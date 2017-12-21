@@ -1,0 +1,13 @@
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index 9a33e3a..3d22283 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -14,7 +14,7 @@
+     </p>
+ </div>
+ 
+-<h2>Comments</h2>
++<h2>Comments ({{ comments|length }})</h2>
+ 
+ <ul>
+     {% for comment in comments %}

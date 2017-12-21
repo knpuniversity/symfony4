@@ -49,7 +49,32 @@
             "id": "twig-render-template",
             "name": "Twig: Render template",
             "description": null
+        },
+        {
+            "id": "twig-loop-over-comments",
+            "name": "Twig: Loop over comments",
+            "description": null
+        },
+        {
+            "id": "twig-use-length-filter",
+            "name": "Twig: Use length filter",
+            "description": null
+        },
+        {
+            "id": "twig-extends-but-no-block",
+            "name": "Twig: Extends but no block",
+            "description": null
+        },
+        {
+            "id": "twig-add-body-block",
+            "name": "Twig: Add body block",
+            "description": null
+        },
+        {
+            "id": "twig-add-title-block",
+            "name": "Twig: Add title block",
+            "description": null
         }
     ],
-    "sha": "2bdd43cbf181dcc353576c02bba2fbeb05c202ab"
+    "sha": "4227616022b63a2ae37341aaa8ebdce33340b89d"
 }
