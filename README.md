@@ -1,7 +1,7 @@
-# Joyful Development with Symfony 4
+# Stellar Development with Symfony 4
 
 Well hi there! This repository holds the code and script
-for the [Joyful Development with Symfony 4](https://knpuniversity.com/screencast/symfony4) course on KnpUniversity.
+for the [Stellar Development with Symfony 4](https://knpuniversity.com/screencast/symfony4) course on KnpUniversity.
 
 ## Have Ideas, Feedback or an Issue?
 
