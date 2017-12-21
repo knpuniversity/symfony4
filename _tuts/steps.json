@@ -74,7 +74,32 @@
             "id": "twig-add-title-block",
             "name": "Twig: Add title block",
             "description": null
+        },
+        {
+            "id": "profiler-install-profiler",
+            "name": "Profiler: Install profiler",
+            "description": null
+        },
+        {
+            "id": "profiler-use-dump",
+            "name": "Profiler: Use dump()",
+            "description": null
+        },
+        {
+            "id": "profiler-dump-in-twig",
+            "name": "Profiler: dump() in Twig",
+            "description": null
+        },
+        {
+            "id": "profiler-install-debug",
+            "name": "Profiler: Install debug",
+            "description": null
+        },
+        {
+            "id": "profiler-remove-dump",
+            "name": "Profiler: Remove dump()",
+            "description": null
         }
     ],
-    "sha": "4227616022b63a2ae37341aaa8ebdce33340b89d"
+    "sha": "408dbedf57fc3733b8f091c99271e610716f770b"
 }
