@@ -1,0 +1,55 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "setup-install-server",
+            "name": "Setup: Install server",
+            "description": null
+        },
+        {
+            "id": "pages-create-yaml-page",
+            "name": "Pages: Create YAML page",
+            "description": null
+        },
+        {
+            "id": "pages-install-annotations",
+            "name": "Pages: Install annotations",
+            "description": null
+        },
+        {
+            "id": "pages-convert-route-to-annotation",
+            "name": "Pages: Convert route to annotation",
+            "description": null
+        },
+        {
+            "id": "pages-add-show-page-hardcoded",
+            "name": "Pages: Add show page hardcoded",
+            "description": null
+        },
+        {
+            "id": "pages-use-a-wildcard-route",
+            "name": "Pages: Use a wildcard route",
+            "description": null
+        },
+        {
+            "id": "recipes-install-sec-checker",
+            "name": "Recipes: Install sec-checker",
+            "description": null
+        },
+        {
+            "id": "twig-install-twig",
+            "name": "Twig: Install twig",
+            "description": null
+        },
+        {
+            "id": "twig-render-template",
+            "name": "Twig: Render template",
+            "description": null
+        }
+    ],
+    "sha": "2bdd43cbf181dcc353576c02bba2fbeb05c202ab"
+}

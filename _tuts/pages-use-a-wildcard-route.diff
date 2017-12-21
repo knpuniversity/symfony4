@@ -1,0 +1,21 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 830712e..dc110b2 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -16,10 +16,13 @@ class ArticleController
+     }
+ 
+     /**
+-     * @Route("/news/why-asteroids-taste-like-chocolate")
++     * @Route("/news/{slug}")
+      */
+-    public function show()
++    public function show($slug)
+     {
+-        return new Response('Future page to show one space article!');
++        return new Response(sprintf(
++            'Future page to show the article: "%s"',
++            $slug
++        ));
+     }
+ }

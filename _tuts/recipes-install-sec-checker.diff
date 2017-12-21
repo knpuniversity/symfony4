@@ -1,0 +1,187 @@
+diff --git a/composer.json b/composer.json
+index d08d903..eb169af 100644
+--- a/composer.json
++++ b/composer.json
+@@ -5,6 +5,7 @@
+         "php": "^7.1.3",
+         "ext-iconv": "*",
+         "sensio/framework-extra-bundle": "^5.1",
++        "sensiolabs/security-checker": "^4.1",
+         "symfony/console": "^4.0",
+         "symfony/flex": "^1.0",
+         "symfony/framework-bundle": "^4.0",
+@@ -40,7 +41,8 @@
+     "scripts": {
+         "auto-scripts": {
+             "cache:clear": "symfony-cmd",
+-            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
++            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
++            "security-checker security:check": "script"
+         },
+         "post-install-cmd": [
+             "@auto-scripts"
+diff --git a/composer.lock b/composer.lock
+index a6915f2..2fface6 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,9 +4,65 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "37ef99d8270e7a03d984f5ed5b737885",
++    "content-hash": "7bb8c8fcf7ee20b6bb69bae28b7062e6",
+     "packages": [
+         {
++            "name": "composer/ca-bundle",
++            "version": "1.1.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/composer/ca-bundle.git",
++                "reference": "943b2c4fcad1ef178d16a713c2468bf7e579c288"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/943b2c4fcad1ef178d16a713c2468bf7e579c288",
++                "reference": "943b2c4fcad1ef178d16a713c2468bf7e579c288",
++                "shasum": ""
++            },
++            "require": {
++                "ext-openssl": "*",
++                "ext-pcre": "*",
++                "php": "^5.3.2 || ^7.0"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "^4.8.35",
++                "psr/log": "^1.0",
++                "symfony/process": "^2.5 || ^3.0 || ^4.0"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Composer\\CaBundle\\": "src"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Jordi Boggiano",
++                    "email": "j.boggiano@seld.be",
++                    "homepage": "http://seld.be"
++                }
++            ],
++            "description": "Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.",
++            "keywords": [
++                "cabundle",
++                "cacert",
++                "certificate",
++                "ssl",
++                "tls"
++            ],
++            "time": "2017-11-29T09:37:33+00:00"
++        },
++        {
+             "name": "doctrine/annotations",
+             "version": "v1.6.0",
+             "source": {
+@@ -669,6 +725,51 @@
+             "time": "2017-12-04T18:33:55+00:00"
+         },
+         {
++            "name": "sensiolabs/security-checker",
++            "version": "v4.1.6",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/sensiolabs/security-checker.git",
++                "reference": "387b6a3b723ba35588b33d5f8d14e28ed608bd30"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/387b6a3b723ba35588b33d5f8d14e28ed608bd30",
++                "reference": "387b6a3b723ba35588b33d5f8d14e28ed608bd30",
++                "shasum": ""
++            },
++            "require": {
++                "composer/ca-bundle": "^1.0",
++                "symfony/console": "~2.7|~3.0|~4.0"
++            },
++            "bin": [
++                "security-checker"
++            ],
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.1-dev"
++                }
++            },
++            "autoload": {
++                "psr-0": {
++                    "SensioLabs\\Security": ""
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien.potencier@gmail.com"
++                }
++            ],
++            "description": "A security checker for your composer.lock",
++            "time": "2017-10-29T18:48:08+00:00"
++        },
++        {
+             "name": "symfony/cache",
+             "version": "v4.0.2",
+             "source": {
+diff --git a/config/packages/dev/security_checker.yaml b/config/packages/dev/security_checker.yaml
+new file mode 100644
+index 0000000..544c0b3
+--- /dev/null
++++ b/config/packages/dev/security_checker.yaml
+@@ -0,0 +1,8 @@
++services:
++    SensioLabs\Security\SecurityChecker:
++        public: false
++
++    SensioLabs\Security\Command\SecurityCheckerCommand:
++        arguments: ['@SensioLabs\Security\SecurityChecker']
++        tags:
++            - { name: console.command }
+diff --git a/symfony.lock b/symfony.lock
+index c73c546..8c00502 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -1,4 +1,7 @@
+ {
++    "composer/ca-bundle": {
++        "version": "1.1.0"
++    },
+     "doctrine/annotations": {
+         "version": "1.0",
+         "recipe": {
+@@ -44,6 +47,15 @@
+             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
+         }
+     },
++    "sensiolabs/security-checker": {
++        "version": "4.0",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "4.0",
++            "ref": "576d653444dade07f272c889d52fe4594caa4fc3"
++        }
++    },
+     "symfony/cache": {
+         "version": "v4.0.2"
+     },
