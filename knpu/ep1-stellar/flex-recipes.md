@@ -1,7 +1,9 @@
 # Symfony Flex & Aliases
 
-It's time to demystify something *incredible* that's already been happening behind
-the scenes. First commit everything, with a nice message:
+It's time to demystify something *incredible*: tractor beams. Well actually, we
+haven't figured those out yet... so let's demystify something *else*, something
+that's already been happening behind the scenes. First commit everything, with a
+nice message:
 
 ```terminal-silent
 git add .
@@ -11,10 +13,8 @@ git commit -m "making so much good progress"
 ## Installing the Security Checker
 
 Let's install a new feature called the Symfony Security Checker. This is a *great*
-tool.... but... full disclosure: we're *mostly* installing it show of the *recipe*
-system.
-
-Run:
+tool.... but... full disclosure: we're *mostly* installing it to show of the *recipe*
+system. Ooooo. Run:
 
 ```terminal
 git status
@@ -28,31 +28,32 @@ composer require sec-checker
 
 ## Hello Symfony Flex
 
-Once again, `sec-checker` should *not* be a valid composer package! So what's going
+Once again, `sec-checker` should *not* be a valid package name! So what's going
 on? Move over and open `composer.json`. Our project began with just a *few* dependencies.
-One of them is something called `symfony/flex`: this is *super* important. Flex
-is a Composer plugin and it has two superpowers.
+One of them was `symfony/flex`: this is *super* important. Flex is a Composer plugin
+with two superpowers.
 
 ## Flex Aliases
 
 The first superpower is the *alias* system. Find your browser and go to
 [symfony.sh](https://symfony.sh).
 
-This is Symphony "recipe" server - we'll talk about what that means next. Search
-for "security". Ah, there's a packages called `sensiolabs/security-checker`. And
+This is the Symfony "recipe" server: we'll talk about what that means next. Search
+for "security". Ah, here's a package called `sensiolabs/security-checker`. And
 below, it has aliases:` sec-check`, `sec-checker`, `security-check` and more.
 
 Thanks to Flex, we can say `composer require sec-checker`, or *any* of these aliases,
 and it will translate that into the real package name. Yep, it's just a shortcut
 system. But the result is *really* cool. Need a logger? `composer require logger`.
-Need to send emails? `composer require mailer`.
+Need to send emails? `composer require mailer`. Need a tractor beam? `composer require`,
+wait, no, we can't help with that one.
 
 Back in `composer.json`, yep! Composer *actually* added `sensiolabs/security-checker`.
-That't the *first* superpower of Flex.
+That's the *first* superpower of Flex.
 
 ## Flex Recipes
 
-The *second* superpower is even better: recipes. Go back to your terminal and...
+The *second* superpower is even better: recipes. Mmmm. Go back to your terminal and...
 yes! It *did* install and, check this out: "Symfony operations: 1 recipe". Then,
 "Configuring sensiolabs/security-checker".
 
@@ -63,15 +64,15 @@ git status
 ```
 
 Woh! We *expected* `composer.json` and `composer.lock` to be updated. But there
-are *also* changes to some `symfony.lock` file and we suddenly have a *brand new*
+are *also* changes to a `symfony.lock` file and we suddenly have a *brand new*
 config file!
 
 First, `symfony.lock`: this file is managed by Flex. It keeps track of which recipes
 have been installed. Basically... commit it to git, but don't worry about it.
 
-The second file is `config/packages/dev/security_checker.yaml`. Ah! This configuration
-adds a new `bin/console` command to our project! Don't worry about the code itself:
-you'll understand and be writing code like this soon!
+The second file is `config/packages/dev/security_checker.yaml`. This was added by
+the recipe and, cool! It adds a new `bin/console` command to our app! Don't worry
+about the code itself: you'll understand and be writing code like this soon enough!
 
 The point is this: thanks to this file, we can now run:
 
@@ -84,7 +85,7 @@ will execute the *recipe* for that package, if there is one. Recipes can add con
 files, create directories, or even modify files like `.gitignore` so that the library
 *instantly* works without *any* extra setup. I *love* Flex.
 
-By the way, the *point* of the security checker is that it checks to see if there
+By the way, the *purpose* of the security checker is that it checks to see if there
 are any known vulnerabilities for packages used in our project. Right now, we're good!
 
 But the recipe made one *other* change. Run:
@@ -104,14 +105,15 @@ when it finishes, it runs the security checker automatically. So cool!
 
 Oh, and I won't show it right now, but Flex is even smart enough to *uninstall*
 the recipes when you *remove* a package. That makes testing out new packages fast
-and safe.
+and easy.
 
 ## The Recipes Repository
 
-So you might be wondering... where do these recipes live? Great question! They live
-in... the *cloud*. I mean, they live on GitHub. On `symfony.sh`, click "Recipe"
-on the Security checker. Ah, it takes us to the `symfony/recipse` repository. Here,
-you can see what files will be added and a few other changes described in `manifest.json`.
+So you might be wondering... where do these recipes live? Great question! They live...
+in the *cloud*. I mean, they live on GitHub. On `symfony.sh`, click "Recipe"
+next to the Security checker. Ah, it takes us to the `symfony/recipes` repository.
+Here, you can see what files will be added and a few other changes described in
+`manifest.json`.
 
 All recipes either live in this repository, or another one called `symfony/recipes-contrib`.
 There's no important difference between the two repositories: but the official recipes

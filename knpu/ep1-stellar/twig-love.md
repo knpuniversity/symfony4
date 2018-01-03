@@ -1,75 +1,127 @@
 # Twig ❤️
 
-All right. Open article controller. We're going to render a template inside of
-our show page as soon as you want to render a template. You need to extend.
+Back to work! Open `ArticleController`. As soon as you want to render a template,
+you need to extend a base class: `AbstractController`. Obviously, your controller
+does not *need* to extend this. But they usually will... because this class gives
+you shortcut methods! The one we want is `return $this->render()`. Pass it a template
+filename: how about `article/show.html.twig` to be consistent with the controller
+name. The second argument is an array of variables that you want to pass *into* your
+template. Eventually, we're going to load articles from the database. But... we hang
+on! We're not quite ready yet. So let's fake it 'til we make it! Pass a `title` variable
+set to a title-ized version of the slug.
 
-A base class called abstract controller. Notice we hadn't extended anything yet
-because simply doesn't care what your controller looks like. But by extending
-abstract controller it's going to give us some shortcuts. The best shortcut is
-return this error or render and you'll give us the name.
+Great! Let's go add that template! Inside `templates/`, create an `article` directory
+then the file: `show.html.twig`.
 
-File name to your template. Let's say article slash showed that 2 last week so
-that were consistent with our Controller name. The second argument is an array
-of variables that you want to pass into your tweak template. Now eventually
-we're going to start loading articles from the database but we don't have a
-database yet. So let's just. Pass a title variable and let's set it to U.S.
-words. And then SDL replace. Dasch with space. SLOC. In other words we're going
-to take our slug and make it look like a title. And. For now that's it. The
-temple locations are super easy. Inside your templates directory. Create a new
-article directory. And then a new file called showed that each with that tweak
-inside.
+Add an `h1`, then print that `title` variable: `{{ title }}`.
 
-Twig it is really really easy. It only has 3 syntaxes the first syntax. Which
-is curly Curly. Is the. Say something syntax. This is the print syntax so is
-always Curly Curly and then a variable or curly Curly and then a string or
-curly Curly and then a function it prints something.
+## Twig Basics
 
-It's that simple.
+If you're new to Twig, welcome! You're going to *love* it! Twig only has *2* syntaxes.
+The first is `{{` `}}`. I call this the "say something" tag, because it *prints*.
+And just like PHP, you can print anything: a variable, a string or a complex expression.
 
-The second syntax is curly brace percent and that's called the do something
-takk. It's used for things like an if statement or a for loop. I'll show you an
-example of a second and I'll show you a full list of do something tax.
+The second syntax is `{% %}`. I call this the "do something" tag. It's used whenever
+you need to, um, *do* something, instead of printing, like an `if` statement or `for`
+loop. We'll look at the *full* list of do something tags in a minute.
 
-And the third type is not really a real type it's just comments curly brace
-percent and then end with preset curly brace.
+And... yea, that's it! Well, ok, I totally lied. There is a *third* syntax:
+`{# #}`: comments! 
 
-At the bottom of this page.
+At the bottom of this page, I'll paste some extra hard-coded content to *spice* things
+up!
 
-I'll paste some extra hard coded content for now. All right so check it out. Go
-back to your page and refresh boom.
+Let's go try it! Find your browser and refresh! Boom! We have content!
 
-We have conta now notice if you view your page source it's just that content.
-We do not have a base layout yet we don't have an HMO structure. Fix that in a
-few minutes. But go back to your controller first.
+But check it out: if you view the page source... it's *just* this content: we don't
+have any layout or HTML structure yet. But, we will soon!
 
-And want a pass and a second variable so I'm going to paste in three fake
-comments for this article. And then add a second variable called comments that
-will pass into our template. So this time it's not as simple as just printing
-those we need to loop over that. So let's add at the bottom and H2 that says
-comments and keep things simple I'll make a UL and we'll use Crilley race
-percent for. Loop. And will say for comment in the comments. And then most so
-do something tags have a corresponding end tag so and for that inside the loop.
-Comment is just your individual comment so we can go back toward Curly Curly
-and say comment.
+## Looping with for
 
-Perfect reference. And we've got Sugo to twig that Symphonie dot com.
+Go back to your controller. Eventually, users will need to be able to comment on
+the articles, so they can respectfully debate the article's conclusions based on
+objective analysis and research. Ya know... no different than *any* other news
+commenting section. Ahem.
 
-And click on their documentation and then scroll down a little bit until you
-see a couple of columns. This is awesome. You see these attacks on the left.
-These are the entire list of do something tags so will always be curly brace.
-Percent if Crilley race percent for curly brace percent block in. Honestly
-you're only going to use about 5 of those so if you want to know more about how
-a for loop works just click for the rest of this is pretty easy Twig has
-functions which I assume you know how to use functions. It also has something
-called tests which are a little more interesting but not difficult and a really
-really cool thing called filters filters are like functions but have a
-different syntax. Let me show you. There's one filter called length. To go back
-to our tweaked template.
+I'll paste in 3 fake comments. Add a second variable called `comments` to pass these
+into the template. This time, we can't just *print* that array: we need to loop
+over it. At the bottom, and an `h2` that says "Comments" and then add a `ul`.
+To loop, we need our first *do* something tag! Woo! Use `{% for comment in comments %}`.
+Most "do" something tags also have a closing tag: `{% endfor %}`.
 
-Message you want to print out the number of comments that are on this article
-so I'll do a little parentheses and then we can say comments pipe length. That
-is the filter the variable on the left passes to the right. Almost like a Unix
-pipe and then the length just counts those and then we print the result.
+Inside the loop, `comment` represents the individual comment. So, just print it:
+`{{ comment }}`.
 
-We your. We've got. So let's talk about one more thing with Weygand that is
-twigs. Amazing awesome killer. Lay out inheritance system.
+Try it! Brilliant! I mean, it's *really* ugly... oof. But we'll fix that later.
+
+## The Amazing Twig Reference
+
+Go to [twig.symfony.com](https://twig.symfony.com/) and click on the Documentation
+link. Scroll down a little until you see a set of columns: the [Twig Reference](https://twig.symfony.com/doc/2.x/#reference).
+
+This is *awesome*! See the tags on the left? That is the *entire* list of possible
+"do something" tags. Yep, it will always be `{%` and then one of these: `for`, `if`,
+`extends`, `tractorbeam`. And honestly, you're only going to use about 5 of these
+most of the time.
+
+Twig also has functions... which work like every other language - and a cool thing
+called "tests". Those are a bit unique, but not too difficult, they allow you to
+say things like `if foo is defined` or... `if space is empty`.
+
+The most *useful* part of this reference is the filter sections. Filters are like
+functions but with a different, way more hipster syntax. Let's try our the `length`
+filter.
+
+Go back to our template. I want to print out the total *number* of comments. Add
+a set of parentheses and then say `{{ comments|length }}`.
+
+*That* is a filter: the `comments` value passes from the left to right, just like
+a Unix pipe. The `length` filter counts whatever was passed to it, and we print the
+result. You can even use *multiple* filters!
+
+***TIP
+To unnecessarily confuse your teammates, try using the `upper` and `lower` filters
+over and over again: `{{ name|upper|lower|upper|lower|upper }}`!
+***
+
+## Template Inheritance
+
+Twig has *one* last *killer* feature: it's template inheritance system. Because
+remember! We don't *yet* have a *real* HTML page: just the content from the template.
+
+To fix this, at the top of the template, add `{% extends 'base.html.twig' %}`.
+
+This refers to the `base.html.twig` file that was added by the recipe. It's simple
+now, but this is *our* layout file and we'll customize it over time. By extending
+it, we should *at least* get this basic HTML structure.
+
+But when we refresh... surprise! An error! And probably one that you'll see at some
+point!
+
+> A template that extends another one cannot include content outside Twig blocks
+
+Huh. Look at base template again: it's basically an HTML layout plus a bunch of
+blocks... most of which are *empty*. When you extend a template, you're telling
+Twig that you want to put your content *inside* of that template. The blocks, are
+the "holes" *into* which our child template can put content. For example, there's
+a block called `body`, and that's *really* where we want to put our content. To do
+that, we need to *override* that block. At the top of the content, add `{% block body %}`,
+and at the bottom, `{% endblock %}`.
+
+Now our content should go *inside* of that block in `base.html.twig`. Try it!
+Refresh! Yes! Well, it doesn't look any different, but we *do* have a proper HTML
+body.
+
+##  More about Blocks
+
+You're *completely* free to customize this template as much as you want: rename
+the blocks, add more blocks, and, hopefully, make the site look less ugly!
+
+Oh, and *most* of the time, the blocks are empty. But you *can* give the block
+some *default* content, like with `title`. Yep, the browser tab's title *is* `Welcome`.
+
+Let's override that! At the top... or really, *anywhere*, add `{% block title %}`.
+Then say `Read `, print the `title` variable, and `{% endblock %}`.
+
+Try that! Yes! The page title changes. And... voilà! That's Twig. You're going to
+*love* it. Now let's check out one of Symfony's most *killer* features: the profiler.
