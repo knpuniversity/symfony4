@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 6e8eabc..16998aa 100644
+index ad89021..94befce 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -10,6 +10,7 @@
+@@ -9,6 +9,7 @@
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
          "symfony/lts": "^4@dev",
@@ -11,19 +11,19 @@ index 6e8eabc..16998aa 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 79366d8..0d2f540 100644
+index 560b0a4..6bdb892 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "f2eb78fdaf16900452559abfb0547fac",
-+    "content-hash": "20d4790bab62ff87d2bb69c2ad42a407",
+-    "content-hash": "60c9b62802e3ed49434764ac1a61749a",
++    "content-hash": "34520c91057cc863236ba3fe9d07156e",
      "packages": [
          {
-             "name": "composer/ca-bundle",
-@@ -1705,6 +1705,61 @@
+             "name": "doctrine/annotations",
+@@ -1604,6 +1604,61 @@
              "time": "2017-10-11T12:05:26+00:00"
          },
          {
@@ -85,7 +85,7 @@ index 79366d8..0d2f540 100644
              "name": "symfony/process",
              "version": "v4.0.2",
              "source": {
-@@ -1754,6 +1809,34 @@
+@@ -1653,6 +1708,34 @@
              "time": "2017-12-14T19:48:22+00:00"
          },
          {
@@ -120,7 +120,7 @@ index 79366d8..0d2f540 100644
              "name": "symfony/routing",
              "version": "v4.0.2",
              "source": {
-@@ -1832,6 +1915,55 @@
+@@ -1731,6 +1814,55 @@
              "time": "2017-12-14T22:39:22+00:00"
          },
          {
@@ -176,7 +176,7 @@ index 79366d8..0d2f540 100644
              "name": "symfony/twig-bridge",
              "version": "v4.0.2",
              "source": {
-@@ -1995,6 +2127,141 @@
+@@ -1894,6 +2026,141 @@
              "time": "2017-12-04T12:31:58+00:00"
          },
          {

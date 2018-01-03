@@ -65,14 +65,14 @@ index 908faa0..b26456e 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index ab4a222..0b18fc8 100644
+index ca85e91..29f0750 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "31c264298a409fd3387f44c33ed800df",
+-    "content-hash": "1a086f8c9b998235e5c6081cb753b266",
 +    "content-hash": "86646ac463b740e13dba7d92249d91da",
      "packages": [
          {

@@ -36,31 +36,31 @@ index 0000000..75d5be8
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index 16998aa..1162a3f 100644
+index 94befce..9522e17 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -7,6 +7,7 @@
+@@ -6,6 +6,7 @@
+         "ext-iconv": "*",
          "sensio/framework-extra-bundle": "^5.1",
-         "sensiolabs/security-checker": "^4.1",
          "symfony/console": "^4.0",
 +        "symfony/debug-pack": "^1.0",
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
          "symfony/lts": "^4@dev",
 diff --git a/composer.lock b/composer.lock
-index 0d2f540..4918e4f 100644
+index 6bdb892..f122a35 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "20d4790bab62ff87d2bb69c2ad42a407",
-+    "content-hash": "8b8e3a17a0495cdf53cfcc91a41895f0",
+-    "content-hash": "34520c91057cc863236ba3fe9d07156e",
++    "content-hash": "61f78f484b03691c9064dde2b52197ae",
      "packages": [
          {
-             "name": "composer/ca-bundle",
-@@ -466,6 +466,134 @@
+             "name": "doctrine/annotations",
+@@ -410,6 +410,134 @@
              "time": "2014-09-09T13:34:57+00:00"
          },
          {
@@ -195,7 +195,7 @@ index 0d2f540..4918e4f 100644
              "name": "psr/cache",
              "version": "1.0.1",
              "source": {
-@@ -1023,6 +1151,102 @@
+@@ -922,6 +1050,102 @@
              "time": "2017-12-12T08:41:51+00:00"
          },
          {
@@ -298,7 +298,7 @@ index 0d2f540..4918e4f 100644
              "name": "symfony/dependency-injection",
              "version": "v4.0.2",
              "source": {
-@@ -1646,6 +1870,197 @@
+@@ -1545,6 +1769,197 @@
              "time": "2017-10-19T02:16:32+00:00"
          },
          {

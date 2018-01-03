@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index eb169af..6e8eabc 100644
+index f569751..ad89021 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -10,6 +10,7 @@
+@@ -9,6 +9,7 @@
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
          "symfony/lts": "^4@dev",
@@ -11,19 +11,19 @@ index eb169af..6e8eabc 100644
          "symfony/yaml": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 2fface6..79366d8 100644
+index 41646b2..560b0a4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "7bb8c8fcf7ee20b6bb69bae28b7062e6",
-+    "content-hash": "f2eb78fdaf16900452559abfb0547fac",
+-    "content-hash": "31f37e6727253e061caa9fd4d3b12ffb",
++    "content-hash": "60c9b62802e3ed49434764ac1a61749a",
      "packages": [
          {
-             "name": "composer/ca-bundle",
-@@ -1832,6 +1832,169 @@
+             "name": "doctrine/annotations",
+@@ -1731,6 +1731,169 @@
              "time": "2017-12-14T22:39:22+00:00"
          },
          {
@@ -193,7 +193,7 @@ index 2fface6..79366d8 100644
              "name": "symfony/web-server-bundle",
              "version": "v4.0.2",
              "source": {
-@@ -1946,6 +2109,72 @@
+@@ -1845,6 +2008,72 @@
              "description": "Symfony Yaml Component",
              "homepage": "https://symfony.com",
              "time": "2017-12-12T08:41:51+00:00"
