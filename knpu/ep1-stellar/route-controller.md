@@ -50,7 +50,7 @@ Let's try the page! Find your browser. Oh, this "Welcome" page only shows if you
 don't have *any* routes configured. Refresh! Yes! This is *our* page. Our first of
 *many*.
 
-## Annotations Routes
+## Annotation Routes
 
 That was *pretty* easy, but it can be easier! Instead of creating our routes in
 YAML, let's use a cool feature called *annotations*. This is an extra feature, so
@@ -63,7 +63,7 @@ composer require annotations
 Interesting... this `annotations` package *actually* installed `sensio/framework-extra-bundle`.
 We're going to talk about how that works *very* soon.
 
-Now, about these annotations routes. Comment-out the YAML route. Then, in `ArticleController`,
+Now, about these annotation routes. Comment-out the YAML route. Then, in `ArticleController`,
 above the controller method, add `/**`, hit enter, clear this out, and say `@Route()`.
 You can use either class - but make sure PhpStorm adds the `use` statement on top.
 Then add `"/"`.

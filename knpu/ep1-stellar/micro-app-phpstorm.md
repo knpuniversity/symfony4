@@ -75,7 +75,7 @@ Ahem, If you *do* use it... which would be *awesome* for you... there are 2 secr
 you need to know to trick out your spaceship, ah, *editor*! Clearly I was in hyper-sleep
 too long.
 
-Go to Preferences, Plugins, then click "Browser Repositories". There are 3
+Go to Preferences, Plugins, then click "Browse Repositories". There are 3
 must-have plugins. Search for "Symfony". First: the "Symfony Plugin". It has over
 2 million downloads for a reason: it will give you *tons* of ridiculous
 auto-completion. You should also download "PHP Annotations" and "PHP Toolbox". I

@@ -3,4 +3,5 @@ chapters:
     - micro-app-phpstorm
     - route-controller
     - flex-recipes
+    - twig-recipe
     - twig-love

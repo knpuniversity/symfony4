@@ -1,46 +1,4 @@
-# Twig <3
-
-We know that Symphony's controller system is simple you just need to return a
-symphony response object. Symphony does not care how you create that response
-object. You could render templates make API requests do anything that you want.
-Now these days. Some applications are built as pure API backhands that talk to
-a javascript front and in some applications still render their own. Each team
-all from the right to do a mixture of both so you can see how they work. But
-for now I'm going to make these pages actually return each team out and I'm not
-going to put the email directly in my controller. That would be terrible. We
-are going to use a templating engine. Called twitt. Add this text before.
-Symphonie is. Most of learning Symphonie is about learning. To install into use
-optional tools inside of your controller to make your job easier.
-
-One of those is a templating engine and we are going to use an awesome one
-called TWIC. First. Make sure you commit all your changes. I already have. This
-is going to make. Watching what the recipes do. Much more fun. Not run composer
-required require tweak.
-
-As you can see this installs the tweak bundle and a few other libraries and
-configures are recipe. Ah. So let's see what that did. Run. Get status. I made
-a few changes the first config slash bundles that page. This is not really
-important. This is the place where all. Bundles. Are a plugin for symphony.
-
-And when you install a bundle the recipe automatically takes care of
-registering it with your application so it just works instantly. So this is
-basically a detail you don't need to worry about. The recipe did. Three. The
-recipe the two other recipe did a few other things I want to talk about two of
-them. First it created a templates directory so you don't have to guess where
-templates go. If you're using templates it creates a template directory. It
-also created a base layout file that will use in a few minutes. The Bunna also
-needs some configuration so it automatically added a config packages tweak that
-Yemenite. And even though this file was added by the recipe it's yours to
-modify. You can make what ever changes you want. This is really cool. Why do
-your templates live in a temples directory. Because the configuration says that
-exact thing. Don't worry about these percent. Syntaxes yet we're going to talk
-about that in a future episode. But you can already see that preset kernel that
-project her.
-
-Is just some sort of variable to point to the root of her project.
-
-So we're looking into the details of what the recipe did but the lesson is
-always the same when you install a library. It takes care of the rest.
+# Twig ❤️
 
 All right. Open article controller. We're going to render a template inside of
 our show page as soon as you want to render a template. You need to extend.
