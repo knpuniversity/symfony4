@@ -48,9 +48,11 @@ whatever changes you want.
 Oh, and I *love* this! *Why* do our templates need to live in a `templates/` directory.
 Is that hardcoded deep inside Symfony? Nope! It's right here!
 
-Don't worry about this percent syntax yet - you'll learn about them in a future
+Don't worry about this percent syntax yet - you'll learn about that in a future
 episode. But, you can probably guess what's going on: `%kernel.project_dir%` is a
 variable that points to the root of the project.
 
 Anyways, looking at what a recipe did is a *great* way to learn! But the main lesson
 of Flex is this: install a library and it takes care of the rest.
+
+Now, let's go *use* Twig!

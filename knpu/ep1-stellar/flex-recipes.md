@@ -40,7 +40,7 @@ The first superpower is the *alias* system. Find your browser and go to
 
 This is the Symfony "recipe" server: we'll talk about what that means next. Search
 for "security". Ah, here's a package called `sensiolabs/security-checker`. And
-below, it has aliases:` sec-check`, `sec-checker`, `security-check` and more.
+below, it has aliases: `sec-check`, `sec-checker`, `security-check` and more.
 
 Thanks to Flex, we can say `composer require sec-checker`, or *any* of these aliases,
 and it will translate that into the real package name. Yep, it's just a shortcut

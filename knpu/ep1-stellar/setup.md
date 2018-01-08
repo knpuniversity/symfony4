@@ -1,4 +1,4 @@
-# Setting up Symfony 4
+# Symfony 4: Let's Launch!
 
 Hey guys! Yes! It's Symfony 4 time! I am *so* excited. Why? Because *nothing*
 makes me happier than sitting down to work inside a framework where coding is actually

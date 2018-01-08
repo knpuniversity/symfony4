@@ -6,7 +6,7 @@ does not *need* to extend this. But they usually will... because this class give
 you shortcut methods! The one we want is `return $this->render()`. Pass it a template
 filename: how about `article/show.html.twig` to be consistent with the controller
 name. The second argument is an array of variables that you want to pass *into* your
-template. Eventually, we're going to load articles from the database. But... we hang
+template. Eventually, we're going to load articles from the database. But... hang
 on! We're not quite ready yet. So let's fake it 'til we make it! Pass a `title` variable
 set to a title-ized version of the slug.
 
@@ -68,7 +68,7 @@ Twig also has functions... which work like every other language - and a cool thi
 called "tests". Those are a bit unique, but not too difficult, they allow you to
 say things like `if foo is defined` or... `if space is empty`.
 
-The most *useful* part of this reference is the filter sections. Filters are like
+The most *useful* part of this reference is the filter section. Filters are like
 functions but with a different, way more hipster syntax. Let's try our the `length`
 filter.
 
@@ -100,7 +100,7 @@ point!
 
 > A template that extends another one cannot include content outside Twig blocks
 
-Huh. Look at base template again: it's basically an HTML layout plus a bunch of
+Huh. Look at the base template again: it's basically an HTML layout plus a bunch of
 blocks... most of which are *empty*. When you extend a template, you're telling
 Twig that you want to put your content *inside* of that template. The blocks, are
 the "holes" *into* which our child template can put content. For example, there's
@@ -124,4 +124,4 @@ Let's override that! At the top... or really, *anywhere*, add `{% block title %}
 Then say `Read `, print the `title` variable, and `{% endblock %}`.
 
 Try that! Yes! The page title changes. And... voilà! That's Twig. You're going to
-*love* it. Now let's check out one of Symfony's most *killer* features: the profiler.
+*love* it. Next let's check out one of Symfony's most *killer* features: the profiler.
