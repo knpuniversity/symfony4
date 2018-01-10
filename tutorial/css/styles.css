@@ -180,8 +180,9 @@ html {height:100%}
     font-size: 2em;
 }
 
-.like-article {
+.like-article, .like-article:hover {
     color: red;
+    text-decoration: none;
 }
 
 @media (max-width: 991px) {
