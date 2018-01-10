@@ -1,0 +1,26 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 4b6f99e..7b27bfd 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Controller;
+ 
++use Psr\Log\LoggerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\JsonResponse;
+@@ -38,10 +39,12 @@ class ArticleController extends AbstractController
+     /**
+      * @Route("/news/{slug}/heart", name="article_toggle_heart", methods={"POST"})
+      */
+-    public function toggleArticleHeart($slug)
++    public function toggleArticleHeart($slug, LoggerInterface $logger)
+     {
+         // TODO - actually heart/unheart the article!
+ 
++        $logger->info('Article is being hearted!');
++
+         return new JsonResponse(['hearts' => rand(5, 100)]);
+     }
+ }

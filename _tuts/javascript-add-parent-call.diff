@@ -1,0 +1,13 @@
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index a51d37c..b1c24d2 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -103,5 +103,7 @@
+ {% endblock %}
+ 
+ {% block javascripts %}
++    {{ parent() }}
++
+     <script src="{{ asset('js/article_show.js') }}"></script>
+ {% endblock %}
+\ No newline at end of file

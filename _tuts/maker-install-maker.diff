@@ -1,0 +1,121 @@
+diff --git a/composer.json b/composer.json
+index 54fc072..76805d9 100644
+--- a/composer.json
++++ b/composer.json
+@@ -18,7 +18,8 @@
+     },
+     "require-dev": {
+         "sensiolabs/security-checker": "^4.1",
+-        "symfony/dotenv": "^4.0"
++        "symfony/dotenv": "^4.0",
++        "symfony/maker-bundle": "^1.0"
+     },
+     "config": {
+         "preferred-install": {
+diff --git a/composer.lock b/composer.lock
+index a5c91eb..c9b5eed 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "58838b038aeb4b346fc6358b6bfafb07",
++    "content-hash": "27abb96fada8b6ab3dbe78531f4e7760",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -2972,6 +2972,63 @@
+                 "environment"
+             ],
+             "time": "2017-12-08T15:46:13+00:00"
++        },
++        {
++            "name": "symfony/maker-bundle",
++            "version": "v1.0.2",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/maker-bundle.git",
++                "reference": "bf97703ddb68c6b37bd6bab5f5ebd5c7542ca1ef"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/bf97703ddb68c6b37bd6bab5f5ebd5c7542ca1ef",
++                "reference": "bf97703ddb68c6b37bd6bab5f5ebd5c7542ca1ef",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.0.8",
++                "symfony/config": "^3.4|^4.0",
++                "symfony/console": "^3.4|^4.0",
++                "symfony/dependency-injection": "^3.4|^4.0",
++                "symfony/filesystem": "^3.4|^4.0",
++                "symfony/framework-bundle": "^3.4|^4.0",
++                "symfony/http-kernel": "^3.4|^4.0"
++            },
++            "require-dev": {
++                "friendsofphp/php-cs-fixer": "^2.8",
++                "symfony/phpunit-bridge": "^3.4|^4.0",
++                "symfony/process": "^3.4|^4.0"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Bundle\\MakerBundle\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "keywords": [
++                "code generator",
++                "generator",
++                "scaffold",
++                "scaffolding"
++            ],
++            "time": "2017-12-04T17:50:28+00:00"
+         }
+     ],
+     "aliases": [],
+diff --git a/config/bundles.php b/config/bundles.php
+index b543674..c9d583d 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -8,4 +8,5 @@ return [
+     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
+     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
++    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+ ];
+diff --git a/symfony.lock b/symfony.lock
+index aed9a30..4fde77e 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -143,6 +143,15 @@
+     "symfony/lts": {
+         "version": "4-dev"
+     },
++    "symfony/maker-bundle": {
++        "version": "1.0",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "1.0",
++            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
++        }
++    },
+     "symfony/monolog-bridge": {
+         "version": "v4.0.2"
+     },

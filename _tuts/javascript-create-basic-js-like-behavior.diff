@@ -1,0 +1,41 @@
+diff --git a/public/js/article_show.js b/public/js/article_show.js
+new file mode 100644
+index 0000000..20ebf90
+--- /dev/null
++++ b/public/js/article_show.js
+@@ -0,0 +1,10 @@
++$(document).ready(function() {
++    $('.js-like-article').on('click', function(e) {
++        e.preventDefault();
++
++        var $link = $(e.currentTarget);
++        $link.toggleClass('fa-heart-o').toggleClass('fa-heart');
++
++        $('.js-like-article-count').html('TEST');
++    });
++});
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index bd5cf34..a51d37c 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -16,7 +16,10 @@
+                             <br>
+                             <span class="align-left article-details"><img class="article-author-img rounded-circle" src="{{ asset('images/alien-profile.png') }}"> Mike Ferengi </span>
+                             <span class="pl-2 article-details"> 3 hours ago</span>
+-                            <span class="pl-2 article-details"> 5 <a href="#" class="fa fa-heart-o like-article"></a> </span>
++                            <span class="pl-2 article-details">
++                                <span class="js-like-article-count">5</span>
++                                <a href="#" class="fa fa-heart-o like-article js-like-article"></a>
++                            </span>
+                         </div>
+                     </div>
+                 </div>
+@@ -98,3 +101,7 @@
+ </div>
+ 
+ {% endblock %}
++
++{% block javascripts %}
++    <script src="{{ asset('js/article_show.js') }}"></script>
++{% endblock %}
+\ No newline at end of file

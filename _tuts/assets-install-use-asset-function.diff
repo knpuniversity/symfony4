@@ -1,0 +1,124 @@
+diff --git a/composer.json b/composer.json
+index 9522e17..54fc072 100644
+--- a/composer.json
++++ b/composer.json
+@@ -5,6 +5,7 @@
+         "php": "^7.1.3",
+         "ext-iconv": "*",
+         "sensio/framework-extra-bundle": "^5.1",
++        "symfony/asset": "^4.0",
+         "symfony/console": "^4.0",
+         "symfony/debug-pack": "^1.0",
+         "symfony/flex": "^1.0",
+diff --git a/composer.lock b/composer.lock
+index f122a35..a9b307b 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "61f78f484b03691c9064dde2b52197ae",
++    "content-hash": "58838b038aeb4b346fc6358b6bfafb07",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -797,6 +797,62 @@
+             "time": "2017-12-04T18:33:55+00:00"
+         },
+         {
++            "name": "symfony/asset",
++            "version": "v4.0.3",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/asset.git",
++                "reference": "db6063ab6e71c0d4910328a4d10eba197e1d6b40"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/asset/zipball/db6063ab6e71c0d4910328a4d10eba197e1d6b40",
++                "reference": "db6063ab6e71c0d4910328a4d10eba197e1d6b40",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3"
++            },
++            "require-dev": {
++                "symfony/http-foundation": "~3.4|~4.0",
++                "symfony/http-kernel": "~3.4|~4.0"
++            },
++            "suggest": {
++                "symfony/http-foundation": ""
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Asset\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony Asset Component",
++            "homepage": "https://symfony.com",
++            "time": "2018-01-03T07:38:00+00:00"
++        },
++        {
+             "name": "symfony/cache",
+             "version": "v4.0.2",
+             "source": {
+diff --git a/symfony.lock b/symfony.lock
+index 641e428..aed9a30 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -68,6 +68,9 @@
+             "ref": "576d653444dade07f272c889d52fe4594caa4fc3"
+         }
+     },
++    "symfony/asset": {
++        "version": "v4.0.3"
++    },
+     "symfony/cache": {
+         "version": "v4.0.2"
+     },
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index cf009be..16e52d9 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -8,6 +8,8 @@
+ 
+         {% block stylesheets %}
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
++            <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" type="text/css" media="screen">
++            <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" media="screen">
+         {% endblock %}
+     </head>
+ 
+@@ -33,7 +35,7 @@
+                 <ul class="navbar-nav ml-auto">
+                     <li class="nav-item dropdown" style="margin-right: 75px;">
+                         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+-                  <img class="nav-profile-img rounded-circle" src="images/astronaut-profile.png">
++                  <img class="nav-profile-img rounded-circle" src="{{ asset('images/astronaut-profile.png') }}">
+                 </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                             <a class="dropdown-item" href="#">Profile</a>

@@ -1,0 +1,44 @@
+diff --git a/src/Command/ArticleStatsCommand.php b/src/Command/ArticleStatsCommand.php
+index 26debd0..64fbb03 100644
+--- a/src/Command/ArticleStatsCommand.php
++++ b/src/Command/ArticleStatsCommand.php
+@@ -16,21 +16,31 @@ class ArticleStatsCommand extends Command
+     protected function configure()
+     {
+         $this
+-            ->setDescription('Add a short description for your command')
+-            ->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
+-            ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
++            ->setDescription('Returns some article stats!')
++            ->addArgument('slug', InputArgument::OPTIONAL, 'The article\'s slug')
++            ->addOption('format', null, InputOption::VALUE_REQUIRED, 'The output format', 'text')
+         ;
+     }
+ 
+     protected function execute(InputInterface $input, OutputInterface $output)
+     {
+         $io = new SymfonyStyle($input, $output);
+-        $argument = $input->getArgument('arg1');
++        $slug = $input->getArgument('slug');
+ 
+-        if ($input->getOption('option1')) {
+-            // ...
+-        }
++        $data = [
++            'slug' => $slug,
++            'hearts' => rand(10, 100),
++        ];
+ 
+-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
++        switch ($input->getOption('format')) {
++            case 'text':
++                $io->listing($data);
++                break;
++            case 'json':
++                $io->write(json_encode($data));
++                break;
++            default:
++                throw new \Exception('What kind of crazy format is that!?');
++        }
+     }
+ }

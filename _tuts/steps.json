@@ -99,7 +99,132 @@
             "id": "profiler-remove-dump",
             "name": "Profiler: Remove dump()",
             "description": null
+        },
+        {
+            "id": "assets-copy-in-layout",
+            "name": "Assets: Copy in layout",
+            "description": null
+        },
+        {
+            "id": "assets-copy-assets-to-public",
+            "name": "Assets: Copy assets to public",
+            "description": null
+        },
+        {
+            "id": "assets-install-use-asset-function",
+            "name": "Assets: Install & use asset function",
+            "description": null
+        },
+        {
+            "id": "assets-copy-in-article-template",
+            "name": "Assets: Copy in article template",
+            "description": null
+        },
+        {
+            "id": "assets-make-template-dynamic",
+            "name": "Assets: Make template dynamic",
+            "description": null
+        },
+        {
+            "id": "links-generate-homepage-link",
+            "name": "Links: Generate homepage link",
+            "description": null
+        },
+        {
+            "id": "links-use-explicit-route-name",
+            "name": "Links: Use explicit route name",
+            "description": null
+        },
+        {
+            "id": "links-add-homepage-template",
+            "name": "Links: Add homepage template",
+            "description": null
+        },
+        {
+            "id": "links-try-to-link-to-show-page",
+            "name": "Links: Try to link to show page",
+            "description": null
+        },
+        {
+            "id": "links-add-slug-parameter",
+            "name": "Links: Add slug parameter",
+            "description": null
+        },
+        {
+            "id": "javascript-create-basic-js-like-behavior",
+            "name": "JavaScript: Create basic JS like behavior",
+            "description": null
+        },
+        {
+            "id": "javascript-add-parent-call",
+            "name": "JavaScript: Add parent() call",
+            "description": null
+        },
+        {
+            "id": "javascript-add-api-endpoint",
+            "name": "JavaScript: Add API endpoint",
+            "description": null
+        },
+        {
+            "id": "javascript-make-route-post-only",
+            "name": "JavaScript: Make route POST only",
+            "description": null
+        },
+        {
+            "id": "javascript-hook-up-ajax",
+            "name": "JavaScript: Hook up AJAX",
+            "description": null
+        },
+        {
+            "id": "services-log-something",
+            "name": "Services: Log something",
+            "description": null
+        },
+        {
+            "id": "services-add-logger-context",
+            "name": "Services: Add logger context",
+            "description": null
+        },
+        {
+            "id": "services-show-direct-twig-usage",
+            "name": "Services: Show direct Twig usage",
+            "description": null
+        },
+        {
+            "id": "services-back-to-easy-twig-render",
+            "name": "Services: Back to easy Twig render",
+            "description": null
+        },
+        {
+            "id": "services-install-use-serializer",
+            "name": "Services: Install & use serializer",
+            "description": null
+        },
+        {
+            "id": "services-remove-serializer",
+            "name": "Services: Remove serializer",
+            "description": null
+        },
+        {
+            "id": "maker-install-maker",
+            "name": "Maker: Install maker",
+            "description": null
+        },
+        {
+            "id": "maker-make-command",
+            "name": "Maker: make:command",
+            "description": null
+        },
+        {
+            "id": "maker-customize-command",
+            "name": "Maker: Customize command",
+            "description": null
+        },
+        {
+            "id": "maker-use-table-to-be-prettier",
+            "name": "Maker: Use table to be prettier",
+            "description": null
         }
     ],
-    "sha": "c6fa48b24a5338ed413a8b1ac4030a5530d0e948"
+    "sha": "d1827492430d256c0d7ad2fdab7fd96931bc4534"
 }

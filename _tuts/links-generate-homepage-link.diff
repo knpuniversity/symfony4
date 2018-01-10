@@ -1,0 +1,13 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 16e52d9..fffa10a 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -15,7 +15,7 @@
+ 
+     <body>
+         <nav class="navbar navbar-expand-lg navbar-dark navbar-bg mb-5">
+-            <a style="margin-left: 75px;" class="navbar-brand space-brand" href="#">The Space Bar</a>
++            <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ path('app_article_homepage') }}">The Space Bar</a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>

@@ -1,0 +1,17 @@
+diff --git a/src/Command/ArticleStatsCommand.php b/src/Command/ArticleStatsCommand.php
+index 64fbb03..bcd3ba8 100644
+--- a/src/Command/ArticleStatsCommand.php
++++ b/src/Command/ArticleStatsCommand.php
+@@ -34,7 +34,11 @@ class ArticleStatsCommand extends Command
+ 
+         switch ($input->getOption('format')) {
+             case 'text':
+-                $io->listing($data);
++                $rows = [];
++                foreach ($data as $key => $val) {
++                    $rows[] = [$key, $val];
++                }
++                $io->table(['Key', 'Value'], $rows);
+                 break;
+             case 'json':
+                 $io->write(json_encode($data));
