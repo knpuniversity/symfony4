@@ -11,7 +11,7 @@ index ad89021..94befce 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 560b0a4..6bdb892 100644
+index 068911b..4eca4b3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -83,10 +83,10 @@ index 560b0a4..6bdb892 100644
 +        },
 +        {
              "name": "symfony/process",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 @@ -1653,6 +1708,34 @@
-             "time": "2017-12-14T19:48:22+00:00"
+             "time": "2018-01-03T07:38:00+00:00"
          },
          {
 +            "name": "symfony/profiler-pack",
@@ -118,10 +118,10 @@ index 560b0a4..6bdb892 100644
 +        },
 +        {
              "name": "symfony/routing",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 @@ -1731,6 +1814,55 @@
-             "time": "2017-12-14T22:39:22+00:00"
+             "time": "2018-01-04T15:52:56+00:00"
          },
          {
 +            "name": "symfony/stopwatch",
@@ -174,10 +174,10 @@ index 560b0a4..6bdb892 100644
 +        },
 +        {
              "name": "symfony/twig-bridge",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 @@ -1894,6 +2026,141 @@
-             "time": "2017-12-04T12:31:58+00:00"
+             "time": "2018-01-04T15:52:56+00:00"
          },
          {
 +            "name": "symfony/var-dumper",
@@ -316,7 +316,7 @@ index 560b0a4..6bdb892 100644
 +        },
 +        {
              "name": "symfony/web-server-bundle",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index e18f2a0..20ea58b 100644

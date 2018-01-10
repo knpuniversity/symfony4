@@ -65,7 +65,7 @@ index 908faa0..b26456e 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index ca85e91..29f0750 100644
+index 3de6c20..a290b96 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -131,10 +131,10 @@ index ca85e91..29f0750 100644
 +        },
 +        {
              "name": "symfony/routing",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 @@ -1210,6 +1259,64 @@
-             "time": "2017-12-14T22:39:22+00:00"
+             "time": "2018-01-04T15:52:56+00:00"
          },
          {
 +            "name": "symfony/web-server-bundle",
@@ -196,7 +196,7 @@ index ca85e91..29f0750 100644
 +        },
 +        {
              "name": "symfony/yaml",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index 49d3fb6..265bf15 100644

@@ -11,7 +11,7 @@ index b26456e..d08d903 100644
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 29f0750..4cdca98 100644
+index a290b96..fad30f0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,9 +4,412 @@
@@ -502,7 +502,7 @@ index 29f0750..4cdca98 100644
 +        },
 +        {
              "name": "symfony/cache",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index 265bf15..1ee925b 100644

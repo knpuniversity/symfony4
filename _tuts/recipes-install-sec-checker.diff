@@ -21,7 +21,7 @@ index d08d903..f569751 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 4cdca98..41646b2 100644
+index fad30f0..e60aa3b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -139,7 +139,7 @@ index 4cdca98..41646b2 100644
 +        },
 +        {
              "name": "symfony/dotenv",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 diff --git a/config/packages/dev/security_checker.yaml b/config/packages/dev/security_checker.yaml
 new file mode 100644

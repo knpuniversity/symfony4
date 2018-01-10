@@ -1,0 +1,75 @@
+diff --git a/composer.json b/composer.json
+index 9522e17..a2f263b 100644
+--- a/composer.json
++++ b/composer.json
+@@ -4,14 +4,18 @@
+     "require": {
+         "php": "^7.1.3",
+         "ext-iconv": "*",
++        "easycorp/easy-log-handler": "^1.0.2",
+         "sensio/framework-extra-bundle": "^5.1",
+         "symfony/console": "^4.0",
+-        "symfony/debug-pack": "^1.0",
++        "symfony/debug-bundle": "^3.3|^4.0",
+         "symfony/flex": "^1.0",
+         "symfony/framework-bundle": "^4.0",
+         "symfony/lts": "^4@dev",
++        "symfony/monolog-bundle": "^3.0",
++        "symfony/phpunit-bridge": "^3.3|^4.0",
+         "symfony/profiler-pack": "^1.0",
+         "symfony/twig-bundle": "^4.0",
++        "symfony/var-dumper": "^3.3|^4.0",
+         "symfony/web-server-bundle": "^4.0",
+         "symfony/yaml": "^4.0"
+     },
+diff --git a/composer.lock b/composer.lock
+index f0a3483..2d1c8e1 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "61f78f484b03691c9064dde2b52197ae",
++    "content-hash": "65da0c68b5630f7db07ecd49d52b2faa",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -1115,37 +1115,6 @@
+             "time": "2017-11-24T14:34:08+00:00"
+         },
+         {
+-            "name": "symfony/debug-pack",
+-            "version": "v1.0.4",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/debug-pack.git",
+-                "reference": "2da9b0ea7a733fc29ec3e72139751fd8d2582887"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/debug-pack/zipball/2da9b0ea7a733fc29ec3e72139751fd8d2582887",
+-                "reference": "2da9b0ea7a733fc29ec3e72139751fd8d2582887",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "easycorp/easy-log-handler": "^1.0.2",
+-                "php": "^7.0",
+-                "symfony/debug-bundle": "^3.3|^4.0",
+-                "symfony/monolog-bundle": "^3.0",
+-                "symfony/phpunit-bridge": "^3.3|^4.0",
+-                "symfony/profiler-pack": "^1.0",
+-                "symfony/var-dumper": "^3.3|^4.0"
+-            },
+-            "type": "symfony-pack",
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "description": "A debug pack for Symfony projects",
+-            "time": "2017-12-12T01:47:04+00:00"
+-        },
+-        {
+             "name": "symfony/dependency-injection",
+             "version": "v4.0.3",
+             "source": {

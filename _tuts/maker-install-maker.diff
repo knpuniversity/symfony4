@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 54fc072..76805d9 100644
+index 60d9a73..3a1d67d 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -18,7 +18,8 @@
+@@ -22,7 +22,8 @@
      },
      "require-dev": {
          "sensiolabs/security-checker": "^4.1",
@@ -13,22 +13,22 @@ index 54fc072..76805d9 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index a5c91eb..c9b5eed 100644
+index 2907058..df53fae 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "58838b038aeb4b346fc6358b6bfafb07",
-+    "content-hash": "27abb96fada8b6ab3dbe78531f4e7760",
+-    "content-hash": "18ac264c33e3680056a1b0fde0708b45",
++    "content-hash": "354f979364af06a2d0dc91cf7eca5efe",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2972,6 +2972,63 @@
+@@ -2945,6 +2945,63 @@
                  "environment"
              ],
-             "time": "2017-12-08T15:46:13+00:00"
+             "time": "2018-01-03T17:15:19+00:00"
 +        },
 +        {
 +            "name": "symfony/maker-bundle",

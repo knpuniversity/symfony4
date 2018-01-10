@@ -1,25 +1,25 @@
 diff --git a/composer.json b/composer.json
-index 8ce1a41..54fc072 100644
+index 489eb58..60d9a73 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -12,7 +12,6 @@
-         "symfony/framework-bundle": "^4.0",
-         "symfony/lts": "^4@dev",
+@@ -15,7 +15,6 @@
+         "symfony/monolog-bundle": "^3.0",
+         "symfony/phpunit-bridge": "^3.3|^4.0",
          "symfony/profiler-pack": "^1.0",
 -        "symfony/serializer-pack": "^1.0",
          "symfony/twig-bundle": "^4.0",
+         "symfony/var-dumper": "^3.3|^4.0",
          "symfony/web-server-bundle": "^4.0",
-         "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 0f6dcad..a5c91eb 100644
+index 2e7d515..2907058 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "92afad733bc3dde3d3deb8862f097023",
-+    "content-hash": "58838b038aeb4b346fc6358b6bfafb07",
+-    "content-hash": "4d67d8f1bd15dd2d76d8caa3c28a1a95",
++    "content-hash": "18ac264c33e3680056a1b0fde0708b45",
      "packages": [
          {
              "name": "doctrine/annotations",
@@ -182,38 +182,8 @@ index 0f6dcad..a5c91eb 100644
              "name": "psr/cache",
              "version": "1.0.1",
              "source": {
-@@ -1006,16 +854,16 @@
-         },
-         {
-             "name": "symfony/cache",
--            "version": "v4.0.2",
-+            "version": "v4.0.3",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/symfony/cache.git",
--                "reference": "d00351f230ca037ca13f6fec3411e002043f7421"
-+                "reference": "1ebe207de664355b1699d35b12b0563c38a47b4e"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/symfony/cache/zipball/d00351f230ca037ca13f6fec3411e002043f7421",
--                "reference": "d00351f230ca037ca13f6fec3411e002043f7421",
-+                "url": "https://api.github.com/repos/symfony/cache/zipball/1ebe207de664355b1699d35b12b0563c38a47b4e",
-+                "reference": "1ebe207de664355b1699d35b12b0563c38a47b4e",
-                 "shasum": ""
-             },
-             "require": {
-@@ -1071,7 +919,7 @@
-                 "caching",
-                 "psr6"
-             ],
--            "time": "2017-12-08T16:11:45+00:00"
-+            "time": "2018-01-03T17:15:19+00:00"
-         },
-         {
-             "name": "symfony/config",
-@@ -1885,63 +1733,6 @@
-             "time": "2017-12-15T03:06:17+00:00"
+@@ -1854,63 +1702,6 @@
+             "time": "2018-01-05T08:54:25+00:00"
          },
          {
 -            "name": "symfony/inflector",
@@ -276,7 +246,7 @@ index 0f6dcad..a5c91eb 100644
              "name": "symfony/lts",
              "version": "dev-master",
              "source": {
-@@ -2416,149 +2207,6 @@
+@@ -2389,149 +2180,6 @@
              "time": "2017-12-12T01:48:24+00:00"
          },
          {
@@ -424,10 +394,10 @@ index 0f6dcad..a5c91eb 100644
 -        },
 -        {
              "name": "symfony/routing",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
-@@ -2637,115 +2285,6 @@
-             "time": "2017-12-14T22:39:22+00:00"
+@@ -2610,115 +2258,6 @@
+             "time": "2018-01-04T15:52:56+00:00"
          },
          {
 -            "name": "symfony/serializer",
@@ -540,9 +510,9 @@ index 0f6dcad..a5c91eb 100644
 -        },
 -        {
              "name": "symfony/stopwatch",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
-@@ -3273,56 +2812,6 @@
+@@ -3246,56 +2785,6 @@
                  "templating"
              ],
              "time": "2017-09-27T18:10:31+00:00"

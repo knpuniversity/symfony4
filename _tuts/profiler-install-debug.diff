@@ -48,7 +48,7 @@ index 94befce..9522e17 100644
          "symfony/framework-bundle": "^4.0",
          "symfony/lts": "^4@dev",
 diff --git a/composer.lock b/composer.lock
-index 6bdb892..f122a35 100644
+index 4eca4b3..f0a3483 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -196,7 +196,7 @@ index 6bdb892..f122a35 100644
              "version": "1.0.1",
              "source": {
 @@ -922,6 +1050,102 @@
-             "time": "2017-12-12T08:41:51+00:00"
+             "time": "2018-01-03T17:15:19+00:00"
          },
          {
 +            "name": "symfony/debug-bundle",
@@ -296,7 +296,7 @@ index 6bdb892..f122a35 100644
 +        },
 +        {
              "name": "symfony/dependency-injection",
-             "version": "v4.0.2",
+             "version": "v4.0.3",
              "source": {
 @@ -1545,6 +1769,197 @@
              "time": "2017-10-19T02:16:32+00:00"
