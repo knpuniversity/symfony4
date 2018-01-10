@@ -116,6 +116,11 @@
             "description": null
         },
         {
+            "id": "assets-add-2-css-link-tags",
+            "name": "Assets: Add 2 CSS link tags",
+            "description": null
+        },
+        {
             "id": "assets-install-use-asset-function",
             "name": "Assets: Install & use asset function",
             "description": null
@@ -231,5 +236,5 @@
             "description": null
         }
     ],
-    "sha": "a73daef8e679644a549eef59531850e0d70cbc92"
+    "sha": "f38363a9124ecd0ecc2ca0ee6160e7170e4343c0"
 }

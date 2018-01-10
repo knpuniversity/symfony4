@@ -570,7 +570,7 @@ index 8b818e4..60eff7b 100644
      ],
      "packages-dev": [
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 15addcb..2d7de1d 100644
+index 598c7be..7b27bfd 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -7,8 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -582,7 +582,7 @@ index 15addcb..2d7de1d 100644
  
  class ArticleController extends AbstractController
  {
-@@ -41,7 +39,7 @@ class ArticleController extends AbstractController
+@@ -41,14 +39,12 @@ class ArticleController extends AbstractController
      /**
       * @Route("/news/{slug}/heart", name="article_toggle_heart", methods={"POST"})
       */
@@ -591,9 +591,7 @@ index 15addcb..2d7de1d 100644
      {
          // TODO - actually heart/unheart the article!
  
-@@ -49,8 +47,6 @@ class ArticleController extends AbstractController
-             'slug' => $slug
-         ]);
+         $logger->info('Article is being hearted!');
  
 -        $json = $serializer->serialize(['hearts' => rand(5, 100)], 'json');
 -

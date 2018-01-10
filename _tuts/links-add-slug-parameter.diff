@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 5624534..4d9e1e1 100644
+index 5624534..e477333 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -19,7 +19,7 @@
@@ -7,7 +7,7 @@ index 5624534..4d9e1e1 100644
  
                  <div class="article-container my-1">
 -                    <a href="{{ path('article_show') }}">
-+                    <a href="{{ path('article_show', {slug: 'why-do-asteroids-taste-like-bacon'}) }}">
++                    <a href="{{ path('article_show', {slug: 'why-asteroids-taste-like-bacon'}) }}">
                          <img class="article-img" src="{{ asset('images/asteroid.jpeg') }}">
                          <div class="article-title d-inline-block pl-3 align-middle">
                              <span>Why do Asteroids Taste Like Bacon?</span>
