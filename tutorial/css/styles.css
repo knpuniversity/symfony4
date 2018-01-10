@@ -180,6 +180,10 @@ html {height:100%}
     font-size: 2em;
 }
 
+.like-article {
+    color: red;
+}
+
 @media (max-width: 991px) {
     .show-article-title {
         font-size: 1.5em;
