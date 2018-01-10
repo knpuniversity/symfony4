@@ -5,3 +5,5 @@ chapters:
     - flex-recipes
     - twig-recipe
     - twig-love
+    - debug-toolbar-profiler
+    - debugging-packs
