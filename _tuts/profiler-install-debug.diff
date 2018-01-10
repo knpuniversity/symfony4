@@ -1,8 +1,13 @@
 diff --git a/.gitignore b/.gitignore
-index 68cb6d2..d67ceb7 100644
+index 68cb6d2..d037b8d 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -9,3 +9,8 @@
+@@ -1,4 +1,3 @@
+-
+ ###> symfony/framework-bundle ###
+ .env
+ /public/bundles/
+@@ -9,3 +8,8 @@
  ###> symfony/web-server-bundle ###
  .web-server-pid
  ###< symfony/web-server-bundle ###
@@ -36,45 +41,45 @@ index 0000000..75d5be8
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index 94befce..9522e17 100644
+index 478a5b6..50d2ada 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -6,6 +6,7 @@
-         "ext-iconv": "*",
-         "sensio/framework-extra-bundle": "^5.1",
-         "symfony/console": "^4.0",
+@@ -15,6 +15,7 @@
+     },
+     "require-dev": {
+         "sensiolabs/security-checker": "^4.1",
 +        "symfony/debug-pack": "^1.0",
-         "symfony/flex": "^1.0",
-         "symfony/framework-bundle": "^4.0",
-         "symfony/lts": "^4@dev",
+         "symfony/dotenv": "^4.0",
+         "symfony/profiler-pack": "^1.0"
+     },
 diff --git a/composer.lock b/composer.lock
-index 4eca4b3..f0a3483 100644
+index b0607d7..54857af 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "34520c91057cc863236ba3fe9d07156e",
-+    "content-hash": "61f78f484b03691c9064dde2b52197ae",
+-    "content-hash": "6da750506f6fc7b7b194d15f6afa5d26",
++    "content-hash": "796eb949e6956b81b42244d2dde7b7db",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -410,6 +410,134 @@
-             "time": "2014-09-09T13:34:57+00:00"
+@@ -2134,6 +2134,134 @@
+             "time": "2017-11-29T09:37:33+00:00"
          },
          {
 +            "name": "easycorp/easy-log-handler",
-+            "version": "v1.0.3",
++            "version": "v1.0.4",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/EasyCorp/easy-log-handler.git",
-+                "reference": "79104f113f562ab6c677d482457d4474204d34a5"
++                "reference": "1a617a37ab9389eac4e2e1d14cb70ee0087d724d"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/EasyCorp/easy-log-handler/zipball/79104f113f562ab6c677d482457d4474204d34a5",
-+                "reference": "79104f113f562ab6c677d482457d4474204d34a5",
++                "url": "https://api.github.com/repos/EasyCorp/easy-log-handler/zipball/1a617a37ab9389eac4e2e1d14cb70ee0087d724d",
++                "reference": "1a617a37ab9389eac4e2e1d14cb70ee0087d724d",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -111,7 +116,7 @@ index 4eca4b3..f0a3483 100644
 +                "monolog",
 +                "productivity"
 +            ],
-+            "time": "2017-10-20T08:47:57+00:00"
++            "time": "2018-01-10T08:34:20+00:00"
 +        },
 +        {
 +            "name": "monolog/monolog",
@@ -192,24 +197,24 @@ index 4eca4b3..f0a3483 100644
 +            "time": "2017-06-19T01:22:40+00:00"
 +        },
 +        {
-             "name": "psr/cache",
-             "version": "1.0.1",
+             "name": "sensiolabs/security-checker",
+             "version": "v4.1.6",
              "source": {
-@@ -922,6 +1050,102 @@
-             "time": "2018-01-03T17:15:19+00:00"
+@@ -2179,6 +2307,102 @@
+             "time": "2017-10-29T18:48:08+00:00"
          },
          {
 +            "name": "symfony/debug-bundle",
-+            "version": "v4.0.2",
++            "version": "v4.0.3",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/symfony/debug-bundle.git",
-+                "reference": "81eac72b030c08c9dcd85f60e873fc356f21f436"
++                "reference": "3188f67995b0b54ca0600c68dac86ae822229a97"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/debug-bundle/zipball/81eac72b030c08c9dcd85f60e873fc356f21f436",
-+                "reference": "81eac72b030c08c9dcd85f60e873fc356f21f436",
++                "url": "https://api.github.com/repos/symfony/debug-bundle/zipball/3188f67995b0b54ca0600c68dac86ae822229a97",
++                "reference": "3188f67995b0b54ca0600c68dac86ae822229a97",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -261,7 +266,7 @@ index 4eca4b3..f0a3483 100644
 +            ],
 +            "description": "Symfony DebugBundle",
 +            "homepage": "https://symfony.com",
-+            "time": "2017-11-24T14:34:08+00:00"
++            "time": "2018-01-03T07:38:00+00:00"
 +        },
 +        {
 +            "name": "symfony/debug-pack",
@@ -295,24 +300,24 @@ index 4eca4b3..f0a3483 100644
 +            "time": "2017-12-12T01:47:04+00:00"
 +        },
 +        {
-             "name": "symfony/dependency-injection",
+             "name": "symfony/dotenv",
              "version": "v4.0.3",
              "source": {
-@@ -1545,6 +1769,197 @@
-             "time": "2017-10-19T02:16:32+00:00"
+@@ -2236,6 +2460,201 @@
+             "time": "2018-01-03T17:15:19+00:00"
          },
          {
 +            "name": "symfony/monolog-bridge",
-+            "version": "v4.0.2",
++            "version": "v4.0.3",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/symfony/monolog-bridge.git",
-+                "reference": "da8c15357bcf114a319105524648940faf03fd77"
++                "reference": "1b4fb2313312ec6cfae8ce45fccb2a88ec99d892"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/monolog-bridge/zipball/da8c15357bcf114a319105524648940faf03fd77",
-+                "reference": "da8c15357bcf114a319105524648940faf03fd77",
++                "url": "https://api.github.com/repos/symfony/monolog-bridge/zipball/1b4fb2313312ec6cfae8ce45fccb2a88ec99d892",
++                "reference": "1b4fb2313312ec6cfae8ce45fccb2a88ec99d892",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -365,7 +370,7 @@ index 4eca4b3..f0a3483 100644
 +            ],
 +            "description": "Symfony Monolog Bridge",
 +            "homepage": "https://symfony.com",
-+            "time": "2017-12-12T08:41:51+00:00"
++            "time": "2018-01-03T07:38:00+00:00"
 +        },
 +        {
 +            "name": "symfony/monolog-bundle",
@@ -432,16 +437,16 @@ index 4eca4b3..f0a3483 100644
 +        },
 +        {
 +            "name": "symfony/phpunit-bridge",
-+            "version": "v4.0.2",
++            "version": "v4.0.3",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/symfony/phpunit-bridge.git",
-+                "reference": "61c84ebdce0d4c289413a222ee545f0114e60120"
++                "reference": "b989c646eb422f3ad583f0be3b482a774668e86f"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/61c84ebdce0d4c289413a222ee545f0114e60120",
-+                "reference": "61c84ebdce0d4c289413a222ee545f0114e60120",
++                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/b989c646eb422f3ad583f0be3b482a774668e86f",
++                "reference": "b989c646eb422f3ad583f0be3b482a774668e86f",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -461,6 +466,10 @@ index 4eca4b3..f0a3483 100644
 +            "extra": {
 +                "branch-alias": {
 +                    "dev-master": "4.0-dev"
++                },
++                "thanks": {
++                    "name": "phpunit/phpunit",
++                    "url": "https://github.com/sebastianbergmann/phpunit"
 +                }
 +            },
 +            "autoload": {
@@ -490,10 +499,10 @@ index 4eca4b3..f0a3483 100644
 +            ],
 +            "description": "Symfony PHPUnit Bridge",
 +            "homepage": "https://symfony.com",
-+            "time": "2017-12-14T19:48:22+00:00"
++            "time": "2018-01-04T17:20:09+00:00"
 +        },
 +        {
-             "name": "symfony/polyfill-mbstring",
+             "name": "symfony/polyfill-php72",
              "version": "v1.6.0",
              "source": {
 diff --git a/config/bundles.php b/config/bundles.php
@@ -577,6 +586,19 @@ index 0000000..90e1a4c
 +            type:   console
 +            process_psr_3_messages: false
 +            channels: ["!event", "!doctrine"]
+diff --git a/config/packages/test/monolog.yaml b/config/packages/test/monolog.yaml
+new file mode 100644
+index 0000000..2762653
+--- /dev/null
++++ b/config/packages/test/monolog.yaml
+@@ -0,0 +1,7 @@
++monolog:
++    handlers:
++        main:
++            type: stream
++            path: "%kernel.logs_dir%/%kernel.environment%.log"
++            level: debug
++            channels: ["!event"]
 diff --git a/config/services_test.yaml b/config/services_test.yaml
 new file mode 100644
 index 0000000..876c36b
@@ -634,7 +656,7 @@ index 0000000..e578316
 +    </listeners>
 +</phpunit>
 diff --git a/symfony.lock b/symfony.lock
-index ec4ec36..641e428 100644
+index 0892d4b..bb145af 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -26,6 +26,18 @@
@@ -680,7 +702,7 @@ index ec4ec36..641e428 100644
          "version": "4-dev"
      },
 +    "symfony/monolog-bridge": {
-+        "version": "v4.0.2"
++        "version": "v4.0.3"
 +    },
 +    "symfony/monolog-bundle": {
 +        "version": "3.1",
@@ -688,7 +710,7 @@ index ec4ec36..641e428 100644
 +            "repo": "github.com/symfony/recipes",
 +            "branch": "master",
 +            "version": "3.1",
-+            "ref": "c24944bd87dacf0bb8fa218dc21e4a70fff56882"
++            "ref": "371d1a2b69984710646b09a1182ef1d4308c904f"
 +        }
 +    },
 +    "symfony/phpunit-bridge": {

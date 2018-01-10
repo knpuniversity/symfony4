@@ -1,30 +1,30 @@
 diff --git a/composer.json b/composer.json
-index 489eb58..60d9a73 100644
+index 152d7b9..4988f28 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -15,7 +15,6 @@
-         "symfony/monolog-bundle": "^3.0",
-         "symfony/phpunit-bridge": "^3.3|^4.0",
-         "symfony/profiler-pack": "^1.0",
+@@ -10,7 +10,6 @@
+         "symfony/flex": "^1.0",
+         "symfony/framework-bundle": "^4.0",
+         "symfony/lts": "^4@dev",
 -        "symfony/serializer-pack": "^1.0",
          "symfony/twig-bundle": "^4.0",
-         "symfony/var-dumper": "^3.3|^4.0",
          "symfony/web-server-bundle": "^4.0",
+         "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 2e7d515..2907058 100644
+index 8b818e4..60eff7b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "4d67d8f1bd15dd2d76d8caa3c28a1a95",
-+    "content-hash": "18ac264c33e3680056a1b0fde0708b45",
+-    "content-hash": "cecce32cc84ebf9300e6fad0a9788afd",
++    "content-hash": "6310a5a36486ccd723b499af355a7d5b",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -538,158 +538,6 @@
-             "time": "2017-06-19T01:22:40+00:00"
+@@ -410,158 +410,6 @@
+             "time": "2014-09-09T13:34:57+00:00"
          },
          {
 -            "name": "phpdocumentor/reflection-common",
@@ -182,7 +182,7 @@ index 2e7d515..2907058 100644
              "name": "psr/cache",
              "version": "1.0.1",
              "source": {
-@@ -1854,63 +1702,6 @@
+@@ -1661,63 +1509,6 @@
              "time": "2018-01-05T08:54:25+00:00"
          },
          {
@@ -246,8 +246,8 @@ index 2e7d515..2907058 100644
              "name": "symfony/lts",
              "version": "dev-master",
              "source": {
-@@ -2389,149 +2180,6 @@
-             "time": "2017-12-12T01:48:24+00:00"
+@@ -1918,149 +1709,6 @@
+             "time": "2018-01-03T07:38:00+00:00"
          },
          {
 -            "name": "symfony/property-access",
@@ -396,7 +396,7 @@ index 2e7d515..2907058 100644
              "name": "symfony/routing",
              "version": "v4.0.3",
              "source": {
-@@ -2610,115 +2258,6 @@
+@@ -2139,115 +1787,6 @@
              "time": "2018-01-04T15:52:56+00:00"
          },
          {
@@ -509,10 +509,10 @@ index 2e7d515..2907058 100644
 -            "time": "2017-12-12T01:48:53+00:00"
 -        },
 -        {
-             "name": "symfony/stopwatch",
+             "name": "symfony/twig-bridge",
              "version": "v4.0.3",
              "source": {
-@@ -3246,56 +2785,6 @@
+@@ -2591,56 +2130,6 @@
                  "templating"
              ],
              "time": "2017-09-27T18:10:31+00:00"
@@ -602,7 +602,7 @@ index 15addcb..2d7de1d 100644
      }
  }
 diff --git a/symfony.lock b/symfony.lock
-index 8e5dccd..aed9a30 100644
+index 6a8f731..11422d0 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -38,15 +38,6 @@
@@ -655,7 +655,7 @@ index 8e5dccd..aed9a30 100644
 -        "version": "v1.0.1"
 -    },
      "symfony/stopwatch": {
-         "version": "v4.0.2"
+         "version": "v4.0.3"
      },
 @@ -250,8 +226,5 @@
      },

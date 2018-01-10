@@ -1,36 +1,32 @@
 diff --git a/composer.json b/composer.json
-index 60d9a73..3a1d67d 100644
+index 4988f28..c0f1438 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -22,7 +22,8 @@
-     },
-     "require-dev": {
+@@ -19,6 +19,7 @@
          "sensiolabs/security-checker": "^4.1",
--        "symfony/dotenv": "^4.0"
-+        "symfony/dotenv": "^4.0",
-+        "symfony/maker-bundle": "^1.0"
-     },
-     "config": {
-         "preferred-install": {
+         "symfony/debug-bundle": "^3.3|^4.0",
+         "symfony/dotenv": "^4.0",
++        "symfony/maker-bundle": "^1.0",
+         "symfony/monolog-bundle": "^3.0",
+         "symfony/phpunit-bridge": "^3.3|^4.0",
+         "symfony/profiler-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 2907058..df53fae 100644
+index 60eff7b..36c8c85 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "18ac264c33e3680056a1b0fde0708b45",
-+    "content-hash": "354f979364af06a2d0dc91cf7eca5efe",
+-    "content-hash": "6310a5a36486ccd723b499af355a7d5b",
++    "content-hash": "1872109fb51e43b83ed089562b52fa44",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2945,6 +2945,63 @@
-                 "environment"
-             ],
+@@ -2485,6 +2485,63 @@
              "time": "2018-01-03T17:15:19+00:00"
-+        },
-+        {
+         },
+         {
 +            "name": "symfony/maker-bundle",
 +            "version": "v1.0.2",
 +            "source": {
@@ -86,9 +82,11 @@ index 2907058..df53fae 100644
 +                "scaffolding"
 +            ],
 +            "time": "2017-12-04T17:50:28+00:00"
-         }
-     ],
-     "aliases": [],
++        },
++        {
+             "name": "symfony/monolog-bridge",
+             "version": "v4.0.3",
+             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index b543674..c9d583d 100644
 --- a/config/bundles.php
@@ -100,7 +98,7 @@ index b543674..c9d583d 100644
 +    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index aed9a30..4fde77e 100644
+index 11422d0..96a08c7 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -143,6 +143,15 @@
@@ -117,5 +115,5 @@ index aed9a30..4fde77e 100644
 +        }
 +    },
      "symfony/monolog-bridge": {
-         "version": "v4.0.2"
+         "version": "v4.0.3"
      },
