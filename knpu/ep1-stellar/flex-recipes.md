@@ -26,6 +26,11 @@ Ok, there are *no* changes. Now run:
 composer require sec-checker
 ```
 
+***TIP
+This package will only be used while developing. So, it would be even better
+to run `composer require sec-checker --dev`.
+***
+
 ## Hello Symfony Flex
 
 Once again, `sec-checker` should *not* be a valid package name! So what's going
