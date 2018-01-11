@@ -28,7 +28,7 @@ into the `vendor/` directory.
 
 Go back to your terminal and find the original tab. Check this out: at the bottom,
 it says that we can get a *better* web server by running `composer require server`.
-I like better stuff! So let's try it! Press Ctrl+C to stop the existing server,
+I like better stuff! So let's try it! Press `Ctrl`+`C` to stop the existing server,
 and then run:
 
 ```terminal

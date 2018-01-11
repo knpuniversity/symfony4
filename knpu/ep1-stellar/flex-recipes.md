@@ -34,14 +34,17 @@ to run `composer require sec-checker --dev`.
 ## Hello Symfony Flex
 
 Once again, `sec-checker` should *not* be a valid package name! So what's going
-on? Move over and open `composer.json`. Our project began with just a *few* dependencies.
-One of them was `symfony/flex`: this is *super* important. Flex is a Composer plugin
-with two superpowers.
+on? Move over and open `composer.json`:
+
+[[[ code('5cb39f8b41') ]]]
+
+Our project began with just a *few* dependencies. One of them was `symfony/flex`:
+this is *super* important. Flex is a Composer plugin with two superpowers.
 
 ## Flex Aliases
 
 The first superpower is the *alias* system. Find your browser and go to
-[symfony.sh](https://symfony.sh).
+[symfony.sh][symfony_sh].
 
 This is the Symfony "recipe" server: we'll talk about what that means next. Search
 for "security". Ah, here's a package called `sensiolabs/security-checker`. And
@@ -53,14 +56,17 @@ system. But the result is *really* cool. Need a logger? `composer require logger
 Need to send emails? `composer require mailer`. Need a tractor beam? `composer require`,
 wait, no, we can't help with that one.
 
-Back in `composer.json`, yep! Composer *actually* added `sensiolabs/security-checker`.
+Back in `composer.json`, yep! Composer *actually* added `sensiolabs/security-checker`:
+
+[[[ code('883ddc1e9c') ]]]
+
 That's the *first* superpower of Flex.
 
 ## Flex Recipes
 
 The *second* superpower is even better: recipes. Mmmm. Go back to your terminal and...
 yes! It *did* install and, check this out: "Symfony operations: 1 recipe". Then,
-"Configuring sensiolabs/security-checker".
+"Configuring `sensiolabs/security-checker`".
 
 What does that mean? Run:
 
@@ -75,9 +81,13 @@ config file!
 First, `symfony.lock`: this file is managed by Flex. It keeps track of which recipes
 have been installed. Basically... commit it to git, but don't worry about it.
 
-The second file is `config/packages/dev/security_checker.yaml`. This was added by
-the recipe and, cool! It adds a new `bin/console` command to our app! Don't worry
-about the code itself: you'll understand and be writing code like this soon enough!
+The second file is `config/packages/dev/security_checker.yaml`:
+
+[[[ code('3a567d7003') ]]]
+
+This was added by the recipe and, cool! It adds a new `bin/console` command to our app!
+Don't worry about the code itself: you'll understand and be writing code like this
+soon enough!
 
 The point is this: thanks to this file, we can now run:
 
@@ -100,6 +110,9 @@ git diff composer.json
 ```
 
 Of course, `composer require` added the package. But the *recipe* added a new *script*!
+
+[[[ code('b4ef3d7af5') ]]]
+
 Thanks to that, whenever we run:
 
 ```terminal
@@ -115,7 +128,7 @@ and easy.
 ## The Recipes Repository
 
 So you might be wondering... where do these recipes live? Great question! They live...
-in the *cloud*. I mean, they live on GitHub. On `symfony.sh`, click "Recipe"
+in the *cloud*. I mean, they live on GitHub. On [symfony.sh][symfony_sh], click "Recipe"
 next to the Security checker. Ah, it takes us to the `symfony/recipes` repository.
 Here, you can see what files will be added and a few other changes described in
 `manifest.json`.
@@ -126,3 +139,6 @@ are watched more closely for quality.
 
 Next! Let's put the recipe system to work by installing Twig so we can create proper
 templates.
+
+
+[symfony_sh]: https://symfony.sh
