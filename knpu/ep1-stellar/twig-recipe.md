@@ -15,8 +15,14 @@ return HTML, then one of these great tools is called Twig.
 
 ## Installing Twig
 
-First, make sure you commit all of your changes so far: I already did this. Recipes
-are *so* much more fun when you can see what they do! Now run:
+First, make sure you commit all of your changes so far:
+
+```terminal-silent
+git status
+```
+
+I already did this. Recipes are *so* much more fun when you can see what they do!
+Now run:
 
 ```terminal
 composer require twig
@@ -33,20 +39,28 @@ that recipe do? Let's find out:
 git status
 ```
 
-Woh! Lot's of good stuff! The first change is `config/bundles.php`. Bundles are
-the "plugin" system for Symfony. And whenever we install a third-party bundle,
-Flex adds it here so that it's used automatically. Thanks Flex!
+Woh! Lot's of good stuff! The first change is `config/bundles.php`:
+
+[[[ code('b65bd10885') ]]]
+
+Bundles are the "plugin" system for Symfony. And whenever we install a third-party
+bundle, Flex adds it here so that it's used automatically. Thanks Flex!
 
 The recipe also *created* some stuff, like a `templates/` directory! Yep, no need
 to guess where templates go: it's pretty obvious! It even added a base layout file
 that we'll use soon.
 
-Twig also needs some configuration, so the recipe added it in `config/packages/twig.yaml`.
+Twig also needs some configuration, so the recipe added it in `config/packages/twig.yaml`:
+
+[[[ code('f7deb4c365') ]]]
+
 But even though this file was added by Flex, it's *yours* to modify: you can make
 whatever changes you want.
 
 Oh, and I *love* this! *Why* do our templates need to live in a `templates/` directory.
 Is that hardcoded deep inside Symfony? Nope! It's right here!
+
+[[[ code('22bf999239') ]]]
 
 Don't worry about this percent syntax yet - you'll learn about that in a future
 episode. But, you can probably guess what's going on: `%kernel.project_dir%` is a
