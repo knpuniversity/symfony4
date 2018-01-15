@@ -7,3 +7,8 @@ chapters:
     - twig-love
     - debug-toolbar-profiler
     - debugging-packs
+    - css-assets
+    - generating-urls
+    - javascript-api
+    - services
+    - maker-command
