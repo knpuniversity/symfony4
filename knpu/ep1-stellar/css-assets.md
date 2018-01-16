@@ -3,10 +3,10 @@
 Even astronauts - who *generally* spend their time staring into the black absyss -
 demand a site that is *less* ugly than this! Let's fix that!
 
-If you download the course code from this page, inside the zip file, you'll find
-a `start/` directory. And inside *that*, you'll see the same `tutorial/` directory
-that I have here. And inside *that*... I've created a new `base.html.twig`. Copy
-that and overwrite our version in `templates/`.
+If you download the course code from the page that you're watching this video on
+right now, inside the zip file, you'll find a `start/` directory. And inside *that*,
+you'll see the same `tutorial/` directory that I have here. And inside *that*...
+I've created a new `base.html.twig`. Copy that and overwrite our version in `templates/`.
 
 On a technical level, this is basically the same as before: it has the same blocks:
 `title` `stylesheets`, `body` and `javascripts` at the bottom. But now, we have a
