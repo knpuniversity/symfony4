@@ -21,8 +21,8 @@ one feature. To make that easy, Symfony has a number of "packs", and their *whol
 purpose is give you *one* easy package that *actually* installs several *other*
 libraries.
 
-In this case, `composer require debug` will install Monolog - a logging library -
-`phpunit-bridge` for testing and even the `profiler-pack` that we already installed
+In this case, `composer require debug` will install Monolog - a logging library,
+`phpunit-bridge` - for testing, and even the `profiler-pack` that we already installed
 earlier.
 
 If you go back to the terminal... yep! It downloaded all those libraries and configured
@@ -34,8 +34,11 @@ integrated everything together even better.
 ## Unpacking the Pack!
 
 Go back to your Twig template and remove that dump. Then, open `composer.json`.
-We just installed two packs: the `debug-pack` and the `profiler-pack`. And we *now*
-know that the `debug-pack` is actually a collection of about 6 libraries.
+We just installed two packs: the `debug-pack` and the `profiler-pack`:
+
+[[[ code('72dcebf651') ]]]
+
+And we *now* know that the `debug-pack` is actually a collection of about 6 libraries.
 
 But, packs have a *disadvantage*... a "dark side". What if you wanted to control
 the version of just *one* of these libraries? Or what if you wanted *most* of these
@@ -50,9 +53,12 @@ composer unpack debug
 ```
 
 The `unpack` command comes from Symfony flex. And... interesting! All it says is
-"removing symfony/debug-pack". But if you look at your `composer.json`, ah! It
-*did* remove `symfony/debug-pack`, but it *replaced* it with the 6 libraries from
-that pack! We can *now* control the versions or even *remove* individual libraries
+"removing symfony/debug-pack". But if you look at your `composer.json`:
+
+[[[ code('5f748553f1') ]]]
+
+Ah! It *did* remove `symfony/debug-pack`, but it *replaced* it with the 6 libraries
+from that pack! We can *now* control the versions or even *remove* individual libraries
 if we don't want them.
 
 That is the power of packs!
