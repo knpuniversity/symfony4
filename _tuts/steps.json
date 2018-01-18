@@ -191,11 +191,6 @@
             "description": null
         },
         {
-            "id": "services-add-logger-context",
-            "name": "Services: Add logger context",
-            "description": null
-        },
-        {
             "id": "services-show-direct-twig-usage",
             "name": "Services: Show direct Twig usage",
             "description": null
