@@ -1,156 +1,98 @@
-# JavaScript & API Endpoints
+# JSON API Endpoint
 
-The topic of API's is... well... a *huge* topic and *hugely* important these days.
-We're going to dive deep into API's in a future tutorial. But... I want to at *least*
-show you the basics right now.
+When we click the heart icon, we need to send an AJAX request to the server that will,
+eventually, update something in a database to show that the we liked this article.
+That API endpoint also needs to return the new number of hearts to show on the page...
+ya know... in case 10 other people liked it since we opened the page.
 
-So here's the goal: see this heart icon? I want the user to be able to click it
-to "like" this article. That means we'll need to write some JavaScript and send an
-AJAX request to an API endpoint. That API endpoint will *return* the *new* number
-of likes. Well... all 
+In `ArticleController`, make a new `public function toggleArticleHeart()`. Then
+add the route above: `@Route("/new/{slug}")` - to match the show URL - then `/heart`.
+Give it a name immediately: `article_toggle_heart`. I included the `{slug}` wildcard
+in the route so that we know *which* article is being liked. We could also use an
+`{id}` wildcard once we have a database.
 
-this little heart icon where you can. Heart an art a whole. And obviously this
-is just a hardcoded value. We're going to hook this up to work. Well kind of
-work when we click the heart. The heart will fill it will send an ajax request.
-That will return a new number of comments and we'll update this number here. So
-let's do this let's creating new JavaScript file.
+Add the corresponding `$slug` argument. But since we *don't* have a database yet,
+I'll add a TODO: `actually heart/unheart the article!`.
 
-And by the way you look at the bottom of our base layout we do have J.
+## Returning JSON
 
-Querrey to work with already. So in the public directory let's create a new J S
-directory. And inside their new file called article on her score show. J.S. The
-idea is that will include this on the article show page and it will take care
-of the hot new heart functionality.
+We want this API endpoint to return JSON... and remember: the *only* rule for
+a Symfony controller is that it must return a Symfony Response object. So we could
+literally say `return new Response(json_encode(['hearts' => 5]))`.
 
-Oh and a new document that ready block. Now go now go to show that HDMI. And.
-If you scroll down a little bit you'll see where the hardcoded functionality
-is. 5. Hearts. So we need to do is we need we need to do something when this
-link is clicked and this 5 is actually what we're going to update. So I'm
-actually going to add a couple of. Make a couple of changes here. On the. Link
-on the link. I'm going to add a new JAST dashed like Dasch article. Class. Add
-a spin around the 5. And call that. Give that a JAST dashed like dassent
-article. Count class we use those instead of for JavaScript.
+But that's too much work! Instead say `return new JsonResponse(['hearts' => rand(5, 100)]`.
+There's nothing special here: `JsonResponse` is a *sub-class* of `Response`. It calls
+`json_encode` *for* you, and also sets the `Content-Type` header to `application/json`,
+which helps your JavaScript understand things.
 
-First. Copy the Jass like article. And then we'll just write some very
-straightforward Jaghori. Find that element in on. Click. Will. Call this
-function.
+Let's try this in the browser first. Go back and add `/heart` to the URL. Yes! Our
+*first* API endpoint!
 
-First will call that prevent default. So if the link isn't actually clicked.
-And then I'll. Set the link. That was clicked itself. To Dasan overruns that
-current target. So link is now the link that was quit. To change the heart. Can
-say links that toggle class.
+***TIP
+My JSON looks pretty thanks to the [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en)
+extension for Chrome!
+***
 
-F A Dash hard dash 0 Tombo. Class. F. A dash heart. That will. Make. The heart.
+## Making the Route POST-Only
 
-Fill in. Then go empty fill in and then go empty. And then for now to actually
-fill in the.
+Eventually, this endpoint will *modify* something on the server - it will "like"
+the article. So as a best-practice, we should *not* be able to make a GET request
+to it. Let's make this route *only* match when a POST request is made. How? Add
+another option to the route: `methods={"POST"}`.
 
-Article. Count value. At the bottom of a say Dyas and open parentheses. Find
-that element and say each T.M. will. Test.
+As *soon* as we do that, we can no longer make a GET request in the browser: it
+does *not* match the route anymore! Run:
 
-Simple enough. So all we need to do is include this on our page. Of course
-inside based at each tweet we could include the script tag right down here
-manually but we don't want this. Script tagging included on every page. We only
-need it in the article show page.
+```terminal
+./bin/console debug:router
+```
 
-So how do we do that. After all if we put the script tag inside of the body
-block.
+and you'll see that the new route only responds to POST requests. Pretty cool. By
+the way, Symfony has a *lot* more tools for creating API endpoints - this is *just*
+the beginning. In future tutorials, we'll go further!
 
-Then it's actually going to show up instead of our final. Each team all way up
-here.
+## Hooking up the JavaScript & API
 
-We need to show down at the bottom of the JavaScript's. So how do we do that.
-By overriding the block. JavaScript's. Set a new block. JavaScript's. Then say
-in the block. Then a lot of script tags with SIRC equals. Article underscore
-show. Now there is a problem with this but let's see it. If you go on refresh
-now. Doesn't work.
+Our API endpoint is ready! Copy the route name and go back to `article_show.js`.
+But wait... if we want to make an AJAX request to the new route... how can we generate
+the URL? This is a pure JS file... so we can't use the Twig `path()` function!
 
-If you inspect the element of the console. It says Dollar is not defined. You
-can source code you'll see why. You scroll down towards the bottom you'll see
-that there is literally only one script tag on the page. Ah that makes sense
-when we overwrite a block. We completely replace the block. So we completely
-replaced all of these blocked tags. What we want to do is add to the block not
-entirely replace it. To do that. Say Curly Curly parents. And that's it. Now go
-get the parent JavaScript's block content print it and then we add ours at the
-bottom. That's why we put our CSSA and a stylesheets block in our JavaScript in
-a JavaScript's block. Now. Refresh. How.
+Actually, there *is* a really cool bundle called [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle)
+that *does* allow you to generate routes in JavaScript. But, I'm going to show you
+another, simple way.
 
-It works. Okay so next we need to make an API endpoint that we can.
+Back in the template, find the heart section. Let's just... fill in the `href` on
+the link! Add `path()`, paste the route name, and pass the `slug` wildcard set to
+a `slug` variable. Actually... there is *not* a `slug` variable in this template
+yet. If you look at `ArticleController`, we're only passing two variables. Add a
+third: `slug` set to `$slug`.
 
-That we can send this to.
+That *should* at least set the URL on the link. Go back to the show page in your
+browser and refresh. Yep! The heart link *is* hooked up.
 
-And that API endpoint when we return a new number of hearts that should show on
-the page. So if we think about the API endpoint. It's going to need to include
-the article slogs so that we know which article should be like it.
+Why did we do this? Because now we can get that URL *really* easily in JavaScript.
+Add `$.ajax({})` and pass `method: 'POST'` and `url` set to `$link.attr('href')`.
 
-It's a fine article controller. Let's make a new public function called the
-toggle. Article. Part.
+That's it! At the end, add `.done()` with a callback that has a `data` argument.
+The `data` will be whatever our API endpoint sends back. That means that we can move
+the article count HTML line into this, and set it to `data.heart`.
 
-And above that we add our app route. Let's say slash news slash curly brace
-slug just like our previous you will slash. Heart. And give this. A name. Of.
-Article. Tavel. Part. Because we have the curly brace slug in the route of a
-dollar sign slug arguments. I'll start with a to do. To actually hearts slash
-on heart. The article. That's something we'll do in the future when we have a
-database. Sybel fake doing the heart slash on heart. Now we want this endpoint
-to return Jaison.
+Oh, and if you're not familiar with the `.done()` function or Promises, I'd highly
+recommend checking out our [JavaScript Track](https://knpuniversity.com/screencast/javascript).
+It's not beginner stuff: it's meant to take your JS up to the next level.
 
-And remember to remember the only rule but a symphony control or is it must
-return a symphony in response object. So there's nothing stopping us from
-saying return. The new response. And then using Jaison code to pass some values
-back. That's perfect. But because Jason such. But if you want to return Jaison
-there's an easier way. You can say return new Jaison response. That's a
-subclass of the normal response object and you can just pass it in array of
-parts equal Arrow. Rand. Five hundred. And that will do the Jaison and code for
-you and it will also set the content type content type header to applications
-last Jaison which is very important. For your. Javascript to understand things.
+Anyways... let's try it already! Refresh! And... click! It works!
 
-Alright so let's try this in the browser first. If you go back and add slash
-part on the end. And there it is. That is our first.
+*And*... I have a surprise! See this little arrow icon in the web debug toolbar?
+This showed up as soon as we made the first AJAX request. Actually, every time we
+make an AJAX request, it's added to the top of this list! That's awesome because -
+remember the profiler? - you can click to view the profiler for *any* AJAX request.
+Yep, you now have all the performance and debugging tools at your fingertips... even
+for AJAX calls.
 
-API endpoint and Symphonie and it could not be easier.
+Oh, and if there *were* an error, you would see it in all its beautiful, styled glory
+on the Exception tab. Being able to load the profiler for an AJAX call is kind of
+an easter egg: not everyone knows about it. But you *should*.
 
-But does it best practice since this modifies is going to eventually modify
-something on the server.
-
-We shouldn't be able to make a good request to it. What I mean is at the end
-we're going to add another option called methods equals and then double quotes
-we're going to say post. As soon as we do that we can no longer make a get
-request to that route. It doesn't match the route. Now if you run then consul
-diva router.
-
-You'll see a new route but you'll see that it only responds to post request
-which is pretty cool. All right so our API endpoint is ready. Let's pick up the
-javascript. Copy the route name. In article showed that J.S..
-
-We can't use twig code to generate a you were added to that route. There
-actually is a way to do this. A really cool bundle called F West jazz robing
-bundle which you should check out but there's a different way to do it.
-
-Inside of our show template. I'll go back up to the heart heart section. I'm
-actually going to fill in the URL. Right on our. Link. And for the. Slog. I'll
-pass that and set it to a slug variable. We actually don't have a slug variable
-yet. If you look back an artifact controller. Were only passing two variables
-into our show template. So let's also passed and. The Sloggett.
-
-Snout. This link will fill out. If you make no other changes. And go back to
-the original you well. You'll see that the. You see the you were Al.
-
-Is now correct. We did this because now we can read this is out of our
-javascript are really easily. So I'll say Dasan that Ajax. Method the post. You
-are all set to the link. That 80 tr h ref. And that's it. Then Dighton done. So
-we get have a callback function done this will pass as our JS Jaison data. And
-I'll move our article count into there. And we can set the each team L2 data
-daat hearts. And yeah. That should be set. Go back. Refresh. Now. Try it.
-Buman. It works perfectly but there's a bonus. See this little icon down here.
-This showed up as soon as we made the first ajax request on the page. Every
-time we make an ajax request. The AJAX request. Is added to this list on top.
-That's awesome because remember the profiler. If you open this in and you can
-click this link in the new tab. It will actually show the profiler for that
-ajax request which means you can see what the performance is for that ajax
-request.
-
-If there's an error you can see that here you see all the logs all the twig
-everything for that ajax request. That's kind of a hidden easter egg that not
-everyone knows about. So yeah there's your first.
-
-Path into doing JavaScript and Symphonie API is.
+I think it's time to talk about the most important part of Symfony: Fabien. I mean,
+services.

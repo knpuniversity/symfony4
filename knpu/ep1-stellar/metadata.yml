@@ -9,6 +9,7 @@ chapters:
     - debugging-packs
     - css-assets
     - generating-urls
+    - javascript
     - javascript-api
     - services
     - maker-command
