@@ -48,21 +48,31 @@ top.
 ## Magic with The dump() Function
 
 But wait, there's more! The profiler also installed Symfony's `var-dumper` component.
-Find `ArticleController` and go to `showAction`. Normally, to debug, I'll use
+Find `ArticleController` and go to `showAction()`. Normally, to debug, I'll use
 `var_dump()` to print some data. But, no more! Instead, use `dump()`: dump the
-`$slug` and also the controller object itself.
+`$slug` and also the controller object itself:
+
+[[[ code('b964f4a635') ]]]
 
 Ok, refresh! Beautiful, colored output. *And*, you can expand objects to dig deeper
 into them.
 
+***TIP
+To expand all the nested nodes just press `Ctrl` and click the arrow.
+***
+
 ## Using dump() in Twig
 
 The `dump()` function is even *more* useful in Twig. Inside the `body` block, add
-`{{ dump() }}`. In Twig, you're allowed to use `dump()` with *no* arguments. And
-that's *especially* useful. Why? Because it dumps an associative array of *all*
-of the variables you have access to. We already knew we had `title` and `comments`
-variables. But apparently, we *also* have an `app` variable! Actually, *every* template
-gets this `app` variable automatically. Good to know!
+`{{ dump() }}`:
+
+[[[ code('670987dfd6') ]]]
+
+In Twig, you're allowed to use `dump()` with *no* arguments. And that's *especially*
+useful. Why? Because it dumps an associative array of *all* of the variables you have
+access to. We already knew we had `title` and `comments` variables. But apparently,
+we *also* have an `app` variable! Actually, *every* template gets this `app` variable
+automatically. Good to know!
 
 But! Symfony has even *more* debugging tools! Let's get them and learn about "packs"
 next!
