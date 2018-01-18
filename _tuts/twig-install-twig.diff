@@ -97,10 +97,11 @@ index e60aa3b..068911b 100644
          },
          {
              "name": "symfony/routing",
-@@ -1731,17 +1731,180 @@
+@@ -1730,18 +1730,181 @@
+             ],
              "time": "2018-01-04T15:52:56+00:00"
          },
-         {
++        {
 +            "name": "symfony/twig-bridge",
 +            "version": "v4.0.3",
 +            "source": {
@@ -263,7 +264,7 @@ index e60aa3b..068911b 100644
 +            "homepage": "https://symfony.com",
 +            "time": "2018-01-04T15:52:56+00:00"
 +        },
-+        {
+         {
              "name": "symfony/web-server-bundle",
 -            "version": "v4.0.2",
 +            "version": "v4.0.3",

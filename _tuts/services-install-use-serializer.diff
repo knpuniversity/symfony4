@@ -23,10 +23,11 @@ index 60eff7b..8b818e4 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -410,6 +410,158 @@
+@@ -409,6 +409,158 @@
+             ],
              "time": "2014-09-09T13:34:57+00:00"
          },
-         {
++        {
 +            "name": "phpdocumentor/reflection-common",
 +            "version": "1.0.1",
 +            "source": {
@@ -178,14 +179,14 @@ index 60eff7b..8b818e4 100644
 +            ],
 +            "time": "2017-07-14T14:27:02+00:00"
 +        },
-+        {
+         {
              "name": "psr/cache",
              "version": "1.0.1",
-             "source": {
-@@ -1509,6 +1661,63 @@
+@@ -1508,6 +1660,63 @@
+             "homepage": "https://symfony.com",
              "time": "2018-01-05T08:54:25+00:00"
          },
-         {
++        {
 +            "name": "symfony/inflector",
 +            "version": "v4.0.3",
 +            "source": {
@@ -242,14 +243,14 @@ index 60eff7b..8b818e4 100644
 +            ],
 +            "time": "2018-01-03T17:15:19+00:00"
 +        },
-+        {
+         {
              "name": "symfony/lts",
              "version": "dev-master",
-             "source": {
-@@ -1709,6 +1918,149 @@
+@@ -1708,6 +1917,149 @@
+             "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },
-         {
++        {
 +            "name": "symfony/property-access",
 +            "version": "v4.0.3",
 +            "source": {
@@ -392,14 +393,14 @@ index 60eff7b..8b818e4 100644
 +            ],
 +            "time": "2018-01-03T17:15:19+00:00"
 +        },
-+        {
+         {
              "name": "symfony/routing",
              "version": "v4.0.3",
-             "source": {
-@@ -1787,6 +2139,115 @@
+@@ -1786,6 +2138,115 @@
+             ],
              "time": "2018-01-04T15:52:56+00:00"
          },
-         {
++        {
 +            "name": "symfony/serializer",
 +            "version": "v4.0.3",
 +            "source": {
@@ -508,10 +509,9 @@ index 60eff7b..8b818e4 100644
 +            "description": "A pack for the Symfony serializer",
 +            "time": "2017-12-12T01:48:53+00:00"
 +        },
-+        {
+         {
              "name": "symfony/twig-bridge",
              "version": "v4.0.3",
-             "source": {
 @@ -2130,6 +2591,56 @@
                  "templating"
              ],

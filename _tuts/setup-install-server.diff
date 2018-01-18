@@ -77,10 +77,11 @@ index 3de6c20..a290b96 100644
      "packages": [
          {
              "name": "psr/cache",
-@@ -1132,6 +1132,55 @@
+@@ -1131,6 +1131,55 @@
+             ],
              "time": "2017-10-11T12:05:26+00:00"
          },
-         {
++        {
 +            "name": "symfony/process",
 +            "version": "v4.0.2",
 +            "source": {
@@ -129,14 +130,14 @@ index 3de6c20..a290b96 100644
 +            "homepage": "https://symfony.com",
 +            "time": "2017-12-14T19:48:22+00:00"
 +        },
-+        {
+         {
              "name": "symfony/routing",
              "version": "v4.0.3",
-             "source": {
-@@ -1210,6 +1259,64 @@
+@@ -1209,6 +1258,64 @@
+             ],
              "time": "2018-01-04T15:52:56+00:00"
          },
-         {
++        {
 +            "name": "symfony/web-server-bundle",
 +            "version": "v4.0.2",
 +            "source": {
@@ -194,10 +195,9 @@ index 3de6c20..a290b96 100644
 +            "homepage": "https://symfony.com",
 +            "time": "2017-12-12T08:41:51+00:00"
 +        },
-+        {
+         {
              "name": "symfony/yaml",
              "version": "v4.0.3",
-             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index 49d3fb6..265bf15 100644
 --- a/config/bundles.php

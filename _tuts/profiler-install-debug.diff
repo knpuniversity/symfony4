@@ -65,10 +65,11 @@ index b0607d7..54857af 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2134,6 +2134,134 @@
+@@ -2133,6 +2133,134 @@
+             ],
              "time": "2017-11-29T09:37:33+00:00"
          },
-         {
++        {
 +            "name": "easycorp/easy-log-handler",
 +            "version": "v1.0.4",
 +            "source": {
@@ -196,14 +197,14 @@ index b0607d7..54857af 100644
 +            ],
 +            "time": "2017-06-19T01:22:40+00:00"
 +        },
-+        {
+         {
              "name": "sensiolabs/security-checker",
              "version": "v4.1.6",
-             "source": {
-@@ -2179,6 +2307,102 @@
+@@ -2178,6 +2306,102 @@
+             "description": "A security checker for your composer.lock",
              "time": "2017-10-29T18:48:08+00:00"
          },
-         {
++        {
 +            "name": "symfony/debug-bundle",
 +            "version": "v4.0.3",
 +            "source": {
@@ -299,14 +300,14 @@ index b0607d7..54857af 100644
 +            "description": "A debug pack for Symfony projects",
 +            "time": "2017-12-12T01:47:04+00:00"
 +        },
-+        {
+         {
              "name": "symfony/dotenv",
              "version": "v4.0.3",
-             "source": {
-@@ -2236,6 +2460,201 @@
+@@ -2235,6 +2459,201 @@
+             ],
              "time": "2018-01-03T17:15:19+00:00"
          },
-         {
++        {
 +            "name": "symfony/monolog-bridge",
 +            "version": "v4.0.3",
 +            "source": {
@@ -501,10 +502,9 @@ index b0607d7..54857af 100644
 +            "homepage": "https://symfony.com",
 +            "time": "2018-01-04T17:20:09+00:00"
 +        },
-+        {
+         {
              "name": "symfony/polyfill-php72",
              "version": "v1.6.0",
-             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index 20ea58b..b543674 100644
 --- a/config/bundles.php
