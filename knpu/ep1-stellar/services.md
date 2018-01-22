@@ -1,126 +1,118 @@
 # Services
 
-It's time to talk about the most important part of Symphony services.
+It's time to talk about the most fundamental part of Symfony: services!
 
-Symphony is really just a group of useful objects that work together to form a
-framework. For example there's a router object which helps the routing system.
-There's a twig object which is what's called Behind the scenes when we render a
-template. And there's a logger object which symphony is already using.
+Honestly, Symfony is nothing more than a bunch of useful objects that work together.
+For example, there's a router object that matches routes and generates URLs. There's
+a Twig object that renders templates. And there's a Logger object that Symfony
+is already using internally to store things in a `var/log/dev.log` file.
 
-Internally. To store things in a Dabdoub log file. Everything in Symphonie is
-done by one of these useful objects and these useful objects are given a name
-service.
+Actually, *everything* in Symfony - I mean *everything* - is done by one of these
+useful objects. And these useful objects have a special name: *services*.
 
-A service. But don't get all excited when I say service. Just think an object
-that does work for me. Simply is. Simply comes with. A huge number of services
-which I want you to think of as your tools.
+## What's a Service?
 
-For example if I gave you the logger service then you would be able to use that
-to log messages. So the entire second half of Symphonie is all about learning.
-Where to find these services and how to use them.
+But don't get too excited about that word - service. It's a special word for a
+*really* simple idea: a service is any object that does *work*, like generating URLs,
+sending emails or saving things to a database.
 
-And actually the logger is a really good example. If you go to a terminal and
-run tailbacks.
+Symfony comes with a *huge* number of services, and I want you to think of services
+as your *tools*.
 
-Var logs dev dash log. I'll clear the screen. And then when we refresh. And
-move back. There are some walk messages. This proves that there is a logger
-somewhere in the system. So could we log messages as well. Yup we just need to
-get access to the logger service. How.
+Like, if I gave you the logger service, or object, then you could use it to log messages.
+If I gave you a mailer service, you could send some emails! Tools!
 
-From inside of a controller. You can add an additional argument. And give it a
-logger interface type hint. I tab to autocomplete back and then say laager.
-Remember when I autocomplete you statements and Pietri storm. They add a U
-statement on top.
+The *entire* second half of Symfony is all about learning where to find these services
+and how to use them. Every time you learn about a new service, you get a new tool,
+and become just a *little* bit more dangerous!
 
-As soon as I do that. Now I get to logger arrow info. Article. Is. Being.
-Guarded.
+## Using the Logger Service
 
-Before we talk about that. Let's try it. Go back. Let's try it. Switch over.
-Click the heart. And.
+Let's check out the logging system. Find your terminal and run:
 
-You back. Yes there it is at the bottom of our tail. Article is being hard it.
-By the way. A nicer way. I control see to exit that was actually a nicer way to
-see the logs is to find the profiler for that request saw what the two are
-going to be profiling for the AJAX request and then go to the logs tab. Yep
-there is our article is being hardened.
+```terminal
+tail -f var/log/dev.log
+```
 
-But how the heck did this work.
+I'll clear the screen. Now, refresh the page, and move back. Awesome! This *proves*
+that Symfony has some sort of logging system. And since *everything* is done by
+a service, there must be a logger object. So here's the question: how can *we*
+get the logger service so that *we* can log our *own* messages?
 
-When Symphonie rendered the page it actually looked at the hype. Hint laager
-interface and knew that we wanted the laager service object and so it
-automatically passed it to us. This is a really powerful thing. If you need a
-service you just need to know what type hint to use to get it. So how the heck
-did I know to use laager interface. Well of course the symphony documentation
-if you look at the laager symphony backwardation it's gonna tell you what type
-to use but there's a cooler way. Go to a terminal and run in console debug auto
-wiring. Boom. This is a full list of all of the type points that you can use in
-the system to get a service. You'll notice they all say alias to something.
-That's not that. Don't worry about that too much. That's just an internal name
-for the object that we'll learn more about later.
+Here's the answer: inside the controller, on the method, add an additional argument.
+Give it a `LoggerInterface` type hint - hit tab to auto-complete that and call it
+whatever you want, how about `$logger`. Remember: when you autocomplete, PhpStorm
+adds the `use` statement to the top for you.
 
-The point is this all of these blue text here are valid type pins that you can
-use which is how I need to use laager interface. Then actually check this out.
-If you want to use twig you can use either of these to type hits. And remember
-I just said that everything in Symphonie is actually done by a service. So for
-example when you call this error render. The logic for that. That actually just
-goes and fetches a service and calls a method on it. What I mean is let's
-pretend that that renders shortcut method doesn't exist. How could we render
-templates. While all we need to do is get the Twiggs service. Slots at a second
-argument called environment because that's the name of the. Type hint.
+Now, we can use one of its methods: `$logger->info('Article is being hearted')`.
 
-I'll call this twig environments. And then I'll change the return to each team
-of equals. Twig environment. Arrow render the method name just happens to be
-the same. Then at the bottom as I return new response. Import the age T.M.
-inside of their.
+Before we talk about this, let's try it! Find your browser and click the heart.
+That hit the AJAX endpoint. Go back to the terminal. Yes! There it is at the bottom.
+Hit Ctrl+C to exit `tail`.
 
-The Render function when you call a render function on the controller. All it
-really does is call render on the twig service and then wrap it inside of the
-response object for you. What I mean is. If you go back and refresh. This works
-exactly like before. Of course this is way too much work. So I'm going to
-change it back to just return. This error or render. And I wanted to show the
-other way. To show you how things actually work behind the scenes. This is
-really important because some day you might be coding somewhere that is not a
-controller and you need to know how to render a tablet. SUNAO thinks of the
-Deba auto Wareing command. You know you can get a list of what all of your
-tools are in the application and it's hype into use to get them.
+## Service Autowiring
 
-But. When you install new packages you're going to get new tools. In fact
-that's the main job. The main reason to install a new package is to get more
-tools. Let me show you an example. Run. Composer require serializer. Serializer
-is a symphony Lyor that helps turn things into. And helps serialize things into
-Jaison or X amount. It's really useful for creating API is. As soon as it
-finishes. Run then console debug auto wiring again and check this out. We have
-new tools. This entire section there are now a whole bunch of different. Types
-that you type hints that you can use. To get the serializer. Now I don't expect
-you to look in this list and automatically know which to use. In the real world
-you would read the serializer documentation.
+Ok cool! But... how the heck did that work? Here's the deal: before Symfony executes
+our controller, it looks at each argument. For simple arguments like `$slug`, it
+passes us the wildcard value from the router. But for `$logger`, it looks at the
+*type-hint* and *realizes* that we *want* Symfony to pass us the logger object.
+Oh, and the order of the arguments does *not* matter.
 
-And it would tell you. What to use. What you really need to understand how this
-system works. So let's actually use this one serializer interface. We use down
-here on our. Ajax and point. Will say serializer interface. Serializer. And
-then instead of returning a decent response. Directly. I'll say Jaison equals.
+This is a *very* powerful idea called autowiring: if you need a service object,
+you just need to know the correct *type-hint* to use! So... how the heck did I know
+to use `LoggerInterface`? Well, of course, if you look at the official Symfony
+docs about the logger, it'll tell you. But, there's a *cooler* way.
 
-Serializer Aeros. And the cool thing is because of the typing. We get auto
-completion. And I'll pass on the data and I'll pass and Jaison. Now we still
-need to return a Jaison. A response not a string. So return Jaison response.
-From Jaison string and pass Jaison. From Jayson's string a fancy. Is just.
+Go to your terminal and run:
 
-An alternate way to use the Jason response. It won't be encode the Jaison
-string but it will still set the content type header for us. Without having any
-configuration.
+```terminal
+./bin/console debug:autowiring
+```
 
-It still works. We've taken advantage of a new tool the serializer. Now the
-serializer is actually overkill in this case it works best when you have
-objects that you want to serialize.
+Boom! This is a full list of *all* of the type-hints that you can use to get a
+service. Notice that most of them say that they are an *alias* to something. Don't
+worry about that too much: like routes, each service has an internal name you can
+use to reference it. We'll learn more about that later. Oh, and whenever you install
+a *new* package, you'll get more and more services in this list. More tools!
 
-But I wanted to prove that it worked. Now that we have it. Let's remove the
-serializer.
+## Using Twig Directly
 
-And then we all go back to using our simpler code. Turn new Jaison response or
-pass. That.
+And check this out! If you want to get the Twig service, you can use either of
+these two type-hints.
 
-Code. And at the top.
+And remember how I said that *everything* in Symfony is done by a service? Well,
+when we call `$this->render()` in a controller, that's just a shortcut to fetch
+the Twig service and call a method on it.
 
-Remove a couple of use statements. We don't need Ikebe response in case we need
-it. Serializer uninstaller itself. We have one less tool now but our site still
-works.
+In fact, let's pretend that the `$this->render()` shortcut does *not* exist. How
+could we render a template? No problem: we just need the Twig service. Add a second
+argument with an `Environment` type-hint, because that's the class name we saw
+in `debug:autowiring`. Call the arg `$twigEnvironment`.
+
+Next, change the `return` statement to be `$html = $twigEnvironment->render()`.
+The method we want to call on the Twig object is coincidentally the same as the
+controller shortcut.
+
+Then at the bottom, return `new Response()` and pass `$html`.
+
+Ok, this is *way* more work than before... and I would *not* do this in a real
+project. But, I wanted to prove a point: when you use the `$this->render()` shortcut
+method on the controller, all it *really* does is call `render()` on the Twig service
+and then wrap it inside a `Response` object for you.
+
+Try it! Go back and refresh the page. It works exactly like before! Of course we
+*will* use shortcut methods, because they make our life *way* more awesome. I'll
+change my code back to look like it did before. But the point is this: *everything*
+is done by a service. If you learn to master services, you can do *anything* from
+*anywhere* in Symfony.
+
+There's a lot more to say about the topic of services, and *so* many other parts
+of Symfony: configuration, Doctrine & the database, forms, Security and APIs, to
+just name a few. The Space Bar is far from being the galactic information source
+that we know it will be!
+
+But, congrats! You just spent an hour getting an *awesome* foundation in Symfony.
+You will *not* regret your hard work: you're on your way to building *great* things
+and, as always, becoming a better and better developer.
+
+Alright guys, seeya next time!
