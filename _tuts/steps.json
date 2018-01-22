@@ -201,16 +201,6 @@
             "description": null
         },
         {
-            "id": "services-install-use-serializer",
-            "name": "Services: Install & use serializer",
-            "description": null
-        },
-        {
-            "id": "services-remove-serializer",
-            "name": "Services: Remove serializer",
-            "description": null
-        },
-        {
             "id": "maker-install-maker",
             "name": "Maker: Install maker",
             "description": null
