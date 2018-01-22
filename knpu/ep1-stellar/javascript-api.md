@@ -6,7 +6,7 @@ That API endpoint also needs to return the new number of hearts to show on the p
 ya know... in case 10 other people liked it since we opened the page.
 
 In `ArticleController`, make a new `public function toggleArticleHeart()`. Then
-add the route above: `@Route("/new/{slug}")` - to match the show URL - then `/heart`.
+add the route above: `@Route("/news/{slug}")` - to match the show URL - then `/heart`.
 Give it a name immediately: `article_toggle_heart`. I included the `{slug}` wildcard
 in the route so that we know *which* article is being liked. We could also use an
 `{id}` wildcard once we have a database.
