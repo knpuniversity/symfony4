@@ -1,0 +1,13 @@
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index a52823f..386baa6 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -26,7 +26,7 @@
+                 <div class="row">
+                     <div class="col-sm-12">
+                         <div class="article-text">
+-                            {{ articleContent }}
++                            {{ articleContent|raw }}
+                         </div>
+                     </div>
+                 </div>

@@ -11,7 +11,7 @@ index b26456e..d08d903 100644
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index a290b96..fad30f0 100644
+index e1e68ca..0b165eb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,411 @@

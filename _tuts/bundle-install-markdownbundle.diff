@@ -1,0 +1,168 @@
+diff --git a/composer.json b/composer.json
+index 4988f28..573b957 100644
+--- a/composer.json
++++ b/composer.json
+@@ -4,6 +4,7 @@
+     "require": {
+         "php": "^7.1.3",
+         "ext-iconv": "*",
++        "knplabs/knp-markdown-bundle": "^1.7",
+         "sensio/framework-extra-bundle": "^5.1",
+         "symfony/asset": "^4.0",
+         "symfony/console": "^4.0",
+diff --git a/composer.lock b/composer.lock
+index cecda75..0c7232b 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "6310a5a36486ccd723b499af355a7d5b",
++    "content-hash": "2be834b1cf1bab62b499aac19ad5591e",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -409,6 +409,115 @@
+             ],
+             "time": "2014-09-09T13:34:57+00:00"
+         },
++        {
++            "name": "knplabs/knp-markdown-bundle",
++            "version": "1.7.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/KnpLabs/KnpMarkdownBundle.git",
++                "reference": "912796833a126df65ce54f81ca174474105665ea"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/KnpLabs/KnpMarkdownBundle/zipball/912796833a126df65ce54f81ca174474105665ea",
++                "reference": "912796833a126df65ce54f81ca174474105665ea",
++                "shasum": ""
++            },
++            "require": {
++                "michelf/php-markdown": "~1.4",
++                "php": ">=5.5.9",
++                "symfony/dependency-injection": "~2.8|~3.0|^4.0",
++                "symfony/framework-bundle": "~2.8|~3.0|^4.0"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "~4.5",
++                "symfony/templating": "~2.8|~3.0|^4.0"
++            },
++            "suggest": {
++                "ext-sundown": "to use optional support for php-sundown extension instead of php implementation",
++                "symfony/twig-bundle": "to use the Twig markdown filter"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.5.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Knp\\Bundle\\MarkdownBundle\\": ""
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "KnpLabs Team",
++                    "homepage": "http://knplabs.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle/contributors"
++                }
++            ],
++            "description": "Knplabs markdown bundle transforms markdown into html",
++            "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle",
++            "keywords": [
++                "bundle",
++                "knp",
++                "knplabs",
++                "markdown"
++            ],
++            "time": "2018-01-23T15:34:53+00:00"
++        },
++        {
++            "name": "michelf/php-markdown",
++            "version": "1.8.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/michelf/php-markdown.git",
++                "reference": "01ab082b355bf188d907b9929cd99b2923053495"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/01ab082b355bf188d907b9929cd99b2923053495",
++                "reference": "01ab082b355bf188d907b9929cd99b2923053495",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.3.0"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Michelf\\": "Michelf/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "BSD-3-Clause"
++            ],
++            "authors": [
++                {
++                    "name": "Michel Fortin",
++                    "email": "michel.fortin@michelf.ca",
++                    "homepage": "https://michelf.ca/",
++                    "role": "Developer"
++                },
++                {
++                    "name": "John Gruber",
++                    "homepage": "https://daringfireball.net/"
++                }
++            ],
++            "description": "PHP Markdown",
++            "homepage": "https://michelf.ca/projects/php-markdown/",
++            "keywords": [
++                "markdown"
++            ],
++            "time": "2018-01-15T00:49:33+00:00"
++        },
+         {
+             "name": "psr/cache",
+             "version": "1.0.1",
+diff --git a/config/bundles.php b/config/bundles.php
+index b543674..e278c0b 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -8,4 +8,5 @@ return [
+     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
+     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
++    Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
+ ];
+diff --git a/symfony.lock b/symfony.lock
+index 11422d0..270d9d8 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -35,6 +35,12 @@
+             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
+         }
+     },
++    "knplabs/knp-markdown-bundle": {
++        "version": "1.6.0"
++    },
++    "michelf/php-markdown": {
++        "version": "1.8.0"
++    },
+     "monolog/monolog": {
+         "version": "1.23.0"
+     },

@@ -1,0 +1,22 @@
+diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
+index f97dbe3..431ec2d 100644
+--- a/config/packages/framework.yaml
++++ b/config/packages/framework.yaml
+@@ -27,4 +27,4 @@ framework:
+         #default_redis_provider: redis://localhost
+ 
+         # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
+-        #app: cache.adapter.apcu
++        app: cache.adapter.apcu
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 44b2769..9a03534 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -53,7 +53,6 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca
+ fugiat.
+ EOF;
+ 
+-        dump($cache);die;
+         $item = $cache->getItem('markdown_'.md5($articleContent));
+         if (!$item->isHit()) {
+             $item->set($markdown->transform($articleContent));

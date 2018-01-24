@@ -1,0 +1,64 @@
+diff --git a/composer.lock b/composer.lock
+index 6e87ef1..cecda75 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -601,16 +601,16 @@
+         },
+         {
+             "name": "sensio/framework-extra-bundle",
+-            "version": "v5.1.3",
++            "version": "v5.1.4",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
+-                "reference": "0696496cb3e2d23add645d424699e5c723238aad"
++                "reference": "072c00c52b947e88a1e619e9ff426cee6c8c482b"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/0696496cb3e2d23add645d424699e5c723238aad",
+-                "reference": "0696496cb3e2d23add645d424699e5c723238aad",
++                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/072c00c52b947e88a1e619e9ff426cee6c8c482b",
++                "reference": "072c00c52b947e88a1e619e9ff426cee6c8c482b",
+                 "shasum": ""
+             },
+             "require": {
+@@ -666,7 +666,7 @@
+                 "annotations",
+                 "controllers"
+             ],
+-            "time": "2017-12-04T18:33:55+00:00"
++            "time": "2018-01-12T13:08:16+00:00"
+         },
+         {
+             "name": "symfony/asset",
+@@ -2319,16 +2319,16 @@
+         },
+         {
+             "name": "sensiolabs/security-checker",
+-            "version": "v4.1.6",
++            "version": "v4.1.7",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/sensiolabs/security-checker.git",
+-                "reference": "387b6a3b723ba35588b33d5f8d14e28ed608bd30"
++                "reference": "d539ccba2b4dce515de04f16b7ed7ae5b9eeb434"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/387b6a3b723ba35588b33d5f8d14e28ed608bd30",
+-                "reference": "387b6a3b723ba35588b33d5f8d14e28ed608bd30",
++                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/d539ccba2b4dce515de04f16b7ed7ae5b9eeb434",
++                "reference": "d539ccba2b4dce515de04f16b7ed7ae5b9eeb434",
+                 "shasum": ""
+             },
+             "require": {
+@@ -2360,7 +2360,7 @@
+                 }
+             ],
+             "description": "A security checker for your composer.lock",
+-            "time": "2017-10-29T18:48:08+00:00"
++            "time": "2018-01-11T05:54:03+00:00"
+         },
+         {
+             "name": "symfony/debug-bundle",

@@ -201,6 +201,86 @@
             "description": null
         },
         {
+            "id": "pre-ep2-upgrade-all-deps",
+            "name": "PRE_EP2: Upgrade all deps",
+            "description": null
+        },
+        {
+            "id": "pre-ep2-update-framework-recipe",
+            "name": "PRE_EP2: Update framework recipe",
+            "description": null
+        },
+        {
+            "id": "bundle-add-some-markdown-content",
+            "name": "Bundle: Add some markdown content",
+            "description": null
+        },
+        {
+            "id": "bundle-install-markdownbundle",
+            "name": "Bundle: Install MarkdownBundle",
+            "description": null
+        },
+        {
+            "id": "bundle-use-the-markdown-service",
+            "name": "Bundle: Use the markdown service",
+            "description": null
+        },
+        {
+            "id": "bundle-use-raw-filter",
+            "name": "Bundle: Use raw filter",
+            "description": null
+        },
+        {
+            "id": "caching-cache-the-markdown-transformation",
+            "name": "Caching: cache the markdown transformation",
+            "description": null
+        },
+        {
+            "id": "caching-tweak-contents",
+            "name": "Caching: Tweak contents",
+            "description": null
+        },
+        {
+            "id": "config-dump-markdown",
+            "name": "Config: Dump markdown",
+            "description": null
+        },
+        {
+            "id": "config-change-markdown-config",
+            "name": "Config: Change markdown config",
+            "description": null
+        },
+        {
+            "id": "config-re-parse-markdown-to-see-it",
+            "name": "Config: Re-parse markdown to see it",
+            "description": null
+        },
+        {
+            "id": "config-dump-cache",
+            "name": "Config: dump($cache)",
+            "description": null
+        },
+        {
+            "id": "config-change-to-apcu-cache",
+            "name": "Config: Change to apcu cache",
+            "description": null
+        },
+        {
+            "id": "environment-tweak-twig-template",
+            "name": "Environment: Tweak Twig template",
+            "description": null
+        },
+        {
+            "id": "environment-filesystem-cache-in-dev",
+            "name": "Environment: Filesystem cache in dev",
+            "description": null
+        },
+        {
+            "id": "environment-remove-dump",
+            "name": "Environment: Remove dump()",
+            "description": null
+        },
+        {
             "id": "maker-install-maker",
             "name": "Maker: Install maker",
             "description": null
@@ -221,5 +301,5 @@
             "description": null
         }
     ],
-    "sha": "2aa28e46afe07c68b3f45137b2cdea47832c8966"
+    "sha": "8e48d239e8f3b6093ad590bddf24313050bbc425"
 }

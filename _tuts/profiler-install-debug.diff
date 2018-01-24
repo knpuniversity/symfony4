@@ -53,7 +53,7 @@ index 478a5b6..50d2ada 100644
          "symfony/profiler-pack": "^1.0"
      },
 diff --git a/composer.lock b/composer.lock
-index b0607d7..54857af 100644
+index 18e28a4..42cd6d1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

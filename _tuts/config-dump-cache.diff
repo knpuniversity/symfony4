@@ -1,0 +1,12 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 9a03534..44b2769 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -53,6 +53,7 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca
+ fugiat.
+ EOF;
+ 
++        dump($cache);die;
+         $item = $cache->getItem('markdown_'.md5($articleContent));
+         if (!$item->isHit()) {
+             $item->set($markdown->transform($articleContent));

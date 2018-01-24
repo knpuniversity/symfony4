@@ -1,0 +1,22 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index bc96cbd..9a03534 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -44,6 +44,8 @@ capicola biltong frankfurter boudin cupim officia. Exercitation fugiat consectet
+ picanha shank et filet mignon pork belly ut ullamco. Irure velit turducken ground round doner incididunt
+ occaecat lorem meatball prosciutto quis strip steak.
+ 
++---
++
+ Meatball adipisicing ribeye bacon strip steak eu. Consectetur ham hock pork hamburger enim strip steak
+ mollit quis officia meatloaf tri-tip swine. Cow ut reprehenderit, buffalo incididunt in filet mignon
+ strip steak pork belly aliquip capicola officia. Labore deserunt esse chicken lorem shoulder tail consectetur
+@@ -58,8 +60,6 @@ EOF;
+         }
+         $articleContent = $item->get();
+ 
+-        dump($markdown);die;
+-
+         return $this->render('article/show.html.twig', [
+             'title' => ucwords(str_replace('-', ' ', $slug)),
+             'slug' => $slug,

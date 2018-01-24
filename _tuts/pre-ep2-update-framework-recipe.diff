@@ -1,0 +1,61 @@
+diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
+index b32f52d..f97dbe3 100644
+--- a/config/packages/framework.yaml
++++ b/config/packages/framework.yaml
+@@ -4,12 +4,27 @@ framework:
+     #csrf_protection: ~
+     #http_method_override: true
+ 
+-    # uncomment this entire section to enable sessions
+-    #session:
+-    #    # With this config, PHP's native session handling is used
+-    #    handler_id: ~
++    # Enables session support. Note that the session will ONLY be started if you read or write from it.
++    # Remove or comment this section to explicitly disable session support.
++    session:
++        handler_id: ~
+ 
+     #esi: ~
+     #fragments: ~
+     php_errors:
+         log: true
++
++    cache:
++        # Put the unique name of your app here: the prefix seed
++        # is used to compute stable namespaces for cache keys.
++        #prefix_seed: your_vendor_name/app_name
++
++        # The app cache caches to the filesystem by default.
++        # Other options include:
++
++        # Redis
++        #app: cache.adapter.redis
++        #default_redis_provider: redis://localhost
++
++        # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
++        #app: cache.adapter.apcu
+diff --git a/public/index.php b/public/index.php
+index 521b85d..ab41c26 100644
+--- a/public/index.php
++++ b/public/index.php
+@@ -15,7 +15,10 @@ if (!isset($_SERVER['APP_ENV'])) {
+     (new Dotenv())->load(__DIR__.'/../.env');
+ }
+ 
+-if ($_SERVER['APP_DEBUG'] ?? ('prod' !== ($_SERVER['APP_ENV'] ?? 'dev'))) {
++$env = $_SERVER['APP_ENV'] ?? 'dev';
++$debug = $_SERVER['APP_DEBUG'] ?? ('prod' !== $env);
++
++if ($debug) {
+     umask(0000);
+ 
+     Debug::enable();
+@@ -29,7 +32,7 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
+     Request::setTrustedHosts(explode(',', $trustedHosts));
+ }
+ 
+-$kernel = new Kernel($_SERVER['APP_ENV'] ?? 'dev', $_SERVER['APP_DEBUG'] ?? ('prod' !== ($_SERVER['APP_ENV'] ?? 'dev')));
++$kernel = new Kernel($env, $debug);
+ $request = Request::createFromGlobals();
+ $response = $kernel->handle($request);
+ $response->send();
