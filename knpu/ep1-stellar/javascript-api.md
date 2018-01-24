@@ -18,7 +18,7 @@ I included the `{slug}` wildcard in the route so that we know *which* article is
 being liked. We could also use an `{id}` wildcard once we have a database.
 
 Add the corresponding `$slug` argument. But since we *don't* have a database yet,
-I'll add a TODO: `actually heart/unheart the article!`:
+I'll add a TODO: "actually heart/unheart the article!":
 
 [[[ code('24472bf8ea') ]]]
 
