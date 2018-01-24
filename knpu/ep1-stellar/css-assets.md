@@ -129,7 +129,7 @@ hardcoded. I mean, that article name is just static text.
 Let's take the dynamic code that we have at the bottom and work it into the new HTML.
 For the title, use `{{ title }}`:
 
-[[[ code('143f61892e') ]]]
+[[[ code('f468e82073') ]]]
 
 Below, it prints the number of comments. Replace that with `{{ comments|length }}`:
 
