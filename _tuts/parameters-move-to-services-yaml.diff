@@ -1,0 +1,23 @@
+diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
+index cc5c559..57e410f 100644
+--- a/config/packages/framework.yaml
++++ b/config/packages/framework.yaml
+@@ -1,6 +1,3 @@
+-parameters:
+-    cache_adapter: cache.adapter.apcu
+-
+ framework:
+     secret: '%env(APP_SECRET)%'
+     #default_locale: en
+diff --git a/config/services.yaml b/config/services.yaml
+index 23800b4..d088893 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -1,6 +1,7 @@
+ # Put parameters here that don't need to change on each machine where the app is deployed
+ # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+ parameters:
++    cache_adapter: cache.adapter.apcu
+ 
+ services:
+     # default configuration for services in *this* file

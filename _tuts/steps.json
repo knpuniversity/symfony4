@@ -281,8 +281,23 @@
             "description": null
         },
         {
-            "id": "environment-remove-dump",
-            "name": "Environment: Remove dump()",
+            "id": "parameters-set-cache-adapter-parameter",
+            "name": "Parameters: Set cache_adapter parameter",
+            "description": null
+        },
+        {
+            "id": "parameters-move-to-services-yaml",
+            "name": "Parameters: Move to services.yaml",
+            "description": null
+        },
+        {
+            "id": "parameters-create-services-dev-yaml",
+            "name": "Parameters: Create services_dev.yaml",
+            "description": null
+        },
+        {
+            "id": "parameters-remove-dump",
+            "name": "Parameters: remove dump()",
             "description": null
         },
         {
@@ -306,5 +321,5 @@
             "description": null
         }
     ],
-    "sha": "232d329c680478c5f9b641b4b5172942220e1f1d"
+    "sha": "e7803ac9e1acfa06647e5bc90acde109be0d7ec8"
 }

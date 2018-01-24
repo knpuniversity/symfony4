@@ -1,0 +1,4 @@
+diff --git a/config/packages/dev/framework.yaml b/config/services_dev.yaml
+similarity index 100%
+rename from config/packages/dev/framework.yaml
+rename to config/services_dev.yaml
