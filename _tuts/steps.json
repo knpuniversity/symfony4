@@ -206,6 +206,11 @@
             "description": null
         },
         {
+            "id": "pre-ep2-clean-tutorial",
+            "name": "PRE_EP2: Clean tutorial\/",
+            "description": null
+        },
+        {
             "id": "pre-ep2-update-framework-recipe",
             "name": "PRE_EP2: Update framework recipe",
             "description": null
@@ -301,5 +306,5 @@
             "description": null
         }
     ],
-    "sha": "8e48d239e8f3b6093ad590bddf24313050bbc425"
+    "sha": "232d329c680478c5f9b641b4b5172942220e1f1d"
 }
