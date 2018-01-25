@@ -3,6 +3,7 @@ chapters:
     - markdown-bundle
     - caching
     - config-bundle
+    - debug-container-cache-config
     - environments
     - parameters
     - environment-variables
