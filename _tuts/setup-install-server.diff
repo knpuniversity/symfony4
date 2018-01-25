@@ -11,10 +11,10 @@ index a0dbcb0..68cb6d2 100644
 +.web-server-pid
 +###< symfony/web-server-bundle ###
 diff --git a/README.md b/README.md
-index 08bda81..7af5016 100644
+index b7d94ae..bb42f6b 100644
 --- a/README.md
 +++ b/README.md
-@@ -27,14 +27,13 @@ You can use Nginx or Apache, but the built-in web server works
+@@ -27,7 +27,7 @@ You can use Nginx or Apache, but the built-in web server works
  great:
  
  ```
@@ -23,13 +23,6 @@ index 08bda81..7af5016 100644
  ```
  
  Now check out the site at `http://localhost:8000`
- 
- Have fun!
- 
--
- ## Have Ideas, Feedback or an Issue?
- 
- If you have suggestions or questions, please feel free to
 diff --git a/composer.json b/composer.json
 index 908faa0..b26456e 100644
 --- a/composer.json

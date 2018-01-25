@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 573b957..4e0a6e5 100644
+index 5a1e709..456ebe2 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -20,6 +20,7 @@
+@@ -22,6 +22,7 @@
          "sensiolabs/security-checker": "^4.1",
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
@@ -11,19 +11,49 @@ index 573b957..4e0a6e5 100644
          "symfony/phpunit-bridge": "^3.3|^4.0",
          "symfony/profiler-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 0c7232b..87871b4 100644
+index b32ebb9..4550a20 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "2be834b1cf1bab62b499aac19ad5591e",
-+    "content-hash": "45b45758d7164ceb6944aeb10788819a",
+-    "content-hash": "25f64652eae65ab16c7db2839f4aae12",
++    "content-hash": "2df898e37ff20844b9cee239ad006299",
      "packages": [
          {
-             "name": "doctrine/annotations",
-@@ -2593,6 +2593,63 @@
+             "name": "clue/stream-filter",
+@@ -2077,16 +2077,16 @@
+         },
+         {
+             "name": "symfony/flex",
+-            "version": "v1.0.66",
++            "version": "v1.0.67",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/symfony/flex.git",
+-                "reference": "b366e902710c8dc8d8be97ed8d64ef574d9bffcb"
++                "reference": "ac1c6aaafc4a9fddba3626867d786d151d2cc2ac"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/flex/zipball/b366e902710c8dc8d8be97ed8d64ef574d9bffcb",
+-                "reference": "b366e902710c8dc8d8be97ed8d64ef574d9bffcb",
++                "url": "https://api.github.com/repos/symfony/flex/zipball/ac1c6aaafc4a9fddba3626867d786d151d2cc2ac",
++                "reference": "ac1c6aaafc4a9fddba3626867d786d151d2cc2ac",
+                 "shasum": ""
+             },
+             "require": {
+@@ -2119,7 +2119,7 @@
+                     "email": "fabien.potencier@gmail.com"
+                 }
+             ],
+-            "time": "2018-01-21T09:15:48+00:00"
++            "time": "2018-01-25T06:46:31+00:00"
+         },
+         {
+             "name": "symfony/framework-bundle",
+@@ -3404,6 +3404,63 @@
              ],
              "time": "2018-01-03T17:15:19+00:00"
          },
@@ -98,10 +128,10 @@ index e278c0b..cdfb6aa 100644
 +    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 270d9d8..b7d582c 100644
+index a17b6d0..897ea61 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -149,6 +149,15 @@
+@@ -188,6 +188,15 @@
      "symfony/lts": {
          "version": "4-dev"
      },

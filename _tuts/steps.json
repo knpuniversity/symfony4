@@ -301,6 +301,16 @@
             "description": null
         },
         {
+            "id": "env-vars-install-slack-lib",
+            "name": "Env Vars: Install slack lib",
+            "description": null
+        },
+        {
+            "id": "env-vars-copy-client-code",
+            "name": "Env Vars: Copy Client code",
+            "description": null
+        },
+        {
             "id": "maker-install-maker",
             "name": "Maker: Install maker",
             "description": null
@@ -321,5 +331,5 @@
             "description": null
         }
     ],
-    "sha": "e7803ac9e1acfa06647e5bc90acde109be0d7ec8"
+    "sha": "bd8154edcf11f840e06515c33ff5d690b596a5ac"
 }
