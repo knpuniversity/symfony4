@@ -41,22 +41,30 @@ get the logger service so that *we* can log our *own* messages?
 
 Here's the answer: inside the controller, on the method, add an additional argument.
 Give it a `LoggerInterface` type hint - hit tab to auto-complete that and call it
-whatever you want, how about `$logger`. Remember: when you autocomplete, PhpStorm
-adds the `use` statement to the top for you.
+whatever you want, how about `$logger`:
 
-Now, we can use one of its methods: `$logger->info('Article is being hearted')`.
+[[[ code('3f726459ce') ]]]
+
+Remember: when you autocomplete, PhpStorm adds the `use` statement to the top for you.
+
+Now, we can use one of its methods: `$logger->info('Article is being hearted')`:
+
+[[[ code('b922641119') ]]]
 
 Before we talk about this, let's try it! Find your browser and click the heart.
 That hit the AJAX endpoint. Go back to the terminal. Yes! There it is at the bottom.
-Hit Ctrl+C to exit `tail`.
+Hit `Ctrl`+`C` to exit `tail`.
 
 ## Service Autowiring
 
 Ok cool! But... how the heck did that work? Here's the deal: before Symfony executes
 our controller, it looks at each argument. For simple arguments like `$slug`, it
-passes us the wildcard value from the router. But for `$logger`, it looks at the
-*type-hint* and *realizes* that we *want* Symfony to pass us the logger object.
-Oh, and the order of the arguments does *not* matter.
+passes us the wildcard value from the router:
+
+[[[ code('4afae713e5') ]]]
+
+But for `$logger`, it looks at the *type-hint* and *realizes* that we *want* Symfony
+to pass us the logger object. Oh, and the order of the arguments does *not* matter.
 
 This is a *very* powerful idea called autowiring: if you need a service object,
 you just need to know the correct *type-hint* to use! So... how the heck did I know
@@ -82,18 +90,27 @@ these two type-hints.
 
 And remember how I said that *everything* in Symfony is done by a service? Well,
 when we call `$this->render()` in a controller, that's just a shortcut to fetch
-the Twig service and call a method on it.
+the Twig service and call a method on it:
+
+[[[ code('ac75dbaf9b') ]]]
 
 In fact, let's pretend that the `$this->render()` shortcut does *not* exist. How
 could we render a template? No problem: we just need the Twig service. Add a second
 argument with an `Environment` type-hint, because that's the class name we saw
-in `debug:autowiring`. Call the arg `$twigEnvironment`.
+in `debug:autowiring`. Call the arg `$twigEnvironment`:
 
-Next, change the `return` statement to be `$html = $twigEnvironment->render()`.
+[[[ code('bd092ca645') ]]]
+
+Next, change the `return` statement to be `$html = $twigEnvironment->render()`:
+
+[[[ code('e9dd2a8868') ]]]
+
 The method we want to call on the Twig object is coincidentally the same as the
 controller shortcut.
 
-Then at the bottom, return `new Response()` and pass `$html`.
+Then at the bottom, return `new Response()` and pass `$html`:
+
+[[[ code('ba7bb2196c') ]]]
 
 Ok, this is *way* more work than before... and I would *not* do this in a real
 project. But, I wanted to prove a point: when you use the `$this->render()` shortcut
