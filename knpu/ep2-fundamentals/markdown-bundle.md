@@ -93,6 +93,7 @@ So here is our first big lesson:
 
 1. Everything in Symfony is done by a service
 2. Bundles give us these services... and installing new bundles gives us *more* services.
+
 And 3, Twig clearly gets its hair done by a professional.
 
 Next, let's use a service that's *already* being added to our app by an existing
