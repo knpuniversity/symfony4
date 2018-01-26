@@ -6,7 +6,7 @@ how our app works. I'm talking about how configuration works, the significance o
 different files and a *whole* lot more.
 
 And yea, there's a reason we're doing this work *now* and not in a distant, future
-episode: by understanding a few fundamentals, *everything* else in Symfony will
+episode: by understanding a few FUNdamentals, *everything* else in Symfony will
 make a *lot* more sense. So let's dig in and get to work!
 
 ## Code Download
@@ -31,9 +31,9 @@ aliens across the universe. Or, it *will* be when we're finished.
 ## Services: Objects that do Work
 
 Let's start off stage 2 of our journey with a pop quiz: in episode 1, what did I
-say was the *most* important part of Symfony? If you answered Fabien... you're technically
-right, but the *real* answer is: services. Remember: a service is an object that
-does work: there's a logger service and a Twig service.
+say was the *most* important part of Symfony? If you answered Fabien... you're
+technically right, but the *real* answer is: services. Remember: a service is
+an object that does work: there's a logger service and a Twig service.
 
 To get a list of the services that we can access, you can go to your terminal,
 open a new tab, and run:
@@ -42,7 +42,10 @@ open a new tab, and run:
 ./bin/console debug:autowiring
 ```
 
-For example, to get the logger service, we can use the `LoggerInterface` type-hint.
+For example, to get the logger service, we can use the `LoggerInterface` type-hint:
+
+[[[ code('b012be21fd') ]]]
+
 You can see this in our controller: yep, as soon as we add an argument with the
 `LoggerInterface` type-hint, Symfony knows to pass us the logger service.
 
@@ -55,7 +58,11 @@ service has an internal name, just like routes.
 
 And what exactly puts these services *into* the container? The answer: *bundles*.
 Bundles are Symfony's *plugin* system. Look inside `config/` and open a `bundles.php`
-file there. Yep, our app has *seven* bundles so far - basically seven plugins.
+file there:
+
+[[[ code('ea1fd02243') ]]]
+
+Yep, our app has *seven* bundles so far - basically seven plugins.
 We installed 6 of these in episode 1: the recipe system automatically updates this
 file when you require a bundle. Sweet!
 
