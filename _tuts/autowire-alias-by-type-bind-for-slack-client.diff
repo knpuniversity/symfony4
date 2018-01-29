@@ -1,0 +1,25 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 30a808f..516fe63 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -16,6 +16,7 @@ services:
+         bind:
+             $markdownLogger: '@monolog.logger.markdown'
+             $isDebug: '%kernel.debug%'
++            Nexy\Slack\Client: '@nexy_slack.client'
+ 
+     # makes classes in src/ available to be used as services
+     # this creates a service per class whose id is the fully-qualified class name
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 2241da8..a63520a 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -18,7 +18,7 @@ class ArticleController extends AbstractController
+      */
+     private $isDebug;
+ 
+-    public function __construct(bool $isDebug, Client $slack)
++    public function __construct(bool $isDebug)
+     {
+         $this->isDebug = $isDebug;
+     }

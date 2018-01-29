@@ -1,0 +1,68 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index dcf0a18..b43b329 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -3,11 +3,9 @@
+ namespace App\Controller;
+ 
+ use App\Service\MarkdownHelper;
+-use Michelf\MarkdownInterface;
+ use Psr\Log\LoggerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+-use Symfony\Component\Cache\Adapter\AdapterInterface;
+ use Symfony\Component\HttpFoundation\JsonResponse;
+ use Symfony\Component\HttpFoundation\Response;
+ use Twig\Environment;
+@@ -25,7 +23,7 @@ class ArticleController extends AbstractController
+     /**
+      * @Route("/news/{slug}", name="article_show")
+      */
+-    public function show($slug, MarkdownInterface $markdown, AdapterInterface $cache, MarkdownHelper $markdownHelper)
++    public function show($slug, MarkdownHelper $markdownHelper)
+     {
+         $comments = [
+             'I ate a normal rock once. It did NOT taste like bacon!',
+@@ -52,11 +50,7 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca
+ fugiat.
+ EOF;
+ 
+-        $articleContent = $markdownHelper->parse(
+-            $articleContent,
+-            $cache,
+-            $markdown
+-        );
++        $articleContent = $markdownHelper->parse($articleContent);
+ 
+         return $this->render('article/show.html.twig', [
+             'title' => ucwords(str_replace('-', ' ', $slug)),
+diff --git a/src/Service/MarkdownHelper.php b/src/Service/MarkdownHelper.php
+index 2d5e017..6296485 100644
+--- a/src/Service/MarkdownHelper.php
++++ b/src/Service/MarkdownHelper.php
+@@ -7,12 +7,21 @@ use Symfony\Component\Cache\Adapter\AdapterInterface;
+ 
+ class MarkdownHelper
+ {
+-    public function parse(string $source, AdapterInterface $cache, MarkdownInterface $markdown): string
++    private $cache;
++    private $markdown;
++
++    public function __construct(AdapterInterface $cache, MarkdownInterface $markdown)
++    {
++        $this->cache = $cache;
++        $this->markdown = $markdown;
++    }
++
++    public function parse(string $source): string
+     {
+-        $item = $cache->getItem('markdown_'.md5($source));
++        $item = $this->cache->getItem('markdown_'.md5($source));
+         if (!$item->isHit()) {
+-            $item->set($markdown->transform($source));
+-            $cache->save($item);
++            $item->set($this->markdown->transform($source));
++            $this->cache->save($item);
+         }
+ 
+         return $item->get();

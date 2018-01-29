@@ -1,0 +1,8 @@
+diff --git a/config/packages/nexy_slack.yaml b/config/packages/nexy_slack.yaml
+new file mode 100644
+index 0000000..5b4bedb
+--- /dev/null
++++ b/config/packages/nexy_slack.yaml
+@@ -0,0 +1,2 @@
++nexy_slack:
++    endpoint: 'https://hooks.slack.com/services/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'

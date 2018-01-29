@@ -1,0 +1,13 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index a63520a..2241da8 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -18,7 +18,7 @@ class ArticleController extends AbstractController
+      */
+     private $isDebug;
+ 
+-    public function __construct(bool $isDebug)
++    public function __construct(bool $isDebug, Client $slack)
+     {
+         $this->isDebug = $isDebug;
+     }

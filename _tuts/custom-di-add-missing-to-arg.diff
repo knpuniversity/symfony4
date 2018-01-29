@@ -1,0 +1,13 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index f67b098..678f473 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -25,7 +25,7 @@ services:
+ 
+     App\Service\MarkdownHelper:
+         arguments:
+-            $logger: 'monolog.logger.markdown'
++            $logger: '@monolog.logger.markdown'
+ 
+     # add more service definitions when explicit configuration is needed
+     # please note that last definitions always *replace* previous ones

@@ -281,6 +281,51 @@
             "description": null
         },
         {
+            "id": "environment-remove-dump",
+            "name": "Environment: Remove dump",
+            "description": null
+        },
+        {
+            "id": "services-create-markdownhelper",
+            "name": "Services: Create MarkdownHelper",
+            "description": null
+        },
+        {
+            "id": "services-pass-args-to-method",
+            "name": "Services: Pass args to method",
+            "description": null
+        },
+        {
+            "id": "services-use-constructor-injection",
+            "name": "Services: Use constructor injection",
+            "description": null
+        },
+        {
+            "id": "custom-di-di-normal-logger",
+            "name": "Custom DI: DI normal Logger",
+            "description": null
+        },
+        {
+            "id": "custom-di-custom-logger-channel",
+            "name": "Custom DI: Custom logger channel",
+            "description": null
+        },
+        {
+            "id": "custom-di-configure-logger-arg",
+            "name": "Custom DI: Configure $logger arg",
+            "description": null
+        },
+        {
+            "id": "custom-di-add-missing-to-arg",
+            "name": "Custom DI: Add missing @ to arg",
+            "description": null
+        },
+        {
+            "id": "custom-di-use-bind-under-defaults",
+            "name": "Custom DI: Use bind under _defaults",
+            "description": null
+        },
+        {
             "id": "parameters-set-cache-adapter-parameter",
             "name": "Parameters: Set cache_adapter parameter",
             "description": null
@@ -296,18 +341,93 @@
             "description": null
         },
         {
-            "id": "parameters-remove-dump",
-            "name": "Parameters: remove dump()",
+            "id": "parameters-try-to-inject-isdebug",
+            "name": "Parameters: Try to inject $isDebug",
             "description": null
         },
         {
-            "id": "env-vars-install-slack-lib",
-            "name": "Env Vars: Install slack lib",
+            "id": "parameters-bind-isdebug",
+            "name": "Parameters: Bind $isDebug",
             "description": null
         },
         {
-            "id": "env-vars-copy-client-code",
-            "name": "Env Vars: Copy Client code",
+            "id": "parameters-using-kernel-debug",
+            "name": "Parameters: Using %kernel.debug%",
+            "description": null
+        },
+        {
+            "id": "controller-di-try-to-use-isdebug-arg",
+            "name": "Controller DI: Try to use $isDebug arg",
+            "description": null
+        },
+        {
+            "id": "controller-di-adding-constructor",
+            "name": "Controller DI: adding constructor",
+            "description": null
+        },
+        {
+            "id": "controller-di-adding-comments",
+            "name": "Controller DI: Adding comments",
+            "description": null
+        },
+        {
+            "id": "autowire-alias-install-slackbundle",
+            "name": "Autowire Alias: Install SlackBundle",
+            "description": null
+        },
+        {
+            "id": "autowire-alias-configure-slack-endpoint",
+            "name": "Autowire Alias: Configure Slack endpoint",
+            "description": null
+        },
+        {
+            "id": "autowire-alias-try-to-autowire",
+            "name": "Autowire Alias: Try to autowire",
+            "description": null
+        },
+        {
+            "id": "autowire-alias-try-the-constructor",
+            "name": "Autowire Alias: Try the constructor",
+            "description": null
+        },
+        {
+            "id": "autowire-alias-by-type-bind-for-slack-client",
+            "name": "Autowire Alias: By-type bind for Slack client",
+            "description": null
+        },
+        {
+            "id": "autowire-alias-change-to-an-alias",
+            "name": "Autowire Alias: Change to an alias",
+            "description": null
+        },
+        {
+            "id": "env-vars-move-endpoint-to-env",
+            "name": "Env Vars: Move endpoint to .env",
+            "description": null
+        },
+        {
+            "id": "env-vars-cast-to-string",
+            "name": "Env Vars: Cast to string",
+            "description": null
+        },
+        {
+            "id": "setter-di-create-slackclient",
+            "name": "Setter DI: Create SlackClient",
+            "description": null
+        },
+        {
+            "id": "setter-di-adding-setlogger",
+            "name": "Setter DI: Adding setLogger",
+            "description": null
+        },
+        {
+            "id": "setter-di-adding-required",
+            "name": "Setter DI: Adding @required",
+            "description": null
+        },
+        {
+            "id": "setter-di-adding-loggertrait",
+            "name": "Setter DI: Adding LoggerTrait",
             "description": null
         },
         {
@@ -331,5 +451,5 @@
             "description": null
         }
     ],
-    "sha": "15164c4f4192b2c3415f66002bf60824f37e4a68"
+    "sha": "2c031505c8a0b75419cdf3475f671986db946972"
 }

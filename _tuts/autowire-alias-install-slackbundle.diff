@@ -1,18 +1,18 @@
 diff --git a/composer.json b/composer.json
-index 573b957..5a1e709 100644
+index 573b957..a80ed1d 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,8 @@
          "php": "^7.1.3",
          "ext-iconv": "*",
          "knplabs/knp-markdown-bundle": "^1.7",
-+        "nexylan/slack": "^2.0",
++        "nexylan/slack-bundle": "^2.0",
 +        "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 0c7232b..b32ebb9 100644
+index b8685f7..5ec76d4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,60 @@
@@ -20,7 +20,7 @@ index 0c7232b..b32ebb9 100644
          "This file is @generated automatically"
      ],
 -    "content-hash": "2be834b1cf1bab62b499aac19ad5591e",
-+    "content-hash": "25f64652eae65ab16c7db2839f4aae12",
++    "content-hash": "1b0a443c6aec0d82379b2a9f883b7ee7",
      "packages": [
 +        {
 +            "name": "clue/stream-filter",
@@ -77,10 +77,40 @@ index 0c7232b..b32ebb9 100644
          {
              "name": "doctrine/annotations",
              "version": "v1.6.0",
-@@ -409,6 +461,187 @@
+@@ -389,63 +441,1028 @@
              ],
-             "time": "2014-09-09T13:34:57+00:00"
-         },
+             "authors": [
+                 {
+-                    "name": "Roman Borschel",
+-                    "email": "roman@code-factory.org"
+-                },
+-                {
+-                    "name": "Guilherme Blanco",
+-                    "email": "guilhermeblanco@gmail.com"
+-                },
+-                {
+-                    "name": "Johannes Schmitt",
+-                    "email": "schmittjoh@gmail.com"
++                    "name": "Roman Borschel",
++                    "email": "roman@code-factory.org"
++                },
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
++                {
++                    "name": "Johannes Schmitt",
++                    "email": "schmittjoh@gmail.com"
++                }
++            ],
++            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
++            "homepage": "http://www.doctrine-project.org",
++            "keywords": [
++                "lexer",
++                "parser"
++            ],
++            "time": "2014-09-09T13:34:57+00:00"
++        },
 +        {
 +            "name": "guzzlehttp/guzzle",
 +            "version": "6.3.0",
@@ -262,13 +292,115 @@ index 0c7232b..b32ebb9 100644
 +            ],
 +            "time": "2017-03-20T17:10:46+00:00"
 +        },
-         {
-             "name": "knplabs/knp-markdown-bundle",
-             "version": "1.7.0",
-@@ -518,6 +751,480 @@
-             ],
-             "time": "2018-01-15T00:49:33+00:00"
-         },
++        {
++            "name": "knplabs/knp-markdown-bundle",
++            "version": "1.7.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/KnpLabs/KnpMarkdownBundle.git",
++                "reference": "912796833a126df65ce54f81ca174474105665ea"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/KnpLabs/KnpMarkdownBundle/zipball/912796833a126df65ce54f81ca174474105665ea",
++                "reference": "912796833a126df65ce54f81ca174474105665ea",
++                "shasum": ""
++            },
++            "require": {
++                "michelf/php-markdown": "~1.4",
++                "php": ">=5.5.9",
++                "symfony/dependency-injection": "~2.8|~3.0|^4.0",
++                "symfony/framework-bundle": "~2.8|~3.0|^4.0"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "~4.5",
++                "symfony/templating": "~2.8|~3.0|^4.0"
++            },
++            "suggest": {
++                "ext-sundown": "to use optional support for php-sundown extension instead of php implementation",
++                "symfony/twig-bundle": "to use the Twig markdown filter"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.5.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Knp\\Bundle\\MarkdownBundle\\": ""
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "KnpLabs Team",
++                    "homepage": "http://knplabs.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle/contributors"
++                }
++            ],
++            "description": "Knplabs markdown bundle transforms markdown into html",
++            "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle",
++            "keywords": [
++                "bundle",
++                "knp",
++                "knplabs",
++                "markdown"
++            ],
++            "time": "2018-01-23T15:34:53+00:00"
++        },
++        {
++            "name": "michelf/php-markdown",
++            "version": "1.8.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/michelf/php-markdown.git",
++                "reference": "01ab082b355bf188d907b9929cd99b2923053495"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/01ab082b355bf188d907b9929cd99b2923053495",
++                "reference": "01ab082b355bf188d907b9929cd99b2923053495",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.3.0"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Michelf\\": "Michelf/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "BSD-3-Clause"
++            ],
++            "authors": [
++                {
++                    "name": "Michel Fortin",
++                    "email": "michel.fortin@michelf.ca",
++                    "homepage": "https://michelf.ca/",
++                    "role": "Developer"
++                },
++                {
++                    "name": "John Gruber",
++                    "homepage": "https://daringfireball.net/"
++                }
++            ],
++            "description": "PHP Markdown",
++            "homepage": "https://michelf.ca/projects/php-markdown/",
++            "keywords": [
++                "markdown"
++            ],
++            "time": "2018-01-15T00:49:33+00:00"
++        },
 +        {
 +            "name": "nexylan/slack",
 +            "version": "v2.0.0",
@@ -331,6 +463,114 @@ index 0c7232b..b32ebb9 100644
 +                "webhook"
 +            ],
 +            "time": "2018-01-17T16:48:45+00:00"
++        },
++        {
++            "name": "nexylan/slack-bundle",
++            "version": "v2.0.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/nexylan/slack-bundle.git",
++                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/nexylan/slack-bundle/zipball/f8d0537dce96539eb94a184fa83be3070bafec2d",
++                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d",
++                "shasum": ""
++            },
++            "require": {
++                "nexylan/slack": "^2.0",
++                "php": "^7.1",
++                "php-http/httplug-bundle": "^1.8",
++                "symfony/http-kernel": "^3.4 || ^4.0"
++            },
++            "require-dev": {
++                "matthiasnoback/symfony-dependency-injection-test": "^2.3",
++                "php-http/mock-client": "^1.1",
++                "phpunit/phpunit": "^6.5"
++            },
++            "suggest": {
++                "eightpoints/guzzle-bundle": "Make a custom Guzzle instance for Slack with ease"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "2.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Nexy\\SlackBundle\\": "src"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Sullivan SENECHAL",
++                    "email": "soullivaneuh@gmail.com"
++                }
++            ],
++            "description": "Symfony bundle integration of maknz/slack library",
++            "time": "2018-01-18T01:13:27+00:00"
++        },
++        {
++            "name": "php-http/cache-plugin",
++            "version": "v1.5.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/php-http/cache-plugin.git",
++                "reference": "c573ac6ea9b4e33fad567f875b844229d18000b9"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/php-http/cache-plugin/zipball/c573ac6ea9b4e33fad567f875b844229d18000b9",
++                "reference": "c573ac6ea9b4e33fad567f875b844229d18000b9",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^5.4 || ^7.0",
++                "php-http/client-common": "^1.1",
++                "php-http/message-factory": "^1.0",
++                "psr/cache": "^1.0",
++                "symfony/options-resolver": "^2.6 || ^3.0 || ^4.0"
++            },
++            "require-dev": {
++                "henrikbjorn/phpspec-code-coverage": "^1.0",
++                "phpspec/phpspec": "^2.5"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.5-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Http\\Client\\Common\\Plugin\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Márk Sági-Kazár",
++                    "email": "mark.sagikazar@gmail.com"
++                }
++            ],
++            "description": "PSR-6 Cache plugin for HTTPlug",
++            "homepage": "http://httplug.io",
++            "keywords": [
++                "cache",
++                "http",
++                "httplug",
++                "plugin"
++            ],
++            "time": "2017-11-29T20:45:41+00:00"
 +        },
 +        {
 +            "name": "php-http/client-common",
@@ -572,6 +812,159 @@ index 0c7232b..b32ebb9 100644
 +            "time": "2016-08-31T08:30:17+00:00"
 +        },
 +        {
++            "name": "php-http/httplug-bundle",
++            "version": "1.8.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/php-http/HttplugBundle.git",
++                "reference": "583dbc5e3ff68a71fee528597549d6cd075ecf3b"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/php-http/HttplugBundle/zipball/583dbc5e3ff68a71fee528597549d6cd075ecf3b",
++                "reference": "583dbc5e3ff68a71fee528597549d6cd075ecf3b",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^5.5 || ^7.0",
++                "php-http/cache-plugin": "^1.4",
++                "php-http/client-common": "^1.6",
++                "php-http/client-implementation": "^1.0",
++                "php-http/discovery": "^1.0",
++                "php-http/httplug": "^1.0",
++                "php-http/logger-plugin": "^1.0",
++                "php-http/message": "^1.4",
++                "php-http/message-factory": "^1.0.2",
++                "php-http/stopwatch-plugin": "^1.0",
++                "psr/http-message": "^1.0",
++                "symfony/asset": "^2.8 || ^3.0 || ^4.0",
++                "symfony/config": "^2.8 || ^3.0 || ^4.0",
++                "symfony/dependency-injection": "^2.8.3 || ^3.0.3 || ^4.0",
++                "symfony/event-dispatcher": "^2.8 || ^3.0 || ^4.0",
++                "symfony/http-kernel": "^2.8 || ^3.0 || ^4.0",
++                "symfony/options-resolver": "^2.8 || ^3.0 || ^4.0",
++                "twig/twig": "^1.18 || ^2.0"
++            },
++            "conflict": {
++                "php-http/guzzle6-adapter": "<1.1"
++            },
++            "require-dev": {
++                "guzzlehttp/psr7": "^1.0",
++                "matthiasnoback/symfony-dependency-injection-test": "^1.1 || ^2.3",
++                "nyholm/nsa": "^1.1",
++                "php-http/buzz-adapter": "^0.3",
++                "php-http/curl-client": "^1.0",
++                "php-http/guzzle6-adapter": "^1.1.1",
++                "php-http/mock-client": "^1.0",
++                "php-http/promise": "^1.0",
++                "php-http/react-adapter": "^0.2.1",
++                "php-http/socket-client": "^1.0",
++                "polishsymfonycommunity/symfony-mocker-container": "^1.0",
++                "symfony/browser-kit": "^2.8 || ^3.0 || ^4.0",
++                "symfony/cache": "^3.1 || ^4.0",
++                "symfony/dom-crawler": "^2.8 || ^3.0 || ^4.0",
++                "symfony/framework-bundle": "^2.8.1 || ^3.0.1 || ^4.0",
++                "symfony/http-foundation": "^2.8 || ^3.0 || ^4.0",
++                "symfony/phpunit-bridge": "^3.3 || ^4.0",
++                "symfony/stopwatch": "^2.8 || ^3.0 || ^4.0",
++                "symfony/twig-bundle": "^2.8 || ^3.0 || ^4.0",
++                "symfony/web-profiler-bundle": "^2.8 || ^3.0 || ^4.0"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.8-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Http\\HttplugBundle\\": ""
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "David Buchmann",
++                    "email": "mail@davidbu.ch"
++                },
++                {
++                    "name": "Tobias Nyholm",
++                    "email": "tobias.nyholm@gmail.com"
++                }
++            ],
++            "description": "Symfony integration for HTTPlug",
++            "homepage": "http://httplug.io",
++            "keywords": [
++                "adapter",
++                "bundle",
++                "discovery",
++                "factory",
++                "http",
++                "httplug",
++                "message",
++                "php-http"
++            ],
++            "time": "2017-12-06T16:26:37+00:00"
++        },
++        {
++            "name": "php-http/logger-plugin",
++            "version": "v1.0.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/php-http/logger-plugin.git",
++                "reference": "d6c2ac7d542bf9928a0ac7a8a249d02848b824ec"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/php-http/logger-plugin/zipball/d6c2ac7d542bf9928a0ac7a8a249d02848b824ec",
++                "reference": "d6c2ac7d542bf9928a0ac7a8a249d02848b824ec",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.4",
++                "php-http/client-common": "^1.1",
++                "php-http/message": "^1.0",
++                "psr/log": "^1.0"
++            },
++            "require-dev": {
++                "henrikbjorn/phpspec-code-coverage": "^1.0",
++                "phpspec/phpspec": "^2.5"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Http\\Client\\Common\\Plugin\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Márk Sági-Kazár",
++                    "email": "mark.sagikazar@gmail.com"
++                }
++            ],
++            "description": "PSR-3 Logger plugin for HTTPlug",
++            "homepage": "http://httplug.io",
++            "keywords": [
++                "http",
++                "httplug",
++                "logger",
++                "plugin"
++            ],
++            "time": "2016-05-04T22:43:46+00:00"
++        },
++        {
 +            "name": "php-http/message",
 +            "version": "1.6.0",
 +            "source": {
@@ -680,73 +1073,182 @@ index 0c7232b..b32ebb9 100644
 +                {
 +                    "name": "Márk Sági-Kazár",
 +                    "email": "mark.sagikazar@gmail.com"
-+                }
-+            ],
+                 }
+             ],
+-            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
+-            "homepage": "http://www.doctrine-project.org",
 +            "description": "Factory interfaces for PSR-7 HTTP Message",
 +            "homepage": "http://php-http.org",
-+            "keywords": [
+             "keywords": [
+-                "lexer",
+-                "parser"
 +                "factory",
 +                "http",
 +                "message",
 +                "stream",
 +                "uri"
-+            ],
+             ],
+-            "time": "2014-09-09T13:34:57+00:00"
 +            "time": "2015-12-19T14:08:53+00:00"
-+        },
-+        {
+         },
+         {
+-            "name": "knplabs/knp-markdown-bundle",
+-            "version": "1.7.0",
 +            "name": "php-http/promise",
 +            "version": "v1.0.0",
-+            "source": {
-+                "type": "git",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/KnpLabs/KnpMarkdownBundle.git",
+-                "reference": "912796833a126df65ce54f81ca174474105665ea"
 +                "url": "https://github.com/php-http/promise.git",
 +                "reference": "dc494cdc9d7160b9a09bd5573272195242ce7980"
-+            },
-+            "dist": {
-+                "type": "zip",
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/KnpLabs/KnpMarkdownBundle/zipball/912796833a126df65ce54f81ca174474105665ea",
+-                "reference": "912796833a126df65ce54f81ca174474105665ea",
 +                "url": "https://api.github.com/repos/php-http/promise/zipball/dc494cdc9d7160b9a09bd5573272195242ce7980",
 +                "reference": "dc494cdc9d7160b9a09bd5573272195242ce7980",
-+                "shasum": ""
-+            },
-+            "require-dev": {
+                 "shasum": ""
+             },
+-            "require": {
+-                "michelf/php-markdown": "~1.4",
+-                "php": ">=5.5.9",
+-                "symfony/dependency-injection": "~2.8|~3.0|^4.0",
+-                "symfony/framework-bundle": "~2.8|~3.0|^4.0"
+-            },
+             "require-dev": {
+-                "phpunit/phpunit": "~4.5",
+-                "symfony/templating": "~2.8|~3.0|^4.0"
+-            },
+-            "suggest": {
+-                "ext-sundown": "to use optional support for php-sundown extension instead of php implementation",
+-                "symfony/twig-bundle": "to use the Twig markdown filter"
 +                "henrikbjorn/phpspec-code-coverage": "^1.0",
 +                "phpspec/phpspec": "^2.4"
-+            },
+             },
+-            "type": "symfony-bundle",
 +            "type": "library",
-+            "extra": {
-+                "branch-alias": {
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.5.x-dev"
 +                    "dev-master": "1.1-dev"
-+                }
-+            },
-+            "autoload": {
-+                "psr-4": {
+                 }
+             },
+             "autoload": {
+                 "psr-4": {
+-                    "Knp\\Bundle\\MarkdownBundle\\": ""
 +                    "Http\\Promise\\": "src/"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -454,69 +1471,73 @@
+             ],
+             "authors": [
+                 {
+-                    "name": "KnpLabs Team",
+-                    "homepage": "http://knplabs.com"
 +                    "name": "Márk Sági-Kazár",
 +                    "email": "mark.sagikazar@gmail.com"
-+                },
-+                {
+                 },
+                 {
+-                    "name": "Symfony Community",
+-                    "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle/contributors"
 +                    "name": "Joel Wurtz",
 +                    "email": "joel.wurtz@gmail.com"
-+                }
-+            ],
+                 }
+             ],
+-            "description": "Knplabs markdown bundle transforms markdown into html",
+-            "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle",
 +            "description": "Promise used for asynchronous HTTP requests",
 +            "homepage": "http://httplug.io",
-+            "keywords": [
+             "keywords": [
+-                "bundle",
+-                "knp",
+-                "knplabs",
+-                "markdown"
 +                "promise"
-+            ],
+             ],
+-            "time": "2018-01-23T15:34:53+00:00"
 +            "time": "2016-01-26T13:27:02+00:00"
-+        },
+         },
+         {
+-            "name": "michelf/php-markdown",
+-            "version": "1.8.0",
++            "name": "php-http/stopwatch-plugin",
++            "version": "1.1.0",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/michelf/php-markdown.git",
+-                "reference": "01ab082b355bf188d907b9929cd99b2923053495"
++                "url": "https://github.com/php-http/stopwatch-plugin.git",
++                "reference": "b9d4ab7a0f4ca1fc17e323e880d1235076e31dbf"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/01ab082b355bf188d907b9929cd99b2923053495",
+-                "reference": "01ab082b355bf188d907b9929cd99b2923053495",
++                "url": "https://api.github.com/repos/php-http/stopwatch-plugin/zipball/b9d4ab7a0f4ca1fc17e323e880d1235076e31dbf",
++                "reference": "b9d4ab7a0f4ca1fc17e323e880d1235076e31dbf",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.3.0"
++                "php": ">=5.4",
++                "php-http/client-common": "^1.1",
++                "symfony/stopwatch": "^2.7|^3.0|^4.0"
++            },
++            "require-dev": {
++                "phpspec/phpspec": "^2.5 || ^3.0 || ^4.0"
+             },
+             "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.0-dev"
++                }
++            },
+             "autoload": {
+                 "psr-4": {
+-                    "Michelf\\": "Michelf/"
++                    "Http\\Client\\Common\\Plugin\\": "src/"
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+             "license": [
+-                "BSD-3-Clause"
++                "MIT"
+             ],
+             "authors": [
+                 {
+-                    "name": "Michel Fortin",
+-                    "email": "michel.fortin@michelf.ca",
+-                    "homepage": "https://michelf.ca/",
+-                    "role": "Developer"
+-                },
+-                {
+-                    "name": "John Gruber",
+-                    "homepage": "https://daringfireball.net/"
++                    "name": "Márk Sági-Kazár",
++                    "email": "mark.sagikazar@gmail.com"
+                 }
+             ],
+-            "description": "PHP Markdown",
+-            "homepage": "https://michelf.ca/projects/php-markdown/",
++            "description": "Symfony Stopwatch plugin for HTTPlug",
++            "homepage": "http://httplug.io",
+             "keywords": [
+-                "markdown"
++                "http",
++                "httplug",
++                "plugin",
++                "stopwatch"
+             ],
+-            "time": "2018-01-15T00:49:33+00:00"
++            "time": "2017-11-29T19:20:03+00:00"
+         },
          {
              "name": "psr/cache",
-             "version": "1.0.1",
-@@ -613,6 +1320,56 @@
+@@ -613,6 +1634,56 @@
              ],
              "time": "2017-02-14T16:28:37+00:00"
          },
@@ -803,22 +1305,22 @@ index 0c7232b..b32ebb9 100644
          {
              "name": "psr/log",
              "version": "1.0.2",
-@@ -1709,6 +2466,60 @@
+@@ -1709,6 +2780,60 @@
              "homepage": "https://symfony.com",
              "time": "2017-10-19T02:16:32+00:00"
          },
 +        {
 +            "name": "symfony/options-resolver",
-+            "version": "v4.0.3",
++            "version": "v4.0.4",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/symfony/options-resolver.git",
-+                "reference": "30d9240b30696a69e893534c9fc4a5c72ab6689b"
++                "reference": "371532a2cfe932f7a3766dd4c45364566def1dd0"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/30d9240b30696a69e893534c9fc4a5c72ab6689b",
-+                "reference": "30d9240b30696a69e893534c9fc4a5c72ab6689b",
++                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/371532a2cfe932f7a3766dd4c45364566def1dd0",
++                "reference": "371532a2cfe932f7a3766dd4c45364566def1dd0",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -859,13 +1361,156 @@ index 0c7232b..b32ebb9 100644
 +                "configuration",
 +                "options"
 +            ],
-+            "time": "2018-01-03T07:38:00+00:00"
++            "time": "2018-01-18T22:19:33+00:00"
 +        },
          {
              "name": "symfony/polyfill-mbstring",
              "version": "v1.6.0",
+@@ -1895,6 +3020,55 @@
+             ],
+             "time": "2018-01-16T18:04:12+00:00"
+         },
++        {
++            "name": "symfony/stopwatch",
++            "version": "v4.0.4",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/stopwatch.git",
++                "reference": "d52321f0e2b596bd03b5d1dd6eebe71caa925704"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/d52321f0e2b596bd03b5d1dd6eebe71caa925704",
++                "reference": "d52321f0e2b596bd03b5d1dd6eebe71caa925704",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Stopwatch\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony Stopwatch Component",
++            "homepage": "https://symfony.com",
++            "time": "2018-01-03T07:38:00+00:00"
++        },
+         {
+             "name": "symfony/twig-bridge",
+             "version": "v4.0.4",
+@@ -2871,55 +4045,6 @@
+             "description": "A pack for the Symfony web profiler",
+             "time": "2017-12-12T01:48:24+00:00"
+         },
+-        {
+-            "name": "symfony/stopwatch",
+-            "version": "v4.0.4",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/stopwatch.git",
+-                "reference": "d52321f0e2b596bd03b5d1dd6eebe71caa925704"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/d52321f0e2b596bd03b5d1dd6eebe71caa925704",
+-                "reference": "d52321f0e2b596bd03b5d1dd6eebe71caa925704",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "php": "^7.1.3"
+-            },
+-            "type": "library",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "4.0-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "Symfony\\Component\\Stopwatch\\": ""
+-                },
+-                "exclude-from-classmap": [
+-                    "/Tests/"
+-                ]
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
+-                },
+-                {
+-                    "name": "Symfony Community",
+-                    "homepage": "https://symfony.com/contributors"
+-                }
+-            ],
+-            "description": "Symfony Stopwatch Component",
+-            "homepage": "https://symfony.com",
+-            "time": "2018-01-03T07:38:00+00:00"
+-        },
+         {
+             "name": "symfony/var-dumper",
+             "version": "v4.0.4",
+diff --git a/config/bundles.php b/config/bundles.php
+index e278c0b..56ef227 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -9,4 +9,6 @@ return [
+     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
+     Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
++    Http\HttplugBundle\HttplugBundle::class => ['all' => true],
++    Nexy\SlackBundle\NexySlackBundle::class => ['all' => true],
+ ];
+diff --git a/config/packages/httplug.yaml b/config/packages/httplug.yaml
+new file mode 100644
+index 0000000..2aadcd1
+--- /dev/null
++++ b/config/packages/httplug.yaml
+@@ -0,0 +1,14 @@
++httplug:
++    plugins:
++        redirect:
++            preserve_header: true
++
++    discovery:
++        client: 'auto'
++
++    clients:
++        app:
++            http_methods_client: true
++            plugins:
++                - 'httplug.plugin.content_length'
++                - 'httplug.plugin.redirect'
 diff --git a/symfony.lock b/symfony.lock
-index 270d9d8..a17b6d0 100644
+index 270d9d8..ca5fc44 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
@@ -892,12 +1537,18 @@ index 270d9d8..a17b6d0 100644
      "knplabs/knp-markdown-bundle": {
          "version": "1.6.0"
      },
-@@ -44,12 +56,39 @@
+@@ -44,12 +56,60 @@
      "monolog/monolog": {
          "version": "1.23.0"
      },
 +    "nexylan/slack": {
 +        "version": "v2.0.0"
++    },
++    "nexylan/slack-bundle": {
++        "version": "v2.0.0"
++    },
++    "php-http/cache-plugin": {
++        "version": "v1.5.0"
 +    },
 +    "php-http/client-common": {
 +        "version": "1.7.0"
@@ -911,6 +1562,18 @@ index 270d9d8..a17b6d0 100644
 +    "php-http/httplug": {
 +        "version": "v1.1.0"
 +    },
++    "php-http/httplug-bundle": {
++        "version": "1.6",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "1.6",
++            "ref": "4655962c64e2de96c418caf576c57215711c7877"
++        }
++    },
++    "php-http/logger-plugin": {
++        "version": "v1.0.0"
++    },
 +    "php-http/message": {
 +        "version": "1.6.0"
 +    },
@@ -919,6 +1582,9 @@ index 270d9d8..a17b6d0 100644
 +    },
 +    "php-http/promise": {
 +        "version": "v1.0.0"
++    },
++    "php-http/stopwatch-plugin": {
++        "version": "1.1.0"
 +    },
      "psr/cache": {
          "version": "1.0.1"
@@ -932,12 +1598,12 @@ index 270d9d8..a17b6d0 100644
      "psr/log": {
          "version": "1.0.2"
      },
-@@ -161,6 +200,9 @@
+@@ -161,6 +221,9 @@
              "ref": "371d1a2b69984710646b09a1182ef1d4308c904f"
          }
      },
 +    "symfony/options-resolver": {
-+        "version": "v4.0.3"
++        "version": "v4.0.4"
 +    },
      "symfony/phpunit-bridge": {
          "version": "3.3",

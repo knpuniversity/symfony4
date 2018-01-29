@@ -1,0 +1,24 @@
+diff --git a/config/packages/dev/monolog.yaml b/config/packages/dev/monolog.yaml
+index 3662592..42fe009 100644
+--- a/config/packages/dev/monolog.yaml
++++ b/config/packages/dev/monolog.yaml
+@@ -5,6 +5,11 @@ monolog:
+             path: "%kernel.logs_dir%/%kernel.environment%.log"
+             level: debug
+             channels: ["!event"]
++        markdown_logging:
++            type: stream
++            path: "%kernel.logs_dir%/markdown.log"
++            level: debug
++            channels: ["markdown"]
+         # uncomment to get logging in your browser
+         # you may have to allow bigger header sizes in your Web server configuration
+         #firephp:
+diff --git a/config/packages/monolog.yaml b/config/packages/monolog.yaml
+new file mode 100644
+index 0000000..73d7b33
+--- /dev/null
++++ b/config/packages/monolog.yaml
+@@ -0,0 +1,2 @@
++monolog:
++    channels: ['markdown']

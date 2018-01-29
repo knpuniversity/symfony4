@@ -1,0 +1,8 @@
+diff --git a/config/packages/nexy_slack.yaml b/config/packages/nexy_slack.yaml
+index abc371c..4837c92 100644
+--- a/config/packages/nexy_slack.yaml
++++ b/config/packages/nexy_slack.yaml
+@@ -1,2 +1,2 @@
+ nexy_slack:
+-    endpoint: '%env(SLACK_WEBHOOK_ENDPOINT)%'
++    endpoint: '%env(string:SLACK_WEBHOOK_ENDPOINT)%'

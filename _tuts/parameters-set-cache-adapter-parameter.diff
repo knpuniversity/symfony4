@@ -25,3 +25,15 @@ index 431ec2d..cc5c559 100644
          # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
 -        app: cache.adapter.apcu
 +        app: '%cache_adapter%'
+diff --git a/src/Service/MarkdownHelper.php b/src/Service/MarkdownHelper.php
+index dbab24a..1b9079c 100644
+--- a/src/Service/MarkdownHelper.php
++++ b/src/Service/MarkdownHelper.php
+@@ -25,6 +25,7 @@ class MarkdownHelper
+             $this->logger->info('They are talking about bacon again!');
+         }
+ 
++        dump($this->cache);die;
+         $item = $this->cache->getItem('markdown_'.md5($source));
+         if (!$item->isHit()) {
+             $item->set($this->markdown->transform($source));

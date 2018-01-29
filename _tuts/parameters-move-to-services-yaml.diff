@@ -10,7 +10,7 @@ index cc5c559..57e410f 100644
      secret: '%env(APP_SECRET)%'
      #default_locale: en
 diff --git a/config/services.yaml b/config/services.yaml
-index 23800b4..d088893 100644
+index 444cf6d..3aa02ad 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -1,6 +1,7 @@
