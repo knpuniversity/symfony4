@@ -12,8 +12,8 @@ automatically, how can we *configure* it? I mean, what if I want to turn some of
 these features on or off, or I want to swap the class from `Max` to a different
 class from the bundle?
 
-The answer is... science! I mena... configuration! Imagine you're the bundle author:
-you can probably imagine the types of things a user might want to change. So, you
+The answer is... science! I mean... configuration! Imagine you're the bundle author:
+you can probably think of the types of things a user might want to change. So, you
 setup a simple configuration array that can be used to control those things.
 
 And yea... that's basically how it works, except the config is in YAML.
@@ -24,7 +24,7 @@ And there's an *awesome* way to find out *all* of the configuration options for 
 bundle without reading the documentation... because *I* know, we all like to skip
 reading the docs!
 
-The name of this bundle is `KnpMarkdownBundle`. At your terminal, use that time
+The name of this bundle is `KnpMarkdownBundle`. At your terminal, use that to
 dump its config:
 
 ```terminal
@@ -63,7 +63,7 @@ the rare occasion when we add a new file to config. It should be fixed soon.
 
 So... what did this config change... actually... do? Well, because the purpose of
 a bundle is to give us services, the purpose of *configuring* a bundle is to *change*
-how those service behaves. That might mean that a service will suddenly use a different
+how those services behave. That might mean that a service will suddenly use a different
 class, or that different arguments are passed to a service object. As a user, it
 doesn't really matter to us: the bundle takes care of the ugly details.
 
