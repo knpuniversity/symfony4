@@ -10,6 +10,10 @@ bundle that *does*! Google for KnpMarkdownBundle and find its GitHub page.
 Let's get this installed: copy the `composer require` line. Then, move over to your
 terminal, paste and... go!
 
+```terminal-silent
+composer require knplabs/knp-markdown-bundle
+```
+
 Notice that this is a *bundle*: you can see it right in the name. That means it
 likely contains two things: First, of course, some PHP classes. And second, some
 configuration that will add one or more new *services* to our app!
@@ -20,7 +24,9 @@ And.... installed! It executed one recipe, which made just *one* change:
 git status
 ```
 
-Yep! It updated `bundles.php`, which *activates* the bundle.
+Yep! It updated `bundles.php`, which *activates* the bundle:
+
+[[[ code('f899273a9c') ]]]
 
 ## Finding the new Service
 
@@ -40,10 +46,17 @@ In `show()`, create a new variable - `$articleContent` - and set it to the multi
 HEREDOC syntax. I'm going to paste in some fake content. This is the same beefy
 content that's in the template. In the controller, let's markdownify some stuff!
 Add some emphasis to `jalapeno bacon` ands let's turn `beef ribs` into a link to
-`https://baconipsum.com/`.
+`https://baconipsum.com/`:
 
-Pass this into the template as a new `articleContent` variable. And *now*, in the
-template, remove *all* the old stuff and just print `{{ articleContent }}`.
+[[[ code('827f680350') ]]]
+
+Pass this into the template as a new `articleContent` variable:
+
+[[[ code('bd30ef152a') ]]]
+
+And *now*, in the template, remove *all* the old stuff and just print `{{ articleContent }}`:
+
+[[[ code('321daed679') ]]]
 
 Let's try it! Go back to our site and refresh! No surprise: it's the *raw* content.
 *Now* it's time to process this through Markdown!
@@ -51,10 +64,15 @@ Let's try it! Go back to our site and refresh! No surprise: it's the *raw* conte
 ## Using the Markdown Service
 
 In `ArticleController`, tell Symfony to pass us the markdown service by adding
-a type-hinted argument. Let's use `MarkdownInterface`: `MarkdownInterface $markdown`.
+a type-hinted argument. Let's use `MarkdownInterface`: `MarkdownInterface $markdown`:
+
+[[[ code('ebf721c928') ]]]
+
 Now, below, `$articleContent = $markdown->` - we never looked at the documentation
 to see *how* to use the markdown service... but thanks to PhpStorm, it's pretty
-self-explanatory - `$markdown->transform($articleContent)`.
+self-explanatory - `$markdown->transform($articleContent)`:
+
+[[[ code('75a75d28e8') ]]]
 
 ## Un-escaping Raw HTML
 
@@ -65,7 +83,9 @@ Actually, this is *awesome*! One of Twig's super-powers - in addition to having 
 stylish hair - is to automatically escape any variable you render. That means
 you're protected from XSS attacks without doing *anything*.
 
-If you *do* know that it's safe to print raw HTML, just add `|raw`.
+If you *do* know that it's safe to print raw HTML, just add `|raw`:
+
+[[[ code('89347266e1') ]]]
 
 Try it again! Beautiful!
 
