@@ -5,7 +5,7 @@ of useful services. In fact, Symfony ships with a *killer* cache system out of
 the box! Run:
 
 ```terminal
-bin/console debug:autowiring
+./bin/console debug:autowiring
 ```
 
 Scroll to the top. Ah! Check out `CacheItemPoolInterface`. Notice it's an alias to
@@ -30,7 +30,9 @@ the method you're looking for, try the other interface.
 
 Let's use the `AdapterInterface`. Go back to our controller. Here's our next mission:
 to cache the markdown transformation: there's *no* reason to do that on every request!
-At the top of the method, add `AdapterInterface $cache`.
+At the top of the method, add `AdapterInterface $cache`:
+
+[[[ code('71f2ba326f') ]]]
 
 Cool! Let's go use it! Symfony's cache service implements the PHP-standard cache
 interface, called PSR-6... in case you want Google it and geek-out over the details.
@@ -41,16 +43,23 @@ But... there's a downside.... a *dark* side. The standard is very powerful... bu
 kinda weird to use at first. So, watch closely.
 
 Start with `$item = $cache->getItem()`. We need to pass this a cache *key*. Use
-`markdown_` and then `md5($articleContent)`.
+`markdown_` and then `md5($articleContent)`:
+
+[[[ code('2183f403bd') ]]]
 
 Excellent! Different markdown content will have a different key. Now, when we call
 `getItem()` this does *not* actually go and fetch that from the cache. Nope, it just
 creates a `CacheItem` object in memory that can *help* us fetch and save to the cache.
 
-For example, to check if this key is *not* already cached, use `if (!$item->isHit())`.
+For example, to check if this key is *not* already cached, use `if (!$item->isHit())`:
+
+[[[ code('3e42b28fa3') ]]]
+
 Inside we need to *put* the item into cache. That's a two-step process. Step 1:
 `$item->set()` and then the value, which is `$markdown->transform($articleContent)`.
-Step 2: `$cache->save($item)`.
+Step 2: `$cache->save($item)`:
+
+[[[ code('ae214fee7f') ]]]
 
 I know, I know - it smells a bit over-engineered... but it's *crazy* powerful and
 *insanely* quick.
@@ -60,7 +69,9 @@ In Symfony 4.1, you will be able to use the `Psr\SimpleCache\CacheInterface`
 type-hint to get a "simpler" (but less powerful) cache object.
 ***
 
-After all of this, add `$articleContent = $item->get()` to fetch the value from cache.
+After all of this, add `$articleContent = $item->get()` to fetch the value from cache:
+
+[[[ code('836dc61644') ]]]
 
 ## Debugging the Cache
 
@@ -76,7 +87,9 @@ Refresh the page again... and re-open the cache profiler. This time we *hit* the
 cache. Yes!
 
 And just to make sure we did our job correctly, go back to the markdown content.
-Let's emphasize "turkey" with two asterisks.
+Let's emphasize "turkey" with two asterisks:
+
+[[[ code('7dbe22a839') ]]]
 
 Refresh again! Yes! The change *does* show up thanks to the new cache key. And
 this time, in the profiler, we had another miss and write on `cache.app`.
