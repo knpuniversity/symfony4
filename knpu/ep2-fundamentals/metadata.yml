@@ -4,7 +4,8 @@ chapters:
     - caching
     - config-bundle
     - debug-container-cache-config
-    - environments
+    - environment-config-files
+    - environment-tweaks
     - parameters
     - environment-variables
     - maker
