@@ -1,7 +1,9 @@
 # Configuring a Bundle
 
 Let's dump this markdown object: I want to know exactly what this object *actually*
-is: `dump($markdown);die;`.
+is: `dump($markdown);die;`:
+
+[[[ code('da578d0f4b') ]]]
 
 Refresh the article page! Ok, it's an instance of some `Max` object - probably from
 the bundle or some library it's using. And it looks like it has a `features` array
@@ -48,7 +50,9 @@ setting its value to `markdown.parser.light`.
 Ok! But... where should this config live? Move over to your project and look in the
 `config/` directory and then `packages/`. Create a new file called `knp_markdown.yaml`.
 Then, copy the configuration, paste it here and change the service to the one from
-the docs: `markdown.parser.light`.
+the docs: `markdown.parser.light`:
+
+[[[ code('dc6ba38084') ]]]
 
 Before we see what that did, find your terminal and run:
 
@@ -81,8 +85,13 @@ and their names are meaningless, technically!
 The *super* important part is the root - meaning, non-indented - key: `knp_markdown`.
 *Each* file in `packages/` configures a different bundle. Any configuration under
 `knp_markdown` is passed to the KnpMarkdownBundle. Any config under `framework`
-configures FrameworkBundle, which is Symfony's one, "core" bundle. And yea, `twig`
-configures TwigBundle.
+configures FrameworkBundle, which is Symfony's one, "core" bundle:
+
+[[[ code('2fe3270ab0') ]]]
+
+And yea, `twig` configures TwigBundle:
+
+[[[ code('01cbe1fc62') ]]]
 
 Every bundle has its *own* set of valid config. Heck, let's go check out Twig's
 config:
@@ -97,7 +106,7 @@ or we can just the config key instead:
 ./bin/console config:dump twig
 ```
 
-Say hello to *all* of the valid options for TwigBundle. Or course, these keys
+Say hello to *all* of the valid options for TwigBundle. Of course, these keys
 are explained more on the TwigBundle docs... but isn't this awesome?
 
 Next: the service container has been hiding something *huge* from us... like
