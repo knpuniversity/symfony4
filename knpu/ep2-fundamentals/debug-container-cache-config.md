@@ -1,8 +1,11 @@
 # debug:container & Cache Config
 
-I want to talk more about this key: `markdown.parser.light`. We got this from the
-documentation: it told us that there are five different valid values that we can
-put for the `service` key.
+I want to talk more about this key: `markdown.parser.light`:
+
+[[[ code('fd29d95a47') ]]]
+
+We got this from the documentation: it told us that there are five different valid
+values that we can put for the `service` key.
 
 But, this is more than just a random config key that the bundle author dreamt up.
 Remember: all services live inside an object called the *container*. And each has
@@ -19,7 +22,7 @@ Go to your terminal and run:
 ./bin/console debug:autowiring
 ```
 
-and scroll to the top. Check this out! The `MarkdownInterface` is now an alias
+And scroll to the top. Check this out! The `MarkdownInterface` is now an alias
 to `markdown.parser.light`! *Before* the config change, this was `markdown.parser.max`.
 Yep, this literally means that when we use `MarkdownInterface`, Symfony will pass
 us a service whose id is `markdown.parser.light`.
@@ -52,14 +55,15 @@ need to. I'll show you how a bit later.
 But here are the two big takeaways:
 
 1. There are *many* services in the container and each has an id.
-
-2. The services you'll use 99% of the time show up in debug:autowiring and are easy
+2. The services you'll use 99% of the time show up in `debug:autowiring` and are easy
 to access.
 
 ## Configuring the Cache Object
 
 Let's play with one more object. Instead of dumping `$markdown`, dump the `$cache`
-object.
+object:
+
+[[[ code('541c1aafd7') ]]]
 
 Find your page and refresh! Interesting: it's something called a `TraceableAdapter`,
 and, inside, a `FilesystemAdapter`!
@@ -74,9 +78,12 @@ with our app.
 
 ## Debugging your Current Config
 
-Open `framework.yaml` and scroll down. Hey! This file even comes with documentation
-about how to configure the cache! Of course, to get an even *bigger* example, we
-can run:
+Open `framework.yaml` and scroll down:
+
+[[[ code('7b9ecdb12a') ]]]
+
+Hey! This file even comes with documentation about how to configure the cache!
+Of course, to get an even *bigger* example, we can run:
 
 ```terminal
 ./bin/console config:dump framework
@@ -98,7 +105,10 @@ is set to `cache.adapter.filesystem`.
 
 The docs in `framework.yaml` tell us that, yep, if we want to change the cache
 system, `app` is the key we want. Let's uncomment the last one to set `app` to
-use APCu: an in-memory cache that's not as awesome as Redis, but easier to install.
+use APCu: an in-memory cache that's not as awesome as Redis, but easier to install:
+
+[[[ code('763badc2f7') ]]]
+
 And just like with markdown, `cache.adapter.apcu` is a service that already exists
 in the container.
 
@@ -121,8 +131,12 @@ the debug tools and documentation. I mean, there's no way we could sit here long
 enough and eventually figure out that the cache system is configured under `framework`,
 `cache`, `app`: the config structure is totally invented by the bundle.
 
-Let's go back to our controller and remove that dump. Make sure everything still
-works. Perfect! If you get an error, make sure to install the APCu PHP extension.
+Let's go back to our controller and remove that dump:
+
+[[[ code('8590a2b0fe') ]]]
+
+Make sure everything still works. Perfect! If you get an error, make sure to install
+the APCu PHP extension.
 
 Next, let's explore Symfony *environments* and *totally* demystify the purpose of
 each file in `config/`.

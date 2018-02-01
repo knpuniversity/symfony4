@@ -35,17 +35,27 @@ optimized for speed, only logs errors, and hides technical info on error pages.
 Ok, I know what you're thinking: this makes sense from a high level... but how does
 it *work*? Show me the code! 
 
-Open the `public/` directory and then `index.php`. This is the front controller:
-a fancy word to mean that it is the *first* file that's executed for *every* page.
-You don't normally worry about it, but... it's kind of interesting.
+Open the `public/` directory and then `index.php`:
 
-It's looking for an environment variable called `APP_ENV`. We're going to talk more
-about environment variables later, but they're just a way to store config values.
-One confusing thing is that environment *variables* are a *totally* different thing
-than what we're talking about right now: Symfony environments.
+[[[ code('cddd3f233a') ]]]
 
-Forget *how* the `$env` variable is set for a moment, and go down to see how it's
-used. Ah! It's passed into some `Kernel` class! The `APP_ENV` variable is set in
+This is the front controller: a fancy word to mean that it is the *first*
+file that's executed for *every* page. You don't normally worry about it,
+but... it's kind of interesting.
+
+It's looking for an environment variable called `APP_ENV`:
+
+[[[ code('e91795adda') ]]]
+
+We're going to talk more about environment variables later, but they're just a way
+to store config values. One confusing thing is that environment *variables* are
+a *totally* different thing than what we're talking about right now: Symfony environments.
+
+Forget *how* the `$env` variable is set for a moment, and go down to see how it's used:
+
+[[[ code('10d86a2b1e') ]]]
+
+Ah! It's passed into some `Kernel` class! The `APP_ENV` variable is set in
 a `.env` file, and right now it's set to `dev`. Again, more on environment *variables*
 later.
 
@@ -55,20 +65,37 @@ is... what does that *do*?
 ## Debugging the Kernel Class
 
 Well... good news! That `Kernel` class is *not* some core part of Symfony. Nope,
-it lives right inside our app! Open `src/Kernel.php`.
+it lives right inside our app! Open `src/Kernel.php`:
+
+[[[ code('211b01be9b') ]]]
 
 After some configuration, there are three methods I want to look at. The first is
-`registerBundles()`. *This* is what loads the `config/bundles.php` file. And check
-this out: some of the bundles are only loaded in *specific* environments. Like,
-the `WebServerBundle` is only loaded in the `dev` environment. And the DebugBundle
-is similar. Most are loaded in `all` environments.
+`registerBundles()`:
+
+[[[ code('cd98a56794') ]]]
+
+*This* is what loads the `config/bundles.php` file:
+
+[[[ code('39b5c6cf5b') ]]]
+
+And check this out: some of the bundles are only loaded in *specific* environments.
+Like, the `WebServerBundle` is only loaded in the `dev` environment:
+
+[[[ code('d185c748af') ]]]
+
+And the DebugBundle is similar. Most are loaded in `all` environments.
 
 The code in `Kernel` handles this: you can pretty easily guess that
 `$this->environment` is set to the environment, so, `dev`!
 
+[[[ code('fa9b2ace61') ]]]
+
 The other two important methods are `configureContainer()`... which basically means
-"configure services"... and `configureRoutes()`. Of course! Because - say it with
-me now:
+"configure services"... and `configureRoutes()`:
+
+[[[ code('54ccd7ce8d') ]]]
+
+Of course! Because - say it with me now:
 
 > Symfony is just a set of services and routes.
 
@@ -76,25 +103,46 @@ Ok, I'll stop jamming that point down your throat.
 
 ## Package File Loading
 
-Look at `configureContainer()` first. When Symfony boots, it needs config: it needs
-to know where to log or how to connect to the database. To get *all* of the config,
-it calls this *one* method. You can ignore these first two lines: they're
-internal optimizations.
+Look at `configureContainer()` first:
 
-After, it's uses some sort of `$loader` to load configuration files. This `CONFIG_EXTS`
-constant is just a fancy way to load any PHP, XML or YAML files. First, it loads
-any files that live *directly* in `packages/`. But then, it looks to see if there
-is an environment-specific sub-directory, like `packages/dev`. And if there *is*,
-it loads all of *those* files.
+[[[ code('e81c77d2e2') ]]]
+
+When Symfony boots, it needs config: it needs to know where to log or how to connect
+to the database. To get *all* of the config, it calls this *one* method. You can ignore
+these first two lines: they're internal optimizations.
+
+After, it's uses some sort of `$loader` to load configuration files:
+
+[[[ code('5cae8cfc53') ]]]
+
+This `CONFIG_EXTS` constant is just a fancy way to load any PHP, XML or YAML files:
+
+[[[ code('52a383a25f') ]]]
+
+First, it loads any files that live *directly* in `packages/`:
+
+[[[ code('6ef0cc9506') ]]]
+
+But then, it looks to see if there is an environment-specific sub-directory,
+like `packages/dev`. And if there *is*, it loads all of *those* files:
+
+[[[ code('3f92768b74') ]]]
 
 Right now, in the `dev` environment, it will load 5 additional files. The *order*
 of how this happens is the *key*: any overlapping config in the environment-specific
 files *override* those from the main files in `packages/`.
 
 For example, open the main `routing.yaml`. This is not very important, but it sets
-some `strict_requirements` flag to `~`... which is `null` in YAML. But then in the
-`dev` environment, that's *overridden*: `strict_requirements` is set to `true`. To
-prove it, find your terminal and run:
+some `strict_requirements` flag to `~`... which is `null` in YAML:
+
+[[[ code('aa98bf8874') ]]]
+
+But then in the `dev` environment, that's *overridden*: `strict_requirements` is set
+to `true`:
+
+[[[ code('50eaa7f689') ]]]
+
+To prove it, find your terminal and run:
 
 ```terminal
 ./bin/console debug:config framework
@@ -121,15 +169,20 @@ Oh and I said earlier that Symfony comes with only two environments: `dev` and
 `prod`. Well... I lied: there is also a `test` environment used for automated testing.
 And... you can create more!
 
-Go *back* to `Kernel.php`. The *last* file that's loaded is `services.yaml`. More
-on that file later. It can also have an environment-specific version, like
+Go *back* to `Kernel.php`. The *last* file that's loaded is `services.yaml`:
+
+[[[ code('6ead45d8a5') ]]]
+
+More on that file later. It can also have an environment-specific version, like
 `services_test.yaml`.
 
 ## Route Loading
 
 And the `configureRoutes()` method is pretty much the same: it automatically loads
 everything from the `config/routes` directory and then looks for an
-environment-specific subdirectory.
+environment-specific subdirectory:
+
+[[[ code('4e637fec37') ]]]
 
 So.. yea! All of the files inside `config/` either configure services or configure
 routes. No biggie.
