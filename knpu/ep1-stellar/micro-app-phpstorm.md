@@ -68,7 +68,7 @@ Yes! This is a list of *all* of the `bin/console` commands. Some of these are de
 Ok, we are *almost* ready to start coding! But we *need* talk about our spaceship,
 I mean, editor! Look, you can use *whatever* your want... but... I *highly* recommend
 PhpStorm! Seriously, it makes developing in Symfony a *dream*! And no, those nice
-guys & gals at PhpStorm aren't paying me to say this... but they can if the want
+guys & gals at PhpStorm aren't paying me to say this... but they can if they want
 to!
 
 Ahem, If you *do* use it... which would be *awesome* for you... there are 2 secrets
