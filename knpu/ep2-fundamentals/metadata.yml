@@ -6,6 +6,12 @@ chapters:
     - debug-container-cache-config
     - environment-config-files
     - environment-tweaks
+    - create-service
+    - logger-other-services
+    - services-config-bind
     - parameters
+    - controller-constructor
+    - slack-autowiring-alias
     - environment-variables
-    - maker
+    - logger-trait
+    - maker-bundle
