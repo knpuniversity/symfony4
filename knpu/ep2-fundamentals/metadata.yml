@@ -11,6 +11,7 @@ chapters:
     - services-config-bind
     - parameters
     - controller-constructor
+    - slack-legacy-bundles
     - slack-autowiring-alias
     - environment-variables
     - logger-trait
