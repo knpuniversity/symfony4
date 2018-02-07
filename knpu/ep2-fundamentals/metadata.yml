@@ -14,5 +14,7 @@ chapters:
     - slack-legacy-bundles
     - slack-autowiring-alias
     - environment-variables
+    - env-vars-tricks-production
     - logger-trait
     - maker-bundle
+    - command-fun

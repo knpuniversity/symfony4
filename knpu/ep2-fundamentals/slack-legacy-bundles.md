@@ -1,8 +1,8 @@
 # Installing Bundles with "Average" Docs
 
-Let's try something fun! Google for SlackBundle - you'll find one called
-`nexylan/slack-bundle`. This is a fun bundle that gives us a *service* that can
-send messages to a Slack channel. Let's install it: find the `composer require`
+Let's do something fun! Google for SlackBundle - you'll find one called
+`nexylan/slack-bundle`. This is a fun library that gives us a *service* that can
+send messages to a Slack channel. To install it, find the `composer require`
 line, copy that, move over to your terminal and paste:
 
 ```terminal-silent
@@ -20,15 +20,15 @@ this is not necessarily a bad thing: sometimes a bundle doesn't really need a cu
 recipe!
 
 The second bundle *did* have a recipe. Before I started recording, I committed my
-changes. To see what that recipe did, let's run:
+changes so far. To see what that recipe did, let's run:
 
 ```terminal
 git status
 ```
 
 Interesting: it added a new configuration file called `httplug.yaml`. We don't know
-what this does yet, but it probably configures some sensible defaults. So let's
-ignore it unless the docs tells us otherwise.
+what this does, but it probably configures some sensible defaults. Let's ignore
+it unless the docs tells us otherwise.
 
 ## When composer require Fails
 
@@ -36,22 +36,22 @@ The *second* important thing I want to talk about is... well... this big error!
 
 > The child node "endpoint" at path "nexy_slack" must be configured.
 
-This... is not a great error message . It means that this bundle *requires* some
+Oof... this is not a great error message. It means that this bundle *requires* some
 configuration, which we don't have yet. And since it didn't add a configuration
-file in a recipe, we'll need to create it ourselves. But before we do that, the
+file via a recipe, we'll need to create it ourselves. But before we do that, the
 *most* important thing to understand is this: when you see an error like this after
 running `composer require`, Composer *did* finish successfully and the library *was*
-install.
+installed.
 
 ## Configuring the Slack Endpoint
 
 Ok, let's go read the docs so we can figure out how to configure this bundle. Ah,
-so *one* of the reasons that installing this bundle isn't easier is that its documentation
-is out-of-date! Hopefully it will be updated by the time you're watching this, but
-it's a *great* example of how to navigate less-than-perfect docs.
+so *one* of the reasons that installing this bundle isn't smoother is that its documentation
+is out-of-date! Hopefully it will be updated soon, but actually, this is a *great*
+example of how to navigate less-than-up-to-date docs.
 
-How do I know it's out-of-date? This `AppKernel` is a Symfony *3* concept. We don't
-need to worry about enabling bundles: this was done for us automatically.
+How do I know it's out-of-date? This `AppKernel` thing is a Symfony *3* concept.
+*We* don't need to worry about enabling bundles: this is done for us automatically.
 
 If you scroll down... ah, *here* is the configuration. And it says that this is
 an example of *default* values... which probably means that we don't need to copy
@@ -71,11 +71,11 @@ for "Incoming Webhooks". Click "Add Configuration" to setup a new webhook: I've
 already done this.
 
 Thanks to this, you now have a new Webhook URL, which anyone can use to send messages
-to your Slack. There's no authentication - the URL is just meant to be a secret.
-Um... yea I know you can read mine - I'm bad at secrets! I'll invalidate it after
-recording!
+to your Slack. There's no authentication - the URL is meant to be a secret. Um... yea,
+I know you can read mine - I'm super bad at secrets. I'll invalidate it after I
+record.
 
-Copy this URL and paste next to `endpoint`. Now, move over and clear your cache:
+Copy the URL and paste it next to `endpoint`. Now, move over and clear your cache:
 
 ```terminal
 php bin/console cache:clear
@@ -87,8 +87,8 @@ adding a new config file.
 ## What is $this->get()?
 
 Sweet! The bundle is configured, so... how do we use it? Go back to the docs. Below,
-yea! Usage! That sounds promising. And *this* is where things get *really* interesting.
-The code says `$this->get('nexy_slack.client)`. What the heck is that?
+yea! Usage! And *this* is where things get *really* interesting. The code says
+`$this->get('nexy_slack.client)`. What the heck is that?
 
 Actually, this is something from Symfony *3*... which we do not recommend doing in
 Symfony 4 and may or may *not* work, depending on the situation. Basically,
