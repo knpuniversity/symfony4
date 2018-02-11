@@ -75,4 +75,4 @@ will not have this magic. So don't expect it.
 
 Thanks to `bind`, we can define what values are passed to specific argument names.
 But, we can go further and control what value should be passed for a specific *type*
-hint.
+hint. That's next.
