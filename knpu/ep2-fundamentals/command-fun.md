@@ -1,15 +1,15 @@
 # Fun with Commands
 
-Ok, let's make our command a bit more awesome. Give it a description: "Returns some
+Let's make our command a bit more fun! Give it a description: "Returns some
 article stats". Each command can have *arguments* - which are strings passed after
 the command and *options*, which are prefixed with `--`, like `--option1`.
 
-Let's rename the argument to `slug`, change it to `InputArgument::REQUIRED` - which
+Rename the argument to `slug`, change it to `InputArgument::REQUIRED` - which
 means that you *must* pass this argument to the command, and give it a description:
-"The article's slug". Rename the option to `format`: I want to be able to say
+"The article's slug". Rename the *option* to `format`: I want to be able to say
 `--format=json` to get the article stats as JSON. Change this to `VALUE_REQUIRED`:
-instead of just `--format`, this means we need to say `--format=json`. Update its
-description, *and* give it a default value: `text`.
+instead of just `--format`, this means we need to say `--format=something`. Update
+its description, *and* give it a default value: `text`.
 
 Perfect! We're not *using* these options yet, but we can already go back and run
 the command with a `--help` flag:
@@ -18,18 +18,18 @@ the command with a `--help` flag:
 php bin/console article:stats --help
 ```
 
-You can add `--help` to *any* command to get all the info about it - like the
-description, arguments and options... including a bunch of options that are built
-in to all commands.
+Actually, you can add `--help` to *any* command to get all the info about it - like
+the description, arguments and options... including a bunch of options that apply
+to *all* commands.
 
 ## Customizing our Command
 
 Ok, so the `configure()` method is where we set things up. But `execute()` is where
-the magic happens. We can do *whatever* we want down here!
+the magic happens. We can do *whatever* we want here!
 
 To get the argument value, update the `getArgument()` call to `slug` and rename
-the variable too. Let's just invent some article "data" - give this array a `slug`
-key and, how about, `hearts` set to a random number between 10 and 100 for now.
+the variable too. Let's just invent some article "data": give this array a `slug`
+key and, how about, `hearts` set to a random number between 10 and 100.
 
 Clear out the rest of the code, and then add a `switch` statement on
 `$input->getOption('format')`. Here's the plan: we're going to support two different
@@ -40,8 +40,8 @@ a different format, yell at them!
 
 ## Printing Things
 
-Notice that `execute()` is passed two arguments: `$input` and `$output`. Input
-lets us *read* arguments and options. And, you can even use it to ask questions
+Notice that `execute()` has two arguments: `$input` and `$output`. Input lets us
+*read* arguments and options. And, you can even use it to ask questions
 interactively. `$output` is all about *printing* things. To make both of these
 even *easier* to use, we have a special `SymfonyStyle` object that's *full* of
 shortcut methods.
@@ -68,7 +68,7 @@ Woohoo!
 ## Printing a Table
 
 But... this listing isn't very helpful: it just prints out the *values*, not the
-keys. What does this 88 mean?
+keys. The article has 88... what?
 
 Instead of using listing, let's create a *table*. 
 
@@ -83,15 +83,15 @@ Let's rock! Try the command again without the `--format` option:
 php bin/console article:stats khaaaaaan
 ```
 
-Oh, *so* much better. And yea, that `$io` variable has a *bunch* of other features,
+Yes! *So* much better! And yea, that `$io` variable has a *bunch* of other features,
 like interactive questions, a progress bar and more. Not only are commands *fun*,
 but they're super easy to create thanks to MakerBundle.
 
 Oh my gosh, you did it! You made it through Symfony Fundamentals! This was serious
 work that will *seriously* unlock you for *everything* else you do with Symfony!
 We now understand the configuration system and - most importantly - *services*.
-Guess what? Commands are services. So if you needed your `SlackClient` service
-here, just add a `__construct()` method and autowire it!
+Guess what? Commands are services. So if you needed your `SlackClient` service,
+you would just add a `__construct()` method and autowire it!
 
 ***TIP
 When you do this, you need to call `parent::__construct()`. Commands are a rare
