@@ -13,7 +13,7 @@ Open `config/packages/framework.yaml`. We configured the cache system to use thi
 And then, in the `dev` environment only, we're *overriding* that to use
 `cache.adapter.filesystem`:
 
-[[[[ code('6c72d91a8d') ]]]]
+[[[ code('6c72d91a8d') ]]]
 
 ## Creating a Parameter
 
