@@ -19,7 +19,10 @@ it.
 At first, it might seem like we're just making life more difficult! But actually,
 Symfony 4 simply has a new philosophy.
 
-Open `services.yaml` and, below `_defaults`, check out the `public: false` config.
+Open `services.yaml` and, below `_defaults`, check out the `public: false` config:
+
+[[[ code('acc89f3246') ]]]
+
 Thanks to this, any service that *we* create is *private*. And so, we *cannot* fetch
 our services with `$this->get()`. Increasingly, more and more third-party bundles
 are *also* making their services private.
@@ -37,8 +40,11 @@ are faster than public services.
 
 Side note, if you *do* want to use the `$this->get()` shortcut to fetch a public
 service - which you should *not* - you'll need to change your base controller class
-to `Controller` instead of `AbstractController`. It's not important why... and you
-shouldn't do it anyways :p.
+to `Controller` instead of `AbstractController`:
+
+[[[ code('7b189d6ef4') ]]]
+
+It's not important why... and you shouldn't do it anyways :p.
 
 ## Fetching a Service by id
 
@@ -55,24 +61,36 @@ autowiring type-hints that would work in `debug:autowiring`... but... maybe it *
 work if we type-hint this class?
 
 Let's try it! In `ArticleController::show()`, add another argument: `Client` - make
-sure you get the one from `Nexy\Slack` -  then `$slack`.
+sure you get the one from `Nexy\Slack` -  then `$slack`:
 
-Add an `if` statement: if `$slug == 'khaaaaaan'`, then we need to know about this!
-Go copy some code from the docs. Then, simplify a bit - we don't need the attachment
-stuff, this is coming from `Khan` and the text should be "Ah, Kirk, my old friend."
+[[[ code('e2bb4c86d8') ]]]
+
+Add an `if` statement: if `$slug === 'khaaaaaan'`:
+
+[[[ code('e4402b3ccf') ]]]
+
+Then we need to know about this! Go copy some code from the docs. Then, simplify
+a bit - we don't need the attachment stuff, this is coming from `Khan` and the text
+should be "Ah, Kirk, my old friend.":
+
+[[[ code('695d45da3b') ]]]
 
 Excellent! Copy the slug. Then go to that page in your browser. And... it *totally*
 did *not* work: the `$slack` argument is missing.
 
 Well... I guess `debug:autowiring` doesn't lie. Copy the `$slack` argument to the
-constructor. No, it won't work here either... but we *will* get a better error message.
-Actually, this is due to another shortcoming with controller autowiring: when it fails,
-the error isn't great. That will hopefully *also* be improved in the future. Again,
-a few of these features are still brand new!
+constructor:
+
+[[[ code('b38871c23c') ]]]
+
+No, it won't work here either... but we *will* get a better error message. Actually,
+this is due to another shortcoming with controller autowiring: when it fails, the error
+isn't great. That will hopefully *also* be improved in the future. Again, a few of these
+features are still brand new!
 
 Refresh! Ah, much better:
 
-> Cannot autowire service ArticleController: argument $slack of method `__construct()`
+> Cannot autowire service `ArticleController`: argument `$slack` of method `__construct()`
 > references class `Nexy\Slack\Client`, but no such service exists.
 
 This basically means that we're missing configuration to tell the container *which*
@@ -82,7 +100,9 @@ control of autowiring.
 Open `services.yaml`, then go copy the full class name for the client:
 `Nexy\Slack\Client`. Back under `bind`, instead of using the argument *name*,
 like `$slack`, put the *class* name: `Nexy\Slack\Client`. Set this to the target
-service id: `@nexy_slack.client`.
+service id: `@nexy_slack.client`:
+
+[[[ code('c325b409bd') ]]]
 
 That's it! Bind has *two* super-powers: you can bind by the argument name *or* you
 can bind by a class or interface. We're defining our *own* rules for autowiring!
@@ -93,7 +113,9 @@ Let's make sure I'm not lying: refresh! Yes! There's our Slack notification.
 
 But I want to make just *one* small tweak. In `services.yaml`, instead of putting
 this beneath `_defaults` and `bind`, let's un-indent it so that it's at the root
-of services.
+of services:
+
+[[[ code('25271e7e13') ]]]
 
 Refresh again. It works *exactly* like before!
 

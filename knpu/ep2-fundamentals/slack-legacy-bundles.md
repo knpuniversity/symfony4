@@ -13,11 +13,14 @@ Interesting: this installs the bundle *and* some other library called `guzzle6-a
 Wait for it to install and... it fails!
 
 Don't panic. There are two important things happening. First, this installed *two*
-bundles! Cool! You can see both of them inside `bundles.php`. For the SlackBundle,
-it says "auto-generated recipe". That means that the bundle doesn't actually *have*
-a recipe... but Symfony Flex, at least added it to `bundles.php` for us. By the way,
-this is not necessarily a bad thing: sometimes a bundle doesn't really need a custom
-recipe!
+bundles! Cool! You can see both of them inside `bundles.php`:
+
+[[[ code('e1af5d8c18') ]]]
+
+For the SlackBundle, it says "auto-generated recipe". That means that the bundle
+doesn't actually *have* a recipe... but Symfony Flex, at least added it to `bundles.php`
+for us. By the way, this is not necessarily a bad thing: sometimes a bundle doesn't
+really need a custom recipe!
 
 The second bundle *did* have a recipe. Before I started recording, I committed my
 changes so far. To see what that recipe did, let's run:
@@ -26,9 +29,12 @@ changes so far. To see what that recipe did, let's run:
 git status
 ```
 
-Interesting: it added a new configuration file called `httplug.yaml`. We don't know
-what this does, but it probably configures some sensible defaults. Let's ignore
-it unless the docs tells us otherwise.
+Interesting: it added a new configuration file called `httplug.yaml`:
+
+[[[ code('4640486eef') ]]]
+
+We don't know what this does, but it probably configures some sensible defaults.
+Let's ignore it unless the docs tells us otherwise.
 
 ## When composer require Fails
 
@@ -60,7 +66,9 @@ all of this. Yep, we just need to fill in the parts that are required, so, `endp
 Let's copy part of the configuration file. But... it doesn't tell us *where* to
 put this! That's ok! We already know: it can live in *any* file in `config/packages`.
 Let's create a new one called `nexy_slack.yaml`. Paste the config, but the only
-key we need is `endpoint`.
+key we need is `endpoint`:
+
+[[[ code('1e93e5ff2e') ]]]
 
 If you're coding along, here's how this will work. First, you'll need access to
 a Slack workspace where you're an admin. If you don't have one, you can create one:
@@ -75,7 +83,11 @@ to your Slack. There's no authentication - the URL is meant to be a secret. Um..
 I know you can read mine - I'm super bad at secrets. I'll invalidate it after I
 record.
 
-Copy the URL and paste it next to `endpoint`. Now, move over and clear your cache:
+Copy the URL and paste it next to `endpoint`:
+
+[[[ code('e05fb2f682') ]]]
+
+Now, move over and clear your cache:
 
 ```terminal
 php bin/console cache:clear
@@ -107,5 +119,5 @@ Yep... this bundle *technically* works with Symfony 4... but it hasn't been full
 updated. And so, it doesn't expose *any* services for autowiring! Right now, there
 is *no* way to autowire that `nexy_slack.client` service.
 
-We need to learn a *little* bit more about public versus private services. And
+We need to learn a *little* bit more about *public* versus *private* services. And
 then take control of things with an autowiring *alias*!
