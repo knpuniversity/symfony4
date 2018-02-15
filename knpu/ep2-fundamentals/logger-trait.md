@@ -7,7 +7,7 @@ its own *service* class.
 
 Since this is *such* an important skill, let's do it: in the `Service/` directory -
 though we could put this anywhere - create a new class: `SlackClient`. Give it a
-public function called, how about, `sendMessage()` with arguments `$to` and `$message`.
+public function called, how about, `sendMessage()` with arguments `$from` and `$message`.
 
 Next, copy the code from the controller, paste, and make the from and message parts
 dynamic. Oh, but let's rename the variable to `$slackMessage` - having *two* `$message`
