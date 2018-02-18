@@ -47,7 +47,7 @@ controller, type-hint the new `SlackClient`:
 And below... simplify: `$slack->sendMessage()` and pass it the from - `Khan` -
 and our message. Clean up the rest of the code:
 
-[[[ code('920d9939f8') ]]]
+[[[ code('914dac64cc') ]]]
 
 And I don't *need* to, but I'll remove the old `use` statement:
 
