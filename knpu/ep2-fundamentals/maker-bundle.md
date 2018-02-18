@@ -39,6 +39,8 @@ This will ask us for a command name - how about `article:stats` - we'll create a
 command that will return some stats about an article. And... it's done! We now have
 a shiny new `src/Command/ArticleStatsCommand.php` file. Open it!
 
+[[[ code('83c66571c7') ]]]
+
 Hey! It even added some example code to get us started! Run:
 
 ```terminal
@@ -46,7 +48,7 @@ php bin/console
 ```
 
 And on top... yes! Symfony *already* sees our new `article:stats` command. Sweet!
-Um... so... let's try!
+Um... so... let's try it!
 
 ```terminal
 php bin/console article:stats
@@ -60,11 +62,21 @@ But... how does Symfony *already* know about this new command? I mean, is it sca
 all of our files looking for command classes? Actually, no! And that's a good thing -
 that would be *super* slow!
 
-Here's the answer. Remember: all of our classes in `src/` are loaded as services.
-Notice that our new class extends Symfony's base `Command` class. When the service
-was registered, Symfony *noticed* this and made sure that it included it as a command.
-This nice feature has a name - `autoconfigure`. It's not too important, but just
-like autowiring, this is *activated* thanks to a little bit of config in our `services.yaml`
-file. It's just *another* way that you can avoid configuration, and keep working!
+Here's the answer. Remember: all of our classes in `src/` are loaded as services:
+
+[[[ code('928e28e89e') ]]]
+
+Notice that our new class extends Symfony's base `Command` class:
+
+[[[ code('73d948193d') ]]]
+
+When the service was registered, Symfony *noticed* this and made sure that it
+included it as a command. This nice feature has a name - `autoconfigure`. It's
+not too important, but just like autowiring, this is *activated* thanks to
+a little bit of config in our `services.yaml` file:
+
+[[[ code('2ce8d7c547') ]]]
+
+It's just *another* way that you can avoid configuration, and keep working!
 
 Next, let's have fun and make our command much more awesome!
