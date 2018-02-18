@@ -30,7 +30,7 @@ a constructor! Type-hint the argument with `Client` from `Nexy\Slack`:
 
 [[[ code('e0a6587c88') ]]]
 
-Then press `Alt`+`Enter` and select "Initialize Fields" to create that property
+Then press `Alt`+`Enter` and select "Initialize fields" to create that property
 and set it:
 
 [[[ code('a10f10b37c') ]]]
@@ -44,8 +44,8 @@ controller, type-hint the new `SlackClient`:
 
 [[[ code('ddc0f75565') ]]]
 
-And below... simplify: `$slack->sendMessage()` and pass it the from - `Khan`
-- and our message. Clean up the rest of the code:
+And below... simplify: `$slack->sendMessage()` and pass it the from - `Khan` -
+and our message. Clean up the rest of the code:
 
 [[[ code('920d9939f8') ]]]
 
