@@ -1,8 +1,12 @@
 # Env Var Tricks & on Production
 
 When you deploy to production, you're *supposed* to set *all* these environment
-variables *correctly*. If you look back at `index.php`: if the `APP_ENV`
-environment variable is set already, it knows to *skip* loading the `.env` file.
+variables *correctly*. If you look back at `index.php`:
+
+[[[ code('eb6f88c6af') ]]]
+
+If the `APP_ENV` environment variable is set already, it knows to *skip* loading
+the `.env` file.
 
 In reality... in a lot of server environments, setting environment variables can
 be a *pain*. You can do it in your Apache virtual host or in PHP-FPM. Oh, and you'll
@@ -19,7 +23,7 @@ section of your `composer.json` to `require` by removing and re-adding it:
 
 ```terminal-silent
 composer remove symfony/dotenv
-composer require symfony/dotenv --dev
+composer require symfony/dotenv
 ```
 
 The reason that using `.env` isn't *recommended* is mostly because the logic to
@@ -35,13 +39,15 @@ environment variable that's set to true or false? Well... when you *read* it wit
 the special syntax, "false" will literally be the *string* "false". Boo!
 
 Don't worry! Environment variables have *one* more trick! You can *cast* values
-by prefixing the name with, for example, `string:`. Well, this is *already* a string,
-but you get the idea!
+by prefixing the name with, for example, `string:`:
+
+[[[ code('74992bce66') ]]]
+
+Well, this is *already* a string, but you get the idea!
 
 To show some better examples, Google for Symfony Advanced Environment Variables to
-find a [blog post](https://symfony.com/blog/new-in-symfony-3-4-advanced-environment-variables)
-about this feature. Cooooool. This `DATABASE_PORT` should be an `int` so... we cast
-it! You can also use `bool` or `float`.
+find a [blog post][advanced_env_vars] about this feature. Cooooool. This `DATABASE_PORT`
+should be an `int` so... we cast it! You can also use `bool` or `float`.
 
 ## Setting Default Environment Variables
 
@@ -56,26 +62,33 @@ environment variable were set, it would override this.
 More importantly, there are 5 *other* prefixes you can use for special processing:
 
 * First, `resolve:` will resolve parameters - the `%foo%` things - if you have them
-  *inside* your environment variable.
+  *inside* your environment variable;
 
 * Second, you can use `file:` to return the *contents* of a file, when that file's path
-  is stored in an environment variable.
+  is stored in an environment variable;
 
 * Third, `base64:` will `base64_decode` a value: that's handy if you have a value that
   contains line breaks or special characters: you can `base64_encode` it to make
-  it easier to *set* as an environment variable.
+  it easier to *set* as an environment variable;
 
-* Fourth, `constant:` allows you to read PHP constants
+* Fourth, `constant:` allows you to read PHP constants;
 
 * And finally, `json:` will, yep, call your friend Jason on the phone. Hey Jason!
-  I mean, it will `json_decode` a string.
+  I mean, it will `json_decode()` a string.
 
 And, ready for the *coolest* part? You can *chain* these: like, open a file, and
-then decode its JSON.
+then decode its JSON:
+
+```yaml
+app.secrets: '%env(json:file:SECRETS_FILE)%'
+```
 
 Actually, sorry, there's more! You can even create your *own*, custom prefix - like
 `blackhole:` and write your own custom processing logic.
 
-Ok, I'll shutup already about environment variables! They're cool, yadda, yadda, yadda.
+Ok, I'll shut up already about environment variables! They're cool, yadda, yadda, yadda.
 
 Let's move on to a *super* fun, *super* unknown "extra" with autowiring.
+
+
+[advanced_env_vars]: https://symfony.com/blog/new-in-symfony-3-4-advanced-environment-variables
