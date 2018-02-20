@@ -16,11 +16,7 @@ and `$message`:
 [[[ code('601d9eb122') ]]]
 
 Next, copy the code from the controller, paste, and make the from and message parts
-dynamic:
-
-[[[ code('5d969681f8') ]]]
-
-Oh, but let's rename the variable to `$slackMessage` - having *two* `$message` is
+dynamic. Oh, but let's rename the variable to `$slackMessage` - having *two* `$message` is
 no fun:
 
 [[[ code('3cd3cdaa44') ]]]
