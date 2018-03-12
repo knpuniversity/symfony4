@@ -1,6 +1,6 @@
 # Fun with Commands
 
-Let's make our command a bit more fun! Give it a description: "Returns some
+Time to make our command a bit more fun! Give it a description: "Returns some
 article stats":
 
 [[[ code('49bdd8ba7f') ]]]

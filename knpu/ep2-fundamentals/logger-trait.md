@@ -16,8 +16,8 @@ and `$message`:
 [[[ code('601d9eb122') ]]]
 
 Next, copy the code from the controller, paste, and make the from and message parts
-dynamic. Oh, but let's rename the variable to `$slackMessage` - having *two* `$message` is
-no fun:
+dynamic. Oh, but let's rename the variable to `$slackMessage` - having *two* `$message`
+variables is no fun.
 
 [[[ code('3cd3cdaa44') ]]]
 
@@ -80,7 +80,7 @@ In `sendMessage()`, let's use it! Start with `if ($this->logger)`. And inside,
 [[[ code('16b72bd35a') ]]]
 
 Bah! No auto-complete: with setter injection, we need to help PhpStorm by adding
-some PHPDoc in the property: it will be `LoggerInterface` or - in theory - `null`:
+some PHPDoc on the property: it will be `LoggerInterface` or - in theory - `null`:
 
 [[[ code('b62f209d87') ]]]
 
@@ -113,7 +113,7 @@ documentation. But here's the magic: add `@required`:
 [[[ code('d51ce2b14e') ]]]
 
 As *soon* as you put `@required` above a method, Symfony will *call* that method
-before giving us the object. And thanks to autowiring, it will pass the the logger
+before giving us the object. And thanks to autowiring, it will pass the logger
 service to the argument.
 
 Ok, move over and... try it! There's the Slack message. And... in the logs...
