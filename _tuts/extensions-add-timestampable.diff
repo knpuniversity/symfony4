@@ -8,10 +8,10 @@ index e7ac8f4..a89cf08 100644
              sluggable: true
 +            timestampable: true
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index e8be09b..fd5ae7f 100644
+index 3052cf9..19c5e32 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -50,11 +50,13 @@ class Article
+@@ -55,11 +55,13 @@ class Article
  
      /**
       * @ORM\Column(type="datetime", nullable=true)

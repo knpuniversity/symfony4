@@ -10,19 +10,19 @@ index c83f3b1..e7ac8f4 100644
 +        default:
 +            sluggable: true
 diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
-index 848a22b..1b06837 100644
+index dca5ced..97922d1 100644
 --- a/src/DataFixtures/AppFixture.php
 +++ b/src/DataFixtures/AppFixture.php
-@@ -19,7 +19,6 @@ class AppFixture extends BaseFixture
+@@ -30,7 +30,6 @@ class AppFixture extends BaseFixture
      {
          $this->createMany(Article::class, 10, function(Article $article, $count) {
-             $article->setTitle($this->faker->randomElement(self::$articleTitles));
--            $article->setSlug($this->faker->slug);
-             $article->setContent(<<<EOF
+             $article->setTitle($this->faker->randomElement(self::$articleTitles))
+-                ->setSlug($this->faker->slug)
+                 ->setContent(<<<EOF
  Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
  lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 73d9bb3..2184c2b 100644
+index b2fcd33..5aca632 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -3,6 +3,7 @@

@@ -1,10 +1,10 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 2184c2b..e8be09b 100644
+index 5aca632..3052cf9 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -48,6 +48,16 @@ class Article
+@@ -53,6 +53,16 @@ class Article
       */
-     private $heartCount = 0;
+     private $imageFilename;
  
 +    /**
 +     * @ORM\Column(type="datetime", nullable=true)
@@ -19,9 +19,9 @@ index 2184c2b..e8be09b 100644
      public function getId()
      {
          return $this->id;
-@@ -132,4 +142,28 @@ class Article
- 
-         return $this;
+@@ -152,4 +162,28 @@ class Article
+     {
+         return 'images/'.$this->getImageFilename();
      }
 +
 +    public function getCreatedAt(): ?\DateTimeInterface

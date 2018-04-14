@@ -1,15 +1,15 @@
 diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
-index bcfeae6..4e3d69c 100644
+index a343a5e..4e3d69c 100644
 --- a/src/Controller/AdminController.php
 +++ b/src/Controller/AdminController.php
-@@ -15,39 +15,7 @@ class AdminController extends AbstractController
+@@ -15,41 +15,7 @@ class AdminController extends AbstractController
       */
      public function newAction(EntityManagerInterface $em)
      {
 -        $article = new Article();
--        $article->setTitle('Why Asteroids Taste Like Bacon');
--        $article->setSlug('why-asteroids-taste-like-bacon-'.rand(100, 999));
--        $article->setContent(<<<EOF
+-        $article->setTitle('Why Asteroids Taste Like Bacon')
+-            ->setSlug('why-asteroids-taste-like-bacon-'.rand(100, 999))
+-            ->setContent(<<<EOF
 -Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
 -lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
 -labore minim pork belly spare ribs cupim short loin in. Elit exercitation eiusmod dolore cow
@@ -34,8 +34,10 @@ index bcfeae6..4e3d69c 100644
 -            $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
 -        }
 -
--        $article->setAuthor('Mike Ferengi');
--        $article->setHeartCount(rand(5, 100));
+-        $article->setAuthor('Mike Ferengi')
+-            ->setHeartCount(rand(5, 100))
+-            ->setImageFilename('asteroid.jpeg')
+-        ;
 -
 -        $em->persist($article);
 -        $em->flush();
@@ -44,7 +46,7 @@ index bcfeae6..4e3d69c 100644
          return new Response(sprintf(
              'Hiya! New Article id: #%d slug: %s',
 diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
-index 37fd7f7..cf1490b 100644
+index 37fd7f7..052a378 100644
 --- a/src/DataFixtures/AppFixture.php
 +++ b/src/DataFixtures/AppFixture.php
 @@ -2,6 +2,7 @@
@@ -55,16 +57,16 @@ index 37fd7f7..cf1490b 100644
  use Doctrine\Bundle\FixturesBundle\Fixture;
  use Doctrine\Common\Persistence\ObjectManager;
  
-@@ -9,8 +10,38 @@ class AppFixture extends Fixture
+@@ -9,8 +10,40 @@ class AppFixture extends Fixture
  {
      public function load(ObjectManager $manager)
      {
 -        // $product = new Product();
 -        // $manager->persist($product);
 +        $article = new Article();
-+        $article->setTitle('Why Asteroids Taste Like Bacon');
-+        $article->setSlug('why-asteroids-taste-like-bacon-'.rand(100, 999));
-+        $article->setContent(<<<EOF
++        $article->setTitle('Why Asteroids Taste Like Bacon')
++            ->setSlug('why-asteroids-taste-like-bacon-'.rand(100, 999))
++            ->setContent(<<<EOF
 +Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
 +lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
 +labore minim pork belly spare ribs cupim short loin in. Elit exercitation eiusmod dolore cow
@@ -89,8 +91,10 @@ index 37fd7f7..cf1490b 100644
 +            $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
 +        }
 +
-+        $article->setAuthor('Mike Ferengi');
-+        $article->setHeartCount(rand(5, 100));
++        $article->setAuthor('Mike Ferengi')
++            ->setHeartCount(rand(5, 100))
++            ->setImageFilename('asteroid.jpeg')
++        ;
 +
 +        $manager->persist($article);
  

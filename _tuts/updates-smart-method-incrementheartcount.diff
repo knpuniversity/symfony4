@@ -12,18 +12,18 @@ index e24255b..b896d01 100644
  
          $logger->info('Article is being hearted!');
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 012f130..73d9bb3 100644
+index 45f472f..b2fcd33 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -123,4 +123,11 @@ class Article
- 
+@@ -129,6 +129,11 @@ class Article
          return $this;
      }
-+
+ 
 +    public function incrementHeartCount(): self
 +    {
 +        $this->heartCount = $this->heartCount + 1;
-+
-+        return $this;
 +    }
- }
++
+     public function getImageFilename(): ?string
+     {
+         return $this->imageFilename;

@@ -1,8 +1,8 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 08f6105..020148b 100644
+index 08f6105..302ac6f 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -36,6 +36,16 @@ class Article
+@@ -36,6 +36,21 @@ class Article
       */
      private $publishedAt;
  
@@ -16,10 +16,15 @@ index 08f6105..020148b 100644
 +     */
 +    private $heartCount;
 +
++    /**
++     * @ORM\Column(type="string", length=255, nullable=true)
++     */
++    private $imageFilename;
++
      public function getId()
      {
          return $this->id;
-@@ -89,4 +99,28 @@ class Article
+@@ -89,4 +104,40 @@ class Article
  
          return $this;
      }
@@ -47,10 +52,22 @@ index 08f6105..020148b 100644
 +
 +        return $this;
 +    }
++
++    public function getImageFilename(): ?string
++    {
++        return $this->imageFilename;
++    }
++
++    public function setImageFilename(?string $imageFilename): self
++    {
++        $this->imageFilename = $imageFilename;
++
++        return $this;
++    }
  }
 diff --git a/src/Migrations/Version20180414171443.php b/src/Migrations/Version20180414171443.php
 new file mode 100644
-index 0000000..a889563
+index 0000000..071a1e8
 --- /dev/null
 +++ b/src/Migrations/Version20180414171443.php
 @@ -0,0 +1,28 @@
@@ -71,7 +88,7 @@ index 0000000..a889563
 +        // this up() migration is auto-generated, please modify it to your needs
 +        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 +
-+        $this->addSql('ALTER TABLE article ADD author VARCHAR(255) NOT NULL, ADD heart_count INT NOT NULL');
++        $this->addSql('ALTER TABLE article ADD author VARCHAR(255) NOT NULL, ADD heart_count INT NOT NULL, ADD image_filename VARCHAR(255) DEFAULT NULL');
 +    }
 +
 +    public function down(Schema $schema)

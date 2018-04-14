@@ -1,13 +1,15 @@
 diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
-index e307a75..bcfeae6 100644
+index 5335896..a343a5e 100644
 --- a/src/Controller/AdminController.php
 +++ b/src/Controller/AdminController.php
-@@ -43,6 +43,9 @@ EOF
+@@ -43,6 +43,11 @@ EOF
              $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
          }
  
-+        $article->setAuthor('Mike Ferengi');
-+        $article->setHeartCount(rand(5, 100));
++        $article->setAuthor('Mike Ferengi')
++            ->setHeartCount(rand(5, 100))
++            ->setImageFilename('asteroid.jpeg')
++        ;
 +
          $em->persist($article);
          $em->flush();

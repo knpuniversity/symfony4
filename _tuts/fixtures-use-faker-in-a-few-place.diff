@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
-index 0512573..d1f54b5 100644
+index d4bb2ab..e405fe6 100644
 --- a/src/DataFixtures/AppFixture.php
 +++ b/src/DataFixtures/AppFixture.php
 @@ -34,12 +34,12 @@ EOF
@@ -12,12 +12,12 @@ index 0512573..d1f54b5 100644
 +                $article->setPublishedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
              }
  
-             $article->setAuthor('Mike Ferengi');
--            $article->setHeartCount(rand(5, 100));
-+            $article->setHeartCount($this->faker->numberBetween(5, 100));
+             $article->setAuthor('Mike Ferengi')
+-                ->setHeartCount(rand(5, 100))
++                ->setHeartCount($this->faker->numberBetween(5, 100))
+                 ->setImageFilename('asteroid.jpeg')
+             ;
          });
- 
-         $manager->flush();
 diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
 index 31b93e2..a5e12fc 100644
 --- a/src/DataFixtures/BaseFixture.php

@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 020148b..012f130 100644
+index 302ac6f..69e90ab 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -44,7 +44,7 @@ class Article
@@ -9,5 +9,5 @@ index 020148b..012f130 100644
 -    private $heartCount;
 +    private $heartCount = 0;
  
-     public function getId()
-     {
+     /**
+      * @ORM\Column(type="string", length=255, nullable=true)

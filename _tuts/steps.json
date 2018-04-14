@@ -566,8 +566,8 @@
             "description": null
         },
         {
-            "id": "updates-generate-2-new-fields",
-            "name": "Updates: Generate 2 new fields",
+            "id": "updates-generate-a-few-more-fields",
+            "name": "Updates: Generate a few more fields",
             "description": null
         },
         {
@@ -583,6 +583,11 @@
         {
             "id": "updates-render-in-templates",
             "name": "Updates: Render in templates",
+            "description": null
+        },
+        {
+            "id": "updates-custom-imagepath-method",
+            "name": "Updates: Custom imagePath method",
             "description": null
         },
         {
@@ -666,5 +671,5 @@
             "description": null
         }
     ],
-    "sha": "2f51d90a3ff52d779da681e319b850f2015d751d"
+    "sha": "e0f427e184a8468e89b427219aea8c1dff586353"
 }

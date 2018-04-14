@@ -1,5 +1,5 @@
 diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
-index 022c65b..e307a75 100644
+index 3bbeb94..5335896 100644
 --- a/src/Controller/AdminController.php
 +++ b/src/Controller/AdminController.php
 @@ -3,6 +3,7 @@
@@ -18,7 +18,7 @@ index 022c65b..e307a75 100644
 +    public function newAction(EntityManagerInterface $em)
      {
          $article = new Article();
-         $article->setTitle('Why Asteroids Taste Like Bacon');
+         $article->setTitle('Why Asteroids Taste Like Bacon')
 @@ -42,6 +43,13 @@ EOF
              $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
          }
