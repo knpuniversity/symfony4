@@ -1,0 +1,154 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+new file mode 100644
+index 0000000..3a25487
+--- /dev/null
++++ b/src/Entity/Article.php
+@@ -0,0 +1,92 @@
++<?php
++
++namespace App\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
++ */
++class Article
++{
++    /**
++     * @ORM\Id()
++     * @ORM\GeneratedValue()
++     * @ORM\Column(type="integer")
++     */
++    private $id;
++
++    /**
++     * @ORM\Column(type="string", length=255)
++     */
++    private $title;
++
++    /**
++     * @ORM\Column(type="string", length=100)
++     */
++    private $slug;
++
++    /**
++     * @ORM\Column(type="text", nullable=true)
++     */
++    private $content;
++
++    /**
++     * @ORM\Column(type="datetime", nullable=true)
++     */
++    private $publishedAt;
++
++    public function getId()
++    {
++        return $this->id;
++    }
++
++    public function getTitle(): ?string
++    {
++        return $this->title;
++    }
++
++    public function setTitle(string $title): self
++    {
++        $this->title = $title;
++
++        return $this;
++    }
++
++
++    public function getSlug(): ?string
++    {
++        return $this->slug;
++    }
++
++    public function setSlug(string $slug): self
++    {
++        $this->slug = $slug;
++
++        return $this;
++    }
++
++    public function getContent(): ?string
++    {
++        return $this->content;
++    }
++
++    public function setContent(?string $content): self
++    {
++        $this->content = $content;
++
++        return $this;
++    }
++
++    public function getPublishedAt(): ?\DateTimeInterface
++    {
++        return $this->publishedAt;
++    }
++
++    public function setPublishedAt(?\DateTimeInterface $publishedAt): self
++    {
++        $this->publishedAt = $publishedAt;
++
++        return $this;
++    }
++}
+diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
+new file mode 100644
+index 0000000..73e0610
+--- /dev/null
++++ b/src/Repository/ArticleRepository.php
+@@ -0,0 +1,50 @@
++<?php
++
++namespace App\Repository;
++
++use App\Entity\Article;
++use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
++use Symfony\Bridge\Doctrine\RegistryInterface;
++
++/**
++ * @method Article|null find($id, $lockMode = null, $lockVersion = null)
++ * @method Article|null findOneBy(array $criteria, array $orderBy = null)
++ * @method Article[]    findAll()
++ * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
++ */
++class ArticleRepository extends ServiceEntityRepository
++{
++    public function __construct(RegistryInterface $registry)
++    {
++        parent::__construct($registry, Article::class);
++    }
++
++//    /**
++//     * @return Article[] Returns an array of Article objects
++//     */
++    /*
++    public function findByExampleField($value)
++    {
++        return $this->createQueryBuilder('a')
++            ->andWhere('a.exampleField = :val')
++            ->setParameter('val', $value)
++            ->orderBy('a.id', 'ASC')
++            ->setMaxResults(10)
++            ->getQuery()
++            ->getResult()
++        ;
++    }
++    */
++
++    /*
++    public function findOneBySomeField($value): ?Article
++    {
++        return $this->createQueryBuilder('a')
++            ->andWhere('a.exampleField = :val')
++            ->setParameter('val', $value)
++            ->getQuery()
++            ->getOneOrNullResult()
++        ;
++    }
++    */
++}

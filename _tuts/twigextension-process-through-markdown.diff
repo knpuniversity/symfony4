@@ -1,0 +1,33 @@
+diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
+index c29342f..ff8d9a8 100644
+--- a/src/Twig/AppExtension.php
++++ b/src/Twig/AppExtension.php
+@@ -2,12 +2,20 @@
+ 
+ namespace App\Twig;
+ 
++use App\Service\MarkdownHelper;
+ use Twig\Extension\AbstractExtension;
+ use Twig\TwigFilter;
+ use Twig\TwigFunction;
+ 
+ class AppExtension extends AbstractExtension
+ {
++    private $markdownHelper;
++
++    public function __construct(MarkdownHelper $markdownHelper)
++    {
++        $this->markdownHelper = $markdownHelper;
++    }
++
+     public function getFilters(): array
+     {
+         return [
+@@ -17,6 +25,6 @@ class AppExtension extends AbstractExtension
+ 
+     public function processMarkdown($value)
+     {
+-        return strtoupper($value);
++        return $this->markdownHelper->parse($value);
+     }
+ }

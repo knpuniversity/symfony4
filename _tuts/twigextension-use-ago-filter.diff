@@ -1,0 +1,13 @@
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index e44bd77..c9d06b5 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -16,7 +16,7 @@
+                             <br>
+                             <span class="align-left article-details"><img class="article-author-img rounded-circle" src="{{ asset('images/alien-profile.png') }}"> Mike Ferengi </span>
+                             <span class="pl-2 article-details">
+-                                {{ article.publishedAt ? article.publishedAt|date('Y-m-d') : 'unpublished' }}
++                                {{ article.publishedAt ? article.publishedAt|ago : 'unpublished' }}
+                             </span>
+                             <span class="pl-2 article-details">
+                                 <span class="js-like-article-count">5</span>

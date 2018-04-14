@@ -1,5 +1,5 @@
 diff --git a/src/Command/ArticleStatsCommand.php b/src/Command/ArticleStatsCommand.php
-index 26debd0..64fbb03 100644
+index 26debd0..6e7ed9a 100644
 --- a/src/Command/ArticleStatsCommand.php
 +++ b/src/Command/ArticleStatsCommand.php
 @@ -16,21 +16,31 @@ class ArticleStatsCommand extends Command
@@ -10,7 +10,7 @@ index 26debd0..64fbb03 100644
 -            ->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
 -            ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
 +            ->setDescription('Returns some article stats!')
-+            ->addArgument('slug', InputArgument::OPTIONAL, 'The article\'s slug')
++            ->addArgument('slug', InputArgument::REQUIRED, 'The article\'s slug')
 +            ->addOption('format', null, InputOption::VALUE_REQUIRED, 'The output format', 'text')
          ;
      }

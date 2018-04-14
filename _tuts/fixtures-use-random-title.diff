@@ -1,0 +1,30 @@
+diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
+index d1f54b5..848a22b 100644
+--- a/src/DataFixtures/AppFixture.php
++++ b/src/DataFixtures/AppFixture.php
+@@ -3,16 +3,23 @@
+ namespace App\DataFixtures;
+ 
+ use App\Entity\Article;
++use Doctrine\Common\Inflector\Inflector;
+ use Doctrine\Common\Persistence\ObjectManager;
+ use Doctrine\ORM\EntityManagerInterface;
+ 
+ class AppFixture extends BaseFixture
+ {
++    private static $articleTitles = [
++        'Why Asteroids Taste Like Bacon',
++        'Life on Planet Mercury: Tan, Relaxing and Fabulous',
++        'Light Speed Travel: Fountain of Youth or Fallacy',
++    ];
++
+     public function loadData(ObjectManager $manager)
+     {
+         $this->createMany(Article::class, 10, function(Article $article, $count) {
+-            $article->setTitle('Why Asteroids Taste Like Bacon');
+-            $article->setSlug('why-asteroids-taste-like-bacon-'.$count);
++            $article->setTitle($this->faker->randomElement(self::$articleTitles));
++            $article->setSlug($this->faker->slug);
+             $article->setContent(<<<EOF
+ Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
+ lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit

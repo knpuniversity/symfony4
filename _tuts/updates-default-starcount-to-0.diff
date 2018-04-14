@@ -1,0 +1,13 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 020148b..012f130 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -44,7 +44,7 @@ class Article
+     /**
+      * @ORM\Column(type="integer")
+      */
+-    private $heartCount;
++    private $heartCount = 0;
+ 
+     public function getId()
+     {

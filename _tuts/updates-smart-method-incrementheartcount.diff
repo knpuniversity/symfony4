@@ -1,0 +1,29 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index e24255b..b896d01 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -64,7 +64,7 @@ class ArticleController extends AbstractController
+      */
+     public function toggleArticleHeart(Article $article, LoggerInterface $logger, EntityManagerInterface $em)
+     {
+-        $article->setHeartCount($article->getHeartCount() + 1);
++        $article->incrementHeartCount();
+         $em->flush();
+ 
+         $logger->info('Article is being hearted!');
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 012f130..73d9bb3 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -123,4 +123,11 @@ class Article
+ 
+         return $this;
+     }
++
++    public function incrementHeartCount(): self
++    {
++        $this->heartCount = $this->heartCount + 1;
++
++        return $this;
++    }
+ }

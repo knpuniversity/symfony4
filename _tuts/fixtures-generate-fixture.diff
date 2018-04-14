@@ -1,0 +1,23 @@
+diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
+new file mode 100644
+index 0000000..37fd7f7
+--- /dev/null
++++ b/src/DataFixtures/AppFixture.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace App\DataFixtures;
++
++use Doctrine\Bundle\FixturesBundle\Fixture;
++use Doctrine\Common\Persistence\ObjectManager;
++
++class AppFixture extends Fixture
++{
++    public function load(ObjectManager $manager)
++    {
++        // $product = new Product();
++        // $manager->persist($product);
++
++        $manager->flush();
++    }
++}

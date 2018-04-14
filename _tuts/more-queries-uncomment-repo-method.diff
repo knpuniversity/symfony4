@@ -1,0 +1,28 @@
+diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
+index 73e0610..a194c6f 100644
+--- a/src/Repository/ArticleRepository.php
++++ b/src/Repository/ArticleRepository.php
+@@ -19,11 +19,10 @@ class ArticleRepository extends ServiceEntityRepository
+         parent::__construct($registry, Article::class);
+     }
+ 
+-//    /**
+-//     * @return Article[] Returns an array of Article objects
+-//     */
+-    /*
+-    public function findByExampleField($value)
++    /**
++     * @return Article[]
++     */
++    public function findAllPublishedOrderdByNewest()
+     {
+         return $this->createQueryBuilder('a')
+             ->andWhere('a.exampleField = :val')
+@@ -34,7 +33,6 @@ class ArticleRepository extends ServiceEntityRepository
+             ->getResult()
+         ;
+     }
+-    */
+ 
+     /*
+     public function findOneBySomeField($value): ?Article

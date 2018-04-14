@@ -1,0 +1,14 @@
+diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
+index e307a75..bcfeae6 100644
+--- a/src/Controller/AdminController.php
++++ b/src/Controller/AdminController.php
+@@ -43,6 +43,9 @@ EOF
+             $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
+         }
+ 
++        $article->setAuthor('Mike Ferengi');
++        $article->setHeartCount(rand(5, 100));
++
+         $em->persist($article);
+         $em->flush();
+ 

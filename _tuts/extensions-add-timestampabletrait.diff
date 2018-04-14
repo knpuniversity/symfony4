@@ -1,0 +1,56 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index fd5ae7f..2e46b3a 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -10,6 +10,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
+  */
+ class Article
+ {
++    use TimestampableTrait;
++
+     /**
+      * @ORM\Id()
+      * @ORM\GeneratedValue()
+@@ -48,18 +50,6 @@ class Article
+      */
+     private $heartCount = 0;
+ 
+-    /**
+-     * @ORM\Column(type="datetime", nullable=true)
+-     * @Gedmo\Timestampable(on="create")
+-     */
+-    private $createdAt;
+-
+-    /**
+-     * @ORM\Column(type="datetime", nullable=true)
+-     * @Gedmo\Timestampable(on="update")
+-     */
+-    private $updatedAt;
+-
+     public function getId()
+     {
+         return $this->id;
+diff --git a/src/Entity/TimestampableTrait.php b/src/Entity/TimestampableTrait.php
+new file mode 100644
+index 0000000..5233a88
+--- /dev/null
++++ b/src/Entity/TimestampableTrait.php
+@@ -0,0 +1,18 @@
++<?php
++
++namespace App\Entity;
++
++trait TimestampableTrait
++{
++    /**
++    * @ORM\Column(type="datetime", nullable=true)
++    * @Gedmo\Timestampable(on="create")
++    */
++   private $createdAt;
++
++   /**
++    * @ORM\Column(type="datetime", nullable=true)
++    * @Gedmo\Timestampable(on="update")
++    */
++   private $updatedAt;
++}

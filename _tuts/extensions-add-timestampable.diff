@@ -1,0 +1,27 @@
+diff --git a/config/packages/stof_doctrine_extensions.yaml b/config/packages/stof_doctrine_extensions.yaml
+index e7ac8f4..a89cf08 100644
+--- a/config/packages/stof_doctrine_extensions.yaml
++++ b/config/packages/stof_doctrine_extensions.yaml
+@@ -5,3 +5,4 @@ stof_doctrine_extensions:
+     orm:
+         default:
+             sluggable: true
++            timestampable: true
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index e8be09b..fd5ae7f 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -50,11 +50,13 @@ class Article
+ 
+     /**
+      * @ORM\Column(type="datetime", nullable=true)
++     * @Gedmo\Timestampable(on="create")
+      */
+     private $createdAt;
+ 
+     /**
+      * @ORM\Column(type="datetime", nullable=true)
++     * @Gedmo\Timestampable(on="update")
+      */
+     private $updatedAt;
+ 

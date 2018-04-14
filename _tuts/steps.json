@@ -449,7 +449,222 @@
             "id": "maker-use-table-to-be-prettier",
             "name": "Maker: Use table to be prettier",
             "description": null
+        },
+        {
+            "id": "pre-ep3-update-deps",
+            "name": "PRE_EP3: Update deps",
+            "description": null
+        },
+        {
+            "id": "install-require-doctrine",
+            "name": "Install: Require doctrine",
+            "description": null
+        },
+        {
+            "id": "install-customize-env-dist",
+            "name": "Install: Customize .env.dist",
+            "description": null
+        },
+        {
+            "id": "entity-generate-article-entity",
+            "name": "Entity: Generate Article entity",
+            "description": null
+        },
+        {
+            "id": "entity-generate-migration",
+            "name": "Entity: Generate Migration",
+            "description": null
+        },
+        {
+            "id": "entity-make-slug-unique",
+            "name": "Entity: Make slug unique",
+            "description": null
+        },
+        {
+            "id": "save-entity-create-admincontroller",
+            "name": "Save Entity: Create AdminController",
+            "description": null
+        },
+        {
+            "id": "save-entity-create-article-object",
+            "name": "Save Entity: Create Article object",
+            "description": null
+        },
+        {
+            "id": "save-entity-persist-flush",
+            "name": "Save Entity: persist & flush",
+            "description": null
+        },
+        {
+            "id": "query-use-em-to-get-repo-find",
+            "name": "Query: Use EM to get repo & find",
+            "description": null
+        },
+        {
+            "id": "query-pass-article-to-template",
+            "name": "Query: Pass article to template",
+            "description": null
+        },
+        {
+            "id": "twigextension-make-twig-extension",
+            "name": "TwigExtension: make:twig-extension",
+            "description": null
+        },
+        {
+            "id": "twigextension-add-cached-markdown-filter",
+            "name": "TwigExtension: Add cached_markdown filter",
+            "description": null
+        },
+        {
+            "id": "twigextension-process-through-markdown",
+            "name": "TwigExtension: Process through markdown",
+            "description": null
+        },
+        {
+            "id": "twigextension-print-publishedat",
+            "name": "TwigExtension: Print publishedAt",
+            "description": null
+        },
+        {
+            "id": "twigextension-install-knptimebundle",
+            "name": "TwigExtension: Install KnpTimeBundle",
+            "description": null
+        },
+        {
+            "id": "twigextension-use-ago-filter",
+            "name": "TwigExtension: Use ago filter",
+            "description": null
+        },
+        {
+            "id": "more-queries-use-repo-in-list",
+            "name": "More Queries: Use repo in list",
+            "description": null
+        },
+        {
+            "id": "more-queries-change-order",
+            "name": "More Queries: Change order",
+            "description": null
+        },
+        {
+            "id": "more-queries-uncomment-repo-method",
+            "name": "More Queries: Uncomment repo method",
+            "description": null
+        },
+        {
+            "id": "more-queries-write-query-builder-query",
+            "name": "More Queries: Write query builder query",
+            "description": null
+        },
+        {
+            "id": "more-queries-autowire-articlerepository",
+            "name": "More Queries: Autowire ArticleRepository",
+            "description": null
+        },
+        {
+            "id": "more-queries-use-param-converter",
+            "name": "More Queries: Use param converter",
+            "description": null
+        },
+        {
+            "id": "updates-generate-2-new-fields",
+            "name": "Updates: Generate 2 new fields",
+            "description": null
+        },
+        {
+            "id": "updates-default-starcount-to-0",
+            "name": "Updates: Default starCount to 0",
+            "description": null
+        },
+        {
+            "id": "updates-set-new-fields-in-dummy-page",
+            "name": "Updates: Set new fields in dummy page",
+            "description": null
+        },
+        {
+            "id": "updates-render-in-templates",
+            "name": "Updates: Render in templates",
+            "description": null
+        },
+        {
+            "id": "updates-make-heart-endpoint-real",
+            "name": "Updates: Make heart endpoint real",
+            "description": null
+        },
+        {
+            "id": "updates-smart-method-incrementheartcount",
+            "name": "Updates: Smart method: incrementHeartCount()",
+            "description": null
+        },
+        {
+            "id": "fixtures-install-fixtures-bundle",
+            "name": "Fixtures: Install fixtures bundle",
+            "description": null
+        },
+        {
+            "id": "fixtures-generate-fixture",
+            "name": "Fixtures: Generate fixture",
+            "description": null
+        },
+        {
+            "id": "fixtures-copy-fixtures-into-code",
+            "name": "Fixtures: Copy fixtures into code",
+            "description": null
+        },
+        {
+            "id": "fixtures-create-basefixture",
+            "name": "Fixtures: Create BaseFixture",
+            "description": null
+        },
+        {
+            "id": "fixtures-add-createmany-method",
+            "name": "Fixtures: Add createMany() method",
+            "description": null
+        },
+        {
+            "id": "fixtures-empty-step",
+            "name": "Fixtures: EMPTY STEP",
+            "description": null
+        },
+        {
+            "id": "fixtures-install-faker",
+            "name": "Fixtures: Install faker",
+            "description": null
+        },
+        {
+            "id": "fixtures-use-faker-in-a-few-place",
+            "name": "Fixtures: Use faker in a few place",
+            "description": null
+        },
+        {
+            "id": "fixtures-use-random-title",
+            "name": "Fixtures: Use random title",
+            "description": null
+        },
+        {
+            "id": "extensions-install-stofdoctrine",
+            "name": "Extensions: Install StofDoctrine",
+            "description": null
+        },
+        {
+            "id": "extensions-use-sluggable",
+            "name": "Extensions: Use Sluggable",
+            "description": null
+        },
+        {
+            "id": "extensions-add-createdat-updatedat",
+            "name": "Extensions: Add createdAt\/updatedAt",
+            "description": null
+        },
+        {
+            "id": "extensions-add-timestampable",
+            "name": "Extensions: add Timestampable",
+            "description": null
+        },
+        {
+            "id": "extensions-add-timestampabletrait",
+            "name": "Extensions: Add TimestampableTrait",
+            "description": null
         }
     ],
-    "sha": "2c031505c8a0b75419cdf3475f671986db946972"
+    "sha": "2f51d90a3ff52d779da681e319b850f2015d751d"
 }
