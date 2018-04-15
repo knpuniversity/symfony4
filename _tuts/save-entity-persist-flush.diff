@@ -1,7 +1,7 @@
-diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
-index 3bbeb94..5335896 100644
---- a/src/Controller/AdminController.php
-+++ b/src/Controller/AdminController.php
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 43a9ea7..953d91d 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
 @@ -3,6 +3,7 @@
  namespace App\Controller;
  
@@ -10,12 +10,12 @@ index 3bbeb94..5335896 100644
  use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  use Symfony\Component\HttpFoundation\Response;
  use Symfony\Component\Routing\Annotation\Route;
-@@ -12,7 +13,7 @@ class AdminController extends AbstractController
+@@ -12,7 +13,7 @@ class ArticleAdminController extends AbstractController
      /**
       * @Route("/admin/article/new")
       */
--    public function newAction()
-+    public function newAction(EntityManagerInterface $em)
+-    public function new()
++    public function new(EntityManagerInterface $em)
      {
          $article = new Article();
          $article->setTitle('Why Asteroids Taste Like Bacon')
@@ -23,7 +23,7 @@ index 3bbeb94..5335896 100644
              $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
          }
  
--        return new Response('boring... but WORKING route!');
+-        return new Response('space rocks... include comets, asteroids & meteoroids');
 +        $em->persist($article);
 +        $em->flush();
 +

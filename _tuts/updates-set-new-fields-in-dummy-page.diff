@@ -1,7 +1,7 @@
-diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
-index 5335896..a343a5e 100644
---- a/src/Controller/AdminController.php
-+++ b/src/Controller/AdminController.php
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 953d91d..e31ddad 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
 @@ -43,6 +43,11 @@ EOF
              $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
          }

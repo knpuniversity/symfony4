@@ -1,10 +1,10 @@
-diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
-index a343a5e..4e3d69c 100644
---- a/src/Controller/AdminController.php
-+++ b/src/Controller/AdminController.php
-@@ -15,41 +15,7 @@ class AdminController extends AbstractController
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index e31ddad..941a70b 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -15,41 +15,7 @@ class ArticleAdminController extends AbstractController
       */
-     public function newAction(EntityManagerInterface $em)
+     public function new(EntityManagerInterface $em)
      {
 -        $article = new Article();
 -        $article->setTitle('Why Asteroids Taste Like Bacon')

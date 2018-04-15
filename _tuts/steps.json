@@ -521,6 +521,11 @@
             "description": null
         },
         {
+            "id": "twigextension-use-servicesubscriberinterface",
+            "name": "TwigExtension: Use ServiceSubscriberInterface",
+            "description": null
+        },
+        {
             "id": "twigextension-print-publishedat",
             "name": "TwigExtension: Print publishedAt",
             "description": null
@@ -671,5 +676,5 @@
             "description": null
         }
     ],
-    "sha": "e0f427e184a8468e89b427219aea8c1dff586353"
+    "sha": "5e1549110539528be0b500b8d5d8531b28ccfbd4"
 }
