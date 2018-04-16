@@ -13,6 +13,39 @@ index ceef5fd..01b48ec 100644
 +# Configure your db driver and server_version in config/packages/doctrine.yaml
 +DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 +###< doctrine/doctrine-bundle ###
+diff --git a/README.md b/README.md
+index bb42f6b..011751f 100644
+--- a/README.md
++++ b/README.md
+@@ -21,6 +21,28 @@ composer install
+ You may alternatively need to run `php composer.phar install`, depending
+ on how you installed Composer.
+ 
++**Configure the the .env File**
++
++First, make sure you have an `.env` file (you should).
++If you don't, copy `.env.dist` to create it.
++
++Next, look at the configuration and make any adjustments you
++need - specifically `DATABASE_URL`.
++
++**Setup the Database**
++
++Again, make sure `.env` is setup for your computer. Then, create
++the database & tables!
++
++```
++php bin/console doctrine:database:create
++php bin/console doctrine:migrations:migrate
++```
++
++If you get an error that the database exists, that should
++be ok. But if you have problems, completely drop the
++database (`doctrine:database:drop --force`) and try again.
++
+ **Start the built-in web server**
+ 
+ You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.json b/composer.json
 index 0a3bbbf..d4ef1bf 100644
 --- a/composer.json

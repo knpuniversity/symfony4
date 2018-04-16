@@ -1,3 +1,15 @@
+diff --git a/README.md b/README.md
+index 011751f..a9edef4 100644
+--- a/README.md
++++ b/README.md
+@@ -37,6 +37,7 @@ the database & tables!
+ ```
+ php bin/console doctrine:database:create
+ php bin/console doctrine:migrations:migrate
++php bin/console doctrine:fixtures:load
+ ```
+ 
+ If you get an error that the database exists, that should
 diff --git a/composer.json b/composer.json
 index 3e8e6e4..bb0ab9b 100644
 --- a/composer.json
