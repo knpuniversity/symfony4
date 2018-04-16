@@ -1,1 +1,8 @@
-chapters: []
+chapters:
+    - install
+    - saving-entities
+    - basic-queries
+    - repository
+    - new-fields
+    - fixtures
+    - sluggable

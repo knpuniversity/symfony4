@@ -1,0 +1,3 @@
+# Sluggable
+
+Coming soon...
