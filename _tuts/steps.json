@@ -256,11 +256,6 @@
             "description": null
         },
         {
-            "id": "config-empty-step",
-            "name": "Config: EMPTY STEP",
-            "description": null
-        },
-        {
             "id": "config-dump-cache",
             "name": "Config: dump($cache)",
             "description": null
@@ -518,11 +513,6 @@
         {
             "id": "twigextension-process-through-markdown",
             "name": "TwigExtension: Process through markdown",
-            "description": null
-        },
-        {
-            "id": "twigextension-empty-step",
-            "name": "TwigExtension: EMPTY STEP",
             "description": null
         },
         {
