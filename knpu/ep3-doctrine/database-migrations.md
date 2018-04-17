@@ -2,12 +2,12 @@
 
 The `Article` entity is ready, and Doctrine already knows to save its data to an
 `article` table in the database. But... that table doesn't exist yet! So... how
-do we create it?
+can we create it?
 
 ## Generating a Migration
 
 Ah, this is one of Doctrine's *superpowers*. Go back to your terminal. At the bottom
-of the `make:entity` command, it has a suggestion: run the `make:migration:` command.
+of the `make:entity` command, it has a suggestion: run the `make:migration` command.
 
 I *love* this! Try it:
 
@@ -26,8 +26,8 @@ Inside, cool! It holds the MySQL code that we need!
 This is *amazing*. No, seriously - it's *way* more awesome than you might think.
 The `make:migration` command actually *looked* at our database, looked at all of 
 our entity classes - which is just one entity right now - and generated the SQL
-code needed to *update* the database to match. I'll show you an even better example
-in a few minutes.
+needed to *update* the database to match our entities. I'll show you an even better
+example in a few minutes.
 
 ## Executing the Migration
 
@@ -38,10 +38,10 @@ the migration, run:
 php bin/console doctrine:migrations:migrate
 ```
 
-This command was also suggested above. Answer yes to run the migrations and...
+This command was *also* suggested above. Answer yes to run the migrations and...
 done! 
 
-But now, run the command again:
+But now, run that same command again:
 
 ```terminal-silent
 php bin/console doctrine:migrations:migrate
@@ -55,21 +55,22 @@ It does nothing! Interesting. Run:
 php bin/console doctrine:migrations:status
 ```
 
-Ok, this tells us a bit more about *how* the migration systems works. Inside the
+Ok, this tells us a bit more about *how* the migration system works. Inside the
 database, the migration system automatically creates a new table called
 `migration_versions`. Then, the *first* time we ran `doctrine:migrations:migrate`,
-it ran the migration, and inserted a new *row* with that migration's version number,
-which is the date in the class name. When we ran `doctrine:migrations:migrate` a
-*second* time, it opened the migration class, then looked up that version in the
-`migration_versions` table. Because it was already there, it knew it had already
-been executed.
+it executed the migration, and inserted a new *row* in that table with that migration's
+version number, which is the date in the class name. When we ran `doctrine:migrations:migrate`
+a *second* time, it opened the migration class, then looked up that version in the
+`migration_versions` table. Because it was already there, it knew that this migration
+had already been executed and did *not* try to run it again.
 
 This is brilliant! Whenever we need to make a database change, we follow this simple
 two-step process: (1) Generate the migration with `make:migration` and (2) run
 that migration with `doctrine:migrations:migrate`. We *will* commit the migrations
 to our git repository. Then, on deploy, just make sure to run `doctrine:migrations:migrate`.
 The production database will have its *own* `migration_versions` table, so this will
-automatically run *all* migrations that have not been run on production. It's perfect.
+automatically run *all* migrations that have not been run yet on production. It's
+perfect.
 
 ## Migration a Second Change
 
@@ -78,11 +79,11 @@ the `slug` field? This will eventually be used to identify the article in the UR
 And so, this *must* be *unique* across every article in the table.
 
 To *guarantee* that this is unique in the database, add `unique=true`. This option
-does only *one* simple thing: it tells Doctrine that it should create a unique
-*index* in the database for this column.
+does only *one* thing: it tells Doctrine that it should create a unique *index*
+in the database for this column.
 
-But of course, the database didn't just magically update to have this constraint.
-We need a migration. No problem! Find your terminal and do step 1: run:
+But of course, the database didn't just magically update to have this index. We
+need a migration. No problem! Find your terminal and do step 1: run:
 
 ```terminal
 php bin/console make:migration
@@ -90,7 +91,7 @@ php bin/console make:migration
 
 Ha! I even misspelled the command: Symfony figured out what I meant. This created
 a *second* migration class: the first creates the table and the second... awesome!
-It creates the unique index. This is the Doctrine magic mentioned earlier: the
+It creates the unique index. This is the Doctrine magic I mentioned earlier: the
 `make:migration` command looked at the entity, looked at the database, determined
 the *difference* between the two, then generated the SQL necessary to *update*
 the database.

@@ -11,4 +11,5 @@ chapters:
     - new-fields
     - updating-entity
     - fixtures
+    - faker-fixtures
     - sluggable
