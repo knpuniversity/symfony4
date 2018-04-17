@@ -1,5 +1,7 @@
 chapters:
     - install
+    - create-entity
+    - database-migrations
     - saving-entities
     - basic-queries
     - repository
