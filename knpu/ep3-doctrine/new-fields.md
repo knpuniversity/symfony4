@@ -1,3 +1,3 @@
-# New Fields
+# New Fields & Smart Methods
 
 Coming soon...

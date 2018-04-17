@@ -1,3 +1,3 @@
-# Sluggable
+# Sluggable & other Wonderful Behaviors
 
 Coming soon...
