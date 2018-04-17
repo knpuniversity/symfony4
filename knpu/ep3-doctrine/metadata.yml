@@ -4,6 +4,7 @@ chapters:
     - database-migrations
     - saving-entities
     - basic-queries
+    - twig-extension
     - repository
     - new-fields
     - fixtures

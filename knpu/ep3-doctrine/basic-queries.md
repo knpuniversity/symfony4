@@ -1,31 +1,118 @@
 # Querying for Data!
 
-Coming soon...
+Hey! We have some rows in the article table! We can now update the news page to
+*not* show this hard-coded article, but instead to query the database and print
+*real*, dynamic data.
 
-Now that we have some articles inserted into the database, we should be able to actually update our show page to not show a hard-coded article, but actually load queries the database, load this article in print real dynamic data. To do that, let's go into our article controller and find show which is responsible for rendering of this page. All right, so as I mentioned earlier, the doctor and bundled brings in one object that does everything save and mcquery. It's the entity manager, so we needed it. Again, here was add another argument called entity manager interface. Let the auto complete to get the use statement dollar sign. Now we saw a second ago that to save something, a database, you just call a couple of methods, he called em, persistent em flush to queries from the database. The first step is you always need to get a repository object, repository equals e em, arrow get repository, and then the class name, so article colon, colon class. This repository object knows everything about how to query from the article table so we can say article equals repository Arrow and it already has a couple of really cool methods and like find what you can you can where you can pass it, the ID, find all to find everything, find a buy where you can pass it in array of things defined by or find one by which is the same, but just finds one item. 
+Open `ArticleController` and find the `show()` method: this renders that page. As
+I mentioned earlier, DoctrineBundle gives us one service - the EntityManager - that
+has the power to save *and* fetch data. Let's get it here: add another argument:
+`EntityManagerInterface $em`.
 
-So let's say find one by I will say we want to find by the slug, calm what matches the slug. Now, of course we're going to need to write more complex queries in the future and we'll talk about how to do that, but out of the box you can do a bunch of basic queries without, without doing anything above this. Just to help my editor, I'm going to tell piece storm. This is an article object, 
+When you want to *query* for data, the first step is always the same: we need to
+get the *repository* for the entity: `$repository = $em->getRepository()` and then
+pass the entity class name: `Article::class`.
 
-OK, 
+This repository object knows *everything* about how to query from the `article` table.
+We can use it to say `$article = $repository->`. Oh, nice! It has a few built-in
+methods, like `find()` where you can pass the `$id` to fetch a single article. Or,
+`findAll()` to fetch *all* articles. With the `findBy()` method, you can fetch
+multiple rows that match some simple data. And `findOneBy()` is the same, but only
+returns *one* Article. Let's use that one: `->findOneBy()` and pass it an array
+with `'slug' => $slug`.
 
-that this is an article object and that's a really important thing when you queried from the database doctrine gives you back in object, not an array with the data. It's a full blown object. Of course, if the. If there is no matching slug on the database, this isn't gonna Return. Nope. So we need to account for that. So say if not article, 
+This will fetch *one* row where the `slug` field matches this value. These built-in
+find methods are nice... but they can't do much more than this. But, don't worry!
+We will *of course* learn how to write more complex queries soon.
 
-throw this Arrow. Create not found exception. And I'm going to pass a message here like no article for slug percent s and pass in the slug. OK, here's the deal. This will result in a four or four. I'm actually gonna hold command and click into this method. And you see this comes from um, a trait used by our base controller. This just throws an exception. So it turns out the way to cause a, for foreign happen in symphony is to throw this very special exception class, which is why we throw this great, not found exception. This message here, you can be as descriptive as possible because this is only going to be shown to the developer, right? And at the bottom, for now, let's just dump the article and die. 
+Above this line, just to help my editor, I'll tell it that this is an `Article`
+object. And... hold on, that's important! When query for something, Doctrine passes
+you an entire *object*, not just an array with data. That's really the whole point
+of Doctrine! You need to stop thinking about inserting and selecting rows in a
+database. Instead, thinking about saving and fetching *objects*... almost as if
+you don't know that a database is helping with this.
 
-Yeah. 
+## Handling 404's
 
-OK, cool. So switch back and first refresh. OK, here is the four four page. There's nothing in the database that matches this slug because ours have a number on the end of them. You can see here it says [inaudible] and it gives us the big description message. This is what the developers will see, and of course when you're in production, you'll see a four, four pages that you can customize. We're not going to talk about how to customize error pages, just google for a symphony customize air page. It's super simple, but you can make your four four pages look exactly how you want. 
+At this point, it's *possible* that there was *no* article in the database with
+this slug. In that case, `$article` will be null. How should we handle this? Well,
+in the real world, this should trigger a 404 page. To do that, say if `!$article`,
+then, `throw $this->createNotFoundException()`. Pass a descriptive message here,
+like: `No article for slug "%s"` and pass `$slug`.
 
-Yeah, 
+I want to dig a *little* bit deeper to see how this work. Hold Command or Ctrl
+and click this method. This comes from a `trait` that's used by the base
+`AbstractController`. Fascinating! It just throws an exception.
 
-to get this, to go to a real page. Let's go back to slash admin article new. Create a new article. Then we'll go back, paste that slug up there and yes it works. You can see the article controller is actually, it's returning to us an article object, so with this now we're dangerous. Working with objects is easy, so I'm gonna. Get rid of that dump there will keep the comments hardcoded for now, but we don't need the article content anymore. We're also going to delete them. Markdown parsing. We'll do that in a template. You'll see in a second. So up here I can get rid of the markdown helpers since we're not using it. And then down here, instead of passing title, article content and slug, let's just pass the article object. 
+In Symfony, to trigger a 404, you just need to throw this very special exception
+class. That's why, in the controller, we *throw* `$this->createNotFoundException()`.
+The message can be as descriptive as possible because it will only be shown to
+the developer.
 
-Yeah. 
+After all of this, let's `dump()` the `$article` to see what it looks like and
+`die`.
 
-All right. Now in the template you can hold command and click this to open it, but it's also just in tests. Article showed a aged and lots wig, a perfect. So instead of title now we'll say article that title and you'll actually see auto-completion on that notice as auto completing get title sees that when I hit tab, it just says article. That title that is thanks to some twig magic when we say article title tweak actually looks in the article class notices that the title property is private and so then it looks for a good title method and calls that. This is really cool because in your templates you can just code really simply article that title and twig figures out what to do. This also works with a race, so if article we're an associative array with entitled key. This would totally work aright. Let's go down and change a couple other places. Article title down here, article that slug and finally down for the content will say article thought content, and then we're going to pipe this through the markdown filter. The campy markdown bundle actually comes to the markdown filters so you can just pass the content through there and it should work. 
+Head back to your browser and first, refresh. Ok! *This* is the 404 page: there's
+nothing in the database that matches this slug: all the *real* slugs have a random
+number at the end. *We* see the helpful error message because *this* is what the
+404 page looks like for *developers*. But of course, on production, your users
+will see a different page that you can customize.
 
-Alright, ready? Let's move over and refresh. It works. This is now dynamic content and I dynamic title. 
+We're not going to talk about how to customize error pages... because it's super
+friendly and easy. Just Google for "Symfony customize error pages" and... have fun!
+You can create separate pages for 404 errors, 403 errors, 500 errors, or whatever
+your heart desires.
 
-Yeah, 
+To find a *real* slug, go back to `/admin/article/new`. Copy that slug, go back,
+paste it and... it works! There is our *full*, *beautiful*, well-written, inspiring,
+Article object... with fake content about meat. Having an *object* is *awesome*!
+We are now... dangerous.
 
-and check this out down on the bottom of the web. Debug toolbar and now has a new database icon which tells us that we had one database queries and how long the database query took and if you click into this, it will show you all of the database queries that were made on that page. You can run. Explain on them. You can also view a runnable Querie, which I use a lot of times to copy in and debug and more complex query. So this is an awesome feature. All right, next, let's do something.
+## Rendering the Article Data: Twig Magic
+
+Back in the controller, remove the `dump()`. Keep the hardcoded comments for now.
+But, remove the `$articleContent`. Let's also remove the markdown parsing code
+and now-unused argument: we'll process the markdown in the template in a minute.
+
+Back down in `render()`, instead of passing `title`, `articleContent` and `slug`,
+*just* pass `article`.
+
+Now, open that template! With the Symfony plugin, you can cheat and hold Command
+or Ctrl and click to open it. Or, it's just in `templates/article`.
+
+Updating the template is a *dream*. Instead of `title`, print `article.title`. Oh,
+and in *many* cases... but not always... you'll get auto-completion based on the
+methods on your entity class!
+
+Look closely: it's auto-completing `getTitle()`. But when I hit tab, it just prints
+`article.title`. Behind the scenes, there is some serious Twig magic happening.
+When you say `article.title`, Twig first looks to see if the class has a `title`
+*property*. It does! But since that property is *private*, it can't use it. No
+worries! It then looks for a `getTitle()` method. And because *that* exists, it
+calls it.
+
+This is *really* cool because our template code can be simple: Twig figures out
+what to do. If you were printing some boolean field, like `article.published`, Twig
+would also look for `isTitle` a `hasTitle` methods. *And*, if `article` were an
+array, the dot syntax would just fetch the keys off of the array. Twig: you're
+the bomb.
+
+Ok, let's update a few more places: `article.title`, then, `article.slug`, and
+finally, for the content, `article.content`, but then `|markdown`. The KnpMarkdownBundle
+givs us a `markdown` filter, so we can just process it right here in the template.
+
+Ready to try it? Move over, deep breath, refresh. Ha! It works! Hello dynamic title!
+Hello dynamic bacon content!
+
+## See your Queries in the Profiler
+
+Oh, and I have a wonderful surprise! The web debug toolbar now has a database icon
+that tells us how many database queries this page executed and how long they took.
+But wait, there's more! Click the icon to go into the profiler. Yes! This actually
+*lists* every query. You can run "EXPLAIN" on each one or view a runnable query.
+I use this to help debug when a particularly complex query isn't returning the
+results I expect.
+
+So, um, yea. This is awesome. Next, let's take a quick detour and have some fun
+by creating a custom Twig filter via a Twig extension. We need to do this, because
+our markdown processing is *no* longer being cached. Boo.

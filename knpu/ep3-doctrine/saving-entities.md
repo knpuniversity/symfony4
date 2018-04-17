@@ -1,31 +1,109 @@
 # Saving Entities
 
-Coming soon...
+Put on your publishing hat, because it's time to insert some rows into our article
+table! And, good news! This is probably one of the *easiest* things to do in doctrine.
 
-Or the first thing you want to do, the next thing we need to do is save. Insert some rows into our table. This is probably one of the easiest things to do in doctrine. I'm actually going to create a new controller called article admin controller. This will be a place where we can add new articles. I'll make an extent. The normal abstract controller will create a public function new, and I'll add the at route above this using auto-completion on the one from symphony components. Make this slash admin slash article slash new. We're not really going to build out an admin form here yet and we're just going to write some code to insert a new article into the database. 
+Let's create a new controller called `ArticleAdminController`. We'll use this as
+a place to add new articles. Make it extend the normal `AbstractController`, and
+create a `public function new()`. Above, add the `@Route()` - make sure to let
+auto-complete the one from Symfony `Components` so that PhpStorm adds the `use`
+statement. For the URL, how about `/admin/article/new`.
 
-Yeah, 
+We're not *actually* going to build out a real page with a form here right now.
+Instead, I just want to write some code that saves a dummy article to the database.
 
-make sure this works. Return the response. The one from age two, DB foundation and. Well, let's just say space rocks. Include comments, asteroids and meteorites. 
+But first, to make sure I haven't screwed anything up, return a new `Response`:
+the one from `HttpFoundation` with a message:
 
-Yeah, 
+> space rocks... include comets, asteroids & meteoroids
 
-cool. Just that should be able to go over here and go to slash admin slash article slash new and awesome page is working. So how do we create, how do we insert a new article? Well, it's as simple as creating a new article object. Then telling doctrine to save it to the database, so quite literally it's article equals new article and then we're just going to start setting the data on it. So actually let's go back. I'll go to my wife to ask her is it tastes like Bacon and let's just use this as an example, so I'll copy the title article title or pays that notice I'm using these setter methods that were automatically generated into my entity. Also, when you use the entity generator, all these setter methods return this which allows you to change your method calls. In other words, we can say sets slug. Then I'll go copy the part of the url. I can go back and paste this here, but we want to make sure this is going to be unique. So let's just add a little random part on the end of that. Then we'll say set content and to get this let's go into article controller and awesome. Let's copy our fake markdown code 
+Now, we *should* be able to find the browser and head to `/admin/article/new`. Great!
 
-and paste that here. That probably won't paced correctly, so you need to make sure that you have everything completely uninvented. There we go. 
+## Creating the Article Object
 
-Perfect. 
+So, here's the big question: *how* do you save data to the database with Doctrine?
+The answer... is beautiful: just create an `Article` object with the data you need,
+then ask Doctrine to put it into the database.
 
-All right, so that's the title, slug content, and then the other fields that are honor and city are the only other field that our entity right now is published that. So to make testing nicer, we're going to, let's create, let's randomly make some articles published in some not. So let's say if a brand of one, a number from one to 10 is greater than two, then let's set the published APP, so article set published at and we'll say new slash date time, and to give us some randomness, let's use a sprint. F here will say percent minus the days. I'll give that a random number from one to a hundred. 
+Start with `$article = new Article()`. For this article's data, go back to the
+"Why Asteroids Taste like Bacon" article: we'll use this as our dummy news story.
+Copy the article's title, then call `$article->setTitle()` and paste.
 
-Perfect. 
+This is one of the setter methods that was automatically generated into our entity.
+Oh, and the generator *also* made all the setter methods return `$this`, which means
+you can chain your calls, like this: `->setSlug()`, then copy the last part of the
+URL, and paste here. Oh, but we need to make sure this is unique... so just add a
+little random number at the end.
 
-So this one I just want to stop because all I've done is create an article object in set data on it. This is just random php the. To save this, all we need to do is just tell doctrine, hey, I want you to save this article to the database. You guys remember from the last episode that the biggest thing that outside bumbles give you are more services. The doctrine bundle gives you one very, very important service which is used for both saving and queering from the database. It's called the entity manager. 
+Then, `->setContent()`. And to get this, go back to `ArticleController`, copy
+*all* of that meaty markdown and paste here. Ah, make sure the content is completely
+*not* indented so the multi-line text works.
 
-Yeah, 
+Much better! The last field is `publishedAt`. To have more interesting data, let's
+only publish *some* articles. So, if a random number from 1 to 10 is greater than
+2, publish the article: `$article->setPublishedAt()` with `new \DateTime()` and
+`sprintf('-%d days)` with a bit more randomness: 1 to 100 days old.
 
-and actually if you go and run bin Console, debug con auto wiring, 
+Perfect! Now... stop. I want you to notice that *all* we've done is create an
+`Article` object and set data on it. This is normal, boring, PHP code: we're not
+using Doctrine at *all* yet. That's really cool.
 
-scroll to the top. You will see it doctrine entity manager interface. That's what we're gonna use to fetch it. So let's go back to our method and our new say entity manager interface from Dr [inaudible] hit tab and call that. Once we have the entity manager to save, it's actually a two step process which might look weird at first am persist article and then em Arrow flush. It's always these two commands. Persist, tells doctrine that you want to save this article, but it doesn't actually do it yet. Then when you call em flush, this is when the actual queries are made. It's done this way mostly so that you could create multiple objects at once and then just save them with one command 
+## Saving the Article
 
-or that in place. Let's give ourselves a little bit more of a helpful message here, so we'll se Haya new article ID is some number. Slug is some string and we'll say article and we'll start using those getters, so I say get id and article Arrow gets sluggish now known as we did not set the ID, but as soon as we save it, doctrine is going to set that id property for us, so that should give us the results. All right, you ready? Let's try it. Go back over and go to slash article slash admin slash article session new and article id one, two, three, four, five, six. Everything is inserting. If you want to prove it, you can load up your php, my admin or whatever tool you like to use to talk to the database. Or if you're in a pinch, you can always run doctrine. Colon queries, sql. We can say select star from article. Remember Dr uses underscored versions of the table and column names. Yes. And there we get six results. Awesome. So next let's talk about how we queried things from the database. OK.
+To *save* this, we just need to find Doctrine and tell it:
+
+> Hey Doctrine! Say hi to Jon Wage for us! Oh, and can you please save this
+> article to the database. You're the best!
+
+How? In the last Symfony episode, we talked about how the *main* thing that a
+bundle gives us is more *services*. DoctrineBundle gives us one, *very* important
+service that's used for both saving to *and* fetching from the database. It's called
+the EntityManager.
+
+Actually, find your terminal and run:
+
+```terminal
+php bin/console debug:autowiring
+```
+
+Scroll to the the top. There it is! `EntityManagerInterface`: that's the type-hint
+we can use to fetch the service. Go back to the top of the `new()` method and add
+an argument: `EntityManagerInterface $em`.
+
+Now that we have the all-important entity manager, saving is a two-step process...
+and it *may* look a bit weird at first. First, `$em->persist($article)`, then
+`$em->flush()`.
+
+It's *always* these two lines. Persist simply says that you would *like* to save
+this article, but Doctrine does *not* make the INSERT query yet. That happens when
+you call `$em->flush()`. Why two separate steps? Well, it gives you a bit more
+flexibility: you could create ten Article objects, called `persist()` on each, then
+`flush()` just *one* time at the end. Sometimes, Doctrine can create more efficient
+queries for all the operations it needs to perform.
+
+At the bottom, let's make our message a bit more helpful, though, I thought my message
+about space rocks was *at least* educational. Set the article id to some number and
+the slug to some string. For each, use `$article->getId()` and `$article->getSlug()`.
+
+Oh, and this is important: *we* never set the id. But when we call `flush()`, Doctrine
+will insert the new row, get the new id, and put that onto the `Article` *for*
+us. By the time we print this message, the Article will have its new, fancy id.
+
+Ok, are you ready? Let's try it: go back to `/admin/article/new` and... ha! Article
+id 1, then 2, 3, 4, 5, 6! It's alive!
+
+If you want to be *more* sure, you can check this in your favorite database tool
+like phpMyAdmin or whatever the cool kids are using this day. *Or*, you can use
+a helpful console command:
+
+```terminal
+php bin/console doctrine:query:sql "SELECT * FROM article"
+```
+
+This is `article` with a *lowercase* "a", because, by default, Doctrine creates
+snake case table and column names.
+
+And... yes! There are the new, 6 results.
+
+We have successfully put stuff *into* the database! Now it's time to run some
+queries to fetch it back out.
