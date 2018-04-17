@@ -1,0 +1,3 @@
+# Query Logic Re-use & Shortcuts
+
+Coming soon...

@@ -1,3 +1,3 @@
-# Creating a (Performant) Twig Extension
+# Fun with Twig Extensions!
 
 Coming soon...

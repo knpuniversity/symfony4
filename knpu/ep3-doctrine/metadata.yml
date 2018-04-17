@@ -5,7 +5,10 @@ chapters:
     - saving-entities
     - basic-queries
     - twig-extension
+    - service-subscriber
     - repository
+    - query-reuse-tricks
     - new-fields
+    - updating-entity
     - fixtures
     - sluggable
