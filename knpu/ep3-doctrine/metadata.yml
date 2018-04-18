@@ -13,3 +13,4 @@ chapters:
     - fixtures
     - faker-fixtures
     - sluggable
+    - timestampable
