@@ -8,19 +8,19 @@ index e7ac8f4..a89cf08 100644
              sluggable: true
 +            timestampable: true
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 3052cf9..19c5e32 100644
+index f602352..72ade31 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -55,11 +55,13 @@ class Article
  
      /**
-      * @ORM\Column(type="datetime", nullable=true)
+      * @ORM\Column(type="datetime")
 +     * @Gedmo\Timestampable(on="create")
       */
      private $createdAt;
  
      /**
-      * @ORM\Column(type="datetime", nullable=true)
+      * @ORM\Column(type="datetime")
 +     * @Gedmo\Timestampable(on="update")
       */
      private $updatedAt;

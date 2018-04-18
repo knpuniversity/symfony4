@@ -661,6 +661,16 @@
             "description": null
         },
         {
+            "id": "extensions-update-migration-for-nullable",
+            "name": "Extensions: Update migration for nullable",
+            "description": null
+        },
+        {
+            "id": "extensions-migrate-to-not-nullable",
+            "name": "Extensions: Migrate to not nullable",
+            "description": null
+        },
+        {
             "id": "extensions-add-timestampable",
             "name": "Extensions: add Timestampable",
             "description": null
@@ -671,5 +681,5 @@
             "description": null
         }
     ],
-    "sha": "73452e3275c5e73a7a7efc5bae0d064b4d2a0ca3"
+    "sha": "88507c073a28bd9b9a5b3e9c4743ffb6993ece3e"
 }
