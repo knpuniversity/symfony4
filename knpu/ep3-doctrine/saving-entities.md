@@ -1,15 +1,16 @@
 # Saving Entities
 
-Put on your publishing hat, because it's time to insert some rows into our article
-table! And, good news! This is probably one of the *easiest* things to do in doctrine.
+Put on your publishing hat, because it's time to write some thoughtful space articles
+and insert some rows into our article table! And, good news! This is probably one
+of the *easiest* things to do in Doctrine.
 
 Let's create a new controller called `ArticleAdminController`. We'll use this as
 a place to add new articles. Make it extend the normal `AbstractController`, and
-create a `public function new()`. Above, add the `@Route()` - make sure to let
+create a `public function new()`. Above, add the `@Route()` - make sure to
 auto-complete the one from Symfony `Components` so that PhpStorm adds the `use`
 statement. For the URL, how about `/admin/article/new`.
 
-We're not *actually* going to build out a real page with a form here right now.
+We're not *actually* going to build a real page with a form here right now.
 Instead, I just want to write some code that saves a dummy article to the database.
 
 But first, to make sure I haven't screwed anything up, return a new `Response`:
@@ -31,7 +32,7 @@ Copy the article's title, then call `$article->setTitle()` and paste.
 
 This is one of the setter methods that was automatically generated into our entity.
 Oh, and the generator *also* made all the setter methods return `$this`, which means
-you can chain your calls, like this: `->setSlug()`, then copy the last part of the
+you can chain your calls, like: `->setSlug()`, then copy the last part of the
 URL, and paste here. Oh, but we need to make sure this is unique... so just add a
 little random number at the end.
 
@@ -40,9 +41,9 @@ Then, `->setContent()`. And to get this, go back to `ArticleController`, copy
 *not* indented so the multi-line text works.
 
 Much better! The last field is `publishedAt`. To have more interesting data, let's
-only publish *some* articles. So, if a random number from 1 to 10 is greater than
+only publish *some* articles. So, if a random number between 1 to 10 is greater than
 2, publish the article: `$article->setPublishedAt()` with `new \DateTime()` and
-`sprintf('-%d days)` with a bit more randomness: 1 to 100 days old.
+`sprintf('-%d days')` with a bit more randomness: 1 to 100 days old.
 
 Perfect! Now... stop. I want you to notice that *all* we've done is create an
 `Article` object and set data on it. This is normal, boring, PHP code: we're not
@@ -50,17 +51,17 @@ using Doctrine at *all* yet. That's really cool.
 
 ## Saving the Article
 
-To *save* this, we just need to find Doctrine and tell it:
+To *save* this, we just need to find Doctrine and say:
 
-> Hey Doctrine! Say hi to Jon Wage for us! Oh, and can you please save this
+> Hey Doctrine! Say hi to Jon Wage for us! Also, can you please save this
 > article to the database. You're the best!
 
-How? In the last Symfony episode, we talked about how the *main* thing that a
-bundle gives us is more *services*. DoctrineBundle gives us one, *very* important
+How do we do this? In the last Symfony tutorial, we talked about how the *main* thing
+that a bundle gives us is more *services*. DoctrineBundle gives us one, *very* important
 service that's used for both saving to *and* fetching from the database. It's called
-the EntityManager.
+the deathstar. No, no, it's the EntityManager. But, missed opportunity...
 
-Actually, find your terminal and run:
+Find your terminal and run:
 
 ```terminal
 php bin/console debug:autowiring
@@ -71,37 +72,37 @@ we can use to fetch the service. Go back to the top of the `new()` method and ad
 an argument: `EntityManagerInterface $em`.
 
 Now that we have the all-important entity manager, saving is a two-step process...
-and it *may* look a bit weird at first. First, `$em->persist($article)`, then
+and it *may* look a bit weird initially. First, `$em->persist($article)`, then
 `$em->flush()`.
 
 It's *always* these two lines. Persist simply says that you would *like* to save
 this article, but Doctrine does *not* make the INSERT query yet. That happens when
 you call `$em->flush()`. Why two separate steps? Well, it gives you a bit more
 flexibility: you could create ten Article objects, called `persist()` on each, then
-`flush()` just *one* time at the end. Sometimes, Doctrine can create more efficient
-queries for all the operations it needs to perform.
+`flush()` just *one* time at the end. This helps Doctrine optimize saving those
+ten articles.
 
 At the bottom, let's make our message a bit more helpful, though, I thought my message
 about space rocks was *at least* educational. Set the article id to some number and
-the slug to some string. For each, use `$article->getId()` and `$article->getSlug()`.
+the slug to some string. Pass: `$article->getId()` and `$article->getSlug()`.
 
 Oh, and this is important: *we* never set the id. But when we call `flush()`, Doctrine
 will insert the new row, get the new id, and put that onto the `Article` *for*
 us. By the time we print this message, the Article will have its new, fancy id.
 
 Ok, are you ready? Let's try it: go back to `/admin/article/new` and... ha! Article
-id 1, then 2, 3, 4, 5, 6! It's alive!
+id 1, then 2, 3, 4, 5, 6! Our news site is alive!
 
 If you want to be *more* sure, you can check this in your favorite database tool
-like phpMyAdmin or whatever the cool kids are using this day. *Or*, you can use
+like phpMyAdmin or whatever the cool kids are using these days. *Or*, you can use
 a helpful console command:
 
 ```terminal
 php bin/console doctrine:query:sql "SELECT * FROM article"
 ```
 
-This is `article` with a *lowercase* "a", because, by default, Doctrine creates
-snake case table and column names.
+This is `article` with a *lowercase* "a", because, thanks to the default configuration,
+Doctrine creates snake case table and column names.
 
 And... yes! There are the new, 6 results.
 
