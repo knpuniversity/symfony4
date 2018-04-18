@@ -110,11 +110,9 @@ the article count HTML line into this, and set it to `data.heart`:
 
 [[[ code('aba3f5c2bb') ]]]
 
-***SEEALSO
 Oh, and if you're not familiar with the `.done()` function or Promises, I'd highly
 recommend checking out our [JavaScript Track][javascript_track]. It's not beginner
 stuff: it's meant to take your JS up to the next level.
-***
 
 Anyways... let's try it already! Refresh! And... click! It works!
 
