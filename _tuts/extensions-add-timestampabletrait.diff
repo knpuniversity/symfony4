@@ -1,37 +1,68 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 72ade31..f627219 100644
+index 72ade31..42e88a8 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -10,6 +10,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
+@@ -4,12 +4,15 @@ namespace App\Entity;
+ 
+ use Doctrine\ORM\Mapping as ORM;
+ use Gedmo\Mapping\Annotation as Gedmo;
++use Gedmo\Timestampable\Traits\TimestampableEntity;
+ 
+ /**
+  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
   */
  class Article
  {
-+    use TimestampableTrait;
++    use TimestampableEntity;
 +
      /**
       * @ORM\Id()
       * @ORM\GeneratedValue()
-diff --git a/src/Entity/TimestampableTrait.php b/src/Entity/TimestampableTrait.php
-new file mode 100644
-index 0000000..5233a88
---- /dev/null
-+++ b/src/Entity/TimestampableTrait.php
-@@ -0,0 +1,18 @@
-+<?php
-+
-+namespace App\Entity;
-+
-+trait TimestampableTrait
-+{
-+    /**
-+    * @ORM\Column(type="datetime", nullable=true)
-+    * @Gedmo\Timestampable(on="create")
-+    */
-+   private $createdAt;
-+
-+   /**
-+    * @ORM\Column(type="datetime", nullable=true)
-+    * @Gedmo\Timestampable(on="update")
-+    */
-+   private $updatedAt;
-+}
+@@ -53,18 +56,6 @@ class Article
+      */
+     private $imageFilename;
+ 
+-    /**
+-     * @ORM\Column(type="datetime")
+-     * @Gedmo\Timestampable(on="create")
+-     */
+-    private $createdAt;
+-
+-    /**
+-     * @ORM\Column(type="datetime")
+-     * @Gedmo\Timestampable(on="update")
+-     */
+-    private $updatedAt;
+-
+     public function getId()
+     {
+         return $this->id;
+@@ -164,28 +155,4 @@ class Article
+     {
+         return 'images/'.$this->getImageFilename();
+     }
+-
+-    public function getCreatedAt(): ?\DateTimeInterface
+-    {
+-        return $this->createdAt;
+-    }
+-
+-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+-    {
+-        $this->createdAt = $createdAt;
+-
+-        return $this;
+-    }
+-
+-    public function getUpdatedAt(): ?\DateTimeInterface
+-    {
+-        return $this->updatedAt;
+-    }
+-
+-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+-    {
+-        $this->updatedAt = $updatedAt;
+-
+-        return $this;
+-    }
+ }
