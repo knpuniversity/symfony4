@@ -5,6 +5,7 @@ chapters:
     - saving-entities
     - basic-queries
     - twig-extension
+    - ago-filter
     - service-subscriber
     - repository
     - query-reuse-tricks
