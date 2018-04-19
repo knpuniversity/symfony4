@@ -54,20 +54,37 @@ message tells us that - no surprise - this is done in the `.env` file.
 ## Configuring the Database Connection
 
 Move over to your code and open the `.env` file. Nice! The DoctrineBundle recipe
-added a new `DATABASE_URL` environment variable. Let's set this up: I use a `root`
-user with no password locally. Call the database `the_spacebar`.
+added a new `DATABASE_URL` environment variable:
+
+[[[ code('3d6b07ba40') ]]]
+
+Let's set this up: I use a `root` user with no password locally. Call the database
+`the_spacebar`:
+
+[[[ code('b119a2078e') ]]]
 
 Of course, this sets a `DATABASE_URL` environment variable. And *it* is used in
 a new `config/packages/doctrine.yaml` file that was installed by the recipe. If
-you scroll down a bit... you can see the environment variable being used.
+you scroll down a bit... you can see the environment variable being used:
+
+[[[ code('222aae44eb') ]]]
 
 There are actually a lot of options in here, but you probably won't need to change
-any of them. These give you nice defaults, like using UTF8 tables. Or, consistently
-using underscores for table and column names.
+any of them. These give you nice defaults, like using UTF8 tables:
+
+[[[ code('083c412860') ]]]
+
+Or, consistently using underscores for table and column names:
+
+[[[ code('b2dcb5e1fa') ]]]
 
 If you want to use something other than MySQL, you can easily change that. Oh, and
 you should set your `server_version` to the server version of MySQL that you're using
-on production: this helps Doctrine with a few subtle, version-specific changes.
+on production:
+
+[[[ code('7f348c163d') ]]]
+
+This helps Doctrine with a few subtle, version-specific changes.
 
 ## Creating the Database
 
