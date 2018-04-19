@@ -1,0 +1,64 @@
+# ago Filter with KnpTimeBundle
+
+There's one other fun tweak I want to make related to Twig filters. See this 4
+hours ago? That's still hard coded! Find the show template and scroll up a bit
+to find that. Here it is!
+
+## Printing a DateTime Object in Twig
+
+The `Article` entity has a `publishedAt` property, so we can use *that* to print
+out a real date. But, remember, the `publishedAt` field might be `null` if this
+article has *not* been published yet. So let's use the fancy ternary syntax to say:
+`{{ article.publishedAt }}`, then, if it *is* published, print
+`article.publishedAt`. But, `publishedAt` is a `DateTime` *object*... and you can't
+just print that. To fix that, pipe this through a `date` filter, and then say
+`Y-m-d`.
+
+Most builders do not have any arguments - most are like our `cached_markdown` filter.
+But filters *are* allowed to have arguments. If the article is *not* published,
+just say that: unpublished.
+
+Love it! Now when we go back and refresh, published on March 20th. 
+
+## Installing KnpTimeBundle
+
+Cool... but it looked better when it said something like "five minutes ago" or
+"two weeks ago" - it's just way more hipster. The date... is kinda ugly!
+
+Fortunately, there's a really simple bundle that can convert your dates into this
+cute "ago" format. Search for KnpTimeBundle. Despite seeing my little face there,
+I did *not* create this bundle, so I take no credit for it. I just think it's great.
+
+Scroll down to the "composer require" line, copy that, find your terminal and, paste!
+
+```terminal-silent
+composer require knplabs/knp-time-bundle
+```
+
+This installs the bundle and... interesting! It also installs `symfony/translation`.
+Behind the scenes, KnpTimeBundle uses the translator to translate the "ago" wording
+into other languages.
+
+But what's *really* cool is that it `symfony/translation` has a Flex *recipe*. Before
+I recorded this chapter, I committed our changes so far. So now I can run:
+
+```terminal
+git status
+```
+
+to see what the translation recipe did. Interesting: we have a new
+`config/packages/translation.yaml` file and a new `translations/` directory where
+our translation files should live... *if* we need to translate anything at all.
+
+For the purposes of this bundle, the recipe system is just making sure that everything
+is setup for us, automatically.
+
+## Using the ago Filter
+
+Ok, let's use the filter! back in the template, replace the `date` filter with
+`|ago`.
+
+That's it. Find the page, refresh and... perfect! 27 days ago. So much nicer!
+
+Next, I want to talk a little bit more about the `AppExtension` twig extension because,
+for a very subtle but important reason, it has some performance problems.
