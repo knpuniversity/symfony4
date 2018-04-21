@@ -6,7 +6,7 @@ in our code. So if we want to create an `article` table, it means that we need t
 create an `Article` *class*. You can *totally* make this class by hand - it's just
 a normal PHP class.
 
-## Generating with make:entity
+## Generating with `make:entity`
 
 But there's a *really* nice generation tool from MakerBundle. We installed MakerBundle
 in the last tutorial, and before I started coding, I updated it to the latest version
@@ -45,24 +45,40 @@ can always update things later, or delete the new entity class and start over.
 ## Investigating the Entity Class
 
 So... what did that just do? Only *one* thing: in `src/Entity`, this command generated
-a new `Article` class. Well... to be fully honest, there is also a new `ArticleRepository`
-class, but I want you to ignore that for now. It's not important yet.
+a new `Article` class:
+
+[[[ code('bc744f624f') ]]]
+
+Well... to be fully honest, there is also a new `ArticleRepository` class, but I want
+you to ignore that for now. It's not important yet.
 
 Anyways, this `Article` class is your *entity*. And, check it out! It's a normal,
 boring PHP class with a property for each column: `id`, `title`, `slug`, `content`,
-and `publishedAt`. What makes this class *special* are the annotations! The `@ORM\Entity`
-above the class tells Doctrine that this is an entity that should be mapped to the
-database. Then, above each property, we have some annotations that help doctrine
-know how to store that exact column.
+and `publishedAt`:
+
+[[[ code('9c6b77d40b') ]]]
+
+What makes this class *special* are the annotations! The `@ORM\Entity` above the
+class tells Doctrine that this is an entity that should be mapped to the database:
+
+[[[ code('0f54df4082') ]]]
+
+Then, above each property, we have some annotations that help doctrine know how
+to store that exact column:
+
+[[[ code('e9557a9f9f') ]]]
 
 Actually, find your browser and Google for "doctrine annotations reference"  to
 find a cool page. This shows you *every* annotation in Doctrine and *every* option
 for each one.
 
 Back at the code, the properties are *private*. So, at the bottom of the class,
-the command generated getter and setter for methods for each one. There's one *really*
-important thing to realize: this class is 100% *your* class. Feel free to add, remove
-or rename any properties or methods you want.
+the command generated getter and setter for methods for each one:
+
+[[[ code('86b15fb1b1') ]]]
+
+There's one *really* important thing to realize: this class is 100% *your* class.
+Feel free to add, remove or rename any properties or methods you want.
 
 And... yea! With one command, our entity is ready! But, the database is still empty!
 We need to tell Doctrine to create the corresponding `article` table in the database.

@@ -17,7 +17,9 @@ php bin/console make:migration
 
 The output says that it created a new `src/Migrations/Version*` class that we should
 review. Ok, find your code, open the `Migrations` directory and, there it is! One
-migration file.
+migration file:
+
+[[[ code('d58ce77cda') ]]]
 
 Inside, cool! It holds the MySQL code that we need!
 
@@ -74,13 +76,20 @@ perfect.
 
 ## Migration a Second Change
 
-To see how nice this is, let's make one more change. Open the `Article` class. See
-the `slug` field? This will eventually be used to identify the article in the URL.
-And so, this *must* be *unique* across every article in the table.
+To see how nice this is, let's make one more change. Open the `Article` class.
+See the `slug` field?
 
-To *guarantee* that this is unique in the database, add `unique=true`. This option
-does only *one* thing: it tells Doctrine that it should create a unique *index*
-in the database for this column.
+[[[ code('c72145f630') ]]]
+
+This will eventually be used to identify the article in the URL. And so, this *must*
+be *unique* across every article in the table.
+
+To *guarantee* that this is unique in the database, add `unique=true`:
+
+[[[ code('f4d39f1fa5') ]]]
+
+This option does only *one* thing: it tells Doctrine that it should create a unique
+*index* in the database for this column.
 
 But of course, the database didn't just magically update to have this index. We
 need a migration. No problem! Find your terminal and do step 1: run:
@@ -91,10 +100,13 @@ php bin/console make:migration
 
 Ha! I even misspelled the command: Symfony figured out what I meant. This created
 a *second* migration class: the first creates the table and the second... awesome!
-It creates the unique index. This is the Doctrine magic I mentioned earlier: the
-`make:migration` command looked at the entity, looked at the database, determined
-the *difference* between the two, then generated the SQL necessary to *update*
-the database.
+It creates the unique index:
+
+[[[ code('222c8239bb') ]]]
+
+This is the Doctrine magic I mentioned earlier: the `make:migration` command looked
+at the entity, looked at the database, determined the *difference* between the two,
+then generated the SQL necessary to *update* the database.
 
 Now, for step (2), run:
 
