@@ -8,8 +8,10 @@ chapters:
     - ago-filter
     - service-subscriber
     - repository
+    - custom-queries
     - query-reuse-tricks
     - new-fields
+    - smart-methods
     - updating-entity
     - fixtures
     - faker-fixtures
