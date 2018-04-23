@@ -5,7 +5,7 @@ for the [Stellar Development with Symfony 4](https://knpuniversity.com/screencas
 
 ## Setup
 
-If you've just downloaded the code, congratulations!
+If you've just downloaded the code, congratulations!!
 
 To get it working, follow these steps:
 
