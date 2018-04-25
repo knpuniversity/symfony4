@@ -4,7 +4,7 @@ Head back to the article show page because... there's a little, bitty problem th
 I just introduced. Using the `markdown` filter from KnpMarkdownBundle works... but
 the process is not being cached anymore. In the previous tutorial, we created a cool
 `MarkdownHelper` that used the markdown object from KnpMarkdownBundle, but added
-caching so that we don't need to re-parse the *same* markdown down content over and
+caching so that we don't need to re-parse the *same* markdown content over and
 over again.
 
 Basically, we want to be able to use a markdown filter in Twig, but we want
