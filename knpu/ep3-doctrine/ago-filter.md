@@ -4,7 +4,7 @@ Ok, I just *need* to show you something fun - it deals with Twig filters. See th
 4 hours ago? That's still hard coded! Find the show template and scroll up a bit
 to find it:
 
-[[[ code('ed02b803b0') ]]]
+[[[ code('36087076a8') ]]]
 
 There!
 
@@ -20,13 +20,13 @@ to *not* get angry.
 
 To fix that, pipe this through a `date` filter, and then say `Y-m-d`:
 
-[[[ code('126afb5a12') ]]]
+[[[ code('2785f6176a') ]]]
 
 Most filters do not have any arguments - most are like `cached_markdown`. But filters
 *are* allowed to have arguments. If the article is *not* published, just say that:
 unpublished:
 
-[[[ code('06b6f5c92f') ]]]
+[[[ code('3255edbee2') ]]]
 
 Love it! When we go back and refresh, published on March 20th. 
 
@@ -68,7 +68,7 @@ is setup for us, automatically.
 Ok, let's use that filter! Back in the template, replace the `date` filter with
 `|ago`:
 
-[[[ code('0a91a9b1a0') ]]]
+[[[ code('a55d8afc9e') ]]]
 
 That's it. Find the page, refresh and... perfect! 27 days ago. So much nicer!
 
