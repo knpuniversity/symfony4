@@ -2,23 +2,31 @@
 
 Ok, I just *need* to show you something fun - it deals with Twig filters. See this
 4 hours ago? That's still hard coded! Find the show template and scroll up a bit
-to find it. There!
+to find it:
+
+[[[ code('36087076a8') ]]]
+
+There!
 
 ## Printing a DateTime Object in Twig
 
-The `Article` entity has a `publishedAt` property, so let's get our act together
+The `Article` entity has a `$publishedAt` property, so let's get our act together
 and starting using that to print out the *real* date. Oh, but remember: the
-`publishedAt` field might be `null` if the article has *not* been published yet.
-So let's use the fancy ternary syntax to say:
-`{{ article.publishedAt }}`, then, if it *is* published, print `article.publishedAt`.
-But, `publishedAt` is a `DateTime` *object*... and you can't just run around printing
-`DateTime` objects, and expect PHP to *not* get angry.
+`$publishedAt` field might be `null` if the article has *not* been published yet.
+So let's use the fancy ternary syntax to say: `{{ article.publishedAt }}`, then,
+if it *is* published, print `article.publishedAt`. But, `publishedAt` is a `DateTime`
+*object*... and you can't just run around printing `DateTime` objects, and expect PHP
+to *not* get angry.
 
-To fix that, pipe this through a `date` filter, and then say `Y-m-d`.
+To fix that, pipe this through a `date` filter, and then say `Y-m-d`:
+
+[[[ code('2785f6176a') ]]]
 
 Most filters do not have any arguments - most are like `cached_markdown`. But filters
 *are* allowed to have arguments. If the article is *not* published, just say that:
-unpublished.
+unpublished:
+
+[[[ code('3255edbee2') ]]]
 
 Love it! When we go back and refresh, published on March 20th. 
 
@@ -58,9 +66,11 @@ is setup for us, automatically.
 ## Using the ago Filter
 
 Ok, let's use that filter! Back in the template, replace the `date` filter with
-`|ago`.
+`|ago`:
+
+[[[ code('a55d8afc9e') ]]]
 
 That's it. Find the page, refresh and... perfect! 27 days ago. So much nicer!
 
-Next, I want to talk a little bit more about the `AppExtension` twig extension because,
+Next, I want to talk a little bit more about the `AppExtension` Twig extension because,
 for a very subtle but important reason, it has a performance problem.
