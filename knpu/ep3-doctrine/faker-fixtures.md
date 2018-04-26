@@ -1,27 +1,100 @@
 # Using Faker for Seeding Data
 
-Coming soon...
+The problem *now* is that our dummy data is super duper boring. It's all the *same*
+stuff, over, and over again. Obviously, as good PHP developers, you guys know that
+we could put some random code here and there to spice things up. I mean, we already
+have a random `publishedAt` date.
 
-Ok, 
+But, instead of creating that random data by hand, there's a *much* cooler way.
+We're going to use a library called Faker. Google for Faker php to find the GitHub
+page from Francois Zaninotto. Fun fact, Fancois was the *original* documentation
+lead for Symfony 1. He's awesome.
 
-the problem is that our dummy data is super duper boring. It's all the same stuff. Obviously as good php developers, you guys know that we could put some random code in here to help. I mean we already have a random published that date. We can just do the same thing for everything else, but there's a much cooler way. We're going to use a library called faker google for faker php to finally get hub page from Francois. Zena, no tow the original symphony documentation, master fun fact. This library is all about creating dummy data. Check this out. You can use it to generate random names, random addresses, random texts, a random letters, numbers between this and that. Paragraphs, street codes. Telephone number is pretty much anything you can dream up. There's a function to generate random fake data. It's awesome. So let's get this installed. Copy the composer require line, move over and paste, but at the Dash, Dash Dem, because we're only going to be using this in our fixtures so we don't need an on production. 
+Anyways, this library is all about creating dummy data. Check it out: tou can use
+it to generate random names, random addresses, random text, random letters, numbers
+between this and that, paragraphs, street codes and pretty much anything else you
+can dream up! Basically, it's awesome.
 
-Cool. When that finishes, let's look back over it. How to use the library. OK, so we just need to say failure equals victor fakers, last factory, colon, colon, create. So let's go to our base fixture class and set this up in just one place. So I'll create a new protected faker property. And then down below I'll say this Arrow faker equals, and then I'll look for a class called factory. There's one from finger colon, colon create. Now we should also add some documentation above this. So I'm gonna hold, command or control clicking a factory in this apparently returns a generator. So let's go up here and say at Bart Generator and find one from finger. Perfect. This makes using fager. Awesome. All right, so let's do a couple of things. First. Right now we have a little random function to set to make most articles published. If you want, you can say this Arrow, faker, arrow, boolean, and then the first argument here is chance of getting true. So let's say 70 percent chance that we're going to publish the article. Awesome. Down here, this long string here to make a random function. Let's random time that's replaced that with this Arrow Arrow date time between say between negative 100 days and negative one days. 
+## Installing Faker
 
-Perfect. 
+So let's get this installed. Copy the composer require line, move over and paste.
+But, add the `--dev` at the end, because we're going going to use this library for
+our fixtures - it's not needed on production.
 
-Finally, down here for the heart count, same thing. We can use this Arrow figure arrow number between five and 100. So a couple of simple things that make life easier to make sure it works so far. Let's go back and run bin Console doctrine. Colon fixtures, cooling load. 
+```terminal-silent
+composer require fzaninotto/faker --dev
+```
 
-Yeah. 
+## Setting up Faker
 
-Yes. Awesome. No errors back on the browser. We can refresh and it's still works. Of course, the big problem is that the title is always the same. The author is always the same and the article image is also the same as you saw. Faker has methods that can generate random names, random titles, even things related to random images that will give you full you where else and we could use those, but I kind of want to keep the images, the names, the articles, and even the authors a little bit more realistic for our application. 
+When that finishes, head back to its docs so we can see how to use it. Ok: we just
+need to say `$faker = Faker\Factory::create()`. Open our `BaseFixture` class: let's
+setup Faker in this, central spot. Create a new protected `$faker` property. And
+down below, I'll say, `$this->faker =` and look for a class called `Factory` from
+Faker, and `::create()`.
 
-So here's what I'm going to do. Go back to article fixtures at the top. I'm actually going to paste in a couple of static properties. What I've done here is I've created three realistic article titles, three article images that exists in two realistic article authors, so instead of making completely random authors, images, titles, images, and authors, we're going to randomly choose from that list and faker even makes this easy, so our under under that title, we can say this Arrow, faker, arrow, random element, and just pass itself, Colin Colin article titles. We'll let it do the work of pulling out random element down here for set slug. We could continue to do this, but we can also say this Arrow, faker air arrow slug. The slug will be different than the article title, but honestly, who cares? And finally down here for the author will do the same thing. This arrow figure arrow, random elements. Pass that the article authors, and I'll copy that and we'll do the same thing for the image file. Name this time using article images. OK, awesome. All right, let's read. Let our fixtures one more time. No heirs 
+We should also add some PHPDoc above the property so PhpStorm knows what type of
+object it is. Hold Command - or Ctrl - and click the `create()` method: it's see
+what this returns exactly. Apparently, it returns a `Generator`.
 
-and refreshed. 
+Cool! Above the property, add `/** @var Generator */` - the one from `Faker`.
 
-Oh, so much better. 
+Perfect! Now, using Faker will be *super* easy.
 
-OK. 
+## Generating Fake Data
 
-Random article titles, random images in random names for us to actually play with. This seems like a small step, but having rich fake data that you can load in one command is going to increase the velocity that you create new features, so take advantage of it.
+Open `ArticleController`. We already have a little bit of randomness. But, Faker
+can even help here: change this to if `$this->faker->boolean()` where the first
+argument is the chance of getting true. Let's use 70: a 70% change that each article
+will be published.
+
+And below, we had this *long* expression to create a random date. *Now* say,
+`$this->dateTimeBetween('-100 days', '-1 days')`.
+
+I love it! Finally, down for `heartCount`, use another Faker function:
+`$this->faker->numberBetween(5, 10)`.
+
+After these few improvements, let's make sure it works! Find your terminal and run:
+
+```terminal
+php bin/console doctrine:fixtures:load
+```
+
+No errors and... back on the browser, it still works. Of course, the *big* problem
+is that the title, author and article images are *always* the same. Faker *does*
+have methods to generate random titles, random names and even random images. But,
+the *more* realistic your fake data is, the better it makes your life as a developer.
+
+## Generating Controller, Realistic Data
+
+So here's the plan: go back to `ArticleFixtures`. At the top, I'm going to paste
+in a few static properties.
+
+These represent some realistic article titles, article images that exist, and two
+realistic article authors. So instead of making *completely* random titles, authors
+and images, we'll randomly choose from this list.
+
+And Faker can *even* help us with this. For title, say `$this->faker->randomElement()`
+and pass `self::$articleTitles`. We'll let Faker do all the hard work.
+
+For `setSlug()`, we *could* continue to use this, but there is also a `$faker->slug`
+method. The slug will now be totally different than the article title, but honestly,
+who cares?
+
+Next, for author, do the same thing: `$this->faker->randomElement()` and pass this
+`self::$articleAuthors`. Copy that, and repeat it one more time for the `imageFile`,
+this time using `self::$articleImages`.
+
+Awesome! Let's reload our fixtures *one* more time:
+
+```terminal-silent
+php bin/console doctrine:fixtures:load
+```
+
+No errors! Find your browser and refresh. Oh, it's *so* much better.
+
+If creating nice, random data seemed like a small step, it's not! Having rich data
+that you can easily load will increase your velocity for creating new features and
+fixing bugs. It's *totally* worth it.
+
+Next! Let's install a *really* cool library with automatic slugging super-powers.

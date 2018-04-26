@@ -1,45 +1,102 @@
 # Sluggable & other Wonderful Behaviors
 
-Coming soon...
+We're now using Faker to generate a random slug for each dummy article. Thanks to
+this, back on the homepage, look at the URLs: they're *truly* random slugs: they
+have no relation to the title.
 
-Ok, 
+Really, the slug should be automatically generated from the title. What I mean is,
+if I set the Article's title, *something* should automatically convert that into
+a slug and make sure it's unique in the database. *We* shouldn't need to worry about
+doing that manually.
 
-we're using faker to set some fake data, including the slug. Thanks to this. 
+And... yea! There's a *really* cool library that can do this, and a *bunch* of other
+magic! Google for `StofDoctrineExtensionsBundle`, and then click into its documentation.
 
-Yeah, 
+Ok, let me explain something: there is a normal, PHP library called DoctrineExtension,
+which can add a lot of different *behaviors* to your entities, like sluggable, where
+you automatically generate the slug from some other field. Other behaviors include
+Loggable, where each change to an entity is tracked, or Blameable, where the user
+who created or updated an entity is automatically tracked.
 
-go to the homepage and look at the UW. Where else? They're just really random slugs, but they're not actually anything related to the title. Really. The slug should be automatically generated from the title, but I mean is if I set the articles title something else, it should automatically convert that to a slug and make sure that slug is unique in the database. 
+## Installing StofDoctrineExtensionsBundle
 
-Yeah. 
+This bundle - `StofDoctrineExtensionsBundle` - helps to *integrate* that library
+into a Symfony project. Copy the `composer require` line, find your terminal, and
+paste!
 
-Fortunately there was a really cool library that can do this and a lot of other magic google for it stuffed doctrine extensions bundle then click into its documentation, so here's the deal. There's a library called doctrine extensions, which adds lots of behaviors to your entities like slugable where you can automatically have a field set from another field. 
+```terminal-silent
+composer require stof/doctrine-extensions-bundle
+```
 
-Yeah, 
+While that's working, let's go look at the documentation. This is a *wonderful*
+library, but it's documentation is *confusing*. So, let's navigate to the parts
+we need. Scroll down to find a section called "Activate the extensions you want".
 
-or other things like log bold for tracking changes or blame. Able to figure out which user created or updated insti really cool stuff. These stuff, doctrine extensions bundle helps you integrate that into a symphony project, so let's copy the composer require line, move over and paste. While that's working, I want to go look at the documentation. This is a wonderful library, but it's documentation is very confusing, so I'm going to walk you through it a little bit. I'll scroll down here finally to a section called activate the extensions you want, so you saw the one that gives you a lot. There's lots of different possible behaviors, but for performance reasons, when you install this bundle, you need to explicitly say which behaviors you want, like timestamp a bull set to true. 
+As we saw, there are a *lot* of different, possible behaviors. But, for performance
+reasons, when you install this bundle, you need to *explicitly* say which behaviors
+you want, like `timestampable` set to true.
 
-Let's move over and Oh, interesting. You'll notice that the install stopped and it's asking us if we want to install a recipe from stuff. Doctrine extensions bundle. That's a little weird because we've been installing recipes. We've been assigned tons of recipes without this message, but it says the recipe for this package comes from the contrib repository, which is open to come. Community contributions. Symphony has to recipe repositories for recipes. A main one that's watched very closely in all of the recipes so far have been installed from that. There's also a contributor repository where the community can contribute recipes, but when you download a package that installs a recipe from that repository, it asks you to make sure that you want it and even asks, giving gives you a link so you can review the recipe. I'm going to say that we can. Yes. Permanently. And then that installs the recipe. 
+## Contrib Recipes
 
-Yeah. 
+Move back to the terminal to see if things are done. Oh, interesting! It stopeed!
+And it's asking us if we want to install the recipe for StofDoctrineExtensionsBundle.
+Hmm... that's a bit weird... because Flex has been installing recipes *without*
+asking us for a *long* time now!
 
-One of the things the recipe did is add a new config packages stuff, doctrine extensions, dot yammel file. This is where we need to enable the extensions we want. So we want slugable. So if you look at the example here we're going to do is say the faults slugable true. The configuration is a little ugly. Default is replying is referring to the default entity manager. Some projects can have multiple ads, multiple entity managers, but mostly just have the default one. 
+But! It says that the recipe for *this* package comes from the "contrib"
+repository, which is open to community contributions. Symfony has *two* repositories
+where recipes can live. The main repository is closely controlled for quality.
+The second - the "contrib" repository - has some basic checks, but the community
+can freely contribute recipes. For security reasons, when you download a package
+that installs a recipe from *that* repository, it will ask you to make sure you
+want to install it. And, there's a link if you want to review the recipe.
 
-Yeah. 
+I'm going to say yes, permanently. *Now* the recipe installs.
 
-So as soon as we do this, nothing happens yet, but now the library is looking in our project for entities that want to have slumps on them to actually activate this. Go into your article entity. 
+## Configuring Sluggable
 
-Yeah. 
+Thanks to the recipe, we now have a new `config/packages/stof_doctrine_extensions.yaml`
+file. *This* is where we need to enable the extensions we want. We want `sluggable`.
+We can use the example in the docs as a guide. Add `orm`, then `default`. The `default`
+is referring to the *default* entity manager... because some projects can actually
+have *multiple* entity managers. Then, `sluggable: true`.
 
-And find your slug field. 
+As *soon* as we do this... nothing will happen. The bundle *is* now looking for
+slug fields on our entities. But, we need a *little* bit more config to activate
+it for `Article`. Open that class and find the `slug` property.
 
-Great. 
+But now, go *back* to the documentation. Another confusing this about this library
+is that the documentation is split in two places: this page shows you how to
+configure the *bundle*... but *most* of the docs are in the *library*. Scroll up
+and find the [DoctrineExtensions Documentation](https://github.com/Atlantic18/DoctrineExtensions/tree/v2.4.x/doc).
+link.
 
-And actually I'm going to go show you the documentation for this. So another confusing thing about this library is the documentation for this bundle shows you just the configuration, but if you want to actually know how to more information about the individual features, you need to open another link to the actual doctrine extensions library. So this is the library that gives you those features and it has more documentation about all the features. So let's click slugable. It's tells us down here how to actually use the feature by adding this slug annotation above our slug field aren't slug field, I'll say at slug it tapped out of complaints that and we'll say fields equals curly brace, title, title, and that's it. Back in article fixtures. We no longer need to set the slug right now. Let's go over and let's reload our fixtures. Bin Console doctrine, fixtures, load. 
+Awesome. Click into `sluggable`. Down a bit... it tells us that to use this feature,
+we need to an `@Gedmo\Slug()` annotation above the slug field. Let's do it! Use
+`@Slug`, then `fields={"title"}`.
 
-OK, 
+That is it! Back in `ArticleFixtures`, we no longer need to set the slug manually.
+And now, find your terminal, and load those fixtures!
 
-go back to our homepage, refreshed and perfect. Look, now that you were a really, really clean based off of the title, that as an added benefit, you'll notice that sometimes as a number on the end, and that's that comes from, that's the slugable behavior. Guaranteeing that there's a unique slug, so in this case there's already that same slug, dash one dash two deaths, three desks for dash five in other places. By the way, the way this isn't magic works behind the scenes is from doctors, event system for Google, for symphony doctrine, event subscriber. You'll find a page on the symphony documentation that talks about this. We're not going to create our own event subscriber, but it's a really, really powerful idea. So in this example, they talk about maybe you have a search system and every time you save an entity you need to update these search index. 
+```terminal
+php bin/console doctrine:fixtures:load
+```
 
-Yeah. 
+No errors! That's a good sign, because the `slug` column *is* required in the
+database. Go back to the homepage and... refresh! Brilliant! The slug is clean
+and *clearly* based off of the title! As an added benefit, look at how some of
+these have a number on the end. The Sluggable behavior is making sure that each
+slug is *unique*. So, if a slug already exists in the database, it adds a `-1`
+, `-2`, `-3`, etc.
 
-To do that. And you create something called a subscriber and then you can actually listen on different events like post persistent post update. So in this case, this would allow you to execute code after he entity in the system is either created or updated behind the scenes. This is how slugable works to do its magic. Yeah.
+Side note: the magic that makes this feature is built on top of Doctrine's
+*event* system. Google for "Doctrine Event Subscriber". You'll find a page on the
+Symfony documentation that talks about this very important topic. We're not going
+to create our own event subscriber, but it's a really powerful idea. In this
+example, they talk about how you could use the event system to automatically
+update a search index, each time any entity is created or updated.
+
+If you ever need to do something automatically when an entity is added, updated
+or removed, think of this system.
+
+Next, let's add one last bit of magic: timestampable!
