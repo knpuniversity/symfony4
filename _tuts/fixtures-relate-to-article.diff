@@ -1,0 +1,20 @@
+diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
+index 88985f6..08e1f70 100644
+--- a/src/DataFixtures/CommentFixture.php
++++ b/src/DataFixtures/CommentFixture.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\DataFixtures;
+ 
++use App\Entity\Article;
+ use App\Entity\Comment;
+ use Doctrine\Common\Persistence\ObjectManager;
+ 
+@@ -15,6 +16,7 @@ class CommentFixture extends BaseFixture
+             );
+ 
+             $comment->setAuthorName($this->faker->name);
++            $comment->setArticle($this->getReference(Article::class.'_0'));
+         });
+ 
+         $manager->flush();

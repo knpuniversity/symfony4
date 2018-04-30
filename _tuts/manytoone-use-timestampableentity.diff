@@ -1,0 +1,20 @@
+diff --git a/src/Entity/Comment.php b/src/Entity/Comment.php
+index b080adb..cc6b85d 100644
+--- a/src/Entity/Comment.php
++++ b/src/Entity/Comment.php
+@@ -3,12 +3,15 @@
+ namespace App\Entity;
+ 
+ use Doctrine\ORM\Mapping as ORM;
++use Gedmo\Timestampable\Traits\TimestampableEntity;
+ 
+ /**
+  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
+  */
+ class Comment
+ {
++    use TimestampableEntity;
++
+     /**
+      * @ORM\Id()
+      * @ORM\GeneratedValue()

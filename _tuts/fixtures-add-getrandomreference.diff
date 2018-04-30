@@ -1,0 +1,51 @@
+diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
+index a5e12fc..191afe9 100644
+--- a/src/DataFixtures/BaseFixture.php
++++ b/src/DataFixtures/BaseFixture.php
+@@ -15,6 +15,8 @@ abstract class BaseFixture extends Fixture
+     /** @var Generator */
+     protected $faker;
+ 
++    private $referencesIndex = [];
++
+     abstract protected function loadData(ObjectManager $manager);
+ 
+     public function load(ObjectManager $manager)
+@@ -36,4 +38,24 @@ abstract class BaseFixture extends Fixture
+             $this->addReference($className . '_' . $i, $entity);
+         }
+     }
++
++    protected function getRandomReference(string $className) {
++        if (!isset($this->referencesIndex[$className])) {
++            $this->referencesIndex[$className] = [];
++
++            foreach ($this->referenceRepository->getReferences() as $key => $ref) {
++                if (strpos($key, $className.'_') === 0) {
++                    $this->referencesIndex[$className][] = $key;
++                }
++            }
++        }
++
++        if (empty($this->referencesIndex[$className])) {
++            throw new \Exception(sprintf('Cannot find any references for class "%s"', $className));
++        }
++
++        $randomReferenceKey = $this->faker->randomElement($this->referencesIndex[$className]);
++
++        return $this->getReference($randomReferenceKey);
++    }
+ }
+diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
+index e51ad46..e927372 100644
+--- a/src/DataFixtures/CommentFixture.php
++++ b/src/DataFixtures/CommentFixture.php
+@@ -16,7 +16,7 @@ class CommentFixture extends BaseFixture
+             );
+ 
+             $comment->setAuthorName($this->faker->name);
+-            $comment->setArticle($this->getReference(Article::class.'_'.$this->faker->numberBetween(0, 9)));
++            $comment->setArticle($this->getRandomReference(Article::class));
+         });
+ 
+         $manager->flush();

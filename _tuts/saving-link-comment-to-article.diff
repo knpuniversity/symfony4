@@ -1,0 +1,12 @@
+diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
+index 091a265..674366d 100644
+--- a/src/DataFixtures/ArticleFixture.php
++++ b/src/DataFixtures/ArticleFixture.php
+@@ -62,6 +62,7 @@ EOF
+             $comment1 = new Comment();
+             $comment1->setAuthorName('Mike Ferengi');
+             $comment1->setContent('I ate a normal rock once. It did NOT taste like bacon!');
++            $comment1->setArticle($article);
+             $manager->persist($comment1);
+         });
+ 

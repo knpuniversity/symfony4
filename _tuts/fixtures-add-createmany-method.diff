@@ -1,14 +1,8 @@
-diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
-index 72c2ab8..d4bb2ab 100644
---- a/src/DataFixtures/AppFixture.php
-+++ b/src/DataFixtures/AppFixture.php
-@@ -4,15 +4,16 @@ namespace App\DataFixtures;
- 
- use App\Entity\Article;
- use Doctrine\Common\Persistence\ObjectManager;
-+use Doctrine\ORM\EntityManagerInterface;
- 
- class AppFixture extends BaseFixture
+diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
+index 6513c1e..3fe0f73 100644
+--- a/src/DataFixtures/ArticleFixture.php
++++ b/src/DataFixtures/ArticleFixture.php
+@@ -9,10 +9,10 @@ class ArticleFixture extends BaseFixture
  {
      public function loadData(ObjectManager $manager)
      {
@@ -23,7 +17,7 @@ index 72c2ab8..d4bb2ab 100644
  Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
  lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
  labore minim pork belly spare ribs cupim short loin in. Elit exercitation eiusmod dolore cow
-@@ -30,19 +31,18 @@ strip steak pork belly aliquip capicola officia. Labore deserunt esse chicken lo
+@@ -30,19 +30,18 @@ strip steak pork belly aliquip capicola officia. Labore deserunt esse chicken lo
  cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim capicola irure pancetta chuck
  fugiat.
  EOF

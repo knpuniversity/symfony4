@@ -1,0 +1,27 @@
+diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
+index e527eb7..88985f6 100644
+--- a/src/DataFixtures/CommentFixture.php
++++ b/src/DataFixtures/CommentFixture.php
+@@ -2,14 +2,20 @@
+ 
+ namespace App\DataFixtures;
+ 
++use App\Entity\Comment;
+ use Doctrine\Common\Persistence\ObjectManager;
+ 
+ class CommentFixture extends BaseFixture
+ {
+     protected function loadData(ObjectManager $manager)
+     {
+-        // $product = new Product();
+-        // $manager->persist($product);
++        $this->createMany(Comment::class, 100, function(Comment $comment) {
++            $comment->setContent(
++                $this->faker->boolean ? $this->faker->paragraph : $this->faker->sentences(2, true)
++            );
++
++            $comment->setAuthorName($this->faker->name);
++        });
+ 
+         $manager->flush();
+     }

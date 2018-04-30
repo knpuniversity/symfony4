@@ -14,7 +14,7 @@ index ceef5fd..01b48ec 100644
 +DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 +###< doctrine/doctrine-bundle ###
 diff --git a/README.md b/README.md
-index bb42f6b..011751f 100644
+index 58be06d..6379099 100644
 --- a/README.md
 +++ b/README.md
 @@ -21,6 +21,28 @@ composer install

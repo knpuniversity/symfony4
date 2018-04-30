@@ -1,0 +1,12 @@
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index bcf7631..061c29e 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -61,6 +61,7 @@
+                                 <img class="comment-img rounded-circle" src="{{ asset('images/alien-profile.png') }}">
+                                 <div class="comment-container d-inline-block pl-3 align-top">
+                                     <span class="commenter-name">{{ comment.authorName }}</span>
++                                    <small>about {{ comment.createdAt|ago }}</small>
+                                     <br>
+                                     <span class="comment"> {{ comment.content }}</span>
+                                     <p><a href="#">Reply</a></p>

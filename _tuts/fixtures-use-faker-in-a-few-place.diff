@@ -1,8 +1,8 @@
-diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
-index d4bb2ab..e405fe6 100644
---- a/src/DataFixtures/AppFixture.php
-+++ b/src/DataFixtures/AppFixture.php
-@@ -34,12 +34,12 @@ EOF
+diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
+index 3fe0f73..2ce1d53 100644
+--- a/src/DataFixtures/ArticleFixture.php
++++ b/src/DataFixtures/ArticleFixture.php
+@@ -33,12 +33,12 @@ EOF
              );
  
              // publish most articles

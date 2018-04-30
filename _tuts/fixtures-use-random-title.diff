@@ -1,16 +1,10 @@
-diff --git a/src/DataFixtures/AppFixture.php b/src/DataFixtures/AppFixture.php
-index e405fe6..dca5ced 100644
---- a/src/DataFixtures/AppFixture.php
-+++ b/src/DataFixtures/AppFixture.php
-@@ -3,16 +3,34 @@
- namespace App\DataFixtures;
+diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
+index 2ce1d53..f79571e 100644
+--- a/src/DataFixtures/ArticleFixture.php
++++ b/src/DataFixtures/ArticleFixture.php
+@@ -7,11 +7,28 @@ use Doctrine\Common\Persistence\ObjectManager;
  
- use App\Entity\Article;
-+use Doctrine\Common\Inflector\Inflector;
- use Doctrine\Common\Persistence\ObjectManager;
- use Doctrine\ORM\EntityManagerInterface;
- 
- class AppFixture extends BaseFixture
+ class ArticleFixture extends BaseFixture
  {
 +    private static $articleTitles = [
 +        'Why Asteroids Taste Like Bacon',
@@ -39,7 +33,7 @@ index e405fe6..dca5ced 100644
                  ->setContent(<<<EOF
  Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
  lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
-@@ -38,9 +56,9 @@ EOF
+@@ -37,9 +54,9 @@ EOF
                  $article->setPublishedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
              }
  

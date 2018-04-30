@@ -679,7 +679,132 @@
             "id": "extensions-add-timestampabletrait",
             "name": "Extensions: Add TimestampableTrait",
             "description": null
+        },
+        {
+            "id": "pre-ep4-update-deps",
+            "name": "PRE_EP4: Update deps",
+            "description": null
+        },
+        {
+            "id": "manytoone-generate-comment-entity",
+            "name": "ManyToOne: Generate Comment entity",
+            "description": null
+        },
+        {
+            "id": "manytoone-use-timestampableentity",
+            "name": "ManyToOne: Use TimestampableEntity",
+            "description": null
+        },
+        {
+            "id": "manytoone-make-migration",
+            "name": "ManyToOne: make:migration",
+            "description": null
+        },
+        {
+            "id": "manytoone-generate-relation",
+            "name": "ManyToOne: Generate relation",
+            "description": null
+        },
+        {
+            "id": "saving-create-comment",
+            "name": "Saving: Create Comment",
+            "description": null
+        },
+        {
+            "id": "saving-link-comment-to-article",
+            "name": "Saving: Link Comment to Article",
+            "description": null
+        },
+        {
+            "id": "saving-add-a-2nd-comment",
+            "name": "Saving: Add a 2nd Comment",
+            "description": null
+        },
+        {
+            "id": "fetch-query-for-comments-with-findby",
+            "name": "Fetch: Query for Comments with findBy",
+            "description": null
+        },
+        {
+            "id": "fetch-use-article-getcomments",
+            "name": "Fetch: Use $article->getComments()",
+            "description": null
+        },
+        {
+            "id": "fetch-loop-dump",
+            "name": "Fetch: Loop & dump",
+            "description": null
+        },
+        {
+            "id": "fetch-render-comments-in-template",
+            "name": "Fetch: Render comments in template",
+            "description": null
+        },
+        {
+            "id": "fetch-print-comment-date",
+            "name": "Fetch: Print comment date",
+            "description": null
+        },
+        {
+            "id": "owning-inverse-try-inverse-side",
+            "name": "Owning\/Inverse: Try inverse side",
+            "description": null
+        },
+        {
+            "id": "owning-inverse-don-t-sync-owning",
+            "name": "Owning\/Inverse: Don't sync owning",
+            "description": null
+        },
+        {
+            "id": "owning-inverse-original-code",
+            "name": "Owning\/Inverse: Original code",
+            "description": null
+        },
+        {
+            "id": "fixtures-remove-comment-code",
+            "name": "Fixtures: Remove Comment code",
+            "description": null
+        },
+        {
+            "id": "fixtures-generate-commentfixture",
+            "name": "Fixtures: Generate CommentFixture",
+            "description": null
+        },
+        {
+            "id": "fixtures-extend-base-class",
+            "name": "Fixtures: Extend base class",
+            "description": null
+        },
+        {
+            "id": "fixtures-mostly-create-100-comments",
+            "name": "Fixtures: Mostly create 100 Comments",
+            "description": null
+        },
+        {
+            "id": "fixtures-relate-to-article",
+            "name": "Fixtures: Relate to Article",
+            "description": null
+        },
+        {
+            "id": "fixtures-relate-to-random-article",
+            "name": "Fixtures: Relate to random Article",
+            "description": null
+        },
+        {
+            "id": "fixtures-add-getrandomreference",
+            "name": "Fixtures: Add getRandomReference()",
+            "description": null
+        },
+        {
+            "id": "fixture-ordering-create-a0commentfixture",
+            "name": "Fixture Ordering: Create A0CommentFixture",
+            "description": null
+        },
+        {
+            "id": "fixture-ordering-rename-back",
+            "name": "Fixture Ordering: Rename back",
+            "description": null
         }
     ],
-    "sha": "0062f94d7103435e49870148a009d59843ddcd4f"
+    "sha": "94f987b22be87b1a2c84c1ceab1ba53e7da6fa01"
 }
