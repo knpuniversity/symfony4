@@ -1,0 +1,41 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index a095e90..80adc8b 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -177,6 +177,14 @@ class Article
+         return $this->comments;
+     }
+ 
++    /**
++     * @return Collection|Comment[]
++     */
++    public function getNonDeletedComments(): Collection
++    {
++        return $this->comments;
++    }
++
+     public function addComment(Comment $comment): self
+     {
+         if (!$this->comments->contains($comment)) {
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index bb1a487..5f893ad 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -39,7 +39,7 @@
+                 </div>
+                 <div class="row">
+                     <div class="col-sm-12">
+-                        <h3><i class="pr-3 fa fa-comment"></i>{{ article.comments|length }} Comments</h3>
++                        <h3><i class="pr-3 fa fa-comment"></i>{{ article.nonDeletedComments|length }} Comments</h3>
+                         <hr>
+ 
+                         <div class="row mb-5">
+@@ -55,7 +55,7 @@
+                             </div>
+                         </div>
+ 
+-                        {% for comment in article.comments %}
++                        {% for comment in article.nonDeletedComments %}
+                         <div class="row">
+                             <div class="col-sm-12">
+                                 <img class="comment-img rounded-circle" src="{{ asset('images/alien-profile.png') }}">

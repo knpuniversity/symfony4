@@ -1,8 +1,8 @@
 diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/A0CommentFixture.php
-similarity index 72%
+similarity index 75%
 rename from src/DataFixtures/CommentFixture.php
 rename to src/DataFixtures/A0CommentFixture.php
-index e927372..5c900de 100644
+index 4a4dfd3..8f72d05 100644
 --- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/A0CommentFixture.php
 @@ -4,9 +4,10 @@ namespace App\DataFixtures;
@@ -17,7 +17,7 @@ index e927372..5c900de 100644
  {
      protected function loadData(ObjectManager $manager)
      {
-@@ -21,4 +22,9 @@ class CommentFixture extends BaseFixture
+@@ -22,4 +23,9 @@ class CommentFixture extends BaseFixture
  
          $manager->flush();
      }

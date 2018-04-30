@@ -1,0 +1,12 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index b1e051c..857501f 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -60,6 +60,7 @@ class Article
+ 
+     /**
+      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article")
++     * @ORM\OrderBy({"createdAt" = "DESC"})
+      */
+     private $comments;
+ 

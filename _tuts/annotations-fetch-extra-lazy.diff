@@ -1,0 +1,13 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 857501f..a095e90 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -59,7 +59,7 @@ class Article
+     private $imageFilename;
+ 
+     /**
+-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article")
++     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article", fetch="EXTRA_LAZY")
+      * @ORM\OrderBy({"createdAt" = "DESC"})
+      */
+     private $comments;

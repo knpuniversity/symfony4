@@ -804,7 +804,57 @@
             "id": "fixture-ordering-rename-back",
             "name": "Fixture Ordering: Rename back",
             "description": null
+        },
+        {
+            "id": "annotations-orderby",
+            "name": "Annotations: @OrderBy",
+            "description": null
+        },
+        {
+            "id": "annotations-comment-count-on-homepage",
+            "name": "Annotations: Comment count on homepage",
+            "description": null
+        },
+        {
+            "id": "annotations-fetch-extra-lazy",
+            "name": "Annotations: fetch=EXTRA_LAZY",
+            "description": null
+        },
+        {
+            "id": "collections-add-comment-isdeleted",
+            "name": "Collections: Add Comment.isDeleted",
+            "description": null
+        },
+        {
+            "id": "collections-default-isdeleted-to-false",
+            "name": "Collections: Default isDeleted to false",
+            "description": null
+        },
+        {
+            "id": "collections-make-some-comments-deleted",
+            "name": "Collections: Make some comments deleted",
+            "description": null
+        },
+        {
+            "id": "collections-add-article-getnondeletedcomments",
+            "name": "Collections: Add Article.getNonDeletedComments()",
+            "description": null
+        },
+        {
+            "id": "collections-use-criteria",
+            "name": "Collections: Use Criteria",
+            "description": null
+        },
+        {
+            "id": "collections-organize-into-repo",
+            "name": "Collections: Organize into repo",
+            "description": null
+        },
+        {
+            "id": "collections-update-homepage-count",
+            "name": "Collections: Update homepage count",
+            "description": null
         }
     ],
-    "sha": "94f987b22be87b1a2c84c1ceab1ba53e7da6fa01"
+    "sha": "35b11c59834aee74adda181dd9dd623c65c15e42"
 }

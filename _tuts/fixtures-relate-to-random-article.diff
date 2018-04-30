@@ -1,11 +1,11 @@
 diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
-index 08e1f70..e51ad46 100644
+index 75e01dc..633d98c 100644
 --- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/CommentFixture.php
-@@ -16,7 +16,7 @@ class CommentFixture extends BaseFixture
-             );
+@@ -17,7 +17,7 @@ class CommentFixture extends BaseFixture
  
              $comment->setAuthorName($this->faker->name);
+             $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
 -            $comment->setArticle($this->getReference(Article::class.'_0'));
 +            $comment->setArticle($this->getReference(Article::class.'_'.$this->faker->numberBetween(0, 9)));
          });

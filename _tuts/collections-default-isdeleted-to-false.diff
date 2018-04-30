@@ -1,0 +1,13 @@
+diff --git a/src/Entity/Comment.php b/src/Entity/Comment.php
+index 4d16e2e..a346521 100644
+--- a/src/Entity/Comment.php
++++ b/src/Entity/Comment.php
+@@ -38,7 +38,7 @@ class Comment
+     /**
+      * @ORM\Column(type="boolean")
+      */
+-    private $isDeleted;
++    private $isDeleted = false;
+ 
+     public function getId()
+     {
