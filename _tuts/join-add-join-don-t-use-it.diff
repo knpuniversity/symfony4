@@ -1,0 +1,14 @@
+diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
+index 29b9a7c..82bc217 100644
+--- a/src/Repository/CommentRepository.php
++++ b/src/Repository/CommentRepository.php
+@@ -34,7 +34,8 @@ class CommentRepository extends ServiceEntityRepository
+      */
+     public function findAllWithSearch(?string $term)
+     {
+-        $qb = $this->createQueryBuilder('c');
++        $qb = $this->createQueryBuilder('c')
++            ->innerJoin('c.article', 'a');
+ 
+         if ($term) {
+             $qb->andWhere('c.content LIKE :term OR c.authorName LIKE :term')

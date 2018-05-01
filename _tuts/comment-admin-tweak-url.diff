@@ -1,0 +1,13 @@
+diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
+index c993e99..e6971cf 100644
+--- a/src/Controller/CommentAdminController.php
++++ b/src/Controller/CommentAdminController.php
+@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ class CommentAdminController extends Controller
+ {
+     /**
+-     * @Route("/comment/admin", name="comment_admin")
++     * @Route("/admin/comment", name="comment_admin")
+      */
+     public function index()
+     {

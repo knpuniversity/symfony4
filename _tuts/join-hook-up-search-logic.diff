@@ -1,0 +1,69 @@
+diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
+index 75c8273..de6290c 100644
+--- a/src/Controller/CommentAdminController.php
++++ b/src/Controller/CommentAdminController.php
+@@ -3,6 +3,7 @@
+ namespace App\Controller;
+ 
+ use App\Repository\CommentRepository;
++use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ 
+@@ -11,9 +12,10 @@ class CommentAdminController extends Controller
+     /**
+      * @Route("/admin/comment", name="comment_admin")
+      */
+-    public function index(CommentRepository $repository)
++    public function index(CommentRepository $repository, Request $request)
+     {
+-        $comments = $repository->findBy([], ['createdAt' => 'DESC']);
++        $q = $request->query->get('q');
++        $comments = $repository->findAllWithSearch($q);
+ 
+         return $this->render('comment_admin/index.html.twig', [
+             'comments' => $comments,
+diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
+index 5963fbb..29b9a7c 100644
+--- a/src/Repository/CommentRepository.php
++++ b/src/Repository/CommentRepository.php
+@@ -28,6 +28,27 @@ class CommentRepository extends ServiceEntityRepository
+         ;
+     }
+ 
++    /**
++     * @param string|null $term
++     * @return Comment[]
++     */
++    public function findAllWithSearch(?string $term)
++    {
++        $qb = $this->createQueryBuilder('c');
++
++        if ($term) {
++            $qb->andWhere('c.content LIKE :term OR c.authorName LIKE :term')
++                ->setParameter('term', '%' . $term . '%')
++            ;
++        }
++
++        return $qb
++            ->orderBy('c.createdAt', 'DESC')
++            ->getQuery()
++            ->getResult()
++        ;
++    }
++
+ //    /**
+ //     * @return Comment[] Returns an array of Comment objects
+ //     */
+diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
+index 29234b2..3b30379 100644
+--- a/templates/comment_admin/index.html.twig
++++ b/templates/comment_admin/index.html.twig
+@@ -14,6 +14,7 @@
+                     <input type="text"
+                            name="q"
+                            class="form-control"
++                           value="{{ app.request.query.get('q') }}"
+                            placeholder="Search..."
+                     >
+                     <div class="input-group-append">

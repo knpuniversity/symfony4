@@ -1,0 +1,26 @@
+diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
+index 1ef5bf6..9f6dfec 100644
+--- a/templates/comment_admin/index.html.twig
++++ b/templates/comment_admin/index.html.twig
+@@ -2,6 +2,8 @@
+ 
+ {% block title %}Comment Admin{% endblock %}
+ 
++{% block content_class %}{{ parent() }} show-article-container-border-green{% endblock %}
++
+ {% block content_body %}
+     <div class="row">
+         <div class="col-sm-12">
+diff --git a/templates/content_base.html.twig b/templates/content_base.html.twig
+index 9d787ff..01302b6 100644
+--- a/templates/content_base.html.twig
++++ b/templates/content_base.html.twig
+@@ -4,7 +4,7 @@
+     <div class="container">
+         <div class="row">
+             <div class="col-sm-12">
+-                <div class="show-article-container p-3 mt-4">
++                <div class="{% block content_class %}show-article-container p-3 mt-4{% endblock %}">
+                     {% block content_body %}{% endblock %}
+                 </div>
+             </div>

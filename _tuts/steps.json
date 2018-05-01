@@ -686,6 +686,11 @@
             "description": null
         },
         {
+            "id": "pre-ep4-css-tweaks",
+            "name": "PRE_EP4: CSS tweaks",
+            "description": null
+        },
+        {
             "id": "manytoone-generate-comment-entity",
             "name": "ManyToOne: Generate Comment entity",
             "description": null
@@ -854,7 +859,77 @@
             "id": "collections-update-homepage-count",
             "name": "Collections: Update homepage count",
             "description": null
+        },
+        {
+            "id": "comment-admin-make-admincommentcontroller",
+            "name": "Comment Admin: Make AdminCommentController",
+            "description": null
+        },
+        {
+            "id": "comment-admin-tweak-url",
+            "name": "Comment Admin: Tweak URL",
+            "description": null
+        },
+        {
+            "id": "comment-admin-add-template-markup",
+            "name": "Comment Admin: Add template markup",
+            "description": null
+        },
+        {
+            "id": "comment-admin-content-base-html-twig-template",
+            "name": "Comment Admin: content_base.html.twig template",
+            "description": null
+        },
+        {
+            "id": "comment-admin-add-custom-base-css-class",
+            "name": "Comment Admin: Add custom base CSS class",
+            "description": null
+        },
+        {
+            "id": "comment-admin-print-table",
+            "name": "Comment Admin: Print table",
+            "description": null
+        },
+        {
+            "id": "join-add-search-form",
+            "name": "Join: Add search form",
+            "description": null
+        },
+        {
+            "id": "join-hook-up-search-logic",
+            "name": "Join: Hook up search logic",
+            "description": null
+        },
+        {
+            "id": "join-add-join-don-t-use-it",
+            "name": "Join: Add join, don't use it",
+            "description": null
+        },
+        {
+            "id": "join-use-join-in-where",
+            "name": "Join: Use join in where",
+            "description": null
+        },
+        {
+            "id": "n-1-use-addselect-on-join",
+            "name": "N+1: Use addSelect on join",
+            "description": null
+        },
+        {
+            "id": "pager-install-knppaginatorbundle",
+            "name": "Pager: Install KnpPaginatorBundle",
+            "description": null
+        },
+        {
+            "id": "pager-use-pagination",
+            "name": "Pager: Use pagination",
+            "description": null
+        },
+        {
+            "id": "pager-bootstrap4-theme",
+            "name": "Pager: Bootstrap4 theme",
+            "description": null
         }
     ],
-    "sha": "35b11c59834aee74adda181dd9dd623c65c15e42"
+    "sha": "165a3c9721c1d149a6c696a216e7a43e37832655"
 }
