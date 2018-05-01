@@ -1,5 +1,5 @@
 diff --git a/public/css/styles.css b/public/css/styles.css
-index fa8a899..2ec2316 100644
+index fa8a899..ffdebfe 100644
 --- a/public/css/styles.css
 +++ b/public/css/styles.css
 @@ -170,6 +170,11 @@ html {height:100%}
@@ -14,6 +14,27 @@ index fa8a899..2ec2316 100644
  .show-article-img {
      width: 250px;
      height: auto;
+@@ -203,6 +208,10 @@ html {height:100%}
+     font-size: 1.5em;
+ }
+ 
++.comment-container {
++    max-width: 600px;
++}
++
+ .comment-img {
+     width: 50px;
+     height: auto;
+@@ -221,6 +230,9 @@ html {height:100%}
+     .comment-form {
+         min-width: 260px;
+     }
++    .comment-container {
++        max-width: 280px;
++    }
+ }
+ 
+ 
 diff --git a/templates/base.html.twig b/templates/base.html.twig
 index aa5fab5..b1db221 100644
 --- a/templates/base.html.twig

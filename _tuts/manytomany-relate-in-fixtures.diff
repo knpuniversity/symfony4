@@ -1,0 +1,57 @@
+diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
+index c2db15d..3c14ce9 100644
+--- a/src/DataFixtures/ArticleFixture.php
++++ b/src/DataFixtures/ArticleFixture.php
+@@ -4,9 +4,11 @@ namespace App\DataFixtures;
+ 
+ use App\Entity\Article;
+ use App\Entity\Comment;
++use App\Entity\Tag;
++use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+ use Doctrine\Common\Persistence\ObjectManager;
+ 
+-class ArticleFixture extends BaseFixture
++class ArticleFixture extends BaseFixture implements DependentFixtureInterface
+ {
+     private static $articleTitles = [
+         'Why Asteroids Taste Like Bacon',
+@@ -58,8 +60,20 @@ EOF
+                 ->setHeartCount($this->faker->numberBetween(5, 100))
+                 ->setImageFilename($this->faker->randomElement(self::$articleImages))
+             ;
++
++            $tags = $this->getRandomReferences(Tag::class, $this->faker->numberBetween(0, 5));
++            foreach ($tags as $tag) {
++                $article->addTag($tag);
++            }
+         });
+ 
+         $manager->flush();
+     }
++
++    public function getDependencies()
++    {
++        return [
++            TagFixture::class,
++        ];
++    }
+ }
+diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
+index 191afe9..ed8d012 100644
+--- a/src/DataFixtures/BaseFixture.php
++++ b/src/DataFixtures/BaseFixture.php
+@@ -58,4 +58,14 @@ abstract class BaseFixture extends Fixture
+ 
+         return $this->getReference($randomReferenceKey);
+     }
++
++    protected function getRandomReferences(string $className, int $count)
++    {
++        $references = [];
++        while (count($references) < $count) {
++            $references[] = $this->getRandomReference($className);
++        }
++
++        return $references;
++    }
+ }

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index ecf348f..d916cf9 100644
+index d4e69df..ba8d7ee 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -11,15 +11,15 @@ index ecf348f..d916cf9 100644
          "nexylan/slack-bundle": "^2.0",
          "php-http/guzzle6-adapter": "^1.1",
 diff --git a/composer.lock b/composer.lock
-index 72ff725..3fb406c 100644
+index 82b53ca..804a23b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "29b9a750d47e2dfd2415ac96cd3844b7",
-+    "content-hash": "93701a1a64d1c5b0d3ea6ed9ca92ec16",
+-    "content-hash": "9520a5fec3f1637da421d734b004dd5f",
++    "content-hash": "52ad1b2a0aab3cfc6c407850d6d56631",
      "packages": [
          {
              "name": "behat/transliterator",
@@ -183,7 +183,7 @@ index c60e848..80c373b 100644
 +    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 7f1bea3..3f4334c 100644
+index 16f9b6b..f4c9048 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -104,9 +104,15 @@

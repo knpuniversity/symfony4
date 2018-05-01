@@ -891,6 +891,16 @@
             "description": null
         },
         {
+            "id": "twig-extension-install-twig-extensions",
+            "name": "Twig Extension: Install twig-extensions",
+            "description": null
+        },
+        {
+            "id": "twig-extension-enable-use-truncate",
+            "name": "Twig Extension: Enable & use truncate",
+            "description": null
+        },
+        {
             "id": "join-add-search-form",
             "name": "Join: Add search form",
             "description": null
@@ -929,7 +939,42 @@
             "id": "pager-bootstrap4-theme",
             "name": "Pager: Bootstrap4 theme",
             "description": null
+        },
+        {
+            "id": "manytomany-make-entity-tag",
+            "name": "ManyToMany: make:entity Tag",
+            "description": null
+        },
+        {
+            "id": "manytomany-update-tag",
+            "name": "ManyToMany: Update Tag",
+            "description": null
+        },
+        {
+            "id": "manytomany-make-fixtures-for-tag",
+            "name": "ManyToMany: make:fixtures for Tag",
+            "description": null
+        },
+        {
+            "id": "manytomany-fill-in-tagfixture",
+            "name": "ManyToMany: Fill in TagFixture",
+            "description": null
+        },
+        {
+            "id": "manytomany-generate-manytomany",
+            "name": "ManyToMany: Generate ManyToMany",
+            "description": null
+        },
+        {
+            "id": "manytomany-relate-in-fixtures",
+            "name": "ManyToMany: Relate in fixtures",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-in-template",
+            "name": "ManyToMany: Print in template",
+            "description": null
         }
     ],
-    "sha": "165a3c9721c1d149a6c696a216e7a43e37832655"
+    "sha": "a806a4daf31f2a2bcb9960993987d0870f5eecd2"
 }

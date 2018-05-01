@@ -1,0 +1,65 @@
+diff --git a/src/Entity/Tag.php b/src/Entity/Tag.php
+index 1df3b87..b2b0539 100644
+--- a/src/Entity/Tag.php
++++ b/src/Entity/Tag.php
+@@ -3,12 +3,16 @@
+ namespace App\Entity;
+ 
+ use Doctrine\ORM\Mapping as ORM;
++use Gedmo\Mapping\Annotation as Gedmo;
++use Gedmo\Timestampable\Traits\TimestampableEntity;
+ 
+ /**
+  * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
+  */
+ class Tag
+ {
++    use TimestampableEntity;
++
+     /**
+      * @ORM\Id()
+      * @ORM\GeneratedValue()
+@@ -22,7 +26,8 @@ class Tag
+     private $name;
+ 
+     /**
+-     * @ORM\Column(type="string", length=255)
++     * @ORM\Column(type="string", length=255, unique=true)
++     * @Gedmo\Slug(fields={"name"})
+      */
+     private $slug;
+ 
+diff --git a/src/Migrations/Version20180501142420.php b/src/Migrations/Version20180501142420.php
+new file mode 100644
+index 0000000..ac8fff5
+--- /dev/null
++++ b/src/Migrations/Version20180501142420.php
+@@ -0,0 +1,28 @@
++<?php declare(strict_types = 1);
++
++namespace DoctrineMigrations;
++
++use Doctrine\DBAL\Migrations\AbstractMigration;
++use Doctrine\DBAL\Schema\Schema;
++
++/**
++ * Auto-generated Migration: Please modify to your needs!
++ */
++class Version20180501142420 extends AbstractMigration
++{
++    public function up(Schema $schema)
++    {
++        // this up() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('CREATE TABLE tag (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, UNIQUE INDEX UNIQ_389B783989D9B62 (slug), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
++    }
++
++    public function down(Schema $schema)
++    {
++        // this down() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('DROP TABLE tag');
++    }
++}
