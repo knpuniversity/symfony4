@@ -686,6 +686,11 @@
             "description": null
         },
         {
+            "id": "pre-ep4-space-riddle",
+            "name": "PRE_EP4: Space riddle",
+            "description": null
+        },
+        {
             "id": "pre-ep4-css-tweaks",
             "name": "PRE_EP4: CSS tweaks",
             "description": null
@@ -986,5 +991,5 @@
             "description": null
         }
     ],
-    "sha": "3ad61f3175b265a25d18ef3948a7a43f11ab7999"
+    "sha": "0c4a9c9d145fde36f24e76febfa5127e3ada6dd3"
 }
