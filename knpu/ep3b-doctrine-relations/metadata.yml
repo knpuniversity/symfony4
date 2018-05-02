@@ -1,1 +1,16 @@
-chapters: []
+chapters:
+    - comment-entity
+    - many-to-one-relation
+    - saving-relations
+    - fetching-relations
+    - owning-vs-inverse
+    - awesome-random-fixtures
+    - orderby-extra-lazy
+    - collection-criteria
+    - twig-block-tricks
+    - Twig-extensions-library
+    - search-form
+    - join-n-plus-one
+    - pagination
+    - many-to-many
+    - many-to-many-save-join
