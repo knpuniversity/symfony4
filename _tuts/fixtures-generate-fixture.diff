@@ -1,8 +1,8 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
 new file mode 100644
-index 0000000..6496708
+index 0000000..09b28bf
 --- /dev/null
-+++ b/src/DataFixtures/ArticleFixture.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -0,0 +1,17 @@
 +<?php
 +
@@ -11,7 +11,7 @@ index 0000000..6496708
 +use Doctrine\Bundle\FixturesBundle\Fixture;
 +use Doctrine\Common\Persistence\ObjectManager;
 +
-+class ArticleFixture extends Fixture
++class ArticleFixtures extends Fixture
 +{
 +    public function load(ObjectManager $manager)
 +    {

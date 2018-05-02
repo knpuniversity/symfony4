@@ -1,7 +1,7 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index bb93fc8..c2db15d 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 6fa5546..24745d6 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -58,18 +58,6 @@ EOF
                  ->setHeartCount($this->faker->numberBetween(5, 100))
                  ->setImageFilename($this->faker->randomElement(self::$articleImages))

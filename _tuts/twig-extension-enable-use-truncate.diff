@@ -9,7 +9,7 @@ index 417b7bc..39c0f02 100644
 -    #Twig\Extensions\TextExtension: ~
 +    Twig\Extensions\TextExtension: ~
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index f9640e4..3fb1508 100644
+index ab6d40c..d0a6334 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -30,7 +30,7 @@

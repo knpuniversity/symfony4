@@ -45,10 +45,10 @@ index e31ddad..941a70b 100644
  
          return new Response(sprintf(
              'Hiya! New Article id: #%d slug: %s',
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index 6496708..e750029 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 09b28bf..4938ca0 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -2,6 +2,7 @@
  
  namespace App\DataFixtures;
@@ -57,7 +57,7 @@ index 6496708..e750029 100644
  use Doctrine\Bundle\FixturesBundle\Fixture;
  use Doctrine\Common\Persistence\ObjectManager;
  
-@@ -9,8 +10,40 @@ class ArticleFixture extends Fixture
+@@ -9,8 +10,40 @@ class ArticleFixtures extends Fixture
  {
      public function load(ObjectManager $manager)
      {

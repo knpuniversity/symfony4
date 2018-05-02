@@ -18,7 +18,7 @@ index a095e90..80adc8b 100644
      {
          if (!$this->comments->contains($comment)) {
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index bb1a487..5f893ad 100644
+index a16f6f7..e9adebd 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -39,7 +39,7 @@

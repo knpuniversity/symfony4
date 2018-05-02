@@ -1,8 +1,8 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index 6513c1e..3fe0f73 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
-@@ -9,10 +9,10 @@ class ArticleFixture extends BaseFixture
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index e71a105..a001b2a 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
+@@ -9,10 +9,10 @@ class ArticleFixtures extends BaseFixture
  {
      public function loadData(ObjectManager $manager)
      {

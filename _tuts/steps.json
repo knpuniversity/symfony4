@@ -881,6 +881,11 @@
             "description": null
         },
         {
+            "id": "comment-admin-fix-indentation",
+            "name": "Comment Admin: Fix indentation",
+            "description": null
+        },
+        {
             "id": "comment-admin-add-custom-base-css-class",
             "name": "Comment Admin: Add custom base CSS class",
             "description": null
@@ -974,7 +979,12 @@
             "id": "manytomany-print-in-template",
             "name": "ManyToMany: Print in template",
             "description": null
+        },
+        {
+            "id": "manytomany-join-addselect",
+            "name": "ManyToMany: Join & addSelect",
+            "description": null
         }
     ],
-    "sha": "a806a4daf31f2a2bcb9960993987d0870f5eecd2"
+    "sha": "bdfbf333d119864f5b06aa2b965b780f71a2c76c"
 }

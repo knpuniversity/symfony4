@@ -1,7 +1,7 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index 3fe0f73..2ce1d53 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index a001b2a..44fc0f9 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -33,12 +33,12 @@ EOF
              );
  

@@ -9,11 +9,11 @@ index c83f3b1..e7ac8f4 100644
 +    orm:
 +        default:
 +            sluggable: true
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index f79571e..97c9dad 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
-@@ -28,7 +28,6 @@ class ArticleFixture extends BaseFixture
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index f883d6e..19c6d46 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
+@@ -28,7 +28,6 @@ class ArticleFixtures extends BaseFixture
      {
          $this->createMany(Article::class, 10, function(Article $article, $count) {
              $article->setTitle($this->faker->randomElement(self::$articleTitles))

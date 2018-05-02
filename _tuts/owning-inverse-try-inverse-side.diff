@@ -1,7 +1,7 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index bb93fc8..a54128d 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 6fa5546..8452b2e 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -62,14 +62,17 @@ EOF
              $comment1 = new Comment();
              $comment1->setAuthorName('Mike Ferengi');

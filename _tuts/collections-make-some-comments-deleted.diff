@@ -11,7 +11,7 @@ index 0028ece..af89757 100644
          });
  
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 061c29e..bb1a487 100644
+index 4bb5392..a16f6f7 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -62,6 +62,9 @@

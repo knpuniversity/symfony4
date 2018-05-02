@@ -1,10 +1,10 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index 2ce1d53..f79571e 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 44fc0f9..f883d6e 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -7,11 +7,28 @@ use Doctrine\Common\Persistence\ObjectManager;
  
- class ArticleFixture extends BaseFixture
+ class ArticleFixtures extends BaseFixture
  {
 +    private static $articleTitles = [
 +        'Why Asteroids Taste Like Bacon',

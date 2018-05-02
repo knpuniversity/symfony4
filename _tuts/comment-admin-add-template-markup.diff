@@ -1,12 +1,12 @@
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index e31b1fb..b66e2bb 100644
+index e31b1fb..13625f4 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -1,20 +1,20 @@
  {% extends 'base.html.twig' %}
  
 -{% block title %}Hello {{ controller_name }}!{% endblock %}
-+{% block title %}Comment Admin{% endblock %}
++{% block title %}Manage Comments{% endblock %}
  
  {% block body %}
 -<style>

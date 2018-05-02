@@ -1,7 +1,7 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index e750029..6513c1e 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 4938ca0..e71a105 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -3,12 +3,11 @@
  namespace App\DataFixtures;
  
@@ -9,8 +9,8 @@ index e750029..6513c1e 100644
 -use Doctrine\Bundle\FixturesBundle\Fixture;
  use Doctrine\Common\Persistence\ObjectManager;
  
--class ArticleFixture extends Fixture
-+class ArticleFixture extends BaseFixture
+-class ArticleFixtures extends Fixture
++class ArticleFixtures extends BaseFixture
  {
 -    public function load(ObjectManager $manager)
 +    public function loadData(ObjectManager $manager)

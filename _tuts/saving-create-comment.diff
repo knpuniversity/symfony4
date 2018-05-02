@@ -1,7 +1,7 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index 97c9dad..091a265 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 19c6d46..a4f0a3d 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -3,6 +3,7 @@
  namespace App\DataFixtures;
  
@@ -9,8 +9,8 @@ index 97c9dad..091a265 100644
 +use App\Entity\Comment;
  use Doctrine\Common\Persistence\ObjectManager;
  
- class ArticleFixture extends BaseFixture
-@@ -26,7 +27,7 @@ class ArticleFixture extends BaseFixture
+ class ArticleFixtures extends BaseFixture
+@@ -26,7 +27,7 @@ class ArticleFixtures extends BaseFixture
  
      public function loadData(ObjectManager $manager)
      {

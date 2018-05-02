@@ -35,7 +35,7 @@ index de6290c..8cea2a7 100644
      }
  }
 diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
-index 7584981..1292916 100644
+index 7584981..cea2a74 100644
 --- a/src/Repository/CommentRepository.php
 +++ b/src/Repository/CommentRepository.php
 @@ -5,6 +5,7 @@ namespace App\Repository;
@@ -46,19 +46,18 @@ index 7584981..1292916 100644
  use Symfony\Bridge\Doctrine\RegistryInterface;
  
  /**
-@@ -30,9 +31,9 @@ class CommentRepository extends ServiceEntityRepository
+@@ -30,9 +31,8 @@ class CommentRepository extends ServiceEntityRepository
  
      /**
       * @param string|null $term
 -     * @return Comment[]
-+     * @return QueryBuilder
       */
 -    public function findAllWithSearch(?string $term)
-+    public function getWithSearchQueryBuilder(?string $term)
++    public function getWithSearchQueryBuilder(?string $term): QueryBuilder
      {
          $qb = $this->createQueryBuilder('c')
              ->innerJoin('c.article', 'a')
-@@ -46,8 +47,6 @@ class CommentRepository extends ServiceEntityRepository
+@@ -46,8 +46,6 @@ class CommentRepository extends ServiceEntityRepository
  
          return $qb
              ->orderBy('c.createdAt', 'DESC')
@@ -68,7 +67,7 @@ index 7584981..1292916 100644
      }
  
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 1b7e851..d50dd0a 100644
+index 3521a9e..944c407 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -7,7 +7,7 @@

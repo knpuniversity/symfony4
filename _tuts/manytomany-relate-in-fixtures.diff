@@ -1,7 +1,7 @@
-diff --git a/src/DataFixtures/ArticleFixture.php b/src/DataFixtures/ArticleFixture.php
-index c2db15d..3c14ce9 100644
---- a/src/DataFixtures/ArticleFixture.php
-+++ b/src/DataFixtures/ArticleFixture.php
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 24745d6..90f23e0 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
 @@ -4,9 +4,11 @@ namespace App\DataFixtures;
  
  use App\Entity\Article;
@@ -10,8 +10,8 @@ index c2db15d..3c14ce9 100644
 +use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  use Doctrine\Common\Persistence\ObjectManager;
  
--class ArticleFixture extends BaseFixture
-+class ArticleFixture extends BaseFixture implements DependentFixtureInterface
+-class ArticleFixtures extends BaseFixture
++class ArticleFixtures extends BaseFixture implements DependentFixtureInterface
  {
      private static $articleTitles = [
          'Why Asteroids Taste Like Bacon',

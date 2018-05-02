@@ -1,5 +1,5 @@
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 3fb1508..7dae03f 100644
+index d0a6334..7c8b7a6 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -9,6 +9,22 @@

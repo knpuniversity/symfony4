@@ -1,10 +1,10 @@
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 1ef5bf6..9f6dfec 100644
+index df33463..b3cf8df 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -2,6 +2,8 @@
  
- {% block title %}Comment Admin{% endblock %}
+ {% block title %}Manage Comments{% endblock %}
  
 +{% block content_class %}{{ parent() }} show-article-container-border-green{% endblock %}
 +

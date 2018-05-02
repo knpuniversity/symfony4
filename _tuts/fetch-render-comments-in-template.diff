@@ -25,7 +25,7 @@ index a13d78a..7f911c0 100644
      }
  
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 9a992c3..bcf7631 100644
+index a08bbb0..9e64257 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -39,7 +39,7 @@
@@ -47,7 +47,7 @@ index 9a992c3..bcf7631 100644
                              <div class="col-sm-12">
                                  <img class="comment-img rounded-circle" src="{{ asset('images/alien-profile.png') }}">
                                  <div class="comment-container d-inline-block pl-3 align-top">
--                                    <span class="commenter-name">{{ article.author }}</span>
+-                                    <span class="commenter-name">Mike Ferengi</span>
 +                                    <span class="commenter-name">{{ comment.authorName }}</span>
                                      <br>
 -                                    <span class="comment"> {{ comment }}</span>

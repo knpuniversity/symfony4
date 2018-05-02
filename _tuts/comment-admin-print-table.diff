@@ -26,7 +26,7 @@ index e6971cf..75c8273 100644
      }
  }
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 9f6dfec..f9640e4 100644
+index b3cf8df..ab6d40c 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -8,6 +8,37 @@

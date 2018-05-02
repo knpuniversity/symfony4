@@ -56,7 +56,7 @@ index 5963fbb..29b9a7c 100644
  //     * @return Comment[] Returns an array of Comment objects
  //     */
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 7dae03f..1b7e851 100644
+index 7c8b7a6..3521a9e 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -14,6 +14,7 @@
