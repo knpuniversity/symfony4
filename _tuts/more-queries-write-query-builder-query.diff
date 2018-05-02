@@ -12,15 +12,11 @@ index c7df7e8..d3ba227 100644
          return $this->render('article/homepage.html.twig', [
              'articles' => $articles,
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index a194c6f..143e488 100644
+index e52228c..143e488 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
-@@ -22,13 +22,11 @@ class ArticleRepository extends ServiceEntityRepository
-     /**
-      * @return Article[]
-      */
--    public function findAllPublishedOrderdByNewest()
-+    public function findAllPublishedOrderedByNewest()
+@@ -25,10 +25,8 @@ class ArticleRepository extends ServiceEntityRepository
+     public function findAllPublishedOrderedByNewest()
      {
          return $this->createQueryBuilder('a')
 -            ->andWhere('a.exampleField = :val')
