@@ -57,13 +57,13 @@ use that here.
 Finally, let's remove the max result.
 
 Once you're done building your query, you always call `getQuery()` and then, to
-get the array of `Article` objects, `getResults()`.
+get the array of `Article` objects, `getResult()`.
 
 Below this method, there's an example of finding just *one* object. It's almost
 the same: build the query, call `getQuery()`, but then finish with `getOneOrNullResult()`.
 
 So, in all normal situations, you *always* call `getQuery()`, then you'll either
-call `getResults()` to return many rows of articles, or `getOneOrNullResult` to return
+call `getResult()` to return many rows of articles, or `getOneOrNullResult` to return
 a single `Article` object. Got it?
 
 Now that our new `findAllPublishedOrderedByNewest` method is done, let's go use
