@@ -1,25 +1,70 @@
 # Saving Relations
 
-We know that our comment entity has an article property and an article underscore id column in the database, so the question is in php code, how do we actually set that? How can we relate a comment to an article? It turns out to be very easy and also very contrary to your thinking. If you're very accustomed to thinking about the database. Let's open up our data fixtures. Article fixtures class, 
+Our `Comment` entity has an `article` property and an `article_id` column in
+the database. So, the question is: how do we actually *populate* that column? How
+can we relate a `Comment` to an `Article`?
 
-OK, yeah, 
+The answer is both very easy, and also, maybe a little weird at first. Open up
+the `ArticleFixtures` class. Let's hack in a new comment object near the bottom:
+`$comment1 = new Comment()`. Then, `$comment1->setAuthorName()`, and we'll go copy
+our favorite person: Mike Ferengi. And, `$comment1->setContent()`, and use one of
+our hardcoded comments.
 
-and just for simplicity, I'm going to hack in a new common objects here in the bottom. I'll say comment [inaudible] equals new comment, then comment on one Arrow set off name and we'll go grab our Mike Franky Arrow set content or grab one of our fake comments. 
+Perfect! Because we're creating this manually, we need to persist it to Doctrine.
+At the top, `use` the `$manager` variable. Then, `$manager->persist($comment1)`.
 
-Perfect. 
+If we stop here, this *is* a valid `Comment`... but it is NOT related to *any* article.
+In fact, go to your terminal, and try the fixtures:
 
-That if we just stop here, obviously that is valid coach who actually create an entity and saving the database. It just doesn't actually relate it to the article and actually if we try right now, bin Console, doctrine, fixtures, load 
+```terminal
+php bin/console doctrine:fixtures:load
+```
 
-be 
+## JoinColumn & Required Foreign Key Columns
 
-then to actually persist that. In this case, since we're creating it by hand, we need to persistent manually, so I'll go to the top and I'm going to use that manager variables so it becomes available inside of here at the bottom we'll say manager, arrow persist, comment one. 
+Boom! It fails with an integrity constraint violation: `article_id` cannot be null.
+It *is* trying to create the `Comment`, but, because we haven't set the relation,
+it doesn't have a value for `article_id`.
 
-Now obviously that's enough to actually create and save an entity. It's not related to article, but it's valid and actually if you try loading the fixtures with doctrine fixtures, load, it'll fail within integrity constraint violation. That article ID cannot be no, so it's trying to create the comment, but it doesn't have a value for the article id because it's because we haven't set up the relationship yet and the reason this throws an error is that in our comment in-state, you'll notice we have this joined column annotation that says noble equals false. That's the same as having knowable equals false. At the end of the column, it makes the column in the database actually required. If you didn't want him to require, you could change that to noble equals true. Anyways, how can we relate this comment to the article? The answer is by calling comment one Arrow set article article, 
+Oh, and also, in `Comment`, see this `JoinColumn` with `nullable=false`? That's
+the same as having `nullable=false` on a column: it makes the `article_id` *required*
+in the database. Oh, but, for whatever reason, columns *default* to `nullable=false`,
+and JoinColumn's default to the opposite: `nullable=true`.
 
-and that's it, 
+## Setting the Article on the Comment
 
-and this is both the most wonderful thing and the weirdest thing about doctrine relations. You do you actually relate objects. Notice we do not say set article and then say article Arrow get id or something like that. No, no, no. That's how it saves them the database, but all we need to do is actually set the article object onto the comment object. You need to pretend like there is no database storage in the background that creates these foreign keys. All you care about is I want a common object related to an article object. I'm going to copy that entire block. Let's create a second comments, make things a bit more interesting. I'll copy a different comment text and then I will paste that into set the content. All right to see if this works. Let's go over. 
+ANYways, how can we relate this `Comment` to the `Article`? By calling
+`$comment1->setArticle($article)`.
 
-Yeah, 
+And that's it! This is both the most wonderful and weirdest thing about Doctrine
+relations! We do *not* say `setArticle()` and pass it `$article->getId()`. Sure,
+that it will *ultimately* use the id in the database, but in PHP, we *only* think
+about objects: relate the `Article` object to the `Comment` object.
 
-reload our fixtures, no errors, and then check this out. Run Bin Console doctrine, colon queries, sql. Select Star from comment and there it is. Look the comments, ideas 20 down here. The article underscored the Acetyl 1:18, and if we scroll further, it's [inaudible]. These are the ideas of the articles that were just loaded in the database, so simply by setting the article on the comment when the comment saves, of course doctrine goes and gets the articles ID and uses that to save in the background, but in php code we always relate objects to each other. All right, next let's talk about how we fetch things off of this relationship.
+Once again, Doctrine wants you to pretend like there is *no* database behind-the-scenes.
+Instead, all *you* care about is that a `Comment` object is related to an `Article`
+object. You expect Doctrine to figure out the details about how to safe that.
+
+Copy that entire block, paste, and let's create a second comment so things are a
+bit more interesting. Copy a different dummy comment and past that for the content.
+And *now*, let's see if it works! Reload the fixtures:
+
+```terminal-silent
+php bin/console doctrine:fixtures:load
+```
+
+No errors! That's always good. Let's look into the database:
+
+```terminal
+php bin/console doctrine:query:sql 'SELECT * FROM comment'
+```
+
+There it is! We have 20 comments: 2 for each article. And the `article_id` for each
+row is set!
+
+This is the *beauty* of Doctrine: *we* relate objects in PHP, never worrying about
+the foreign key columns. But of course, when we save, it stores things exactly like
+we expect.
+
+Net, let's learn how to *fetch* related data, to get all of the comments for a
+specific `Article`.

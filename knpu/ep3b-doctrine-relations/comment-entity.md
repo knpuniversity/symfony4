@@ -1,29 +1,86 @@
-# Comment Entity
+# Adding a Comment Entity
 
-Coming soon...
+Hi friends! I mean, hello fellow space-traveling developer... friends. And welcome,
+to our *second* Doctrine tutorial where we talk *all* about... relationships.
+Oh, I *love* relationships, and there are so many beautiful types in the universe!
+Like, the relationship between two friends, as they high-five after a long trip
+between solar systems. Or, the complex relationship between a planet and a moon:
+a perfect gravitational dance between BFF's. And of course, the most *incredible*
+type of relationship in the galaxy... database relationships.
 
-Hey guys, 
+Yep, we learned a *ton* about Doctrine in the first tutorial, but we *completely*
+avoided this topic! And it turns out, database relationships are *pretty* darn
+important in real applications. So let's *dominate* them.
 
-welcome to part two of our doctrines tutorial because even though we learned a lot of really fun stuff in the first tutorial, we sorta avoided the elephant in the room. We said nothing about database relationships and it turns out database relationships are pretty darn important if you want to create a real application, so we're back to not only learn, but absolutely dominate doctrine relations, database relations in doctrine. The trickiest thing, as you'll see, will be that you'll need to start thinking about things differently. Instead of thinking about tables and foreign key columns, you're instead going to think about objects relating to objects. You'll see what I mean. 
+## Project Setup
 
-Yeah. 
+As always, to have the *best* possible relationship with Doctrine, you should totally
+code along with me. Download the course code from this page. After you unzip the file,
+you'll you'll find a `start/` directory that will have the same code you see here.
+Check out the `README.md` file for setup instructions, and the answer to this
+KnpU-original space riddle: 
 
-As always, 
+> I'm not white and fluffy, but pieces of me *do* orbit the sun. What am I?
 
-yeah, 
+Want to know? Then download the course code! Anyways, the last setup step will be
+to open a terminal, move into the project directory and run:
 
-to become my best friend and therefore have. 
+```terminal
+php bin/console server:run
+```
 
-Yeah, 
+to start the built-in web server. Then, celebrate by finding your terminal, and
+loading `http://localhost:8000`. Hello: The Space Bar! Our hot new app that helps
+spread *real* news to curious astronauts across the galaxy.
 
-the best possible relationship. You should totally code along with me. Download the code from this page. After you will unzip the file, you'll find a start directory which will have these same stuff, same project that you see here opened up the read me.md file. For all the details you need on how to get set up. The last step will be to open a terminal, move into the project and run bin Console server, run to start the built in web server. That'll let let us go to local host Colon, 8,000 to open up the space bar are inter galactic news site that now actually loads real articles from the database, but the one thing that it's not loading from the database yet are these comments. These are three coded comments at the bottom so you can already see the relationship. Every article is able to have many comments below it. Bright right now, if you look at me, source entity directory, the only entity we have his article. So the first thing we need to do is create a separate entity, a comment entity. We could just create this by hand, but you guys know that I like to use the maker Bundle, so open up a new terminal 
+And thanks to the *last* tutorial, these articles are being loaded dynamically
+from the database. But... these comments at the bottom? Yep, *those* are still
+hardcoded. We need to fix that! And this will be our first relationship: each
+Article can have *many* Comments. But, we'll get to that.
 
-and run bin Console, make colon entity. Let's generate a new entity called comment. Then for the fields, you see that basically right now, to keep things simple, we have an author and we have the actual comment, so let's say author name and we'll have that be a string field. 
+## Creating the Comment Entity
 
-Yeah, 
+Before we do, in the `src/Entity` directory, the *only* entity we have so far is
+`Article`. So before we talk about relationships, let's *first* build the `Comment`
+entity. We *could* create this by hand, but I like the generator better.
 
-and we'll make it available in the database. In the future, if we had users in our system, this might actually be a relation to the. To a specific user. We don't have users yet, and database relationships are actually what we're about to talk about anyways, so for now, keep that as a simple stringfield. Let's also add the content field content of the comment, well, this Ba textiles, and also don't allow that to be known in the database. Then hit enter to finish it up. Now before you generate the migration. 
+Open a new terminal tab and run:
 
-Yeah, 
+```terminal
+php bin/console make:entity
+```
 
-open up that comment class and you'll see no surprises. We have the ID column off her name content, and then of course the getters and setters below that at the top of the class, use timestamp bubble entity a trait that comes from the doctrine extensions library that will automatically give us the creative at an updated that fields. Now that we're ready to go back and run bin Console, make colon migration, that generates the migration file, then I'll move back to my code and as always we just want to make sure that this doesn't contain any extra changes. Great table comment, and it looks just fine. At this point, we're going to have two tables in the database article in comments, but they're not actually related to each other in any way. We'll handle actually creating that database. Will go back and run bin Console doctrine migrations, migrate and perfect. OK, next let's actually talk about how you relate to tables together.
+Let's create a new entity called Comment. Then, for the fields, we need one for the
+author and one for the actual comment. Add `authorName` as a string field. And yea,
+*someday*, we might have a `User` table. And then, this could be a *relationship*
+to that table. But for now, keep it as a simple string.
+
+Next, add `content` as a `text` field, and also say no to nullable. Hit enter one
+more time to finish up.
+
+Oh, but *before* we generate the migration, go open the new `Comment` class. No
+surprises: `id`, `authorName`, `content` and some getter & setter methods. At the
+top of the class, let's add `use TimestampableEntity`.
+
+This will give us `createdAt` and `updatedAt` fields.
+
+*Now* head back to your terminal and run:
+
+```terminal
+php bin/console make:migration
+```
+
+When that finishes, go find the new file. We just want to make sure that this doesn't
+contain any surprise. For example, if you're working on multiple branches, then
+your database may be out-of-sync *before* you run `make:migration`. If that happens,
+the migration file could contain *extra* changes that you'll want to remove. In this
+case, it looks *great*.
+
+Go back to your terminal and, migrate!
+
+```terminal
+php bin/console doctrine:migrations:migrate
+```
+
+Perfect! We have an `article` table and *now* a `comment` table. But, they have
+*no* relation between them... yet. Let's add one next!

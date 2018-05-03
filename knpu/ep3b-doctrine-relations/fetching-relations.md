@@ -1,19 +1,79 @@
 # Fetching Relations
 
-Coming soon...
+Yes! Each `Article` is now related to *two* comments in the database. So, on the
+article show page, it's time to get rid of this hardcoded stuff and, instead,
+query for the *true* comments related to this `Article`.
 
+In `src/Controller`, open `ArticleController` and find the `show()` action. This
+renders a single article. So, how can we find *all* of the comments related to this
+article? Well, we *already* know *one* way to do this.
 
+Remember: whenever you need to run a query, you need to *first* get that entity's
+repository. And, surprise! We we generated the `Comment` class, the `make:entity`
+command *also* gave us a new `CommentRepository`. Thanks MakerBundle!
 
-Now that we have articles, 
+So, get the repository by adding a `CommentRepository` argument. Then, let's see,
+could we use one of the built-in methods? How about,
+`$comments = $commentRepository->findBy()`, and pass this `article` set to the
+entire `$article` object.
 
-OK 
+Dump these comments and die. Then, find your browser and, try it! Yes!
+It returns the *two* `Comment` objects related to this Article!
 
-and comments related to the database on the article show page, we need to actually querie for the true comments related to this article. So let's go into our controller directory, open article controller, and find the show action. This is where we render a single article. So how can we find all of the comments related to this article while you guys know whenever you need to make a query. The way you do it is by going to that entities repository. Unfortunately, when we generated our comment, and Steve also got a new comment repository basically empty right now, but it's ready to go. So let's just see what we can figure out. Let's add a comment repository argument and then we'll say something like comments equals common repository Arrow and we can use those built in find by methods, but it's a little bit strange. Will say Repo Arrow to buy in the field that we actually want to find by his article. So we can pass article set to the article object. I'm going to dump those comments and then say, die. If you move back over and refresh. Yes, it returns the two common objects related to this article right now, every article has two identical comments related to it, 
+So, the weird thing is that, once again, you need to stop thinking about the *columns*
+in your tables, like `article_id`, and only think about the *properties* in your
+entity classes. That's why we use `'article' => $article`. Of course, behind the
+scenes, Doctrine will make a query where `article_id` = the id from this `Article`.
+But, in PHP, we think *all* about object.
 
-so the weird thing is that once again you need to stop thinking about id fields in the database. We actually do a to buy were article equals the entire article object. Of course behind the scenes it makes a querie where article underscore id equals the ID from this article, but in php we think all about objects, so as nice and simple as this is, there's a much easier way. Remember when we generated the relationship, it asked us if we wanted to add an optional comments property to our article for convenience. Thanks to that we can literally say comments equals article. Arrow gets comments, let's dump comments again and now that we've done that, we don't need the comment repository at all, so I'll remove that. 
+## Fetching Comments Directly from Article
 
-If we move on now and refresh, it's exactly the same. Wait, wait, what? No, it's totally different. We get this weird persistent collection thing, so here's what's going on. Doctrine fetches relationships laser. Really, what I mean is when symphony makes the query for article, it fetches only the data doctrine, doesn't fetch the comment data for this article until we actually called get comments and try to use its data to make that magic possible. It's using, it's just using. It's using a persistent collection object so it looks like it has nothing in it, but in fact that's for each over at comments as comment, dump comment inside, put a dye in the end you want to refresh. Boom are two common objects, so doctrine fetches things lazily behind the scenes, which is great and it has a little bit of magic to do that and most of the time you won't even notice that logic. All right, so we don't need these hard coded comments down here anymore because we have our own comments and actually we don't even need to pass comments into the template anymore and that's because we can use this get comments method directly in the template. So let's get rid of all the comments logic inside of the controller and then we'll go to templates. Article showed a twig and let's update this template. Scroll down a little bit to the comments and actually the first thing we do here is comments, pipe length. 
+As nice as this was... there's actually a *much* simpler way! When we generated
+the relationship, it asked us if we wanted to add an optional `comments` property
+to our `Article` class for convenience. We said yes! And thanks to that, we can
+literally say `$comments = $article->getComments()`. Dump `$comments` again. Oh,
+and *now*, we don't need the `CommentRepository` anymore. Cool.
 
-This is, 
+## Lazy Loading
 
-this is the part of the page that prints the number of comments. This is now going to be article doctor comments. That length instance, this is a collection we can still totally countered with length. Then below we'll say for comment in article [inaudible] and it's just a simple update. They opted to come with a comment, that author name. Then down below we'll have comment that content and also let's print out the date here, so let's add a small tag and we'll say about comments about created at pipe. Perfect. All right, let's try it. Go back, refresh and our two comments about 17 minutes ago it works and check this out. Down here at the bottom you can see that there's two database queries and you can see that the first database query is the one that selected all of the article data. Do you notice it's just selecting the article data. The second one selects all of the common data. CCA basically select star from comment where article ID equals the ID of this article behind the scenes, the that second queer doesn't actually happen until we loop over the comments here, which is awesome. That's the laziness of how these database relationships are loaded.
+Head back to your browser and, refresh! It's the *exact* same as before. Wait, what?
+What's this weird `PersistentCollection` thing?
+
+Here's what's going on. When Symfony queries for the `Article`, it *only* fetches
+the `Article` data: it does *not* automatically fetch the related Comments. And,
+for performance, that's what we want! But, as *soon* as we call `getComments()`
+and start using that, Doctrine makes a query in the background to go get the
+comment data.
+
+This is called "lazy loading": related data is not queried for until we use it.
+To make this magic possible, Doctrine uses this `PersistentCollection` object.
+And, this is *not* something you need to think or worry about: this object looks
+and acts like an array.
+
+To prove it, let's foreach over `$comments as $comment` and dump each `$comment`
+inside. Put a `die` at the end.
+
+Try it again! Boom! Two `Comment` object.
+
+## Fetching the Comments in the Template
+
+Back in the controller, we *no* longer need these hard-coded comments. In fact,
+we don't even need to pass `comments` into the template at all! That's because
+we can call the `getComments()` method directly from Twig!
+
+Remove *all* of the comment logic, and then, jump into `templates/article/show.htm.twig`.
+Scroll down a little... ah, yes! First, update the count: `article.comments|length`.
+
+Easy! Then, below, update the loop to use `for comment in article.comments`. And
+because each comment has a dynamic author, print that with `{{ comment.authorName }}`.
+And the content is now `comment.content`.
+
+Love it! So, let's try it! Go back, refresh and... yes! Two comments, from about
+17 minutes ago. And, check this out: on the web debug toolbar, you can see that
+there are *two* database queries. The first query selects the `article` data only.
+And the *second* selects all of the *comment* data where `article_id` matches
+this article's id - 112. This second query doesn't actually happen *until* we reference
+the comments from inside of Twig. That laziness is a *key* feature of Doctrine relations.
+
+Next, it's time to talk about the *subtle*, but super-important distinction between
+the *owning* and *inverse* sides of a relation.
