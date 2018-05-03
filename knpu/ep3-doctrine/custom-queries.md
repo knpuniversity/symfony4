@@ -37,10 +37,10 @@ This prevents SQL injection.
 ## Writing our Custom Query
 
 In our case, we won't need any arguments, and I'm going to simplify a bit. Let's
-say `andWhere('a.isPublished IS NOT NULL')`.
+say `andWhere('a.publishedAt IS NOT NULL')`.
 
 You can *totally* see how close this is to normal SQL. You can even put OR statements
-inside the string, like `a.isPublished IS NULL OR a.isPublished > NOW()`.
+inside the string, like `a.publishedAt IS NULL OR a.publishedAt > NOW()`.
 
 Oh, and what the heck does the `a` mean? Think of this as the table *alias* for
 `Article` in the query - just like how you can say `SELECT a.* from article as a`.
