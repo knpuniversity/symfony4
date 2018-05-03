@@ -37,10 +37,10 @@ This prevents SQL injection.
 ## Writing our Custom Query
 
 In our case, we won't need any arguments, and I'm going to simplify a bit. Let's
-say `andWhere('a.isPublished IS NOT NULL')`.
+say `andWhere('a.publishedAt IS NOT NULL')`.
 
 You can *totally* see how close this is to normal SQL. You can even put OR statements
-inside the string, like `a.isPublished IS NULL OR a.isPublished > NOW()`.
+inside the string, like `a.publishedAt IS NULL OR a.publishedAt > NOW()`.
 
 Oh, and what the heck does the `a` mean? Think of this as the table *alias* for
 `Article` in the query - just like how you can say `SELECT a.* from article as a`.
@@ -57,13 +57,13 @@ use that here.
 Finally, let's remove the max result.
 
 Once you're done building your query, you always call `getQuery()` and then, to
-get the array of `Article` objects, `getResults()`.
+get the array of `Article` objects, `getResult()`.
 
 Below this method, there's an example of finding just *one* object. It's almost
 the same: build the query, call `getQuery()`, but then finish with `getOneOrNullResult()`.
 
 So, in all normal situations, you *always* call `getQuery()`, then you'll either
-call `getResults()` to return many rows of articles, or `getOneOrNullResult` to return
+call `getResult()` to return many rows of articles, or `getOneOrNullResult` to return
 a single `Article` object. Got it?
 
 Now that our new `findAllPublishedOrderedByNewest` method is done, let's go use
