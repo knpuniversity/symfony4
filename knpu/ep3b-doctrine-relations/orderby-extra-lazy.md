@@ -1,17 +1,82 @@
-# Orderby Extra Lazy
+# OrderBy & fetch EXTRA_LAZY
 
-Coming soon...
+It's *great* that each article now has *real*, dynamic comments at the bottom.
+But... something isn't right: the articles are in a, kind of, random order. Actually,
+they're just printing out in whatever order they were added to the database. But,
+I *really* want them to print with the newest on top, and oldest on the bottom.
 
-So it's really nice that we now have real dynamic comments, comments below each article, but if you look around, you can spot a problem. The articles are not in the right order. We really want the newest article on top and then we went to descend to the oldest oldest art comments on the bottom. The problem is that if you're looking at the template, all we're doing is just calling article that comments, which is article Arrow, get comments in. The great thing about shortcut methods like this is that they're really easy to use. The downside is that you don't have a lot of control over what's returned. Actually that's not true as we'll see, but we'll get to that. In this case, it's just going. It's simply returning the comments in whatever order they were loaded into the database, and while we don't have a lot of control over these fields, we can control the order of them in articles. Scroll all the way to the top and find the comments property below the one it's money at another annotation called at rm slash order by and say curly brace created at equals descending. 
+How can we do this? Check out the template. Hmm, *all* we;re doing is calling
+`article.comments`, which is the `getComments()` method on `Article`. The *great*
+thing about these relationship shortcut methods is that.... they're easy! The
+*downside* is that you don't have a lot of control over what's returned, like,
+their *order*.
 
-Then go back, refresh, and perfect. Newest comments are on top. I want to say two quick things about the syntax for the annotation here. First of all, the syntax for annotations in general can sometimes be a little confusing. This curly brace here is setting up an a in associative array. Don't worry about it too much even. I still need to sometimes look up the correct syntax for different situations with annotations. The second thing is, for better or worse, annotations only support double quotes, so don't you can't ever use single quotes. It just doesn't work. All right. I want to show you one more trick. Go back to the homepage when we. Let's start articles here. It'd be really cool to list the number of comments on each article, so that's easy to do. Open home page, that html Twig, and then when you loop over the articles right after the article title, let's add a small tag that'll add parentheses and we'll say curly curly article dot comments. We use that same helper method, pipe length through count those comments, and then we'll put the word comments at the end of it. Go back, refresh and perfect it works effortlessly, but check out the comments down here in the web debug toolbar. If you click into it, there are actually six comments now, the first query for six queries, the queries why you'd expect this is the queer that's selecting all of the articles that are published. The other five queries are actually selecting. 
+Well... that's not entirely true. We *can* control the order, and I'll show you
+how. Actually, we can control a *lot* of things - but more on that later.
 
-Second mcquery selects all of the comments for an article whose ideas one, 76 and the next queries selects all the comments for another article and then we select all of the comments for another article. What's happening here is as we loop over our table, each time we call get comments at that moment, doctrine goes and fetches all of the comments for that specific article so that we can get a count. There are two problems with this. First, we now have six queries which is inefficient. This is known as the in plus. One. Problem is the problem and it's a problem with thanks to the magic of doctrine. When you're looping over many entities like articles and you're fetching data from a related article, you might end up with a lot of queries, one extra queries. We are going to talk about solving that, but it's not always that big of a deal. Six periods on this page is not necessarily a huge deal, but there's a second way that you can think about this problem. Let's say that we're OK with making [inaudible] queries. One querie per row on this page. The problem is that the query is way too big. 
+Scroll all the way to the top and find the `comments` property. Add a *new* annotation:
+`@ORM\OrderBy()` with `{"createdAt" = "DESC"}`.
 
-It's actually selecting all of the comment data just so that it can get a count of the comments. This is the default behavior of doctrine. As soon as you call, as soon as you call get comments and use that data, it makes a query at that moment to get all of the comment data, but we can control that behavior in the article entity at the end of the [inaudible] annotation, add fetch equals extra lazy. Now go back to our page refresh and you'll see that we still have six queries, but if you look at the queries, the five extra queries are super fast select count queries now, so instead of fetching all of the data, it's just fetching the count of the data. So here's how fetch extra lazy works if you have this setting on. 
+That's it! Move over and, refersh! Brilliant! The *newest* comments are on top.
+This actually changed *how* Doctrine queries for the related comments.
 
-Yeah. 
+Oh, and I want to mention *two* quick things about the syntax for the annotations.
+First... well... the syntax can sometimes be confusing - where to put curly braces,
+equal sign etc. Don't sweat it: I still sometimes need to look up the correct syntax
+in a situation. It's easy enough.
 
-Then when you call get comments, if you only count the comments, then instead of querying for all of the it just does a quick count query, which in this case is exactly what we want. In fact, if you don't think about it too hard, it seems like fetch extra lazy is actually the best setting for all of the time and that's almost true. The one situation where having fetch extra lazy is not good is if you intend to, to the comments and the then loop over them and print them. 
+Second, for better or worse, annotations *only* support double quotes. Yep, you
+simply *cannot* use single quotes. It just won't work.
 
-So in our case, if you look at a specific, we're here. It's exactly what we do in our article show page. We count our queries and then we loop over them. So if you look at the portfolio now, thanks to the extra lazy, we actually have this extra queer here that counts them and then we loop over the comments before we had extra lazy, we just had this queer here which was used for the count and then use to fetch the data. So using extra lazy is a trade off. It just depends on your on your situation and helps us on the home page, but then hurts us on the article show page if you're going to be doing a lot of counting of a relationship without actually printing that relationships data, it's probably a good idea. Either way. These are minor performance optimizations, so don't prematurely optimize things too much.
+## Fetch EXTRA_LAZY
+
+Ok, I want to show you one other trick. Go back to the homepage. It would be really
+nice to list the number of comments for each article. No problem! Open
+`homepage.html.twig`. When, inside the articles loop, right after the title, add
+a `<small>` tag, a set of parentheses, and use `{{ article.comments|length }}`
+and then the word comments.
+
+I love that! Refresh the homepage. It works effortlessly! But... check out the
+queries down here on the web debug toolbar. If you click into it, there are suddenly
+*6* queries! The first query is what we expect: it finds all published articles.
+
+The second query selects all of the `comments` for an article whose is 176. The
+next is an *identical* query for article 177. As we loop over the articles, each
+time we call `getComments()`, at that moment, Doctrine fetches *all* of the comments
+for that specific `Article`. Then, it counts them.
+
+This is a classic, *potential* performance issue with ORM's like Doctrine. It's
+called the N+1 problem. And, we'll talk about it later. But, it's basically the
+idea that having an extra query per row, may cause performance issues.
+
+But, forget about that for now, because, there's a *simpler* performance problem.
+We're querying for *all* of the comments for each article... simply to count them!
+That's insane!
+
+This is the default behavior of Doctrine: as soon as you call `getComments()` and
+use that data, it makes a query at that moment to get all of the comment data, even
+if you only need to *count* that data.
+
+But, we can control this. In `Article,` at the end of the `OneToMany` annotation,
+add `fetch="EXTRA_LAZY"`.
+
+Now, go back to the page and refresh. We *still* have six queries, but go look at
+them. Awesome! Instead of selecting *all* of the comment data, they are super-fast
+COUNT queries!
+
+Here's how this works: if you set `fetch="EXTRA_LAZY"`, and you simply *count*
+the result of `$article->getcomments()`, then instead of querying for all of the
+comments, Doctrine does a quick COUNT query.
+
+Awesome, right! You might think that it's *so* awesome that this should *always*
+be the way it works! But, there is *one* situation where this is *not* ideal. And
+actually, we have it! Go to the article show page.
+
+Here, we count the comments first, and *then* we loop over them. Look at the profiler
+now. Thanks to `EXTRA_LAZY`, we have an extra query! It counts the comments... but
+then, right after, it queries for all of them anyways. *Before* we were using
+`EXTRA_LAZY`, this count query didn't exist.
+
+So, like life, it's a trade-off. But, it's still probably a net-win for us. But
+*as always*, don't prematurely optimize. Deploy first, identify performance issues,
+and then solve them.
