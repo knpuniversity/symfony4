@@ -6,9 +6,10 @@ chapters:
     - owning-vs-inverse
     - awesome-random-fixtures
     - orderby-extra-lazy
+    - comment-is-deleted
     - collection-criteria
     - twig-block-tricks
-    - Twig-extensions-library
+    - twig-extensions-library
     - search-form
     - join-n-plus-one
     - pagination
