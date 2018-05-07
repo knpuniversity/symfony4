@@ -1,61 +1,100 @@
-# Search Form
+# Comment Search Form
 
-Coming soon...
+Because our site will have a *lot* of comments on production, I want to add a
+search box above this table so we can find things quickly. 
 
-Yeah, 
+Find the template and, on top, I'm going to paste in a simple HTML form. We're
+not going to use Symfony's form system because, first, we haven't learned about
+it yet, and second, this is a *super* simple form: Symfony's form system won't
+really help us anyways.
 
-because there's a lot of comments that are going to be on this page. Let's add a little search box on top so we can find the comment we're looking for, so let's move on to our template and for this we're not going to use symphony's form system because we haven't learned about it yet, but also this is a super simple for them and as one field it's actually overkill for symphony's form system above the table. I'm just going to pass a good old fashioned normal form. 
+Ok! Check this out: this form has one input field whose name is `q`, and a button
+at the bottom. Notice that the form has *no* `action=`: that means the form will
+submit *right* back to this same URL. It *also* has no `method=`, which means it
+will submit with a GET request instead of POST, which is *exactly* what you want
+for a search or filter form.
 
-OK. 
+Let's see what it looks like: find your browser and refresh. Nice! Search for
+"ipsam" and hit enter. The search isn't *working* yet of course, but you can see
+the `?q=` at the top.
 
-What I want you to realize is that it has only one input field. It's name is q and then it has a button down at the bottom. Notice the form has no action equals that means that it will submit right back to the same page. It also has no method equals, so it's going to. It's going to submit via a get request and is the proper method to use when you have a search form. 
+## Fetching the Request Object
 
-So if you move over and refresh. Yep, there's our form and you can hardly see if we search for, let's say if some if some enter. Of course, we're not using that data to filter yet, but you can see the question mark q equals if some up on top. Great. So let's go into our controller and actually process this. So the first question is how can we read query parameters from symphony, but we haven't talked about it much yet, but anytime you need to read hitters or query parameters or post data or uploaded files or anything, you need access to symphonies request object to get that. You can actually type hinted inside of your controller requests, makes you get the one from http foundation because there are several and then request, so are now actually three common cases, [inaudible] three common type hint cases in your controller. You can type in services as we've been doing many places. You can also type in entity objects if you want symphony to automatically clearly for the objects by using the wildcard or you can type in the request object. The request object is a special case. It's not technically a service, but you can kind of think of it. There are other tricks you can do here as well, but those are the main three. 
+Back in the controller, hmm. The *first* question is: how can we read the `?q`
+query parameter? Or, more broadly, in a different situation, how could we read
+POST data? Or, headers? Or uploaded files? *Any* time you need to read some information
+about the request, you need Symfony's `Request` object. How can you get it? Ah,
+you can probably guess: add another argument with a `Request` type-hint. Important:
+get the one from `HttpFoundation` - there are several, which is confusing.
 
-Now that we have the request object because a dollar sign q equals request Arrow querie Arrow get cute. So querie is how you get the query parameters. There are a number of other properties for the other things like request Arrow headers, request Arrow cookies, request Arrow files. 
+So far, we know of *two* "magical" things you can do with controller arguments.
+First, if you type-hint a service class or interface, Symfony will give you that
+service. And second, if you type-hint an entity class, Symfony will query for that
+entity by using the wildcard in the route.
 
-Yeah. 
+Well, you *might* think that the `Request` falls into the *first* magic category.
+I mean, the `Request` is a service, right? Well, actually... it's not, and the
+reasons are technical, and honestly, not very important. The ability to type-hint
+a controller argument with `Request` is the *third* "magic" trick you can do with
+controller arguments. So, it's (1) type-hint services, (2) type-hint entities or
+(3) type-hint the `Request` class. There *is* other magic that's possible, but these
+are the 3 main cases. 
 
-All right, so now that we have the query parameter, we're going to need to use that to make a custom queries we can't use find by because we're going to need to use the like keyword, so we know that we need to go into our content repository and added new custom function here. So let's call it public function. 
+Oh, side-note: while the `Request` object is *not* in the service container, there
+*is* a service called `RequestStack`. You can fetch it out *just* like any service
+and call `getCurrentRequest()` to get the `Request`.
 
-OK, 
+*Anyways*, the request gives us access to *anything* we want to know about, um
+the request! Add `$q = $request->query->get('q')`. This is how you read *query*
+parameters, it's like a modern `$_GET`. There are other properties for almost
+everything else: `$request->headers` for headers, `$request->cookies`,
+`$request->files`, and a few more. Basically, any time you want to use `$_GET`,
+`$_POST`, `$_SERVER` or any of those global variables, use the Request instead.
 
-find the all with search and I'm going to give us a knowable string argument called term reason. I'm making this knowable is I want for convenience. I'm going to allow this function to be called with no and if there is no term past and then we'll just show all of the comments 
+## A Custom Query with OR Logic
 
-above this. 
+Now that we have the search term, we need to use that to make a custom query. Yep,
+we can't use `findBy()` anymore: it's not smart enough to allow us to do queries
+with `LIKE`. No worries: inside `CommentRepository`, add a public function caled
+`findAllWithSearch()`. Give this a *nullable* string argument called `$term`.
 
-I'm going to go ahead and add any return. We're gonna. Add a at return to say that this is going to return an array of comments in that will help PHP storm. All right, so we know how to do custom queries. We always need to create a query about first, so I'll say this pre query builder and we'll give our alias. We use the alias of seat next. If there is a term specified, then we're going to need an. And where? Here's the tricky thing. I want to search a couple of fields on comment. When we search, I want to search for the [inaudible] 
+I'm making this nullable because, for convenience, I want to allow this method to
+be called with a `null` term, and we'll be smart enough to just return everything.
 
-yeah, 
+Above the method, add some PHP doc: this will `@return` an array of `Comment`
+objects.
 
-content obviously, but I also want to search via the author's name. So we actually need an org side of our queries for the first time. 
+Ok: we already know how to write custom queries: `$this->createQueryBuilder()` with
+an alias of `c`. Then, *if* a `$term` is passed, we need a WHERE clause. But, here's
+the tricky part: I want to search for the term on a couple of fields on comment:
+I want `WHERE content LIKE $term OR authorName LIKE $term`.
 
-Yeah. 
+How can we do this? Hmm, the `QueryBuilder` apparently has an `orWhere()` method.
+Perfect, right! Nope! Surprise, I almost *never* use this method. Why? Imagine
+a complex query with various levels or AND clauses mixed with OR clauses and
+parenthesis. You have to be *very* careful not to mess up your parenthesis. One
+mistake could lead to an OR causing *many* more results to be returned than you
+expect.
 
-Now if you look at the query builder is actually is in or where, but I almost never use it and the reason is that it gets very confusing. If you think about a complex queries about where your parentheses are in your, in your ors, instead of always use an aware and if I have any where clauses, I put them right inside of here. So for example, we can say see that content like then we'll put in a 
+To *best* handle this in Doctrine use `andWhere()` and put all the logic right
+inside: `c.content LIKE :term OR c.authorName LIKE :term`. On the next line, set
+`term` to, this looks a little odd, `'%'.$term.'%s'`.
 
-OK 
+By putting this all inside `andWhere()` instead of using `orWhere()`, all of that
+logic will be surrounded by a parenthesis. Later, if we add another `andWhere()`,
+it'll logically group together properly.
 
-a wildcard current called term, or you can put the order right here, see that author name, 
+Finally, in all cases, we want to return `$qb->orderBy('c.createdAt', 'DESC')`
+and `->getQuery()->getResult()`. Remember, `getResult()` returns an array of results,
+and `getOneOrNullResult()` returns just *one* row.
 
-like term. 
+Phew! That looks great! Go back to the controller. Use that method:
+`$comments = $repository->findAllWithSearch()` passing it `$q`.
 
-Then after this we'll say set parameter. Of course we need to fill that term. And the only weird thing here is that term actually should have the percent signs around it. So we'll say certain percent 
+Moment of truth! First, remove the `?q=` from the URL. Ok, everything looks good.
+Now search for something very specific, like, ahem, `reprehenderit`. And, yes!
+A *much* smaller result. Try an author: `Ernie`: got it!
 
-that term percent and that's it, 
-
-not the bottom. In all cases we're going to want to say return qb unless edit an order by for our c dot created at descending. And then we always finished with get queries and then either get results for an array of results or get one or no result. If we want only one row, this case, we want to get an array. 
-
-Have comments. 
-
-All right, so that looks good. Let's go back to our admin controller. In here. We'll use commas, eagles repository, Arrow, find all search and we'll pass in that queue. 
-
-Yeah. 
-
-All right, so let's see if it works. First thing I'm gonna do is go back 
-
-and remove the cue and it looks like we've got everything. Then let's search for something very specific like this Latin word here and yes, much smaller results set and let's also try the author field will search for Ernie. Got It. So the only problem is you'll notice all the only thing I don't like is that we're losing the search term right here inside of our search box. So if you look at our template, that's easy enough. We just need to add a value equals onto our input field. But how can we get that query parameter value? Well, one thing we could do is we could pass this cute variable down as a new variable indoor template and that's totally allowed, but there's a shortcut in the template. He was curly curly app that request that Querie dot get cute. 
-
-Yeah. 
-
-So go back, refresh and you can see it's filled in that box. So here's the deal. When you use twig inside of symphony, you have exactly one global variable called APP. In fact, if you go to your terminal and run Bin Console, the Book Colin Twig, you will see that global's App and it tells you that this is an object called an APP variable. I'm going to go back to my terminal and type shift shift and search for at variable and you can actually load that up and see what's inside. Ignore the setter functions. Those are there for setup. Do you have something called get token which relates to security. Get user relates to security and then also get the request which gives you the current request object. That's what we're using is also gets session, get environment, get debug and something called flashes which are used to show temporary messages, so not a lot in here, but a few things that are really handy. So when when we say APP that requests, that gives us the request object and then that queries get is the same thing that we're doing inside of our controller. It's calling queries the queries property and then calling get on it, and then we're getting the cue off of that. So don't forget about this very important queer variable. So next though, let's up the challenge and I also want to make this search include a field on article. I want to search the articles title to do that. We're going to need a join.
+Woo! This is great! But, we can go further! Next let's learn about a Twig global
+variable that can help us fill in this input box when we search. Then, it's finally
+time to add a *join* to our custom query.
