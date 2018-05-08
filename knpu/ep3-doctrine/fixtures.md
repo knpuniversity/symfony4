@@ -131,7 +131,7 @@ number.
 The point is: this is going to save us some serious work... but not until the *next*
 tutorial.
 
-Back in `ArticleController`, use the new method: `$this->createMany()` passing
+Back in `ArticleFixtures`, use the new method: `$this->createMany()` passing
 it `Article::class`, 10, and a function. This will have two args: the `Article`
 that was just created and a count of which article this is. Inside the method, we
 can remove the `$article = new Article()`, and instead of a random number on the
