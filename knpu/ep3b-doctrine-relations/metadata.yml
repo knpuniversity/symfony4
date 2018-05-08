@@ -13,5 +13,7 @@ chapters:
     - search-form
     - join-n-plus-one
     - pagination
+    - relationship-types
     - many-to-many
-    - many-to-many-save-join
+    - many-to-many-save
+    - many-to-many-joins
