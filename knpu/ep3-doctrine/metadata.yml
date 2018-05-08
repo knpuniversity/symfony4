@@ -15,4 +15,5 @@ chapters:
     - fixtures
     - faker-fixtures
     - sluggable
+    - failed-migrations
     - timestampable
