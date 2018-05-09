@@ -14,7 +14,7 @@ to `Article`.
 To do that, let's once-again use:
 
 ```terminal
-php bin/console make:enitty
+php bin/console make:entity
 ```
 
 Type `Comment` so we can add the new field to it. But then, wait! This is a *very*
