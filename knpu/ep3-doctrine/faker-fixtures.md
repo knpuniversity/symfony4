@@ -54,7 +54,7 @@ And below, we had this *long* expression to create a random date. *Now* say,
 `$this->faker->dateTimeBetween('-100 days', '-1 days')`.
 
 I love it! Down for `heartCount`, use another Faker function:
-`$this->faker->numberBetween(5, 10)`.
+`$this->faker->numberBetween(5, 100)`.
 
 After these few improvements, let's make sure the system *is* actually as easy
 as pie. Find your terminal and run:
