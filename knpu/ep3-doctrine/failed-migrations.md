@@ -4,8 +4,9 @@ My *other* favorite Doctrine Extension behavior is timestampable. Go back to the
 library's documentation and click to view the Timestampable docs.
 
 Oh, it's so nice: with this behavior, we can add `createdAt` and `updatedAt` fields
-that are automatically updated. Believe me, this will save your *butt* sometime
-in the future, when something happens on your site you can't *quite* explain.
+to our entity, and they will be automatically set. Believe me, this will save your
+*butt* sometime in the future when something happens on your site you can't *quite*
+explain. A mystery!
 
 ## Adding the createdAt & updatedAt Fields
 
@@ -27,9 +28,8 @@ Next, you guys know the drill, run:
 php bin/console make:migration
 ```
 
-Awesome! Move over and open that migration. Yep, this looks good: an `ALTER TABLE`
-to add `created_at` and `updated_at`. So, go *back* to your terminal, and run
-this:
+Awesome! Move over and open that file. Yep, this looks good: an `ALTER TABLE`
+to add `created_at` and `updated_at`. Go *back* to your terminal, and run it:
 
 ```terminal
 php bin/console doctrine:migrations:migrate
@@ -41,13 +41,13 @@ And... great! Wait, woh! No! It exploded! Check it out:
 
 > Incorrect datetime value: 0000-00-00
 
-Hmm. The problem is that our database *already* holds articles. So when MySQL tries
+Hmm. The problem is that our database *already* has articles. So when MySQL tries
 to create a new datetime column that is *not* nullable, it has a hard time figuring
 out what value to put for those existing rows!
 
 Yep, unfortunately, *sometimes*, migrations fail. And fixing them is a delicate
 process. Let's think about this. What we *really* want to do is create those columns,
-but allow them to be *null* at first. Then, we can *update*  both fields to today's
+but *allow* them to be null... at first. Then, we can *update* both fields to today's
 date. And, *then* we can use another `ALTER TABLE` query to finally make them not
 null.
 
@@ -62,32 +62,37 @@ UPDATE article SET created_at = NOW(), updated_at = NOW()
 
 We *still* need another query to change things *back* to not null, but don't do
 it yet: we can be lazy. Instead, find your terminal: let's try the migration again.
-But, wait! You may or may *not* be able to run the migration immediately. In this
-case, the original migration only had *one* statement, and that one statement
-failed. This means that *no* part of the migration executed successfully.
+But, wait! You may or may *not* be able to re-run the migration immediately. In this
+case, the original migration had only *one* query, and that one query failed. This
+means that *no* part of the migration executed successfully.
 
 But sometimes, a migration may contain *multiple* lines of SQL. And, if the second
 or third line fails, then, well, we're in a *really* weird state! In that situation,
 if we tried to *rerun* the migration, the first line would execute for the *second*
 time, and it would probably fail.
 
-Basically, when a migration fails, it's possible for your migration system to be
+Basically, when a migration fails, it's possible that your migration system is now
 in an invalid state. *When* that happens, you should completely drop your database
 and start over. You can do that with:
 
 ```terminal
 php bin/console doctrine:database:drop --force
+```
+
+And then:
+
+```
 php bin/console doctrine:database:create
 ```
 
 And *then* you can migrate. Anyways, we are *not* in an invalid state: so we can
-just re-try the migrations:
+just re-try the migration:
 
 ```terminal
 php bin/console doctrine:migrations:migrate
 ```
 
-And *this* time, they work! To finally make the fields *not* nullable, we can ask
+And *this* time, it works! To finally make the fields *not* nullable, we can ask
 Doctrine to generate a new migration:
 
 ```terminal
@@ -100,4 +105,4 @@ Go check it out! Ha! Nice! It simply changes the fields to be NOT NULL. Run it!
 php bin/console doctrine:migrations:migrate
 ```
 
-And we are good! Next, let's *finally* activate Timestampable.
+And we are good! Now, back to Timestampable!
