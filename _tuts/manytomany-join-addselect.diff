@@ -1,11 +1,11 @@
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index 143e488..32ad77a 100644
+index 2435455..7795362 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
 @@ -26,6 +26,8 @@ class ArticleRepository extends ServiceEntityRepository
+     public function findAllPublishedOrderedByNewest()
      {
-         return $this->createQueryBuilder('a')
-             ->andWhere('a.publishedAt IS NOT NULL')
+         return $this->addIsPublishedQueryBuilder()
 +            ->leftJoin('a.tags', 't')
 +            ->addSelect('t')
              ->orderBy('a.publishedAt', 'DESC')

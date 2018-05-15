@@ -561,6 +561,16 @@
             "description": null
         },
         {
+            "id": "more-queries-reuse-query",
+            "name": "More Queries: Reuse query",
+            "description": null
+        },
+        {
+            "id": "more-queries-get-or-create-query-builder",
+            "name": "More Queries: Get or create query builder",
+            "description": null
+        },
+        {
             "id": "more-queries-use-param-converter",
             "name": "More Queries: Use param converter",
             "description": null
@@ -991,5 +1001,5 @@
             "description": null
         }
     ],
-    "sha": "0c4a9c9d145fde36f24e76febfa5127e3ada6dd3"
+    "sha": "e7feebd58eb5ed8f95ddb8c80e9208d4a0dbd7fa"
 }
