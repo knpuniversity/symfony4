@@ -2,10 +2,14 @@
 
 One of my *favorite* things about the query builder is that, with a few tricks,
 you can *reuse* query logic! Check this out: right now, we only have one custom method
-in `ArticleRepository`. But, as our app grows, we'll *certainly* need to add
-more. And there's a *pretty* darn good chance that *another* custom query will *also*
-need to filter its results to only show *published* articles. In a *perfect* world,
-we would *share* that logic, between both custom methods. And... we can do that!
+in `ArticleRepository`:
+
+[[[ code('a27541ba41') ]]]
+
+But, as our app grows, we'll *certainly* need to add more. And there's a *pretty*
+darn good chance that *another* custom query will *also* need to filter its results
+to only show *published* articles. In a *perfect* world, we would *share* that logic,
+between both custom methods. And... we can do that!
 
 Step 1 is to isolate the query logic that we need to share into its own private
 method. At the bottom, create a `private function addIsPublishedQueryBuilder()`
