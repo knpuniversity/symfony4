@@ -15,18 +15,18 @@ Step 1 is to isolate the query logic that we need to share into its own private
 method. At the bottom, create a `private function addIsPublishedQueryBuilder()`
 with a `QueryBuilder` type-hint - the one from `Doctrine\ORM` - and `$qb`:
 
-[[[ code('xxx') ]]]
+[[[ code('2f6615b8e2') ]]]
 
 Next, go up, copy that part of the query, and just return
 `$qb->andWhere('a.publishedAt IS NOT NULL')`:
 
-[[[ code('xxx') ]]]
+[[[ code('6c51624a78') ]]]
 
-And since we're *returning* this - and each query builder method returns itself - back up top,
-we can say `$qb = $this->createQueryBuilder('a')`, and below,
+And since we're *returning* this - and each query builder method returns
+itself - back up top, we can say `$qb = $this->createQueryBuilder('a')`, and below,
 `return $this->addIsPublishedQueryBuilder()` passing it `$qb`:
 
-[[[ code('xxx') ]]]
+[[[ code('9c7f0c1aee') ]]]
 
 The rest of the query can chain off of this.
 
@@ -39,13 +39,13 @@ This is nice... but since I do this a lot, we can get a bit fancier. Create
 another private method called `getOrCreateQueryBuilder()` with a `QueryBuilder`
 argument like before, but make it optional:
 
-[[[ code('xxx') ]]]
+[[[ code('21d9acb832') ]]]
 
 Here's the idea: when someone calls this method, *if* the query builder is passed,
 we'll just return it. Otherwise we will return a new one with
 `$this->createQueryBuilder('a')`:
 
-[[[ code('xxx') ]]]
+[[[ code('3cdd75dfbe') ]]]
 
 If you're not used to this syntax, it means that if a `QueryBuilder` object is passed,
 return that `QueryBuilder` object. If a `QueryBuilder` object is not passed, then create one.
@@ -53,17 +53,17 @@ return that `QueryBuilder` object. If a `QueryBuilder` object is not passed, the
 This is *cool*, because *now* we can make the argument to `addIsPublishedQueryBuilder()`
 *also* optional:
 
-[[[ code('xxx') ]]]
+[[[ code('eefe8717a2') ]]]
 
 Inside, use the new method: `return $this->getOrCreateQueryBuilder()` passing it `$qb`,
 and then our `andWhere()`:
 
-[[[ code('xxx') ]]]
+[[[ code('973d9eb4fa') ]]]
 
 But the *real* beautiful thing is back up top. This *whole* method can now be one
 big chained call: `return $this->addIsPublishedQueryBuilder()` - and pass nothing:
 
-[[[ code('xxx') ]]]
+[[[ code('acae5accbe') ]]]
 
 It will create the `QueryBuilder` for us.
 
