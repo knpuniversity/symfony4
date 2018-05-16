@@ -185,7 +185,7 @@ function: Symfony will add it there automatically.
 Ok, try it out - refresh! It still works! And now that we've centralized that method,
 in `show.html.twig`, it's *super* easy to make the same change: `article.imagePath`:
 
-[[[ code('cc27a131e4') ]]]
+[[[ code('2b7198b6b6') ]]]
 
 Awesome. And when you click on the show page, it works too.
 
