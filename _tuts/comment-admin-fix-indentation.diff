@@ -1,5 +1,5 @@
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 49ece87..4f269ea 100644
+index 48a559b..2384cb7 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -3,73 +3,73 @@
@@ -8,7 +8,7 @@ index 49ece87..4f269ea 100644
  {% block content_body %}
 -                <div class="row">
 -                    <div class="col-sm-12">
--                        <img class="show-article-img" src="{{ asset('images/asteroid.jpeg') }}">
+-                        <img class="show-article-img" src="{{ asset(article.imagePath) }}">
 -                        <div class="show-article-title-container d-inline-block pl-3 align-middle">
 -                            <span class="show-article-title ">{{ article.title }}</span>
 -                            <br>
@@ -29,7 +29,7 @@ index 49ece87..4f269ea 100644
 -                            {{ article.content|cached_markdown }}
 +    <div class="row">
 +        <div class="col-sm-12">
-+            <img class="show-article-img" src="{{ asset('images/asteroid.jpeg') }}">
++            <img class="show-article-img" src="{{ asset(article.imagePath) }}">
 +            <div class="show-article-title-container d-inline-block pl-3 align-middle">
 +                <span class="show-article-title ">{{ article.title }}</span>
 +                <br>
