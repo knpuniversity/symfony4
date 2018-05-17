@@ -56,10 +56,16 @@ I'm going to say yes, permanently. *Now* the recipe installs.
 ## Configuring Sluggable
 
 Thanks to this, we now have a shiny new `config/packages/stof_doctrine_extensions.yaml`
-file. *This* is where we need to enable the extensions we want. We want `sluggable`.
+file:
+
+[[[ code('6ee4477af8') ]]]
+
+*This* is where we need to enable the extensions we want. We want `sluggable`.
 We can use the example in the docs as a guide. Add `orm`, then `default`. The `default`
 is referring to the *default* entity manager... because some projects can actually
-have *multiple* entity managers. Then, `sluggable: true`.
+have *multiple* entity managers. Then, `sluggable: true`:
+
+[[[ code('4dc8291008') ]]]
 
 As *soon* as we do this... drumroll... absolutely nothing will happen. Ok, behind
 the scenes, the bundle *is* now looking for slug fields on our entities. But, we
@@ -69,12 +75,13 @@ find the `slug` property.
 Now, go *back* to the documentation. Another confusing thing about this bundle
 is that the documentation is split in two places: this page shows you how to
 configure the *bundle*... but *most* of the docs are in the *library*. Scroll up
-and find the [DoctrineExtensions Documentation](https://github.com/Atlantic18/DoctrineExtensions/tree/v2.4.x/doc).
-link.
+and find the [DoctrineExtensions Documentation][doctrine_extensions_docs] link.
 
-Awesome. Click into `sluggable`. Down a bit... it tells us that to use this feature,
+Awesome. Click into `sluggable.md`. Down a bit... it tells us that to use this feature,
 we need to add an `@Gedmo\Slug()` annotation above the slug field. Let's do it! Use
-`@Gedmo\Slug`, then `fields={"title"}`.
+`@Gedmo\Slug`, then `fields={"title"}`:
+
+[[[ code('7d70322fe7') ]]]
 
 That's all we need! Back in `ArticleFixtures`, we no longer need to set the slug
 manually. Try it out: find your terminal, and load those fixtures!
@@ -105,3 +112,6 @@ If you ever need to do something automatically when an entity is added, updated
 or removed, think of this system.
 
 Next, let's find out how to rescue things when migrations go wrong!
+
+
+[doctrine_extensions_docs]: https://github.com/Atlantic18/DoctrineExtensions/tree/v2.4.x/doc
