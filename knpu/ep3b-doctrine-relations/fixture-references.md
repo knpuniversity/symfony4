@@ -5,7 +5,7 @@ other stuff, is not super great for organization. Let's give the comments their 
 home. First, delete the comment code from here. Then, find your terminal and run
 
 ```terminal
-php bin/console make:fixtures
+php bin/console make:fixture
 ```
 
 Call it `CommentFixture`.
