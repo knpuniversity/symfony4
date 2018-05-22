@@ -17,7 +17,7 @@ them.
 
 As always, to have the *best* possible relationship with Doctrine, you should totally
 code along with me. Download the course code from this page. After you unzip the file,
-you'll you'll find a `start/` directory that will have the same code you see here.
+you'll find a `start/` directory that will have the same code you see here.
 Check out the `README.md` file for setup instructions, and the answer to this
 KnpU space riddle: 
 
@@ -42,8 +42,11 @@ Article can have *many* Comments. But, more about that later.
 
 ## Creating the Comment Entity
 
-In the `src/Entity` directory, the *only* entity we have so far is `Article`. So
-*before* we can talk about relationships, we *first* need to build a `Comment`
+In the `src/Entity` directory, the *only* entity we have so far is `Article`:
+
+[[[ code('b7de454ea2') ]]]
+
+So *before* we can talk about relationships, we *first* need to build a `Comment`
 entity. We *could* create this by hand, but the generator is so much nicer:
 
 Open a new terminal tab and run:
@@ -60,11 +63,16 @@ But for now, keep it as a simple string.
 Next, add `content` as a `text` field, and also say no to nullable. Hit enter one
 more time to finish up.
 
-Oh, but *before* we generate the migration, go open the new `Comment` class. No
-surprises: `id`, `authorName`, `content` and some getter & setter methods. At the
-top of the class, let's add `use TimestampableEntity`.
+Oh, but *before* we generate the migration, go open the new `Comment` class:
 
-That will give us `createdAt` and `updatedAt` fields.
+[[[ code('5c77c90dea') ]]]
+
+No surprises: `id`, `authorName`, `content` and some getter & setter methods.
+At the top of the class, let's add `use TimestampableEntity`:
+
+[[[ code('a714563ae3') ]]]
+
+That will give us `$createdAt` and `$updatedAt` fields.
 
 *Now* head back to your terminal and run:
 
@@ -73,10 +81,12 @@ php bin/console make:migration
 ```
 
 When that finishes, go find the new file. We *just* want to make sure that this doesn't
-contain any surprise. For example, if you're working on multiple branches, then
+contain any surprises. For example, if you're working on multiple branches, then
 your database may be out-of-sync *before* you run `make:migration`. If that happens,
 the migration file would contain *extra* changes that you'll want to remove. In this
-case, it looks *great*.
+case, it looks *great*:
+
+[[[ code('f48b29d6f6') ]]]
 
 Go back to your terminal and, migrate!
 
