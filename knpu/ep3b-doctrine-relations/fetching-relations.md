@@ -67,7 +67,7 @@ Scroll down a little... ah, yes! First, update the count: `article.comments|leng
 Easy! Then, below, change the loop to use `for comment in article.comments`. And
 because each comment has a dynamic author, print that with `{{ comment.authorName }}`.
 And the content is now `comment.content`. Oh, and, because each comment has
-`createdAt`, let's print that to, with our trusty `ago` filter.
+a `createdAt`, let's print that too, with our trusty `ago` filter.
 
 Love it! Let's try it! Go back, refresh and... yes! Two comments, from about
 17 minutes ago. And, check this out: on the web debug toolbar, you can see that
