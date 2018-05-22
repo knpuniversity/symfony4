@@ -70,12 +70,11 @@ empty! The relationship is *not* being set correctly!
 
 *This* is *exactly* what I wanted to talk about. Every relationship has two
 sides. One side is known as the *owning* side of the relation and the other
-is known as the *inverse* side of the relation. I'll scroll back to the top
-of `Comment`. For a ManyToOne and OneToMany relation, the *owning* side is always
-the ManyToOne side. And, it's easy to remember: the owning side is the side where
-the actual *column* appears in the database. Because the `comment` table will have
-the `article_id` column, the `Comment.article` property is the owning side.
-And so, `Article.comments` is the *inverse* side.
+is known as the *inverse* side of the relation. For a ManyToOne and OneToMany relation, 
+the *owning* side is always the ManyToOne side. And, it's easy to remember: the owning 
+side is the side where the actual *column* appears in the database. Because the 
+`comment` table will have the `article_id` column, the `Comment.article` property 
+is the owning side. And so, `Article.comments` is the *inverse* side.
 
 The reason this is *so* important is that, when you relate two entities together
 and save, Doctrine *only* looks at the *owning* side of the relationship to figure
