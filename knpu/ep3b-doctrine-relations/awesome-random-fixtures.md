@@ -90,7 +90,7 @@ that makes sense.
 With that fixed, let's rename the class *back* from this ridiculous name to
 `CommentFixture`.
 
-To celebrate, move over, refresh and... awesome! 10, random comments. We rock!
+To celebrate, move over, refresh and... awesome! 8, random comments. We rock!
 
 Next, let's learn about some tricks to control *how* Doctrine fetches the
 comments for an article, like, their *order*.
