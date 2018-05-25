@@ -90,23 +90,37 @@ git status
 ```
 
 to see what this did. Cool! It updated *both* `Article` and `Comment`. Open
-the `Comment` class first.
+the `Comment` class first:
+
+[[[ code('42c3eba0fb') ]]]
 
 Awesome! It added a new property called `article`, but instead of the normal
 `@ORM\Column`, it used `@ORM\ManyToOne`, with some options that point to the
-`Article` class. Then, at the bottom, we have getter and setter methods like normal.
+`Article` class. Then, at the bottom, we have getter and setter methods like normal:
+
+[[[ code('f47cb3db06') ]]]
 
 Now, check out the other side of the relationship, in `Article` entity. This has
-a new `comments` property. And, near the bottom, *three* new methods: `getComments()`,
-`addComment()` and `removeComment()`. You *could* also add a `setComments()` method:
-but `addComment()` and `removeComment()` are usually more convenient.
+a new `comments` property:
+
+[[[ code('d2407c1638') ]]]
+
+And, near the bottom, *three* new methods: `getComments()`, `addComment()` and
+`removeComment()`:
+
+[[[ code('1e82ce471f') ]]]
+
+You *could* also add a `setComments()` method: but `addComment()` and `removeComment()`
+are usually more convenient:
 
 ## The ArrayCollection Object
 
 Oh, and there's one *little*, annoying detail that I need to point out. Whenever you have
 a relationship that holds a *collection* of items - like how an `Article` will
 relate to a *collection* of comments, you need to add a `__construct()` method
-and initialize that property to a `new ArrayCollection()`.
+and initialize that property to a `new ArrayCollection()`:
+
+[[[ code('1153653f1e') ]]]
 
 The generator took care of that for us. And, this looks scarier, or at least, more
 important than it really is. *Even* though the comments are set to an `ArrayCollection`
@@ -118,8 +132,11 @@ array. The `ArrayCollection` is simply needed by Doctrine for internal reasons.
 
 Now, remember, we generated a *ManyToOne* relationship. We can see it inside
 `Comment`: the `article` property is a ManyToOne to `Article`. But, if you look
-at `Article`, huh. *It* has a *OneToMany* relationship back to Comment. This is a
-really important thing. In reality, ManyToOne and OneToMany do *not* represent
+at `Article`, huh. *It* has a *OneToMany* relationship back to Comment:
+
+[[[ code('d0b06c24fd') ]]]
+
+This is a really important thing. In reality, ManyToOne and OneToMany do *not* represent
 two different types of relationships! Nope, they describe the *same*, *one* relationship,
 just viewed from different sides.
 
@@ -132,14 +149,19 @@ php bin/console make:migration
 ```
 
 Go back to your editor and open that new migration file. Woh! Awesome! The end-result
-is *super* simple: it adds a new `article_id` column to the `comment`  table along
-with a foreign key constraint to the article's `id` column. 
+is *super* simple: it adds a new `article_id` column to the `comment` table along
+with a foreign key constraint to the article's `id` column:
 
-So even though, in `Comment`, we called the property `article`, in the database,
-this creates an `article_id` column! Ultimately, the database looks *exactly* like
-we expected in the beginning! But in PHP, guess what? When we *set* this `article`
-property, we will set an entire `Article` *object* on it - *not* the Article's id.
-More about that next.
+[[[ code('4b2c78bcb7') ]]]
+
+So even though, in `Comment`, we called the property `article`:
+
+[[[ code('d0b439cc88') ]]]
+
+In the database, this creates an `article_id` column! Ultimately, the database looks
+*exactly* like we expected in the beginning! But in PHP, guess what? When we *set*
+this `article` property, we will set an entire `Article` *object* on it - *not*
+the Article's ID. More about that next.
 
 The migration looks prefect. So find your terminal, and run it!
 
