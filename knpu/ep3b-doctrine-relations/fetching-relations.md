@@ -98,7 +98,7 @@ Easy! Then, below, change the loop to use `for comment in article.comments`:
 And because each comment has a dynamic author, print that with `{{ comment.authorName }}`.
 And the content is now `comment.content`:
 
-[[[ code('f9945e776b') ]]]
+[[[ code('180a30d970') ]]]
 
 Oh, and, because each comment has a `createdAt`, let's print that too, with our
 trusty `ago` filter:
