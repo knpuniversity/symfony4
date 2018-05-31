@@ -29,7 +29,7 @@ Scroll all the way to the top and find the `comments` property:
 
 Add a *new* annotation: `@ORM\OrderBy()` with `{"createdAt" = "DESC"}`:
 
-[[[ code('9c8dc02649') ]]]
+[[[ code('0a270f634e') ]]]
 
 That's it! Move over and, refresh! Brilliant! The *newest* comments are on top.
 This actually changed *how* Doctrine queries for the related comments.
