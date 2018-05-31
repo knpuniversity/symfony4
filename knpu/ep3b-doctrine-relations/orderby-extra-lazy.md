@@ -6,9 +6,16 @@ they're just printing out in whatever order they were added to the database. But
 that's silly! We need to print the *newest* comments on top, the oldest at the bottom.
 
 How can we do this? Check out the template. Hmm, *all* we're doing is calling
-`article.comments`, which is the `getComments()` method on `Article`. The *great*
-thing about these relationship shortcut methods is that.... they're easy! The
-*downside* is that you don't have a lot of control over what's returned, like,
+`article.comments`:
+
+[[[ code('0d56452a58') ]]]
+
+Which is the `getComments()` method on `Article`:
+
+[[[ code('2789b8f3c9') ]]]
+
+The *great* thing about these relationship shortcut methods is that.... they're easy!
+The *downside* is that you don't have a lot of control over what's returned, like,
 the *order* of this article's comments.
 
 Well... that's not entirely true. We *can* control the order, and I'll show you
@@ -16,8 +23,13 @@ how. Actually, we can control a *lot* of things - but more on that later.
 
 ## @ORM\OrderBy()
 
-Scroll all the way to the top and find the `comments` property. Add a *new* annotation:
-`@ORM\OrderBy()` with `{"createdAt" = "DESC"}`.
+Scroll all the way to the top and find the `comments` property:
+
+[[[ code('d385850f36') ]]]
+
+Add a *new* annotation: `@ORM\OrderBy()` with `{"createdAt" = "DESC"}`:
+
+[[[ code('9c8dc02649') ]]]
 
 That's it! Move over and, refresh! Brilliant! The *newest* comments are on top.
 This actually changed *how* Doctrine queries for the related comments.
@@ -36,7 +48,9 @@ I want to show you one other trick. Go back to the homepage. It would be really
 nice to list the number of comments for each article. No problem! Open
 `homepage.html.twig`. Then, inside the articles loop, right after the title, add
 a `<small>` tag, a set of parentheses, and use `{{ article.comments|length }}`
-and then the word comments.
+and then the word "comments":
+
+[[[ code('deb9f1ccdd') ]]]
 
 I love it! Refresh the homepage. It works effortlessly! But... check out the
 queries down here on the web debug toolbar. If you click into it, there are suddenly
@@ -61,7 +75,9 @@ use that data, it makes a query at that moment to get all of the comment data, e
 if you eventually only need to *count* that data.
 
 But, we can control this. In `Article,` at the end of the `OneToMany` annotation,
-add `fetch="EXTRA_LAZY"`.
+add `fetch="EXTRA_LAZY"`:
+
+[[[ code('bcb96e2dee') ]]]
 
 Now, go back to the page and refresh. We *still* have six queries, but go look at
 them. Awesome! Instead of selecting *all* of the comment data, they are super-fast
@@ -75,10 +91,13 @@ Awesome, right! You might think that it's *so* awesome that this should *always*
 be the way it works! But, there is *one* situation where this is *not* ideal. And
 actually, we have it! Go to the article show page.
 
-Here, we count the comments first, and *then* we loop over them. Look at the profiler
-now. Thanks to `EXTRA_LAZY`, we have an extra query! It counts the comments... but
-then, right after, it queries for all of them anyways. *Before* we were using
-`EXTRA_LAZY`, this count query didn't exist.
+Here, we count the comments first, and *then* we loop over them:
+
+[[[ code('a78ed91ad5') ]]]
+
+Look at the profiler now. Thanks to `EXTRA_LAZY`, we have an extra query!
+It counts the comments... but then, right after, it queries for all of them anyways.
+*Before* we were using `EXTRA_LAZY`, this count query didn't exist.
 
 So, sorry people, like life, everything is a trade-off. But, it's still probably
 a net-win for us. But *as always*, don't prematurely optimize. Deploy first, identify
