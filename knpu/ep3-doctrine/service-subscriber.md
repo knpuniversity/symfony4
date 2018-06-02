@@ -68,7 +68,7 @@ still have *other* arguments, as long as one has this type-hint.
 
 But, one important thing: this `$container` is *not* Symfony's big service container
 that holds hundreds of services. Nope, this is a mini-container, that holds a
-*subset* of those services. In fact, right not, it holds zero.
+*subset* of those services. In fact, right now, it holds zero.
 
 To tell Symfony *which* services you want in your mini-container, use
 `getSubscribedServices()`. Let's return the one service we need: `MarkdownHelper::class`:
