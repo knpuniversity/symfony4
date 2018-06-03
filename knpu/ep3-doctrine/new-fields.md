@@ -153,7 +153,7 @@ operator, which is `~`, then `article.imageFilename`:
 {# templates/article/homepage.html.twig #}
 
 {# ... #}
-    &lt;img class="article-img" src="{{ asset('images/'~article.imageFilename) }}"&gt;
+    <img class="article-img" src="{{ asset('images/'~article.imageFilename) }}">
 {# ... #}
 ```
 
