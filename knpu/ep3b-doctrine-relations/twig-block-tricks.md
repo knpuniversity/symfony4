@@ -14,7 +14,7 @@ php bin/console make:controller
 
 Call it `CommentAdminController`. This creates a new class *and* one bonus
 template file. Go check it out! Ok, nice start! Hmm, but let's change that URL
-to `/admin/comments`.
+to `/admin/comment`.
 
 Let's see what we have so far. Open a new browser tab and go to
 `http://localhost:8000/admin/comment`. Awesome! The template even tells us where
