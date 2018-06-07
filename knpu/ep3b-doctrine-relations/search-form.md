@@ -1,9 +1,8 @@
-# Comment Search Form
+# Request Object & Query OR Logic
 
 Because astronauts *love* to debate news, our site will have a *lot* of comments
 on production. So, let's add a search box above this table so we can find things
 quickly. 
-
 
 Open the template and, on top, I'm going to paste in a simple HTML form. We're
 not going to use Symfony's form system because, first, we haven't learned about
