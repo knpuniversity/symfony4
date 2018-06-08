@@ -13,8 +13,13 @@ php bin/console make:controller
 ```
 
 Call it `CommentAdminController`. This creates a new class *and* one bonus
-template file. Go check it out! Ok, nice start! Hmm, but let's change that URL
-to `/admin/comment`.
+template file. Go check it out!
+
+[[[ code('0aee7254a9') ]]]
+
+Ok, nice start! Hmm, but let's change that URL to `/admin/comment`:
+
+[[[ code('f6b612cf01') ]]]
 
 Let's see what we have so far. Open a new browser tab and go to
 `http://localhost:8000/admin/comment`. Awesome! The template even tells us where
@@ -22,12 +27,20 @@ the source code lives!
 
 ## Building the Comment Admin Template
 
-Let's open that template and get to work! This already overrides the `title` block,
-which is cool! Change it to say "Manage Comments". Then, delete all the body code.
+Let's open that template and get to work!
+
+[[[ code('93525be1b4') ]]]
+
+This already overrides the `title` block, which is cool! Change it to say
+"Manage Comments". Then, delete all the body code:
+
+[[[ code('8c0756ca17') ]]]
 
 To make the page look nice, open `show.html.twig`: we need to steal some markup
 from this. Copy the first 6 divs. Back in `index.html.twig`, paste, close each
-of those 6 divs and... back in the middle, add `Manage Comments`.
+of those 6 divs and... back in the middle, add `Manage Comments`:
+
+[[[ code('69ff9b0dcf') ]]]
 
 Try that again in your browser: refresh. Ok! Those 6 divs give us this white
 box that you also see on the article show page.
@@ -44,25 +57,42 @@ layout.
 
 In the `templates/` directory, create a new file: `content_base.html.twig`. What's
 *cool* is that, we can extend the *normal* `base.html.twig` and then just add the
-*extra* markup we need. To do that, override `block body` just like we would in
-a normal template. Then, steal the first four divs: these are the divs that *really*
-give us the structure. Paste them here, and type a ton of closing div tags.
+*extra* markup we need:
+
+[[[ code('4d2d65dc38') ]]]
+
+To do that, override `block body` just like we would in a normal template. Then,
+steal the first four divs: these are the divs that *really* give us the structure.
+Paste them here, and type a ton of closing div tags:
+
+[[[ code('f003bc9c5b') ]]]
 
 Next, and here's the key, in the middle, which is where we want the *content* to
-go, create a *new* block called `content_body` and `{% endblock %}`. I just invented
-that name.
+go, create a *new* block called `content_body` and `{% endblock %}`:
+
+[[[ code('fbfebbb080') ]]]
+
+I just invented that name.
 
 And, that's it! Let's go use it! In `index.html.twig`, change the extends to
-`content_base.html.twig`. Now, we do *not* want to override the block `body`. Nope,
-we want to override `content_body`. Thanks to this, we should get the normal base
-layout *plus* the extra markup from `content_base.html.twig`.
+`content_base.html.twig`:
 
-Remove the 4 divs, their closing tags, then clean things up a bit.
+[[[ code('c5ca9b835b') ]]]
+
+Now, we do *not* want to override the block `body`. Nope, we want to override
+`content_body`. Thanks to this, we should get the normal base layout *plus*
+the extra markup from `content_base.html.twig`.
+
+Remove the 4 divs, their closing tags, then clean things up a bit:
+
+[[[ code('dda2ebba24') ]]]
 
 Ok, try it! Go back to the admin tab and refresh. Yay! A nice layout with *no* work.
 Repeat this in `show.html.twig`: extend `content_base.html.twig`, change the block
 to `content_body`, and remove the 4 divs on top, the 4 closing tags on the bottom
-and... un-indent a few times so this looks decent.
+and... un-indent a few times so this looks decent:
+
+[[[ code('f706d1baae') ]]]
 
 And unless we forgot something... nope! It still looks perfect! We now have a
 *super* easy way to create new pages.
@@ -88,13 +118,17 @@ The answer is... drumroll... blocks! Blocks are *almost* always the answer when
 you need to do cool things with Twig inheritance.
 
 In `content_base.html.twig`, surround all of the classes with a new block: call
-it `content_class`. After the classes, use `endblock`.
+it `content_class`. After the classes, use `endblock`:
+
+[[[ code('908cb8ac51') ]]]
 
 This defines a new block that has *default content*. If nobody overrides the block,
 it will have all of these classes. But, in the comments template, we *can* override
 this: `{% block content_class %}`. But, we don't *really* want to fully replace it:
 we want to *add* to the block's content. No problem: use `{{ parent() }}` to print
-the existing classes, then `show-article-container-border-green` with `{% endblock %}`.
+the existing classes, then `show-article-container-border-green` with `{% endblock %}`:
+
+[[[ code('dbd66ddba0') ]]]
 
 I love it! To make sure I'm not lying: find your browser and refresh the manage
 comments page. Looks great! But the article show page... nope! No green border:
