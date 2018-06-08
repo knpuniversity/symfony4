@@ -17,21 +17,31 @@ To solve this, Doctrine has a *super* powerful and amazing feature... and yet,
 somehow, almost nobody knows about it! Time to change that! Once you're an expert
 on this feature, it'll be your job to tell the world!
 
-The system is called `Criteria`. Instead of looping over all the data, add
-`$criteria = Criteria` - the one from Doctrine - `Criteria::create()`. Then, you
-can chain off of this. The `Criteria` object is similar to the `QueryBuilder` we're
-used to, but with a slightly different, well, slightly more *confusing* syntax.
+The system is called "Criteria". Instead of looping over all the data, add
+`$criteria = Criteria` - the one from Doctrine - `Criteria::create()`:
+
+[[[ code('1874d10846') ]]]
+
+Then, you can chain off of this. The `Criteria` object is similar to the `QueryBuilder`
+we're used to, but with a slightly different, well, slightly more *confusing* syntax.
 Add `andWhere()`, but instead of a string, use `Criteria::expr()`. Then, there
 are a bunch of methods to help create the where clause, like `eq()` for equals,
 `gt()` for greater than, `gte()` for greater than or equal, and so on. It's a little
 object-oriented builder for the WHERE expression.
 
-In this case, we need `eq()` so we can say that `isDeleted` equals `false`. Then,
-add `orderBy`, with `createdAt => 'DESC'` to keep the sorting we want.
+In this case, we need `eq()` so we can say that `isDeleted` equals `false`:
+
+[[[ code('c9a279bb96') ]]]
+
+Then, add `orderBy`, with `createdAt => 'DESC'` to keep the sorting we want:
+
+[[[ code('763b1daccb') ]]]
 
 *Creating* the Criteria object doesn't actually *do* anything yet - it's like creating
 a query builder. But *now* we can say return `$this->comments->matching()` and pass
-`$criteria`.
+`$criteria`:
+
+[[[ code('118a8454fc') ]]]
 
 Because, remember, even though we *think* of the `$comments` property as an array,
 it's not! This `Collection` return type is an interface from Doctrine, and our property
@@ -66,18 +76,26 @@ to have 100% of my query logic *inside* my repository. No worries: we can move
 it there!
 
 In `ArticleRepository`, create a `public static function` called
-`createNonDeletedCriteria()` that will return a `Criteria` object. In `Article`,
-copy the `Criteria` code, paste it here, and return.
+`createNonDeletedCriteria()` that will return a `Criteria` object:
+
+[[[ code('6fc72ef9a4') ]]]
+
+In `Article`, copy the `Criteria` code, paste it here, and return:
+
+[[[ code('4f2c62af65') ]]]
 
 These are the *only* static methods that you should ever have in your repository.
 It *needs* to be static simply so that we can use it from inside `Article`. That's
 because entity classes don't have access to services.
 
-Use it with `$criteria = ArticleRepository::createNonDeletedCriteria()`. Side note:
-we *could* have also put this method into the `CommentRepository`. When you start
-working with related entities, sometimes, it's not clear exactly *which* repository
-class should hold some logic. No worries: do your best and don't over-think it.
-You can always move code around later.
+Use it with `$criteria = ArticleRepository::createNonDeletedCriteria()`:
+
+[[[ code('3fb8c9fc6f') ]]]
+
+Side note: we *could* have also put this method into the `CommentRepository`.
+When you start working with related entities, sometimes, it's not clear exactly
+*which* repository class should hold some logic. No worries: do your best and
+don't over-think it. You can always move code around later.
 
 Ok, go back to your browser, close the profiler and, refresh. Awesome: it still
 works great!
@@ -86,7 +104,24 @@ works great!
 
 Oh, and bonus! in `ArticleRepository`, what if in the future, we need to create
 a `QueryBuilder` and want to re-use the logic from the Criteria? Is that possible?
-Totally! Just use `->addCriteria()` then, in this case, `self::createNonDeletedCriteria()`.
+Totally! Just use `->addCriteria()` then, in this case, `self::createNonDeletedCriteria()`:
+
+```php
+class ArticleRepository extends ServiceEntityRepository
+{
+    public function findAllPublishedOrderedByNewest()
+    {
+        $this->createQueryBuilder('a')
+            ->addCriteria(CommentRepository::createNonDeletedCriteria());
+
+        return $this->addIsPublishedQueryBuilder()
+            ->orderBy('a.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+}
+```
 
 These `Criteria` *are* reusable.
 
@@ -94,9 +129,11 @@ These `Criteria` *are* reusable.
 
 To finish this feature, go back to the homepage. These comment numbers are still
 including deleted comments. No problem! Open `homepage.html.twig`, find where we're
-printing that number, and use `article.nonDeletedComments`.
+printing that number, and use `article.nonDeletedComments`:
+
+[[[ code('87cc156512') ]]]
 
 Ok, go back. We have 10, 13 & 7. Refresh! Nice! Now it's 5, 9 and 5.
 
-Next, let's take a quick detour and leverage some Twig techniques to reduce duplication
-in our templates.
+Next, let's take a quick detour and leverage some Twig techniques to reduce
+duplication in our templates.
