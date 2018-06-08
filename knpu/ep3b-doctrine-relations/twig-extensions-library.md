@@ -2,18 +2,30 @@
 
 Let's bring this section to life by listing *all* of the comments in the system.
 Ah man, with all our tools, this is going to be really easy! First, to query
-for the comments, add the `CommentRepository $repository` argument. Then,
-`$comments = $repository->`, and we *could* use `findAll()`, but I'll use
-`findBy()` passing this an empty array, then `'createdAt' => 'DESC'` so that
-we get the newest comments on top.
+for the comments, add the `CommentRepository $repository` argument:
 
-Clear out the `render` variables: we only need to pass one: `comments` set to `$comments`.
+[[[ code('29588eddbf') ]]]
+
+Then, `$comments = $repository->`, and we *could* use `findAll()`, but I'll use
+`findBy()` passing this an empty array, then `'createdAt' => 'DESC'` so that
+we get the newest comments on top:
+
+[[[ code('89cb68ea30') ]]]
+
+Clear out the `render()` variables: we only need to pass one: `comments` set to `$comments`:
+
+[[[ code('656ba09299') ]]]
 
 Perfect! Next, to the template! Below the `h1`, I'll paste the beginning of a table
 that has some Bootstrap classes and headers for the article name, author, the comment
-itself and when it was created.
+itself and when it was created:
 
-No problem! In the `tbody`, let's loop: `for comment in comments`, and `{% endfor %}`.
+[[[ code('e2c5bbb9e2') ]]]
+
+No problem! In the `tbody`, let's loop: `for comment in comments`, and `{% endfor %}`:
+
+[[[ code('ede15a7751') ]]]
+
 Add the `<tr>`, then let's print some data! In the first `td`, we need the article
 name. But, to make it *more* awesome, let's make this a *link* to the article. Add
 the `a` tag with `href=""`, but keep that blank for a moment. Inside, hmm, we have
@@ -23,14 +35,29 @@ then `.title`.
 
 For the `href`, use the `path()` function from Twig. Here, we need the *name* of
 the route that we want to link to. Open `ArticleController`. Ah! There it is:
-`name="article_show`. Close that and, back in the template, use `article_show`.
-This route needs a `slug` parameter so add that, set to `comment.article.slug`.
+`name="article_show`:
+
+[[[ code('3b12fd9aef') ]]]
+
+Close that and, back in the template, use `article_show`. This route needs a `slug`
+parameter so add that, set to `comment.article.slug`:
+
+[[[ code('36f7cce464') ]]]
 
 Dang, those relationships are handy!
 
-Let's keep going! Add another `td` and print `comment.authorName`. Give the next
-`td` a `style="width: 20%"` so it doesn't get too big. Then, print `comment.content`.
-Finally, Add a `td` with `comment.createdAt|ago`.
+Let's keep going! Add another `td` and print `comment.authorName`:
+
+[[[ code('0eaf378695') ]]]
+
+Give the next `td` a `style="width: 20%"` so it doesn't get too big. Then, print
+`comment.content`:
+
+[[[ code('ffd2b6d03e') ]]]
+
+Finally, add a `td` with `comment.createdAt|ago`:
+
+[[[ code('838603bac8') ]]]
 
 Cool! Let's see if we made any mistakes. Find your browser, refresh and... boom!
 A big, beautiful list of *all* of the comments on the site. Oh, but eventually
@@ -67,11 +94,10 @@ be pretty long. So, printing the *entire* comment will become a problem. What I
 *really* want to do is show some sort of preview, maybe the first 30 characters
 of a comment.
 
-Hmm, can Twig do that? Go to [twig.symfony.com](https://twig.symfony.com/) and
-click on the Documentation. Huh, there is actually *not* a filter or function
-that can do this! We could easily add one, but instead, search for "Twig extensions"
-and click on the
-[documentation for some Twig extensions library](http://twig-extensions.readthedocs.io/en/latest/).
+Hmm, can Twig do that? Go to [twig.symfony.com][twig] and click on the
+Documentation. Huh, there is actually *not* a filter or function that can do this!
+We could easily add one, but instead, search for "Twig extensions" and click on the
+[documentation for some Twig extensions library][twig_extensions].
 
 *We* know that if we need to create a custom Twig function or filter, we create
 a class called a Twig extension. We did it in an earlier tutorial. But *this* is
@@ -110,23 +136,29 @@ git status
 to see what changed. Beyond the normal Composer files and `symfony.lock`, the recipe
 created a *new* file: `config/packages/twig_extensions.yaml`. Ah, go check it out!
 
+[[[ code('c9ddc57709') ]]]
+
 Nice! As we just talked about, the library *simply* gives us the extension classes,
 but it does *not* register them as services. So, to make life easier, the Flex recipe
 for the library *gives* us the exact configuration we need to finish the job! Here,
-we can activate the extensions by uncommenting the ones we need.
+we can activate the extensions by uncommenting the ones we need:
+
+[[[ code('33acfcd655') ]]]
 
 Actually - because knowledge is power! - there are a few things going on. Thanks
 to the `Twig\Extensions\TwigExtension: ~` part, that class becomes registered as
 as service. Remember: each class in the `src/` directory is *automatically* registered
 as a service. But because this class lives in `vendor/`, we need to register it
-by hand. Oh, and the `~` means null: it means we don't need to configure this service
+by hand. Oh, and the `~` means `null`: it means we don't need to configure this service
 in any special way. For example, we don't need to configure any arguments.
 
 Second, thanks to the `_defaults` section on top, specifically `autoconfigure`,
 Symfony *notices* this is a Twig Extension by its interface, and automatically
 notifies the Twig service about it, without us needing to do anything.
 
-*All* of this means that in `index.html.twig`, we can now immediately add `|truncate`.
+*All* of this means that in `index.html.twig`, we can now immediately add `|truncate`:
+
+[[[ code('046f84f085') ]]]
 
 In fact, *before* we even try it, go back to your terminal and run:
 
@@ -143,3 +175,7 @@ library has, like `Intl` for date or number formatting and, actually, `Date`,
 which coincidentally has a `time_diff` filter that works like our `ago` filter.
 
 Next! Let's add a search form to the comment admin page.
+
+
+[twig]: https://twig.symfony.com/
+[twig_extensions]: http://twig-extensions.readthedocs.io/en/latest/
