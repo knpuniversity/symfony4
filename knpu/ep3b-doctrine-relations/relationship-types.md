@@ -16,7 +16,7 @@ to `Comment`.
 This means that there are *truly* only *three* different types of relationships:
 ManyToOne, ManyToMany and OneToOne. Um, ok, this is embarrassing. That's not true
 either. Yea, A OneToOne relationship is more or less the same as a ManyToOne. OneToOne
-is kind of a weird. Here's an example: suppose you have a `User` entity and you decide
+is kind of weird. Here's an example: suppose you have a `User` entity and you decide
 to create a `Profile` entity that contains *more* data about that one user. In this
 example, each `User` has exactly one `Profile` and each `Profile` is linked to exactly
 one `User`.
@@ -30,7 +30,7 @@ unique to prevent you from accidentally linking multiple profiles to the same
 user.
 
 The point is, OneToOne relationships are kind of ManyToOne relationships in disguise.
-They also not very common, and I don't like them.
+They also not very common, and I don't really like them.
 
 ## The 2 Types of Relationships
 

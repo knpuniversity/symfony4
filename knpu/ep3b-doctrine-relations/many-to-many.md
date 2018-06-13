@@ -63,7 +63,7 @@ which points *back* to `Article`.
 
 Here's the point: with a ManyToMany relationship, you *choose* the owning side by
 where the `inversedBy` versus `mappedBy` config lives. The generator configured
-things so that `Article` class holds the owning side because that's the entity we
+things so that `Article` holds the owning side because that's the entity we
 chose to update with `make:entity`.
 
 Remember, all of this owning versus inverse stuff is important because, when Doctrine
