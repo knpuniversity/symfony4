@@ -12,8 +12,13 @@ fix it. The *first* query on this page finds all of the published articles. Coul
 we add a join to that query to select the tag data all at once?
 
 Totally! Open `ArticleController` and find the `homepage()` action. Right now, we're
-using `$articles = $repository->findAllPublishedOrderedByNewest()`. Open
-`ArticleRepository` to check that out.
+using `$articles = $repository->findAllPublishedOrderedByNewest()`:
+
+[[[ code('bb53c2a5aa') ]]]
+
+Open `ArticleRepository` to check that out:
+
+[[[ code('8bea03fdfc') ]]]
 
 This custom query finds the `Article` objects, but does *not* do any special joins.
 Let's add one. But.... wait. This is weird. If you think about the database, we're
@@ -23,11 +28,15 @@ we can select the tag's data.
 
 This is where Doctrine's `ManyToMany` relationship *really* shines. Don't think
 *at all* about the join table. Instead, `->leftJoin()` on `a.tags` and use
-`t` as the new alias.
+`t` as the new alias:
+
+[[[ code('7a03d6dc3b') ]]]
 
 The `a.tags` refers to the `tags` property on `Article`. And because Doctrine knows
 that this is a ManyToMany relationship, it knows how to join *all* the way over to
-`tag`. To actually fetch the tag data, use `->addSelect('t')`.
+`tag`. To actually fetch the tag data, use `->addSelect('t')`:
+
+[[[ code('6d68e93b7c') ]]]
 
 That is it. Go back to our browser. The 15 queries are... back down to 8! Open the
 profiler to check them out. Awesome! The query selects everything from `article`
