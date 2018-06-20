@@ -67,7 +67,7 @@ Inside the loop, just say `$tag->getName()`:
 // ...
 $tags = $this->getRandomReferences(Tag::class, $this->faker->numberBetween(0, 5));
 foreach ($tags as $tag) {
-    $article->getName();
+    $tag->getName();
     dump($tag);
 }
 die;
