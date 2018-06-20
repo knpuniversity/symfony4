@@ -45,10 +45,16 @@ title. For example, if I search for "Bacon", that should return some results.
 
 Oh, by the way, here's a fun Twig feature. When we get *zero* results, we should
 probably print a nice message. On a Twig `for` loop, you can put an `else` at the
-end. Add a `<td colspan="4">`, a centering class, and: No comments found.
+end. Add a `<td colspan="4">`, a centering class, and: No comments found:
+
+[[[ code('e87af13473') ]]]
 
 Go back and try it! It works! Pff, except for my not-awesome styling skills. Use
-`text-center`. That's better.
+`text-center`:
+
+[[[ code('b74d833771') ]]]
+
+That's better.
 
 ## Adding a Join
 
@@ -58,20 +64,28 @@ need to *join* to that table first.
 
 In this case, we want to join from `comment` to `article`: an inner join is perfect.
 How can you do this with the QueryBuilder? Oh, it's awesome:
-`->innerJoin('c.article', 'a')`.
+`->innerJoin('c.article', 'a')`:
+
+[[[ code('e9d4d49cf0') ]]]
 
 That's *it*. When we say `c.article`, we're actually referencing the `article`
-property on `Comment`. Thanks to that, we can be lazy! We don't need to explain to
-Doctrine *how* to join - we don't need an `ON article.id = comment.article_id`.
-Nah, Doctrine can figure that out on its own. The second argument - `a` - will be
-the "alias" for `Article` for the rest of the query.
+property on `Comment`:
+
+[[[ code('f6f9e30bda') ]]]
+
+Thanks to that, we can be lazy! We don't need to explain to Doctrine *how*
+to join - we don't need an `ON article.id = comment.article_id`. Nah, Doctrine
+can figure that out on its own. The second argument - `a` - will be the "alias"
+for `Article` for the rest of the query.
 
 Before we do *anything* else, go refresh the page. Nothing changes yet, but go
 open the profiler and click to look at the query. Yes, it's perfect! It still
 *only* selects from `comment`, but it *does* have the `INNER JOIN` to article!
 
 We can now *easily* reference the article somewhere else in the query. Inside
-the `andWhere()`, add `OR a.title LIKE :term`.
+the `andWhere()`, add `OR a.title LIKE :term`:
+
+[[[ code('2a7ce1887c') ]]]
 
 That's all you need. Move back and refresh again. It works *instantly*. Check out
 the query again: this time we have the `INNER JOIN` *and* the extra logic inside
@@ -93,7 +107,9 @@ to `article`, it *only* selects data from `comment`. We are *not* fetching *any*
 `article` data. That's why the extra 6 queries are still needed.
 
 But at this point, the solution to the N+1 problem is *dead* simple. Go back
-to `CommentRepository` and put `->addSelect('a')`.
+to `CommentRepository` and put `->addSelect('a')`:
+
+[[[ code('df7deff42b') ]]]
 
 When you create a QueryBuilder from inside a repository, that QueryBuilder automatically
 knows to select from its own table, so, from `c`. With this line, we're telling
