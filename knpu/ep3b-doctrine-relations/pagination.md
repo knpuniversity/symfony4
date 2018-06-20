@@ -45,7 +45,7 @@ injection, which almost always means, autowiring.
 
 But, hmm, it doesn't say anything about autowiring here. That's a problem: the
 bundle needs to tell us what class or interface we can use to autowire the
-paginator service. Ah, dont worry: we can figure it out on our own!
+paginator service. Ah, don't worry: we can figure it out on our own!
 
 Go back to your terminal Excellent! The install finished. Now run:
 
@@ -59,10 +59,13 @@ get that *exact* service. We are in business!
 ## Using the Paginator
 
 Back in `CommentAdminController`, add that as the 3rd argument: `PaginatorInterface`.
-Make sure to auto-complete this to get the `use` statement. Call the arg `$paginator`.
+Make sure to auto-complete this to get the `use` statement. Call the arg `$paginator`:
 
-Next, go back to the docs and copy the `$pagination =` section, return, and
-paste.
+[[[ code('57912c9595') ]]]
+
+Next, go back to the docs and copy the `$pagination =` section, return, and paste:
+
+[[[ code('e1082deb92') ]]]
 
 Ok, so what should we use for `$query`? When you use a paginator, there is an important,
 practical change: we are no longer responsible for actually *executing* the query.
@@ -70,20 +73,37 @@ Nope, we're now only responsible for *building* a query and passing it to the pa
 This `$query` variable should be a QueryBuilder.
 
 So, back in `CommentRepository`, let's refactor this method to return that instead.
-Remove the `@returns` and, instead, use a `QueryBuilder` return type. Next, at the
-bottom, remove the `getQuery()` and `getResults()` lines. Finally, rename the method
-to `getWithSearchQueryBuilder()`,
+Remove the `@returns` and, instead, use a `QueryBuilder` return type:
+
+[[[ code('23d75b8a3d') ]]]
+
+Next, at the bottom, remove the `getQuery()` and `getResults()` lines:
+
+[[[ code('1a18964155') ]]]
+
+Finally, rename the method to `getWithSearchQueryBuilder()`:
+
+[[[ code('fa290cd2ea') ]]]
 
 Perfect! Back in the controller, add
-`$queryBuilder = $repository->getWithSearchQueryBuilder($q)`. Pass this below.
+`$queryBuilder = $repository->getWithSearchQueryBuilder($q)`. Pass this below:
+
+[[[ code('b8cf148937') ]]]
 
 *Finally*, instead of passing `comments` into the template, pass this `pagination`
-variable. Open `index.html.twig` so we can make changes there. First, at the top,
-let's print the *total* number of comments because we will now only show 10 on each
-page. To do that, go back to the docs. Ah, this is perfect. Use:
-`pagination.getTotalItemCount()`.
+variable:
 
-Next, down in the loop, update this to `for comment in pagination`.
+[[[ code('9bdf7201a1') ]]]
+
+Open `index.html.twig` so we can make changes there. First, at the top, let's print
+the *total* number of comments because we will now only show 10 on each page. To do
+that, go back to the docs. Ah, this is perfect. Use: `pagination.getTotalItemCount()`:
+
+[[[ code('3ca4143b8c') ]]]
+
+Next, down in the loop, update this to `for comment in pagination`:
+
+[[[ code('009878ceba') ]]]
 
 Yes, `pagination` is an *object*. But, you *can* loop over it to get the comments
 for the current page only.
@@ -91,6 +111,8 @@ for the current page only.
 Oh, and at the bottom, we need some navigation to help the user go to the other
 pages. That's really easy: on the docs, copy the `knp_pagination_render()` line
 and, paste!
+
+[[[ code('18bb890e99') ]]]
 
 Phew! Let's go check it out! Yes! 100 total results, but only 10 on this page. We
 can click to page 2, then 3 and so-on. Heck, the search even works! Try something
@@ -115,7 +137,9 @@ Just create it by hand: `knp_paginator.yaml`.
 As usual, the filename matches the root config key. But, we know from previous
 tutorials that the filename is actually meaningless. Next, copy the config down
 to the `pagination` line, move over, paste, then remove all the stuff we don't
-need. Finally, copy the bootstrap v4 template name and, paste.
+need. Finally, copy the bootstrap v4 template name and, paste:
+
+[[[ code('007a77a478') ]]]
 
 We're ready! Move back and refresh. Boom! It still works! It's beautiful! We
 rock! Our pagination is awesome! I'm super happy!
