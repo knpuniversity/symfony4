@@ -85,7 +85,7 @@ open the profiler and click to look at the query. Yes, it's perfect! It still
 We can now *easily* reference the article somewhere else in the query. Inside
 the `andWhere()`, add `OR a.title LIKE :term`:
 
-[[[ code('2a7ce1887c') ]]]
+[[[ code('f07999b951') ]]]
 
 That's all you need. Move back and refresh again. It works *instantly*. Check out
 the query again: this time we have the `INNER JOIN` *and* the extra logic inside
