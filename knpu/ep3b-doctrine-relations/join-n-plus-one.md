@@ -6,7 +6,9 @@ show up inside the search box. That sucks! Go back to the template. Ok, just add
 Well, of course, we could pass a new `q` variable into the template and use it.
 That's *totally* valid.
 
-But, of course, there's a shortcut! In the template, use `{{ app.request.query.get('q') }}`.
+But, of course, there's a shortcut! In the template, use `{{ app.request.query.get('q') }}`:
+
+[[[ code('97a9861410') ]]]
 
 Before we talk about this black magic, try it: refresh. It works! Woo!
 
@@ -22,7 +24,7 @@ php bin/console debug:twig
 Yep! Under "Globals", we have one: `app`. And it's an *object* called, um,
 `AppVariable`. Ah, clever name Symfony!
 
-Back in your editor, type Shift+Shift and search for this: `AppVariable`. Cool!
+Back in your editor, type `Shift`+`Shift` and search for this: `AppVariable`. Cool!
 Ignore the setter methods on top - these are just for setup. The `AppVariable`
 has a couple of handy methods: `getToken()` and `getUser()` both relate to security.
 Then, hey! There's our favorite `getRequest()` method, then `getSession()`,
@@ -31,7 +33,9 @@ temporary messages, usually for forms.
 
 It's not a *huge* class, but it's *handy*! We're calling `getRequest()`, then
 `.query.get()`, which ultimately does the same thing as the code in our controller:
-go to the `query` property and call `get()`.
+go to the `query` property and call `get()`:
+
+[[[ code('8c52f8620c') ]]]
 
 Cool. So now it's time for a totally *new* challenge. In addition to searching a
 comment's content and author name, I *also* want to search the comment's, article's
