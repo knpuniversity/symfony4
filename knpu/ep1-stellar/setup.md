@@ -80,11 +80,17 @@ hello to your new Symfony app!
 
 ## Our Tiny Project
 
+***TIP
+Symfony no longer creates a Git repository automatically for you. But, no problem!
+Just type `git init` once to initialize your repository.
+***
+
 Back in the terminal, I'll create a new terminal tab. Symfony *already* inititalized
 a new git repository for us *and* gave us a perfect `.gitignore` file. Thanks Symfony!
 That means we can create our *first* commit just by saying:
 
 ```terminal
+git init
 git add .
 git commit
 ```
