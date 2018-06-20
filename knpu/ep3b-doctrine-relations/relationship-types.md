@@ -7,7 +7,10 @@ and OneToOne.
 
 But, that's not really true... and the truth is a lot more interesting. For example,
 we quickly learned that ManyToOne and OneToMany are really two different ways to
-refer to the *same* relationship! `Comment` has a ManyToOne relationship to `Article`.
+refer to the *same* relationship! `Comment` has a ManyToOne relationship to `Article`:
+
+[[[ code('980b2ebf95') ]]]
+
 But that same database relationship can be described as a OneToMany from `Article`
 to `Comment`.
 
@@ -54,14 +57,29 @@ php bin/console make:entity
 Name it `Tag` and give it two properties: `name`, as a string and `slug` also as
 a string, so that we can use the tag in a URL later.
 
-Cool! Before generating the migration, open the new class. No surprises: `name`
-and `slug`. At the top, use our favorite `TimestampableEntity` trait. And, just
-like we did in `Article`, configure the slug to generate automatically. Copy
-the slug annotation and paste that above the `slug` property. Oh, but we need a `use`
-statement for the annotation. An easy way to add it is to temporarily type
-`@Slug` on the next line and hit tab to auto-complete it. Then, delete it: that
-was enough to make sure the `use` statement was added on top. Let's also make
-the `slug` column unique.
+Cool! Before generating the migration, open the new class:
+
+[[[ code('b427551ab9') ]]]
+
+No surprises: `name` and `slug`. At the top, use our favorite `TimestampableEntity`
+trait:
+
+[[[ code('2bbd209e4a') ]]]
+
+And, just like we did in `Article`, configure the slug to generate automatically. Copy
+the slug annotation and paste that above the `slug` property:
+
+[[[ code('d828d1f932') ]]]
+
+Oh, but we need a `use` statement for the annotation. An easy way to add it is to
+temporarily type `@Slug` on the next line and hit tab to auto-complete it. Then,
+delete it: that was enough to make sure the `use` statement was added on top:
+
+[[[ code('487769233b') ]]]
+
+Let's also make the `slug` column unique:
+
+[[[ code('84c698aebf') ]]]
 
 Great! The entity is ready. Go back to your terminal and make that migration!
 
@@ -70,14 +88,21 @@ php bin/console make:migration
 ```
 
 Whoops! My bad! Maybe you saw my mistake. Change the Slug annotation from `title`
-to `name`. Generate the migration again:
+to `name`:
+
+[[[ code('ab05ac9803') ]]]
+
+Generate the migration again:
 
 ```terminal-silent
 php bin/console make:migration
 ```
 
-Got it! Open that class to make sure it looks right. Yep: `CREATE TABLE tag`.
-Go run it:
+Got it! Open that class to make sure it looks right:
+
+[[[ code('4e8ad5eb5b') ]]]
+
+Yep: `CREATE TABLE tag`. Go run it:
 
 ```terminal
 php bin/console doctrine:migrations:migrate
@@ -89,11 +114,23 @@ Now that the entity & database are setup, we need some dummy data! Run:
 php bin/console make:fixtures
 ```
 
-Call it `TagFixture`. Then, like always, open that class so we can tweak it. First,
-extend `BaseFixture`, rename `load` to `loadData` and make it protected. We also
-don't need this `use` statement anymore. Call our trusty `$this->createMany()`
-to create 10 tags. For the name, use `$tag->setName()` with `$this->faker->realText()`
-and 20, to get about that many characters.
+Call it `TagFixture`. Then, like always, open that class so we can tweak it:
+
+[[[ code('4c4cc188b7') ]]]
+
+First, extend `BaseFixture`, rename `load()` to `loadData()` and make it protected:
+
+[[[ code('71e4d7ec59') ]]]
+
+We also don't need this `use` statement anymore. Call our trusty `$this->createMany()`
+to create 10 tags:
+
+[[[ code('b7ba8c3d22') ]]]
+
+For the name, use `$tag->setName()` with `$this->faker->realText()` and 20, to get about
+that many characters:
+
+[[[ code('f517dfffb9') ]]]
 
 We *could* use `$this->faker->word` to get a random word, but that word would be
 in Latin. The `realText()` method will give us a *few* words, actually, but they
