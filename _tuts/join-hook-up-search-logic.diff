@@ -56,7 +56,7 @@ index 5963fbb..29b9a7c 100644
  //     * @return Comment[] Returns an array of Comment objects
  //     */
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 7c8b7a6..3521a9e 100644
+index 7c8b7a6..83d56cc 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -14,6 +14,7 @@
@@ -67,3 +67,16 @@ index 7c8b7a6..3521a9e 100644
                             placeholder="Search..."
                      >
                      <div class="input-group-append">
+@@ -52,6 +53,12 @@
+                             {{ comment.createdAt|ago }}
+                         </td>
+                     </tr>
++                {% else %}
++                    <tr>
++                        <td colspan="4" class="text-center">
++                            No comments found
++                        </td>
++                    </tr>
+                 {% endfor %}
+                 </tbody>
+             </table>

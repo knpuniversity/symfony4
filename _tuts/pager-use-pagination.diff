@@ -67,7 +67,7 @@ index 7584981..cea2a74 100644
      }
  
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 3521a9e..944c407 100644
+index 83d56cc..8b13f9e 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -7,7 +7,7 @@
@@ -88,7 +88,7 @@ index 3521a9e..944c407 100644
                      <tr>
                          <td>
                              <a href="{{ path('article_show', {'slug': comment.article.slug}) }}">
-@@ -56,6 +56,8 @@
+@@ -62,6 +62,8 @@
                  {% endfor %}
                  </tbody>
              </table>
