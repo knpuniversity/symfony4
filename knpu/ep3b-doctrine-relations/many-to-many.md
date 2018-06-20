@@ -34,32 +34,54 @@ And, that's it! Hit enter to finish.
 
 ## Looking at the Generating Entities
 
-Exciting! Let's see what changes this made. Open `Article` first. Yes! Here is the
-new `tags` property: it's a ManyToMany that points to the `Tag` entity. And, like
-we saw earlier with comments, whenever you have a relationship that holds *many*
-objects, in your constructor, you need to initialize that property to a new
-`ArrayCollection`. The generator did that for us.
+Exciting! Let's see what changes this made. Open `Article` first:
 
-At the bottom, instead of a getter & setter, we have a getter, adder & remover.
+[[[ code('84eac55e9e') ]]]
+
+Yes! Here is the new `tags` property: it's a ManyToMany that points to the `Tag`
+entity. And, like we saw earlier with comments, whenever you have a relationship
+that holds *many* objects, in your constructor, you need to initialize that property
+to a new `ArrayCollection`:
+
+[[[ code('2d1a9d76f6') ]]]
+
+The generator did that for us.
+
+At the bottom, instead of a getter & setter, we have a getter, adder & remover:
+
+[[[ code('5ad3f2e73e') ]]]
+
 There's no special reason for that: the adder & remover methods are just convenient.
 
-Next, open `Tag`. The code here is almost *identical*: a ManyToMany pointing back
-to `Article` and, at the bottom, getter, adder & remover methods.
+Next, open `Tag`:
+
+[[[ code('c0a72a5b20') ]]]
+
+The code here is almost *identical*: a ManyToMany pointing back to `Article` and,
+at the bottom, getter, adder & remover methods.
 
 ## Owning Versus Inverse Sides
 
 Great! But, which side is the owning side and which is the inverse side of the
-relationship? Open `Comment`. Remember, with a ManyToOne / OneToMany relationship,
-the ManyToOne side is *always* the owning side of the relation. That's easy to remember,
-because this is where the column lives in the database: the `comment` table has
-an `article_id` column.
+relationship? Open `Comment`:
+
+[[[ code('463c5d148d') ]]]
+
+Remember, with a ManyToOne / OneToMany relationship, the ManyToOne side is *always*
+the owning side of the relation. That's easy to remember, because this is where
+the column lives in the database: the `comment` table has an `article_id` column.
 
 But, with a ManyToMany relationship, well, *both* sides are ManyToMany! In `Article`,
 ManyToMany. In `Tag`, the same! So, which side is the *owning* side?
 
-The answer lives in `Article`. See that `inversedBy="articles"` config? That points
-to the `articles` property in `Tag`. On the other side, we have `mappedBy="tags"`,
-which points *back* to `Article`.
+The answer lives in `Article`. See that `inversedBy="articles"` config?
+
+[[[ code('6ffb65350e') ]]]
+
+That points to the `articles` property in `Tag`. On the other side, we have
+`mappedBy="tags"`, which points *back* to `Article`:
+
+[[[ code('e965a5964f') ]]]
 
 Here's the point: with a ManyToMany relationship, you *choose* the owning side by
 where the `inversedBy` versus `mappedBy` config lives. The generator configured
@@ -72,7 +94,9 @@ out what to save to the database. So, if we add tags to an article, Doctrine wil
 save that correctly. But, if you added articles to a tag and save, Doctrine would
 do nothing. Well, in practice, if you use `make:entity`, that's not true. Why?
 Because the generated code *synchronizes* the owning side. If you call
-`$tag->addArticle()`, inside, that calls `$article->addTag()`.
+`$tag->addArticle()`, inside, that calls `$article->addTag()`:
+
+[[[ code('9f5bbcba0d') ]]]
 
 ## Generating the Migration
 
@@ -82,9 +106,13 @@ Enough of that! Let's generate the migration:
 php bin/console make:migration
 ```
 
-Cool! Go open that file. Woh! It creates a new *table*! Of course! That's how you
-model a ManyToMany relationship in a relational database. It creates an `article_tag`
-table with only two fields: `article_id` and `tag_id`.
+Cool! Go open that file:
+
+[[[ code('244fd471f8') ]]]
+
+Woh! It creates a new *table*! Of course! That's how you model a ManyToMany
+relationship in a relational database. It creates an `article_tag` table with
+only two fields: `article_id` and `tag_id`.
 
 This is very different than anything we've seen so far with Doctrine. This is the
 *first* time - and really, the only time - that you will have a table in the database,
