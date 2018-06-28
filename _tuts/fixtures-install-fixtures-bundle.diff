@@ -35,11 +35,10 @@ index 9811484..ccb5d66 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -4564,6 +4564,124 @@
-             ],
+@@ -4565,6 +4565,124 @@
              "time": "2018-03-29T19:57:20+00:00"
          },
-+        {
+         {
 +            "name": "doctrine/data-fixtures",
 +            "version": "v1.3.0",
 +            "source": {
@@ -157,9 +156,10 @@ index 9811484..ccb5d66 100644
 +            ],
 +            "time": "2017-12-04T20:26:38+00:00"
 +        },
-         {
++        {
              "name": "easycorp/easy-log-handler",
              "version": "v1.0.4",
+             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index 3cae3dd..a3e56b0 100644
 --- a/config/bundles.php

@@ -22,7 +22,7 @@ index f883d6e..19c6d46 100644
  Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
  lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index b2fcd33..5aca632 100644
+index dd32f52..e59d6b3 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -3,6 +3,7 @@

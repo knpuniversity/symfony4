@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 5aca632..f602352 100644
+index e59d6b3..9f74c32 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -53,6 +53,16 @@ class Article
@@ -19,7 +19,7 @@ index 5aca632..f602352 100644
      public function getId()
      {
          return $this->id;
-@@ -152,4 +162,28 @@ class Article
+@@ -154,4 +164,28 @@ class Article
      {
          return 'images/'.$this->getImageFilename();
      }

@@ -23,10 +23,10 @@ index 8452b2e..6fa5546 100644
  
          $manager->flush();
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index f42195b..b1e051c 100644
+index f33da59..00862f4 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -180,7 +180,7 @@ class Article
+@@ -182,7 +182,7 @@ class Article
      {
          if (!$this->comments->contains($comment)) {
              $this->comments[] = $comment;

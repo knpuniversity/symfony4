@@ -15,14 +15,14 @@ diff --git a/composer.lock b/composer.lock
 index b8685f7..5ec76d4 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -4,8 +4,60 @@
+@@ -4,9 +4,61 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
 -    "content-hash": "2be834b1cf1bab62b499aac19ad5591e",
 +    "content-hash": "1b0a443c6aec0d82379b2a9f883b7ee7",
      "packages": [
-+        {
+         {
 +            "name": "clue/stream-filter",
 +            "version": "v1.4.0",
 +            "source": {
@@ -74,9 +74,10 @@ index b8685f7..5ec76d4 100644
 +            ],
 +            "time": "2017-08-18T09:54:01+00:00"
 +        },
-         {
++        {
              "name": "doctrine/annotations",
              "version": "v1.6.0",
+             "source": {
 @@ -389,63 +441,1028 @@
              ],
              "authors": [
@@ -1248,11 +1249,10 @@ index b8685f7..5ec76d4 100644
          },
          {
              "name": "psr/cache",
-@@ -613,6 +1634,56 @@
-             ],
+@@ -614,6 +1635,56 @@
              "time": "2017-02-14T16:28:37+00:00"
          },
-+        {
+         {
 +            "name": "psr/http-message",
 +            "version": "1.0.1",
 +            "source": {
@@ -1302,14 +1302,14 @@ index b8685f7..5ec76d4 100644
 +            ],
 +            "time": "2016-08-06T14:39:51+00:00"
 +        },
-         {
++        {
              "name": "psr/log",
              "version": "1.0.2",
-@@ -1709,6 +2780,60 @@
-             "homepage": "https://symfony.com",
+             "source": {
+@@ -1710,6 +2781,60 @@
              "time": "2017-10-19T02:16:32+00:00"
          },
-+        {
+         {
 +            "name": "symfony/options-resolver",
 +            "version": "v4.0.4",
 +            "source": {
@@ -1363,14 +1363,14 @@ index b8685f7..5ec76d4 100644
 +            ],
 +            "time": "2018-01-18T22:19:33+00:00"
 +        },
-         {
++        {
              "name": "symfony/polyfill-mbstring",
              "version": "v1.6.0",
-@@ -1895,6 +3020,55 @@
-             ],
+             "source": {
+@@ -1896,6 +3021,55 @@
              "time": "2018-01-16T18:04:12+00:00"
          },
-+        {
+         {
 +            "name": "symfony/stopwatch",
 +            "version": "v4.0.4",
 +            "source": {
@@ -1419,14 +1419,14 @@ index b8685f7..5ec76d4 100644
 +            "homepage": "https://symfony.com",
 +            "time": "2018-01-03T07:38:00+00:00"
 +        },
-         {
++        {
              "name": "symfony/twig-bridge",
              "version": "v4.0.4",
-@@ -2871,55 +4045,6 @@
-             "description": "A pack for the Symfony web profiler",
+             "source": {
+@@ -2872,55 +4046,6 @@
              "time": "2017-12-12T01:48:24+00:00"
          },
--        {
+         {
 -            "name": "symfony/stopwatch",
 -            "version": "v4.0.4",
 -            "source": {
@@ -1475,9 +1475,10 @@ index b8685f7..5ec76d4 100644
 -            "homepage": "https://symfony.com",
 -            "time": "2018-01-03T07:38:00+00:00"
 -        },
-         {
+-        {
              "name": "symfony/var-dumper",
              "version": "v4.0.4",
+             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index e278c0b..56ef227 100644
 --- a/config/bundles.php

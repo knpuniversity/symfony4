@@ -32,11 +32,10 @@ index 42cd6d1..cfdf297 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2371,37 +2371,6 @@
-             "homepage": "https://symfony.com",
+@@ -2372,37 +2372,6 @@
              "time": "2018-01-03T07:38:00+00:00"
          },
--        {
+         {
 -            "name": "symfony/debug-pack",
 -            "version": "v1.0.4",
 -            "source": {
@@ -67,6 +66,7 @@ index 42cd6d1..cfdf297 100644
 -            "description": "A debug pack for Symfony projects",
 -            "time": "2017-12-12T01:47:04+00:00"
 -        },
-         {
+-        {
              "name": "symfony/dotenv",
              "version": "v4.0.3",
+             "source": {

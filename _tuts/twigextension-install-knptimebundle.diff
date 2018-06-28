@@ -23,11 +23,10 @@ index c2ffead..9811484 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -1272,6 +1272,71 @@
-             ],
+@@ -1273,6 +1273,71 @@
              "time": "2018-01-23T15:34:53+00:00"
          },
-+        {
+         {
 +            "name": "knplabs/knp-time-bundle",
 +            "version": "1.8.0",
 +            "target-dir": "Knp/Bundle/TimeBundle",
@@ -92,14 +91,14 @@ index c2ffead..9811484 100644
 +            ],
 +            "time": "2017-12-26T03:59:33+00:00"
 +        },
-         {
++        {
              "name": "michelf/php-markdown",
              "version": "1.8.0",
-@@ -3866,6 +3931,129 @@
-             "homepage": "https://symfony.com",
+             "source": {
+@@ -3867,6 +3932,129 @@
              "time": "2018-02-19T16:50:22+00:00"
          },
-+        {
+         {
 +            "name": "symfony/templating",
 +            "version": "v4.0.8",
 +            "source": {
@@ -222,9 +221,10 @@ index c2ffead..9811484 100644
 +            "homepage": "https://symfony.com",
 +            "time": "2018-02-22T10:50:29+00:00"
 +        },
-         {
++        {
              "name": "symfony/twig-bridge",
              "version": "v4.0.8",
+             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index aaa4908..3cae3dd 100644
 --- a/config/bundles.php

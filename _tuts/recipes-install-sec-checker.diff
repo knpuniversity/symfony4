@@ -33,11 +33,10 @@ index 0b165eb..a04c67d 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -1848,6 +1848,107 @@
-         }
+@@ -1849,6 +1849,107 @@
      ],
      "packages-dev": [
-+        {
+         {
 +            "name": "composer/ca-bundle",
 +            "version": "1.1.0",
 +            "source": {
@@ -138,9 +137,10 @@ index 0b165eb..a04c67d 100644
 +            "description": "A security checker for your composer.lock",
 +            "time": "2017-10-29T18:48:08+00:00"
 +        },
-         {
++        {
              "name": "symfony/dotenv",
              "version": "v4.0.3",
+             "source": {
 diff --git a/config/packages/dev/security_checker.yaml b/config/packages/dev/security_checker.yaml
 new file mode 100644
 index 0000000..544c0b3

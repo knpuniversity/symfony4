@@ -880,11 +880,10 @@ index 437778b..21133cc 100644
          },
          {
              "name": "easycorp/easy-log-handler",
-@@ -3600,18 +3605,69 @@
-             ],
+@@ -3601,17 +3606,68 @@
              "time": "2017-06-19T01:22:40+00:00"
          },
-+        {
+         {
 +            "name": "nikic/php-parser",
 +            "version": "v4.0.1",
 +            "source": {
@@ -935,7 +934,7 @@ index 437778b..21133cc 100644
 +            ],
 +            "time": "2018-03-25T17:35:16+00:00"
 +        },
-         {
++        {
              "name": "sensiolabs/security-checker",
 -            "version": "v4.1.7",
 +            "version": "v4.1.8",

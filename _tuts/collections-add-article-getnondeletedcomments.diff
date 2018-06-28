@@ -1,8 +1,8 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index a095e90..80adc8b 100644
+index c9f6d3c..64a188e 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -177,6 +177,14 @@ class Article
+@@ -179,6 +179,14 @@ class Article
          return $this->comments;
      }
  

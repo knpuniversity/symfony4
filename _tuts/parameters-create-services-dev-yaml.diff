@@ -1,4 +1,16 @@
-diff --git a/config/packages/dev/framework.yaml b/config/services_dev.yaml
-similarity index 100%
-rename from config/packages/dev/framework.yaml
-rename to config/services_dev.yaml
+diff --git a/config/packages/dev/framework.yaml b/config/packages/dev/framework.yaml
+deleted file mode 100644
+index fb930db..0000000
+--- a/config/packages/dev/framework.yaml
++++ /dev/null
+@@ -1,2 +0,0 @@
+-parameters:
+-    cache_adapter: 'cache.adapter.filesystem'
+diff --git a/config/services_dev.yaml b/config/services_dev.yaml
+new file mode 100644
+index 0000000..fb930db
+--- /dev/null
++++ b/config/services_dev.yaml
+@@ -0,0 +1,2 @@
++parameters:
++    cache_adapter: 'cache.adapter.filesystem'

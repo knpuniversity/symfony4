@@ -1,8 +1,8 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index b1e051c..f42195b 100644
+index 00862f4..f33da59 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
-@@ -180,7 +180,7 @@ class Article
+@@ -182,7 +182,7 @@ class Article
      {
          if (!$this->comments->contains($comment)) {
              $this->comments[] = $comment;

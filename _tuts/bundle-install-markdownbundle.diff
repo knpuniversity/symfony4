@@ -23,11 +23,10 @@ index 2597139..b8685f7 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -409,6 +409,115 @@
-             ],
+@@ -410,6 +410,115 @@
              "time": "2014-09-09T13:34:57+00:00"
          },
-+        {
+         {
 +            "name": "knplabs/knp-markdown-bundle",
 +            "version": "1.7.0",
 +            "source": {
@@ -136,9 +135,10 @@ index 2597139..b8685f7 100644
 +            ],
 +            "time": "2018-01-15T00:49:33+00:00"
 +        },
-         {
++        {
              "name": "psr/cache",
              "version": "1.0.1",
+             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index b543674..e278c0b 100644
 --- a/config/bundles.php

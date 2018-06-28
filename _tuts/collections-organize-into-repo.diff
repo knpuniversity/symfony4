@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 58db8cf..40d4402 100644
+index c670d0e..809136f 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -2,6 +2,7 @@
@@ -10,7 +10,7 @@ index 58db8cf..40d4402 100644
  use Doctrine\Common\Collections\ArrayCollection;
  use Doctrine\Common\Collections\Collection;
  use Doctrine\Common\Collections\Criteria;
-@@ -183,10 +184,7 @@ class Article
+@@ -185,10 +186,7 @@ class Article
       */
      public function getNonDeletedComments(): Collection
      {

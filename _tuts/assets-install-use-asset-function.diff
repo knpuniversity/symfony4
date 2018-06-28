@@ -23,11 +23,10 @@ index cfdf297..6e87ef1 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -668,6 +668,62 @@
-             ],
+@@ -669,6 +669,62 @@
              "time": "2017-12-04T18:33:55+00:00"
          },
-+        {
+         {
 +            "name": "symfony/asset",
 +            "version": "v4.0.3",
 +            "source": {
@@ -83,9 +82,10 @@ index cfdf297..6e87ef1 100644
 +            "homepage": "https://symfony.com",
 +            "time": "2018-01-03T07:38:00+00:00"
 +        },
-         {
++        {
              "name": "symfony/cache",
              "version": "v4.0.3",
+             "source": {
 diff --git a/symfony.lock b/symfony.lock
 index bb145af..11422d0 100644
 --- a/symfony.lock

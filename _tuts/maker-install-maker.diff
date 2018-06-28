@@ -23,11 +23,10 @@ index 5ec76d4..437778b 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -3767,6 +3767,63 @@
-             ],
+@@ -3768,6 +3768,63 @@
              "time": "2018-01-03T17:15:19+00:00"
          },
-+        {
+         {
 +            "name": "symfony/maker-bundle",
 +            "version": "v1.0.2",
 +            "source": {
@@ -84,9 +83,10 @@ index 5ec76d4..437778b 100644
 +            ],
 +            "time": "2017-12-04T17:50:28+00:00"
 +        },
-         {
++        {
              "name": "symfony/monolog-bridge",
              "version": "v4.0.4",
+             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index 56ef227..de7f774 100644
 --- a/config/bundles.php

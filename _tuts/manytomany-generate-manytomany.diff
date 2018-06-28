@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 40d4402..96b545b 100644
+index 809136f..7ae4db6 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -66,9 +66,15 @@ class Article
@@ -18,7 +18,7 @@ index 40d4402..96b545b 100644
      }
  
      public function getId()
-@@ -211,4 +217,30 @@ class Article
+@@ -213,4 +219,30 @@ class Article
  
          return $this;
      }

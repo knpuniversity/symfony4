@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 80adc8b..58db8cf 100644
+index 64a188e..c670d0e 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -4,6 +4,7 @@ namespace App\Entity;
@@ -10,7 +10,7 @@ index 80adc8b..58db8cf 100644
  use Doctrine\ORM\Mapping as ORM;
  use Gedmo\Mapping\Annotation as Gedmo;
  use Gedmo\Timestampable\Traits\TimestampableEntity;
-@@ -182,7 +183,12 @@ class Article
+@@ -184,7 +185,12 @@ class Article
       */
      public function getNonDeletedComments(): Collection
      {

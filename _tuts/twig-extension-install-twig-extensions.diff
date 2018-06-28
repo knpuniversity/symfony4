@@ -25,11 +25,10 @@ index 895bfb5..82b53ca 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4523,6 +4523,62 @@
-             "homepage": "https://symfony.com",
+@@ -4524,6 +4524,62 @@
              "time": "2018-04-08T08:49:08+00:00"
          },
-+        {
+         {
 +            "name": "twig/extensions",
 +            "version": "v1.5.1",
 +            "source": {
@@ -85,9 +84,10 @@ index 895bfb5..82b53ca 100644
 +            ],
 +            "time": "2017-06-08T18:19:53+00:00"
 +        },
-         {
++        {
              "name": "twig/twig",
              "version": "v2.4.8",
+             "source": {
 diff --git a/config/packages/twig_extensions.yaml b/config/packages/twig_extensions.yaml
 new file mode 100644
 index 0000000..417b7bc

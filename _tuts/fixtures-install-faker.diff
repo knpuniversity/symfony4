@@ -23,11 +23,10 @@ index ccb5d66..89e22ef 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -4732,6 +4732,56 @@
-             ],
+@@ -4733,6 +4733,56 @@
              "time": "2018-01-10T08:34:20+00:00"
          },
-+        {
+         {
 +            "name": "fzaninotto/faker",
 +            "version": "v1.7.1",
 +            "source": {
@@ -77,9 +76,10 @@ index ccb5d66..89e22ef 100644
 +            ],
 +            "time": "2017-08-15T16:48:10+00:00"
 +        },
-         {
++        {
              "name": "monolog/monolog",
              "version": "1.23.0",
+             "source": {
 diff --git a/symfony.lock b/symfony.lock
 index f9831f3..3b36a90 100644
 --- a/symfony.lock
