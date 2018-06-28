@@ -97,11 +97,11 @@ is simple, it can sometimes live inside your *entity* class. Check this out: ope
 scroll to the bottom, and add a new method: `public function incrementHeartCount()`.
 Give it no arguments and return self, like our other methods:
 
-[[[ code('fb5db76cc3') ]]]
+[[[ code('08af703626') ]]]
 
 Then, `$this->heartCount = $this->heartCount + 1`:
 
-[[[ code('ca76f233db') ]]]
+[[[ code('8581c3d15b') ]]]
 
 Back in `ArticleController`, we can simplify to `$article->incrementHeartCount()`:
 
@@ -126,7 +126,7 @@ For example, do we really want a `setHeartCount()` method?
 I mean, should any part of the app *ever* need to change this? Probably not:
 they should just call our more descriptive `incrementHeartCount()` instead:
 
-[[[ code('a9c8ecdc1b') ]]]
+[[[ code('8581c3d15b') ]]]
 
 I *am* going to keep it, because we use it to generate our fake data, but I
 want you to *really* think about this point.
