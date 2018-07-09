@@ -97,11 +97,11 @@ is simple, it can sometimes live inside your *entity* class. Check this out: ope
 scroll to the bottom, and add a new method: `public function incrementHeartCount()`.
 Give it no arguments and return self, like our other methods:
 
-[[[ code('08af703626') ]]]
+[[[ code('5fce6c808f') ]]]
 
 Then, `$this->heartCount = $this->heartCount + 1`:
 
-[[[ code('8581c3d15b') ]]]
+[[[ code('aff391a934') ]]]
 
 Back in `ArticleController`, we can simplify to `$article->incrementHeartCount()`:
 
