@@ -6,6 +6,7 @@ that's already been happening behind the scenes. First commit everything, with a
 nice message:
 
 ```terminal-silent
+git init
 git add .
 git commit -m "making so much good progress"
 ```
