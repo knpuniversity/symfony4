@@ -5,6 +5,11 @@ haven't figured those out yet... so let's demystify something *else*, something
 that's already been happening behind the scenes. First commit everything, with a
 nice message:
 
+***TIP
+Wait! Run `git init` first before `git add .`: Symfony no longer creates a Git repo
+automatically for you :)
+***
+
 ```terminal-silent
 git init
 git add .
