@@ -23,11 +23,11 @@ index 3e8e6e4..bb0ab9b 100644
          "sensiolabs/security-checker": "^4.1",
          "symfony/debug-bundle": "^3.3|^4.0",
 diff --git a/composer.lock b/composer.lock
-index 9811484..ccb5d66 100644
+index e73e1d1..be1c4e1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "d02d7cbcbf9b6b4d4858b3663a97fb48",
@@ -35,10 +35,11 @@ index 9811484..ccb5d66 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -4565,6 +4565,124 @@
-             "time": "2018-03-29T19:57:20+00:00"
+@@ -4613,6 +4613,124 @@
+             ],
+             "time": "2017-11-29T09:37:33+00:00"
          },
-         {
++        {
 +            "name": "doctrine/data-fixtures",
 +            "version": "v1.3.0",
 +            "source": {
@@ -156,10 +157,9 @@ index 9811484..ccb5d66 100644
 +            ],
 +            "time": "2017-12-04T20:26:38+00:00"
 +        },
-+        {
+         {
              "name": "easycorp/easy-log-handler",
              "version": "v1.0.4",
-             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index 3cae3dd..a3e56b0 100644
 --- a/config/bundles.php
@@ -174,7 +174,7 @@ diff --git a/src/DataFixtures/.gitignore b/src/DataFixtures/.gitignore
 new file mode 100644
 index 0000000..e69de29
 diff --git a/symfony.lock b/symfony.lock
-index 0fccfdd..f9831f3 100644
+index e4e9a2a..8a75c98 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -23,6 +23,9 @@

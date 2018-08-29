@@ -13,11 +13,11 @@ index ecf348f..d4e69df 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 895bfb5..82b53ca 100644
+index 900ffbc..5726ea0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "29b9a750d47e2dfd2415ac96cd3844b7",
@@ -25,10 +25,11 @@ index 895bfb5..82b53ca 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4524,6 +4524,62 @@
-             "time": "2018-04-08T08:49:08+00:00"
+@@ -4569,6 +4569,62 @@
+             "homepage": "https://symfony.com",
+             "time": "2018-07-26T11:22:46+00:00"
          },
-         {
++        {
 +            "name": "twig/extensions",
 +            "version": "v1.5.1",
 +            "source": {
@@ -84,10 +85,9 @@ index 895bfb5..82b53ca 100644
 +            ],
 +            "time": "2017-06-08T18:19:53+00:00"
 +        },
-+        {
+         {
              "name": "twig/twig",
-             "version": "v2.4.8",
-             "source": {
+             "version": "v2.4.4",
 diff --git a/config/packages/twig_extensions.yaml b/config/packages/twig_extensions.yaml
 new file mode 100644
 index 0000000..417b7bc
@@ -105,7 +105,7 @@ index 0000000..417b7bc
 +    #Twig\Extensions\IntlExtension: ~
 +    #Twig\Extensions\TextExtension: ~
 diff --git a/symfony.lock b/symfony.lock
-index 7f1bea3..16f9b6b 100644
+index 3f5b6bb..9ff0ee1 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -398,6 +398,15 @@

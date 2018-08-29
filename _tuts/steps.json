@@ -999,7 +999,12 @@
             "id": "manytomany-join-addselect",
             "name": "ManyToMany: Join & addSelect",
             "description": null
+        },
+        {
+            "id": "pre-security-update-deps",
+            "name": "PRE_SECURITY: Update deps",
+            "description": null
         }
     ],
-    "sha": "7647dd019309cc3adaddd7e322ef5eef3a9b264f"
+    "sha": "3630e95aa14a18ff6e290942f50262097d3dde78"
 }

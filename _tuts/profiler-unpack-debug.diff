@@ -20,11 +20,11 @@ index 50d2ada..fa54a9a 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 42cd6d1..cfdf297 100644
+index 0c8c5fa..9a30987 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "796eb949e6956b81b42244d2dde7b7db",
@@ -32,10 +32,11 @@ index 42cd6d1..cfdf297 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2372,37 +2372,6 @@
+@@ -2425,37 +2425,6 @@
+             "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },
-         {
+-        {
 -            "name": "symfony/debug-pack",
 -            "version": "v1.0.4",
 -            "source": {
@@ -66,7 +67,6 @@ index 42cd6d1..cfdf297 100644
 -            "description": "A debug pack for Symfony projects",
 -            "time": "2017-12-12T01:47:04+00:00"
 -        },
--        {
+         {
              "name": "symfony/dotenv",
-             "version": "v4.0.3",
-             "source": {
+             "version": "v4.0.14",

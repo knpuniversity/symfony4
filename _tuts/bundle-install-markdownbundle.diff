@@ -11,11 +11,11 @@ index 4988f28..573b957 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 2597139..b8685f7 100644
+index 7bab056..32a0fa8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "6310a5a36486ccd723b499af355a7d5b",
@@ -23,10 +23,11 @@ index 2597139..b8685f7 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -410,6 +410,115 @@
+@@ -409,6 +409,115 @@
+             ],
              "time": "2014-09-09T13:34:57+00:00"
          },
-         {
++        {
 +            "name": "knplabs/knp-markdown-bundle",
 +            "version": "1.7.0",
 +            "source": {
@@ -135,10 +136,9 @@ index 2597139..b8685f7 100644
 +            ],
 +            "time": "2018-01-15T00:49:33+00:00"
 +        },
-+        {
+         {
              "name": "psr/cache",
              "version": "1.0.1",
-             "source": {
 diff --git a/config/bundles.php b/config/bundles.php
 index b543674..e278c0b 100644
 --- a/config/bundles.php
@@ -150,7 +150,7 @@ index b543674..e278c0b 100644
 +    Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 11422d0..270d9d8 100644
+index 4ae7717..caa86a6 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -35,6 +35,12 @@

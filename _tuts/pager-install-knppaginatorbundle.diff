@@ -11,11 +11,11 @@ index d4e69df..ba8d7ee 100644
          "nexylan/slack-bundle": "^2.0",
          "php-http/guzzle6-adapter": "^1.1",
 diff --git a/composer.lock b/composer.lock
-index 82b53ca..804a23b 100644
+index 5726ea0..0a357dc 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "9520a5fec3f1637da421d734b004dd5f",
@@ -23,10 +23,11 @@ index 82b53ca..804a23b 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -1335,6 +1335,79 @@
+@@ -1331,6 +1331,79 @@
+             ],
              "time": "2014-01-12T16:20:24+00:00"
          },
-         {
++        {
 +            "name": "knplabs/knp-components",
 +            "version": "1.3.8",
 +            "source": {
@@ -99,14 +100,14 @@ index 82b53ca..804a23b 100644
 +            ],
 +            "time": "2018-04-03T12:20:48+00:00"
 +        },
-+        {
+         {
              "name": "knplabs/knp-markdown-bundle",
              "version": "1.7.0",
-             "source": {
-@@ -1398,6 +1471,68 @@
+@@ -1394,6 +1467,68 @@
+             ],
              "time": "2018-01-23T15:34:53+00:00"
          },
-         {
++        {
 +            "name": "knplabs/knp-paginator-bundle",
 +            "version": "v2.7.2",
 +            "source": {
@@ -168,10 +169,9 @@ index 82b53ca..804a23b 100644
 +            ],
 +            "time": "2018-01-30T08:43:41+00:00"
 +        },
-+        {
+         {
              "name": "knplabs/knp-time-bundle",
              "version": "1.8.0",
-             "target-dir": "Knp/Bundle/TimeBundle",
 diff --git a/config/bundles.php b/config/bundles.php
 index c60e848..80c373b 100644
 --- a/config/bundles.php
@@ -183,7 +183,7 @@ index c60e848..80c373b 100644
 +    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 16f9b6b..f4c9048 100644
+index 9ff0ee1..0752ebe 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -104,9 +104,15 @@

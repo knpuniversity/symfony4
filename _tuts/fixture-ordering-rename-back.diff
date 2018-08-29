@@ -1,74 +1,16 @@
-diff --git a/src/DataFixtures/A0CommentFixture.php b/src/DataFixtures/A0CommentFixture.php
-deleted file mode 100644
-index 8f72d05..0000000
+diff --git a/src/DataFixtures/A0CommentFixture.php b/src/DataFixtures/CommentFixture.php
+similarity index 91%
+rename from src/DataFixtures/A0CommentFixture.php
+rename to src/DataFixtures/CommentFixture.php
+index 8f72d05..0028ece 100644
 --- a/src/DataFixtures/A0CommentFixture.php
-+++ /dev/null
-@@ -1,31 +0,0 @@
--<?php
--
--namespace App\DataFixtures;
--
--use App\Entity\Article;
--use App\Entity\Comment;
--use Doctrine\Common\DataFixtures\DependentFixtureInterface;
--use Doctrine\Common\Persistence\ObjectManager;
--
--class A0CommentFixture extends BaseFixture implements DependentFixtureInterface
--{
--    protected function loadData(ObjectManager $manager)
--    {
--        $this->createMany(Comment::class, 100, function(Comment $comment) {
--            $comment->setContent(
--                $this->faker->boolean ? $this->faker->paragraph : $this->faker->sentences(2, true)
--            );
--
--            $comment->setAuthorName($this->faker->name);
--            $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
--            $comment->setArticle($this->getRandomReference(Article::class));
--        });
--
--        $manager->flush();
--    }
--
--    public function getDependencies()
--    {
--        return [ArticleFixture::class];
--    }
--}
-diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
-new file mode 100644
-index 0000000..0028ece
---- /dev/null
 +++ b/src/DataFixtures/CommentFixture.php
-@@ -0,0 +1,31 @@
-+<?php
-+
-+namespace App\DataFixtures;
-+
-+use App\Entity\Article;
-+use App\Entity\Comment;
-+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-+use Doctrine\Common\Persistence\ObjectManager;
-+
+@@ -7,7 +7,7 @@ use App\Entity\Comment;
+ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+ use Doctrine\Common\Persistence\ObjectManager;
+ 
+-class A0CommentFixture extends BaseFixture implements DependentFixtureInterface
 +class CommentFixture extends BaseFixture implements DependentFixtureInterface
-+{
-+    protected function loadData(ObjectManager $manager)
-+    {
-+        $this->createMany(Comment::class, 100, function(Comment $comment) {
-+            $comment->setContent(
-+                $this->faker->boolean ? $this->faker->paragraph : $this->faker->sentences(2, true)
-+            );
-+
-+            $comment->setAuthorName($this->faker->name);
-+            $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
-+            $comment->setArticle($this->getRandomReference(Article::class));
-+        });
-+
-+        $manager->flush();
-+    }
-+
-+    public function getDependencies()
-+    {
-+        return [ArticleFixture::class];
-+    }
-+}
+ {
+     protected function loadData(ObjectManager $manager)
+     {

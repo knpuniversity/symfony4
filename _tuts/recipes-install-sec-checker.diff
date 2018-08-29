@@ -21,11 +21,11 @@ index d08d903..f569751 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 0b165eb..a04c67d 100644
+index 9d1fa12..2e446aa 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "37ef99d8270e7a03d984f5ed5b737885",
@@ -33,10 +33,11 @@ index 0b165eb..a04c67d 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -1849,6 +1849,107 @@
+@@ -1902,6 +1902,107 @@
+         }
      ],
      "packages-dev": [
-         {
++        {
 +            "name": "composer/ca-bundle",
 +            "version": "1.1.0",
 +            "source": {
@@ -137,10 +138,9 @@ index 0b165eb..a04c67d 100644
 +            "description": "A security checker for your composer.lock",
 +            "time": "2017-10-29T18:48:08+00:00"
 +        },
-+        {
+         {
              "name": "symfony/dotenv",
-             "version": "v4.0.3",
-             "source": {
+             "version": "v4.0.14",
 diff --git a/config/packages/dev/security_checker.yaml b/config/packages/dev/security_checker.yaml
 new file mode 100644
 index 0000000..544c0b3
@@ -156,7 +156,7 @@ index 0000000..544c0b3
 +        tags:
 +            - { name: console.command }
 diff --git a/symfony.lock b/symfony.lock
-index c73c546..8c00502 100644
+index 212a663..f517c7e 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@

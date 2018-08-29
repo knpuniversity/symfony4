@@ -1,68 +1,29 @@
-diff --git a/src/DataFixtures/A0CommentFixture.php b/src/DataFixtures/A0CommentFixture.php
-new file mode 100644
-index 0000000..8f72d05
---- /dev/null
+diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/A0CommentFixture.php
+similarity index 75%
+rename from src/DataFixtures/CommentFixture.php
+rename to src/DataFixtures/A0CommentFixture.php
+index 4a4dfd3..8f72d05 100644
+--- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/A0CommentFixture.php
-@@ -0,0 +1,31 @@
-+<?php
-+
-+namespace App\DataFixtures;
-+
-+use App\Entity\Article;
-+use App\Entity\Comment;
+@@ -4,9 +4,10 @@ namespace App\DataFixtures;
+ 
+ use App\Entity\Article;
+ use App\Entity\Comment;
 +use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-+use Doctrine\Common\Persistence\ObjectManager;
-+
+ use Doctrine\Common\Persistence\ObjectManager;
+ 
+-class CommentFixture extends BaseFixture
 +class A0CommentFixture extends BaseFixture implements DependentFixtureInterface
-+{
-+    protected function loadData(ObjectManager $manager)
-+    {
-+        $this->createMany(Comment::class, 100, function(Comment $comment) {
-+            $comment->setContent(
-+                $this->faker->boolean ? $this->faker->paragraph : $this->faker->sentences(2, true)
-+            );
-+
-+            $comment->setAuthorName($this->faker->name);
-+            $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
-+            $comment->setArticle($this->getRandomReference(Article::class));
-+        });
-+
-+        $manager->flush();
-+    }
+ {
+     protected function loadData(ObjectManager $manager)
+     {
+@@ -22,4 +23,9 @@ class CommentFixture extends BaseFixture
+ 
+         $manager->flush();
+     }
 +
 +    public function getDependencies()
 +    {
 +        return [ArticleFixture::class];
 +    }
-+}
-diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
-deleted file mode 100644
-index 4a4dfd3..0000000
---- a/src/DataFixtures/CommentFixture.php
-+++ /dev/null
-@@ -1,25 +0,0 @@
--<?php
--
--namespace App\DataFixtures;
--
--use App\Entity\Article;
--use App\Entity\Comment;
--use Doctrine\Common\Persistence\ObjectManager;
--
--class CommentFixture extends BaseFixture
--{
--    protected function loadData(ObjectManager $manager)
--    {
--        $this->createMany(Comment::class, 100, function(Comment $comment) {
--            $comment->setContent(
--                $this->faker->boolean ? $this->faker->paragraph : $this->faker->sentences(2, true)
--            );
--
--            $comment->setAuthorName($this->faker->name);
--            $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
--            $comment->setArticle($this->getRandomReference(Article::class));
--        });
--
--        $manager->flush();
--    }
--}
+ }

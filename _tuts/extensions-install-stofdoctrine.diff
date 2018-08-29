@@ -20,17 +20,17 @@ index 8ae6587..ecf348f 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 89e22ef..f11e738 100644
+index 04bf97d..900ffbc 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -4,9 +4,53 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+@@ -4,8 +4,52 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "6a81bfb93a4a225af5748d3614905639",
 +    "content-hash": "29b9a750d47e2dfd2415ac96cd3844b7",
      "packages": [
-         {
++        {
 +            "name": "behat/transliterator",
 +            "version": "v1.2.0",
 +            "source": {
@@ -74,14 +74,14 @@ index 89e22ef..f11e738 100644
 +            ],
 +            "time": "2017-04-04T11:38:05+00:00"
 +        },
-+        {
+         {
              "name": "clue/stream-filter",
              "version": "v1.4.0",
-             "source": {
-@@ -979,6 +1023,84 @@
+@@ -978,6 +1022,84 @@
+             ],
              "time": "2018-02-27T07:30:56+00:00"
          },
-         {
++        {
 +            "name": "gedmo/doctrine-extensions",
 +            "version": "v2.4.33",
 +            "source": {
@@ -159,14 +159,14 @@ index 89e22ef..f11e738 100644
 +            ],
 +            "time": "2018-01-08T14:13:45+00:00"
 +        },
-+        {
-             "name": "guzzlehttp/guzzle",
-             "version": "6.3.2",
-             "source": {
-@@ -2601,6 +2723,71 @@
-             "time": "2018-02-14T08:40:54+00:00"
-         },
          {
+             "name": "guzzlehttp/guzzle",
+             "version": "6.3.0",
+@@ -2598,6 +2720,71 @@
+             ],
+             "time": "2018-01-12T13:08:16+00:00"
+         },
++        {
 +            "name": "stof/doctrine-extensions-bundle",
 +            "version": "v1.3.0",
 +            "source": {
@@ -231,10 +231,9 @@ index 89e22ef..f11e738 100644
 +            ],
 +            "time": "2017-12-24T16:06:50+00:00"
 +        },
-+        {
+         {
              "name": "symfony/asset",
-             "version": "v4.0.8",
-             "source": {
+             "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
 index a3e56b0..c60e848 100644
 --- a/config/bundles.php
@@ -256,7 +255,7 @@ index 0000000..c83f3b1
 +stof_doctrine_extensions:
 +    default_locale: en_US
 diff --git a/symfony.lock b/symfony.lock
-index 3b36a90..7f1bea3 100644
+index 5e524bf..3f5b6bb 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
