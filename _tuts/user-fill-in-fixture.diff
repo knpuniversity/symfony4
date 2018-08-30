@@ -1,0 +1,24 @@
+diff --git a/src/DataFixtures/UserFixture.php b/src/DataFixtures/UserFixture.php
+index cfb0374..5e92ec2 100644
+--- a/src/DataFixtures/UserFixture.php
++++ b/src/DataFixtures/UserFixture.php
+@@ -2,14 +2,17 @@
+ 
+ namespace App\DataFixtures;
+ 
++use App\Entity\User;
+ use Doctrine\Common\Persistence\ObjectManager;
+ 
+ class UserFixture extends BaseFixture
+ {
+     protected function loadData(ObjectManager $manager)
+     {
+-        // $product = new Product();
+-        // $manager->persist($product);
++        $this->createMany(User::class, 10, function(User $user, $i) {
++            $user->setEmail(sprintf('spacebar%d@example.com', $i));
++            $user->setFirstName($this->faker->firstName);
++        });
+ 
+         $manager->flush();
+     }

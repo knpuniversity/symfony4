@@ -1004,7 +1004,52 @@
             "id": "pre-security-update-deps",
             "name": "PRE_SECURITY: Update deps",
             "description": null
+        },
+        {
+            "id": "user-upgrade-makerbundle",
+            "name": "User: Upgrade MakerBundle",
+            "description": null
+        },
+        {
+            "id": "user-installing-security",
+            "name": "User: Installing security",
+            "description": null
+        },
+        {
+            "id": "user-make-user",
+            "name": "User: make:user",
+            "description": null
+        },
+        {
+            "id": "user-add-firstname-field",
+            "name": "User: Add firstName field",
+            "description": null
+        },
+        {
+            "id": "user-set-server-version-to-5-6",
+            "name": "User: Set server_version to 5.6",
+            "description": null
+        },
+        {
+            "id": "user-make-migration",
+            "name": "User: make:migration",
+            "description": null
+        },
+        {
+            "id": "user-make-fixture",
+            "name": "User: make:fixture",
+            "description": null
+        },
+        {
+            "id": "user-change-fixture-to-basefixture",
+            "name": "User: Change fixture to BaseFixture",
+            "description": null
+        },
+        {
+            "id": "user-fill-in-fixture",
+            "name": "User: fill in fixture",
+            "description": null
         }
     ],
-    "sha": "3630e95aa14a18ff6e290942f50262097d3dde78"
+    "sha": "c0e41db934fd0dc5c97814675f24c1f1df42c055"
 }

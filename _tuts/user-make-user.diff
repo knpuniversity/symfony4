@@ -1,0 +1,179 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index fb4c593..e4800f2 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -1,7 +1,11 @@
+ security:
+     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+     providers:
+-        in_memory: { memory: ~ }
++        # used to reload user from session & other features (e.g. switch_user)
++        app_user_provider:
++            entity:
++                class: App\Entity\User
++                property: email
+     firewalls:
+         dev:
+             pattern: ^/(_(profiler|wdt)|css|images|js)/
+diff --git a/src/Entity/User.php b/src/Entity/User.php
+new file mode 100644
+index 0000000..b7ed9d4
+--- /dev/null
++++ b/src/Entity/User.php
+@@ -0,0 +1,100 @@
++<?php
++
++namespace App\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++use Symfony\Component\Security\Core\User\UserInterface;
++
++/**
++ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
++ */
++class User implements UserInterface
++{
++    /**
++     * @ORM\Id()
++     * @ORM\GeneratedValue()
++     * @ORM\Column(type="integer")
++     */
++    private $id;
++
++    /**
++     * @ORM\Column(type="string", length=180, unique=true)
++     */
++    private $email;
++
++    /**
++     * @ORM\Column(type="json")
++     */
++    private $roles = [];
++
++    public function getId(): ?int
++    {
++        return $this->id;
++    }
++
++    public function getEmail(): ?string
++    {
++        return $this->email;
++    }
++
++    public function setEmail(string $email): self
++    {
++        $this->email = $email;
++
++        return $this;
++    }
++
++    /**
++     * A visual identifier that represents this user.
++     *
++     * @see UserInterface
++     */
++    public function getUsername(): string
++    {
++        return (string) $this->email;
++    }
++
++    /**
++     * @see UserInterface
++     */
++    public function getRoles(): array
++    {
++        $roles = $this->roles;
++        // guarantee every user at least has ROLE_USER
++        $roles[] = 'ROLE_USER';
++
++        return array_unique($roles);
++    }
++
++    public function setRoles(array $roles): self
++    {
++        $this->roles = $roles;
++
++        return $this;
++    }
++
++    /**
++     * @see UserInterface
++     */
++    public function getPassword()
++    {
++        // not needed for apps that do not check user passwords
++    }
++
++    /**
++     * @see UserInterface
++     */
++    public function getSalt()
++    {
++        // not needed for apps that do not check user passwords
++    }
++
++    /**
++     * @see UserInterface
++     */
++    public function eraseCredentials()
++    {
++        // If you store any temporary, sensitive data on the user, clear it here
++        // $this->plainPassword = null;
++    }
++}
+diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
+new file mode 100644
+index 0000000..e082682
+--- /dev/null
++++ b/src/Repository/UserRepository.php
+@@ -0,0 +1,50 @@
++<?php
++
++namespace App\Repository;
++
++use App\Entity\User;
++use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
++use Symfony\Bridge\Doctrine\RegistryInterface;
++
++/**
++ * @method User|null find($id, $lockMode = null, $lockVersion = null)
++ * @method User|null findOneBy(array $criteria, array $orderBy = null)
++ * @method User[]    findAll()
++ * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
++ */
++class UserRepository extends ServiceEntityRepository
++{
++    public function __construct(RegistryInterface $registry)
++    {
++        parent::__construct($registry, User::class);
++    }
++
++//    /**
++//     * @return User[] Returns an array of User objects
++//     */
++    /*
++    public function findByExampleField($value)
++    {
++        return $this->createQueryBuilder('u')
++            ->andWhere('u.exampleField = :val')
++            ->setParameter('val', $value)
++            ->orderBy('u.id', 'ASC')
++            ->setMaxResults(10)
++            ->getQuery()
++            ->getResult()
++        ;
++    }
++    */
++
++    /*
++    public function findOneBySomeField($value): ?User
++    {
++        return $this->createQueryBuilder('u')
++            ->andWhere('u.exampleField = :val')
++            ->setParameter('val', $value)
++            ->getQuery()
++            ->getOneOrNullResult()
++        ;
++    }
++    */
++}

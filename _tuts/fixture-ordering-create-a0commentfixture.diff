@@ -2,7 +2,7 @@ diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/A0CommentFix
 similarity index 75%
 rename from src/DataFixtures/CommentFixture.php
 rename to src/DataFixtures/A0CommentFixture.php
-index 4a4dfd3..8f72d05 100644
+index 4a4dfd3..1296fb7 100644
 --- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/A0CommentFixture.php
 @@ -4,9 +4,10 @@ namespace App\DataFixtures;
@@ -24,6 +24,6 @@ index 4a4dfd3..8f72d05 100644
 +
 +    public function getDependencies()
 +    {
-+        return [ArticleFixture::class];
++        return [ArticleFixtures::class];
 +    }
  }

@@ -1,0 +1,13 @@
+diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
+index 6c81971..1302f01 100644
+--- a/config/packages/doctrine.yaml
++++ b/config/packages/doctrine.yaml
+@@ -9,7 +9,7 @@ doctrine:
+     dbal:
+         # configure these for your database server
+         driver: 'pdo_mysql'
+-        server_version: '5.7'
++        server_version: '5.6'
+         charset: utf8mb4
+         default_table_options:
+             charset: utf8mb4
