@@ -1,0 +1,14 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index a063b5f..58277f6 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -26,6 +26,9 @@ security:
+                     - App\Security\LoginFormAuthenticator
+                     - App\Security\ApiTokenAuthenticator
+ 
++                # redirect anonymous users to the login page
++                entry_point: App\Security\LoginFormAuthenticator
++
+             logout:
+                 path: app_logout
+ 

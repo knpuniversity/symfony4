@@ -1,0 +1,19 @@
+diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
+index ee7efa2..4d8d79d 100644
+--- a/templates/account/index.html.twig
++++ b/templates/account/index.html.twig
+@@ -15,12 +15,12 @@
+                 <div class="row spacepurplebg white">
+                     <div class="col-md-2 no-pad">
+                         <div class="user-image">
+-                            <img src="https://robohash.org/hello@symfonycasts.com" class="img-responsive thumbnail">
++                            <img src="https://robohash.org/{{ app.user.email }}" class="img-responsive thumbnail">
+                         </div>
+                     </div>
+                     <div class="col-md-10 no-pad">
+                         <div class="user-pad">
+-                            <h3>Welcome back, ?????</h3>
++                            <h3>Welcome back, {{ app.user.firstName }}</h3>
+                             <h4 class="white"><i class="fa fa-twitter"></i> ?????</h4>
+                             <a class="btn btn-labeled btn-info" href="#">
+                                 <span class="btn-label"><i class="fa fa-pencil"></i></span>Update

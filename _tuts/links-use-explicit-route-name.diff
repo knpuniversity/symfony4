@@ -12,7 +12,7 @@ index 52c4f62..a0ce96f 100644
      public function homepage()
      {
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 8a77737..aa5fab5 100644
+index 3d1879f..442c02d 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -15,7 +15,7 @@

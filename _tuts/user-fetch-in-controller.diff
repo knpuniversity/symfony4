@@ -1,0 +1,12 @@
+diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
+index 817a1c0..e191f77 100644
+--- a/src/Controller/AccountController.php
++++ b/src/Controller/AccountController.php
+@@ -16,6 +16,7 @@ class AccountController extends AbstractController
+      */
+     public function index()
+     {
++        dd($this->getUser()->getFirstName());
+         return $this->render('account/index.html.twig', [
+ 
+         ]);

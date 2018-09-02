@@ -1,0 +1,65 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 15b0d29..5966e58 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -32,4 +32,12 @@ class SecurityController extends AbstractController
+     {
+         throw new \Exception('Will be intercepted before getting here');
+     }
++
++    /**
++     * @Route("/register", name="app_register")
++     */
++    public function register()
++    {
++        return $this->render('security/register.html.twig');
++    }
+ }
+diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
+new file mode 100644
+index 0000000..bf43f32
+--- /dev/null
++++ b/templates/security/register.html.twig
+@@ -0,0 +1,42 @@
++{% extends 'base.html.twig' %}
++
++{% block title %}Login!{% endblock %}
++
++{% block stylesheets %}
++    {{ parent() }}
++
++    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
++{% endblock %}
++
++{% block body %}
++<div class="container">
++    <div class="row">
++        <div class="col-sm-12">
++            <form class="form-signin" method="post">
++                {% if error %}
++                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
++                {% endif %}
++
++                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
++                <label for="inputEmail" class="sr-only">Email address</label>
++                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
++                <label for="inputPassword" class="sr-only">Password</label>
++                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
++
++                <input type="hidden" name="_csrf_token"
++                    value="{{ csrf_token('authenticate') }}"
++                >
++
++                <div class="checkbox mb-3">
++                    <label>
++                        <input type="checkbox" name="_remember_me"> Remember me
++                    </label>
++                </div>
++                <button class="btn btn-lg btn-primary btn-block" type="submit">
++                    Sign in
++                </button>
++            </form>
++        </div>
++    </div>
++</div>
++{% endblock %}

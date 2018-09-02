@@ -1,0 +1,49 @@
+diff --git a/src/Security/ApiTokenAuthenticator.php b/src/Security/ApiTokenAuthenticator.php
+index 45a1e56..151c2fa 100644
+--- a/src/Security/ApiTokenAuthenticator.php
++++ b/src/Security/ApiTokenAuthenticator.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Security;
+ 
++use App\Repository\ApiTokenRepository;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+ use Symfony\Component\Security\Core\Exception\AuthenticationException;
+@@ -11,6 +12,13 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+ 
+ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
+ {
++    private $apiTokenRepo;
++
++    public function __construct(ApiTokenRepository $apiTokenRepo)
++    {
++        $this->apiTokenRepo = $apiTokenRepo;
++    }
++
+     public function supports(Request $request)
+     {
+         // look for header "Authorization: Bearer <token>"
+@@ -28,12 +36,20 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
+ 
+     public function getUser($credentials, UserProviderInterface $userProvider)
+     {
+-        dump($credentials);die;
++        $token = $this->apiTokenRepo->findOneBy([
++            'token' => $credentials
++        ]);
++
++        if (!$token) {
++            return;
++        }
++
++        return $token->getUser();
+     }
+ 
+     public function checkCredentials($credentials, UserInterface $user)
+     {
+-        // todo
++        dd('checking credentials');
+     }
+ 
+     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)

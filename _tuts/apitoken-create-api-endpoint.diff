@@ -1,0 +1,19 @@
+diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
+index 42e56ed..f4642c0 100644
+--- a/src/Controller/AccountController.php
++++ b/src/Controller/AccountController.php
+@@ -22,4 +22,14 @@ class AccountController extends AbstractController
+ 
+         ]);
+     }
++
++    /**
++     * @Route("/api/account", name="api_account")
++     */
++    public function accountApi()
++    {
++        $user = $this->getUser();
++
++        return $this->json($user);
++    }
+ }

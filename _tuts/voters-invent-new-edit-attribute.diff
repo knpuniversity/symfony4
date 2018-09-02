@@ -1,0 +1,13 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 7e17747..987d717 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -31,7 +31,7 @@ class ArticleAdminController extends AbstractController
+      */
+     public function edit(Article $article)
+     {
+-        if ($article->getAuthor() != $this->getUser() && !$this->isGranted('ROLE_ADMIN_ARTICLE')) {
++        if (!$this->isGranted('MANAGE', $article)) {
+             throw $this->createAccessDeniedException('No access!');
+         }
+ 

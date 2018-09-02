@@ -1006,6 +1006,16 @@
             "description": null
         },
         {
+            "id": "pre-security-refactor-fixtures",
+            "name": "PRE_SECURITY: Refactor fixtures",
+            "description": null
+        },
+        {
+            "id": "pre-security-stop-using-fwextra-route",
+            "name": "PRE_SECURITY: Stop using FWExtra route",
+            "description": null
+        },
+        {
             "id": "user-upgrade-makerbundle",
             "name": "User: Upgrade MakerBundle",
             "description": null
@@ -1049,7 +1059,457 @@
             "id": "user-fill-in-fixture",
             "name": "User: fill in fixture",
             "description": null
+        },
+        {
+            "id": "login-form-make-controller",
+            "name": "Login Form: make:controller",
+            "description": null
+        },
+        {
+            "id": "login-form-rename-make-basic-tpl",
+            "name": "Login Form: Rename & make basic tpl",
+            "description": null
+        },
+        {
+            "id": "login-form-copy-controller-template",
+            "name": "Login Form: Copy controller+template",
+            "description": null
+        },
+        {
+            "id": "login-form-remove-action",
+            "name": "Login Form: Remove action=",
+            "description": null
+        },
+        {
+            "id": "login-form-bootstrap4-izing",
+            "name": "Login Form: Bootstrap4-izing",
+            "description": null
+        },
+        {
+            "id": "login-form-adding-error-styling",
+            "name": "Login Form: Adding error styling",
+            "description": null
+        },
+        {
+            "id": "login-form-add-login-link",
+            "name": "Login Form: Add login link",
+            "description": null
+        },
+        {
+            "id": "authenticator-make-auth",
+            "name": "Authenticator: make:auth",
+            "description": null
+        },
+        {
+            "id": "authenticator-use-abstractformloginauthenticator",
+            "name": "Authenticator: Use AbstractFormLoginAuthenticator",
+            "description": null
+        },
+        {
+            "id": "authenticator-activate-under-firewall",
+            "name": "Authenticator: activate under firewall",
+            "description": null
+        },
+        {
+            "id": "authenticator-supports",
+            "name": "Authenticator: supports()",
+            "description": null
+        },
+        {
+            "id": "authenticator-dd",
+            "name": "Authenticator: dd()",
+            "description": null
+        },
+        {
+            "id": "authenticator-getcredentials",
+            "name": "Authenticator: getCredentials()",
+            "description": null
+        },
+        {
+            "id": "authenticator-getuser",
+            "name": "Authenticator: getUser()",
+            "description": null
+        },
+        {
+            "id": "authenticator-checkcredentials",
+            "name": "Authenticator: checkCredentials()",
+            "description": null
+        },
+        {
+            "id": "authenticator-onauthenticationsuccess",
+            "name": "Authenticator: onAuthenticationSuccess()",
+            "description": null
+        },
+        {
+            "id": "authenticator-getloginurl",
+            "name": "Authenticator: getLoginUrl()",
+            "description": null
+        },
+        {
+            "id": "authenticator-set-use-last-username",
+            "name": "Authenticator: set\/use LAST_USERNAME",
+            "description": null
+        },
+        {
+            "id": "logout-adding-logout",
+            "name": "Logout: Adding logout",
+            "description": null
+        },
+        {
+            "id": "csrf-add-protection",
+            "name": "CSRF: Add protection",
+            "description": null
+        },
+        {
+            "id": "remember-me-activate-it",
+            "name": "Remember Me: Activate it",
+            "description": null
+        },
+        {
+            "id": "password-add-password-field",
+            "name": "Password: Add password field",
+            "description": null
+        },
+        {
+            "id": "password-update-getpassword",
+            "name": "Password: Update getPassword()",
+            "description": null
+        },
+        {
+            "id": "password-configure-encoder",
+            "name": "Password: Configure encoder",
+            "description": null
+        },
+        {
+            "id": "password-delete-me",
+            "name": "Password: delete me",
+            "description": null
+        },
+        {
+            "id": "password-encode-in-fixtures",
+            "name": "Password: Encode in fixtures",
+            "description": null
+        },
+        {
+            "id": "password-check-in-authenticator",
+            "name": "Password: Check in authenticator",
+            "description": null
+        },
+        {
+            "id": "access-control-enable-for-admin",
+            "name": "access_control: Enable for \/admin",
+            "description": null
+        },
+        {
+            "id": "targetpath-use-targetpathtrait-in-auth",
+            "name": "TargetPath: use TargetPathTrait in auth",
+            "description": null
+        },
+        {
+            "id": "isgranted-isgranted-in-controller",
+            "name": "isGranted: isGranted in controller",
+            "description": null
+        },
+        {
+            "id": "isgranted-access-with-role-user",
+            "name": "isGranted: access with ROLE_USER",
+            "description": null
+        },
+        {
+            "id": "isgranted-isgranted-annotation",
+            "name": "isGranted: @IsGranted annotation",
+            "description": null
+        },
+        {
+            "id": "isgranted-annotation-above-class",
+            "name": "isGranted: annotation above class",
+            "description": null
+        },
+        {
+            "id": "roles-add-accountcontroller",
+            "name": "Roles: Add AccountController",
+            "description": null
+        },
+        {
+            "id": "roles-customize-page",
+            "name": "Roles: Customize page",
+            "description": null
+        },
+        {
+            "id": "roles-delete-me",
+            "name": "Roles: delete me",
+            "description": null
+        },
+        {
+            "id": "roles-protect-account-with-role-user",
+            "name": "Roles: Protect account with ROLE_USER",
+            "description": null
+        },
+        {
+            "id": "roles-add-admin-users-to-fixtures",
+            "name": "Roles: Add admin users to fixtures",
+            "description": null
+        },
+        {
+            "id": "is-granted-hide-show-menu",
+            "name": "is_granted: Hide\/show menu",
+            "description": null
+        },
+        {
+            "id": "is-granted-link-to-logout",
+            "name": "is_granted: Link to logout",
+            "description": null
+        },
+        {
+            "id": "is-granted-conditionally-show-admin-link",
+            "name": "is_granted: conditionally show admin link",
+            "description": null
+        },
+        {
+            "id": "user-fetch-in-controller",
+            "name": "User: Fetch in controller",
+            "description": null
+        },
+        {
+            "id": "user-log-user-in-controller",
+            "name": "User: Log user in controller",
+            "description": null
+        },
+        {
+            "id": "user-use-in-template",
+            "name": "User: Use in template",
+            "description": null
+        },
+        {
+            "id": "user-spice-up-account-page",
+            "name": "User: spice up account page",
+            "description": null
+        },
+        {
+            "id": "user-make-template-dynamic",
+            "name": "User: make template dynamic",
+            "description": null
+        },
+        {
+            "id": "user-add-twitter-username",
+            "name": "User: Add Twitter Username",
+            "description": null
+        },
+        {
+            "id": "user-use-robot-hash-in-header",
+            "name": "User: Use robot hash in header",
+            "description": null
+        },
+        {
+            "id": "user-add-shortcut-method-for-uri",
+            "name": "User: add shortcut method for uri",
+            "description": null
+        },
+        {
+            "id": "user-getting-user-in-a-service",
+            "name": "User: Getting user in a service",
+            "description": null
+        },
+        {
+            "id": "rolehierarchy-change-to-specific-roles",
+            "name": "RoleHierarchy: Change to specific roles",
+            "description": null
+        },
+        {
+            "id": "rolehierarchy-add-role-hierarchy",
+            "name": "RoleHierarchy: Add role_hierarchy",
+            "description": null
+        },
+        {
+            "id": "switch-user-activate-it",
+            "name": "switch_user: Activate it",
+            "description": null
+        },
+        {
+            "id": "switch-user-add-to-role-hiearchy",
+            "name": "switch_user: add to role_hiearchy",
+            "description": null
+        },
+        {
+            "id": "switch-user-warning-bar-on-top",
+            "name": "switch_user: Warning bar on top",
+            "description": null
+        },
+        {
+            "id": "apitoken-create-api-endpoint",
+            "name": "ApiToken: Create API endpoint",
+            "description": null
+        },
+        {
+            "id": "apitoken-install-serializer",
+            "name": "ApiToken: Install serializer",
+            "description": null
+        },
+        {
+            "id": "apitoken-use-serialization-groups",
+            "name": "ApiToken: Use serialization groups",
+            "description": null
+        },
+        {
+            "id": "apitoken-create-apitoken-entity",
+            "name": "ApiToken: Create ApiToken entity",
+            "description": null
+        },
+        {
+            "id": "apitoken-create-in-fixtures",
+            "name": "ApiToken: Create in fixtures",
+            "description": null
+        },
+        {
+            "id": "apitoken-delete-me",
+            "name": "ApiToken: Delete me",
+            "description": null
+        },
+        {
+            "id": "apitoken-delete-me-2",
+            "name": "ApiToken: Delete me 2",
+            "description": null
+        },
+        {
+            "id": "apitoken-make-auth",
+            "name": "ApiToken: make:auth",
+            "description": null
+        },
+        {
+            "id": "apitoken-register-in-firewall",
+            "name": "ApiToken: Register in firewall",
+            "description": null
+        },
+        {
+            "id": "apitoken-add-entry-point-config",
+            "name": "ApiToken: add entry_point config",
+            "description": null
+        },
+        {
+            "id": "apitoken-debug-in-supports",
+            "name": "ApiToken: debug in supports()",
+            "description": null
+        },
+        {
+            "id": "apitoken-fill-in-supports-getcredentials",
+            "name": "ApiToken: Fill in supports & getCredentials",
+            "description": null
+        },
+        {
+            "id": "apitoken-fill-in-getuser",
+            "name": "ApiToken: Fill in getUser()",
+            "description": null
+        },
+        {
+            "id": "apitoken-fill-in-onauthenticationfailure",
+            "name": "ApiToken: Fill in onAuthenticationFailure",
+            "description": null
+        },
+        {
+            "id": "apitoken-customize-bad-token-message",
+            "name": "ApiToken: Customize bad token message",
+            "description": null
+        },
+        {
+            "id": "apitoken-check-expiration",
+            "name": "ApiToken: Check expiration",
+            "description": null
+        },
+        {
+            "id": "apitoken-fill-in-rest-of-methods",
+            "name": "ApiToken: Fill in rest of methods",
+            "description": null
+        },
+        {
+            "id": "registration-create-page",
+            "name": "Registration: Create page",
+            "description": null
+        },
+        {
+            "id": "registration-customize-template",
+            "name": "Registration: Customize template",
+            "description": null
+        },
+        {
+            "id": "registration-add-nav-link",
+            "name": "Registration: Add nav link",
+            "description": null
+        },
+        {
+            "id": "registration-start-to-handle-post",
+            "name": "Registration: Start to handle POST",
+            "description": null
+        },
+        {
+            "id": "registration-save-user",
+            "name": "Registration: Save User",
+            "description": null
+        },
+        {
+            "id": "registration-auto-login",
+            "name": "Registration: Auto-login",
+            "description": null
+        },
+        {
+            "id": "voters-remove-article-author-field",
+            "name": "Voters: Remove Article.author field",
+            "description": null
+        },
+        {
+            "id": "voters-add-article-author-relation",
+            "name": "Voters: Add Article.author relation",
+            "description": null
+        },
+        {
+            "id": "voters-update-article-fixture",
+            "name": "Voters: Update Article fixture",
+            "description": null
+        },
+        {
+            "id": "voters-add-user-tostring",
+            "name": "Voters: Add User::__toString",
+            "description": null
+        },
+        {
+            "id": "voters-create-article-edit-endpoint",
+            "name": "Voters: Create article edit endpoint",
+            "description": null
+        },
+        {
+            "id": "voters-move-isgranted-to-method",
+            "name": "Voters: Move isGranted to method",
+            "description": null
+        },
+        {
+            "id": "voters-add-security-logic-in-controller",
+            "name": "Voters: Add security logic in controller",
+            "description": null
+        },
+        {
+            "id": "voters-invent-new-edit-attribute",
+            "name": "Voters: Invent new EDIT attribute",
+            "description": null
+        },
+        {
+            "id": "voters-make-voter",
+            "name": "Voters: make:voter",
+            "description": null
+        },
+        {
+            "id": "voters-implement-author-check-in-voter",
+            "name": "Voters: implement author check in voter",
+            "description": null
+        },
+        {
+            "id": "voters-check-for-admin-role",
+            "name": "Voters: Check for admin role",
+            "description": null
+        },
+        {
+            "id": "voters-simplify-controller-code",
+            "name": "Voters: Simplify controller code",
+            "description": null
         }
     ],
-    "sha": "c0e41db934fd0dc5c97814675f24c1f1df42c055"
+    "sha": "9a7afbc788608336370aa2408d90e07f82e9f733"
 }

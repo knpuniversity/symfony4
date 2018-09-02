@@ -1,0 +1,13 @@
+diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
+index a4ccabb..06c858f 100644
+--- a/src/Controller/CommentAdminController.php
++++ b/src/Controller/CommentAdminController.php
+@@ -15,7 +15,7 @@ class CommentAdminController extends Controller
+      */
+     public function index(CommentRepository $repository, Request $request, PaginatorInterface $paginator)
+     {
+-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
++        $this->denyAccessUnlessGranted('ROLE_USER');
+ 
+         $q = $request->query->get('q');
+ 

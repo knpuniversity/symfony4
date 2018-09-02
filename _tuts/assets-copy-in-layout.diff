@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 043f42d..cf009be 100644
+index 043f42d..674e4e4 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -1,12 +1,66 @@
@@ -43,8 +43,8 @@ index 043f42d..cf009be 100644
 +                <ul class="navbar-nav ml-auto">
 +                    <li class="nav-item dropdown" style="margin-right: 75px;">
 +                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-+                  <img class="nav-profile-img rounded-circle" src="images/astronaut-profile.png">
-+                </a>
++                          <img class="nav-profile-img rounded-circle" src="images/astronaut-profile.png">
++                        </a>
 +                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 +                            <a class="dropdown-item" href="#">Profile</a>
 +                            <a class="dropdown-item" href="#">Create Post</a>

@@ -1,0 +1,12 @@
+diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
+index df238a1..0e049bf 100644
+--- a/src/Security/LoginFormAuthenticator.php
++++ b/src/Security/LoginFormAuthenticator.php
+@@ -55,6 +55,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
+ 
+     protected function getLoginUrl()
+     {
+-        // TODO: Implement getLoginUrl() method.
++        return $this->router->generate('app_login');
+     }
+ }

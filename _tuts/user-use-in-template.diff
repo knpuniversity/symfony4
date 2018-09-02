@@ -1,0 +1,11 @@
+diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
+index d096e01..965697a 100644
+--- a/templates/account/index.html.twig
++++ b/templates/account/index.html.twig
+@@ -3,5 +3,5 @@
+ {% block title %}Manage Account!{% endblock %}
+ 
+ {% block body %}
+-    <h1>Manage Your Account</h1>
++    <h1>Manage Your Account {{ app.user.firstName }}</h1>
+ {% endblock %}

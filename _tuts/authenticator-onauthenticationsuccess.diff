@@ -1,0 +1,37 @@
+diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
+index 7a0b698..df238a1 100644
+--- a/src/Security/LoginFormAuthenticator.php
++++ b/src/Security/LoginFormAuthenticator.php
+@@ -3,7 +3,9 @@
+ namespace App\Security;
+ 
+ use App\Repository\UserRepository;
++use Symfony\Component\HttpFoundation\RedirectResponse;
+ use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\Routing\RouterInterface;
+ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+ use Symfony\Component\Security\Core\User\UserInterface;
+ use Symfony\Component\Security\Core\User\UserProviderInterface;
+@@ -12,10 +14,12 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
+ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
+ {
+     private $userRepository;
++    private $router;
+ 
+-    public function __construct(UserRepository $userRepository)
++    public function __construct(UserRepository $userRepository, RouterInterface $router)
+     {
+         $this->userRepository = $userRepository;
++        $this->router = $router;
+     }
+ 
+     public function supports(Request $request)
+@@ -46,7 +50,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
+ 
+     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+     {
+-        dd('success!');
++        return new RedirectResponse($this->router->generate('app_homepage'));
+     }
+ 
+     protected function getLoginUrl()

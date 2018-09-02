@@ -101,7 +101,7 @@ index 024b695..b1d4735 100644
          "version": "v4.0.2"
      },
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 86cd840..6a4a3ab 100644
+index b98bde3..7af6542 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -8,8 +8,8 @@
@@ -119,8 +119,8 @@ index 86cd840..6a4a3ab 100644
                  <ul class="navbar-nav ml-auto">
                      <li class="nav-item dropdown" style="margin-right: 75px;">
                          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
--                  <img class="nav-profile-img rounded-circle" src="images/astronaut-profile.png">
-+                  <img class="nav-profile-img rounded-circle" src="{{ asset('images/astronaut-profile.png') }}">
-                 </a>
+-                          <img class="nav-profile-img rounded-circle" src="images/astronaut-profile.png">
++                          <img class="nav-profile-img rounded-circle" src="{{ asset('images/astronaut-profile.png') }}">
+                         </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                              <a class="dropdown-item" href="#">Profile</a>

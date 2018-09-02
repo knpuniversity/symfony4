@@ -1,0 +1,13 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index 63a0a62..f796c24 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -12,7 +12,7 @@ security:
+                 property: email
+ 
+     role_hierarchy:
+-        ROLE_ADMIN: [ROLE_ADMIN_COMMENT, ROLE_ADMIN_ARTICLE]
++        ROLE_ADMIN: [ROLE_ADMIN_COMMENT, ROLE_ADMIN_ARTICLE, ROLE_ALLOWED_TO_SWITCH]
+ 
+     firewalls:
+         dev:

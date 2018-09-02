@@ -1,0 +1,24 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index 995f181..ea32a5a 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -39,5 +39,5 @@ security:
+     # Easy way to control access for large sections of your site
+     # Note: Only the *first* access control that matches will be used
+     access_control:
+-        - { path: ^/admin, roles: ROLE_ADMIN }
++        # - { path: ^/admin, roles: ROLE_ADMIN }
+         # - { path: ^/profile, roles: ROLE_USER }
+diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
+index 8cea2a7..a4ccabb 100644
+--- a/src/Controller/CommentAdminController.php
++++ b/src/Controller/CommentAdminController.php
+@@ -15,6 +15,8 @@ class CommentAdminController extends Controller
+      */
+     public function index(CommentRepository $repository, Request $request, PaginatorInterface $paginator)
+     {
++        $this->denyAccessUnlessGranted('ROLE_ADMIN');
++
+         $q = $request->query->get('q');
+ 
+         $queryBuilder = $repository->getWithSearchQueryBuilder($q);

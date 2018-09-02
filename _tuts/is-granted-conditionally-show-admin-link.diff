@@ -1,0 +1,39 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 941a70b..5da7588 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -4,14 +4,18 @@ namespace App\Controller;
+ 
+ use App\Entity\Article;
+ use Doctrine\ORM\EntityManagerInterface;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
++/**
++ * @IsGranted("ROLE_ADMIN")
++ */
+ class ArticleAdminController extends AbstractController
+ {
+     /**
+-     * @Route("/admin/article/new")
++     * @Route("/admin/article/new", name="admin_article_new")
+      */
+     public function new(EntityManagerInterface $em)
+     {
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index faa497c..7e74386 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -40,7 +40,9 @@
+                             </a>
+                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                 <a class="dropdown-item" href="{{ path('app_account') }}">Profile</a>
+-                                <a class="dropdown-item" href="#">Create Post</a>
++                                {% if is_granted('ROLE_ADMIN') %}
++                                    <a class="dropdown-item" href="{{ path('admin_article_new') }}">Create Post</a>
++                                {% endif %}
+                                 <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
+                             </div>
+                         </li>

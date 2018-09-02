@@ -1,0 +1,36 @@
+diff --git a/src/Security/Voter/ArticleVoter.php b/src/Security/Voter/ArticleVoter.php
+index a180b6e..9e8835e 100644
+--- a/src/Security/Voter/ArticleVoter.php
++++ b/src/Security/Voter/ArticleVoter.php
+@@ -5,10 +5,18 @@ namespace App\Security\Voter;
+ use App\Entity\Article;
+ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
++use Symfony\Component\Security\Core\Security;
+ use Symfony\Component\Security\Core\User\UserInterface;
+ 
+ class ArticleVoter extends Voter
+ {
++    private $security;
++
++    public function __construct(Security $security)
++    {
++        $this->security = $security;
++    }
++
+     protected function supports($attribute, $subject)
+     {
+         // replace with your own logic
+@@ -34,7 +42,11 @@ class ArticleVoter extends Voter
+                     return true;
+                 }
+ 
+-                break;
++                if ($this->security->isGranted('ROLE_ADMIN_ARTICLE')) {
++                    return true;
++                }
++
++                return false;
+         }
+ 
+         return false;

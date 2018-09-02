@@ -1,0 +1,12 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index f796c24..a063b5f 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -24,6 +24,7 @@ security:
+             guard:
+                 authenticators:
+                     - App\Security\LoginFormAuthenticator
++                    - App\Security\ApiTokenAuthenticator
+ 
+             logout:
+                 path: app_logout

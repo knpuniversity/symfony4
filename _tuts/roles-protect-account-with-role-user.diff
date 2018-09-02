@@ -1,0 +1,18 @@
+diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
+index 3829472..817a1c0 100644
+--- a/src/Controller/AccountController.php
++++ b/src/Controller/AccountController.php
+@@ -2,9 +2,13 @@
+ 
+ namespace App\Controller;
+ 
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
++/**
++ * @IsGranted("ROLE_USER")
++ */
+ class AccountController extends AbstractController
+ {
+     /**

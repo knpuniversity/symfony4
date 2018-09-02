@@ -1,0 +1,15 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index e4800f2..6da73fc 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -13,6 +13,10 @@ security:
+         main:
+             anonymous: true
+ 
++            guard:
++                authenticators:
++                    - App\Security\LoginFormAuthenticator
++
+             # activate different ways to authenticate
+ 
+             # http_basic: true

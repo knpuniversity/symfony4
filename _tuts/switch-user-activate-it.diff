@@ -1,0 +1,13 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index 4b1b56d..63a0a62 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -32,6 +32,8 @@ security:
+                 secret:   '%kernel.secret%'
+                 lifetime: 2592000 # 30 days in seconds
+ 
++            switch_user: true
++
+             # activate different ways to authenticate
+ 
+             # http_basic: true

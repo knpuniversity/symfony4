@@ -1,0 +1,51 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+new file mode 100644
+index 0000000..9cf3926
+--- /dev/null
++++ b/src/Controller/SecurityController.php
+@@ -0,0 +1,19 @@
++<?php
++
++namespace App\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
++use Symfony\Component\Routing\Annotation\Route;
++
++class SecurityController extends AbstractController
++{
++    /**
++     * @Route("/security", name="security")
++     */
++    public function index()
++    {
++        return $this->render('security/index.html.twig', [
++            'controller_name' => 'SecurityController',
++        ]);
++    }
++}
+diff --git a/templates/security/index.html.twig b/templates/security/index.html.twig
+new file mode 100644
+index 0000000..7e25c60
+--- /dev/null
++++ b/templates/security/index.html.twig
+@@ -0,0 +1,20 @@
++{% extends 'base.html.twig' %}
++
++{% block title %}Hello {{ controller_name }}!{% endblock %}
++
++{% block body %}
++<style>
++    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
++    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
++</style>
++
++<div class="example-wrapper">
++    <h1>Hello {{ controller_name }}! ✅</h1>
++
++    This friendly message is coming from:
++    <ul>
++        <li>Your controller at <code><a href="{{ 'src/Controller/SecurityController.php'|file_link(0) }}">src/Controller/SecurityController.php</a></code></li>
++        <li>Your template at <code><a href="{{ 'templates/security/index.html.twig'|file_link(0) }}">templates/security/index.html.twig</a></code></li>
++    </ul>
++</div>
++{% endblock %}

@@ -1,8 +1,8 @@
 diff --git a/src/DataFixtures/UserFixture.php b/src/DataFixtures/UserFixture.php
-index cfb0374..5e92ec2 100644
+index cfb0374..9277a3d 100644
 --- a/src/DataFixtures/UserFixture.php
 +++ b/src/DataFixtures/UserFixture.php
-@@ -2,14 +2,17 @@
+@@ -2,14 +2,20 @@
  
  namespace App\DataFixtures;
  
@@ -15,9 +15,12 @@ index cfb0374..5e92ec2 100644
      {
 -        // $product = new Product();
 -        // $manager->persist($product);
-+        $this->createMany(User::class, 10, function(User $user, $i) {
++        $this->createMany(10, 'main_users', function($i) {
++            $user = new User();
 +            $user->setEmail(sprintf('spacebar%d@example.com', $i));
 +            $user->setFirstName($this->faker->firstName);
++
++            return $user;
 +        });
  
          $manager->flush();

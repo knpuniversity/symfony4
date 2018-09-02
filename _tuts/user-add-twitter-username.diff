@@ -1,0 +1,97 @@
+diff --git a/src/DataFixtures/UserFixture.php b/src/DataFixtures/UserFixture.php
+index a6f0f58..38bc14c 100644
+--- a/src/DataFixtures/UserFixture.php
++++ b/src/DataFixtures/UserFixture.php
+@@ -22,6 +22,10 @@ class UserFixture extends BaseFixture
+             $user->setEmail(sprintf('spacebar%d@example.com', $i));
+             $user->setFirstName($this->faker->firstName);
+ 
++            if ($this->faker->boolean) {
++                $user->setTwitterUsername($this->faker->userName);
++            }
++
+             $user->setPassword($this->passwordEncoder->encodePassword(
+                 $user,
+                 'engage'
+diff --git a/src/Entity/User.php b/src/Entity/User.php
+index d054821..2b7dee6 100644
+--- a/src/Entity/User.php
++++ b/src/Entity/User.php
+@@ -37,6 +37,11 @@ class User implements UserInterface
+      */
+     private $password;
+ 
++    /**
++     * @ORM\Column(type="string", length=255, nullable=true)
++     */
++    private $twitterUsername;
++
+     public function getId(): ?int
+     {
+         return $this->id;
+@@ -126,4 +131,16 @@ class User implements UserInterface
+ 
+         return $this;
+     }
++
++    public function getTwitterUsername(): ?string
++    {
++        return $this->twitterUsername;
++    }
++
++    public function setTwitterUsername(?string $twitterUsername): self
++    {
++        $this->twitterUsername = $twitterUsername;
++
++        return $this;
++    }
+ }
+diff --git a/src/Migrations/Version20180831195803.php b/src/Migrations/Version20180831195803.php
+new file mode 100644
+index 0000000..202ff18
+--- /dev/null
++++ b/src/Migrations/Version20180831195803.php
+@@ -0,0 +1,28 @@
++<?php declare(strict_types=1);
++
++namespace DoctrineMigrations;
++
++use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
++
++/**
++ * Auto-generated Migration: Please modify to your needs!
++ */
++final class Version20180831195803 extends AbstractMigration
++{
++    public function up(Schema $schema) : void
++    {
++        // this up() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE user ADD twitter_username VARCHAR(255) DEFAULT NULL');
++    }
++
++    public function down(Schema $schema) : void
++    {
++        // this down() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE user DROP twitter_username');
++    }
++}
+diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
+index 4d8d79d..263ad4d 100644
+--- a/templates/account/index.html.twig
++++ b/templates/account/index.html.twig
+@@ -21,7 +21,9 @@
+                     <div class="col-md-10 no-pad">
+                         <div class="user-pad">
+                             <h3>Welcome back, {{ app.user.firstName }}</h3>
+-                            <h4 class="white"><i class="fa fa-twitter"></i> ?????</h4>
++                            {% if app.user.twitterUsername %}
++                                <h4 class="white"><i class="fa fa-twitter"></i> {{ app.user.twitterUsername }}</h4>
++                            {% endif %}
+                             <a class="btn btn-labeled btn-info" href="#">
+                                 <span class="btn-label"><i class="fa fa-pencil"></i></span>Update
+                             </a>

@@ -1,0 +1,22 @@
+diff --git a/config/packages/sensio_framework_extra.yaml b/config/packages/sensio_framework_extra.yaml
+new file mode 100644
+index 0000000..1821ccc
+--- /dev/null
++++ b/config/packages/sensio_framework_extra.yaml
+@@ -0,0 +1,3 @@
++sensio_framework_extra:
++    router:
++        annotations: false
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 7f911c0..c265b81 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -7,7 +7,7 @@ use App\Repository\ArticleRepository;
+ use App\Service\SlackClient;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Psr\Log\LoggerInterface;
+-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
++use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\JsonResponse;
+ 

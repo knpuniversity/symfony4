@@ -1,0 +1,28 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index f1e9a7f..cb01303 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -20,6 +20,10 @@ security:
+             logout:
+                 path: app_logout
+ 
++            remember_me:
++                secret:   '%kernel.secret%'
++                lifetime: 2592000 # 30 days in seconds
++
+             # activate different ways to authenticate
+ 
+             # http_basic: true
+diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
+index d299be4..bf43f32 100644
+--- a/templates/security/login.html.twig
++++ b/templates/security/login.html.twig
+@@ -29,7 +29,7 @@
+ 
+                 <div class="checkbox mb-3">
+                     <label>
+-                        <input type="checkbox" value="remember-me"> Remember me
++                        <input type="checkbox" name="_remember_me"> Remember me
+                     </label>
+                 </div>
+                 <button class="btn btn-lg btn-primary btn-block" type="submit">

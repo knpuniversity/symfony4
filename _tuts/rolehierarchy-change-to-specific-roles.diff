@@ -1,0 +1,26 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 5da7588..455e672 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+ /**
+- * @IsGranted("ROLE_ADMIN")
++ * @IsGranted("ROLE_ADMIN_ARTICLE")
+  */
+ class ArticleAdminController extends AbstractController
+ {
+diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
+index 026e68d..ef6b729 100644
+--- a/src/Controller/CommentAdminController.php
++++ b/src/Controller/CommentAdminController.php
+@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ 
+ /**
+- * @IsGranted("ROLE_ADMIN")
++ * @IsGranted("ROLE_ADMIN_COMMENT")
+  */
+ class CommentAdminController extends Controller
+ {

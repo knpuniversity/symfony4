@@ -1,0 +1,38 @@
+diff --git a/src/Service/MarkdownHelper.php b/src/Service/MarkdownHelper.php
+index b48ba90..fb90899 100644
+--- a/src/Service/MarkdownHelper.php
++++ b/src/Service/MarkdownHelper.php
+@@ -5,6 +5,7 @@ namespace App\Service;
+ use Michelf\MarkdownInterface;
+ use Psr\Log\LoggerInterface;
+ use Symfony\Component\Cache\Adapter\AdapterInterface;
++use Symfony\Component\Security\Core\Security;
+ 
+ class MarkdownHelper
+ {
+@@ -13,18 +14,23 @@ class MarkdownHelper
+     private $logger;
+     private $isDebug;
+ 
+-    public function __construct(AdapterInterface $cache, MarkdownInterface $markdown, LoggerInterface $markdownLogger, bool $isDebug)
++    private $security;
++
++    public function __construct(AdapterInterface $cache, MarkdownInterface $markdown, LoggerInterface $markdownLogger, bool $isDebug, Security $security)
+     {
+         $this->cache = $cache;
+         $this->markdown = $markdown;
+         $this->logger = $markdownLogger;
+         $this->isDebug = $isDebug;
++        $this->security = $security;
+     }
+ 
+     public function parse(string $source): string
+     {
+         if (stripos($source, 'bacon') !== false) {
+-            $this->logger->info('They are talking about bacon again!');
++            $this->logger->info('They are talking about bacon again!', [
++                'user' => $this->security->getUser()
++            ]);
+         }
+ 
+         // skip caching entirely in debug
