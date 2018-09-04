@@ -1,1 +1,6 @@
-chapters: []
+chapters:
+    - make-user
+    - user-class
+    - user-entity
+    - login-form
+    - firewalls-authenticator
