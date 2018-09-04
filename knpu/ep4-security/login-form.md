@@ -1,25 +1,122 @@
-# Login Form
+# The Login Form
 
-Coming soon...
+There are *two* steps to building a login form: the visual part - the HTML form
+itself - *and* the logic when you *submit* that form: finding the user, checking
+the password, and logging in. The interesting part is... if you think about it,
+the *first* part - the HTML form - has *nothing* to do with security. It's just...
+well... a boring, normal HTML form!
 
-There are two steps to building a log in form authentication system. There is the visual part, the actual html login form, and then there's the security part that actually checks, finds the user, checks the password and logs them in. The first part, the visual part has nothing to do with security and actually it's in. That's where we're going to start. Our first step is just to build a log in page and they can look however we want and actually make a bundle. There is a plan to make a command to even do this for you automatically, but it's not done yet, so that's okay. We'll do it by hand and we'll learn some things along the way. Let's at least use the new bin console and use the make controller command to build a new controller class called 
+So let's build that first. By the way, there are plans to add a `make` command
+to generate a login form and the security logic automatically, so that *we* only
+need to fill in a few pieces. That doesn't exist yet, so.. we'll do it manually.
+But, that's a bit better for learning anyways.
 
-security controller. 
+## Creating the Login Controller & Template
 
-Move over and open that up. Now the end point we actually want is slash login. I'll make the name of this route app slash login and we'll change the method to log in. Then I won't pass any variables yet and we'll call the template logging that. Each team on that twig down here in templates, we'll go into the security directory and rename that index dot html dot twig to log in that eight month twig and it should work. So let's move over. We'll go to slash login and yes, perfect. Variable controller name does not exist because I just removed that a second ago from my controller. So let's go and clear out all the existing code, changed the title to be logging in for now. We'll just put an [inaudible] that says log into the space bar. Now if we move over and try that. Perfect. It doesn't look good yet. We'll get there, but the page is functional. So the bill is the login form itself. I want you to Google for symphony login form and you'll find a page on the documentation called how to build a traditional login form. And we're doing this because there because there's a little bit of boilerplate code that we need to, 
+To build the controller, let's at *least* use one shortcut. At your terminal,
+run:
 
-to um, copy 
+```terminal
+php bin/console make:controller
+```
 
-which hopefully will be made easier in the future by just to come in that does this scroll down a little bit. You'll eventually see a login method just like ours with a little bit of logic filled in a copy of the body of that logic, move over and go to our controller and paste that in. This needs a authentication utils class, which they're getting as an argument, so let's also add that I had an argument with authentication, utils authentication, utils, and then these two new variables are passed in as variables to our twig template, so I'll copy that and paste it over there. Now in a few minutes we're going to talk about how these two variables are set. They deal with authentication heirs, and they also deal in the last user name that was previously tried if they fail, but for now just assume that these two variables that are passing two variables into our template and they exist. 
+to create a new class called `SecurityController`. Move over and open that.
+Ok: update the URL to `/login`, change the route name to `app_login` and the method
+to `login()`. We don't need to pass any variables yet, and we'll call the template
+`login.html.twig`.
 
-Okay. 
+Next, down in `templates/security`, rename `index.html.twig` to `login.html.twig`.
+Let's try it! Move over, go to `/login` and... whoops!
 
-The other thing you can copy down here is a little html form, so I'll copy this html form, move over and we'll paste that and you'll notice there's nothing special about this form. It has a user name field that has a password field and actually we're going to customize it so don't look at it too closely. So if you move over now and refresh, oh, we actually get an error, unable to generate a url for the named route login, and this is coming from log into H, two months. Wic of course, so this hasn't actually equals, I'm pointing to a route called login. Ours is called APP underscore login, but actually I'm going to remove that action equals entirely. When a form doesn't have an action attribute, it just means that submits right back to the same url, which is actually what we're ultimately going to want. So now when we refresh, perfect, it looks awful, but it's an html form. Very, very simple to make this not a way. I'm going to go back and replace this form with a bootstrap version. You can copy this, this new form from the code block on this page, 
+> Variable `controller_name` does not exist.
 
-and before we look at the specifics of this shoot, if we refresh right, it's still going to look ugly and that's because we actually need a new css file for this, so go back and if you download the course code, you should have a tutorial directory here with two new css files. Let's copy logging that css and then find your public directory and we're just going to put pace that and do public slash css. In this tutorial. We're not using webpack encore only because we haven't talked about it yet. Webpack encore is a really great way of handling your css and javascript and we have a tutorial about it on the site, but for now we're keeping things simple. We just have a login dot css inside of our public directory, so now I want to include the login that css only on this page. If you remember from an earlier tutorial, 
+Duh! I removed the variables that we *were* passing into the template. Go remove
+all of the existing code. Change the title to `Login!` and, for now, just add an
+`h1` with "Log in to the Space Bar!".
 
-if you look at our base, that html Twig, you'll notice that it has three css files right here and it's based layout in there. Instead of a block called style sheets, so we want to add something, we effectively want to add a new link to right below styles dot css to do that and log into html dot twig. We can say lock style sheets into block to override that block, but we don't really want to fully override the style sheets block we want to add to it, so to do that call parents that will echo the three parent style sheets and then blow. We can add our own. So I'll type link and then I can start typing. Logging that CSS and Petri storm will help me fill that in with the normal asset function. Now if you go back and refresh it looks much better except I don't need that h one tag there anymore. Cool. 
+## Filling in the Security Logic & Login Form
 
-So, so this, even though this looks much better, but it's still just a very boring html field. I've changed to. I now have a an email field and a password field. Now. We don't actually have a password yet in our application, but we're going to add it later and so I just added this field now that we have it, and then we also have a remember me check box here here, which we'll talk about later, so very, very simple html form. You can build it however you want. Now later when we start talking about authentication airs, this error variable is ultimately going to get printed inside of this div, so I'm just going to plan ahead and add a little bootstrap styling to that so that that air looks red once that happens, and then the last thing is to perfect this is if you look at the upper right corner of our page, we have a little user dropdown. Well that's actually all just hard coded fake. Go back into base to a twig. Looked down here and you'll see. Yep. All of this. Scroll down a little bit. Yup. You'll see just a big drop down here with a bunch of hard coded data for right now. I am going to comment that out. We'll bring it back to later once we can actually log in and we'll make it real again. Then I'm going to copy and ally from above 
+Try it again: perfect! Well, not *perfect* - it looks *terrible*, and there's no
+login form yet. To fix that part, Google for "Symfony login form" to find a page
+on the Symfony docs that talks all about this. We're coming here so that we can
+steal some boilerplate code.
 
-paste that right here and we'll call this link log in and we'll make a linked to APP underscore login. Alright, refresh and perfect. We can go back to the home page where you can click to the log in form. That's it. So at this point we've graded an html form. Nothing special at all. Simple, stupid, easy. It can look however you want, but now we are ready to fill in the logic of when we submit the form to actually handle authentication. Will do that with something called an authenticator. We'll do it next.
+Scroll down a little but until you see a `login()` method that has some logic
+in it. Copy the body, move back to our controller, and paste! This needs an
+`AuthenticationUtils` class as an argument. Add it: `AuthenticationUtils
+$authenticationUtils`. Then, these two new variables are passed into Twig. Copy
+that and also paste it.
+
+In a few minutes, we're going to talk about *where* these two variables are set.
+They both deal with authentication.
+
+Go back to the docs and find the login form. Copy this, move over and paste it
+into our body. Notice: there is *nothing* special about this form: it has a
+username field, a password field and a submit button. And, we're going to customize
+it, so don't look at it too closely yet.
+
+Move back to your browser to check things out. Bah!
+
+> Unable to generate a URL for the named route "login"
+
+This comes from `login.html.twig`. Of course! The template we copied is pointing
+to a route called `login`, but *our* route is called `app_login`. Actually, just
+remove the `action=` entirely. If a form doesn't have an `action` attribute, it
+will just submit right back to the *same* URL, which is what I want anyways.
+
+Refresh again. Perfect! Well, it still looks *awful*. Oof. To fix that, I'm going
+to replace the HTML form with some markup that looks nice in Bootstrap 4 - you
+can copy this from the code block on this page.
+
+## Including the login.css File
+
+Before we look at this new code, try it! Refresh! Still ugly! Oh, that's because
+we need to include a new CSS file for this markup.
+
+If you downloaded the course code, you should have a `tutorial/` directory with
+two css files inside. Copy `login.css`, find your `public/` directory and paste
+the file into `public/css`. So far in this series, we are *not* using Webpack
+Encore, which is an *awesome* tool for professionally combining and loading CSS
+and JS files. Instead, we're just putting CSS files into the `public/` directory
+and linking to them. If you want to learn more about Encore, go check out our
+[Webpack Encore tutorial](https://knpuniversity.com/screencast/Webpack-encore).
+
+Next, we need to add a `link` tag to this new CSS file... but I *only* want to
+include it on *this* page, *not* on *every* page - it's just not necessary. Look
+at `base.html.twig`. We're including three CSS files in the base layout. And they
+*all* live inside a block called `stylesheets`.
+
+We basically want to add a *fourth* `link` tag right *below* these... but *only*
+on the login page. To do that, in `login.html.twig`, add `block stylesheets` and
+`endblock`. This will *override* that block completely... which is actually *not*
+what we want. Instead, to *add* to that block, print `parent()`. This will print
+the content of the *parent* block, and then we can add the new link tag below:
+`link`, with `href=` and `login.css`. PhpStorm helps fill in the `asset()` function.
+
+*Now* it should look less ugly. Try it. Boom! Oh, but we don't need that extra
+`h1` tag anymore.
+
+## The Fields of the Login Form
+
+So even though this looks much better, it's still just a very boring HTML form.
+It has an email field and a password field... though, we won't add the
+password-checking logic until later. It also has a "remember me" checkbox that
+we'll activate learn how to activate.
+
+The point is: you can make your login form look *however* you want. The only special
+part is this `error` variable, which, when we're done, will be the authentication
+error if the user had a bad email or password. I'll plan ahead and add a Bootstrap
+class for this.
+
+## Adding a Link to the Login Page
+
+Ok. Login form is done! But... we probably need a *link* to this page. In the upper
+right corner, we have a cute user dropdown... which is *totally* hardcoded with
+fake data. Go back to `base.html.twig` and scroll down to find this. There it
+is! For now, let's comment-out that drop-down - we'll re-add it later when we have
+*real* data. Then, copy a link from above, paste it here and change it to Login
+with a link to `app_login`.
+
+Try that - refresh! We got it! HTML login form, check! We are now ready to fill
+in the logic of what happens when *submit* the form. We'll do that in something
+called an "authenticator".

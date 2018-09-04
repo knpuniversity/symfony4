@@ -1,17 +1,94 @@
-# Firewalls Authenticator
+# Firewalls & Authenticator
 
-Coming soon...
+We built the a login form with a traditional route, controller and template. And
+so you *might* expect that because the form submits back to this same URL, the submit
+logic would live right inside this controller. Like, if the request method is POST,
+we would grab the email, grab the password and do some magic.
 
-We've now built our long and with a traditional symphony route controller and template. Now you might expect because the form is actually submitting right back to the same url, you might expect us to put our authentication logic right inside this controller, like if the request is a post request, then grab the email, grab the password and do some magic, but we are not going to do it that way. Simply security works in a very special way. At the beginning of every request, symphony executes something called authentication listeners or our authenticators. The job of these authenticators is to look at the request to see if there is authentication information on them like maybe a submitted email and password or maybe an Api token or maybe something totally different, and if an authenticator finds an information and then tries to authenticate the user, checks their password and does anything else that it needs to do. Our job is to write these authenticators, open up your config packages security that Yammel file. The most important section. I want you to look at the firewalls key. This is the most important section of this file and you'll notice that there are two firewalls right now, Dev and maintain. A firewall basically is your security system. You can almost think of it as the security checkpoint as you walk into a building or into an airport. 
+## What are Authentication Listeners / Authenticators?
 
-The whole job of the firewall is to authenticate you, which means to figure out who you are and make you prove it. Now, usually in an application and only makes sense to have one security system or one firewall because it wouldn't make sense to 
+Well... we are *not* going to do that. Symfony's security works in a bit of a
+"magical"
+way, at least, it feels like magic at first. At the beginning of every request,
+Symfony calls a set of "authentication listeners", or "authenticators". The job
+of each authenticator is to look at the request to see if there is any authentication
+info on it - like a submitted email & password or maybe an API token that's stored
+on a header. If an authenticator finds some info, it then tries to find the user,
+check the password if there is one, and log in the user! *Our* job is to write these
+authenticators.
 
-most applications. Only need one firewall. Now you see that we have to hear, but we don't really have to. This first firewall called Dev on every request. Only one firewall is activated. This first firewalls activated whenever the you were all starts with underscore profiler, underscore wet css images or javascript, and it has security set. The false, this first firewall is just to make sure that we don't accidentally set security on our web depot toolbar, so it's just there to make sure that we don't get in the way. In reality, we have one real firewall called Maine. Most of the configuration that we're going 
+## Understanding Firewalls
 
-to put under the firewall is going to be configuration that activates different ways to authenticate, like in a second, we're going to add some configuration here that activates our form login authentication system, and later when we add an API token authentication system, we're going to add another key here to activate that way. This is where we activate our authentication or authenticators that you noticed. We have one key under here in alcohol anonymous. True. 
+Open up your config/packages/security.yaml. The *most* important section of this
+file is the `firewalls` key. Ok, what the heck is a "firewall" in Symfony language?
+First, let's back up. There are *two* main parts of security: authentication and
+authorization. Authentication is all about finding out *who* you are and making
+you prove it. It's the login process. Authorization happens after authentication:
+it's all about determining whether or not you should have access to something.
 
-That basically means that anonymous users should in general be allowed to access our main firewall, which matches every single you were out because it doesn't have a pattern. He Dang it. That's complicated. You pretty much always want this key here set to anonymous true. Even if your site is completely, you want every single page on your site to actually require authentication. You should still use anonymous. True here. There is a different way below called access control where we can require log on every page, so send anonymous, true and don't think about it. Okay, so we need to create our first authenticator until our firewall about it. To do that, find your terminal and run, make off. Let's create a new authenticator called login form authenticator. Cool. Great. So one new file. It's got a source security login form authenticator. This class is awesome. It basically has a method where we need to fill in the logic for every single part of our new authentication system and we're going to walk through all of those. However, first, because we're using a. This is a form login system. There's actually a different base class that can, that we can use to do a little bit less work, so instead of extends abstract art, authentic say extends abstract 
+The *whole* job of the firewall is to *authenticate* you: to figure out who you are.
+And, it *usually* only makes sense to have *one* firewall in your app, *even* if
+you want your users to have *many* different ways to login - like a login form
+or API authentication.
 
-login form form login authenticator and I'll remove the extra use statement by adding that. We no longer need authentication, failure, start or supports you remember me, but don't worry. We're going to talk about those methods later when we add an API token authentication, but we do need one more method and I'll go to code generate or command end. Go to implement methods and have get logged in. You well, don't worry yet. Like I said, we're going to talk about what all of these methods do. Now, in order to activate this authenticator, we need to go back to our config packages, secured that Yammel file, and bill our firewall. We're going to add something called guard authenticators, and then we're going to create an array of authenticators here, and we only need one right now and it's just going to be the name of our security class APP slash security slash login form authenticator. The reason we have the key called guard here is that the authenticator system behind the scenes is called guard of an occasion. The real important thing is that as soon as we add this here, our authenticator is activated, which means that the beginning of every single request, these supports method is going to be called 
+But... hmm... Symfony gives us *two* firewalls by default! What the heck? Here's
+how it works: at the beginning of each request, Symfony determines the *one* firewall
+that matches that request. It does that by comparing the URL to the `pattern` config.
+And if you look closely... the first firewall is a fake! It becomes the active firewall
+if the URL starts with `/_profiler`, `/_wdt`, `/css` or `/images` or `/js`. *When*
+this is the active firewall, it sets security to `false`. Basically, this firewall
+exists *just* to make sure that we don't make our site *so* secure that we block
+the web debug toolbar or some of our static assets.
 
-prove it. Let's put dye and a little bit of message at the beginning of the supports method. Then we'll move over and we'll refresh and we've got it and look, it doesn't matter what page are we go to. It's always called the beginning of every center request. This is really awesome because now we are in business. We're gonna write, all we need to do now is write php code here that reads are submitted email and read. They're some of the password and actually logs in the user. We're gonna walk through how to do that next step by step.
+In reality, there is *one* real firewall called `main`. And because it doesn't have
+a `pattern` key, it will be the active firewall for *all* URLs, except the ones
+matched above.
+
+Because the job of a firewall is to authenticate the user, most of the config that
+goes below a firewall relates to "activating" a new authentication listener - those
+things that execute at the beginning of Symfony and try to log in the user. We'll
+add some new config here pretty soon.
+
+Oh, and see this `anonymous: true` part? Keep that. This allows anonymous requests
+to pass through this firewall so that users can access your public pages. *Even*
+if you want to require authentication on *every* page of your site, keep this.
+There's a different place - `access_control` - where we can do this better.
+
+## Creating the Authentication with make:auth
+
+Ok, let's get to work! To handle the login form submit, we need to create our very
+first authenticator. Find your terminal and run `make:auth`. Call the new class
+`LoginFormAuthenticator`.
+
+Nice! This creates one new file: `src/Security/LoginFormAuthenticator.php`. This
+class is awesome: it basically has a method for each step of the authentication
+process. Before we walk through each one, because this authenticator will be for
+a login form, there's a different base class that allows us to... well... do less
+work!
+
+Instead of `extends AbstractAuthenticator` use `AbtractFormLoginAuthenticator`. I'll
+remove the old `use` statement.
+
+Thanks to this, we no longer need `onAuthenticationFailure()`, `start()` or
+`supportsRememberMe()`: they're all handled for us. But don't worry, when we create
+an API token authenticator later, we *will* learn about these methods. We *do* now
+need one *new* method. Go to the Code->Generate menu, or Command + N on a Mac,
+and select "Implement Methods" to generate `getLoginUrl()`.
+
+## Activating the Authenticator in security.yaml
+
+Perfect! Unlike a lot of features in Symfony, this authenticator won't be activate
+automatically. To tell Symfony about it, go *back* to `security.yaml`. Under the
+`main` firewall, add a new `guard` key, a new `authenticators` key below that,
+and add one new item in that array: `App\Security\LoginFormAuthenticator`.
+
+The whole authenticator system comes from a part of the security component called
+"guard", hence the name. The important part is that, as *soon* as we add this,
+at the beginning of *every* request, Symfony will call the `supports()` method on
+our authenticator.
+
+To prove it, add a `die` statement with a message. Then, move over and, refresh!
+Got it! And it doesn't matter *what* URL we go to: the `supports()` method is
+always called at the beginning of the request.
+
+And now, we're in business! Let's fill in these methods and get our user logged in.
