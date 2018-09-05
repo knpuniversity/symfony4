@@ -4,3 +4,13 @@ chapters:
     - user-entity
     - login-form
     - firewalls-authenticator
+    - login-form-authenticator
+    - success-error-last-username
+    - errors-logout
+    - csrf-remember-me
+    - user-password
+    - access-control-target-path
+    - deny-access-controller
+    - dynamic-roles
+    - is-auth
+    - fetch-user

@@ -3,12 +3,12 @@
 There are *two* steps to building a login form: the visual part - the HTML form
 itself - *and* the logic when you *submit* that form: finding the user, checking
 the password, and logging in. The interesting part is... if you think about it,
-the *first* part - the HTML form - has *nothing* to do with security. It's just...
-well... a boring, normal HTML form!
+the *first* part - the HTML form - has absolutely *nothing* to do with security.
+It's just... well... a boring, normal HTML form!
 
-So let's build that first. By the way, there are plans to add a `make` command
+Let's get that built first. By the way, there are plans to add a `make` command
 to generate a login form and the security logic automatically, so that *we* only
-need to fill in a few pieces. That doesn't exist yet, so.. we'll do it manually.
+need to fill in a few details. That doesn't exist yet, so.. we'll do it manually.
 But, that's a bit better for learning anyways.
 
 ## Creating the Login Controller & Template
@@ -30,14 +30,14 @@ Let's try it! Move over, go to `/login` and... whoops!
 
 > Variable `controller_name` does not exist.
 
-Duh! I removed the variables that we *were* passing into the template. Go remove
-all of the existing code. Change the title to `Login!` and, for now, just add an
-`h1` with "Log in to the Space Bar!".
+Duh! I removed the variables that we *were* passing into the template. Empty
+all of the existing code from the template. Then, change the title to `Login!` and,
+for now, just add an `h1` with "Log in to the Space Bar!".
 
 ## Filling in the Security Logic & Login Form
 
-Try it again: perfect! Well, not *perfect* - it looks *terrible*, and there's no
-login form yet. To fix that part, Google for "Symfony login form" to find a page
+Try it again: perfect! Well, not *perfect* - it looks *terrible*... and there's no
+login form yet. To fix *that* part, Google for "Symfony login form" to find a page
 on the Symfony docs that talks all about this. We're coming here so that we can
 steal some boilerplate code.
 
