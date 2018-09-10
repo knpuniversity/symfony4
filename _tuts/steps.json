@@ -1016,6 +1016,11 @@
             "description": null
         },
         {
+            "id": "pre-security-add-css-files-to-tutorial",
+            "name": "PRE_SECURITY: Add CSS files to tutorial",
+            "description": null
+        },
+        {
             "id": "user-upgrade-makerbundle",
             "name": "User: Upgrade MakerBundle",
             "description": null
@@ -1151,6 +1156,11 @@
             "description": null
         },
         {
+            "id": "errors-translate-error-message",
+            "name": "Errors: translate error message",
+            "description": null
+        },
+        {
             "id": "logout-adding-logout",
             "name": "Logout: Adding logout",
             "description": null
@@ -1203,6 +1213,11 @@
         {
             "id": "targetpath-use-targetpathtrait-in-auth",
             "name": "TargetPath: use TargetPathTrait in auth",
+            "description": null
+        },
+        {
+            "id": "roles-delete-me-2",
+            "name": "Roles: Delete me 2",
             "description": null
         },
         {
@@ -1266,6 +1281,36 @@
             "description": null
         },
         {
+            "id": "is-auth-add-access-control",
+            "name": "IS_AUTH: add access_control",
+            "description": null
+        },
+        {
+            "id": "is-auth-require-login-on-all-urls",
+            "name": "IS_AUTH: require login on all urls",
+            "description": null
+        },
+        {
+            "id": "is-auth-allow-login-to-be-accessed",
+            "name": "IS_AUTH: Allow \/login to be accessed",
+            "description": null
+        },
+        {
+            "id": "is-auth-remembered",
+            "name": "IS_AUTH: REMEMBERED",
+            "description": null
+        },
+        {
+            "id": "is-auth-fully-on-change-password",
+            "name": "IS_AUTH: FULLY on change-password",
+            "description": null
+        },
+        {
+            "id": "is-auth-comment-out-access-control",
+            "name": "IS_AUTH: Comment out access_control",
+            "description": null
+        },
+        {
             "id": "user-fetch-in-controller",
             "name": "User: Fetch in controller",
             "description": null
@@ -1273,6 +1318,11 @@
         {
             "id": "user-log-user-in-controller",
             "name": "User: Log user in controller",
+            "description": null
+        },
+        {
+            "id": "user-custom-base-controller",
+            "name": "User: Custom base controller",
             "description": null
         },
         {
@@ -1511,5 +1561,5 @@
             "description": null
         }
     ],
-    "sha": "9a7afbc788608336370aa2408d90e07f82e9f733"
+    "sha": "1b5115d852c233a50991dc37c419ca663f4a90a9"
 }

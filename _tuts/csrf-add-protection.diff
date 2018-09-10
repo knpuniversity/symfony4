@@ -50,18 +50,18 @@ index df0f8a0..b536588 100644
      }
  
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 665382f..d299be4 100644
+index af1ae0f..02c15cd 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
-@@ -22,6 +22,11 @@
-                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                 <label for="inputPassword" class="sr-only">Password</label>
-                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+@@ -19,6 +19,11 @@
+         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+         <label for="inputPassword" class="sr-only">Password</label>
+         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 +
-+                <input type="hidden" name="_csrf_token"
-+                    value="{{ csrf_token('authenticate') }}"
-+                >
++        <input type="hidden" name="_csrf_token"
++            value="{{ csrf_token('authenticate') }}"
++        >
 +
-                 <div class="checkbox mb-3">
-                     <label>
-                         <input type="checkbox" value="remember-me"> Remember me
+         <div class="checkbox mb-3">
+             <label>
+                 <input type="checkbox" value="remember-me"> Remember me

@@ -13,3 +13,16 @@ index e4800f2..6da73fc 100644
              # activate different ways to authenticate
  
              # http_basic: true
+diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
+index 5831ef2..833fad9 100644
+--- a/src/Security/LoginFormAuthenticator.php
++++ b/src/Security/LoginFormAuthenticator.php
+@@ -12,7 +12,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
+ {
+     public function supports(Request $request)
+     {
+-        // todo
++        die('Our authenticator is alive!');
+     }
+ 
+     public function getCredentials(Request $request)

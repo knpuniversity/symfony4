@@ -1,0 +1,8 @@
+diff --git a/translations/security.en.yaml b/translations/security.en.yaml
+new file mode 100644
+index 0000000..40f224c
+--- /dev/null
++++ b/translations/security.en.yaml
+@@ -0,0 +1 @@
++"Username could not be found.": "Oh no! It doesn't look like that email exists!"
+\ No newline at end of file

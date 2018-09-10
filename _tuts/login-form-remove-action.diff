@@ -1,13 +1,13 @@
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 725af49..729138d 100644
+index 011c6ed..9cb7074 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
-@@ -12,7 +12,7 @@
-                 <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-             {% endif %}
+@@ -9,7 +9,7 @@
+         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+     {% endif %}
  
--            <form action="{{ path('login') }}" method="post">
-+            <form method="post">
-                 <label for="username">Username:</label>
-                 <input type="text" id="username" name="_username" value="{{ last_username }}" />
+-    <form action="{{ path('login') }}" method="post">
++    <form method="post">
+         <label for="username">Username:</label>
+         <input type="text" id="username" name="_username" value="{{ last_username }}" />
  

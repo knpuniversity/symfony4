@@ -1,13 +1,13 @@
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index d97a138..e0a9721 100644
+index 77ecfde..4348148 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
-@@ -14,7 +14,7 @@
-         <div class="col-sm-12">
-             <form class="form-signin" method="post">
-                 {% if error %}
--                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                 {% endif %}
+@@ -11,7 +11,7 @@
+ {% block body %}
+     <form class="form-signin" method="post">
+         {% if error %}
+-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
++            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+         {% endif %}
  
-                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

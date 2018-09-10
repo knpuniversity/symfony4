@@ -1,0 +1,40 @@
+diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
+index 42e56ed..b9026f9 100644
+--- a/src/Controller/AccountController.php
++++ b/src/Controller/AccountController.php
+@@ -4,13 +4,12 @@ namespace App\Controller;
+ 
+ use Psr\Log\LoggerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+ /**
+  * @IsGranted("ROLE_USER")
+  */
+-class AccountController extends AbstractController
++class AccountController extends BaseController
+ {
+     /**
+      * @Route("/account", name="app_account")
+diff --git a/src/Controller/BaseController.php b/src/Controller/BaseController.php
+new file mode 100644
+index 0000000..21714f5
+--- /dev/null
++++ b/src/Controller/BaseController.php
+@@ -0,0 +1,14 @@
++<?php
++
++namespace App\Controller;
++
++use App\Entity\User;
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
++
++abstract class BaseController extends AbstractController
++{
++    protected function getUser(): User
++    {
++        return parent::getUser();
++    }
++}
+\ No newline at end of file

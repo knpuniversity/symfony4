@@ -45,60 +45,55 @@ index 0000000..8ac8f6f
 +}
 \ No newline at end of file
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 729138d..d97a138 100644
+index 9cb7074..77ecfde 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
-@@ -2,30 +2,34 @@
+@@ -2,26 +2,30 @@
  
  {% block title %}Login!{% endblock %}
  
+-{% block body %}
+-    <h1>Login to the SpaceBar!</h1>
+-
+-    {% if error %}
+-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+-    {% endif %}
+-
+-    <form method="post">
+-        <label for="username">Username:</label>
+-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
 +{% block stylesheets %}
 +    {{ parent() }}
-+
+ 
+-        <label for="password">Password:</label>
+-        <input type="password" id="password" name="_password" />
 +    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 +{% endblock %}
-+
- {% block body %}
- <div class="container">
-     <div class="row">
-         <div class="col-sm-12">
--            <h1>Login to the SpaceBar!</h1>
--
--            {% if error %}
--                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
--            {% endif %}
--
--            <form method="post">
--                <label for="username">Username:</label>
--                <input type="text" id="username" name="_username" value="{{ last_username }}" />
--
--                <label for="password">Password:</label>
--                <input type="password" id="password" name="_password" />
--
--                {#
--                    If you want to control the URL the user
--                    is redirected to on success (more details below)
--                    <input type="hidden" name="_target_path" value="/account" />
--                #}
-+            <form class="form-signin" method="post">
-+                {% if error %}
-+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-+                {% endif %}
  
--                <button type="submit">login</button>
-+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-+                <label for="inputEmail" class="sr-only">Email address</label>
-+                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-+                <label for="inputPassword" class="sr-only">Password</label>
-+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-+                <div class="checkbox mb-3">
-+                    <label>
-+                        <input type="checkbox" value="remember-me"> Remember me
-+                    </label>
-+                </div>
-+                <button class="btn btn-lg btn-primary btn-block" type="submit">
-+                    Sign in
-+                </button>
-             </form>
-         </div>
-     </div>
+-        {#
+-            If you want to control the URL the user
+-            is redirected to on success (more details below)
+-            <input type="hidden" name="_target_path" value="/account" />
+-        #}
++{% block body %}
++    <form class="form-signin" method="post">
++        {% if error %}
++            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
++        {% endif %}
+ 
+-        <button type="submit">login</button>
++        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
++        <label for="inputEmail" class="sr-only">Email address</label>
++        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
++        <label for="inputPassword" class="sr-only">Password</label>
++        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
++        <div class="checkbox mb-3">
++            <label>
++                <input type="checkbox" value="remember-me"> Remember me
++            </label>
++        </div>
++        <button class="btn btn-lg btn-primary btn-block" type="submit">
++            Sign in
++        </button>
+     </form>
+ {% endblock %}

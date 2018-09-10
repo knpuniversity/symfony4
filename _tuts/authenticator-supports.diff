@@ -1,12 +1,12 @@
 diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
-index 5831ef2..f186f9e 100644
+index 833fad9..f186f9e 100644
 --- a/src/Security/LoginFormAuthenticator.php
 +++ b/src/Security/LoginFormAuthenticator.php
 @@ -12,12 +12,14 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
  {
      public function supports(Request $request)
      {
--        // todo
+-        die('Our authenticator is alive!');
 +        // do your work when we're POSTing to the login page
 +        return $request->attributes->get('_route') === 'app_login'
 +            && $request->isMethod('POST');

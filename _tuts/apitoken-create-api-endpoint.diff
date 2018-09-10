@@ -1,8 +1,8 @@
 diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
-index 42e56ed..f4642c0 100644
+index b9026f9..15478e2 100644
 --- a/src/Controller/AccountController.php
 +++ b/src/Controller/AccountController.php
-@@ -22,4 +22,14 @@ class AccountController extends AbstractController
+@@ -21,4 +21,14 @@ class AccountController extends BaseController
  
          ]);
      }

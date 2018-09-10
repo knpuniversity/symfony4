@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index a8e1f79..caa6afa 100644
+index 2dd3e65..3f1ae08 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -22,11 +22,6 @@ class ArticleFixtures extends BaseFixture implements DependentFixtureInterface
@@ -11,7 +11,7 @@ index a8e1f79..caa6afa 100644
 -        'Amy Oort',
 -    ];
 -
-     public function loadData(ObjectManager $manager)
+     protected function loadData(ObjectManager $manager)
      {
          $this->createMany(10, 'main_articles', function($count) use ($manager) {
 @@ -57,7 +52,7 @@ EOF

@@ -24,3 +24,16 @@ index 026e68d..ef6b729 100644
   */
  class CommentAdminController extends Controller
  {
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 1b48f0c..5a77701 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -40,7 +40,7 @@
+                             </a>
+                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                 <a class="dropdown-item" href="{{ path('app_account') }}">Profile</a>
+-                                {% if is_granted('ROLE_ADMIN') %}
++                                {% if is_granted('ROLE_ADMIN_ARTICLE') %}
+                                     <a class="dropdown-item" href="{{ path('admin_article_new') }}">Create Post</a>
+                                 {% endif %}
+                                 <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>

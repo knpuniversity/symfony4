@@ -30,15 +30,15 @@ index 0e049bf..df0f8a0 100644
  
      public function getUser($credentials, UserProviderInterface $userProvider)
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index e0a9721..665382f 100644
+index 4348148..af1ae0f 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
-@@ -19,7 +19,7 @@
+@@ -16,7 +16,7 @@
  
-                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                 <label for="inputEmail" class="sr-only">Email address</label>
--                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                 <label for="inputPassword" class="sr-only">Password</label>
-                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                 <div class="checkbox mb-3">
+         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+         <label for="inputEmail" class="sr-only">Email address</label>
+-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
++        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+         <label for="inputPassword" class="sr-only">Password</label>
+         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+         <div class="checkbox mb-3">

@@ -14,15 +14,15 @@ index f1e9a7f..cb01303 100644
  
              # http_basic: true
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index d299be4..bf43f32 100644
+index 02c15cd..778f582 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
-@@ -29,7 +29,7 @@
+@@ -26,7 +26,7 @@
  
-                 <div class="checkbox mb-3">
-                     <label>
--                        <input type="checkbox" value="remember-me"> Remember me
-+                        <input type="checkbox" name="_remember_me"> Remember me
-                     </label>
-                 </div>
-                 <button class="btn btn-lg btn-primary btn-block" type="submit">
+         <div class="checkbox mb-3">
+             <label>
+-                <input type="checkbox" value="remember-me"> Remember me
++                <input type="checkbox" name="_remember_me"> Remember me
+             </label>
+         </div>
+         <button class="btn btn-lg btn-primary btn-block" type="submit">

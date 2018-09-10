@@ -47,20 +47,14 @@ index 7e25c60..0000000
 -{% endblock %}
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
 new file mode 100644
-index 0000000..4a4e7da
+index 0000000..ed52647
 --- /dev/null
 +++ b/templates/security/login.html.twig
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,7 @@
 +{% extends 'base.html.twig' %}
 +
 +{% block title %}Login!{% endblock %}
 +
 +{% block body %}
-+<div class="container">
-+    <div class="row">
-+        <div class="col-sm-12">
-+            <h1>Login to the SpaceBar!</h1>
-+        </div>
-+    </div>
-+</div>
++    <h1>Login to the SpaceBar!</h1>
 +{% endblock %}

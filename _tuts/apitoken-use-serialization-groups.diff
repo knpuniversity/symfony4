@@ -1,8 +1,8 @@
 diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
-index f4642c0..b1ee62d 100644
+index 15478e2..18db4af 100644
 --- a/src/Controller/AccountController.php
 +++ b/src/Controller/AccountController.php
-@@ -30,6 +30,8 @@ class AccountController extends AbstractController
+@@ -29,6 +29,8 @@ class AccountController extends BaseController
      {
          $user = $this->getUser();
  
