@@ -5,7 +5,8 @@ chapters:
     - login-form
     - firewalls-authenticator
     - login-form-authenticator
-    - success-error-last-username
+    - success-user-provider
+    - auth-errors
     - errors-logout
     - csrf-remember-me
     - user-password
