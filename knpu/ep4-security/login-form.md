@@ -39,21 +39,20 @@ for now, just add an `h1` with "Log in to the Space Bar!".
 Try it again: perfect! Well, not *perfect* - it looks *terrible*... and there's no
 login form yet. To fix *that* part, Google for "Symfony login form" to find a page
 on the Symfony docs that talks all about this. We're coming here so that we can
-steal some boilerplate code.
+steal some code!
 
-Scroll down a little but until you see a `login()` method that has some logic
-in it. Copy the body, move back to our controller, and paste! This needs an
-`AuthenticationUtils` class as an argument. Add it: `AuthenticationUtils
-$authenticationUtils`. Then, these two new variables are passed into Twig. Copy
-that and also paste it.
+Scroll down a bit until you see a `login()` method that has some logic in it. Copy
+the body, move back to our controller, and paste! This needs an `AuthenticationUtils`
+class as an argument. Add it: `AuthenticationUtils $authenticationUtils`. Then,
+these two new variables are passed into Twig. Copy them, and also paste it.
 
 In a few minutes, we're going to talk about *where* these two variables are set.
 They both deal with authentication.
 
-Go back to the docs and find the login form. Copy this, move over and paste it
-into our body. Notice: there is *nothing* special about this form: it has a
+But first, go back to the docs and find the login form. Copy this, move over and
+paste it into our body. Notice: there is *nothing* special about this form: it has a
 username field, a password field and a submit button. And, we're going to customize
-it, so don't look at it too closely yet.
+it, so don't look too closely yet.
 
 Move back to your browser to check things out. Bah!
 
@@ -62,7 +61,7 @@ Move back to your browser to check things out. Bah!
 This comes from `login.html.twig`. Of course! The template we copied is pointing
 to a route called `login`, but *our* route is called `app_login`. Actually, just
 remove the `action=` entirely. If a form doesn't have an `action` attribute, it
-will just submit right back to the *same* URL, which is what I want anyways.
+will submit right back to the *same* URL - `/login` - which is what I want anyways.
 
 Refresh again. Perfect! Well, it still looks *awful*. Oof. To fix that, I'm going
 to replace the HTML form with some markup that looks nice in Bootstrap 4 - you
@@ -70,53 +69,53 @@ can copy this from the code block on this page.
 
 ## Including the login.css File
 
-Before we look at this new code, try it! Refresh! Still ugly! Oh, that's because
-we need to include a new CSS file for this markup.
+Before we look at this new code, try it! Refresh! Still ugly! Dang! Oh yea, that's
+because we need to include a new CSS file for this markup.
 
 If you downloaded the course code, you should have a `tutorial/` directory with
 two css files inside. Copy `login.css`, find your `public/` directory and paste
 the file into `public/css`. So far in this series, we are *not* using Webpack
 Encore, which is an *awesome* tool for professionally combining and loading CSS
 and JS files. Instead, we're just putting CSS files into the `public/` directory
-and linking to them. If you want to learn more about Encore, go check out our
-[Webpack Encore tutorial](https://knpuniversity.com/screencast/Webpack-encore).
+and pointing to them directly. If you want to learn more about Encore, go check out
+our [Webpack Encore tutorial](https://knpuniversity.com/screencast/Webpack-encore).
 
-Next, we need to add a `link` tag to this new CSS file... but I *only* want to
-include it on *this* page, *not* on *every* page - it's just not necessary. Look
-at `base.html.twig`. We're including three CSS files in the base layout. And they
-*all* live inside a block called `stylesheets`.
+Anyways, we need to add a `link` tag for this new CSS file... but I *only* want to
+include it on *this* page, *not* on *every* page - we just *don't* need the CSS on
+every page. Look at `base.html.twig`. We're including three CSS files in the base
+layout. Ah, and they *all* live inside a block called `stylesheets`.
 
 We basically want to add a *fourth* `link` tag right *below* these... but *only*
 on the login page. To do that, in `login.html.twig`, add `block stylesheets` and
 `endblock`. This will *override* that block completely... which is actually *not*
-what we want. Instead, to *add* to that block, print `parent()`. This will print
-the content of the *parent* block, and then we can add the new link tag below:
-`link`, with `href=` and `login.css`. PhpStorm helps fill in the `asset()` function.
+exactly what we want. Nope, we want to *add* to that block. To do that print `parent()`.
+This will print the content of the *parent* block - the 3 link tags - and then we
+can add the new link tag below: `link`, with `href=` and `login.css`. PhpStorm helps
+fill in the `asset()` function.
 
-*Now* it should look less ugly. Try it. Boom! Oh, but we don't need that extra
-`h1` tag anymore.
+*Now* it should look good. Try it. Boom! Oh, but we don't need that `h1` tag anymore.
 
 ## The Fields of the Login Form
 
 So even though this looks much better, it's still just a very boring HTML form.
 It has an email field and a password field... though, we won't add the
 password-checking logic until later. It also has a "remember me" checkbox that
-we'll activate learn how to activate.
+we'll learn how to activate.
 
 The point is: you can make your login form look *however* you want. The only special
 part is this `error` variable, which, when we're done, will be the authentication
-error if the user had a bad email or password. I'll plan ahead and add a Bootstrap
-class for this.
+error if the user just entered a bad email or password. I'll plan ahead and add a
+Bootstrap class for this.
 
 ## Adding a Link to the Login Page
 
 Ok. Login form is done! But... we probably need a *link* to this page. In the upper
 right corner, we have a cute user dropdown... which is *totally* hardcoded with
 fake data. Go back to `base.html.twig` and scroll down to find this. There it
-is! For now, let's comment-out that drop-down - we'll re-add it later when we have
+is! For now, let's comment-out that drop-down: we'll re-add it later when we have
 *real* data. Then, copy a link from above, paste it here and change it to Login
 with a link to `app_login`.
 
-Try that - refresh! We got it! HTML login form, check! We are now ready to fill
-in the logic of what happens when *submit* the form. We'll do that in something
+Try it - refresh! We got it! HTML login form, check! We are now ready to fill
+in the logic of what happens when we *submit* the form. We'll do that in something
 called an "authenticator".

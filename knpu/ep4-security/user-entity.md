@@ -19,7 +19,7 @@ Update the `User `class and add `firstName` as a `string`, length 255 - or short
 if you want - and not nullable. Done!
 
 Check out the `User` class! Yep, there's the new `firstName` property and... at
-the bottom, the getter and setter method. Awesome!
+the bottom, the getter and setter methods. Awesome!
 
 ## Setting Doctrine's server_version
 

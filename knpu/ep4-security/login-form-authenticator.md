@@ -1,21 +1,119 @@
 # Login Form Authenticator
 
-Coming soon...
+Now that we've added our authenticator under the `authenticators` key, Symfony calls
+its `supports()` method at the beginning of *every* request, which is why we see
+this little die statement. These authenticator classes are really cool because *each*
+method controls just *one* small part of the authentication process.
 
-By adding our authenticator under the authenticators key here, the supports method on our authenticator is called an every single request, which is where we have this little die statements. So these authenticator classes are really cool because every method controls just one small part of the authentication process. So first the supports method is called an every single request. Our job is to return true if our authenticators sees some authentication information or alice to return false. So in our case, because our login form posts of when we submit our login form it posts to slash login, our login form authenticator should only do its work when the current url is a post request to slash login. So literally we're going to return request Arrow 
+## The supports() Method
 
-attributes Arrow get underscore route, and I'm going to check to see if that is equal to app slash login. Now let me explain that. If you look in your security controller, the name of our log in you were all as app underscore login. You don't do it very commonly, but if you call request or attributes Arrow get underscore login, that will actually return the current route. That is matched, so basically this is checking to see if the url is slash login, so we also want to make sure it's a post request so we'll say and and request Arrow is method post. 
+The first method - `supports()` - is called on every request. Our job is simple:
+to return `true` if this request contains authentication info that this authenticator
+knows how to process. And if not, to return `false`. 
 
-So if we, if we return false from the supports method, then nothing else happens in our authenticator, none of the other methods that are called the request, just continuous anonymously, like normal. If we return true from supports, then symphony calls our next method. Get credentials down here just to see if things are working. I'm going to say dump to dump request Arrow, request Arrow all and then say die request Arrow request. Which I know sounds funny is the way that you get post data. So this should dump all of the posted data from our request. All right, so let's try it. If you back over here and click enter on slash login, this makes a get request to slash login, which means that our supports method returns false in everything continues on like normal. It calls our controller and renders our. I'll log in with one of our fake users like spacebar1@example.com. Password doesn't matter, it's all just about food. And then hit enter. Boom. This time, because it's a post request, supports returns, true and it dumps are posted data which you can see as an email and a password because in our login form we had name because email and password. 
+In this case, when we submit the login form, it POSTs to `/login`. So, our authenticator
+should *only* try to authenticate the user in that exact situation. Return
+`$request->attributes->get('_route') === 'app_login'`.
 
-Alright, back in. Login form authenticator, unrelated to security. I'm going to show you one new feature in symphony four. Point one. It's really silly, but anytime you want to dump in die, he can instead just say dee dee and then remove the dye that stands for dumped in die. So I have to refresh. Now you get the same result. I'll start using dd because it's cool. Alright, so if we returned true from supports, then get credentials is called in this method, our job is to return whatever authentication credentials are on the request. So in our case the email and the password. But if this were an API authenticator, we would probably return. We might return the API token. So literally will return an array. You can return whatever you want. So I'm going to return an array with an email key set to request air request, arrow, get email, and then a password set to request Arrow request Arrow get password. We can return whatever we want from this because whatever we returned from get credentials is going to be passed as the first argument and get user. So I'll do dd credentials so that we can see that. 
+Let me... explain this. If you look in `SecurityController`, the *name* of our login
+route is `app_login`. And, though you don't need to do it very often, if you want
+to find out the *name* of the currently-matched route, you can do that by reading
+this special `_route` key from the request attributes. In other words, this is checking
+to see if the URL is `/login`. We also only want our authenticator to try to login
+the user if this is a POST request. So, add `&& $request->isMethod('POST')`.
 
-All right, so now move over, refresh and perfect. It dumps the exact same thing as before. But notice this is line 30. This is coming down from our get user method. Okay, let's keep going. Our job and get user instead, use the credentials to return a user object that represents that user or return no. If the user isn't found, since we're storing our users in the database, this means that we're going to query for the user based on their email. To do that, we need the user repository that was generated for our entity, 
+Here's how this works: if we return `false` from `supports()`, nothing else happens.
+Symfony doesn't call *any* other methods on our authenticator, and the request
+continues on like normal to our controller, like nothing happened. It's not an
+authentication *failure* - it's just that nothing happens at all.
 
-so go to the top 
+If we return `true` from `supports()`, well, that's when the fun starts. If we return
+`true`, Symfony will immediately call `getCredentials()`.
 
-at a construct method type of user repository, user repository. Then I'll hit enter 
+To see if things are working, let's just `dump($request->request->all())` then
+`die()`. I know, that looks funny. *Unrelated* to security, if you want to read POST
+data off of the request, you use the `$request->request` property.
 
-better initialize fields and select the user repository. I'll remove the peach doc. Now, let me have that down and get user just return this Arrow user repository, aerifying one and look up the email field based on credentials square bracket, email, so that way the return the user object or it will return. No. The cool thing is if we return no, the whole authentication process will stop and the user will see an error automatically. If we return a user object, then then check credentials is called and we're past the same credentials and that user object that we just return. So let's do a dd down here of the user object so we can make sure that's working. All right, move over, refresh and 
+Anyways, let's try it! Go back to your browser and hit enter on the URL so that it
+makes a `GET` request to `/login`. Hello login page! Our `supports()` method just
+returned `false`. And so, the request continued *anonymously*, like normal.
 
-got it. And returns our user object. So the last step in the authentication process is this check credentials method. This is your opportunity to check to see if the user's password is correct. Right now we don't have a password so we're just going to return true. And actually you, if you have in some systems you will always have return true. Like if you have an API token system, there is no password, and so there was no credentials that check if your return false from here, authentication will fail and the user will see a bad password message. We'll see that in a second, but if we return true here, we finally call on authentication success. Let's just put a little dd here that says success. We move over and refresh. Yes, we do hit this method. So at this point we've fully filled in the logic. We've said we filled in supports to say when we should do our work, we fetched her credentials off the request, use that to check the user, and for now just returned true from check credentials. Next, we're going to fill in these last two methods here and also learn a bit more, a bit more about what happens when authentication fails and how to render the and how the error message is rendered.
+Log in with one of our dummy users: `spacebar1@example.com`. The password doesn't
+matter. And... enter! Yes! *This* time, because this is a POST request to `/login`,
+`supports()` returns true! So, Symfony calls `getCredentials()` and our dump fires!
+As expected, we can see the `email` and `password` POST parameters, because the login
+form uses these names.
+
+## The Brand-New dd() Function
+
+Oh, and I want to show you a *quick* new Easter egg in Symfony 4.1, *unrelated* to
+security. Instead of `dump()` and `die()`, use `dd()` and then remove the `die`
+
+Refresh! Same result. This is just a nice, silly shortcut: `dd()` is `dump()`
+and `die`. We'll use it... because... why not?
+
+## The getCredentials() Method
+
+Back to work! Our job in `getCredentials()` is simple: to read our authentication
+credentials off of the request and return them. In this case, we'll return the
+`email` and `password`. But, if this were an API token authenticator, we would
+return that token. We'll see that later.
+
+Return an array with an `email` key set to `$request->request->get('email')`
+and `password` set to `$request->request->get('password')`. I'm just inventing
+these `email` and `password` keys for the new array: we can really return *whatever*
+we want from this method. Because, after we return from `getCredentials()`, Symfony
+will immediately call `getUser()` and pass this array *back* to us as the first
+`$credentials` argument.
+
+Let's see that in action: `dd($credentials)`.
+
+Move back to your browser and, refresh! Coincidentally, it dumps the *exact*
+same thing as before. But, this time, it's coming from line 30 - our line in `getUser()`.
+
+## The getUser() Method
+
+Let's keep going! Our job in `getUser()` is to use these `$credentials` to return
+a `User` object, or null if the user isn't found. Because we're storing our users
+in the database, we need to *query* for the user via their email. And to do that,
+we need the `UserRepository` that was generated with our entity.
+
+At the top of the class, add `public function __construct()` with a
+`UserRepository $userRepository` argument. I'll hit Alt+Enter and select
+"Initialize Fields" to add that property and set it.
+
+Back down in `getUser()`, just return `$this->userRepository->findOneBy()` to
+query by email, set to `$credentials['email']`.
+
+This will return our `User` object, or null. The *cool* thing is that if this returns
+null, the whole authentication process will stop, and the user will see an error.
+But if we return a `User` object, then Symfony immediately calls `checkCredentials()`,
+and passes it the same `$credentials` and the `User` object *we* just returned.
+
+Inside, `dd($user)` so we can see if things are working. Refresh and... got it!
+That's *our* `User` object!
+
+## The checkCredentials() Method
+
+Ok, final step: `checkCredentials()`. This is your opportunity to check to see if
+the user's password is correct, or any other last, security checks. Right now...
+well... we don't have a password, so, let's return `true`. And actually, in *many*
+systems, simply returning `true` is perfect! For example, if you have an API token
+system, there's no password.
+
+If you *did* return `false`, authentication would fail and the user would see
+an "Invalid Credentials" message. We'll see that soon.
+
+But, when you return *true*... authentication is successful! Woo! To figure out
+what to *do*, now that the user is authenticated, Symfony calls `onAuthenticationSuccess()`.
+Put a `dd()` here that says "Success".
+
+Move over and... refresh the POST! Yes! We hit it! At this point, we have *fully*
+filled in *all* the authentication logic. We used `supports()` to tell Symfony
+whether or not our authenticator should be used in this request, fetched credentials
+off of the request, used those to find the user, and returned `true` in
+`checkCredentials()` because we don't have a pasword.
+
+Next, let's fill in these *last* two methods and *finally* see - for *real* - that
+our user is logged in. We'll also learn a bit more about what happens when
+authentication fails and how the error message is rendered.
