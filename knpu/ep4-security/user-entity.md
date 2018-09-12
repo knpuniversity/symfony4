@@ -21,6 +21,8 @@ if you want - and not nullable. Done!
 Check out the `User` class! Yep, there's the new `firstName` property and... at
 the bottom, the getter and setter methods. Awesome!
 
+[[[ code('c491f416f7') ]]]
+
 ## Setting Doctrine's server_version
 
 I think we're ready to make the migration. But! A word of warning. Check out
@@ -57,6 +59,8 @@ Perfect! Go check that file out in `src/Migrations`. And... nice!
 `CREATE TABLE user`. Look at the `roles` field: a `LONGTEXT` column. If you kept
 your `server_version` at 5.7, this would be a `json` column.
 
+[[[ code('d553182931') ]]]
+
 Let's run this:
 
 ```terminal
@@ -77,9 +81,13 @@ If you watched our Doctrine tutorial, you might remember that we created a speci
 tutorial, based on some feedback from *you* nice people, I made a few improvements
 to that class. Go team!
 
+[[[ code('3cc4c0fcb4') ]]]
+
 The way you use this class is still the same: extend `BaseFixture` and update
 the `load` method to be `protected function loadData()`. I'll remove the old `use`
 statement.
+
+[[[ code('547585cc48') ]]]
 
 Inside, call `$this->createMany()`. The arguments to this method changed a bit since
 the last tutorial. Pass this 10 to create 10 users. Then, pass a "group name" -
@@ -87,6 +95,8 @@ the last tutorial. Pass this 10 to create 10 users. Then, pass a "group name" -
 different fixture class to relate other objects to these users. Finally, pass a callback
 with an `$i` argument. This will be called 10 times and our job inside is simple:
 create a `User`, put some data on it and return!
+
+[[[ code('17f7010d7f') ]]]
 
 Do it! `$user = new User()`. Then `$user->setEmail()` with `sprintf()`
 `spacebar%d@example.com`. For the `%d` wildcard, pass `$i`, which will be one, two,
@@ -96,6 +106,8 @@ The only other field is first name. To set this, we an use Faker, which we alrea
 setup inside `BaseFixture`: `$this->faker->firstName`.
 
 Finally, at the bottom, return `User`.
+
+[[[ code('7b8a0befa0') ]]]
 
 And... we're done! This step had *nothing* to do with security: this is just boring
 Doctrine & PHP code inside a fancy `createMany()` method to make life easier.
