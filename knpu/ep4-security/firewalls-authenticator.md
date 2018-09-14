@@ -67,7 +67,7 @@ process. Before we walk through each one, because this authenticator will be for
 a login form, there's a different base class that allows us to... well... do less
 work!
 
-Instead of `extends AbstractAuthenticator` use `extends AbtractFormLoginAuthenticator`.
+Instead of `extends AbstractGuardAuthenticator` use `extends AbtractFormLoginAuthenticator`.
 I'll remove the old `use` statement.
 
 Thanks to this, we no longer need `onAuthenticationFailure()`, `start()` or
