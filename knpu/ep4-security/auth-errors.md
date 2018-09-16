@@ -1,58 +1,84 @@
 # Authentication Errors
 
-but the point is your user objects stored at the
-session, but Symfony makes sure that it's always fresh at the beginning of every
-single request. That is the main job of your user provider. All right, so let's go
-back to the login page because honestly what happens when we fail login, which is
-only possible right now by using a fake email address and oh, cannot redirect to an
-empty url. And if you look down here, this is actually coming from our abstract form
-login authenticator. If you looked into it, the problem is that the authenticator is
-trying to call or get log in url. That's because if we fail, if we fail log in, of
-course what we want to do is redirect back to the login page, but we need to tell the
-authenticator where this is so return this->router error, generate
+Go back to the login page. I wonder what happens if we *fail* the login... which,
+is only possible right now if we use a non-existent email address. Oh!
 
-APP_login. All right, try it again, refresh and perfect, and you even see that we get
-the air up here, username and not be found.
+> Cannot redirect to an empty URL
 
-We get that exact error because the step that fails is the get user message in a
-little bit. I'll show you how to customize that message to say, email cannot be
-found. For example, if we failed to get credentials method, instead we'll log in with
-a legitimate user. You'll see that it's automatically an invalid credentials message,
-but more than that, I'm going to show you how this is working because if you go into
-security controller, remember we're getting the air just by calling some
-authentication utils, get last authentication error, and then we're passing that into
-our template and we are rendering a message key property on that. So the whole
-handling of the authentication error is happening a bit magically and I want to
-demystify that a little bit. If you scroll to the top of your authentic cater and
-hold command or control to click and click into abstract form, log and authentic
-later. In reality, when authentication fails, this on authentication failure message
-is called and see. What it does is it takes the air message which is stored on the
-exception variable and it stores it in the session. Then in our controller, when we
-say get last authentication error, I'm going to hold command again.
+## Filling in getLogUrl()
 
-No, not not going to do that. That's actually a shortcut to go read that key off of
-the session, so are authentic stores the air and the session, and then we read the
-air off our controller and we render it. Then it calls get logged in. You were out
-and it redirects us there, so no magic going on. Now you'll notice if you go back in
-and fail authentication again with a fake email address, when you come back to the
-email address, field is empty, which is not ideal. We should prefill that with the
-email that they just put in, but if you look in your country, if you look in your
-controller, we're using that same authentication utils to also get something called
-get last username, which is the value that we put into that field. We're passing this
-into our template, but I forgot to render this as a value on my email field. It's no
-problem. Let's say value =
+Hmm: this is coming from `AbstractFormLoginAuthenticator` *our* authenticator's
+base class. If you dug a bit, you'd find out that, on failure, that authenticator
+class is calling `getLoginUrl()` and trying to redirect *there*. And, yea, that makes
+sense: if we fail login, the user should be redirected *back* to the login page.
+To make this actually work, all *we* need to do is fill in this method.
 
-curly curly, last username. However, unlike the error messages, the last user name is
-not automatically stored in the session. This is something that we need to do inside
-of our login form authenticator. Super easy to do and get credentials. Instead of
-returning, say prudential's equals. At this point we know exactly what email is being
-set, so let's set this in the session by saying request Arrow, get session,->set, and
-when you use a special constant here called security, get the one from the security
-components last user name and set that to credentials email that will store this
-value in the session, which is where getting in the get last year's and a method
-reads that key off of the session. Then at the bottom we'll return the same
-credentials, so the last user name and the air are both set to the session and we
-read those. Now if we go back, log in with that same email address again, we get the
-air in. This time the email stays awesome. So let's learn how to customize these
-error messages and we need to add a log out link so that we can actually start
-logging out. Let's do that next.
+No problem: `return $this->router->generate('app_login')`.
+
+Ok, try it again: refresh and... perfect! Hey! You can even see an error message
+on top:
+
+> Username could not be found.
+
+We get *that* exact error because of *where* the authenticator fails: we *failed*
+to return a user from `getUser()`. In a little while, we'll learn how to customize
+this message because... probably saying "Email" could not be found would make more
+sense.
+
+The *other* common place where your authenticator can fail is in the `checkCredentials()`
+method. Try returning `false` here for a second. Then, login with a *legitimate*
+user. Nice!
+
+> Invalid credentials.
+
+Anyways, go change that back to `true`.
+
+## How Authentication Errors are Stored
+
+What I *really* want to find out is: where are these errors coming from? In
+`SecurityController`, we're getting the error by calling some
+`$authenticationUtils->getLastAuthenticationError()` method. We're passing that
+into the template and rendering its `messageKey` property... with some translation
+magic we'll talk about soon too.
+
+The point is: we magically fetch the "error" from... somewhere and render it. Let's
+demystify that. Go back to the top of your authenticator and hold command
+or control to click into `AbstractFormLoginAuthenticator`.
+
+In reality, when authentication fails, this `onAuthenticationFailure` method is
+called. It's a bit technical, but when authentication fails, internally, it's because
+something threw an `AuthenticationException`, which is passed to this method. And,
+ah: this method *stores* that exception onto a special key in the session! Then,
+back in the controller, the `lastAuthenticationError()` method is just a *shortcut*
+to read that key *off* of the session!
+
+So, it's simple: our authenticator stores the error in the session and then we read
+the error *from* the session in our controller and render it.
+
+The *last* thing `onAuthenticationFailure()` does is call our `getLoginUrl()` method
+and redirect there.
+
+## Filling in the Last Email
+
+Go back to the login form and fail authentication again with a fake email. We see
+the error... but the email field is empty - that's not ideal. For convenience, it
+*should* pre-fill with the email I just entered.
+
+Look at the controller again. Hmm: we *are* calling a `getLastUsername()` method
+and passing that into the template. Oh, but I forgot to render it! Add `value=`
+and print `last_username`.
+
+But... we're not quite done. Unlike the error message, the last user name is *not*
+automatically stored to the session. This is something that *we* need to do inside
+of our `LoginFormAuthenticator`. But, it's super easy. Inside `getCredentials()`,
+instead of returning, add `$credentials = `. Now, set the email onto the session
+with `$request->getSession()->set()`. Use a special key: `Security` - the one
+from the Security component - `::LAST_USERNAME` and set this to `$credentials['email']`.
+
+Then, at the bottom, return `$credentials`.
+
+Try it! Go back, login with that same email address and... nice! Both the error
+*and* the last email are read from the session and displayed.
+
+Next: let's learn how to *customize* these error messages. And, we really need
+a way to logout.
