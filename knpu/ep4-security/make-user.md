@@ -80,8 +80,14 @@ important. We'll start talking about it soon.
 ## Creating the User Class with make:user
 
 Before we run `make:user` again, add all the changed files to git and commit
-with a message about upgrading MakerBundle & adding security. I'm doing this because
-I want to see *exactly* what the `make:user` command does.
+with a message about upgrading MakerBundle & adding security:
+
+```terminal-silent
+git add .
+git commit -m "Upgraded MakerBundle and added security"
+```
+
+I'm doing this because I want to see *exactly* what the `make:user` command does.
 
 Ok already, let's try it!
 
@@ -100,7 +106,7 @@ you want to store *any* extra information about your users in a local database
 table, you should still answer yes. Answer "no" *only* if you don't need to store
 *any* user information to your database.
 
-So, yes for us! Next: choose one property on your user that will be its unique
+So, "yes" for us! Next: choose one property on your user that will be its unique
 display name. This can be anything - it's usually an `email` or `username`. We'll
 talk about how it's used later. Choose `email`.
 
