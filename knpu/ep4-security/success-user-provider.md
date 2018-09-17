@@ -1,7 +1,7 @@
 # Success Error Last Username
 
 *If* our authenticator is able to return a `User` from `getUser()` *and* we return
-true from `getCredentials()`, then, congrats! Our user is logged in! The *last*
+true from `checkCredentials()`, then, congrats! Our user is logged in! The *last*
 question Symfony asks us is: now what? Now that the user is authenticated, what
 do you want to do?
 
