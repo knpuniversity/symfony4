@@ -1,13 +1,102 @@
-# Errors Logout
+# Customizing Errors & Logout
 
-Coming soon...
+If we enter an email that doesn't exist, we get this
 
-If we put in a username that doesn't exist, we get the user name could not be found error message and we saw a second ago that inner authenticator, if we return false from check credentials, the air is something about invalid credentials, so the point is, depending on where authentication fails, you get a couple of guilt in messages, so the question is what if you want to customize those because using them cannot be found is not a very good error message. When you have an email, the answer is there are two different ways. First, there is a way. There's two different ways. The first way is by throwing spent the first. The first way involves three special exception. Inside this class, we're going to see that later when we talk about API authentication. The second way is to translate this message. No, this isn't a tutorial about a translation, but if you look at our login template, you see when we actually print out this air dot message key thing, we actually run it through symphonies translation filter and run it through something that's called a security domain. Another way to look at this as if you look at the web debug toolbar down here, 
+> Username could not be found
 
-there's a little translation thing here you can click on, you can actually see this is information about the translations on this page. There's only one thing being translated and it's that user name could not be found. The message which is being translated into user name could not be found 
+error message. And, as we saw a moment ago, if we return `false` from
+`checkCredentials()`, the error is something about "Invalid credentials".
 
-actually in the core of symphony. Symphony has translation files for most languages that translate these into into other languages. So if we, if we were using the Spanish locale, you'd actually see these Spanish version of this message here. Well anyway, so we're not worried about translations really, but we can because this is being passed to the translator, we can actually change this message to a different message and it's super simple. In your translations directory, create a security. It's called security because it's being passed through this security domain, which is Kinda like a translation category that e n, that's all. Okay. Look how dot gamble. Instead of here, I'll literally copied the message ID. That insight quotes paste. It will assign it to a new message called junior message. Oh No, it doesn't look like that email exists. If you go back to your browser and go back to your login page. In theory, if you try logging in again, this should work instantly, but you can see that it doesn't. That's a small bug in symphony, whenever you create a new translation, whenever you create your first translation file, you actually need to manually clear the cache. I'll do that. I'll do that with bin Console. Cache, colon clear. You won't need to do that again. Just when you create this first file. 
+The point is, depending on *where* authentication fails, the user will see one of
+these two messages.
 
-When that finishes go over, log in again with the battery email, email and awesome. Got It. Alright, so it was one of the things I want to do right now and that is allow us to log out and see. I'm still logged in a space bar one, an example.com. This starts pretty similar to the login page. Close a couple of files here. Go to your security controller and right under the login method make another function called log out. And above this, I'll add the normal app route annotation for slash log out and we'll give it a name of APP slash log out. Cool. Now here is the interesting part. We do need to create this route, however, we don't need to write the logic to log the user out. In fact, I'm going to say throw a new exception 
+The question *now* is, what if we want to customize those? Because, username could
+not be found? Really? In an app that doesn't use usernames!? That's... confusing.
 
-will not will be intercepted before getting here in the same way that the authentication system runs automatically at the beginning of the request. Our authentication authentic are our authenticator runs at the beginning of each request. Log out process also runs at the beginning of the request automatically. The only thing you need to do to activate it is go into your firewall and add a new key called logout. And below that add a path option and point this to the route of your log out. Log out route. So for us it's APP underscore log out. So app underscore log out. That's it, thanks to this, whenever we access the APP, log out route at the beginning of their requests, simply will automatically log us out and take care of everything. So let's try it, go up here, go to slash the log out and yes we've got it because he done here. We're back to anonymous. There are other things you can customize under. Log out there, other options and you can find those on the symphony reference section.
+## Customizing Error Messages
+
+There are two ways to control these error messages. The first is by throwing
+a very special exception class from anywhere in your authenticator. It's called
+`CustomUserMessageAuthenticationException`. When you do this, you can create your
+own message. We'll do this later when we build an API authenticator.
+
+The second way is to *translate* this message. No, this isn't a tutorial about
+translations. But, if you look at your login template, when we print this
+`error.messageKey` thing, we are *already* running it through Symfony's translation
+filter.
+
+Another way to look at this is on the web debug toolbar. See this little translation
+icon? Click that! Cool: you can see all the information about translations that
+are being processed on this page. Not surprisingly - since we're not trying to translate
+anything - there's only one: "Username could not be found."... which... is being
+translated into... um... "Username could not be found."
+
+Internally, Symfony ships with translation files that will translate these authentication
+error messages into most other languages. For example, if we were using the `es`
+locale, we would see this message in Spanish.
+
+Ok, so, why the heck do we care about all of this? *Because*, the errors are passed
+through the translator, we can *translate* the English into... *different* English!
+
+Check this out: in your `translations/` directory, create a `security.yaml` file.
+This file is called *security* because of this `security` key in the translator.
+This is called the translation "domain" - it's kind of a translation category - a
+way to organize things.
+
+Anyways, inside the file, copy the message id, paste that inside quotes, and assign
+it to our newer, hipper message:
+
+> Oh no! It doesn't look like that email exists!
+
+That's it! If you go back to your browser and head over to the login page, in theory,
+if you try failing login now, this should work instantly. But... no! Same message.
+Today is *not* our lucky day.
+
+This is thanks to a small, um, bug in Symfony. Yes, yes, they *do* happen sometimes,
+and this bug only affects our development... slightly. Here's the deal: whenever
+you create a *new* translation file, Symfony won't see that file until you manually
+clear the cache. In your terminal, run:
+
+```terminal
+php bin/console cache:clear
+```
+
+When that finishes, go back and try it again: login with a bad email and... awesome!
+
+## Logging Out
+
+Hey! Our login authentication system is... done! And... not that I want to rush
+our moment of victory - we did it! - but now that our friendly alien users can log
+*in*... they'll probably need a way to log *out*. They're just never satisfied...
+
+Right now, I'm still logged in as `spacebar1@example.com`. Let's close a few files.
+Then, open `SecurityController`. Step 1 to creating a logout system is to create
+the route. Add `public function logout()`. Above this, use the normal `@Route("/logout")`
+with the name `app_logout`.
+
+And *this* is where things get interesting... We *do* need to create this route...
+but we *don't* need to write any *logic* to log out the user. In fact, I'm feeling
+so sure that I'm going to throw a `new Exception()`:
+
+> will be intercepted before getting here
+
+Remember how "authenticators" run automatically at the beginning of every request,
+before the controllers? The logout process works the same way. All *we* need to do
+is tell Symfony what *URL* we want to use for logging out.
+
+In `security.yaml`, under your firewall, add a new key: `logout` and, below that,
+`path` set to our logout route. So, for us, it's `app_logout`.
+
+That's it! *Now*, whenever a user goes to the `app_logout` route, at the beginning
+of that request, Symfony will automatically log the user out and then redirect them...
+*all* before the controller is ever executed.
+
+So... let's try it! Change the URL to `/logout` and... yes! The web debug toolbar
+reports that we are once again floating around the side anonymously.
+
+By the way, there *are* a few other things that you can customize under the `logout`
+section, like *where* to redirect. You can find those options in the Symfony reference
+section.
+
+But now, we need to talk about CSRF protection. We'll also add remember me functionality
+to our login form with almost no effort.
