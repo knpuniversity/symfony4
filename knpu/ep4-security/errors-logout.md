@@ -92,7 +92,7 @@ of that request, Symfony will automatically log the user out and then redirect t
 *all* before the controller is ever executed.
 
 So... let's try it! Change the URL to `/logout` and... yes! The web debug toolbar
-reports that we are once again floating around the side anonymously.
+reports that we are once again floating around the site anonymously.
 
 By the way, there *are* a few other things that you can customize under the `logout`
 section, like *where* to redirect. You can find those options in the Symfony reference
