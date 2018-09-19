@@ -1,23 +1,139 @@
-# User Password
+# Adding & Checking the User's Password
 
-Coming soon...
+Until now, we've allowed users to login without *any* password. As *much* fun as
+it would be to deploy this to production... I think we should *probably* fix that.
+If you look at your `User` class, our users actually don't have a password field
+at *all* yet. When you originally use the `make:user` command, you *can* tell it
+to create this field for you. We told it to *not* do this... just to keep things
+simpler as we were learning. So, we'll do it now.
 
-Let's keep things simple. In the beginning we allowed us to log in with any password are you just were not actually checking the user's password yet and in fact in the database, if you look at your user class, our users don't have a password yet. I just have id, email roles and first name. So let's finally add a password for our users. How do you terminal or a been consult, make entity. We're going to update the user and add a new field called password. Well, it'd be string to 55. Doesn't need to be that long, but that's fine. And can it be known? The database, we'll say no, we'll make our. All of our users will have passwords and that's it. No, it's an updated user dot php, but it did not generate the gip password method because we already had that before. We'll check that out in a second, but first run had been council make colon migration. 
+## Adding the password Field to User
 
-We'll move over 
+Find your terminal and run:
 
-looking, looking the migrations directory, open that up and yes, this looks perfect. Alter table, user ad password, close that loop. Go back and run bin Console doctrine. Migrations migrate. 
+```terminal
+php bin/console make:entity
+```
 
-Awesome. 
+Update the `User` class to add a new field called `password`. Make it a string
+with length 255. It doesn't need to be *quite* that long, but that's fine. Can
+it be null? Say no: in our system, each user will *always* have a password.
 
-So when the user class, we now have a password field and all the way at the bottom we have these set password method. Let me get password method. We already had this from before for when we implemented user interface and so far it's just been blank because our users haven't needed a password. So now we will return this Arrow password. Now just to be clear, password here is not going to be the plain text password. This will be a salted and encoded password that we store in the database. In fact, this method below get salt. The whole purpose. Whenever you salt and Hash a password, you actually need to store two things in the database. You need to install the encoded password and you also need to install save the salt, the, uh, 
+And... done! It updated the `User.php` file, but it did *not* generate the normal
+`getPassword()` method because we already had that method before. We'll check that
+out in a minute.
 
-the salt value that was used to encode the password. Now in reality, back in before we used to put these in two different columns, you have to have a password column and then we'd have a salt column. Fortunately, most modern encoders don't need assault because they store it right inside of the encoded password. The point is I'm going to keep get soft blank, say not needed when using the crypt or are gone. These are the. These are the names of two and court encoders and you are going to use one of these two encoders, so leave gets soft blank. Now it's tail symphony, which encoding algorithm you're going to use. You're going to go back to security. That Yam on Adam. One more key here called encoders below. That will put the name of our user class, APP, entity user, and below that you're going to an algorithm and set this to be crypt. 
+Before that, run:
 
-Actually, there's two options here. There's B crypt and there's another one called Argon to to I. The Argon to I encoder is actually a little bit more secure than the secret algorithm. However, you need to have php seven point two in order for this to be available. There's also another. There's also, there are ways to install it. I'm on versions below seven point two and if you really, if you need extra security, I recommend looking at the Argon to encoder and making it work, but if you can't be crypt should work just fine. There was one other config below that so you might want to look into and that's called cost. If you have a high security system and you might want to set this cost to a higher number, you can do some research until what that means for your application. So thanks to this config symphony is now going to be able to encrypt plain text passwords like when we are creating a new user and also check whether a submitted password is valid like when a user logs in. So the first thing we need to do is in that fixture is user fixture. We now need to give all of our users a password 
+```terminal
+php bin/console make:migration
+```
 
-to encode the password. Simply has no surprise is a service. To do this, move over and run bin Console, debug auto wiring. 
+Move over and check out the `Migrations` directory. Open the new file and... yes!
+It looks perfect: `ALTER TABLE user ADD password`. Close that, go back to your
+terminal, and migrate:
 
-I'll search this for password and Yep, there we go. One match password in co, user password encoder interface. This is what you'll use to encrypt and check passwords in your fixture file use, add a constructor. Then type in a user password encoder interface. I'll retype the and hit tab to autocomplete Anant Avenue statement. I'll call this password encoder. Hit enter initialize fields to create that property and set it. Then down below. Super easy user aerosept password, but we're not setting the plain text password here. We're gonna. Say this Arrow Password, encoder Arrow encode password. This has two arguments. You need to pass it the user object, so I'll pass it user and the password that you want to encode will make all of our passwords the same, which will be engaged, engaged. The reason we need to pass the user object as the first argument is that the password and connor will use that to figure out what algorithm we're using behind the scenes. All right, let's try that. Move over and let reload your fixtures with bin Console doctrine fixtures load, yes, and you might notice your user fixture takes a little bit longer began because it actually takes some time to encode the password. When I finished this run bin Console doctrine query sql, select star from user. Oh, awesome. Cool. Check this out. 
+```terminal
+php bin/console doctrine:migrations:migrate
+```
 
-Good. Now see the encoded password on every field. Like I mentioned, the salt is actually contained right inside that string are. The last step is that inside of our login form authenticator in check credentials, we actually need to check if the password is valid and this is really easy because we already know the name of the service which is responsive for encoding and check and passwords user password encoder interface on your constructor. Add one more argument user password encoder interface. We call this password encoder. Then I'll hit enter to initialize that field and then down at the bottom background check credentials or return this arrow. This Arrow Password encoder Arrow is password valid. In this, we're going to pass to the user object again and the raw password in. Remember we're storing the wrong password on a password key of our credentials, so we'll pass this credentials password. Perfect. Alright, let's try guys move over and once again all this put food is the password and this time it fails. Yes, try engage as the password and it works. Nailed it.
+Awesome!
+
+## Updating the User Class
+
+Go open the `User` class. Yep - we *now* have a password field. And *all* the way
+at the bottom, a `setPassword()` method. Scroll up to find `getPassword()`. This
+already existed from back when our user had no password. Now that it does, return
+`$this->password`.
+
+Oh, and just to be clear, this password will *not* be a plain-text password. No,
+no, no! The string that we store in the database will always be properly salted
+& encoded. In fact, look at the method below this: `getSalt()`. In reality, there
+are *two* things you need to store in the database: the encoded password and the
+random *salt* value that was *used* to encode the password.
+
+But, great news! Most modern encoders - including the one we will use - store the
+salt value as *part* of the encoded password string. In other words, we *only* need
+this one field. *And*, the `getSalt()` method can stay blank. I'll update the
+comment to explain why. I love doing no work!
+
+## Configuring the Encoder
+
+Symfony will take care of *all* of this password encoding stuff *for* us. Nice!
+We just need to tell it which encoder algorithm to use. Go back to `security.yaml`.
+Add one new key: `encoders`. Below that, put the class name for your `User` class:
+`App\Entity\User`. And below *that*, set `algorithm` to `bcrypt`.
+
+There are at least two good algorithm options here: `bcrypt` and `argon2i`. The
+`argon2i` encoder is actually a bit more secure. But, it's only available on PHP 7.2
+or by installing an extension called Sodium. 
+
+If you and your production server have this available, awesome! Use it. If not, use
+bcrypt. Just know that once you start encoding passwords, *changing* algorithms in
+the future is a *pain*.
+
+Oh, and for both encoders, there is one other option you can configure: `cost`.
+A higher `cost` makes passwords harder to crack... but will take more CPU. If
+security is really important for your app, check out this setting.
+
+*Anyways*, thanks to this config, Symfony can *now* encrypt plaintext passwords
+*and* check whether a submitted password is valid.
+
+## Encoding Passwords
+
+Open the `UserFixture` class because *first*, we need to populate the new `password`
+field in the database for our dummy users.
+
+To encode a password - surprise! - Symfony has a service! Find your terminal and
+run our favorite:
+
+```terminal
+php bin/console debug:autowiring
+```
+
+Search for "password". There it is! `UserPasswordEncoderInterface`. This service
+can encode *and* check passwords. Back in `UserFixture`, add a constructor with one
+argument: `UserPasswordEncoderInterface`. I'll re-type the "e" and hit tab to
+autocomplete and get the `use` statement I need on top. Call it `$passwordEncoder`.
+Press Alt+Enter and select initialize fields to create that property and set it.
+
+Now... the fun part: `$user->setPassword()`. But, instead of setting the plain password
+here - which would be *super* uncool... - say `$this->passwordEcoder->encodePassword()`.
+This needs two arguments: the `$user` object and the plain-text password we want
+to use. To make life easier for my brain, we'll use the same for everyone: `engage`.
+
+That's it! The reason we need to pass the `User` object as the first argument is
+so that the password encoder knows which encoder algorithm to use. Let's try it:
+find your terminal and reload the fixtures:
+
+```terminal
+php bin/console doctrine:fixtures:load
+```
+
+You might notice that this is a bit slower now. By design, password encoding is
+CPU-intensive. Ok, check out the database!
+
+```terminal
+php bin/console doctrine:query:sql 'SELECT * FROM user'
+```
+
+Awesome! Beautiful, encoded passwords. The bcrypt algorithm generated a unique
+salt for each user, which lives right inside this string.
+
+## Checking the Password
+
+Ok, just *one* more step - and it's an easy one! We need to *check* the submitted
+password in `LoginFormAuthenticator`. *This* is the job of `checkCredentials()`.
+
+We already know which service can do this. Add one more argument to your constructor:
+`UserPasswordEncoderInterface $passwordEncoder`. Hit Alt+Enter to initialize that
+field. Then down in `checkCredentials()`, return
+`$this->passwordEncoder->isPasswordValid()` and pass this the `User` object and the
+raw, submitted password... which we're storing inside the `password` key of
+`$credentials`
+
+And.. we're done! Time to celebrate by trying it! Move over, but this time put "foo"
+as a password. Login fails! Try `engage`. Yes!
+
+Next: it's finally time to start talking about how we deny access to certain parts
+of our app. We'll start off that topic with a fun feature called `access_control`.

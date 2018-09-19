@@ -8,9 +8,11 @@ chapters:
     - success-user-provider
     - auth-errors
     - errors-logout
-    - csrf-remember-me
+    - csrf-token
+    - remember-me
     - user-password
-    - access-control-target-path
+    - access-control
+    - target-path
     - deny-access-controller
     - dynamic-roles
     - is-auth
