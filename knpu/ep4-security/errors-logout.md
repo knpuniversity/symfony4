@@ -38,7 +38,7 @@ locale, we would see this message in Spanish.
 Ok, so, why the heck do we care about all of this? *Because*, the errors are passed
 through the translator, we can *translate* the English into... *different* English!
 
-Check this out: in your `translations/` directory, create a `security.yaml` file.
+Check this out: in your `translations/` directory, create a `security.en.yaml` file.
 This file is called *security* because of this `security` key in the translator.
 This is called the translation "domain" - it's kind of a translation category - a
 way to organize things.
