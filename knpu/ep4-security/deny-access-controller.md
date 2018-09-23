@@ -1,11 +1,47 @@
-# Deny Access Controller
+# Deny Access in the Controller
 
-Coming soon...
+There are two main places where you can deny access. The first we just learned about:
+`access_control` in `security.yaml`. It's simple - just a regular expression and
+a role. It's *the* best way to protect entire *areas* of your site - like *everything*
+under `/admin` with `ROLE_ADMIN`.
 
-There are two main places where you can deny access. The first one we just learned about it is access control. This is super easy because it's all done with regular expressions and this is a great way to protect entire areas of your site, like everything under slash admin with roll underscore admin, so I do use access control, but most of the time I want to deny access on a more granular level. I want to, for example, open controller, comment admin controller. I usually deny access right inside of my controller so that I can specify exactly exactly which role I want to use for this right now so we can see if these things are so we can test. If this isn't working, I'm going to comment out our new access control though I might actually keep it real application and then go back to your common APP chiller. So how can we deny access inside of controller? Oh, so easy. This arrow tonight access, unless granted, pass this role underscore Adam. That's it. Move over, refresh 
+I *do* use access controls for things like that. But, most of the time, I prefer to
+control access at a more granular level. Open `CommentAdminController`. Most of
+the time, I deny access *right* inside the controller.
 
-and access denied. If you want to give a note to make sure that's really working, we'll change it to roll user. If we rush and it works now, as easy as it deny access, unless grants in is I actually prefer to use annotations, let's check us out. We can delete or deny access. Less granted. Up here we're going to say at is granted to get an annotation that comes from framework, extra bundle, which is a bundle that you should already have installed. We already have installed because we installed the annotation support inside here, double quotes, we just say roll underscore admin. That's it. Dried out, refresh and done access denied by controller annotation, pretty sweet, but the really cool thing is then in addition to putting his granted above the controller method, you can put it above the controller class, so above common admin controller at ACC is granted role admin. Now, every single method inside of this controller, which is only one right now, will require this role. You're fresh to that. You get the same error. That is an awesome way to deny access.
+To test this out - let's comment-out our access control. Back in `CommentAdminController`,
+how can we deny access here? Simple: `$this->denyAccessUnlessGranted()` and pass
+this a role: `ROLE_ADMIN`.
 
-There are two main places where you can deny access. The first one we just learned about it is access control. This is super easy because it's all done with regular expressions and this is a great way to protect entire areas of your site, like everything under slash admin with roll underscore admin, so I do use access control, but most of the time I want to deny access on a more granular level. I want to, for example, open controller, comment admin controller. I usually deny access right inside of my controller so that I can specify exactly exactly which role I want to use for this right now so we can see if these things are so we can test. If this isn't working, I'm going to comment out our new access control though I might actually keep it real application and then go back to your common APP chiller. So how can we deny access inside of controller? Oh, so easy. This arrow tonight access, unless granted, pass this role underscore Adam. That's it. Move over, refresh 
+That's it. Move over and refresh!
 
-and access denied. If you want to give a note to make sure that's really working, we'll change it to roll user. If we rush and it works now, as easy as it deny access, unless grants in is I actually prefer to use annotations, let's check us out. We can delete or deny access. Less granted. Up here we're going to say at is granted to get an annotation that comes from framework, extra bundle, which is a bundle that you should already have installed. We already have installed because we installed the annotation support inside here, double quotes, we just say roll underscore admin. That's it. Dried out, refresh and done access denied by controller annotation, pretty sweet, but the really cool thing is then in addition to putting his granted above the controller method, you can put it above the controller class, so above common admin controller at ACC is granted role admin. Now, every single method inside of this controller, which is only one right now, will require this role. You're fresh to that. You get the same error. That is an awesome way to deny access.
+Nice! Try changing it to `ROLE_USER`. Access granted! I love it!
+
+## IsGranted Annotation
+
+But wait, there's more! As simple as this is, I like to use annotations. Check this
+out: delete the `denyAccessUnlessGranted()` code. Instead, above the method,
+add `@IsGranted()` to use an annotation that comes from SensioFrameworkExtraBundle:
+a bundle that we installed a long time ago via `composer require annotations`. In
+double quotes, pass `ROLE_ADMIN`.
+
+Nice! Try it: refresh!
+
+> Access Denied by controller annotation
+
+Pretty sweet. I know not everyone will *love* using annotations for this. So, if
+you don't love it, use the PHP version. No problem.
+
+## Protecting an Entire Controller Class
+
+Oh, but the annotation *does* have one superpower. In addition to putting
+`@IsGranted` above a controller method, you can *also* put it above the controller
+*class*. Above `CommmentAdminController`, add `@IsGranted("ROLE_ADMIN")`.
+
+Now, *every* method inside of this controller... which is only one right now, will
+require this role. When you refresh... yep! Same error. That is an awesome way to
+deny access.
+
+We know how to make sure a user has a role. But, how can we simply make sure a user
+is logged in, regardless of roles? Let's find out next - *and* - create our first
+admin users.

@@ -1,78 +1,76 @@
-# access_control Authorization & Target Path
+# Target Path: Redirecting an Anonymous User
 
-*Everything* that we've done so far has been about authentication: how your user
-logs in. But, at this point, *our* space-traveling users *can* log in! We're loading
-users from the database, checking their password and even protecting ourselves
-from the Borg Collective with CSRF tokens.
+After changing the `access_control` back to `ROLE_ADMIN`, if we try to access
+`/admin/comment` again, we see that same "Access Denied" page: 403 forbidden.
 
-With our awesome authentication system, let's start to look at the second part
-of security: authorization. Authorization is all about deciding whether or not
-a user should have access to something. This is where, for example, you can require
-a user to login before they see some page - or restrict some sections to admin
-users only.
+## Customizing the Error Page
 
-There are two main ways to handle authorization: `access_control` and denying access
-in your controller. We'll see both, but I want to talk about `access_control` first,
-it's pretty cool.
+Like with *all* the big, beautiful error pages, these are only shown to us, the developers.
+On production, by default, your users will see a boring, generic error page that
+*truly* looks like it was designed by a developer.
 
-## access_control in security.yaml
+But, you can - and *should* - customize this. We won't go through it now, but if
+you Google for "Symfony error pages", you can find out how. The cool thing is that
+you can have a different error page per *status* code. So, a custom 404 not found
+page and a *different* custom 403 "Access Denied" page - with, ya know, like a mean
+looking alien or something to tell you to *stop* trying to hack the site.
 
-At the bottom of your `security.yaml` file, you'll find a key called, well,
-`access_control`. Uncomment the first access control. The `path` here is a regular
-expression. So, this access control says that any URL that starts with `/admin`
-should require a role called `ROLE_ADMIN`. We'll talk about roles in a minute.
+## Redirecting Anonymous Users: Entry Point
 
-If you go to your terminal and run
+Anyways, I have a question for you. First, log out. Now that we are anonymous:
+what do you think will happen if we try to go to `/admin/comment`? Will we see that
+same Access Denied page? After all, we *are* anonymous... so we definitely do *not*
+have `ROLE_ADMIN`.
 
-```terminal
-php bin/console debug:router
-```
+Well... let's find out! No! We are redirected to the login page! That's... awesome!
+If you think about it, that's the *exact* behavior we want: if we're not logged
+in and we try to access a page that requires me to be logged in, we should *totally*
+be sent to the login form so that we *can* login.
 
-you might remember that we *do* have a few URLs that start with `/admin`, like
-`/admin/comment`. Well... let's see what happens when we try to access that page.
+The logic behind this actually comes from our authenticator. Or, really, from the
+parent `AbstractFormLoginAuthenticator`. It has a method - called `start()` - that
+decides what to do when an anonymous user tries to access something. It's called
+an entry point, and we'll learn more about this later when we talk about API authentication.
 
-Access denied! Cool! We get kicked out!
+## Redirecting Back on Success
 
-## Roles!
+But for now, great! Our system already behaves like we want. But now... check this
+out. Log back in with `spacebar1@example.com`, password `engage`. When I hit
+enter, where do you think we'll be redirected to? The homepage? `/admin/comment`?
+Let's find out.
 
-So let's talk about how *roles* work in Symfony: it's simple and it's beautiful.
-Down on the web debug toolbar, click on the user icon. Cool: we're logged in as
-`spacebar1@example.com` and we have one role: `ROLE_USER`. Here's the idea: when
-a user logs in, you give them whatever "roles" you want - like `ROLE_USER`. Then,
-you run around your code and make different URLs require different roles. Because
-our user doesn't `ROLE_ADMIN`, we are denied access.
+We're sent to the homepage! Perfect, right? No, not perfect! I originally tried to
+go to `/admin/comment`. So, after logging in, to have a great user experience, we
+should be redirected back *there*.
 
-But... why does our user have `ROLE_USER`? I don't remember assigning roles to
-this user. Open the `User` class. When we ran the `make:user` command, one of the
-methods that it generated was `getRoles()`. Look at it carefully: it reads a `roles`
-property, which is an array that's stored in the database. Right now, this property
-is empty for *every* user in the system: we have *not* set this to any value in
-our fixtures.
+The reason that we're sent to the homepage is because of *our* code in
+`LoginFormAuthenticator`. `onAuthenticationSuccess` *always* sends the user to the
+homepage, no matter what. Hmm: how could we update this method to send the user back
+to the *previous* page instead?
 
-But, in `getRoles()`, there's a little extra logic that guarantees that *every*
-user *at least* has this one role" `ROLE_USER`. This is nice because we *now* know
-that, *if* you are logged in, you definitely have this *one* role. Also... you
-need to make sure that `getRoles()` always returns at least *one* role... otherwise
-weird stuff happens: user becomes an undead zombie that is "sort of" logged in.
+Symfony can help with this. Find your browser, log out, and then go back to
+`/admin/comment`. *Whenever* you try to access a URL as an anonymous user, *before*
+Symfony redirects to the login page, it saves this URL - `/admin/comment` - into
+the session on a special key. So, if we can *read* that value from the session
+inside `onAuthenticationSuccess()`, we can redirect the user back there!
 
-To prove that this roles system is working like we expect, change `ROLE_ADMIN`
-to `ROLE_USER` for our access control. Then, click *back* to the admin page and...
-access granted!
+To do this, at the top of your authenticator, use a *trait* `TargetPathTrait`.
+Then, down in `onAuthenticationSuccess`, add if `$targetPath = $this->getTargetPath()`.
+*This* method comes from our handy trait! It needs the session - `$request->getSession()` -
+and the "provider key", which is actually an argument to this method.  The provider
+key is just the *name* of your firewall... but that's not too important here.
 
-Change that back to `ROLE_ADMIN`.
+Oh, and, yea, the if statement might look funny to you: I'm assigning the `$targetPath`
+variable and *then* checking to see if it's empty or not. If it's *not* empty, if
+there *is* something stored in the session, return new `RedirectResponse($targetPath)`.
 
-## Only One access_control Matches per Page
+That's it! If there is *no* target path in the session - which can happen if the
+user went to the login page directly - fallback to the homepage.
 
-As you can in the examples down here, you're allowed to have as *many* `access_control`
-lines as you want: each has their own regular expression path. But, there is one
-*super* important thing to understand. Access controls work like *routes*: Symfony
-checks them one-by-one from top to bottom. And as soon as it finds *one* access
-control that matches the URL, it uses that and stops. Yep, a maximum of *one* access
-will be used on each page load.
+Let's try it! Log back in... with password `engage`. Yea! Got it! I know, it feels
+weird to celebrate when you see an access denied page. But we *expected* that part.
+The important thing is that we *were* redirected back to the page we originally
+tried to access. That's *excellent* UX.
 
-Actually, this fact allows you to do some cool things if you want *most* of your
-pages to require login. We'll talk about that later. For now, just keep in mind
-that only one access control will match per page.
-
-Now that we can deny access... something interesting happens if you try to access
-a protected page as an *anonymous* user. Let's see that next.
+Next - as nice as access controls are, we need more *granular* control.
+Let's learn how to control user access from inside the controller.

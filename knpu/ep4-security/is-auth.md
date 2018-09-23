@@ -1,39 +1,118 @@
-# Is Auth
+# IS_AUTHENTICATED_ & Protecting All URLs
 
-Coming soon...
+I mentioned earlier that there are *two* ways to check whether or not the user is 
+simply logged in. The first is by checking `ROLE_USER`. I like this one because
+it's simple. It works because of how our `getRoles()` method is written.
 
-I mentioned that there are two ways to check whether or not the user is simply logged in at all. The first one is role underscore user. That's the one you should use 
+The *only* reason I'm even going to *mention* the *second* way is because I want
+you to know what it is if you see it, *and*, it leads us towards a few other
+interesting things.
 
-and it works because we have set up our role so that every user has this role, but I want to show you the other ones so they know what it means when you see it and it also touches on a couple of other interesting things. So to show this off, I'm going to go to secure that Yam on add. A new access control will make its path carrot slash account karen slash account, so it's a bit redundant. This is just an example. It's a bit redundant because this is already protected the annotations, but for the roles instead of role in user use is authenticated 
+## IS_AUTHENTICATED_FULLY
 
-fully. 
+Let's *play* a little bit in `security.yaml`. Under `access_control` add a new entry
+with path `^/account`. Yes, this will be a *totally* redundant access control because
+we're already requiring `ROLE_USER` from inside the controller. Just pretend that
+we don't have this controller code for a minute.
 
-This is a special string that simply checks to see if the user is logged in. In our system. The way our system's set up, this is 100 percent identical to roll underscore user. Actually if you go back to your site and click 
+On your `access_control`, if you wanted to require the user to be logged in, you
+could use `roles: ROLE_USER` *or* `IS_AUTHENTICATED_FULLY`.
 
-alright, 
+OoooOOOoo.
 
-I think I can site and refresh. Yup. You can see that we absolutely still have access, by the way, if you clicked it back down on the web debug toolbar, this security areas pretty sweet. It shows you what roles you have. It also shows you some lower level information 
+Well, it's not really that fancy: it's just a special string that *simply* checks
+if the user is logged in or not. In our system, it's 100% identical to `ROLE_USER`.
 
-about our 
+Move over, go back to `/account` and... yep! Access is *still* granted.
 
-security, including our authentication listeners, which you're talking about earlier, and a couple of other things. Well, most importantly, what I really want you to see is down at the bottom, it has a little access decision log. This is pretty sweet. 
+## Web Debug Toolbar & Access Control Checks
 
-Shoot a 14. 
+Oh, and I want to show you something cool! Click the little security icon on the
+web debug toolbar. This has some *pretty* sweet stuff in it. In addition to saying
+who you're logged in as and your roles, it also has a table down here with some
+lower-level info. But what I *really* want to show you is *all* the way at the bottom.
+Yes! The access decision log. This records *every* time that we checked whether or
+not the user had access to something on this page. The first check is for
+`IS_AUTHENTICATED_FULLY` from `access_control`. Granted! Then, two `ROLE_USER`
+checks and one `ROLE_ADMIN` check.
 
-I'm going to start over recording part of that right now, 
+One of those `ROLE_USER` checks is from `AccountController` and the other
+comes from `is_granted` in the template. The `ROLE_ADMIN` check also lives here.
 
-so if you move over, we'll go back to r slash account and no surprise access granted. By the way, click the little security icon on the web debug toolbar. This is some pretty sweet stuff in it. In addition to saying who you're logged in as and your roles, and also has a key down here with a little bit of lower level information about your security system, which might be useful as you're getting a little bit more advanced. What I really want to show you is all the way at the bottom, ah, the access decision log, this records every single time that we checked whether or not the user had access on this page so you can see the first one you can see is authenticated fully, is returning as access. Granted. You can also see role user two times enroll avid once one of those real users is coming from our account controller, the other role users coming from his grandson, the template, and then role admin inside of our template here. So really cool way to kind of debug what's going on in your system there. Anyways, as I mentioned, 
+So, this is just a nice way to debug all the security checks happening on your page.
 
-real user is authenticated. Bully are effectively exactly the same, but this does touch on another interesting question in our site. A lot of the pages are going to be public because they're going to be. It's a public newspage, but in a lot of sites you want a lot of sites are different. You actually want every single page of your site to require authentication or or maybe almost every single page of your site to require authentication. Access controls are a great way to do this. For example, if you just change this to carrot slash because this is a regular expression, it is everywhere else. So slash, so this will match everything and it required logging on every page. Again, you can use is authenticated for here or role user. They're the same thing. So if I refresh the logged in, I of course still have access, but now log out and 
+## Requiring Login on Every Page
 
-Whoa, this page isn't working. Local host redirected you too many times. So the problem with this approach is that because we weren't authenticated and every page requires authentication, it redirected to the to slash login. But guess what? Wagon and requires us to be authenticated. So what does it do? It redirects us to slash login. We have made security so tight on her page that you can't even get to the login page. So here's the really cool way to fix this at an access control. Bug this for carrot slash login, you can put a dollar sign in the end if you want to match this exact you were out or leave it off. If you want to match slash login slash anything, then say roles is authenticated anonymously. This 
+Anyways, we now know `IS_AUTHENTICATED_FULLY` is a way to check if the user is logged
+in. Though... because of the way our app is written, checking `ROLE_USER` does
+the same thing and... it's shorter to write.
 
-roll 
+But! This *does* touch on another interesting topic. This is a news site, so most
+of the pages will be accessible to anonymous users. We'll require login on just
+the pages that need it. Not all sites are like this, however. On *some* sites,
+you want to do the opposite: you want to require authentication for *every* page,
+or at least, *almost* every page. In those cases, a better strategy is to require
+login on *all* pages and then *allow* anonymous access on just a few pages.
 
-is a role that literally every single user has in the system. Always. Whether you're logged in or not, you always have is authenticated anonymously, so that might at first might seem like an entirely worthless enroll, but if you go back and refresh, it fixes our problem. Remember symphony goes down, the access controls one by one, and as soon as it finds one access control that matches, it uses that one in stops, so when we go to slash login, the first access control is used. Everyone has is authenticated anonymously, so access is granted for every other. You were on the page on our site, it's going to require us to be logged in. Now there's one other special is authenticated string. There's three. Total special is authenticated strings. Change is authenticated fully to is authenticated, remembered is authenticated. Remember it is almost the same is authenticated fully. If you just went to your site and logged in, you would have. You have authenticated, you have is that dedicated fully and is that thank to remembered and of course is authenticated anonymously. 
+We can do this by being clever with `access_control`. Try this: change the
+`path` to just `^/`. Because this is a regular expression, it will match
+*every* URL and so *every* page now requires login.
 
-Yeah, 
+If we refresh, we still have access. But now, log out!
 
-what if you closed your browser and reopened it, but if you use the remember me functionality and you close your browser and reopened it and we're only logged in thanks to the remember me token, then you would have is authenticated, remembered, but not is authenticated fully. Basically what this allows you to do if you use the remember me functionality is that you can protect your. All of your normal pages was is authenticated, remembered, which basically means that you only care that the user users actually logged in and you don't care whether they just logged in during this session or if they logged in via the remember me cookie. Then you can protect very important pages like the change password page, which is offense authenticated fully. Then if a user tries to go to that page and they're only logged in via the, remember me cookie symphony will redirect them to the login page. We're redirecting the log in page so that they can authenticate fully. That's it. By the way, I'm showing you all of these examples via access control, but you can use these in side your controller or inside of twig. There's nothing special about this area. Alright, since our site is going to be mostly 
+## Allowing the Login Page: IS_AUTHENTICATED_ANONYMOUSLY
 
-public, I'm going to uncover these examples right here.
+Whoa! The page is broken! Like, *crazy* broken! `localhost` redirected too many
+times!? Yep, our security system is *too* awesome. Because we're now anonymous,
+when we try to access any page, we're redirected to `/login`. But guess what?
+`/login` requires authentication too! So what does Symfony do? It redirects
+us to `/login`!
+
+We made security *so* tight that anonymous users can't even get to the login page!
+Here's the fix: add a new `access_control` - *above* the one for all URLs with
+`path: ^/login`. You can add a `$` on the end to match only this URL exactly,
+not also `/login/foo`. Your call. For `roles`, use a *second* special string:
+`IS_AUTHENTICATED_ANONYMOUSLY`.
+
+This one is *weird*. Who has `IS_AUTHENTICATED_ANONYMOUSLY`? Everyone! If you're
+anonymous, you have it. If you're logged in, you have it too! So, *why* would
+we *ever* want to use a role that *everyone* has? Well, go refresh.
+
+Because it fixes our problem! Remember: Symfony goes down each `access_control`
+one-by-one. As *soon* as it finds *one* that matches, it uses that *one* and stops.
+So when we go to `/login`, *only* the first access control is used and access is
+granted. Every *other* page will still require login. Booya!
+
+## IS_AUTHENTICATED_REMEMBERED
+
+We've now learned *two* special "strings" that can be used in place of the normal
+roles: `IS_AUTHENTICATED_FULLY` and `IS_AUTHENTICATED_ANONYMOUSLY`. But, there
+is *one* more. Change "fully" to `IS_AUTHENTICATED_REMEMBERED`.
+
+Go back to your site and log in. Because we *just* logged in, we have all three
+special strings: `IS_AUTHENTICATED_FULLY`, `IS_AUTHENTICATED_REMEMBERED` and, of
+course, `IS_AUTHENTICATED_ANONYMOUSLY`.
+
+But now, imagine that you're using the "remember me" functionality. You close your
+browser, re-open it, and are *still* authenticated, but only thanks to the remember
+me cookie. *Now*, you would *still* have `IS_AUTHENTICATED_REMEMBERED`, but you
+would *not* have `IS_AUTHENTICATED_FULLY`. Fully means that you have authenticated
+during *this* session.
+
+This allows you to do something really neat. If you use the remember me functionality
+you should protect all pages that require login with `IS_AUTHENTICATED_REMEMBERED`.
+This says that you don't care whether the user just logged in during this session or
+if they are logged in via the remember me cookie. *Then* you can protect more sensitive
+pages - like the change password page - with `IS_AUTHENTICATED_FULLY`.
+
+If a user tries to access that page, but is *only* authenticated with the remember
+me cookie, Symfony will redirect them to the login page so that they can become "fully"
+authenticated. Nice, right?
+
+By the way, I'm showing you all of these examples for the `IS_AUTHENTICATED` strings
+inside `access_control`. But, you absolutely can use these in your controller or inside
+Twig.
+
+Ok, because our site will be mostly public, I'll comment-out these examples.
+
+Next, let's learn how to find out *who* is logged in by fetching their `User` object.

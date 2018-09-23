@@ -1,37 +1,101 @@
-# Fetch User
+# Fetch the User Object
 
-Coming soon...
+Once you have your authentication system step, pff, life is easy! On a day-to-day
+basis, you'll spend most of your time in a controller where... well, there's really
+only *two* things you can do related to security. One, deny access, like, based on
+a role or two, figure out *who* is logged in.
 
-What's your have your authentication system set up? That's the hard part. Most of the time you're going to be in controllers and really there's only two things that you can do. Either you can check to see if the user has access, which is pretty simple and the only other thing that you will ever need to do is figure out who is logged in, which is it, which is exactly what we need to do in a comp controller so that we can start printing out details about the user's account. So how can we get access to what user is logged in from inside of controller? Well, it's this arrow. Get user. 
+That's *exactly* what we need to do in `AccountController` so that we can start
+printing out details about the user's account. So... how *can* we find out who is
+logged in? With `$this->getUser()`.
 
-Yep. That's it. Refreshed that free press that no, 
+## Using the User Object
 
-if you go back to your browser and go to slash 
+Go back to your browser and head to `/account`. Nice! This gives us the `User`
+entity object! That's *awesome* because we can do all kinds of cool stuff with it.
+For example, let's see if we can log the email address of who is logged in.
 
-account, 
+Add a `LoggerInterface $logger` argument. Then say `$this->logger->debug()`:
 
-go back to your browser and go to slash account. Yes, there it is. This gives you the user object. So our user entity that is logged in, which is awesome because we can do all kinds of cool stuff with it. So just as a simple example, let's try to. Let's log the users. What's a log? A message here that includes the user's email address, so I'll type in lager interface logger as an arguments. Then we'll say lager Arrow debug checking account, page four, and we'll say this Arrow, get user and because we know this is our user entity, we know that we can call, get email on it, so arrow get email, cool, move over, refresh no errors. If you click any anywhere down on the web debug toolbar, you can get into the profiler, go to logs, go to debug and down a bit. There it is. Checking account page four, space bar five at example, dot com. 
+> Checking account page for
 
-Now the only kind of annoying thing is that you noticed I didn't get any auto completion on this. The reason is that if you hold command or control clicking to get user simply doesn't know what your user class is, so all it can say, so it can't really tell you what this is going to return. So to get around this, what I like to do is create my own a base controller, so the controller directory, printing new php class called base controller. I'll make it abstract because this is not going to be a real controller and I'll make it extend the normal abstract controller that we've been using from symphony inside. I'm going to go to the code, generate menu or command n on a Mac, do override methods and look forward get user, so we're going to override the gate user method, but not actually because we want to override it. I'm going to return to parent call and call and get user, but because I can add a return type to this, that's my user entity, so thanks to this from now on, instead of extending base abstract controller, I'm going to extend base controller. 
+and then `$this->getUser()`. Because we know this is *our* `User` entity, we know
+that we can call, `getEmail()` on it. Do that: `->getEmail()`.
 
-This means that I will get nice little all my proper odd completion on get user. I also use base controller just to add a nice shortcut methods. If there's something that you're doing really commonly, add new protected function here and then you can use it from any of your controllers so I won't go and update my other controllers to extend base controller right this second, but little by little as I need those shortcuts, I'll use my custom base controller. It's just a nice little short cut. All right, so that's how you get the user object inside of the controller. So how can we get the user object inside of our template? Find the templates directory and find our account slash index dot html twig. The answer is app dot user App. That user, so we can say APP dot, user dot first name. Try that out, go back to slash account, 
+Cool! Move over and refresh. No errors. Click anywhere down on the web debug
+toolbar to get into the profiler. Go to the logs tab, click "Debug" and... down a
+bit, there it is!
 
-and 
+> Checking account page for `spacebar5@example.com`.
 
-perfect it prints out so when you're inside of Twig, in symphony you have exactly one local variable called APP and it just has a couple of convenient things on it like app dot user, an APP dot session. After that, users by far the most useful. And since this returns are user entity, we can call first name on it. So you get the first name to call, get first name on that object. It's just that simple. 
+## Base Controller: Auto-complete $this->getUser()
 
-Yeah. 
+But, hmm, something is bothering me: I do *not* get any auto-complete on this
+`getEmail()` method. Why not? Hold Command or Control and click the `getUser()`
+method. Ah: it's simple: Symfony doesn't know what our `User` class is. So, its
+PhpDoc can't really tell PhpStorm what this method will return.
 
-Yeah, because this page is super ugly. I'm gonna. Go back to my controller, clear out my age, one in paste in some markup that I I prepared. You can get this market by copying the code block on this page. This actually reuses some of the special classes 
+To get around this, I like to create my own `BaseController` class. In the
+`Controller/` directory, create a new PHP class called `BaseController`. I'll make
+it `abstract` because this is not going to be a real controller - just a helpful
+base class. Make it extend the normal `AbstractController` that we've been using
+in our existing controllers.
 
-I'm from our logging 
+Then, I'll go to the Code -> Generate menu - or Command+N on a Mac, click Override
+Methods and override  `getUser()`. We're not *actually* going to override how this
+method works. Just return `parent::getUser()`. But, add a return type `User` - *our*
+`User` class.
 
-that css file that we used earlier, right? 
+From now on, instead of extending `AbstractController`, we should extend `BaseController`.
+And *this* will give us the proper auto-completion on `getUser()`. I also like
+to use my `BaseController` to add other shortcut methods specific to my app. If
+there's something that you do frequently, but it doesn't make sense to move that
+logic into a service, just add a new `protected function`.
 
-Or is it templates? Oh boy. Ah, 
+I won't go and update my other controllers to extend `BaseController` right this
+second - I'll do that little-by-little when I need to.
 
-few refreshes right now. It still looks pretty terrible and that's because, oh, but a cool robot, that's because this new market new uses another css file. So if you download the course code, you should have a tutorial directory. We already copied this log in that CSS earlier. I want you to copy his account that css, find your public directory, open css and paste it there. Then just like we did before, to include this one style sheet on this page, we'll do block style sheets 
+## Fetching the User in Twig
 
-and block 
+Ok: we *now* know how to fetch the `User` object in a controller. So, how can
+we fetch it inside a template? Find the `templates/` directory and open our
+`account/index.html.twig`. The answer is... `app.user`. That's it! We can call
+`app.user.firstName`.
 
-call the parent functions that we don't override all the normal ones. Then do rink link and I will say account dot css, hit tab and pizzerias Germaphobia and for me, all right, now refresh. Awesome. It looks much better except you'll notice I have a bunch of question marks in there because all of this markup is just hard coded right now. So now we can start to fill in the dynamic pieces. First of all, for the Avatar, we're using this cool robot hash site where you just pass it in email and it gives you the Avatar. So let's replace this with app.user.email. I think we can do down here as welcome back. Let's replace that with APP, that user, that first name. All right, now when I move over and refresh, yes, brand new avatar for us and we have the first name. What we're still missing this twitter handle because our user object doesn't have a twitter handle yet, so let's do that next. Also add another cool little shortcut method or a user class in talk about how we can fetch the user object in the one plate. Last place we haven't talked about from inside of services.
+Try that out. Go back to `/account` and... perfect!
+
+Symfony gives you exactly *one* global variable in Twig: `app`. And it just has
+a few helpful things on it, like `app.user` and `app.session`. And because
+`app.user` returns *our* `User` object, we can call `firstName` on it. Twig will
+call `getFirstName()` on `User`.
+
+## Making the Account Page Pretty
+
+Oh, and, oof. This page is *super* ugly. Clear out the `h1`. I'm going to paste in
+some HTML markup I prepared: you can copy this markup from the code block on this
+page.
+
+If you refresh right now... oof. It still looks pretty terrible. Oh, hello robot!
+Anyways, the page looks awful because this markup requires another CSS file.
+If you downloaded the course code, you should have a `tutorial/` directory. We
+already copied this `login.css` file earlier. Now, copy `account.css`, find your
+`public/` directory, open `css/` and... paste! To include this stylesheet on this
+page, add `block stylesheets` and `endblock`.
+
+Inside, call `parent()` so that we *add* to the existing stylesheets, instead of
+replacing them. Add `link` and point to `css/account.css`. PhpStorm auto-completes
+the asset function for me.
+
+*Now* refresh again. So much better! All of this markup is 100% hardcoded. But
+I added friendly ? marks where we need to print some dynamic stuff. Let's do it!
+For the Avatar, we're using this cool [RoboHash](https://robohash.org/) site where
+you give it an email, and it gives you a robot avatar. I love the Internet!
+
+Replace this with `app.user.email`. Then, down by "Welcome back", replace that
+with `app.user.firstName`. Cool! Let's see how it looks like now.
+
+Hey! A brand new robot avatar *and* we see the first name of the dummy user. We
+*are* still missing this twitter handle... because... our `User` class doesn't have
+that property yet. Let's add that next, add cool shortcut method to our `User` class
+*and* talk about how we can fetch the `User` object from the *one* place we haven't
+talked about yet: services.
