@@ -98,7 +98,7 @@ autocomplete and get the `use` statement I need on top. Call it `$passwordEncode
 Press Alt+Enter and select initialize fields to create that property and set it.
 
 Now... the fun part: `$user->setPassword()`. But, instead of setting the plain password
-here - which would be *super* uncool... - say `$this->passwordEcoder->encodePassword()`.
+here - which would be *super* uncool... - say `$this->passwordEncoder->encodePassword()`.
 This needs two arguments: the `$user` object and the plain-text password we want
 to use. To make life easier for my brain, we'll use the same for everyone: `engage`.
 
