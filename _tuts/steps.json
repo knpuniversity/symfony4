@@ -1559,7 +1559,12 @@
             "id": "voters-simplify-controller-code",
             "name": "Voters: Simplify controller code",
             "description": null
+        },
+        {
+            "id": "voters-use-isgranted",
+            "name": "Voters: Use @IsGranted",
+            "description": null
         }
     ],
-    "sha": "1b5115d852c233a50991dc37c419ca663f4a90a9"
+    "sha": "c51e78cc8a76bca7fdf0578f222d7f742027b9c9"
 }

@@ -1,5 +1,5 @@
 diff --git a/src/Security/ApiTokenAuthenticator.php b/src/Security/ApiTokenAuthenticator.php
-index 62a591e..31fb7b3 100644
+index 62a591e8..042c6c14 100644
 --- a/src/Security/ApiTokenAuthenticator.php
 +++ b/src/Security/ApiTokenAuthenticator.php
 @@ -59,7 +59,7 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
@@ -16,7 +16,7 @@ index 62a591e..31fb7b3 100644
      public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
      {
 -        // todo
-+        // allow the authentication to continue
++        // allow the request to continue
      }
  
      public function start(Request $request, AuthenticationException $authException = null)

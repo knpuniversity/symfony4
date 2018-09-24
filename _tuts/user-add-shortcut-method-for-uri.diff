@@ -1,24 +1,25 @@
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 2b7dee6..95ad7b3 100644
+index 2b7dee68..d3eebbe8 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
-@@ -143,4 +143,14 @@ class User implements UserInterface
+@@ -143,4 +143,15 @@ class User implements UserInterface
  
          return $this;
      }
 +
-+    public function getAvatarUrl(string $size = null): string
++    public function getAvatarUrl(int $size = null): string
 +    {
 +        $url = 'https://robohash.org/'.$this->getEmail();
 +
-+        if ($size)
++        if ($size) {
 +            $url .= sprintf('?size=%dx%d', $size, $size);
++        }
 +
 +        return $url;
 +    }
  }
 diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
-index 263ad4d..21c63ab 100644
+index 263ad4d7..21c63ab5 100644
 --- a/templates/account/index.html.twig
 +++ b/templates/account/index.html.twig
 @@ -15,7 +15,7 @@
@@ -31,7 +32,7 @@ index 263ad4d..21c63ab 100644
                      </div>
                      <div class="col-md-10 no-pad">
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 248604d..1b48f0c 100644
+index 248604d8..1b48f0c9 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -36,7 +36,7 @@

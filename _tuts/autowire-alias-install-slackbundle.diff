@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 573b957..a80ed1d 100644
+index 573b9575..a80ed1d3 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,8 @@
@@ -12,7 +12,7 @@ index 573b957..a80ed1d 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 32a0fa8..2ad3426 100644
+index 32a0fa88..2ad34262 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,60 @@
@@ -1479,7 +1479,7 @@ index 32a0fa8..2ad3426 100644
              "name": "symfony/var-dumper",
              "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index e278c0b..56ef227 100644
+index e278c0b4..56ef227a 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -9,4 +9,6 @@ return [
@@ -1491,7 +1491,7 @@ index e278c0b..56ef227 100644
  ];
 diff --git a/config/packages/httplug.yaml b/config/packages/httplug.yaml
 new file mode 100644
-index 0000000..2aadcd1
+index 00000000..2aadcd13
 --- /dev/null
 +++ b/config/packages/httplug.yaml
 @@ -0,0 +1,14 @@
@@ -1510,7 +1510,7 @@ index 0000000..2aadcd1
 +                - 'httplug.plugin.content_length'
 +                - 'httplug.plugin.redirect'
 diff --git a/symfony.lock b/symfony.lock
-index caa86a6..96cd02b 100644
+index caa86a6c..96cd02b1 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@

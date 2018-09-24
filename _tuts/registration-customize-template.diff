@@ -1,5 +1,5 @@
 diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
-index bf43f32..eec6296 100644
+index bf43f32b..c726e5e8 100644
 --- a/templates/security/register.html.twig
 +++ b/templates/security/register.html.twig
 @@ -1,6 +1,6 @@
@@ -35,7 +35,7 @@ index bf43f32..eec6296 100644
                  <div class="checkbox mb-3">
                      <label>
 -                        <input type="checkbox" name="_remember_me"> Remember me
-+                        <input type="checkbox" name="_remember_me" required> Agree to terms I for sure read
++                        <input type="checkbox" name="_terms" required> Agree to terms I for sure read
                      </label>
                  </div>
                  <button class="btn btn-lg btn-primary btn-block" type="submit">

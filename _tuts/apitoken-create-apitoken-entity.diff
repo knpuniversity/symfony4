@@ -1,6 +1,6 @@
 diff --git a/src/Entity/ApiToken.php b/src/Entity/ApiToken.php
 new file mode 100644
-index 0000000..b468c8b
+index 00000000..b468c8bf
 --- /dev/null
 +++ b/src/Entity/ApiToken.php
 @@ -0,0 +1,75 @@
@@ -80,7 +80,7 @@ index 0000000..b468c8b
 +    }
 +}
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index dacf3e5..a4f857c 100644
+index e84f4d38..eb27fb84 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -2,6 +2,8 @@
@@ -109,7 +109,7 @@ index dacf3e5..a4f857c 100644
      public function getId(): ?int
      {
          return $this->id;
-@@ -157,4 +169,35 @@ class User implements UserInterface
+@@ -158,4 +170,35 @@ class User implements UserInterface
  
          return $url;
      }
@@ -147,7 +147,7 @@ index dacf3e5..a4f857c 100644
  }
 diff --git a/src/Migrations/Version20180901171717.php b/src/Migrations/Version20180901171717.php
 new file mode 100644
-index 0000000..248d111
+index 00000000..248d111c
 --- /dev/null
 +++ b/src/Migrations/Version20180901171717.php
 @@ -0,0 +1,29 @@
@@ -182,7 +182,7 @@ index 0000000..248d111
 +}
 diff --git a/src/Repository/ApiTokenRepository.php b/src/Repository/ApiTokenRepository.php
 new file mode 100644
-index 0000000..6c3bf6f
+index 00000000..6c3bf6fa
 --- /dev/null
 +++ b/src/Repository/ApiTokenRepository.php
 @@ -0,0 +1,50 @@

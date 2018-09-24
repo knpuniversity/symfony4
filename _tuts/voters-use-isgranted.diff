@@ -1,0 +1,17 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index f661c9da..5ddeab1f 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -28,11 +28,10 @@ class ArticleAdminController extends AbstractController
+ 
+     /**
+      * @Route("/admin/article/{id}/edit")
++     * @IsGranted("MANAGE", subject="article")
+      */
+     public function edit(Article $article)
+     {
+-        $this->denyAccessUnlessGranted('MANAGE', $article);
+-
+         dd($article);
+     }
+ }
