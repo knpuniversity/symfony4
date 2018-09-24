@@ -17,3 +17,11 @@ chapters:
     - dynamic-roles
     - is-auth
     - fetch-user
+    - user-in-service
+    - role-hierarchy-impersonation
+    - serializer-api
+    - api-token-entity
+    - api-token-authenticator
+    - registration-auth
+    - author-relation
+    - voters
