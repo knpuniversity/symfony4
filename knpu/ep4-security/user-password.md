@@ -3,7 +3,7 @@
 Until now, we've allowed users to login without *any* password. As *much* fun as
 it would be to deploy this to production... I think we should *probably* fix that.
 If you look at your `User` class, our users actually don't have a password field
-at *all* yet. When you originally use the `make:user` command, you *can* tell it
+at *all*. When you originally use the `make:user` command, you *can* tell it
 to create this field for you. We told it to *not* do this... just to keep things
 simpler as we were learning. So, we'll do it now.
 
