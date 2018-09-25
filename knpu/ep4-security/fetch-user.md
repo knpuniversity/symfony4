@@ -96,6 +96,5 @@ with `app.user.firstName`. Cool! Let's see how it looks like now.
 
 Hey! A brand new robot avatar *and* we see the first name of the dummy user. We
 *are* still missing this twitter handle... because... our `User` class doesn't have
-that property yet. Let's add that next, add cool shortcut method to our `User` class
-*and* talk about how we can fetch the `User` object from the *one* place we haven't
-talked about yet: services.
+that property yet. Let's add that next *and* add a cool shortcut method to our `User`
+class.

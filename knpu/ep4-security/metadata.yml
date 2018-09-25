@@ -17,8 +17,10 @@ chapters:
     - dynamic-roles
     - is-auth
     - fetch-user
+    - custom-user-method
     - user-in-service
-    - role-hierarchy-impersonation
+    - role-hierarchy
+    - impersonation
     - serializer-api
     - api-token-entity
     - api-token-authenticator
