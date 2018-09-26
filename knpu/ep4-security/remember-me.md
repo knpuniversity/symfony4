@@ -1,16 +1,29 @@
 # Adding Remember Me
 
 Go back to the HTML form: it has *one* other field that we haven't talked about yet:
-the "remember me" checkbox. You could check & uncheck this to your heart's delight:
-that works great. But... checking it does... nothing. No worries: making this *actually*
-work is super easy - just two steps.
+the "remember me" checkbox:
 
-First, make sure that your checkbox has no value and that its name is `_remember_me`.
+[[[ code('2fbda9110f') ]]]
+
+You could check & uncheck this to your heart's delight: that works great. But...
+checking it does... nothing. No worries: making this *actually* work is super
+easy - just two steps.
+
+First, make sure that your checkbox has no value and that its name is `_remember_me`:
+
+[[[ code('bb77f5b697') ]]]
+
 That's the magic name that Symfony will look for. Second, in `security.yaml`, under
 your firewall, add a new `remember_me` section. Add two *other* keys below this.
-The first is required: `secret` set to `%kernel.secret%`. Second, `lifetime` set to
-2592000, which is 30 days in seconds. This option is... optional - it defaults
-to one year.
+The first is required: `secret` set to `%kernel.secret%`:
+
+[[[ code('5ebe8cba24') ]]]
+
+Second, `lifetime` set to 2592000, which is 30 days in seconds:
+
+[[[ code('e78025891c') ]]]
+
+This option is... optional - it defaults to one year.
 
 ## More about Parameters
 

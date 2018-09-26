@@ -5,7 +5,7 @@ logs in. But now, our space-traveling users *can* log in! We're loading users
 from the database, checking their password and even protecting ourselves
 from the Borg Collective... with CSRF tokens.
 
-So let's start to look at the second part of security: authorization. Authorization
+So let's start to look at the second part of security: **authorization**. Authorization
 is all about deciding whether or not a user should have access to something. This
 is where, for example, you can require a user to log in before they see some page -
 or restrict some sections to admin users only.
@@ -17,9 +17,17 @@ first, it's pretty cool.
 ## access_control in security.yaml
 
 At the bottom of your `security.yaml` file, you'll find a key called, well,
-`access_control`. Uncomment the first access control. The `path` is a regular
-expression. So, this access control says that any URL that starts with `/admin`
-should require a role called `ROLE_ADMIN`. We'll talk about roles in a minute.
+`access_control`:
+
+[[[ code('f07daa3686') ]]]
+
+Uncomment the first access control:
+
+[[[ code('dd4aac0ae7') ]]]
+
+The `path` is a regular expression. So, this access control says that any URL that
+starts with `/admin` should require a role called `ROLE_ADMIN`. We'll talk about
+roles in a minute.
 
 Go to your terminal and run
 
@@ -43,24 +51,43 @@ our user does *not* have `ROLE_ADMIN`, we are denied access.
 
 But... why does our user have `ROLE_USER`? I don't remember doing *anything* with
 roles during the login code. Open the `User` class. When we ran the `make:user` command,
-one of the methods that it generated was `getRoles()`. Look at it carefully: it reads
-a `roles` property, which is an array that's stored in the database. Right now,
-this property is empty for *every* user in the database: we have *not* set this to
-any value in the fixtures.
+one of the methods that it generated was `getRoles()`:
+
+[[[ code('466263d32f') ]]]
+
+Look at it carefully: it reads a `roles` property, which is an array that's stored
+in the database:
+
+[[[ code('7b71bafabb') ]]]
+
+Right now, this property is empty for *every* user in the database: we have *not*
+set this to any value in the fixtures.
 
 But, inside `getRoles()`, there's a little extra logic that guarantees that *every*
-user *at least* has this one role: `ROLE_USER`. This is nice because we *now* know
-that, *if* you are logged in, you definitely have this *one* role. Also... you
-need to make sure that `getRoles()` always returns at least *one* role... otherwise
-weird stuff happens: the user becomes an undead zombie that is "sort of" logged in.
+user *at least* has this one role: `ROLE_USER`:
+
+[[[ code('5a564c7518') ]]]
+
+This is nice because we *now* know that, *if* you are logged in, you definitely have
+this *one* role. Also... you need to make sure that `getRoles()` always returns at least
+*one* role... otherwise weird stuff happens: the user becomes an undead zombie that
+is "sort of" logged in.
 
 To prove that this roles system works like we expect, change `ROLE_ADMIN` to
-`ROLE_USER` in the access control. Then, click *back* to the admin page and...
-access granted!
+`ROLE_USER` in the access control:
+
+```yaml
+security:
+    # ...
+    access_control:
+        - { path: ^/admin, roles: ROLE_USER }
+```
+
+Then, click *back* to the admin page and... access granted!
 
 Change that back to `ROLE_ADMIN`.
 
-## Only One access_control Matches per Page
+## Only One `access_control` Matches per Page
 
 As you can see in the examples down here, you're allowed to have as *many* `access_control`
 lines as you want: each has their own regular expression path. But, there is one
