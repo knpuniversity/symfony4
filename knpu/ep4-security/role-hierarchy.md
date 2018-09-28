@@ -46,7 +46,7 @@ array with `ROLE_ADMIN_COMMENT` and `ROLE_ADMIN_ARTICLE`.
 
 It's *just* that simple. Now, *anybody* that has `ROLE_ADMIN` *also* has these
 two roles, automatically. To prove it, go log out so that we can log in as one of
-our admin users: `admin2@thespacebar.com`, password `engage`.
+our admin users: `admin2@example.com`, password `engage`.
 
 Go back to `/admin/comment` and... access granted!
 
