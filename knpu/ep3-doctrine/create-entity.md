@@ -73,7 +73,7 @@ find a cool page. This shows you *every* annotation in Doctrine and *every* opti
 for each one.
 
 Back at the code, the properties are *private*. So, at the bottom of the class,
-the command generated getter and setter for methods for each one:
+the command generated getter and setter methods for each one:
 
 [[[ code('86b15fb1b1') ]]]
 
