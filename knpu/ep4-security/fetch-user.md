@@ -15,7 +15,7 @@ Go back to your browser and head to `/account`. Nice! This gives us the `User`
 entity object! That's *awesome* because we can do all kinds of cool stuff with it.
 For example, let's see if we can log the email address of who is logged in.
 
-Add a `LoggerInterface $logger` argument. Then say `$this->logger->debug()`:
+Add a `LoggerInterface $logger` argument. Then say `$logger->debug()`:
 
 > Checking account page for
 
