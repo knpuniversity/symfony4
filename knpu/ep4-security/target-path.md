@@ -1,7 +1,11 @@
 # Target Path: Redirecting an Anonymous User
 
-After changing the `access_control` back to `ROLE_ADMIN`, if we try to access
-`/admin/comment` again, we see that same "Access Denied" page: 403 forbidden.
+After changing the `access_control` back to `ROLE_ADMIN`:
+
+[[[ code('8476d77a2f') ]]]
+
+If we try to access `/admin/comment` again, we see that same "Access Denied"
+page: 403 forbidden.
 
 ## Customizing the Error Page
 
@@ -44,9 +48,12 @@ go to `/admin/comment`. So, after logging in, to have a great user experience, w
 should be redirected back *there*.
 
 The reason that we're sent to the homepage is because of *our* code in
-`LoginFormAuthenticator`. `onAuthenticationSuccess` *always* sends the user to the
-homepage, no matter what. Hmm: how could we update this method to send the user back
-to the *previous* page instead?
+`LoginFormAuthenticator`. `onAuthenticationSuccess()` *always* sends the user to the
+homepage, no matter what:
+
+[[[ code('62dbccf4e1') ]]]
+
+Hmm: how could we update this method to send the user back to the *previous* page instead?
 
 Symfony can help with this. Find your browser, log out, and then go back to
 `/admin/comment`. *Whenever* you try to access a URL as an anonymous user, *before*
@@ -54,18 +61,28 @@ Symfony redirects to the login page, it saves this URL - `/admin/comment` - into
 the session on a special key. So, if we can *read* that value from the session
 inside `onAuthenticationSuccess()`, we can redirect the user back there!
 
-To do this, at the top of your authenticator, use a *trait* `TargetPathTrait`.
-Then, down in `onAuthenticationSuccess`, add if `$targetPath = $this->getTargetPath()`.
+To do this, at the top of your authenticator, use a *trait* `TargetPathTrait`:
+
+[[[ code('2f4a29ab62') ]]]
+
+Then, down in `onAuthenticationSuccess()`, add if `$targetPath = $this->getTargetPath()`.
 *This* method comes from our handy trait! It needs the session - `$request->getSession()` -
-and the "provider key", which is actually an argument to this method.  The provider
-key is just the *name* of your firewall... but that's not too important here.
+and the "provider key", which is actually an argument to this method:
+
+[[[ code('0bdf5b4a84') ]]]
+
+The provider key is just the *name* of your firewall... but that's not too important here.
 
 Oh, and, yea, the if statement might look funny to you: I'm assigning the `$targetPath`
 variable and *then* checking to see if it's empty or not. If it's *not* empty, if
-there *is* something stored in the session, return new `RedirectResponse($targetPath)`.
+there *is* something stored in the session, return new `RedirectResponse($targetPath)`:
+
+[[[ code('4b5b8a0b55') ]]]
 
 That's it! If there is *no* target path in the session - which can happen if the
-user went to the login page directly - fallback to the homepage.
+user went to the login page directly - fallback to the homepage:
+
+[[[ code('9d348405f0') ]]]
 
 Let's try it! Log back in... with password `engage`. Yea! Got it! I know, it feels
 weird to celebrate when you see an access denied page. But we *expected* that part.
