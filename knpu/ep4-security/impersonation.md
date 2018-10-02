@@ -18,7 +18,7 @@ called `ROLE_ALLOWED_TO_SWITCH`. Go back to `security.yaml` and give `ROLE_ADMIN
 users this new role under `role_hierarchy`.
 
 Ok, watch closely: we still have the magic `?_switch_user=` in the URL. Hit enter.
-That's gone, but now, yea! I'm logged in as `spacebar1@example.com`! You can see
+That's gone, yea! I'm logged in as `spacebar1@example.com`! You can see
 this down in the web debug toolbar. Of course, this normal user can't access this
 page. But if you go back to the homepage, you can surf around as the `spacebar1`
 user.
