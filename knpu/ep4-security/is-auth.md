@@ -1,4 +1,4 @@
-# `IS_AUTHENTICATED_*` & Protecting All URLs
+# IS_AUTHENTICATED_ & Protecting All URLs
 
 I mentioned earlier that there are *two* ways to check whether or not the user is 
 simply logged in. The first is by checking `ROLE_USER`:
