@@ -30,7 +30,7 @@ not some other field like the `id`, is due to the user provider. Remember, this 
 the code inside Symfony that helps reload the user from the session at the beginning
 of each request. But it is *also* used by a few other features to load the user,
 like `remember_me` and `switch_user`. If you're using the Doctrine user provider
-like we are, then this `field` key determines which field will be used for all
+like we are, then this `property` key determines which field will be used for all
 of this. If you changed this to `id`, we would need to use the `id` with switch user.
 
 ## Adding a Banner when you are Impersonating
