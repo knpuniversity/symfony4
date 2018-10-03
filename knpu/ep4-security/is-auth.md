@@ -51,7 +51,7 @@ One of those `ROLE_USER` checks is from `AccountController`:
 
 [[[ code('ca2f8cd42f') ]]]
 
-And the other comes from `is_granted` in the template. The `ROLE_ADMIN` check also
+And the other comes from `is_granted()` in the template. The `ROLE_ADMIN` check also
 lives here:
 
 [[[ code('0306aeb73e') ]]]
