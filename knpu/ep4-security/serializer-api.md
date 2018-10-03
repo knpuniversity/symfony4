@@ -1,15 +1,73 @@
-# Serializer API
+# Serializer & API Endpoint
 
-Coming soon...
+In addition to our login form authentication, I *also* want to allow users to log in
+by sending an API token. But, before we get there, let's make a proper API endpoint
+first.
 
-Addition to our log informants indication, I want to allow users to to send API token authentication, but before we get there, first let's make a proper Api endpoint, are close a few files and then open our account controller, so to keep things simple, I'm just going to make a new public function at the bottom of this called account Api. The idea is that you could. 
+## Creating the API Endpoint
 
-This will return a Jason Representation of whoever is logged in. So above this I'll do it at route. We'll make this slash api slash account. We'll give the name equals API underscore account, so very simply we're going to get the user object user equals this Arrow, get user of whoever's logged in. We can safely do that because every controller in this class does require the use to be logged in. And then to turn this into Jason, this is pretty cool. We can say return this Arrow Jason, and pass it the user object. Cool. Let's try it. Go over and we'd go to slash api slash accounting in your browser and 
+I'll close a few files and open `AccountController`. To keep things simple, we'll
+create an API endpoint right here. Add a public function at the bottom called
+`accountApi`. This new endpoint will return the JSON representation of whoever is
+logged in. Above, add `@Route("/api/account")` with `name="api_account"`.
 
-hm, well that's not what I expected. It's Jason, but it's empty. The reason why, because if you hold command or control and click into this jason method, this class does one of two different things at first checks to see if symphonies serializer is installed serializer components right now that is not installed, and so if when it's installed it, it falls back to using this Jason Response Class and passing the data directly internally in that class. All it does is call it the PHP function, Jason and code, and when you Jason had coded object, the only thing you get back are it's public properties, which of course we have no public properties, so we get an empty object. This is actually the entire point of symphonies serializer component to be a professional way to turn objects into Jason or some other format, so we're not gonna talk too much about the symphony serialized right now, but we are going to install it so that it's used. So find your browser and run composer require serializer. How'd your terminal? 
+The code here is simple - excitingly simple! `$user = $this->getUser()` to
+find who's logged in. We can safely do this thanks to the annotation on the class:
+every method requires authentication. Then, to transform the `User` object into
+JSON - this is pretty cool - `return $this->json()` and pass `$user`.
 
-Yeah, 
+Let's try it! In your browser, head over to `/api/account`. And! Oh! That's
+not what I expected! It's JSON... but it's totally empty!
 
-Mr. Miss installs a serializer pack. Yeah. Which gets need simply serializer component and a couple of other things. That was soon as you do that, somebody will start using these serializer service internally and when we refresh, ha, it works. That has super cool except it is actually exposing a little bit more than I want. I don't actually want to expose the encoded password, for example, so to control this, what we're going to talk about the serializer just a little bit. Open up your user class and what you can do is you can put each property that you want to expose into eight group via an annotation, so we won't expose the ID, but let's expose the group email. So we'll say at groups and then put this into a group call main. I'm just making that name up. I'm going to copy that. Let's also, let's not do roles what's exposed first name and let's expose twitter username. Then in your account controller, you can actually tell a serialized. You've only see realize things inside of that main group. So to do that we'll use the normal 200 status code, the second argument, any custom headers, but we do want to pass this context argument. We'll say groups equal to an array with me, you can tell it to serialize as many different groups on your entities you want. 
+## Installing the Serializer
 
-So now when move over and refresh, there it is just the fields that we want. All right, so next let's actually start talking about how to do api token authentication.
+Why? Hold Command or Control and click into the `json()` method. This method does
+two different things, depending on your setup. First, it checks to see if Symfony's
+serializer component is installed. Right now, it is *not*. So, it falls back to
+passing the `User` object to the `JsonResponse` class. I won't open that class,
+but *all* it does internally is called `json_encode()` on that data we pass inL
+the `User` object in this case.
+
+Do you know what happens when you call `json_encode()` on an object in PHP? It only...
+sorta works: it encodes only the *public* properties on that class. And because we
+have *no* public properties, we get back nothing!
+
+This is actually the *entire* point of Symfony's serializer component! It's a kick
+butt way to turn objects into JSON, or any other format. I don't want to talk *too*
+much about the serializer right now: we're trying to learn security! But, I *do*
+want to use it. Find your terminal and run:
+
+```terminal
+composer require serializer
+```
+
+This installs the serializer pack, which downloads the serializer and a few other
+things. As *soon* as this finishes, the `json()` method will start using the new
+`serializer` service. Try it - refresh! Hey! It works! That's awesome!
+
+## Serialization Groups
+
+Except... well... we probably don't want to include *all* of these properties -
+especially the encoded password. I know, I said we *weren't* going to talk about
+the serializer, and yet, I *do* want to fix this one thing!
+
+Open your `User` class. To control which fields are serialized, above each property,
+you can use an annotation to organize into "groups". I won't expose the `id`, but
+let's expose `email` by putting it into a group: `@Group("main")`. When I auto-completed
+that annotation, the PHP Annotations plugin added the `use` statement I need to the
+top of the file.
+
+Oh, and I totally invented the "main" part - that's the group name, and you'll see
+how I use it in a minute. Copy the annotation and also add `firstName` and `twitterUsername`
+to that same group.
+
+To complete this, in `AccountController`, we just need to tell the `json()` method
+to *only* serialize properties that are in the group called "main". To do that, pass
+the normal 200 status code as the second argument, we don't need any custom headers,
+but we *do* want to pass one item to "context". Set `groups =>` an array with the
+string `main`. You can include just one group name here like this, or tell the
+serializer to serialize the properties from multiple groups.
+
+Let's try it! Refresh! Yes! Just these three fields.
+
+Ok, we are *now* ready to take on a big, cool topic: API token authentication.

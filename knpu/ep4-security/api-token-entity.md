@@ -1,25 +1,115 @@
-# Api Token Entity
+# ApiToken Entity
 
-Coming soon...
+Time to get to work on our API token authentication system! As we just learned,
+there are a bunch of different ways to do API auth. We're going to code through *one*
+way, which will make you *plenty* dangerous for whatever way *you* ultimately need.
 
-Let's talk a little bit about Api authentication because I think there's some misconceptions out there about what system you need to use under what condition. The first question to ask is, do you need some sort of Api token authentication system at all and the answer is maybe not. Even if you have api end points like this, if the only thing that will use your Api endpoints is the Java script that you're building for your own site, then you do not need an API token authentication system. You can add them in if you want, but just using normal form login with sessions is much simpler. What I mean is 
+For our API tokens, we're going to create an `ApiToken` entity in the database to
+store them. Find your terminal and run:
 
-you. 
+```terminal
+php bin/console make:entity
+```
 
-We already know that if you log in with a log in form every age x requests after that sends the session cookie and is also logged in, so if you're just building, the only thing that needs to use your api is your own javascript. Just use login form authenticator. You can still do the log and form itself with age x. If you want to, you can just update a couple of parts of your authenticator to send back Api responses instead of redirecting on success. So if you do need api token authentication, there are two important sides to it that actually very unrelated first, no matter what system you build, Api tokens are just a string and that string is somehow connected to a user in your system. So if I use that string twelfth dedicate that is basically authenticating me as a user. There are some variations on this, but that's the simplest case is the simplest and one of the most common cases. 
+Call the class `ApiToken`. And, we need a few fields: `token`, a string that's not
+nullable, `expiredAt` so that we can set an expiration as a `datetime`, and `user`,
+which will be a `relation` type to our `User` class. In this situation, we want a
+ManyToOne relationship so that each `ApiToken` has one `User` and each `User` can
+have many ApiTokens. Make this *not* nullable: every API token must be related to
+a `User`. And, though it doesn't matter for authentication, let's map both sides
+of the relationship. That will allow us to easily fetch all of the API tokens
+for a specific user. For `orphanRemoval`, this is also not important, but choose
+`yes`. If we create a page where a user can manage their API tokens, this might
+make it easier to delete API tokens.
 
-The way that that token string is tied to the user can be done in a couple of different ways. You could, for example, have an API token database table where each api token has a relationship over to a user. Very simple. If you give me an API token, I can find that record in the database and find the user that it's related to. Or you can do something like j dot w dot Jason Web Tokens where the user is actually encoded inside the token itself. So when you decode the token, it contains the user information, the user that it's related to, but the point is you have an API token string and we can use that somehow to figure out what user is to. That's the first important thing about API token authentication. The second important thing is how are how these API tokens are created and distributed? This is actually a totally separate conversation and there are several different ways to do this. So for example, 
+And... done! Generate the migration with:
 
-let me give you three examples of how tokens could be created and distributed to who needs them. First, you could create an admin interface. If a user logs in, they can go to some interface and they can create a token for their own account. This is a super simple way of doing it. The negative is that there's no automated way via an API. First, a token to be created. The user can only create it manually. A second option is to create an API endpoint to create Api Tokens and that situation you would send your username or your email and password to an api end point 
+```terminal
+php bin/console make:migration
+```
 
-and that API endpoint would return. In Api token. This is still a pretty simple system, but now it's programmable. Somebody can actually. We can write automated software to use that end point, but the downside is that this method can't be used by third parties. It's okay for the user to write some code to send their user name and password, but if you. If somebody were building an iphone app for your site, they should not use this method because it would require the user to give that iphone app their username and password so that they can send that to our end point. We never want third parties to get the email and password are users, so the third method is off or something similar to Olaf. This is the way this allows third parties to securely create and get access tokens for user without the user having to get their password. 
+Go check it out - in the `Migrations/` directory, open that file. Cool!
+`CREATE TABLE api_token` with `id`, `user_id`, `token` and `expires_at`. And, it
+creates the foreign key.
 
-The negative, this one is it's complex and not everyone needs third parties to get access to tokens, so the set whole second part of Api token authentication is how the tokens are created and distributed. We are not going to talk about that in this tutorial because because it's a. it's a big topic and be. It's different for all. It's different for different applications. We're going to focus on the first part which is how you actually authenticate user that sends you an Api token, and in our app we're actually going to create an Api token table in the database to store our API tokens. So find your terminal and run make entity. We're gonna, create a new entity called API token 
+That looks perfect. Move back and run it!
 
-and we'll create a couple of fields. One called token. That will be the string just not nullable. Another call expires at so we can set an expiration for that. I'll be a daytime and then we're going to have each token relate to one user. So I'll add a user property. We'll make this a relation type. This is going to relate to our user class and in our case, we want a many to one relationship where each api token has one user in each user can have many api tokens, so we will say many to one and we'll say it isn't not allowed to be null in the database. Every API token must be related to a user. Well, Matt, both sides of the relationship and for orphan removal, this is not very important, but I'm going to say yes, that would allow us to more easily create an API, an Admin area where API tokens can be deleted and that's it. I'll let you run bin Console and make migration and then we'll move over, open the migrations directory and check that out. Okay, cool. Create Table Api token id, user id token expires at, and then you can see it sets up the foreign key over to the user table, so that looks perfect. Over an hour I've been console doctrine. Migrations migrate. 
+```terminal
+php bin/console doctrine:migrations:migrate
+```
 
-So again, the way that API tokens are created in your system, whether it's being an avid area and Api endpoint or oh off, it's not something that we're going to talk about. Instead, we're just going to make sure that our fixture users have. We're gonna, we're gonna, create some Api Tokens in our fixtures. We're just going to create some Api Tokens via our fixtures. To do that, I first want you to go and look at that new API token entity as usual. We have a set of property that parent and then we have a getter and setter for every single method. In this case, I'm actually going to change this a little bit. Print a public function construct, and this I'm gonna make a required user argument. I'm doing that because every api token needs a user. The other is not making this construct function is this token here should be a random string. So the easiest thing to do is actually just to generate that right in the constructor. Automatically say this, our token equals, say vin to Hex, random bites, 60. That's a secure way of getting a random string. Then we'll say this Arrow, user equals user, and we'll also set the expired at here, expires that equals new datetime will say plus one hour, so you can set that to 24 hours, however long you want your exploration to last. Now, because we've initialized everything, the constructor, I'm actually going to remove all of my setter methods down here. 
+## How are Tokens Created?
 
-What's an API token object is created. We're not going to allow it to be mutated. Perfect, so this will make creating this in our fixture really easy. Now instead of making, I couldn't make an API token fixture, but to keep things simple, I'm just going to put this right. Instead of my user fixture class, I'm going to create a couple of API tokens for each of our normal users, 
+So, the question of *how* these ApiTokens will be created is *not* something we're
+going to answer. As we talked about, it's either super easy... or super complicated,
+depending on your needs. 
 
-so we'll say api token one equals new api token pass our user a copy of that and I'll create a second API token. Now when you use our nice create many system, whatever object you return, you don't need to call persist and flush on that because that's actually being taken care of in our parent class. Can actually see that if I hold this, you can see that whatever entity we get, we get back, it calls persist on that automatically, but if you create some objects manually like this, we do need to make sure that we call persist on that. So I'm gonna say use and bring in the manager. Object into my callback. I'll say manager Arrow persist API token one, manager Arrow, persist API token to. And that should be it. All right, so let's move over. Run Bin Console doctrine fixtures, load matte finishes, run Bin Console, doctrine query sql, select star from Api underscore token. Nice, good long random strings. You can see each is related to a different user Id. Awesome. So next let's talk about. Talk about using these API tokens to authenticate the user.
+So, for our app, we're just going to create some ApiTokens via the fixtures.
+
+## Making the ApiToken Class Awesome
+
+But before we do that, open the new `ApiToken` entity class. Yep, all the usual
+stuff: some properties, annotations and a getter & setter for each method. I want
+to change things a bit. The `make:entity` command always generates getter and setter
+methods. But, in some cases, there is a better way to design things.
+
+Add a `public function __construct()` method with a `User` argument. Because ever
+`ApiToken` needs a `User`, why not make it required when the object is instantiated?
+Oh, and we can *also* generate the random `token` string here. Use
+`$this->token = bin2hex(random_bytes(60))`. Then `$this->user = $user`. Oh, and
+we can also set the expires time here - `$this->expiresAt = new \DateTime()` with
+`+1 hour`. You can set the expiration time for however long you want.
+
+Now that we are initializing everything in the constructor, we can clean up thre class:
+remove all the setter methods. Yep, our token class is now *immutable*, which wins
+us *major* hipster points. Immutable just means that, once it's instantiated, this
+object's data can never be changed. Some developers think that making immutable
+objects like this is *super* important. I don't fully agree with that. But, it
+*definitely* makes sense to be thoughtful about your entity classes. Sometimes having
+setter methods makes sense. But sometimes, it makes more sense to setup some things
+in the constructor and remove the setter methods if you don't need them.
+
+Oh, and if, in the future, you want to *update* the data in this entity - maybe you
+need the to change the `expiresAt`, it's totally OK to add new public functions to
+allow that. But, when you do, again, be thoughtful. You *could* add a
+`public function setExpiresAt()`. Or, if all you ever do is re-set the `expiresAt`
+to one hour from now, you could instead create a `public function renewExpiresAt()`
+that handles the logic for you. That method name is more meaningful, and centralizes
+more control inside the class.
+
+Ok, I'm done with my rant!
+
+## Adding ApiTokens to the Fixtures
+
+Let's create some ApiTokens in the fixtures already! We *could* create a new
+`ApiTokenFixture` class, but, to keep things simple, I'm going to put the logic
+right inside `UserFixture`. 
+
+Use `$apiToken1 = new ApiToken()` and pass our `User`. Copy that and create
+`$apiToken2`,
+
+With our fancy `createMany()` method, you do *not* need to call `persist()` or `flush()`
+on the object that you return. That's because our base class calls `persist()` on
+the object *for* us.
+
+But, if you create some objects manually - like this - you *do* need to call
+`persist()`. No big deal: add `use ($manager)` to make the variable available in
+the callback. Then,`$manager->persist($apiToken1)` and
+`$manager->persist($apiToken2)`.
+
+That should be it! Let's reload some fixtures!
+
+```terminal
+php bin/console doctrine:fixtures:load
+```
+
+When it's done, run:
+
+```terminal
+php bin/console doctrine:query:sql 'SELECT * FROM api_token'
+```
+
+Beautiful, long, random strings. And *each* is related to a User.
+
+Next, let's create an authenticator that's capable of reading, processing &
+authenticating these API tokens.

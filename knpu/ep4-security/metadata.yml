@@ -22,8 +22,11 @@ chapters:
     - role-hierarchy
     - impersonation
     - serializer-api
+    - api-auth
     - api-token-entity
+    - entry-point
     - api-token-authenticator
+    - api-token-authenticator2
     - registration-auth
     - author-relation
     - voters

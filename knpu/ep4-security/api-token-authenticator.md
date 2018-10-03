@@ -1,41 +1,92 @@
-# Api Token Authenticator
+# API Token Authenticator
 
-Coming soon...
+Time to fill in our `ApiTokenAuthenticator` logic! Woo! I'm going to use Postman
+to help make test API requests. The only thing *better* than using Postman is creating
+functional tests in your own app. But that's beyond the scope of this tutorial.
 
-Here's the goal, we now have a database table full of Api Tokens and each api token is related to that user. I want to allow API requests to be made that send us this api token string and when that happens, we authenticate them as this user, so this will be a second way to authenticate or system. We already have login form authentication and now we're going to have API token authentication, so we're going to create a second authenticator, partly terminal run bin Console. Make off. If you see a question about choosing which type of authentication you want, choose the empty authentication. That's the same one I'm seeing here. You're seeing a new feature inside of that. A bundle, let's call it API token authenticator. 
+Let's make a GET request to `http://localhost:8000/api/account`. Next, hmm, we need
+to send the API token string on a request header. What should we call that header?
+Postman has a nice system to help us configure common authentication types. Choose
+something called "Bearer token". I'll show you what that means in a minute.
 
-Yeah, 
+But first, find your terminal: we need to find a valid API key! Run:
 
-which creates a new class. This the same thing we saw before. It's just a nice big empty authenticator class. Now, in order for symphony to use this, we need to go to APP config packages, security dot Yammel, and on our firewall we need to make sure that our authentic hitters listed. If you're using the newer version of this fundal, this stuff is actually taken care of for you automatically. As soon as we do that, the supports method should be called in every single request for our authenticator, but small issue refresh. The API account page or any page you'll get an error says because you have multiple guard authenticator, is you need to set the guard entry point he to one of your configurators and then unless one of those two move back over insecure that Yammel under guard at a new config key called entry point. Again, if you were using the new version of this command, it would have actually asked you this question already and would have filled in this config for you next to this copy. The login form authenticator and paste. So an entry point is a very important concept. Entry point is what happens when an anonymous user tries to access a protected page. So far what's happened is we've redirected to the login form 
+```terminal
+php bin/console doctrine:query:sql 'SELECT * FROM api_token'
+```
 
-and the reason is that inside of login form authenticator actually in it's based class. So I'll hold command or control the click into abstract form longer. Log into indicator, every authenticator has a method called start. 
+## Authorization: Bearer
 
-This is the method that's called when an anonymous user tries to access a productive page and as you can see in the form login authenticator, it redirects you to the login page. The problem is that you can only have one entry point per firewall because one of the anonymous user tries to access a protected page. You're not actually using either of your authenticators yet. This is just a anonymous user trying to ask as a page so stephanie doesn't know which one of your authenticators it should use to find as the entry point, so you need to decide whether you want to redirect the user to the login form or whether you want to use the. I'm a do something different and implement the entry point in Api token authenticator. For now, we're going to keep with login form authenticator. If you ever wanted to, you could override the start method in that class and make it do smart things under different conditions. Anyways. When we refresh now, 
+Copy one of these long strings, move back to Postman and paste! To see what this
+Auth stuff does, hit "Preview Request".
 
-it works well. It redirects us to the login page. You got logged out, but then it works when we go back. Awesome. Alright. So here's the plan to help us test our API authentication. I have opened up postman just an awesome way to test API endpoints. We're going to make in a request to locals clinic thousand slash API slash account. We're going to make this a get request and then down here you see they have a header heteros key and they also have an off key and they kind of give you some really, um, some really common ways to send authentication information. We're going to choose somebody called the bear token and I'll show you what that means in a second. 
+> Request headers were successfully updated.
 
-Now I'm gonna move back over to my terminal and on the run bin Console doctrine query sql, select star from Api token so we can get a valid api token from here. So I'll copy one of these long strings and I moved back over to postman paste that. And then hit preview request says request headers were successfully updated. So when you set a bearer token on this offscreen, all that is is a shortcut to set a special header on the request. You can see this sets a header called authorization. If you can read that, and then I know it's hard to read because that thing is the way that's annoying. Then the value is actually the word fair, a space, and then the long token. Now this is just a standard, it's nothing important about the word bear. A bear actually means that you want to authenticate as the user that is the bearer of that token, but that's not important at all that this is just a standard way to send Api Tokens. So our job inside of our authenticator is kind of to reach or read this authorization header, read this token off of there and find the user. 
+Cool! Click back to "Headers". Ahh! This "auth" section is just a shortcut to add
+a request header called `Authorization` - um... go away tooltip! Anyways, the `Authorization`
+header is set to the word "Bearer", a space, and then our token.
 
-Okay? 
+Honestly, we could choose to name this header *whatever* we want - like
+`SEND-ME-YOUR-TOKEN` or `WHATS-THE-MAGIC-WORD`. The `Authorization` header is just
+a standard and, yea, it sounds more professional than my other ideas. There's
+also nothing significant about that "Bearer" part. That's *another* standard
+that's commonly used when your token is what's known as a "Bearer token", which
+is a fancy term that  basically means that whoever "bears" this token - which means
+whoever "has" this token, can use it to authenticate, without needing to provide
+*any* other types of authentication, like a master key or a password. It short, most
+API tokens, also known as "access tokens" are "bearer" tokens. And this is a standard
+way of attaching them to a request.
 
-So move back over to your API token authenticator. The first method of supports, and basically our token are this authenticator should only do anything if there is an authorization header whose value starts with the word bear. So we can literally say return request Arrow Arrow has authorization. So we need to have the authorization header and zero should be the position str pos request, arrow headers, arrow get authorization when looking for the string bear and a space. Okay, so that might look a little wacky, but we're basically saying this authentic care can do its job if there is an authorization header and if the value of that authorization header starts with the word fair and then a space, if it doesn't include exactly that, this supports will return false in our authenticator will do nothing else. So next thing, get credentials. What we want to do is actually read that token off the header. The only tricky thing is this silly bare space thing. We don't want the barest space, we just want to read the API token part off of there. So to do that, let's first say authorization header equals request Arrow headers, arrow get authorization, 
+## supports()
 
-and I'll put a little comedy here that we want to skip beyond bear. So we'll say return and we're going to sub string of that past the authorization header and we want to start at the seventh character. So let's skip the part and just return the API token authentication. Okay? Finally in get use it, I'll dump credentials and die. This should be the string of the API token. Notice that is different than the login form authenticator. When we returned an array from get credentials, you can turn whatever you can to return whatever you want from get credentials. In this case, the only thing we need to return is the token. So let's go back over find postman and scent. Nice. I mean it looks terrible, but go to preview. Yes there is our API tokens stream. We have it isolated. Alright, so now is the easy part. We need to take the API token and we need to query for the API token in the database. So go to the top of this class. 
+Back to work! Open `ApiTokenAuthenticator`. Ok: this is our *second* authenticator,
+so it's time to use our existing knowledge to kick some security butt! For `supports()`,
+our authenticator should only become active if the request has an `Authorization`
+header whose value starts with the word "Bearer". No problem: return
+`$this->headers->has('Authorization')` to make sure the header is set and also check
+that 0 is the position inside `$request->headers->get('Authorization')` where the
+string `Bearer` and a space appears.
 
-Well, 
+I know - it weird-looking code, but it does exactly what we need! If the `Authorization`
+Bearer header isn't there, `supports()` will return false and no other methods will
+be called.
 
-we'll make a construct function. Give this the API token repository argument, AK token repo. I'll hit enter to initialize that. 
+## getCredentials()
 
-And then down below in get user, we're first going to query for that. So we can say token equals this Arrow Api token repo arrow. Find one by and we're gonna be looking for it's token field set to credentials, which is that string. Of course, if we don't find the API token, we'll just return null. That will make authentication fail, but if we did find one, we want to return the user object, so return token Arrow, get user nice. Now of course if we return to use it from this, it should hit check credentials. So I'm going to DD uncheck credentials. You say checking credentials to see if this is all working. All right, let's try it. Move back over to postman send and yes we got a checking credentials. Alright, so before we finished the success thing, I want to see what happens if we have a bad key. So let's see, the last number here is six. So let's just put a little space there that's enough to mess things up and then we'll hit send again. Oh, interesting. Redirecting to log in. 
+Next: `getCredentials()`. Our job is to read the token string and return it.
+Start with `$authorizationHeader = $request->headers->get('Authorization')`. But,
+instead of returning that *whole* value, skip the `Bearer` part. So, return a sub-string
+of `$authorizationHeader` where we start at the 7th character.
 
-Hm, that's interesting. Here's what's going on. When authentication fails, this on authentication failure method is called in. What we want to do here is return a response that should be set back to the user. Right now we're doing nothing, so the request actually continued and then because we were still anonymous, it it hit the entry point in redirected to the login page. That's not all we want, so we're going to do is return a new jason response since this is an API and we'll set a message key that says what went wrong. Now I mentioned earlier that whenever authentication for any reason, it's because some sort of an authentication exception is thrown in the system, so when this on authentication failures called, that exception is passed to us and it has a handicap that called exception. Get message key which will have the details about what went wrong and we'll also gotten wider return a four. Oh, one status code. 
+Ok. Deep breath: let's see if this is working so far. In `getUser()`, `dump($credentials)`
+and die. This *should* be the API token *string*. Oh, and notice that this is different
+than `LoginFormAuthenticator`: we returned an *array* from `getCredentials()` there.
+But that's the beauty of the authenticators: you can return *whatever* you want
+from `getCredentials()`. The only thing we need is the token string... so, we just
+return that.
 
-All right, so go back sending it again and yes, we hit the four one authorized, but the message isn't quite right. Username could not be found. Remember, that's because you get different error messages based on where you fail inside of the API. Token authentication. If you failed to return a user, you get the username not found message that earlier the way we handled that with our login form is we actually in our long informed that era, that message key is passed to the translator and then we set up a little translator to translate this to a different thing about your on that existing. We could actually inject the translator service India, Api, Api token authenticator and we could translate this message key, but the message still wouldn't be right. This is a different situation when we actually want to say is in valid API token, so I'm going to show you the second way to customize a message inside of your authenticator and that is that at any point in your authenticator, you can throw a new custom user message authentication exception that will cause authentication to fail and you can give it whatever message you want in valid api token. 
+Try it! Find Postman and... send! Nice! I mean, it looks terrible, but go to Preview.
+Yes! *There* is our API token string.
 
-When you throw this customer, when you throw the succession, it's actually passed two authentication failure and its message key is set to this message up there. So it's just a nice way to customize your air and now when you try it, send to get a postman. Now we get that message. Alright, so we're almost done now. Before, before we finished the authenticator, there's one other thing that we want to check here 
+## getUser()
 
-and that is we want to check whether or not the token is expired. Remembered Api token. There's an expired at in there. Okay. So let's go down to the bottom of this class. What a nice helper function in here called is expired. That will return a brule here. We'll return this Arrow get expires that is less than or equal to new datetime that that happens. Then it's expired. Then in our API token authenticator up and get user before were returned. The user will say if token Arrow is expired, then throw new custom user message authentication exception and we can say token expired. By the way, why? Why am I putting this code and get user in instead of check credentials? It makes no difference at all. These two methods are called one after another, so you can really, doesn't matter where you put code, you can totally put those down there. Oh, because check credentials is only passed the user, not the token. 
+Next up: `getUser()`. First, we need to query for the `ApiToken` entity. At the
+top of this class, make an `__construct` function and give it an
+`ApiTokenRepository $apiTokenRepo` argument. I'll hit Alt+Enter to initialize that.
 
-Alright, so if we go back now and let's actually take the space out of our token and postman and had sent. So right now hits checking credentials because things are once again successful, but now I'm going to go back into my api token class and temporarily we're just gonna return true from is expired so we can see that error message back over. Hit send and Nice token expired. Alright, go back and remove that return. True. Alright, now we are just about done in check credentials. We don't have a password. The API token itself is ca stands in as the password, so it's okay for us just to return true for authentication success. 
+Then, back in `getUser()`, query for that: `$token = $thi->apiTokenRepo`
+and use `findOneBy()` to find where `token` is set to `$credentials`, which is a
+the string.
 
-Unlike a log and a forum where you want to redirect the user after success with Api token authentication, you don't want to do anything. You just want to allow the request to continue so that it can hit the hit the controller and return the response in start. Remember, this is the entry point. We're using the entry point from our other class, so just to be safe, I'm going to throw an exception here that says not used entry point from other authenticator is used. So if by some mistake this is called, we'll see a nice exception. Then finally supports you. Remember me, we can return a false return. True from support to remember me. That doesn't automatically mean that supports me is being used for your authenticator. You still need to have the, um, the chatbox and all that. But if your authentication mechanism does it need remember me functionality, you can return false and it just saves a little bit of performance. Okay? Finally, let's go back, hit send. And we got it. It hits our API endpoint. We're authenticated as this user and it's returns that user's information. We now have two valid ways to authenticate inner system. The cool thing is that inside of our controller code, we don't care which method is used. We just say this get user, and if we are authenticated via the form login, it works. If we authenticated via the API token authentication, it works exactly the same, so there are many different other ways. You got to find a cable box.
+If we do *not* find an `ApiToken`, return null. That will make authentication fail.
+If we *do* find one, we need to return the `User`, not the token. So, return
+`$token->getUser()`.
+
+Finally, *if* you return a `User` object from `getUser()`, Symfony calls
+`checkCredentials()`. Let's `dd('checking credentials')` to see if we *continue*
+to be lucky.
+
+Move back over to Postman, Send and... yes! Checking credentials.
+
+We're *almost* done! But before we handle success, I want to see what happens
+with a *bad* API key. And how we can send back the *perfect* error response.
