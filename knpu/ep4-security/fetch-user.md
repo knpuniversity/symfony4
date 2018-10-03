@@ -108,7 +108,7 @@ already copied this `login.css` file earlier. Now, copy `account.css`, find your
 `public/` directory, open `css/` and... paste! To include this stylesheet on this
 page, add `block stylesheets` and `endblock`:
 
-[[[ code('da76f926dc) ]]]
+[[[ code('da76f926dc') ]]]
 
 Inside, call `parent()` so that we *add* to the existing stylesheets, instead of
 replacing them. Add `link` and point to `css/account.css`:
