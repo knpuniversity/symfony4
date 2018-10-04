@@ -2,24 +2,114 @@
 
 Coming soon...
 
-Okay guys, we are through most of this tutorial. I just want to show a couple more important things right now. We're going to turn from API to actually creating a registration form, so move over to your code. Let's open our account controller. That seems like A. Oops. Let's move over. Let's go to our security controller. This has log in and log out. Let a new public function here called registered. We'll give it the normal route for slash register. We'll give it a name of APP underscore register. Now here's the interesting thing about registration. It has zero to do with security in reality, to think about it. What is registration? It's nothing more than creating a new user record in your table. That's just database stuff. It has nothing to do with security, so why are we going through it? Well, there is a little bit of security right at the end. You'll see. Let's just right now, let's re. Let's render a template. This EHR vendor, we'll call security slash registered. That html dot twig, not a cheat. I'm actually going to go into security. We're going to copy our logon template and paste this to register dot html twig and we'll just modify some things here. We'll change the title on the page. 
+Okay guys, we are through most of this tutorial. I just want to show a couple more
+important things right now. We're going to turn from API to actually creating a
+registration form, so move over to your code. Let's open our `AccountController`. That
+seems like A. Oops. Let's move over. Let's go to our `SecurityController`. This has
+`login` and `logout`. Let a new `public function register()` here. We'll give it
+the normal route for `/register`. We'll give it a name of `app_register`. Now here's the
+interesting thing about registration. It has zero to do with security in reality, to
+think about it. What is registration? It's nothing more than creating a new `User`
+record in your table. That's just database stuff. It has nothing to do with security,
+so why are we going through it? Well, there is a little bit of security right at the
+end. You'll see. Let's just right now, let's re. Let's render a template. 
+`$this->render('security/register.html.twig')`, not a cheat. I'm actually
+going to go into security. We're going to copy our `login` template and paste this to
+`register.html.twig` and we'll just modify some things here. We'll change the title on
+the page.
 
-Yeah, 
+Yeah,
 
-I'll delete the uh, authentication error stuff and I am going to put a little comment here that says to do replace with a symphony form. We haven't talked about the symphony form system yet, so I don't want to use it here, but this is a case where I would normally use symphony's form system because it handles validation for us, handles CSRF protection, but for now we're just going to use this html form so that we can get to the security part of what I want to talk about. So we'll change the h one, remove the value equals on the email field because that would should always be blank. Remove the CSRF token. We could validate CSRF in you should on your site, but reality just use symphony's form system and it handles CSRF protection automatically for you. And then will hijack the remember me box check box and turn this into a terms box. We'll say agree to terms. I for sure read because we always read the terms. Now at the bottom we'll say registered. Okay symbol. Let's move over. Go to slash register and got it. And actually let's log out and move back over and open up based on html that twig and scroll down just a little bit. So we find our log out, link, our login link. There it is. Let's create a second doc there a that goes to our new APP and register route and we'll call this register. 
+I'll delete the uh, authentication error stuff and I am going to put a little comment
+here that says to do replace with a Symfony form. We haven't talked about the Symfony
+form system yet, so I don't want to use it here, but this is a case where I would
+normally use Symfony's form system because it handles validation for us, handles CSRF
+protection, but for now we're just going to use this html form so that we can get to
+the security part of what I want to talk about. So we'll change the `h1`, remove the
+value = on the email field because that would should always be blank. Remove the CSRF
+token. We could validate CSRF in you should on your site, but reality just use
+Symfony's form system and it handles CSRF protection automatically for you. And then
+will hijack the remember me box check box and turn this into a terms box. We'll say
+agree to terms. I for sure read because we always read the terms. Now at the bottom
+we'll say registered. Okay symbol. Let's move over. Go to `/register` and got it. And
+actually let's log out and move back over and open up `base.html.twig` and
+scroll down just a little bit. So we find our `logout`, link, our `login` link. There it
+is. Let's create a second doc there a that goes to our new `app_register` route and
+we'll call this register.
 
-Go over, refresh, and perfect. Now until it register, there is our registration form. So we're going to work on the submit logic for this. So 
+Go over, refresh, and perfect. Now until it register, there is our registration form.
+So we're going to work on the submit logic for this. So
 
-just like with our login form, because there's no action equals this is going to submit right back to the same year. Well unlike login, because this is just a normal page, we're going to handle that submit logic right inside of here. So first thing we need is the request objects. We can figure out whether or not to say post request. So I'll type head to request from http foundation, had a request argument, and once again I'm going to put them all to do reminder here to use symphony forms and validation. We're skipping that right now that if request is method post, then we know that we actually want to process things. So cool. Again, registration is nothing more than just creating a new user object, so user equals new user. Then we'll set some data on it. User, I was set email and we will read request Arrow request Arrow get email. Remember request Arrow request is the way that you get post data. And on our registration form we had name equals email and name equals password. So those are the two fields that we're going to want to read off. Um, next space, username set, first name. This is required in the database. We don't actually have a field for it and a registration. So I'm just going to put mystery for now. You enter in a real app, you either want to add that to your registration form or make it knowable in the database. So it's optional. And then finally we're going to set the password, 
+just like with our `login` form, because there's no action = this is going to submit
+right back to the same year. Well unlike login, because this is just a normal page,
+we're going to handle that submit logic right inside of here. So first thing we need
+is the `Request` objects. We configure out whether or not to say `POST` request. So I'll
+type head to `Request` from `HttpFoundation`, had a `$request` argument, and once again I'm
+going to put them all to do reminder here to use Symfony forms and validation. We're
+skipping that right now that `if ($request->isMethod('POST'))`, then we know that we actually
+want to process things. So cool. Again, registration is nothing more than just
+creating a new `User` object, so `$user = new User()`. Then we'll set some data on it. 
+`$user->setEmail($request->request->get('email')`. Remember `$request->request` is the way 
+that you get post data. And on our registration form we had `name="email"` and `name="password"`. 
+So those are the two fields that we're going to want to read off. Um, next space, 
+`$user->setFirstName()`. This is required in the database. We don't actually have a field for 
+it and a registration. So I'm just going to put `'Mystery'` for now. You enter in a real app, 
+you either want to add that to your registration form or make it knowable in the database. 
+So it's optional. And then finally we're going to set the password, 
 
-but of course we are never ever, ever, ever going to set the plain text password. We need to encode this password. And you remember we already did this inside of user fixtures using the user password and user interface. That makes it very easy. And our controller, we can get a service as an argument so we can say user password, encoder interface and call that password encoder. 
+but of course we are never ever, ever, ever going to set the plain text password. We
+need to encode this password. And you remember we already did this inside of `UserFixture` 
+using the `UserPasswordEncoderInterface`. That makes it very easy. And our
+controller, we can get a service as an argument so we can say `UserPasswordEncoderInterface` 
+and call that `$passwordEncoder`.
 
-Okay. 
+Okay.
 
-And down here we can say password encoder, Arrow encode password, and this needs the user object. And then the plain password which is request request error, request Arrow get password. And that is it. Our user object is set up to say this, I'll say equals this arrow. Get doctrinal. I'll use the nice doctrine shortcut. There am persist user, he em, arrow flush, all very boring Co. This looks a lot like what we're doing in our fixtures. Finally, The last thing we want to do at the end of any form, submit is redirect. So I think we should say so say return this arrow redirect to route. That's the shortcut method we were looking at earlier and let's redirect actually to our account page. App underscore account. Awesome. let's try it out. Swaddle register as ryan at symphony [inaudible] dot com. Password engage. Agreed to the terms that I for sure read and hit register and. Oh shoot. Oh, and this good doctrine arrow. Get manager. That's what I meant to do. All right, let's move on and try this. I'll log in asRyan@symphonykeptcivicas.com. Password engage, I'll for sure agree to the terms that I read. Register. And um, what were on the login form? Huh? Can actually look where anonymous. Well here's what actually happened. Registration just worked 
+And down here we can say `$passwordEncoder->encodePassword()`, and this needs the `User`
+object. And then the plain password which is `$request->request->get('password')`. 
+And that is it. Our `User` object is set up to say this, I'll say 
+`$em = $this->getDoctrine();`. I'll use the nice doctrine shortcut. 
+`$em->persist($user)`, `$em->flush()`, all very boring Co. This looks a lot like what we're doing in our
+fixtures. Finally, The last thing we want to do at the end of any form, submit is
+redirect. So I think we should say so say `return $this->redirectToRoute()`. That's the
+shortcut method we were looking at earlier and let's redirect actually to our account
+page. `'app_account'`. Awesome. let's try it out. Swaddle register as `ryan@symfonycasts.com`. 
+Password `engage`. Agreed to the terms that I for sure read and hit register and. Oh shoot. 
+Oh, and `$this->getDoctrine()->getManager()`. That's what I meant to do. All right, 
+let's move on and try this. I'll login as `ryan@symfonycasts.com`. Password `engage`, 
+I'll for sure agree to the terms that I read. Register. And um, what were on the 
+login form? Huh? Can actually look where anonymous. Well here's what actually 
+happened. Registration just worked
 
-and then we were redirected to slash account, but that requires you to be logged in. So it redirected us to slash login. That is not the flow we want for a better user experience. As soon as the user logs in, as soon as use user registers, I want to log them in immediately. There's also another problem if you look in your login form authenticator 
+and then we were redirected to `/account`, but that requires you to be logged in. So it
+redirected us to `/login`. That is not the flow we want for a better user experience.
+As soon as the user logs in, as soon as use user registers, I want to log them in
+immediately. There's also another problem if you look in your `LoginFormAuthenticator.php`
 
-down in authentication success. We added some extra code here to make sure that if the user went to slept, for example slash admin slash comment as an anonymous user, after they log in, they're actually sent back to that page. You can make the same argument For a registration page. For example, imagine that I'm building a store and I'm anonymous. I add some things to my cart and then I go to slash checkout. Well slash checkout requires me to be logged in, so I'm sent to the login form, but I don't have an account yet, so instead I registered after I finished registration, where should I be taken to? I need to be taken back to the checkout page. I went to mimic the same thing that we did inside of our authentic cater. Those two problems can be solved super easily. What we're basically they're going to do is tell symphony after we save the user to log us in using our login form authenticator that will authenticate us and it will also go through the same on authentication success so that were redirected to the right place. Check this out. To do that, we need to add to arguments to our controller. first something a service called guard authentication handler guard handler, and the second thing is your actual authenticator that you want to authenticate through sso login form authenticator form authenticator. Once we have those two things, instead of redirecting to a normal route or to say return guard, guard, handler, arrow, authenticate user and handle success, 
+down in authentication success. We added some extra code here to make sure that if
+the user went to slept, for example `/admin` `/comment` as an anonymous user, after they
+login, they're actually sent back to that page. You can make the same argument For a
+registration page. For example, imagine that I'm building a store and I'm anonymous.
+I add some things to my cart and then I go to `/checkout`. Well `/checkout` requires me
+to be logged in, so I'm sent to the login form, but I don't have an account yet, so
+instead I registered after I finished registration, where should I be taken to? I
+need to be taken back to the checkout page. I went to mimic the same thing that we
+did inside of our authentic cater. Those two problems can be solved super easily.
+What we're basically they're going to do is tell Symfony after we save the user to
+log us in using our `LoginFormAuthenticator` that will authenticate us and it will
+also go through the same `onAuthenticationSuccess` so that were redirected to the
+right place. Check this out. To do that, we need to add to arguments to our
+controller. first something a service called `GuardAuthenticationHandler $guardHandler`, 
+and the second thing is your actual authenticator that you want to
+authenticate through sso `LoginFormAuthenticator $formAuthenticator`. Once we have
+those two things, instead of redirecting to a normal route or to say 
+`return $guardHandler->authenticateUserAndHandleSuccess()`,
 
-just needs a few argument and needs the user that's being logged in user and he's the current request and it needs which authenticator you gonna log in as. So we're gonna say form authenticator. The last thing that needs the provider key, that's just the name of your firewall. So we'll hardcode nate reckoned right there and that's it. So let's go back, click back to register this time, make you make sure that you register as a different user password, engage, agree, and it works perfect. And actually thiS wouldn't be notIced. One thing that we had been neglecting, which is if you look in your user entity, nope, never mind, don't talk about that. It's already unique.
+just needs a few argument and needs the `$user` that's being logged in user and he's the
+current `$request` and it needs which authenticator you gonna log in as. So we're gonna
+say `$formAuthenticator`. The last thing that needs the provider key, that's just the
+name of your firewall. So we'll hardcode nate reckoned right there and that's it. So
+let's go back, click back to register this time, make you make sure that you register
+as a different user password, engage, agree, and it works perfect. And actually thiS
+wouldn't be notIced. One thing that we had been neglecting, which is if you look in
+your `User` entity, nope, never mind, don't talk about that. It's already unique.
