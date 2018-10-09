@@ -55,6 +55,18 @@ in our existing controllers:
 
 [[[ code('bd1a09fcb3') ]]]
 
+***TIP
+A simpler solution (and one that avoids a deprecation warning) is to advertise to your IDE that getUser() returns a User with some PHPDoc:
+```
+/**
+ * @method User getUser()
+ */
+class BaseController extends AbstractController
+{
+}
+```
+***
+
 Then, I'll go to the "Code"->"Generate" menu - or `Command`+`N` on a Mac, click "Override
 Methods" and override  `getUser()`. We're not *actually* going to override how this
 method works. Just return `parent::getUser()`. But, add a return type `User` - *our*
