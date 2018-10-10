@@ -9,13 +9,19 @@ Time to find a different career! The end is nigh!
 Suddenly, a super-hero swoops in to save the day! This hero's name? switch_user.
 
 In `security.yaml`, under your firewall, activate our hero with a new key: `switch_user`
-set to `true`. As *soon* as you do this, you can go to *any* URL and add `?_switch_user=`
-and the email address of a user that you want to impersonate. Let's try `spacebar1@example.com`.
+set to `true`:
+
+[[[ code('07f725d4a3') ]]]
+
+As *soon* as you do this, you can go to *any* URL and add `?_switch_user=` and the email
+address of a user that you want to impersonate. Let's try `spacebar1@example.com`.
 
 And... access denied! Of course! To prevent *any* user from taking advantage of
 this little trick, the `switch_user` feature requires you to have a special role
 called `ROLE_ALLOWED_TO_SWITCH`. Go back to `security.yaml` and give `ROLE_ADMIN`
-users this new role under `role_hierarchy`.
+users this new role under `role_hierarchy`:
+
+[[[ code('f52d99074c') ]]]
 
 Ok, watch closely: we still have the magic `?_switch_user=` in the URL. Hit enter.
 That's gone, yea! I'm logged in as `spacebar1@example.com`! You can see
@@ -31,7 +37,11 @@ the code inside Symfony that helps reload the user from the session at the begin
 of each request. But it is *also* used by a few other features to load the user,
 like `remember_me` and `switch_user`. If you're using the Doctrine user provider
 like we are, then this `property` key determines which field will be used for all
-of this. If you changed this to `id`, we would need to use the `id` with switch user.
+of this:
+
+[[[ code('50b7837830') ]]]
+
+If you changed this to `id`, we would need to use the `id` with switch user.
 
 ## Adding a Banner when you are Impersonating
 
@@ -52,9 +62,13 @@ we are switched to another user, Symfony gives us a special role called
 
 > You are currently switched to this user
 
+[[[ code('c9004c41c2') ]]]
+
 And, to maximize our fanciness, let's add a link to exit. Use the `path` function
 to point to `app_homepage`. For the second argument, pass an array with the
-necessary `_switch_user` set to `_exit`. At the end, say "Exit Impersonation".
+necessary `_switch_user` set to `_exit`. At the end, say "Exit Impersonation":
+
+[[[ code('3f1321367c') ]]]
 
 ## Adding Query Parameters with path()
 
@@ -64,11 +78,17 @@ But... wait... the way we just used the `path()` function was a bit weird.
 
 Why? Open `templates/article/homepage.html.twig` and find the article list. You
 might remember that the second argument of the `path()` function is *normally* used
-to fill in the  "wild card" values for a route. 
+to fill in the  "wild card" values for a route:
 
-Hold Command or Control and click `article_show`. Yep! This route has a `{slug}`
-wild card. And so, when we link to it, we need to pass a value for that `slug`
-wildcard via the 2nd argument to `path()`.
+[[[ code('11724a47a0') ]]]
+
+Hold `Command` or `Control` and click `article_show`. Yep! This route has a `{slug}`
+wild card:
+
+[[[ code('31932f1196') ]]]
+
+And so, when we link to it, we need to pass a value for that `slug` wildcard via
+the 2nd argument to `path()`.
 
 We *already* knew that. And *this* is the *normal* purpose of the second argument
 to `path()`. However, *if* you pass a key to the second argument, and that route
