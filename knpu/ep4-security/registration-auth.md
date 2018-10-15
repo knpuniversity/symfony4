@@ -1,115 +1,145 @@
-# Registration Auth
+# Manual Authentication / Registration
 
-Coming soon...
+Hey! You've made it through almost this *entire* tutorial! Nice work! I have
+just a *few* more tricks to show you before we're done - and they're good ones!
 
-Okay guys, we are through most of this tutorial. I just want to show a couple more
-important things right now. We're going to turn from API to actually creating a
-registration form, so move over to your code. Let's open our `AccountController`. That
-seems like A. Oops. Let's move over. Let's go to our `SecurityController`. This has
-`login` and `logout`. Let a new `public function register()` here. We'll give it
-the normal route for `/register`. We'll give it a name of `app_register`. Now here's the
-interesting thing about registration. It has zero to do with security in reality, to
-think about it. What is registration? It's nothing more than creating a new `User`
-record in your table. That's just database stuff. It has nothing to do with security,
-so why are we going through it? Well, there is a little bit of security right at the
-end. You'll see. Let's just right now, let's re. Let's render a template. 
-`$this->render('security/register.html.twig')`, not a cheat. I'm actually
-going to go into security. We're going to copy our `login` template and paste this to
-`register.html.twig` and we'll just modify some things here. We'll change the title on
-the page.
+## Creating the Registration Form
 
-Yeah,
+First, I want to create a registration form. Find your code and open
+`SecurityController`. In addition to `login` and `logout`, add a new
+`public function register()`. Give it a route - `/register` and a name: `app_register`.
 
-I'll delete the uh, authentication error stuff and I am going to put a little comment
-here that says to do replace with a Symfony form. We haven't talked about the Symfony
-form system yet, so I don't want to use it here, but this is a case where I would
-normally use Symfony's form system because it handles validation for us, handles CSRF
-protection, but for now we're just going to use this html form so that we can get to
-the security part of what I want to talk about. So we'll change the `h1`, remove the
-value = on the email field because that would should always be blank. Remove the CSRF
-token. We could validate CSRF in you should on your site, but reality just use
-Symfony's form system and it handles CSRF protection automatically for you. And then
-will hijack the remember me box check box and turn this into a terms box. We'll say
-agree to terms. I for sure read because we always read the terms. Now at the bottom
-we'll say registered. Okay symbol. Let's move over. Go to `/register` and got it. And
-actually let's log out and move back over and open up `base.html.twig` and
-scroll down just a little bit. So we find our `logout`, link, our `login` link. There it
-is. Let's create a second doc there a that goes to our new `app_register` route and
-we'll call this register.
+Here's the interesting thing about registration. It has *nothing* to do with
+security! Think about it. What *is* registration? It's just a form that creates a
+new record in the `User` table. That's it! That's just database stuff.
 
-Go over, refresh, and perfect. Now until it register, there is our registration form.
-So we're going to work on the submit logic for this. So
+So then... why are we even *talking* about this in a security tutorial? Well...
+to create the *best* user experience, there will be just a *little* bit of security
+right at the end. Because after registration, I want to instantly authenticate the
+new user.
 
-just like with our `login` form, because there's no action = this is going to submit
-right back to the same year. Well unlike login, because this is just a normal page,
-we're going to handle that submit logic right inside of here. So first thing we need
-is the `Request` objects. We configure out whether or not to say `POST` request. So I'll
-type head to `Request` from `HttpFoundation`, had a `$request` argument, and once again I'm
-going to put them all to do reminder here to use Symfony forms and validation. We're
-skipping that right now that `if ($request->isMethod('POST'))`, then we know that we actually
-want to process things. So cool. Again, registration is nothing more than just
-creating a new `User` object, so `$user = new User()`. Then we'll set some data on it. 
-`$user->setEmail($request->request->get('email')`. Remember `$request->request` is the way 
-that you get post data. And on our registration form we had `name="email"` and `name="password"`. 
-So those are the two fields that we're going to want to read off. Um, next space, 
-`$user->setFirstName()`. This is required in the database. We don't actually have a field for 
-it and a registration. So I'm just going to put `'Mystery'` for now. You enter in a real app, 
-you either want to add that to your registration form or make it knowable in the database. 
-So it's optional. And then finally we're going to set the password, 
+More on that later. Right now, render a template:
+`$this->render('security/register.html.twig')`. Then... I'll cheat: in `security/`,
+copy the `login.html.twig` template, paste and call it `register.html.twig`. Let's
+see: change the title, delete the authentication error stuff and I am going to add
+a little comment here that says that we should replace this with a Symfony form
+later. We haven't talked about the form system yet, so I don't want to use it
+here. But, normally, I *would* use the form system because it handles validation
+and automatically adds CSRF protection.
 
-but of course we are never ever, ever, ever going to set the plain text password. We
-need to encode this password. And you remember we already did this inside of `UserFixture` 
-using the `UserPasswordEncoderInterface`. That makes it very easy. And our
-controller, we can get a service as an argument so we can say `UserPasswordEncoderInterface` 
-and call that `$passwordEncoder`.
+But, to show off how to manually authenticate a user after registration, this HTML
+form will work *beautifully*. Change the `h1`, remove the `value=` on the `email`
+field so that it always starts blank and take out the CSRF token. We *do* need CSRF
+protection on this form... but I'll skip it for now, because we'll refactor this
+into a Symfony form in a future tutorial.
 
-Okay.
+And finally, hijack the "remember me" checkbox and turn it into a terms box.
+We'll say:
 
-And down here we can say `$passwordEncoder->encodePassword()`, and this needs the `User`
-object. And then the plain password which is `$request->request->get('password')`. 
-And that is it. Our `User` object is set up to say this, I'll say 
-`$em = $this->getDoctrine();`. I'll use the nice doctrine shortcut. 
-`$em->persist($user)`, `$em->flush()`, all very boring Co. This looks a lot like what we're doing in our
-fixtures. Finally, The last thing we want to do at the end of any form, submit is
-redirect. So I think we should say so say `return $this->redirectToRoute()`. That's the
-shortcut method we were looking at earlier and let's redirect actually to our account
-page. `'app_account'`. Awesome. let's try it out. Swaddle register as `ryan@symfonycasts.com`. 
-Password `engage`. Agreed to the terms that I for sure read and hit register and. Oh shoot. 
-Oh, and `$this->getDoctrine()->getManager()`. That's what I meant to do. All right, 
-let's move on and try this. I'll login as `ryan@symfonycasts.com`. Password `engage`, 
-I'll for sure agree to the terms that I read. Register. And um, what were on the 
-login form? Huh? Can actually look where anonymous. Well here's what actually 
-happened. Registration just worked
+> Agree to terms I for sure read
 
-and then we were redirected to `/account`, but that requires you to be logged in. So it
-redirected us to `/login`. That is not the flow we want for a better user experience.
-As soon as the user logs in, as soon as use user registers, I want to log them in
-immediately. There's also another problem if you look in your `LoginFormAuthenticator.php`
+Oh, and update the button: Register.
 
-down in authentication success. We added some extra code here to make sure that if
-the user went to slept, for example `/admin` `/comment` as an anonymous user, after they
-login, they're actually sent back to that page. You can make the same argument For a
-registration page. For example, imagine that I'm building a store and I'm anonymous.
-I add some things to my cart and then I go to `/checkout`. Well `/checkout` requires me
-to be logged in, so I'm sent to the login form, but I don't have an account yet, so
-instead I registered after I finished registration, where should I be taken to? I
-need to be taken back to the checkout page. I went to mimic the same thing that we
-did inside of our authentic cater. Those two problems can be solved super easily.
-What we're basically they're going to do is tell Symfony after we save the user to
-log us in using our `LoginFormAuthenticator` that will authenticate us and it will
-also go through the same `onAuthenticationSuccess` so that were redirected to the
-right place. Check this out. To do that, we need to add to arguments to our
-controller. first something a service called `GuardAuthenticationHandler $guardHandler`, 
-and the second thing is your actual authenticator that you want to
-authenticate through sso `LoginFormAuthenticator $formAuthenticator`. Once we have
-those two things, instead of redirecting to a normal route or to say 
-`return $guardHandler->authenticateUserAndHandleSuccess()`,
+Let's see how it looks! Move over, go to `/register` and... got it! Logout, then
+move back over and open up `base.html.twig`. Scroll down just a little bit to find
+the "Login" link. Let's create a second link that points to the new `app_register`
+route. Say, "Register".
 
-just needs a few argument and needs the `$user` that's being logged in user and he's the
-current `$request` and it needs which authenticator you gonna log in as. So we're gonna
-say `$formAuthenticator`. The last thing that needs the provider key, that's just the
-name of your firewall. So we'll hardcode nate reckoned right there and that's it. So
-let's go back, click back to register this time, make you make sure that you register
-as a different user password, engage, agree, and it works perfect. And actually thiS
-wouldn't be notIced. One thing that we had been neglecting, which is if you look in
-your `User` entity, nope, never mind, don't talk about that. It's already unique.
+Move back and check it out. Not bad!
+
+## Handing the Registration Submit
+
+Just like with the `login` form, because there is no `action=` on the form, this
+will submit right back to the same URL. But, *unlike* login, because this is just
+a normal page, we *are* going to handle that submit logic right inside of the
+controller.
+
+First, get the Request object by adding an argument with the `Request` type hint:
+the one from HttpFoundation. Below, I'm going to add *another* reminder to use the
+Symfony form & validation system later.
+
+Then, to only process the data when the form is being submitted, add
+`if ($request->isMethod('POST'))`.
+
+Inside... our job is simple! Registration is nothing more than a mechanism to
+create a new `User` object. So `$user = new User()`. Then set some data on it:
+`$user->setEmail($request->request->get('email'))`. Remember `$request->request`
+is the way that you get `$_POST` data. And, the *names* of the fields on our form
+are `name="email"` and `name="password"`. But before we handle the password, add
+`$user->setFirstName()`. This field is required in the database... but, we don't
+*actually* have that field on the form. Just use `Mystery` for now. In a real
+app, I would either add this field to the registration form, or make it `nullable`
+in the database, so it's optional.
+
+Finally, let's set the password. But... of course! We are never ever, ever, ever
+going to save the *plain* password. We need to encode it. We already did this
+inside of `UserFixture`. Ah yes, the key was the `UserPasswordEncoderInterface`
+service. In our controller, add another argument: `UserPasswordEncoderInterface` 
+`$passwordEncoder`.
+
+Below, we can say `$passwordEncoder->encodePassword()`. This needs the `User`
+object and the plain password that was just submitted:
+`$request->request->get('password')`.
+
+We are ready to save! Get the entity manager with `$em = $this->getDoctrine()->getManager()`.
+Then, `$em->persist($user)` and `$em->flush()`. All delightfully boring code.
+This looks a lot like what we're doing in our fixtures.
+
+Finally, after *any* successful form submit, we always redirect. Use
+`return $this->redirectToRoute()`. This is the shortcut method that we were looking
+at earlier. Redirect to the account page: `app_account`.
+
+Awesome! Let's give this thing a spin! I'll register as `ryan@symfonycasts.com`,
+password `engage`. Agree to the terms that I for sure read and... Register!
+Bah! That smells like a Ryan mistake! Yep! Use `$this->getDoctrine()->getManager()`.
+*That's* what I meant to do.
+
+Move over and try this again: `ryan@symfonycasts.com`, password `engage`, agree
+to the terms that I read and... Register!
+
+## Authentication after Registration
+
+Um... what? We're on the *login* form? What happened? First, according to the
+web debug toolbar, we are still anonymous. That makes sense: we *registered*,
+but we did *not* login. After registration, we were redirected to `/account`... but
+because we are *not* logged in, that sent us here.
+
+This is *not* the flow that I want my users to experience. Nope, as *soon* as
+the user registers, I want to log them in automatically.
+
+Oh, and there's also *another* problem. Open `LoginFormAuthenticator` and find
+`onAuthenticationSuccess`. We added some extra code here to make sure that
+if the user went to, for example, `/admin/comment` as an anonymous user, then,
+after they log in, they would be sent *back* to `/admin/comment`.
+
+And... hey! I want that *same* behavior for my registration form! Imagine that you're
+building a store. As an anonymous user, I add some things to my cart and finally
+go to `/checkout`. But because `/checkout` requires me to be logged in, I'm sent
+to the login form. And because I don't have an account yet, I instead click to register
+and fill out that form. After submitting, where should I be taken to? That's easy!
+I should *definitely* be taken *back* to `/checkout` so I can continue what I was
+doing!
+
+These two problems - the fact that we want to automatically authenticate the user
+after registration *and* redirect them intelligently - can be solved at the same
+time! After we save the `User` to the database, we're basically going to tell
+Symfony to use our `LoginFormAuthenticator` class to authenticate the user and
+redirect by using its `onAuthenticationSuccess` method.
+
+Check it out: add two arguments to our controller. First, a service called
+`GuardAuthenticationHandler $guardHandler`,  Second, the authenticator that you
+want to authenticate through: `LoginFormAuthenticator $formAuthenticator`. Once
+we have those two things, instead of redirecting to a normal route use
+`return $guardHandler->authenticateUserAndHandleSuccess()`. This needs a few
+arguments: the `$user` that's being logged in, the `$request` object, the authenticator -
+`$formAuthenticator` and the "provider key". That's just the name of your firewall:
+`main`.
+
+Cool! Let's try it! Click back to register. This time, make sure that you register
+as a different user, password `engage`, agree to the terms, submit and... nice!
+We're authenticated *and* sent to the correct place.
+
+Next - we're going to start talking about a *very* important and *very* fun feature
+called "voters". Voters are *the* way to make more *complex* access decisions,
+like, determining that a User can edit *this* Article because they are its author,
+but not an Article created by someone else.

@@ -1,150 +1,132 @@
-# Author Relation
+# Author ManyToOne Relation to User
 
-Coming soon...
+Check out the homepage: every `Article` has an author. But, open the
+`Article` entity. Oh: the `author` property is just a *string*!  When we
+originally created this field, we hadn't learned how to handle database
+relationships yet.
 
-If you look in the homepage, you can see that every `Article` has an author, but when
-we originally set up the system, if you look inside `Article`,
+But now that we are *way* more awesome than "past us", let's replace this `author`
+string property with a proper relation to the `User` entity. So every `Article`
+will be "authored" by a specific `User`.
 
-the `author` is just a string field and that's because we didn't know how to handle
-the database relationships correctly. What I want to do now is replaced this `author`
-string property with a proper relation to our `User` entity, so every `Article` will be
-created by a specific user. The reason we're doing this is it's going to lead us down
-to some very interesting access control problems with being able to control who is
-allowed to edit each individual `Article`, but first let's just worry about the
-relationship stuff, so to remove first, let's remove the `author` property entirely.
-Also find the getter and setter methods and we will remove those. How about a
+Wait... why are we talking about database relationship in the security tutorial?
+Am I wandering off-topic again? Well, only a *little*. Setting up database
+relations is *always* good practice. But, I have a *real*, dubious, security-related
+goal: this setup will lead us to some *really* interesting access control problems -
+like denying access to edit an `Article` unless the logged in user is that
+Article's *author*.
+
+Let's smash this relationship stuff so we can get to that goodness! First,
+remove the `author` property entirely. Find the getter and setter methods
+and remove those too. Now, find your terminal and run:
+
 ```terminal
 php bin/console make:migration
 ```
-If this were on production, you might need to be a little bit more careful to make
-sure you didn't lose that data. If you needed it in the migrations directory, I'll 
-open up the new migration and yep, `ALTER TABLE `Article` DROP author`. 
-Great. Next, let's go back and let's run
+
+If our app were already deployed, we might need to be a little bit more careful
+so that we don't *lose* all this original author data. But, for us, no worries:
+that author data was garbage! Find the `Migrations/` directory, open up the new
+migration file and yep! `ALTER TABLE Article DROP author`.
+
+## Adding the Relation
+
+Now, lets *re-add* author as a relation:
+
 ```terminal
 php bin/console make:entity
 ```
-Let's read ad that `article` property, the other property, but
-as a relationship, so let's update the `Article` on Steve. We're going to add a new
-property called `author` will make it a relationship. This is going to be a
-relationship to our `User` entity. Now this is going to be another `ManyToOne`
-relationship because each `Article` has one `User` in each `User` can have many articles,
-so `ManyToOne`.
 
-The other author property should not be knowable and this should be required in the
-database and we'll say "yes" to mapping the other side of the relationship and I'll
-say "no" to orphan removal, but that's not important right now. Then I'll enter to
-finish.
-Then once again, run
+Update the `Article` entity and add a new `author` property. This will be
+a "relation" to the `User` entity. For the type, it's another `ManyToOne` relation:
+each `Article` has one `User` and each `User` can have many articles. The
+`author` property will be *required*, so make it *not* nullable. We'll say
+"yes" to mapping the other side of the relationship and I'll say "no" to
+`orphanRemoval`, though, that's not important. Cool! Hit enter to finish.
+
+Now run:
+
 ```terminal
 php bin/console make:migration
 ```
-Oh,
 
-and once again, look over and oh, of course you probably saw I made a mistake there.
-You can say it's adding `author_id`, but dropping `author`. That was my mistake.
-Delete that migration file because I free after I generated the initial migration file, 
-I forgot to migrate. 
-```terminal-silent
+Like always, let's go check out the new migration. Woh! I made a mistake! It *is*
+adding `author_id` but it is *also* dropping `author`. But that column should
+already be gone by now! My bad! After generating the *first* migration, I forgot
+to run it! This diff contains *too* many changes. Delete it. Then, execute the
+first migration:
+
+```terminal
 php bin/console doctrine:migrations:migrate
 ```
-Well, migrate that will drop that `author`, original `author`
-property. Now we'll clear and ron
+
+Bye bye original `author` column. *Now* run:
+
 ```terminal
 php bin/console make:migration
 ```
-again.
 
-Gosh darn it.
+Go check it out. *Much* better: it adds the `author_id` column and foreign
+key constraint. Close that and, once again, run:
 
-Move over and okay, this looks better. Just adding the `author_id` and the foreign
-key constraints on that. I'll close out those migrations and once again, run
 ```terminal
 php bin/console doctrine:migrations:migrate
 ```
-Whoa. When you can see this actually explodes, this
-isn't one of those tricky migrations where because we made the new column required,
-it actually fails to add the foreign key in the migration. If this were, if our
-application we're already deployed to production, well, we'd actually need to do is
-actually first make the property `nullable=true`, generate the migration, so that's
-allowed to be `null`. Then run some script or a query to set up the author for all the
-existing articles. Then changes this dental legal spouse and generate another
-migration. So three different steps to do that because this isn't on production yet.
 
-Yeah,
+## Failed Migration!
 
-we know when we first deployed, our database is going to be empty and it's not going
-to have this problem, so we're not going to do is actually run
+Woh! It explodes! Bad luck! This is one of those *tricky* migrations. We made
+the new column required... but that field will be *empty* for all the existing
+rows in the table. That's not a problem on its own... but it *does* cause a problem
+when the migration tries to add the foreign key! The fix depends on your situation.
+If our app were already deployed to production, we would need to follow a 3-step
+process. First, make the property `nullable=true` at first and generate that migration.
+Second, run a script or query that can somehow set the `article_id` for all the
+existing articles. And finally, change the property to `nullable=false` and
+generate one last migration.
+
+But because our app has *not* been deployed yet... we can cheat. First, drop
+*all* of the tables in the database with:
+
 ```terminal
 php bin/console doctrine:schema:drop --full-database --force
 ```
-That's a fancy way of actually dropping every table in the database. Then I'm going 
-to rerun all of my aggressions to make sure that they are working. Okay, cool. And you 
-can see it works that time because there weren't any articles in the database, so 
-now we do need to go into our `ArticleFixtures` class though.
 
-Okay.
+Then, re-run all the migrations to make sure they're working:
 
-It makes sure we update the code in here. Set `$author`. His strength thing is not going
-to work anymore. Well, we need to do is actually relate this to one of the users
-that's created in `UserFixture`. Remember we have two groups, these main users and
-these admin users. I'm going to allow normal people to create a `Article`, so I'm going
-to relate it to one of these main users. To do that, we can save
-`$this->getRandomReference('main_users')` that will randomly give us one
-of those elements and then on the top of the class I can remove this old static
-property. All right, let's try that. Move over. Run
+```terminal
+php bin/console doctrine:migrations:migrate
+```
+
+Awesome! Because the `article` table is empty, no errors.
+
+## Adding Article Author Fixtures
+
+Now that the database is ready, open `ArticleFixtures`. Ok: this simple
+`setAuthor()` call will *not* work anymore. Nope, we need to relate this to one
+of the users from `UserFixture`. Remember we have two groups: these `main_users`
+and these `admin_users`. Let's allow normal users to be the author of an `Article`.
+In other words, use `$this->getRandomReference('main_users')` to get a *random* `User`
+object from that group. At the top of the class, I can remove this old static property.
+
+Try it! Move over and run:
+
 ```terminal
 php bin/console doctrine:fixtures:load
 ```
-and it works, but only luckily. Notice that `UserFixture` happened to run
-before `ArticleFixtures`.
 
-We need that to happen now that these are dependent on each other but down and get
-dependencies. I actually want you to add `UserFixture::class`, that will
-make sure that the `UserFixture` always run before `ArticleFixtures`. Whereas right
-now there wasn't guaranteed yet. Do you want to? You can try it again and you shouldn't
-see it will all load in that same order, but now it's a guaranteed. 
+It works! But... only by chance. `UserFixture` was executed before
+`ArticleFixtures`... and that's important! It would *not* work the other way around.
+We just got lucky. To enforce this ordering, at the bottom of `ArticleFixtures`,
+in `getDependencies()`, add `UserFixture::class`. Now `UserFixture` will *definitely*
+run before `ArticleFixtures`.
 
-All right, so our articles now proper user relationships, but we haven't updated 
-anything else in our code. And if refers to the home page, now you get a big explosion 
-and exception has been thrown. Rendering the template `Catchable Fatal Error: Object of Class
-Proxies\__CG__\App\Entity\User cannot be converted to string`. So two important
-things here, whenever you see this proxies thing, this isn't internal object as wrapping 
-your entity, ignore it. I want you to pretend like this just says that our `User` 
-could not be converted to `string`. This part of the `Article` makes sense because 
-in our template we're just friending `{{ article.author}}` that used to be a `string`, 
-but that's now a `User` object.
-So we could go change this to `Article` that author dot first name or we can go into
-our `User` class and add a two string method `public function __toString()` and 
-`return $this->getFirstName()` Soon as we do that. Nice. It works perfectly. 
+If you try the fixtures again:
 
-Alright, so what I really want to talk about is I want to start talking
-about, uh, adding an admin section where you can edit articles. So we already have an
-`ArticleAdminController` though. There's only one end point and it just has a di
-statement in it right now. Hello, this, let's create another `public function edit()`. I love this. I'm going to put the normal route and we'll have the you where
-I'll be `/admin/article/{id}/edit`. I won't give it any name yet.
-Down here we can actually say `Article $article`.
-
-Yeah,
-
-and Cynthia will use the `id`, the query for that specific `Article` and inside just
-to see if this is working. Let's do a `dd($article)`. Now. You'll remember that this
-entire controller protected by `ROLE_ADMIN_ARTICLE` right now, so only avid users can
-see it. To get a valid id. I'm actually going to go over my database run
 ```terminal-silent
-php bin/console doctrine:query:sql 'SELECT * FROM article'
+php bin/console doctrine:fixtures:load
 ```
-and it looks like right now I can use the ID 20. Perfect, so let's go to 
-`/admin/article/20/edit` to the login page. If you've got
-an to access, I just go log into somebody else and we'll say
-`admin2@thespacebar.com`, password `engage`
 
-and her. Perfect. We are bumped back to that page. Now here's where things get
-interesting. I do want admin users to be able to access this page, but I also want
-the author of this `Article` to be able to edit it too. The problem is if the author is
-just a normal user, they're not going to have `ROLE_ADMIN_ARTICLE` and I don't want
-to give them `ROLE_ADMIN_ARTICLE` because I don't want them to be able to create new.
-Maybe I don't want them to do other stuff like create new articles or delete
-articles, so for the first time our access control rules are more complex. We need to
-be able to allow admin users to edit this `Article` or the owner of the `Article`. The
-permissions are different for each `Article`. We're going to solve that next with a
-great system called voters.
+same result. But now, it's guaranteed!
+
+Next - let's finish our refactoring and create a new "Article Edit" page!

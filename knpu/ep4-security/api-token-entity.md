@@ -12,7 +12,7 @@ php bin/console make:entity
 ```
 
 Call the class `ApiToken`. And, we need a few fields: `token`, a string that's not
-nullable, `expiredAt` so that we can set an expiration as a `datetime`, and `user`,
+nullable, `expiresAt` so that we can set an expiration as a `datetime`, and `user`,
 which will be a `relation` type to our `User` class. In this situation, we want a
 ManyToOne relationship so that each `ApiToken` has one `User` and each `User` can
 have many ApiTokens. Make this *not* nullable: every API token must be related to
@@ -60,7 +60,7 @@ Oh, and we can *also* generate the random `token` string here. Use
 we can also set the expires time here - `$this->expiresAt = new \DateTime()` with
 `+1 hour`. You can set the expiration time for however long you want.
 
-Now that we are initializing everything in the constructor, we can clean up thre class:
+Now that we are initializing everything in the constructor, we can clean up the class:
 remove all the setter methods. Yep, our token class is now *immutable*, which wins
 us *major* hipster points. Immutable just means that, once it's instantiated, this
 object's data can never be changed. Some developers think that making immutable
@@ -70,11 +70,11 @@ setter methods makes sense. But sometimes, it makes more sense to setup some thi
 in the constructor and remove the setter methods if you don't need them.
 
 Oh, and if, in the future, you want to *update* the data in this entity - maybe you
-need the to change the `expiresAt`, it's totally OK to add new public functions to
+need to change the `expiresAt`, it's totally OK to add a new public function to
 allow that. But, when you do, again, be thoughtful. You *could* add a
 `public function setExpiresAt()`. Or, if all you ever do is re-set the `expiresAt`
 to one hour from now, you could instead create a `public function renewExpiresAt()`
-that handles the logic for you. That method name is more meaningful, and centralizes
+that handles that logic for you. That method name is more meaningful, and centralizes
 more control inside the class.
 
 Ok, I'm done with my rant!

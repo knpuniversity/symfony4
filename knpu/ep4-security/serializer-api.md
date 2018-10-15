@@ -25,7 +25,7 @@ Why? Hold Command or Control and click into the `json()` method. This method doe
 two different things, depending on your setup. First, it checks to see if Symfony's
 serializer component is installed. Right now, it is *not*. So, it falls back to
 passing the `User` object to the `JsonResponse` class. I won't open that class,
-but *all* it does internally is called `json_encode()` on that data we pass inL
+but *all* it does internally is called `json_encode()` on that data we pass in:
 the `User` object in this case.
 
 Do you know what happens when you call `json_encode()` on an object in PHP? It only...

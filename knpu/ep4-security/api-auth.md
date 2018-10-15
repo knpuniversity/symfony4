@@ -80,7 +80,7 @@ you to do all *three* of these.
 First, you could allow API tokens to be created through a web interface. Like, a
 user logs in, they navigate to some API token page, and then they create one or
 more API tokens that are tied to their account. This solution is dead simple.
-The negative is that there is no automated way to create API tokens: you can't
+The negative is that there is no automated way to create an API token: you can't
 write a script that can create them. It must be done manually.
 
 Second, you could write an API endpoint whose jobs is to create & return tokens.

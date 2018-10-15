@@ -29,4 +29,6 @@ chapters:
     - api-token-authenticator2
     - registration-auth
     - author-relation
+    - article-admin-setup
     - voters
+    - custom-voter
