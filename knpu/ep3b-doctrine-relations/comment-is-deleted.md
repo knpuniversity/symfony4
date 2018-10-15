@@ -129,7 +129,7 @@ comments:
 $comments = [];
 
 foreach ($this->getComments() as $comment) {
-    if (!$comment->isDeleted()) {
+    if (!$comment->getIsDeleted()) {
         $comments[] = $comment;
     }
 }

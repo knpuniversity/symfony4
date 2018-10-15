@@ -2,8 +2,12 @@
 
 So far, our site has two types of users. First, for some pages, like the account page,
 we only care that you are logged in - a "normal" user. And second, there are a few
-admin pages. Open up `ArticleAdminController` and `CommonAdminController`. Both of
-these are protected by `ROLE_ADMIN`.
+admin pages. Open up `ArticleAdminController` and `CommentAdminController`. Both of
+these are protected by `ROLE_ADMIN`:
+
+[[[ code('541300c1b9') ]]]
+
+[[[ code('ec1ef2cad9') ]]]
 
 A lot of sites are just this simple: you have normal users and admin users, who have
 access to *all* of the admin sections. But, if you have a more complex setup - like
@@ -20,12 +24,19 @@ or `ROLE_THE_PERSON_THAT_OWNS_THE_COMPANY`... or something like that. But, I don
 me access to.
 
 Instead, I like to use role names that *specifically* describe *what* you're
-protecting - like `ROLE_ADMIN_ARTICLE` for `ArticleAdminController`. And, for
-`CommentAdminController`: `ROLE_ADMIN_COMMENT`.
+protecting - like `ROLE_ADMIN_ARTICLE` for `ArticleAdminController`:
+
+[[[ code('072fbf4aef') ]]]
+
+And, for `CommentAdminController`: `ROLE_ADMIN_COMMENT`:
+
+[[[ code('bb6e61091a') ]]]
 
 Oh, and also open `base.html.twig`. There's one other spot here where we use
 `ROLE_ADMIN`. There it is: to hide or show the "Create Post" link. *Now* that
-should be `ROLE_ADMIN_ARTICLE`.
+should be `ROLE_ADMIN_ARTICLE`:
+
+[[[ code('3e292b8be7') ]]]
 
 ## role_hierarchy
 
@@ -42,7 +53,9 @@ access to that new section, and give *them* that new role. That's a bummer!
 But... don't worry! Symfony has our backs with a sweet feature called
 `role_hierarchy`. Open `config/packages/security.yaml`. Anywhere inside, I'll
 do it above firewalls, add `role_hierarchy`. Below, put `ROLE_ADMIN` set to an
-array with `ROLE_ADMIN_COMMENT` and `ROLE_ADMIN_ARTICLE`.
+array with `ROLE_ADMIN_COMMENT` and `ROLE_ADMIN_ARTICLE`:
+
+[[[ code('eefd63ac50') ]]]
 
 It's *just* that simple. Now, *anybody* that has `ROLE_ADMIN` *also* has these
 two roles, automatically. To prove it, go log out so that we can log in as one of

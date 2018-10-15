@@ -9,15 +9,22 @@ php bin/console make:entity
 ```
 
 to update the `User` entity. Add `twitterUsername`... and make this nullable in
-the database: this is an optional field. Cool! Now run:
+the database: this is an optional field:
+
+[[[ code('32399c7b24') ]]]
+
+Cool! Now run:
 
 ```terminal
 php bin/console make:migration
 ```
 
 Let's go check that out: look in the `Migrations/` directory and open the new
-file. And... yep! It looks perfect. Move back to your terminal one more time and
-run:
+file:
+
+[[[ code('60e63b7ef2') ]]]
+
+And... yep! It looks perfect. Move back to your terminal one more time and run:
 
 ```terminal
 php bin/console doctrine:migrations:migrate
@@ -25,8 +32,11 @@ php bin/console doctrine:migrations:migrate
 
 Excellent! Now that we have the new field, let's *set* it on our dummy users in the
 database. Open `UserFixture`. Inside the first set of users, add if
-`$this->faker->boolean`, then `$user->setTwitterUsername($this->faker->userName)`.
-The `$faker->boolean` is cool: it will return true or false randomly. So, about
+`$this->faker->boolean`, then `$user->setTwitterUsername($this->faker->userName)`:
+
+[[[ code('de6250b15b') ]]]
+
+The `$faker->boolean` is cool: it will return `true` or `false` randomly. So, about
 *half* of our users will have a twitter username.
 
 Go reload! Run:
@@ -35,9 +45,15 @@ Go reload! Run:
 php bin/console doctrine:fixtures:load
 ```
 
-Finally! Let's get to work in `account/index.html.twig`. Replace the ? marks with
-`app.user.twitterUsername`. Hmm, but we probably don't want to show this block if
-they don't have a `twitterUsername`. No problem: surround this with an if statement.
+Finally! Let's get to work in `account/index.html.twig`. Replace the `?` marks with
+`app.user.twitterUsername`:
+
+[[[ code('3200b0614b') ]]]
+
+Hmm, but we probably don't want to show this block if they don't have a `twitterUsername`.
+No problem: surround this with an `if` statement:
+
+[[[ code('584320e766') ]]]
 
 Perfect! Ok, let's go find a user that has their `twitterUsername` set! Run:
 
@@ -57,8 +73,14 @@ Oh, and there's one other thing that we can *finally* update! See the user avata
 drop-down? That's *totally* hardcoded. Let's roboticize that! Yea, roboticize apparently
 *is* a real word.
 
-Copy the `src` for the RoboHash. Then, open up `base.html.twig` and, instead of
-pointing to the astronaut's profile image, paste it!
+Copy the `src` for the RoboHash:
+
+[[[ code('c9ab630f99') ]]]
+
+Then, open up `base.html.twig` and, instead of pointing to the astronaut's profile
+image, paste it!
+
+[[[ code('b4621c6931') ]]]
 
 Try it! Move over and... refresh!
 
@@ -75,21 +97,33 @@ I don't like duplicating the RoboHash link everywhere. Open your `User` class.
 Let's add a new custom function called `public function getAvatarUrl()`.
 
 We don't actually have an `avatarUrl` property... but that's ok! Give this an `int`
-argument that's optional and the method will return a `string`. Inside, set
-`$url = ` and paste the RoboHash link. Remove the email but add
-`$this->getEmail()`.
+argument that's optional and the method will return a `string`:
+
+[[[ code('459cca80cf') ]]]
+
+Inside, set `$url = ` and paste the RoboHash link. Remove the email but add
+`$this->getEmail()`:
+
+[[[ code('d6682c08b8') ]]]
 
 Easy enough! For the size part, if a `$size` is passed in, use `$url .= `
 to add `sprintf('?size=%dx%d')`, passing `$size` for both of these wildcards.
-At the bottom, `return $url`.
+At the bottom, `return $url`:
+
+[[[ code('f167708669') ]]]
 
 Now that we're done with our fancy new function, go into `index.html.twig`, remove
-the long string, and just print `app.user.avatarUrl`. We can reference `avatarUrl`
-like a property, but behind the scenes, we know that Twig is smart enough to call
-the `getAvatarUrl()` method.
+the long string, and just print `app.user.avatarUrl`:
+
+[[[ code('7759b3735c') ]]]
+
+We can reference `avatarUrl` like a property, but behind the scenes, we know that
+Twig is smart enough to call the `getAvatarUrl()` method.
 
 Copy that, go back into `base.html.twig` and paste. But this time, call it like
-a function: pass 100.
+a function: pass 100:
+
+[[[ code('3a6a7848d8') ]]]
 
 Let's see if it works! Close a tab then, refresh! Yep! And if we copy the image address
 again and load it... nice! A little bit smaller.
