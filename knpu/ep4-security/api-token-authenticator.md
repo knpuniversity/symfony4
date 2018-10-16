@@ -45,7 +45,7 @@ Back to work! Open `ApiTokenAuthenticator`. Ok: this is our *second* authenticat
 so it's time to use our existing knowledge to kick some security butt! For `supports()`,
 our authenticator should only become active if the request has an `Authorization`
 header whose value starts with the word "Bearer". No problem: return
-`$this->headers->has('Authorization')` to make sure that header is set and also check
+`$request->headers->has('Authorization')` to make sure that header is set and also check
 that 0 is the position inside `$request->headers->get('Authorization')` where the
 string `Bearer` and a space appears.
 
