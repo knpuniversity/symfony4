@@ -1964,7 +1964,27 @@
             "id": "formtypeextension-override-rows-option",
             "name": "FormTypeExtension: Override rows option",
             "description": null
+        },
+        {
+            "id": "options-get-dump-options-data",
+            "name": "Options: Get & dump $options['data']",
+            "description": null
+        },
+        {
+            "id": "options-disable-author-on-edit",
+            "name": "Options: Disable author on edit",
+            "description": null
+        },
+        {
+            "id": "options-pass-in-include-published-at-option",
+            "name": "Options: Pass in include_published_at option",
+            "description": null
+        },
+        {
+            "id": "upload-delete-me-4",
+            "name": "Upload: delete me 4",
+            "description": null
         }
     ],
-    "sha": "640d65df21a44c0d5488fdde6a6aa0eaae410fd2"
+    "sha": "51a59e3e92bad754f2c6ddf9d5d6e7a52f6a8bc3"
 }

@@ -1,5 +1,5 @@
 diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
-index ee7f634f..514e96f1 100644
+index ab5c2494..34f608cf 100644
 --- a/src/Form/DataTransformer/EmailToUserTransformer.php
 +++ b/src/Form/DataTransformer/EmailToUserTransformer.php
 @@ -10,10 +10,12 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
@@ -16,7 +16,7 @@ index ee7f634f..514e96f1 100644
      }
  
      public function transform($value)
-@@ -31,7 +33,8 @@ class EmailToUserTransformer implements DataTransformerInterface
+@@ -35,7 +37,8 @@ class EmailToUserTransformer implements DataTransformerInterface
              return;
          }
  

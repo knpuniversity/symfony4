@@ -1,21 +1,21 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index c38f68c3..b5f77d41 100644
+index c38f68c3..8ffab2f1 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
-@@ -28,6 +28,8 @@ class ArticleFormType extends AbstractType
+@@ -28,15 +28,7 @@ class ArticleFormType extends AbstractType
                  'help' => 'Choose something catchy!'
              ])
              ->add('content')
+-            ->add('author', EntityType::class, [
+-                'class' => User::class,
+-                'choice_label' => function(User $user) {
+-                    return sprintf('(%d) %s', $user->getId(), $user->getEmail());
+-                },
+-                'placeholder' => 'Choose an author',
+-                'choices' => $this->userRepository->findAllEmailAlphabetical(),
+-                'invalid_message' => 'Symfony is too smart for your hacking!'
+-            ])
 +            ->add('author', UserSelectTextType::class)
-+            /*
-             ->add('author', EntityType::class, [
-                 'class' => User::class,
-                 'choice_label' => function(User $user) {
-@@ -37,6 +39,7 @@ class ArticleFormType extends AbstractType
-                 'choices' => $this->userRepository->findAllEmailAlphabetical(),
-                 'invalid_message' => 'Symfony is too smart for your hacking!'
-             ])
-+            */
              ->add('publishedAt', null, [
                  'widget' => 'single_text',
              ])

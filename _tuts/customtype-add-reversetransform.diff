@@ -1,5 +1,5 @@
 diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
-index f5207688..021b597a 100644
+index d4318a4a..d4dca50b 100644
 --- a/src/Form/DataTransformer/EmailToUserTransformer.php
 +++ b/src/Form/DataTransformer/EmailToUserTransformer.php
 @@ -3,11 +3,19 @@
@@ -21,8 +21,8 @@ index f5207688..021b597a 100644
 +
      public function transform($value)
      {
-         if (!$value instanceof User) {
-@@ -19,6 +27,12 @@ class EmailToUserTransformer implements DataTransformerInterface
+         if (null === $value) {
+@@ -23,6 +31,12 @@ class EmailToUserTransformer implements DataTransformerInterface
  
      public function reverseTransform($value)
      {

@@ -1,0 +1,55 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 7f1630a1..d37e591a 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -20,7 +20,9 @@ class ArticleAdminController extends AbstractController
+      */
+     public function new(EntityManagerInterface $em, Request $request)
+     {
+-        $form = $this->createForm(ArticleFormType::class);
++        $form = $this->createForm(ArticleFormType::class, null, [
++            'include_published_at' => false
++        ]);
+ 
+         $form->handleRequest($request);
+         if ($form->isSubmitted() && $form->isValid()) {
+@@ -46,7 +48,9 @@ class ArticleAdminController extends AbstractController
+      */
+     public function edit(Article $article, Request $request, EntityManagerInterface $em)
+     {
+-        $form = $this->createForm(ArticleFormType::class, $article);
++        $form = $this->createForm(ArticleFormType::class, $article, [
++            'include_published_at' => true
++        ]);
+ 
+         $form->handleRequest($request);
+         if ($form->isSubmitted() && $form->isValid()) {
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 97424daf..30efc667 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -36,16 +36,20 @@ class ArticleFormType extends AbstractType
+             ->add('author', UserSelectTextType::class, [
+                 'disabled' => $isEdit
+             ])
+-            ->add('publishedAt', null, [
+-                'widget' => 'single_text',
+-            ])
+         ;
++
++        if ($options['include_published_at']) {
++            $builder->add('publishedAt', null, [
++                'widget' => 'single_text',
++            ]);
++        }
+     }
+ 
+     public function configureOptions(OptionsResolver $resolver)
+     {
+         $resolver->setDefaults([
+-            'data_class' => Article::class
++            'data_class' => Article::class,
++            'include_published_at' => false,
+         ]);
+     }
+ }

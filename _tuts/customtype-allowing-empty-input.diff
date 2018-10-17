@@ -11,10 +11,10 @@ index 3c8c97db..3d312a79 100644
      private $author;
  
 diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
-index 021b597a..ee7f634f 100644
+index d4dca50b..ab5c2494 100644
 --- a/src/Form/DataTransformer/EmailToUserTransformer.php
 +++ b/src/Form/DataTransformer/EmailToUserTransformer.php
-@@ -27,6 +27,10 @@ class EmailToUserTransformer implements DataTransformerInterface
+@@ -31,6 +31,10 @@ class EmailToUserTransformer implements DataTransformerInterface
  
      public function reverseTransform($value)
      {

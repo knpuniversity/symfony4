@@ -1,0 +1,14 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index c3200ec6..8b3b0107 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -23,6 +23,9 @@ class ArticleFormType extends AbstractType
+ 
+     public function buildForm(FormBuilderInterface $builder, array $options)
+     {
++        $user = $options['data'] ?? null;
++        dd($user);
++
+         $builder
+             ->add('title', TextType::class, [
+                 'help' => 'Choose something catchy!'
