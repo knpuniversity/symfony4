@@ -1,0 +1,47 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 5ddeab1f..446e1a6f 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -3,6 +3,7 @@
+ namespace App\Controller;
+ 
+ use App\Entity\Article;
++use App\Form\ArticleFormType;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+@@ -17,13 +18,11 @@ class ArticleAdminController extends AbstractController
+      */
+     public function new(EntityManagerInterface $em)
+     {
+-        die('todo');
++        $form = $this->createForm(ArticleFormType::class);
+ 
+-        return new Response(sprintf(
+-            'Hiya! New Article id: #%d slug: %s',
+-            $article->getId(),
+-            $article->getSlug()
+-        ));
++        return $this->render('article_admin/new.html.twig', [
++            'articleForm' => $form->createView()
++        ]);
+     }
+ 
+     /**
+diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
+new file mode 100644
+index 00000000..af6748fa
+--- /dev/null
++++ b/templates/article_admin/new.html.twig
+@@ -0,0 +1,11 @@
++{% extends 'content_base.html.twig' %}
++
++{% block content_body %}
++    <h1>Launch a new Article! 🚀</h1>
++
++    {{ form_start(articleForm) }}
++        {{ form_widget(articleForm) }}
++
++        <button type="submit" class="btn btn-primary">Create!</button>
++    {{ form_end(articleForm) }}
++{% endblock %}

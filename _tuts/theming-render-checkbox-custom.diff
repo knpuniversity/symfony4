@@ -1,0 +1,20 @@
+diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
+index 3f6b5cd6..fd960baa 100644
+--- a/templates/security/register.html.twig
++++ b/templates/security/register.html.twig
+@@ -15,6 +15,15 @@
+     {{- form_help(form) -}}
+ {% endblock %}
+ 
++{% block _user_registration_form_agreeTerms_row %}
++    <div class="checkbox mb-3">
++        {{ form_errors(form) }}
++        <label>
++            <input type="checkbox" name="{{ full_name }}" required> Agree to terms I for sure read
++        </label>
++    </div>
++{% endblock %}
++
+ {% block title %}Register!{% endblock %}
+ 
+ {% block stylesheets %}

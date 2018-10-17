@@ -1,0 +1,16 @@
+diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
+index af6748fa..8ddcb8df 100644
+--- a/templates/article_admin/new.html.twig
++++ b/templates/article_admin/new.html.twig
+@@ -4,7 +4,10 @@
+     <h1>Launch a new Article! 🚀</h1>
+ 
+     {{ form_start(articleForm) }}
+-        {{ form_widget(articleForm) }}
++        {{ form_row(articleForm.title) }}
++        {{ form_row(articleForm.author) }}
++        {{ form_row(articleForm.content) }}
++        {{ form_row(articleForm.publishedAt) }}
+ 
+         <button type="submit" class="btn btn-primary">Create!</button>
+     {{ form_end(articleForm) }}

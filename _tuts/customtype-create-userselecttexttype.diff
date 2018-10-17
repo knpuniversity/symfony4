@@ -1,0 +1,41 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index c38f68c3..b5f77d41 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -28,6 +28,8 @@ class ArticleFormType extends AbstractType
+                 'help' => 'Choose something catchy!'
+             ])
+             ->add('content')
++            ->add('author', UserSelectTextType::class)
++            /*
+             ->add('author', EntityType::class, [
+                 'class' => User::class,
+                 'choice_label' => function(User $user) {
+@@ -37,6 +39,7 @@ class ArticleFormType extends AbstractType
+                 'choices' => $this->userRepository->findAllEmailAlphabetical(),
+                 'invalid_message' => 'Symfony is too smart for your hacking!'
+             ])
++            */
+             ->add('publishedAt', null, [
+                 'widget' => 'single_text',
+             ])
+diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
+new file mode 100644
+index 00000000..63b057be
+--- /dev/null
++++ b/src/Form/UserSelectTextType.php
+@@ -0,0 +1,14 @@
++<?php
++
++namespace App\Form;
++
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\Extension\Core\Type\TextType;
++
++class UserSelectTextType extends AbstractType
++{
++    public function getParent()
++    {
++        return TextType::class;
++    }
++}

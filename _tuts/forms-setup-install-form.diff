@@ -1,0 +1,294 @@
+diff --git a/composer.json b/composer.json
+index 2bc86ec3..e64cd09e 100644
+--- a/composer.json
++++ b/composer.json
+@@ -14,6 +14,7 @@
+         "symfony/asset": "^4.0",
+         "symfony/console": "^4.0",
+         "symfony/flex": "^1.0",
++        "symfony/form": "^4.0",
+         "symfony/framework-bundle": "^4.0",
+         "symfony/lts": "^4@dev",
+         "symfony/orm-pack": "^1.0",
+diff --git a/composer.lock b/composer.lock
+index a715c6d6..f515a237 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "162629886045fca4d67d8d5c7b55df5e",
++    "content-hash": "87ce622b70225272914194f0772c736d",
+     "packages": [
+         {
+             "name": "behat/transliterator",
+@@ -3988,6 +3988,87 @@
+             "description": "Composer plugin for Symfony",
+             "time": "2018-09-03T08:17:12+00:00"
+         },
++        {
++            "name": "symfony/form",
++            "version": "v4.1.6",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/form.git",
++                "reference": "360f22cdb0278d69fbd571b293df04065b2a2279"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/form/zipball/360f22cdb0278d69fbd571b293df04065b2a2279",
++                "reference": "360f22cdb0278d69fbd571b293df04065b2a2279",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "symfony/event-dispatcher": "~3.4|~4.0",
++                "symfony/intl": "~3.4|~4.0",
++                "symfony/options-resolver": "~3.4|~4.0",
++                "symfony/polyfill-ctype": "~1.8",
++                "symfony/polyfill-mbstring": "~1.0",
++                "symfony/property-access": "~3.4|~4.0"
++            },
++            "conflict": {
++                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0",
++                "symfony/dependency-injection": "<3.4",
++                "symfony/doctrine-bridge": "<3.4",
++                "symfony/framework-bundle": "<3.4",
++                "symfony/http-kernel": "<3.4",
++                "symfony/twig-bridge": "<3.4.5|<4.0.5,>=4.0"
++            },
++            "require-dev": {
++                "doctrine/collections": "~1.0",
++                "symfony/config": "~3.4|~4.0",
++                "symfony/console": "~3.4|~4.0",
++                "symfony/dependency-injection": "~3.4|~4.0",
++                "symfony/http-foundation": "~3.4|~4.0",
++                "symfony/http-kernel": "~3.4|~4.0",
++                "symfony/security-csrf": "~3.4|~4.0",
++                "symfony/translation": "~3.4|~4.0",
++                "symfony/validator": "~3.4|~4.0",
++                "symfony/var-dumper": "~3.4|~4.0"
++            },
++            "suggest": {
++                "symfony/framework-bundle": "For templating with PHP.",
++                "symfony/security-csrf": "For protecting forms against CSRF attacks.",
++                "symfony/twig-bridge": "For templating with Twig.",
++                "symfony/validator": "For form validation."
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.1-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Form\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony Form Component",
++            "homepage": "https://symfony.com",
++            "time": "2018-10-02T12:40:59+00:00"
++        },
+         {
+             "name": "symfony/framework-bundle",
+             "version": "v4.1.6",
+@@ -4304,6 +4385,81 @@
+             ],
+             "time": "2018-07-26T08:55:25+00:00"
+         },
++        {
++            "name": "symfony/intl",
++            "version": "v4.1.6",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/intl.git",
++                "reference": "793437f519a51bca4ac9b23bdaa479bb78535f6c"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/intl/zipball/793437f519a51bca4ac9b23bdaa479bb78535f6c",
++                "reference": "793437f519a51bca4ac9b23bdaa479bb78535f6c",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "symfony/polyfill-intl-icu": "~1.0"
++            },
++            "require-dev": {
++                "symfony/filesystem": "~3.4|~4.0"
++            },
++            "suggest": {
++                "ext-intl": "to use the component with locales other than \"en\""
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.1-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Intl\\": ""
++                },
++                "classmap": [
++                    "Resources/stubs"
++                ],
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Bernhard Schussek",
++                    "email": "bschussek@gmail.com"
++                },
++                {
++                    "name": "Eriksen Costa",
++                    "email": "eriksen.costa@infranology.com.br"
++                },
++                {
++                    "name": "Igor Wiedler",
++                    "email": "igor@wiedler.ch"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "A PHP replacement layer for the C intl extension that includes additional data from the ICU library.",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "i18n",
++                "icu",
++                "internationalization",
++                "intl",
++                "l10n",
++                "localization"
++            ],
++            "time": "2018-10-02T12:40:59+00:00"
++        },
+         {
+             "name": "symfony/lts",
+             "version": "dev-master",
+@@ -4527,6 +4683,64 @@
+             ],
+             "time": "2018-08-06T14:22:27+00:00"
+         },
++        {
++            "name": "symfony/polyfill-intl-icu",
++            "version": "v1.9.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/polyfill-intl-icu.git",
++                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/f22a90256d577c7ef7efad8df1f0201663d57644",
++                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.3.3",
++                "symfony/intl": "~2.3|~3.0|~4.0"
++            },
++            "suggest": {
++                "ext-intl": "For best performance"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.9-dev"
++                }
++            },
++            "autoload": {
++                "files": [
++                    "bootstrap.php"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Nicolas Grekas",
++                    "email": "p@tchwork.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony polyfill for intl's ICU-related data and classes",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "compatibility",
++                "icu",
++                "intl",
++                "polyfill",
++                "portable",
++                "shim"
++            ],
++            "time": "2018-08-06T14:22:27+00:00"
++        },
+         {
+             "name": "symfony/polyfill-mbstring",
+             "version": "v1.9.0",
+diff --git a/symfony.lock b/symfony.lock
+index 62d2a71f..2e46f7dc 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -293,6 +293,9 @@
+             "ref": "cc1afd81841db36fbef982fe56b48ade6716fac4"
+         }
+     },
++    "symfony/form": {
++        "version": "v4.1.6"
++    },
+     "symfony/framework-bundle": {
+         "version": "3.3",
+         "recipe": {
+@@ -311,6 +314,9 @@
+     "symfony/inflector": {
+         "version": "v4.1.4"
+     },
++    "symfony/intl": {
++        "version": "v4.1.6"
++    },
+     "symfony/lts": {
+         "version": "4-dev"
+     },
+@@ -353,6 +359,9 @@
+     "symfony/polyfill-ctype": {
+         "version": "v1.9.0"
+     },
++    "symfony/polyfill-intl-icu": {
++        "version": "v1.9.0"
++    },
+     "symfony/polyfill-mbstring": {
+         "version": "v1.6.0"
+     },

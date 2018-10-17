@@ -1,0 +1,16 @@
+diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
+index d3b9077c..e1f2b712 100644
+--- a/templates/security/register.html.twig
++++ b/templates/security/register.html.twig
+@@ -7,8 +7,9 @@
+         {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+     {%- endif -%}
+ 
+-    {{ dump() }}
+-    {{- form_label(form) -}}
++    {{- form_label(form, null, {
++            label_attr: { class: 'sr-only' }
++    }) -}}
+     {{- form_errors(form) -}}
+     {{- form_widget(form, widget_attr) -}}
+     {{- form_help(form) -}}

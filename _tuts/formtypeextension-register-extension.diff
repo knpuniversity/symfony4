@@ -1,0 +1,13 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index ca973308..0acfff89 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -35,3 +35,8 @@ services:
+ 
+     # add more service definitions when explicit configuration is needed
+     # please note that last definitions always *replace* previous ones
++
++    App\Form\TypeExtension\TextareaSizeExtension:
++        tags:
++            - { name: form.type_extension,
++                extended_type: Symfony\Component\Form\Extension\Core\Type\TextareaType }

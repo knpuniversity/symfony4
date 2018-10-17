@@ -1,0 +1,35 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index f9fe5375..7f1630a1 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -60,7 +60,7 @@ class ArticleAdminController extends AbstractController
+             ]);
+         }
+ 
+-        return $this->render('article_admin/new.html.twig', [
++        return $this->render('article_admin/edit.html.twig', [
+             'articleForm' => $form->createView()
+         ]);
+     }
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+new file mode 100644
+index 00000000..2de0fe99
+--- /dev/null
++++ b/templates/article_admin/edit.html.twig
+@@ -0,0 +1,16 @@
++{% extends 'content_base.html.twig' %}
++
++{% block content_body %}
++    <h1>Launch a new Article! 🚀</h1>
++
++    {{ form_start(articleForm) }}
++        {{ form_row(articleForm.title, {
++            label: 'Article title'
++        }) }}
++        {{ form_row(articleForm.author) }}
++        {{ form_row(articleForm.content) }}
++        {{ form_row(articleForm.publishedAt) }}
++
++        <button type="submit" class="btn btn-primary">Create!</button>
++    {{ form_end(articleForm) }}
++{% endblock %}

@@ -1,0 +1,30 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index a1224fb2..3c8c97db 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -10,9 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
+ use Gedmo\Mapping\Annotation as Gedmo;
+ use Gedmo\Timestampable\Traits\TimestampableEntity;
+ use Symfony\Component\Validator\Constraints as Assert;
++use Symfony\Component\Validator\Context\ExecutionContextInterface;
+ 
+ /**
+  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
++ * @Assert\Callback("validateArticle")
+  */
+ class Article
+ {
+@@ -253,4 +255,13 @@ class Article
+ 
+         return $this;
+     }
++
++    public function validateArticle(ExecutionContextInterface $context)
++    {
++        if (stripos($this->getTitle(), 'the borg')) {
++            $context->buildViolation('Um.. the Borg kinda make us nervous')
++                ->atPath('title')
++                ->addViolation();
++        }
++    }
+ }

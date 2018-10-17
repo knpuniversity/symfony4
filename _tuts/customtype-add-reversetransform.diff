@@ -1,0 +1,68 @@
+diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
+index f5207688..021b597a 100644
+--- a/src/Form/DataTransformer/EmailToUserTransformer.php
++++ b/src/Form/DataTransformer/EmailToUserTransformer.php
+@@ -3,11 +3,19 @@
+ namespace App\Form\DataTransformer;
+ 
+ use App\Entity\User;
++use App\Repository\UserRepository;
+ use Symfony\Component\Form\DataTransformerInterface;
+ use Symfony\Component\Form\Exception\TransformationFailedException;
+ 
+ class EmailToUserTransformer implements DataTransformerInterface
+ {
++    private $userRepository;
++
++    public function __construct(UserRepository $userRepository)
++    {
++        $this->userRepository = $userRepository;
++    }
++
+     public function transform($value)
+     {
+         if (!$value instanceof User) {
+@@ -19,6 +27,12 @@ class EmailToUserTransformer implements DataTransformerInterface
+ 
+     public function reverseTransform($value)
+     {
+-        dd('reverse transform', $value);
++        $user = $this->userRepository->findOneBy(['email' => $value]);
++
++        if (!$user) {
++            throw new TransformationFailedException(sprintf('No user found with email "%s"', $value));
++        }
++
++        return $user;
+     }
+ }
+\ No newline at end of file
+diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
+index 5be49719..2b883031 100644
+--- a/src/Form/UserSelectTextType.php
++++ b/src/Form/UserSelectTextType.php
+@@ -3,15 +3,23 @@
+ namespace App\Form;
+ 
+ use App\Form\DataTransformer\EmailToUserTransformer;
++use App\Repository\UserRepository;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ 
+ class UserSelectTextType extends AbstractType
+ {
++    private $userRepository;
++
++    public function __construct(UserRepository $userRepository)
++    {
++        $this->userRepository = $userRepository;
++    }
++
+     public function buildForm(FormBuilderInterface $builder, array $options)
+     {
+-        $builder->addModelTransformer(new EmailToUserTransformer());
++        $builder->addModelTransformer(new EmailToUserTransformer($this->userRepository));
+     }
+ 
+     public function getParent()

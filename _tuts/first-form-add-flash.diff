@@ -1,0 +1,41 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 5c31db06..d83d69ca 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -33,7 +33,9 @@ class ArticleAdminController extends AbstractController
+             $em->persist($article);
+             $em->flush();
+ 
+-            return $this->redirectToRoute('app_homepage');
++            $this->addFlash('success', 'Article Created! Knowledge is power!');
++
++            return $this->redirectToRoute('admin_article_list');
+         }
+ 
+         return $this->render('article_admin/new.html.twig', [
+@@ -51,7 +53,7 @@ class ArticleAdminController extends AbstractController
+     }
+ 
+     /**
+-     * @Route("/admin/article")
++     * @Route("/admin/article", name="admin_article_list")
+      */
+     public function list(ArticleRepository $articleRepo)
+     {
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 5ce805d2..a069251b 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -64,6 +64,12 @@
+             </div>
+         </nav>
+ 
++        {% for message in app.flashes('success') %}
++            <div class="alert alert-success">
++                {{ message }}
++            </div>
++        {% endfor %}
++
+         {% block body %}{% endblock %}
+ 
+         <footer class="footer">

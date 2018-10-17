@@ -1,0 +1,13 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index b9c2da5b..a1224fb2 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -27,7 +27,7 @@ class Article
+ 
+     /**
+      * @ORM\Column(type="string", length=255)
+-     * @Assert\NotBlank()
++     * @Assert\NotBlank(message="Get creative and think of a title!")
+      */
+     private $title;
+ 

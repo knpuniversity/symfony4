@@ -1,0 +1,16 @@
+diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
+index 651ab1fe..8b740fd7 100644
+--- a/templates/security/register.html.twig
++++ b/templates/security/register.html.twig
+@@ -12,7 +12,10 @@
+ <div class="container">
+     <div class="row">
+         <div class="col-sm-12">
+-            {{ form_start(registrationForm) }}
++            {{ form_start(registrationForm, {
++                'attr': {'class': 'form-signin'}
++            }) }}
++                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+                 {{ form_widget(registrationForm) }}
+ 
+                 <button class="btn btn-lg btn-primary btn-block" type="submit">

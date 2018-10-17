@@ -1,0 +1,89 @@
+diff --git a/public/css/algolia-autocomplete.css b/public/css/algolia-autocomplete.css
+new file mode 100644
+index 00000000..8093cda1
+--- /dev/null
++++ b/public/css/algolia-autocomplete.css
+@@ -0,0 +1,26 @@
++.algolia-autocomplete {
++  width: 100%;
++}
++.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
++  width: 100%;
++}
++.algolia-autocomplete .aa-hint {
++  color: #999;
++}
++.algolia-autocomplete .aa-dropdown-menu {
++  width: 100%;
++  background-color: #fff;
++  border: 1px solid #999;
++  border-top: none;
++}
++.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
++  cursor: pointer;
++  padding: 5px 4px;
++}
++.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
++  background-color: #B2D7FF;
++}
++.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
++  font-weight: bold;
++  font-style: normal;
++}
+diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
+new file mode 100644
+index 00000000..8c60c0f6
+--- /dev/null
++++ b/public/js/algolia-autocomplete.js
+@@ -0,0 +1,12 @@
++$(document).ready(function() {
++    $('.js-user-autocomplete').autocomplete({hint: false}, [
++        {
++            source: function(query, cb) {
++                cb([
++                    {value: 'foo'},
++                    {value: 'bar'}
++                ])
++            }
++        }
++    ]);
++});
+diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
+index c2fd5e28..f8e64501 100644
+--- a/src/Form/UserSelectTextType.php
++++ b/src/Form/UserSelectTextType.php
+@@ -37,7 +37,10 @@ class UserSelectTextType extends AbstractType
+             'invalid_message' => 'Hmm, user not found!',
+             'finder_callback' => function(UserRepository $userRepository, string $email) {
+                 return $userRepository->findOneBy(['email' => $email]);
+-            }
++            },
++            'attr' => [
++                'class' => 'js-user-autocomplete'
++            ]
+         ]);
+     }
+ }
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index 962b02d7..194a7ed8 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -1,5 +1,18 @@
+ {% extends 'content_base.html.twig' %}
+ 
++{% block javascripts %}
++    {{ parent() }}
++
++    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
++    <script src="{{ asset('js/algolia-autocomplete.js') }}"></script>
++{% endblock %}
++
++{% block stylesheets %}
++    {{ parent() }}
++
++    <link rel="stylesheet" href="{{ asset('css/algolia-autocomplete.css') }}">
++{% endblock %}
++
+ {% block content_body %}
+     <h1>Edit the Article! 🚀</h1>
+ 

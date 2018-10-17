@@ -1,0 +1,79 @@
+diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
+index 8c60c0f6..b11d672b 100644
+--- a/public/js/algolia-autocomplete.js
++++ b/public/js/algolia-autocomplete.js
+@@ -1,12 +1,19 @@
+ $(document).ready(function() {
+-    $('.js-user-autocomplete').autocomplete({hint: false}, [
+-        {
+-            source: function(query, cb) {
+-                cb([
+-                    {value: 'foo'},
+-                    {value: 'bar'}
+-                ])
++    $('.js-user-autocomplete').each(function() {
++        var autocompleteUrl = $(this).data('autocomplete-url');
++
++        $(this).autocomplete({hint: false}, [
++            {
++                source: function(query, cb) {
++                    $.ajax({
++                        url: autocompleteUrl
++                    }).then(function(data) {
++                        cb(data.users.slice(0, 5));
++                    });
++                },
++                displayKey: 'email',
++                debounce: 500 // only request every 1/2 second
+             }
+-        }
+-    ]);
++        ])
++    });
+ });
+diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
+index fbb31583..0291d92d 100644
+--- a/src/Controller/AdminUtilityController.php
++++ b/src/Controller/AdminUtilityController.php
+@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
+ class AdminUtilityController extends AbstractController
+ {
+     /**
+-     * @Route("/admin/utility/users", methods="GET")
++     * @Route("/admin/utility/users", methods="GET", name="admin_utility_users")
+      */
+     public function getUsersApi(UserRepository $userRepository)
+     {
+diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
+index f8e64501..b90bd10d 100644
+--- a/src/Form/UserSelectTextType.php
++++ b/src/Form/UserSelectTextType.php
+@@ -8,14 +8,17 @@ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\OptionsResolver\OptionsResolver;
++use Symfony\Component\Routing\RouterInterface;
+ 
+ class UserSelectTextType extends AbstractType
+ {
+     private $userRepository;
++    private $router;
+ 
+-    public function __construct(UserRepository $userRepository)
++    public function __construct(UserRepository $userRepository, RouterInterface $router)
+     {
+         $this->userRepository = $userRepository;
++        $this->router = $router;
+     }
+ 
+     public function buildForm(FormBuilderInterface $builder, array $options)
+@@ -39,7 +42,8 @@ class UserSelectTextType extends AbstractType
+                 return $userRepository->findOneBy(['email' => $email]);
+             },
+             'attr' => [
+-                'class' => 'js-user-autocomplete'
++                'class' => 'js-user-autocomplete',
++                'data-autocomplete-url' => $this->router->generate('admin_utility_users')
+             ]
+         ]);
+     }

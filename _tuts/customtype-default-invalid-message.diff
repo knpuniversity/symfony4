@@ -1,0 +1,24 @@
+diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
+index 2b883031..2aeab272 100644
+--- a/src/Form/UserSelectTextType.php
++++ b/src/Form/UserSelectTextType.php
+@@ -7,6 +7,7 @@ use App\Repository\UserRepository;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolver;
+ 
+ class UserSelectTextType extends AbstractType
+ {
+@@ -26,4 +27,11 @@ class UserSelectTextType extends AbstractType
+     {
+         return TextType::class;
+     }
++
++    public function configureOptions(OptionsResolver $resolver)
++    {
++        $resolver->setDefaults([
++            'invalid_message' => 'Hmm, user not found!',
++        ]);
++    }
+ }

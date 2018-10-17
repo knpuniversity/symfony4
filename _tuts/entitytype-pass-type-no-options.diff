@@ -1,0 +1,21 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 81acaa47..bdc9301c 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -3,6 +3,7 @@
+ namespace App\Form;
+ 
+ use App\Entity\Article;
++use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+@@ -17,7 +18,7 @@ class ArticleFormType extends AbstractType
+                 'help' => 'Choose something catchy!'
+             ])
+             ->add('content')
+-            ->add('author')
++            ->add('author', EntityType::class)
+         ;
+     }
+ 

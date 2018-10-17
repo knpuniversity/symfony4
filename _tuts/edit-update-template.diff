@@ -1,0 +1,21 @@
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index 2de0fe99..e28ef74c 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -1,7 +1,7 @@
+ {% extends 'content_base.html.twig' %}
+ 
+ {% block content_body %}
+-    <h1>Launch a new Article! 🚀</h1>
++    <h1>Edit the Article! 🚀</h1>
+ 
+     {{ form_start(articleForm) }}
+         {{ form_row(articleForm.title, {
+@@ -11,6 +11,6 @@
+         {{ form_row(articleForm.content) }}
+         {{ form_row(articleForm.publishedAt) }}
+ 
+-        <button type="submit" class="btn btn-primary">Create!</button>
++        <button type="submit" class="btn btn-primary">Update!</button>
+     {{ form_end(articleForm) }}
+ {% endblock %}

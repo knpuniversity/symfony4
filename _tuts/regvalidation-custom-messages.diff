@@ -1,0 +1,22 @@
+diff --git a/src/Entity/User.php b/src/Entity/User.php
+index a66409b5..aa1a5a02 100644
+--- a/src/Entity/User.php
++++ b/src/Entity/User.php
+@@ -24,7 +24,7 @@ class User implements UserInterface
+     /**
+      * @ORM\Column(type="string", length=180, unique=true)
+      * @Groups("main")
+-     * @Assert\NotBlank()
++     * @Assert\NotBlank(message="Please enter an email")
+      * @Assert\Email()
+      */
+     private $email;
+@@ -37,7 +37,7 @@ class User implements UserInterface
+     /**
+      * @ORM\Column(type="string", length=255)
+      * @Groups("main")
+-     * @Assert\NotBlank()
++     * @Assert\NotBlank(message="Please tell us your first name")
+      */
+     private $firstName;
+ 

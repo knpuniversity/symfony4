@@ -1,0 +1,10 @@
+diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
+index 3b315dcc..a3d0bbb9 100644
+--- a/config/packages/twig.yaml
++++ b/config/packages/twig.yaml
+@@ -2,3 +2,5 @@ twig:
+     paths: ['%kernel.project_dir%/templates']
+     debug: '%kernel.debug%'
+     strict_variables: '%kernel.debug%'
++    form_themes:
++        - bootstrap_4_layout.html.twig

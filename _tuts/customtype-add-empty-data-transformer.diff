@@ -1,0 +1,49 @@
+diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
+new file mode 100644
+index 00000000..05542974
+--- /dev/null
++++ b/src/Form/DataTransformer/EmailToUserTransformer.php
+@@ -0,0 +1,19 @@
++<?php
++
++namespace App\Form\DataTransformer;
++
++use Symfony\Component\Form\DataTransformerInterface;
++use Symfony\Component\Form\Exception\TransformationFailedException;
++
++class EmailToUserTransformer implements DataTransformerInterface
++{
++    public function transform($value)
++    {
++        dd('transform', $value);
++    }
++
++    public function reverseTransform($value)
++    {
++        dd('reverse transform', $value);
++    }
++}
+\ No newline at end of file
+diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
+index 63b057be..5be49719 100644
+--- a/src/Form/UserSelectTextType.php
++++ b/src/Form/UserSelectTextType.php
+@@ -2,11 +2,18 @@
+ 
+ namespace App\Form;
+ 
++use App\Form\DataTransformer\EmailToUserTransformer;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
++use Symfony\Component\Form\FormBuilderInterface;
+ 
+ class UserSelectTextType extends AbstractType
+ {
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        $builder->addModelTransformer(new EmailToUserTransformer());
++    }
++
+     public function getParent()
+     {
+         return TextType::class;

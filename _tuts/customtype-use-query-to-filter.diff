@@ -1,0 +1,60 @@
+diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
+index b11d672b..093869ec 100644
+--- a/public/js/algolia-autocomplete.js
++++ b/public/js/algolia-autocomplete.js
+@@ -6,7 +6,7 @@ $(document).ready(function() {
+             {
+                 source: function(query, cb) {
+                     $.ajax({
+-                        url: autocompleteUrl
++                        url: autocompleteUrl+'?query='+query
+                     }).then(function(data) {
+                         cb(data.users.slice(0, 5));
+                     });
+diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
+index 0291d92d..b4d007c6 100644
+--- a/src/Controller/AdminUtilityController.php
++++ b/src/Controller/AdminUtilityController.php
+@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\JsonResponse;
++use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+ /**
+@@ -16,9 +17,9 @@ class AdminUtilityController extends AbstractController
+     /**
+      * @Route("/admin/utility/users", methods="GET", name="admin_utility_users")
+      */
+-    public function getUsersApi(UserRepository $userRepository)
++    public function getUsersApi(UserRepository $userRepository, Request $request)
+     {
+-        $users = $userRepository->findAllEmailAlphabetical();
++        $users = $userRepository->findAllMatching($request->query->get('query'));
+ 
+         return $this->json([
+             'users' => $users
+diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
+index fe3ab5ee..d170dcb1 100644
+--- a/src/Repository/UserRepository.php
++++ b/src/Repository/UserRepository.php
+@@ -31,6 +31,18 @@ class UserRepository extends ServiceEntityRepository
+         ;
+     }
+ 
++    /**
++     * @User[]
++     */
++    public function findAllMatching(string $query)
++    {
++        return $this->createQueryBuilder('u')
++            ->andWhere('u.email LIKE :query')
++            ->setParameter('query', '%'.$query.'%')
++            ->getQuery()
++            ->execute();
++    }
++
+ //    /**
+ //     * @return User[] Returns an array of User objects
+ //     */

@@ -1,0 +1,22 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index abeb944c..dd1d784b 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -23,7 +23,16 @@ class ArticleAdminController extends AbstractController
+ 
+         $form->handleRequest($request);
+         if ($form->isSubmitted() && $form->isValid()) {
+-            dd($form->getData());
++            $data = $form->getData();
++            $article = new Article();
++            $article->setTitle($data['title']);
++            $article->setContent($data['content']);
++            $article->setAuthor($this->getUser());
++
++            $em->persist($article);
++            $em->flush();
++
++            return $this->redirectToRoute('app_homepage');
+         }
+ 
+         return $this->render('article_admin/new.html.twig', [

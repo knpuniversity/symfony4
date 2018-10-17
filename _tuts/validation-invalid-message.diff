@@ -1,0 +1,12 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 96faf828..c38f68c3 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -35,6 +35,7 @@ class ArticleFormType extends AbstractType
+                 },
+                 'placeholder' => 'Choose an author',
+                 'choices' => $this->userRepository->findAllEmailAlphabetical(),
++                'invalid_message' => 'Symfony is too smart for your hacking!'
+             ])
+             ->add('publishedAt', null, [
+                 'widget' => 'single_text',

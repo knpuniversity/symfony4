@@ -1,0 +1,14 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index e02f5c4f..1de6f808 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -23,7 +23,8 @@ class ArticleFormType extends AbstractType
+                 'class' => User::class,
+                 'choice_label' => function(User $user) {
+                     return sprintf('(%d) %s', $user->getId(), $user->getEmail());
+-                }
++                },
++                'placeholder' => 'Choose an author'
+             ])
+         ;
+     }

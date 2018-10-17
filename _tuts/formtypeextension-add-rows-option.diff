@@ -1,0 +1,23 @@
+diff --git a/src/Form/TypeExtension/TextareaSizeExtension.php b/src/Form/TypeExtension/TextareaSizeExtension.php
+index 9c626044..ac35e81a 100644
+--- a/src/Form/TypeExtension/TextareaSizeExtension.php
++++ b/src/Form/TypeExtension/TextareaSizeExtension.php
+@@ -17,7 +17,7 @@ class TextareaSizeExtension implements FormTypeExtensionInterface
+ 
+     public function buildView(FormView $view, FormInterface $form, array $options)
+     {
+-        $view->vars['attr']['rows'] = 10;
++        $view->vars['attr']['rows'] = $options['rows'];
+     }
+ 
+     public function finishView(FormView $view, FormInterface $form, array $options)
+@@ -26,6 +26,9 @@ class TextareaSizeExtension implements FormTypeExtensionInterface
+ 
+     public function configureOptions(OptionsResolver $resolver)
+     {
++        $resolver->setDefaults([
++            'rows' => 10
++        ]);
+     }
+ 
+     public function getExtendedType()

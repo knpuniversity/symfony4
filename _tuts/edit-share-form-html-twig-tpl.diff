@@ -1,0 +1,61 @@
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+new file mode 100644
+index 00000000..df490b22
+--- /dev/null
++++ b/templates/article_admin/_form.html.twig
+@@ -0,0 +1,10 @@
++{{ form_start(articleForm) }}
++    {{ form_row(articleForm.title, {
++        label: 'Article title'
++    }) }}
++    {{ form_row(articleForm.author) }}
++    {{ form_row(articleForm.content) }}
++    {{ form_row(articleForm.publishedAt) }}
++
++    <button type="submit" class="btn btn-primary">{{ button_text }}</button>
++{{ form_end(articleForm) }}
+\ No newline at end of file
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index e28ef74c..962b02d7 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -3,14 +3,7 @@
+ {% block content_body %}
+     <h1>Edit the Article! 🚀</h1>
+ 
+-    {{ form_start(articleForm) }}
+-        {{ form_row(articleForm.title, {
+-            label: 'Article title'
+-        }) }}
+-        {{ form_row(articleForm.author) }}
+-        {{ form_row(articleForm.content) }}
+-        {{ form_row(articleForm.publishedAt) }}
+-
+-        <button type="submit" class="btn btn-primary">Update!</button>
+-    {{ form_end(articleForm) }}
++    {{ include('article_admin/_form.html.twig', {
++        button_text: 'Update!'
++    }) }}
+ {% endblock %}
+diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
+index 2de0fe99..0765b918 100644
+--- a/templates/article_admin/new.html.twig
++++ b/templates/article_admin/new.html.twig
+@@ -3,14 +3,7 @@
+ {% block content_body %}
+     <h1>Launch a new Article! 🚀</h1>
+ 
+-    {{ form_start(articleForm) }}
+-        {{ form_row(articleForm.title, {
+-            label: 'Article title'
+-        }) }}
+-        {{ form_row(articleForm.author) }}
+-        {{ form_row(articleForm.content) }}
+-        {{ form_row(articleForm.publishedAt) }}
+-
+-        <button type="submit" class="btn btn-primary">Create!</button>
+-    {{ form_end(articleForm) }}
++    {{ include('article_admin/_form.html.twig', {
++        button_text: 'Create!'
++    }) }}
+ {% endblock %}

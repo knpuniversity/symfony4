@@ -1,0 +1,12 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 2f16f04d..b1bc8d44 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -26,7 +26,6 @@ class ArticleAdminController extends AbstractController
+         if ($form->isSubmitted() && $form->isValid()) {
+             /** @var Article $article */
+             $article = $form->getData();
+-            $article->setAuthor($this->getUser());
+ 
+             $em->persist($article);
+             $em->flush();

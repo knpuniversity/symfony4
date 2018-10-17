@@ -1564,7 +1564,407 @@
             "id": "voters-use-isgranted",
             "name": "Voters: Use @IsGranted",
             "description": null
+        },
+        {
+            "id": "pre-forms-update-deps",
+            "name": "PRE_FORMS: Update deps",
+            "description": null
+        },
+        {
+            "id": "pre-forms-empty-tutorial-dir",
+            "name": "PRE_FORMS: Empty tutorial dir",
+            "description": null
+        },
+        {
+            "id": "forms-setup-install-form",
+            "name": "Forms Setup: Install form",
+            "description": null
+        },
+        {
+            "id": "first-form-create-articleformtype",
+            "name": "First form: Create ArticleFormType",
+            "description": null
+        },
+        {
+            "id": "first-form-build-fields",
+            "name": "First form: Build fields",
+            "description": null
+        },
+        {
+            "id": "first-form-render-form",
+            "name": "First form: Render form",
+            "description": null
+        },
+        {
+            "id": "first-form-process",
+            "name": "First form: Process",
+            "description": null
+        },
+        {
+            "id": "first-form-save-article",
+            "name": "First form: Save article",
+            "description": null
+        },
+        {
+            "id": "first-form-make-list-page",
+            "name": "First form: Make list page",
+            "description": null
+        },
+        {
+            "id": "first-form-add-flash",
+            "name": "First form: Add flash",
+            "description": null
+        },
+        {
+            "id": "first-form-fancier-flash-with-peek",
+            "name": "First form: Fancier flash with peek",
+            "description": null
+        },
+        {
+            "id": "data-class-set-and-dump",
+            "name": "data_class: Set and dump",
+            "description": null
+        },
+        {
+            "id": "data-class-save-entity",
+            "name": "data_class: Save entity",
+            "description": null
+        },
+        {
+            "id": "bootstrap-use-bs4-theme",
+            "name": "Bootstrap: use BS4 theme",
+            "description": null
+        },
+        {
+            "id": "options-set-help-option",
+            "name": "Options: Set help option",
+            "description": null
+        },
+        {
+            "id": "entitytype-add-field-use-guessing",
+            "name": "EntityType: add field, use guessing",
+            "description": null
+        },
+        {
+            "id": "entitytype-pass-type-no-options",
+            "name": "EntityType: Pass type, no options",
+            "description": null
+        },
+        {
+            "id": "entitytype-pass-class-option",
+            "name": "EntityType: Pass class option",
+            "description": null
+        },
+        {
+            "id": "entitytype-choice-label",
+            "name": "EntityType: choice_label",
+            "description": null
+        },
+        {
+            "id": "entitytype-choice-label-callback",
+            "name": "EntityType: choice_label callback",
+            "description": null
+        },
+        {
+            "id": "entitytype-add-placeholder",
+            "name": "EntityType: Add placeholder",
+            "description": null
+        },
+        {
+            "id": "entitytype-remove-setauthor-in-ctrller",
+            "name": "EntityType: Remove setAuthor in ctrller",
+            "description": null
+        },
+        {
+            "id": "entitytype-getchoices-with-custom-query",
+            "name": "EntityType: getChoices() with custom query",
+            "description": null
+        },
+        {
+            "id": "datetimetype-add-field",
+            "name": "DateTimeType: add field",
+            "description": null
+        },
+        {
+            "id": "datetimetype-set-widget",
+            "name": "DateTimeType: set widget",
+            "description": null
+        },
+        {
+            "id": "validation-install-it",
+            "name": "Validation: Install it",
+            "description": null
+        },
+        {
+            "id": "validation-invalid-message",
+            "name": "Validation: invalid_message",
+            "description": null
+        },
+        {
+            "id": "validation-notblank",
+            "name": "Validation: @NotBlank",
+            "description": null
+        },
+        {
+            "id": "validation-customize-message",
+            "name": "Validation: Customize Message",
+            "description": null
+        },
+        {
+            "id": "validation-callback-constraint",
+            "name": "Validation: Callback constraint",
+            "description": null
+        },
+        {
+            "id": "rendering-use-form-row-functions",
+            "name": "Rendering: Use form_row functions",
+            "description": null
+        },
+        {
+            "id": "rendering-label-view-variable",
+            "name": "Rendering: label view variable",
+            "description": null
+        },
+        {
+            "id": "rendering-use-all-form-functions",
+            "name": "Rendering: use all form_ functions",
+            "description": null
+        },
+        {
+            "id": "rendering-go-back-to-form-row",
+            "name": "Rendering: Go back to form_row",
+            "description": null
+        },
+        {
+            "id": "edit-paste-new-logic-into-edit",
+            "name": "Edit: Paste new logic into edit",
+            "description": null
+        },
+        {
+            "id": "edit-customize-edit-controller",
+            "name": "Edit: Customize edit controller",
+            "description": null
+        },
+        {
+            "id": "edit-copy-controller",
+            "name": "Edit: copy controller",
+            "description": null
+        },
+        {
+            "id": "edit-update-template",
+            "name": "Edit: update template",
+            "description": null
+        },
+        {
+            "id": "edit-share-form-html-twig-tpl",
+            "name": "Edit: Share _form.html.twig tpl",
+            "description": null
+        },
+        {
+            "id": "registration-make-form",
+            "name": "Registration: make:form",
+            "description": null
+        },
+        {
+            "id": "registration-use-form-in-register",
+            "name": "Registration: use form in register",
+            "description": null
+        },
+        {
+            "id": "registration-use-fake-plainpassword-field",
+            "name": "Registration: use fake plainPassword field",
+            "description": null
+        },
+        {
+            "id": "registration-use-mapped-false",
+            "name": "Registration: use mapped=false",
+            "description": null
+        },
+        {
+            "id": "registration-encode-password",
+            "name": "Registration: encode password",
+            "description": null
+        },
+        {
+            "id": "registration-passwordtype",
+            "name": "Registration: PasswordType",
+            "description": null
+        },
+        {
+            "id": "regvalidation-add-constraints",
+            "name": "RegValidation: Add constraints",
+            "description": null
+        },
+        {
+            "id": "regvalidation-custom-messages",
+            "name": "RegValidation: Custom messages",
+            "description": null
+        },
+        {
+            "id": "regvalidation-plainpassword-constraints",
+            "name": "RegValidation: plainPassword constraints",
+            "description": null
+        },
+        {
+            "id": "terms-add-agreeterms-field-prop",
+            "name": "Terms: Add agreeTerms field + prop",
+            "description": null
+        },
+        {
+            "id": "terms-fix-migration",
+            "name": "Terms: Fix migration",
+            "description": null
+        },
+        {
+            "id": "terms-read-validate-unmapped",
+            "name": "Terms: Read & validate unmapped",
+            "description": null
+        },
+        {
+            "id": "theming-add-form-class-h1",
+            "name": "Theming: Add form class + h1",
+            "description": null
+        },
+        {
+            "id": "theming-them-self-w-form-row",
+            "name": "Theming: them _self w form_row",
+            "description": null
+        },
+        {
+            "id": "theming-remove-form-row-div",
+            "name": "Theming: remove form_row div",
+            "description": null
+        },
+        {
+            "id": "theming-dump-vars",
+            "name": "Theming: dump() vars",
+            "description": null
+        },
+        {
+            "id": "theming-add-label-sr-only-class",
+            "name": "Theming: Add label sr-only class",
+            "description": null
+        },
+        {
+            "id": "theming-form-render-with-placeholder",
+            "name": "Theming: form_render with placeholder",
+            "description": null
+        },
+        {
+            "id": "theming-render-checkbox-custom",
+            "name": "Theming: render checkbox custom",
+            "description": null
+        },
+        {
+            "id": "customtype-delete-me",
+            "name": "CustomType: delete me",
+            "description": null
+        },
+        {
+            "id": "customtype-create-userselecttexttype",
+            "name": "CustomType: Create UserSelectTextType",
+            "description": null
+        },
+        {
+            "id": "customtype-add-empty-data-transformer",
+            "name": "CustomType: Add empty data transformer",
+            "description": null
+        },
+        {
+            "id": "customtype-add-transform",
+            "name": "CustomType: Add transform",
+            "description": null
+        },
+        {
+            "id": "customtype-add-reversetransform",
+            "name": "CustomType: Add reverseTransform",
+            "description": null
+        },
+        {
+            "id": "customtype-default-invalid-message",
+            "name": "CustomType: Default invalid_message",
+            "description": null
+        },
+        {
+            "id": "customtype-allowing-empty-input",
+            "name": "CustomType: Allowing empty input",
+            "description": null
+        },
+        {
+            "id": "customtype-add-finder-callback-option",
+            "name": "CustomType: Add finder_callback option",
+            "description": null
+        },
+        {
+            "id": "customtype-add-autocomplete-initial",
+            "name": "CustomType: Add autocomplete initial",
+            "description": null
+        },
+        {
+            "id": "customtype-bootstrap-useradmincontroller",
+            "name": "CustomType: Bootstrap UserAdminController",
+            "description": null
+        },
+        {
+            "id": "customtype-setup-endpoint",
+            "name": "CustomType: Setup endpoint",
+            "description": null
+        },
+        {
+            "id": "customtype-hook-up-endpoint",
+            "name": "CustomType: Hook up endpoint",
+            "description": null
+        },
+        {
+            "id": "customtype-use-query-to-filter",
+            "name": "CustomType: Use query to filter",
+            "description": null
+        },
+        {
+            "id": "customtype-copy-css-js-to-new",
+            "name": "CustomType: Copy css\/js to new",
+            "description": null
+        },
+        {
+            "id": "customtype-buildview",
+            "name": "CustomType: buildView",
+            "description": null
+        },
+        {
+            "id": "typetheme-delete-me",
+            "name": "TypeTheme: Delete me",
+            "description": null
+        },
+        {
+            "id": "typetheme-delete-me2",
+            "name": "TypeTheme: Delete me2",
+            "description": null
+        },
+        {
+            "id": "formtypeextension-empty-class",
+            "name": "FormTypeExtension: empty class",
+            "description": null
+        },
+        {
+            "id": "formtypeextension-register-extension",
+            "name": "FormTypeExtension: Register extension",
+            "description": null
+        },
+        {
+            "id": "formtypeextension-add-rows-attr",
+            "name": "FormTypeExtension: Add rows attr",
+            "description": null
+        },
+        {
+            "id": "formtypeextension-add-rows-option",
+            "name": "FormTypeExtension: Add rows option",
+            "description": null
+        },
+        {
+            "id": "formtypeextension-override-rows-option",
+            "name": "FormTypeExtension: Override rows option",
+            "description": null
         }
     ],
-    "sha": "c51e78cc8a76bca7fdf0578f222d7f742027b9c9"
+    "sha": "640d65df21a44c0d5488fdde6a6aa0eaae410fd2"
 }

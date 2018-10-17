@@ -1,0 +1,88 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 8dcecc71..be007a4f 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -3,6 +3,7 @@
+ namespace App\Controller;
+ 
+ use App\Entity\User;
++use App\Form\UserRegistrationFormType;
+ use App\Security\LoginFormAuthenticator;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+@@ -43,14 +44,15 @@ class SecurityController extends AbstractController
+      */
+     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $formAuthenticator)
+     {
+-        // TODO - use Symfony forms & validation
+-        if ($request->isMethod('POST')) {
+-            $user = new User();
+-            $user->setEmail($request->request->get('email'));
+-            $user->setFirstName('Mystery');
++        $form = $this->createForm(UserRegistrationFormType::class);
++        $form->handleRequest($request);
++
++        if ($form->isSubmitted() && $form->isValid()) {
++            /** @var User $user */
++            $user = $form->getData();
+             $user->setPassword($passwordEncoder->encodePassword(
+                 $user,
+-                $request->request->get('password')
++                $user->getPassword()
+             ));
+ 
+             $em = $this->getDoctrine()->getManager();
+@@ -65,6 +67,8 @@ class SecurityController extends AbstractController
+             );
+         }
+ 
+-        return $this->render('security/register.html.twig');
++        return $this->render('security/register.html.twig', [
++            'registrationForm' => $form->createView(),
++        ]);
+     }
+ }
+diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
+index 8a949167..d31b94b5 100644
+--- a/src/Form/UserRegistrationFormType.php
++++ b/src/Form/UserRegistrationFormType.php
+@@ -13,10 +13,7 @@ class UserRegistrationFormType extends AbstractType
+     {
+         $builder
+             ->add('email')
+-            ->add('roles')
+-            ->add('firstName')
+             ->add('password')
+-            ->add('twitterUsername')
+         ;
+     }
+ 
+diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
+index c726e5e8..651ab1fe 100644
+--- a/templates/security/register.html.twig
++++ b/templates/security/register.html.twig
+@@ -12,7 +12,15 @@
+ <div class="container">
+     <div class="row">
+         <div class="col-sm-12">
+-            {# todo - replace with a Symfony form! #}
++            {{ form_start(registrationForm) }}
++                {{ form_widget(registrationForm) }}
++
++                <button class="btn btn-lg btn-primary btn-block" type="submit">
++                    Register
++                </button>
++            {{ form_end(registrationForm) }}
++
++            {#
+             <form class="form-signin" method="post">
+                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+                 <label for="inputEmail" class="sr-only">Email address</label>
+@@ -29,6 +37,7 @@
+                     Register
+                 </button>
+             </form>
++            #}
+         </div>
+     </div>
+ </div>

@@ -1,0 +1,17 @@
+diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
+new file mode 100644
+index 00000000..76458e3b
+--- /dev/null
++++ b/src/Controller/AdminUtilityController.php
+@@ -0,0 +1,10 @@
++<?php
++
++namespace App\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
++
++class AdminUtilityController extends AbstractController
++{
++
++}
+\ No newline at end of file

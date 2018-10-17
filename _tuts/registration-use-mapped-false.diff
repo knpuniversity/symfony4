@@ -1,0 +1,27 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index be007a4f..40877daa 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -48,6 +48,7 @@ class SecurityController extends AbstractController
+         $form->handleRequest($request);
+ 
+         if ($form->isSubmitted() && $form->isValid()) {
++            dd($form['plainPassword']->getData());
+             /** @var User $user */
+             $user = $form->getData();
+             $user->setPassword($passwordEncoder->encodePassword(
+diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
+index 7caa105d..56fdc643 100644
+--- a/src/Form/UserRegistrationFormType.php
++++ b/src/Form/UserRegistrationFormType.php
+@@ -15,7 +15,9 @@ class UserRegistrationFormType extends AbstractType
+             ->add('email')
+             // don't use password: avoid EVER setting that on a
+             // field that might be persisted
+-            ->add('plainPassword')
++            ->add('plainPassword', null, [
++                'mapped' => false
++            ]);
+         ;
+     }
+ 

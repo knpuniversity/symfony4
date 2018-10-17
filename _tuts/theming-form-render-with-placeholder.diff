@@ -1,0 +1,19 @@
+diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
+index e1f2b712..3f6b5cd6 100644
+--- a/templates/security/register.html.twig
++++ b/templates/security/register.html.twig
+@@ -31,7 +31,13 @@
+                 'attr': {'class': 'form-signin'}
+             }) }}
+                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+-                {{ form_widget(registrationForm) }}
++                {{ form_row(registrationForm.email, {
++                    attr: { placeholder: 'Email' }
++                }) }}
++                {{ form_row(registrationForm.plainPassword, {
++                    attr: { placeholder: 'Password' }
++                }) }}
++                {{ form_row(registrationForm.agreeTerms) }}
+ 
+                 <button class="btn btn-lg btn-primary btn-block" type="submit">
+                     Register

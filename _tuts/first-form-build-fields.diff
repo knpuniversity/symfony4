@@ -1,0 +1,17 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 6c6419d2..02a54de4 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -9,6 +9,9 @@ class ArticleFormType extends AbstractType
+ {
+     public function buildForm(FormBuilderInterface $builder, array $options)
+     {
+-        
++        $builder
++            ->add('title')
++            ->add('content')
++        ;
+     }
+-}
+\ No newline at end of file
++}

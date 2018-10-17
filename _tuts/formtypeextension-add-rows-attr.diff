@@ -1,0 +1,41 @@
+diff --git a/src/Form/TypeExtension/TextareaSizeExtension.php b/src/Form/TypeExtension/TextareaSizeExtension.php
+index e3a89f4b..9c626044 100644
+--- a/src/Form/TypeExtension/TextareaSizeExtension.php
++++ b/src/Form/TypeExtension/TextareaSizeExtension.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Form\TypeExtension;
+ 
++use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\Form\FormInterface;
+ use Symfony\Component\Form\FormTypeExtensionInterface;
+@@ -12,26 +13,23 @@ class TextareaSizeExtension implements FormTypeExtensionInterface
+ {
+     public function buildForm(FormBuilderInterface $builder, array $options)
+     {
+-        // TODO: Implement buildForm() method.
+     }
+ 
+     public function buildView(FormView $view, FormInterface $form, array $options)
+     {
+-        // TODO: Implement buildView() method.
++        $view->vars['attr']['rows'] = 10;
+     }
+ 
+     public function finishView(FormView $view, FormInterface $form, array $options)
+     {
+-        // TODO: Implement finishView() method.
+     }
+ 
+     public function configureOptions(OptionsResolver $resolver)
+     {
+-        // TODO: Implement configureOptions() method.
+     }
+ 
+     public function getExtendedType()
+     {
+-        // TODO: Implement getExtendedType() method.
++        return TextareaType::class;
+     }
+ }

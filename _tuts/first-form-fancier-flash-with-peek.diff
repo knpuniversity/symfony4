@@ -1,0 +1,14 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index a069251b..2b5b171e 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -20,7 +20,8 @@
+                 <a href="{{ path('app_homepage', {'_switch_user': '_exit'}) }}">Exit Impersonation</a>
+             </div>
+         {% endif %}
+-        <nav class="navbar navbar-expand-lg navbar-dark navbar-bg mb-5">
++
++        <nav class="navbar navbar-expand-lg navbar-dark navbar-bg {{ app.session.flashbag.peek('success')|length > 0 ? '' : 'mb-5' }}">
+             <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ path('app_homepage') }}">The Space Bar</a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>

@@ -1,0 +1,39 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index d83d69ca..3313f0fc 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -25,6 +25,7 @@ class ArticleAdminController extends AbstractController
+         $form->handleRequest($request);
+         if ($form->isSubmitted() && $form->isValid()) {
+             $data = $form->getData();
++            dd($data);
+             $article = new Article();
+             $article->setTitle($data['title']);
+             $article->setContent($data['content']);
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 02a54de4..593cf1d7 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -2,8 +2,10 @@
+ 
+ namespace App\Form;
+ 
++use App\Entity\Article;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolver;
+ 
+ class ArticleFormType extends AbstractType
+ {
+@@ -14,4 +16,11 @@ class ArticleFormType extends AbstractType
+             ->add('content')
+         ;
+     }
++
++    public function configureOptions(OptionsResolver $resolver)
++    {
++        $resolver->setDefaults([
++            'data_class' => Article::class
++        ]);
++    }
+ }

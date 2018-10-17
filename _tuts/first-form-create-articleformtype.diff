@@ -1,0 +1,21 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+new file mode 100644
+index 00000000..6c6419d2
+--- /dev/null
++++ b/src/Form/ArticleFormType.php
+@@ -0,0 +1,14 @@
++<?php
++
++namespace App\Form;
++
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\FormBuilderInterface;
++
++class ArticleFormType extends AbstractType
++{
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        
++    }
++}
+\ No newline at end of file

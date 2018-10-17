@@ -1,0 +1,27 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 3c8c97db..3d312a79 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -73,6 +73,7 @@ class Article
+     /**
+      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+      * @ORM\JoinColumn(nullable=false)
++     * @Assert\NotNull(message="Please set an author")
+      */
+     private $author;
+ 
+diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
+index 021b597a..ee7f634f 100644
+--- a/src/Form/DataTransformer/EmailToUserTransformer.php
++++ b/src/Form/DataTransformer/EmailToUserTransformer.php
+@@ -27,6 +27,10 @@ class EmailToUserTransformer implements DataTransformerInterface
+ 
+     public function reverseTransform($value)
+     {
++        if (!$value) {
++            return;
++        }
++
+         $user = $this->userRepository->findOneBy(['email' => $value]);
+ 
+         if (!$user) {
