@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 1de6f808..7cbd4bea 100644
+index 8b8b8013..628c6ffd 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -4,6 +4,8 @@ namespace App\Form;
@@ -25,7 +25,7 @@ index 1de6f808..7cbd4bea 100644
      public function buildForm(FormBuilderInterface $builder, array $options)
      {
          $builder
-@@ -24,7 +33,8 @@ class ArticleFormType extends AbstractType
+@@ -27,7 +36,8 @@ class ArticleFormType extends AbstractType
                  'choice_label' => function(User $user) {
                      return sprintf('(%d) %s', $user->getId(), $user->getEmail());
                  },

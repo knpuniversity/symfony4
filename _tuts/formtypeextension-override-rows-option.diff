@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 8ffab2f1..c3200ec6 100644
+index d9b56fbb..d87cfd16 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -27,7 +27,9 @@ class ArticleFormType extends AbstractType
@@ -10,6 +10,6 @@ index 8ffab2f1..c3200ec6 100644
 +            ->add('content', null, [
 +                'rows' => 15
 +            ])
-             ->add('author', UserSelectTextType::class)
              ->add('publishedAt', null, [
-                 'widget' => 'single_text',
+                 'widget' => 'single_text'
+             ])

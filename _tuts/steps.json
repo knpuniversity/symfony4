@@ -1576,6 +1576,11 @@
             "description": null
         },
         {
+            "id": "pre-forms-removing-symfony-lts",
+            "name": "PRE_FORMS: Removing symfony\/lts",
+            "description": null
+        },
+        {
             "id": "forms-setup-install-form",
             "name": "Forms Setup: Install form",
             "description": null
@@ -1641,6 +1646,16 @@
             "description": null
         },
         {
+            "id": "options-add-publishedat",
+            "name": "Options: add publishedAt",
+            "description": null
+        },
+        {
+            "id": "options-add-widget-option",
+            "name": "Options: Add widget option",
+            "description": null
+        },
+        {
             "id": "entitytype-add-field-use-guessing",
             "name": "EntityType: add field, use guessing",
             "description": null
@@ -1681,13 +1696,13 @@
             "description": null
         },
         {
-            "id": "datetimetype-add-field",
-            "name": "DateTimeType: add field",
+            "id": "datetimetype-delete-me-1",
+            "name": "DateTimeType: delete me 1",
             "description": null
         },
         {
-            "id": "datetimetype-set-widget",
-            "name": "DateTimeType: set widget",
+            "id": "datetimetype-delete-me-2",
+            "name": "DateTimeType: delete me 2",
             "description": null
         },
         {
@@ -1771,6 +1786,11 @@
             "description": null
         },
         {
+            "id": "registration-make-firstname-nullable",
+            "name": "Registration: Make firstName nullable",
+            "description": null
+        },
+        {
             "id": "registration-use-fake-plainpassword-field",
             "name": "Registration: use fake plainPassword field",
             "description": null
@@ -1798,6 +1818,11 @@
         {
             "id": "regvalidation-custom-messages",
             "name": "RegValidation: Custom messages",
+            "description": null
+        },
+        {
+            "id": "regvalidation-uniqueentity",
+            "name": "RegValidation: UniqueEntity",
             "description": null
         },
         {
@@ -1986,5 +2011,5 @@
             "description": null
         }
     ],
-    "sha": "51a59e3e92bad754f2c6ddf9d5d6e7a52f6a8bc3"
+    "sha": "464cb18303170ee820e12142d78a76ec4aaf0799"
 }

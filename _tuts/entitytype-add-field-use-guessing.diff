@@ -1,11 +1,11 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 283bb885..81acaa47 100644
+index 016617b6..7aa65434 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
-@@ -17,6 +17,7 @@ class ArticleFormType extends AbstractType
-                 'help' => 'Choose something catchy!'
+@@ -20,6 +20,7 @@ class ArticleFormType extends AbstractType
+             ->add('publishedAt', null, [
+                 'widget' => 'single_text'
              ])
-             ->add('content')
 +            ->add('author')
          ;
      }

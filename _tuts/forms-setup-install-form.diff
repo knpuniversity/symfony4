@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 2bc86ec3..e64cd09e 100644
+index eeebb084..fa0e060e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,6 +14,7 @@
@@ -8,18 +8,18 @@ index 2bc86ec3..e64cd09e 100644
          "symfony/flex": "^1.0",
 +        "symfony/form": "^4.0",
          "symfony/framework-bundle": "^4.0",
-         "symfony/lts": "^4@dev",
          "symfony/orm-pack": "^1.0",
+         "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index a715c6d6..f515a237 100644
+index d4e48604..ead7b5f0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "162629886045fca4d67d8d5c7b55df5e",
-+    "content-hash": "87ce622b70225272914194f0772c736d",
+-    "content-hash": "7c9c6cc2d8920d3bd37bb5094982b01a",
++    "content-hash": "20609e650f0ff5d35be7b3573ac8c746",
      "packages": [
          {
              "name": "behat/transliterator",
@@ -191,9 +191,9 @@ index a715c6d6..f515a237 100644
 +            "time": "2018-10-02T12:40:59+00:00"
 +        },
          {
-             "name": "symfony/lts",
-             "version": "dev-master",
-@@ -4527,6 +4683,64 @@
+             "name": "symfony/options-resolver",
+             "version": "v4.1.6",
+@@ -4444,6 +4600,64 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },
@@ -259,7 +259,7 @@ index a715c6d6..f515a237 100644
              "name": "symfony/polyfill-mbstring",
              "version": "v1.9.0",
 diff --git a/symfony.lock b/symfony.lock
-index 62d2a71f..2e46f7dc 100644
+index a6f8c809..77c3da82 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -293,6 +293,9 @@
@@ -279,10 +279,10 @@ index 62d2a71f..2e46f7dc 100644
 +    "symfony/intl": {
 +        "version": "v4.1.6"
 +    },
-     "symfony/lts": {
-         "version": "4-dev"
-     },
-@@ -353,6 +359,9 @@
+     "symfony/maker-bundle": {
+         "version": "1.0",
+         "recipe": {
+@@ -350,6 +356,9 @@
      "symfony/polyfill-ctype": {
          "version": "v1.9.0"
      },

@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index e64cd09e..d93cc773 100644
+index fa0e060e..fc96ba2e 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -21,6 +21,7 @@
+@@ -20,6 +20,7 @@
          "symfony/security-bundle": "^4.0",
          "symfony/serializer-pack": "^1.0",
          "symfony/twig-bundle": "^4.0",
@@ -11,19 +11,19 @@ index e64cd09e..d93cc773 100644
          "symfony/yaml": "^4.0",
          "twig/extensions": "^1.5"
 diff --git a/composer.lock b/composer.lock
-index f515a237..31e9a911 100644
+index ead7b5f0..1109467a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "87ce622b70225272914194f0772c736d",
-+    "content-hash": "f3a9b0675e820204d7b8ffd3e6b0c81a",
+-    "content-hash": "20609e650f0ff5d35be7b3573ac8c746",
++    "content-hash": "5ad2e8d611401c6ae7aad6703bcc7b12",
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -5675,6 +5675,92 @@
+@@ -5592,6 +5592,92 @@
              "homepage": "https://symfony.com",
              "time": "2018-09-30T03:38:13+00:00"
          },
@@ -126,10 +126,10 @@ index 00000000..a695e1a6
 +    validation:
 +        email_validation_mode: html5
 diff --git a/symfony.lock b/symfony.lock
-index 2e46f7dc..36353d63 100644
+index 77c3da82..920bea09 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -434,6 +434,15 @@
+@@ -431,6 +431,15 @@
              "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
          }
      },

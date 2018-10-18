@@ -1,0 +1,150 @@
+diff --git a/composer.json b/composer.json
+index 2bc86ec3..eeebb084 100644
+--- a/composer.json
++++ b/composer.json
+@@ -15,7 +15,6 @@
+         "symfony/console": "^4.0",
+         "symfony/flex": "^1.0",
+         "symfony/framework-bundle": "^4.0",
+-        "symfony/lts": "^4@dev",
+         "symfony/orm-pack": "^1.0",
+         "symfony/security-bundle": "^4.0",
+         "symfony/serializer-pack": "^1.0",
+@@ -78,7 +77,8 @@
+     "extra": {
+         "symfony": {
+             "id": "01C1TW989CK77ZA7B2H4HC9WAG",
+-            "allow-contrib": true
++            "allow-contrib": true,
++            "require": "4.1.*"
+         }
+     }
+ }
+diff --git a/composer.lock b/composer.lock
+index a715c6d6..d4e48604 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "162629886045fca4d67d8d5c7b55df5e",
++    "content-hash": "7c9c6cc2d8920d3bd37bb5094982b01a",
+     "packages": [
+         {
+             "name": "behat/transliterator",
+@@ -4304,89 +4304,6 @@
+             ],
+             "time": "2018-07-26T08:55:25+00:00"
+         },
+-        {
+-            "name": "symfony/lts",
+-            "version": "dev-master",
+-            "conflict": {
+-                "symfony/asset": ">=5",
+-                "symfony/browser-kit": ">=5",
+-                "symfony/cache": ">=5",
+-                "symfony/class-loader": ">=5",
+-                "symfony/config": ">=5",
+-                "symfony/console": ">=5",
+-                "symfony/css-selector": ">=5",
+-                "symfony/debug": ">=5",
+-                "symfony/debug-bundle": ">=5",
+-                "symfony/dependency-injection": ">=5",
+-                "symfony/doctrine-bridge": ">=5",
+-                "symfony/dom-crawler": ">=5",
+-                "symfony/dotenv": ">=5",
+-                "symfony/event-dispatcher": ">=5",
+-                "symfony/expression-language": ">=5",
+-                "symfony/filesystem": ">=5",
+-                "symfony/finder": ">=5",
+-                "symfony/form": ">=5",
+-                "symfony/framework-bundle": ">=5",
+-                "symfony/http-foundation": ">=5",
+-                "symfony/http-kernel": ">=5",
+-                "symfony/inflector": ">=5",
+-                "symfony/intl": ">=5",
+-                "symfony/ldap": ">=5",
+-                "symfony/lock": ">=5",
+-                "symfony/messenger": ">=5",
+-                "symfony/monolog-bridge": ">=5",
+-                "symfony/options-resolver": ">=5",
+-                "symfony/process": ">=5",
+-                "symfony/property-access": ">=5",
+-                "symfony/property-info": ">=5",
+-                "symfony/proxy-manager-bridge": ">=5",
+-                "symfony/routing": ">=5",
+-                "symfony/security": ">=5",
+-                "symfony/security-bundle": ">=5",
+-                "symfony/security-core": ">=5",
+-                "symfony/security-csrf": ">=5",
+-                "symfony/security-guard": ">=5",
+-                "symfony/security-http": ">=5",
+-                "symfony/serializer": ">=5",
+-                "symfony/stopwatch": ">=5",
+-                "symfony/symfony": ">=5",
+-                "symfony/templating": ">=5",
+-                "symfony/translation": ">=5",
+-                "symfony/twig-bridge": ">=5",
+-                "symfony/twig-bundle": ">=5",
+-                "symfony/validator": ">=5",
+-                "symfony/var-dumper": ">=5",
+-                "symfony/web-link": ">=5",
+-                "symfony/web-profiler-bundle": ">=5",
+-                "symfony/web-server-bundle": ">=5",
+-                "symfony/workflow": ">=5",
+-                "symfony/yaml": ">=5"
+-            },
+-            "type": "metapackage",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "4-dev"
+-                }
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
+-                },
+-                {
+-                    "name": "Symfony Community",
+-                    "homepage": "https://symfony.com/contributors"
+-                }
+-            ],
+-            "description": "Enforces Long Term Supported versions of Symfony components",
+-            "homepage": "https://symfony.com",
+-            "abandoned": "symfony/flex",
+-            "time": "2018-10-03T12:03:19+00:00"
+-        },
+         {
+             "name": "symfony/options-resolver",
+             "version": "v4.1.6",
+@@ -6922,9 +6839,7 @@
+     ],
+     "aliases": [],
+     "minimum-stability": "stable",
+-    "stability-flags": {
+-        "symfony/lts": 20
+-    },
++    "stability-flags": [],
+     "prefer-stable": false,
+     "prefer-lowest": false,
+     "platform": {
+diff --git a/symfony.lock b/symfony.lock
+index 62d2a71f..a6f8c809 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -311,9 +311,6 @@
+     "symfony/inflector": {
+         "version": "v4.1.4"
+     },
+-    "symfony/lts": {
+-        "version": "4-dev"
+-    },
+     "symfony/maker-bundle": {
+         "version": "1.0",
+         "recipe": {

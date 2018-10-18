@@ -1,0 +1,47 @@
+diff --git a/src/Entity/User.php b/src/Entity/User.php
+index d6f97ed0..23ede54a 100644
+--- a/src/Entity/User.php
++++ b/src/Entity/User.php
+@@ -32,7 +32,7 @@ class User implements UserInterface
+     private $roles = [];
+ 
+     /**
+-     * @ORM\Column(type="string", length=255)
++     * @ORM\Column(type="string", length=255, nullable=true)
+      * @Groups("main")
+      */
+     private $firstName;
+diff --git a/src/Migrations/Version20181018165320.php b/src/Migrations/Version20181018165320.php
+new file mode 100644
+index 00000000..2d30c823
+--- /dev/null
++++ b/src/Migrations/Version20181018165320.php
+@@ -0,0 +1,28 @@
++<?php declare(strict_types=1);
++
++namespace DoctrineMigrations;
++
++use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
++
++/**
++ * Auto-generated Migration: Please modify to your needs!
++ */
++final class Version20181018165320 extends AbstractMigration
++{
++    public function up(Schema $schema) : void
++    {
++        // this up() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE user CHANGE first_name first_name VARCHAR(255) DEFAULT NULL');
++    }
++
++    public function down(Schema $schema) : void
++    {
++        // this down() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE user ADD agreed_terms_at DATETIME NOT NULL, CHANGE first_name first_name VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
++    }
++}

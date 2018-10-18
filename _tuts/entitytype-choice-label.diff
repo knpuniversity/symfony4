@@ -1,9 +1,9 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index ce19d301..f48bf7b9 100644
+index e050eb59..427e66b2 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
-@@ -21,6 +21,7 @@ class ArticleFormType extends AbstractType
-             ->add('content')
+@@ -24,6 +24,7 @@ class ArticleFormType extends AbstractType
+             ])
              ->add('author', EntityType::class, [
                  'class' => User::class,
 +                'choice_label' => 'email',

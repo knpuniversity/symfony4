@@ -25,16 +25,12 @@ index 7f1630a1..d37e591a 100644
          $form->handleRequest($request);
          if ($form->isSubmitted() && $form->isValid()) {
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 97424daf..30efc667 100644
+index 57a5bc05..f2a035c6 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
-@@ -36,16 +36,20 @@ class ArticleFormType extends AbstractType
-             ->add('author', UserSelectTextType::class, [
+@@ -40,12 +40,19 @@ class ArticleFormType extends AbstractType
                  'disabled' => $isEdit
              ])
--            ->add('publishedAt', null, [
--                'widget' => 'single_text',
--            ])
          ;
 +
 +        if ($options['include_published_at']) {

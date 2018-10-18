@@ -1,11 +1,11 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index c38f68c3..8ffab2f1 100644
+index 671720a8..d9b56fbb 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
-@@ -28,15 +28,7 @@ class ArticleFormType extends AbstractType
-                 'help' => 'Choose something catchy!'
+@@ -31,15 +31,7 @@ class ArticleFormType extends AbstractType
+             ->add('publishedAt', null, [
+                 'widget' => 'single_text'
              ])
-             ->add('content')
 -            ->add('author', EntityType::class, [
 -                'class' => User::class,
 -                'choice_label' => function(User $user) {
@@ -16,9 +16,9 @@ index c38f68c3..8ffab2f1 100644
 -                'invalid_message' => 'Symfony is too smart for your hacking!'
 -            ])
 +            ->add('author', UserSelectTextType::class)
-             ->add('publishedAt', null, [
-                 'widget' => 'single_text',
-             ])
+         ;
+     }
+ 
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
 new file mode 100644
 index 00000000..63b057be
