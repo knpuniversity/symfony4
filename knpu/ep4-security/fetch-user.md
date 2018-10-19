@@ -56,10 +56,10 @@ in our existing controllers:
 [[[ code('bd1a09fcb3') ]]]
 
 ***TIP
-A simpler solution (and one that avoids a deprecation warning) is to advertise to your IDE that getUser() returns a User with some PHPDoc:
+A simpler solution (and one that avoids a deprecation warning) is to advertise to your IDE that getUser() returns a User (or null) with some PHPDoc:
 ```
 /**
- * @method User getUser()
+ * @method User|null getUser()
  */
 class BaseController extends AbstractController
 {
