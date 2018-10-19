@@ -11,10 +11,14 @@ First, you need to ask yourself a very important question:
 > Do you actually need an API token authentication system?
 
 There's a *pretty* good chance that the answer is... no, *even* if your app has
-API endpoints. If you're creating API endpoints *solely* so that your *own* JavaScript
-for your *own* site can use them, then, you do *not* need an API token authentication
-system. Nope! Your life will be much simpler if you use a normal login form and
-session-based authentication.
+API endpoints:
+
+[[[ code('1a34e1b4b1') ]]]
+
+If you're creating API endpoints *solely* so that your *own* JavaScript for your
+*own* site can use them, then, you do *not* need an API token authentication system.
+Nope! Your life will be much simpler if you use a normal login form and session-based
+authentication.
 
 Yep! You probably already know, that, once you login via a login form, you can
 instantly make authenticated AJAX requests from JavaScript, because those requests
@@ -24,8 +28,12 @@ own JavaScript, just use `LoginFormAuthenticator`.
 Oh, and if you need to be fancier with your login form, sure! You can *totally* use
 JavaScript to make the login form submit via AJAX. Nothing would need to change in
 your authenticator, except that you would probably want to send back JSON on success,
-instead of redirecting. You would also override `onAuthenticationError()` and the
-`start()` method to do the same. We'll learn more about those methods soon.
+instead of redirecting:
+
+[[[ code('a44af57764') ]]]
+
+You would also override `onAuthenticationError()` and the `start()` method to do
+the same. We'll learn more about those methods soon.
 
 Of course, even if your JavaScript will be the only thing using your API, you
 *can* still build an API token authentication system, if you want. And if you

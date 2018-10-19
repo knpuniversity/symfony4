@@ -24,13 +24,13 @@ Auth stuff does, hit "Preview Request".
 
 > Request headers were successfully updated.
 
-Cool! Click back to "Headers". Ahh! This "auth" section is just a shortcut to add
+Cool! Click back to "Headers". Ahh! This "Auth" section is just a shortcut to add
 a request header called `Authorization`. Hey! Go away tooltip! Anyways, the `Authorization`
 header is set to the word "Bearer", a space, and then our token.
 
 Honestly, you can name this header *whatever* you want - like
 `SEND-ME-YOUR-TOKEN`, `WHATS-THE-MAGIC-WORD` or `I-LIKE-DINOSAURS`. The name
-`Authorization` is just a standard and, yea, I guess... it *does* sound a bit more
+`Authorization` is just a standard, yea, and I guess... it *does* sound a bit more
 professional than my other ideas. There's also nothing significant about that
 "Bearer" part. That's *another* standard that's commonly used when your token is
 what's known as a "Bearer token": a fancy term that means whoever "bears" this
@@ -47,7 +47,9 @@ our authenticator should only become active if the request has an `Authorization
 header whose value starts with the word "Bearer". No problem: return
 `$request->headers->has('Authorization')` to make sure that header is set and also check
 that 0 is the position inside `$request->headers->get('Authorization')` where the
-string `Bearer` and a space appears.
+string `Bearer` and a space appears:
+
+[[[ code('41c5b5564a') ]]]
 
 I know: weird-looking code. But it does exactly what we need! If the `Authorization`
 Bearer header isn't there, `supports()` will return false and no other methods will
@@ -56,13 +58,25 @@ be called.
 ## getCredentials()
 
 Next: `getCredentials()`. Our job is to read the token string and return it.
-Start with `$authorizationHeader = $request->headers->get('Authorization')`. But,
-instead of returning that *whole* value, skip the `Bearer` part. So, return a sub-string
-of `$authorizationHeader` where we start at the 7th character.
+Start with `$authorizationHeader = $request->headers->get('Authorization')`:
+
+[[[ code('cd066f81a7') ]]]
+
+But, instead of returning that *whole* value, skip the `Bearer` part. So, return
+a sub-string of `$authorizationHeader` where we start at the 7th character:
+
+[[[ code('a12ee88922') ]]]
 
 Ok. Deep breath: let's see if this is working so far. In `getUser()`, `dump($credentials)`
-and die. This *should* be the API token *string*. Oh, and notice that this is different
-than `LoginFormAuthenticator`: we returned an *array* from `getCredentials()` there.
+and die:
+
+[[[ code('c121cf39f3') ]]]
+
+This *should* be the API token *string*. Oh, and notice that this is different
+than `LoginFormAuthenticator`: we returned an *array* from `getCredentials()` there:
+
+[[[ code('905aa7a8f6') ]]]
+
 But that's the beauty of the authenticators: you can return *whatever* you want
 from `getCredentials()`. The only thing we need is the token string... so, we just
 return that.
@@ -74,18 +88,26 @@ Yes! *There* is our API token string.
 
 Next up: `getUser()`. First, we need to query for the `ApiToken` entity. At the
 top of this class, make an `__construct` function and give it an
-`ApiTokenRepository $apiTokenRepo` argument. I'll hit Alt+Enter to initialize that.
+`ApiTokenRepository $apiTokenRepo` argument. I'll hit `Alt`+`Enter` to initialize that:
+
+[[[ code('e76ee07fab') ]]]
 
 Then, back in `getUser()`, get that token: `$token = $this->apiTokenRepo->findOneBy()`
-to query where the `token` property is set to the `$credentials` string.
+to query where the `token` property is set to the `$credentials` string:
+
+[[[ code('3a6fa191ac') ]]]
 
 If we do *not* find an `ApiToken`, return null. That will make authentication fail.
 If we *do* find one, we need to return the `User`, not the token. So, return
-`$token->getUser()`.
+`$token->getUser()`:
+
+[[[ code('6342fc16f6') ]]]
 
 Finally, *if* you return a `User` object from `getUser()`, Symfony calls
 `checkCredentials()`. Let's `dd('checking credentials')` to see if we *continue*
-to be lucky.
+to be lucky:
+
+[[[ code('4fcc63f44d') ]]]
 
 Move back over to Postman, Send and... yes! Checking credentials.
 
