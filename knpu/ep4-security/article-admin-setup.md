@@ -2,7 +2,7 @@
 
 Each Article's `author` is now a proper relationship to the `User` entity, instead
 of a string. That's great... except that we haven't updated anything else yet in
-our code to refelct this. Refresh the homepage. Yep! A big ol' error:
+our code to reflect this. Refresh the homepage. Yep! A big ol' error:
 
 > Exception thrown rendering the template
 > Catchable Fatal Error: Object of Class
@@ -15,12 +15,17 @@ and works *exactly* like `User`.
 
 Second, the error itself basically means that something is trying to convert our
 `User` object into a `string`. This makes sense: in our template, we're just
-rendering `{{ article.author }}`. That *was* a `string` before, but now it's a
-`User` object.
+rendering `{{ article.author }}`:
+
+[[[ code('8bf05bd9cd') ]]]
+
+That *was* a `string` before, but now it's a `User` object.
 
 We *could* go change this to `article.author.firstName`. *Or*, we can go into
 our `User` class and add a `public function __toString()` method. 
-`return $this->getFirstName()`.
+Return `$this->getFirstName()`:
+
+[[[ code('368a875c5e') ]]]
 
 As *soon* as we do that... we're back!
 
@@ -29,17 +34,30 @@ As *soon* as we do that... we're back!
 What I *really* want to talk about is controlling access in your system on an
 *object-by-object* basis. Like, User A can edit *this* `Article` because they are
 the author, but not that *other* `Article`. Open `ArticleAdminController` and add
-a new endpoint:  `public function edit()`. Add the normal route with a URL of
-`/admin/article/{id}/edit`. I won't give it a name yet.
+a new endpoint: `public function edit()`:
 
-Next, add an argument to the method: `Article $article`. Because `Article` is an *entity*,
-SensioFrameworkExtraBundle - a bundle we installed a long time ago - will use the
-`{id}` route parameter to query for the correct `Article`.
+[[[ code('97dd31d704') ]]]
 
-To see if this is working, `dd($article)`. Oh, and remember: this *entire* controller
-class is protected by `ROLE_ADMIN_ARTICLE`.
+Add the normal route with a URL of `/admin/article/{id}/edit`. I won't give it a name yet:
 
-To get a valid `Article` id, find your terminal and run:
+[[[ code('84e8a6c7e2') ]]]
+
+Next, add an argument to the method: `Article $article`:
+
+[[[ code('225d06730b') ]]]
+
+Because `Article` is an *entity*, SensioFrameworkExtraBundle - a bundle we installed
+a long time ago - will use the `{id}` route parameter to query for the correct `Article`.
+
+To see if this is working, `dd($article)`:
+
+[[[ code('ebb5e2152c') ]]]
+
+Oh, and remember: this *entire* controller class is protected by `ROLE_ADMIN_ARTICLE`:
+
+[[[ code('d296e6976c') ]]]
+
+To get a valid `Article` ID, find your terminal and run:
 
 ```terminal
 php bin/console doctrine:query:sql 'SELECT * FROM article'
@@ -62,8 +80,11 @@ had to make an access decision that is *based* on an object - the `Article`.
 
 ## Manually Denying Access
 
-Start by moving `@IsGranted()` from above the class to above the `new()` method.
-Thanks to this, our `edit` endpoint is temporarily open to the world.
+Start by moving `@IsGranted()` from above the class to above the `new()` method:
+
+[[[ code('1f64c57918') ]]]
+
+Thanks to this, our `edit()` endpoint is temporarily open to the world.
 
 Right now, we're looking at article `id` 20. Go back to your terminal. Ok, this
 article's author is user 18. Find out who that is:
@@ -81,10 +102,13 @@ right now.
 The *simplest* way to enforce our custom security logic is to add it *right* in
 the controller. Check it out: `if ($article->getAuthor() !== $this->getUser())`
 and if `!$this->isGranted('ROLE_ADMIN_ARTICLE')`, then
-`throw $this->createAccessDeniedException('No access!')`. The `$this->isGranted()`
-method is new to us, but simple: it returns true or false based on whether or not
-the user has `ROLE_ADMIN_ARTICLE`. We also haven't seen this `createAccessDeniedException()`
-method yet either. Up until now, we've denied access using
+`throw $this->createAccessDeniedException('No access!')`:
+
+[[[ code('a20716532c') ]]]
+
+The `$this->isGranted()` method is new to us, but simple: it returns true or false
+based on whether or not the user has `ROLE_ADMIN_ARTICLE`. We also haven't seen this
+`createAccessDeniedException()` method yet either. Up until now, we've denied access using
 `$this->denyAccessUnlessGranted()`. It turns out, that method is just a shortcut
 to call `$this->isGranted()` and then `throw $this->createAccessDeniedException()` if
 that returned false. The cool takeaway is that, the way you *ultimately* deny access
