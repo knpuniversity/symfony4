@@ -1,1 +1,9 @@
-chapters: []
+chapters:
+  - form-type-class
+  - form-submit
+  - data-class
+  - types-options
+  - entity-type
+  - validation
+  - rendering-functions
+  - update-form
