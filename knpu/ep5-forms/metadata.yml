@@ -7,3 +7,9 @@ chapters:
   - validation
   - rendering-functions
   - update-form
+  - registration-form
+  - registration-validation
+  - agree-terms
+  - form-theme-basics
+  - form-theme-variables
+  - custom-field-theme
