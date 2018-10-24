@@ -1,16 +1,22 @@
 # Voters
 
-We need to centralize this logic so that it can be reused in other places.
+We need to centralize this logic so that it can be reused in other places:
+
+[[[ code('17a225535c') ]]]
+
 How? Well... it may look a bit weird at first. Remove all of this logic and replace
-it with: `if (!$this->isGranted('MANAGE', $article))`.
+it with: `if (!$this->isGranted('MANAGE', $article))`:
+
+[[[ code('2f08bea85f') ]]]
 
 Hmm. I'm using the same `isGranted()` function as before. But instead of passing
 a *role*, I'm just "inventing" a string: `MANAGE`. It *also* turns out that
 `isGranted()` has an optional *second* argument: a piece of *data* that is relevant
 to making this access decision.
 
-Don't worry - this will *not* magically work somehow. If you try it... yep! Access
-denied.
+Don't worry - this will *not* magically work somehow. If you try it... yep!
+
+> Access denied.
 
 ## Hello Voter System
 
