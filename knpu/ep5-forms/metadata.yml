@@ -1,6 +1,7 @@
 chapters:
   - form-type-class
   - form-submit
+  - flash-messages
   - data-class
   - types-options
   - entity-type
