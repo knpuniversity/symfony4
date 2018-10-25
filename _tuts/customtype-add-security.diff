@@ -1,0 +1,12 @@
+diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
+index c4e46c7a..747acb8a 100644
+--- a/src/Controller/AdminUtilityController.php
++++ b/src/Controller/AdminUtilityController.php
+@@ -12,6 +12,7 @@ class AdminUtilityController extends AbstractController
+ {
+     /**
+      * @Route("/admin/utility/users", methods="GET")
++     * @IsGranted("ROLE_ADMIN_ARTICLE")
+      */
+     public function getUsersApi(UserRepository $userRepository)
+     {

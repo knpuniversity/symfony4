@@ -1851,6 +1851,11 @@
             "description": null
         },
         {
+            "id": "theming-add-emailtype-class",
+            "name": "Theming: Add EmailType::class",
+            "description": null
+        },
+        {
             "id": "theming-them-self-w-form-row",
             "name": "Theming: them _self w form_row",
             "description": null
@@ -1936,6 +1941,11 @@
             "description": null
         },
         {
+            "id": "customtype-add-security",
+            "name": "CustomType: add security",
+            "description": null
+        },
+        {
             "id": "customtype-hook-up-endpoint",
             "name": "CustomType: Hook up endpoint",
             "description": null
@@ -1991,6 +2001,11 @@
             "description": null
         },
         {
+            "id": "options-dump-options",
+            "name": "Options: dump $options",
+            "description": null
+        },
+        {
             "id": "options-get-dump-options-data",
             "name": "Options: Get & dump $options['data']",
             "description": null
@@ -2011,5 +2026,5 @@
             "description": null
         }
     ],
-    "sha": "464cb18303170ee820e12142d78a76ec4aaf0799"
+    "sha": "769fcb75efda4b05cb8a5737ecc7c8e257a66157"
 }

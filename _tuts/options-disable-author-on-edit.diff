@@ -1,17 +1,18 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index daa7d1a0..57a5bc05 100644
+index 5dcf0f74..c3a4b745 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
-@@ -24,7 +24,7 @@ class ArticleFormType extends AbstractType
+@@ -24,7 +24,8 @@ class ArticleFormType extends AbstractType
      public function buildForm(FormBuilderInterface $builder, array $options)
      {
-         $user = $options['data'] ?? null;
--        dd($user);
-+        $isEdit = $user && $user->getId();
- 
+         $article = $options['data'] ?? null;
+-        dd($article);
++        $isEdit = $article && $article->getId();
++
          $builder
              ->add('title', TextType::class, [
-@@ -36,7 +36,9 @@ class ArticleFormType extends AbstractType
+                 'help' => 'Choose something catchy!'
+@@ -35,7 +36,9 @@ class ArticleFormType extends AbstractType
              ->add('publishedAt', null, [
                  'widget' => 'single_text'
              ])

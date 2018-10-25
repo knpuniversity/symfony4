@@ -1,19 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 7f1630a1..d37e591a 100644
+index 7f1630a1..09036a04 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -20,7 +20,9 @@ class ArticleAdminController extends AbstractController
-      */
-     public function new(EntityManagerInterface $em, Request $request)
-     {
--        $form = $this->createForm(ArticleFormType::class);
-+        $form = $this->createForm(ArticleFormType::class, null, [
-+            'include_published_at' => false
-+        ]);
- 
-         $form->handleRequest($request);
-         if ($form->isSubmitted() && $form->isValid()) {
-@@ -46,7 +48,9 @@ class ArticleAdminController extends AbstractController
+@@ -46,7 +46,9 @@ class ArticleAdminController extends AbstractController
       */
      public function edit(Article $article, Request $request, EntityManagerInterface $em)
      {
@@ -25,10 +14,17 @@ index 7f1630a1..d37e591a 100644
          $form->handleRequest($request);
          if ($form->isSubmitted() && $form->isValid()) {
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 57a5bc05..f2a035c6 100644
+index c3a4b745..953edf49 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
-@@ -40,12 +40,19 @@ class ArticleFormType extends AbstractType
+@@ -33,19 +33,23 @@ class ArticleFormType extends AbstractType
+             ->add('content', null, [
+                 'rows' => 15
+             ])
+-            ->add('publishedAt', null, [
+-                'widget' => 'single_text'
+-            ])
+             ->add('author', UserSelectTextType::class, [
                  'disabled' => $isEdit
              ])
          ;
@@ -49,3 +45,19 @@ index 57a5bc05..f2a035c6 100644
          ]);
      }
  }
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index df490b22..eb9984fb 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -4,7 +4,9 @@
+     }) }}
+     {{ form_row(articleForm.author) }}
+     {{ form_row(articleForm.content) }}
+-    {{ form_row(articleForm.publishedAt) }}
++    {% if articleForm.publishedAt is defined %}
++        {{ form_row(articleForm.publishedAt) }}
++    {% endif %}
+ 
+     <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+ {{ form_end(articleForm) }}
+\ No newline at end of file

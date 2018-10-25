@@ -1,5 +1,5 @@
 diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
-index 8c60c0f6..b11d672b 100644
+index 8c60c0f6..f7074647 100644
 --- a/public/js/algolia-autocomplete.js
 +++ b/public/js/algolia-autocomplete.js
 @@ -1,12 +1,19 @@
@@ -20,7 +20,7 @@ index 8c60c0f6..b11d672b 100644
 +                    $.ajax({
 +                        url: autocompleteUrl
 +                    }).then(function(data) {
-+                        cb(data.users.slice(0, 5));
++                        cb(data.users);
 +                    });
 +                },
 +                displayKey: 'email',
@@ -32,18 +32,18 @@ index 8c60c0f6..b11d672b 100644
 +    });
  });
 diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
-index fbb31583..0291d92d 100644
+index 747acb8a..de6bd08f 100644
 --- a/src/Controller/AdminUtilityController.php
 +++ b/src/Controller/AdminUtilityController.php
-@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
+@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  class AdminUtilityController extends AbstractController
  {
      /**
 -     * @Route("/admin/utility/users", methods="GET")
 +     * @Route("/admin/utility/users", methods="GET", name="admin_utility_users")
+      * @IsGranted("ROLE_ADMIN_ARTICLE")
       */
      public function getUsersApi(UserRepository $userRepository)
-     {
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
 index f8e64501..b90bd10d 100644
 --- a/src/Form/UserSelectTextType.php

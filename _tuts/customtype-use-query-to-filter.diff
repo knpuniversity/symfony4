@@ -1,5 +1,5 @@
 diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
-index b11d672b..093869ec 100644
+index f7074647..fa62249c 100644
 --- a/public/js/algolia-autocomplete.js
 +++ b/public/js/algolia-autocomplete.js
 @@ -6,7 +6,7 @@ $(document).ready(function() {
@@ -9,10 +9,10 @@ index b11d672b..093869ec 100644
 -                        url: autocompleteUrl
 +                        url: autocompleteUrl+'?query='+query
                      }).then(function(data) {
-                         cb(data.users.slice(0, 5));
+                         cb(data.users);
                      });
 diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
-index 0291d92d..b4d007c6 100644
+index de6bd08f..4f86cca2 100644
 --- a/src/Controller/AdminUtilityController.php
 +++ b/src/Controller/AdminUtilityController.php
 @@ -6,6 +6,7 @@ use App\Repository\UserRepository;
@@ -22,10 +22,10 @@ index 0291d92d..b4d007c6 100644
 +use Symfony\Component\HttpFoundation\Request;
  use Symfony\Component\Routing\Annotation\Route;
  
- /**
-@@ -16,9 +17,9 @@ class AdminUtilityController extends AbstractController
-     /**
+ class AdminUtilityController extends AbstractController
+@@ -14,9 +15,9 @@ class AdminUtilityController extends AbstractController
       * @Route("/admin/utility/users", methods="GET", name="admin_utility_users")
+      * @IsGranted("ROLE_ADMIN_ARTICLE")
       */
 -    public function getUsersApi(UserRepository $userRepository)
 +    public function getUsersApi(UserRepository $userRepository, Request $request)
@@ -36,23 +36,24 @@ index 0291d92d..b4d007c6 100644
          return $this->json([
              'users' => $users
 diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
-index fe3ab5ee..d170dcb1 100644
+index fe3ab5ee..70b7bed8 100644
 --- a/src/Repository/UserRepository.php
 +++ b/src/Repository/UserRepository.php
-@@ -31,6 +31,18 @@ class UserRepository extends ServiceEntityRepository
+@@ -31,6 +31,19 @@ class UserRepository extends ServiceEntityRepository
          ;
      }
  
 +    /**
-+     * @User[]
++     * @return User[]
 +     */
-+    public function findAllMatching(string $query)
++    public function findAllMatching(string $query, int $limit = 5)
 +    {
 +        return $this->createQueryBuilder('u')
 +            ->andWhere('u.email LIKE :query')
 +            ->setParameter('query', '%'.$query.'%')
++            ->setMaxResults($limit)
 +            ->getQuery()
-+            ->execute();
++            ->getResult();
 +    }
 +
  //    /**

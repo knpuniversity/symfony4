@@ -1,22 +1,8 @@
-diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index a48752a7..a16fc638 100644
---- a/config/packages/security.yaml
-+++ b/config/packages/security.yaml
-@@ -12,7 +12,8 @@ security:
-                 property: email
- 
-     role_hierarchy:
--        ROLE_ADMIN: [ROLE_ADMIN_COMMENT, ROLE_ADMIN_ARTICLE, ROLE_ALLOWED_TO_SWITCH]
-+        ROLE_ADMIN: [ROLE_ADMIN_COMMENT, ROLE_ADMIN_ARTICLE, ROLE_ALLOWED_TO_SWITCH, ROLE_ADMIN_UTILITY]
-+        ROLE_ADMIN_ARTICLE: [ROLE_ADMIN_UTILITY]
- 
-     firewalls:
-         dev:
 diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
-index 76458e3b..fbb31583 100644
+index 76458e3b..c4e46c7a 100644
 --- a/src/Controller/AdminUtilityController.php
 +++ b/src/Controller/AdminUtilityController.php
-@@ -2,9 +2,26 @@
+@@ -2,9 +2,23 @@
  
  namespace App\Controller;
  
@@ -26,9 +12,6 @@ index 76458e3b..fbb31583 100644
 +use Symfony\Component\HttpFoundation\JsonResponse;
 +use Symfony\Component\Routing\Annotation\Route;
  
-+/**
-+ * @IsGranted("ROLE_ADMIN_UTILITY")
-+ */
  class AdminUtilityController extends AbstractController
  {
 +    /**
