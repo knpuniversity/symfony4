@@ -17,3 +17,7 @@ chapters:
   - custom-field-type
   - data-transformer
   - custom-field-option
+  - autocomplete-js
+  - autocomplete-js-tweaked-ending
+  - autocomplete-endpoint
+  - build-view
