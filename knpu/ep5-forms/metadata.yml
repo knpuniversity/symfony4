@@ -14,3 +14,6 @@ chapters:
   - form-theme-basics
   - form-theme-variables
   - custom-field-theme
+  - custom-field-type
+  - data-transformer
+  - custom-field-option
