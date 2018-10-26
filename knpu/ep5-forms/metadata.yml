@@ -4,6 +4,7 @@ chapters:
   - flash-messages
   - data-class
   - types-options
+  - datetime-type-transforming
   - entity-type
   - validation
   - rendering-functions
