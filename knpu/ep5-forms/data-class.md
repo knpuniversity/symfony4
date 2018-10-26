@@ -31,7 +31,7 @@ Whoa! The content is now a `textarea`! We haven't talked about it yet, but we ca
 of course, configure how each field is rendered. By default, if you do nothing,
 everything renders as a text input. But, when you bind your form to a class, a
 special system - called the "form type guessing" system - tries to *guess* the proper
-"type" for each field. It notices that the `$content` field on `Article` is a longer
+"type" for each field. It notices that the `$content` property on `Article` is a longer
 `text` Doctrine type. And so, it basically says:
 
 > Hey peeps! This content field looks pretty big! So, let's use a textarea
@@ -87,7 +87,7 @@ you're using Bootstrap CSS or Foundation CSS, ah, you're in luck! Symfony comes
 with a built-in form theme that makes your forms render *exactly* how these systems
 want.
 
-Open `config/packages/twig.yaml`. Add a new key called `form_themes` and with one
+Open `config/packages/twig.yaml`. Add a new key called `form_themes` with one
 element that points to a template called `bootstrap_4_layout.html.twig`.
 
 This template lives deep inside the core of Symfony. And we'll check it out later
