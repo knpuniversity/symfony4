@@ -68,10 +68,15 @@ to find the `AbstractType` class from the `Form` component.
 
 Got it! Now, go to the Code -> generate menu, or Cmd+N on a Mac, and click override
 methods. There are several methods that you can override to control different parts
-of your form. But, by *far*, the most important is `buildForm()`. Inside this method,
-our job is pretty simple: use this `$builder` object to, um... build the form! Use
-`$builder->add()` to add two fields right now: `title` and `content`. These are the
+of your form. But, by *far*, the most important is `buildForm()`.
+
+[[[ code('33698f9a63') ]]]
+
+Inside this method, our job is pretty simple: use this `$builder` object to, um... build the form!
+Use `$builder->add()` to add two fields right now: `title` and `content`. These are the
 two most important fields inside the `Article` entity class.
+
+[[[ code('9ecdd3f8b5') ]]]
 
 And... that's it! We'll do more work here later, but this is enough.
 
@@ -87,6 +92,8 @@ and set it to - this is tricky - `$form->createView()`. Yep: don't pass the
 Form object into another object that is *super* good at rendering forms and telling
 funny stories at parties.
 
+[[[ code('f41dc0b97a') ]]]
+
 ## Rendering the Form
 
 To create the template, I'll cheat! Ha! Thanks to the Symfony plugin, I can put my
@@ -101,12 +108,16 @@ bit of real markup and a `content_body` block that we can override. Let's use th
 with `{% endblock %}`. Add an `<h1>Launch a new Article</h1>` with, of course, a
 rocket emoji! Zoom!
 
+[[[ code('b890a3a4b9') ]]]
+
 To render the form, we get to use a few special form *rendering* functions:
 `{{ form_start() }}` and pass that the `articleForm` variable. At the end
 `{{ form_end(articleForm }}`. And in the middle, `{{ form_widget(articleForm) }}`.
 Oh, and for the submit button, you *can* build this into your form class, but
 I prefer to add it manually: `<button type="submit">`, some classes:
 `btn btn-primary`, and then `Create`!
+
+[[[ code('a875f5499b') ]]]
 
 And... we're done! We create a form class, create a Form object from that in the
 controller, pass the form to Twig, then render it. We'll learn a *lot* more about
