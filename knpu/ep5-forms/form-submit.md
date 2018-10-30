@@ -18,6 +18,8 @@ First, get the `$request` object by type-hinting `Request` - the one from
 `if ($form->isSubmitted() && $form->isValid())`. Inside the `if`,
 `dd($form->getData()`.
 
+[[[ code('b99603219a') ]]]
+
 Okay, so... this requires a *little* bit of explanation. First, yea, the
 `$form->handleRequest()` makes it *look* like the submitted data is being read
 and processed on *every* request, even the initial GET request that renders
@@ -58,12 +60,16 @@ Then, create that object: `$article = new Article()`,
 and the author field is also required. How about, `$article->setAuthor()` with
 `$this->getUser()`: the current user will be the author.
 
+[[[ code('c15bd1515d') ]]]
+
 To save this to the database, we need the entity manager. And, hey! We *already*
 have it thanks to our `EntityManagerInterface` argument. Save with the normal
 `$em->persist($article)`, `$em->flush()`.
 
 Awesome! The *last* thing we *always* do after a successful form submit is
 redirect to another page. Let's use `return this->redirectToRoute('app_homepage')`.
+
+[[[ code('c8b292c69d') ]]]
 
 Time to test this puppy out! Refresh to re-post the data. Cool! I... *think* it worked?
 Scroll down... Hmm. I don't see my article. Ah! But that's because only *published*
@@ -78,6 +84,8 @@ To fetch all of the articles, add an argument: `ArticleRepository $articleRepo`,
 and then say `$articles = $articleRepo->findAll()`. At the bottom, render a
 template - `article_admin/list.html.twig`- and pass this an `articles` variable.
 
+[[[ code('ace31ab538') ]]]
+
 Oh, and I'll cheat again! If you have the Symfony plugin installed, you can put
 your cursor in the template name and press Alt+Enter to create the Twig template,
 right next to the other one.
@@ -86,6 +94,8 @@ Because we're *awesome* at Twig, the contents of this are pretty boring. In fact
 I'm going to cheat again! I'm on a roll! I'll paste a template I already prepared.
 You can get this from the code block on this page.
 
+[[[ code('3732970218') ]]]
+
 And... yea! Beautifully boring! This loops over the `articles` and prints some basic
 info about each. I also added a link on top to the new article form page.
 
@@ -93,6 +103,8 @@ Oh, there is *one* interesting part: the `article.isPublished` code, which I use
 show a check mark or an "x" mark. That's interesting because... we don't have an
 `isPublished` property or method on `Article`! Add `public function isPublished()`,
 which will return a `bool`, and very simply, `return $this->publishedAt !== null`.
+
+[[[ code('c2d673ecca') ]]]
 
 If you want to be fancier, you could check to see if the `publishedAt` date is
 not null and also not a *future* date. It's up to how you want your app to work.
