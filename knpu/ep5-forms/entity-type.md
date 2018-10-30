@@ -1,142 +1,106 @@
-# Entity Type
+# EntityType: Drop-downs from the Database
 
-Coming soon...
+On submit, we set the `author` to *whoever* is currently logged in. I want to change
+that: sometimes the person who *creates* the article, isn't the author! They need
+to be able to *select* the author.
 
-Alright, next, right now when we submit the form or setting the `author` to whoever's
-currently logged in in my application, I actually want the whoever creates the
-article to be able to select the `author`, so go to the. If you go back to the
-documentation, click back to the form field types. One of the most important options
-and all of Symfony is the `ChoiceType`, which actually is responsible for creating
-select elements, radio buttons, and check boxes all in one because if you think about
-it, those are all just different ways to choose things the way you and it's really
-simple. You basically just pass it eight choices option with the choices you want.
-Maybe yes, no, and you get a dropdown if you want to. If you don't want to drop down.
-If you want radio buttons or you want select boxes, you control those by the multiple
-and expanded options. So for example, if you said expanded to true, you'll get
-instead of a dropdown, you would get radio buttons. If you then also said multiple to
-true, this would turn it into checkboxes. So the APP is super powerful for creating
-dropdowns, but in this case of `author`, we actually have a special case because we
-want a dropdown, but one of the dropdown to be populated from a table in a database,
-when you have that situation, instead of the `ChoiceType` you want to use 
-the `EntityType`
+## ChoiceType: Maker of select, radio & checkboxes
 
-you have to type is actually kind of a child of choice typing, see parent type choice
-type. So it basically has all the same options, but it makes it a little bit easy to
-query from the database.
+Go to the documentation and click back to see the list of form field types. One
+of the most *important* types in *all* of Symfony is the `ChoiceType`. It's kind
+of the loud, confident, over-achiever in the group: it's able to create a select
+drop-down, a multi-select list, radio buttons *or* checkboxes. It even works on
+weekends! Phew!
 
-So first go to your `ArticleFormType` and let's add our `author` field and we're
-choosing the word author here because that is the name of the property on our, uh,
-`Entity` class. And more importantly it's because we have a `setAuthor()` and a 
-`getAuthor()` methods. Now, as soon as we do this, if you go over and refresh, boom, we have
-a dropdown. It's populated with all of the users from the database might look a
-little bit weird because by default it uses the `__toString()` method that we have on our
-`User` entity in order to figure out what display value to use, so the first name, if
-you don't have a two string method, you'd actually get an error and I'll show you in
-a second how we can control this and get rid of that air.
+If you think about it, that makes sense: those are all different ways to *choose*
+one or more items. You pass this type a `choices` option - like "Yes" and "No" -
+and, by default, it will give you a select drop-down. Want radio buttons instead?
+Brave choice! Just set the `expanded` option to true. Need to be able to select
+"multiple" items instead of just one? Totally cool! Set `multiple` to `true` to
+get checkboxes. The `ChoiceType` is awesome!
 
-Now we know behind the scenes that this is being guest as an entity type, so just to
-be a little bit more specific, I'm actually gonna pass `EntityType::class` is the
-second argument because something interesting happens. Suddenly we get a huge error
-required. Option of `class` is missing, so check this out. When you use the `EntityType`, 
-here's one option that you have to pass it, which is `class`, which makes sense
-because this is the `Entity` class that you want to display. The cool thing about form
-field guessing from type guessing is that if you allow the type to be guest, then it
-also tries to guest certain options, but as soon as you pass the type, it stops
-passing the options, which means that we need to pass `class`, specifically 
-`User::class`. As soon as we do that. Nice. It works just like a day before. I
-want to talk about a few other options on the `EntityType` and actually a lot of these
-options, as I mentioned, a lot of these options on `EntityType` are the same with
-`ChoiceType`. The first one is `choice_label`.
+But... we have a special case. Yes, we *do* want a select drop-down, but we want
+to *populate* that drop-down from a table in the database. We *could* use
+`ChoiceType`, but a much easier, ah, choice, is `EntityType`.
 
-This is how you, if you're not happy with just using the `__toString()` method, this is
-how you can control exactly which field on your entity is used for the for the
-options, so let's say `choice_label`, and we can set this to `email`. That
-means that we're going to call, `getEmail()` on our `User` objects, so want to refresh.
-Nice. It works perfectly. If you want to get fancier, you can also pass this a
-callback. It's gonna receive the object. The `User` object, and here you can return
-whatever you want, so we'll `return sprintf('(%d) %s', $user->getId(), $user->getEmail());`
-Now under your refresh, Nice. We get a very
-specific format. One option that's special to the `EntityType`. One other option that
-the staff has that actually be `ChoiceType` also has is `placeholder`. This is how you
-add that empty option on the top, which we'd want. It's a little weird that it auto
-selects the first one, so let's go back over and add `placeholder` sat. Two shoes, an
-author the back. Try that the highest. That works. Perfect.
+## Hello EntityType
 
-All right, well now that we have this setup, let's go back to our controller. Let's
-remove that. Set off their call in. Let's actually try this. Before I fill the
-center, I just want to point something out. If you look at the options, the value of
-each options, the idea that user and the database, so when we choose an author, this
-is the value that's actually going to be submitted to the server, the number. I want
-you to remember that. Oh, that's right. A very important article. Pluto. I didn't
-want to be a planet anyways. Anyway, we'll set the publish that just to today at any
-time or you can leave that blank.
+`EntityType` is kind of a "sub-type" of choice - you can see that right here:
+parent type `ChoiceType`. That means it basically works the same way, but it makes
+it easy to get the `choices` from the database and has a few different options.
 
-Thanks.
+Head over to `ArticleFormType` and add the new `author` field. I'm calling this
+`author` because that's the name of the property in the `Article` class. Well,
+actually, that doesn't matter. I'm calling it `article` because this class has
+`setAuthor()` and `getAuthor()` methods: *they* are what the form system will call
+behind the scenes.
 
-And she's an author and we'll hit create. Yes. spacebar3@example.com
-and it is published.
+As *soon* as we add this field, go try it! Refresh! Hello drop-down! It *is*
+populated with all the users from the database... but... it might look a little
+weird. By default, the `EntityType` queries for all of the `User` objects and then
+uses the `__toString()` method that we have on that class to figure out what display
+value to use. So, `firstName`. If we did *not* have a `__toString()` method, we
+would get a huge error because `EntityType` wouldn't know what to do. Anyways,
+we'll see in a minute how we can control what's displayed here.
 
-It's actually a more amazing than it seems and it's because of the data transformer.
-The intercept is cool because it makes it really easy to create a dropdown or check
-boxes based on some a `Entity` in the database, but the really important part of it is
-the data transformer. The fact that when we submit an id like 17, it transforms it
-into the `User` object. That's important because when we submit a form system
-ultimately calls `setAuthor()`, so this needs to be a `User` object. The data transformer
-takes care of that for us. Now I want to do one last thing.
+## Set the Type, Options are Not Guessed
 
-Okay.
+So... great first step! It looks like the form guessing system correctly sees the
+Doctrine relation to the `User` entity and configured the `EntityType` for us. Go
+team!
 
-If you go back to the create connect to create, a lot of times you might want to
-control. You might not want to show all of the rows from a database table where you
-might want to control how their order. You can totally do that needed to type. There
-are actually two ways. Normally when you use the `EntityType`, you don't need to pass
-the `choices` option. Remember that if you look at the `ChoiceType`, he `choices` option
-is how you actually specify which choices you want to show. In the dropdown. We don't
-have to pass the `ChoicesType` because we pass the class and then it queries for the
-choices automatically to control how that query that query. There's an option called
-`query_builder`,
+But now, pass the type manually: `EntityType::class`. That should make no difference,
+right? After all, the guessing system was *already* setting that behind the scenes!
 
-which you can use to create a custom query, but actually I'm going to do it a
-different way. I'm just going to say instead, I'm just going to override the `choices`
-option. We can do that. We can say, look, I can handle queries for the choices
-myself. To do that, instead of our form class we're going to need. We're going to
-need to query, so we're going to need the `UserRepository`. So let's. Fortunately, our
-services, our form types, our services, so we can use dependency injection like
-normal to create a `__constructor()` at an `ArticleRepository` argument. I'll hit alt enter,
-go to initialize fields to create that property and set it
+Well... we're programmers. And so, we know to expect the unexpected. Try it!
+Surprise! A huge error!
 
-perfect.
+> The required option `class` is missing
 
-Then down below where `choices` set to `$this->userRepository`. I did it again. We need
-the user repository user repository. I'll hit alt enter to initialize those fields to
-create that property and set it
+But, why? First, the `EntityType` has *one* required option: `class`. That makes
+sense: it needs to know which entity to query for. Second, the form type guessing
+system does *more* than just guess the form *type*: it can also guess certain
+field *options*. Until now, it was guessing `EntityType` *and* the `class` option!
 
-perfect.
+But, as *soon* as you pass the field type explicitly, it stops guessing *anything*.
+That means that *we* need to manually set `class` to `User::class`. This is why
+I often *omit* the 2nd argument if it's being guessed correctly. And, we *could*
+do that here.
 
-Then down below we'll just pass `choices`, `$this->userRepository()`, and I'll call a new
-method on it called `->findAllEmailAlphabetical()` copy that. Then we'll go over to our
-`src/Repository/`, open `UserRepository`, and we'll create that method. Say
+Try it again. Got it!
 
-```
-public function findAllEmailAlphabetical()
-{
-    return $this->createQueryBuilder('u')
-        ->orderBy('u.email', 'ASC')
-        ->getQuery()
-        ->execute();
-}
-```
- 
-and above. This will advertise this returns. We know this returns an
-array of `User` objects. Perfect. That makes our article form type happy. Now when we
-go back to our form and refresh,
+## Controlling the Option Display Value
 
-yes, so you can see it is reversed the order on those. I've got the admin first, so I
-just want to point out at this point it might look like we are using the `EntityType`,
-but we're not really using any of the features after all. We are passing the `choices`
-in specifically so we could just use the `ChoiceType`. Right? Well actually no. The
-one important thing to `EntityType` is still giving us is that data transformation. The
-idea that when we pass it an `array` of we it an `array` of `User` objects in it knows how
-to convert those into the label we want and then when we submit the ID it knows how
-to convert and make a query to convert that back into the `User` object. So we're still
-taking advantage of that. Was that man.
+Let's go see what *else* we can do with this field type. Because EntityType's parent
+is `ChoiceType`, they share a lot of options. One example is `choice_label`. If you're
+not happy with using the `__toString()` method as the display value for each `option`...
+too bad! I mean, you can *totally* control it with this option!
+
+Add `choice_label` and set it to `email`, which means it should call `getEmail()`
+on each `User` object. Try this. I like it! Much more obvious.
+
+Want to get fancier? I thought you would. You can *also* pass this option a callback,
+which Symfony will call for each item and pass it the data for that option - a `User`
+object in this case. Inside, we can return whatever we want. How about
+`return sprintf('(%d) %s')` passing `$user->getId()` and `$user->getEmail()`.
+
+Cool! Refresh that! Got it!
+
+## The "Choose an Option" Empty Value
+
+Another useful option that `EntityType` shares with `ChoiceType`  is `placeholder`.
+This is how you can add that "empty" option on top - the one that says something
+like "Choose your favorite color". It's... a little weird that we *don't* have
+this now, and so the first author is auto-selected.
+
+Back on the form, set `placeholder` to `Choose an author`. Try that: refresh.
+Perfecto!
+
+With all of this set up, go back to our controller. And... remove that `setAuthor()`
+call! Woo! We don't need it anymore because the form will call that method
+*for* us and pass the selected `User` object.
+
+We just learned how to use the `EntityType`. But... well... we haven't talked
+about the most *important* thing that it does for us! Data transforming. Let's
+talk about that next and learn how to create a custom query to select and order
+the users in a custom way.

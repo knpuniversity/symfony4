@@ -6,6 +6,7 @@ chapters:
   - types-options
   - datetime-type-transforming
   - entity-type
+  - entity-type-query
   - validation
   - rendering-functions
   - update-form
