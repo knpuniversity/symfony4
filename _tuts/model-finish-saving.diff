@@ -1,0 +1,22 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index c4e820a9..c2393a05 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -51,12 +51,15 @@ class SecurityController extends AbstractController
+         if ($form->isSubmitted() && $form->isValid()) {
+             /** @var UserRegistrationFormModel $userModel */
+             $userModel = $form->getData();
++
++            $user = new User();
++            $user->setEmail($userModel->email);
+             $user->setPassword($passwordEncoder->encodePassword(
+                 $user,
+-                $form['plainPassword']->getData()
++                $userModel->plainPassword
+             ));
+             // be absolutely sure they agree
+-            if (true === $form['agreeTerms']->getData()) {
++            if (true === $userModel->agreeTerms) {
+                 $user->agreeToTerms();
+             }
+ 

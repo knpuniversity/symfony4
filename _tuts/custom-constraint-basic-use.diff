@@ -1,0 +1,55 @@
+diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
+index e0fa870e..a882c901 100644
+--- a/src/Form/Model/UserRegistrationFormModel.php
++++ b/src/Form/Model/UserRegistrationFormModel.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Form\Model;
+ 
++use App\Validator\UniqueUser;
+ use Symfony\Component\Validator\Constraints as Assert;
+ 
+ class UserRegistrationFormModel
+@@ -9,6 +10,7 @@ class UserRegistrationFormModel
+     /**
+      * @Assert\NotBlank(message="Please enter an email")
+      * @Assert\Email()
++     * @UniqueUser()
+      */
+     public $email;
+ 
+diff --git a/src/Validator/UniqueUser.php b/src/Validator/UniqueUser.php
+index 74645aeb..be774cee 100644
+--- a/src/Validator/UniqueUser.php
++++ b/src/Validator/UniqueUser.php
+@@ -6,6 +6,7 @@ use Symfony\Component\Validator\Constraint;
+ 
+ /**
+  * @Annotation
++ * @Target({"PROPERTY", "ANNOTATION"})
+  */
+ class UniqueUser extends Constraint
+ {
+@@ -13,5 +14,5 @@ class UniqueUser extends Constraint
+      * Any public properties become valid options for the annotation.
+      * Then, use these in your validator class.
+      */
+-    public $message = 'The value "{{ value }}" is not valid.';
++    public $message = 'I think you\'re already registered!';
+ }
+diff --git a/src/Validator/UniqueUserValidator.php b/src/Validator/UniqueUserValidator.php
+index 62b713a3..31e2bfbd 100644
+--- a/src/Validator/UniqueUserValidator.php
++++ b/src/Validator/UniqueUserValidator.php
+@@ -9,10 +9,9 @@ class UniqueUserValidator extends ConstraintValidator
+ {
+     public function validate($value, Constraint $constraint)
+     {
+-        /* @var $constraint App\Validator\UniqueUser */
++        /* @var $constraint \App\Validator\UniqueUser */
+ 
+         $this->context->buildViolation($constraint->message)
+-            ->setParameter('{{ value }}', $value)
+             ->addViolation();
+     }
+ }

@@ -1,0 +1,12 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 8a7d7cf6..2a893e14 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -144,6 +144,6 @@ class ArticleFormType extends AbstractType
+             'interstellar_space' => null,
+         ];
+ 
+-        return $locationNameChoices[$location];
++        return $locationNameChoices[$location] ?? null;
+     }
+ }

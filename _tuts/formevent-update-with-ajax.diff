@@ -1,0 +1,122 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+new file mode 100644
+index 00000000..bec4c243
+--- /dev/null
++++ b/public/js/admin_article_form.js
+@@ -0,0 +1,26 @@
++$(document).ready(function() {
++    var $locationSelect = $('.js-article-form-location');
++    var $specificLocationTarget = $('.js-specific-location-target');
++
++    $locationSelect.on('change', function(e) {
++        $.ajax({
++            url: $locationSelect.data('specific-location-url'),
++            data: {
++                location: $locationSelect.val()
++            },
++            success: function (html) {
++                if (!html) {
++                    $specificLocationTarget.find('select').remove();
++                    $specificLocationTarget.addClass('d-none');
++
++                    return;
++                }
++
++                // Replace the current field and show
++                $specificLocationTarget
++                    .html(html)
++                    .removeClass('d-none')
++            }
++        });
++    });
++});
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 09036a04..f1b51d4a 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -67,6 +67,25 @@ class ArticleAdminController extends AbstractController
+         ]);
+     }
+ 
++    /**
++     * @Route("/admin/article/location-select", name="admin_article_location_select")
++     */
++    public function getSpecificLocationSelect(Request $request)
++    {
++        $article = new Article();
++        $article->setLocation($request->query->get('location'));
++        $form = $this->createForm(ArticleFormType::class, $article);
++
++        // no field? Return an empty response
++        if (!$form->has('specificLocationName')) {
++            return new Response(null, 204);
++        }
++
++        return $this->render('article_admin/_specific_location_name.html.twig', [
++            'articleForm' => $form->createView(),
++        ]);
++    }
++
+     /**
+      * @Route("/admin/article", name="admin_article_list")
+      */
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index 33b85c0e..d38d576e 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -3,10 +3,17 @@
+         label: 'Article title'
+     }) }}
+     {{ form_row(articleForm.author) }}
+-    {{ form_row(articleForm.location) }}
+-    {%  if articleForm.specificLocationName is defined %}
+-        {{ form_row(articleForm.specificLocationName) }}
+-    {% endif %}
++    {{ form_row(articleForm.location, {
++        attr: {
++            'data-specific-location-url': path('admin_article_location_select'),
++            'class': 'js-article-form-location'
++        }
++    }) }}
++    <div class="js-specific-location-target">
++        {%  if articleForm.specificLocationName is defined %}
++            {{ form_row(articleForm.specificLocationName) }}
++        {% endif %}
++    </div>
+     {{ form_row(articleForm.content) }}
+     {% if articleForm.publishedAt is defined %}
+         {{ form_row(articleForm.publishedAt) }}
+diff --git a/templates/article_admin/_specific_location_name.html.twig b/templates/article_admin/_specific_location_name.html.twig
+new file mode 100644
+index 00000000..fbe8e511
+--- /dev/null
++++ b/templates/article_admin/_specific_location_name.html.twig
+@@ -0,0 +1 @@
++{{ form_row(articleForm.specificLocationName) }}
+\ No newline at end of file
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index 962b02d7..342703c8 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -7,3 +7,9 @@
+         button_text: 'Update!'
+     }) }}
+ {% endblock %}
++
++{% block javascripts %}
++    {{ parent() }}
++
++    <script src="{{ asset('js/admin_article_form.js') }}"></script>
++{% endblock %}
+diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
+index b5a95b99..ee092b20 100644
+--- a/templates/article_admin/new.html.twig
++++ b/templates/article_admin/new.html.twig
+@@ -5,6 +5,7 @@
+ 
+     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+     <script src="{{ asset('js/algolia-autocomplete.js') }}"></script>
++    <script src="{{ asset('js/admin_article_form.js') }}"></script>
+ {% endblock %}
+ 
+ {% block stylesheets %}

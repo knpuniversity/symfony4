@@ -1,0 +1,24 @@
+diff --git a/templates/article_admin/list.html.twig b/templates/article_admin/list.html.twig
+index 4b1a061d..2689b46d 100644
+--- a/templates/article_admin/list.html.twig
++++ b/templates/article_admin/list.html.twig
+@@ -12,6 +12,7 @@
+                 <th>Title</th>
+                 <th>Author</th>
+                 <th>Published?</th>
++                <th>&nbsp;</th>
+             </tr>
+         </thead>
+         <tbody>
+@@ -22,6 +23,11 @@
+                     <td>
+                         <span class="fa fa-{{ article.isPublished ? 'check' : 'times' }}"></span>
+                     </td>
++                    <td>
++                        <a href="{{ path('admin_article_edit', {
++                            id: article.id
++                        }) }}">edit</a>
++                    </td>
+                 </tr>
+             {% endfor %}
+         </tbody>

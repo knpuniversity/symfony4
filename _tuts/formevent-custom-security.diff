@@ -1,0 +1,42 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index f1b51d4a..ad70d8ba 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+-class ArticleAdminController extends AbstractController
++class ArticleAdminController extends BaseController
+ {
+     /**
+      * @Route("/admin/article/new", name="admin_article_new")
+@@ -69,9 +69,15 @@ class ArticleAdminController extends AbstractController
+ 
+     /**
+      * @Route("/admin/article/location-select", name="admin_article_location_select")
++     * @IsGranted("ROLE_USER")
+      */
+     public function getSpecificLocationSelect(Request $request)
+     {
++        // a custom security check
++        if (!$this->isGranted('ROLE_ADMIN_ARTICLE') && $this->getUser()->getArticles()->isEmpty()) {
++            throw $this->createAccessDeniedException();
++        }
++
+         $article = new Article();
+         $article->setLocation($request->query->get('location'));
+         $form = $this->createForm(ArticleFormType::class, $article);
+diff --git a/src/Entity/User.php b/src/Entity/User.php
+index 101c0eb5..522103ac 100644
+--- a/src/Entity/User.php
++++ b/src/Entity/User.php
+@@ -62,7 +62,7 @@ class User implements UserInterface
+     private $apiTokens;
+ 
+     /**
+-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="author")
++     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="author", fetch="EXTRA_LAZY")
+      */
+     private $articles;
+ 

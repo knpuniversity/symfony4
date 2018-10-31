@@ -1,0 +1,97 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 1d49c14f..435e1b54 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -81,6 +81,11 @@ class Article
+      */
+     private $location;
+ 
++    /**
++     * @ORM\Column(type="string", length=255, nullable=true)
++     */
++    private $specificLocationName;
++
+     public function __construct()
+     {
+         $this->comments = new ArrayCollection();
+@@ -284,4 +289,16 @@ class Article
+ 
+         return $this;
+     }
++
++    public function getSpecificLocationName(): ?string
++    {
++        return $this->specificLocationName;
++    }
++
++    public function setSpecificLocationName(?string $specificLocationName): self
++    {
++        $this->specificLocationName = $specificLocationName;
++
++        return $this;
++    }
+ }
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index db3f826c..19d91620 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -46,6 +46,13 @@ class ArticleFormType extends AbstractType
+                 ],
+                 'required' => false,
+             ])
++            ->add('specificLocationName', ChoiceType::class, [
++                'placeholder' => 'Where exactly?',
++                'choices' => [
++                    'TODO' => 'TODO'
++                ],
++                'required' => false,
++            ])
+         ;
+ 
+         if ($options['include_published_at']) {
+diff --git a/src/Migrations/Version20181031163156.php b/src/Migrations/Version20181031163156.php
+new file mode 100644
+index 00000000..8bb16bba
+--- /dev/null
++++ b/src/Migrations/Version20181031163156.php
+@@ -0,0 +1,28 @@
++<?php declare(strict_types=1);
++
++namespace DoctrineMigrations;
++
++use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
++
++/**
++ * Auto-generated Migration: Please modify to your needs!
++ */
++final class Version20181031163156 extends AbstractMigration
++{
++    public function up(Schema $schema) : void
++    {
++        // this up() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE article ADD specific_location_name VARCHAR(255) DEFAULT NULL');
++    }
++
++    public function down(Schema $schema) : void
++    {
++        // this down() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE article DROP specific_location_name');
++    }
++}
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index 23872311..706c6a2a 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -4,6 +4,7 @@
+     }) }}
+     {{ form_row(articleForm.author) }}
+     {{ form_row(articleForm.location) }}
++    {{ form_row(articleForm.specificLocationName) }}
+     {{ form_row(articleForm.content) }}
+     {% if articleForm.publishedAt is defined %}
+         {{ form_row(articleForm.publishedAt) }}

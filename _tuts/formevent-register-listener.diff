@@ -1,0 +1,27 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 2c930097..726ab568 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -11,6 +11,8 @@ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\Form\FormEvent;
++use Symfony\Component\Form\FormEvents;
+ use Symfony\Component\OptionsResolver\OptionsResolver;
+ 
+ class ArticleFormType extends AbstractType
+@@ -63,6 +65,13 @@ class ArticleFormType extends AbstractType
+                 'widget' => 'single_text',
+             ]);
+         }
++
++        $builder->get('location')->addEventListener(
++            FormEvents::POST_SUBMIT,
++            function(FormEvent $event) {
++                dd($event);
++            }
++        );
+     }
+ 
+     public function configureOptions(OptionsResolver $resolver)

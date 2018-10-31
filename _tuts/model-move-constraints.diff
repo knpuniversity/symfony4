@@ -1,0 +1,60 @@
+diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
+index 8a32a8eb..e0fa870e 100644
+--- a/src/Form/Model/UserRegistrationFormModel.php
++++ b/src/Form/Model/UserRegistrationFormModel.php
+@@ -2,11 +2,24 @@
+ 
+ namespace App\Form\Model;
+ 
++use Symfony\Component\Validator\Constraints as Assert;
++
+ class UserRegistrationFormModel
+ {
++    /**
++     * @Assert\NotBlank(message="Please enter an email")
++     * @Assert\Email()
++     */
+     public $email;
+ 
++    /**
++     * @Assert\NotBlank(message="Choose a password!")
++     * @Assert\Length(min=5, minMessage="Come on, you can think of a password longer than that!")
++     */
+     public $plainPassword;
+ 
++    /**
++     * @Assert\IsTrue(message="I know, it's silly, but you must agree to our terms.")
++     */
+     public $agreeTerms;
+ }
+diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
+index 0154baad..027bd5d7 100644
+--- a/src/Form/UserRegistrationFormType.php
++++ b/src/Form/UserRegistrationFormType.php
+@@ -21,24 +21,8 @@ class UserRegistrationFormType extends AbstractType
+             ->add('email', EmailType::class)
+             // don't use password: avoid EVER setting that on a
+             // field that might be persisted
+-            ->add('plainPassword', PasswordType::class, [
+-                'constraints' => [
+-                    new NotBlank([
+-                        'message' => 'Choose a password!'
+-                    ]),
+-                    new Length([
+-                        'min' => 5,
+-                        'minMessage' => 'Come on, you can think of a password longer than that!'
+-                    ])
+-                ]
+-            ])
+-            ->add('agreeTerms', CheckboxType::class, [
+-                'constraints' => [
+-                    new IsTrue([
+-                        'message' => 'I know, it\'s silly, but you must agree to our terms.'
+-                    ])
+-                ]
+-            ])
++            ->add('plainPassword', PasswordType::class)
++            ->add('agreeTerms', CheckboxType::class)
+         ;
+     }
+ 

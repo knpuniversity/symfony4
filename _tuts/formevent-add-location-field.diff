@@ -1,0 +1,27 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 953edf49..e8f6d8c1 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -8,6 +8,7 @@ use App\Repository\ArticleRepository;
+ use App\Repository\UserRepository;
+ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+ use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\OptionsResolver\OptionsResolver;
+@@ -36,6 +37,14 @@ class ArticleFormType extends AbstractType
+             ->add('author', UserSelectTextType::class, [
+                 'disabled' => $isEdit
+             ])
++            ->add('location', ChoiceType::class, [
++                'choices' => [
++                    'The Solar System' => 'solar_system',
++                    'Near a star' => 'star',
++                    'Interstellar Space' => 'interstellar_space'
++                ],
++                'required' => false,
++            ])
+         ;
+ 
+         if ($options['include_published_at']) {
