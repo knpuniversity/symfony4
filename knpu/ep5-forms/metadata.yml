@@ -25,3 +25,6 @@ chapters:
   - build-view
   - form-type-extension
   - form-options-data
+  - form-dto
+  - custom-validator
+  - choice-type-fields
