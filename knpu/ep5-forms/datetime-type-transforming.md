@@ -83,5 +83,5 @@ types: `ChoiceType`. It's the over-achiever in the group: you can use it to crea
 a `select` drop down, multi-select, radio buttons or checkboxes. Heck, I'm pretty
 sure it even knows how to fix a flat tire.
 
-Let's work with it - and its brother the `EntityType` - next to create a drop-down
+Let's work with it - and its brother the `EntityType` - to create a drop-down
 list populated from the database.
