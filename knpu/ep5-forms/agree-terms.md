@@ -134,3 +134,16 @@ sometimes this is a better solution when you're working with some of these forms
 system. Then a more clever solution like creating a set agreed terms method because
 it's just easier to read and it's easier for people. It's easier to learn and know
 that you can do this.
+
+Oh, but there's just one more small problem. Try to reload the fixtures:
+
+php bin/console doctrine:fixtures:load
+
+It... explodes! We've made the new `agreedTermsAt` field *required* in the
+database. So, we need to update our fixtures. No problem. Open `UserFixture`.
+In the first block, add `$user->agreeTerms()`. Copy that, and do the same for
+the admin users.
+
+Cool! Let's make sure that works - reload again.
+
+And.... all better.
