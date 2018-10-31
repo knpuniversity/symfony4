@@ -7,6 +7,8 @@ tell us it worked! We can do better!
 In `ArticleAdminController`, give the list endpoint route a `name="admin_article_list"`.
 After a successful submit, we can redirect there. That makes more sense.
 
+[[[ code('498721350e') ]]]
+
 ## Adding a Flash Message
 
 With that done, I *next* want to add a "success" message. Like, after I submit, there's
@@ -19,6 +21,8 @@ Pass this the key `success` - we'll talk about that in a moment - and then an in
 message! 
 
 > Article Created! Knowledge is power
+
+[[[ code('4d49451736') ]]]
 
 That's *all* we need in the controller. The `addFlash()` method is a shortcut to
 set a message in the *session*. But, flash messages are special: they only live
@@ -41,6 +45,8 @@ to Twig called `app`, which comes in handy here.
 
 Inside the `for`, add a div with `class="alert alert-success"` and, inside, print
 `message`.
+
+[[[ code('59907b99a8') ]]]
 
 Done! Oh, but, why do we need a `for` loop here to read the message? Well, it's
 not *too* common, but you can technically put as *many* messages onto your `success`
@@ -72,6 +78,8 @@ Our loop below would *never* do *anything*!
 How can we work around that? By *peeking* at the flash messages. Copy the class.
 Then, say `app.session.flashbag.peek('success')`. Pipe that to the `length` filter
 and if this is greater than zero, print nothing. Otherwise, print the `mb-5` class.
+
+[[[ code('b8f32ed38b') ]]]
 
 This... deserves some explanation. First, the global `app` variable is actually an
 *object* called, conveniently, `AppVariable`! Press Shift+Shift and search for this
