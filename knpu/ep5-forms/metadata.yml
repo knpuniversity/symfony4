@@ -28,3 +28,7 @@ chapters:
   - form-dto
   - custom-validator
   - choice-type-fields
+  - dynamic-choice-type
+  - dynamic-form-events
+  - dynamic-select-js
+  - clear-field-security
