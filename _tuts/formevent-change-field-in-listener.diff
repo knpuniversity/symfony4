@@ -1,0 +1,52 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 726ab568..56a25c8e 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\Form\FormEvent;
+ use Symfony\Component\Form\FormEvents;
++use Symfony\Component\Form\FormInterface;
+ use Symfony\Component\OptionsResolver\OptionsResolver;
+ 
+ class ArticleFormType extends AbstractType
+@@ -69,11 +70,38 @@ class ArticleFormType extends AbstractType
+         $builder->get('location')->addEventListener(
+             FormEvents::POST_SUBMIT,
+             function(FormEvent $event) {
+-                dd($event);
++                $form = $event->getForm();
++                $this->setupSpecificLocationNameField(
++                    $form->getParent(),
++                    $form->getData()
++                );
+             }
+         );
+     }
+ 
++    private function setupSpecificLocationNameField(FormInterface $form, ?string $location)
++    {
++        if (null === $location) {
++            $form->remove('specificLocationName');
++
++            return;
++        }
++
++        $choices = $this->getLocationNameChoices($location);
++
++        if (null === $choices) {
++            $form->remove('specificLocationName');
++
++            return;
++        }
++
++        $form->add('specificLocationName', ChoiceType::class, [
++            'placeholder' => 'Where exactly?',
++            'choices' => $choices,
++            'required' => false,
++        ]);
++    }
++
+     public function configureOptions(OptionsResolver $resolver)
+     {
+         $resolver->setDefaults([

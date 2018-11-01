@@ -1,0 +1,61 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 0a2418b0..c4e820a9 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -3,6 +3,7 @@
+ namespace App\Controller;
+ 
+ use App\Entity\User;
++use App\Form\Model\UserRegistrationFormModel;
+ use App\Form\UserRegistrationFormType;
+ use App\Security\LoginFormAuthenticator;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+@@ -48,8 +49,8 @@ class SecurityController extends AbstractController
+         $form->handleRequest($request);
+ 
+         if ($form->isSubmitted() && $form->isValid()) {
+-            /** @var User $user */
+-            $user = $form->getData();
++            /** @var UserRegistrationFormModel $userModel */
++            $userModel = $form->getData();
+             $user->setPassword($passwordEncoder->encodePassword(
+                 $user,
+                 $form['plainPassword']->getData()
+diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
+index 518e8dfe..0154baad 100644
+--- a/src/Form/UserRegistrationFormType.php
++++ b/src/Form/UserRegistrationFormType.php
+@@ -2,7 +2,7 @@
+ 
+ namespace App\Form;
+ 
+-use App\Entity\User;
++use App\Form\Model\UserRegistrationFormModel;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+ use Symfony\Component\Form\Extension\Core\Type\EmailType;
+@@ -22,7 +22,6 @@ class UserRegistrationFormType extends AbstractType
+             // don't use password: avoid EVER setting that on a
+             // field that might be persisted
+             ->add('plainPassword', PasswordType::class, [
+-                'mapped' => false,
+                 'constraints' => [
+                     new NotBlank([
+                         'message' => 'Choose a password!'
+@@ -34,7 +33,6 @@ class UserRegistrationFormType extends AbstractType
+                 ]
+             ])
+             ->add('agreeTerms', CheckboxType::class, [
+-                'mapped' => false,
+                 'constraints' => [
+                     new IsTrue([
+                         'message' => 'I know, it\'s silly, but you must agree to our terms.'
+@@ -47,7 +45,7 @@ class UserRegistrationFormType extends AbstractType
+     public function configureOptions(OptionsResolver $resolver)
+     {
+         $resolver->setDefaults([
+-            'data_class' => User::class,
++            'data_class' => UserRegistrationFormModel::class
+         ]);
+     }
+ }

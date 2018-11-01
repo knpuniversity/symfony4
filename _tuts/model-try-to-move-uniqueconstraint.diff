@@ -1,0 +1,20 @@
+diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
+index e0fa870e..8ab99017 100644
+--- a/src/Form/Model/UserRegistrationFormModel.php
++++ b/src/Form/Model/UserRegistrationFormModel.php
+@@ -2,8 +2,15 @@
+ 
+ namespace App\Form\Model;
+ 
++use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+ use Symfony\Component\Validator\Constraints as Assert;
+ 
++/**
++ * @UniqueEntity(
++ *     fields={"email"},
++ *     message="I think you're already registered!"
++ * )
++ */
+ class UserRegistrationFormModel
+ {
+     /**

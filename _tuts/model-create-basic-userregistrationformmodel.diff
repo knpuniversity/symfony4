@@ -1,0 +1,18 @@
+diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
+new file mode 100644
+index 00000000..8a32a8eb
+--- /dev/null
++++ b/src/Form/Model/UserRegistrationFormModel.php
+@@ -0,0 +1,12 @@
++<?php
++
++namespace App\Form\Model;
++
++class UserRegistrationFormModel
++{
++    public $email;
++
++    public $plainPassword;
++
++    public $agreeTerms;
++}

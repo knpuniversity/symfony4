@@ -1,0 +1,15 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 435e1b54..5cec4217 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -287,6 +287,10 @@ class Article
+     {
+         $this->location = $location;
+ 
++        if (!$this->location || $this->location === 'interstellar_space') {
++            $this->setSpecificLocationName(null);
++        }
++
+         return $this;
+     }
+ 

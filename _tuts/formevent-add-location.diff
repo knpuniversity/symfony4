@@ -1,0 +1,67 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 3eb0141c..1d49c14f 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -76,6 +76,11 @@ class Article
+      */
+     private $author;
+ 
++    /**
++     * @ORM\Column(type="string", length=255, nullable=true)
++     */
++    private $location;
++
+     public function __construct()
+     {
+         $this->comments = new ArrayCollection();
+@@ -267,4 +272,16 @@ class Article
+                 ->addViolation();
+         }
+     }
++
++    public function getLocation(): ?string
++    {
++        return $this->location;
++    }
++
++    public function setLocation(?string $location): self
++    {
++        $this->location = $location;
++
++        return $this;
++    }
+ }
+diff --git a/src/Migrations/Version20181031150638.php b/src/Migrations/Version20181031150638.php
+new file mode 100644
+index 00000000..d0fada1a
+--- /dev/null
++++ b/src/Migrations/Version20181031150638.php
+@@ -0,0 +1,28 @@
++<?php declare(strict_types=1);
++
++namespace DoctrineMigrations;
++
++use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
++
++/**
++ * Auto-generated Migration: Please modify to your needs!
++ */
++final class Version20181031150638 extends AbstractMigration
++{
++    public function up(Schema $schema) : void
++    {
++        // this up() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE article ADD location VARCHAR(255) DEFAULT NULL');
++    }
++
++    public function down(Schema $schema) : void
++    {
++        // this down() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE article DROP location');
++    }
++}
