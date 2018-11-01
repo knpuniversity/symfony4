@@ -19,8 +19,12 @@ you can set *options* that control how your form behaves. And, well... there
 aren't actually very many options. The most important, by *far*, is `data_class`.
 Set it to `Article::class`. This *binds* the form to that class.
 
+[[[ code('9aca337718') ]]]
+
 And... yep! *That* little option changes *everything*. Ready to see how? Back in
 your controller, `dd($data)`.
+
+[[[ code('ffd6473436') ]]]
 
 Now, move back to your browser. Watch closely: right now both fields are simple
 text inputs... because we haven't configured them to be anything else. But, refresh!
@@ -56,6 +60,8 @@ what we are *already* doing manually in our controller. This is *awesome* becaus
 we can remove code! Just say `$article = $form->getData()`, done. To
 help PhpStorm I'll add some inline documentation that says that this is an `Article`.
 
+[[[ code('02e644a65d') ]]]
+
 That's great! Our controller is tiny and, when we submit, bonus! It even works!
 
 ## Model Classes & Complex Forms
@@ -89,6 +95,8 @@ want.
 
 Open `config/packages/twig.yaml`. Add a new key called `form_themes` with one
 element that points to a template called `bootstrap_4_layout.html.twig`.
+
+[[[ code('3d40790fa9') ]]]
 
 This template lives deep inside the core of Symfony. And we'll check it out later
 when we talk more about form themes. Because right now... we get to celebrate!
