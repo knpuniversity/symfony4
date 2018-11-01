@@ -31,7 +31,7 @@ it easy to get the `choices` from the database and has a few different options.
 
 Head over to `ArticleFormType` and add the new `author` field. I'm calling this
 `author` because that's the name of the property in the `Article` class. Well,
-actually, that doesn't matter. I'm calling it `article` because this class has
+actually, that doesn't matter. I'm calling it `author` because this class has
 `setAuthor()` and `getAuthor()` methods: *they* are what the form system will call
 behind the scenes.
 
