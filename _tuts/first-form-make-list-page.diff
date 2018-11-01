@@ -45,10 +45,10 @@ index 29137ec0..62ef8a23 100644
          $this->publishedAt = $publishedAt;
 diff --git a/templates/article_admin/list.html.twig b/templates/article_admin/list.html.twig
 new file mode 100644
-index 00000000..4b1a061d
+index 00000000..9d9113a0
 --- /dev/null
 +++ b/templates/article_admin/list.html.twig
-@@ -0,0 +1,29 @@
+@@ -0,0 +1,37 @@
 +{% extends 'content_base.html.twig' %}
 +
 +{% block content_body %}
@@ -63,6 +63,7 @@ index 00000000..4b1a061d
 +                <th>Title</th>
 +                <th>Author</th>
 +                <th>Published?</th>
++                <th>&nbsp;</th>
 +            </tr>
 +        </thead>
 +        <tbody>
@@ -72,6 +73,13 @@ index 00000000..4b1a061d
 +                    <td>{{ article.author.email }}</td>
 +                    <td>
 +                        <span class="fa fa-{{ article.isPublished ? 'check' : 'times' }}"></span>
++                    </td>
++                    <td>
++                        <a href="{{ path('admin_article_edit', {
++                            id: article.id
++                        }) }}">
++                            <span class="fa fa-pencil"></span>
++                        </a>
 +                    </td>
 +                </tr>
 +            {% endfor %}
