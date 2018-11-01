@@ -44,7 +44,7 @@ To do this, we need to execute a *query* from inside of our form class. And to d
 *that*, we need the `UserRepository`. But... great news! Form types are services!
 So we can use our favorite pattern: dependency injection.
 
-Create an `__construct()` method with an `ArticleRepository` argument. I'll hit alt+enter,
+Create an `__construct()` method with an `UserRepository` argument. I'll hit alt+enter,
 and select "Initialize Fields" to create that property and set it. Down below,
 pass `choices` set to `$this->userRepository` and I'll call a new method
 `->findAllEmailAlphabetical()`.
