@@ -36,6 +36,8 @@ Check out this `help` option: we can define a "help" message for any field.
 That sounds awesome! Back in the form class, add a third argument: an options
 array. Pass `help` and set it to "Choose something catchy".
 
+[[[ code('2bfb18109d') ]]]
+
 Let's go check it out! Refresh! I like that! Nice little help text below the field.
 
 ## The Form Profiler
