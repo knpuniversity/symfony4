@@ -2,16 +2,77 @@
 
 Coming soon...
 
-All right, let's focus on the edit, the edit form first. It's going to be a little bit easier to get set up, so go to the slash edmund slash article and click to edit one of the existing articles. All right, so based on the location we need to make this specific location, have different values. To start with that I'm going to go into my article form type and at the bottom of this I'm going to paste and a new function I wrote called get private function called get location named choices. You can copy this function from the code black on this page, but it's fairly simple. We can pass this law, the location string which will be one of our solar system star or interstellar space. It creates and it will basically returned the choices that we want for that. So if we choose solar system, it will be one of the planets. Would you start? But one of the stars and if we choose interstellar interstellar space, there will be no, because we actually don't want that drop down to be shown in that case. Now notice I'm using a re combine. That's because in this case, I actually wanted to display value to be also be the same value that's set on the form on my motto class, so that's equivalent to just saying mercury equal Arrow, Mercury. I'm just saving myself some duplication in this case by using a re combine,
+All right, let's focus on the edit, the edit form first. It's going to be a little
+bit easier to get set up, so go to the `/admin/article` and click to edit one of the
+existing articles. All right, so based on the location we need to make this specific
+location, have different values. To start with that I'm going to go into my 
+`ArticleFormType` and at the bottom of this I'm going to paste and a new function I wrote
+called get `private function` called `getLocationNamedChoices()`. You can copy this
+function from the code black on this page, but it's fairly simple. We can pass this
+law, the `$location` string which will be one of our solar system star or interstellar
+space. It creates and it will basically returned the choices that we want for that.
+So if we choose solar system, it will be one of the planets. Would you start? But one
+of the stars and if we choose interstellar interstellar space, there will be `null`,
+because we actually don't want that drop down to be shown in that case. Now notice
+I'm using a re combine. That's because in this case, I actually wanted to display
+value to be also be the same value that's set on the form on my motto class, so
+that's equivalent to just saying `'Mercury' => 'Mercury'`. I'm just saving myself
+some duplication in this case by using `array_combine()`,
 
-so this is not the first step here is not so dissimilar from something we did earlier. When I first want to do is when this page originally loads, forget about Ajax. If we already have the solar system selected, I'll actually update this right now that I want on page load, this specific location name field to already to have the planet list, so basically we can use the underlying article data that's passed to us to figure this out. I'm going to add a little of inland documentation here just to tell my editor that this will be an article object or not, so then when we're editing an article, location is going to be if there's an article is going to be an article Arrow get location. Otherwise, this is a new form and we'll just say that initially it's going to be not now, just like we did before. I'm going to take this specific location name, remove that, and we're going to surround it in an if statement, so say if if location has passed and only if locations fast, we're going to add that field. So I'll say builder Arrow ad and choices. We'll say this era gets location named choices and we'll pass it location. So again, we're not thinking about
+so this is not the first step here is not so dissimilar from something we did
+earlier. When I first want to do is when this page originally loads, forget about
+Ajax. If we already have the solar system selected, I'll actually update this right
+now that I want on page load, this specific location name field to already to have
+the planet list, so basically we can use the underlying article data that's passed to
+us to figure this out. I'm going to add a little of inland documentation here just to
+tell my editor that this will be an `Article` object or `null`, so then when we're editing
+an `Article`, `$location` is going to be if there's an article is going to be an
+`$article->getLocation()`. Otherwise, this is a new form and we'll just say that
+initially it's going to be `null` now, just like we did before. I'm going to take this
+specific location name, remove that, and we're going to surround it in an if
+statement, so say `if ($location)` has passed and only if locations fast, we're going
+to add that field. So I'll say `$builder->add()` and `choices`. We'll say 
+`$this->getLocationNamedChoices()` and we'll pass it `$location`. So again, we're not 
+thinking about
 
-nothing about anything about Ajax or dynamically. When I changed this field, it's going to automatically load this on page load. I'm simply saying when I originally loved this form, if solar system is already selected in the database, then I want this to load correctly, so if there's already a location set on our article entity, then let's add these specific location field name and let's get the correct choices. If there's not, let's not even load that field at all, which means in our underscore form template, we need to do something similar to what we did before, which is we need to say if article form, dot specific location name is defined, then we'll print the field. Otherwise we want.
+nothing about anything about Ajax or dynamically. When I changed this field, it's
+going to automatically load this on page load. I'm simply saying when I originally
+loved this form, if solar system is already selected in the database, then I want
+this to load correctly, so if there's already a `$location` set on our `Article` entity,
+then let's add these specific location field name and let's get the correct choices.
+If there's not, let's not even load that field at all, which means in `_form.html.twig`
+template, we need to do something similar to what we did before, which is we need to
+say `{% if articleForm.specificLocationName is defined %}`, then we'll print the
+field. Otherwise we want.
 
 Alright,
 
-so if I refresh the page now the solar system is selected and yes we have our list of planets and I can totally save these. Yup. It's saved and saved as earth. I'm open to a second tab and go over to my new form and my new form notice does not have a specific location because of course the location isn't set yet, so this now sort of works. I can change things, but I kind of have to do it piece by piece. Like if I go to near a star and hit updates, it changes nearest star and now I can change this to this specific location name and save that, but I can't do it all at once. I have to do this full page reload, which is not not ideal.
+so if I refresh the page now the solar system is selected and yes we have our list of
+planets and I can totally save these. Yup. It's saved and saved as earth. I'm open to
+a second tab and go over to my new form and my new form notice does not have a
+specific location because of course the location isn't set yet, so this now sort of
+works. I can change things, but I kind of have to do it piece by piece. Like if I go
+to near a star and hit updates, it changes nearest star and now I can change this to
+this specific location name and save that, but I can't do it all at once. I have to
+do this full page reload, which is not not ideal.
 
-Heck, even if I get clever, let's be clever. Okay. Let's change this to the solar system and then let's inspect element on it. I'm going to go down and they selected Amir and how is beetlejuice? Let's change that to Earth, right? Because if you think about it, that should in theory work, I am now going to submit the solar system and I'm going to submit earth. Earth is a valid option for the solar system, so that should at least be a hacky way of giving this to be a being able to change both fields at the same time. So when we hit update it not work, it says this value is invalid. The reason is at the moment, this original, this form renders it's rendering with this dropdown of these stars when we submit, because the, uh, because near a star is still the selected location, it builds a form with the dropdown on the stars. And so when we try to submit earth as an option, it looks like an invalid option. What we need to be able to do is
+Heck, even if I get clever, let's be clever. Okay. Let's change this to the solar
+system and then let's inspect element on it. I'm going to go down and they selected
+Amir and how is beetlejuice? Let's change that to Earth, right? Because if you think
+about it, that should in theory work, I am now going to submit the solar system and
+I'm going to submit earth. Earth is a valid option for the solar system, so that
+should at least be a hacky way of giving this to be a being able to change both
+fields at the same time. So when we hit update it not work, it says this value is
+invalid. The reason is at the moment, this original, this form renders it's rendering
+with this dropdown of these stars when we submit, because the, uh, because near a
+star is still the selected location, it builds a form with the dropdown on the stars.
+And so when we try to submit earth as an option, it looks like an invalid option.
+What we need to be able to do is
 
-let me change this option from need a star to the solar system on submit. We need to be smart enough to realize that these solar system, that the location was changed to slower system in dynamically at that moment change the dropdown to me, the list of planets so that we can submit earth. Now we still need to handle Java script, but in. We'll do that in a second, but this is a first necessary step so that on a server level we are able to accept both fields dynamically and where we're going to do that is form advance and it is a little bit tricky. Let's do that next.
+let me change this option from need a star to the solar system on submit. We need to
+be smart enough to realize that these solar system, that the location was changed to
+slower system in dynamically at that moment change the dropdown to me, the list of
+planets so that we can submit earth. Now we still need to handle JavaScript, but in.
+We'll do that in a second, but this is a first necessary step so that on a server
+level we are able to accept both fields dynamically and where we're going to do that
+is form advance and it is a little bit tricky. Let's do that next.
