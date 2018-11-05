@@ -9,6 +9,8 @@ But, in *our* app, I want to allow whoever is writing the article to specificall
 set the publish date. So, add `publishedAt` to the form... but *don't* set the
 type.
 
+[[[ code('956f38c0a5') ]]]
+
 So... ah... this is interesting! How will Symfony render a "date" field? Let's
 find out! Refresh! Woh... it's a bunch of dropdowns for the year, month, day and
 time. That... will *technically* work... but that's not my favorite.
@@ -37,6 +39,8 @@ field type. Basically, I'm being lazy: we could pass `DateTimeType::class` ... b
 we don't need to!
 
 Under the options, set `widget` to `single_text`.
+
+[[[ code('60caae260b') ]]]
 
 Let's see what that did! Find your form, refresh and... cool! It's a text field!
 Right click and "Inspect Element" on that. Double cool! It's an
