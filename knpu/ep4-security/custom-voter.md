@@ -77,7 +77,7 @@ The current user is the author and so access *should* be granted.
 
 ## Checking for Roles inside a Voter
 
-If they are *not* the author, we need to check for `ROLE_ARTICLE_ADMIN`. But,
+If they are *not* the author, we need to check for `ROLE_ADMIN_ARTICLE`. But,
 hmm. We know how to check if a User has a role in a controller: `$this->isGranted()`:
 
 [[[ code('8988fec50c') ]]]
