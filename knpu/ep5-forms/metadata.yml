@@ -8,6 +8,7 @@ chapters:
   - entity-type
   - entity-type-query
   - validation
+  - assert-validation
   - rendering-functions
   - update-form
   - registration-form

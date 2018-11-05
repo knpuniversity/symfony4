@@ -1,111 +1,97 @@
 # Validation
 
-Coming soon...
+Does our form have any validation yet? Well... sort of? The form *is* going through
+a validation process. When we POST to this endpoint, `handleRequest()` reads the
+data *and* executes Symfony's validation system. If validation fails, then
+`$form->isValid()` returns false and we immediately render the template, except
+that *now* errors will be rendered by each field with an issue.
 
-Let's talk about form validation. Our form is actually already going through a
-validation process. As soon as we post to this endpoint, handle requests, reads in
-the data and it runs all the validation, and then if validation fails, if form is not
-valid, then immediately renders a template and now the validation errors will be
-attached to the form and they will render and we'll run down the page. Of course we
-haven't seen this yet because we haven't actually added any html five validation, any
-validation, but check this out. There actually is some validation already. If you
-haven't completely empty form and hit create, it's stops you. Please fill out this
-field. A lot of you probably recognize what this is. This is html five validation.
-When Symfony renders the field,
+Of course we haven't *seen* this yet... because we haven't added any validation
+rules!
 
-depending on your configuration, a lot of times it adds are `required="required"` key.
-This is not real validation. It's just a nice little client side validation that adds
-that message and there are other types of validation on other field types, like
-sometimes it feels like a `datetime` field or an `<input type="number">`. Your browser
-will give you some basic validation if the format is wrong or if it's not required.
-This required ass right here, you can actually control in your form type. Every
-single field has a an option called required. You can set that to `true` or `false`. When
-you bind your form to an `Entity` class, it tries to figure out the correct value based
-on your article entity. So for example, if you have knowable = true, like on content,
-then it won't make that required. So in fact, if we look at our text area field here,
-you will see that there is no `required` attribute on this one. There's just a bunch of
-things coming from my grammarly. You can ignore it. So the first step of validation
-is html five validation. You basically get it for free, but it doesn't. It's not real
-validation. To do real validation, we actually need to install a validator. So find
-your terminal and run 
+## HTML5 Validation
+
+But, check this out: leave the form completely blank and try to submit. It stops
+us! Wait... who stopped us? Actually, it was the *browser*. Many of you may recognize
+this: its HTML5 validation.
+
+When Symfony renders a field, depending on our config, it often adds a
+`required="required"` attribute. This isn't *real* validation - there's *nothing*
+on our server that's checking to make sure this value isn't blank. It's just a nice
+client-side validation. HTML5 is cool... but limited. There *are* a few other things
+it will validate. Like, a `datetime-local` field will usually require you to enter
+a valid date. Or, an `<input type="number">` will require a number. But, that's
+about it.
+
+## The Annoying required Attribute
+
+To control whether or not you want that `required` attribute, *every* field type
+has an option called `required` - just set it to `true` or `false`. Actually, this
+option is kinda confusing. It defaults to *true* for *every* field... which can
+be kind of annoying & surprising. But, when you bind your form to an entity class,
+the form field guessing system uses the `nullable` Doctrine option to choose the
+correct `required` option value. In fact, if we look at textarea field... yep!
+This has no `required` attribute. Oh, by the way, all those extra attributes are
+coming from a browser plugin I have installed - not the form system.
+
+So, the `required` option just adds some nice, optional, client-side validation,
+and it's guessed correctly based on your Doctrine metadata. Well... actually,
+the option is *only* guessed if you pass `null` to the second argument of `add()`.
+If you specify the type manually, you'll also need to configure the `required`
+option manually. Honestly, the `required` option is kind of a pain in the butt.
+Be careful to make sure that an optional field doesn't accidentally have this
+attribute.
+
+## Installing Validation
+
+*Anyways*, even if you use HTML5 validation, you will *still* need proper server-side
+validation so that a "bad" user can't just disable that validation and send weird
+data. To do that, well, we need to install the validator!
+
+Find your terminal and run:
 
 ```terminal
 composer require validator
 ```
 
-Validation is a separate component
-in Symfony, which is great because it actually means you can use it independent of
-the form system, but it works really nicely with the form system.
+Validation is a separate component in Symfony, which is *cool* because it means
+you can use it independent of the form system if you want.
 
-Perfect. Now there are actually two types of server side validation. There's what I
-call sanity validation in what I call business rules validation. First let's talk
-about sanity validation. Sanity validation is built into the form fields themselves
-and basically the form fields. Make sure that whatever value is submitted is
-something that makes sense for `title` and `content`. There is no sanity validation. We
-can submit anything to those fields and it makes sense but for, but for the `EntityType`, 
-there is sanity validation. Check this out. I'm going to go to inspect element,
-find my select element, and let's change one of these values to be $100 something
-that's not in the database, so this is space bar zero. If we select this user, I'll
-select this user and hit create. Oh, actually, of course HTML5, validation
-stops us, so temporarily to work around that to make my life easier. If you go on
-your form class and add a no validate attribute that we'll skip HTML5 validation
-to nice little trick when you're testing your service, have validation, so when was
-when we hit create boom air, our first ever air. This value is not valid, so built
-into some of the form fields themselves is validation to make sure that they're
-sending a a actual real value. This is not that important of this is for the most
-part. This is validation that you don't need to think about. It just works. If you
-want to control the message, you can pass an option called `invalid_message` and we
-could say Symfony is too smart for your hacking.
+And.. done! There are actually *two* types of server-side validation: what I call
+"sanity validation" versus "business rules validation".
 
-She moved back and refresh. Now to repost that. Perfect. You'll see that error. The
-real validation I want to talk about is business rules validation. This is where you
-tell Symfony that's in the title needs to be a certain length or a certain field
-needs to be an email. That's all the specific stuff that you know about in. One
-interesting thing about Symfonys validation is that you don't usually apply it to
-your form. You apply it to your `Entity` via annotations, so check this out. We want
-the `title` field to be required, so let's add a new APP, `NotBlank()` annotation now
-because I have the PHB annotations plugin installed when I auto completed that, it
-added a use statement on top for a `Symfony\Component\Validator\Constraints as Assert;`,
-so as soon as we add that, if we go back and actually I can refresh because my `title`
-is already empty. Yes, we get an error. This value should not be blank. To customize
-that error, we can add a `message`. Key here will say, get creative and think of a
-title, go back, refresh, and perfect in general. Go back to the Symfony forums, go
-back to the documentation,
+## Form Field Sanity Validation
 
-and under guides find the validation guide. Just like with the form fields, there are
-a bunch of built in constraints that can help you validate just about everything
-seriously. There is a lot of stuff in here and also like with form field types, every
-validation constraint has different options. So for example, there's one called
-`length` and you can set the min, a Max length and also a min message, a Max message,
-and some other things. Another way to see what the options are is remember with every
-annotation, there's actually a class name behind that. So because I have a phd
-annotations plugin installed, I can hold command or control and click into that class
-and every property is basically an option that you can pass the annotation. So we're
-not going to talk too much about a foundation constraints because they're honestly
-pretty easy and it's just a matter of finding which foundation constraint you need
-and the options that you need for it. But there's one really cool one called
-`Callback`. This is a really great way just to do super custom validation. What you do
-is you just create a method but at a `@Assert\Callback()` on it. In Symfony, we'll call
-that method. So let's actually copy this here.
+Let's talk about sanity validation first. Sanity validation is built into the form
+fields themselves and makes sure that the submitted value isn't completely insane.
+For text fields like `title` and `content`, there is no sanity validation: we can
+submit anything to those fields and it basically makes sense: it's a string.
+But the `EntityType` *does* have built-in sanity validation.
 
-We're going to our article class and let's go all the way at the bottom and I will
-need to retype the eon `ExecutionContextInterface` to get that type event. And then
-inside, it's awesome, you can do whatever you want. So let's make sure that the `title`
-of this `Article` doesn't contain the `string`, the Borg. So `stripos()` of 
-`$this->getTitle()` because we're validating this object. The Borg does not equal `false`.
-Then we can add a validation error. Use that `$context` variable. You say `->buildViolation()`
- given an error, I'm bored, kind of scare us,
+Check this out: inspect element in your browser and the select field. Let's change
+one of these value to be something that's *not* in the database, like `value=100`.
 
-kind of
+Select this user and hit Create. Oh, duh! The HTML5 validation on the other fields
+stops us. To work around this, find the form class and add a `novalidate` attribute:
+that tells the browser to skip HTML5 validation, and it's a nice trick when you're
+testing your server-side validation. Hit Create again.
 
-makes us nervous. And then you can say `->atPath()`, and this is important because you
-choose where you want that validation. Error messages show up. So you want to show up
-massively `title` property and then we'll say `->addViolation()`. That's it. So now if we
-go back talk, how we really want to join the board
+Yay! Our first, *real* validation error ever!
 
-and create.
+> This value is not valid
 
-Yes, we got it. Custom validation message on that. Next, let's talk a little bit more
-about how we can control the rendering of these fields. Because right now we're just
-sort of rendering them all at once. We don't really know how to control the look and
-feel.
+This error comes from the "sanity" validation that's built right into `EntityType`:
+if you try to submit a value that should *not* be in the drop-down, boom! You
+get an error. Sanity validation is great: it saves us, and... we don't need to
+think about it! It just works.
+
+To control the message, pass an option called `invalid_message`. Set it to:
+
+> Symfony is too smart for your hacking!
+
+Move back and refresh to repost that. Nice! Our custom error. I don't *usually*
+set the `invalid_message`, only because these errors usually aren't seen unless
+a user is doing something *really* weird.
+
+We've talked about HTML5 validation and learned about sanity validation. Next, let's
+get to the *good* stuff: the *real* validation that *we* need to add.
