@@ -10,6 +10,7 @@ chapters:
   - validation
   - assert-validation
   - rendering-functions
+  - rendering-variables
   - update-form
   - registration-form
   - registration-validation
