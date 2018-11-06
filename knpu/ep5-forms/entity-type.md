@@ -35,6 +35,8 @@ actually, that doesn't matter. I'm calling this `author` because this class has
 `setAuthor()` and `getAuthor()` methods: *they* are what the form system will call
 behind the scenes.
 
+[[[ code('5c27126426') ]]]
+
 As *soon* as we add this field, go try it! Refresh! Hello drop-down! It *is*
 populated with all the users from the database... but... it might look a little
 weird. By default, the `EntityType` queries for all of the `User` objects and then
@@ -52,6 +54,8 @@ team!
 But now, pass the type manually: `EntityType::class`. That should make no difference,
 right? After all, the guessing system was *already* setting that behind the scenes!
 
+[[[ code('6440150b8a') ]]]
+
 Well... we're programmers. And so, we know to expect the unexpected. Try it!
 Surprise! A huge error!
 
@@ -67,6 +71,8 @@ That means that *we* need to manually set `class` to `User::class`. This is why
 I often *omit* the 2nd argument if it's being guessed correctly. And, we *could*
 do that here.
 
+[[[ code('310b2b4826') ]]]
+
 Try it again. Got it!
 
 ## Controlling the Option Display Value
@@ -79,10 +85,14 @@ too bad! I mean, you can *totally* control it with this option!
 Add `choice_label` and set it to `email`, which means it should call `getEmail()`
 on each `User` object. Try this. I like it! Much more obvious.
 
+[[[ code('1ec4460b50') ]]]
+
 Want to get fancier? I thought you would. You can *also* pass this option a callback,
 which Symfony will call for each item and pass it the data for that option - a `User`
 object in this case. Inside, we can return whatever we want. How about
 `return sprintf('(%d) %s')` passing `$user->getId()` and `$user->getEmail()`.
+
+[[[ code('c5e5d5a5f1') ]]]
 
 Cool! Refresh that! Got it!
 
@@ -95,6 +105,8 @@ this now, and so the first author is auto-selected.
 
 Back on the form, set `placeholder` to `Choose an author`. Try that: refresh.
 Perfecto!
+
+[[[ code('3cb6411d04') ]]]
 
 With all of this set up, go back to our controller. And... remove that `setAuthor()`
 call! Woo! We don't need it anymore because the form will call that method
