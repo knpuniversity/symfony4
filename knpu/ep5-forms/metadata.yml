@@ -13,6 +13,7 @@ chapters:
   - rendering-variables
   - update-form
   - registration-form
+  - unmapped-fields
   - registration-validation
   - agree-terms
   - form-theme-basics
