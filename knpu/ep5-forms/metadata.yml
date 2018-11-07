@@ -16,6 +16,7 @@ chapters:
   - unmapped-fields
   - registration-validation
   - agree-terms
+  - agree-terms-field
   - form-theme-basics
   - form-theme-variables
   - custom-field-theme
