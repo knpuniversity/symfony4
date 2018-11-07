@@ -34,10 +34,10 @@ at the textarea field... yep! This has no `required` attribute. Oh, by the way, 
 those extra attributes are coming from a browser plugin I have installed - not the
 form system.
 
-To make things a bit *more* confusing, the ``required`` option is only "guessed"
+To make things a bit *more* confusing, the `required` option is only "guessed"
 from your Doctrine config if you omit or pass `null` to the second argument of `add()`.
 If you specify the type manually, the form type guessing system does nothing and
-you'll also need to configure the `required` option manually. Honestly, the
+you'll need to configure the `required` option manually. Honestly, the
 `required` option is kind of a pain in the butt. Be careful to make sure that an
 optional field doesn't accidentally have this attribute.
 
@@ -68,7 +68,7 @@ submit anything to those fields and it basically makes sense: it's a string. But
 the `EntityType` *does* have built-in sanity validation.
 
 Check this out: inspect element in your browser and find the select field. Let's
-change one of these value to be something that's *not* in the database, like
+change one of these values to be something that's *not* in the database, like
 `value=100`.
 
 Select this user and hit Create. Oh, duh! The HTML5 validation on the other fields

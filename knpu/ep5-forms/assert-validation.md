@@ -2,18 +2,19 @@
 
 When you talk about validation, what you're *really* talking about is business
 rules validation. That's where you tell Symfony that the title is required and
-needs to be a certain length, or that some field should be a valid email address.
-It's about making the data constrain to *your* application's meaning for each piece
-of data.
+needs to be a certain length, or that some field should be a valid email address,
+or that the password must contain 2 upper case letters, 2 lower case letters, 3
+unicode characters and at least 4 emojis. It's about making the data constrain to
+*your* application's rules.
 
 ## Adding your First Assert Annotation
 
-Symfony's validation is kinda interesting because you *don't* apply the validation
-rules to the form. Nope, you apply them to your entity class via annotations. Check
-this out: I want the `title` field to be required. To do that, type `@NotBlank`and
+Symfony's validation is kinda interesting because you do *not* apply the validation
+rules to the form. Nope, you apply them to your class via annotations. Check this
+out: I want the `title` field to be required. To do that, type `@NotBlank` and
 hit tab to autocomplete to `@Assert\NotBlank`. Because I have the PHP annotations
 plugin installed, when I auto-completed that, it added a `use` statement on top
-that we need: `Symfony\Component\Validator\Constraints as Assert;`.
+that we need: `use Symfony\Component\Validator\Constraints as Assert`.
 
 Without doing *anything* else, refresh the form - the `title` field *is* empty.
 Yes! That's our error!
@@ -30,12 +31,12 @@ Try it again - refresh and... nice!
 
 On the docs, click to go back to the documentation homepage. Then, under guides,
 find the "Validation" guide. Just like with the form fields, there are a *bunch*
-of built-in validation constraints that... can help you validate just about anything!
+of built-in validation constraints that... can help you validate almost anything!
 And... just like with form field types, each validation constraint has different
 options that control its behavior.
 
 For example - check out `Length`: you can set the `min` length with the `min` option,
-or `max` with `max`. Control those error messages with `minMessage` and `maxMessage`.
+or `max` with `max`. Control their error messages with `minMessage` and `maxMessage`.
 
 Oh, *another* way to see what the options are is to remember that every annotation
 has a concrete PHP *class* behind it. Thanks to the PHP annotations plugin, I can
@@ -45,22 +46,22 @@ Nice! Every property becomes an *option* that you can pass to the annotation. We
 see this again later when we create our *own* custom validation constraint.
 
 Anyways, we won't talk too much about validation constraints because... they're
-honestly pretty easy: it's usually just a matter of finding which validation
-constraint you need and the options to pass to it.
+honestly pretty easy: it's usually a matter of finding which validation constraint
+you need and the options to pass to it.
 
 ## The Callback Constraint
 
-Oh, but there *is* one really cool one called `Callback`. This is *the* tool when
-you need to do something totally custom. Check it out: create a method in your
-entity class and add the `@Assert\Callback()` above it. Then, during validation,
+Oh, but there *is* one really cool constraint called `Callback`. This is *the* tool
+when you need to go rogue and do something totally custom. Check it out: create a
+method in your class and add `@Assert\Callback()` above it. Then, during validation,
 Symfony will call your method!
 
 Let's copy this, find our `Article` class, go all the way to the bottom, and paste.
-Oh, I need to retype the end of `ExecutionContextInterface` and auto-complete to
-get the `use` statement. Then, inside... it's awesome! Do whatever you want!
+Oh, I need to retype the end of `ExecutionContextInterface` and auto-complete it to
+get the `use` statement. Then, inside... it's awesome! We can do whatever we want!
 
 Let's make sure that the `title` of this `Article` doesn't contain the string
-`the borg`... cause they're scary. So, if`stripos()` of  `$this->getTitle()` and
+`the borg`... cause they're scary. So, if `stripos()` of  `$this->getTitle()` and
 `the borg` does not equal false... error! To create the error, use
 `$context->buildViolation()`:
 
