@@ -110,6 +110,11 @@ Symfony will automatically query for that entity. How? It looks at all of the ro
 placeholder values - which is just one in this case, `{slug}` - and creates a query
 where the `slug` field matches that value:
 
+***TIP
+It requires `sensio/framework-extra-bundle` to be installed in order to 
+automatically query for entity objects
+***
+
 [[[ code('523e425f15') ]]]
 
 In other words, to use this trick, your routing wildcard *must* be named the same
