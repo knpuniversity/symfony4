@@ -1,51 +1,54 @@
-# Custom Field Theme
+# Form Theming a Single Field
 
-Coming soon...
+The last thing we need to do is fix this, "agree to terms" checkbox. It doesn't look
+that bad, but this markup is *not* the markup that we had before.
 
-The last thing we need to do is fix this, agree to terms box. It doesn't look that
-bad, but you know this markup is not the market that we had before, so let's fix this
-to do this. This is actually interesting. We basically want to override override how
-they form row is rendering, but just for this one field and we can actually do that.
-Go back and open the web debug toolbar for the `Form` system.
+This fix for this is... interesting. We want to override how the `form_row` is
+rendering... but just for this *one* field - not for everything. Can we create a
+form theme block that only applies to a *single* field? Totally!
 
-Then click on the `agreeTerms` box and go down to the view variables. Few minutes ago
-we looked at this `block_prefixes`. Remember what happens is if you, whenever you
-render each, when you render each part of the form, it's going to look for a block
-that starts first with `_user_registration_form_agreeTerms` like 
-`_user_registration_form_agreedTerms_row`. If it doesn't find that, which of course 
-it doesn't, it then looks for a `checkbox_row()`, and if it doesn't find that it uses 
-`form_row()`, which is what's happening in this case, and so ultimately it is of course 
-using the same block `form_row()` as everybody else. But if we want to customize just 
-hubby row of this one field is done, we'll copy that long block name and will override 
-`{% block _user_registration_form_agreeTerms_row %}` and will say `{% end_block %}`. And 
-inside here I'm just going to literally copy and paste the old field.
+Go back and open the web debug toolbar for the form system. Click on the
+`agreeTerms` field and scroll down to the "View Variables". A few minutes ago
+we looked at this `block_prefixes` variable. When you render the "row" for a field,
+Symfony will *first* look for a block that starts with `_user_registration_form_agreeTerms`.
+So, `_user_registration_form_agreedTerms_row`. If it doesn't find that, which of
+course it will not, it falls back to the other prefixes and eventually uses `form_row`.
 
-Boom.
+## Creating the Form Theme Block
 
-It's not perfect yet, but when I go back, find my terminal, find my main tab and
-refresh. Oh again, an error at temple that extends another one. CanNot include
-content outside of toy blocks because I put, pasted that in the wrong spot and paste
-that in the right spot. Come back, refresh. And yeah, so you can see it moved over
-just a little bit
+To customize *just* this one field, copy that long block name and use it to create
+a new`{% block _user_registration_form_agreeTerms_row %}`, then `{% end_block %}`.
+Inside, let's *literally* copy the old HTML and paste.
 
-and is using our new kind of simpler checkbox `mb-3` label setup. So the cool thing is
-is that yeah, this, this is nice, but you know, if there's a validation error, it's
-not going to show up. We're just rendering everything manually. So what you want to
-do is you want to make sure that you take advantage of as many of these variables as
-you need to in order to make this really rendered the way you want to. So first thing
-I'm gonna do is I am going inside of here, we're gonna call `{{ form_errors(form) }}` 
-to make sure that my validation errors show up. I can also call form_health forum if I wanted
-to, but since I'm not adding any help text this field, I don't need to. Second thing
-is this `name="_terms"` that actually is a problem because the form is expecting to
-be called a certain way and if it's not called, it has a different name. It's not
-going to process correctly. Fortunately, one of the variables we have access to his
-`full_name`, so we going to say `{{ full_name }}` and that's it. Yes, we can get
-fancier. We can use the `ID` attribute if we want to set the `ID` properly, if we care,
-it's all up to how far you want to do things.
+Let's try it! Find the main browser table and refresh. Whoops!
 
-You can look through this and get as fancy as you want to. You can also use the `errors`
-is variable here to check to see if the ehrs are not empty and you could, for
-example, add a special errors class up here. Something like `errors is not empty`. Then
-we print some special class. That's up to you. Point is get as fancy as you need to
-for your actual situation. It's now recover. Refresh this. It looks good and it's
-also going to play nice with our system because it has the proper input type.
+> A template that extends another cannot include content outside Twig blocks.
+
+Yep, I pasted that in the wrong spot. Let's move it *into* the block. Come back
+and try that again. Yea! The checkbox moved back into place. Yep, the markup is
+exactly what we just pasted in.
+
+## Customizing with Variables
+
+This is nice... but it's totally hardcoded! For example, if there's a validation
+error, it wouldn't show up! No problem! Remember all of those variables we have
+access to inside a form theme block? Let's put them to use!
+
+First, inside, call `{{ form_errors(form) }}` to make sure any validation errors
+show up. I can also call `form_help()` if I wanted to, but we're not using that
+in this case.
+
+Second: this `name="_terms"` is a problem because the form is expecting a different
+name. And so, this field won't process correctly. Replace this with the very handy
+`full_name` variable.
+
+And... I think that's all I care about! Yes, we *could* get fancier, like using
+the `id` attribute if we care. Or, you could use the `errors` variable to print
+a special error class if `errros is not empty`. It's all up to you. 
+
+The point is: get as fancy as your situation requires. Try the page one more time.
+It looks good *and* it will play nice with our form.
+
+Next: let's learn how to create our own, totally custom field type! We'll eventually
+use it to create an auto-completing email text box to replace our author select
+drop-down.
