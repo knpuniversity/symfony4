@@ -23,6 +23,7 @@ chapters:
   - custom-field-theme
   - custom-field-type
   - data-transformer
+  - custom-field-configure-options
   - custom-field-option
   - autocomplete-js
   - autocomplete-js-tweaked-ending

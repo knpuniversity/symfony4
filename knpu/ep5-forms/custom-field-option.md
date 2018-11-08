@@ -1,57 +1,5 @@
 # Custom Field Option
 
-Coming soon...
-
-Thanks to the `DataTransformer` and specifically the fact that the `DataTransformer`
-throws a `TransformationFailedException` when a bad email is past our field. Our user
-select texts type has some built in sanity validation. Somebody puts an email address
-in here that doesn't exist. It will always fail validation. The way to control that
-error message for sanity validation is on the field itself to add an `invalid_message`
-option, but actually instead of putting it on the instead of putting it when we're
-configuring the field, we can actually give it a default value. So go back to user
-select text type, go back to code, generate menu or Command + N on a Mac and override
-`configureOptions()` inside. Here's a `$resolver->setDefaults()`, and here we can say
-`invalid_message` is equal to "User, not found". All right, so try that out. Go back,
-refresh
-
-and
-
-nice. There is the message.
-
-So this is kind of a cool thing. We've seen this `configureOptions()` before we sought
-on our. When we're building our forum class. So when you use `configureOptions()`, when
-you're building an entire form, you're configuring your setting options for that
-entire forum and there aren't very many data classes, the most important one, but
-when you're creating a custom field type the `configureOptions()`, our options for that
-specific field. So here we're setting an `invalid_message` option for this field and
-the cool thing is is that those can be overwritten if we want to, when we use that
-field so we can still set in an `invalid_message` when we use it to a different message
-here and that would override that option. More options. Things are pretty
-
-handy
-
-actually. I want to talk about them a little bit more, but first there is a small
-problem with our data transformer and that is that if we empty the author field and
-then of course we need to disable html five validation. So I'll add the novalidate
-attribute and hit update.
-
-Our sanity validations still failed. It says user not found. That's not quite right.
-Our data transformer should probably not fail in that case. It should just pass. `null`,
-here's what I mean. Go back to your `EmailToUserTransformer` in `reverseTransform()`.
-If there is no `$value` past that's an empty `string`, then let's just `return;`. What this
-means is that if we submit the field empty or when you first transform is going to
-return `null`, which is really the proper behavior for a transformer. Now the problem
-with that is that it means that our set off their method is going to be called with
-no, which technically is fine except that we want our author field to be required. So
-if I actually submit this again, you'll see that we haven't given integrity
-constraint violation, no is being said on the author, but the `author_id`, we made that
-a required field in the database so it ultimately blows up. This is a great example
-of missing business validation. So what were the top row of our author class `Article`
-class. Find the `$author` field and we need and `@Assert\NotNull()` here and we'll say
-`message="Please set an author"`
-
-Now refresh.
-
 Excellent. There is the error message we expect. All right, so I'm going to make our.
 I want to make our field a little bit, our `UserSelectTextType` a little bit more.
 Um, flexible. Supposedly use this `UserSelectTextType` in multiple places on our
