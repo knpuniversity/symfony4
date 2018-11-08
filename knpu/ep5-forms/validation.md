@@ -1,4 +1,4 @@
-# Validation
+# HTML5 & "Sanity" Validation
 
 Does our form have any validation yet? Well... sort of? The form *is* going through
 a validation process. When we POST to this endpoint, `handleRequest()` reads the
