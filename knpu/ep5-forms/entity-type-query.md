@@ -49,12 +49,16 @@ and select "Initialize Fields" to create that property and set it. Down below,
 pass `choices` set to `$this->userRepository` and I'll call a new method
 `->findAllEmailAlphabetical()`.
 
+[[[ code('d8d3e21dc2') ]]]
+
 Copy that name, go to `src/Repository/`, open `UserRepository`, and create that method.
 Use the query builder: `return $this->createQueryBuilder('u')` and then
 `->orderBy('u.email', 'ASC')`. Finish with `->getQuery()` and `->execute()`.
 
 Above the method, *we* know that this will return an array of `User` objects. So,
 let's advertise that!
+
+[[[ code('341ee4679c') ]]]
 
 I love it! This makes our `ArticleFormType` class happy. I think we should try it!
 Refresh! Cool! The admin users are first, then the others.
