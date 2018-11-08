@@ -1,97 +1,105 @@
-# Form Theme Variables
+# Form Theming & Variables
 
-Coming soon...
+We now know that when Symfony renders any part of your form, it looks for a specific
+block in this core `form_div_layout.html.twig` template. For example, to render the
+"row" part of any field, it looks for `form_row()`. We *also* learned that this sytem
+has some hierarchy to it: when you're rendering the `label` for a `TextType`, it
+first looks for `text_label()` and then falls back to using `form_label()`.
 
-We just learned that whenever Symfony renders any part of your form, it looks for a
-block in this core `form_div_layout.html.twig` to the age smarts wake, for example, when it's
-rendering the row part of any field that looks for `form_row()`. We also learned this a
-little bit of a hierarchy to it, so when you're rendering the label for a text type,
-it first looks for `text_label()`, but then it looks for ultimately looks
-for `form_label()` as a fall back because really all labels are the same.
+Heck, there is even a `form_start()` block that controls the open form tag!
 
-Heck, you can even look at the `form_start()` tag. There's a block that defines how that
-looks inside of there. Now we use this information to create our own `form_theme` and
-register that hr where we told twig to now look inside of our template for blocks
-when it's rendering the registration form so it's not looking at outside of art, a
-template and finding `form_row()`. Now when you're inside of these form theme blocks,
-you are in an entire different universe universe. You want to pretend like this block
-doesn't even exist in this template. It's an island, it gets past a completely
-different set of variables from the `Form` system. This does not work like any of your
-other blocks in this template. And if you look inside of here, you can already see
-that there is apparently a `help` variable. There is apparently a `form` variable. So the
-first thing you need to figure out when you're inside of these boxes, what variables
-do I have access to? And the easiest way to do that is just to use the `dump()` function
-inside of here. So if you go over now and refresh,
+We used this new knowledge to create our first form theme: we told Twig to look
+*right* inside *this* template for blocks to use when rendering the registration
+form. Our `form_row()` block is now hooked into the form rendering process.
 
-yes, we get big giant dumps whenever it renders the rows for any of our fields. So
-you can see there's `attr`, there's the `ID`, that's the `ID` attribute that's used for
-the full name attribute. This might look familiar to some of you, some of you. These
-are the exact variables that we can use when we're rendering our field. So if I go
-back and look at `article/admin/_form.html.twig` we had learned earlier that
-there is a variable called `label`. And the second argument is you `form_row()` is an `array`
-of variables. You can resolve this in the tweet template, function form, reference.
-If I search for form row inside of here. The second argument to it, and most of these
-functions is variables. So here the idea is whenever a field renders, there are a
-bunch of variables that are created in those variables are ultimately used inside of
-your `form_theme` to render things. For example, you can see `form_start()`, it's using
-a variable called `method` in order to render the method attribute on there that `method`
-variables, something that's created by the `Form` system. Then in our templates,
+## The Bizarre World of a Form Theme Block
 
-we can actually override those variables when we call our form rendering functions.
-So that's a very, very powerful thing to understand right there. Now when you're
-inside of a `form_theme`, what you are doing is you are actually in an environment
-where all of those variables are passed to you. So that's why we have all these
-variables here for each individual field, which is great because it means that we can
-actually change those variables, use those variables, uh, do whatever we want with
-those.
+When you're inside of a block that's used by the form theming system... your world
+is... weird. You *really* need to pretend like this block doesn't even exist in
+this template - that it lives all by itself in its *own* template. Why? Because
+it is passed a *completely* different set of variables that come from the form system:
+this block doesn't work like *any* of your other blocks in this template.
 
-So check this out. If you go back to our `register.html.twig`, I'll remove
-the `dump()`. One of the things in, in the old form is that our labels all had a class of
-`sr-only`. That's screen reader only because the labels were actually invisible by
-default. So we want our labels automatically do have that `sr-only` class on them.
-Now, of course, `form_row()` we call `form_label()` and we just pass it the `form` object
-which represents the current form. If you go back to our form function reference and
-search for `form_label()`, you'll see that the second argument is the actual label
-itself. And the third argument isn't a late `array` of variables. And guess what
-variable you have, there is a variable called `label_attr`. If we set
-that, we can control the attributes that are passed into our `label` variable. In fact,
-to make this more clear, if I go into `form_div_layout.html.twig`, search for 
-`form_label` to find the block that's used inside of here, you can see it using this 
-`label_attr` variable. It's doing some complex processing on it, but ultimately 
-it uses it down here a little bit complicated
+I mean, look inside: there is apparently a `help` variable and a `form` variable.
+So, the *big* question is: when you're in a form theme block, what variables do
+you have access to?
 
-to pass in those variables. This is one of the things about these codes. They are
-super complicated, but it's using that down there anyways, back on `register.html.twig`, 
-weeks since we're the ones calling `form_label` directly, we can pass no as the
-second argument, which you remember is the `label_text`, so we'll allow a label tech
-still to be auto use the normal value.
+The easiest answer is just to use the `dump()` function inside.
 
-Okay.
+Move over and refresh. Woh! Yes - we see *giant* dumps for *each* row that's
+rendered! There's `attr`, `id` and `full_name`. Do these... look familiar? The are
+the *exact* variables that we have been *overriding* when rendering our fields!
 
-Then we can pass a third argument here with `label_attr` and then another array of
-`class` set to `sr-only`.
+Look back at `article_admin/_form.html.twig`. We learned earlier that there is a
+variable called `label` and that the second argument of `form_row()` is an array
+of variables that you want to override. You can see this in the docs: when I search
+for `form_row()`, the second argument is `variables`.
 
-All right, so move back, go over refresh and yes you can see it. Those labels are
-gone. They now have this `sr-only` a variable paths to them, whereas the only
-problem is that there is no actual text here on these fields. The way that was
-handled before is that each field had a `placeholder` attribute, so this is kind of the
-same thing before. This is actually the same thing. This is just an attribute that we
-want to set on each individual input, so we actually could go down to `form_widget()`
-here and we could change this widget `attr` to actually have a new, `attr` class on it,
-a key on it with a class that does something, but unfortunately we don't know what
-the label should be, so instead of doing it there, I'm going to go down and actually
-finally refactored my `form_widget()` into just three form render robocalls, so 
-`form_row(registrationForm)`, and then let me close a couple of files here and we have `email`
-`plainPassword` and `agreeTerms`, so use that email.
+Here's the point: when a field is rendered, the form system creates a bunch of variables
+to help that process, which we can override. And *those* variable are ultimately
+passed... as variables, to your form theme blocks!
 
-Okay.
+For example, remember how we passed a `method` variable to the `form_start()`
+function? Check out the `form_start()` block in the bootstrap theme. Surprise!
+There is a local `method` variable that it uses to render. We *literally* override
+these variable values via the form rendering functions.
 
-`plainPassword` and `agreeTerms` and for `email` will pass a second argument which is the
-variables `attr` with `placeholder` set to "Email". And then the same thing down here for
-`plainPassword`. Is that a `placeholder` to "Password"? And that shouldn't be it. Now
-notice we could have been less fancy about this and actually just passed this label a
-ttr variable directly down here and that would have worked fine. That would have
-passed down eventually into the label and it would have said it. So the form theme
-actually isn't completely necessary to get rid of this part. It's just a different
-way of doing it. All right, so we'll go back and refresh now. Yes, it pops those in
-except I have a typo on password, but other than that, things work great.
+The point is: when you're inside a form theme block, you have access to a lot of
+variables... which is *great*, because it means we can use those variables to do,
+well, whatever we want!
+
+## Adding a label_attr
+
+Back in `register.html.twig`, remove the `dump()`. On the old form, each label
+had an `sr-only` class. That stands for "screen reader only" and it makes the labels
+invisible. 
+
+How can we make our label tag have this? Hmm. Well, inside our block, we call
+`form_label()` and pass in the `form` object - which represents the form object
+for whatever field is currently being rendered.
+
+Look back at the form function reference and search for `form_label()`. Ah yes:
+the second argument is the label itself. But the *third* argument is an array
+of variables! And, apparently, there is a variable called `label_attr`! If we set
+that, we can control the attributes on the `label` tag.
+
+In fact, we can see this: open `form_div_layout.html.twig` and search for 
+`form_label` to find that block. There it is! It does some complex processing, but
+it *does* use this variable.
+
+Actually, this is a great example of one, not-so-great thing about these templates:
+they can be crazy complex! 
+
+Anyways, back on `register.html.twig`, let's customize the label attributes!
+Pass `null` as the label text so it uses whatever the normal label is. Then pass
+an array with `label_attr` set to another array, and `class` equals `sr-only`.
+
+Phew! Let's try that. Move over refresh and... yes! They're gone! They now have
+the `sr-only` class! But, hmm... now we have no idea what these fields are!
+No worries: that was handled before via a `placeholder` attribute. How can we
+set this for each field? Well... it's kind of the same thing: we want a custom
+attribute on each input.
+
+The `form_widget()` function is being passed this `widget_attr` variable as its
+array of variables. So, we *could* add an `attr` key to it! Except... we don't
+know what the label should be! You *might* think that we could use the `label`
+variable. This *does* exist, but, unless you set the label explicitly, at this
+point, it's `null`. The `form_label` block holds the logic that turns the field
+name into a humanized label, if it wasn't set some other way.
+
+No problem: there's another simple solution. Refactor the `form_widget()` call into
+three, separate `form_row()` calls. Let me close a few files and - that's right!
+The fields are `email` `plainPassword` and `agreeTerms`. Use `.email`, copy those,
+paste twice, then `plainPassword` and `agreeTerms`.
+
+For `email` pass a second argument with `attr` then `placeholder` set to `Email`.
+Do the same thing for the one other text field: `placeholder` set to "Password".
+
+That should be it! And yea, we *could* have been less fancy and *also* passed this
+`label_attr` variable directly in `form_row()`. That would have worked *fine*.
+
+Anyways, let's try it! move over, refresh and... woohoo! The placeholders pop
+into place. And other than my obvious typo... I think it looks pretty good!
+
+Next: there's one field left that isn't rendering correctly: the terms checkbox.
+Let's learn how to customize how a *single* field renders.
