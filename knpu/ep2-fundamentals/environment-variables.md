@@ -139,6 +139,13 @@ This shows your Symfony version, some system info and - hello! - environment var
 
 ## Updating .env.dist
 
+***TIP
+New projects will *not* have a `.env.dist` file. Instead, your `.env` file *is* committed
+to your repository and should hold sensible, but not "secret" default values. To override
+these defaults with values specific to your machine, create a `.env.local` file. This
+file *will* be ignored by git.
+***
+
 In addition to the `.env` file, there is *another* file: `.env.dist`. Copy our new
 section, open that file, and paste! Remove the sensitive part of the URL:
 
