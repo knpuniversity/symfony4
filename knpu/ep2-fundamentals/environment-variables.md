@@ -25,6 +25,11 @@ variable: `APP_ENV`:
 
 [[[ code('b6eb443ace') ]]]
 
+***TIP
+If you start a new project today, you won't see this `APP_ENV` logic. It's
+been moved to a `bootstrapEnv()` method in your `src/Kernel.php` file.
+***
+
 But here's the question: how can we *remove* this hardcoded URL, and *instead* tell
 the NexySlackBundle to read from some *environment* variable? I mean, it's not like
 we can just use the `getenv()` PHP function in the middle of YAML!
