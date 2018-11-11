@@ -47,6 +47,11 @@ It's looking for an environment variable called `APP_ENV`:
 
 [[[ code('e91795adda') ]]]
 
+***TIP
+If you start a new project today, you won't see this `APP_ENV` logic. It's
+been moved to a `bootstrapEnv()` method in your `src/Kernel.php` file.
+***
+
 We're going to talk more about environment variables later, but they're just a way
 to store config values. One confusing thing is that environment *variables* are
 a *totally* different thing than what we're talking about right now: Symfony environments.

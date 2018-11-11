@@ -8,6 +8,11 @@ variables *correctly*. If you look back at `index.php`:
 If the `APP_ENV` environment variable is set already, it knows to *skip* loading
 the `.env` file.
 
+***TIP
+If you start a new project today, you won't see this `APP_ENV` logic. It's
+been moved to a `bootstrapEnv()` method in your `src/Kernel.php` file.
+***
+
 In reality... in a lot of server environments, setting environment variables can
 be a *pain*. You can do it in your Apache virtual host or in PHP-FPM. Oh, and you'll
 need to make sure it's set at the command line too, so you can run `bin/console`.
@@ -30,6 +35,12 @@ The reason that using `.env` isn't *recommended* is mostly because the logic to
 parse this file isn't optimized: it's not *meant* for production! So, you'll lose
 a *small* amount of performance - probably just a couple of milliseconds, but you
 can profile it to be sure.
+
+***TIP
+The performance cost of `.env` has been shown to be low. It *is* ok to use
+a `.env` file in production if that's the most convenient way for you to set
+environment variables.
+***
 
 ## Casting Environment Variables
 

@@ -25,6 +25,11 @@ variable: `APP_ENV`:
 
 [[[ code('b6eb443ace') ]]]
 
+***TIP
+If you start a new project today, you won't see this `APP_ENV` logic. It's
+been moved to a `bootstrapEnv()` method in your `src/Kernel.php` file.
+***
+
 But here's the question: how can we *remove* this hardcoded URL, and *instead* tell
 the NexySlackBundle to read from some *environment* variable? I mean, it's not like
 we can just use the `getenv()` PHP function in the middle of YAML!
@@ -133,6 +138,13 @@ php bin/console about
 This shows your Symfony version, some system info and - hello! - environment variables!
 
 ## Updating .env.dist
+
+***TIP
+New projects will *not* have a `.env.dist` file. Instead, your `.env` file *is* committed
+to your repository and should hold sensible, but not "secret" default values. To override
+these defaults with values specific to your machine, create a `.env.local` file. This
+file *will* be ignored by git.
+***
 
 In addition to the `.env` file, there is *another* file: `.env.dist`. Copy our new
 section, open that file, and paste! Remove the sensitive part of the URL:
