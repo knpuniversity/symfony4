@@ -89,6 +89,8 @@ To control the message, pass an option called `invalid_message`. Set it to:
 
 > Symfony is too smart for your hacking!
 
+[[[ code('cbc9d16908') ]]]
+
 Move back and refresh to re-POST the form. Nice! I don't *usually* set the
 `invalid_message`, only because, for most fields, you only see these errors
 if you're doing something *really* weird - like messing with the HTML.

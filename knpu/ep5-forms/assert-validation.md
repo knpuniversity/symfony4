@@ -16,6 +16,8 @@ hit tab to autocomplete to `@Assert\NotBlank`. Because I have the PHP annotation
 plugin installed, when I auto-completed that, it added a `use` statement on top
 that we need: `use Symfony\Component\Validator\Constraints as Assert`.
 
+[[[ code('d337a291e1') ]]]
+
 Without doing *anything* else, refresh the form - the `title` field *is* empty.
 Yes! That's our error!
 
@@ -24,6 +26,8 @@ Yes! That's our error!
 To customize that, add a `message` key to the annotation:
 
 > Get creative and think of a title!
+
+[[[ code('584abe6ecb') ]]]
 
 Try it again - refresh and... nice!
 
@@ -60,6 +64,8 @@ Let's copy this, find our `Article` class, go all the way to the bottom, and pas
 Oh, I need to retype the end of `ExecutionContextInterface` and auto-complete it to
 get the `use` statement. Then, inside... it's awesome! We can do whatever we want!
 
+[[[ code('d087967557') ]]]
+
 Let's make sure that the `title` of this `Article` doesn't contain the string
 `the borg`... cause they're scary. So, if `stripos()` of  `$this->getTitle()` and
 `the borg` does not equal false... error! To create the error, use
@@ -72,6 +78,8 @@ futile...
 
 Next, choose which field to attach the error to with `->atPath('title')` and finish
 with `->addViolation()`. That's it!
+
+[[[ code('3742dce5fc') ]]]
 
 Go back to our form, write an article about how you *really* want to join the
 borg and Create!
