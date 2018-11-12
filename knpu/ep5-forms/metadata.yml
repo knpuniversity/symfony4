@@ -26,8 +26,8 @@ chapters:
   - custom-field-configure-options
   - custom-field-option
   - autocomplete-js
-  - autocomplete-js-tweaked-ending
   - autocomplete-endpoint
+  - autocomplete-ajax
   - build-view
   - form-type-extension
   - form-options-data

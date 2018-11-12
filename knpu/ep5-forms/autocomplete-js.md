@@ -1,124 +1,110 @@
-# Autocomplete Js
+# Autocomplete JavaScript
 
-Coming soon...
+From a backend perspective, the custom field is done! When the user submits a string
+email address, the data transformer turns that into the proper User object.
 
-This custom field and data transformer is cool because this field now works exactly
-how I want it to, except it would be even cooler if I had some awesome little
-JavaScript autocomplete here because I really can't tell like who the actual valid
-users are,
+But from a *frontend* perspective, it could use some work. It would be *way*
+more awesome if this field had some cool JavaScript auto-completion magic so
+I could see who the actual valid users are. So... let's do it!
 
-so it's a little bit difficult for me to use this, so let's do that. Google for it.
-`Algolia` autocomplete. There are lots of autocomplete libraries, but `Algolia` has a
-nice little JavaScript library. I'll click into their documentation, but what I
-really want is their little autocomplete, that js thing. Now, many of you might know
-that a Symfony comes with a really great a JavaScript library called `Webpack Encore`
-to help you build a really, really a professional, beautiful JavaScript. We're not
-using that in this tutorial yet. So I'm going to do things the very. I'm going to do
-things. I'm going to keep things very simple. Uh, but the important part here is how
-we can add JavaScript to our custom fields. So in this case, I'm going to copy the
-script tag for `jQuery` and then open your `templates/article_admin/edit.html.twig` 
-in override the `{% block javascripts %}` at the `{% endblock %}`, then call the `{{ parent() }}`
-function so that we don't override the parent blocks. And then we'll we'll paste in
-that `<script>` tag. Yes, we are also, we're also going to need to do this on the new
-template. We'll take care of that in a little bit. Second, if you scroll down a
-little bit of eventually there it is. There is some css that actually helps make this
-all look good. Let's copy that. Then I'll open the `public/` directory. There it is, and
-in css I'll create a new file called `algolia-autocomplete.css`
+Google for it "Algolia autocomplete". There are a lot of autocomplete libraries,
+and this one is pretty nice. Click into their documentation and then to the GitHub
+page for `autocomplete.js`.
 
-paste that in there, close that up, and that will override the
-`{% block stylesheets %}`. `{% endblock %}`. This time we'll add a `<link>` tag so you that
-`algolia-autocomplete.css` file and PhpStorm doesn't look happy. I think it's
-just. There we go. It just got confused and finally to actually implement the logic
-we want in the js directory, I'm also going to create a new file call 
-`algolia-autocomplete.js`. Before I fill anything in here, I'll also go up here and create
-a `<script>` tag for that `src="js/algolia-autocomplete.js"`. All right, so if
-you go back and look at their documentation, I basically talks about how to use this
-with `jQuery`. You basically need to select an element and then there's some code that
-you can put here to tell it where to go and get the code from.
+Many of you might know that a Symfony comes with a great a JavaScript tool called
+Webpack Encore, which helps you build organized JavaScript and build it all into
+compiled files. We have *not* being using Encore in this tutorial yet. So I'm going
+to keep things simple and continue without it. Don't worry: the most *important*
+part of what we're about to do is the same no matter what: it's how you connect
+custom JavaScript to your form fields.
 
-So I'll actually copy. No, I'm not going to copy into that. So we're going to
-basically do that same thing by hand here. I'll start just to be safe with a document
-that ready block from jquery to make sure the page is fully loaded. And then we're
-going to do is I'm going to select all elements that have some `.js-user-autocomplete` 
-class. Nothing has this yet, but our field will soon. Then we call auto
-complete on it. We'll pass it that same `hint: false`. Then it's a little complex. We
-need to pass it in `array` and then an `object`, and then we need a `source` option set to a
-`function()` that receives a `query` which is the value in the field and then a `callback`.
-So basically as we're typing in the field, the library is going to call our `source()`
-function. It's going to be our job to figure out what results to pass back and the
-past back. We're actually going to call execute this callback function and pass it
-our array of options, which right now I'm just going to hard code. I'm to create this
-little data structure with a value key because that's how the library and likes the
-values to be constructed and bar
+## Adding the autocomplete.js JavaScript
 
-and that's it.
+Copy the script tag for jQuery, open `templates/article_admin/edit.html.twig` and
+override `{% block javascripts %}` and `{% endblock %}`. Call the `{{ parent() }}`
+function so that we don't override the parent JavaScript. Then paste in that new
+`<script>` tag.
 
-Now, in order for this to be a to be applied to our field, all we need to do is add
-that class to our aba field, so let's just do that all the time. Automatically a copy
-of this class here, that end `UserSelectTextType`. We can actually set in default
-value for the `attr` our option and say `'class' => 'js-user-autocomplete` up until now if
-we've wanted to add a class attribute, we've actually been doing that from inside of
-our tweet template. For example, `security\registered.html.twig`
+Yes, we *are* also going to need to do this on the new template. We'll take care
+of that in a little bit.
 
-, we're passing a V, a variable called `attr`, and then we can
-pass a `class` there or a variable called her with a `placeholder`. `Attr` is one of the few
-things that are both can be past either as view variables or also as form options,
-but these are generally two different things and I want to make sure we don't get
-them confused, so if I go back and open my profiler and I click on, for example the
-author field, remember that there are a number of options that you can pass to your
-field and these are the things that you would pass in your form class and then when
-you're rendering your template, there are a bunch of view variables. These are two
-different lists. They just happen to have a little bit of overlap like a ttr, which
-exists as an option and if you pass that, that becomes the default value for your,
-for your view variable. Anyways, inside of our `UserSelectTextType`, we now are giving
-it a default a `class`, so with any luck that should work. I'll close the profiler
-refresh
+Second, if you scroll down a little on their docs... there it is! This page has
+some css that helps make all of this look good. Copy that, go to the `public/css`
+directory, and create a new file: `algolia-autocomplete.css`. Paste this there.
 
-and Oh, I killed my page. CSS has gone. I always do that and edit that each month to
-make sure you call the `{{ parent() }}` function in your style sheet spot or else you lose all
-of the other style sheets. All right? Much better. And now when we type into our
-field, no matter what we type, we always get the food and the bar options because we
-have this hard coded in. So the next thing we need to do is create an end point in
-Ajax end point that's going to be able to return us the list of user objects so that
-we're not hard coating them. To do that. Let's create a new controller for this.
-Doesn't matter how you organize this, but I'm going to create an `AdminUtilityController`. 
-I'll make that extend the normal `AbstractController`
+Let's include this file in our template as well: override `{% block stylesheets %}`
+and `{% endblock %}`. This time add a `<link>` tag that points to that file:
+`algolia-autocomplete.css`. Oh, and don't forget the `parent()` call - I'll add
+that in a second.
 
-and then I'm going to create a `public function getUsersApi()`, so we're gonna Credit
-Api end points, and above this I'll give it the `@Route()`, the one from the routing
-components, and then `/admin/utility/users`, and just to be extra fancy, I'll say
-`methods="GET"`. This is only a good end point right inside of this, we're basically
-just gonna return the `User` objects. We're not even going to worry about filtering
-them yet, so I'll say `UserRepository $userRepository`, then 
-`$users = $userRepository->findAllEmailAlphabetical()` though it doesn't matter.
-And down below I'll `return $this->json()`. Oh, return this on user's key and that's
-it. Let's copy that. You were on seat. This is actually working. It's all credit. New
-Tab here. We'll go to `localhost:8000/admin/utility/users`. And Whoa, a circular
-reference has been detected. Oh, so this means that when it was trying to see,
-realize the `User` object, it's somehow got into a circular reference. Check this out,
-open up your user entity class. By default, the serializer is going to see realize
-every single a property you have on it or more accurately every single property that
-has a guitar method.
+Finally, for the custom JavaScript logic, in the `js/` directory, create a new
+file called  `algolia-autocomplete.js`. Before I fill *anything* in here, include
+that in the template: a `<script>` tag poinging to `js/algolia-autocomplete.js`.
 
-This means that it is serializing our API tokens, for example. Well, I want to
-serialize the API token. Api token has a reference back to the users, so it
-serializes the user and it kind of goes on forever until it gets deep enough that
-it's notices that it's in a loop and then it throws an exception. Well, the thing is
-we don't really want to serialize all of those fields anyways. We just want to
-serialize a couple of basic fields and we already did this earlier.
+## Implementing autocomplete.js
 
-In `AccountController`. We created an API end point that return one user object and
-when we did that, the key was that we told the serializer to only serialize the
-groups called main look in your `User` entity class. We didn't materialize everything.
-We just added an act groups and main above all the fields that we want it to
-serialize. So we just need to do the same thing here instead of our AdminUtilityController. 
-Second argument is the status code. Who wants 200? We don't need any
-custom headers, but we do need to pass a groups option set to Maine. I know a lot of
-square brackets there. Now to go back and refresh. Got It's. There is a nice usable
-list. We can use a different serialization group here if we wanted to. To return even
-less data are the last thing you need to do is make sure that this is secure because
-right now this controller is open to the world and we might not want everybody to be
-able to list all the users. So this is a little bit tricky because our 
-`ArticleAdminController` requires `ROLE_ADMIN_ARTICLE`. Where did the `User` object? Ignore that.
+Initial set up done! Head back to their documentation to find where it talks about
+how to use this with jQuery. Looks *kinda* simple: select an element, call
+`.autcomplete()` on it, then... pass it a bunch of options that tell it how to
+fetch and process the autocomplete data.
 
-So next, let's hook up the end points.
+Cool! Let's do something similar to that. I'll start with the `document.ready()`
+block from jQuery just to make sure the DOM is fully loaded. Now: here is the key
+moment: how can we write JavaScript that can *connect* to our custom field? Should
+we select it by the id? Something else?
+
+I like to always select by class. Find all elements with, how about, some
+`.js-user-autocomplete` class. Nothing has this class yet, but our field will soon.
+Call `.autocomplete()` on this, pass it that same `hint: false` and then an array.
+This looks a bit complex: add a JavaScript object with a `source` option set to a
+`function()` that receives a `query` and a callback `cb` argument.
+
+Basically, as we're typing in the text field, the library will call this function
+and pass whatever we've entered into the text box as the `query` argument. *Our*
+job is to determine which results match this "query" text and then pass back those
+results by calling the `cb` function.
+
+To start... let's hardcode something and see if it works! Call `cb()` and pass it
+an array where each entry is an object with a `value` key... because that's how
+the library wants the data to be structured by default.
+
+Thanks to my imaginative code, no matter *what* we type, `foo` and `bar` should
+be suggested.
+
+## Adding the js- Class to the Field
+
+And... we're almost done! In order for this to be applied our field, all *we* need
+to do is add this class to our author field. No problem! Copy the class name and
+open `UserSelectTextType`. Here, we can set a *default* value for the `attr`
+option to an array with `class` set to `js-user-autocomplete`.
+
+## Field Options vs View Variables
+
+Up until now, if we've wanted to add a `class` attribute, we've done it from inside
+of our Twig template. For example, open `security/register.html.twig`. For the form
+start tag, we're passing an `attr` variable with a `class` key. Or, for the fields,
+we're adding a `placeholder` attribute.
+
+`attr` is one of a few things that are both can be passed either as view variables
+or *also* as a field *option*. But, I want to be clear: options and variables are
+*two* different things. Go back and open the profiler. Click on, how about, the
+`author` field. We know that there is a set of options that we can pass to the
+field from inside the form class. And then, when you're rendering in your template,
+there is a *different* set of view variables. These are two *different* concepts.
+However, there *is* some overlap, like `attr`, which exists as an option and a variable.
+
+But, behind the scenes, when you pass the `attr` option, that simply becomes the
+default value for the `attr` view variable. The `attr` option, just like the `label`
+and `help` options - exists *just* for the added convenience of being able to set
+these in your form class *or* in your template.
+
+Anyways, thanks to the code in `UserSelectTextType`, our field *should* have this
+class. Let's try it! Close the profiler refresh and... ah! I killed my page! The
+CSS is gone! I *always* do that! Go back to the template and add the missing
+`parent()` call: I don't want to completely *replace* the CSS From my layout.
+
+Ok, try it again. Much better. And when we type into the field... yes! We got
+`foo` and `bar` no matter what we type. Awesome!
+
+Next, as much as I like `foo` and `bar`, we should probably make an AJAX call to
+fetch a *true* list of the matching email addresses.
