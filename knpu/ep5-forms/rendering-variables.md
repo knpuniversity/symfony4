@@ -12,6 +12,8 @@ fields, including `label`.
 Let's override that variable for the title. Pass a second argument to `form_row()`:
 an array with a `label` key. How about, `Article title`.
 
+[[[ code('bc3fa48839') ]]]
+
 Try that! Reload the form. Boom! Label changed!
 
 ## Discovering the Form Variables
@@ -59,6 +61,8 @@ is the label. Then `{{ form_errors(articleForm.title) }}` for the validation err
 `{{ form_widget(articleForm.title }}` to print the input field, and finally
 `{{ form_help(articleForm.title }}`.
 
+[[[ code('9a53652fdd') ]]]
+
 Let's see how this compares to using `form_row()`. Refresh! Hmm - it's *almost*
 the same. But if you look more closely, of course! The other fields are wrapped in
 a `form-group` div, but the title no longer has that!
@@ -67,11 +71,14 @@ When you render things at this level, you start to lose some of the special form
 that `form_row()` gives you. Sure, it's easy to re-add that div. But `form_row`
 also adds a special error class to that div when the field has a validation error.
 
-For that reason, let's go back to using `form_row()`. A little bit later, we're
-going to learn how we can use `form_row()`, but completely customize how it looks
-for one specific form, or across your entire site! We'll do this by creating a
-"form theme". It's kind of the best of both worlds: you can render things in the
-lazy way, but still have the control you need.
+For that reason, let's go back to using `form_row()`.
+
+[[[ code('ca4d3d1f18') ]]]
+
+A little bit later, we're going to learn how we can use `form_row()`, but completely
+customize how it looks for one specific form, or across your entire site! We'll do this
+by creating a "form theme". It's kind of the best of both worlds: you can render things
+in the lazy way, but still have the control you need.
 
 But before we get there - let's learn how to create an "edit" form so we can update
 articles!
