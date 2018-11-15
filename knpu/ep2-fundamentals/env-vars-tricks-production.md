@@ -10,7 +10,7 @@ the `.env` file.
 
 ***TIP
 If you start a new project today, you won't see this `APP_ENV` logic. It's
-been moved to a `bootstrapEnv()` method in your `src/Kernel.php` file.
+been moved to a `bootstrap.php` file.
 ***
 
 In reality... in a lot of server environments, setting environment variables can
