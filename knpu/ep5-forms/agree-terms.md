@@ -51,7 +51,7 @@ the one field. Run it with:
 php bin/console doctrine:migrations:migrate
 ```
 
-But, oh no! Things are *not* happy. We have *existing* users in the database!
+Oh no! Things are *not* happy. We have *existing* users in the database!
 When we suddenly create a new field that is `NOT NULL`, MySQL has a hard time
 figuring out what datetime value to use for the existing user rows!
 
