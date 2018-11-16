@@ -99,8 +99,8 @@ identical... we'll talk about that in the next chapter.
 ## BaseFixture Class for Cooler Looping
 
 But first, let me show you a *cooler* way to create multiple articles. In the
-`DataFixtures` directory, create a new class called `BaseFixtures`. Make it abstract,
-and extend the normal class that all fixtures extend... so... `Fixtures`:
+`DataFixtures` directory, create a new class called `BaseFixture`. Make it abstract,
+and extend the normal class that all fixtures extend... so... `Fixture`:
 
 [[[ code('67b6ca4e18') ]]]
 
