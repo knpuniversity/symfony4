@@ -16,6 +16,8 @@ kind of strange to use this property in two ways.
 Go back to `UserRegistrationFormType`. Change the field to `plainPassword`. Let's
 add a comment above about why we're doing this.
 
+[[[ code('e2ce52c13d') ]]]
+
 But... yea! This *will* break things! Go back to the form and try to register with
 a different user. Boom!
 
@@ -58,6 +60,8 @@ it gives us the `User` object. Where will that `plainPassword` data live?
 
 In your controller, `dd($form['plainPassword']->getData())`.
 
+[[[ code('') ]]]
+
 Then move over, refresh and... oh! Form contains extra fields. My fault: I never
 fully refreshed the form after renaming `password` to `plainPassword`. So, we were
 *still* submitting the old password field. By default, if you submit *extra* fields
@@ -77,6 +81,8 @@ This is a *super* nice solution for situations where you need to add a field to 
 form, but it doesn't map cleanly to a property on your entity. Copy this, remove the
 `dd()` and, down below, use *that* to get the plain password.
 
+[[[ code('967d551132') ]]]
+
 Let's try it! Move back over, refresh and... got it! We are *registered*!
 
 ## Using the PasswordType Field
@@ -90,6 +96,8 @@ fails, it falls back to `TextType`.
 
 Change this to `PasswordType::class`. This won't change how the field *behaves*,
 only how it's rendered. Yep! A proper `<input type="password">` field.
+
+[[[ code('784809ab59') ]]]
 
 Next: time to add validation! Which, hmm, is going to be a bit interesting. First,
 we need to validate that the user is unique in the database. And second, for the
