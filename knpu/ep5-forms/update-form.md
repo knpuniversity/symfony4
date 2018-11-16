@@ -6,12 +6,16 @@ to make an "edit" form?
 
 The answer is - delightfully - almost identical! In fact, let's copy all of our
 code from the `new()` action and go down to `edit()`, where the only thing we're doing
-so far is allowing Symfony to query for our article. Paste! Excellent. Oh, but we
-need a few arguments: the `Request` and `EntityManagerInterface $em`.
+so far is allowing Symfony to query for our article. Paste! Excellent.
 
-This is now *exactly* the same code from the new form. So... how can we make this
+.[[[ code('8735cedb73') ]]]
+
+Oh, but we need a few arguments: the `Request` and `EntityManagerInterface $em`. This is
+now *exactly* the same code from the new form. So... how can we make this
 an edit form? You're going to love it! Pass `$article` as the second argument to
 `->createForm()`.
+
+[[[ code('69f50b019d') ]]]
 
 We're done! Seriously! When you pass `$article`, this object - which we just got
 from the database becomes the *data* attached to the form. This causes two things
@@ -45,9 +49,13 @@ flash message:
 
 > Article updated! Inaccuracies squashed!
 
+[[[ code('f72b45d7ed') ]]]
+
 And then, instead of redirecting to the list page, give this route a
 `name="admin_article_edit"`. Then, redirect right back here! Don't forget to
 pass a value for the `id` route wildcard: `$article->getId()`.
+
+[[[ code('faf37a4d27') ]]]
 
 Controller, done!
 
@@ -58,6 +66,8 @@ directory, copy the `new.html.twig`  and name it `edit.html.twig`, because, ther
 not *much* that needs to be different.
 
 Update the `h1` to `Edit the Article` and, for the button, `Update!`.
+
+[[[ code('501b525dda') ]]]
 
 Cool! Let's try this - refresh! Looks perfect! Let's change some content, hit Update
 and... we're back!
@@ -72,11 +82,17 @@ this template will render a little bit of content - not an entire page.
 Next, copy the *entire* form code and paste! Oh, but the button needs to be different
 for each page! No problem: render a new variable: `{{ button_text }}`.
 
+[[[ code('18c48dff75') ]]]
+
 Then, from the edit template, use the `include()` function to include
 `article_admin/_form.html.twig` and pass one *extra* variable as a second argument:
 `button_text` set to `Update!`.
 
+[[[ code('3196b64bd2') ]]]
+
 Copy this and repeat it in new: remove the duplicated stuff and say `Create!`.
+
+[[[ code('a72efbac28') ]]]
 
 I love it! Let's double-check that it works. No problems on edit! And, if we go to
 `/admin/article/new`... nice!
@@ -88,6 +104,8 @@ let's add a link to edit each article. Open `list.html.twig`, add a new empty
 table header, then, in the loop, create the link with `href="path('admin_article_edit')"`
 passing an id wildcard set to `article.id`. For the text, print an icon using the
 classes `fa fa-pencil`.
+
+[[[ code('4503c9f464') ]]]
 
 Cool! Try that out - refresh the list page. Hello pencil icon! Click any of these
 to hop right into that form.
