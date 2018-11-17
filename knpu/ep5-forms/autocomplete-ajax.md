@@ -1,104 +1,105 @@
 # Hooking up the AJAX Autocomplete
 
-Coming soon...
+We now have an endpoint that returns us all the users as JSON. And we have some
+autocomplete JavaScript that... ya know... autocompletes entries for us. I have
+a crazy idea: let's *combine* these two so that our autocomplete uses that Ajax
+endpoint!
 
-Okay, we now have an endpoint that returns to us all the users in the system as JSON
-and we have some custom autocomplete JavaScript which has the ability to set auto
-complete stuff for us, so I have a crazy idea. Let's combine these two so that our
-autocomplete actually uses that Ajax endpoint arts a. here's how first, instead of
-our JavaScript, we're going to need to know the `url` to the endoint. There's
-actually a kind of a cool way we can do this in `AdminUtilityController`. Let's give
-our new route named `admin_utility_users`. Now, here's the idea. When we render our
-input field, what if we added a little data attribute onto the input field which was
-set to that url? If we did that, it would be super easy in our JavaScript to read
-that data off of there and use that endpoint from inside of our JavaScript. In other
-words, in `UserSelectTextType`, we're going to need a. we're going to want to add a
-new attribute like `data-autocomplete-url` set to some value, but for this
-value we need to generate the url. How do we generate the url from inside of service
-by using the `Router` service? So at the top of this class, at a second argument for
-`RouterInterface $router`
+## Adding a data-autocomplete-url Attribute
 
-I'll hit enter to initialize that field to create that field and set it.
-Remember all of these type events `RouterInterface`, we can get those by running 
+First: inside of the JavaScript, we need to know what the URL is to this endpoint.
+We *could* hardcode this - I wouldn't judge you for doing that - this is a no-judgment
+zone. But, there *is* a pretty cool, and clean solution.
+
+In `AdminUtilityController`, let's give our new route a name `admin_utility_users`.
+Now, idea time: when we render the field, what if we added a "data" attribute onto
+the input field that pointed to this URL? If we did that, it would be *super* easy
+to read that in JavaScript.
+
+Let's do it! In `UserSelectTextType`, let's add a new attribute, like
+`data-autocomplete-url` set to... hmm. We need to *generate* the URL to our new
+route. How do we generate a URL from inside of a service? Answer: by using the
+`router` service. Add a second argument to the constructor: `RouterInterface $router`.
+I'll hit enter to add that property and set it.
+
+Oh, and if you can't remember the type-hint to use, make sure you *do* remember
+that you can run:
 
 ```terminal
 php bin/console debug:autowiring
 ```
 
-. By the way, in the next version of Symfony Symfony
-four point two, this will actually look. This list will look a little bit different,
-but it still contains the same information, so if I really run that search for the
-word route without the e, Yep, we can see we have a couple options, but there's
-`RouterInterface` anyways. Now that we have this injected in down here, we can just
-say `$this->router->generate()`. Then we'll use that new `admin_utility_users` and point. So
-as soon as we do this, when we refresh,
+to see a full list of things you can type-hint. By the way, in Symfony 4.2, this
+output will look a little bit different, but contains the same info. If you search
+for the word "route" without the e... cool! We have a few different type-hints,
+but they all return the same service anyways.
 
-hey,
+Now that we've injected the router, down below, use `$this->router->generate()`
+and pass it the new route name: `admin_utility_users`.
 
-we do have that new `data-autocomplete-url`. Awesome. Now on our JavaScript, we're
-going to read that, but actually to do that, I'm going to wrap us. I'm going to write
-this code a little bit different. I'm gonna search for these always items and do an
-`each()` function on them,
+Let's check it out! When we refresh and look... perfect! We have a shiny new
+`data-autocomplete-url` attribute.
 
-and then I'm going to in debt. Well then I'm going to indented this inner loop and
-then close them down and then it's inside. I'll change this to `this` so it's
-effectively doing the same thing as before. Just looping over each of those elements
-and then inside it's calling initializing the autocomplete on each of those. The
-reason I'm doing this is that it allows me inside the loop to say 
-`var autocompleteUrl = $(this).data()`, and then we can use that `autocomplete-url`.
-Fetch that off of there. Now we are dangerous in source. Clear this out. We're not
-going to make an Ajax request since I have j jquery available. Obviously use it to do
-it for you. We're out. We'll send it to the `autocompleteUrl` and that's it. Now when
-it's done that, `then()`
+## Making the AJAX Call
 
-our callback will be passed and inside here we need to call the CB function and we
-need to pass it to the data that should be used in the auto complete. Now remembering
-the controller, I'm returning all the user information on a user's key, so I'm
-actually going to return `data.users` that will return that entire array of data.
-So you can picture it here. It's going to return this array. Now, by default, the
-autocomplete plugin expects her to be a value key here. Obviously ours is called
-email. So to control that we can say `displayKey: 'email'`. I'm also going to add a deep
-`debounce: 500`, uh, he here, which will make sure that it only requests doesn't every half
-a second to our end point. Um, I think we're ready guys. Let's try this. Move back
-over. Let's refresh the page and that's cleared out space bar. Yes, we got it
+Let's head to our JavaScript! I'm going to write this a little bit different - though
+it would work either way: I'll find all of the elements... well... there will be
+just one... and loop over them with `.each()`. Let's indent the inner code, then
+close the extra function. 
 
-returning all of the users, but notice Jordy at the enterprise that work does not
-match space, but of course that's our fault because our endpoint right now always
-returns all of the users. There's nothing to actually filter those users yet by
-what's typed in that fortunately is really easy to add. Notice on this `source`
-function. We're past the `query`. That's whatever is typed into the box at that point
-so we can just add a little `+'?query='+query`. So now we're
-gonna. Have a question mark, we're = and then whatever it's a typed in Pastoria
-endpoint and an `AdminUtilityController`. We can use this at a second argument, the
-`Request` object from `HttpFoundation`, and then I'm going to call a new method on a
-year or two repository called `findAllMatching()`. I'm going to pass it that question
-mark. We're = the way you require your parameters and Symfony is `$request->query`. I
-know a little confusing and then `->get()` and then I put `'query'` here again because we're
-looking for a question mark. Query = alright, let's copy that method name and then
-we'll go to `src/Repository/UserRepository.php`
+Now, we can change the selector to `this` and... yea! We're basically doing the
+same thing as before. Inside the loop, fetch the URL with
+`var autocompleteUrl = $(this).data()` to read that new attribute.
 
-and we'll add our new method here, so `public function findAllMatching()`, taken a
-`string $query` argument and I'm also going to take  `int $limit = 5` arguments and set that
-to five. By default, we actually don't want to return all of the matching users.
-That's probably not that helpful and the list could be huge. So let's just return
-five by default and this will return an array of user objects for the query. It's
-pretty simple. `return $this->createQueryBuilder('u')` will give it the alias then 
-`->andWhere('u.email LIKE :query')` wildcard and we'll in that :query wildcard to be equal to it's
-a little weird `'%'.$query.'%'` and then percent.
+Now we are dangerous! Clear out the `source` attribute. Since we're using jQuery
+already, let's use it to make the AJAX call: `$.ajax()` with a `url` option set
+`autocompleteUrl`. That's it!
 
-Then finally,
+To handle the result, chain a `.then()` onto this promise and pass this a callback
+with a `data` option. Let's see: our job here is to execute the `cb` callback and
+pass it an array of the results.
 
-we'll set `->setMaxResults()` to be our `$limit`
+Remember: in the controller, I'm returning all the user information on a `users`
+key. Cool: so let's return `data.users`: that should return this entire array of
+data.
 
-and then `->getQuery()`,
+But, remember, by default, the autocomplete library expects each result have a
+`value` key that it will use. Obviously, *our* key is called `email`. To change
+that behavior, add `displayKey: 'email'`. I'll also add `debounce: 500` - that
+will make sure we don't make a new AJAX requeset faster than once per second.
 
-then `->getResults()` which will just execute that in return the `array`. That's it. Any
-luck, we should have it. You don't actually need to refresh anything because we only
-changed under. We do. We need to refresh that. Our JavaScript starts sending us that
-new query parameter, then tracking space
+Ok.... I think we're ready! Let's try this! Move back to your browser, refresh
+the page and clear out the author field... "spac"... we got it! Though... it *still*
+returns *all* of the users - the `geordi` users should not be matching.
 
-and
+## Filtering the Users
 
-yes, perfect. Only five results. I know the debug two bars on the way here and you
-don't see any that shouldn't match. All right, next, let's do something that I can't
-remember what it is.
+That shouldn't be a surprise: right now our endpoint *always* returns *every*
+user. No worries - this is probably the easiest part. Go back to the JavaScript.
+Notice that the `source` function is passed a `query` argument: that's equal to
+whatever is typed into the box at that moment. Let's use that! Add a
+`'?query='+query` to the URL.
+
+Then, back in `AdminUtilityController`, let's read this! Add a second argument, the
+`Request` object from `HttpFoundation`. Then, let's call a new method on `UserRepository`,
+how about `findAllMatching()`. Pass this the `?query=` GET parameter value by calling
+`$request->query->get('query')`.
+
+Nice! Copy the new method name and then open `src/Repository/UserRepository.php`.
+Add the new `public function findAllMatching()` and give it a `string $query`
+argument. Let's also add an optional `int $limit = 5` argument because we probably
+shouldn't return 1000 users if 1000 users match the query. Advertise that this
+will return an array of `User` objects.
+
+Inside, it's pretty simple: `return $this->createQueryBuilder('u')`, then
+`->andWhere('u.email LIKE :query')`, and bind that with `->setParameter('query')`
+and, this is a little weird, `'%'.$query.'%'`.
+
+Finish with `->setMaxResults($limit)`, `->getQuery()` and `->getResults()`.
+
+Done! Unless I've *totally* mucked something up, I think we should have a working
+autocomplete setup! Refresh to get the new JavaScript type "spac" and... woohoo!
+Only 5 results! Let's get the web debut toolbar out of the way. I love it!
+
+Next: there's one other important method you can override in your custom form field
+type class to influence how it renders.
