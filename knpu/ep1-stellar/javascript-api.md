@@ -38,6 +38,8 @@ Or use the controller shortcut!
 ```php
 return $this->json(['hearts' => rand(5, 100)]);
 ```
+
+Fun Fact: You can also use another random integer generating function that has its advantages and drawbacks. `random_int()` produces cryptographically secure values for when you need them, but it is less performant than using `rand()`. 
 ***
 
 There's nothing special here: `JsonResponse` is a *sub-class* of `Response`. It calls
