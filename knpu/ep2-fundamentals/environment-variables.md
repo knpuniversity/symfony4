@@ -27,7 +27,7 @@ variable: `APP_ENV`:
 
 ***TIP
 If you start a new project today, you won't see this `APP_ENV` logic. It's
-been moved to a `src/.bootstrap.php` file.
+been moved to a `config/bootstrap.php` file.
 ***
 
 But here's the question: how can we *remove* this hardcoded URL, and *instead* tell
