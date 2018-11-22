@@ -28,7 +28,7 @@ We want this API endpoint to return JSON... and remember: the *only* rule for
 a Symfony controller is that it must return a Symfony Response object. So we could
 literally say `return new Response(json_encode(['hearts' => 5]))`.
 
-But that's too much work! Instead say `return new JsonResponse(['hearts' => random_int(5, 100)]`:
+But that's too much work! Instead say `return new JsonResponse(['hearts' => rand(5, 100)]`:
 
 [[[ code('a7ecdbda6f') ]]]
 
@@ -36,8 +36,10 @@ But that's too much work! Instead say `return new JsonResponse(['hearts' => rand
 Or use the controller shortcut!
 
 ```php
-return $this->json(['hearts' => random_int(5, 100)]);
+return $this->json(['hearts' => rand(5, 100)]);
 ```
+
+Fun Fact: You can also use two other random integer generating functions that have advantages and drawbacks. `mt_rand()` is four times as fast as using `rand()` and `random_int()` produces cryptographically secure values for when you need them. 
 ***
 
 There's nothing special here: `JsonResponse` is a *sub-class* of `Response`. It calls
