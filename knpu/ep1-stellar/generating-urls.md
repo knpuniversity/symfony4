@@ -1,6 +1,6 @@
 # Generating URLs
 
-Most of these links don't got anywhere yet. Whatever! No problem! We're going to
+Most of these links don't go anywhere yet. Whatever! No problem! We're going to
 fill them in as we continue. Besides, most of our users will be in hypersleep for
 at least a few more decades.
 
