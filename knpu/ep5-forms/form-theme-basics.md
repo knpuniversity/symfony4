@@ -30,6 +30,8 @@ the most common variables that we can override. One of the most important ones i
 set to *another* array with `class` set to `form-signin`. Phew! And while we're here,
 we also had an `<h1>` before. Add that right at the beginning of the form.
 
+[[[ code('84c6da5ab6') ]]]
+
 Two small steps forward! Let's try it! Oh, it's already, *so* much better. Heck,
 I can even see my agree to terms checkbox again!
 
@@ -65,6 +67,8 @@ into that block. Yea, it's a *totally* cool, but weird use of Twig.
 Go back to our form class to see an example. Oh, I totally forgot! We can set
 `email` to `EmailType::class`. That will make it render as `<input type="email">`
 instead of text. And *that* will give us some extra HTML5 validation.
+
+[[[ code('bd4222f5b1') ]]]
 
 Back to the theming stuff. Here's the key: to render the "widget" part of an "email"
 field type, Symfony looks for a block called `email_widget`. That's the pattern:
