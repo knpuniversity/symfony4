@@ -23,6 +23,8 @@ of this field to be `true`, not `false`. Set a custom message:
 
 > I know, it's silly, but you must agree to our terms
 
+[[[ code('fe3883a9b1') ]]]
+
 Excellent! Thanks to the `mapped = false`, the form should *at least* load. Try
 it - refresh! Yes! Well... oh boy - our styling is *so* bad, the checkbox is hiding
 off the screen! Let's worry about that in a minute.
@@ -34,13 +36,19 @@ that looks redundant! We *already* have form validation that *forces* the box to
 be checked. You're totally right! I'm just being *extra* careful... ya know... for
 legal reasons.
 
+[[[ code('015dd4a720') ]]]
+
 Inside, we *could* call `$user->setAgreedTermsAt()` and pass the current date.
 *Or*, we can do something a bit cleaner. Find the  `setAgreedTermsAt()` method and
 rename it to `agreeTerms()`, but with no arguments. Inside say
 `$this->agreedTermsAt = new \DateTime()`.
 
+[[[ code('76649a9c08') ]]]
+
 This gives us a clean, *meaningful* method. In `SecurityController`, call that:
 `$user->agreeTerms()`.
+
+[[[ code('a47f21d16f') ]]]
 
 Ok team, let's try this. Refresh the page. *Annoyingly*, I still can't see the
 checkbox. Let's hack that for now: add a little extra padding on this div. There
@@ -70,6 +78,8 @@ It... explodes! Duh! I made the new `agreedTermsAt` field *required* in the
 database, but forgot to update it in the fixtures. No problem: open `UserFixture`.
 In the first block, add `$user->agreeTerms()`. Copy that, and do the same for
 the admin users.
+
+[[[ code('bba1f6f59b') ]]]
 
 Cool! Try it again:
 
