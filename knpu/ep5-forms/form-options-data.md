@@ -1,92 +1,116 @@
-# Form Options Data
+# Tweak your Form based on the Underlying Data
 
-Coming soon...
+New goal team! Remember this author field? It's where we added all this nice
+auto-complete magic. I want this field to be *fully* functional on the "new form",
+but *disabled* on the edit form: as *wonderful* as they are, some of our alien
+authors get nervous and sometimes try to change an article to look like it was written
+by someone else.
 
-Alright, new goal guys, remember this author field down here? It says all the nice
-auto complete stuff filled in for it. Well, I want to use that field on the new form,
-but on the edit form I want to completely disable it so it prints, but it's a
-completely disabled field. This is the first time where we want the same form to
-behave in a different way from a high level, the way you can make your form behave in
-one, behaving a different way. So one way to think about this is if we are
+This is the first time that we want the *same* form to behave in two different ways,
+based on *where* it is used.
 
-for our new end point that we're creating a new `Article` object behind the scenes, but
-if when you're in the `edit()` and point, we're actually modifying an `Article` object. We
-pass the article object to the form. So if in our form type in our bill for method,
-if we could get access to the data that was passed to us, either the `Article` object
-or maybe nothing that we could actually make different decisions inside of bill form
-based on that data. The way to do this is by leveraging the `$options` that are passing
-this method and we haven't talked about these yet, I'm just going to `dd($options);` and
-then go back and refresh the edit page. Nice. So there's actually a ton of options
-that are passed into this method and these are actually things that we can configure
-on everything you can see here. We can actually configure it down and you `configureOptions()`,
-but the vast majority of the stuff are not things that you're going to need
-to think about, but there is one key called it `data` which is set to the `Article`
-object that we passed in. I'm going to open another tab and go to the `/new` end point.
+Let's see: on our new endpoint, the form creates the new `Article` object behind
+the scenes for us. But on the edit page, the form is *modifying* an *existing*
+`Article` object: we pass this *to* the form.
+
+So, hmm, in the `buildForm()` method of our form class, if we could get *access* to
+the data that was passed to the form - either the existing `Article` object or maybe
+nothing - then we could use that info to build the fields differently.
+
+## Accessing Data via $options
+
+Fortunately... that's *easy*. The secret is the `$options` argument that's passed
+to us. Let's see what this looks like: `dd($options)` and then go back and refresh
+the edit page. Wow! There are a *ton* of options that are passed into this method.
+And *all* of these are things that we could configure down in `configureOptions()`,
+if we want. But, the majority of this stuff isn't all that important. However, there
+is *one* super-helpful key: `data`. It's set to our `Article` object! Bingo!
+
+Now, open another tab and go to the `/admin/article/new` endpoint.
 
 Notice here there is no `data` which makes sense because we never actually passed
 anything in when we instantiated this, but now we know that there's a `data` key that
 we can use to get our underlying data, so try this now. Let's say 
 `$article = $options['data'] ?? null;`
 
-Okay.
+If you don't know that syntax, it basically says that I want the `$article` variable
+to be equal to `$options['data']` if it *exists* and is not null. But if it does *not*
+exist, set it to null. Let's dump that and make sure it's what we expect.
 
-Question question. No, that's a super fancy syntax. Basically to say I want the
-article variable to be equal to options data, it actually exists otherwise I want
-article to be equal to not and then we will add that article, make sure that gives us
-what we want, so refreshing the new page `null` Click on refresh the edit page,
-`Article` object. Now we are dangerous. Wait that `dd()` and now create a new variable
-called `$isEdit = $article && $article->getId()`. Now you might think it's
-enough just to check to see if `$article` is normal or if it's an object, but actually
-when you have a. In our new end point, if we had wanted to, we could've actually
-instantiate a `new Article()` object and passed it as a second argument to `createForm()`.
-We don't need to, but that would be a total legal thing to do and Dr Wood's still be
-smart enough to see that as a new object and it would save it. It would insert it. So
-that's why I'm checking not only that the article object exists, but checking to see
-if it has its id not down below. Inside of our author field, every field has a
-`disabled` option and you can set this to `$isEdit`. All right, try that out. Refresh
-the other page.
+Refresh the new article page - yep - `null`. Try the edit page... there's the `Article`
+object. *Now*, we are dangerous. Remove the `dd()` and create a new variable:
+`$isEdit = $article && $article->getId()`. You *might* think that it's enough just
+to check whether `$article` is an object. But actually, on our new endpoint, if
+we wanted, we *could* instantiate a `new Article()` object and pass *it* as the
+second argument to `createForm()`. You do this sometimes of you want to pre-fill
+a "new" form with some default data. The form system then *updates* that object,
+but Doctrine is still smart enough to insert a new row when we save it.
 
-Disabled, refresh the new page,
+Anyways, *that's* why I'm checking not only that the `Article` is an object, but
+that it also has an `id`.
 
-not disabled. Perfect. By the way, did disabled flag. There's two things. Obviously
-it adds a disabled attribute to that fields that appears disabled, but it also means
-that if you have a a nasty user that actually maybe removes this and actually send
-some data to the form, that data will be ignored, so it's not actually going to
-process that data at all. This is a true read only field. All right, so I want to do
-one more thing that at least at first seems similar, but I want to do it in a
-different way. The `publishedAt` field. I want to only show that on the edit page,
-so when we're creating a new form we won't be able to publish it, but then once we
-create it on the edit, we will be able to have `publishedAt` field, so I'm going
-to hide that field entirely on the new form, but instead of leveraging this is edit
-variable, which would totally work, I want to be able to control this behavior from
-my controller. Basically, when I create my form, I want to be able to say whether or
-not I want to be `publishedAt` field. So for example, down the edit form, every the
-create form method actually has a third argument of options. These are options you
-can pass to your form. I'm going to invent a new one called `'include_published_at' => true`.
+## Dynamically disabling a Field
 
-Now what do we do? This just like when we add a an option that doesn't exist to a
-field, we get a huge error, says, look, your form does not have this option. You
-can't just run around and making up options. Life doesn't work that way, but we can
-add that option to our form. Check this out. Copy of the option name. Go into 
-`ArticleFormType` in download configured. If fault `configureOptions()`, add 
-`'include_published_at' => false`, so by default we don't set the. We weren't set. Include published
-APP. Now up in pill form, our options will always include a include published at
-field, and we'll be set to true or false. We can use that down here and say 
-`if ($options['include_published_at'])` ads, then we want to run to the Polish that field, so I'll
-remove it from the main builder down here. I'll say `$builder` and I will paste and then
-let's clean that up a little bit. Perfect. So on the edit page we've overwritten that
-option and check it out. We have the staff fuel. If you open your profile for your
-form, click on the top level. You can actually see the options at the top level. You
-can see that there is a past option `include_published_at` was set to `true` because
-that's how we set it inside of our controller.
+Ok, this is great! Because, our goal was to *disable* the `author` field on the
+edit form. To do that, we can take advantage of an option - `disabled` - that
+*every* field type has: set it to `$isEdit`.
 
-Now for the new page, this should not have the published outfield and in fact we get
-a huge error. It's coming from twic. Neither the property published at normal. One of
-the methods published up, Blah Blah Blah, has access in some form do you class and
-it's blowing up inside of r_form that age to autoid because we're trying to print
-that polished outfield of course, so going on to `templates/article_admin/_form.html.twig`, 
-and we can just wrap this in an if statement, `{% if articleForm.publishedAt is defined %}`
-and we'll print it and if now the field is gone from my new,
-which means when we submit the `setPublishedAt()` method will never be called and it
-will stay with his default value, which for a new `Article` is just not on the other
-page. Still there and with any luck should still be working nice.
+Ok, let's try that out! Refresh the edit page. Disabled! Now try the new page:
+*not* disabled. Perfect!
+
+Oh, by the way, this `disabled` option does *two* things. First, obviously, it
+adds a `disabled` attribute so the browser renders the field as disabled. But
+it *also* now *ignores* any submitted data for this field. So, if a nasty user
+removed the `disabled` attribute and updated the field, meh - no problem - our
+form will ignore that submitted data.
+
+## Conditionally Hiding / Showing a Field
+
+I want to do *one* more thing. The `publishedAt` field - I want to *only* show that
+on the *edit* page. So, when we're creating a new article, we can't publish it
+immediately. And to do that, instead of just disabling it, I want to remove the
+field *entirely* from the new form.
+
+So, yea - we *could* leverage this `isEdit` variable: that would totally work. But,
+let's make this more interesting: I want the ability to choose whether or not the
+`publishedAt` field should be shown when *create* my form in the controller.
+
+Here's the trick: go down to the edit form. The `createForm()` method actually
+has a *third* argument: an array of options that you can pass to your form.
+Let's invent a new one called `include_published_at` set to `true`.
+
+Before doing *anything* else, try this. A huge error! *Just* like with the options
+you pass to an individual *field*, you can't just *invent* new options to pass to
+your form! The error says: look - the form does *not* have this option!
+
+So, we'll add it! Copy of the option name, go into  `ArticleFormType` and down
+in `configureOptions()`, add  `include_published_at` set to `false`. *This* is
+enough to make this a valid option - with a default value.
+
+Now, up in `buildForm()`, the `$options` array will *always* have an
+`include_published_at` key. We can use that down below to say
+`if ($options['include_published_at'])`, then we want that field. Let's remove it
+from above, then say `$builder` paste and... clean that up a little bit.
+
+I love it! On the edit form, because we've overwritten that option to be `true`,
+when we refresh... yes! We have the field! Open up the profiler for your form and
+click on the top level. Nice! You can see that a passed option
+`include_published_at` was set to `true`.
+
+For the new page, this should *not* have the that field. Try it! Woh! An error
+from Twig:
+
+> Neither the property `publishedAt` nor one of the methods `publishedAt()`, blah
+> blah blah, exist in some `FormView` class.
+
+It's blowing up inside `form_row()` because we're trying to render a field that
+doesn't exist! Go open this template: `templates/article_admin/_form.html.twig`,
+and wrap this in an if statement: `{% if articleForm.publishedAt is defined %}`,
+then we'll render the field.
+
+Try it again. Field is gone! And because it's *completely* gone from the field,
+when we submit, the form system will *not* call the `setPublishedAt()` method at
+all.
+
+Next: let's talk about another approach to when your form looks different than
+your entity class: data transfer objects.

@@ -1,88 +1,120 @@
 # Custom Validator
 
-Coming soon...
+Unfortunately, you can't use the `@UniqueEntity()` validation constraint above a
+class that is *not* an entity: it's just a known limitation. But, *fortunately*,
+this gives us the *perfect* excuse to create a custom validation constraint! Woo!
 
-Unfortunately, you can't use the `@UniqueEntity()` validation constraint above a class
-that's not an entity, it's just a limitation that's not currently possible, so this
-means that there is no built in validation and strength that can help us out here and
-when you have, when, when, when you get in a situation, when there's no built in
-validation constraint, the next thing to try is the `@Assert\Callback`. We use this
-in an `Article` class. You create a public function, put that annotation of other
-function and during validation your function's called and you can do whatever you
-want. The only limitation is that we don't have access to any services in this
-situation because we're just innosight as simple entity class. So if you need access
-to services like you need to make a database query, then you need to create a custom
-validation constraint. Fortunately, it's super easy. Find your terminal and run 
+Remember, when you can't find a built-in validation constraint that does what you
+need, the *next* thing to try is the `@Assert\Callback` constraint. We use this
+in the `Article` class. But, it has one limitation: because the method lives inside
+our entity class - or simple form model class - we do *not* have access to any
+services. In our case, in order to know whether or not the `email` is taken yet,
+we need to make a query and so we *do* need to access a service.
+
+## Generating the Constraint Validator
+
+When that's your situation, it's time for a custom validation constraint. They're
+awesome anyways *and* we're going to cheat! Find your terminal and run:
 
 ```terminal
-php bin\console make:validator
+php bin/console make:validator
 ```
 
-Let's create a new validator called `UniqueUser`.
-And notice this creates two classes, `UniqueUser` and `UniqueUserValidator`. Go find
-those in your new `Validator\` directory. So first `UniqueUser` is basically a
-configuration object, and we're actually going to use this annotation `@UniqueUser`
-validation itself is actually handled by the `UniqueUserValidator`.
+Call the class, how about, `UniqueUser`. Oh, this created *two*  classes: `UniqueUser`
+and `UniqueUserValidator`. You can find these inside a new `Validator/` directory.
+Look at `UniqueUser` first: it's basically a dumb configuration object, and *this*
+will be the class we use for our annotation.
 
-It's going to be past the `Constraint` object which will actually be our unique string
-object and we can read any data off of it in order to get our job done. So it's
-reading the message in order to add the validation error. And we have a message as a
-public property over here.
+The actual validation handled by `UniqueUserValidator`: Symfony will pass it the
+value being validated *and* a `Constraint` object - which will actually be our
+`UniqueUser` object. We'll use it to read some options to help us get our job done.
+For example, in the generated code, it reads the `message` property from the
+`$constraint` and sets that as the validation error. That's literally reading this
+public `$message` property from `UniqueUser`.
 
-So the first thing you need to do with your annotation, first we need to do is
-actually make sure your annotation class is configured. Now, annotation in general
-can be added either above the class or above the property, and actually you can also
-add them above methods. If you add your validation annotation above your class, then
-during validation, the value that's passed to you is the entire object. If you add it
-above a property, then the value of your past is just at that property. So if you
-need access to multiple fields on a class for validation, then you want to create a
-an annotation that can be used above the class. This situation, I'm going to delete
-my `@UniqueEntity` and I'm going to put my new annotation above my `$email` field. So
-`@UniqueUser` am I hit tab actually adds that as a new use statement. So basically
-we're going to take whatever value is populated with this email and instead of our
-validator we're going to make we're gonna. Use that value to query the database to
-see if that's already a already found. But first when you do a little bit more work
-inside of our annotation class, hit shift, shift, and open the `NotBlank` core
-annotation. Notice it has an `@Target()` annotation on top of it. This is something
-special to the annotation system. By adding at target, it tells, it tells the system
-where your annotation is allowed to be used. So let's copy that and paste that above
-ours. This says it's okay to be used above a property above a method or even inside
-of an annotation. That's an edge case, but we'll leave that.
+## Configuring the Annotation
 
-If you did want your annotations video to be used above in a class, I would follow
-the, uh, I would check out the unique entity constraint to follow it. Notice it
-hasn't at target of class. And then the other thing you need to do is override the
-targets. This tells the validation system that it's okay if this is applied to a
-class anyways. The last thing we need to change inside of our `UniqueUser` is let's
-change this `$message` and we'll have it be the same thing that we have above our User
-class. I think you already registered, paste that and that's it. If we need more
-configuration options, we can actually pass great more public properties on our
-`UniqueUser`. And you can override any of these when you use your annotation and we're
-not doing it here, but I couldn't say message = and uh, we can put whatever we wanted
-in order to customize that. Alright, so just to see if this is working, let's go over
-to our set parameter. Let's go over to val, a unique user validator and remove this
-set parameter part. That's a way of filling in a wildcard values. We don't need that
-and let's just make this always fail.
+Ok: let's bring this generated code to life! Step 1: make sure that your annotation
+class - `UniqueUser` - if ready to go. Now, in general, and annotation can either
+be added above a class *or* above a property. Well, you can *also* add annotations
+above methods - that works pretty similar to properties.
 
-Speak over an hour now and refresh to resubmit the form. Boom, we've got it. Look, I
-think you've already registered, which doesn't even make sense because we don't have
-anything filled in. All right, so to do that, we're going to need to make a query
-instead of our validator. Fortunately these validator classes, our services and so we
-can use normal dependency injection `__construct()` method on top will type end 
-`UserRepository $userRepository`. I'll hit alt entered to create that property and set it
-down here. We can say `$existingUser = $this->userRepository->findOneBy()`
+If you add your validation annotation above your class, then during validation, the
+*value* that's passed to you is the entire *object*. If you add it above a property,
+then the value that's passed to you is *just* that property's value. So, if you
+need access to multiple fields on an object for validation, then you'll need to
+create an annotation that can be used above the class. In this situation, I'm going
+to delete `@UniqueEntity` and, instead, add the new annotation above my `$email`
+field: `@UniqueUser`. Hit tab to auto-complete that and get the `use` statement.
 
-then we'll search for email set to
-whatever value is I don't remember because we have put this above our email property.
-The email is the value that's going to be passed to us automatically. None very
-simply, `if (!existingUser)` then we'll `return;`. Very simple. Now, if we were using
-this on an edit form, we would also want to make sure that if we found an existing
-user, it's, we wouldn't want to throw an error if that was the same as this user.
-That would just mean that they haven't changed. In that case, you'd actually need the
-`$value` to be the entire `User` object so you can look at the `ID` and so for that you
-would need to make this `UniqueUser` something that you added to the class, not just
-the property. Alright, that's it. Back over and refresh and got it. We fill in a new
-user and I'll add the no validate so I can keep the other fields blank and hit
-register. Yep. The error goes away if we try. Will riker and summit the summit. The
-field for him? Yep. We get the air. So custom validation constraints, super powerful
-tool.
+Nice! Now, go back to your annotation class - we need to do a bit more work. To
+follow an example, press shift+ shift and open the core `NotBlank` annotation class.
+See that `@Target()` annotation above the class. This is a special annotation...
+that configures, uh, the annotation system! `@Target` tells the annotation system
+*where* your annotation is allowed to be used. Copy that and paste it above
+ours. This says that it's okay for this annotation to be used above a property,
+above a method or even inside of another annotation... which is a bit more of a
+complex case, but we'll leave that.
+
+What if you instead want your annotation to be put above a class? Open the
+`UniqueEntity` class as an example. Yep, you would use the `CLASS` target. The
+*other* thing you would need to do is override the `getTargets()` method. Wait,
+why is there a `@Target` annotation *and* a `getTargets()` method - isn't that
+redundant? Basically, yea - these provide more or less the same info to two different
+systems: the annotation system and the validation system. The `getTargets()` method
+defaults to `PROPERTY` - so you only need to override it if your annotation should
+be applied to a class.
+
+## Configuring your Annotation Properties
+
+Phew! The *last* thing we need to do inside of `UniqueUser` is give it a better
+default `$message`: we'll set it to the same thing that we have above our `User`
+class: `I think you've already registered`. Paste that and... cool!
+
+If you need to be able to configure more things on your annotation - just create
+more public properties on `UniqueUser`. Any properties on this class can be set
+or overridden as options when using the annotation. In `UserRegistrationFormModel`,
+I won't do it now, but we *could* add a `message=` option: that string would be
+set on the `message` property.
+
+Before we try this, go to `UniqueUserValidator`. See the `setParameter()` line?
+The makes it possible to add wildcards to your message - like:
+
+> The email {{ value }} is already registered
+
+We could keep that, but since I'm not going to use it I'll remove it. And... cool!
+With this setup, when we submit, this validator will be called and it will *always*
+fail. That's a good start. LEt's try it!
+
+## Filling in the Validator Logic
+
+Move over and refresh to resubmit the form. Yes! Our validator *is* working... it
+just doesn't have any logic yet! Actually, this is the easy part! Let's think about
+it: we need to make a query from inside the Validator. Fortunately, these validator
+classes are *services*. And so, we can use our *favorite* trick: dependency injection!
+
+Add an `__construct()` method on top with a `UserRepository $userRepository` argument.
+I'll hit alt+Enter to create that property and set it. Below, let's say
+`$existingUser = $this->userRepository->findOneBy()` to query for an email set to
+`$value`. Remember: because we put the annotation above the `email` property, `$value`
+will be that properties value.
+
+Next, very simply, `if (!$existingUser)` then `return`. That's it.
+
+One note: if this were an edit form where a user could *change* their email, this
+validator would need to make sure that the existing user wasn't actually just *this*
+user, if they submitted without changing their email. In that case, we would need
+`$value` to be the entire `User` object so that we could use the `id` to be sure
+of this. To do that, you would need to change `UniqueUser` so that it lives above
+the *class*, instead of the property. You would also need to add an `id` property
+to `UniqueRegistrationFormModel`.
+
+But, for us, this is it! Move back over, refresh and... got it! Try entering a new
+user and adding the `novalidate` so we can be lazy and keep the other fields blank.
+Submit! Error gone. Try `WillRyker@theenterprise.org` with the same `novalidate`
+trick. Error is back.
+
+Custom validation constraints, check! Next, we're going to update our Article form
+to add a few new drop-down select fields, but... with a catch: when the user selects
+an option from the first drop-down, the options of the *second* drop-down will need
+to update dynamically.
