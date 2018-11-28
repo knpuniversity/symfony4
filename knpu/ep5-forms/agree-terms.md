@@ -22,12 +22,16 @@ Update the `User` class and add a new field called `agreedTermsAt`. This will be
 a `datetime` field and it *cannot* be `nullable` in the database: we need this to
 always be set. Hit enter to finish.
 
+[[[ code('92629b2cad') ]]]
+
 ## Adding the Checkbox Field
 
 Before we worry about the migration, let's think about the form. What we want is
 very simple: a checkbox. Call it, how about, `agreeTerms`. Notice: this creates
 a familiar problem: the form field is called `agreeTerms` but the *property* on
 `User` is `agreedTermsAt`. We *are* going to need more setup to get this working.
+
+[[[ code('9344a1e21f') ]]]
 
 But first, Google for "Symfony form types" and click the "Form Type Reference"
 page. Let's see if we can find a checkbox field - ah: `CheckboxType`. Interesting:
@@ -37,6 +41,8 @@ is unchecked, the value will be set to `false`. That makes sense! That's the
 *whole* point of a checkbox!
 
 Back on the form, set the type to `CheckboxType::class`.
+
+[[[ code('d1151d98de') ]]]
 
 Nice start! Before I forget, find your terminal and make the migration:
 
@@ -74,6 +80,8 @@ Anyways, to fix the migration, change the `NOT NULL` part to `DEFAULT NULL`
 temporarily. Then add another statement:
 `$this->addSql('UPDATE user SET agreed_terms_at = NOW()');`.
 
+[[[ code('722282134d') ]]]
+
 Great! First, let's run *just* this migration
 
 ```terminal
@@ -85,6 +93,8 @@ This time... it works! To finish the change, make one more migration:
 ```terminal-silent
 php bin/console make:migration
 ```
+
+[[[ code('ccf0898da2') ]]]
 
 Go check it out! Perfect! This gives us the *last* piece we need: changing the
 column back to `NOT NULL`, which will *work* because each existing user now has a

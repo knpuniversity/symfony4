@@ -11,10 +11,14 @@ the `User` class. Find the `email` field and, above, add  `@Assert\NotBlank()`.
 Make sure to hit tab to auto-complete this so that PhpStorm adds the `use` statement
 that we need on top. Also add `@Assert\Email()`.
 
+[[[ code('e75c2108b9') ]]]
+
 Nice! Move back to your browser and inspect the form. Add the `novalidate` attribute
 so we can skip HTML5 validation. Then, enter "foo" and, submit! Nice! Both of these
 validation annotations have a `message` option - let's customize the `NotBlank`
 message: "Please enter an email".
+
+[[[ code('d3a64e9b6e') ]]]
 
 Cool! `email` field validation, done!
 
@@ -51,6 +55,8 @@ This annotation needs at least one option: the `fields` that, when combined, nee
 to be unique. For us, it's just `email`. You'll probably want to control the message
 too. How about: `I think you've already registered`.
 
+[[[ code('da4563087e') ]]]
+
 Oh, and just a reminder: if you have the PHP annotations plugin installed, you can
 hold command or control and click the annotation to open its class and see all its
 options.
@@ -75,6 +81,8 @@ Heck, while we're here, let's also add `new Length()` so we can require a minimu
 length. Hold command or control and click to open that class and see the options.
 Ah, yea: `min`, `max`, `minMessage`, `maxMessage`. Ok: set `min` to, how about 5
 and `minMessage` to `Come on, you can think of a password longer than that!`
+
+[[[ code('2e543f4867') ]]]
 
 Done! These constraint options will work *exactly* the same as the annotations.
 To prove it, go back and refresh! Got it! Now, validating an unmapped field is no
