@@ -16,7 +16,7 @@ Let's remove that and see what happens. Refresh! Woohoo! A big ol' error:
 
 More importantly, *even* if we put this back, yes, the form would render. But when
 we submitted it, we would just get a *different* huge error: the form would try to
-take the submitted *string* and try to pass *that* to `setAuthor()`.
+take the submitted *string* and pass *that* to `setAuthor()`.
 
 To fix this, our field needs a data transformer: something that's capable of taking
 the `User` object and rendering its `email` field. And on submit, transforming that
@@ -32,7 +32,7 @@ The only rule for a data transformer is that it needs to implement a
 `DataTransformerInterface`. I'll go to the Code -> Generate menu, or Command+N
 on a Mac, select "Implement Methods" and choose the two from that interface.
 
-I love data transformers! Let's add some debug code in each so we can see when
+I love data transformers! Let's add some debug code in each method so we can see when
 they're called and what this value looks like. So `dd('transform', $value)` and
 `dd('reverse transform', $value)`.
 
@@ -79,7 +79,7 @@ Time for some dependency injection! Add a constructor with
 to create that property and set it.
 
 Normally... that's all we would need to do: we could instantly use that property below.
-But... this object is *not* instantiated by the Symfony's container. So, we
+But... this object is *not* instantiated by Symfony's container. So, we
 *don't* get our cool autowiring magic. Nope, in this case, *we* are creating
 this object ourselves! And so, *we* are responsible for passing it whatever
 it needs.
