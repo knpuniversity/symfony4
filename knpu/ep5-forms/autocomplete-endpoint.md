@@ -1,7 +1,8 @@
 # Autocomplete Endpoint & Serialization Group
 
-To get our autocomplete fully working, we need an API endpoint that can return a
-list of user information. We can do that! Let's create a new controller for this:
+To get our autocomplete fully working, we need an API endpoint that returns a list
+of user information - specifically user *email* addresses. We can do that! Create
+a new controller for this:
 `AdminUtilityController`. Make that extend the normal `AbstractController` and add
 a `public function getUsersApi()`. To make this a real page, add
 `@Route("/admin/utility/users")`. And, just to be extra fancy. let's also add
