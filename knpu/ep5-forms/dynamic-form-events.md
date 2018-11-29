@@ -1,136 +1,104 @@
-# Dynamic Form Events
+# Form Events
 
-Coming soon...
+All right, here's the issue and it is *super* technical. If we change the Location
+from "Near a Start" to "Solar System", *even* if we "hack" the `specificLocationName`
+field so that it submits the value "Earth", it doesn't work! It fails validation!
 
-All right, here's the issue and it is technical. When I originally low this, I have
-near a star as my location, so I have a choice list of stars. We know that the choice
-type, if you hack the choice type every retain fields, juice here to earth and it
-updates. That's not gonna work. It's gonna fail validation because the choice type of
-smart enough not to allow an invalid choice. The problem is if I change this to the
-solar system in, then I changed this to earth.
+This *is* a real problem because, in a few minutes, we're going to add JavaScript
+to the page so that when we change the `location` to "The Solar System", it will
+dynamically update the `specificLocationName` dropdown down to be the list of planets.
+But for that to work, our form system needs to be smart enough to realize - at
+the *moment* we're submitting - that the location has changed. And then, before it
+validates the `ChoiceType`, it needs to *change* the choices to be the list of
+planets.
 
-That should work because we're actually changing the type, but it doesn't and this is
-a problem because in a second we're going to add some some JavaScript and Ajax so
-that when we do change the location to the solar system, it's going to update the
-location name dropdown down to bed list of planets, but in order for that to work,
-our form system needs to be smart enough to realize at the moment we're submitting
-that the location has changed and so before it does validation on the choice type, it
-needs to change the choices to be the list of planets. This doesn't totally make
-sense yet. Let's see some code, it should help a little bit. So one of the things
-that you can do with the form system we haven't talked about yet, and it's really
-complex I don't like having to do it, is it has an event system. So say 
-`$builder->get('location')` men say `->addEventListener()`, and then we're gonna. 
-Use a concept called `FormEvents::POST_SUBMIT`. You know this, this is 
-a little class here that will show you all of the different events that you can 
-listen to you on your form. And then we're going to pass this a call back. I think 
-it's going to use the receive a `FormalEvent` singular object. And I'm just 
-going to say `dd()` on that `$event` object. All right, so two important things here. 
-First of all
+Don't worry if this doesn't make complete sense yet - let's see some code@
 
-are when you build forms, it's actually a big a form treat. And we've seen this
-inside of our, uh, form profiler. There's actually a form object on top and then each
-individual feel below that is itself actually a form object. The same is true with
-the form builder. We normally are just interact with a top loader builder and adding
-fields to it, but when you had a,
+## Adding an Event Listener
 
-when you add a field to build are actually grades a builder below it and you can get
-that builder back out later by saying `$builder->get()`. Second thing is we're actually
-adding the event listener on this, so basically says when the form is submitted, call
-this callback, but this event object, we'll just have information about the location
-field. All right, let's just see it so we configure it out. I'm going to repost the
-data here and it can pass this big form object in and it actually contains the raw
-solar system data and it contains the raw form object
+There's one piece of the form system that we haven't talked about yet: it has
+an *event* system, which we can use to hook into the form loading & submitting
+process.
 
-which has also has the data on it. So here's the cool thing. This gives us a hook.
-This happens before, right after we get the form data, but before any of the
-validation takes place so we can actually dynamically change the specific name of
-choice type based on the value that was submitted. So to do that, I'm actually going
-to go down here and create a new `private function` called `setupSpecificLocationNameField()`. 
-The job of this function will be to dynamically add the the specific name
-field with the correct choices. It's gonna, accept a `FormInterface`. Talk about
-that in a second and a `?string $location` because maybe there isn't a location
-selected and inside here it's pretty simple. First I'm gonna check to see if that
-`$location` is `null`. If it is, I'm going to take the `$form` object and actually 
-`->remove('specificLocationName');`, field, and then `return;`. So the idea here is 
-if I originally rendered the form and there was a location, then there will then 
-thanks to our logic up here, there will be a `specificLocationName`, but if we 
-changed it to be,
+At the end of the form, add `$builder->get('location')->addEventListener()` and
+pass this `FormEvents::POST_SUBMIT`. This `FormEvents` class holds a constant for
+each "event" that we can hook into with the form system. Then, pass a callback
+as a second argument: Symfony will pass us a `FormEvent` object.
 
-if we actually changed it in selected, choose a location, that means we're not
-choosing a location and we actually want to remove that `specificLocationName` field
-before we do any of the validation. So that's what I'm doing down here. I'm actually
-removing it. Next, I'll get the `$choices` by using our `->getLocationNameChoices()` and
-paths, that `$location`, and then I'm gonna. Do something similar. I'm gonna. Say 
-`if (null === $choices )` I'm once again, I'm going to `->remove()` the form field and
-`return;`. What this is doing is it perhaps the user selected interstellar space that
-doesn't have any choices, and so if there are no choices, let's once again removed
-the field from the forum and then finally down here we want to add the field, but we
-want to add using our custom choices. So I'm actually going to go up to the top. I'm
-going to copy my `$builder->add()` go down here and say `$form->add()` that actually works the
-same way and then for choices pass it `$choices`.
+Let's `dd()` the `$event` so we can see what it looks like.
 
-So we created this new function so that we can call it from inside of our listener.
-So scroll up a little bit. I'm going to say `$form = $event->getForm()`. That gives us
-the actual form object. We don't normally work at the foreign object directly. We
-normally you work with this form builder, but they do have some similarities to them.
-Then I'm going to say `$this->setupSpecificLocationNameField()`. Remember, this
-requires two arguments. The `Form` object which is actually going to be `$form->getParent()`
-This is super tricky guys. The form object here is actually representing just
-the location field, but when you want to pass the entire top level form object so
-that the `specificLocationName` field can be added or removed from it. All right? And
-then the second argument is the location itself, which is going to be `$form->getData()`
-You can also use `$event->getData()`. There's a subtle difference between those
-two. $form->getData()` is posted. Data transformation, so it uh, it might be a
-better option. Okay guys, I know that's craziness, but if we go back now and refresh
+Before we look at that, two important things. First, when you build a form, it's
+actually a big a form tree. We've seen this inside of the form profiler. There's
+a `Form` object on top and then each individual field below is itself a full `Form`
+object. The same is true with the "form builder": we normally just interact with
+the top-level `$builder` by adding fields to it. But, call `$builder->add()`, that
+creates another "form builder" object for that field, and you can fetch it later
+by saying `$builder->get()`.
 
-it saves in to remind you what we just did here. I can now change this to nearest
-star and then I'll do inspect element on that. Select imagine that. Imagine that when
-we made that change to actually updated this dropdown. So earth is selected here
-that's actually go find a valid star name like serious if we hack that in there
-pretending like it was actually updated and hit update, that's going to change. Yes,
-that changes our `location` and our `specificLocationName` at the same time, which
-means we're ready to actually swap out the location name with Ajax when the location
-changes. First, it's one more thing I want to do and that's to avoid duplication
-because you'll notice that we are now setting up the location name field in two
-places. We have our if statement up here, we've basically duplicated that down inside
-of our `setupSpecificLocationNameField()`. So let's just call 
-`$this->setup specificLocationNameField()` from our original builder APP. So when the 
-form is originally rendered, let's, uh, let's call it function to do it. Now, 
-the only problem with that is that when you originally building the forum, 
-we have a form builder objects and for reasons that aren't important down here, 
-we need a. We were receiving a `FormInterface` object. It's annoying because they 
-have the same method on it method add, but technically there's sort of incompatible
+Second, we're attaching the event to only the location *field* - not the entire
+form. So, when the form submits, Symfony will call this function, but this
+`$event` object will only have information about the `location` field - not the
+entire form.
 
-as long way of saying that I'm going to add this specific location name field and a
-slightly different way to work around this, so remove the location block. I'm
-actually going to remove the location = variable above and basically we can do the
-same thing we just did a second ago by leveraging, once again form events. The
-advantage is simply going to be that it's going to allow us to get that form object.
-So this I'm going to call `->addEventListener()`. I'm going to do it on the entire form
-object and we're gonna listen to `ForumEvents::PRE_SET_DATA`,
+Let's actually *see* this! Refresh to re-submit the form. There it is! The
+`FormEvent` contains the raw, submitted data - the `solar_system` string - *and*
+the entire `Form` object for this one field.
 
-so this is what's called right when we set the be original data on
-the form has nothing to do with submitting. It is entirely. For example, if you look
-in `ArticleAdminController`, in the case of our `edit()` action, we pass it in `Article`
-object internally. When that's set on the form, it calls this `PRE_SET_DATA` event. Once
-again, this will receive the same `FormEvent`, object `$event`. Then we can say 
-`$data = $event->getData()` that will be the underlying data on our forum which we know in our
-case is actually going to be an `Article` object or `null`. In the case of the new form,
-there is no data. I'll say, `if (!$data)`, then we're going to do nothing. I don't want
-to add the field at all, but if there is data then we'll use our 
-`setupSpecificLocationNameField()`, the same we'll say `$event->getForm()` because we're adding an
-event listener to be top level builder. This will be the top level forums. That's
-correct, and then I'll say `$data->getLocation()` or read the location off of the
-original form. So this is pretty much identical to what we had before with our if
-statement that used the data off of the options and I normally just read the data off
-of the options because it's simpler. It's a very simple concept.
+## Dynamically Updating the Field
 
-Talking about event listeners and preset data is way more complicated and most of the
-time you don't need it and we're just doing in this case because it allows us to
-reuse this `setupSpecificLocationNameField()` in two places, but I'm honestly not
-that happy about it, so this is a long way of saying we hit enter on the form to to
-open the edit field. Yes, nearest star is selected and it correctly does the list of
-stars and if I did change this to the solar system and Hakone Earth, that is going to
-save as well. So we are finally fully 100 percent ready to do the last step, which is
-to set up some Ajax to dynamically switch this dropdown based on the location field.
-That's actually the easiest part with all of this.
+This give us the hook we need: we can use the submitting data to *dynamically*
+change the `specificLocationName` field to use the correct choices, *right* before
+validation occurs. Actually, this hook happens *after* validation - but we'll
+use a trick to get around that.
+
+To start, create a new `private function` called `setupSpecificLocationNameField()`. 
+The job of this function will be to dynamically add the `specificLocationName`
+field with the correct choices. It will accept a `FormInterface` - we'll talk
+about that in a second - and a `?string $location`, the `?` part so this can be
+`null`.
+
+Inside, first if `$location` is `null`. If it is, take the `$form` object and actually 
+`->remove()` the `specificLocationName` field and `return`. Here's the idea: if
+I originally rendered the form and there was a location, then, thanks to our logic
+in `buildform()`, there *will* be a `specificLocationName` field. But if we changed
+it to "Choose a location", meaning we are *not* selecting a location, then we want
+to *remove* the `specificLocationName` field before we do any validation. We're
+kind of trying to do the same thing on *submit*, that our future JavaScript will
+do instantly on the frontend.
+
+Next, get the `$choices` by using `$this->getLocationNameChoices()` and pass that
+`$location`. Then, similar to above, `if (null === $choices )` remove the field
+and return. This is needed for when the user selects "Interstellar Space": that
+doesn't have any specific location name choices, and so we don't want that field
+at all.
+
+Finally, we *do* want the `specificLocationName` field, but we want to use our
+new choices. Scroll up and copy the `$builder->add()` line for this field, paste
+down here, and change `$builder` to `$form` - these two objects have an identical
+`add()` method. For `choices` pass `$choices`.
+
+Nice! We created this new function so that we can call it from inside of our listener
+callback. Start with `$form = $event->getForm()`: that gives us the actual `Form`
+object for this one field. Now call `$this->setupSpecificLocationNameField()` and,
+for the first argument, pass it `$form->getParent()`.
+
+This is tricky. The `$form` variable is the Form object that represents just
+the `location` field. But we want to pass the *top* level `Form` object into
+the function so that the `specificLocationName` field can be added or removed from
+*it*.
+
+The second argument is the `location` itself, which will be `$form->getData()`,
+or `$event->getData()`.
+
+Okay guys, I know this is craziness, but we're ready to try it! Refresh to resubmit
+the form. It saves. Now change the Location to "Near a Star". In a few minutes,
+our JavaScript will reload the `specificLocationName` field with the new options.
+To fake that, inspect the element. Let's go copy a real star name - how about
+`Sirius`. Change the selected option's value to that string.
+
+Hit update! Yes! It saved! We were able to change both the `location` *and*
+`specificLocationName` fields at the same time.
+
+And *that* means that we're ready to swap out the field dynamically with JavaScript.
+But first, we're going to leverage another form event to remove some duplication
+from our form class.

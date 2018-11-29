@@ -1,78 +1,83 @@
-# Dynamic Choice Type
+# Form Events & Dynamic ChoiceType choices
 
-Coming soon...
+Let's focus on the edit form first - It'll be a little bit easier to get working.
+Go to `/admin/article` and click to edit one of the existing articles. So, based
+on the `location`, we need to make this `specificLocationName` field have different
+options.
 
-All right, let's focus on the edit, the edit form first. It's going to be a little
-bit easier to get set up, so go to the `/admin/article` and click to edit one of the
-existing articles. All right, so based on the location we need to make this specific
-location, have different values. To start with that I'm going to go into my 
-`ArticleFormType` and at the bottom of this I'm going to paste and a new function I wrote
-called get `private function` called `getLocationNamedChoices()`. You can copy this
-function from the code black on this page, but it's fairly simple. We can pass this
-law, the `$location` string which will be one of our solar system star or interstellar
-space. It creates and it will basically returned the choices that we want for that.
-So if we choose solar system, it will be one of the planets. Would you start? But one
-of the stars and if we choose interstellar interstellar space, there will be `null`,
-because we actually don't want that drop down to be shown in that case. Now notice
-I'm using a re combine. That's because in this case, I actually wanted to display
-value to be also be the same value that's set on the form on my motto class, so
-that's equivalent to just saying `'Mercury' => 'Mercury'`. I'm just saving myself
-some duplication in this case by using `array_combine()`,
+## Determining the specificLocationName Choices
 
-so this is not the first step here is not so dissimilar from something we did
-earlier. When I first want to do is when this page originally loads, forget about
-Ajax. If we already have the solar system selected, I'll actually update this right
-now that I want on page load, this specific location name field to already to have
-the planet list, so basically we can use the underlying article data that's passed to
-us to figure this out. I'm going to add a little of inland documentation here just to
-tell my editor that this will be an `Article` object or `null`, so then when we're editing
-an `Article`, `$location` is going to be if there's an article is going to be an
-`$article->getLocation()`. Otherwise, this is a new form and we'll just say that
-initially it's going to be `null` now, just like we did before. I'm going to take this
-specific location name, remove that, and we're going to surround it in an if
-statement, so say `if ($location)` has passed and only if locations fast, we're going
-to add that field. So I'll say `$builder->add()` and `choices`. We'll say 
-`$this->getLocationNamedChoices()` and we'll pass it `$location`. So again, we're not 
-thinking about
+Open `ArticleFormType` and go to the bottom. I'm going to paste in a function I wrote
+called `getLocationNameChoices()`. You can copy this function from the code black
+on this page. But, it's fairly simple: We can pass this the `$location` string,
+which will be one of `solar_system`, `star` or `interstellar_space`, and it returns
+the choices for the `specificLocationName` field. If we choose "solar system", it
+returns planets. If we choose "star", it returns some popular stars. And if we choose
+"Interstellar space", it returns `null`, because we actually don't want the drop
+down to be display at *all* in that case.
 
-nothing about anything about Ajax or dynamically. When I changed this field, it's
-going to automatically load this on page load. I'm simply saying when I originally
-loved this form, if solar system is already selected in the database, then I want
-this to load correctly, so if there's already a `$location` set on our `Article` entity,
-then let's add these specific location field name and let's get the correct choices.
-If there's not, let's not even load that field at all, which means in `_form.html.twig`
-template, we need to do something similar to what we did before, which is we need to
-say `{% if articleForm.specificLocationName is defined %}`, then we'll print the
-field. Otherwise we want.
+Oh, and I'm using `array_combine()` just because I want the display values and the
+values set back on my entity to be the same. This is equivalent to saying
+`'Mercury' => 'Mercury'`, but saves me a bunch of duplication.
 
-Alright,
+## Dynamically Changing the Options
 
-so if I refresh the page now the solar system is selected and yes we have our list of
-planets and I can totally save these. Yup. It's saved and saved as earth. I'm open to
-a second tab and go over to my new form and my new form notice does not have a
-specific location because of course the location isn't set yet, so this now sort of
-works. I can change things, but I kind of have to do it piece by piece. Like if I go
-to near a star and hit updates, it changes nearest star and now I can change this to
-this specific location name and save that, but I can't do it all at once. I have to
-do this full page reload, which is not not ideal.
+The first step to get this working is not *so* different from something we did
+earlier. To start, *forget* about trying to use fancy JavaScript to instantly reload
+the `specificLocationName` drop-down when we select a new location. Yes, we *are*
+going to do that - but not yet.
 
-Heck, even if I get clever, let's be clever. Okay. Let's change this to the solar
-system and then let's inspect element on it. I'm going to go down and they selected
-Amir and how is beetlejuice? Let's change that to Earth, right? Because if you think
-about it, that should in theory work, I am now going to submit the solar system and
-I'm going to submit earth. Earth is a valid option for the solar system, so that
-should at least be a hacky way of giving this to be a being able to change both
-fields at the same time. So when we hit update it not work, it says this value is
-invalid. The reason is at the moment, this original, this form renders it's rendering
-with this dropdown of these stars when we submit, because the, uh, because near a
-star is still the selected location, it builds a form with the dropdown on the stars.
-And so when we try to submit earth as an option, it looks like an invalid option.
-What we need to be able to do is
+Hit "Update" the save the location to "The Solar System". The first goal is this:
+when the form loads, because the `location` field is already set, the
+`specificLocationName` should show me the planet list. In other words, we should be
+able to use the underlying `Article` data inside the form to figure out which
+`choices` to use.
 
-let me change this option from need a star to the solar system on submit. We need to
-be smart enough to realize that these solar system, that the location was changed to
-slower system in dynamically at that moment change the dropdown to me, the list of
-planets so that we can submit earth. Now we still need to handle JavaScript, but in.
-We'll do that in a second, but this is a first necessary step so that on a server
-level we are able to accept both fields dynamically and where we're going to do that
-is form advance and it is a little bit tricky. Let's do that next.
+I'll add some inline documentation just to tell my editor that this is an `Article`
+object or `null`. Then, `$location = `, if `$article` is an object, then
+`$article->getLocation()`, otherwise, `null`.
+
+Down below, copy the entire `specificLocationName` field and remove it. Then *only*
+`if ($location)` is set, add that field. For `choices`, use
+`$this->getLocationNamedChoices()` and pass that `$location`.
+
+Cool! Again, no, if we change the `location` field, it will *not* magically update
+the `specificLocationName` field dynamically... not yet, at least.
+
+With this code, we're saying: when we originally load this form, if
+there is already a `$location` set on our `Article` entity, then let's add the
+`specificLocationName` field with the correct choices. If there is *no* location,
+let's not even load that field at *all*, which means in `_form.html.twig`, we need
+to render this field conditionally:
+`{% if articleForm.specificLocationName is defined %}`, then call `form_row()`.
+
+Let's try this! Refresh the page. The Solar System is selected and so.. sweet!
+There is our list of planets! And we can totally save this. Yep! It saved as Earth.
+Open a second tab and go to the new article form. No surprise: there is *no*
+`specificLocationName` field here because, of course, the location isn't set yet.
+
+Our system now... sort of works. We can change the data... but we need to do it
+little-by-little. We can go to "Near a Star", hit "Update" and *then* change the
+`specificLocationName` field and save that. But I can't do it all at once: I need
+to fully reload the page... which kinda sucks!
+
+## Can you Hack the Options to Work?
+
+Heck, we can't even be clever! Change location to "The Solar System". Then, inspect
+element on the next field and change the "Betelgeuse" option to "Earth". In theory,
+that should work, right? Earth *is* a valid option of `location` is set to `solar_system`
+and so this should *at least* be a hacky way to work with the system.
+
+Hit Update. Woh! It does *not* work! We get a validation error: This value is
+not valid. Why?
+
+Think about it: when we submit, Symfony *first* builds the form based on the `Article`
+data that's stored in the *database*. Because `location` is set to `star` in the
+database, it builds the `specificLocationName` field with the star options. When
+it sees `earth` being submitted for that field, it looks invalid!
+
+Our form needs to be even smarter: when we submit, the form needs to *realize* that
+the `location` field changed, and rebuild the `specificLocationName` choices bfore
+processing the data. Woh.
+
+We can do that by leveraging form events.
