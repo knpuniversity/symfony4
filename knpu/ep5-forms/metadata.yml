@@ -38,4 +38,5 @@ chapters:
   - dynamic-form-events
   - pre-set-data-form-event
   - dynamic-select-js
-  - clear-field-security
+  - clear-field
+  - security-cleanup
