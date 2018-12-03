@@ -111,8 +111,8 @@ php bin/console doctrine:migrations:migrate
 ***TIP
 If you got an error like "Syntax error or access violation: 1071 Specified key was too long;..." 
 
-No worries! Just open your Entity and modify `slug` annotation set `length=180` and 
-Migration file `slug VARCHAR(180)` and run command again. Or update MySQL to version 5.7
+No worries! Just open your Entity and modify `@Slug` annotation, set `length=180`. Remove 
+migration file and repeat last 2 steps. Or update MySQL to version 5.7
 ***
 
 Now that the entity & database are setup, we need some dummy data! Run:
