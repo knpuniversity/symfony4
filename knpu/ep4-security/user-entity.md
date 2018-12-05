@@ -107,10 +107,13 @@ statement.
 [[[ code('e6fbb7afc9') ]]]
 
 Inside, call `$this->createMany()`. The arguments to this method changed a bit since
-the last tutorial. Pass this 10 to create 10 users. Then, pass a "group name" -
-`main_users`. Right now, this key is meaningless. But later, we'll use it in a
-different fixture class to relate other objects to these users. Finally, pass a callback
-with an `$i` argument:
+the last tutorial:
+
+[[[ code('821f7bd0a9') ]]]
+
+Pass this 10 to create 10 users. Then, pass a "group name" - `main_users`. Right now,
+this key is meaningless. But later, we'll use it in a different fixture class to relate
+other objects to these users. Finally, pass a callback with an `$i` argument:
 
 [[[ code('c93f4d38fa') ]]]
 
