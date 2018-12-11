@@ -94,7 +94,7 @@ Inside, it's pretty simple: `return $this->createQueryBuilder('u')`,
 `->andWhere('u.email LIKE :query')` and bind that with `->setParameter('query')`
 and, this is a little weird, `'%'.$query.'%'`.
 
-Finish with `->setMaxResults($limit)`, `->getQuery()` and `->getResults()`.
+Finish with `->setMaxResults($limit)`, `->getQuery()` and `->getResult()`.
 
 Done! Unless I've *totally* mucked things up, I think we should have a working
 autocomplete setup! Refresh to get the new JavaScript, type "spac" and... woohoo!
