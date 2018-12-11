@@ -68,6 +68,11 @@ The `dump()` function is even *more* useful in Twig. Inside the `body` block, ad
 
 [[[ code('670987dfd6') ]]]
 
+***TIP
+If you don't have Xdebug installed, this might fail with a memory issue. But don't
+worry! In the next chapter, we'll install a tool to make this even better.
+***
+
 In Twig, you're allowed to use `dump()` with *no* arguments. And that's *especially*
 useful. Why? Because it dumps an associative array of *all* of the variables you have
 access to. We already knew we had `title` and `comments` variables. But apparently,
