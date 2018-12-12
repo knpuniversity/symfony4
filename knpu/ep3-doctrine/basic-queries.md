@@ -6,7 +6,7 @@ dynamic data.
 
 Open `ArticleController` and find the `show()` method:
 
-[[[ code('55c15485e7') ]]]
+[[[ code('15a764e338') ]]]
 
 This renders that page. As I mentioned earlier, DoctrineBundle gives us one
 service - the EntityManager - that has the power to save *and* fetch data.
