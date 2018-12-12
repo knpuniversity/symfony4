@@ -108,6 +108,16 @@ Yep: `CREATE TABLE tag`. Go run it:
 php bin/console doctrine:migrations:migrate
 ```
 
+***TIP
+If you get an error like:
+
+> Syntax error or access violation: 1071 Specified key was too long...
+
+No worries! Just open your entity and modify the `@Column` annotation
+above the `$slug` property: set `length=180`. Then, remove the migration
+and re-run the last 2 commands. Or update MySQL to version 5.7 or higher.
+***
+
 Now that the entity & database are setup, we need some dummy data! Run:
 
 ```terminal
