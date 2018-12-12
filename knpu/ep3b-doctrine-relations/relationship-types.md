@@ -113,8 +113,8 @@ If you get an error like:
 
 > Syntax error or access violation: 1071 Specified key was too long...
 
-No worries! Just open your entity and modify `@Column` annotation,
-above the `$slug` property, set `length=180`. Remove the migration
+No worries! Just open your entity and modify the `@Column` annotation
+above the `$slug` property: set `length=180`. Then, remove the migration
 and re-run the last 2 commands. Or update MySQL to version 5.7 or higher.
 ***
 
