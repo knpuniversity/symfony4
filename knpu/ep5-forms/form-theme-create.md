@@ -59,6 +59,8 @@ If you only need to customize a *single* form, there's an easier way. At the top
 of the template where you form lives, add `{% form_theme %}`, the name of your form
 variable - `registrationForm` - and then `_self`.
 
+[[[ code('48a1e6d334') ]]]
+
 This says:
 
 > Yo form system! I want to use *this* template as a form theme template for the
@@ -72,8 +74,12 @@ Let's do that! But, actually, the Bootstrap `form_row` block is a bit fancier th
 I need. Instead, open `form_div_layout.html.twig` and find the block there. Copy
 that and, in `register.html.twig`, paste this anywhere.
 
+[[[ code('bc91de8542') ]]]
+
 Hmm - let's remove the wrapping `<div>` and see if this works! Deep breath - refresh!
 I saw something move! Inspect the form and... yes! That wrapping `div` is gone!
+
+[[[ code('4f9a34cc56') ]]]
 
 When Symfony looks for the `form_row()` block it finds *our* block and uses it.
 All the other parts - like the `widget` and `label` blocks - are *still* coming from
