@@ -44,6 +44,8 @@ Second: this `name="_terms"` is a problem because the form is expecting a differ
 name. And so, this field won't process correctly. Replace this with the very handy
 `full_name` variable.
 
+[[[ code('41fea084fe') ]]]
+
 And... I think that's all I care about! Yes, we *could* get fancier, like using
 the `id` variable... if we cared. Or, we could use the `errors` variable to print
 a special error class if `errors is not empty`. It's all up to you. 

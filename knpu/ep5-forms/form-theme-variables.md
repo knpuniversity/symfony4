@@ -27,6 +27,8 @@ you have access to?
 
 The easiest answer is just to `dump()` inside one of these blocks.
 
+[[[ code('fd3e5bebc6') ]]]
+
 Move over and refresh. Woh! Yes - we see *giant* dumps for *each* row that's
 rendered! There's `attr`, `id` and `full_name`. Do these... look familiar? These are
 the *exact* variables that we have been *overriding* when rendering our fields!
@@ -75,6 +77,8 @@ Anyways, back on `register.html.twig`, let's customize the label attributes!
 Pass `null` as the label text so it continues to use whatever the normal label is.
 Then pass an array with `label_attr` set to another array, and `class` equals `sr-only`.
 
+[[[ code('38ae04d7ea') ]]]
+
 Phew! Let's try that. Move over refresh and... yes! They're gone! They now have
 an `sr-only` class! But, hmm... we now have *no* idea what these fields are!
 No worries: that was handled before via a `placeholder` attribute. New question:
@@ -95,6 +99,8 @@ paste twice, then `plainPassword` and `agreeTerms`.
 
 For `email` pass a second argument with `attr` then `placeholder` set to `Email`.
 Do the same thing for the one other text field: `placeholder` set to "Password".
+
+[[[ code('74cddc9f4b') ]]]
 
 That should be it! And yea, we *could* have been less fancy and *also* passed this
 `label_attr` variable directly to `form_row()`. That would have worked *fine*.

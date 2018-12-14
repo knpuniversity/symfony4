@@ -16,6 +16,8 @@ go back to the Code -> Generate menu, or Command + N on a Mac, and this time,
 override `configureOptions()`. Inside, add `$resolver->setDefaults()` and give
 the `invalid_message` option a different default: "User not found".
 
+[[[ code('e8911396ee') ]]]
+
 Try that out! Go back, refresh and... very nice!
 
 And hey! We've seen this `configureOptions()` method before inside our normal
@@ -42,7 +44,7 @@ we want. Instead of failing, our data transformer should probably just return
 
 Go back to `EmailToUserTransformer`. In `reverseTransform()`, if `$value` is empty,
 just `return`. So, if the field is submitted empty, `null` should be passed to
-`setAuthor()`. 
+`setAuthor()`.
 
 But, hmm... the problem *now* is that, while it's *technically* ok to call `setAuthor()`
 with a `null` argument, we *want* that field to be required!
@@ -53,6 +55,8 @@ required in the database and this is a *great* example of... messing up! We forg
 to add an important piece of business validation: to make the `author` required.
 No worries: open the `Article` class, find the `$author` field and, above it, add
 `@Assert\NotNull()`. Give it a message: `Please set an author`.
+
+[[[ code('d93787b799') ]]]
 
 Try that again. Excellent! *This* is the behavior - and error - we expect.
 

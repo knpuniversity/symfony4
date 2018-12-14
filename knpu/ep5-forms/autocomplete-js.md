@@ -26,6 +26,8 @@ override `{% block javascripts %}` and `{% endblock %}`. Call the `{{ parent() }
 function to keep rendering the parent JavaScript. Then paste in that new
 `<script>` tag.
 
+[[[ code('2d1f6404e1') ]]]
+
 Yes, we *are* also going to need to do this in the new template. We'll take care
 of that in a little bit.
 
@@ -38,9 +40,13 @@ and `{% endblock %}`. This time add a `<link>` tag that points to that file:
 `algolia-autocomplete.css`. Oh, and don't forget the `parent()` call - I'll add
 that in a second.
 
+[[[ code('439978f03b') ]]]
+
 Finally, for the custom JavaScript logic, in the `js/` directory, create a new
 file called  `algolia-autocomplete.js`. Before I fill *anything* in here, include
 that in the template: a `<script>` tag pointing to `js/algolia-autocomplete.js`.
+
+[[[ code('2dd6cc5a99') ]]]
 
 ## Implementing autocomplete.js
 
@@ -69,6 +75,8 @@ To start... let's hardcode something and see if it works! Call `cb()` and pass i
 an array where each entry is an object with a `value` key... because that's how
 the library wants the data to be structured by default.
 
+[[[ code('49e179ff87') ]]]
+
 Thanks to my imaginative code, no matter *what* we type, `foo` and `bar` *should*
 be suggested.
 
@@ -78,6 +86,8 @@ And... we're almost... sorta done! In order for this to be applied to our field,
 *we* need to do is add this class to the author field. No problem! Copy the class
 name and open `UserSelectTextType`. Here, we can set a *default* value for the `attr`
 option to an array with `class` set to `js-user-autocomplete`.
+
+[[[ code('d8e290f178') ]]]
 
 ## Field Options vs View Variables
 

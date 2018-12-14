@@ -16,11 +16,15 @@ Let's start inside the transformer first. How about this: add a new argument to
 the constructor a `callable` argument called `$finderCallback`. Hit the normal
 Alt+Enter to create that property and set it.
 
+[[[ code('563eb50ba5') ]]]
+
 Here's the idea: whoever instantiates this transformer will pass in a callback that's
 responsible for querying for the `User`. Down below, instead of fetching it directly,
 say `$callback = $this->finderCallback` and then, `$user = $callback()`. For convenience,
 let's pass the function  `$this->userRepository`. And of course, it will need
 the `$value` that was just submitted.
+
+[[[ code('1b6b6c67dc') ]]]
 
 Cool! We've now made this class a little bit more flexible. But, that doesn't *really*
 help us yet. How can we allow this `$finderCallback` to be customized each time we
@@ -33,12 +37,16 @@ accepts a `UserRepository $userRepository` argument and the value - which will b
 a `string $email`. Inside return the normal `$userRepository->findOneBy()` with
 `['email' => $email]`.
 
+[[[ code('62b5a2dd4d') ]]]
+
 Next, check out the `build()` method. See this array of `$options`? That will *now*
 include `finder_callback`, which will either be our default value, or some other
 callback if it was overridden.
 
 Let's break this onto multiple lines and, for the second argument to
 `EmailToUserTransformer`, pass `$options['finder_callback']`.
+
+[[[ code('71e9a67f67') ]]]
 
 Ok! Let's make sure it works. I'll hit
 enter on the URL to reload the page. Then, change to `spacebar2@example.com`,

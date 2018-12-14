@@ -7,6 +7,8 @@ a new controller for this: `AdminUtilityController`. Make that extend the normal
 page, add `@Route("/admin/utility/users")`. And, just to be extra fancy, let's also
 add `methods="GET"`.
 
+[[[ code('f7f31f0b2e') ]]]
+
 The *job* of this endpoint is pretty simple: return an array of User objects as
 JSON: I'm not even going to worry about filtering them by a search term yet.
 
@@ -14,6 +16,8 @@ Add the `UserRepository $userRepository` argument and fetch every user with
 `$users = $userRepository->findAllEmailAlphabetical()`. Finish this with
 `return $this->json()` and, it doesn't really matter, but let's set the user objects
 into a `users` key.
+
+[[[ code('06766fe3d1') ]]]
 
 Cool! Copy that URL, open a new tab paste and.... boo! A circular reference has
 been detected. This is a common problem with the serializer and Doctrine objects.
@@ -42,6 +46,8 @@ second argument - this is the status code - we don't need any custom headers, bu
 we *do* want to pass a `groups` option set to `main`... I know a lot of square
 brackets to do this.
 
+[[[ code('84efa87576') ]]]
+
 *Now* go back and refresh. Got it! We could add a *new* serialization group to return
 even *less* - like maybe just the `email`. It's up to you.
 
@@ -54,6 +60,8 @@ is tricky. In `ArticleAdminController`, the `new()` endpoint requires
 
 Copy that role, go back to `AdminUtilityController` and, above the method, add
 `@IsGranted()` and paste to use the same role.
+
+[[[ code('6b28df4d1a') ]]]
 
 This is a *little* weird because, in `ArticleAdminController`, the `edit` endpoint
 is protected by a custom voter that allows access if you have that same

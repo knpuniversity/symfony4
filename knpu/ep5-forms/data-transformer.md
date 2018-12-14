@@ -36,6 +36,8 @@ I love data transformers! Let's add some debug code in each method so we can see
 they're called and what this value looks like. So `dd('transform', $value)` and
 `dd('reverse transform', $value)`.
 
+[[[ code('52f246d005') ]]]
+
 To make `UserSelectTextType`  use this, head back to that class, go to the
 Code -> Generate menu again, or Command + N on a Mac, and override one more method:
 `buildForm()`.
@@ -44,6 +46,8 @@ Hey! We know this method! This is is the method that we override in our *normal*
 form type classes: it's where we add the fields! It turns out that there are a few
 *other* things that you can do with this `$builder` object: one of them is
 `$builder->addModelTransformer()`. Pass this a `new EmailToUserTransformer()`.
+
+[[[ code('b47cd2ae1f') ]]]
 
 ## The transform() Method
 
@@ -66,6 +70,8 @@ do something crazy. Throw a new `LogicException()` that says:
 Finally, at the bottom, so nice, `return $value` - which we now know is a `User`
 object `->getEmail()`.
 
+[[[ code('698c979373') ]]]
+
 Let's rock! Move over, refresh and.... hello email address!
 
 ## The reverseTransform() Method
@@ -78,6 +84,8 @@ Time for some dependency injection! Add a constructor with
 `UserRepository $userRepository`. I'll hit alt+enter and select "Initialize Fields"
 to create that property and set it.
 
+[[[ code('39675b436a') ]]]
+
 Normally... that's all we would need to do: we could instantly use that property below.
 But... this object is *not* instantiated by Symfony's container. So, we
 *don't* get our cool autowiring magic. Nope, in this case, *we* are creating
@@ -89,8 +97,12 @@ an identical `__construct()` method with the same `UserRepository` argument. Hit
 Alt+Enter again to initialize that field. The form type classes *are* services,
 so autowiring *will* work here.
 
+[[[ code('a4b4618dff') ]]]
+
 Thanks to that, in `buildForm()` pass `$this->userRepository` manually into
 `EmailToUserTransformer`.
+
+[[[ code('4ff208d910') ]]]
 
 Back in `reverseTransform()`, let's get to work: `$user = $this->userRepository` and
 use the `findOneBy()` method to query for `email` set to `$value`. If there is
@@ -101,6 +113,8 @@ interface. Inside, say:
 > No user found with email %s
 
 and pass the value. At the bottom, `return $user`.
+
+[[[ code('fdd3f96f2e') ]]]
 
 The `TransformationFailedException` is special: when this is thrown, it's a signal
 that there is a *validation* error.
@@ -120,5 +134,5 @@ We saw this in action back when we were using the `EntityType` for the `author`
 field: if we hacked the HTML and changed the `value` attribute of an `option` to
 a non-existent id, we got a sanity validation error message.
 
-Next: let's see how we can customize this error and learn to do a few of other
+Next: let's see how we can customize this error and learn to do a few other
 fancy things to make our custom field more flexible.
