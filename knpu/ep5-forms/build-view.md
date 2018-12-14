@@ -13,6 +13,8 @@ and paste! Oh, and I mentioned earlier, that we're going to eventually tweak thi
 so that the author field is *only* filled in on *create*: we're going to disable
 it on edit.
 
+[[[ code('ea34d8cedf') ]]]
+
 That means... we *won't* need any of this stuff on the edit page. Let's delete it
 now. But, if you *did* need some JavaScript and CSS on both templates and
 you did *not* want to duplicate the blocks, you could create a new template, like
@@ -39,6 +41,8 @@ or command+N on a Mac, select Override methods and choose `buildView()`. Oh, the
 also a method called `finishView()` and its purpose is *almost* identical
 to `buildView()` - it's just called a bit later.
 
+[[[ code('72fa150bb6') ]]]
+
 Here's what's going on: to render each field, Symfony creates a bunch of *variables*
 that are used in the form theme system. We already knew that: in `register.html.twig`
 we're overriding the `attr` variable. And in our form theme blocks, we use different
@@ -57,14 +61,20 @@ property that holds *all* of the things that will eventually become the "variabl
 At this moment, the core form system has *already* set this variable up for us: it
 will either be equal to the `attr` option passed for this field, or an empty array.
 
+[[[ code('8c63ee1cf8') ]]]
+
 Next: grab the class: if `class` is set on `$attr`, use it, but add a space on
 the end. If there is no class yet, set this to be blank. Now, here's the key: let's
 *always* append `js-user-autocomplete`: that's the class we're using above. Call
 `$attr['class'] =` to set the new class string back on.
 
+[[[ code('6fe2732ff0') ]]]
+
 Oh, and we *also* need to add the `data-autocomplete-url` attribute. Copy that from
 above and say `$attr['data-autocomplete-url']` equals the generated URL. Perfect!
 *Finally*, set *all* of this back onto the view object with `$view->vars['attr'] = $attr`.
+
+[[[ code('0d12a54fc3') ]]]
 
 Phew! We're done! Now that we're setting the `attr` variable directly, we don't need
 to set the option anymore. And the *best* part is that we know our attributes will
