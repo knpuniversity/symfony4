@@ -19,10 +19,14 @@ In your `Form/` directory, create a new directory called `TypeExtension`, then i
 a class called `TextareaSizeExtension`. Make this implement `FormTypeExtensionInterface`.
 As the name implies, this will allow us to *extend* existing form types.
 
+[[[ code('850d8191ce') ]]]
+
 Next, go to the Code -> Generate menu, or Command+N on a Mac, and choose
 "Implement Methods" to implement everything we need. Woh! We know these methods!
 These are almost the *exact* same methods that we've been implementing in our form
 type classes! And... that's on purpose! These methods work pretty much the same way.
+
+[[[ code('e63d71dbd8') ]]]
 
 ## Registering the Form Type Extension
 
@@ -38,6 +42,8 @@ create a new line for my own sanity and add one more option `extended_type`. We 
 to set this to the form type class that we want to extend - so `TextareaType`. Let's
 cheat real quick: I'll `use TextareaType`, auto-complete that, copy the class, then
 delete that. Go paste it in the config. Oh, and I forgot my comma!
+
+[[[ code('38f8fa6393') ]]]
 
 As *soon* as we do this, every time a `TextareaType` is created in the system, *every*
 method on our `TextareaSizeExtension` will be called. It's almost as if each of
@@ -66,12 +72,16 @@ The `getExtendedType()` method! Inside, `return TextareaType::class`. And yea,
 we *also* need to fill in this method in Symfony 4.1... it's a bit redundant, which
 is why Symfony 4.2 will be *so* much cooler.
 
+[[[ code('5dbb6758b7') ]]]
+
 ## Filling in the Form Type Extension
 
 Ok! Let's remove the rest of the TODOs in here and then get to work! We can fill
 in whichever methods we need. In our case, we want to modify the *view* variables.
 That's easy for us: in `buildView()`, say `$view->vars['attr']`, and
 then add a `rows` attribute equal to 10.
+
+[[[ code('77857989f0') ]]]
 
 Done! Move over, refresh and... yea! I think it's bigger! Inspect it - yes: `rows="10"`.
 *Every* `<textarea>` on our *entire* site will now have this.
@@ -93,6 +103,8 @@ this value *each* time you use the `TextareaType`? Why, of course! In `ArticleFo
 pass `null` to the `content` field so it keeps guessing it. Then add a new option:
 `rows` set to 15.
 
+[[[ code('9563aed286') ]]]
+
 Try this out - refresh! Giant error!
 
 > The option "rows" does not exist
@@ -103,8 +115,12 @@ invent new options. Do it down in `configureOptions()`: add
 `$resolver->setDefaults()` and invent a new `rows` option with a default value of
 10.
 
+[[[ code('3298f882b1') ]]]
+
 Now, up in `buildView()`, notice that almost every method is passed the final
 array of `$options` for this field. Set the `rows` attribute to `$options['rows']`.
+
+[[[ code('0ad47d7ddc') ]]]
 
 Done. The `rows` will default to 10, but we can override that via a brand, new
 shiny form field option. Try it! Refresh, inspect the textarea and... yes! The
