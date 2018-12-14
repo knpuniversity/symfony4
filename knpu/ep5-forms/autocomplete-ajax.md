@@ -16,11 +16,15 @@ Now, idea time: when we render the field, what if we added a "data" attribute on
 the input field that pointed to this URL? If we did that, it would be *super* easy
 to read that from JavaScript.
 
+[[[ code('dbd264a2ed') ]]]
+
 Let's do it! In `UserSelectTextType`, add another attribute: how about
 `data-autocomplete-url` set to... hmm. We need to *generate* the URL to our new
 route. How do we generate a URL from inside of a service? Answer: by using the
 `router` service. Add a second argument to the constructor: `RouterInterface $router`.
 I'll hit Alt+Enter to add that property and set it.
+
+[[[ code('d65aafd005') ]]]
 
 Oh, and if you can't remember the type-hint to use, at least make sure that you
 remember that you can run:
@@ -37,6 +41,8 @@ same service anyways.
 Now that we've injected the router, down below, use `$this->router->generate()`
 and pass it the new route name: `admin_utility_users`.
 
+[[[ code('85f4956916') ]]]
+
 Let's check it out! Refresh, inspect that field and ... perfect! We have a shiny new
 `data-autocomplete-url` attribute.
 
@@ -47,9 +53,13 @@ it would work either way: let's find all of the elements... there will be just o
 in this case... and loop over them with `.each()`. Indent the inner code, then
 close the extra function. 
 
+[[[ code('4ab0d22024') ]]]
+
 Now we can change the selector to `this` and... yea! We're basically doing the
 same thing as before. Inside the loop, fetch the URL with
 `var autocompleteUrl = $(this).data()` to read that new attribute.
+
+[[[ code('145e0793b8') ]]]
 
 Finally, clear out the `source` attribute. Since we're using jQuery already, let's
 use it to make the AJAX call: `$.ajax()` with a `url` option set to
@@ -63,10 +73,14 @@ Remember: in the controller, I'm returning all the user information on a `users`
 key. So, let's return `data.users`: that should return this entire array of
 data.
 
+[[[ code('b3f8faa454') ]]]
+
 But *also* remember that, by default, the autocomplete library expects each result
 to have a `value` key that it uses. Obviously, *our* key is called `email`. To change
 that behavior, add `displayKey: 'email'`. I'll also add `debounce: 500` - that
 will make sure that we don't make AJAX requests faster than once per half a second.
+
+[[[ code('0fb02f6509') ]]]
 
 Ok... I think we're ready! Let's try this! Move back to your browser, refresh
 the page and clear out the author field... "spac"... we got it! Though... it *still*
@@ -79,10 +93,14 @@ is the easiest part! Go back to the JavaScript. The `source` function is passed 
 `query` argument: that's equal to whatever is typed into the input box at that moment.
 Let's use that! Add a `'?query='+query` to the URL.
 
+[[[ code('f8fd94902e') ]]]
+
 Back in `AdminUtilityController`, to read that, add a second argument, the
 `Request` object from `HttpFoundation`. Then, let's call a new method on `UserRepository`,
 how about `findAllMatching()`. Pass this the `?query=` GET parameter by calling
 `$request->query->get('query')`.
+
+[[[ code('2eb57674c1') ]]]
 
 Nice! Copy the method name and then open `src/Repository/UserRepository.php`.
 Add the new `public function findAllMatching()` and give it a `string $query`
@@ -90,11 +108,15 @@ argument. Let's also add an optional `int $limit = 5` argument, because we proba
 shouldn't return 1000 users if 1000 users match the query. Advertise that this
 will return an array of `User` objects.
 
+[[[ code('62bfdc436f') ]]]
+
 Inside, it's pretty simple: `return $this->createQueryBuilder('u')`,
 `->andWhere('u.email LIKE :query')` and bind that with `->setParameter('query')`
 and, this is a little weird, `'%'.$query.'%'`.
 
 Finish with `->setMaxResults($limit)`, `->getQuery()` and `->getResult()`.
+
+[[[ code('2b3a07cb1e') ]]]
 
 Done! Unless I've *totally* mucked things up, I think we should have a working
 autocomplete setup! Refresh to get the new JavaScript, type "spac" and... woohoo!
