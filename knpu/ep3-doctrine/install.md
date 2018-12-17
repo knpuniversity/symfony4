@@ -59,7 +59,7 @@ added a new `DATABASE_URL` environment variable:
 [[[ code('3d6b07ba40') ]]]
 
 Let's set this up: I use a `root` user with no password locally. Call the database
-`the_spacebar`:
+`symfony4_space_bar`:
 
 [[[ code('b119a2078e') ]]]
 
