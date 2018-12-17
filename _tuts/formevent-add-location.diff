@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 3eb0141c..1d49c14f 100644
+index 3eb0141..1d49c14 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -76,6 +76,11 @@ class Article
@@ -33,7 +33,7 @@ index 3eb0141c..1d49c14f 100644
  }
 diff --git a/src/Migrations/Version20181031150638.php b/src/Migrations/Version20181031150638.php
 new file mode 100644
-index 00000000..d0fada1a
+index 0000000..d0fada1
 --- /dev/null
 +++ b/src/Migrations/Version20181031150638.php
 @@ -0,0 +1,28 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/BaseController.php b/src/Controller/BaseController.php
-index 21714f5e..b70faf83 100644
+index 21714f5..b70faf8 100644
 --- a/src/Controller/BaseController.php
 +++ b/src/Controller/BaseController.php
 @@ -5,10 +5,9 @@ namespace App\Controller;

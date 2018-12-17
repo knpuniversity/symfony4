@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 4988f28c..573b9575 100644
+index 4988f28..573b957 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -11,7 +11,7 @@ index 4988f28c..573b9575 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 7bab0562..32a0fa88 100644
+index 7bab056..32a0fa8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -140,7 +140,7 @@ index 7bab0562..32a0fa88 100644
              "name": "psr/cache",
              "version": "1.0.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index b5436745..e278c0b4 100644
+index b543674..e278c0b 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -8,4 +8,5 @@ return [
@@ -150,7 +150,7 @@ index b5436745..e278c0b4 100644
 +    Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 4ae77178..caa86a6c 100644
+index 4ae7717..caa86a6 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -35,6 +35,12 @@

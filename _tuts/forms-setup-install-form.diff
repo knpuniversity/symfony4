@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index eeebb084..fa0e060e 100644
+index eeebb08..fa0e060 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,6 +14,7 @@
@@ -11,7 +11,7 @@ index eeebb084..fa0e060e 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index d4e48604..ead7b5f0 100644
+index d4e4860..ead7b5f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -259,7 +259,7 @@ index d4e48604..ead7b5f0 100644
              "name": "symfony/polyfill-mbstring",
              "version": "v1.9.0",
 diff --git a/symfony.lock b/symfony.lock
-index a6f8c809..77c3da82 100644
+index a6f8c80..77c3da8 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -293,6 +293,9 @@

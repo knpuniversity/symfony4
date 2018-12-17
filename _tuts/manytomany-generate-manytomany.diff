@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 809136f1..7ae4db6d 100644
+index 809136f..7ae4db6 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -66,9 +66,15 @@ class Article
@@ -50,7 +50,7 @@ index 809136f1..7ae4db6d 100644
 +    }
  }
 diff --git a/src/Entity/Tag.php b/src/Entity/Tag.php
-index b2b05390..6987aa4e 100644
+index b2b0539..6987aa4 100644
 --- a/src/Entity/Tag.php
 +++ b/src/Entity/Tag.php
 @@ -2,6 +2,8 @@
@@ -114,7 +114,7 @@ index b2b05390..6987aa4e 100644
  }
 diff --git a/src/Migrations/Version20180501143055.php b/src/Migrations/Version20180501143055.php
 new file mode 100644
-index 00000000..a507396f
+index 0000000..a507396
 --- /dev/null
 +++ b/src/Migrations/Version20180501143055.php
 @@ -0,0 +1,30 @@

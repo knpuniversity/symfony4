@@ -1,6 +1,6 @@
 diff --git a/src/Migrations/Version20180830012659.php b/src/Migrations/Version20180830012659.php
 new file mode 100644
-index 00000000..bcb9555c
+index 0000000..bcb9555
 --- /dev/null
 +++ b/src/Migrations/Version20180830012659.php
 @@ -0,0 +1,28 @@

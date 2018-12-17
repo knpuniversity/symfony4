@@ -1,6 +1,6 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
 new file mode 100644
-index 00000000..3a254875
+index 0000000..3a25487
 --- /dev/null
 +++ b/src/Entity/Article.php
 @@ -0,0 +1,92 @@
@@ -98,7 +98,7 @@ index 00000000..3a254875
 +}
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
 new file mode 100644
-index 00000000..73e06108
+index 0000000..73e0610
 --- /dev/null
 +++ b/src/Repository/ArticleRepository.php
 @@ -0,0 +1,50 @@

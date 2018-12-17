@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 7f1630a1..09036a04 100644
+index 7f1630a..09036a0 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -46,7 +46,9 @@ class ArticleAdminController extends AbstractController
@@ -14,7 +14,7 @@ index 7f1630a1..09036a04 100644
          $form->handleRequest($request);
          if ($form->isSubmitted() && $form->isValid()) {
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index c3a4b745..953edf49 100644
+index c3a4b74..953edf4 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -33,19 +33,23 @@ class ArticleFormType extends AbstractType
@@ -46,7 +46,7 @@ index c3a4b745..953edf49 100644
      }
  }
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
-index df490b22..eb9984fb 100644
+index df490b2..eb9984f 100644
 --- a/templates/article_admin/_form.html.twig
 +++ b/templates/article_admin/_form.html.twig
 @@ -4,7 +4,9 @@

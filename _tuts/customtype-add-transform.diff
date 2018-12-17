@@ -1,5 +1,5 @@
 diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
-index 05542974..d4318a4a 100644
+index 0554297..d4318a4 100644
 --- a/src/Form/DataTransformer/EmailToUserTransformer.php
 +++ b/src/Form/DataTransformer/EmailToUserTransformer.php
 @@ -2,6 +2,7 @@

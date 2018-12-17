@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index e31ddad0..941a70b7 100644
+index e31ddad..941a70b 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -15,41 +15,7 @@ class ArticleAdminController extends AbstractController
@@ -46,7 +46,7 @@ index e31ddad0..941a70b7 100644
          return new Response(sprintf(
              'Hiya! New Article id: #%d slug: %s',
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index 09b28bf3..4938ca0f 100644
+index 09b28bf..4938ca0 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -2,6 +2,7 @@

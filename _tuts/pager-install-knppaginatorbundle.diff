@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index d4e69dfb..ba8d7eef 100644
+index d4e69df..ba8d7ee 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -11,7 +11,7 @@ index d4e69dfb..ba8d7eef 100644
          "nexylan/slack-bundle": "^2.0",
          "php-http/guzzle6-adapter": "^1.1",
 diff --git a/composer.lock b/composer.lock
-index 5726ea0d..0a357dca 100644
+index 5726ea0..0a357dc 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -173,7 +173,7 @@ index 5726ea0d..0a357dca 100644
              "name": "knplabs/knp-time-bundle",
              "version": "1.8.0",
 diff --git a/config/bundles.php b/config/bundles.php
-index c60e848c..80c373b7 100644
+index c60e848..80c373b 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -18,4 +18,5 @@ return [
@@ -183,7 +183,7 @@ index c60e848c..80c373b7 100644
 +    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 9ff0ee13..0752ebe9 100644
+index 9ff0ee1..0752ebe 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -104,9 +104,15 @@

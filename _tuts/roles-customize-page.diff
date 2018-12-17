@@ -1,5 +1,5 @@
 diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
-index ca6ef9e8..3829472f 100644
+index ca6ef9e..3829472 100644
 --- a/src/Controller/AccountController.php
 +++ b/src/Controller/AccountController.php
 @@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +18,7 @@ index ca6ef9e8..3829472f 100644
      }
  }
 diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
-index 22ebd3f9..d096e01e 100644
+index 22ebd3f..d096e01 100644
 --- a/templates/account/index.html.twig
 +++ b/templates/account/index.html.twig
 @@ -1,20 +1,7 @@

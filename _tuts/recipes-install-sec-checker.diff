@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index d08d903d..f5697515 100644
+index d08d903..f569751 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -13,6 +13,7 @@
@@ -21,7 +21,7 @@ index d08d903d..f5697515 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 9d1fa126..2e446aa0 100644
+index 9d1fa12..2e446aa 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -143,7 +143,7 @@ index 9d1fa126..2e446aa0 100644
              "version": "v4.0.14",
 diff --git a/config/packages/dev/security_checker.yaml b/config/packages/dev/security_checker.yaml
 new file mode 100644
-index 00000000..544c0b33
+index 0000000..544c0b3
 --- /dev/null
 +++ b/config/packages/dev/security_checker.yaml
 @@ -0,0 +1,8 @@
@@ -156,7 +156,7 @@ index 00000000..544c0b33
 +        tags:
 +            - { name: console.command }
 diff --git a/symfony.lock b/symfony.lock
-index 212a663b..f517c7e0 100644
+index 212a663..f517c7e 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@

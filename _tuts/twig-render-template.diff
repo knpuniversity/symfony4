@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index dc110b2c..d084b108 100644
+index dc110b2..d084b10 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -3,9 +3,10 @@
@@ -29,7 +29,7 @@ index dc110b2c..d084b108 100644
  }
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
 new file mode 100644
-index 00000000..2fdd5c99
+index 0000000..2fdd5c9
 --- /dev/null
 +++ b/templates/article/show.html.twig
 @@ -0,0 +1,15 @@

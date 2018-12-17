@@ -1,6 +1,6 @@
 diff --git a/tutorial/css/font-awesome.css b/tutorial/css/font-awesome.css
 deleted file mode 100644
-index ee906a81..00000000
+index ee906a8..0000000
 --- a/tutorial/css/font-awesome.css
 +++ /dev/null
 @@ -1,2337 +0,0 @@
@@ -2343,7 +2343,7 @@ index ee906a81..00000000
 -}
 diff --git a/tutorial/css/styles.css b/tutorial/css/styles.css
 deleted file mode 100644
-index fa8a899f..00000000
+index fa8a899..0000000
 --- a/tutorial/css/styles.css
 +++ /dev/null
 @@ -1,238 +0,0 @@
@@ -6761,7 +6761,7 @@ de*jv40|X!y3}<W?od?mU{cQ|D^cBO5od6617EJ&E
 
 diff --git a/tutorial/fonts/fontawesome-webfont.svg b/tutorial/fonts/fontawesome-webfont.svg
 deleted file mode 100644
-index 855c845e..00000000
+index 855c845..0000000
 --- a/tutorial/fonts/fontawesome-webfont.svg
 +++ /dev/null
 @@ -1,2671 +0,0 @@
@@ -42524,7 +42524,7 @@ uOw+WxN3v19%E@!r7VeC{H{F+`Z<z)fg4PnWdytXI!YpII;}8FM`2PT>%(G4a
 
 diff --git a/tutorial/templates/article.html.twig b/tutorial/templates/article.html.twig
 deleted file mode 100644
-index fa55d1d0..00000000
+index fa55d1d..0000000
 --- a/tutorial/templates/article.html.twig
 +++ /dev/null
 @@ -1,90 +0,0 @@
@@ -42620,7 +42620,7 @@ index fa55d1d0..00000000
 -</div>
 diff --git a/tutorial/templates/base.html.twig b/tutorial/templates/base.html.twig
 deleted file mode 100644
-index cf009be4..00000000
+index cf009be..0000000
 --- a/tutorial/templates/base.html.twig
 +++ /dev/null
 @@ -1,66 +0,0 @@
@@ -42692,7 +42692,7 @@ index cf009be4..00000000
 -</html>
 diff --git a/tutorial/templates/homepage.html.twig b/tutorial/templates/homepage.html.twig
 deleted file mode 100644
-index 9c87cb37..00000000
+index 9c87cb3..0000000
 --- a/tutorial/templates/homepage.html.twig
 +++ /dev/null
 @@ -1,80 +0,0 @@

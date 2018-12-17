@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index fdf81e82..0a2418b0 100644
+index fdf81e8..0a2418b 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -54,6 +54,10 @@ class SecurityController extends AbstractController
@@ -14,7 +14,7 @@ index fdf81e82..0a2418b0 100644
              $em = $this->getDoctrine()->getManager();
              $em->persist($user);
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 60364b7d..101c0eb5 100644
+index 60364b7..101c0eb 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -262,10 +262,8 @@ class User implements UserInterface
@@ -31,7 +31,7 @@ index 60364b7d..101c0eb5 100644
      }
  }
 diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
-index 98689183..670b54e9 100644
+index 9868918..670b54e 100644
 --- a/src/Form/UserRegistrationFormType.php
 +++ b/src/Form/UserRegistrationFormType.php
 @@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
