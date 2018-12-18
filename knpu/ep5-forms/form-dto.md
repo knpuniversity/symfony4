@@ -29,6 +29,8 @@ anything. And because our form has three fields - `email`, `plainPassword` and
 `agreeTerms` - I'm going to create three *public* properties:
 `email`, `plainPassword`, `agreeTerms`.
 
+[[[ code('638e4df587') ]]]
+
 Wait, why public? We *never* make public properties! Ok, yes, we *could*
 make these properties private and then add getter and setter methods for them.
 That *is* probably a bit better. But, because these classes are *so* simple and have
@@ -37,6 +39,8 @@ fine with the form component.
 
 Next, in `UserRegistrationFormType`, at the bottom, instead of binding our class
 to `User::class`, bind it to `UserRegistrationFormModel::class`.
+
+[[[ code('0bdc4352b9') ]]]
 
 And... that's it! Now, instead of creating a new `User` object and setting the
 data onto it, it will create a new `UserRegistrationFormModel` object and put the
@@ -47,6 +51,8 @@ In the controller, the *big* difference is that `$form->getData()` will *not* be
 a `User` object anymore - it will be a `$userModel`. I'll update the inline doc
 above this to make that obvious.
 
+[[[ code('50e4b6e008') ]]]
+
 When you use a model class, the downside is that you need to do a bit more work to
 *transfer* the data from our model object into the entity object - or *objects* -
 that actually need it. That's why these model classes are often called
@@ -56,6 +62,8 @@ the form system and our entity classes.
 Add `$user = new User()` and `$user->setEmail($userModel->email)`. For the `password`
 field, it's almost the same, but now the data comes from `$userModel->plainPassword`.
 Do the same thing for `$userModel->agreeTerms`.
+
+[[[ code('9c72a7a9c3') ]]]
 
 The benefit of this approach is that we're using this nice, concrete PHP class,
 instead of referencing specific array keys on the form for unmapped fields.
@@ -89,6 +97,8 @@ Let's start fixing things up. Above the `email` property, paste the two existing
 annotations. I *do* need a use statement for this: I'll cheat - add another
 `@Email`, hit tab - there's the `use` statement - and then delete that extra line.
 
+[[[ code('4f3587f05e') ]]]
+
 At this point, if you *want* to, you can remove these annotations from your `User`
 class. But, because we might use the `User` class on a form somewhere else - like
 an edit profile form - I'll keep them there.
@@ -103,6 +113,8 @@ from the form class. Then copy the `minMessage` string, add `min=5`,
 Finally, above `agreeTerms`, go copy the message from the form, and add the same
 `@Assert\IsTrue()` with `message=` that message.
 
+[[[ code('8210b51fd6') ]]]
+
 Awesome! Let's celebrate by removing these from our form! Woo! Time to try it!
 Find your browser, refresh and... ooook - annotations parse error! It's a Ryan
 mistake! Let's go fix that - ah - what can I say? I love quotes!
@@ -115,6 +127,8 @@ annotation on it: `@UniqueEntity()`. Copy this, go back into `UserRegistrationFo
 and paste this above the class. We need a special `use` statement for this, so
 I'll re-type it, hit tab and... there it is! This annotation happens to live in
 a different namespace than all the others.
+
+[[[ code('aef263d438') ]]]
 
 Let's try this - refresh. Woh! Huge error!
 
