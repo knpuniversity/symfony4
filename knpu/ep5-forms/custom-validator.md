@@ -25,6 +25,8 @@ and `UniqueUserValidator`. You'll find these inside a new `Validator/` directory
 Look at `UniqueUser` first: it's basically a dumb configuration object. *This*
 will be the class we use for our annotation.
 
+[[[ code('251c9f6aa9') ]]]
+
 The actual validation is handled by `UniqueUserValidator`: Symfony will pass it the
 value being validated *and* a `Constraint` object - which will be that `UniqueUser`
 object we just saw. We'll use it to read some options to help us get our job done.
@@ -32,10 +34,12 @@ For example, in the generated code, it reads the `message` property from the
 `$constraint` and sets that as the validation error. That's literally reading this
 public `$message` property from `UniqueUser`.
 
+[[[ code('959d5a11c1') ]]]
+
 ## Configuring the Annotation
 
 Ok: let's bring this generated code to life! Step 1: make sure your annotation
-class - `UniqueUser` - if ready to go. In general, an annotation can either be added
+class - `UniqueUser` - is ready to go. In general, an annotation can either be added
 above a class *or* above a property. Well, you can *also* add annotations above
 methods - that works pretty similar to properties.
 
@@ -47,6 +51,8 @@ create an annotation that can be used above the class. In this situation, I'm go
 to delete `@UniqueEntity` and, instead, add the new annotation above my `$email`
 property: `@UniqueUser`. Hit tab to auto-complete that and get the `use` statement.
 
+[[[ code('4959b65bca') ]]]
+
 Nice! Now, go back to your annotation class, we need to do a bit more work. To
 follow an example, press shift+ shift and open the core `NotBlank` annotation class.
 See that `@Target()` annotation above the class? This is a special annotation...
@@ -55,6 +61,8 @@ that configures, um, the annotation system! `@Target` tells the annotation syste
 our class. This says that it's okay for this annotation to be used above a property,
 above a method or even inside of another annotation... which is a bit more of a
 complex case, but we'll leave it.
+
+[[[ code('1f4d95b89f') ]]]
 
 What if you instead want your annotation to be put above a class? Open the
 `UniqueEntity` class as an example. Yep, you would use the `CLASS` target. The
@@ -70,6 +78,8 @@ be applied to a class.
 Phew! The *last* thing we need to do inside of `UniqueUser` is give it a better
 default `$message`: we'll set it to the same thing that we have above our `User`
 class: `I think you've already registered`. Paste that and... cool!
+
+[[[ code('1e63f2e70b') ]]]
 
 If you need to be able to configure more things on your annotation - just create
 more public properties on `UniqueUser`. Any properties on this class can be set
@@ -100,6 +110,8 @@ I'll hit alt+Enter to create that property and set it. Below, let's say
 will be that property's value.
 
 Next, very simply, `if (!$existingUser)` then `return`. That's it.
+
+[[[ code('971eac360d') ]]]
 
 One note: if this were an edit form where a user could *change* their email, this
 validator would need to make sure that the existing user wasn't actually just *this*
