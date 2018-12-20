@@ -31,8 +31,11 @@ optional. Now run:
 php bin/console make:migration
 ```
 
-and open the `Migrations/` directory to check out that new file. No surprises
-here, so let's go back and run it:
+and open the `Migrations/` directory to check out that new file.
+
+[[[ code('ec8fe8d800') ]]]
+
+No surprises here, so let's go back and run it:
 
 ```terminal
 php bin/console doctrine:migrations:migrate
@@ -45,13 +48,18 @@ set it to a `ChoiceType` to make it a drop-down. Pass the `choices` option set t
 just three choices. `The Solar System` set to `solar_system`, `Near a star` set
 to `star` and `Interstellar Space` set to `interstellar_space`.
 
+[[[ code('624480ff78') ]]]
+
 The `choices` on the `ChoiceType` can look confusing at first: the *key* for each
 item will be what's actually *displayed* in the drop down. And the *value* will
 be what's *set* onto our entity if this option is selected. So, this is the string
 that will ultimately be saved to the database.
 
-Let's also add one more option: `required` set to `false`. Remember: as soon as
-we pass the field type as the second argument, the form field type guessing stops
+Let's also add one more option: `required` set to `false`.
+
+[[[ code('0ad2b473d0') ]]]
+
+Remember: as soon as we pass the field type as the second argument, the form field type guessing stops
 and does nothing. Lazy! It would normally guess that the `required` option *should*
 be false - because this field is not required in the database, but that won't happen.
 So, we set it explicitly.
@@ -65,8 +73,12 @@ kind of a nice reminder that I forgot it. Of course, we don't *really* want to r
 it all the way at the bottom like this. Instead, add
 `{{ form_row(articleForm.location) }}`
 
+[[[ code('ad5a26e45e') ]]]
+
 Oh, and I forgot: we'll want an "empty" choice at the top of the select. In the
 form, add one more option: `placeholder` set to `Choose a location`.
+
+[[[ code('b1e3bac2b7') ]]]
 
 Refresh! So much nicer! And if we submitted the form, it *would* save.
 
@@ -100,8 +112,12 @@ Sweet! Back in `ArticleFormType`, copy the `location` field, paste, and call it
 `choices`... hmm - this is where things get interesting. I'll just add a dummy
 "TODO" option to start.
 
+[[[ code('26bcfc4b86') ]]]
+
 Back in the form template, copy the `location` render line, paste it right below,
 and change it to `specificLocationName`.
+
+[[[ code('b433a61c44') ]]]
 
 When we refresh now... no surprise: it works. Here's our `location` and here's our
 `specificLocationName`. But... this is not how we want this to work. When
