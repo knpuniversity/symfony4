@@ -16,7 +16,7 @@ where we first add the `specificLocationName` field. Oh, and we can remove the
 
 Let's think about how we could re-add this field using events: we basically want
 Symfony to call our callback, the moment the underlying "data" is set onto
-the form - the `Article` object. Use `$this->addEventListener()` and listen on an
+the form - the `Article` object. Use `$builder->addEventListener()` and listen on an
 event called `FormEvents::PRE_SET_DATA`. Two things: first, this time, we're attaching
 the event to the entire *form*, which means our callback will be passed info about
 the entire form. That's *usually* want you want: listening to a single field like
