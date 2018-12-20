@@ -18,7 +18,7 @@ entire `specificLocationName` field. So, this won't be a pure API endpoint that
 returns JSON. We *could* do that, but because the form is already rendering our
 HTML, returning HTML simplifies things a bit.
 
-Above the method add the normal `@Route()` with `/admin/articles/location-select`.
+Above the method add the normal `@Route()` with `/admin/article/location-select`.
 And give it a `name="admin_article_location_select"`.
 
 Inside, the logic is kinda cool: create a new `Article`:
