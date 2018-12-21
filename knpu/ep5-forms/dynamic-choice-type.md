@@ -16,6 +16,8 @@ If we choose "star", it returns some popular stars. And if we choose "Interstell
 it returns `null`, because we actually don't want the drop-down to be displayed at
 *all* in that case.
 
+[[[ code('8e9ed70d20') ]]]
+
 Oh, and I'm using `array_combine()` just because I want the display values and the
 values set back on my entity to be the same. This is equivalent to saying
 `'Mercury' => 'Mercury'`... but saves me some duplication.
@@ -37,9 +39,13 @@ I'll add some inline documentation just to tell my editor that this is an `Artic
 object or `null`. Then, `$location = `, if `$article` is an object, then
 `$article->getLocation()`, otherwise, `null`.
 
+[[[ code('935f3e17f5') ]]]
+
 Down below, copy the entire `specificLocationName` field and remove it. Then *only*
 `if ($location)` is set, add that field. For `choices`, use
 `$this->getLocationNameChoices()` and pass that `$location`.
+
+[[[ code('8f89f50b29') ]]]
 
 Cool! Again, no, if we change the `location` field, it will *not* magically update
 the `specificLocationName` field... not yet, at least. With this code, we're saying:
@@ -48,6 +54,8 @@ when we originally load the form, if there is already a `$location` set on our
 If there is *no* location, let's not load that field at *all*, which means in
 `_form.html.twig`, we need to render this field conditionally:
 `{% if articleForm.specificLocationName is defined %}`, then call `form_row()`.
+
+[[[ code('191402382a') ]]]
 
 Let's try this! Refresh the page. The Solar System is selected and so... sweet!
 There is our list of planets! And we can totally save this. Yep! It saved as Earth.
