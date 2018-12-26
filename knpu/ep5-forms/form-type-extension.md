@@ -72,6 +72,11 @@ The `getExtendedType()` method! Inside, `return TextareaType::class`. And yea,
 we *also* need to fill in this method in Symfony 4.1... it's a bit redundant, which
 is why Symfony 4.2 will be *so* much cooler.
 
+***TIP
+Since Symfony 4.2, the getExtendedType() method is deprecated. 
+Instead, rename the method to getExtendedTypes() (ending with an “s”)
+***
+
 [[[ code('5dbb6758b7') ]]]
 
 ## Filling in the Form Type Extension
