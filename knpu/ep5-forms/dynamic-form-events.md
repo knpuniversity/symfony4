@@ -27,6 +27,8 @@ second argument: Symfony will pass that a `FormEvent` object.
 
 Let's `dd()` the `$event` so we can see what it looks like.
 
+[[[ code('494037c6d2') ]]]
+
 But before we check it out, two important things. First, when you build a form, it's
 actually a big form tree. We've seen this inside of the form profiler. There's
 a `Form` object on top and then each individual field below is itself a full `Form`
@@ -57,6 +59,8 @@ field with the correct choices. It will accept a `FormInterface` - we'll talk
 about that in a minute - and a `?string $location`, the `?` part so this can be
 `null`.
 
+[[[ code('ddae7fdbbf') ]]]
+
 Inside, first check if `$location` is `null`. If it is, take the `$form` object and
 actually  `->remove()` the `specificLocationName` field and `return`. Here's the
 idea: if when I originally rendered the form there was a location set, then, thanks
@@ -67,21 +71,29 @@ We're kind of trying to do the same thing in *here* that our future JavaScript w
 do instantly on the frontend: when we change to "Choose a location" - we will want
 the field to disappear.
 
+[[[ code('30fb74c246') ]]]
+
 Next, get the `$choices` by using `$this->getLocationNameChoices()` and pass that
 `$location`. Then, similar to above, `if (null === $choices)` remove the field
 and return. This is needed for when the user selects "Interstellar Space": that
 doesn't have any specific location name choices, and so we don't want that field
 at all.
 
+[[[ code('5dbb4fd319') ]]]
+
 Finally, we *do* want the `specificLocationName` field, but we want to use our
 new choices. Scroll up and copy the `$builder->add()` section for this field, paste
 down here, and change `$builder` to `$form` - these two objects have an identical
 `add()` method. For `choices` pass `$choices`.
 
+[[[ code('6e62074eb1') ]]]
+
 Nice! We created this new function so that we can call it from inside of our listener
 callback. Start with `$form = $event->getForm()`: that gives us the actual `Form`
 object for this one field. Now call `$this->setupSpecificLocationNameField()` and,
 for the first argument, pass it `$form->getParent()`.
+
+[[[ code('771c9b2491') ]]]
 
 This is tricky. The `$form` variable is the Form object that represents just
 the `location` field. But we want to pass the *top* level `Form` object into
@@ -90,6 +102,8 @@ the function so that the `specificLocationName` field can be added or removed fr
 
 The second argument is the `location` itself, which will be `$form->getData()`,
 or `$event->getData()`.
+
+[[[ code('e6481aeeff') ]]]
 
 Okay guys, I know this is craziness, but we're ready to try it! Refresh to resubmit
 the form. It saves. Now change the Location to "Near a Star". In a few minutes,
