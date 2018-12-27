@@ -23,6 +23,8 @@ the entire form. That's *usually* want you want: listening to a single field lik
 we did before was a bit of a hack to allow us to remove and re-add the field at
 *just* the right moment.
 
+[[[ code('e0025809d7') ]]]
+
 Second, how do we know to use `PRE_SET_DATA`? When exactly is that called? Open
 `ArticleAdminController`: in the `edit()` action, we pass `createForm()` an `Article`
 object. When that happens, Symfony dispatches this `PRE_SET_DATA` event. In general,
@@ -36,10 +38,14 @@ data with `$data = $event->getData()`. *We* know that this must be either an
 `Article` object or possibly `null`. If there is *no* data, just return and do nothing:
 we don't want to add the field at *all* for the new form.
 
+[[[ code('6ed3c9837b') ]]]
+
 If there *is* data, call `$this->setupSpecificLocationNameField()` and pass it
 `$event->getForm()`. This time, `$event->getForm()` will be the top-level form,
 because we added the listener to the top-level builder. For the location, pass
 `$data->getLocation()`.
+
+[[[ code('a81576363f') ]]]
 
 Cool! This code *should* work just like before. But actually, while events are nice,
 if I need to tweak my form based on the underlying data - like we're doing here -
