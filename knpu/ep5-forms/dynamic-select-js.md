@@ -18,13 +18,19 @@ entire `specificLocationName` field. So, this won't be a pure API endpoint that
 returns JSON. We *could* do that, but because the form is already rendering our
 HTML, returning HTML simplifies things a bit.
 
+[[[ code('8d8dbe6b51') ]]]
+
 Above the method add the normal `@Route()` with `/admin/article/location-select`.
 And give it a `name="admin_article_location_select"`.
+
+[[[ code('2a09d44c30') ]]]
 
 Inside, the logic is kinda cool: create a new `Article`:
 `$article = new Article()`. Next, we need to set the new location *onto* that. When
 we make the AJAX request, we're going to add a `?location=` query parameter. Read
 that here with `$request->query->get('location')`.
+
+[[[ code('b831904592') ]]]
 
 But, let's back up: we're *not* creating this `Article` object so we can save it,
 or anything like that. We're going to build a temporary *form* using this Article's
@@ -34,19 +40,29 @@ thanks to our event listeners - specifically our `PRE_SET_DATA` event listener -
 this form will now have the correct `specificNameLocation` options based on whatever
 location was just sent to us.
 
+[[[ code('a7982b49db') ]]]
+
 Or, the field may have been removed! Check for that first:
 `if (!$form->has('specificLocationName')` then just `return new Response()` -
 the one from `HttpFoundation` - with no content. I'll set the status code to 204,
 which is a fancy way of saying that the call was successful, but we have no content
 to send back.
 
+[[[ code('1692d4194a') ]]]
+
 If we *do* have that field, we want to render it! Return and render a new template:
 `article_admin/_specific_location_name.html.twig`. Pass this the form like
 normal `'articleForm' => $form->createView()`. Then, I'll put my cursor on the
 template name and press alt+enter to make PhpStorm create that template for me.
 
+[[[ code('a4e9c93405') ]]]
+
 Inside, just say: `{{ form_row(articleForm.specificLocationName) }}` and that's
-it. Yep, we're literally returning *just* the form row markup for this *one* field.
+it.
+
+[[[ code('d6f4ea0cb6') ]]]
+
+Yep, we're literally returning *just* the form row markup for this *one* field.
 It's a weird way to use a form, but it works!
 
 Let's go try this out! Copy the new URL, open a new tab and go to
@@ -65,10 +81,14 @@ No problem: for the `location` field, pass an `attr` array variable.
 Add a `data-specific-location-url` key set to `path('admin_article_location')`.
 Then, add a class set to `js-article-form-location`.
 
+[[[ code('ab47270a79') ]]]
+
 Next, *surround* the `specificLocationName` field with a new
 `<div class="js-specific-location-target">`. I'm adding this as a new element *around*
 the field instead of *on* the select element so that we can remove the field without
 losing this target element.
+
+[[[ code('f4e44d4a0a') ]]]
 
 ## Adding the JavaScript
 
@@ -76,12 +96,19 @@ Ok, we're ready for the JavaScript! Open up the `public/` directory and create a
 file: `admin_article_form.js`. I'm going to paste in some JavaScript that I prepped:
 you can copy this from the code block on this page.
 
+[[[ code('d23dcbc965') ]]]
+
 Before we talk about the specifics, let's include this with the `script` tag.
 Unfortunately, we can't include JavaScript directly in `_form.html.twig` because
 that's an included template. So, in the edit template, override
 `{% block javascripts %}`, call the `{{ parent() }}` function and then add a
-`<script>` tag with `src="{{ asset('js/admin_article_form.js') }}`. Copy that,
-open the new template, and paste this at the bottom of the `javascripts` block.
+`<script>` tag with `src="{{ asset('js/admin_article_form.js') }}`.
+
+[[[ code('f39e0e9bc8') ]]]
+
+Copy that, open the new template, and paste this at the bottom of the `javascripts` block.
+
+[[[ code('55abfb7da4') ]]]
 
 Before we try this, let's check out the JavaScript so we can see the entire flow.
 I made the code here as simple, and unimpressive as possible - but it gets the
