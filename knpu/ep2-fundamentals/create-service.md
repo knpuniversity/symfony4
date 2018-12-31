@@ -46,7 +46,7 @@ part is that we can *automatically* autowire our new service.
 Find your terminal and run:
 
 ***TIP
-Since Symfony 4.2 this command only shows service aliases. 
+Since *Symfony 4.2* this command only shows service aliases. 
 If you want to see all the services you can pass a `--all` option.
 ***
 
