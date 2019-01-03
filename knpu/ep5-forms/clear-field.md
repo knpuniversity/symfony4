@@ -21,6 +21,8 @@ and that's a *super* not valid key.
 To fix this, add `?? null`. This says, *if* the location key is set, use it,
 else use `null`.
 
+[[[ code('40e4d027c2') ]]]
+
 Let's make sure that worked: on your browser, switch back to the solar system,
 and then back to "Choose a Location". Nice! The field disappears and *no* 500
 error this time.
@@ -63,6 +65,8 @@ But, honestly, they're overly-complex. The solution *I* like lives entirely in
 `Article`. Open that class and find the `setLocation()` method. Inside, if there
 is *no* location, or if the location equals `interstellar_space`,
 call `$this->setSpecificLocationName(null)`.
+
+[[[ code('e692eb4148') ]]]
 
 Simple! Oh, and in a real app, I'd probably add some class constants in `Article`
 to represent these special location keys so we could use something like
