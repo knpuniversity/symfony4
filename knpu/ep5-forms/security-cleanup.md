@@ -31,8 +31,12 @@ Then, inside the method, if *not* `$this->isGranted('ROLE_ADMIN_ARTICLE')` *and*
 `$this->getUser()->getArticles() === 0`, then we should not have access. Wait,
 but the `->getArticles()` method is not auto-completing for me.
 
+[[[ code('82a91b7b17') ]]]
+
 Oh, I know why! Go to the top of this class and change the base class from
 `extends AbstractController` to `extends BaseController`.
+
+[[[ code('76ab130f57') ]]]
 
 Reminder: `BaseController` is a controller that *we* created. It extends
 `AbstractController` but it adds a return type to `getUser()` with *our* `User`
@@ -42,6 +46,8 @@ Back down in our method, we can say
 `$this->getUser()->getArticles()->isEmpty()`, which is a method on Doctrine's
 Collection object. So, if we don't have `ROLE_ADMIN_ARTICLE` *and* we are not the
 author of any articles, `throw $this->createAccessDeniedException()`.
+
+[[[ code('293626e260') ]]]
 
 Done! And just to make sure I didn't completely break things, if I change the
 location to "Near a star"... yea! It *still* loads.
@@ -59,6 +65,8 @@ property. At the end of the `@OneToMany` annotation, add `fetch="EXTRA_LAZY"`. W
 talked about this option in our Doctrine relations tutorial. With this set, if
 we simply try to *count* the articles - which is what `isEmpty()` does - then
 Doctrine will make a quick COUNT query instead of fetching all the data. Nice!
+
+[[[ code('1899bf524a') ]]]
 
 ## Using the @method in BaseController
 
@@ -78,6 +86,8 @@ it's harder for Symfony to unit test code that has final methods.
 Anyways, the method is *intended* to be final, which means that we're not supposed
 to override it. So, delete the method in our class. There's another nice solution
 anyways: above the class add `@method User getUser()`.
+
+[[[ code('7265981498') ]]]
 
 That's it! That does the *exact* same thing: it hints to our IDE that the `getUser()`
 method returns our `User` object. Back in `ArticleAdminController`, if we delete
