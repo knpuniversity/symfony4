@@ -79,7 +79,7 @@ with our app.
 ## Debugging your Current Config
 
 ***TIP
-In a recent change to the recipe, the cache config now lives in its own file config/packages/cache.yaml
+In a recent change to the recipe, the cache config now lives in its own file `config/packages/cache.yaml`
 ***
 
 Open `framework.yaml` and scroll down:
