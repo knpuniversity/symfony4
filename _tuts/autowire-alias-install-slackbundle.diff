@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 573b957..a80ed1d 100644
+index 02e3ec5..d38583a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,8 @@
@@ -12,15 +12,15 @@ index 573b957..a80ed1d 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 32a0fa8..2ad3426 100644
+index 2adb87f..df2ab78 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,60 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "2be834b1cf1bab62b499aac19ad5591e",
-+    "content-hash": "1b0a443c6aec0d82379b2a9f883b7ee7",
+-    "content-hash": "ba7e2c44f7076dd2c0bec4680c9b872f",
++    "content-hash": "f4a569dccefa0ba0b0e72f5d57eb3406",
      "packages": [
 +        {
 +            "name": "clue/stream-filter",
@@ -1305,9 +1305,9 @@ index 32a0fa8..2ad3426 100644
          {
              "name": "psr/log",
              "version": "1.0.2",
-@@ -1763,6 +2834,60 @@
-             ],
-             "time": "2018-08-06T14:22:27+00:00"
+@@ -1711,6 +2782,60 @@
+             "abandoned": "symfony/flex",
+             "time": "2018-04-03T05:04:16+00:00"
          },
 +        {
 +            "name": "symfony/options-resolver",
@@ -1364,9 +1364,9 @@ index 32a0fa8..2ad3426 100644
 +            "time": "2018-01-18T22:19:33+00:00"
 +        },
          {
-             "name": "symfony/polyfill-mbstring",
+             "name": "symfony/polyfill-ctype",
              "version": "v1.9.0",
-@@ -1948,6 +3073,55 @@
+@@ -1954,6 +3079,55 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -1422,7 +1422,7 @@ index 32a0fa8..2ad3426 100644
          {
              "name": "symfony/twig-bridge",
              "version": "v4.0.4",
-@@ -2925,55 +4099,6 @@
+@@ -2830,55 +4004,6 @@
              "description": "A pack for the Symfony web profiler",
              "time": "2017-12-12T01:48:24+00:00"
          },
@@ -1510,7 +1510,7 @@ index 0000000..2aadcd1
 +                - 'httplug.plugin.content_length'
 +                - 'httplug.plugin.redirect'
 diff --git a/symfony.lock b/symfony.lock
-index caa86a6..96cd02b 100644
+index ae7bc11..9d6f928 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
@@ -1518,10 +1518,10 @@ index caa86a6..96cd02b 100644
 +    "clue/stream-filter": {
 +        "version": "v1.4.0"
 +    },
-     "composer/ca-bundle": {
-         "version": "1.1.0"
-     },
-@@ -35,6 +38,15 @@
+     "doctrine/annotations": {
+         "version": "1.0",
+         "recipe": {
+@@ -32,6 +35,15 @@
              "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
          }
      },
@@ -1537,7 +1537,7 @@ index caa86a6..96cd02b 100644
      "knplabs/knp-markdown-bundle": {
          "version": "1.6.0"
      },
-@@ -44,12 +56,60 @@
+@@ -41,12 +53,60 @@
      "monolog/monolog": {
          "version": "1.23.0"
      },
@@ -1598,7 +1598,7 @@ index caa86a6..96cd02b 100644
      "psr/log": {
          "version": "1.0.2"
      },
-@@ -158,6 +218,9 @@
+@@ -146,6 +206,9 @@
              "ref": "371d1a2b69984710646b09a1182ef1d4308c904f"
          }
      },

@@ -1,11 +1,11 @@
 diff --git a/composer.json b/composer.json
-index ad89021..478a5b6 100644
+index ed2c3b4..cc77124 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -15,7 +15,8 @@
      },
      "require-dev": {
-         "sensiolabs/security-checker": "^4.1",
+         "sensiolabs/security-checker": "^5.0",
 -        "symfony/dotenv": "^4.0"
 +        "symfony/dotenv": "^4.0",
 +        "symfony/profiler-pack": "^1.0"
@@ -13,19 +13,19 @@ index ad89021..478a5b6 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 44346a3..112e50d 100644
+index 363e073..cf964be 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "60c9b62802e3ed49434764ac1a61749a",
-+    "content-hash": "6da750506f6fc7b7b194d15f6afa5d26",
+-    "content-hash": "91932e7e92f62e293d44d4855ec3000c",
++    "content-hash": "b2cf3c381eba6cc0a63a721a8a55f8b3",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2288,6 +2288,273 @@
+@@ -2295,6 +2295,273 @@
                  "environment"
              ],
              "time": "2018-07-26T11:22:46+00:00"

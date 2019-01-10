@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index d4ef1bf..3e8e6e4 100644
+index 993eaf4..242a5ff 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -11,15 +11,15 @@ index d4ef1bf..3e8e6e4 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index ced2024..e73e1d1 100644
+index 02918ff..7f146c1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "bf418d30f4dd8034085c84ab25883aee",
-+    "content-hash": "d02d7cbcbf9b6b4d4858b3663a97fb48",
+-    "content-hash": "03f2e5fc0269b7758aa5a2c3f608c2c4",
++    "content-hash": "7e1a9264a32af139e8477fb9fd731a1d",
      "packages": [
          {
              "name": "clue/stream-filter",
@@ -95,7 +95,7 @@ index ced2024..e73e1d1 100644
          {
              "name": "michelf/php-markdown",
              "version": "1.8.0",
-@@ -3914,6 +3979,129 @@
+@@ -3920,6 +3985,129 @@
              "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },
@@ -261,10 +261,10 @@ index 4754e66..ca97330 100644
  services:
      # default configuration for services in *this* file
 diff --git a/symfony.lock b/symfony.lock
-index 3d23159..e4e9a2a 100644
+index d5b6e62..a40c9f1 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -86,6 +86,9 @@
+@@ -83,6 +83,9 @@
      "knplabs/knp-markdown-bundle": {
          "version": "1.6.0"
      },
@@ -274,7 +274,7 @@ index 3d23159..e4e9a2a 100644
      "michelf/php-markdown": {
          "version": "1.8.0"
      },
-@@ -317,6 +320,18 @@
+@@ -305,6 +308,18 @@
      "symfony/stopwatch": {
          "version": "v4.0.3"
      },

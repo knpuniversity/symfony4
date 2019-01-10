@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index bb0ab9b..8ae6587 100644
+index b096f2a..7625daa 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -22,6 +22,7 @@
@@ -7,23 +7,23 @@ index bb0ab9b..8ae6587 100644
          "doctrine/doctrine-fixtures-bundle": "^3.0",
          "easycorp/easy-log-handler": "^1.0.2",
 +        "fzaninotto/faker": "^1.7",
-         "sensiolabs/security-checker": "^4.1",
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
+         "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index be1c4e1..04bf97d 100644
+index e0cd031..4378b13 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "5601e813a0abf908bd1a7118dc71ec9a",
-+    "content-hash": "6a81bfb93a4a225af5748d3614905639",
+-    "content-hash": "89456fbabfdd0b1efa43b4be92cb76d1",
++    "content-hash": "9f7cb7fb73c09a0361f4d1940fc265f2",
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -4781,6 +4781,56 @@
+@@ -4731,6 +4731,56 @@
              ],
              "time": "2018-01-10T08:34:20+00:00"
          },
@@ -81,10 +81,10 @@ index be1c4e1..04bf97d 100644
              "name": "monolog/monolog",
              "version": "1.23.0",
 diff --git a/symfony.lock b/symfony.lock
-index 8a75c98..5e524bf 100644
+index 81bb8bd..e8fc174 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -83,6 +83,9 @@
+@@ -80,6 +80,9 @@
              "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
          }
      },

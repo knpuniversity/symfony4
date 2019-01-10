@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index ba8d7ee..92e1a40 100644
+index c34638d..372271a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -17,6 +17,7 @@
@@ -11,15 +11,15 @@ index ba8d7ee..92e1a40 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 1f9b2f9..909b7f2 100644
+index 2ae1e5d..d2c476c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "52ad1b2a0aab3cfc6c407850d6d56631",
-+    "content-hash": "0a6545e85c014c8c1f37059f675ac7ab",
+-    "content-hash": "f2ab9e360d691fe536f8d3a72c1442e3",
++    "content-hash": "62423ef980d92b545b414d9e8b347b87",
      "packages": [
          {
              "name": "behat/transliterator",
@@ -88,7 +88,7 @@ index 1f9b2f9..909b7f2 100644
          {
              "name": "symfony/lts",
              "version": "dev-master",
-@@ -4423,6 +4481,73 @@
+@@ -4429,6 +4487,73 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-03T11:13:38+00:00"
          },
@@ -162,7 +162,7 @@ index 1f9b2f9..909b7f2 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4500,6 +4625,163 @@
+@@ -4506,6 +4631,163 @@
              ],
              "time": "2018-08-03T07:58:40+00:00"
          },
@@ -367,10 +367,10 @@ index 0000000..fb4c593
 +        # - { path: ^/admin, roles: ROLE_ADMIN }
 +        # - { path: ^/profile, roles: ROLE_USER }
 diff --git a/symfony.lock b/symfony.lock
-index 3084d7f..033ecf6 100644
+index f5bc38f..45e5529 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -299,6 +299,9 @@
+@@ -287,6 +287,9 @@
      "symfony/http-kernel": {
          "version": "v4.0.2"
      },
@@ -380,7 +380,7 @@ index 3084d7f..033ecf6 100644
      "symfony/lts": {
          "version": "4-dev"
      },
-@@ -353,6 +356,9 @@
+@@ -341,6 +344,9 @@
      "symfony/profiler-pack": {
          "version": "v1.0.3"
      },
@@ -390,7 +390,7 @@ index 3084d7f..033ecf6 100644
      "symfony/routing": {
          "version": "4.0",
          "recipe": {
-@@ -362,6 +368,18 @@
+@@ -350,6 +356,18 @@
              "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
          }
      },

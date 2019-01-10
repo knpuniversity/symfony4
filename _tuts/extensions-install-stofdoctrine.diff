@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 8ae6587..ecf348f 100644
+index 7625daa..38a99a4 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -9,6 +9,7 @@
@@ -10,7 +10,7 @@ index 8ae6587..ecf348f 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
          "symfony/flex": "^1.0",
-@@ -73,7 +74,7 @@
+@@ -71,7 +72,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -20,15 +20,15 @@ index 8ae6587..ecf348f 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 04bf97d..900ffbc 100644
+index 4378b13..1abaa5e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,52 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6a81bfb93a4a225af5748d3614905639",
-+    "content-hash": "29b9a750d47e2dfd2415ac96cd3844b7",
+-    "content-hash": "9f7cb7fb73c09a0361f4d1940fc265f2",
++    "content-hash": "b8ebcf8a806692107e15a632ae195a03",
      "packages": [
 +        {
 +            "name": "behat/transliterator",
@@ -255,7 +255,7 @@ index 0000000..c83f3b1
 +stof_doctrine_extensions:
 +    default_locale: en_US
 diff --git a/symfony.lock b/symfony.lock
-index 5e524bf..3f5b6bb 100644
+index e8fc174..36619da 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
@@ -266,7 +266,7 @@ index 5e524bf..3f5b6bb 100644
      "clue/stream-filter": {
          "version": "v1.4.0"
      },
-@@ -86,6 +89,9 @@
+@@ -83,6 +86,9 @@
      "fzaninotto/faker": {
          "version": "v1.7.1"
      },
@@ -276,8 +276,8 @@ index 5e524bf..3f5b6bb 100644
      "guzzlehttp/guzzle": {
          "version": "6.3.0"
      },
-@@ -197,6 +203,15 @@
-             "ref": "576d653444dade07f272c889d52fe4594caa4fc3"
+@@ -185,6 +191,15 @@
+             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
          }
      },
 +    "stof/doctrine-extensions-bundle": {

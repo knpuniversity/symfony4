@@ -1,8 +1,8 @@
 diff --git a/symfony.lock b/symfony.lock
-index 40259c1..6fdcdbf 100644
+index fce2372..92c9d5b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -62,6 +62,9 @@
+@@ -59,6 +59,9 @@
      "nexylan/slack-bundle": {
          "version": "v2.0.0"
      },

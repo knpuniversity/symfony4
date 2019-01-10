@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index f569751..ad89021 100644
+index 6b2b78d..ed2c3b4 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -9,6 +9,7 @@
@@ -11,15 +11,15 @@ index f569751..ad89021 100644
          "symfony/yaml": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 2e446aa..44346a3 100644
+index cb688d4..363e073 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "31f37e6727253e061caa9fd4d3b12ffb",
-+    "content-hash": "60c9b62802e3ed49434764ac1a61749a",
+-    "content-hash": "8b8707c26461af181f593457014cf1cf",
++    "content-hash": "91932e7e92f62e293d44d4855ec3000c",
      "packages": [
          {
              "name": "doctrine/annotations",
@@ -67,7 +67,7 @@ index 2e446aa..44346a3 100644
          },
          {
              "name": "doctrine/lexer",
-@@ -1659,16 +1659,16 @@
+@@ -1665,16 +1665,16 @@
          },
          {
              "name": "symfony/process",
@@ -88,7 +88,7 @@ index 2e446aa..44346a3 100644
                  "shasum": ""
              },
              "require": {
-@@ -1704,7 +1704,7 @@
+@@ -1710,7 +1710,7 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -97,7 +97,7 @@ index 2e446aa..44346a3 100644
          },
          {
              "name": "symfony/routing",
-@@ -1783,18 +1783,181 @@
+@@ -1789,18 +1789,181 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -283,7 +283,7 @@ index 2e446aa..44346a3 100644
                  "shasum": ""
              },
              "require": {
-@@ -1803,7 +1966,7 @@
+@@ -1809,7 +1972,7 @@
                  "symfony/console": "~3.4|~4.0",
                  "symfony/dependency-injection": "~3.4|~4.0",
                  "symfony/http-kernel": "~3.4|~4.0",
@@ -292,7 +292,7 @@ index 2e446aa..44346a3 100644
              },
              "suggest": {
                  "symfony/expression-language": "For using the filter option of the log server.",
-@@ -1839,7 +2002,7 @@
+@@ -1845,7 +2008,7 @@
              ],
              "description": "Symfony WebServerBundle",
              "homepage": "https://symfony.com",
@@ -301,7 +301,7 @@ index 2e446aa..44346a3 100644
          },
          {
              "name": "symfony/yaml",
-@@ -1899,6 +2062,72 @@
+@@ -1905,6 +2068,72 @@
              "description": "Symfony Yaml Component",
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"

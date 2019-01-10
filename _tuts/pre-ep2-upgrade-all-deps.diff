@@ -1,7 +1,38 @@
+diff --git a/composer.json b/composer.json
+index 1372c0e..bd80317 100644
+--- a/composer.json
++++ b/composer.json
+@@ -16,7 +16,6 @@
+     },
+     "require-dev": {
+         "easycorp/easy-log-handler": "^1.0.2",
+-        "sensiolabs/security-checker": "^5.0",
+         "symfony/debug-bundle": "^3.3|^4.0",
+         "symfony/dotenv": "^4.0",
+         "symfony/monolog-bundle": "^3.0",
+@@ -49,8 +48,7 @@
+     "scripts": {
+         "auto-scripts": {
+             "cache:clear": "symfony-cmd",
+-            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
+-            "security-checker security:check": "script"
++            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
+         },
+         "post-install-cmd": [
+             "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 27359f4..7bab056 100644
+index 7535eaf..1c09126 100644
 --- a/composer.lock
 +++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "4d1f923925b8c9bf0d237750491d5344",
++    "content-hash": "6fb7af769a0a1498a051a965be2bff65",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
 @@ -601,16 +601,16 @@
          },
          {
@@ -37,7 +68,7 @@ index 27359f4..7bab056 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/asset.git",
-@@ -1715,16 +1715,16 @@
+@@ -1721,16 +1721,16 @@
          },
          {
              "name": "symfony/process",
@@ -58,7 +89,7 @@ index 27359f4..7bab056 100644
                  "shasum": ""
              },
              "require": {
-@@ -1760,7 +1760,7 @@
+@@ -1766,7 +1766,7 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -67,7 +98,7 @@ index 27359f4..7bab056 100644
          },
          {
              "name": "symfony/routing",
-@@ -1841,16 +1841,16 @@
+@@ -1847,16 +1847,16 @@
          },
          {
              "name": "symfony/twig-bridge",
@@ -88,7 +119,7 @@ index 27359f4..7bab056 100644
                  "shasum": ""
              },
              "require": {
-@@ -1927,20 +1927,20 @@
+@@ -1933,20 +1933,20 @@
              ],
              "description": "Symfony Twig Bridge",
              "homepage": "https://symfony.com",
@@ -114,7 +145,7 @@ index 27359f4..7bab056 100644
                  "shasum": ""
              },
              "require": {
-@@ -2000,11 +2000,11 @@
+@@ -2006,11 +2006,11 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
@@ -128,34 +159,119 @@ index 27359f4..7bab056 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/web-server-bundle.git",
-@@ -2373,16 +2373,16 @@
-         },
+@@ -2193,62 +2193,6 @@
+         }
+     ],
+     "packages-dev": [
+-        {
+-            "name": "composer/ca-bundle",
+-            "version": "1.1.0",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/composer/ca-bundle.git",
+-                "reference": "943b2c4fcad1ef178d16a713c2468bf7e579c288"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/943b2c4fcad1ef178d16a713c2468bf7e579c288",
+-                "reference": "943b2c4fcad1ef178d16a713c2468bf7e579c288",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "ext-openssl": "*",
+-                "ext-pcre": "*",
+-                "php": "^5.3.2 || ^7.0"
+-            },
+-            "require-dev": {
+-                "phpunit/phpunit": "^4.8.35",
+-                "psr/log": "^1.0",
+-                "symfony/process": "^2.5 || ^3.0 || ^4.0"
+-            },
+-            "type": "library",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "1.x-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "Composer\\CaBundle\\": "src"
+-                }
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Jordi Boggiano",
+-                    "email": "j.boggiano@seld.be",
+-                    "homepage": "http://seld.be"
+-                }
+-            ],
+-            "description": "Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.",
+-            "keywords": [
+-                "cabundle",
+-                "cacert",
+-                "certificate",
+-                "ssl",
+-                "tls"
+-            ],
+-            "time": "2017-11-29T09:37:33+00:00"
+-        },
          {
-             "name": "sensiolabs/security-checker",
--            "version": "v4.1.6",
-+            "version": "v4.1.7",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/sensiolabs/security-checker.git",
--                "reference": "387b6a3b723ba35588b33d5f8d14e28ed608bd30"
-+                "reference": "d539ccba2b4dce515de04f16b7ed7ae5b9eeb434"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/387b6a3b723ba35588b33d5f8d14e28ed608bd30",
--                "reference": "387b6a3b723ba35588b33d5f8d14e28ed608bd30",
-+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/d539ccba2b4dce515de04f16b7ed7ae5b9eeb434",
-+                "reference": "d539ccba2b4dce515de04f16b7ed7ae5b9eeb434",
-                 "shasum": ""
-             },
-             "require": {
-@@ -2414,11 +2414,11 @@
-                 }
+             "name": "easycorp/easy-log-handler",
+             "version": "v1.0.4",
+@@ -2377,55 +2321,9 @@
              ],
-             "description": "A security checker for your composer.lock",
--            "time": "2017-10-29T18:48:08+00:00"
-+            "time": "2018-01-11T05:54:03+00:00"
+             "time": "2017-06-19T01:22:40+00:00"
          },
+-        {
+-            "name": "sensiolabs/security-checker",
+-            "version": "v5.0.3",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/sensiolabs/security-checker.git",
+-                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/46be3f58adac13084497961e10eed9a7fb4d44d1",
+-                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "composer/ca-bundle": "^1.0",
+-                "php": ">=5.5.9",
+-                "symfony/console": "~2.7|~3.0|~4.0"
+-            },
+-            "bin": [
+-                "security-checker"
+-            ],
+-            "type": "library",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "5.0-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "SensioLabs\\Security\\": "SensioLabs/Security"
+-                }
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien.potencier@gmail.com"
+-                }
+-            ],
+-            "description": "A security checker for your composer.lock",
+-            "time": "2018-12-19T17:14:59+00:00"
+-        },
          {
              "name": "symfony/debug-bundle",
 -            "version": "v4.0.3",
@@ -163,7 +279,7 @@ index 27359f4..7bab056 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -2540,7 +2540,7 @@
+@@ -2547,7 +2445,7 @@
          },
          {
              "name": "symfony/monolog-bridge",
@@ -172,7 +288,7 @@ index 27359f4..7bab056 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/monolog-bridge.git",
-@@ -2669,16 +2669,16 @@
+@@ -2676,16 +2574,16 @@
          },
          {
              "name": "symfony/phpunit-bridge",
@@ -193,7 +309,7 @@ index 27359f4..7bab056 100644
                  "shasum": ""
              },
              "require": {
-@@ -2731,7 +2731,7 @@
+@@ -2738,7 +2636,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -202,7 +318,7 @@ index 27359f4..7bab056 100644
          },
          {
              "name": "symfony/polyfill-php72",
-@@ -2818,7 +2818,7 @@
+@@ -2825,7 +2723,7 @@
          },
          {
              "name": "symfony/stopwatch",
@@ -211,7 +327,7 @@ index 27359f4..7bab056 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/stopwatch.git",
-@@ -2867,16 +2867,16 @@
+@@ -2874,16 +2772,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -232,7 +348,7 @@ index 27359f4..7bab056 100644
                  "shasum": ""
              },
              "require": {
-@@ -2932,20 +2932,20 @@
+@@ -2939,20 +2837,20 @@
                  "debug",
                  "dump"
              ],
@@ -258,7 +374,7 @@ index 27359f4..7bab056 100644
                  "shasum": ""
              },
              "require": {
-@@ -2998,7 +2998,7 @@
+@@ -3005,7 +2903,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",
@@ -267,17 +383,45 @@ index 27359f4..7bab056 100644
          }
      ],
      "aliases": [],
+diff --git a/config/packages/dev/security_checker.yaml b/config/packages/dev/security_checker.yaml
+deleted file mode 100644
+index 544c0b3..0000000
+--- a/config/packages/dev/security_checker.yaml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-services:
+-    SensioLabs\Security\SecurityChecker:
+-        public: false
+-
+-    SensioLabs\Security\Command\SecurityCheckerCommand:
+-        arguments: ['@SensioLabs\Security\SecurityChecker']
+-        tags:
+-            - { name: console.command }
 diff --git a/symfony.lock b/symfony.lock
-index b1d4735..4ae7717 100644
+index 4ae7717..30c34e2 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -98,9 +98,6 @@
-             "ref": "71d29aaf710fd59cd3abff2b1ade907ed73103c6"
+@@ -1,7 +1,4 @@
+ {
+-    "composer/ca-bundle": {
+-        "version": "1.1.0"
+-    },
+     "doctrine/annotations": {
+         "version": "1.0",
+         "recipe": {
+@@ -59,15 +56,6 @@
+             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
          }
      },
--    "symfony/debug-pack": {
--        "version": "v1.0.4"
+-    "sensiolabs/security-checker": {
+-        "version": "4.0",
+-        "recipe": {
+-            "repo": "github.com/symfony/recipes",
+-            "branch": "master",
+-            "version": "4.0",
+-            "ref": "576d653444dade07f272c889d52fe4594caa4fc3"
+-        }
 -    },
-     "symfony/dependency-injection": {
-         "version": "v4.0.2"
+     "symfony/asset": {
+         "version": "v4.0.3"
      },

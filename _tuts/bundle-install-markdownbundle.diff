@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 4988f28..573b957 100644
+index bd80317..02e3ec5 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -11,15 +11,15 @@ index 4988f28..573b957 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 7bab056..32a0fa8 100644
+index 1c09126..2adb87f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6310a5a36486ccd723b499af355a7d5b",
-+    "content-hash": "2be834b1cf1bab62b499aac19ad5591e",
+-    "content-hash": "6fb7af769a0a1498a051a965be2bff65",
++    "content-hash": "ba7e2c44f7076dd2c0bec4680c9b872f",
      "packages": [
          {
              "name": "doctrine/annotations",
@@ -150,10 +150,10 @@ index b543674..e278c0b 100644
 +    Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 4ae7717..caa86a6 100644
+index 30c34e2..ae7bc11 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -35,6 +35,12 @@
+@@ -32,6 +32,12 @@
              "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
          }
      },

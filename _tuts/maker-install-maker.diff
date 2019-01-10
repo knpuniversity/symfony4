@@ -1,9 +1,9 @@
 diff --git a/composer.json b/composer.json
-index a80ed1d..0a3bbbf 100644
+index d38583a..5a739c7 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -22,6 +22,7 @@
-         "sensiolabs/security-checker": "^4.1",
+@@ -21,6 +21,7 @@
+         "easycorp/easy-log-handler": "^1.0.2",
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
 +        "symfony/maker-bundle": "^1.0",
@@ -11,19 +11,19 @@ index a80ed1d..0a3bbbf 100644
          "symfony/phpunit-bridge": "^3.3|^4.0",
          "symfony/profiler-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 2ad3426..d9e8276 100644
+index df2ab78..ebb52d2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "1b0a443c6aec0d82379b2a9f883b7ee7",
-+    "content-hash": "f6eba8daead9e87802e7a1b3f56dc68f",
+-    "content-hash": "f4a569dccefa0ba0b0e72f5d57eb3406",
++    "content-hash": "474b85162d48f0e9e54e7bee7f8fd27c",
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -3821,6 +3821,63 @@
+@@ -3726,6 +3726,63 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -98,10 +98,10 @@ index 56ef227..de7f774 100644
 +    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 96cd02b..40259c1 100644
+index 9d6f928..fce2372 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -206,6 +206,15 @@
+@@ -194,6 +194,15 @@
      "symfony/lts": {
          "version": "4-dev"
      },

@@ -41,31 +41,31 @@ index 0000000..75d5be8
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index 478a5b6..50d2ada 100644
+index cc77124..994c8ad 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -15,6 +15,7 @@
      },
      "require-dev": {
-         "sensiolabs/security-checker": "^4.1",
+         "sensiolabs/security-checker": "^5.0",
 +        "symfony/debug-pack": "^1.0",
          "symfony/dotenv": "^4.0",
          "symfony/profiler-pack": "^1.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 112e50d..0c8c5fa 100644
+index cf964be..5a6f32f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6da750506f6fc7b7b194d15f6afa5d26",
-+    "content-hash": "796eb949e6956b81b42244d2dde7b7db",
+-    "content-hash": "b2cf3c381eba6cc0a63a721a8a55f8b3",
++    "content-hash": "1f3dd87404ed65db8ece95a1f2f0a5cb",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2187,6 +2187,134 @@
+@@ -2193,6 +2193,134 @@
              ],
              "time": "2017-11-29T09:37:33+00:00"
          },
@@ -199,10 +199,10 @@ index 112e50d..0c8c5fa 100644
 +        },
          {
              "name": "sensiolabs/security-checker",
-             "version": "v4.1.6",
-@@ -2232,6 +2360,102 @@
+             "version": "v5.0.3",
+@@ -2239,6 +2367,102 @@
              "description": "A security checker for your composer.lock",
-             "time": "2017-10-29T18:48:08+00:00"
+             "time": "2018-12-19T17:14:59+00:00"
          },
 +        {
 +            "name": "symfony/debug-bundle",
@@ -303,7 +303,7 @@ index 112e50d..0c8c5fa 100644
          {
              "name": "symfony/dotenv",
              "version": "v4.0.14",
-@@ -2289,6 +2513,201 @@
+@@ -2296,6 +2520,201 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
