@@ -1,6 +1,6 @@
 diff --git a/src/Security/ApiTokenAuthenticator.php b/src/Security/ApiTokenAuthenticator.php
 new file mode 100644
-index 0000000..3b6ea7d
+index 00000000..3b6ea7d6
 --- /dev/null
 +++ b/src/Security/ApiTokenAuthenticator.php
 @@ -0,0 +1,53 @@
