@@ -1,6 +1,6 @@
 diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
 new file mode 100644
-index 0000000..025aa92
+index 00000000..025aa925
 --- /dev/null
 +++ b/src/Security/LoginFormAuthenticator.php
 @@ -0,0 +1,53 @@
