@@ -24,7 +24,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups("main")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Please enter an email")
      * @Assert\Email()
      */
     private $email;
