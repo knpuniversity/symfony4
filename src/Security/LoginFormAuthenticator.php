@@ -12,12 +12,14 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
     public function supports(Request $request)
     {
-        die('Our authenticator is alive!');
+        // do your work when we're POSTing to the login page
+        return $request->attributes->get('_route') === 'app_login'
+            && $request->isMethod('POST');
     }
 
     public function getCredentials(Request $request)
     {
-        // todo
+        dump($request->request->all());die;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
