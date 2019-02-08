@@ -1,5 +1,5 @@
 diff --git a/.env.dist b/.env.dist
-index 01b48ec..16391fa 100644
+index 01b48ec0..16391fab 100644
 --- a/.env.dist
 +++ b/.env.dist
 @@ -17,5 +17,5 @@ APP_SECRET=5ea3114a349591bd131296e00f21c20a
