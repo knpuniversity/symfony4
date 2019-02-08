@@ -15,7 +15,9 @@ class UserRegistrationFormType extends AbstractType
             ->add('email')
             // don't use password: avoid EVER setting that on a
             // field that might be persisted
-            ->add('plainPassword')
+            ->add('plainPassword', null, [
+                'mapped' => false
+            ]);
         ;
     }
 
