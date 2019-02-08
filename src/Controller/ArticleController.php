@@ -52,7 +52,11 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca
 fugiat.
 EOF;
 
-        $articleContent = $markdownHelper->parse($articleContent);
+        $articleContent = $markdownHelper->parse(
+            $articleContent,
+            $cache,
+            $markdown
+        );
 
         return $this->render('article/show.html.twig', [
             'title' => ucwords(str_replace('-', ' ', $slug)),
