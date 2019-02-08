@@ -1,6 +1,6 @@
 diff --git a/tutorial/account.css b/tutorial/account.css
 deleted file mode 100644
-index 5d7500e..0000000
+index 5d7500ef..00000000
 --- a/tutorial/account.css
 +++ /dev/null
 @@ -1,90 +0,0 @@
@@ -97,7 +97,7 @@ index 5d7500e..0000000
 \ No newline at end of file
 diff --git a/tutorial/login.css b/tutorial/login.css
 deleted file mode 100644
-index 8ac8f6f..0000000
+index 8ac8f6fe..00000000
 --- a/tutorial/login.css
 +++ /dev/null
 @@ -1,39 +0,0 @@
