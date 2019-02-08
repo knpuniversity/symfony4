@@ -1,3 +1,3 @@
-index:
-    path: /
-    controller: App\Controller\ArticleController::homepage
+#index:
+#    path: /
+#    controller: App\Controller\ArticleController::homepage
