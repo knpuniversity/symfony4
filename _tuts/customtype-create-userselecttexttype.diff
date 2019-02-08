@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 671720a..d9b56fb 100644
+index 671720a8..d9b56fbb 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -31,15 +31,7 @@ class ArticleFormType extends AbstractType
@@ -21,7 +21,7 @@ index 671720a..d9b56fb 100644
  
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
 new file mode 100644
-index 0000000..63b057b
+index 00000000..63b057be
 --- /dev/null
 +++ b/src/Form/UserSelectTextType.php
 @@ -0,0 +1,14 @@
