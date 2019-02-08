@@ -20,11 +20,44 @@
     "doctrine/common": {
         "version": "v2.8.1"
     },
+    "doctrine/dbal": {
+        "version": "v2.7.1"
+    },
+    "doctrine/doctrine-bundle": {
+        "version": "1.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.6",
+            "ref": "c745b67e4dec2771d4d57a60efd224faf445c929"
+        }
+    },
+    "doctrine/doctrine-cache-bundle": {
+        "version": "1.3.3"
+    },
+    "doctrine/doctrine-migrations-bundle": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "c1431086fec31f17fbcfe6d6d7e92059458facc1"
+        }
+    },
     "doctrine/inflector": {
         "version": "v1.2.0"
     },
+    "doctrine/instantiator": {
+        "version": "1.1.0"
+    },
     "doctrine/lexer": {
         "version": "v1.0.1"
+    },
+    "doctrine/migrations": {
+        "version": "v1.6.2"
+    },
+    "doctrine/orm": {
+        "version": "v2.6.1"
     },
     "easycorp/easy-log-handler": {
         "version": "1.0",
@@ -44,6 +77,9 @@
     "guzzlehttp/psr7": {
         "version": "1.4.2"
     },
+    "jdorn/sql-formatter": {
+        "version": "v1.2.17"
+    },
     "knplabs/knp-markdown-bundle": {
         "version": "1.6.0"
     },
@@ -61,6 +97,12 @@
     },
     "nikic/php-parser": {
         "version": "v4.0.1"
+    },
+    "ocramius/package-versions": {
+        "version": "1.3.0"
+    },
+    "ocramius/proxy-manager": {
+        "version": "2.1.1"
     },
     "php-http/cache-plugin": {
         "version": "v1.5.0"
@@ -158,6 +200,9 @@
     "symfony/dependency-injection": {
         "version": "v4.0.2"
     },
+    "symfony/doctrine-bridge": {
+        "version": "v4.0.8"
+    },
     "symfony/dotenv": {
         "version": "v4.0.2"
     },
@@ -220,6 +265,9 @@
     },
     "symfony/options-resolver": {
         "version": "v4.0.4"
+    },
+    "symfony/orm-pack": {
+        "version": "v1.0.5"
     },
     "symfony/phpunit-bridge": {
         "version": "3.3",
@@ -295,5 +343,11 @@
     },
     "twig/twig": {
         "version": "v2.4.4"
+    },
+    "zendframework/zend-code": {
+        "version": "3.3.0"
+    },
+    "zendframework/zend-eventmanager": {
+        "version": "3.2.0"
     }
 }
