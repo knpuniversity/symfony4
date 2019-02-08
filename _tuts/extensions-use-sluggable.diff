@@ -1,5 +1,5 @@
 diff --git a/config/packages/stof_doctrine_extensions.yaml b/config/packages/stof_doctrine_extensions.yaml
-index c83f3b1..e7ac8f4 100644
+index c83f3b1d..e7ac8f4a 100644
 --- a/config/packages/stof_doctrine_extensions.yaml
 +++ b/config/packages/stof_doctrine_extensions.yaml
 @@ -2,3 +2,6 @@
@@ -10,7 +10,7 @@ index c83f3b1..e7ac8f4 100644
 +        default:
 +            sluggable: true
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index f883d6e..19c6d46 100644
+index f883d6e8..19c6d46a 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -28,7 +28,6 @@ class ArticleFixtures extends BaseFixture
@@ -22,7 +22,7 @@ index f883d6e..19c6d46 100644
  Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
  lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index dd32f52..e59d6b3 100644
+index dd32f52a..e59d6b32 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -3,6 +3,7 @@
