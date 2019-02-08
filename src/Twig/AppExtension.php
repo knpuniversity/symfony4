@@ -11,19 +11,12 @@ class AppExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('filter_name', [$this, 'doSomething'], ['is_safe' => ['html']]),
+            new TwigFilter('cached_markdown', [$this, 'processMarkdown'], ['is_safe' => ['html']]),
         ];
     }
 
-    public function getFunctions(): array
+    public function processMarkdown($value)
     {
-        return [
-            new TwigFunction('function_name', [$this, 'doSomething']),
-        ];
-    }
-
-    public function doSomething($value)
-    {
-        // ...
+        return strtoupper($value);
     }
 }
