@@ -32,6 +32,8 @@ security:
                 secret:   '%kernel.secret%'
                 lifetime: 2592000 # 30 days in seconds
 
+            switch_user: true
+
             # activate different ways to authenticate
 
             # http_basic: true
