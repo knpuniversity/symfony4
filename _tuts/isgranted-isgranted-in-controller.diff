@@ -1,5 +1,5 @@
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index 995f181..ea32a5a 100644
+index 995f181e..ea32a5a0 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -39,5 +39,5 @@ security:
@@ -10,7 +10,7 @@ index 995f181..ea32a5a 100644
 +        # - { path: ^/admin, roles: ROLE_ADMIN }
          # - { path: ^/profile, roles: ROLE_USER }
 diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
-index 8cea2a7..a4ccabb 100644
+index 8cea2a77..a4ccabb6 100644
 --- a/src/Controller/CommentAdminController.php
 +++ b/src/Controller/CommentAdminController.php
 @@ -15,6 +15,8 @@ class CommentAdminController extends Controller
