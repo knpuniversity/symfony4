@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/UserFixture.php b/src/DataFixtures/UserFixture.php
-index a2836e6..a6f0f58 100644
+index a2836e6b..a6f0f584 100644
 --- a/src/DataFixtures/UserFixture.php
 +++ b/src/DataFixtures/UserFixture.php
 @@ -30,6 +30,20 @@ class UserFixture extends BaseFixture
