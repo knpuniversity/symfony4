@@ -1,6 +1,6 @@
 diff --git a/src/Entity/Comment.php b/src/Entity/Comment.php
 new file mode 100644
-index 0000000..b080adb
+index 00000000..b080adb8
 --- /dev/null
 +++ b/src/Entity/Comment.php
 @@ -0,0 +1,57 @@
@@ -63,7 +63,7 @@ index 0000000..b080adb
 +}
 diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
 new file mode 100644
-index 0000000..df33fdd
+index 00000000..df33fdd7
 --- /dev/null
 +++ b/src/Repository/CommentRepository.php
 @@ -0,0 +1,50 @@

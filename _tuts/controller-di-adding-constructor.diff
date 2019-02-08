@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 503e18f..84ab279 100644
+index 503e18f6..84ab279d 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -12,6 +12,11 @@ use Twig\Environment;
