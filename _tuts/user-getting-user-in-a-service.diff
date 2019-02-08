@@ -1,5 +1,5 @@
 diff --git a/src/Service/MarkdownHelper.php b/src/Service/MarkdownHelper.php
-index b48ba90..fb90899 100644
+index b48ba902..fb908991 100644
 --- a/src/Service/MarkdownHelper.php
 +++ b/src/Service/MarkdownHelper.php
 @@ -5,6 +5,7 @@ namespace App\Service;
