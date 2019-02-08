@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 283bb88..33d1f68 100644
+index 283bb885..33d1f68e 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -17,6 +17,7 @@ class ArticleFormType extends AbstractType
