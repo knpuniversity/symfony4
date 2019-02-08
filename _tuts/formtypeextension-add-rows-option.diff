@@ -1,5 +1,5 @@
 diff --git a/src/Form/TypeExtension/TextareaSizeExtension.php b/src/Form/TypeExtension/TextareaSizeExtension.php
-index 9c62604..ac35e81 100644
+index 9c626044..ac35e81a 100644
 --- a/src/Form/TypeExtension/TextareaSizeExtension.php
 +++ b/src/Form/TypeExtension/TextareaSizeExtension.php
 @@ -17,7 +17,7 @@ class TextareaSizeExtension implements FormTypeExtensionInterface
