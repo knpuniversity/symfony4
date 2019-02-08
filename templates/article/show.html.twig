@@ -1,13 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'content_base.html.twig' %}
 
 {% block title %}Read: {{ article.title }}{% endblock %}
 
-{% block body %}
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="show-article-container p-3 mt-4">
+{% block content_body %}
                 <div class="row">
                     <div class="col-sm-12">
                         <img class="show-article-img" src="{{ asset(article.imagePath) }}">
@@ -75,10 +70,6 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 {% endblock %}
 
