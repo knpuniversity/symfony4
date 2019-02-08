@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 5c5a591..ef7e083 100644
+index 5c5a591a..ef7e0830 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -51,7 +51,6 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca
