@@ -1,5 +1,5 @@
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index 6da73fc..f1e9a7f 100644
+index 6da73fc5..f1e9a7f1 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -17,6 +17,9 @@ security:
@@ -13,7 +13,7 @@ index 6da73fc..f1e9a7f 100644
  
              # http_basic: true
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 9b9f6ff..15b0d29 100644
+index 9b9f6ff1..15b0d296 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -24,4 +24,12 @@ class SecurityController extends AbstractController
