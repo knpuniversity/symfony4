@@ -3,10 +3,17 @@
         label: 'Article title'
     }) }}
     {{ form_row(articleForm.author) }}
-    {{ form_row(articleForm.location) }}
-    {%  if articleForm.specificLocationName is defined %}
-        {{ form_row(articleForm.specificLocationName) }}
-    {% endif %}
+    {{ form_row(articleForm.location, {
+        attr: {
+            'data-specific-location-url': path('admin_article_location_select'),
+            'class': 'js-article-form-location'
+        }
+    }) }}
+    <div class="js-specific-location-target">
+        {%  if articleForm.specificLocationName is defined %}
+            {{ form_row(articleForm.specificLocationName) }}
+        {% endif %}
+    </div>
     {{ form_row(articleForm.content) }}
     {% if articleForm.publishedAt is defined %}
         {{ form_row(articleForm.publishedAt) }}
