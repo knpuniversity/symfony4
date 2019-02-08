@@ -42,6 +42,6 @@ security:
         # but, definitely allow /login to be accessible anonymously
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # if you wanted to force EVERY URL to be protected
-        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
