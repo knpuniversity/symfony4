@@ -10,6 +10,10 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_ADMIN_COMMENT, ROLE_ADMIN_ARTICLE]
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
