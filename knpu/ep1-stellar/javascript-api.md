@@ -110,7 +110,7 @@ That's it! At the end, add `.done()` with a callback that has a `data` argument:
 [[[ code('7a1700529c') ]]]
 
 The `data` will be whatever our API endpoint sends back. That means that we can move
-the article count HTML line into this, and set it to `data.heart`:
+the article count HTML line into this, and set it to `data.hearts`:
 
 [[[ code('aba3f5c2bb') ]]]
 
