@@ -1,5 +1,5 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index 30a808f..516fe63 100644
+index 30a808fe..516fe63b 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -16,6 +16,7 @@ services:
@@ -11,7 +11,7 @@ index 30a808f..516fe63 100644
      # makes classes in src/ available to be used as services
      # this creates a service per class whose id is the fully-qualified class name
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 2241da8..a63520a 100644
+index 2241da8f..a63520a6 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -18,7 +18,7 @@ class ArticleController extends AbstractController
