@@ -1,5 +1,5 @@
 diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
-index c29342f..ff8d9a8 100644
+index c29342f1..ff8d9a88 100644
 --- a/src/Twig/AppExtension.php
 +++ b/src/Twig/AppExtension.php
 @@ -2,12 +2,20 @@
