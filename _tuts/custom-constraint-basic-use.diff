@@ -1,5 +1,5 @@
 diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
-index e0fa870..a882c90 100644
+index e0fa870e..a882c901 100644
 --- a/src/Form/Model/UserRegistrationFormModel.php
 +++ b/src/Form/Model/UserRegistrationFormModel.php
 @@ -2,6 +2,7 @@
@@ -19,7 +19,7 @@ index e0fa870..a882c90 100644
      public $email;
  
 diff --git a/src/Validator/UniqueUser.php b/src/Validator/UniqueUser.php
-index 74645ae..be774ce 100644
+index 74645aeb..be774cee 100644
 --- a/src/Validator/UniqueUser.php
 +++ b/src/Validator/UniqueUser.php
 @@ -6,6 +6,7 @@ use Symfony\Component\Validator\Constraint;
@@ -38,7 +38,7 @@ index 74645ae..be774ce 100644
 +    public $message = 'I think you\'re already registered!';
  }
 diff --git a/src/Validator/UniqueUserValidator.php b/src/Validator/UniqueUserValidator.php
-index 62b713a..31e2bfb 100644
+index 62b713a3..31e2bfbd 100644
 --- a/src/Validator/UniqueUserValidator.php
 +++ b/src/Validator/UniqueUserValidator.php
 @@ -9,10 +9,9 @@ class UniqueUserValidator extends ConstraintValidator
