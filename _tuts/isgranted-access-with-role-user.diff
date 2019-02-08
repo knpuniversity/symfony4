@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
-index a4ccabb..06c858f 100644
+index a4ccabb6..06c858fb 100644
 --- a/src/Controller/CommentAdminController.php
 +++ b/src/Controller/CommentAdminController.php
 @@ -15,7 +15,7 @@ class CommentAdminController extends Controller
