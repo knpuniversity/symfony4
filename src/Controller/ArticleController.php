@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use App\Repository\CommentRepository;
 use App\Service\MarkdownHelper;
 use App\Service\SlackClient;
 use Doctrine\ORM\EntityManagerInterface;
@@ -41,11 +42,14 @@ class ArticleController extends AbstractController
     /**
      * @Route("/news/{slug}", name="article_show")
      */
-    public function show(Article $article, SlackClient $slack)
+    public function show(Article $article, SlackClient $slack, CommentRepository $commentRepository)
     {
         if ($article->getSlug() === 'khaaaaaan') {
             $slack->sendMessage('Kahn', 'Ah, Kirk, my old friend...');
         }
+
+        $comments = $commentRepository->findBy(['article' => $article]);
+        dump($comments);die;
 
         $comments = [
             'I ate a normal rock once. It did NOT taste like bacon!',
