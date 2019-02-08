@@ -1,6 +1,6 @@
 diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
 new file mode 100644
-index 0000000..3049b49
+index 00000000..3049b492
 --- /dev/null
 +++ b/src/Twig/AppExtension.php
 @@ -0,0 +1,29 @@
