@@ -71,6 +71,12 @@ Somebody has to go polish the stars.
 
 Shel Silverstein
 
+## A Space Riddle!
+
+> I'm not white and fluffy, but pieces of me *do* orbit the sun. What am I?
+
+**Answer**: The Oort Cloud!
+
 ## Have Ideas, Feedback or an Issue?
 
 If you have suggestions or questions, please feel free to
