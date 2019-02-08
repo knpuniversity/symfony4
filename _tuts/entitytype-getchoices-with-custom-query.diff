@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 8b8b801..628c6ff 100644
+index 8b8b8013..628c6ffd 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -4,6 +4,8 @@ namespace App\Form;
@@ -36,7 +36,7 @@ index 8b8b801..628c6ff 100644
          ;
      }
 diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
-index e082682..fe3ab5e 100644
+index e0826829..fe3ab5ee 100644
 --- a/src/Repository/UserRepository.php
 +++ b/src/Repository/UserRepository.php
 @@ -19,6 +19,18 @@ class UserRepository extends ServiceEntityRepository
