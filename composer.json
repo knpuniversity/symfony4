@@ -9,6 +9,7 @@
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
+        "symfony/twig-bundle": "^4.0",
         "symfony/web-server-bundle": "^4.0",
         "symfony/yaml": "^4.0"
     },
