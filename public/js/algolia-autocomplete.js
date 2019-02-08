@@ -6,7 +6,7 @@ $(document).ready(function() {
             {
                 source: function(query, cb) {
                     $.ajax({
-                        url: autocompleteUrl
+                        url: autocompleteUrl+'?query='+query
                     }).then(function(data) {
                         cb(data.users);
                     });
