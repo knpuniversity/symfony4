@@ -18,6 +18,7 @@
         "symfony/lts": "^4@dev",
         "symfony/orm-pack": "^1.0",
         "symfony/security-bundle": "^4.0",
+        "symfony/serializer-pack": "^1.0",
         "symfony/twig-bundle": "^4.0",
         "symfony/web-server-bundle": "^4.0",
         "symfony/yaml": "^4.0",
