@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/UserFixture.php b/src/DataFixtures/UserFixture.php
-index 38bc14c..c9e4cee 100644
+index 38bc14c4..c9e4cee2 100644
 --- a/src/DataFixtures/UserFixture.php
 +++ b/src/DataFixtures/UserFixture.php
 @@ -2,6 +2,7 @@
@@ -32,7 +32,7 @@ index 38bc14c..c9e4cee 100644
          });
  
 diff --git a/src/Entity/ApiToken.php b/src/Entity/ApiToken.php
-index b468c8b..8f525ad 100644
+index b468c8bf..8f525ad2 100644
 --- a/src/Entity/ApiToken.php
 +++ b/src/Entity/ApiToken.php
 @@ -32,6 +32,13 @@ class ApiToken
