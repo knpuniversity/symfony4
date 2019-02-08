@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
-index cf8ab39..75e01dc 100644
+index cf8ab397..75e01dc6 100644
 --- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/CommentFixture.php
 @@ -2,6 +2,7 @@
