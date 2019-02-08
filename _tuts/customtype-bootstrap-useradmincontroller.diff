@@ -1,6 +1,6 @@
 diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
 new file mode 100644
-index 0000000..76458e3
+index 00000000..76458e3b
 --- /dev/null
 +++ b/src/Controller/AdminUtilityController.php
 @@ -0,0 +1,10 @@
