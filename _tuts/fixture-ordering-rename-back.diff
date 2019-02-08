@@ -2,7 +2,7 @@ diff --git a/src/DataFixtures/A0CommentFixture.php b/src/DataFixtures/CommentFix
 similarity index 91%
 rename from src/DataFixtures/A0CommentFixture.php
 rename to src/DataFixtures/CommentFixture.php
-index 1296fb7..13d15ef 100644
+index 1296fb76..13d15ef5 100644
 --- a/src/DataFixtures/A0CommentFixture.php
 +++ b/src/DataFixtures/CommentFixture.php
 @@ -7,7 +7,7 @@ use App\Entity\Comment;
