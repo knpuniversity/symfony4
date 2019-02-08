@@ -7,11 +7,28 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class ArticleFixtures extends BaseFixture
 {
+    private static $articleTitles = [
+        'Why Asteroids Taste Like Bacon',
+        'Life on Planet Mercury: Tan, Relaxing and Fabulous',
+        'Light Speed Travel: Fountain of Youth or Fallacy',
+    ];
+
+    private static $articleImages = [
+        'asteroid.jpeg',
+        'mercury.jpeg',
+        'lightspeed.png',
+    ];
+
+    private static $articleAuthors = [
+        'Mike Ferengi',
+        'Amy Oort',
+    ];
+
     public function loadData(ObjectManager $manager)
     {
         $this->createMany(Article::class, 10, function(Article $article, $count) {
-            $article->setTitle('Why Asteroids Taste Like Bacon')
-                ->setSlug('why-asteroids-taste-like-bacon-'.$count)
+            $article->setTitle($this->faker->randomElement(self::$articleTitles))
+                ->setSlug($this->faker->slug)
                 ->setContent(<<<EOF
 Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
 lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
@@ -37,9 +54,9 @@ EOF
                 $article->setPublishedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
             }
 
-            $article->setAuthor('Mike Ferengi')
+            $article->setAuthor($this->faker->randomElement(self::$articleAuthors))
                 ->setHeartCount($this->faker->numberBetween(5, 100))
-                ->setImageFilename('asteroid.jpeg')
+                ->setImageFilename($this->faker->randomElement(self::$articleImages))
             ;
         });
 
