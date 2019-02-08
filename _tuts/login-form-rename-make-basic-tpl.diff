@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 9cf3926..75ef6a0 100644
+index 9cf39262..75ef6a0f 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +21,7 @@ index 9cf3926..75ef6a0 100644
  }
 diff --git a/templates/security/index.html.twig b/templates/security/index.html.twig
 deleted file mode 100644
-index 7e25c60..0000000
+index 7e25c609..00000000
 --- a/templates/security/index.html.twig
 +++ /dev/null
 @@ -1,20 +0,0 @@
@@ -47,7 +47,7 @@ index 7e25c60..0000000
 -{% endblock %}
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
 new file mode 100644
-index 0000000..ed52647
+index 00000000..ed526475
 --- /dev/null
 +++ b/templates/security/login.html.twig
 @@ -0,0 +1,7 @@
