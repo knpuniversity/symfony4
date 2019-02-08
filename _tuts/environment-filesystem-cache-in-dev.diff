@@ -1,6 +1,6 @@
 diff --git a/config/packages/dev/framework.yaml b/config/packages/dev/framework.yaml
 new file mode 100644
-index 0000000..90963ea
+index 00000000..90963ea0
 --- /dev/null
 +++ b/config/packages/dev/framework.yaml
 @@ -0,0 +1,3 @@
@@ -8,7 +8,7 @@ index 0000000..90963ea
 +    cache:
 +        app: cache.adapter.filesystem
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index ef7e083..5c5a591 100644
+index ef7e0830..5c5a591a 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -51,6 +51,7 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca

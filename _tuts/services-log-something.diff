@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 4b6f99e..7b27bfd 100644
+index 4b6f99e5..7b27bfd2 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -2,6 +2,7 @@
