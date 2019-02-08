@@ -1,5 +1,5 @@
 diff --git a/src/Security/ApiTokenAuthenticator.php b/src/Security/ApiTokenAuthenticator.php
-index aecacc4..e872fed 100644
+index aecacc4a..e872fed7 100644
 --- a/src/Security/ApiTokenAuthenticator.php
 +++ b/src/Security/ApiTokenAuthenticator.php
 @@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
