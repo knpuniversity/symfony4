@@ -26,6 +26,9 @@ security:
                     - App\Security\LoginFormAuthenticator
                     - App\Security\ApiTokenAuthenticator
 
+                # redirect anonymous users to the login page
+                entry_point: App\Security\LoginFormAuthenticator
+
             logout:
                 path: app_logout
 
