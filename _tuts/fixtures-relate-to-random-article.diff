@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
-index 75e01dc..633d98c 100644
+index 75e01dc6..633d98c6 100644
 --- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/CommentFixture.php
 @@ -17,7 +17,7 @@ class CommentFixture extends BaseFixture
