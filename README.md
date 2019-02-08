@@ -1,7 +1,7 @@
-# Stellar Development with Symfony 4
+# File Uploads in Symfony
 
 Well hi there! This repository holds the code and script
-for the [Stellar Development with Symfony 4](https://knpuniversity.com/screencast/symfony4) course on KnpUniversity.
+for the [File Uploads in Symfony](https://symfonycasts.com/screencast/symfony-uploads) course on SymfonyCasts.
 
 ## Setup
 
@@ -88,4 +88,4 @@ itself. We're watching both :).
 And as always, thanks so much for your support and letting
 us do what we love!
 
-<3 Your friends at KnpUniversity
+<3 Your friends at SymfonyCasts
