@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 75b80cc..00862f4 100644
+index 75b80cc9..00862f47 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -2,6 +2,8 @@
@@ -65,7 +65,7 @@ index 75b80cc..00862f4 100644
 +    }
  }
 diff --git a/src/Entity/Comment.php b/src/Entity/Comment.php
-index cc6b85d..bdd88b2 100644
+index cc6b85de..bdd88b25 100644
 --- a/src/Entity/Comment.php
 +++ b/src/Entity/Comment.php
 @@ -29,6 +29,12 @@ class Comment
@@ -100,7 +100,7 @@ index cc6b85d..bdd88b2 100644
  }
 diff --git a/src/Migrations/Version20180426185536.php b/src/Migrations/Version20180426185536.php
 new file mode 100644
-index 0000000..d6e0efb
+index 00000000..d6e0efb6
 --- /dev/null
 +++ b/src/Migrations/Version20180426185536.php
 @@ -0,0 +1,32 @@

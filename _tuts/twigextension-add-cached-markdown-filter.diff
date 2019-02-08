@@ -1,5 +1,5 @@
 diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
-index 3049b49..c29342f 100644
+index 3049b492..c29342f1 100644
 --- a/src/Twig/AppExtension.php
 +++ b/src/Twig/AppExtension.php
 @@ -11,19 +11,12 @@ class AppExtension extends AbstractExtension
@@ -26,7 +26,7 @@ index 3049b49..c29342f 100644
      }
  }
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 6666331..56c358c 100644
+index 66663311..56c358cb 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -26,7 +26,7 @@
