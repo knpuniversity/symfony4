@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Article;
 use App\Entity\Comment;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -16,6 +17,7 @@ class CommentFixture extends BaseFixture
 
             $comment->setAuthorName($this->faker->name);
             $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
+            $comment->setArticle($this->getReference(Article::class.'_0'));
         });
 
         $manager->flush();
