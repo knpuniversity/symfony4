@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f3dd87404ed65db8ece95a1f2f0a5cb",
+    "content-hash": "431eea624912e17d378671fd909e4585",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2431,37 +2431,6 @@
             "description": "Symfony DebugBundle",
             "homepage": "https://symfony.com",
             "time": "2018-01-03T07:38:00+00:00"
-        },
-        {
-            "name": "symfony/debug-pack",
-            "version": "v1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/debug-pack.git",
-                "reference": "2da9b0ea7a733fc29ec3e72139751fd8d2582887"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug-pack/zipball/2da9b0ea7a733fc29ec3e72139751fd8d2582887",
-                "reference": "2da9b0ea7a733fc29ec3e72139751fd8d2582887",
-                "shasum": ""
-            },
-            "require": {
-                "easycorp/easy-log-handler": "^1.0.2",
-                "php": "^7.0",
-                "symfony/debug-bundle": "^3.3|^4.0",
-                "symfony/monolog-bundle": "^3.0",
-                "symfony/phpunit-bridge": "^3.3|^4.0",
-                "symfony/profiler-pack": "^1.0",
-                "symfony/var-dumper": "^3.3|^4.0"
-            },
-            "type": "symfony-pack",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A debug pack for Symfony projects",
-            "time": "2017-12-12T01:47:04+00:00"
         },
         {
             "name": "symfony/dotenv",
