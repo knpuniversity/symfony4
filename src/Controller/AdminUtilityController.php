@@ -12,6 +12,7 @@ class AdminUtilityController extends AbstractController
 {
     /**
      * @Route("/admin/utility/users", methods="GET")
+     * @IsGranted("ROLE_ADMIN_ARTICLE")
      */
     public function getUsersApi(UserRepository $userRepository)
     {
