@@ -33,12 +33,12 @@ EOF
             );
 
             // publish most articles
-            if (rand(1, 10) > 2) {
-                $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
+            if ($this->faker->boolean(70)) {
+                $article->setPublishedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
             }
 
             $article->setAuthor('Mike Ferengi')
-                ->setHeartCount(rand(5, 100))
+                ->setHeartCount($this->faker->numberBetween(5, 100))
                 ->setImageFilename('asteroid.jpeg')
             ;
         });
