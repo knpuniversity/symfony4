@@ -3,12 +3,11 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class ArticleFixtures extends Fixture
+class ArticleFixtures extends BaseFixture
 {
-    public function load(ObjectManager $manager)
+    public function loadData(ObjectManager $manager)
     {
         $article = new Article();
         $article->setTitle('Why Asteroids Taste Like Bacon')
