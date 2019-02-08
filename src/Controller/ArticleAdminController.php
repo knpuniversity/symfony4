@@ -46,7 +46,24 @@ class ArticleAdminController extends AbstractController
      */
     public function edit(Article $article)
     {
-        dd($article);
+        $form = $this->createForm(ArticleFormType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Article $article */
+            $article = $form->getData();
+
+            $em->persist($article);
+            $em->flush();
+
+            $this->addFlash('success', 'Article Created! Knowledge is power!');
+
+            return $this->redirectToRoute('admin_article_list');
+        }
+
+        return $this->render('article_admin/new.html.twig', [
+            'articleForm' => $form->createView()
+        ]);
     }
 
     /**
