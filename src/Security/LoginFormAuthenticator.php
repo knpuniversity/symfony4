@@ -40,12 +40,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        dd($user);
+        // only needed if we need to check a password - we'll do that later!
+        return true;
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        // todo
+        dd('success!');
     }
 
     protected function getLoginUrl()
