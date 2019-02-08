@@ -1,5 +1,5 @@
 diff --git a/src/Service/SlackClient.php b/src/Service/SlackClient.php
-index f32e306..fbb9bae 100644
+index f32e306b..fbb9bae4 100644
 --- a/src/Service/SlackClient.php
 +++ b/src/Service/SlackClient.php
 @@ -19,6 +19,9 @@ class SlackClient
