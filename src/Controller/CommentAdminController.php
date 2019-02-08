@@ -9,11 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * @IsGranted("ROLE_ADMIN")
+ */
 class CommentAdminController extends Controller
 {
     /**
      * @Route("/admin/comment", name="comment_admin")
-     * @IsGranted("ROLE_ADMIN")
      */
     public function index(CommentRepository $repository, Request $request, PaginatorInterface $paginator)
     {
