@@ -1,0 +1,90 @@
+.square, .btn {
+    border-radius: 0px!important;
+}
+
+/* -- color classes -- */
+.spacepurplebg {
+    background-color: #5b4f69;
+}
+
+.white {
+    color: #fff!important;
+}
+
+div.user-menu-container {
+  z-index: 10;
+  background-color: #fff;
+  margin-top: 20px;
+  background-clip: padding-box;
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+div.user-menu-container h4 {
+    font-weight: 300;
+    color: #8b8b8b;
+}
+
+div.user-menu-container a, div.user-menu-container .btn  {
+    transition: 1s ease;
+}
+
+div.user-menu-container .thumbnail {
+   width:100%;
+   min-height:200px;
+   border: 0px!important;
+   padding: 0px;
+   border-radius: 0;
+   border: 0px!important;
+}
+
+/* -- The btn stylings for the btn icons -- */
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+
+/* -- Custom classes for the snippet, won't effect any existing bootstrap classes of your site, but can be reused. -- */
+
+.user-pad {
+    padding: 20px 25px;
+}
+
+.no-pad {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.user-details {
+    background: #eee;
+    min-height: 333px;
+}
+
+.user-image {
+  max-height:200px;
+  overflow:hidden;
+}
+
+.overview h3 {
+    font-weight: 300;
+    margin-top: 15px;
+    margin: 10px 0 0 0;
+}
+
+.overview h4 {
+    font-weight: bold!important;
+    font-size: 40px;
+    margin-top: 0;
+}
+
+.square, .btn {
+    border-radius: 0px!important;
+}
+
+/* -- media query for user profile image -- */
+@media (max-width: 767px) {
+    .user-image {
+        max-height: 400px;
+    }
+}
