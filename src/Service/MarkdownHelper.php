@@ -7,12 +7,21 @@ use Symfony\Component\Cache\Adapter\AdapterInterface;
 
 class MarkdownHelper
 {
-    public function parse(string $source, AdapterInterface $cache, MarkdownInterface $markdown): string
+    private $cache;
+    private $markdown;
+
+    public function __construct(AdapterInterface $cache, MarkdownInterface $markdown)
     {
-        $item = $cache->getItem('markdown_'.md5($source));
+        $this->cache = $cache;
+        $this->markdown = $markdown;
+    }
+
+    public function parse(string $source): string
+    {
+        $item = $this->cache->getItem('markdown_'.md5($source));
         if (!$item->isHit()) {
-            $item->set($markdown->transform($source));
-            $cache->save($item);
+            $item->set($this->markdown->transform($source));
+            $this->cache->save($item);
         }
 
         return $item->get();
