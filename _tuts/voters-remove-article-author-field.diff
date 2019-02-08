@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 7ae4db6..bb25b93 100644
+index 7ae4db6d..bb25b938 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -45,11 +45,6 @@ class Article
@@ -35,7 +35,7 @@ index 7ae4db6..bb25b93 100644
          return $this->heartCount;
 diff --git a/src/Migrations/Version20180901184240.php b/src/Migrations/Version20180901184240.php
 new file mode 100644
-index 0000000..1737d17
+index 00000000..1737d174
 --- /dev/null
 +++ b/src/Migrations/Version20180901184240.php
 @@ -0,0 +1,28 @@
