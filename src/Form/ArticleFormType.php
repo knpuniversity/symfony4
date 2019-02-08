@@ -24,6 +24,7 @@ class ArticleFormType extends AbstractType
             ])
             ->add('author', EntityType::class, [
                 'class' => User::class,
+                'choice_label' => 'email',
             ])
         ;
     }
