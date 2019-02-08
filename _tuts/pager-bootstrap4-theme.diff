@@ -1,6 +1,6 @@
 diff --git a/config/packages/knp_paginator.yaml b/config/packages/knp_paginator.yaml
 new file mode 100644
-index 0000000..c777851
+index 00000000..c7778510
 --- /dev/null
 +++ b/config/packages/knp_paginator.yaml
 @@ -0,0 +1,3 @@
