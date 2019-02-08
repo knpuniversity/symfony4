@@ -87,6 +87,12 @@ Just type `git init` once to initialize your repository.
 
 Back in the terminal, I'll create a new terminal tab. Symfony *already* inititalized
 a new git repository for us *and* gave us a perfect `.gitignore` file. Thanks Symfony!
+
+***TIP
+If you're using PhpStorm, you'll want to ignore the `.idea` directory from git. I already have it
+ignored in my global .gitignore file: https://help.github.com/articles/ignoring-files/
+***
+
 That means we can create our *first* commit just by saying:
 
 ```terminal
