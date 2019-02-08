@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
-index de6290c..8cea2a7 100644
+index de6290cc..8cea2a77 100644
 --- a/src/Controller/CommentAdminController.php
 +++ b/src/Controller/CommentAdminController.php
 @@ -3,6 +3,7 @@
@@ -35,7 +35,7 @@ index de6290c..8cea2a7 100644
      }
  }
 diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
-index 7584981..cea2a74 100644
+index 75849817..cea2a74a 100644
 --- a/src/Repository/CommentRepository.php
 +++ b/src/Repository/CommentRepository.php
 @@ -5,6 +5,7 @@ namespace App\Repository;
@@ -67,7 +67,7 @@ index 7584981..cea2a74 100644
      }
  
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 83d56cc..8b13f9e 100644
+index 83d56ccf..8b13f9eb 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -7,7 +7,7 @@

@@ -1,6 +1,6 @@
 diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
 new file mode 100644
-index 0000000..0554297
+index 00000000..05542974
 --- /dev/null
 +++ b/src/Form/DataTransformer/EmailToUserTransformer.php
 @@ -0,0 +1,19 @@
@@ -25,7 +25,7 @@ index 0000000..0554297
 +}
 \ No newline at end of file
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
-index 63b057b..5be4971 100644
+index 63b057be..5be49719 100644
 --- a/src/Form/UserSelectTextType.php
 +++ b/src/Form/UserSelectTextType.php
 @@ -2,11 +2,18 @@
