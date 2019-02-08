@@ -50,6 +50,12 @@ class SecurityController extends AbstractController
                 $user,
                 $request->request->get('password')
             ));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('app_account');
         }
 
         return $this->render('security/register.html.twig');
