@@ -1,5 +1,5 @@
 diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
-index 8c60c0f..f707464 100644
+index 8c60c0f6..f7074647 100644
 --- a/public/js/algolia-autocomplete.js
 +++ b/public/js/algolia-autocomplete.js
 @@ -1,12 +1,19 @@
@@ -32,7 +32,7 @@ index 8c60c0f..f707464 100644
 +    });
  });
 diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
-index 747acb8..de6bd08 100644
+index 747acb8a..de6bd08f 100644
 --- a/src/Controller/AdminUtilityController.php
 +++ b/src/Controller/AdminUtilityController.php
 @@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +45,7 @@ index 747acb8..de6bd08 100644
       */
      public function getUsersApi(UserRepository $userRepository)
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
-index f8e6450..b90bd10 100644
+index f8e64501..b90bd10d 100644
 --- a/src/Form/UserSelectTextType.php
 +++ b/src/Form/UserSelectTextType.php
 @@ -8,14 +8,17 @@ use Symfony\Component\Form\AbstractType;
