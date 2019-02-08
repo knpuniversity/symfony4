@@ -27,7 +27,7 @@ You can use Nginx or Apache, but the built-in web server works
 great:
 
 ```
-php -S 127.0.0.1:8000 -t public
+php bin/console server:run
 ```
 
 Now check out the site at `http://localhost:8000`
