@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index e8f6d8c..db3f826 100644
+index e8f6d8c1..db3f826c 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -38,6 +38,7 @@ class ArticleFormType extends AbstractType
@@ -11,7 +11,7 @@ index e8f6d8c..db3f826 100644
                      'The Solar System' => 'solar_system',
                      'Near a star' => 'star',
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
-index eb9984f..2387231 100644
+index eb9984fb..23872311 100644
 --- a/templates/article_admin/_form.html.twig
 +++ b/templates/article_admin/_form.html.twig
 @@ -3,6 +3,7 @@
