@@ -32,6 +32,12 @@
             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
         }
     },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.6.0"
+    },
+    "michelf/php-markdown": {
+        "version": "1.8.0"
+    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
