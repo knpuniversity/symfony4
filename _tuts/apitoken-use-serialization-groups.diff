@@ -1,5 +1,5 @@
 diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
-index 15478e2..18db4af 100644
+index 15478e2c..18db4af3 100644
 --- a/src/Controller/AccountController.php
 +++ b/src/Controller/AccountController.php
 @@ -29,6 +29,8 @@ class AccountController extends BaseController
@@ -13,7 +13,7 @@ index 15478e2..18db4af 100644
      }
  }
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index d3eebbe..e84f4d3 100644
+index d3eebbe8..e84f4d38 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -4,6 +4,7 @@ namespace App\Entity;
