@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/TagFixture.php b/src/DataFixtures/TagFixture.php
-index 3c6b0d7..6939a4c 100644
+index 3c6b0d76..6939a4c7 100644
 --- a/src/DataFixtures/TagFixture.php
 +++ b/src/DataFixtures/TagFixture.php
 @@ -2,15 +2,16 @@
