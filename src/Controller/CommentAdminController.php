@@ -15,6 +15,8 @@ class CommentAdminController extends Controller
      */
     public function index(CommentRepository $repository, Request $request, PaginatorInterface $paginator)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $q = $request->query->get('q');
 
         $queryBuilder = $repository->getWithSearchQueryBuilder($q);
