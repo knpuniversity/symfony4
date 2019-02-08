@@ -13,10 +13,7 @@ class UserRegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles')
-            ->add('firstName')
             ->add('password')
-            ->add('twitterUsername')
         ;
     }
 
