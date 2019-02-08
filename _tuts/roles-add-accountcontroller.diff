@@ -1,6 +1,6 @@
 diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
 new file mode 100644
-index 0000000..ca6ef9e
+index 00000000..ca6ef9e8
 --- /dev/null
 +++ b/src/Controller/AccountController.php
 @@ -0,0 +1,19 @@
@@ -25,7 +25,7 @@ index 0000000..ca6ef9e
 +}
 diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
 new file mode 100644
-index 0000000..22ebd3f
+index 00000000..22ebd3f9
 --- /dev/null
 +++ b/templates/account/index.html.twig
 @@ -0,0 +1,20 @@
