@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 52c4f62..a0ce96f 100644
+index 52c4f62f..a0ce96fd 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ index 52c4f62..a0ce96f 100644
      public function homepage()
      {
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 3d1879f..442c02d 100644
+index 3d1879f6..442c02d8 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -15,7 +15,7 @@

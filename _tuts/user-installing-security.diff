@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index c34638d..372271a 100644
+index c34638de..372271ab 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -17,6 +17,7 @@
@@ -11,7 +11,7 @@ index c34638d..372271a 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 2ae1e5d..d2c476c 100644
+index 23db54b1..45e8cf8e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -88,7 +88,7 @@ index 2ae1e5d..d2c476c 100644
          {
              "name": "symfony/lts",
              "version": "dev-master",
-@@ -4429,6 +4487,73 @@
+@@ -4424,6 +4482,73 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-03T11:13:38+00:00"
          },
@@ -162,7 +162,7 @@ index 2ae1e5d..d2c476c 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4506,6 +4631,163 @@
+@@ -4501,6 +4626,163 @@
              ],
              "time": "2018-08-03T07:58:40+00:00"
          },
@@ -327,7 +327,7 @@ index 2ae1e5d..d2c476c 100644
              "name": "symfony/stopwatch",
              "version": "v4.1.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 80c373b..9c8aa9d 100644
+index 80c373b7..9c8aa9df 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -19,4 +19,5 @@ return [
@@ -338,7 +338,7 @@ index 80c373b..9c8aa9d 100644
  ];
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
 new file mode 100644
-index 0000000..fb4c593
+index 00000000..fb4c593e
 --- /dev/null
 +++ b/config/packages/security.yaml
 @@ -0,0 +1,24 @@
@@ -367,7 +367,7 @@ index 0000000..fb4c593
 +        # - { path: ^/admin, roles: ROLE_ADMIN }
 +        # - { path: ^/profile, roles: ROLE_USER }
 diff --git a/symfony.lock b/symfony.lock
-index f5bc38f..45e5529 100644
+index f5bc38f7..45e55290 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -287,6 +287,9 @@
