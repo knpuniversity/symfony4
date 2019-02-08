@@ -24,7 +24,7 @@
                         <img class="article-img" src="{{ asset(article.imagePath) }}">
                         <div class="article-title d-inline-block pl-3 align-middle">
                             <span>{{ article.title }}</span>
-                            <small>({{ article.comments|length }} comments)</small>
+                            <small>({{ article.nonDeletedComments|length }} comments)</small>
                             <br>
                             <span class="align-left article-details"><img class="article-author-img rounded-circle" src="{{ asset('images/alien-profile.png') }}"> {{ article.author }} </span>
                             <span class="pl-5 article-details float-right"> {{ article.publishedAt ? article.publishedAt|ago }}</span>
