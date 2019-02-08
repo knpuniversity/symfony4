@@ -2,15 +2,16 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Tag;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class TagFixture extends Fixture
+class TagFixture extends BaseFixture
 {
-    public function load(ObjectManager $manager)
+    protected function loadData(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        $this->createMany(Tag::class, 10, function(Tag $tag) {
+            $tag->setName($this->faker->realText(20));
+        });
 
         $manager->flush();
     }
