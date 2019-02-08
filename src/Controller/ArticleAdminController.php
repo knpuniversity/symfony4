@@ -31,6 +31,10 @@ class ArticleAdminController extends AbstractController
      */
     public function edit(Article $article)
     {
+        if ($article->getAuthor() != $this->getUser() && !$this->isGranted('ROLE_ADMIN_ARTICLE')) {
+            throw $this->createAccessDeniedException('No access!');
+        }
+
         dd($article);
     }
 }
