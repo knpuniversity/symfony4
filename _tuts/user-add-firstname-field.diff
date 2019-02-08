@@ -1,5 +1,5 @@
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index b7ed9d4..7894f72 100644
+index b7ed9d40..7894f726 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -27,6 +27,11 @@ class User implements UserInterface
