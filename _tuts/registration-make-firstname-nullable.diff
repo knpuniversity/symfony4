@@ -1,5 +1,5 @@
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index d6f97ed..23ede54 100644
+index d6f97ed0..23ede54a 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -32,7 +32,7 @@ class User implements UserInterface
@@ -13,7 +13,7 @@ index d6f97ed..23ede54 100644
      private $firstName;
 diff --git a/src/Migrations/Version20181018165320.php b/src/Migrations/Version20181018165320.php
 new file mode 100644
-index 0000000..2d30c82
+index 00000000..2d30c823
 --- /dev/null
 +++ b/src/Migrations/Version20181018165320.php
 @@ -0,0 +1,28 @@
