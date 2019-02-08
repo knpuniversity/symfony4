@@ -30,7 +30,7 @@
                             {{ comment.authorName }}
                         </td>
                         <td style="width: 20%;">
-                            {{ comment.content }}
+                            {{ comment.content|truncate }}
                         </td>
                         <td>
                             {{ comment.createdAt|ago }}
