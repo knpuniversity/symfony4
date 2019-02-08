@@ -1,6 +1,6 @@
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
 new file mode 100644
-index 0000000..df490b2
+index 00000000..df490b22
 --- /dev/null
 +++ b/templates/article_admin/_form.html.twig
 @@ -0,0 +1,10 @@
@@ -16,7 +16,7 @@ index 0000000..df490b2
 +{{ form_end(articleForm) }}
 \ No newline at end of file
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index e28ef74..962b02d 100644
+index e28ef74c..962b02d7 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -3,14 +3,7 @@
@@ -38,7 +38,7 @@ index e28ef74..962b02d 100644
 +    }) }}
  {% endblock %}
 diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
-index 2de0fe9..0765b91 100644
+index 2de0fe99..0765b918 100644
 --- a/templates/article_admin/new.html.twig
 +++ b/templates/article_admin/new.html.twig
 @@ -3,14 +3,7 @@
