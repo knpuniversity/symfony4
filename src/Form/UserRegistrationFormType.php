@@ -21,24 +21,8 @@ class UserRegistrationFormType extends AbstractType
             ->add('email', EmailType::class)
             // don't use password: avoid EVER setting that on a
             // field that might be persisted
-            ->add('plainPassword', PasswordType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Choose a password!'
-                    ]),
-                    new Length([
-                        'min' => 5,
-                        'minMessage' => 'Come on, you can think of a password longer than that!'
-                    ])
-                ]
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'I know, it\'s silly, but you must agree to our terms.'
-                    ])
-                ]
-            ])
+            ->add('plainPassword', PasswordType::class)
+            ->add('agreeTerms', CheckboxType::class)
         ;
     }
 
