@@ -40,7 +40,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{ path('app_account') }}">Profile</a>
-                                {% if is_granted('ROLE_ADMIN') %}
+                                {% if is_granted('ROLE_ADMIN_ARTICLE') %}
                                     <a class="dropdown-item" href="{{ path('admin_article_new') }}">Create Post</a>
                                 {% endif %}
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
