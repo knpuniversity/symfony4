@@ -39,7 +39,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3><i class="pr-3 fa fa-comment"></i>{{ comments|length }} Comments</h3>
+                        <h3><i class="pr-3 fa fa-comment"></i>{{ article.comments|length }} Comments</h3>
                         <hr>
 
                         <div class="row mb-5">
@@ -55,14 +55,14 @@
                             </div>
                         </div>
 
-                        {% for comment in comments %}
+                        {% for comment in article.comments %}
                         <div class="row">
                             <div class="col-sm-12">
                                 <img class="comment-img rounded-circle" src="{{ asset('images/alien-profile.png') }}">
                                 <div class="comment-container d-inline-block pl-3 align-top">
-                                    <span class="commenter-name">Mike Ferengi</span>
+                                    <span class="commenter-name">{{ comment.authorName }}</span>
                                     <br>
-                                    <span class="comment"> {{ comment }}</span>
+                                    <span class="comment"> {{ comment.content }}</span>
                                     <p><a href="#">Reply</a></p>
                                 </div>
                             </div>
