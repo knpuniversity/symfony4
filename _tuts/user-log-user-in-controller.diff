@@ -1,5 +1,5 @@
 diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
-index e191f77..42e56ed 100644
+index e191f776..42e56eda 100644
 --- a/src/Controller/AccountController.php
 +++ b/src/Controller/AccountController.php
 @@ -2,6 +2,7 @@
