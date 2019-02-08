@@ -31,9 +31,7 @@ class ArticleAdminController extends AbstractController
      */
     public function edit(Article $article)
     {
-        if (!$this->isGranted('MANAGE', $article)) {
-            throw $this->createAccessDeniedException('No access!');
-        }
+        $this->denyAccessUnlessGranted('MANAGE', $article);
 
         dd($article);
     }
