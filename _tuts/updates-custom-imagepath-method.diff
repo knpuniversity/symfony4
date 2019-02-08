@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 69e90ab..45f472f 100644
+index 69e90ab3..45f472f2 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -140,4 +140,9 @@ class Article
@@ -13,7 +13,7 @@ index 69e90ab..45f472f 100644
 +    }
  }
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index e8cddf2..8d49b56 100644
+index e8cddf2c..8d49b567 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -21,7 +21,7 @@
@@ -26,7 +26,7 @@ index e8cddf2..8d49b56 100644
                              <span>{{ article.title }}</span>
                              <br>
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index a08bbb0..9e20312 100644
+index a08bbb0e..9e20312a 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -10,7 +10,7 @@

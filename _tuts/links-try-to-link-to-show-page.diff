@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index a0563bd..9c63891 100644
+index a0563bd1..9c638912 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -17,7 +17,7 @@ class ArticleController extends AbstractController
@@ -12,7 +12,7 @@ index a0563bd..9c63891 100644
      public function show($slug)
      {
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 9c87cb3..5624534 100644
+index 9c87cb37..5624534f 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -19,7 +19,7 @@
