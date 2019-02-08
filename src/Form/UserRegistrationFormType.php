@@ -13,7 +13,9 @@ class UserRegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password')
+            // don't use password: avoid EVER setting that on a
+            // field that might be persisted
+            ->add('plainPassword')
         ;
     }
 
