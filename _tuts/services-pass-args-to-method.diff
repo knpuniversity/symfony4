@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index ecd4203..dcf0a18 100644
+index ecd4203b..dcf0a180 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -52,7 +52,11 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca
@@ -16,7 +16,7 @@ index ecd4203..dcf0a18 100644
          return $this->render('article/show.html.twig', [
              'title' => ucwords(str_replace('-', ' ', $slug)),
 diff --git a/src/Service/MarkdownHelper.php b/src/Service/MarkdownHelper.php
-index 860eaff..2d5e017 100644
+index 860eafff..2d5e017d 100644
 --- a/src/Service/MarkdownHelper.php
 +++ b/src/Service/MarkdownHelper.php
 @@ -2,9 +2,12 @@
