@@ -27,7 +27,7 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Get creative and think of a title!")
      */
     private $title;
 
