@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index 4938ca0..e71a105 100644
+index 4938ca0f..e71a1054 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -3,12 +3,11 @@
@@ -19,7 +19,7 @@ index 4938ca0..e71a105 100644
          $article->setTitle('Why Asteroids Taste Like Bacon')
 diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
 new file mode 100644
-index 0000000..c3216f5
+index 00000000..c3216f59
 --- /dev/null
 +++ b/src/DataFixtures/BaseFixture.php
 @@ -0,0 +1,21 @@
