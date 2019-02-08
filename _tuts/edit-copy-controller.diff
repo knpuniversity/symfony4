@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index f9fe537..7f1630a 100644
+index f9fe5375..7f1630a1 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -60,7 +60,7 @@ class ArticleAdminController extends AbstractController
@@ -13,7 +13,7 @@ index f9fe537..7f1630a 100644
      }
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
 new file mode 100644
-index 0000000..2de0fe9
+index 00000000..2de0fe99
 --- /dev/null
 +++ b/templates/article_admin/edit.html.twig
 @@ -0,0 +1,16 @@
