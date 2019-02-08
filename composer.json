@@ -20,6 +20,7 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "easycorp/easy-log-handler": "^1.0.2",
         "symfony/debug-bundle": "^3.3|^4.0",
         "symfony/dotenv": "^4.0",
