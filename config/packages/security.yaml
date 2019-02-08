@@ -20,6 +20,10 @@ security:
             logout:
                 path: app_logout
 
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 2592000 # 30 days in seconds
+
             # activate different ways to authenticate
 
             # http_basic: true
