@@ -1,5 +1,5 @@
 diff --git a/src/Entity/ApiToken.php b/src/Entity/ApiToken.php
-index 8f525ad..ca9bd7c 100644
+index 8f525ad2..ca9bd7c9 100644
 --- a/src/Entity/ApiToken.php
 +++ b/src/Entity/ApiToken.php
 @@ -58,4 +58,9 @@ class ApiToken
@@ -13,7 +13,7 @@ index 8f525ad..ca9bd7c 100644
 +    }
  }
 diff --git a/src/Security/ApiTokenAuthenticator.php b/src/Security/ApiTokenAuthenticator.php
-index e872fed..62a591e 100644
+index e872fed7..62a591e8 100644
 --- a/src/Security/ApiTokenAuthenticator.php
 +++ b/src/Security/ApiTokenAuthenticator.php
 @@ -48,6 +48,12 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
