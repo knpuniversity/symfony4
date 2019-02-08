@@ -45,7 +45,10 @@ class ArticleController extends AbstractController
         }
 
         $comments = $article->getComments();
-        dump($comments);die;
+        foreach ($comments as $comment) {
+            dump($comment);
+        }
+        die;
 
         $comments = [
             'I ate a normal rock once. It did NOT taste like bacon!',
