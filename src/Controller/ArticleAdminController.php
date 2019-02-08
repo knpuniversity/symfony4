@@ -43,6 +43,11 @@ EOF
             $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
         }
 
+        $article->setAuthor('Mike Ferengi')
+            ->setHeartCount(rand(5, 100))
+            ->setImageFilename('asteroid.jpeg')
+        ;
+
         $em->persist($article);
         $em->flush();
 
