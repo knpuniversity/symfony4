@@ -3,6 +3,7 @@
         label: 'Article title'
     }) }}
     {{ form_row(articleForm.author) }}
+    {{ form_row(articleForm.location) }}
     {{ form_row(articleForm.content) }}
     {% if articleForm.publishedAt is defined %}
         {{ form_row(articleForm.publishedAt) }}

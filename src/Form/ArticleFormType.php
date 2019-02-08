@@ -38,6 +38,7 @@ class ArticleFormType extends AbstractType
                 'disabled' => $isEdit
             ])
             ->add('location', ChoiceType::class, [
+                'placeholder' => 'Choose a location',
                 'choices' => [
                     'The Solar System' => 'solar_system',
                     'Near a star' => 'star',
