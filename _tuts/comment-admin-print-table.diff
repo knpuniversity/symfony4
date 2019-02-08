@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
-index e6971cf..75c8273 100644
+index e6971cf1..75c82734 100644
 --- a/src/Controller/CommentAdminController.php
 +++ b/src/Controller/CommentAdminController.php
 @@ -2,6 +2,7 @@
@@ -26,7 +26,7 @@ index e6971cf..75c8273 100644
      }
  }
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index b3cf8df..ab6d40c 100644
+index b3cf8dfc..ab6d40c8 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -8,6 +8,37 @@
