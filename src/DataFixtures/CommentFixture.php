@@ -17,7 +17,7 @@ class CommentFixture extends BaseFixture
 
             $comment->setAuthorName($this->faker->name);
             $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
-            $comment->setArticle($this->getReference(Article::class.'_'.$this->faker->numberBetween(0, 9)));
+            $comment->setArticle($this->getRandomReference(Article::class));
         });
 
         $manager->flush();
