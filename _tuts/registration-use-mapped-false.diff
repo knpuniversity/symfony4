@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index be007a4..40877da 100644
+index be007a4f..40877daa 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -48,6 +48,7 @@ class SecurityController extends AbstractController
@@ -11,7 +11,7 @@ index be007a4..40877da 100644
              $user = $form->getData();
              $user->setPassword($passwordEncoder->encodePassword(
 diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
-index 7caa105..56fdc64 100644
+index 7caa105d..56fdc643 100644
 --- a/src/Form/UserRegistrationFormType.php
 +++ b/src/Form/UserRegistrationFormType.php
 @@ -15,7 +15,9 @@ class UserRegistrationFormType extends AbstractType
