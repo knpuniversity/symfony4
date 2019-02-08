@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Form\ArticleFormType;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,5 +48,17 @@ class ArticleAdminController extends AbstractController
     public function edit(Article $article)
     {
         dd($article);
+    }
+
+    /**
+     * @Route("/admin/article")
+     */
+    public function list(ArticleRepository $articleRepo)
+    {
+        $articles = $articleRepo->findAll();
+
+        return $this->render('article_admin/list.html.twig', [
+            'articles' => $articles,
+        ]);
     }
 }
