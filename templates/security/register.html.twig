@@ -15,6 +15,15 @@
     {{- form_help(form) -}}
 {% endblock %}
 
+{% block _user_registration_form_agreeTerms_row %}
+    <div class="checkbox mb-3">
+        {{ form_errors(form) }}
+        <label>
+            <input type="checkbox" name="{{ full_name }}" required> Agree to terms I for sure read
+        </label>
+    </div>
+{% endblock %}
+
 {% block title %}Register!{% endblock %}
 
 {% block stylesheets %}
