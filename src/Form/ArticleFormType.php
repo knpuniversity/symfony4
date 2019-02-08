@@ -33,19 +33,23 @@ class ArticleFormType extends AbstractType
             ->add('content', null, [
                 'rows' => 15
             ])
-            ->add('publishedAt', null, [
-                'widget' => 'single_text'
-            ])
             ->add('author', UserSelectTextType::class, [
                 'disabled' => $isEdit
             ])
         ;
+
+        if ($options['include_published_at']) {
+            $builder->add('publishedAt', null, [
+                'widget' => 'single_text',
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Article::class
+            'data_class' => Article::class,
+            'include_published_at' => false,
         ]);
     }
 }
