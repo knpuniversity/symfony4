@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +13,7 @@ class ArticleAdminController extends AbstractController
     /**
      * @Route("/admin/article/new")
      */
-    public function new()
+    public function new(EntityManagerInterface $em)
     {
         $article = new Article();
         $article->setTitle('Why Asteroids Taste Like Bacon')
@@ -42,6 +43,13 @@ EOF
             $article->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
         }
 
-        return new Response('space rocks... include comets, asteroids & meteoroids');
+        $em->persist($article);
+        $em->flush();
+
+        return new Response(sprintf(
+            'Hiya! New Article id: #%d slug: %s',
+            $article->getId(),
+            $article->getSlug()
+        ));
     }
 }
