@@ -14,4 +14,12 @@ class ArticleController
     {
         return new Response('OMG! My first page already! WOOO!');
     }
+
+    /**
+     * @Route("/news/why-asteroids-taste-like-bacon")
+     */
+    public function show()
+    {
+        return new Response('Future page to show one space article!');
+    }
 }
