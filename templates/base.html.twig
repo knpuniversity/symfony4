@@ -8,8 +8,8 @@
 
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-            <link rel="stylesheet" href="/css/font-awesome.css">
-            <link rel="stylesheet" href="/css/styles.css">
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
     </head>
 
@@ -35,7 +35,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown" style="margin-right: 75px;">
                         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <img class="nav-profile-img rounded-circle" src="images/astronaut-profile.png">
+                          <img class="nav-profile-img rounded-circle" src="{{ asset('images/astronaut-profile.png') }}">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Profile</a>
