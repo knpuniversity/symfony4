@@ -1,3 +1,6 @@
+parameters:
+    cache_adapter: cache.adapter.apcu
+
 framework:
     secret: '%env(APP_SECRET)%'
     #default_locale: en
@@ -27,4 +30,4 @@ framework:
         #default_redis_provider: redis://localhost
 
         # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
-        app: cache.adapter.apcu
+        app: '%cache_adapter%'
