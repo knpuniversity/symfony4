@@ -1,6 +1,6 @@
 diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
 new file mode 100644
-index 0000000..8a32a8e
+index 00000000..8a32a8eb
 --- /dev/null
 +++ b/src/Form/Model/UserRegistrationFormModel.php
 @@ -0,0 +1,12 @@

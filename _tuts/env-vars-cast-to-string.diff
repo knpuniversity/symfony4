@@ -1,5 +1,5 @@
 diff --git a/config/packages/nexy_slack.yaml b/config/packages/nexy_slack.yaml
-index abc371c..4837c92 100644
+index abc371c1..4837c920 100644
 --- a/config/packages/nexy_slack.yaml
 +++ b/config/packages/nexy_slack.yaml
 @@ -1,2 +1,2 @@
