@@ -182,7 +182,7 @@ class Article
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
-            $comment->setArticle($this);
+            //$comment->setArticle($this);
         }
 
         return $this;
