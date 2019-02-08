@@ -1,6 +1,6 @@
 diff --git a/public/css/account.css b/public/css/account.css
 new file mode 100644
-index 0000000..5d7500e
+index 00000000..5d7500ef
 --- /dev/null
 +++ b/public/css/account.css
 @@ -0,0 +1,90 @@
@@ -96,7 +96,7 @@ index 0000000..5d7500e
 +}
 \ No newline at end of file
 diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
-index 965697a..ee7efa2 100644
+index 965697a5..ee7efa20 100644
 --- a/templates/account/index.html.twig
 +++ b/templates/account/index.html.twig
 @@ -2,6 +2,47 @@
