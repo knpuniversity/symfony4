@@ -12,7 +12,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
     public function supports(Request $request)
     {
-        // todo
+        die('Our authenticator is alive!');
     }
 
     public function getCredentials(Request $request)
