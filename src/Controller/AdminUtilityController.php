@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminUtilityController extends AbstractController
 {
     /**
-     * @Route("/admin/utility/users", methods="GET")
+     * @Route("/admin/utility/users", methods="GET", name="admin_utility_users")
      * @IsGranted("ROLE_ADMIN_ARTICLE")
      */
     public function getUsersApi(UserRepository $userRepository)
