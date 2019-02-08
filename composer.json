@@ -15,7 +15,6 @@
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
-        "symfony/lts": "^4@dev",
         "symfony/orm-pack": "^1.0",
         "symfony/security-bundle": "^4.0",
         "symfony/serializer-pack": "^1.0",
@@ -76,7 +75,8 @@
     "extra": {
         "symfony": {
             "id": "01C1TW989CK77ZA7B2H4HC9WAG",
-            "allow-contrib": true
+            "allow-contrib": true,
+            "require": "4.1.*"
         }
     }
 }

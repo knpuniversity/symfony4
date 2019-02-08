@@ -299,9 +299,6 @@
     "symfony/inflector": {
         "version": "v4.1.4"
     },
-    "symfony/lts": {
-        "version": "4-dev"
-    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
