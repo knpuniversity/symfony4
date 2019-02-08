@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
-index a5e12fc..191afe9 100644
+index a5e12fc9..191afe99 100644
 --- a/src/DataFixtures/BaseFixture.php
 +++ b/src/DataFixtures/BaseFixture.php
 @@ -15,6 +15,8 @@ abstract class BaseFixture extends Fixture
@@ -37,7 +37,7 @@ index a5e12fc..191afe9 100644
 +    }
  }
 diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
-index 633d98c..4a4dfd3 100644
+index 633d98c6..4a4dfd32 100644
 --- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/CommentFixture.php
 @@ -17,7 +17,7 @@ class CommentFixture extends BaseFixture
