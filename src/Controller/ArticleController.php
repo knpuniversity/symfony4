@@ -18,7 +18,7 @@ class ArticleController extends AbstractController
      */
     private $isDebug;
 
-    public function __construct(bool $isDebug)
+    public function __construct(bool $isDebug, Client $slack)
     {
         $this->isDebug = $isDebug;
     }
