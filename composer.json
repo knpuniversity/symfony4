@@ -21,6 +21,7 @@
         "easycorp/easy-log-handler": "^1.0.2",
         "symfony/debug-bundle": "^3.3|^4.0",
         "symfony/dotenv": "^4.0",
+        "symfony/maker-bundle": "^1.0",
         "symfony/monolog-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.3|^4.0",
         "symfony/profiler-pack": "^1.0",
