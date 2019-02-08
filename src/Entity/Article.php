@@ -129,6 +129,13 @@ class Article
         return $this;
     }
 
+    public function incrementHeartCount(): self
+    {
+        $this->heartCount = $this->heartCount + 1;
+
+        return $this;
+    }
+
     public function getImageFilename(): ?string
     {
         return $this->imageFilename;
