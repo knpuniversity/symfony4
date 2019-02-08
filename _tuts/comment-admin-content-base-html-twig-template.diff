@@ -1,5 +1,5 @@
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 4e7a3df..48a559b 100644
+index 4e7a3dfc..48a559bb 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -1,13 +1,8 @@
@@ -30,7 +30,7 @@ index 4e7a3df..48a559b 100644
  {% endblock %}
  
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index 13625f4..df33463 100644
+index 13625f4e..df334637 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -1,20 +1,11 @@
@@ -59,7 +59,7 @@ index 13625f4..df33463 100644
  {% endblock %}
 diff --git a/templates/content_base.html.twig b/templates/content_base.html.twig
 new file mode 100644
-index 0000000..9d787ff
+index 00000000..9d787ff0
 --- /dev/null
 +++ b/templates/content_base.html.twig
 @@ -0,0 +1,13 @@
