@@ -36,7 +36,7 @@
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item dropdown" style="margin-right: 75px;">
                             <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <img class="nav-profile-img rounded-circle" src="{{ asset('images/astronaut-profile.png') }}">
+                              <img class="nav-profile-img rounded-circle" src="https://robohash.org/{{ app.user.email }}">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{ path('app_account') }}">Profile</a>
