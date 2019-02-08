@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="show-article-container p-3 mt-4">
+                <div class="{% block content_class %}show-article-container p-3 mt-4{% endblock %}">
                     {% block content_body %}{% endblock %}
                 </div>
             </div>
