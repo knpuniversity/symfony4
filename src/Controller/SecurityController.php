@@ -51,12 +51,15 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UserRegistrationFormModel $userModel */
             $userModel = $form->getData();
+
+            $user = new User();
+            $user->setEmail($userModel->email);
             $user->setPassword($passwordEncoder->encodePassword(
                 $user,
-                $form['plainPassword']->getData()
+                $userModel->plainPassword
             ));
             // be absolutely sure they agree
-            if (true === $form['agreeTerms']->getData()) {
+            if (true === $userModel->agreeTerms) {
                 $user->agreeToTerms();
             }
 
