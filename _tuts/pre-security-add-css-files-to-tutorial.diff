@@ -1,6 +1,6 @@
 diff --git a/tutorial/account.css b/tutorial/account.css
 new file mode 100644
-index 0000000..5d7500e
+index 00000000..5d7500ef
 --- /dev/null
 +++ b/tutorial/account.css
 @@ -0,0 +1,90 @@
@@ -97,7 +97,7 @@ index 0000000..5d7500e
 \ No newline at end of file
 diff --git a/tutorial/login.css b/tutorial/login.css
 new file mode 100644
-index 0000000..8ac8f6f
+index 00000000..8ac8f6fe
 --- /dev/null
 +++ b/tutorial/login.css
 @@ -0,0 +1,39 @@
