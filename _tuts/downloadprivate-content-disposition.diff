@@ -1,0 +1,13 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 795b27ce..dac49f68 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -142,7 +142,7 @@ class ArticleAdminController extends BaseController
+             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+             $reference->getFilename()
+         );
+-        dd($disposition);
++        $response->headers->set('Content-Disposition', $disposition);
+ 
+         return $response;
+     }

@@ -1,0 +1,31 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index bff19aba..70e04700 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -40,7 +40,12 @@ function initializeDropzone()
+     var dropzone = new Dropzone(inputElement, {
+         paramName: 'reference',
+         success: function(file, data) {
+-            console.log(file, data);
++            var downloadPath = file.xhr.getResponseHeader('Location');
++
++            var $anchor = $('<a class="list-group-item list-group-item-action"></a>');
++            $anchor.html(data.filename);
++            $anchor.attr('href', downloadPath);
++            $('.js-reference-list').append($anchor);
+         }
+     });
+ }
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index fb93cad4..d302148a 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -15,7 +15,7 @@
+         <div class="col-sm-4">
+             <h3>References</h3>
+ 
+-            <div class="list-group">
++            <div class="list-group js-reference-list">
+                 {% for reference in article.articleReferences %}
+                     <a href="{{ path('admin_article_download_reference', {
+                         id: article.id,

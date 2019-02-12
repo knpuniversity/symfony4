@@ -1,0 +1,24 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 58eb416f..795b27ce 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
++use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+ use Symfony\Component\HttpFoundation\StreamedResponse;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+@@ -137,6 +138,11 @@ class ArticleAdminController extends BaseController
+ 
+             stream_copy_to_stream($fileStream, $outputStream);
+         });
++        $disposition = $response->headers->makeDisposition(
++            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
++            $reference->getFilename()
++        );
++        dd($disposition);
+ 
+         return $response;
+     }

@@ -1,0 +1,21 @@
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index 1bff3fa0..d2002b5f 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -15,6 +15,16 @@
+         <div class="col-sm-4">
+             <h3>References</h3>
+ 
++            <div class="list-group">
++                {% for reference in article.articleReferences %}
++                    <a href="#" class="list-group-item list-group-item-action">
++                        {{ reference.filename }}
++                    </a>
++                {% endfor %}
++            </div>
++
++            <hr>
++
+             <form action="{{ path('admin_article_add_reference', {
+                 id: article.id
+             }) }}" method="POST" enctype="multipart/form-data">

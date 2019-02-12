@@ -241,6 +241,11 @@
             "description": null
         },
         {
+            "id": "articlereference-remove-adder-remover",
+            "name": "ArticleReference: remove adder\/remover",
+            "description": null
+        },
+        {
             "id": "articlereference-markup-on-edit-form",
             "name": "ArticleReference: Markup on edit form",
             "description": null
@@ -249,7 +254,82 @@
             "id": "articlereference-add-form-controller",
             "name": "ArticleReference: add form + controller",
             "description": null
+        },
+        {
+            "id": "articlereference-start-in-uploaderhelper",
+            "name": "ArticleReference: Start in UploaderHelper",
+            "description": null
+        },
+        {
+            "id": "articlereference-start-refactoring-uploadhelper",
+            "name": "ArticleReference: Start refactoring UploadHelper",
+            "description": null
+        },
+        {
+            "id": "articlereference-finish-refactoring",
+            "name": "ArticleReference: Finish refactoring",
+            "description": null
+        },
+        {
+            "id": "downloadprivate-list-references",
+            "name": "DownloadPrivate: list references",
+            "description": null
+        },
+        {
+            "id": "downloadprivate-start-controller",
+            "name": "DownloadPrivate: Start controller",
+            "description": null
+        },
+        {
+            "id": "downloadprivate-stream-file",
+            "name": "DownloadPrivate: stream file",
+            "description": null
+        },
+        {
+            "id": "downloadprivate-dump-disposition",
+            "name": "DownloadPrivate: dump disposition",
+            "description": null
+        },
+        {
+            "id": "downloadprivate-content-disposition",
+            "name": "DownloadPrivate: Content-disposition",
+            "description": null
+        },
+        {
+            "id": "dropzone-add-basic-js",
+            "name": "Dropzone: Add basic JS",
+            "description": null
+        },
+        {
+            "id": "dropzone-manually-create",
+            "name": "Dropzone: manually create",
+            "description": null
+        },
+        {
+            "id": "dropzone-api-response",
+            "name": "Dropzone: API response",
+            "description": null
+        },
+        {
+            "id": "dropzone-fix-api-groups",
+            "name": "Dropzone: fix API groups",
+            "description": null
+        },
+        {
+            "id": "dropzone-add-location-header",
+            "name": "Dropzone: Add Location header",
+            "description": null
+        },
+        {
+            "id": "dropzone-add-success-event",
+            "name": "Dropzone: add success event",
+            "description": null
+        },
+        {
+            "id": "dropzone-add-file-dynamically",
+            "name": "Dropzone: Add file dynamically",
+            "description": null
         }
     ],
-    "sha": "0014ebc0a84e16610e005d42fce9c3d3f7df3a46"
+    "sha": "084dc1522874eb7ab1a86b31565df75bd64f7cdb"
 }

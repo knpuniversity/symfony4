@@ -1,0 +1,18 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index fede3cbe..ec45b2c7 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -119,7 +119,12 @@ class ArticleAdminController extends BaseController
+         return $this->json(
+             $articleReference,
+             201,
+-            [],
++            [
++                'Location' => $this->generateUrl('admin_article_download_reference', [
++                    'id' => $article->getId(),
++                    'referenceId' => $articleReference->getId()
++                ])
++            ],
+             [
+                 'groups' => ['main']
+             ]

@@ -1,0 +1,64 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 789e0066..58eb416f 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -10,11 +10,13 @@ use App\Repository\ArticleRepository;
+ use App\Service\UploaderHelper;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Gedmo\Sluggable\Util\Urlizer;
++use League\Flysystem\FilesystemInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
++use Symfony\Component\HttpFoundation\StreamedResponse;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+ class ArticleAdminController extends BaseController
+@@ -122,14 +124,21 @@ class ArticleAdminController extends BaseController
+      * @Route("/admin/article/{id}/references/{referenceId}", name="admin_article_download_reference", methods={"GET"})
+      * @IsGranted("MANAGE", subject="article")
+      */
+-    public function downloadArticleReference(Article $article, $referenceId, ArticleReferenceRepository $articleReferenceRepository)
++    public function downloadArticleReference(Article $article, $referenceId, ArticleReferenceRepository $articleReferenceRepository, FilesystemInterface $privateUploadsFilesystem)
+     {
+         $reference = $articleReferenceRepository->find($referenceId);
+         if (!$reference || $reference->getArticle() !== $article) {
+             throw $this->createNotFoundException('Reference not found');
+         }
+ 
+-        dd($reference);
++        $response = new StreamedResponse(function() use ($reference, $privateUploadsFilesystem) {
++            $outputStream = fopen('php://output', 'wb');
++            $fileStream = $privateUploadsFilesystem->readStream($reference->getFilePath());
++
++            stream_copy_to_stream($fileStream, $outputStream);
++        });
++
++        return $response;
+     }
+ 
+     /**
+diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
+index 516a6d58..daa75d03 100644
+--- a/src/Entity/ArticleReference.php
++++ b/src/Entity/ArticleReference.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Entity;
+ 
++use App\Service\UploaderHelper;
+ use Doctrine\ORM\Mapping as ORM;
+ 
+ /**
+@@ -70,4 +71,9 @@ class ArticleReference
+ 
+         return $this;
+     }
++
++    public function getFilePath(): string
++    {
++        return UploaderHelper::ARTICLE_REFERENCE.'/'.$this->getFilename();
++    }
+ }

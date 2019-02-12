@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 0584cdfa..6bab4223 100644
+index 0584cdfa..89131976 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -82,10 +82,19 @@ class ArticleAdminController extends BaseController
+@@ -82,10 +82,20 @@ class ArticleAdminController extends BaseController
          }
  
          return $this->render('article_admin/edit.html.twig', [
@@ -14,6 +14,7 @@ index 0584cdfa..6bab4223 100644
  
 +    /**
 +     * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
++     * @IsGranted("MANAGE", subject="article")
 +     */
 +    public function uploadArticleReference(Article $article, Request $request)
 +    {
@@ -24,13 +25,13 @@ index 0584cdfa..6bab4223 100644
       * @Route("/admin/article/location-select", name="admin_article_location_select")
       * @IsGranted("ROLE_USER")
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index cbb36e88..dfc605cf 100644
+index f353a02e..1bff3fa0 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -14,6 +14,13 @@
          </div>
          <div class="col-sm-4">
-             <h3>Add References</h3>
+             <h3>References</h3>
 +
 +            <form action="{{ path('admin_article_add_reference', {
 +                id: article.id

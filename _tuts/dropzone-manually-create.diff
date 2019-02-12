@@ -1,0 +1,58 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 830becde..1a8b27df 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -1,4 +1,8 @@
++Dropzone.autoDiscover = false;
++
+ $(document).ready(function() {
++    initializeDropzone();
++
+     var $locationSelect = $('.js-article-form-location');
+     var $specificLocationTarget = $('.js-specific-location-target');
+ 
+@@ -23,4 +27,17 @@ $(document).ready(function() {
+             }
+         });
+     });
+-});
+\ No newline at end of file
++});
++
++function initializeDropzone()
++{
++    var inputElement = document.querySelector('.js-reference-dropzone');
++    if (!inputElement) {
++        return;
++    }
++    console.log(inputElement);
++
++    var dropzone = new Dropzone(inputElement, {
++        paramName: 'reference'
++    });
++}
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 589ca0d7..dac49f68 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -100,7 +100,6 @@ class ArticleAdminController extends BaseController
+     {
+         /** @var UploadedFile $uploadedFile */
+         $uploadedFile = $request->files->get('reference');
+-        dump($uploadedFile);
+ 
+         if (!$uploadedFile) {
+             return $this->redirectToRoute('admin_article_edit', [
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index a8c2e963..fb93cad4 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -30,7 +30,7 @@
+ 
+             <form action="{{ path('admin_article_add_reference', {
+                 id: article.id
+-            }) }}" method="POST" enctype="multipart/form-data" class="dropzone">
++            }) }}" method="POST" enctype="multipart/form-data" class="dropzone js-reference-dropzone">
+             </form>
+         </div>
+     </div>

@@ -1,0 +1,54 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index cd82f348..fede3cbe 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -116,7 +116,14 @@ class ArticleAdminController extends BaseController
+         $entityManager->persist($articleReference);
+         $entityManager->flush();
+ 
+-        return $this->json($articleReference);
++        return $this->json(
++            $articleReference,
++            201,
++            [],
++            [
++                'groups' => ['main']
++            ]
++        );
+     }
+ 
+     /**
+diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
+index daa75d03..4f2db6ba 100644
+--- a/src/Entity/ArticleReference.php
++++ b/src/Entity/ArticleReference.php
+@@ -4,6 +4,7 @@ namespace App\Entity;
+ 
+ use App\Service\UploaderHelper;
+ use Doctrine\ORM\Mapping as ORM;
++use Symfony\Component\Serializer\Annotation\Groups;
+ 
+ /**
+  * @ORM\Entity(repositoryClass="App\Repository\ArticleReferenceRepository")
+@@ -14,6 +15,7 @@ class ArticleReference
+      * @ORM\Id()
+      * @ORM\GeneratedValue()
+      * @ORM\Column(type="integer")
++     * @Groups("main")
+      */
+     private $id;
+ 
+@@ -25,11 +27,13 @@ class ArticleReference
+ 
+     /**
+      * @ORM\Column(type="string", length=255)
++     * @Groups("main")
+      */
+     private $filename;
+ 
+     /**
+      * @ORM\Column(type="string", length=50)
++     * @Groups("main")
+      */
+     private $mimeType;
+ 

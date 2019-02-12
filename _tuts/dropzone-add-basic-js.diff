@@ -1,0 +1,52 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index bec4c243..830becde 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -23,4 +23,4 @@ $(document).ready(function() {
+             }
+         });
+     });
+-});
++});
+\ No newline at end of file
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index dac49f68..589ca0d7 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -100,6 +100,7 @@ class ArticleAdminController extends BaseController
+     {
+         /** @var UploadedFile $uploadedFile */
+         $uploadedFile = $request->files->get('reference');
++        dump($uploadedFile);
+ 
+         if (!$uploadedFile) {
+             return $this->redirectToRoute('admin_article_edit', [
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index a55a72a1..a8c2e963 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -30,16 +30,21 @@
+ 
+             <form action="{{ path('admin_article_add_reference', {
+                 id: article.id
+-            }) }}" method="POST" enctype="multipart/form-data">
+-                <input type="file" name="reference">
+-                <button type="submit" class="btn btn-sm btn-primary">Upload</button>
++            }) }}" method="POST" enctype="multipart/form-data" class="dropzone">
+             </form>
+         </div>
+     </div>
+ {% endblock %}
+ 
++{% block stylesheets %}
++    {{ parent() }}
++
++    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet">
++{% endblock %}
++
+ {% block javascripts %}
+     {{ parent() }}
+ 
++    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+     <script src="{{ asset('js/admin_article_form.js') }}"></script>
+ {% endblock %}

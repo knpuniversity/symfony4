@@ -1,0 +1,49 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 328257d6..789e0066 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -5,6 +5,7 @@ namespace App\Controller;
+ use App\Entity\Article;
+ use App\Entity\ArticleReference;
+ use App\Form\ArticleFormType;
++use App\Repository\ArticleReferenceRepository;
+ use App\Repository\ArticleRepository;
+ use App\Service\UploaderHelper;
+ use Doctrine\ORM\EntityManagerInterface;
+@@ -117,6 +118,20 @@ class ArticleAdminController extends BaseController
+         ]);
+     }
+ 
++    /**
++     * @Route("/admin/article/{id}/references/{referenceId}", name="admin_article_download_reference", methods={"GET"})
++     * @IsGranted("MANAGE", subject="article")
++     */
++    public function downloadArticleReference(Article $article, $referenceId, ArticleReferenceRepository $articleReferenceRepository)
++    {
++        $reference = $articleReferenceRepository->find($referenceId);
++        if (!$reference || $reference->getArticle() !== $article) {
++            throw $this->createNotFoundException('Reference not found');
++        }
++
++        dd($reference);
++    }
++
+     /**
+      * @Route("/admin/article/location-select", name="admin_article_location_select")
+      * @IsGranted("ROLE_USER")
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index d2002b5f..a55a72a1 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -17,7 +17,10 @@
+ 
+             <div class="list-group">
+                 {% for reference in article.articleReferences %}
+-                    <a href="#" class="list-group-item list-group-item-action">
++                    <a href="{{ path('admin_article_download_reference', {
++                        id: article.id,
++                        referenceId: reference.id
++                    }) }}" class="list-group-item list-group-item-action">
+                         {{ reference.filename }}
+                     </a>
+                 {% endfor %}

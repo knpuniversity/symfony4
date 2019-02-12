@@ -57,10 +57,10 @@ index 111fb832..b4345d33 100644
  }
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
 new file mode 100644
-index 00000000..427ad53e
+index 00000000..e4b17d2b
 --- /dev/null
 +++ b/src/Entity/ArticleReference.php
-@@ -0,0 +1,58 @@
+@@ -0,0 +1,75 @@
 +<?php
 +
 +namespace App\Entity;
@@ -90,6 +90,11 @@ index 00000000..427ad53e
 +     */
 +    private $filename;
 +
++    /**
++     * @ORM\Column(type="string", length=50)
++     */
++    private $mimeType;
++
 +    public function getId(): ?int
 +    {
 +        return $this->id;
@@ -118,12 +123,24 @@ index 00000000..427ad53e
 +
 +        return $this;
 +    }
++
++    public function getMimeType(): ?string
++    {
++        return $this->mimeType;
++    }
++
++    public function setMimeType(string $mimeType): self
++    {
++        $this->mimeType = $mimeType;
++
++        return $this;
++    }
 +}
-diff --git a/src/Migrations/Version20190212173805.php b/src/Migrations/Version20190212173805.php
+diff --git a/src/Migrations/Version20190212185416.php b/src/Migrations/Version20190212185416.php
 new file mode 100644
-index 00000000..983b996d
+index 00000000..29984818
 --- /dev/null
-+++ b/src/Migrations/Version20190212173805.php
++++ b/src/Migrations/Version20190212185416.php
 @@ -0,0 +1,36 @@
 +<?php
 +
@@ -137,7 +154,7 @@ index 00000000..983b996d
 +/**
 + * Auto-generated Migration: Please modify to your needs!
 + */
-+final class Version20190212173805 extends AbstractMigration
++final class Version20190212185416 extends AbstractMigration
 +{
 +    public function getDescription() : string
 +    {
@@ -149,7 +166,7 @@ index 00000000..983b996d
 +        // this up() migration is auto-generated, please modify it to your needs
 +        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 +
-+        $this->addSql('CREATE TABLE article_reference (id INT AUTO_INCREMENT NOT NULL, article_id INT NOT NULL, filename VARCHAR(255) NOT NULL, INDEX IDX_749619377294869C (article_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
++        $this->addSql('CREATE TABLE article_reference (id INT AUTO_INCREMENT NOT NULL, article_id INT NOT NULL, filename VARCHAR(255) NOT NULL, mime_type VARCHAR(50) NOT NULL, INDEX IDX_749619377294869C (article_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
 +        $this->addSql('ALTER TABLE article_reference ADD CONSTRAINT FK_749619377294869C FOREIGN KEY (article_id) REFERENCES article (id)');
 +    }
 +

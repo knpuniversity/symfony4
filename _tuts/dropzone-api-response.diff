@@ -1,0 +1,28 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index dac49f68..cd82f348 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -102,9 +102,9 @@ class ArticleAdminController extends BaseController
+         $uploadedFile = $request->files->get('reference');
+ 
+         if (!$uploadedFile) {
+-            return $this->redirectToRoute('admin_article_edit', [
+-                'id' => $article->getId(),
+-            ]);
++            return $this->json([
++                'message' => 'Missing file'
++            ], 400);
+         }
+ 
+         $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
+@@ -116,9 +116,7 @@ class ArticleAdminController extends BaseController
+         $entityManager->persist($articleReference);
+         $entityManager->flush();
+ 
+-        return $this->redirectToRoute('admin_article_edit', [
+-            'id' => $article->getId(),
+-        ]);
++        return $this->json($articleReference);
+     }
+ 
+     /**
