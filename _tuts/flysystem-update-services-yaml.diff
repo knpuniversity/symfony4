@@ -1,0 +1,29 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index a7cd6805..1b6adca8 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -20,7 +20,7 @@ services:
+         bind:
+             $markdownLogger: '@monolog.logger.markdown'
+             $isDebug: '%kernel.debug%'
+-            $uploadsPath: '%kernel.project_dir%/public/uploads'
++            $publicUploadsFilesystem: '@oneup_flysystem.public_uploads_filesystem_filesystem'
+ 
+     # custom aliases for autowiring
+     Nexy\Slack\Client: '@nexy_slack.client'
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index 222c7626..1cc2e668 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -16,9 +16,9 @@ class UploaderHelper
+ 
+     private $requestStack;
+ 
+-    public function __construct(FilesystemInterface $filesystem, RequestStack $requestStack)
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack)
+     {
+-        $this->filesystem = $filesystem;
++        $this->filesystem = $publicUploadsFilesystem;
+         $this->requestStack = $requestStack;
+     }
+ 

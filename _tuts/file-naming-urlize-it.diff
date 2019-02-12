@@ -1,0 +1,21 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 34651256..192fb9aa 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -6,6 +6,7 @@ use App\Entity\Article;
+ use App\Form\ArticleFormType;
+ use App\Repository\ArticleRepository;
+ use Doctrine\ORM\EntityManagerInterface;
++use Gedmo\Sluggable\Util\Urlizer;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
+@@ -78,7 +79,7 @@ class ArticleAdminController extends BaseController
+         $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_images';
+ 
+         $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+-        $newFilename = $originalFilename . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
++        $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
+ 
+         dd($uploadedFile->move(
+             $destination,

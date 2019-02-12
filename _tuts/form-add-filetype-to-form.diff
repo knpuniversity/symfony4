@@ -1,0 +1,20 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 5263eaca..4b969cf9 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
+ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
++use Symfony\Component\Form\Extension\Core\Type\FileType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\Form\FormEvent;
+@@ -50,6 +51,7 @@ class ArticleFormType extends AbstractType
+                 ],
+                 'required' => false,
+             ])
++            ->add('imageFilename', FileType::class)
+         ;
+ 
+         if ($options['include_published_at']) {

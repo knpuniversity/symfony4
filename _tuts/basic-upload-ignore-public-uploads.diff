@@ -1,0 +1,10 @@
+diff --git a/.gitignore b/.gitignore
+index e9a59860..4c881d3e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -15,3 +15,5 @@
+ .phpunit
+ /phpunit.xml
+ ###< symfony/phpunit-bridge ###
++
++/public/uploads/

@@ -1,0 +1,68 @@
+diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
+index 50b80766..a760f365 100644
+--- a/config/packages/oneup_flysystem.yaml
++++ b/config/packages/oneup_flysystem.yaml
+@@ -1,10 +1,9 @@
+ # Read the documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/Resources/doc/index.md
+ oneup_flysystem:
+     adapters:
+-        default_adapter:
++        public_uploads_adapter:
+             local:
+-                directory: '%kernel.cache_dir%/flysystem'
++                directory: '%kernel.project_dir%/public/uploads'
+     filesystems:
+-        default_filesystem:
+-            adapter: default_adapter
+-            alias: League\Flysystem\Filesystem
++        public_uploads_filesystem:
++            adapter: public_uploads_adapter
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index 88f29b39..222c7626 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -3,6 +3,7 @@
+ namespace App\Service;
+ 
+ use Gedmo\Sluggable\Util\Urlizer;
++use League\Flysystem\FilesystemInterface;
+ use Symfony\Component\HttpFoundation\File\File;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\RequestStack;
+@@ -11,20 +12,18 @@ class UploaderHelper
+ {
+     const ARTICLE_IMAGE = 'article_image';
+ 
+-    private $uploadsPath;
++    private $filesystem;
+ 
+     private $requestStack;
+ 
+-    public function __construct(string $uploadsPath, RequestStack $requestStack)
++    public function __construct(FilesystemInterface $filesystem, RequestStack $requestStack)
+     {
+-        $this->uploadsPath = $uploadsPath;
++        $this->filesystem = $filesystem;
+         $this->requestStack = $requestStack;
+     }
+ 
+     public function uploadArticleImage(File $file): string
+     {
+-        $destination = $this->uploadsPath.'/'.self::ARTICLE_IMAGE;
+-
+         if ($file instanceof UploadedFile) {
+             $originalFilename = $file->getClientOriginalName();
+         } else {
+@@ -32,9 +31,9 @@ class UploaderHelper
+         }
+         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)) . '-' . uniqid('', true) . '.' . $file->guessExtension();
+ 
+-        $file->move(
+-            $destination,
+-            $newFilename
++        $this->filesystem->write(
++            self::ARTICLE_IMAGE . '/' . $newFilename,
++            file_get_contents($file->getPathname())
+         );
+ 
+         return $newFilename;

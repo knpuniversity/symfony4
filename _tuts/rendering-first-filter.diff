@@ -1,0 +1,40 @@
+diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
+index 48ea8349..372e159e 100644
+--- a/config/packages/liip_imagine.yaml
++++ b/config/packages/liip_imagine.yaml
+@@ -1,13 +1,19 @@
+-#liip_imagine:
++liip_imagine:
+ #    # valid drivers options include "gd" or "gmagick" or "imagick"
+ #    driver: "gd"
+ #
+ #    # define your filter sets under this option
+-#    filter_sets:
++    filter_sets:
+ #
+ #        # an example thumbnail transformation definition
+ #        # https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html#create-thumbnails
+-#        squared_thumbnail:
++        squared_thumbnail_small:
++            filters:
++                thumbnail:
++                    size:          [200, 200]
++                    mode:          outbound
++                    allow_upscale: true
++
+ #
+ #            # set your image quality defaults
+ #            jpeg_quality:          85
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 0994875c..e65f35fc 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -21,7 +21,7 @@
+                 {% for article in articles %}
+                 <div class="article-container my-1">
+                     <a href="{{ path('article_show', {slug: article.slug}) }}">
+-                        <img class="article-img" src="{{ uploaded_asset(article.imagePath) }}">
++                        <img class="article-img" src="{{ uploaded_asset(article.imagePath)|imagine_filter('squared_thumbnail_small') }}">
+                         <div class="article-title d-inline-block pl-3 align-middle">
+                             <span>{{ article.title }}</span>
+                             <small>({{ article.nonDeletedComments|length }} comments)</small>

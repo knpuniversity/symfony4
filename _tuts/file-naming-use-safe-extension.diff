@@ -1,0 +1,15 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 9491eea5..34651256 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -76,7 +76,9 @@ class ArticleAdminController extends BaseController
+         /** @var UploadedFile $uploadedFile */
+         $uploadedFile = $request->files->get('image');
+         $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_images';
+-        $newFilename = uniqid('', true) . '-' . $uploadedFile->getClientOriginalName();
++
++        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
++        $newFilename = $originalFilename . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
+ 
+         dd($uploadedFile->move(
+             $destination,

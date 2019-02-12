@@ -1,0 +1,12 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index ebf000cc..a7cd6805 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -20,6 +20,7 @@ services:
+         bind:
+             $markdownLogger: '@monolog.logger.markdown'
+             $isDebug: '%kernel.debug%'
++            $uploadsPath: '%kernel.project_dir%/public/uploads'
+ 
+     # custom aliases for autowiring
+     Nexy\Slack\Client: '@nexy_slack.client'

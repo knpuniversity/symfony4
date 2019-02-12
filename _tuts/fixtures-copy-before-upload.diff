@@ -1,0 +1,25 @@
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index 4b90a2aa..f421c882 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
+@@ -8,6 +8,7 @@ use App\Entity\Tag;
+ use App\Service\UploaderHelper;
+ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+ use Doctrine\Common\Persistence\ObjectManager;
++use Symfony\Component\Filesystem\Filesystem;
+ use Symfony\Component\HttpFoundation\File\File;
+ 
+ class ArticleFixtures extends BaseFixture implements DependentFixtureInterface
+@@ -62,8 +63,11 @@ EOF
+             }
+ 
+             $randomImage = $this->faker->randomElement(self::$articleImages);
++            $fs = new Filesystem();
++            $targetPath = sys_get_temp_dir().'/'.$randomImage;
++            $fs->copy(__DIR__.'/images/'.$randomImage, $targetPath, true);
+             $imageFilename = $this->uploaderHelper
+-                ->uploadArticleImage(new File(__DIR__.'/images/'.$randomImage));
++                ->uploadArticleImage(new File($targetPath));
+ 
+             $article->setAuthor($this->getRandomReference('main_users'))
+                 ->setHeartCount($this->faker->numberBetween(5, 100))

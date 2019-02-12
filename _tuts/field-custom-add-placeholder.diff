@@ -1,0 +1,17 @@
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index 397f2592..832c5df4 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -2,7 +2,11 @@
+     {{ form_row(articleForm.title, {
+         label: 'Article title'
+     }) }}
+-    {{ form_row(articleForm.imageFile) }}
++    {{ form_row(articleForm.imageFile, {
++        attr: {
++            'placeholder': 'Select an article image'
++        }
++    }) }}
+     {{ form_row(articleForm.author) }}
+     {{ form_row(articleForm.location, {
+         attr: {

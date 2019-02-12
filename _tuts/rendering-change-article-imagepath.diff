@@ -1,0 +1,13 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 5cec4217..97752eec 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -184,7 +184,7 @@ class Article
+ 
+     public function getImagePath()
+     {
+-        return 'images/'.$this->getImageFilename();
++        return 'uploads/article_images/'.$this->getImageFilename();
+     }
+ 
+     /**

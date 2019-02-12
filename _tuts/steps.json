@@ -1,0 +1,255 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "basic-upload-add-file-field-start-of-controller",
+            "name": "Basic Upload: Add file field + start of controller",
+            "description": null
+        },
+        {
+            "id": "basic-upload-add-enctype",
+            "name": "Basic Upload: add enctype",
+            "description": null
+        },
+        {
+            "id": "basic-upload-add-uploads-dir",
+            "name": "Basic Upload: Add uploads\/ dir",
+            "description": null
+        },
+        {
+            "id": "basic-upload-ignore-public-uploads",
+            "name": "Basic Upload: Ignore public\/uploads",
+            "description": null
+        },
+        {
+            "id": "basic-upload-move-file-easily",
+            "name": "Basic Upload: Move file easily",
+            "description": null
+        },
+        {
+            "id": "file-naming-use-client-original",
+            "name": "File naming: use client original",
+            "description": null
+        },
+        {
+            "id": "file-naming-add-unique-prefix",
+            "name": "File naming: add unique prefix",
+            "description": null
+        },
+        {
+            "id": "file-naming-use-safe-extension",
+            "name": "File naming: use safe extension",
+            "description": null
+        },
+        {
+            "id": "file-naming-urlize-it",
+            "name": "File naming: urlize it",
+            "description": null
+        },
+        {
+            "id": "form-add-filetype-to-form",
+            "name": "Form: Add FileType to form",
+            "description": null
+        },
+        {
+            "id": "form-make-unmapped-field",
+            "name": "Form: Make unmapped field",
+            "description": null
+        },
+        {
+            "id": "form-process-on-submit",
+            "name": "Form: Process on submit",
+            "description": null
+        },
+        {
+            "id": "form-handle-not-uploading",
+            "name": "Form: Handle not uploading",
+            "description": null
+        },
+        {
+            "id": "service-add-uploaderhelper",
+            "name": "Service: Add UploaderHelper",
+            "description": null
+        },
+        {
+            "id": "service-finish-logic-in-service",
+            "name": "Service: Finish logic in service",
+            "description": null
+        },
+        {
+            "id": "service-bind-uploadspath",
+            "name": "Service: bind $uploadsPath",
+            "description": null
+        },
+        {
+            "id": "service-use-in-new-endpoint",
+            "name": "Service: Use in new endpoint",
+            "description": null
+        },
+        {
+            "id": "validation-add-image-constraint",
+            "name": "Validation: Add Image constraint",
+            "description": null
+        },
+        {
+            "id": "validation-add-maxsize",
+            "name": "Validation: Add maxSize",
+            "description": null
+        },
+        {
+            "id": "validation-make-maxsize-real",
+            "name": "Validation: make maxSize real",
+            "description": null
+        },
+        {
+            "id": "field-custom-add-placeholder",
+            "name": "Field Custom: Add placeholder",
+            "description": null
+        },
+        {
+            "id": "field-custom-add-javascript",
+            "name": "Field Custom: Add JavaScript",
+            "description": null
+        },
+        {
+            "id": "rendering-change-article-imagepath",
+            "name": "Rendering: change Article.imagePath",
+            "description": null
+        },
+        {
+            "id": "rendering-use-a-constant",
+            "name": "Rendering: Use a constant",
+            "description": null
+        },
+        {
+            "id": "rendering-add-getpublicpath-helper",
+            "name": "Rendering: Add getPublicPath() helper",
+            "description": null
+        },
+        {
+            "id": "rendering-wrap-in-asset",
+            "name": "Rendering: wrap in asset()",
+            "description": null
+        },
+        {
+            "id": "rendering-delete-me1",
+            "name": "Rendering: delete me1",
+            "description": null
+        },
+        {
+            "id": "rendering-use-request-basepath",
+            "name": "Rendering: use Request::basePath()",
+            "description": null
+        },
+        {
+            "id": "rendering-install-liipimaginebundle",
+            "name": "Rendering: Install LiipImagineBundle",
+            "description": null
+        },
+        {
+            "id": "rendering-first-filter",
+            "name": "Rendering: First filter",
+            "description": null
+        },
+        {
+            "id": "rendering-another-filter",
+            "name": "Rendering: Another filter",
+            "description": null
+        },
+        {
+            "id": "rendering-image-on-form",
+            "name": "Rendering: image on form",
+            "description": null
+        },
+        {
+            "id": "fixtures-start-using-in-fixtures",
+            "name": "Fixtures: Start using in fixtures",
+            "description": null
+        },
+        {
+            "id": "fixtures-copy-before-upload",
+            "name": "Fixtures: Copy before \"upload\"",
+            "description": null
+        },
+        {
+            "id": "fixtures-refactor-to-private-method",
+            "name": "Fixtures: refactor to private method",
+            "description": null
+        },
+        {
+            "id": "flysystem-install-bundle",
+            "name": "Flysystem: install bundle",
+            "description": null
+        },
+        {
+            "id": "flysystem-use-in-uploaderhelper",
+            "name": "Flysystem: Use in UploaderHelper",
+            "description": null
+        },
+        {
+            "id": "flysystem-update-services-yaml",
+            "name": "Flysystem: update services.yaml",
+            "description": null
+        },
+        {
+            "id": "flysystem-use-stream",
+            "name": "Flysystem: use stream",
+            "description": null
+        },
+        {
+            "id": "flysystem-delete-old-file",
+            "name": "Flysystem: delete old file",
+            "description": null
+        },
+        {
+            "id": "flysystem-silent-on-old-file-not-found",
+            "name": "Flysystem: silent on old file not found",
+            "description": null
+        },
+        {
+            "id": "flysystem-code-defensively",
+            "name": "Flysystem: code defensively",
+            "description": null
+        },
+        {
+            "id": "fly-liip-add-use-loader",
+            "name": "Fly+Liip: Add & use loader",
+            "description": null
+        },
+        {
+            "id": "fly-liip-remove-uploaded-asset",
+            "name": "Fly+Liip: Remove uploaded_asset()",
+            "description": null
+        },
+        {
+            "id": "fly-liip-add-resolver",
+            "name": "Fly+Liip: Add resolver",
+            "description": null
+        },
+        {
+            "id": "fly-liip-store-uploads-in-parameter",
+            "name": "Fly+Liip: store uploads\/ in parameter",
+            "description": null
+        },
+        {
+            "id": "articlereference-make-entity",
+            "name": "ArticleReference: make:entity",
+            "description": null
+        },
+        {
+            "id": "articlereference-markup-on-edit-form",
+            "name": "ArticleReference: Markup on edit form",
+            "description": null
+        },
+        {
+            "id": "articlereference-add-form-controller",
+            "name": "ArticleReference: add form + controller",
+            "description": null
+        }
+    ],
+    "sha": "0014ebc0a84e16610e005d42fce9c3d3f7df3a46"
+}

@@ -1,0 +1,74 @@
+diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
+index 64c27929..914b06f1 100644
+--- a/config/packages/liip_imagine.yaml
++++ b/config/packages/liip_imagine.yaml
+@@ -16,7 +16,7 @@ liip_imagine:
+             flysystem:
+                 filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+                 cache_prefix: media/cache
+-                root_url: /uploads
++                root_url: '/%local_uploads_dir%'
+ 
+     # default cache resolver for saving thumbnails
+     cache: flysystem_resolver
+diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
+index a760f365..1646c3b7 100644
+--- a/config/packages/oneup_flysystem.yaml
++++ b/config/packages/oneup_flysystem.yaml
+@@ -3,7 +3,7 @@ oneup_flysystem:
+     adapters:
+         public_uploads_adapter:
+             local:
+-                directory: '%kernel.project_dir%/public/uploads'
++                directory: '%kernel.project_dir%/public/%local_uploads_dir%'
+     filesystems:
+         public_uploads_filesystem:
+             adapter: public_uploads_adapter
+diff --git a/config/services.yaml b/config/services.yaml
+index 1b6adca8..cc069723 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -6,6 +6,7 @@
+ parameters:
+     cache_adapter: cache.adapter.apcu
+     locale: 'en'
++    local_uploads_dir: 'uploads'
+ 
+ services:
+     # default configuration for services in *this* file
+@@ -21,6 +22,7 @@ services:
+             $markdownLogger: '@monolog.logger.markdown'
+             $isDebug: '%kernel.debug%'
+             $publicUploadsFilesystem: '@oneup_flysystem.public_uploads_filesystem_filesystem'
++            $uploadsPathPrefix: '%local_uploads_dir%'
+ 
+     # custom aliases for autowiring
+     Nexy\Slack\Client: '@nexy_slack.client'
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index 322d44bc..64241f47 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -20,11 +20,14 @@ class UploaderHelper
+ 
+     private $logger;
+ 
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger)
++    private $storagePathPrefix;
++
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadsPathPrefix)
+     {
+         $this->filesystem = $publicUploadsFilesystem;
+         $this->requestStack = $requestStack;
+         $this->logger = $logger;
++        $this->storagePathPrefix = $uploadsPathPrefix;
+     }
+ 
+     public function uploadArticleImage(File $file, ?string $existingFilename): string
+@@ -70,6 +73,6 @@ class UploaderHelper
+         // needed if you deploy under a subdirectory
+         return $this->requestStack
+             ->getCurrentRequest()
+-            ->getBasePath() . '/uploads/'.$path;
++            ->getBasePath() . '/'.$this->storagePathPrefix.'/'.$path;
+     }
+ }

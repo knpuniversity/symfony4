@@ -1,0 +1,27 @@
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index 342703c8..cbb36e88 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -3,9 +3,19 @@
+ {% block content_body %}
+     <h1>Edit the Article! 🚀</h1>
+ 
+-    {{ include('article_admin/_form.html.twig', {
+-        button_text: 'Update!'
+-    }) }}
++    <hr/>
++
++    <div class="row">
++        <div class="col-sm-8">
++            <h3>Details</h3>
++            {{ include('article_admin/_form.html.twig', {
++                button_text: 'Update!'
++            }) }}
++        </div>
++        <div class="col-sm-4">
++            <h3>Add References</h3>
++        </div>
++    </div>
+ {% endblock %}
+ 
+ {% block javascripts %}

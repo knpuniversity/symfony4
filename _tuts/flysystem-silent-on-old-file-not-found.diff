@@ -1,0 +1,42 @@
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index ba0172cd..6c4f49ad 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -3,7 +3,9 @@
+ namespace App\Service;
+ 
+ use Gedmo\Sluggable\Util\Urlizer;
++use League\Flysystem\FileNotFoundException;
+ use League\Flysystem\FilesystemInterface;
++use Psr\Log\LoggerInterface;
+ use Symfony\Component\HttpFoundation\File\File;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\RequestStack;
+@@ -16,10 +18,13 @@ class UploaderHelper
+ 
+     private $requestStack;
+ 
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack)
++    private $logger;
++
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger)
+     {
+         $this->filesystem = $publicUploadsFilesystem;
+         $this->requestStack = $requestStack;
++        $this->logger = $logger;
+     }
+ 
+     public function uploadArticleImage(File $file, ?string $existingFilename): string
+@@ -41,7 +46,11 @@ class UploaderHelper
+         }
+ 
+         if ($existingFilename) {
+-            $this->filesystem->delete(self::ARTICLE_IMAGE . '/' . $existingFilename);
++            try {
++                $this->filesystem->delete(self::ARTICLE_IMAGE . '/' . $existingFilename);
++            } catch (FileNotFoundException $e) {
++                $this->logger->alert(sprintf('Old uploaded file "%s" was missing when trying to delete', $existingFilename));
++            }
+         }
+ 
+         return $newFilename;

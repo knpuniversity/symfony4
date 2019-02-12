@@ -1,0 +1,100 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index eb36fa25..111fb832 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -185,7 +185,7 @@ class Article
+ 
+     public function getImagePath()
+     {
+-        return 'uploads/'.UploaderHelper::ARTICLE_IMAGE.'/'.$this->getImageFilename();
++        return UploaderHelper::ARTICLE_IMAGE.'/'.$this->getImageFilename();
+     }
+ 
+     /**
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index f37e250d..02e0c4af 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -30,4 +30,9 @@ class UploaderHelper
+ 
+         return $newFilename;
+     }
++
++    public function getPublicPath(string $path): string
++    {
++        return 'uploads/'.$path;
++    }
+ }
+diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
+index 05111e89..11c57567 100644
+--- a/src/Twig/AppExtension.php
++++ b/src/Twig/AppExtension.php
+@@ -3,7 +3,9 @@
+ namespace App\Twig;
+ 
+ use App\Service\MarkdownHelper;
++use App\Service\UploaderHelper;
+ use Psr\Container\ContainerInterface;
++use Symfony\Component\Asset\Packages;
+ use Symfony\Component\DependencyInjection\ServiceSubscriberInterface;
+ use Twig\Extension\AbstractExtension;
+ use Twig\TwigFilter;
+@@ -18,6 +20,13 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
+         $this->container = $container;
+     }
+ 
++    public function getFunctions(): array
++    {
++        return [
++            new TwigFunction('uploaded_asset', [$this, 'getUploadedAssetPath'])
++        ];
++    }
++
+     public function getFilters(): array
+     {
+         return [
+@@ -32,10 +41,18 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
+             ->parse($value);
+     }
+ 
++    public function getUploadedAssetPath(string $path): string
++    {
++        return $this->container
++            ->get(UploaderHelper::class)
++            ->getPublicPath($path);
++    }
++
+     public static function getSubscribedServices()
+     {
+         return [
+             MarkdownHelper::class,
++            UploaderHelper::class,
+         ];
+     }
+ }
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 6af365b4..0994875c 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -21,7 +21,7 @@
+                 {% for article in articles %}
+                 <div class="article-container my-1">
+                     <a href="{{ path('article_show', {slug: article.slug}) }}">
+-                        <img class="article-img" src="{{ asset(article.imagePath) }}">
++                        <img class="article-img" src="{{ uploaded_asset(article.imagePath) }}">
+                         <div class="article-title d-inline-block pl-3 align-middle">
+                             <span>{{ article.title }}</span>
+                             <small>({{ article.nonDeletedComments|length }} comments)</small>
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index f70db230..08a9a295 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -5,7 +5,7 @@
+ {% block content_body %}
+     <div class="row">
+         <div class="col-sm-12">
+-            <img class="show-article-img" src="{{ asset(article.imagePath) }}">
++            <img class="show-article-img" src="{{ uploaded_asset(article.imagePath) }}">
+             <div class="show-article-title-container d-inline-block pl-3 align-middle">
+                 <span class="show-article-title ">{{ article.title }}</span>
+                 <br>

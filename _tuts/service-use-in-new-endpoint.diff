@@ -1,0 +1,28 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 8d666953..0366cf53 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -21,7 +21,7 @@ class ArticleAdminController extends BaseController
+      * @Route("/admin/article/new", name="admin_article_new")
+      * @IsGranted("ROLE_ADMIN_ARTICLE")
+      */
+-    public function new(EntityManagerInterface $em, Request $request)
++    public function new(EntityManagerInterface $em, Request $request, UploaderHelper $uploaderHelper)
+     {
+         $form = $this->createForm(ArticleFormType::class);
+ 
+@@ -30,6 +30,14 @@ class ArticleAdminController extends BaseController
+             /** @var Article $article */
+             $article = $form->getData();
+ 
++            /** @var UploadedFile $uploadedFile */
++            $uploadedFile = $form['imageFile']->getData();
++
++            if ($uploadedFile) {
++                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
++                $article->setImageFilename($newFilename);
++            }
++
+             $em->persist($article);
+             $em->flush();
+ 

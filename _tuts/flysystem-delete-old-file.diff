@@ -1,0 +1,58 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 0366cf53..0584cdfa 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -34,7 +34,7 @@ class ArticleAdminController extends BaseController
+             $uploadedFile = $form['imageFile']->getData();
+ 
+             if ($uploadedFile) {
+-                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
++                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile, $article->getImageFilename());
+                 $article->setImageFilename($newFilename);
+             }
+ 
+@@ -67,7 +67,7 @@ class ArticleAdminController extends BaseController
+             $uploadedFile = $form['imageFile']->getData();
+ 
+             if ($uploadedFile) {
+-                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
++                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile, $article->getImageFilename());
+                 $article->setImageFilename($newFilename);
+             }
+ 
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index e34b11cf..d298ef4d 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
+@@ -96,6 +96,6 @@ EOF
+         $fs->copy(__DIR__.'/images/'.$randomImage, $targetPath, true);
+ 
+         return $this->uploaderHelper
+-            ->uploadArticleImage(new File($targetPath));
++            ->uploadArticleImage(new File($targetPath), null);
+     }
+ }
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index 076559c3..ba0172cd 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -22,7 +22,7 @@ class UploaderHelper
+         $this->requestStack = $requestStack;
+     }
+ 
+-    public function uploadArticleImage(File $file): string
++    public function uploadArticleImage(File $file, ?string $existingFilename): string
+     {
+         if ($file instanceof UploadedFile) {
+             $originalFilename = $file->getClientOriginalName();
+@@ -40,6 +40,10 @@ class UploaderHelper
+             fclose($stream);
+         }
+ 
++        if ($existingFilename) {
++            $this->filesystem->delete(self::ARTICLE_IMAGE . '/' . $existingFilename);
++        }
++
+         return $newFilename;
+     }
+ 
