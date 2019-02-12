@@ -329,7 +329,17 @@
             "id": "dropzone-add-file-dynamically",
             "name": "Dropzone: Add file dynamically",
             "description": null
+        },
+        {
+            "id": "dropzone-add-validation",
+            "name": "Dropzone: Add validation",
+            "description": null
+        },
+        {
+            "id": "dropzone-handle-json-error",
+            "name": "Dropzone: handle JSON error",
+            "description": null
         }
     ],
-    "sha": "084dc1522874eb7ab1a86b31565df75bd64f7cdb"
+    "sha": "515a55ae0cf9c2d727ed2f59963e28a4c36266a1"
 }

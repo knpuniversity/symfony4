@@ -1,0 +1,17 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 5e4f7e23..53aa9c69 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -48,6 +48,12 @@ function initializeDropzone()
+                 $anchor.attr('href', downloadPath);
+                 $('.js-reference-list').append($anchor);
+             });
++
++            this.on('error', function(file, data) {
++                if (data.detail) {
++                    this.emit('error', file, data.detail);
++                }
++            });
+         }
+     });
+ }

@@ -1,21 +1,21 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index bff19aba..70e04700 100644
+index 352cfdf7..5e4f7e23 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
-@@ -40,7 +40,12 @@ function initializeDropzone()
-     var dropzone = new Dropzone(inputElement, {
+@@ -41,7 +41,12 @@ function initializeDropzone()
          paramName: 'reference',
-         success: function(file, data) {
--            console.log(file, data);
-+            var downloadPath = file.xhr.getResponseHeader('Location');
+         init: function() {
+             this.on('success', function(file, data) {
+-                console.log(file, data);
++                var downloadPath = file.xhr.getResponseHeader('Location');
 +
-+            var $anchor = $('<a class="list-group-item list-group-item-action"></a>');
-+            $anchor.html(data.filename);
-+            $anchor.attr('href', downloadPath);
-+            $('.js-reference-list').append($anchor);
++                var $anchor = $('<a class="list-group-item list-group-item-action"></a>');
++                $anchor.html(data.filename);
++                $anchor.attr('href', downloadPath);
++                $('.js-reference-list').append($anchor);
+             });
          }
      });
- }
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
 index fb93cad4..d302148a 100644
 --- a/templates/article_admin/edit.html.twig
