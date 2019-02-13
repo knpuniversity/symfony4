@@ -21,13 +21,12 @@ composer install
 You may alternatively need to run `php composer.phar install`, depending
 on how you installed Composer.
 
-**Configure the the .env File**
+**Configure the .env (or .env.local) File**
 
-First, make sure you have an `.env` file (you should).
-If you don't, copy `.env.dist` to create it.
-
-Next, look at the configuration and make any adjustments you
-need - specifically `DATABASE_URL`.
+Open the `.env` file and make any adjustments you need - specifically
+`DATABASE_URL`. Or, if you want, you can create a `.env.local` file
+and *override* any configuration you need there (instead of changing
+`.env` directly).
 
 **Setup the Database**
 
@@ -46,14 +45,25 @@ database (`doctrine:database:drop --force`) and try again.
 
 **Start the built-in web server**
 
-You can use Nginx or Apache, but the built-in web server works
-great:
+You can use Nginx or Apache, but Symfony's local web server
+works even better.
+
+To install the Symfony local web server, follow
+"Downloading the Symfony client" instructions found
+here: https://symfony.com/download - you only need to do this
+once on your system.
+
+Then, to start the web server, open a terminal, move into the
+project, and run:
 
 ```
-php bin/console server:run
+symfony serve
 ```
 
-Now check out the site at `http://localhost:8000`
+(If this is your first time using this command, you may see an
+error that you need to run `symfony server:ca:install` first).
+
+Now check out the site at `https://localhost:8000`
 
 Have fun!
 
