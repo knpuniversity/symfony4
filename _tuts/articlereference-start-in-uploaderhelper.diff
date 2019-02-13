@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 89131976..328257d6 100644
+index a9565086..d03e82fd 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -3,6 +3,7 @@
@@ -10,7 +10,7 @@ index 89131976..328257d6 100644
  use App\Form\ArticleFormType;
  use App\Repository\ArticleRepository;
  use App\Service\UploaderHelper;
-@@ -91,9 +92,29 @@ class ArticleAdminController extends BaseController
+@@ -90,9 +91,29 @@ class ArticleAdminController extends BaseController
       * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
       * @IsGranted("MANAGE", subject="article")
       */
@@ -73,7 +73,7 @@ index e4b17d2b..516a6d58 100644
      {
          return $this->filename;
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 64241f47..745eeb5c 100644
+index e9c0b9c4..cdacc5d0 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -68,6 +68,11 @@ class UploaderHelper

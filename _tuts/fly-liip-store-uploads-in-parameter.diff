@@ -45,7 +45,7 @@ index 1b6adca8..cc069723 100644
      # custom aliases for autowiring
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 322d44bc..64241f47 100644
+index 94b23747..e9c0b9c4 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -20,11 +20,14 @@ class UploaderHelper

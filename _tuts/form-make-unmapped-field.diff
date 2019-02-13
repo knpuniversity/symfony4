@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 192fb9aa..bca33cfe 100644
+index 3ee564cd..72d9314b 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -54,6 +54,8 @@ class ArticleAdminController extends BaseController
@@ -39,7 +39,7 @@ index d38d576e..397f2592 100644
      {{ form_row(articleForm.location, {
          attr: {
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 6030f588..342703c8 100644
+index a55c9a33..342703c8 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -3,14 +3,6 @@
@@ -47,12 +47,12 @@ index 6030f588..342703c8 100644
      <h1>Edit the Article! 🚀</h1>
  
 -    <form method="POST" action="{{ path('upload_test') }}" enctype="multipart/form-data">
--        <input type="file" name="image" />
+-        <input type="file" name="image">
 -
 -        <button type="submit" class="btn btn-primary">Upload!</button>
 -    </form>
 -
--    <hr/>
+-    <hr>
 -
      {{ include('article_admin/_form.html.twig', {
          button_text: 'Update!'

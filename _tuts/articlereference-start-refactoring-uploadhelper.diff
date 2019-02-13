@@ -29,7 +29,7 @@ index cc069723..e253ec6b 100644
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 745eeb5c..190e6f26 100644
+index cdacc5d0..673d6717 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -16,15 +16,18 @@ class UploaderHelper
@@ -64,7 +64,7 @@ index 745eeb5c..190e6f26 100644
 +        } else {
 +            $originalFilename = $file->getFilename();
 +        }
-+        $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)) . '-' . uniqid('', true) . '.' . $file->guessExtension();
++        $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
 +
 +        $stream = fopen($file->getPathname(), 'r');
 +        $result = $this->filesystem->writeStream(

@@ -1,9 +1,9 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 6c4f49ad..322d44bc 100644
+index 2e01ef68..94b23747 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -37,17 +37,26 @@ class UploaderHelper
-         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)) . '-' . uniqid('', true) . '.' . $file->guessExtension();
+         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
  
          $stream = fopen($file->getPathname(), 'r');
 -        $this->filesystem->writeStream(

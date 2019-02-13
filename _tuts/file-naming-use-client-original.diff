@@ -1,11 +1,11 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index e989e8c7..5be193f4 100644
+index ab030233..d2627042 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -76,7 +76,10 @@ class ArticleAdminController extends BaseController
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('image');
-         $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_images';
+         $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
 -        dd($uploadedFile->move($destination));
 +        dd($uploadedFile->move(
 +            $destination,

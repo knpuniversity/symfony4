@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 0584cdfa..89131976 100644
+index fd3e1d9b..a9565086 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -82,10 +82,20 @@ class ArticleAdminController extends BaseController
+@@ -81,10 +81,20 @@ class ArticleAdminController extends BaseController
          }
  
          return $this->render('article_admin/edit.html.twig', [

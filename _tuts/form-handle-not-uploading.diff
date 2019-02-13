@@ -1,25 +1,26 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 48d7d0ab..e099090b 100644
+index a2cefaa2..68637ce0 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -56,16 +56,19 @@ class ArticleAdminController extends BaseController
+@@ -56,16 +56,18 @@ class ArticleAdminController extends BaseController
          if ($form->isSubmitted() && $form->isValid()) {
              /** @var UploadedFile $uploadedFile */
              $uploadedFile = $form['imageFile']->getData();
--            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_images';
- 
+-            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_image';
+-
 -            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
--            $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
-+            if ($uploadedFile) {
-+                $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/article_images';
- 
+-            $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+-
 -            $uploadedFile->move(
 -                $destination,
 -                $newFilename
 -            );
 -            $article->setImageFilename($newFilename);
++            if ($uploadedFile) {
++                $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_image';
++
 +                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-+                $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
++                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 +
 +                $uploadedFile->move(
 +                    $destination,

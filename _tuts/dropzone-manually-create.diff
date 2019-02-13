@@ -32,10 +32,10 @@ index 830becde..1a8b27df 100644
 +    });
 +}
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 589ca0d7..dac49f68 100644
+index 038a0b7a..7380c2c7 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -100,7 +100,6 @@ class ArticleAdminController extends BaseController
+@@ -99,7 +99,6 @@ class ArticleAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');

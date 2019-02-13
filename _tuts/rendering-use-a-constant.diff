@@ -20,7 +20,7 @@ index 97752eec..eb36fa25 100644
  
      /**
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index a300ef66..f37e250d 100644
+index 660bd3dd..d245323f 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -36,8 +36,8 @@ index a300ef66..f37e250d 100644
  
      public function uploadArticleImage(UploadedFile $uploadedFile): string
      {
--        $destination = $this->uploadsPath.'/article_images';
+-        $destination = $this->uploadsPath.'/article_image';
 +        $destination = $this->uploadsPath.'/'.self::ARTICLE_IMAGE;
  
          $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-         $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
+         $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();

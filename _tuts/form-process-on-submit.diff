@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index bca33cfe..48d7d0ab 100644
+index 72d9314b..4114396a 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -54,7 +54,18 @@ class ArticleAdminController extends BaseController
@@ -9,10 +9,10 @@ index bca33cfe..48d7d0ab 100644
 -            dd($form['imageFile']->getData());
 +            /** @var UploadedFile $uploadedFile */
 +            $uploadedFile = $form['imageFile']->getData();
-+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_images';
++            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
 +
 +            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-+            $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
++            $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 +
 +            $uploadedFile->move(
 +                $destination,
@@ -33,10 +33,10 @@ index bca33cfe..48d7d0ab 100644
 -    {
 -        /** @var UploadedFile $uploadedFile */
 -        $uploadedFile = $request->files->get('image');
--        $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_images';
+-        $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
 -
 -        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
--        $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
+-        $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 -
 -        dd($uploadedFile->move(
 -            $destination,

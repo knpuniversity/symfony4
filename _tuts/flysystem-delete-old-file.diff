@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 0366cf53..0584cdfa 100644
+index 2c507cc4..fd3e1d9b 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -34,7 +34,7 @@ class ArticleAdminController extends BaseController
@@ -11,9 +11,9 @@ index 0366cf53..0584cdfa 100644
                  $article->setImageFilename($newFilename);
              }
  
-@@ -67,7 +67,7 @@ class ArticleAdminController extends BaseController
+@@ -66,7 +66,7 @@ class ArticleAdminController extends BaseController
+             /** @var UploadedFile $uploadedFile */
              $uploadedFile = $form['imageFile']->getData();
- 
              if ($uploadedFile) {
 -                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
 +                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile, $article->getImageFilename());
@@ -33,7 +33,7 @@ index e34b11cf..d298ef4d 100644
      }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 076559c3..ba0172cd 100644
+index abefd20b..66946355 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -22,7 +22,7 @@ class UploaderHelper

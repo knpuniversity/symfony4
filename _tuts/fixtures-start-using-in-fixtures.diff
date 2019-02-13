@@ -55,7 +55,7 @@ similarity index 100%
 rename from public/images/mercury.jpeg
 rename to src/DataFixtures/images/mercury.jpeg
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 3fc4b812..88f29b39 100644
+index 09e98413..f83b38e1 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,6 +3,7 @@
@@ -76,13 +76,13 @@ index 3fc4b812..88f29b39 100644
          $destination = $this->uploadsPath.'/'.self::ARTICLE_IMAGE;
  
 -        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
--        $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
+-        $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 +        if ($file instanceof UploadedFile) {
 +            $originalFilename = $file->getClientOriginalName();
 +        } else {
 +            $originalFilename = $file->getFilename();
 +        }
-+        $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)) . '-' . uniqid('', true) . '.' . $file->guessExtension();
++        $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
  
 -        $uploadedFile->move(
 +        $file->move(

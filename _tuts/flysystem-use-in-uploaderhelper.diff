@@ -18,7 +18,7 @@ index 50b80766..a760f365 100644
 +        public_uploads_filesystem:
 +            adapter: public_uploads_adapter
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 88f29b39..222c7626 100644
+index f83b38e1..4ecc64c6 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,6 +3,7 @@
@@ -55,7 +55,7 @@ index 88f29b39..222c7626 100644
          } else {
 @@ -32,9 +31,9 @@ class UploaderHelper
          }
-         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)) . '-' . uniqid('', true) . '.' . $file->guessExtension();
+         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
  
 -        $file->move(
 -            $destination,

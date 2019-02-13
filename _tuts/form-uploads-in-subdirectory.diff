@@ -1,0 +1,13 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 4114396a..a2cefaa2 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -56,7 +56,7 @@ class ArticleAdminController extends BaseController
+         if ($form->isSubmitted() && $form->isValid()) {
+             /** @var UploadedFile $uploadedFile */
+             $uploadedFile = $form['imageFile']->getData();
+-            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
++            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_image';
+ 
+             $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+             $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();

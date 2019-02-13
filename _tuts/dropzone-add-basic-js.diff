@@ -10,10 +10,10 @@ index bec4c243..830becde 100644
 +});
 \ No newline at end of file
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index dac49f68..589ca0d7 100644
+index 7380c2c7..038a0b7a 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -100,6 +100,7 @@ class ArticleAdminController extends BaseController
+@@ -99,6 +99,7 @@ class ArticleAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');

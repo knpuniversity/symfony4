@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 789e0066..58eb416f 100644
+index 30c01a6a..fa2c621c 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -10,11 +10,13 @@ use App\Repository\ArticleRepository;
@@ -16,7 +16,7 @@ index 789e0066..58eb416f 100644
  use Symfony\Component\Routing\Annotation\Route;
  
  class ArticleAdminController extends BaseController
-@@ -122,14 +124,21 @@ class ArticleAdminController extends BaseController
+@@ -121,14 +123,21 @@ class ArticleAdminController extends BaseController
       * @Route("/admin/article/{id}/references/{referenceId}", name="admin_article_download_reference", methods={"GET"})
       * @IsGranted("MANAGE", subject="article")
       */

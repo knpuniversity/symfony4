@@ -1,5 +1,5 @@
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 4baecba2..6030f588 100644
+index c435b417..a55c9a33 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -3,7 +3,7 @@
@@ -8,6 +8,6 @@ index 4baecba2..6030f588 100644
  
 -    <form method="POST" action="{{ path('upload_test') }}">
 +    <form method="POST" action="{{ path('upload_test') }}" enctype="multipart/form-data">
-         <input type="file" name="image" />
+         <input type="file" name="image">
  
          <button type="submit" class="btn btn-primary">Upload!</button>

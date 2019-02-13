@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index cd82f348..fede3cbe 100644
+index 1ec35984..b0dedb6f 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -116,7 +116,14 @@ class ArticleAdminController extends BaseController
+@@ -115,7 +115,14 @@ class ArticleAdminController extends BaseController
          $entityManager->persist($articleReference);
          $entityManager->flush();
  

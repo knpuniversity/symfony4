@@ -18,7 +18,7 @@ index ad70d8ba..ac344501 100644
       * @Route("/admin/article/location-select", name="admin_article_location_select")
       * @IsGranted("ROLE_USER")
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 342703c8..4baecba2 100644
+index 342703c8..c435b417 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -3,6 +3,14 @@
@@ -26,12 +26,12 @@ index 342703c8..4baecba2 100644
      <h1>Edit the Article! 🚀</h1>
  
 +    <form method="POST" action="{{ path('upload_test') }}">
-+        <input type="file" name="image" />
++        <input type="file" name="image">
 +
 +        <button type="submit" class="btn btn-primary">Upload!</button>
 +    </form>
 +
-+    <hr/>
++    <hr>
 +
      {{ include('article_admin/_form.html.twig', {
          button_text: 'Update!'

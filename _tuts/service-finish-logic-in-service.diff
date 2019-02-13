@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index e099090b..8d666953 100644
+index 68637ce0..cd0089f5 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -5,6 +5,7 @@ namespace App\Controller;
@@ -19,14 +19,14 @@ index e099090b..8d666953 100644
      {
          $form = $this->createForm(ArticleFormType::class, $article, [
              'include_published_at' => true
-@@ -58,15 +59,7 @@ class ArticleAdminController extends BaseController
+@@ -57,15 +58,7 @@ class ArticleAdminController extends BaseController
+             /** @var UploadedFile $uploadedFile */
              $uploadedFile = $form['imageFile']->getData();
- 
              if ($uploadedFile) {
--                $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/article_images';
+-                $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_image';
 -
 -                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
--                $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
+-                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 -
 -                $uploadedFile->move(
 -                    $destination,
@@ -37,7 +37,7 @@ index e099090b..8d666953 100644
              }
  
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 674793d3..a300ef66 100644
+index 192754f4..660bd3dd 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -7,9 +7,16 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -53,11 +53,11 @@ index 674793d3..a300ef66 100644
 +
      public function uploadArticleImage(UploadedFile $uploadedFile): string
      {
--        $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/article_images';
-+        $destination = $this->uploadsPath.'/article_images';
+-        $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_image';
++        $destination = $this->uploadsPath.'/article_image';
  
          $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-         $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
+         $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 @@ -18,5 +25,7 @@ class UploaderHelper
              $destination,
              $newFilename

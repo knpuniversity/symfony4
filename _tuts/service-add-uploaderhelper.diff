@@ -1,6 +1,6 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
 new file mode 100644
-index 00000000..674793d3
+index 00000000..192754f4
 --- /dev/null
 +++ b/src/Service/UploaderHelper.php
 @@ -0,0 +1,22 @@
@@ -15,10 +15,10 @@ index 00000000..674793d3
 +{
 +    public function uploadArticleImage(UploadedFile $uploadedFile): string
 +    {
-+        $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/article_images';
++        $destination = $this->getParameter('kernel.project_dir').'/public/uploads/article_image';
 +
 +        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-+        $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid('', true) . '.' . $uploadedFile->guessExtension();
++        $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 +
 +        $uploadedFile->move(
 +            $destination,

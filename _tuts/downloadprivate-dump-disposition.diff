@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 58eb416f..795b27ce 100644
+index fa2c621c..8c16f6c9 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,7 +10,7 @@ index 58eb416f..795b27ce 100644
  use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
  
-@@ -137,6 +138,11 @@ class ArticleAdminController extends BaseController
+@@ -136,6 +137,11 @@ class ArticleAdminController extends BaseController
  
              stream_copy_to_stream($fileStream, $outputStream);
          });

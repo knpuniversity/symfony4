@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index dac49f68..cd82f348 100644
+index 7380c2c7..1ec35984 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -102,9 +102,9 @@ class ArticleAdminController extends BaseController
+@@ -101,9 +101,9 @@ class ArticleAdminController extends BaseController
          $uploadedFile = $request->files->get('reference');
  
          if (!$uploadedFile) {
@@ -15,7 +15,7 @@ index dac49f68..cd82f348 100644
          }
  
          $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
-@@ -116,9 +116,7 @@ class ArticleAdminController extends BaseController
+@@ -115,9 +115,7 @@ class ArticleAdminController extends BaseController
          $entityManager->persist($articleReference);
          $entityManager->flush();
  
