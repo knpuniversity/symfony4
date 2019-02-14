@@ -1,4 +1,5 @@
 chapters:
+    - server-setup
     - upload-request
     - file-naming
     - upload-in-form

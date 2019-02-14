@@ -1,172 +1,108 @@
-# Upload Request
+# Uploads, multipart/form-data & UploadedFile
 
-Coming soon...
+This page uses a Symfony form. And we *will* learn how to add a file upload field
+to a form object. But... let's start simpler - with a good old-fashioned HTML
+form.
 
-Hey friends, welcome to our tutorial that is going to talk about everything related
-to uploading files and Symfony turns out there's a lot. I mean in some sense
-uploading a file, it's pretty simple. You upload the file, you move it somewhere, but
-of course you need to store it in the right place. You can store it in the cloud on s3
- If you want, need to validate that file to make sure that it's the right file
-type and isn't, um, uh, some security problem on of course, then you need to link to
-it publicly and sometimes you need to check security before you link to it. So
-there's actually a whole bunch of things that you need to keep track of with
-uploading, um, in any web application. So in this tutorial we are wanting to talk
-about every single part of that and create a really nice system for uploading files
-in a sane way inside of Symfony. As always, if you want to do, you want to upload
-the most knowledge into your brain, you should download the course code from this
-page and code along with me. After unzipping the code, you'll find a start directory.
-Whoops.
+The controller behind this page live at `src/Controller/ArticleAdminController.php`,
+and we're on the `edit()` action. Create a totally new, temporary endpoint:
+`public function temporaryUploadAction()`. We're going to create an HTML form
+in our template, put an input file field inside, and make it submit to this action.
+Add the `@Route()` with, how about, `/admin/upload/test` and `name="upload_test"`.
+But... don't do anything else yet.
 
-Then has the same code that you see here. This is the Symfony 4 application form of
-the `README.md` file for all the setup details. The last step in our tutorials is usually
-to open a terminal move into the project and run 
+Copy the route name, then open the template for the edit page:
+`templates/article_admin/edit.html.twig`. The Symfony form lives inside the
+`_form.html.twig` template. So, *above* that form tag, add a new form tag, with
+`method="POST"` and `action=""` set to `{{ path('upload_test') }}`. Inside, we only
+need one thing `<input type="file">`. We need to give this a name so we can reference
+it on the server: how about `name="image"`.
 
-```terminal
-php bin/console server:run
-```
+Finally, add `<button type="submit">` and I'll add some classes so that this isn't
+the *ugliest* button ever. Say: Upload!
 
-to start the built in web server, but we're going to do something slightly different. In
-this tutorial. We're going to use a brand new tool from Symfony called the Symfony
-local web server. So I want to go back to my browser here. Go to symfony.com/download 
-at the very top here you're going to see some instructions about
-downloading the Symfony client. It should auto select the right operating system for
-you so your instructions might vary a little bit. I'll copy this curl command, move
-back over to my uh, terminal and hit enter. So this, see what this is is a an
-executable file that does a whole bunch of cool things, but one of the things it
-does, it allows you to run a really powerful local web server.
+That's it! The simplest possible file upload setup: one field, one button.
 
-So I'm going to follow the instructions here to actually install this on my system
-globally and now I can run 
+## Fetching the File in the Controller
 
-```terminal
-symfony
-```
+In some ways, uploading a file is really no different than any other form field:
+you're always just sending data to the server where each data has a *key* equal
+to its `name` attribute. So, the same as any form, to read the submitted data,
+we'll need the request object. Add a new argument with a `Request` type-hint - the
+one from HttpFoundation - `$request`. Then say: `dd()` - that's dump & die -
+`$request->files->get('image')`. I'm using `image` because that's the `name`
+attribute used on the field.
 
-from anywhere in my system and I have this really cool new `Symfony Cli` tool. 
-By the way, if you can run help here 
+Cool! What do you think this will dump out? A string filename? An array? An object?
+Let's find out! Choose a file - I'll go into my `I <3 Space` directory, and select
+the astronaut photo! Upload!
 
-```terminal-silent
-symfomy help
-```
+## multipart/form-data
 
-to see all the many, many commands once you have this installed, but you only need to 
-do one time, you can say 
+Oh! It's... null!? I did not see that coming. If you're ever uploading a file and
+it's *totally* not working, you've probably made the same mistake I just did. Go
+back to the template and add an attribute to the form `enctype="multipart/form-data"`.
 
-```terminal
-symfony serve
-```
-Now first time you run it, you'll probably get this error about running this 
-`symfony server:ca:install` thing. So I'll run that. 
+Yep! Mysteriously, you *never* need this on your forms... *until* you have a file
+upload field. It basically tells your browser to send the data in a different
+*format*. We're going to see *exactly* what this means soon cause we are *crushing*
+the magic behind uploads.
 
-```terminal-silent
-symfony server:ca:install
-```
+Fortunately, PHP understand this format *and* this format supports file uploads.
+Refresh the form so the new attribute is rendered. Let's choose the astronaut again.
+And before hitting Upload, open up your developer tools and go to the Network tab:
+I want to see what this request looks like. Hit upload!
 
-I need to type in my password. What this is doing is it's actually installing a local SSL 
-certificate, which is super awesome because when you run `symfony serve`, it actually 
-starts up your site on https, so you get free https locally. Anyways, we'll talk more 
-about this tool and in another tutorial. But once you've run `symfony serve` and go back to 
-your browser, go to `localhost:8000` or `127.0.0.1:8000`
-and welcome to the space bar, the site that we've been working on in our Symfony
-series. And don't worry if you didn't want to watch that, you don't need to know too
-much about the site. You can log in with `admin1@thespacebar.com` password
-`engage`
+Nice! This time we get an `UploadedFile` object *full* of useful data.
 
-and then go to `/admin/article`. So this is our admin section for our articles.
-And one of the things that all of our articles have is they have this article image,
-but that's sort of been hard coded up until now. So we're going to want to actually
-make that upload field. So I'm going to click the edit one of these articles and
-eventually we're going to put the file upload directly into this Symfony form. But
-I'm gonna keep things really simple to begin with so we can see what's going on. The
-controller. Behind this page is a `src/Controller/ArticleAdminController`, and we
-are on the `edit()` action. I'm actually going to create a totally new action right down
-here called `public function temporaryUploadAction()`. We're going to do is we're going
-to see what it looks like to upload a file outside of the simplest form system to
-Symfony so we can really understand what's going on.
+But before we dive into that, look down at the network tools and find the POST
+request we just made. If you look at the request headers... here it is: our
+browser sent a `Content-Type: multipart/form-data` header. *This* is because of
+the `enctype` attribute. It also added this weird `boundary=----WebkitFormBoundary`,
+blah, blah, blah thing.
 
-I'm going to give this the `@Route()` on top and we'll just say `/admin/upload/test`
-and we'll give it a `name` of `upload_test`. And for now we're not going to do anything
-with this. It closed my apprentices. I'll copy that route name. Now the template
-behind this page is called `edit.html.twig`. It's in 
-`templates/article_admin/edit.html.twig`. You're right after the `<h1>`, so not actually
-inside my form. So the Symfony form is inside this `_form` template. But for right now,
-outside of my form, I'm going to create a new `<form>` tag of the `method="POST"` and the
-`action=""` we'll say `{{ path('upload_test') }}`. So we're going to have this form submit to that
-temporary end point or grading in. The only thing we need here is `<input type="file">`.
-And then we'll give this a `name=""` of how about just `image`. That can be whatever you
-want. And finally, all the `<button type="submit">`. I'll even get some classes so that
-doesn't look too ugly. And we'll say `Upload`. That's it. Super simple. Upload a
-situation.
+Ok: this stuff is super-nerdy-cool. *Normally*, when you do *not* have that
+`enctype` attribute, when you submit a form, all of the data is sent in the body
+of the request in a big string full of what looks like query parameters. That's
+kind of invisible to us, because PHP parses all of that and makes the data available.
 
-And that should be enough when we, when we move over, we have Uhm, an upload field
-right here.
+But when you add the `multipart/form-data` attribute, it tells our browser to send
+the data in a different format. It's actually kind of hard to see what the body
+of these requests look like - Chrome hides it. No worries! Through the magic of
+TV... boom! *This* is what the body of that request looks like.
 
-So in some ways, uploading files is no different than just normal form fields. Where
-you're doing is you're sending information to your server inside the request. So
-inside of our controller, if we want to read this `image` file, we're going to need
-Symfonys request object to do that. So I'll type hint the `Request` here. The one from
-`HttpFoundation` `$request`. And then I'm gonna use `dd()` to say `$request->files->get()`
-and then `image`. So the only thing that's different with file uploads is instead of is
-that when you want to get their information to use this `->files` property and then use
-`image` here because that is the name of our `input` right there. So let's see what that
-actually looks like when we upload a file and what is that thing? What information
-does Symfony of us, so let's see. I'll choose a file here. Go into my I heartspace
-directory, let's Upload An astronaut and Upload and oh it's `null`, which is not right in
-a lot of you might know why it's `null`. The problem is that in our edit template we
-need to add a `enctype="multipart/form-data"`
+Weird, right! Each field is separated by this mysterious `WebkitFormBoundary` thing...
+which is the string that we saw in the `Content-Type` header! Our form only has
+one field, but if we had multiple, this separator would be between *every* field.
+Our browsers invents this string, separates each piece of data with it, then sends
+this separator up with the request so that the server knows how to parse everything.
 
-This, this attribute is basically something that you only ever
-need to add when you're drunk. File uploads, and I'm going to show you what that
-does, but it actually tells your browser to send the post information in this form on
-the request using a different kind of format. Unfortunately, PHP is already set up to
-understand that format, so we need to go back here and actually refresh it so that
-our forum has that tag. Let's choose that the astronaut file and before I hit upload
-I'm going to go to inspect and go to my network tools so we can see what it was this
-request looks like and we had upload an boom. This time we get an `UploadedFile`
-object. Now hold on. There's a couple of really cool things I want to show you.
-First, if you look down at your network tools, this here is the actual request
+*Why* is this cool? Because we can now send up *multiple* pieces of information
+about our `name="image"` field, like the original filename on our system and what
+type of file it is... which, by the way, can be totally faked by the user. More on
+that later. After all that, we've got the data itself!
 
-that came through and one thing I want to show you is that it sends the special
-`content-type: multipart/form-data`. That's because we added the `enctype` and then
-this weird `boundary=----WebkitFormBoundary`, Blab lab la thing on here. So when you
-set a form to `multipart/form-data`, instead of just sending all the data in the body
-of the request in a format that's similar to normally when you upload all the fields,
-go into the body of the request in a way that looks like query parameters and PHP is
-able to understand this. But if you've got a `multipart/form-data` and then suddenly
-the body of the request looks a little bit different. It's actually kind of hard to
-to see what that requests looks like. But I've kind of prepared one for us.
+If you look *all* the way at the bottom, it has another `WebKitFormBoundary` line.
+If there were more fields on this form, you'd see their data below - all separated
+by another "boundary".
 
-Yeah,
+So... that's it! It literally tells our browser to send the data in a different
+format - and PHP understands *both* formats just fine. We *need* this format when
+doing file uploads because a file upload is *more* than just its contents: we
+also want to send some metadata. And also, due to how the data is encoded, if you
+*were* able to send binary data on a normal request - without the `multipart/form-data`
+encoding - it would increase the amount of data you need to upload by as much as
+three times! Not great for uploads!
 
-some of them move over here. So this is actually what the wrong body of a request
-looks like. Once you can see here is each field actually is separated by this weird
-`WebkitFormBoundary` thing. So our form only has one field, but if,
+## The UploadedFile Object
 
-okay.
+Once the data arrives at the server, PHP automatically reads in the file and saves
+it to a temporary location on your server. Symfony then takes *all* of these details
+and puts it into a nice, neat `UploadedFile` object. You can see the `originalName`:
+`astronaut.jpeg`, the `mimeType` and - *importantly* - the location on the filesystem
+where the file is temporarily stored.
 
-And then it has a couple of information about their `name="image"`, that's the name of
-our field and actually the original filename that we sent up and what type of
-content type it is. And notice we got all the way to the bottom of this. And then it
-has all of its data all the way at the bottom, it has another `WebKitFormBoundary`. 
-And if we had multiple fields in our form, there would be another spot below that for, 
-with another `WebKitFormBoundary`. And then the next field. So it just sends the data on it in
-a different kind of format. And it has to do this because when you upload a file,
-it's not just the file you need to send the name of the field, the filename, the
-content type, and the raw data. So that's why you need to use that different type of
-a thing. Now, PHP and Symfony automatically know how to read that, so it just works.
-But if you ever, ever wondered why you need that now, you know? So once things are
-getting to Symfony, the cool thing is there's lots of information that you have. What
-PHP automatically does is it takes an upload a file and it stores it do temporary
-location and the `UploadedFile` object in Symfony holds all of that information. You
-can see the `originalName` that was sent out, `astronaut.jpeg`, the `mimeType` that
-was sent up. And you can even see, and you can also see like the temporary place on
-your filesystem where that file was stored. So of course,
-
-okay,
-
-our job now is going to be to move that file into its permanent location. We also
-need to worry about multiple things, like making sure that, um, the, uh, it would
-give it a unique file name and a number of other things like validation, et Cetera,
-et cetera. So those are things that we're going to start worrying about next.
-
-Okay.
+If we do *nothing* with that file, PHP will automatically delete it at the end of
+the request. So... our job is clear! We need to move that into a final location
+and... do a bunch of other things, like make sure it has a unique filename and the
+correct file *extension*. Let's handle that next.
