@@ -1,5 +1,5 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 673d6717..7ec459e6 100644
+index 209e5126..baaafc9f 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RequestStack;

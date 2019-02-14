@@ -1,0 +1,30 @@
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index 8f06c9b4..bb599cfc 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -3,6 +3,7 @@
+ namespace App\Service;
+ 
+ use Gedmo\Sluggable\Util\Urlizer;
++use League\Flysystem\AdapterInterface;
+ use League\Flysystem\FileNotFoundException;
+ use League\Flysystem\FilesystemInterface;
+ use Psr\Log\LoggerInterface;
+@@ -80,12 +81,13 @@ class UploaderHelper
+         }
+         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
+ 
+-        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
+-
+         $stream = fopen($file->getPathname(), 'r');
+-        $result = $filesystem->writeStream(
++        $result = $this->filesystem->writeStream(
+             $directory . '/' . $newFilename,
+-            $stream
++            $stream,
++            [
++                'visibility' => $isPublic ? AdapterInterface::VISIBILITY_PUBLIC : AdapterInterface::VISIBILITY_PRIVATE
++            ]
+         );
+ 
+         if ($result === false) {

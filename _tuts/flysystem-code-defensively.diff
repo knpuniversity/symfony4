@@ -1,5 +1,5 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 2e01ef68..94b23747 100644
+index f8ef680f..e0f375ab 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -37,17 +37,26 @@ class UploaderHelper

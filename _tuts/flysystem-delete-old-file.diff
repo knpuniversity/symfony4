@@ -33,7 +33,7 @@ index e34b11cf..d298ef4d 100644
      }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index abefd20b..66946355 100644
+index ef978b22..dbb16411 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -22,7 +22,7 @@ class UploaderHelper

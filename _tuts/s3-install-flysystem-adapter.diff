@@ -1,0 +1,93 @@
+diff --git a/composer.json b/composer.json
+index d9cb110a..c8fe8d48 100644
+--- a/composer.json
++++ b/composer.json
+@@ -8,6 +8,7 @@
+         "knplabs/knp-markdown-bundle": "^1.7",
+         "knplabs/knp-paginator-bundle": "^2.7",
+         "knplabs/knp-time-bundle": "^1.8",
++        "league/flysystem-aws-s3-v3": "^1.0",
+         "liip/imagine-bundle": "^2.1",
+         "nexylan/slack-bundle": "^2.0",
+         "oneup/flysystem-bundle": "^3.0",
+diff --git a/composer.lock b/composer.lock
+index dc39cb59..b63777da 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "3d6c7df71e42b6a670eb04098c9fa865",
++    "content-hash": "9cd522f888ecd6a50cc6e570bd5d707b",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -2080,6 +2080,53 @@
+             ],
+             "time": "2019-02-01T08:50:36+00:00"
+         },
++        {
++            "name": "league/flysystem-aws-s3-v3",
++            "version": "1.0.22",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
++                "reference": "883b02c80ca9cd68cf58a9b4b2185beef24b836b"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/883b02c80ca9cd68cf58a9b4b2185beef24b836b",
++                "reference": "883b02c80ca9cd68cf58a9b4b2185beef24b836b",
++                "shasum": ""
++            },
++            "require": {
++                "aws/aws-sdk-php": "^3.0.0",
++                "league/flysystem": "^1.0.40",
++                "php": ">=5.5.0"
++            },
++            "require-dev": {
++                "henrikbjorn/phpspec-code-coverage": "~1.0.1",
++                "phpspec/phpspec": "^2.0.0"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "League\\Flysystem\\AwsS3v3\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Frank de Jonge",
++                    "email": "info@frenky.net"
++                }
++            ],
++            "description": "Flysystem adapter for the AWS S3 SDK v3.x",
++            "time": "2019-01-31T15:07:25+00:00"
++        },
+         {
+             "name": "liip/imagine-bundle",
+             "version": "2.1.0",
+diff --git a/symfony.lock b/symfony.lock
+index 6240ba28..e728f645 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -131,6 +131,9 @@
+     "league/flysystem": {
+         "version": "1.0.50"
+     },
++    "league/flysystem-aws-s3-v3": {
++        "version": "1.0.22"
++    },
+     "liip/imagine-bundle": {
+         "version": "1.8",
+         "recipe": {

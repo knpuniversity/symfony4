@@ -1,5 +1,5 @@
 diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
-index 64c27929..914b06f1 100644
+index 64c27929..1fb171c2 100644
 --- a/config/packages/liip_imagine.yaml
 +++ b/config/packages/liip_imagine.yaml
 @@ -16,7 +16,7 @@ liip_imagine:
@@ -7,7 +7,7 @@ index 64c27929..914b06f1 100644
                  filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
                  cache_prefix: media/cache
 -                root_url: /uploads
-+                root_url: '/%local_uploads_dir%'
++                root_url: '/%uploads_base_url%'
  
      # default cache resolver for saving thumbnails
      cache: flysystem_resolver
@@ -25,14 +25,14 @@ index a760f365..1646c3b7 100644
          public_uploads_filesystem:
              adapter: public_uploads_adapter
 diff --git a/config/services.yaml b/config/services.yaml
-index 1b6adca8..cc069723 100644
+index 1b6adca8..4429414b 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -6,6 +6,7 @@
  parameters:
      cache_adapter: cache.adapter.apcu
      locale: 'en'
-+    local_uploads_dir: 'uploads'
++    uploads_base_url: 'uploads'
  
  services:
      # default configuration for services in *this* file
@@ -40,12 +40,12 @@ index 1b6adca8..cc069723 100644
              $markdownLogger: '@monolog.logger.markdown'
              $isDebug: '%kernel.debug%'
              $publicUploadsFilesystem: '@oneup_flysystem.public_uploads_filesystem_filesystem'
-+            $uploadsPathPrefix: '%local_uploads_dir%'
++            $uploadedAssetsBaseUrl: '%uploads_base_url%'
  
      # custom aliases for autowiring
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 94b23747..e9c0b9c4 100644
+index e0f375ab..b0dd3fad 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -20,11 +20,14 @@ class UploaderHelper
@@ -53,14 +53,14 @@ index 94b23747..e9c0b9c4 100644
      private $logger;
  
 -    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger)
-+    private $storagePathPrefix;
++    private $publicAssetBaseUrl;
 +
-+    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadsPathPrefix)
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
      {
          $this->filesystem = $publicUploadsFilesystem;
          $this->requestStack = $requestStack;
          $this->logger = $logger;
-+        $this->storagePathPrefix = $uploadsPathPrefix;
++        $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;
      }
  
      public function uploadArticleImage(File $file, ?string $existingFilename): string
@@ -68,7 +68,7 @@ index 94b23747..e9c0b9c4 100644
          // needed if you deploy under a subdirectory
          return $this->requestStack
              ->getCurrentRequest()
--            ->getBasePath() . '/uploads/'.$path;
-+            ->getBasePath() . '/'.$this->storagePathPrefix.'/'.$path;
+-            ->getBasePath().'/uploads/'.$path;
++            ->getBasePath().'/'.$this->publicAssetBaseUrl.'/'.$path;
      }
  }

@@ -73,7 +73,7 @@ index e4b17d2b..516a6d58 100644
      {
          return $this->filename;
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index e9c0b9c4..cdacc5d0 100644
+index b0dd3fad..3b557796 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -68,6 +68,11 @@ class UploaderHelper

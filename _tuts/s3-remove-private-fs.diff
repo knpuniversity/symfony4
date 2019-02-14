@@ -1,0 +1,54 @@
+diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
+index 4ef51d0c..637d8b2b 100644
+--- a/config/packages/oneup_flysystem.yaml
++++ b/config/packages/oneup_flysystem.yaml
+@@ -6,13 +6,6 @@ oneup_flysystem:
+                 client: Aws\S3\S3Client
+                 bucket: '%env(AWS_S3_BUCKET_NAME)%'
+ 
+-        private_uploads_adapter:
+-            awss3v3:
+-                client: Aws\S3\S3Client
+-                bucket: '%env(AWS_S3_BUCKET_NAME)%'
+-
+     filesystems:
+         public_uploads_filesystem:
+             adapter: public_uploads_adapter
+-        private_uploads_filesystem:
+-            adapter: private_uploads_adapter
+diff --git a/config/services.yaml b/config/services.yaml
+index 1a9c414d..af3e8c6a 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -22,7 +22,6 @@ services:
+             $markdownLogger: '@monolog.logger.markdown'
+             $isDebug: '%kernel.debug%'
+             $publicUploadsFilesystem: '@oneup_flysystem.public_uploads_filesystem_filesystem'
+-            $privateUploadsFilesystem: '@oneup_flysystem.private_uploads_filesystem_filesystem'
+             $uploadedAssetsBaseUrl: '%uploads_base_url%'
+ 
+     # custom aliases for autowiring
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index bb599cfc..8c0ac3e3 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -18,18 +18,15 @@ class UploaderHelper
+ 
+     private $filesystem;
+ 
+-    private $privateFilesystem;
+-
+     private $requestStack;
+ 
+     private $logger;
+ 
+     private $publicAssetBaseUrl;
+     
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, FilesystemInterface $privateUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
+     {
+         $this->filesystem = $publicUploadsFilesystem;
+-        $this->privateFilesystem = $privateUploadsFilesystem;
+         $this->requestStack = $requestStack;
+         $this->logger = $logger;
+         $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;

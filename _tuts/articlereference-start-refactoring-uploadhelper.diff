@@ -17,7 +17,7 @@ index 1646c3b7..da671c16 100644
 +        private_uploads_filesystem:
 +            adapter: private_uploads_adapter
 diff --git a/config/services.yaml b/config/services.yaml
-index cc069723..e253ec6b 100644
+index 4429414b..d023bd48 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -22,6 +22,7 @@ services:
@@ -25,11 +25,11 @@ index cc069723..e253ec6b 100644
              $isDebug: '%kernel.debug%'
              $publicUploadsFilesystem: '@oneup_flysystem.public_uploads_filesystem_filesystem'
 +            $privateUploadsFilesystem: '@oneup_flysystem.private_uploads_filesystem_filesystem'
-             $uploadsPathPrefix: '%local_uploads_dir%'
+             $uploadedAssetsBaseUrl: '%uploads_base_url%'
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index cdacc5d0..673d6717 100644
+index 3b557796..209e5126 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -16,15 +16,18 @@ class UploaderHelper
@@ -42,19 +42,20 @@ index cdacc5d0..673d6717 100644
  
      private $logger;
  
-     private $storagePathPrefix;
- 
--    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadsPathPrefix)
-+    public function __construct(FilesystemInterface $publicUploadsFilesystem, FilesystemInterface $privateUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadsPathPrefix)
+     private $publicAssetBaseUrl;
+-
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
++    
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, FilesystemInterface $privateUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
      {
          $this->filesystem = $publicUploadsFilesystem;
 +        $this->privateFilesystem = $privateUploadsFilesystem;
          $this->requestStack = $requestStack;
          $this->logger = $logger;
-         $this->storagePathPrefix = $uploadsPathPrefix;
+         $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;
 @@ -80,4 +83,28 @@ class UploaderHelper
              ->getCurrentRequest()
-             ->getBasePath() . '/'.$this->storagePathPrefix.'/'.$path;
+             ->getBasePath().'/'.$this->publicAssetBaseUrl.'/'.$path;
      }
 +
 +    private function uploadFile(File $file, string $directory, bool $isPublic)

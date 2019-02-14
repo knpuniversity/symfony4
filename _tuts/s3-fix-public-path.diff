@@ -1,0 +1,34 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 8ea57605..1a9c414d 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -6,7 +6,7 @@
+ parameters:
+     cache_adapter: cache.adapter.apcu
+     locale: 'en'
+-    uploads_base_url: 'uploads'
++    uploads_base_url: 'https://s3.amazonaws.com/%env(AWS_S3_BUCKET_NAME)%'
+ 
+ services:
+     # default configuration for services in *this* file
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index baaafc9f..8f06c9b4 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -60,10 +60,15 @@ class UploaderHelper
+ 
+     public function getPublicPath(string $path): string
+     {
++        $fullPath = $this->publicAssetBaseUrl.'/'.$path;
++        if (strpos($path, '://') !== false) {
++            return $fullPath;
++        }
++
+         // needed if you deploy under a subdirectory
+         return $this->requestStack
+             ->getCurrentRequest()
+-            ->getBasePath().'/'.$this->publicAssetBaseUrl.'/'.$path;
++            ->getBasePath().'/'.$fullPath;
+     }
+ 
+     private function uploadFile(File $file, string $directory, bool $isPublic)

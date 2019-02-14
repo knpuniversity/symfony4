@@ -1,0 +1,18 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index d023bd48..076f13c2 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -47,3 +47,12 @@ services:
+         tags:
+             - { name: form.type_extension,
+                 extended_type: Symfony\Component\Form\Extension\Core\Type\TextareaType }
++
++    Aws\S3\S3Client:
++        arguments:
++            -
++                version: '2006-03-01' # or 'latest'
++                region: "region-id" # 'eu-central-1' for example
++                credentials:
++                    key: "s3-key"
++                    secret: "s3-secret"
+\ No newline at end of file

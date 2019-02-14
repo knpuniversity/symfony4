@@ -55,7 +55,7 @@ similarity index 100%
 rename from public/images/mercury.jpeg
 rename to src/DataFixtures/images/mercury.jpeg
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 09e98413..f83b38e1 100644
+index cd1c3e87..f73977c7 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,6 +3,7 @@

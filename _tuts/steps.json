@@ -344,7 +344,47 @@
             "id": "dropzone-handle-json-error",
             "name": "Dropzone: handle JSON error",
             "description": null
+        },
+        {
+            "id": "s3-install-aws-aws-sdk-php",
+            "name": "S3: Install aws\/aws-sdk-php",
+            "description": null
+        },
+        {
+            "id": "s3-start-adding-service",
+            "name": "S3: Start adding service",
+            "description": null
+        },
+        {
+            "id": "s3-add-env-vars",
+            "name": "S3: Add env vars",
+            "description": null
+        },
+        {
+            "id": "s3-use-with-flysystem",
+            "name": "S3: use with flysystem",
+            "description": null
+        },
+        {
+            "id": "s3-install-flysystem-adapter",
+            "name": "S3: Install flysystem adapter",
+            "description": null
+        },
+        {
+            "id": "s3-fix-public-path",
+            "name": "S3: Fix public path",
+            "description": null
+        },
+        {
+            "id": "s3-change-visibility",
+            "name": "S3: change visibility",
+            "description": null
+        },
+        {
+            "id": "s3-remove-private-fs",
+            "name": "S3: Remove private FS",
+            "description": null
         }
     ],
-    "sha": "6484bff2173e71a44a1ce558fd7d77cff2b45340"
+    "sha": "1f786bd197ceb62a521458825c0b364a07116714"
 }
