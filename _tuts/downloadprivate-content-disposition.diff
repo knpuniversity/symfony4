@@ -1,10 +1,10 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 8c16f6c9..7380c2c7 100644
+index 5a81ba86..35b5a860 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -141,7 +141,7 @@ class ArticleAdminController extends BaseController
+@@ -142,7 +142,7 @@ class ArticleAdminController extends BaseController
              ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-             $reference->getFilename()
+             $reference->getOriginalFilename()
          );
 -        dd($disposition);
 +        $response->headers->set('Content-Disposition', $disposition);

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index a9565086..d03e82fd 100644
+index a9565086..8c3109ce 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -3,6 +3,7 @@
@@ -10,7 +10,7 @@ index a9565086..d03e82fd 100644
  use App\Form\ArticleFormType;
  use App\Repository\ArticleRepository;
  use App\Service\UploaderHelper;
-@@ -90,9 +91,29 @@ class ArticleAdminController extends BaseController
+@@ -90,9 +91,30 @@ class ArticleAdminController extends BaseController
       * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
       * @IsGranted("MANAGE", subject="article")
       */
@@ -31,6 +31,7 @@ index a9565086..d03e82fd 100644
 +
 +        $articleReference = new ArticleReference($article);
 +        $articleReference->setFilename($filename);
++        $articleReference->setOriginalFilename($uploadedFile->getClientOriginalName() ?? $filename);
 +        $articleReference->setMimeType($uploadedFile->getMimeType() ?? 'application/octet-stream');
 +
 +        $entityManager->persist($articleReference);
@@ -43,10 +44,10 @@ index a9565086..d03e82fd 100644
  
      /**
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index e4b17d2b..516a6d58 100644
+index ffdf22fb..c7c13f31 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
-@@ -32,6 +32,11 @@ class ArticleReference
+@@ -37,6 +37,11 @@ class ArticleReference
       */
      private $mimeType;
  
@@ -58,7 +59,7 @@ index e4b17d2b..516a6d58 100644
      public function getId(): ?int
      {
          return $this->id;
-@@ -42,13 +47,6 @@ class ArticleReference
+@@ -47,13 +52,6 @@ class ArticleReference
          return $this->article;
      }
  

@@ -32,7 +32,7 @@ index 830becde..1a8b27df 100644
 +    });
 +}
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 038a0b7a..7380c2c7 100644
+index cd152354..35b5a860 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -99,7 +99,6 @@ class ArticleAdminController extends BaseController

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 7380c2c7..1ec35984 100644
+index 35b5a860..c4b6b875 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -101,9 +101,9 @@ class ArticleAdminController extends BaseController
@@ -15,7 +15,7 @@ index 7380c2c7..1ec35984 100644
          }
  
          $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
-@@ -115,9 +115,7 @@ class ArticleAdminController extends BaseController
+@@ -116,9 +116,7 @@ class ArticleAdminController extends BaseController
          $entityManager->persist($articleReference);
          $entityManager->flush();
  

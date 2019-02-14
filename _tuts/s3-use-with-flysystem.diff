@@ -9,7 +9,7 @@ index 074995cc..4fc9ebd8 100644
 +AWS_S3_BUCKET_NAME=
  ### END CUSTOM VARS
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index da671c16..4ef51d0c 100644
+index 5a039774..4ef51d0c 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -2,12 +2,14 @@
@@ -17,7 +17,7 @@ index da671c16..4ef51d0c 100644
      adapters:
          public_uploads_adapter:
 -            local:
--                directory: '%kernel.project_dir%/public/%local_uploads_dir%'
+-                directory: '%kernel.project_dir%/public/%uploads_base_url%'
 +            awss3v3:
 +                client: Aws\S3\S3Client
 +                bucket: '%env(AWS_S3_BUCKET_NAME)%'

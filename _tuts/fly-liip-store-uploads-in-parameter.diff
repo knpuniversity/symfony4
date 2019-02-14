@@ -12,7 +12,7 @@ index 64c27929..1fb171c2 100644
      # default cache resolver for saving thumbnails
      cache: flysystem_resolver
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index a760f365..1646c3b7 100644
+index a760f365..513d534d 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -3,7 +3,7 @@ oneup_flysystem:
@@ -20,7 +20,7 @@ index a760f365..1646c3b7 100644
          public_uploads_adapter:
              local:
 -                directory: '%kernel.project_dir%/public/uploads'
-+                directory: '%kernel.project_dir%/public/%local_uploads_dir%'
++                directory: '%kernel.project_dir%/public/%uploads_base_url%'
      filesystems:
          public_uploads_filesystem:
              adapter: public_uploads_adapter

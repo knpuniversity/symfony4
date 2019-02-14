@@ -10,7 +10,7 @@ index bec4c243..830becde 100644
 +});
 \ No newline at end of file
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 7380c2c7..038a0b7a 100644
+index 35b5a860..cd152354 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -99,6 +99,7 @@ class ArticleAdminController extends BaseController

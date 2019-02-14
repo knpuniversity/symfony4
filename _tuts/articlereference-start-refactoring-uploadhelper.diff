@@ -1,11 +1,11 @@
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index 1646c3b7..da671c16 100644
+index 513d534d..5a039774 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -4,6 +4,13 @@ oneup_flysystem:
          public_uploads_adapter:
              local:
-                 directory: '%kernel.project_dir%/public/%local_uploads_dir%'
+                 directory: '%kernel.project_dir%/public/%uploads_base_url%'
 +
 +        private_uploads_adapter:
 +            local:
