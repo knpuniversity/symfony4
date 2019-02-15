@@ -2,7 +2,7 @@
 
 Yo friends! It's file upload time! Woo! We are going to absolutely *crush* this
 topic... yea know... because file uploads are a *critical* part of the Internet.
-Where would we be if we couldn't upload photos selfies... or videos of Victor's
+Where would we be if we couldn't upload selfies... or videos of Victor's
 cat... or SPAM our friends with memes!?!?! That's not a world I want to live in.
 
 But... is uploading a file really *that* hard: add a file input to a form, submit,
@@ -49,7 +49,7 @@ a single executable file called `symfony`. To make sure I can type that command 
 anywhere, I'll move this into a global `bin` directory. By the way, you only need
 to do these steps *once* on your computer... so you're done forever!
 
-Unless we've mocked things up, we should *now* be able to run this from anywhere:
+Unless we've mucked things up, we should *now* be able to run this from anywhere:
 try it!
 
 ```terminal
@@ -84,7 +84,7 @@ Sweet!
 
 Find your browser and go to `http://127.0.0.1:8000` - or localhost, it's the same
 thing. Say hello to The SpaceBar! This is the app we've been building in our
-Symfony 4 series: a new site for space-traveling friends from across the galaxy.
+Symfony 4 series: a news site for space-traveling friends from across the galaxy.
 
 Try logging in with `admin1@thespacebar.com` and password `engage`. Then go to
 `/admin/article`.
