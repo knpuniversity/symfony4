@@ -44,7 +44,7 @@ So problem number one is security and we'll tackle part if it in a minute and th
 other part when we talk about validation.
 
 Problem number two is that the filename is not guaranteed to be unique! If someone
-else uploads a file called `astronaut.jpg`, boom! Mine schweet photo is gone!
+else uploads a file called `astronaut.jpg`, boom! My schweet photo is gone!
 
 ## Making Filenames Unique
 
