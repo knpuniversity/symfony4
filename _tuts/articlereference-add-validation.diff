@@ -1,17 +1,17 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index cf27a3a4..ef8d9d0b 100644
+index 2a07f9d2..bd23fdfd 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -19,6 +19,8 @@ use Symfony\Component\HttpFoundation\Response;
- use Symfony\Component\HttpFoundation\ResponseHeaderBag;
- use Symfony\Component\HttpFoundation\StreamedResponse;
+@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
  use Symfony\Component\Routing\Annotation\Route;
 +use Symfony\Component\Validator\Constraints\File;
 +use Symfony\Component\Validator\Validator\ValidatorInterface;
  
  class ArticleAdminController extends BaseController
  {
-@@ -95,11 +97,22 @@ class ArticleAdminController extends BaseController
+@@ -91,11 +93,22 @@ class ArticleAdminController extends BaseController
       * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
       * @IsGranted("MANAGE", subject="article")
       */
@@ -28,10 +28,10 @@ index cf27a3a4..ef8d9d0b 100644
 +            ])
 +        );
 +
-+        if (!empty($violations)) {
-+            return $this->json($violations, 400);
++        if ($violations->count() > 0) {
++            dd($violations);
 +        }
 +
-         if (!$uploadedFile) {
-             return $this->json([
-                 'message' => 'Missing file'
+         $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
+ 
+         $articleReference = new ArticleReference($article);

@@ -10,17 +10,17 @@ index bec4c243..830becde 100644
 +});
 \ No newline at end of file
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 35b5a860..cd152354 100644
+index 9c5d1145..aa3729f5 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -99,6 +99,7 @@ class ArticleAdminController extends BaseController
+@@ -103,6 +103,7 @@ class ArticleAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');
 +        dump($uploadedFile);
  
-         if (!$uploadedFile) {
-             return $this->redirectToRoute('admin_article_edit', [
+         $violations = $validator->validate(
+             $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
 index a55a72a1..a8c2e963 100644
 --- a/templates/article_admin/edit.html.twig

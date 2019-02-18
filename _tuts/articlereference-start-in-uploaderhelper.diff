@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index a9565086..8c3109ce 100644
+index a9565086..2a07f9d2 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -3,6 +3,7 @@
@@ -10,7 +10,7 @@ index a9565086..8c3109ce 100644
  use App\Form\ArticleFormType;
  use App\Repository\ArticleRepository;
  use App\Service\UploaderHelper;
-@@ -90,9 +91,30 @@ class ArticleAdminController extends BaseController
+@@ -90,9 +91,24 @@ class ArticleAdminController extends BaseController
       * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
       * @IsGranted("MANAGE", subject="article")
       */
@@ -20,12 +20,6 @@ index a9565086..8c3109ce 100644
 -        dd($request->files->get('reference'));
 +        /** @var UploadedFile $uploadedFile */
 +        $uploadedFile = $request->files->get('reference');
-+
-+        if (!$uploadedFile) {
-+            return $this->redirectToRoute('admin_article_edit', [
-+                'id' => $article->getId(),
-+            ]);
-+        }
 +
 +        $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
 +

@@ -1,0 +1,22 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index cc8b592c..2f47de1e 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -102,7 +102,16 @@ class ArticleAdminController extends BaseController
+         $violations = $validator->validate(
+             $uploadedFile,
+             new File([
+-                'maxSize' => '1k'
++                'maxSize' => '5M',
++                'mimeTypes' => [
++                    'image/*',
++                    'application/pdf',
++                    'application/msword',
++                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
++                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
++                    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
++                    'text/plain'
++                ]
+             ])
+         );
+ 

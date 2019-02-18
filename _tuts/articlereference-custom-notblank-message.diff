@@ -1,0 +1,15 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 3b33a66b..664b524a 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -103,7 +103,9 @@ class ArticleAdminController extends BaseController
+         $violations = $validator->validate(
+             $uploadedFile,
+             [
+-                new NotBlank(),
++                new NotBlank([
++                    'message' => 'Please select a file to upload'
++                ]),
+                 new File([
+                     'maxSize' => '5M',
+                     'mimeTypes' => [

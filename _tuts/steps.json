@@ -276,6 +276,31 @@
             "description": null
         },
         {
+            "id": "articlereference-add-validation",
+            "name": "ArticleReference: Add validation",
+            "description": null
+        },
+        {
+            "id": "articlereference-show-validation-error",
+            "name": "ArticleReference: show validation error",
+            "description": null
+        },
+        {
+            "id": "articlereference-mimetype-validation",
+            "name": "ArticleReference: mimeType validation",
+            "description": null
+        },
+        {
+            "id": "articlereference-notblank-validation",
+            "name": "ArticleReference: NotBlank validation",
+            "description": null
+        },
+        {
+            "id": "articlereference-custom-notblank-message",
+            "name": "ArticleReference: custom NotBlank message",
+            "description": null
+        },
+        {
             "id": "downloadprivate-list-references",
             "name": "DownloadPrivate: list references",
             "description": null
@@ -336,8 +361,8 @@
             "description": null
         },
         {
-            "id": "dropzone-add-validation",
-            "name": "Dropzone: Add validation",
+            "id": "dropzone-delete-me1",
+            "name": "Dropzone: delete me1",
             "description": null
         },
         {
@@ -386,5 +411,5 @@
             "description": null
         }
     ],
-    "sha": "ad6d0c5f9a9e79798b1d0c931f44ca9bb918680b"
+    "sha": "e6e367f0cb60846800aab295cb24e5176a14d810"
 }

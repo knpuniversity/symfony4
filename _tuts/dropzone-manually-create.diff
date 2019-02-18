@@ -32,17 +32,17 @@ index 830becde..1a8b27df 100644
 +    });
 +}
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index cd152354..35b5a860 100644
+index aa3729f5..9c5d1145 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -99,7 +99,6 @@ class ArticleAdminController extends BaseController
+@@ -103,7 +103,6 @@ class ArticleAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');
 -        dump($uploadedFile);
  
-         if (!$uploadedFile) {
-             return $this->redirectToRoute('admin_article_edit', [
+         $violations = $validator->validate(
+             $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
 index a8c2e963..fb93cad4 100644
 --- a/templates/article_admin/edit.html.twig

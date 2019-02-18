@@ -1,0 +1,44 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index bd23fdfd..cc8b592c 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\Validator\Constraints\File;
++use Symfony\Component\Validator\ConstraintViolation;
+ use Symfony\Component\Validator\Validator\ValidatorInterface;
+ 
+ class ArticleAdminController extends BaseController
+@@ -106,7 +107,13 @@ class ArticleAdminController extends BaseController
+         );
+ 
+         if ($violations->count() > 0) {
+-            dd($violations);
++            /** @var ConstraintViolation $violation */
++            $violation = $violations[0];
++            $this->addFlash('error', $violation->getMessage());
++
++            return $this->redirectToRoute('admin_article_edit', [
++                'id' => $article->getId(),
++            ]);
+         }
+ 
+         $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 8db23721..fef5b7b3 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -71,6 +71,12 @@
+             </div>
+         {% endfor %}
+ 
++        {% for message in app.flashes('error') %}
++            <div class="alert alert-danger">
++                {{ message }}
++            </div>
++        {% endfor %}
++
+         {% block body %}{% endblock %}
+ 
+         <footer class="footer">

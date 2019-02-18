@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 91aaec10..6cffa3c0 100644
+index 3083cf74..b8f778c4 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -10,11 +10,13 @@ use App\Repository\ArticleRepository;
@@ -14,9 +14,9 @@ index 91aaec10..6cffa3c0 100644
  use Symfony\Component\HttpFoundation\Response;
 +use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
- 
- class ArticleAdminController extends BaseController
-@@ -122,14 +124,21 @@ class ArticleAdminController extends BaseController
+ use Symfony\Component\Validator\Constraints\File;
+ use Symfony\Component\Validator\Constraints\NotBlank;
+@@ -151,14 +153,21 @@ class ArticleAdminController extends BaseController
       * @Route("/admin/article/{id}/references/{referenceId}", name="admin_article_download_reference", methods={"GET"})
       * @IsGranted("MANAGE", subject="article")
       */

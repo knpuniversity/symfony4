@@ -1,21 +1,31 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 35b5a860..c4b6b875 100644
+index 9c5d1145..12f3fb52 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -101,9 +101,9 @@ class ArticleAdminController extends BaseController
-         $uploadedFile = $request->files->get('reference');
+@@ -21,7 +21,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\Validator\Constraints\File;
+ use Symfony\Component\Validator\Constraints\NotBlank;
+-use Symfony\Component\Validator\ConstraintViolation;
+ use Symfony\Component\Validator\Validator\ValidatorInterface;
  
-         if (!$uploadedFile) {
+ class ArticleAdminController extends BaseController
+@@ -126,13 +125,7 @@ class ArticleAdminController extends BaseController
+         );
+ 
+         if ($violations->count() > 0) {
+-            /** @var ConstraintViolation $violation */
+-            $violation = $violations[0];
+-            $this->addFlash('error', $violation->getMessage());
+-
 -            return $this->redirectToRoute('admin_article_edit', [
 -                'id' => $article->getId(),
 -            ]);
-+            return $this->json([
-+                'message' => 'Missing file'
-+            ], 400);
++            return $this->json($violations, 400);
          }
  
          $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
-@@ -116,9 +116,7 @@ class ArticleAdminController extends BaseController
+@@ -145,9 +138,7 @@ class ArticleAdminController extends BaseController
          $entityManager->persist($articleReference);
          $entityManager->flush();
  
