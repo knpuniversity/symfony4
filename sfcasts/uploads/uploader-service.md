@@ -35,7 +35,7 @@ to configure once we try this.
 
 For now, go back into `ArticleAdminController` and use this. Start by adding another
 argument: `UploaderHelper $uploaderHelper`. Celebrate by removing all of the logic
-below and saying `$newFilename = UploaderHelper->uploadArticleImage($uploadedFile)`.
+below and saying `$newFilename = $uploaderHelper->uploadArticleImage($uploadedFile)`.
 
 Dang - that is nice! There is still a *little* bit of logic here - the form logic,
 and the logic that sets the filename on the `Article`, but I'm comfortable with
