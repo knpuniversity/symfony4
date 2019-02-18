@@ -1,6 +1,7 @@
 chapters:
     - server-setup
     - upload-request
+    - storing-uploaded-file
     - file-naming
     - upload-in-form
     - uploader-service
