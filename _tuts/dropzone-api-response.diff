@@ -1,16 +1,16 @@
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 7e32a874..4707746a 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -20,7 +20,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 586ca5c2..74ca6fc7 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Validator\Constraints\File;
  use Symfony\Component\Validator\Constraints\NotBlank;
 -use Symfony\Component\Validator\ConstraintViolation;
  use Symfony\Component\Validator\Validator\ValidatorInterface;
  
- class ArticleAdminController extends BaseController
-@@ -125,13 +124,7 @@ class ArticleAdminController extends BaseController
+ class ArticleReferenceAdminController extends BaseController
+@@ -51,13 +50,7 @@ class ArticleReferenceAdminController extends BaseController
          );
  
          if ($violations->count() > 0) {
@@ -25,7 +25,7 @@ index 7e32a874..4707746a 100644
          }
  
          $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
-@@ -144,9 +137,7 @@ class ArticleAdminController extends BaseController
+@@ -70,9 +63,7 @@ class ArticleReferenceAdminController extends BaseController
          $entityManager->persist($articleReference);
          $entityManager->flush();
  

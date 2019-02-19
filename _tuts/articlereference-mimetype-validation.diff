@@ -1,8 +1,8 @@
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index cc8b592c..2f47de1e 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -102,7 +102,16 @@ class ArticleAdminController extends BaseController
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 08fe435f..30b6a510 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -28,7 +28,16 @@ class ArticleReferenceAdminController extends BaseController
          $violations = $validator->validate(
              $uploadedFile,
              new File([

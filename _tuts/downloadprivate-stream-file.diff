@@ -1,22 +1,20 @@
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 7dfffa0a..47b437d9 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -9,11 +9,13 @@ use App\Repository\ArticleRepository;
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index a574b2ca..c4a527c7 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -6,9 +6,11 @@ use App\Entity\Article;
+ use App\Entity\ArticleReference;
  use App\Service\UploaderHelper;
  use Doctrine\ORM\EntityManagerInterface;
- use Gedmo\Sluggable\Util\Urlizer;
 +use League\Flysystem\FilesystemInterface;
  use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
- use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
  use Symfony\Component\HttpFoundation\Request;
- use Symfony\Component\HttpFoundation\Response;
 +use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Validator\Constraints\File;
  use Symfony\Component\Validator\Constraints\NotBlank;
-@@ -149,11 +151,19 @@ class ArticleAdminController extends BaseController
+@@ -75,10 +77,18 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/references/{id}/download", name="admin_article_download_reference", methods={"GET"})
       */
@@ -36,8 +34,7 @@ index 7dfffa0a..47b437d9 100644
 +
 +        return $response;
      }
- 
-     /**
+ }
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
 index c7c13f31..0e5dd3eb 100644
 --- a/src/Entity/ArticleReference.php

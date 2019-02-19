@@ -1,16 +1,16 @@
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index bd23fdfd..cc8b592c 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
- use Symfony\Component\HttpFoundation\Response;
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index e984895c..08fe435f 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\Request;
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Validator\Constraints\File;
 +use Symfony\Component\Validator\ConstraintViolation;
  use Symfony\Component\Validator\Validator\ValidatorInterface;
  
- class ArticleAdminController extends BaseController
-@@ -106,7 +107,13 @@ class ArticleAdminController extends BaseController
+ class ArticleReferenceAdminController extends BaseController
+@@ -32,7 +33,13 @@ class ArticleReferenceAdminController extends BaseController
          );
  
          if ($violations->count() > 0) {

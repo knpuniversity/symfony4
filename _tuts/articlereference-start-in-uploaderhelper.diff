@@ -1,16 +1,20 @@
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index a9565086..2a07f9d2 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -3,6 +3,7 @@
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 01a32d46..54906e65 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -3,7 +3,11 @@
  namespace App\Controller;
  
  use App\Entity\Article;
 +use App\Entity\ArticleReference;
- use App\Form\ArticleFormType;
- use App\Repository\ArticleRepository;
- use App\Service\UploaderHelper;
-@@ -90,9 +91,24 @@ class ArticleAdminController extends BaseController
++use App\Service\UploaderHelper;
++use Doctrine\ORM\EntityManagerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
++use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+@@ -13,8 +17,23 @@ class ArticleReferenceAdminController extends BaseController
       * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
       * @IsGranted("MANAGE", subject="article")
       */
@@ -35,8 +39,7 @@ index a9565086..2a07f9d2 100644
 +            'id' => $article->getId(),
 +        ]);
      }
- 
-     /**
+ }
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
 index ffdf22fb..c7c13f31 100644
 --- a/src/Entity/ArticleReference.php

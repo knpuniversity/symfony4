@@ -1,19 +1,8 @@
-diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index bec4c243..830becde 100644
---- a/public/js/admin_article_form.js
-+++ b/public/js/admin_article_form.js
-@@ -23,4 +23,4 @@ $(document).ready(function() {
-             }
-         });
-     });
--});
-+});
-\ No newline at end of file
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 7e32a874..211c19c1 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -102,6 +102,7 @@ class ArticleAdminController extends BaseController
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 586ca5c2..bb99f636 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -28,6 +28,7 @@ class ArticleReferenceAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');

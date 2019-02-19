@@ -1,17 +1,17 @@
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 2a07f9d2..bd23fdfd 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 54906e65..e984895c 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
  use Symfony\Component\HttpFoundation\Request;
- use Symfony\Component\HttpFoundation\Response;
  use Symfony\Component\Routing\Annotation\Route;
 +use Symfony\Component\Validator\Constraints\File;
 +use Symfony\Component\Validator\Validator\ValidatorInterface;
  
- class ArticleAdminController extends BaseController
+ class ArticleReferenceAdminController extends BaseController
  {
-@@ -91,11 +93,22 @@ class ArticleAdminController extends BaseController
+@@ -17,11 +19,22 @@ class ArticleReferenceAdminController extends BaseController
       * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
       * @IsGranted("MANAGE", subject="article")
       */

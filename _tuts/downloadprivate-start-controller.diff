@@ -1,11 +1,12 @@
-diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 664b524a..8eb483f1 100644
---- a/src/Controller/ArticleAdminController.php
-+++ b/src/Controller/ArticleAdminController.php
-@@ -146,6 +146,14 @@ class ArticleAdminController extends BaseController
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 0ea97f65..f7500295 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -71,4 +71,12 @@ class ArticleReferenceAdminController extends BaseController
+             'id' => $article->getId(),
          ]);
      }
- 
++
 +    /**
 +     * @Route("/admin/article/references/{id}/download", name="admin_article_download_reference", methods={"GET"})
 +     */
@@ -13,10 +14,7 @@ index 664b524a..8eb483f1 100644
 +    {
 +        dd($reference);
 +    }
-+
-     /**
-      * @Route("/admin/article/location-select", name="admin_article_location_select")
-      * @IsGranted("ROLE_USER")
+ }
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
 index 46b3b4f5..cd3a2eea 100644
 --- a/templates/article_admin/edit.html.twig
