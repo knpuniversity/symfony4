@@ -1,16 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 86ab9b1f..91339fe8 100644
+index 20a1af54..b6811f0d 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
- use Symfony\Component\HttpFoundation\ResponseHeaderBag;
- use Symfony\Component\HttpFoundation\StreamedResponse;
- use Symfony\Component\Routing\Annotation\Route;
-+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
- use Symfony\Component\Validator\Constraints\File;
- use Symfony\Component\Validator\Constraints\NotBlank;
- use Symfony\Component\Validator\Validator\ValidatorInterface;
-@@ -180,7 +181,14 @@ class ArticleAdminController extends BaseController
+@@ -157,7 +157,14 @@ class ArticleAdminController extends BaseController
       */
      public function getArticleReferences(Article $article)
      {
