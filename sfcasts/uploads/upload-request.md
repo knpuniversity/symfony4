@@ -11,6 +11,8 @@ in our template, put an input file field inside, and make it submit to this acti
 Add the `@Route()` with, how about, `/admin/upload/test` and `name="upload_test"`.
 But... don't do anything else yet.
 
+[[[ code('4a9450d2b0') ]]]
+
 Copy the route name, then open the template for the edit page:
 `templates/article_admin/edit.html.twig`. The Symfony form lives inside the
 `_form.html.twig` template. So, *above* that form tag, add a new form tag, with
@@ -20,6 +22,8 @@ it on the server: how about `name="image"`.
 
 Finally, add `<button type="submit">` and I'll add some classes so that this isn't
 the *ugliest* button ever. Say: Upload!
+
+[[[ code('cd4dc6ad45') ]]]
 
 That's it! The simplest possible file upload setup: one field, one button.
 
@@ -33,6 +37,8 @@ one from HttpFoundation - `$request`. Then say: `dd()` - that's dump & die -
 `$request->files->get('image')`. I'm using `image` because that's the `name`
 attribute used on the field.
 
+[[[ code('dfb440aaf8') ]]]
+
 Cool! What do you think this will dump out? A string filename? An array? An object?
 Let's find out! Choose a file - I'll go into my `I <3 Space` directory, and select
 the astronaut photo! Upload!
@@ -42,6 +48,8 @@ the astronaut photo! Upload!
 Oh! It's... null!? I did not see that coming. If you're ever uploading a file and
 it's *totally* not working, you've probably made the same mistake I just did. Go
 back to the template and add an attribute to the form `enctype="multipart/form-data"`.
+
+[[[ code('5683d240d4') ]]]
 
 Yep! Mysteriously, you *never* need this on your forms... *until* you have a file
 upload field. It basically tells your browser to send the data in a different
