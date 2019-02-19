@@ -1,18 +1,18 @@
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 1bff3fa0..46b3b4f5 100644
+index 1bff3fa0..557ccf79 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -15,6 +15,16 @@
          <div class="col-sm-4">
              <h3>References</h3>
  
-+            <div class="list-group">
++            <ul class="list-group small">
 +                {% for reference in article.articleReferences %}
-+                    <a href="#" class="list-group-item list-group-item-action">
++                    <li class="list-group-item d-flex justify-content-between align-items-center">
 +                        {{ reference.originalFilename }}
-+                    </a>
++                    </li>
 +                {% endfor %}
-+            </div>
++            </ul>
 +
 +            <hr>
 +

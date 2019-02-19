@@ -1,0 +1,52 @@
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 86c1dcc6..4b83bf1b 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+ use Symfony\Component\HttpFoundation\StreamedResponse;
+ use Symfony\Component\Routing\Annotation\Route;
+@@ -118,9 +119,16 @@ class ArticleReferenceAdminController extends BaseController
+     /**
+      * @Route("/admin/article/references/{id}", name="admin_article_delete_reference", methods={"DELETE"})
+      */
+-    public function deleteArticleReference(ArticleReference $reference)
++    public function deleteArticleReference(ArticleReference $reference, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager)
+     {
+         $article = $reference->getArticle();
+         $this->denyAccessUnlessGranted('MANAGE', $article);
++
++        $entityManager->remove($reference);
++        $entityManager->flush();
++
++        $uploaderHelper->deleteFile($reference->getFilePath(), false);
++
++        return new Response(null, 204);
+     }
+ }
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index ba4409c7..d00e1d33 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -82,6 +82,17 @@ class UploaderHelper
+         return $resource;
+     }
+ 
++    public function deleteFile(string $path, bool $isPublic)
++    {
++        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
++
++        $result = $filesystem->delete($path);
++
++        if ($result === false) {
++            throw new \Exception(sprintf('Error deleting "%s"', $path));
++        }
++    }
++
+     private function uploadFile(File $file, string $directory, bool $isPublic)
+     {
+         if ($file instanceof UploadedFile) {

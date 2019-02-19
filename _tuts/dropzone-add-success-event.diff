@@ -1,8 +1,8 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 27bb53b6..ae565328 100644
+index dc1d1f4d..610def49 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
-@@ -70,6 +70,10 @@ function initializeDropzone()
+@@ -74,6 +74,10 @@ function initializeDropzone()
      var dropzone = new Dropzone(inputElement, {
          paramName: 'reference',
          init: function() {

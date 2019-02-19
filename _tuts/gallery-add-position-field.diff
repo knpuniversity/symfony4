@@ -1,0 +1,74 @@
+diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
+index b337b94b..30153cdf 100644
+--- a/src/Entity/ArticleReference.php
++++ b/src/Entity/ArticleReference.php
+@@ -43,6 +43,11 @@ class ArticleReference
+      */
+     private $mimeType;
+ 
++    /**
++     * @ORM\Column(type="integer")
++     */
++    private $position;
++
+     public function __construct(Article $article)
+     {
+         $this->article = $article;
+@@ -98,4 +103,16 @@ class ArticleReference
+     {
+         return UploaderHelper::ARTICLE_REFERENCE.'/'.$this->getFilename();
+     }
++
++    public function getPosition(): ?int
++    {
++        return $this->position;
++    }
++
++    public function setPosition(int $position): self
++    {
++        $this->position = $position;
++
++        return $this;
++    }
+ }
+diff --git a/src/Migrations/Version20190219195937.php b/src/Migrations/Version20190219195937.php
+new file mode 100644
+index 00000000..06b0e705
+--- /dev/null
++++ b/src/Migrations/Version20190219195937.php
+@@ -0,0 +1,35 @@
++<?php
++
++declare(strict_types=1);
++
++namespace DoctrineMigrations;
++
++use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
++
++/**
++ * Auto-generated Migration: Please modify to your needs!
++ */
++final class Version20190219195937 extends AbstractMigration
++{
++    public function getDescription() : string
++    {
++        return '';
++    }
++
++    public function up(Schema $schema) : void
++    {
++        // this up() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE article_reference ADD position INT NOT NULL');
++    }
++
++    public function down(Schema $schema) : void
++    {
++        // this down() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE article_reference DROP position');
++    }
++}

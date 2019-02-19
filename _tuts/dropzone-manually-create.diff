@@ -28,10 +28,10 @@ index bec4c243..a35df8c4 100644
 +    });
 +}
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index bb99f636..586ca5c2 100644
+index 22a4b752..973db55a 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -28,7 +28,6 @@ class ArticleReferenceAdminController extends BaseController
+@@ -27,7 +27,6 @@ class ArticleReferenceAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');
@@ -40,10 +40,10 @@ index bb99f636..586ca5c2 100644
          $violations = $validator->validate(
              $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 478291aa..ddfea968 100644
+index b604416a..25c07eb8 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
-@@ -29,7 +29,7 @@
+@@ -33,7 +33,7 @@
  
              <form action="{{ path('admin_article_add_reference', {
                  id: article.id

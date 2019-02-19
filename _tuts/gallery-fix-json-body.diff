@@ -1,0 +1,13 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 4dc384ce..e53d036f 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -87,7 +87,7 @@ class ReferenceList
+         $.ajax({
+             url: '/admin/article/references/'+id,
+             method: 'PUT',
+-            data: reference
++            data: JSON.stringify(reference)
+         });
+     }
+ 

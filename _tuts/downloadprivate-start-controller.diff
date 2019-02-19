@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 0ea97f65..f7500295 100644
+index 1005f71c..f970f55f 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -71,4 +71,12 @@ class ArticleReferenceAdminController extends BaseController
@@ -16,17 +16,19 @@ index 0ea97f65..f7500295 100644
 +    }
  }
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 46b3b4f5..cd3a2eea 100644
+index 557ccf79..83bf5d84 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
-@@ -17,7 +17,9 @@
- 
-             <div class="list-group">
+@@ -19,6 +19,12 @@
                  {% for reference in article.articleReferences %}
--                    <a href="#" class="list-group-item list-group-item-action">
-+                    <a href="{{ path('admin_article_download_reference', {
-+                        id: reference.id
-+                    }) }}" class="list-group-item list-group-item-action">
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
                          {{ reference.originalFilename }}
-                     </a>
++
++                        <span>
++                            <a href="{{ path('admin_article_download_reference', {
++                                id: reference.id
++                            }) }}"><span class="fa fa-download"></span></a>
++                        </span>
+                     </li>
                  {% endfor %}
+             </ul>

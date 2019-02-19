@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 586ca5c2..bb99f636 100644
+index 973db55a..22a4b752 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -28,6 +28,7 @@ class ArticleReferenceAdminController extends BaseController
+@@ -27,6 +27,7 @@ class ArticleReferenceAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');
@@ -11,10 +11,10 @@ index 586ca5c2..bb99f636 100644
          $violations = $validator->validate(
              $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index cd3a2eea..478291aa 100644
+index 83bf5d84..b604416a 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
-@@ -29,16 +29,21 @@
+@@ -33,16 +33,21 @@
  
              <form action="{{ path('admin_article_add_reference', {
                  id: article.id

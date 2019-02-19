@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 01a32d46..54906e65 100644
+index c0157824..a1d2ae59 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -3,7 +3,11 @@
@@ -15,7 +15,7 @@ index 01a32d46..54906e65 100644
  use Symfony\Component\Routing\Annotation\Route;
  
 @@ -13,8 +17,23 @@ class ArticleReferenceAdminController extends BaseController
-      * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
+      * @Route("/admin/article/{id}/references", name="admin_article_add_reference", methods={"POST"})
       * @IsGranted("MANAGE", subject="article")
       */
 -    public function uploadArticleReference(Article $article, Request $request)

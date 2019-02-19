@@ -1,0 +1,14 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 0e9a9601..79149854 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -39,6 +39,9 @@ class ReferenceList
+         this.sortable = Sortable.create(element, {
+             handle: '.drag-handle',
+             animation: 150,
++            onEnd: () => {
++                console.log(this.sortable.toArray());
++            }
+         });
+         this.references = [];
+         this.render();

@@ -14,7 +14,7 @@ index fd3e1d9b..32c237c0 100644
  
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
 new file mode 100644
-index 00000000..01a32d46
+index 00000000..c0157824
 --- /dev/null
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -0,0 +1,20 @@
@@ -30,7 +30,7 @@ index 00000000..01a32d46
 +class ArticleReferenceAdminController extends BaseController
 +{
 +    /**
-+     * @Route("/admin/article/{id}/reference", name="admin_article_add_reference", methods={"POST"})
++     * @Route("/admin/article/{id}/references", name="admin_article_add_reference", methods={"POST"})
 +     * @IsGranted("MANAGE", subject="article")
 +     */
 +    public function uploadArticleReference(Article $article, Request $request)

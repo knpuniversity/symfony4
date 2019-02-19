@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c4a527c7..61347181 100644
+index c2a9227e..ee16519c 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -10,6 +10,7 @@ use League\Flysystem\FilesystemInterface;
+@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
  use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
  use Symfony\Component\HttpFoundation\Request;
@@ -10,7 +10,7 @@ index c4a527c7..61347181 100644
  use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Validator\Constraints\File;
-@@ -88,6 +89,11 @@ class ArticleReferenceAdminController extends BaseController
+@@ -87,6 +88,11 @@ class ArticleReferenceAdminController extends BaseController
  
              stream_copy_to_stream($fileStream, $outputStream);
          });

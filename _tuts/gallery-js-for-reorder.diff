@@ -1,0 +1,17 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 79149854..253bb818 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -40,7 +40,11 @@ class ReferenceList
+             handle: '.drag-handle',
+             animation: 150,
+             onEnd: () => {
+-                console.log(this.sortable.toArray());
++                $.ajax({
++                    url: $(this.element).data('url')+'/reorder',
++                    method: 'POST',
++                    data: JSON.stringify(this.sortable.toArray())
++                });
+             }
+         });
+         this.references = [];

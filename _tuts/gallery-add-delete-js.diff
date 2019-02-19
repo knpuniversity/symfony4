@@ -1,0 +1,48 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 771850c6..776491fa 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -39,6 +39,10 @@ class ReferenceList
+         this.references = [];
+         this.render();
+ 
++        $(this.element).on('click', '.js-reference-delete', (event) => {
++            this.handleReferenceDelete(event);
++        });
++
+         $.ajax({
+             url: this.element.dataset.url
+         }).then(data => {
+@@ -52,14 +56,31 @@ class ReferenceList
+         this.render();
+     }
+ 
++    handleReferenceDelete(event) {
++        const li = $(event.currentTarget).closest('.list-group-item');
++        const id = li.data('id');
++        li.addClass('disabled');
++
++        $.ajax({
++            url: '/admin/article/references/'+id,
++            method: 'DELETE'
++        }).then(() => {
++            this.references = this.references.filter(reference => {
++                return reference.id !== id;
++            });
++            this.render();
++        });
++    }
++
+     render() {
+         const itemsHtml = this.references.map(reference => {
+             return `
+-<li class="list-group-item d-flex justify-content-between align-items-center">
++<li class="list-group-item d-flex justify-content-between align-items-center" data-id="${reference.id}">
+     ${reference.originalFilename}
+ 
+     <span>
+         <a href="/admin/article/references/${reference.id}/download"><span class="fa fa-download"></span></a>
++        <button class="js-reference-delete btn btn-link"><span class="fa fa-trash"></span></button>
+     </span>
+ </li>
+ `

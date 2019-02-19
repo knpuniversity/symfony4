@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index e984895c..08fe435f 100644
+index 882f2e2d..ec03cb1b 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;

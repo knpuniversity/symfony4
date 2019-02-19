@@ -1,0 +1,58 @@
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index bcfc3362..5478e748 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+ use Symfony\Component\HttpFoundation\StreamedResponse;
+ use Symfony\Component\Routing\Annotation\Route;
++use Symfony\Component\Serializer\SerializerInterface;
+ use Symfony\Component\Validator\Constraints\File;
+ use Symfony\Component\Validator\Constraints\NotBlank;
+ use Symfony\Component\Validator\Validator\ValidatorInterface;
+@@ -135,9 +136,31 @@ class ArticleReferenceAdminController extends BaseController
+     /**
+      * @Route("/admin/article/references/{id}", name="admin_article_update_reference", methods={"PUT"})
+      */
+-    public function updateArticleReference(ArticleReference $reference, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager)
++    public function updateArticleReference(ArticleReference $reference, EntityManagerInterface $entityManager, SerializerInterface $serializer, Request $request)
+     {
+         $article = $reference->getArticle();
+         $this->denyAccessUnlessGranted('MANAGE', $article);
++
++        $serializer->deserialize(
++            $request->getContent(),
++            ArticleReference::class,
++            'json',
++            [
++                'object_to_populate' => $reference,
++                'groups' => ['input']
++            ]
++        );
++
++        $entityManager->persist($reference);
++        $entityManager->flush();
++
++        return $this->json(
++            $reference,
++            200,
++            [],
++            [
++                'groups' => ['main']
++            ]
++        );
+     }
+ }
+diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
+index 23f4c531..b337b94b 100644
+--- a/src/Entity/ArticleReference.php
++++ b/src/Entity/ArticleReference.php
+@@ -33,7 +33,7 @@ class ArticleReference
+ 
+     /**
+      * @ORM\Column(type="string", length=255)
+-     * @Groups("main")
++     * @Groups({"main", "input"})
+      */
+     private $originalFilename;
+ 

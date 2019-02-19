@@ -1,0 +1,18 @@
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 4b83bf1b..bcfc3362 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -131,4 +131,13 @@ class ArticleReferenceAdminController extends BaseController
+ 
+         return new Response(null, 204);
+     }
++
++    /**
++     * @Route("/admin/article/references/{id}", name="admin_article_update_reference", methods={"PUT"})
++     */
++    public function updateArticleReference(ArticleReference $reference, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager)
++    {
++        $article = $reference->getArticle();
++        $this->denyAccessUnlessGranted('MANAGE', $article);
++    }
+ }

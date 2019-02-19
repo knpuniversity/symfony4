@@ -1,0 +1,12 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 3637fcc9..ecc579d8 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -89,6 +89,7 @@ class Article
+ 
+     /**
+      * @ORM\OneToMany(targetEntity="App\Entity\ArticleReference", mappedBy="article")
++     * @ORM\OrderBy({"position"="ASC"})
+      */
+     private $articleReferences;
+ 

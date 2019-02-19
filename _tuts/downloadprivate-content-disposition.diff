@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 61347181..586ca5c2 100644
+index ee16519c..973db55a 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -93,7 +93,7 @@ class ArticleReferenceAdminController extends BaseController
+@@ -92,7 +92,7 @@ class ArticleReferenceAdminController extends BaseController
              ResponseHeaderBag::DISPOSITION_ATTACHMENT,
              $reference->getOriginalFilename()
          );

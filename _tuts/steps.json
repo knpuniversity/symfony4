@@ -381,6 +381,91 @@
             "description": null
         },
         {
+            "id": "gallery-start-delete-endpoint",
+            "name": "Gallery: start delete endpoint",
+            "description": null
+        },
+        {
+            "id": "gallery-finish-delete-endpoint",
+            "name": "Gallery: Finish delete endpoint",
+            "description": null
+        },
+        {
+            "id": "gallery-add-delete-js",
+            "name": "Gallery: Add delete JS",
+            "description": null
+        },
+        {
+            "id": "gallery-tweak-anchor-align",
+            "name": "Gallery: tweak anchor align",
+            "description": null
+        },
+        {
+            "id": "gallery-start-edit-endpoint",
+            "name": "Gallery: start edit endpoint",
+            "description": null
+        },
+        {
+            "id": "gallery-finish-endpoint",
+            "name": "Gallery: Finish endpoint",
+            "description": null
+        },
+        {
+            "id": "gallery-edit-js",
+            "name": "Gallery: edit JS",
+            "description": null
+        },
+        {
+            "id": "gallery-fix-json-body",
+            "name": "Gallery: fix JSON body",
+            "description": null
+        },
+        {
+            "id": "gallery-add-position-field",
+            "name": "Gallery: add position field",
+            "description": null
+        },
+        {
+            "id": "gallery-default-position",
+            "name": "Gallery: default position",
+            "description": null
+        },
+        {
+            "id": "gallery-add-sortable",
+            "name": "Gallery: Add Sortable",
+            "description": null
+        },
+        {
+            "id": "gallery-customize-w-drag-handle",
+            "name": "Gallery: Customize w drag-handle",
+            "description": null
+        },
+        {
+            "id": "gallery-test-toarray",
+            "name": "Gallery: test toArray()",
+            "description": null
+        },
+        {
+            "id": "gallery-begin-reorder-endpoint",
+            "name": "Gallery: Begin reorder endpoint",
+            "description": null
+        },
+        {
+            "id": "gallery-finish-reorder-endpoint",
+            "name": "Gallery: finish reorder endpoint",
+            "description": null
+        },
+        {
+            "id": "gallery-js-for-reorder",
+            "name": "Gallery: JS for reorder",
+            "description": null
+        },
+        {
+            "id": "gallery-change-rendering-order",
+            "name": "Gallery: change rendering order",
+            "description": null
+        },
+        {
             "id": "s3-install-aws-aws-sdk-php",
             "name": "S3: Install aws\/aws-sdk-php",
             "description": null
@@ -421,5 +506,5 @@
             "description": null
         }
     ],
-    "sha": "096ece3e4844a8f08dbaaf05c5bc3bc921cd56f7"
+    "sha": "914637869ceb4c20af27e02737e30bd879603540"
 }

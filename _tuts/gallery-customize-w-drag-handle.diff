@@ -1,0 +1,41 @@
+diff --git a/public/css/styles.css b/public/css/styles.css
+index ffdebfe3..477b5d43 100644
+--- a/public/css/styles.css
++++ b/public/css/styles.css
+@@ -248,3 +248,11 @@ html {height:100%}
+   background-color: #fff;
+   margin-top: 10px;
+ }
++
++/* Sortable */
++.sortable-ghost {
++    background-color: lightblue;
++}
++.drag-handle {
++    cursor: grab;
++}
+\ No newline at end of file
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 10d003e7..0e9a9601 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -36,7 +36,10 @@ class ReferenceList
+ {
+     constructor(element) {
+         this.element = element;
+-        this.sortable = Sortable.create(element);
++        this.sortable = Sortable.create(element, {
++            handle: '.drag-handle',
++            animation: 150,
++        });
+         this.references = [];
+         this.render();
+ 
+@@ -96,6 +99,7 @@ class ReferenceList
+         const itemsHtml = this.references.map(reference => {
+             return `
+ <li class="list-group-item d-flex justify-content-between align-items-center" data-id="${reference.id}">
++    <span class="drag-handle fa fa-reorder"></span>
+     <input type="text" value="${reference.originalFilename}" class="form-control js-edit-filename" style="width: auto;">
+ 
+     <span>

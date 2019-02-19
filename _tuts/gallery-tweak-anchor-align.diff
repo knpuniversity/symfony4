@@ -1,0 +1,15 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 776491fa..21391a3e 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -79,8 +79,8 @@ class ReferenceList
+     ${reference.originalFilename}
+ 
+     <span>
+-        <a href="/admin/article/references/${reference.id}/download"><span class="fa fa-download"></span></a>
+-        <button class="js-reference-delete btn btn-link"><span class="fa fa-trash"></span></button>
++        <a href="/admin/article/references/${reference.id}/download" class="btn btn-link btn-sm"><span class="fa fa-download" style="vertical-align: middle"></span></a>
++        <button class="js-reference-delete btn btn-link btn-sm"><span class="fa fa-trash"></span></button>
+     </span>
+ </li>
+ `

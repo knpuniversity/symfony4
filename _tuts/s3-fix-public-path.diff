@@ -12,7 +12,7 @@ index 8ea57605..1a9c414d 100644
  services:
      # default configuration for services in *this* file
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index baaafc9f..8f06c9b4 100644
+index d00e1d33..31c56d71 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -60,10 +60,15 @@ class UploaderHelper
@@ -31,4 +31,4 @@ index baaafc9f..8f06c9b4 100644
 +            ->getBasePath().'/'.$fullPath;
      }
  
-     private function uploadFile(File $file, string $directory, bool $isPublic)
+     /**

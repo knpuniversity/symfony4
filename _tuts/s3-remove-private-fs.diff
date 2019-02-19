@@ -29,7 +29,7 @@ index 1a9c414d..af3e8c6a 100644
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index bb599cfc..8c0ac3e3 100644
+index c4b7e372..b190f841 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -18,18 +18,15 @@ class UploaderHelper

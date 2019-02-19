@@ -1,0 +1,18 @@
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index fe66954b..86c1dcc6 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -114,4 +114,13 @@ class ArticleReferenceAdminController extends BaseController
+ 
+         return $response;
+     }
++
++    /**
++     * @Route("/admin/article/references/{id}", name="admin_article_delete_reference", methods={"DELETE"})
++     */
++    public function deleteArticleReference(ArticleReference $reference)
++    {
++        $article = $reference->getArticle();
++        $this->denyAccessUnlessGranted('MANAGE', $article);
++    }
+ }
