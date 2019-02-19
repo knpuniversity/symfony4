@@ -351,6 +351,11 @@
             "description": null
         },
         {
+            "id": "dropzone-parse-json-error",
+            "name": "Dropzone: parse JSON error",
+            "description": null
+        },
+        {
             "id": "dropzone-add-success-event",
             "name": "Dropzone: add success event",
             "description": null
@@ -366,8 +371,8 @@
             "description": null
         },
         {
-            "id": "dropzone-handle-json-error",
-            "name": "Dropzone: handle JSON error",
+            "id": "dropzone-delete-me-2",
+            "name": "Dropzone: delete me 2",
             "description": null
         },
         {
@@ -411,5 +416,5 @@
             "description": null
         }
     ],
-    "sha": "e6e367f0cb60846800aab295cb24e5176a14d810"
+    "sha": "98710289e7b63a1fa164765bbde00997df51face"
 }

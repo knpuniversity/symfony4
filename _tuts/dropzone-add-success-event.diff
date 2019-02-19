@@ -1,17 +1,15 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 1a8b27df..352cfdf7 100644
+index 8ada9bf8..7eebf1e1 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
-@@ -38,6 +38,11 @@ function initializeDropzone()
-     console.log(inputElement);
- 
+@@ -40,6 +40,10 @@ function initializeDropzone()
      var dropzone = new Dropzone(inputElement, {
--        paramName: 'reference'
-+        paramName: 'reference',
-+        init: function() {
+         paramName: 'reference',
+         init: function() {
 +            this.on('success', function(file, data) {
 +                console.log(file, data);
 +            });
-+        }
-     });
- }
++
+             this.on('error', function(file, data) {
+                 if (data.detail) {
+                     this.emit('error', file, data.detail);

@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 352cfdf7..5e4f7e23 100644
+index 7eebf1e1..53aa9c69 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -41,7 +41,12 @@ function initializeDropzone()
@@ -14,8 +14,8 @@ index 352cfdf7..5e4f7e23 100644
 +                $anchor.attr('href', downloadPath);
 +                $('.js-reference-list').append($anchor);
              });
-         }
-     });
+ 
+             this.on('error', function(file, data) {
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
 index fb93cad4..d302148a 100644
 --- a/templates/article_admin/edit.html.twig
