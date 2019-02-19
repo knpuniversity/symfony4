@@ -1,0 +1,54 @@
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index eea79745..700c1de4 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -134,7 +134,7 @@ class ArticleReferenceAdminController extends BaseController
+ 
+         $response = new StreamedResponse(function() use ($reference, $uploaderHelper) {
+             $outputStream = fopen('php://output', 'wb');
+-            $fileStream = $uploaderHelper->readStream($reference->getFilePath(), false);
++            $fileStream = $uploaderHelper->readStream($reference->getFilePath());
+ 
+             stream_copy_to_stream($fileStream, $outputStream);
+         });
+@@ -158,7 +158,7 @@ class ArticleReferenceAdminController extends BaseController
+         $entityManager->remove($reference);
+         $entityManager->flush();
+ 
+-        $uploaderHelper->deleteFile($reference->getFilePath(), false);
++        $uploaderHelper->deleteFile($reference->getFilePath());
+ 
+         return new Response(null, 204);
+     }
+diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
+index b190f841..312ee6f7 100644
+--- a/src/Service/UploaderHelper.php
++++ b/src/Service/UploaderHelper.php
+@@ -72,11 +72,9 @@ class UploaderHelper
+     /**
+      * @return resource
+      */
+-    public function readStream(string $path, bool $isPublic)
++    public function readStream(string $path)
+     {
+-        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
+-
+-        $resource = $filesystem->readStream($path);
++        $resource = $this->filesystem->readStream($path);
+ 
+         if ($resource === false) {
+             throw new \Exception(sprintf('Error opening stream for "%s"', $path));
+@@ -85,11 +83,9 @@ class UploaderHelper
+         return $resource;
+     }
+ 
+-    public function deleteFile(string $path, bool $isPublic)
++    public function deleteFile(string $path)
+     {
+-        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
+-
+-        $result = $filesystem->delete($path);
++        $result = $this->filesystem->delete($path);
+ 
+         if ($result === false) {
+             throw new \Exception(sprintf('Error deleting "%s"', $path));

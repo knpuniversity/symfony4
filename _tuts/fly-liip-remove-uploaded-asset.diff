@@ -24,3 +24,16 @@ index 5615115f..6bc658bd 100644
              <div class="show-article-title-container d-inline-block pl-3 align-middle">
                  <span class="show-article-title ">{{ article.title }}</span>
                  <br>
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index 2772198b..94dbc097 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -13,7 +13,7 @@
+         </div>
+         <div class="col-sm-3">
+             {% if articleForm.vars.data.imageFilename %}
+-                <img src="{{ uploaded_asset(articleForm.vars.data.imagePath) | imagine_filter('squared_thumbnail_small') }}" height="100">
++                <img src="{{ articleForm.vars.data.imagePath | imagine_filter('squared_thumbnail_small') }}" height="100">
+             {% endif %}
+         </div>
+     </div>

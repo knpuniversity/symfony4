@@ -1,3 +1,16 @@
+diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
+index 1fb171c2..873af73f 100644
+--- a/config/packages/liip_imagine.yaml
++++ b/config/packages/liip_imagine.yaml
+@@ -16,7 +16,7 @@ liip_imagine:
+             flysystem:
+                 filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+                 cache_prefix: media/cache
+-                root_url: '/%uploads_base_url%'
++                root_url: '%uploads_base_url%'
+ 
+     # default cache resolver for saving thumbnails
+     cache: flysystem_resolver
 diff --git a/config/services.yaml b/config/services.yaml
 index 8ea57605..1a9c414d 100644
 --- a/config/services.yaml

@@ -509,7 +509,17 @@
             "id": "s3-remove-private-fs",
             "name": "S3: Remove private FS",
             "description": null
+        },
+        {
+            "id": "s3-remove-more-private-fs-refs",
+            "name": "S3: remove more private fs refs",
+            "description": null
+        },
+        {
+            "id": "s3-renaming-public-fs",
+            "name": "S3: Renaming public fs",
+            "description": null
         }
     ],
-    "sha": "3a8841bbcb4bbecf9c55a9eb0e154aa1321c6a35"
+    "sha": "577f8b0419883b1e532b30eb712c2eae3b29a5e9"
 }
