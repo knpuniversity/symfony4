@@ -94,6 +94,7 @@ class ArticleAdminController extends BaseController
 
     /**
      * @Route("/admin/article", name="admin_article_list")
+     * @IsGranted("ROLE_ADMIN_ARTICLE")
      */
     public function list(ArticleRepository $articleRepo)
     {
