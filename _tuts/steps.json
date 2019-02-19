@@ -141,11 +141,6 @@
             "description": null
         },
         {
-            "id": "rendering-delete-me1",
-            "name": "Rendering: delete me1",
-            "description": null
-        },
-        {
             "id": "rendering-use-request-basepath",
             "name": "Rendering: use Request::basePath()",
             "description": null
@@ -363,16 +358,6 @@
         {
             "id": "dropzone-add-file-dynamically",
             "name": "Dropzone: Add file dynamically",
-            "description": null
-        },
-        {
-            "id": "dropzone-delete-me1",
-            "name": "Dropzone: delete me1",
-            "description": null
-        },
-        {
-            "id": "dropzone-delete-me-2",
-            "name": "Dropzone: delete me 2",
             "description": null
         },
         {
