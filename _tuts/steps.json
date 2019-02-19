@@ -519,7 +519,17 @@
             "id": "s3-renaming-public-fs",
             "name": "S3: Renaming public fs",
             "description": null
+        },
+        {
+            "id": "s3-install-league-flysystem-cached-adapter",
+            "name": "S3: Install league\/flysystem-cached-adapter",
+            "description": null
+        },
+        {
+            "id": "s3-use-cached-adapter",
+            "name": "S3: Use cached adapter",
+            "description": null
         }
     ],
-    "sha": "577f8b0419883b1e532b30eb712c2eae3b29a5e9"
+    "sha": "c853a8eafef0b469828ce2845833b68164dbc7ad"
 }
