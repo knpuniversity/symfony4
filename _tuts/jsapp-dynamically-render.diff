@@ -1,0 +1,70 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index cf656161..27bb53b6 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -1,6 +1,8 @@
+ Dropzone.autoDiscover = false;
+ 
+ $(document).ready(function() {
++    var referenceList = new ReferenceList(document.querySelector('.js-reference-list'));
++
+     initializeDropzone();
+ 
+     var $locationSelect = $('.js-article-form-location');
+@@ -29,6 +31,35 @@ $(document).ready(function() {
+     });
+ });
+ 
++// todo - use Webpack Encore so ES6 syntax is transpiled to ES5
++class ReferenceList
++{
++    constructor(element) {
++        this.element = element;
++        this.references = [];
++        this.render();
++
++        $.ajax({
++            url: this.element.dataset.url
++        }).then(data => {
++            this.references = data;
++            this.render();
++        })
++    }
++
++    render() {
++        const itemsHtml = this.references.map(reference => {
++            return `
++<a class="list-group-item list-group-item-action" href="/admin/article/references/${reference.id}/download">
++    ${reference.originalFilename}
++</a>
++`
++        });
++
++        this.element.innerHTML = itemsHtml.join('');
++    }
++}
++
+ function initializeDropzone()
+ {
+     var inputElement = document.querySelector('.js-reference-dropzone');
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index ddfea968..5c037a14 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -15,15 +15,7 @@
+         <div class="col-sm-4">
+             <h3>References</h3>
+ 
+-            <div class="list-group">
+-                {% for reference in article.articleReferences %}
+-                    <a href="{{ path('admin_article_download_reference', {
+-                        id: reference.id
+-                    }) }}" class="list-group-item list-group-item-action">
+-                        {{ reference.originalFilename }}
+-                    </a>
+-                {% endfor %}
+-            </div>
++            <div class="list-group js-reference-list" data-url="{{ path('admin_article_list_references', {id: article.id}) }}"></div>
+ 
+             <hr>
+ 

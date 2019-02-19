@@ -1,0 +1,20 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 894c864e..86ab9b1f 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -174,6 +174,15 @@ class ArticleAdminController extends BaseController
+         return $response;
+     }
+ 
++    /**
++     * @Route("/admin/article/{id}/references", methods="GET", name="admin_article_list_references")
++     * @IsGranted("MANAGE", subject="article")
++     */
++    public function getArticleReferences(Article $article)
++    {
++        return $this->json($article->getArticleReferences());
++    }
++
+     /**
+      * @Route("/admin/article/location-select", name="admin_article_location_select")
+      * @IsGranted("ROLE_USER")

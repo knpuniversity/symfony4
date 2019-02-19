@@ -10,10 +10,10 @@ index bec4c243..830becde 100644
 +});
 \ No newline at end of file
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 9c5d1145..aa3729f5 100644
+index 7e32a874..211c19c1 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -103,6 +103,7 @@ class ArticleAdminController extends BaseController
+@@ -102,6 +102,7 @@ class ArticleAdminController extends BaseController
      {
          /** @var UploadedFile $uploadedFile */
          $uploadedFile = $request->files->get('reference');
@@ -22,10 +22,10 @@ index 9c5d1145..aa3729f5 100644
          $violations = $validator->validate(
              $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index a55a72a1..a8c2e963 100644
+index cd3a2eea..478291aa 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
-@@ -30,16 +30,21 @@
+@@ -29,16 +29,21 @@
  
              <form action="{{ path('admin_article_add_reference', {
                  id: article.id

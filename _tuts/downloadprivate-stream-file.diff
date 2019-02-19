@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 3083cf74..b8f778c4 100644
+index 7dfffa0a..47b437d9 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -10,11 +10,13 @@ use App\Repository\ArticleRepository;
+@@ -9,11 +9,13 @@ use App\Repository\ArticleRepository;
  use App\Service\UploaderHelper;
  use Doctrine\ORM\EntityManagerInterface;
  use Gedmo\Sluggable\Util\Urlizer;
@@ -16,19 +16,17 @@ index 3083cf74..b8f778c4 100644
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Validator\Constraints\File;
  use Symfony\Component\Validator\Constraints\NotBlank;
-@@ -151,14 +153,21 @@ class ArticleAdminController extends BaseController
-      * @Route("/admin/article/{id}/references/{referenceId}", name="admin_article_download_reference", methods={"GET"})
-      * @IsGranted("MANAGE", subject="article")
+@@ -149,11 +151,19 @@ class ArticleAdminController extends BaseController
+     /**
+      * @Route("/admin/article/references/{id}/download", name="admin_article_download_reference", methods={"GET"})
       */
--    public function downloadArticleReference(Article $article, $referenceId, ArticleReferenceRepository $articleReferenceRepository)
-+    public function downloadArticleReference(Article $article, $referenceId, ArticleReferenceRepository $articleReferenceRepository, FilesystemInterface $privateUploadsFilesystem)
+-    public function downloadArticleReference(ArticleReference $reference)
++    public function downloadArticleReference(ArticleReference $reference, FilesystemInterface $privateUploadsFilesystem)
      {
-         $reference = $articleReferenceRepository->find($referenceId);
-         if (!$reference || $reference->getArticle() !== $article) {
-             throw $this->createNotFoundException('Reference not found');
-         }
- 
+         $article = $reference->getArticle();
+         $this->denyAccessUnlessGranted('MANAGE', $article);
 -        dd($reference);
++
 +        $response = new StreamedResponse(function() use ($reference, $privateUploadsFilesystem) {
 +            $outputStream = fopen('php://output', 'wb');
 +            $fileStream = $privateUploadsFilesystem->readStream($reference->getFilePath());

@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 12f3fb52..80d49578 100644
+index 4707746a..862e0762 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -138,7 +138,14 @@ class ArticleAdminController extends BaseController
+@@ -137,7 +137,14 @@ class ArticleAdminController extends BaseController
          $entityManager->persist($articleReference);
          $entityManager->flush();
  
@@ -19,7 +19,7 @@ index 12f3fb52..80d49578 100644
  
      /**
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index 0e5dd3eb..e099efc6 100644
+index 0e5dd3eb..23f4c531 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
 @@ -4,6 +4,7 @@ namespace App\Entity;
@@ -38,7 +38,7 @@ index 0e5dd3eb..e099efc6 100644
       */
      private $id;
  
-@@ -25,6 +27,7 @@ class ArticleReference
+@@ -25,16 +27,19 @@ class ArticleReference
  
      /**
       * @ORM\Column(type="string", length=255)
@@ -46,7 +46,11 @@ index 0e5dd3eb..e099efc6 100644
       */
      private $filename;
  
-@@ -35,6 +38,7 @@ class ArticleReference
+     /**
+      * @ORM\Column(type="string", length=255)
++     * @Groups("main")
+      */
+     private $originalFilename;
  
      /**
       * @ORM\Column(type="string", length=50)

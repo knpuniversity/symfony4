@@ -306,6 +306,11 @@
             "description": null
         },
         {
+            "id": "downloadprivate-add-security",
+            "name": "DownloadPrivate: Add security",
+            "description": null
+        },
+        {
             "id": "downloadprivate-stream-file",
             "name": "DownloadPrivate: stream file",
             "description": null
@@ -348,6 +353,21 @@
         {
             "id": "dropzone-parse-json-error",
             "name": "Dropzone: parse JSON error",
+            "description": null
+        },
+        {
+            "id": "jsapp-add-articles-references-endpoint",
+            "name": "JsApp: add articles references endpoint",
+            "description": null
+        },
+        {
+            "id": "jsapp-add-main-group",
+            "name": "JsApp: add main group",
+            "description": null
+        },
+        {
+            "id": "jsapp-dynamically-render",
+            "name": "JsApp: Dynamically render",
             "description": null
         },
         {
@@ -401,5 +421,5 @@
             "description": null
         }
     ],
-    "sha": "98710289e7b63a1fa164765bbde00997df51face"
+    "sha": "d5947f9cd1a0de4f9e826d8841193d5a49b572ac"
 }

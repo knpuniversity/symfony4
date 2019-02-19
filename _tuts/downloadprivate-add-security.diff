@@ -1,0 +1,13 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 8eb483f1..7dfffa0a 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -151,6 +151,8 @@ class ArticleAdminController extends BaseController
+      */
+     public function downloadArticleReference(ArticleReference $reference)
+     {
++        $article = $reference->getArticle();
++        $this->denyAccessUnlessGranted('MANAGE', $article);
+         dd($reference);
+     }
+ 

@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index b8f778c4..dfbec902 100644
+index 47b437d9..80204ef8 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
  use Symfony\Component\HttpFoundation\Request;
  use Symfony\Component\HttpFoundation\Response;
@@ -10,7 +10,7 @@ index b8f778c4..dfbec902 100644
  use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Validator\Constraints\File;
-@@ -166,6 +167,11 @@ class ArticleAdminController extends BaseController
+@@ -162,6 +163,11 @@ class ArticleAdminController extends BaseController
  
              stream_copy_to_stream($fileStream, $outputStream);
          });

@@ -1,31 +1,46 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 7eebf1e1..53aa9c69 100644
+index ae565328..3bf84aba 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
-@@ -41,7 +41,12 @@ function initializeDropzone()
+@@ -3,7 +3,7 @@ Dropzone.autoDiscover = false;
+ $(document).ready(function() {
+     var referenceList = new ReferenceList(document.querySelector('.js-reference-list'));
+ 
+-    initializeDropzone();
++    initializeDropzone(referenceList);
+ 
+     var $locationSelect = $('.js-article-form-location');
+     var $specificLocationTarget = $('.js-specific-location-target');
+@@ -47,6 +47,11 @@ class ReferenceList
+         })
+     }
+ 
++    addReference(reference) {
++        this.references.push(reference);
++        this.render();
++    }
++
+     render() {
+         const itemsHtml = this.references.map(reference => {
+             return `
+@@ -60,7 +65,10 @@ class ReferenceList
+     }
+ }
+ 
+-function initializeDropzone()
++/**
++ * @param {ReferenceList} referenceList
++ */
++function initializeDropzone(referenceList)
+ {
+     var inputElement = document.querySelector('.js-reference-dropzone');
+     if (!inputElement) {
+@@ -71,7 +79,7 @@ function initializeDropzone()
          paramName: 'reference',
          init: function() {
              this.on('success', function(file, data) {
 -                console.log(file, data);
-+                var downloadPath = file.xhr.getResponseHeader('Location');
-+
-+                var $anchor = $('<a class="list-group-item list-group-item-action"></a>');
-+                $anchor.html(data.filename);
-+                $anchor.attr('href', downloadPath);
-+                $('.js-reference-list').append($anchor);
++                referenceList.addReference(data);
              });
  
              this.on('error', function(file, data) {
-diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index fb93cad4..d302148a 100644
---- a/templates/article_admin/edit.html.twig
-+++ b/templates/article_admin/edit.html.twig
-@@ -15,7 +15,7 @@
-         <div class="col-sm-4">
-             <h3>References</h3>
- 
--            <div class="list-group">
-+            <div class="list-group js-reference-list">
-                 {% for reference in article.articleReferences %}
-                     <a href="{{ path('admin_article_download_reference', {
-                         id: article.id,

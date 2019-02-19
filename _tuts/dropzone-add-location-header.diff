@@ -1,16 +1,15 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 80d49578..57777b60 100644
+index 862e0762..894c864e 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -141,7 +141,12 @@ class ArticleAdminController extends BaseController
+@@ -140,7 +140,11 @@ class ArticleAdminController extends BaseController
          return $this->json(
              $articleReference,
              201,
 -            [],
 +            [
 +                'Location' => $this->generateUrl('admin_article_download_reference', [
-+                    'id' => $article->getId(),
-+                    'referenceId' => $articleReference->getId()
++                    'id' => $articleReference->getId(),
 +                ])
 +            ],
              [
