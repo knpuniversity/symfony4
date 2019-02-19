@@ -1,14 +1,14 @@
 # Centralizing Upload Logic
 
-We've got a pretty nice system so far: moving the file, unique filenames, putting
-the filename data into the database. But it *is* kind of a lot of logic to put
+We've got a pretty nice system so far: moving the file, unique filenames and putting
+the filename string into the database. But it *is* kind of a lot of logic to put
 in the controller... and we *already* need to reuse this code somewhere else:
 in the `new()` action.
 
 ## Creating the Service
 
 That's why I like to isolate my upload logic into a service class. In the `Service/`
-directory... or really anywhere, create a new class: how about `UploaderHelper`?
+directory - or really anywhere - create a new class: how about `UploaderHelper`?
 This class will handle *all* things related to uploading files. Create a
 `public function uploadArticleImage()`: it will take the `UploadedFile` as an
 argument - remember the one from `HttpFoundation` - and return a `string`. That will
@@ -29,16 +29,17 @@ I'll put my cursor on that argument name, hit `Alt + Enter` and select initializ
 fields to create that property and set it. Now, below, we can say
 `$this->uploadsPath` and then `/article_image`.
 
-Cool! Let's worry about passing this argument to our service in a minute. After
-all, Symfony's service system is *so* awesome, it'll tell me *exactly* what I need
-to configure once we try this.
+Cool! Let's worry about passing configuring the `$uploadsPath` argument to our service
+in a minute. After all, Symfony's service system is *so* awesome, it'll tell me
+*exactly* what I need to configure once we try this.
 
 For now, go back into `ArticleAdminController` and use this. Start by adding another
-argument: `UploaderHelper $uploaderHelper`. Celebrate by removing all of the logic
-below and saying `$newFilename = $uploaderHelper->uploadArticleImage($uploadedFile)`.
+argument: `UploaderHelper $uploaderHelper`. And celebrate by removing *all* of the
+logic below and replacing it with
+`$newFilename = $uploaderHelper->uploadArticleImage($uploadedFile)`.
 
-Dang - that is nice! There is still a *little* bit of logic here - the form logic,
-and the logic that sets the filename on the `Article`, but I'm comfortable with
+Dang - that is nice! There is still a *little* bit of logic here: the form logic
+and the logic that sets the filename on the `Article` - but I'm comfortable with
 that. And we now have this great new method: pass it an `UploadedFile` object, and
 it'll move it into the correct directory and give it a unique filename.
 
@@ -51,7 +52,7 @@ I'm kidding - we knew this error was coming... but isn't it beautiful?
 > service `UploadHelper`: argument `$uploadsPath` of method `__construct()` is
 > type-hinted `string`, you should configure its value explicitly.
 
-To me, that is programming poetry! And this makes sense: autowiring doesn't work
+That's programming poetry people! And it makes sense: autowiring doesn't work
 for scalar arguments. We got this: open `config/services.yaml`. We *could* configure
 the *specific* argument for this *specific* service. But if you've watched our
 Symfony series, you know that *I* like to use the `bind` feature. The argument
@@ -68,10 +69,11 @@ Let's go see if that fixed things - reload. *Now* we see the form. To test this
 fully, let's empty out the `article_image/` directory. This time, let's upload
 the stars photo. Hit update.
 
-Woh! The file empty string does not exist!? What the heck! Let's do some digging.
+Woh! The file "empty string" does not exist!? What the heck! Let's do some digging.
 When we call `guessExtension()`, internally, Symfony looks at the contents of the
 temporary uploaded file to determine what's inside. But... that file is missing!
 In fact, PHP is telling us that the temporary file name is... an empty string!
+It's madness!
 
 Why is this happening? I'll give you a clue: the file we just uploaded is 3mb.
 Go to your terminal and run
@@ -96,11 +98,11 @@ It worked!
 
 ## Adding the Logic to new() Action
 
-And now that all of our logic is isolated, we can easily repeat this in the
-`new()` action. We *do* need these 5 lines or so, but I'm happy with that.
+Now that all of our logic is isolated, we can easily repeat this in the `new()`
+action. We *do* need to copy these 5 lines or so, but I'm happy with that.
 
 Up in `new()`, add the argument - `UploaderHelper $uploaderHelper` - and inside
-the `isValid()` block, paste the code. This is using the same form, with the same
-unampped field, so it will all just work.
+the `isValid()` block, paste! This uses the same form, with the same unmapped
+field, so it'll all just work.
 
 Next: let's talk about validation.
