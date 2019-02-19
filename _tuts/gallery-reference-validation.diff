@@ -1,0 +1,45 @@
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 5478e748..638a386d 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -136,7 +136,7 @@ class ArticleReferenceAdminController extends BaseController
+     /**
+      * @Route("/admin/article/references/{id}", name="admin_article_update_reference", methods={"PUT"})
+      */
+-    public function updateArticleReference(ArticleReference $reference, EntityManagerInterface $entityManager, SerializerInterface $serializer, Request $request)
++    public function updateArticleReference(ArticleReference $reference, EntityManagerInterface $entityManager, SerializerInterface $serializer, Request $request, ValidatorInterface $validator)
+     {
+         $article = $reference->getArticle();
+         $this->denyAccessUnlessGranted('MANAGE', $article);
+@@ -151,6 +151,11 @@ class ArticleReferenceAdminController extends BaseController
+             ]
+         );
+ 
++        $violations = $validator->validate($reference);
++        if ($violations->count() > 0) {
++            return $this->json($violations, 400);
++        }
++
+         $entityManager->persist($reference);
+         $entityManager->flush();
+ 
+diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
+index b337b94b..8917df87 100644
+--- a/src/Entity/ArticleReference.php
++++ b/src/Entity/ArticleReference.php
+@@ -5,6 +5,7 @@ namespace App\Entity;
+ use App\Service\UploaderHelper;
+ use Doctrine\ORM\Mapping as ORM;
+ use Symfony\Component\Serializer\Annotation\Groups;
++use Symfony\Component\Validator\Constraints as Assert;
+ 
+ /**
+  * @ORM\Entity(repositoryClass="App\Repository\ArticleReferenceRepository")
+@@ -34,6 +35,7 @@ class ArticleReference
+     /**
+      * @ORM\Column(type="string", length=255)
+      * @Groups({"main", "input"})
++     * @Assert\NotBlank()
+      */
+     private $originalFilename;
+ 

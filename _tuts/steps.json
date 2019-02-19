@@ -421,6 +421,11 @@
             "description": null
         },
         {
+            "id": "gallery-reference-validation",
+            "name": "Gallery: Reference validation",
+            "description": null
+        },
+        {
             "id": "gallery-add-position-field",
             "name": "Gallery: add position field",
             "description": null
@@ -506,5 +511,5 @@
             "description": null
         }
     ],
-    "sha": "914637869ceb4c20af27e02737e30bd879603540"
+    "sha": "3a8841bbcb4bbecf9c55a9eb0e154aa1321c6a35"
 }

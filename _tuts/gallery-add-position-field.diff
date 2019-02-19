@@ -1,8 +1,8 @@
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index b337b94b..30153cdf 100644
+index 8917df87..f04e2833 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
-@@ -43,6 +43,11 @@ class ArticleReference
+@@ -45,6 +45,11 @@ class ArticleReference
       */
      private $mimeType;
  
@@ -14,7 +14,7 @@ index b337b94b..30153cdf 100644
      public function __construct(Article $article)
      {
          $this->article = $article;
-@@ -98,4 +103,16 @@ class ArticleReference
+@@ -100,4 +105,16 @@ class ArticleReference
      {
          return UploaderHelper::ARTICLE_REFERENCE.'/'.$this->getFilename();
      }

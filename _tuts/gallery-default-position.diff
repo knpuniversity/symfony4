@@ -1,8 +1,8 @@
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index 30153cdf..d53ef5e6 100644
+index f04e2833..9de40570 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
-@@ -46,7 +46,7 @@ class ArticleReference
+@@ -48,7 +48,7 @@ class ArticleReference
      /**
       * @ORM\Column(type="integer")
       */
