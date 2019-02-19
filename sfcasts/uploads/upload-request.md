@@ -37,7 +37,7 @@ one from HttpFoundation - `$request`. Then say: `dd()` - that's dump & die -
 `$request->files->get('image')`. I'm using `image` because that's the `name`
 attribute used on the field.
 
-[[[ code('dfb440aaf8') ]]]
+[[[ code('aced8f1d21') ]]]
 
 Cool! What do you think this will dump out? A string filename? An array? An object?
 Let's find out! Choose a file - I'll go into my `I <3 Space` directory, and select
