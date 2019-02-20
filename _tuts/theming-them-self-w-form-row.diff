@@ -1,5 +1,5 @@
 diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
-index 8b740fd7..ad20fe21 100644
+index 8b740fd..ad20fe2 100644
 --- a/templates/security/register.html.twig
 +++ b/templates/security/register.html.twig
 @@ -1,4 +1,19 @@

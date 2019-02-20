@@ -1,5 +1,5 @@
 diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
-index b9026f91..15478e2c 100644
+index b9026f9..15478e2 100644
 --- a/src/Controller/AccountController.php
 +++ b/src/Controller/AccountController.php
 @@ -21,4 +21,14 @@ class AccountController extends BaseController

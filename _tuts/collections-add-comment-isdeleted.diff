@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Comment.php b/src/Entity/Comment.php
-index bdd88b25..4d16e2e0 100644
+index bdd88b2..4d16e2e 100644
 --- a/src/Entity/Comment.php
 +++ b/src/Entity/Comment.php
 @@ -35,6 +35,11 @@ class Comment
@@ -33,7 +33,7 @@ index bdd88b25..4d16e2e0 100644
  }
 diff --git a/src/Migrations/Version20180430194518.php b/src/Migrations/Version20180430194518.php
 new file mode 100644
-index 00000000..494070ad
+index 0000000..c43f83e
 --- /dev/null
 +++ b/src/Migrations/Version20180430194518.php
 @@ -0,0 +1,28 @@
@@ -41,15 +41,15 @@ index 00000000..494070ad
 +
 +namespace DoctrineMigrations;
 +
-+use Doctrine\DBAL\Migrations\AbstractMigration;
 +use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
 +
 +/**
 + * Auto-generated Migration: Please modify to your needs!
 + */
 +class Version20180430194518 extends AbstractMigration
 +{
-+    public function up(Schema $schema)
++    public function up(Schema $schema): void
 +    {
 +        // this up() migration is auto-generated, please modify it to your needs
 +        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
@@ -57,7 +57,7 @@ index 00000000..494070ad
 +        $this->addSql('ALTER TABLE comment ADD is_deleted TINYINT(1) NOT NULL');
 +    }
 +
-+    public function down(Schema $schema)
++    public function down(Schema $schema): void
 +    {
 +        // this down() migration is auto-generated, please modify it to your needs
 +        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');

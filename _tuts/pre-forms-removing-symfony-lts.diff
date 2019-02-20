@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 111e62f0..a2d36942 100644
+index 111e62f..a2d3694 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -15,7 +15,6 @@
@@ -21,7 +21,7 @@ index 111e62f0..a2d36942 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index d5e1690a..b0450dfb 100644
+index eeeb870..ef9e739 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -33,13 +33,18 @@ index d5e1690a..b0450dfb 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4304,89 +4304,6 @@
+@@ -4401,94 +4401,6 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
 -        {
 -            "name": "symfony/lts",
 -            "version": "dev-master",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/lts.git",
+-                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2"
+-            },
 -            "conflict": {
 -                "symfony/asset": ">=5",
 -                "symfony/browser-kit": ">=5",
@@ -123,7 +128,7 @@ index d5e1690a..b0450dfb 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -6821,9 +6738,7 @@
+@@ -6923,9 +6835,7 @@
      ],
      "aliases": [],
      "minimum-stability": "stable",
@@ -135,10 +140,10 @@ index d5e1690a..b0450dfb 100644
      "prefer-lowest": false,
      "platform": {
 diff --git a/symfony.lock b/symfony.lock
-index b9079178..a0da2682 100644
+index 6597ad1..e83c74c 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -299,9 +299,6 @@
+@@ -302,9 +302,6 @@
      "symfony/inflector": {
          "version": "v4.1.4"
      },

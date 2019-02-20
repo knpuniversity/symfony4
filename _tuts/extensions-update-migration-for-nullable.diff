@@ -1,5 +1,5 @@
 diff --git a/src/Migrations/Version20180418130337.php b/src/Migrations/Version20180418130337.php
-index 38be73f2..4c3c7803 100644
+index 659ef01..1f05082 100644
 --- a/src/Migrations/Version20180418130337.php
 +++ b/src/Migrations/Version20180418130337.php
 @@ -15,7 +15,8 @@ class Version20180418130337 extends AbstractMigration
@@ -11,4 +11,4 @@ index 38be73f2..4c3c7803 100644
 +        $this->addSql('UPDATE article SET created_at = NOW(), updated_at = NOW()');
      }
  
-     public function down(Schema $schema)
+     public function down(Schema $schema): void

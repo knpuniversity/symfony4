@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index e59d6b32..9f74c328 100644
+index e59d6b3..9f74c32 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -53,6 +53,16 @@ class Article
@@ -50,7 +50,7 @@ index e59d6b32..9f74c328 100644
  }
 diff --git a/src/Migrations/Version20180418130337.php b/src/Migrations/Version20180418130337.php
 new file mode 100644
-index 00000000..38be73f2
+index 0000000..659ef01
 --- /dev/null
 +++ b/src/Migrations/Version20180418130337.php
 @@ -0,0 +1,28 @@
@@ -58,15 +58,15 @@ index 00000000..38be73f2
 +
 +namespace DoctrineMigrations;
 +
-+use Doctrine\DBAL\Migrations\AbstractMigration;
 +use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
 +
 +/**
 + * Auto-generated Migration: Please modify to your needs!
 + */
 +class Version20180418130337 extends AbstractMigration
 +{
-+    public function up(Schema $schema)
++    public function up(Schema $schema): void
 +    {
 +        // this up() migration is auto-generated, please modify it to your needs
 +        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
@@ -74,7 +74,7 @@ index 00000000..38be73f2
 +        $this->addSql('ALTER TABLE article ADD created_at DATETIME NOT NULL, ADD updated_at DATETIME NOT NULL');
 +    }
 +
-+    public function down(Schema $schema)
++    public function down(Schema $schema): void
 +    {
 +        // this down() migration is auto-generated, please modify it to your needs
 +        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');

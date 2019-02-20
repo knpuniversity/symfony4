@@ -1,5 +1,5 @@
 diff --git a/config/routes.yaml b/config/routes.yaml
-index 07824453..35ff087e 100644
+index 0782445..35ff087 100644
 --- a/config/routes.yaml
 +++ b/config/routes.yaml
 @@ -1,3 +1,3 @@
@@ -10,7 +10,7 @@ index 07824453..35ff087e 100644
 +#    path: /
 +#    controller: App\Controller\ArticleController::homepage
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 42ca0d12..8d7f0632 100644
+index 42ca0d1..8d7f063 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -2,10 +2,14 @@

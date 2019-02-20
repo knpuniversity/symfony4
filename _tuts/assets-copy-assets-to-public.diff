@@ -1,6 +1,6 @@
 diff --git a/public/css/font-awesome.css b/public/css/font-awesome.css
 new file mode 100644
-index 00000000..ee906a81
+index 0000000..ee906a8
 --- /dev/null
 +++ b/public/css/font-awesome.css
 @@ -0,0 +1,2337 @@
@@ -2343,7 +2343,7 @@ index 00000000..ee906a81
 +}
 diff --git a/public/css/styles.css b/public/css/styles.css
 new file mode 100644
-index 00000000..fa8a899f
+index 0000000..fa8a899
 --- /dev/null
 +++ b/public/css/styles.css
 @@ -0,0 +1,238 @@
@@ -6761,7 +6761,7 @@ HcmV?d00001
 
 diff --git a/public/fonts/fontawesome-webfont.svg b/public/fonts/fontawesome-webfont.svg
 new file mode 100644
-index 00000000..855c845e
+index 0000000..855c845
 --- /dev/null
 +++ b/public/fonts/fontawesome-webfont.svg
 @@ -0,0 +1,2671 @@

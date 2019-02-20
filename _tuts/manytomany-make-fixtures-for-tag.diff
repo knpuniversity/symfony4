@@ -1,6 +1,6 @@
 diff --git a/src/DataFixtures/TagFixture.php b/src/DataFixtures/TagFixture.php
 new file mode 100644
-index 00000000..3c6b0d76
+index 0000000..3c6b0d7
 --- /dev/null
 +++ b/src/DataFixtures/TagFixture.php
 @@ -0,0 +1,17 @@

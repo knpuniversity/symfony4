@@ -1,5 +1,5 @@
 diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
-index ab5c2494..34f608cf 100644
+index ab5c249..34f608c 100644
 --- a/src/Form/DataTransformer/EmailToUserTransformer.php
 +++ b/src/Form/DataTransformer/EmailToUserTransformer.php
 @@ -10,10 +10,12 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
@@ -27,7 +27,7 @@ index ab5c2494..34f608cf 100644
          if (!$user) {
              throw new TransformationFailedException(sprintf('No user found with email "%s"', $value));
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
-index 2aeab272..c2fd5e28 100644
+index 2aeab27..c2fd5e2 100644
 --- a/src/Form/UserSelectTextType.php
 +++ b/src/Form/UserSelectTextType.php
 @@ -20,7 +20,10 @@ class UserSelectTextType extends AbstractType

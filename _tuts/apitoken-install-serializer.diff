@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 372271ab..111e62f0 100644
+index 372271a..111e62f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,6 +18,7 @@
@@ -11,7 +11,7 @@ index 372271ab..111e62f0 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 45e8cf8e..b1845d1f 100644
+index 77e726d..3ae9c9b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 45e8cf8e..b1845d1f 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -2788,6 +2788,158 @@
+@@ -2809,6 +2809,158 @@
              ],
              "time": "2017-11-29T19:20:03+00:00"
          },
@@ -182,7 +182,7 @@ index 45e8cf8e..b1845d1f 100644
          {
              "name": "psr/cache",
              "version": "1.0.1",
-@@ -4549,6 +4701,82 @@
+@@ -4651,6 +4803,82 @@
              ],
              "time": "2018-08-24T10:22:26+00:00"
          },
@@ -265,7 +265,7 @@ index 45e8cf8e..b1845d1f 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4783,6 +5011,117 @@
+@@ -4885,6 +5113,117 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-18T16:52:46+00:00"
          },
@@ -383,7 +383,7 @@ index 45e8cf8e..b1845d1f 100644
          {
              "name": "symfony/stopwatch",
              "version": "v4.1.4",
-@@ -5361,6 +5700,56 @@
+@@ -5463,6 +5802,56 @@
              ],
              "time": "2018-07-13T07:18:09+00:00"
          },
@@ -441,7 +441,7 @@ index 45e8cf8e..b1845d1f 100644
              "name": "zendframework/zend-code",
              "version": "3.3.1",
 diff --git a/symfony.lock b/symfony.lock
-index 45e55290..b9079178 100644
+index 74cfd6d..6597ad1 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -182,6 +182,15 @@
@@ -460,7 +460,7 @@ index 45e55290..b9079178 100644
      "psr/cache": {
          "version": "1.0.1"
      },
-@@ -347,6 +356,9 @@
+@@ -350,6 +359,9 @@
      "symfony/property-access": {
          "version": "v4.1.4"
      },
@@ -470,7 +470,7 @@ index 45e55290..b9079178 100644
      "symfony/routing": {
          "version": "4.0",
          "recipe": {
-@@ -368,6 +380,12 @@
+@@ -371,6 +383,12 @@
              "ref": "f8a63faa0d9521526499c0a8f403c9964ecb0527"
          }
      },
@@ -483,7 +483,7 @@ index 45e55290..b9079178 100644
      "symfony/stopwatch": {
          "version": "v4.0.3"
      },
-@@ -431,6 +449,9 @@
+@@ -434,6 +452,9 @@
      "twig/twig": {
          "version": "v2.4.4"
      },

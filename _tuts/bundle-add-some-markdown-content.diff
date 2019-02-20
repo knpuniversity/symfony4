@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index cd54acbb..c665f73e 100644
+index cd54acb..c665f73 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -30,10 +30,30 @@ class ArticleController extends AbstractController
@@ -34,7 +34,7 @@ index cd54acbb..c665f73e 100644
      }
  
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 346fe33c..a52823f3 100644
+index 346fe33..a52823f 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -26,33 +26,7 @@

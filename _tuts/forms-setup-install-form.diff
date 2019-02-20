@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index a2d36942..4cd96eeb 100644
+index a2d3694..4cd96ee 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,6 +14,7 @@
@@ -11,7 +11,7 @@ index a2d36942..4cd96eeb 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index b0450dfb..81deee65 100644
+index ef9e739..98b67df 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index b0450dfb..81deee65 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -3988,6 +3988,87 @@
+@@ -4085,6 +4085,87 @@
              "description": "Composer plugin for Symfony",
              "time": "2018-09-03T08:17:12+00:00"
          },
@@ -111,7 +111,7 @@ index b0450dfb..81deee65 100644
          {
              "name": "symfony/framework-bundle",
              "version": "v4.1.6",
-@@ -4304,6 +4385,81 @@
+@@ -4401,6 +4482,81 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -193,7 +193,7 @@ index b0450dfb..81deee65 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -4444,6 +4600,64 @@
+@@ -4541,6 +4697,64 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },
@@ -257,12 +257,12 @@ index b0450dfb..81deee65 100644
 +        },
          {
              "name": "symfony/polyfill-mbstring",
-             "version": "v1.9.0",
+             "version": "v1.10.0",
 diff --git a/symfony.lock b/symfony.lock
-index a0da2682..0b9b9c96 100644
+index e83c74c..df64716 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -281,6 +281,9 @@
+@@ -284,6 +284,9 @@
              "ref": "cc1afd81841db36fbef982fe56b48ade6716fac4"
          }
      },
@@ -272,7 +272,7 @@ index a0da2682..0b9b9c96 100644
      "symfony/framework-bundle": {
          "version": "3.3",
          "recipe": {
-@@ -299,6 +302,9 @@
+@@ -302,6 +305,9 @@
      "symfony/inflector": {
          "version": "v4.1.4"
      },
@@ -282,7 +282,7 @@ index a0da2682..0b9b9c96 100644
      "symfony/maker-bundle": {
          "version": "1.0",
          "recipe": {
-@@ -338,6 +344,9 @@
+@@ -341,6 +347,9 @@
      "symfony/polyfill-ctype": {
          "version": "v1.9.0"
      },

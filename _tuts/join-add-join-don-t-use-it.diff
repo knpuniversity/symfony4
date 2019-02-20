@@ -1,5 +1,5 @@
 diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
-index 29b9a7cb..82bc2170 100644
+index 29b9a7c..82bc217 100644
 --- a/src/Repository/CommentRepository.php
 +++ b/src/Repository/CommentRepository.php
 @@ -34,7 +34,8 @@ class CommentRepository extends ServiceEntityRepository

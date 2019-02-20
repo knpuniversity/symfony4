@@ -1,5 +1,5 @@
 diff --git a/config/packages/dev/monolog.yaml b/config/packages/dev/monolog.yaml
-index 36625928..42fe009a 100644
+index 3662592..42fe009 100644
 --- a/config/packages/dev/monolog.yaml
 +++ b/config/packages/dev/monolog.yaml
 @@ -5,6 +5,11 @@ monolog:
@@ -16,7 +16,7 @@ index 36625928..42fe009a 100644
          #firephp:
 diff --git a/config/packages/monolog.yaml b/config/packages/monolog.yaml
 new file mode 100644
-index 00000000..73d7b332
+index 0000000..73d7b33
 --- /dev/null
 +++ b/config/packages/monolog.yaml
 @@ -0,0 +1,2 @@
