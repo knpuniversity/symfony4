@@ -1,0 +1,64 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 43ecfcd3..a3eee8bd 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -23,6 +23,7 @@ services:
+             $isDebug: '%kernel.debug%'
+             $uploadsFilesystem: '@oneup_flysystem.uploads_filesystem_filesystem'
+             $uploadedAssetsBaseUrl: '%uploads_base_url%'
++            $s3BucketName: '%env(AWS_S3_BUCKET_NAME)%'
+ 
+     # custom aliases for autowiring
+     Nexy\Slack\Client: '@nexy_slack.client'
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 700c1de4..143a07ee 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -5,13 +5,13 @@ namespace App\Controller;
+ use App\Entity\Article;
+ use App\Entity\ArticleReference;
+ use App\Service\UploaderHelper;
++use Aws\S3\S3Client;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Component\HttpFoundation\File\UploadedFile;
++use Symfony\Component\HttpFoundation\RedirectResponse;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
+-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+-use Symfony\Component\HttpFoundation\StreamedResponse;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\Serializer\SerializerInterface;
+ use Symfony\Component\Validator\Constraints\File;
+@@ -127,24 +127,18 @@ class ArticleReferenceAdminController extends BaseController
+     /**
+      * @Route("/admin/article/references/{id}/download", name="admin_article_download_reference", methods={"GET"})
+      */
+-    public function downloadArticleReference(ArticleReference $reference, UploaderHelper $uploaderHelper)
++    public function downloadArticleReference(ArticleReference $reference, S3Client $s3Client, string $s3BucketName)
+     {
+         $article = $reference->getArticle();
+         $this->denyAccessUnlessGranted('MANAGE', $article);
+ 
+-        $response = new StreamedResponse(function() use ($reference, $uploaderHelper) {
+-            $outputStream = fopen('php://output', 'wb');
+-            $fileStream = $uploaderHelper->readStream($reference->getFilePath());
++        $command = $s3Client->getCommand('GetObject', [
++            'Bucket' => $s3BucketName,
++            'Key' => $reference->getFilePath()
++        ]);
++        $request = $s3Client->createPresignedRequest($command, '+30 minutes');
+ 
+-            stream_copy_to_stream($fileStream, $outputStream);
+-        });
+-        $disposition = $response->headers->makeDisposition(
+-            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+-            $reference->getOriginalFilename()
+-        );
+-        $response->headers->set('Content-Disposition', $disposition);
+-
+-        return $response;
++        return new RedirectResponse((string) $request->getUri());
+     }
+ 
+     /**

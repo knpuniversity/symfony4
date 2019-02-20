@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index f724366e..3b1bcc6c 100644
+index 5f2110fe..5cbf5b8c 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -84,7 +84,6 @@ class ArticleReferenceAdminController extends BaseController
+@@ -85,7 +85,6 @@ class ArticleReferenceAdminController extends BaseController
  
          if (is_file($uploadedFile->getPathname())) {
              unlink($uploadedFile->getPathname());

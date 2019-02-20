@@ -23,7 +23,7 @@ index 00000000..acddd1fc
 +    public $data;
 +}
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index d91459ba..8104e6e2 100644
+index d6b04f5f..97ce6c51 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -2,6 +2,7 @@
@@ -34,7 +34,7 @@ index d91459ba..8104e6e2 100644
  use App\Entity\Article;
  use App\Entity\ArticleReference;
  use App\Service\UploaderHelper;
-@@ -23,10 +24,25 @@ class ArticleReferenceAdminController extends BaseController
+@@ -24,10 +25,25 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/{id}/references", name="admin_article_add_reference", methods={"POST"})
       */

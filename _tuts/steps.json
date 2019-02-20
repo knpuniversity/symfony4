@@ -556,6 +556,16 @@
             "description": null
         },
         {
+            "id": "s3-create-a-signed-url-download",
+            "name": "S3: Create a signed URL download",
+            "description": null
+        },
+        {
+            "id": "s3-re-add-content-disposition",
+            "name": "S3: Re-add Content-Disposition",
+            "description": null
+        },
+        {
             "id": "api-temp-remove-security",
             "name": "API: temp remove security",
             "description": null
@@ -589,7 +599,12 @@
             "id": "api-remove-die-code",
             "name": "API: remove die code",
             "description": null
+        },
+        {
+            "id": "api-put-back-security",
+            "name": "API: Put back security",
+            "description": null
         }
     ],
-    "sha": "48c30030f146837988089b69973f969c60b7384f"
+    "sha": "2fb37e5d1f67d95db0e9c9622a1d5fc3d40dcaf3"
 }

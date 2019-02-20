@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 700c1de4..d91459ba 100644
+index b789819e..d6b04f5f 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -22,7 +22,6 @@ class ArticleReferenceAdminController extends BaseController
+@@ -23,7 +23,6 @@ class ArticleReferenceAdminController extends BaseController
  {
      /**
       * @Route("/admin/article/{id}/references", name="admin_article_add_reference", methods={"POST"})

@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 4db84210..f724366e 100644
+index ce7e1a03..5f2110fe 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -82,6 +82,11 @@ class ArticleReferenceAdminController extends BaseController
+@@ -83,6 +83,11 @@ class ArticleReferenceAdminController extends BaseController
          $articleReference->setOriginalFilename($originalFilename ?? $filename);
          $articleReference->setMimeType($uploadedFile->getMimeType() ?? 'application/octet-stream');
  

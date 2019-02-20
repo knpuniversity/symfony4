@@ -13,18 +13,18 @@ index 7dcd92df..c0163176 100644
 +    }
  }
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 8104e6e2..0c2afbd5 100644
+index 97ce6c51..daf647aa 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -8,6 +8,7 @@ use App\Entity\ArticleReference;
- use App\Service\UploaderHelper;
+@@ -9,6 +9,7 @@ use App\Service\UploaderHelper;
+ use Aws\S3\S3Client;
  use Doctrine\ORM\EntityManagerInterface;
  use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 +use Symfony\Component\HttpFoundation\File\File as FileObject;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
- use Symfony\Component\HttpFoundation\Request;
- use Symfony\Component\HttpFoundation\Response;
-@@ -27,6 +28,7 @@ class ArticleReferenceAdminController extends BaseController
+ use Symfony\Component\HttpFoundation\HeaderUtils;
+ use Symfony\Component\HttpFoundation\RedirectResponse;
+@@ -28,6 +29,7 @@ class ArticleReferenceAdminController extends BaseController
      public function uploadArticleReference(Article $article, Request $request, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, ValidatorInterface $validator, SerializerInterface $serializer)
      {
          if ($request->headers->get('Content-Type') === 'application/json') {
@@ -32,7 +32,7 @@ index 8104e6e2..0c2afbd5 100644
              $uploadApiModel = $serializer->deserialize(
                  $request->getContent(),
                  ArticleReferenceUploadApiModel::class,
-@@ -38,7 +40,10 @@ class ArticleReferenceAdminController extends BaseController
+@@ -39,7 +41,10 @@ class ArticleReferenceAdminController extends BaseController
                  return $this->json($violations, 400);
              }
  
