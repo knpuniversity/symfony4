@@ -33,11 +33,11 @@ index e34b11cf..d298ef4d 100644
      }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index ef978b22..dbb16411 100644
+index fdeff25c..915c7567 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -22,7 +22,7 @@ class UploaderHelper
-         $this->requestStack = $requestStack;
+         $this->requestStackContext = $requestStackContext;
      }
  
 -    public function uploadArticleImage(File $file): string

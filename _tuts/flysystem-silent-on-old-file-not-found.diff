@@ -1,5 +1,5 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index dbb16411..f8ef680f 100644
+index 915c7567..ad3d75b5 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,7 +3,9 @@
@@ -10,19 +10,19 @@ index dbb16411..f8ef680f 100644
  use League\Flysystem\FilesystemInterface;
 +use Psr\Log\LoggerInterface;
  use Symfony\Component\HttpFoundation\File\File;
+ use Symfony\Component\Asset\Context\RequestStackContext;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
- use Symfony\Component\HttpFoundation\RequestStack;
 @@ -16,10 +18,13 @@ class UploaderHelper
  
-     private $requestStack;
+     private $requestStackContext;
  
--    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack)
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext)
 +    private $logger;
 +
-+    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger)
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger)
      {
          $this->filesystem = $publicUploadsFilesystem;
-         $this->requestStack = $requestStack;
+         $this->requestStackContext = $requestStackContext;
 +        $this->logger = $logger;
      }
  

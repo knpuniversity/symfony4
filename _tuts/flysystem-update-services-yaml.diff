@@ -1,5 +1,5 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index a7cd6805..1b6adca8 100644
+index 6f7700c6..578d7df1 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -20,7 +20,7 @@ services:
@@ -12,18 +12,18 @@ index a7cd6805..1b6adca8 100644
      # custom aliases for autowiring
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 180603f6..4c90d0f1 100644
+index f06a3830..ef3bd767 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -16,9 +16,9 @@ class UploaderHelper
  
-     private $requestStack;
+     private $requestStackContext;
  
--    public function __construct(FilesystemInterface $filesystem, RequestStack $requestStack)
-+    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack)
+-    public function __construct(FilesystemInterface $filesystem, RequestStackContext $requestStackContext)
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext)
      {
 -        $this->filesystem = $filesystem;
 +        $this->filesystem = $publicUploadsFilesystem;
-         $this->requestStack = $requestStack;
+         $this->requestStackContext = $requestStackContext;
      }
  

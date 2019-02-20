@@ -141,8 +141,18 @@
             "description": null
         },
         {
-            "id": "rendering-use-request-basepath",
-            "name": "Rendering: use Request::basePath()",
+            "id": "rendering-requeststackcontext-base-path",
+            "name": "Rendering: RequestStackContext base path",
+            "description": null
+        },
+        {
+            "id": "rendering-add-requeststackcontext-alias",
+            "name": "Rendering: Add RequestStackContext alias",
+            "description": null
+        },
+        {
+            "id": "rendering-delete-me1",
+            "name": "Rendering: delete me1",
             "description": null
         },
         {
@@ -233,6 +243,16 @@
         {
             "id": "fly-liip-store-uploads-in-parameter",
             "name": "Fly+Liip: store uploads\/ in parameter",
+            "description": null
+        },
+        {
+            "id": "absolute-use-non-thumbnailed-url",
+            "name": "Absolute: Use non-thumbnailed url",
+            "description": null
+        },
+        {
+            "id": "absolute-use-site-base-url",
+            "name": "Absolute: Use SITE_BASE_URL",
             "description": null
         },
         {
@@ -531,5 +551,5 @@
             "description": null
         }
     ],
-    "sha": "c853a8eafef0b469828ce2845833b68164dbc7ad"
+    "sha": "00a0a8a3f0214265e415ff2504a450ad93960744"
 }

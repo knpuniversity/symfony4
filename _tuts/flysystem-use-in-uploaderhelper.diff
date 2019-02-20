@@ -18,7 +18,7 @@ index 50b80766..a760f365 100644
 +        public_uploads_filesystem:
 +            adapter: public_uploads_adapter
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index f73977c7..180603f6 100644
+index 189e8be1..f06a3830 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,6 +3,7 @@
@@ -27,8 +27,8 @@ index f73977c7..180603f6 100644
  use Gedmo\Sluggable\Util\Urlizer;
 +use League\Flysystem\FilesystemInterface;
  use Symfony\Component\HttpFoundation\File\File;
+ use Symfony\Component\Asset\Context\RequestStackContext;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
- use Symfony\Component\HttpFoundation\RequestStack;
 @@ -11,20 +12,18 @@ class UploaderHelper
  {
      const ARTICLE_IMAGE = 'article_image';
@@ -36,14 +36,14 @@ index f73977c7..180603f6 100644
 -    private $uploadsPath;
 +    private $filesystem;
  
-     private $requestStack;
+     private $requestStackContext;
  
--    public function __construct(string $uploadsPath, RequestStack $requestStack)
-+    public function __construct(FilesystemInterface $filesystem, RequestStack $requestStack)
+-    public function __construct(string $uploadsPath, RequestStackContext $requestStackContext)
++    public function __construct(FilesystemInterface $filesystem, RequestStackContext $requestStackContext)
      {
 -        $this->uploadsPath = $uploadsPath;
 +        $this->filesystem = $filesystem;
-         $this->requestStack = $requestStack;
+         $this->requestStackContext = $requestStackContext;
      }
  
      public function uploadArticleImage(File $file): string

@@ -40,7 +40,7 @@ index 637d8b2b..fcf44369 100644
 +        uploads_filesystem:
 +            adapter: uploads_adapter
 diff --git a/config/services.yaml b/config/services.yaml
-index af3e8c6a..7f93c4b5 100644
+index f980b691..43ecfcd3 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -21,7 +21,7 @@ services:
@@ -53,18 +53,20 @@ index af3e8c6a..7f93c4b5 100644
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 312ee6f7..392576bc 100644
+index 1bcd8b47..1e63f553 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -24,9 +24,9 @@ class UploaderHelper
+@@ -24,10 +24,10 @@ class UploaderHelper
+     private $logger;
  
      private $publicAssetBaseUrl;
-     
--    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
-+    public function __construct(FilesystemInterface $uploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
+-    
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
++
++    public function __construct(FilesystemInterface $uploadsFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
      {
 -        $this->filesystem = $publicUploadsFilesystem;
 +        $this->filesystem = $uploadsFilesystem;
-         $this->requestStack = $requestStack;
+         $this->requestStackContext = $requestStackContext;
          $this->logger = $logger;
          $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;

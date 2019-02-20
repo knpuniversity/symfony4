@@ -29,10 +29,10 @@ index 86c1dcc6..4b83bf1b 100644
      }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index ba4409c7..d00e1d33 100644
+index 8c8cdf71..db310aab 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -82,6 +82,17 @@ class UploaderHelper
+@@ -81,6 +81,17 @@ class UploaderHelper
          return $resource;
      }
  

@@ -1,8 +1,8 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 209e5126..baaafc9f 100644
+index 30a20b33..ba93cf0d 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
+@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  class UploaderHelper
  {
      const ARTICLE_IMAGE = 'article_image';
@@ -47,7 +47,7 @@ index 209e5126..baaafc9f 100644
      }
  
      public function getPublicPath(string $path): string
-@@ -93,9 +75,11 @@ class UploaderHelper
+@@ -92,9 +74,11 @@ class UploaderHelper
          }
          $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
  
@@ -61,7 +61,7 @@ index 209e5126..baaafc9f 100644
              $stream
          );
  
-@@ -106,5 +90,7 @@ class UploaderHelper
+@@ -105,5 +89,7 @@ class UploaderHelper
          if (is_resource($stream)) {
              fclose($stream);
          }

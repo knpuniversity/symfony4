@@ -1,8 +1,8 @@
 diff --git a/.env b/.env
-index 3f757f48..074995cc 100644
+index ef5d1fce..9cdd094f 100644
 --- a/.env
 +++ b/.env
-@@ -29,4 +29,7 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
+@@ -29,6 +29,9 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
  
  ### CUSTOM VARS
  SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
@@ -10,11 +10,13 @@ index 3f757f48..074995cc 100644
 +AWS_S3_ACCESS_ID=
 +AWS_S3_ACCESS_SECRET=
  ### END CUSTOM VARS
+ 
+ SITE_BASE_URL=https://localhost:8000
 diff --git a/config/services.yaml b/config/services.yaml
-index 076f13c2..8ea57605 100644
+index 43021b89..4b2f7050 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
-@@ -51,8 +51,8 @@ services:
+@@ -54,8 +54,8 @@ services:
      Aws\S3\S3Client:
          arguments:
              -
@@ -25,6 +27,5 @@ index 076f13c2..8ea57605 100644
                  credentials:
 -                    key: "s3-key"
 -                    secret: "s3-secret"
-\ No newline at end of file
 +                    key: '%env(AWS_S3_ACCESS_ID)%'
 +                    secret: '%env(AWS_S3_ACCESS_SECRET)%'

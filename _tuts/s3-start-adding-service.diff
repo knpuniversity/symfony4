@@ -1,11 +1,14 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index d023bd48..076f13c2 100644
+index d134ff65..43021b89 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
-@@ -47,3 +47,12 @@ services:
-         tags:
+@@ -49,4 +49,13 @@ services:
              - { name: form.type_extension,
                  extended_type: Symfony\Component\Form\Extension\Core\Type\TextareaType }
+ 
+-    Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
+\ No newline at end of file
++    Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
 +
 +    Aws\S3\S3Client:
 +        arguments:
@@ -15,4 +18,3 @@ index d023bd48..076f13c2 100644
 +                credentials:
 +                    key: "s3-key"
 +                    secret: "s3-secret"
-\ No newline at end of file

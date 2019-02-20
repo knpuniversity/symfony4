@@ -1,11 +1,11 @@
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index 513d534d..5a039774 100644
+index c50fbc35..2161581f 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -4,6 +4,13 @@ oneup_flysystem:
          public_uploads_adapter:
              local:
-                 directory: '%kernel.project_dir%/public/%uploads_base_url%'
+                 directory: '%kernel.project_dir%/public/%uploads_dir_name%'
 +
 +        private_uploads_adapter:
 +            local:
@@ -17,10 +17,10 @@ index 513d534d..5a039774 100644
 +        private_uploads_filesystem:
 +            adapter: private_uploads_adapter
 diff --git a/config/services.yaml b/config/services.yaml
-index 4429414b..d023bd48 100644
+index ad8a105c..d134ff65 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
-@@ -22,6 +22,7 @@ services:
+@@ -23,6 +23,7 @@ services:
              $markdownLogger: '@monolog.logger.markdown'
              $isDebug: '%kernel.debug%'
              $publicUploadsFilesystem: '@oneup_flysystem.public_uploads_filesystem_filesystem'
@@ -29,7 +29,7 @@ index 4429414b..d023bd48 100644
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 3b557796..209e5126 100644
+index 50b58b63..30a20b33 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -16,15 +16,18 @@ class UploaderHelper
@@ -38,24 +38,23 @@ index 3b557796..209e5126 100644
  
 +    private $privateFilesystem;
 +
-     private $requestStack;
+     private $requestStackContext;
  
      private $logger;
  
      private $publicAssetBaseUrl;
--
--    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
-+    
-+    public function __construct(FilesystemInterface $publicUploadsFilesystem, FilesystemInterface $privateUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
+ 
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, FilesystemInterface $privateUploadsFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
      {
          $this->filesystem = $publicUploadsFilesystem;
 +        $this->privateFilesystem = $privateUploadsFilesystem;
-         $this->requestStack = $requestStack;
+         $this->requestStackContext = $requestStackContext;
          $this->logger = $logger;
          $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;
-@@ -80,4 +83,28 @@ class UploaderHelper
-             ->getCurrentRequest()
-             ->getBasePath().'/'.$this->publicAssetBaseUrl.'/'.$path;
+@@ -79,4 +82,28 @@ class UploaderHelper
+         return $this->requestStackContext
+             ->getBasePath().$this->publicAssetBaseUrl.'/'.$path;
      }
 +
 +    private function uploadFile(File $file, string $directory, bool $isPublic)

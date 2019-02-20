@@ -21,10 +21,10 @@ index eea79745..700c1de4 100644
          return new Response(null, 204);
      }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index b190f841..312ee6f7 100644
+index 2cb9c5d3..1bcd8b47 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -72,11 +72,9 @@ class UploaderHelper
+@@ -73,11 +73,9 @@ class UploaderHelper
      /**
       * @return resource
       */
@@ -38,7 +38,7 @@ index b190f841..312ee6f7 100644
  
          if ($resource === false) {
              throw new \Exception(sprintf('Error opening stream for "%s"', $path));
-@@ -85,11 +83,9 @@ class UploaderHelper
+@@ -86,11 +84,9 @@ class UploaderHelper
          return $resource;
      }
  

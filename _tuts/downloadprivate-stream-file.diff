@@ -54,11 +54,11 @@ index c7c13f31..0e5dd3eb 100644
 +    }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index baaafc9f..ba4409c7 100644
+index ba93cf0d..8c8cdf71 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -66,6 +66,22 @@ class UploaderHelper
-             ->getBasePath().'/'.$this->publicAssetBaseUrl.'/'.$path;
+@@ -65,6 +65,22 @@ class UploaderHelper
+             ->getBasePath().$this->publicAssetBaseUrl.'/'.$path;
      }
  
 +    /**

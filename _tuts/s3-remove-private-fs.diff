@@ -17,7 +17,7 @@ index 4ef51d0c..637d8b2b 100644
 -        private_uploads_filesystem:
 -            adapter: private_uploads_adapter
 diff --git a/config/services.yaml b/config/services.yaml
-index 1a9c414d..af3e8c6a 100644
+index d2231ada..f980b691 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -22,7 +22,6 @@ services:
@@ -29,26 +29,27 @@ index 1a9c414d..af3e8c6a 100644
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index c4b7e372..b190f841 100644
+index 5a5afb3e..2cb9c5d3 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -18,18 +18,15 @@ class UploaderHelper
+@@ -18,18 +18,16 @@ class UploaderHelper
  
      private $filesystem;
  
 -    private $privateFilesystem;
--
-     private $requestStack;
+ 
+     private $requestStackContext;
  
      private $logger;
  
      private $publicAssetBaseUrl;
-     
--    public function __construct(FilesystemInterface $publicUploadsFilesystem, FilesystemInterface $privateUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
-+    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStack $requestStack, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
+-
+-    public function __construct(FilesystemInterface $publicUploadsFilesystem, FilesystemInterface $privateUploadsFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
++    
++    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
      {
          $this->filesystem = $publicUploadsFilesystem;
 -        $this->privateFilesystem = $privateUploadsFilesystem;
-         $this->requestStack = $requestStack;
+         $this->requestStackContext = $requestStackContext;
          $this->logger = $logger;
          $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;

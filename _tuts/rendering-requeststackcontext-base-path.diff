@@ -1,37 +1,36 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 100dad35..cd1c3e87 100644
+index 100dad35..baa5f2d7 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -4,6 +4,7 @@ namespace App\Service;
+@@ -3,6 +3,7 @@
+ namespace App\Service;
  
  use Gedmo\Sluggable\Util\Urlizer;
++use Symfony\Component\Asset\Context\RequestStackContext;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
-+use Symfony\Component\HttpFoundation\RequestStack;
  
  class UploaderHelper
- {
 @@ -11,9 +12,12 @@ class UploaderHelper
  
      private $uploadsPath;
  
 -    public function __construct(string $uploadsPath)
-+    private $requestStack;
++    private $requestStackContext;
 +
-+    public function __construct(string $uploadsPath, RequestStack $requestStack)
++    public function __construct(string $uploadsPath, RequestStackContext $requestStackContext)
      {
          $this->uploadsPath = $uploadsPath;
-+        $this->requestStack = $requestStack;
++        $this->requestStackContext = $requestStackContext;
      }
  
      public function uploadArticleImage(UploadedFile $uploadedFile): string
-@@ -33,6 +37,9 @@ class UploaderHelper
+@@ -33,6 +37,8 @@ class UploaderHelper
  
      public function getPublicPath(string $path): string
      {
 -        return 'uploads/'.$path;
 +        // needed if you deploy under a subdirectory
-+        return $this->requestStack
-+            ->getCurrentRequest()
++        return $this->requestStackContext
 +            ->getBasePath().'/uploads/'.$path;
      }
  }
