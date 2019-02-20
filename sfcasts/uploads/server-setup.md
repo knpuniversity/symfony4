@@ -82,7 +82,7 @@ SSL certificate authority... which is *awesome* because when we run `symfony ser
 it creates a local web server that supports https! Woh! We get *free* https locally!
 Sweet!
 
-Find your browser and go to `http://127.0.0.1:8000` - or localhost, it's the same
+Find your browser and go to `https://127.0.0.1:8000` - or localhost, it's the same
 thing. Say hello to The SpaceBar! This is the app we've been building in our
 Symfony 4 series: a news site for space-traveling friends from across the galaxy.
 
