@@ -1,8 +1,8 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index a35df8c4..cf656161 100644
+index 8298d045..6e93bbcf 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
-@@ -37,6 +37,13 @@ function initializeDropzone()
+@@ -36,6 +36,13 @@ function initializeDropzone() {
      }
  
      var dropzone = new Dropzone(inputElement, {

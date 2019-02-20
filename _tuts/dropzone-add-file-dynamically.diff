@@ -1,10 +1,10 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 610def49..771850c6 100644
+index b96f0437..28a713b9 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -3,7 +3,7 @@ Dropzone.autoDiscover = false;
  $(document).ready(function() {
-     var referenceList = new ReferenceList(document.querySelector('.js-reference-list'));
+     var referenceList = new ReferenceList($('.js-reference-list'));
  
 -    initializeDropzone();
 +    initializeDropzone(referenceList);
@@ -27,15 +27,15 @@ index 610def49..771850c6 100644
      }
  }
  
--function initializeDropzone()
+-function initializeDropzone() {
 +/**
 + * @param {ReferenceList} referenceList
 + */
-+function initializeDropzone(referenceList)
- {
++function initializeDropzone(referenceList) {
      var inputElement = document.querySelector('.js-reference-dropzone');
      if (!inputElement) {
-@@ -75,7 +83,7 @@ function initializeDropzone()
+         return;
+@@ -74,7 +82,7 @@ function initializeDropzone() {
          paramName: 'reference',
          init: function() {
              this.on('success', function(file, data) {

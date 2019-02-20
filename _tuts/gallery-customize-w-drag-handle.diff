@@ -16,15 +16,15 @@ index ffdebfe3..477b5d43 100644
 +}
 \ No newline at end of file
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 10d003e7..0e9a9601 100644
+index 1b091323..5a841350 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -36,7 +36,10 @@ class ReferenceList
  {
-     constructor(element) {
-         this.element = element;
--        this.sortable = Sortable.create(element);
-+        this.sortable = Sortable.create(element, {
+     constructor($element) {
+         this.$element = $element;
+-        this.sortable = Sortable.create(this.$element[0]);
++        this.sortable = Sortable.create(this.$element[0], {
 +            handle: '.drag-handle',
 +            animation: 150,
 +        });

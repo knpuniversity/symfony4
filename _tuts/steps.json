@@ -541,6 +541,11 @@
             "description": null
         },
         {
+            "id": "s3-remove-public-uploads",
+            "name": "S3: Remove public\/uploads",
+            "description": null
+        },
+        {
             "id": "s3-install-league-flysystem-cached-adapter",
             "name": "S3: Install league\/flysystem-cached-adapter",
             "description": null
@@ -551,5 +556,5 @@
             "description": null
         }
     ],
-    "sha": "00a0a8a3f0214265e415ff2504a450ad93960744"
+    "sha": "a0cbf21757ceacbf604accc18e8b3f063dc24bc1"
 }

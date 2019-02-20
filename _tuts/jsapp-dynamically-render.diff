@@ -1,12 +1,12 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index cf656161..dc1d1f4d 100644
+index 6e93bbcf..80d11646 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -1,6 +1,8 @@
  Dropzone.autoDiscover = false;
  
  $(document).ready(function() {
-+    var referenceList = new ReferenceList(document.querySelector('.js-reference-list'));
++    var referenceList = new ReferenceList($('.js-reference-list'));
 +
      initializeDropzone();
  
@@ -18,13 +18,13 @@ index cf656161..dc1d1f4d 100644
 +// todo - use Webpack Encore so ES6 syntax is transpiled to ES5
 +class ReferenceList
 +{
-+    constructor(element) {
-+        this.element = element;
++    constructor($element) {
++        this.$element = $element;
 +        this.references = [];
 +        this.render();
 +
 +        $.ajax({
-+            url: this.element.dataset.url
++            url: this.$element.data('url')
 +        }).then(data => {
 +            this.references = data;
 +            this.render();
@@ -44,13 +44,13 @@ index cf656161..dc1d1f4d 100644
 +`
 +        });
 +
-+        this.element.innerHTML = itemsHtml.join('');
++        this.$element.html(itemsHtml.join(''));
 +    }
 +}
 +
- function initializeDropzone()
- {
+ function initializeDropzone() {
      var inputElement = document.querySelector('.js-reference-dropzone');
+     if (!inputElement) {
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
 index 25c07eb8..15ed3658 100644
 --- a/templates/article_admin/edit.html.twig

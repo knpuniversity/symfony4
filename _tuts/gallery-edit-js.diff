@@ -1,25 +1,25 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 21391a3e..4dc384ce 100644
+index 62b4a017..6fb531e9 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -43,6 +43,10 @@ class ReferenceList
              this.handleReferenceDelete(event);
          });
  
-+        $(this.element).on('blur', '.js-edit-filename', (event) => {
++        this.$element.on('blur', '.js-edit-filename', (event) => {
 +            this.handleReferenceEditFilename(event);
 +        });
 +
          $.ajax({
-             url: this.element.dataset.url
+             url: this.$element.data('url')
          }).then(data => {
 @@ -72,11 +76,26 @@ class ReferenceList
          });
      }
  
 +    handleReferenceEditFilename(event) {
-+        const li = $(event.currentTarget).closest('.list-group-item');
-+        const id = li.data('id');
++        const $li = $(event.currentTarget).closest('.list-group-item');
++        const id = $li.data('id');
 +        const reference = this.references.find(reference => {
 +            return reference.id === id;
 +        });

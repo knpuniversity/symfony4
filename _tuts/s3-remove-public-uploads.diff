@@ -1,0 +1,16 @@
+diff --git a/.gitignore b/.gitignore
+index dfd32027..a714f0f4 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -16,8 +16,6 @@
+ /phpunit.xml
+ ###< symfony/phpunit-bridge ###
+ 
+-/public/uploads/
+-
+ ###> liip/imagine-bundle ###
+ /public/media/cache/
+ ###< liip/imagine-bundle ###
+diff --git a/public/uploads/.gitignore b/public/uploads/.gitignore
+deleted file mode 100644
+index e69de29b..00000000

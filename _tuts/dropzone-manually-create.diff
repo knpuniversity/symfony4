@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index bec4c243..a35df8c4 100644
+index bec4c243..8298d045 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -1,4 +1,8 @@
@@ -11,13 +11,12 @@ index bec4c243..a35df8c4 100644
      var $locationSelect = $('.js-article-form-location');
      var $specificLocationTarget = $('.js-specific-location-target');
  
-@@ -24,3 +28,15 @@ $(document).ready(function() {
+@@ -24,3 +28,14 @@ $(document).ready(function() {
          });
      });
  });
 +
-+function initializeDropzone()
-+{
++function initializeDropzone() {
 +    var inputElement = document.querySelector('.js-reference-dropzone');
 +    if (!inputElement) {
 +        return;

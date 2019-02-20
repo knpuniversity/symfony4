@@ -1,12 +1,12 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index e53d036f..10d003e7 100644
+index 0cbb3b17..1b091323 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -36,6 +36,7 @@ class ReferenceList
  {
-     constructor(element) {
-         this.element = element;
-+        this.sortable = Sortable.create(element);
+     constructor($element) {
+         this.$element = $element;
++        this.sortable = Sortable.create(this.$element[0]);
          this.references = [];
          this.render();
  

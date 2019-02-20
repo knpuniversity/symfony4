@@ -24,7 +24,7 @@ index 5478e748..638a386d 100644
          $entityManager->flush();
  
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index b337b94b..8917df87 100644
+index b337b94b..094a41ed 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
 @@ -5,6 +5,7 @@ namespace App\Entity;
@@ -35,11 +35,12 @@ index b337b94b..8917df87 100644
  
  /**
   * @ORM\Entity(repositoryClass="App\Repository\ArticleReferenceRepository")
-@@ -34,6 +35,7 @@ class ArticleReference
+@@ -34,6 +35,8 @@ class ArticleReference
      /**
       * @ORM\Column(type="string", length=255)
       * @Groups({"main", "input"})
 +     * @Assert\NotBlank()
++     * @Assert\Length(max=100)
       */
      private $originalFilename;
  

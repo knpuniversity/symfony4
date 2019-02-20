@@ -1,9 +1,9 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 0e9a9601..79149854 100644
+index 5a841350..faf0e3c6 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -39,6 +39,9 @@ class ReferenceList
-         this.sortable = Sortable.create(element, {
+         this.sortable = Sortable.create(this.$element[0], {
              handle: '.drag-handle',
              animation: 150,
 +            onEnd: () => {
