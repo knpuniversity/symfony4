@@ -33,7 +33,11 @@ git add public/uploads/.gitignore
 Next, open up the *real* `.gitignore` file - the one at the root of your app -
 and ignore the entire `/public/uploads` directory. It's a bit weird, but thanks
 to this, we will ignore *all* files in `public/uploads` *except* for the `.gitignore`
-file we already added. Why did we do this? Well, unfortunately, you can't add a
+file we already added. 
+
+[[[ code('174c8a3b04') ]]]
+
+Why did we do this? Well, unfortunately, you can't add a
 *directory* to git. So by adding this `.gitignore` file, it will guarantee that
 the `public/uploads` directory will exist when you clone the repository. Honestly,
 the file could be named *anything*, it's just sort of a common practice to use an
@@ -58,6 +62,8 @@ be an `UploadedFile` object. Because I'm *obsessed* with auto-completion, let's
 add inline doc about this: this *will* be an `UploadedFile` object - but not the
 one from Guzzle - the one from HttpFoundation in Symfony.
 
+[[[ code ('7926e67b91') ]]]
+
 And guess what? This `UploadedFile` object has a *super* useful method on it:
 `move()`! Give *it* the destination directory and it'll take care of the rest.
 To get that directory, say `$destination =` and we need to get the path to our
@@ -68,6 +74,8 @@ pass it `$destination`.
 
 Hold Command or Ctrl and click this method. Ah, it returns a `File` object that represents
 the new file. Let's see what this looks like: surround this entire call with `dd()`.
+
+[[[ code('ae49182f23') ]]]
 
 Alright team! Find your browser, refresh and re-post that upload. I... think it
 worked! The dumped file object tells me that there *is* a new file in our
