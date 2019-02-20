@@ -1,0 +1,28 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 3d655450..52cfa201 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -52,14 +52,18 @@ class ArticleFormType extends AbstractType
+                 ],
+                 'required' => false,
+             ])
++        ;
++
++        $imageConstraints = [
++            new Image([
++                'maxSize' => '5M'
++            ])
++        ];
++        $builder
+             ->add('imageFile', FileType::class, [
+                 'mapped' => false,
+                 'required' => false,
+-                'constraints' => [
+-                    new Image([
+-                        'maxSize' => '5M'
+-                    ])
+-                ]
++                'constraints' => $imageConstraints
+             ])
+         ;
+ 

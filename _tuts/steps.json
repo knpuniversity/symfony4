@@ -111,6 +111,16 @@
             "description": null
         },
         {
+            "id": "validation-move-constraints-to-var",
+            "name": "Validation: move constraints to var",
+            "description": null
+        },
+        {
+            "id": "validation-conditionally-add-notnull",
+            "name": "Validation: conditionally add NotNull",
+            "description": null
+        },
+        {
             "id": "field-custom-add-placeholder",
             "name": "Field Custom: Add placeholder",
             "description": null
@@ -606,5 +616,5 @@
             "description": null
         }
     ],
-    "sha": "2fb37e5d1f67d95db0e9c9622a1d5fc3d40dcaf3"
+    "sha": "bddda9619b1bf2507e2f89045fe00b71e0082cc4"
 }
