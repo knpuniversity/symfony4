@@ -29,7 +29,7 @@ I'll put my cursor on that argument name, hit `Alt + Enter` and select initializ
 fields to create that property and set it. Now, below, we can say
 `$this->uploadsPath` and then `/article_image`.
 
-Cool! Let's worry about passing configuring the `$uploadsPath` argument to our service
+Cool! Let's worry about configuring the `$uploadsPath` argument to our service
 in a minute. After all, Symfony's service system is *so* awesome, it'll tell me
 *exactly* what I need to configure once we try this.
 
