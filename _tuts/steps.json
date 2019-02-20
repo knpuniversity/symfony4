@@ -554,7 +554,42 @@
             "id": "s3-use-cached-adapter",
             "name": "S3: Use cached adapter",
             "description": null
+        },
+        {
+            "id": "api-temp-remove-security",
+            "name": "API: temp remove security",
+            "description": null
+        },
+        {
+            "id": "api-create-model-deserialize",
+            "name": "API: Create model & deserialize",
+            "description": null
+        },
+        {
+            "id": "api-smarter-model-class",
+            "name": "API: smarter model class",
+            "description": null
+        },
+        {
+            "id": "api-create-file-object",
+            "name": "API: create File object",
+            "description": null
+        },
+        {
+            "id": "api-fix-originalfilename",
+            "name": "API: fix originalFilename",
+            "description": null
+        },
+        {
+            "id": "api-unlink-tmp-file",
+            "name": "API: unlink tmp file",
+            "description": null
+        },
+        {
+            "id": "api-remove-die-code",
+            "name": "API: remove die code",
+            "description": null
         }
     ],
-    "sha": "a0cbf21757ceacbf604accc18e8b3f063dc24bc1"
+    "sha": "48c30030f146837988089b69973f969c60b7384f"
 }
