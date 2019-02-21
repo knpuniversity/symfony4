@@ -16,3 +16,4 @@ chapters:
     - absolute-asset-paths      # raw
     - article-references        # raw
     - uploading-private-files   # raw
+    - mime-type-validation      # raw
