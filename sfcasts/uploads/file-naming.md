@@ -40,7 +40,7 @@ an image, the user could *still* successfully upload an image with a `.exe`
 or `.php` file extension! Even if we validate the file type, allowing fake extensions
 is weird... and could be risky.
 
-So problem number one is security and we'll tackle part if it in a minute and the
+So problem number one is security and we'll tackle part of it in a minute and the
 other part when we talk about validation.
 
 Problem number two is that the filename is not guaranteed to be unique! If someone
