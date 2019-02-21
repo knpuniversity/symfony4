@@ -12,6 +12,8 @@ file. The *easiest* name to use is: `$uploadedFile->getClientOriginalName()`. Th
 is the name that the file had on *my* computer: it's one of the pieces of data
 that is sent up on the request, along with the file contents.
 
+[[[ code('121b74bdcb') ]]]
+
 Move over and resubmit the form again. There it is: `astronaut.jpg`!
 
 ## Security Concerns
@@ -52,6 +54,8 @@ There are a few ways to handle the unique problem - but the easiest one is just
 to add some sort of unique id to the filename. Set `$newFilename` to `uniqid()`, a
 `'-'` then `$uploadedFile->getClientOriginalName()`. Below, use `$newFilename`.
 
+[[[ code('fdac9b9f24') ]]]
+
 Let's try that! Better. It's kind of an ugly hash on the beginning of the filename,
 but it *does* solve the unique problem. You can also use a shorter hash or, when
 we actually save this data to our `Article` object, you could use the Article id
@@ -75,6 +79,8 @@ the `guessExtension()` method looks at the file *contents*, determines the mime
 type, and returns the file extension for that. But the `guessClientExtension()` uses
 the mime type the *user* sent... which can't be trusted.
 
+[[[ code('9d2415a258') ]]]
+
 So, we're not validating that this is an image file yet, but no matter what they
 upload, we should now get the correct file extension.
 
@@ -89,6 +95,8 @@ weird characters on a filesystem. But if you want to guarantee cleaner filenames
 there's an easy way to do that. I'll use a class called `Urlizer`: this comes from
 the `gedmo/doctrine-extensions` library. It has a nice method called
 `urlize()` and we can wrap our `$originalFilename` in that to make it a bit cleaner.
+
+[[[ code('7739cbc75d') ]]]
 
 Try that out. Nice! So now we have a unique, normalized filename that at least
 *looks* a bit like the original filename. Later, we'll see how we can keep the
