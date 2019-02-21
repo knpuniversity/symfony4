@@ -5,7 +5,7 @@ chapters:
     - file-naming
     - upload-in-form
     - uploader-service
-    - validation                # raw
+    - validation
     - bootstrap-styling         # raw
     - public-path               # raw
     - thumbnailing              # raw
