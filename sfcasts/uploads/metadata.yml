@@ -17,3 +17,9 @@ chapters:
     - article-references        # raw
     - uploading-private-files   # raw
     - mime-type-validation      # raw
+    - downloading-private-files # raw
+    - dropzone                  # raw
+    - js-rendering              # raw
+    - delete-file               # raw
+    - edit-filename             # raw
+    - reordering                # raw
