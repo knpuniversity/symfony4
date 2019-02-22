@@ -6,8 +6,8 @@ chapters:
     - upload-in-form
     - uploader-service
     - validation
-    - bootstrap-styling         # raw
-    - public-path               # raw
+    - bootstrap-styling
+    - public-path
     - thumbnailing              # raw
     - fixtures-uploading        # raw
     - flysystem                 # raw
