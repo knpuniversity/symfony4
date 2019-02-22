@@ -29,7 +29,7 @@ index ad8a105c..d134ff65 100644
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 50b58b63..30a20b33 100644
+index b671a215..5fe26f6d 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -16,15 +16,18 @@ class UploaderHelper
@@ -68,7 +68,7 @@ index 50b58b63..30a20b33 100644
 +
 +        $stream = fopen($file->getPathname(), 'r');
 +        $result = $this->filesystem->writeStream(
-+            self::ARTICLE_IMAGE . '/' . $newFilename,
++            self::ARTICLE_IMAGE.'/'.$newFilename,
 +            $stream
 +        );
 +

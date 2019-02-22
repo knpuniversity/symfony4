@@ -1,21 +1,21 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c2a9227e..ee16519c 100644
+index d6d46519..b82b2ea9 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
+@@ -8,6 +8,7 @@ use App\Service\UploaderHelper;
+ use Doctrine\ORM\EntityManagerInterface;
  use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
++use Symfony\Component\HttpFoundation\HeaderUtils;
  use Symfony\Component\HttpFoundation\Request;
-+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
  use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
- use Symfony\Component\Validator\Constraints\File;
-@@ -87,6 +88,11 @@ class ArticleReferenceAdminController extends BaseController
- 
+@@ -88,6 +89,11 @@ class ArticleReferenceAdminController extends BaseController
              stream_copy_to_stream($fileStream, $outputStream);
          });
-+        $disposition = $response->headers->makeDisposition(
-+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+         $response->headers->set('Content-Type', $reference->getMimeType());
++        $disposition = HeaderUtils::makeDisposition(
++            HeaderUtils::DISPOSITION_ATTACHMENT,
 +            $reference->getOriginalFilename()
 +        );
 +        dd($disposition);

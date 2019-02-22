@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 16ec2e01..eea79745 100644
+index 3b308989..dd21420f 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -98,8 +98,22 @@ class ArticleReferenceAdminController extends BaseController
+@@ -94,8 +94,22 @@ class ArticleReferenceAdminController extends BaseController
       * @Route("/admin/article/{id}/references/reorder", methods="POST", name="admin_article_reorder_references")
       * @IsGranted("MANAGE", subject="article")
       */

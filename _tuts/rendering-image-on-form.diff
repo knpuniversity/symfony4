@@ -1,5 +1,5 @@
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
-index 832c5df4..2772198b 100644
+index 832c5df4..fe518859 100644
 --- a/templates/article_admin/_form.html.twig
 +++ b/templates/article_admin/_form.html.twig
 @@ -2,11 +2,22 @@
@@ -22,7 +22,7 @@ index 832c5df4..2772198b 100644
 +        </div>
 +        <div class="col-sm-3">
 +            {% if articleForm.vars.data.imageFilename %}
-+                <img src="{{ uploaded_asset(articleForm.vars.data.imagePath) | imagine_filter('squared_thumbnail_small') }}" height="100">
++                <img src="{{ uploaded_asset(articleForm.vars.data.imagePath)|imagine_filter('squared_thumbnail_small') }}" height="100">
 +            {% endif %}
 +        </div>
 +    </div>

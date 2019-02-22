@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c9ab2a8e..e578138e 100644
+index 2f16828c..238e6f2e 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -62,7 +62,14 @@ class ArticleReferenceAdminController extends BaseController
@@ -19,7 +19,7 @@ index c9ab2a8e..e578138e 100644
  
      /**
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index 0e5dd3eb..23f4c531 100644
+index 69ee29fb..01ba991c 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
 @@ -4,6 +4,7 @@ namespace App\Entity;
@@ -53,7 +53,7 @@ index 0e5dd3eb..23f4c531 100644
      private $originalFilename;
  
      /**
-      * @ORM\Column(type="string", length=50)
+      * @ORM\Column(type="string", length=255)
 +     * @Groups("main")
       */
      private $mimeType;

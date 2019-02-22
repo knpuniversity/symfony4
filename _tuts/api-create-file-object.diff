@@ -13,7 +13,7 @@ index 7dcd92df..c0163176 100644
 +    }
  }
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 97ce6c51..daf647aa 100644
+index 2ddf55a7..9f688db1 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -9,6 +9,7 @@ use App\Service\UploaderHelper;

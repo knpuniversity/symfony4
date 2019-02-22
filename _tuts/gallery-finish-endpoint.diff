@@ -1,16 +1,16 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index bcfc3362..5478e748 100644
+index de49b0cf..76ddeff1 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
- use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
  use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
 +use Symfony\Component\Serializer\SerializerInterface;
  use Symfony\Component\Validator\Constraints\File;
  use Symfony\Component\Validator\Constraints\NotBlank;
  use Symfony\Component\Validator\Validator\ValidatorInterface;
-@@ -135,9 +136,31 @@ class ArticleReferenceAdminController extends BaseController
+@@ -132,9 +133,31 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/references/{id}", name="admin_article_update_reference", methods={"PUT"})
       */
@@ -44,7 +44,7 @@ index bcfc3362..5478e748 100644
      }
  }
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index 23f4c531..b337b94b 100644
+index 01ba991c..0e9133c9 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
 @@ -33,7 +33,7 @@ class ArticleReference

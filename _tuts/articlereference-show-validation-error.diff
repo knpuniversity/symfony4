@@ -26,7 +26,7 @@ index 882f2e2d..ec03cb1b 100644
  
          $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 8db23721..fef5b7b3 100644
+index f360a280..827883e7 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -71,6 +71,12 @@

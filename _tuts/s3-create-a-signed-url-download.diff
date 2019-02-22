@@ -11,10 +11,10 @@ index 43ecfcd3..a3eee8bd 100644
      # custom aliases for autowiring
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 700c1de4..143a07ee 100644
+index 8a312020..8c3433c0 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -5,13 +5,13 @@ namespace App\Controller;
+@@ -5,13 +5,14 @@ namespace App\Controller;
  use App\Entity\Article;
  use App\Entity\ArticleReference;
  use App\Service\UploaderHelper;
@@ -22,15 +22,15 @@ index 700c1de4..143a07ee 100644
  use Doctrine\ORM\EntityManagerInterface;
  use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  use Symfony\Component\HttpFoundation\File\UploadedFile;
+ use Symfony\Component\HttpFoundation\HeaderUtils;
 +use Symfony\Component\HttpFoundation\RedirectResponse;
  use Symfony\Component\HttpFoundation\Request;
  use Symfony\Component\HttpFoundation\Response;
--use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 -use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Serializer\SerializerInterface;
  use Symfony\Component\Validator\Constraints\File;
-@@ -127,24 +127,18 @@ class ArticleReferenceAdminController extends BaseController
+@@ -123,25 +124,18 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/references/{id}/download", name="admin_article_download_reference", methods={"GET"})
       */
@@ -51,8 +51,9 @@ index 700c1de4..143a07ee 100644
  
 -            stream_copy_to_stream($fileStream, $outputStream);
 -        });
--        $disposition = $response->headers->makeDisposition(
--            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+-        $response->headers->set('Content-Type', $reference->getMimeType());
+-        $disposition = HeaderUtils::makeDisposition(
+-            HeaderUtils::DISPOSITION_ATTACHMENT,
 -            $reference->getOriginalFilename()
 -        );
 -        $response->headers->set('Content-Disposition', $disposition);

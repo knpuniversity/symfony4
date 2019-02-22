@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 0cbb3b17..1b091323 100644
+index 24978c5b..b2220472 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -36,6 +36,7 @@ class ReferenceList
@@ -11,7 +11,7 @@ index 0cbb3b17..1b091323 100644
          this.render();
  
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 15ed3658..08042d36 100644
+index c975795d..d53a0dca 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -37,5 +37,6 @@
