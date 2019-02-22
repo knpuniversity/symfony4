@@ -23,3 +23,5 @@ chapters:
     - delete-file               # raw
     - edit-filename             # raw
     - reordering                # raw
+    - aws-s3                    # raw
+    - s3-public-private         # raw
