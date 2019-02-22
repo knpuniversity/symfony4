@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 6e93bbcf..80d11646 100644
+index a589c8ce..1c61c5fa 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -1,6 +1,8 @@
@@ -49,10 +49,10 @@ index 6e93bbcf..80d11646 100644
 +}
 +
  function initializeDropzone() {
-     var inputElement = document.querySelector('.js-reference-dropzone');
-     if (!inputElement) {
+     var formElement = document.querySelector('.js-reference-dropzone');
+     if (!formElement) {
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 25c07eb8..15ed3658 100644
+index 25c07eb8..c975795d 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -15,19 +15,7 @@
@@ -72,7 +72,7 @@ index 25c07eb8..15ed3658 100644
 -                    </li>
 -                {% endfor %}
 -            </ul>
-+            <div class="list-group small js-reference-list" data-url="{{ path('admin_article_list_references', {id: article.id}) }}"></div>
++            <ul class="list-group small js-reference-list" data-url="{{ path('admin_article_list_references', {id: article.id}) }}"></ul>
  
              <hr>
  

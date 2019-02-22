@@ -39,20 +39,17 @@ index 00000000..c0157824
 +    }
 +}
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index f353a02e..1bff3fa0 100644
+index a49c5365..1bff3fa0 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
-@@ -14,6 +14,13 @@
-         </div>
+@@ -15,7 +15,9 @@
          <div class="col-sm-4">
              <h3>References</h3>
-+
+ 
+-            <form action="" method="POST" enctype="multipart/form-data">
 +            <form action="{{ path('admin_article_add_reference', {
 +                id: article.id
 +            }) }}" method="POST" enctype="multipart/form-data">
-+                <input type="file" name="reference">
-+                <button type="submit" class="btn btn-sm btn-primary">Upload</button>
-+            </form>
-         </div>
-     </div>
- {% endblock %}
+                 <input type="file" name="reference">
+                 <button type="submit" class="btn btn-sm btn-primary">Upload</button>
+             </form>

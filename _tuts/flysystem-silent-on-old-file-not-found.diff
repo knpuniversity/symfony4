@@ -1,5 +1,5 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 915c7567..ad3d75b5 100644
+index a62d1fde..d2954d47 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,7 +3,9 @@
@@ -31,9 +31,9 @@ index 915c7567..ad3d75b5 100644
          }
  
          if ($existingFilename) {
--            $this->filesystem->delete(self::ARTICLE_IMAGE . '/' . $existingFilename);
+-            $this->filesystem->delete(self::ARTICLE_IMAGE.'/'.$existingFilename);
 +            try {
-+                $this->filesystem->delete(self::ARTICLE_IMAGE . '/' . $existingFilename);
++                $this->filesystem->delete(self::ARTICLE_IMAGE.'/'.$existingFilename);
 +            } catch (FileNotFoundException $e) {
 +                $this->logger->alert(sprintf('Old uploaded file "%s" was missing when trying to delete', $existingFilename));
 +            }

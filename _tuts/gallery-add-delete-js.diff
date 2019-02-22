@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 28a713b9..444f0dad 100644
+index 9af50881..1f4ba66b 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -39,6 +39,10 @@ class ReferenceList

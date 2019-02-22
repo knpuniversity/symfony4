@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 5478e748..638a386d 100644
+index 76ddeff1..fac5294b 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -136,7 +136,7 @@ class ArticleReferenceAdminController extends BaseController
+@@ -133,7 +133,7 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/references/{id}", name="admin_article_update_reference", methods={"PUT"})
       */
@@ -11,7 +11,7 @@ index 5478e748..638a386d 100644
      {
          $article = $reference->getArticle();
          $this->denyAccessUnlessGranted('MANAGE', $article);
-@@ -151,6 +151,11 @@ class ArticleReferenceAdminController extends BaseController
+@@ -148,6 +148,11 @@ class ArticleReferenceAdminController extends BaseController
              ]
          );
  
@@ -24,7 +24,7 @@ index 5478e748..638a386d 100644
          $entityManager->flush();
  
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index b337b94b..094a41ed 100644
+index 0e9133c9..90eae0dc 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
 @@ -5,6 +5,7 @@ namespace App\Entity;

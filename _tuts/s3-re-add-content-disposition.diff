@@ -1,16 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 143a07ee..b789819e 100644
+index 8c3433c0..42ed53c7 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -9,6 +9,7 @@ use Aws\S3\S3Client;
- use Doctrine\ORM\EntityManagerInterface;
- use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
- use Symfony\Component\HttpFoundation\File\UploadedFile;
-+use Symfony\Component\HttpFoundation\HeaderUtils;
- use Symfony\Component\HttpFoundation\RedirectResponse;
- use Symfony\Component\HttpFoundation\Request;
- use Symfony\Component\HttpFoundation\Response;
-@@ -132,9 +133,15 @@ class ArticleReferenceAdminController extends BaseController
+@@ -129,9 +129,16 @@ class ArticleReferenceAdminController extends BaseController
          $article = $reference->getArticle();
          $this->denyAccessUnlessGranted('MANAGE', $article);
  
@@ -23,6 +15,7 @@ index 143a07ee..b789819e 100644
              'Bucket' => $s3BucketName,
 -            'Key' => $reference->getFilePath()
 +            'Key' => $reference->getFilePath(),
++            'ResponseContentType' => $reference->getMimeType(),
 +            'ResponseContentDisposition' => $disposition,
          ]);
          $request = $s3Client->createPresignedRequest($command, '+30 minutes');

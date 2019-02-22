@@ -13,7 +13,7 @@ index 4b2f7050..d2231ada 100644
  services:
      # default configuration for services in *this* file
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index db310aab..a742fe68 100644
+index b0ae50cb..13bee6b5 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -60,6 +60,12 @@ class UploaderHelper

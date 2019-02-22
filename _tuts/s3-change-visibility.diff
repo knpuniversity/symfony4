@@ -1,5 +1,5 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index a742fe68..5a5afb3e 100644
+index 13bee6b5..6a770936 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,6 +3,7 @@
@@ -19,7 +19,7 @@ index a742fe68..5a5afb3e 100644
          $stream = fopen($file->getPathname(), 'r');
 -        $result = $filesystem->writeStream(
 +        $result = $this->filesystem->writeStream(
-             $directory . '/' . $newFilename,
+             $directory.'/'.$newFilename,
 -            $stream
 +            $stream,
 +            [

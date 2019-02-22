@@ -1,13 +1,13 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 2b5b171e..8db23721 100644
+index 2b5b171e..f360a280 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -86,6 +86,12 @@
              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
              <script>
                  $('.dropdown-toggle').dropdown();
-+                $('.custom-file-input').change(function(e) {
-+                    var inputFile = e.currentTarget;
++                $('.custom-file-input').on('change', function(event) {
++                    var inputFile = event.currentTarget;
 +                    $(inputFile).parent()
 +                        .find('.custom-file-label')
 +                        .html(inputFile.files[0].name);

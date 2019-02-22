@@ -33,7 +33,7 @@ index e34b11cf..d298ef4d 100644
      }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index fdeff25c..915c7567 100644
+index aeb24b1d..a62d1fde 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -22,7 +22,7 @@ class UploaderHelper
@@ -50,7 +50,7 @@ index fdeff25c..915c7567 100644
          }
  
 +        if ($existingFilename) {
-+            $this->filesystem->delete(self::ARTICLE_IMAGE . '/' . $existingFilename);
++            $this->filesystem->delete(self::ARTICLE_IMAGE.'/'.$existingFilename);
 +        }
 +
          return $newFilename;

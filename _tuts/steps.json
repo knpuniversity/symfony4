@@ -186,6 +186,11 @@
             "description": null
         },
         {
+            "id": "rendering-fix-error-on-new",
+            "name": "Rendering: fix error on new",
+            "description": null
+        },
+        {
             "id": "fixtures-start-using-in-fixtures",
             "name": "Fixtures: Start using in fixtures",
             "description": null
@@ -281,6 +286,11 @@
             "description": null
         },
         {
+            "id": "articlereference-add-form",
+            "name": "ArticleReference: Add <form>",
+            "description": null
+        },
+        {
             "id": "articlereference-add-form-controller",
             "name": "ArticleReference: add form + controller",
             "description": null
@@ -346,6 +356,11 @@
             "description": null
         },
         {
+            "id": "downloadprivate-add-content-type",
+            "name": "DownloadPrivate: Add Content-Type",
+            "description": null
+        },
+        {
             "id": "downloadprivate-dump-disposition",
             "name": "DownloadPrivate: dump disposition",
             "description": null
@@ -376,8 +391,8 @@
             "description": null
         },
         {
-            "id": "dropzone-add-location-header",
-            "name": "Dropzone: Add Location header",
+            "id": "dropzone-delete-me-1",
+            "name": "Dropzone: delete me 1",
             "description": null
         },
         {
@@ -616,5 +631,5 @@
             "description": null
         }
     ],
-    "sha": "bddda9619b1bf2507e2f89045fe00b71e0082cc4"
+    "sha": "88a1f8947a9069034b0f1e7fe27b86977b15dbc2"
 }

@@ -16,7 +16,7 @@ index ffdebfe3..477b5d43 100644
 +}
 \ No newline at end of file
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 1b091323..5a841350 100644
+index b2220472..c7b9d342 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -36,7 +36,10 @@ class ReferenceList

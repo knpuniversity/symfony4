@@ -26,20 +26,18 @@ index d245323f..100dad35 100644
 +    }
  }
 diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
-index 05111e89..11c57567 100644
+index 9c8b47d2..b67dbcd0 100644
 --- a/src/Twig/AppExtension.php
 +++ b/src/Twig/AppExtension.php
-@@ -3,7 +3,9 @@
+@@ -3,6 +3,7 @@
  namespace App\Twig;
  
  use App\Service\MarkdownHelper;
 +use App\Service\UploaderHelper;
  use Psr\Container\ContainerInterface;
-+use Symfony\Component\Asset\Packages;
- use Symfony\Component\DependencyInjection\ServiceSubscriberInterface;
+ use Symfony\Contracts\Service\ServiceSubscriberInterface;
  use Twig\Extension\AbstractExtension;
- use Twig\TwigFilter;
-@@ -18,6 +20,13 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
+@@ -18,6 +19,13 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
          $this->container = $container;
      }
  
@@ -53,7 +51,7 @@ index 05111e89..11c57567 100644
      public function getFilters(): array
      {
          return [
-@@ -32,10 +41,18 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
+@@ -32,10 +40,18 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
              ->parse($value);
      }
  

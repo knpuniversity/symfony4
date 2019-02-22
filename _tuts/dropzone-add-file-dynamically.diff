@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index b96f0437..28a713b9 100644
+index 96f2dc7e..9af50881 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -3,7 +3,7 @@ Dropzone.autoDiscover = false;
@@ -32,8 +32,8 @@ index b96f0437..28a713b9 100644
 + * @param {ReferenceList} referenceList
 + */
 +function initializeDropzone(referenceList) {
-     var inputElement = document.querySelector('.js-reference-dropzone');
-     if (!inputElement) {
+     var formElement = document.querySelector('.js-reference-dropzone');
+     if (!formElement) {
          return;
 @@ -74,7 +82,7 @@ function initializeDropzone() {
          paramName: 'reference',
