@@ -96,12 +96,20 @@ the dump. We have two jobs in our controller: move this file to the final locati
 scroll down to `temporaryUploadAction()`, steal all its code, and delete it.
 
 Up in `edit()`, remove the `dd()` and set this to an `$uploadedFile` variable.
-Add the same inline phpdoc as last time, then paste the code. Yep! We'll move
-the file to `public/uploads` and give it a unique filename. Take off the `dd()`
-around `move()`. *Now*, call `$article->setImageFilename($newFilename)` and let Doctrine
-save the entity, *just* like it already was.
+Add the same inline phpdoc as last time
+
+[[[ code('d63cbc215b') ]]]
+
+then paste the code. Yep! We'll move the file to `public/uploads` and give it a unique 
+filename. Take off the `dd()` around `move()`. 
+
+[[[ code('ac10833f6c') ]]]
+
+*Now*, call `$article->setImageFilename($newFilename)` 
 
 [[[ code('e8d47716d8') ]]]
+
+and let Doctrine save the entity, *just* like it already was.
 
 Beautiful! I *do* want to point out that the `$newFilename` string that we're storing
 in the database is *just* the filename: it doesn't contain the directory or the
