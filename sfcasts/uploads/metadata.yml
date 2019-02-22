@@ -5,3 +5,15 @@ chapters:
     - file-naming
     - upload-in-form
     - uploader-service
+    - validation
+    - bootstrap-styling         # raw
+    - public-path               # raw
+    - thumbnailing              # raw
+    - fixtures-uploading        # raw
+    - flysystem                 # raw
+    - flysystem-defensive       # raw
+    - flysystem-imagine-bundle  # raw
+    - absolute-asset-paths      # raw
+    - article-references        # raw
+    - uploading-private-files   # raw
+    - mime-type-validation      # raw
