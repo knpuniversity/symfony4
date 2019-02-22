@@ -89,7 +89,7 @@ scroll down to `temporaryUploadAction()`, steal all its code, and delete it.
 Up in `edit()`, remove the `dd()` and set this to an `$uploadedFile` variable.
 Add the same inline phpdoc as last time, then paste the code. Yep! We'll move
 the file to `public/uploads` and give it a unique filename. Take off the `dd()`
-around `move()`. *Now*, call `$article->setImage($newFilename)` and let Doctrine
+around `move()`. *Now*, call `$article->setImageFilename($newFilename)` and let Doctrine
 save the entity, *just* like it already was.
 
 Beautiful! I *do* want to point out that the `$newFilename` string that we're storing
