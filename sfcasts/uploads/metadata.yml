@@ -6,8 +6,8 @@ chapters:
     - upload-in-form
     - uploader-service
     - validation
-    - bootstrap-styling         # raw
-    - public-path               # raw
+    - bootstrap-styling
+    - public-path
     - thumbnailing              # raw
     - fixtures-uploading        # raw
     - flysystem                 # raw
@@ -17,3 +17,11 @@ chapters:
     - article-references        # raw
     - uploading-private-files   # raw
     - mime-type-validation      # raw
+    - downloading-private-files # raw
+    - dropzone                  # raw
+    - js-rendering              # raw
+    - delete-file               # raw
+    - edit-filename             # raw
+    - reordering                # raw
+    - aws-s3                    # raw
+    - s3-public-private         # raw

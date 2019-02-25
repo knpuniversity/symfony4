@@ -29,7 +29,7 @@ In `ArticleFormType`, add a new field with `->add()` and call it `imageFilename`
 because that's the name of the property inside `Article`. For the type, use
 `FileType::class`.
 
-[[[ code('76bf709741') ]]]
+[[[ code('4b6eee2483') ]]]
 
 But... there's a problem with this. And if you already see it, extra credit points
 for you! Move over and refresh. Woh.
@@ -56,7 +56,7 @@ work. They don't persist this property to the database with Doctrine... so the i
 Instead, we'll use a trick that we talked a lot about in our forms tutorial: add
 an option to the field: `'mapped' => false`. 
 
-[[[ code('ae50ea9e7e') ]]]
+[[[ code('4df0eada50') ]]]
 
 If you've never seen this before, we'll explain it in a minute. Now that we have 
 a new `imageFile` field, let's go render it! Open `edit.html.twig`. Remove the 
@@ -96,12 +96,20 @@ the dump. We have two jobs in our controller: move this file to the final locati
 scroll down to `temporaryUploadAction()`, steal all its code, and delete it.
 
 Up in `edit()`, remove the `dd()` and set this to an `$uploadedFile` variable.
-Add the same inline phpdoc as last time, then paste the code. Yep! We'll move
-the file to `public/uploads` and give it a unique filename. Take off the `dd()`
-around `move()`. *Now*, call `$article->setImageFilename($newFilename)` and let Doctrine
-save the entity, *just* like it already was.
+Add the same inline phpdoc as last time
 
-[[[ code('225cd88f9a') ]]]
+[[[ code('d63cbc215b') ]]]
+
+then paste the code. Yep! We'll move the file to `public/uploads` and give it a unique 
+filename. Take off the `dd()` around `move()`. 
+
+[[[ code('ac10833f6c') ]]]
+
+*Now*, call `$article->setImageFilename($newFilename)` 
+
+[[[ code('e8d47716d8') ]]]
+
+and let Doctrine save the entity, *just* like it already was.
 
 Beautiful! I *do* want to point out that the `$newFilename` string that we're storing
 in the database is *just* the filename: it doesn't contain the directory or the
@@ -109,7 +117,7 @@ word `uploads`: it's... the filename. Oh, for my personal sanity, let's upload
 things into an `article_image` sub-directory: that'll be cleaner when we start
 uploading multiple types of things. Remove the old files.
 
-[[[ code('dde7aa4769') ]]]
+[[[ code('704482e4c2') ]]]
 
 Moment of truth! Find your browser, roll up your sleeves, and refresh! Um...
 it *probably* worked? In the `uploads/` directory... yea! There's our Earth file!
@@ -142,7 +150,7 @@ That's ok! If the user didn't upload a file, we don't need to do *any* of this
 logic. In other words, `if ($uploadedFile)`, then do all of that. Otherwise,
 skip it!
 
-[[[ code('1cf45f5783') ]]]
+[[[ code('c25e2d4ea2') ]]]
 
 Refresh now. Got it!
 
