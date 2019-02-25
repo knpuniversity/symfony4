@@ -13,10 +13,10 @@ index 4b2f7050..d2231ada 100644
  services:
      # default configuration for services in *this* file
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index b0ae50cb..13bee6b5 100644
+index b0ae50cb..1da0de03 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
-@@ -60,6 +60,12 @@ class UploaderHelper
+@@ -60,9 +60,15 @@ class UploaderHelper
  
      public function getPublicPath(string $path): string
      {
@@ -28,4 +28,8 @@ index b0ae50cb..13bee6b5 100644
 +
          // needed if you deploy under a subdirectory
          return $this->requestStackContext
-             ->getBasePath().$this->publicAssetBaseUrl.'/'.$path;
+-            ->getBasePath().$this->publicAssetBaseUrl.'/'.$path;
++            ->getBasePath().$fullPath;
+     }
+ 
+     /**

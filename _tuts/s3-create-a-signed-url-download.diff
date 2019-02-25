@@ -11,7 +11,7 @@ index 43ecfcd3..a3eee8bd 100644
      # custom aliases for autowiring
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 8a312020..8c3433c0 100644
+index 63d7995e..73126131 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -5,13 +5,14 @@ namespace App\Controller;

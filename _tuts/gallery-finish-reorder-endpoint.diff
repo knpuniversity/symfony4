@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 3b308989..dd21420f 100644
+index 3b308989..230ad59f 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -94,8 +94,22 @@ class ArticleReferenceAdminController extends BaseController
@@ -12,7 +12,7 @@ index 3b308989..dd21420f 100644
 +        $orderedIds = json_decode($request->getContent(), true);
 +
 +        if ($orderedIds === null) {
-+            return $this->json(['message' => 'Invalid body'], 400);
++            return $this->json(['detail' => 'Invalid body'], 400);
 +        }
 +
 +        // from (position)=>(id) to (id)=>(position)

@@ -1,9 +1,9 @@
 diff --git a/src/Api/ArticleReferenceUploadApiModel.php b/src/Api/ArticleReferenceUploadApiModel.php
-index 7dcd92df..c0163176 100644
+index 5f27316e..1ab6ab71 100644
 --- a/src/Api/ArticleReferenceUploadApiModel.php
 +++ b/src/Api/ArticleReferenceUploadApiModel.php
 @@ -23,4 +23,9 @@ class ArticleReferenceUploadApiModel
-         $this->encodedData = $data;
+         $this->data = $data;
          $this->decodedData = base64_decode($data);
      }
 +
@@ -13,7 +13,7 @@ index 7dcd92df..c0163176 100644
 +    }
  }
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 2ddf55a7..9f688db1 100644
+index 483221ea..ac1a8f8d 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -9,6 +9,7 @@ use App\Service\UploaderHelper;

@@ -1,5 +1,5 @@
 diff --git a/src/Api/ArticleReferenceUploadApiModel.php b/src/Api/ArticleReferenceUploadApiModel.php
-index acddd1fc..7dcd92df 100644
+index acddd1fc..5f27316e 100644
 --- a/src/Api/ArticleReferenceUploadApiModel.php
 +++ b/src/Api/ArticleReferenceUploadApiModel.php
 @@ -14,5 +14,13 @@ class ArticleReferenceUploadApiModel
@@ -7,13 +7,13 @@ index acddd1fc..7dcd92df 100644
       * @Assert\NotBlank()
       */
 -    public $data;
-+    private $encodedData;
++    private $data;
 +
 +    private $decodedData;
 +
 +    public function setData(?string $data)
 +    {
-+        $this->encodedData = $data;
++        $this->data = $data;
 +        $this->decodedData = base64_decode($data);
 +    }
  }
