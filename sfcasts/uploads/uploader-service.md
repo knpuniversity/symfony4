@@ -9,14 +9,25 @@ in the `new()` action.
 
 That's why I like to isolate my upload logic into a service class. In the `Service/`
 directory - or really anywhere - create a new class: how about `UploaderHelper`?
+
+[[[ code('85aef6783d') ]]]
+
 This class will handle *all* things related to uploading files. Create a
 `public function uploadArticleImage()`: it will take the `UploadedFile` as an
 argument - remember the one from `HttpFoundation` - and return a `string`. That will
 be the string filename that was ultimately saved.
 
+[[[ code('832814eb87') ]]]
+
 Ok! Let's go steal some code for this. In fact, we're going to steal pretty much
 all the logic here... and paste it in. Make sure to retype the `r` on `Urlizer`
-to get the `use` statement on top. And at the bottom, `return $newFilename`.
+to get the `use` statement on top. 
+
+[[[ code('8b03e9cdc9') ]]]
+
+And at the bottom, `return $newFilename`.
+
+[[[ code('0de46d4b27') ]]]
 
 Perfect! Well... not *perfect*, because the `$this->getParameter()` method is a
 shortcut that only works in the controller. If you need a parameter - or *any*
@@ -25,9 +36,13 @@ Add the `public function __construct()` with, how about, a `string $uploadsPath`
 argument. Instead of just injecting the `kernel.project_dir` parameter, we'll pass
 in the *whole* string to where uploads should be stored.
 
+[[[ code('dd7922e783') ]]]
+
 I'll put my cursor on that argument name, hit `Alt + Enter` and select initialize
 fields to create that property and set it. Now, below, we can say
 `$this->uploadsPath` and then `/article_image`.
+
+[[[ code('104a86f7c5') ]]]
 
 Cool! Let's worry about configuring the `$uploadsPath` argument to our service
 in a minute. After all, Symfony's service system is *so* awesome, it'll tell me
@@ -37,6 +52,8 @@ For now, go back into `ArticleAdminController` and use this. Start by adding ano
 argument: `UploaderHelper $uploaderHelper`. And celebrate by removing *all* of the
 logic below and replacing it with
 `$newFilename = $uploaderHelper->uploadArticleImage($uploadedFile)`.
+
+[[[ code('32dc7cd99e') ]]]
 
 Dang - that is nice! There is still a *little* bit of logic here: the form logic
 and the logic that sets the filename on the `Article` - but I'm comfortable with
@@ -58,6 +75,8 @@ the *specific* argument for this *specific* service. But if you've watched our
 Symfony series, you know that *I* like to use the `bind` feature. The argument
 name is `$uploadsPath`. So, below `_defaults` and `bind`, add `$uploadsPath` set
 to `%kernel.project_dir%/public/uploads`.
+
+[[[ code('9d72416900') ]]]
 
 This means: *anywhere* that `$uploadsPath` is used as an argument for a method
 that's autowired - usually a controller action or the constructor of a service -
@@ -102,7 +121,10 @@ Now that all of our logic is isolated, we can easily repeat this in the `new()`
 action. We *do* need to copy these 5 lines or so, but I'm happy with that.
 
 Up in `new()`, add the argument - `UploaderHelper $uploaderHelper` - and inside
-the `isValid()` block, paste! This uses the same form, with the same unmapped
-field, so it'll all just work.
+the `isValid()` block, paste! 
+
+[[[ code ('cb9bd712c3') ]]]
+
+This uses the same form, with the same unmapped field, so it'll all just work.
 
 Next: let's talk about validation.
