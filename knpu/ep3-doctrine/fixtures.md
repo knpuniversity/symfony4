@@ -20,7 +20,7 @@ but with our own spin to make things *really* fun.
 First let's get it installed. Find your terminal and run
 
 ```terminal
-composer require orm-fixtures --dev
+composer require orm-fixtures:3.0.2 --dev
 ```
 
 And yep, this is a Flex *alias*, and we're using `--dev` because this tool will
