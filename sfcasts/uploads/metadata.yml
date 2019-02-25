@@ -25,3 +25,6 @@ chapters:
     - reordering                # raw
     - aws-s3                    # raw
     - s3-public-private         # raw
+    - cached-s3-filesystem      # raw
+    - signed-urls               # raw
+    - api-uploads               # raw
