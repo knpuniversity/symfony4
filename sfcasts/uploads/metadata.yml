@@ -8,7 +8,9 @@ chapters:
     - validation
     - bootstrap-styling
     - public-path
+    - assets-context
     - thumbnailing
+    - form-image
     - fixtures-uploading        # raw
     - flysystem                 # raw
     - flysystem-defensive       # raw
