@@ -17,6 +17,8 @@ the `constraints` option. And when it comes to file uploads, there are two reall
 important constraints: one called `File` and an even stronger one called `Image`.
 Add `new Image()` - the one from the `Validator\Constraints`.
 
+[[[ code('b0dec53405') ]]]
+
 ## The Image Constraint
 
 And... that's all we need! That's enough to make sure the user uploads an image.
@@ -39,10 +41,14 @@ Go back to the docs and click to see the `File` constraint. The other most commo
 option is `maxSize`. To see what that looks like, set it to something *tiny*,
 like `5k`.
 
+[[[ code('aefa1102c7') ]]]
+
 Ok: browse and select *any* of the files. Hit update and... perfect: the
 file is too large.
 
 Change that back to `5M`, or whatever makes sense for you.
+
+[[[ code('0133a520fe') ]]]
 
 ## Validation and upload_max_filesize
 
@@ -69,8 +75,14 @@ an image *every* time we changed anything.
 Okay: so we want the `imageFile` to be required... but *only* if the `Article`
 doesn't already have an `imageFilename`. Start by breaking this onto multiple
 lines. Then say `$imageConstraints =`, copy the `new Image()` stuff and paste it
-here. Down below, set `'constraints' => $imageConstraints`. Oh... and let's
+here. 
+
+[[[ code('7aa3ba2a66') ]]]
+
+Down below, set `'constraints' => $imageConstraints`. Oh... and let's
 spell that correctly.
+
+[[[ code('129238d7bc') ]]]
 
 *Now* we can conditionally add the `NotNull()` constraint *exactly* when we need
 it. Scroll up a little. In our forms tutorial, we used the `data` option to get
@@ -83,6 +95,8 @@ We can leverage that by saying if this is *not* the edit page or if the article
 doesn't have an image filename, then take `$imageConstraints` and add
 `new NotNull()`. We'll even get fancy and customize the message:
 `Please upload an image`.
+
+[[[ code('2dc226f67c') ]]]
 
 Just saying if `!$isEdit` is probably enough... but *just* in case, I'm checking
 to see if, *somehow*, we're on the edit page, but the `imageFilename` is missing,
