@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index a2d3694..4cd96ee 100644
+index be944383..7b8cd01d 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,6 +14,7 @@
@@ -11,19 +11,19 @@ index a2d3694..4cd96ee 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index ef9e739..98b67df 100644
+index 68562343..5bd8f31f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "94fea250ded266855324efc5cf9ebc4a",
-+    "content-hash": "d3d17d2cfabb14ce04e611ce3795bfcb",
+-    "content-hash": "47236d88662281ce6d04fd708af7cee5",
++    "content-hash": "81fb90bcefcdb88098c18ed576834c5a",
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4085,6 +4085,87 @@
+@@ -4084,6 +4084,87 @@
              "description": "Composer plugin for Symfony",
              "time": "2018-09-03T08:17:12+00:00"
          },
@@ -111,7 +111,7 @@ index ef9e739..98b67df 100644
          {
              "name": "symfony/framework-bundle",
              "version": "v4.1.6",
-@@ -4401,6 +4482,81 @@
+@@ -4400,6 +4481,81 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -193,7 +193,7 @@ index ef9e739..98b67df 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -4541,6 +4697,64 @@
+@@ -4540,6 +4696,64 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },
@@ -259,7 +259,7 @@ index ef9e739..98b67df 100644
              "name": "symfony/polyfill-mbstring",
              "version": "v1.10.0",
 diff --git a/symfony.lock b/symfony.lock
-index e83c74c..df64716 100644
+index e83c74ca..df647161 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -284,6 +284,9 @@

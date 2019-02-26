@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 7625daa..38a99a4 100644
+index 18f4576e..5ff18692 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -9,6 +9,7 @@
@@ -10,7 +10,7 @@ index 7625daa..38a99a4 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
          "symfony/flex": "^1.0",
-@@ -71,7 +72,7 @@
+@@ -74,7 +75,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -20,15 +20,15 @@ index 7625daa..38a99a4 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 6b5bd07..ba0c724 100644
+index ec469896..11aa21a0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,52 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "9f7cb7fb73c09a0361f4d1940fc265f2",
-+    "content-hash": "b8ebcf8a806692107e15a632ae195a03",
+-    "content-hash": "a17f599ae08ff3e657ea6f2305abcc01",
++    "content-hash": "91fd1ee6146cce9a3fa44ef420e4d22c",
      "packages": [
 +        {
 +            "name": "behat/transliterator",
@@ -162,7 +162,7 @@ index 6b5bd07..ba0c724 100644
          {
              "name": "guzzlehttp/guzzle",
              "version": "6.3.0",
-@@ -2863,6 +2985,71 @@
+@@ -2862,6 +2984,71 @@
              ],
              "time": "2018-01-12T13:08:16+00:00"
          },
@@ -235,7 +235,7 @@ index 6b5bd07..ba0c724 100644
              "name": "symfony/asset",
              "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index a3e56b0..c60e848 100644
+index a3e56b0e..c60e848c 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -17,4 +17,5 @@ return [
@@ -246,7 +246,7 @@ index a3e56b0..c60e848 100644
  ];
 diff --git a/config/packages/stof_doctrine_extensions.yaml b/config/packages/stof_doctrine_extensions.yaml
 new file mode 100644
-index 0000000..c83f3b1
+index 00000000..c83f3b1d
 --- /dev/null
 +++ b/config/packages/stof_doctrine_extensions.yaml
 @@ -0,0 +1,4 @@
@@ -255,7 +255,7 @@ index 0000000..c83f3b1
 +stof_doctrine_extensions:
 +    default_locale: en_US
 diff --git a/symfony.lock b/symfony.lock
-index b5f80fb..fbe5b10 100644
+index b5f80fb6..fbe5b10e 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@

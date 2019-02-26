@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index c34638d..372271a 100644
+index 3179297a..30228bc8 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -17,6 +17,7 @@
@@ -11,19 +11,19 @@ index c34638d..372271a 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 92e707c..77e726d 100644
+index d75150be..307efb32 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "f2ab9e360d691fe536f8d3a72c1442e3",
-+    "content-hash": "62423ef980d92b545b414d9e8b347b87",
+-    "content-hash": "1c899fd1c15555907b12927410cd50cf",
++    "content-hash": "801f1de9012164bc12b6239990547c6c",
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4190,6 +4190,64 @@
+@@ -4189,6 +4189,64 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-28T06:17:42+00:00"
          },
@@ -88,7 +88,7 @@ index 92e707c..77e726d 100644
          {
              "name": "symfony/lts",
              "version": "dev-master",
-@@ -4526,6 +4584,73 @@
+@@ -4525,6 +4583,73 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-03T11:13:38+00:00"
          },
@@ -162,7 +162,7 @@ index 92e707c..77e726d 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4603,6 +4728,163 @@
+@@ -4602,6 +4727,163 @@
              ],
              "time": "2018-08-03T07:58:40+00:00"
          },
@@ -327,7 +327,7 @@ index 92e707c..77e726d 100644
              "name": "symfony/stopwatch",
              "version": "v4.1.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 80c373b..9c8aa9d 100644
+index 80c373b7..9c8aa9df 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -19,4 +19,5 @@ return [
@@ -338,7 +338,7 @@ index 80c373b..9c8aa9d 100644
  ];
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
 new file mode 100644
-index 0000000..fb4c593
+index 00000000..fb4c593e
 --- /dev/null
 +++ b/config/packages/security.yaml
 @@ -0,0 +1,24 @@
@@ -367,7 +367,7 @@ index 0000000..fb4c593
 +        # - { path: ^/admin, roles: ROLE_ADMIN }
 +        # - { path: ^/profile, roles: ROLE_USER }
 diff --git a/symfony.lock b/symfony.lock
-index eaa396b..74cfd6d 100644
+index eaa396b7..74cfd6d8 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -290,6 +290,9 @@

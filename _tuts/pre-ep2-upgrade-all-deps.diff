@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 1372c0e..bd80317 100644
+index 9bc218ba..27e21023 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -16,7 +16,6 @@
@@ -10,7 +10,7 @@ index 1372c0e..bd80317 100644
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
          "symfony/monolog-bundle": "^3.0",
-@@ -49,8 +48,7 @@
+@@ -52,8 +51,7 @@
      "scripts": {
          "auto-scripts": {
              "cache:clear": "symfony-cmd",
@@ -21,7 +21,7 @@ index 1372c0e..bd80317 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 7535eaf..1c09126 100644
+index 7535eaf8..1c09126e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -385,7 +385,7 @@ index 7535eaf..1c09126 100644
      "aliases": [],
 diff --git a/config/packages/dev/security_checker.yaml b/config/packages/dev/security_checker.yaml
 deleted file mode 100644
-index 544c0b3..0000000
+index 544c0b33..00000000
 --- a/config/packages/dev/security_checker.yaml
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -398,7 +398,7 @@ index 544c0b3..0000000
 -        tags:
 -            - { name: console.command }
 diff --git a/symfony.lock b/symfony.lock
-index 4ae7717..30c34e2 100644
+index 4ae77178..30c34e2e 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,7 +1,4 @@

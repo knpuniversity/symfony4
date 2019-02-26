@@ -1,5 +1,5 @@
 diff --git a/.env.dist b/.env.dist
-index ceef5fd..01b48ec 100644
+index ceef5fd0..01b48ec0 100644
 --- a/.env.dist
 +++ b/.env.dist
 @@ -12,3 +12,10 @@ APP_SECRET=5ea3114a349591bd131296e00f21c20a
@@ -14,7 +14,7 @@ index ceef5fd..01b48ec 100644
 +DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 +###< doctrine/doctrine-bundle ###
 diff --git a/README.md b/README.md
-index 58be06d..6379099 100644
+index 58be06d5..63790990 100644
 --- a/README.md
 +++ b/README.md
 @@ -21,6 +21,28 @@ composer install
@@ -47,7 +47,7 @@ index 58be06d..6379099 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.json b/composer.json
-index 5a739c7..993eaf4 100644
+index 7428243c..4948bacc 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -13,6 +13,7 @@
@@ -59,7 +59,7 @@ index 5a739c7..993eaf4 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 7dae97c..b7faa59 100644
+index 7dae97c6..8cb6993e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -67,7 +67,7 @@ index 7dae97c..b7faa59 100644
          "This file is @generated automatically"
      ],
 -    "content-hash": "474b85162d48f0e9e54e7bee7f8fd27c",
-+    "content-hash": "03f2e5fc0269b7758aa5a2c3f608c2c4",
++    "content-hash": "0f380499d2c218687c113c47559f9f96",
      "packages": [
          {
              "name": "clue/stream-filter",
@@ -1441,7 +1441,7 @@ index 7dae97c..b7faa59 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -799,58 +1739,59 @@
+@@ -799,58 +1739,58 @@
              ],
              "authors": [
                  {
@@ -1468,20 +1468,20 @@ index 7dae97c..b7faa59 100644
 -            "name": "nexylan/slack-bundle",
 -            "version": "v2.0.0",
 +            "name": "ocramius/proxy-manager",
-+            "version": "2.2.2",
++            "version": "2.1.1",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/nexylan/slack-bundle.git",
 -                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d"
 +                "url": "https://github.com/Ocramius/ProxyManager.git",
-+                "reference": "14b137b06b0f911944132df9d51e445a35920ab1"
++                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/nexylan/slack-bundle/zipball/f8d0537dce96539eb94a184fa83be3070bafec2d",
 -                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d",
-+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/14b137b06b0f911944132df9d51e445a35920ab1",
-+                "reference": "14b137b06b0f911944132df9d51e445a35920ab1",
++                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
++                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
                  "shasum": ""
              },
              "require": {
@@ -1489,24 +1489,23 @@ index 7dae97c..b7faa59 100644
 -                "php": "^7.1",
 -                "php-http/httplug-bundle": "^1.8",
 -                "symfony/http-kernel": "^3.4 || ^4.0"
-+                "ocramius/package-versions": "^1.1.3",
-+                "php": "^7.2.0",
-+                "zendframework/zend-code": "^3.3.0"
++                "ocramius/package-versions": "^1.1.1",
++                "php": "^7.1.0",
++                "zendframework/zend-code": "^3.1.0"
              },
              "require-dev": {
 -                "matthiasnoback/symfony-dependency-injection-test": "^2.3",
 -                "php-http/mock-client": "^1.1",
 -                "phpunit/phpunit": "^6.5"
-+                "couscous/couscous": "^1.6.1",
++                "couscous/couscous": "^1.5.2",
 +                "ext-phar": "*",
-+                "humbug/humbug": "1.0.0-RC.0@RC",
-+                "nikic/php-parser": "^3.1.1",
-+                "padraic/phpunit-accelerator": "dev-master@DEV",
++                "humbug/humbug": "dev-master@DEV",
++                "nikic/php-parser": "^3.0.4",
 +                "phpbench/phpbench": "^0.12.2",
-+                "phpstan/phpstan": "dev-master#856eb10a81c1d27c701a83f167dc870fd8f4236a as 0.9.999",
-+                "phpstan/phpstan-phpunit": "dev-master#5629c0a1f4a9c417cb1077cf6693ad9753895761",
-+                "phpunit/phpunit": "^6.4.3",
-+                "squizlabs/php_codesniffer": "^2.9.1"
++                "phpstan/phpstan": "^0.6.4",
++                "phpunit/phpunit": "^5.6.4",
++                "phpunit/phpunit-mock-objects": "^3.4.1",
++                "squizlabs/php_codesniffer": "^2.7.0"
              },
              "suggest": {
 -                "eightpoints/guzzle-bundle": "Make a custom Guzzle instance for Slack with ease"
@@ -1531,7 +1530,7 @@ index 7dae97c..b7faa59 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -859,12 +1800,21 @@
+@@ -859,12 +1799,21 @@
              ],
              "authors": [
                  {
@@ -1553,11 +1552,11 @@ index 7dae97c..b7faa59 100644
 +                "proxy pattern",
 +                "service proxies"
 +            ],
-+            "time": "2018-09-27T13:45:01+00:00"
++            "time": "2017-05-04T11:12:50+00:00"
          },
          {
              "name": "php-http/cache-plugin",
-@@ -2104,6 +3054,74 @@
+@@ -2104,6 +3053,74 @@
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -1632,7 +1631,7 @@ index 7dae97c..b7faa59 100644
          {
              "name": "symfony/debug",
              "version": "v4.0.14",
-@@ -2162,7 +3180,7 @@
+@@ -2162,7 +3179,7 @@
          },
          {
              "name": "symfony/dependency-injection",
@@ -1641,7 +1640,7 @@ index 7dae97c..b7faa59 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/dependency-injection.git",
-@@ -2231,6 +3249,94 @@
+@@ -2231,6 +3248,94 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-01T08:23:45+00:00"
          },
@@ -1736,7 +1735,7 @@ index 7dae97c..b7faa59 100644
          {
              "name": "symfony/event-dispatcher",
              "version": "v4.0.14",
-@@ -2697,6 +3803,11 @@
+@@ -2697,6 +3802,11 @@
          {
              "name": "symfony/lts",
              "version": "dev-master",
@@ -1748,7 +1747,7 @@ index 7dae97c..b7faa59 100644
              "conflict": {
                  "symfony/asset": ">=5",
                  "symfony/browser-kit": ">=5",
-@@ -2831,6 +3942,34 @@
+@@ -2831,6 +3941,34 @@
              ],
              "time": "2018-01-18T22:19:33+00:00"
          },
@@ -1783,7 +1782,7 @@ index 7dae97c..b7faa59 100644
          {
              "name": "symfony/polyfill-ctype",
              "version": "v1.9.0",
-@@ -2891,16 +4030,16 @@
+@@ -2891,16 +4029,16 @@
          },
          {
              "name": "symfony/polyfill-mbstring",
@@ -1804,7 +1803,7 @@ index 7dae97c..b7faa59 100644
                  "shasum": ""
              },
              "require": {
-@@ -2946,7 +4085,7 @@
+@@ -2946,7 +4084,7 @@
                  "portable",
                  "shim"
              ],
@@ -1813,7 +1812,7 @@ index 7dae97c..b7faa59 100644
          },
          {
              "name": "symfony/process",
-@@ -3468,6 +4607,113 @@
+@@ -3468,6 +4606,113 @@
                  "templating"
              ],
              "time": "2017-09-27T18:10:31+00:00"
@@ -1927,8 +1926,18 @@ index 7dae97c..b7faa59 100644
          }
      ],
      "packages-dev": [
+@@ -4262,5 +5507,8 @@
+         "php": "^7.1.3",
+         "ext-iconv": "*"
+     },
+-    "platform-dev": []
++    "platform-dev": [],
++    "platform-overrides": {
++        "php": "7.1.3"
++    }
+ }
 diff --git a/config/bundles.php b/config/bundles.php
-index de7f774..aaa4908 100644
+index de7f7749..aaa49082 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -12,4 +12,7 @@ return [
@@ -1941,7 +1950,7 @@ index de7f774..aaa4908 100644
  ];
 diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
 new file mode 100644
-index 0000000..6c81971
+index 00000000..6c819716
 --- /dev/null
 +++ b/config/packages/doctrine.yaml
 @@ -0,0 +1,30 @@
@@ -1977,7 +1986,7 @@ index 0000000..6c81971
 +                alias: App
 diff --git a/config/packages/doctrine_migrations.yaml b/config/packages/doctrine_migrations.yaml
 new file mode 100644
-index 0000000..3bf0fbc
+index 00000000..3bf0fbca
 --- /dev/null
 +++ b/config/packages/doctrine_migrations.yaml
 @@ -0,0 +1,5 @@
@@ -1988,7 +1997,7 @@ index 0000000..3bf0fbc
 +    namespace: DoctrineMigrations
 diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
 new file mode 100644
-index 0000000..2f16f0f
+index 00000000..2f16f0fd
 --- /dev/null
 +++ b/config/packages/prod/doctrine.yaml
 @@ -0,0 +1,31 @@
@@ -2024,7 +2033,7 @@ index 0000000..2f16f0f
 +            doctrine.system_cache_pool:
 +                adapter: cache.system
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
-index e578316..cefa27c 100644
+index e578316a..cefa27c9 100644
 --- a/phpunit.xml.dist
 +++ b/phpunit.xml.dist
 @@ -15,6 +15,13 @@
@@ -2043,15 +2052,15 @@ index e578316..cefa27c 100644
      <testsuites>
 diff --git a/src/Entity/.gitignore b/src/Entity/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/src/Migrations/.gitignore b/src/Migrations/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/src/Repository/.gitignore b/src/Repository/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/symfony.lock b/symfony.lock
-index 92c9d5b..9132796 100644
+index 92c9d5bd..91327965 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -20,12 +20,54 @@
