@@ -1,68 +1,75 @@
-# Bootstrap Styling
+# Upload Field Styling & Bootstrap
 
-Coming soon...
+If you use the Bootstrap 4 theme with Symfony... things get weird with upload fields!
+Yea, there *is* a good reason for *why*, but out-of-the-box, it's... just super
+weird. The problem? Select a file and... get rewarded by seeing absolutely *nothing*!
+Did the file actually attach? We *should* see the filename somewhere. What happened?
 
-Okay.
+## Why Doesn't it Work?
 
-When do you use the bootstrap 4 theme? With Symfony? Uh, it's a little bit weird as
-we saw because when you browse for files, you don't see anything. It usually says the
-file name. I want to talk a little bit about how we can, the reason for this and how
-we can make this work better. So the issue is that styling file upload fields is a
-little bit hard. So if you want more control over it and bootstrap has a way for you
-to create this custom file div and a bit of a structure here so that you can make it
-look how you want. And this is what Symfony uses by default. Now check out here.
-Here's the `<input type="file"...>`. This is actually hidden in by bootstrap unchanged the
-capacity there is the actual file upload field. So bootstrap does is it actually
-hides this and then all the markup comes from this label.
+The thing is... styling a file upload field is kinda hard. So, if you *really*
+want to control how it looks and make it super shiny, Bootstrap allows you to create
+a "custom" file input structure, which is what Symfony uses by default. Check this
+out: see the `<input type="file"...>` field? That's *hidden* by Bootstrap! Try
+removing the `opacity: 0` part and... say hello to the *real* file upload field...
+*with* the filename that we selected!
 
-This label is actually that entire width and oddly enough that browse button actually
-comes from the after content of the field. So this is great because it gives us
-massive control over how the file upload field looks. Um, but you need to do a couple
-of special things to actually make it at least function as well as you want. First
-thing I'm going to show is how we can change this browse button cause you can see
-it's actually the file label after. So it's like, okay, how can we customize that
-when we're working with Symfony forms?
+Bootstrap hides the input so that it, or *we*, can *completely* control how this
+*whole* field looks. Everything you *actually* see comes from the `label`: it takes
+up the entire width. Even the "Browse" button comes from some `:after` content.
 
-So go over to our `templates/` directory and open `article_admin/_form.html.twig`.
-And here is our `imageFile` field. So normally the second argument, as you guys know,
-it can be used to pass variables. One of the most important variables, it's called an
-attribute, which normally is attributes that are added to that input field. In this
-case I want you to add `placeholder` set to "Select an article image". This would
-normally add a placeholder attribute to the input, you know, so you could have, for
-example, some empty text if an input isn't filled then. But for the file upload
-field, it's used in a special way. It's actually used as the default text.
+The *great* thing about this is that styling a `label` element is easy. The sad panda
+part is that we don't see the filename when we select a file! We *can* fix that -
+but it takes a little bit of JavaScript.
 
-Okay.
+## Customizing the Text in the Upload Field
 
-Um, in the image field itself. Now, if we select a file, it's still not going to
-update though. So we need to fix that as well. The way you do that is if you, because
-Symfony's form theme is opted into this custom file input, we need to do it with a
-little bit of JavaScript. So if you look at the structure again, basically what we
-want to do is change the html of this label. One a file is selected. So to keep this
-simple, I'm actually gonna go into my `base.html.twig`. I'm the rice in JavaScript
-that will work into across the entire site. So I'll go down here. I'd have a little
-of global JavaScript, um, I recommend using Webpack encore actually for
-this, instead of just putting inline JavaScript, but I'm trying to keep things simple
-in this tutorial, we're going to say, here is, we're going to find it all 
-`$('.custom-file-input')` fields. That's the class that actually goes onto the input itself. 
-And then we'll say `.on('change')`. We'll pass that call back. And here what we're gonna do is
-we're very simply, we're going to actually find the label. So I'm actually gonna go
-to the parent and then I'm going to find the custom file label down there. And then
-we're going to set the inner html. So first I'm going to grab the input. It's element
-itself cause we'll need that in a second. That's `event.currentTarget`. That will
-be, they'll represent the `<input type="file">`. And then we'll say, okay,
+Before we do that, we can *also* put a message in the main part of the file
+field by putting some content in the `label` element. But... it doesn't work
+like a normal label.
 
-okay,
+In the `templates/` directory, open `article_admin/_form.html.twig`. Here's
+our `imageFile` field. The second argument to `form_row` is an array of variables
+you can use to customize... basically anything. One of the most important ones
+is called `attr`: it's how you attach custom HTML attributes to the input field.
+Pass an attribute called `placeholder` set to `Select an article image`.
 
-`$(inputFile).parent().find('custom-file-label)`, well I'll say it `.html()`. And
-to get the actual file name that was just uploaded, we can say `inputFile.files`.
-Now I should be an array because technically you can have multiple file uploads,
-sport and then `.name`. So probably not something that you worked with very often. Um,
-but that should do it.
+This would normally add a `placeholder` attribute to the input so you can have some
+text on the field if it's empty. But when you're dealing with a file upload field
+with the Bootstrap theme, this is used in a different way... but it accomplishes
+the same thing.
 
-Okay.
+Refresh! Cool! The empty part of the file field now gets this text.
 
-All right, let's try that. Refresh. We've got our custom select an article image. We
-select rocket dot jpeg and boom. There it is. Very, very nice. There's a few other
-things you can do, but that is enough to get you started. Now you can style it
-however you want.
+## Showing the Selected Filename
+
+But if you select a file... the filename still doesn't show. Let's fix that already.
+Look at the structure again: Symfony's form theme is using this `custom-file-input`
+class on the input. Ok, so what we need to do is this: on *change* of that field,
+we need to set the HTML of the label to the filename, which *is* something we have
+access to in JavaScript.
+
+To keep things simple, open `base.html.twig`: we'll write some JavaScript that will
+work across the entire site. I'd recommend using Webpack Encore, and putting this
+code in your main entry file if you want it to be global. But, without Encore, down
+here works fine.
+
+Use `$('.custom-file-input')` - that's the class that's on the `input` field itself,
+`.on('change')` and pass this a callback with an `event` argument. Inside, we need
+to find the `label` element: I'll do that by finding the parent of the `input` and
+then looking for the `custom-file-label` class so we can set its HTML.
+
+In the callback, set `var inputFile = event.currentTarget` - that's the DOM node for
+the `input type="file"` element. Next,
+`$(inputFile).parent().find('.custom-file-label').html()` and pass this the filename
+that was just selected: `inputFile.files[0].name`. The `0` part looks a bit weird,
+but technically a file upload field can upload *multiple* files. We're not doing
+that, so we get to take this shortcut.
+
+Give it a try! Refresh... browse... select `rocket.jpg` and... yea! Our placeholder
+gets replaced by the filename. That's what we expect *and* the field is easier to
+style thanks to this.
+
+Next: the upload side of things is looking good. It's time to start rendering the
+URL to the upload files... but without letting things get crazy-disorganized. I
+want to *love* our setup.
