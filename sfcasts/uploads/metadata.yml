@@ -13,7 +13,7 @@ chapters:
     - form-image
     - fixtures-uploading
     - flysystem
-    - flysystem-defensive       # raw
+    - flysystem-defensive
     - flysystem-imagine-bundle  # raw
     - absolute-asset-paths      # raw
     - article-references        # raw
