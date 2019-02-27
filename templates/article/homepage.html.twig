@@ -47,7 +47,7 @@
                 <div class="ad-space mx-auto mt-1 pb-2 pt-2">
                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
                     <p><span class="advertisement-text">New:</span> Space Ice Cream!</p>
-                    <button class="btn btn-info">Buy Now!</button>
+                    <button class="btn btn-info js-purchase-btn">Buy Now for $9.99!</button>
                 </div>
 
                 <div class="quote-space pb-2 pt-2 px-5">
@@ -61,4 +61,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="{{ asset('js/purchase.js') }}"></script>
 {% endblock %}
