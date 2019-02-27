@@ -34,6 +34,8 @@ you can use to customize... basically anything. One of the most important ones
 is called `attr`: it's how you attach custom HTML attributes to the input field.
 Pass an attribute called `placeholder` set to `Select an article image`.
 
+[[[ code('01271b0a0f') ]]]
+
 This would normally add a `placeholder` attribute to the input so you can have some
 text on the field if it's empty. But when you're dealing with a file upload field
 with the Bootstrap theme, this is used in a different way... but it accomplishes
@@ -59,12 +61,16 @@ Use `$('.custom-file-input')` - that's the class that's on the `input` field its
 to find the `label` element: I'll do that by finding the parent of the `input` and
 then looking for the `custom-file-label` class so we can set its HTML.
 
+[[[ code('80e6c4607e') ]]]
+
 In the callback, set `var inputFile = event.currentTarget` - that's the DOM node for
 the `input type="file"` element. Next,
 `$(inputFile).parent().find('.custom-file-label').html()` and pass this the filename
 that was just selected: `inputFile.files[0].name`. The `0` part looks a bit weird,
 but technically a file upload field can upload *multiple* files. We're not doing
 that, so we get to take this shortcut.
+
+[[[ code('b390a52d80') ]]]
 
 Give it a try! Refresh... browse... select `rocket.jpg` and... yea! Our placeholder
 gets replaced by the filename. That's what we expect *and* the field is easier to
