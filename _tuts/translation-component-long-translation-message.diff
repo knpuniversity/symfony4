@@ -1,0 +1,20 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 5f6bc72..e14a847 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -46,7 +46,7 @@
+             <div class="col-sm-12 col-md-4 text-center">
+                 <div class="ad-space mx-auto mt-1 pb-2 pt-2">
+                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
+-                    <p><span class="advertisement-text">New:</span> Space Ice Cream!</p>
++                    <p>{{ '<span class="advertisement-text">New:</span> Space Ice Cream!'|trans }}</p>
+                     <button class="btn btn-info js-purchase-btn">Buy Now for $9.99!</button>
+                 </div>
+ 
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 4730d7b..2dbe307 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -1 +1,2 @@
+ 'Trending Quotes': 'Trending Quotes'
++'<span class="advertisement-text">New:</span> Space Ice Cream!': '__<span class="advertisement-text">New:</span> Space Ice Cream!'

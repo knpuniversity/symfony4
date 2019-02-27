@@ -1,0 +1,25 @@
+diff --git a/composer.json b/composer.json
+index 5a92133..17124fb 100644
+--- a/composer.json
++++ b/composer.json
+@@ -19,6 +19,7 @@
+         "symfony/orm-pack": "^1.0",
+         "symfony/security-bundle": "^4.0",
+         "symfony/serializer-pack": "^1.0",
++        "symfony/translation": "4.2.*",
+         "symfony/twig-bundle": "^4.0",
+         "symfony/validator": "^4.0",
+         "symfony/web-server-bundle": "^4.0",
+diff --git a/composer.lock b/composer.lock
+index 1d104e5..0c2f506 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "99620a5b0e104ec32099d33fdb556fb1",
++    "content-hash": "f9e1b5cef9b90e1e6d92dbfdba5f6b16",
+     "packages": [
+         {
+             "name": "behat/transliterator",

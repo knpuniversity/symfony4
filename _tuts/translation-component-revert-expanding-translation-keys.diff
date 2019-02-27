@@ -1,0 +1,25 @@
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 639148e..76e1d08 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -4,14 +4,9 @@ search.placeholder: Search
+ search.button: Search
+ page.weather.header: Universal Forecast
+ page.weather.slogan: Your Trusted Guide to the Universe's Weather
+-page:
+-    weather:
+-        earth:
+-            header: Near Earth
+-            content: So you're looking to visit Earth, excellent! The planet will be enjoying warmer than normal temperatures, so be sure to bring along your sunscreen. Temperatures in near Earth orbit today will peak at 50 degrees Fahrenheit (10 Celcius).
+-        cloud:
+-            header: Oort Cloud
+-            content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
+-        space:
+-            header: Deep Space
+-            content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</p>
++page.weather.earth.header: Near Earth
++page.weather.earth.content: So you're looking to visit Earth, excellent! The planet will be enjoying warmer than normal temperatures, so be sure to bring along your sunscreen. Temperatures in near Earth orbit today will peak at 50 degrees Fahrenheit (10 Celcius).
++page.weather.cloud.header: Oort Cloud
++page.weather.cloud.content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
++page.weather.space.header: Deep Space
++page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</p>

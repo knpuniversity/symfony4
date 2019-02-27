@@ -1,0 +1,23 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 418f7be..61ff87f 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -36,8 +36,8 @@
+                      </li>
+                    </ul>
+                 <form class="form-inline my-2 my-lg-0">
+-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+-                    <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
++                    <input class="form-control mr-sm-2" type="search" placeholder="{{ 'search'|trans }}" aria-label="Search">
++                    <button class="btn btn-info my-2 my-sm-0" type="submit">{{ 'search'|trans }}</button>
+                 </form>
+                 <ul class="navbar-nav ml-auto">
+                     {% if is_granted('ROLE_USER') %}
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 212e5f6..cc9d4d4 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -1,2 +1,3 @@
+ trending_quotes: 'Trending Quotes'
+ ice_cream_promo_title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'
++search: Search

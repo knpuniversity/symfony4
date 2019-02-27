@@ -1,0 +1,90 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "translation-component-require-translator",
+            "name": "Translation Component: Require translator",
+            "description": null
+        },
+        {
+            "id": "translation-component-trans-twig-filter",
+            "name": "Translation Component: Trans Twig filter",
+            "description": null
+        },
+        {
+            "id": "translation-component-create-translation-file",
+            "name": "Translation Component: Create translation file",
+            "description": null
+        },
+        {
+            "id": "translation-component-translate-message",
+            "name": "Translation Component: Translate message",
+            "description": null
+        },
+        {
+            "id": "translation-component-long-translation-message",
+            "name": "Translation Component: Long translation message",
+            "description": null
+        },
+        {
+            "id": "translation-component-use-translation-keys",
+            "name": "Translation Component: Use translation keys",
+            "description": null
+        },
+        {
+            "id": "translation-component-don-t-use-quotes-for-keys",
+            "name": "Translation Component: Don't use quotes for keys",
+            "description": null
+        },
+        {
+            "id": "translation-component-use-raw-twig-filter",
+            "name": "Translation Component: Use raw Twig filter",
+            "description": null
+        },
+        {
+            "id": "translation-component-add-html-suffix",
+            "name": "Translation Component: Add html suffix",
+            "description": null
+        },
+        {
+            "id": "translation-component-translate-search",
+            "name": "Translation Component: Translate search",
+            "description": null
+        },
+        {
+            "id": "translation-component-split-search-keys",
+            "name": "Translation Component: Split search keys",
+            "description": null
+        },
+        {
+            "id": "translation-component-translate-weather-page",
+            "name": "Translation Component: Translate Weather page",
+            "description": null
+        },
+        {
+            "id": "translation-component-use-trans-twig-tag",
+            "name": "Translation Component: Use trans Twig tag",
+            "description": null
+        },
+        {
+            "id": "translation-component-split-big-translation-into-smaller-ones",
+            "name": "Translation Component: Split big translation into smaller ones",
+            "description": null
+        },
+        {
+            "id": "translation-component-expand-translation-keys",
+            "name": "Translation Component: Expand translation keys",
+            "description": null
+        },
+        {
+            "id": "translation-component-revert-expanding-translation-keys",
+            "name": "Translation Component: Revert expanding translation keys",
+            "description": null
+        }
+    ],
+    "sha": "6172c98cb8edf3b3e32355d9b492e761a7e5940b"
+}

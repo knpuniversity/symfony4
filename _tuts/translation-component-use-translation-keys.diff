@@ -1,0 +1,28 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index e14a847..fffe99c 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -46,12 +46,12 @@
+             <div class="col-sm-12 col-md-4 text-center">
+                 <div class="ad-space mx-auto mt-1 pb-2 pt-2">
+                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
+-                    <p>{{ '<span class="advertisement-text">New:</span> Space Ice Cream!'|trans }}</p>
++                    <p>{{ 'ice_cream_promo_title'|trans }}</p>
+                     <button class="btn btn-info js-purchase-btn">Buy Now for $9.99!</button>
+                 </div>
+ 
+                 <div class="quote-space pb-2 pt-2 px-5">
+-                    <h3 class="text-center pb-3">{{ 'Trending Quotes'|trans }}</h3>
++                    <h3 class="text-center pb-3">{{ 'trending_quotes'|trans }}</h3>
+                     <p><i class="fa fa-comment"></i> "Our two greatest problems are gravity and paperwork. We can lick gravity, but sometimes the paperwork is overwhelming." <br>— <a href="https://en.wikipedia.org/wiki/Wernher_von_Braun">Wernher von Braun, Rocket Engineer</a></p>
+ 
+                     <p class="pt-4"><i class="fa fa-comment"></i> "Let's face it, space is a risky business. I always considered every launch a barely controlled explosion." <br>— <a href="https://en.wikipedia.org/wiki/Aaron_Cohen_(Deputy_NASA_administrator)">Aaron Cohen, NASA Administrator</a></p>
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 2dbe307..bfb4388 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -1,2 +1,2 @@
+-'Trending Quotes': 'Trending Quotes'
+-'<span class="advertisement-text">New:</span> Space Ice Cream!': '__<span class="advertisement-text">New:</span> Space Ice Cream!'
++'trending_quotes': 'Trending Quotes'
++'ice_cream_promo_title': '<span class="advertisement-text">New:</span> Space Ice Cream!'

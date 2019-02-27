@@ -1,0 +1,39 @@
+diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
+index cbfc7b0..64df15e 100644
+--- a/templates/weather/index.html.twig
++++ b/templates/weather/index.html.twig
+@@ -7,7 +7,12 @@
+         <div class="col-sm-12">
+             <h1 class="text-center">{{ 'page.weather.header'|trans }}</h1>
+             <p class="text-center"><em>{{ 'page.weather.slogan'|trans }}</em></p>
+-            {% trans %}page.weather.content{% endtrans %}
++            <h2 class="weather-header">Near Earth</h2>
++            <p class="weather-description">So you're looking to visit Earth, excellent! The planet will be enjoying warmer than normal temperatures, so be sure to bring along your sunscreen. Temperatures in near Earth orbit today will peak at 50 degrees Fahrenheit (10 Celcius).</p>
++            <h2 class="weather-header">Oort Cloud</h2>
++            <p class="weather-description">Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.</p>
++            <h2 class="weather-header">Deep Space</h2>
++            <p class="weather-description">There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</p>
+         </div>
+     </div>
+ {% endblock %}
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index f2c3e6f..76e1d08 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -4,10 +4,9 @@ search.placeholder: Search
+ search.button: Search
+ page.weather.header: Universal Forecast
+ page.weather.slogan: Your Trusted Guide to the Universe's Weather
+-page.weather.content: |
+-  <h2 class="weather-header">Near Earth</h2>
+-  <p class="weather-description">So you're looking to visit Earth, excellent! The planet will be enjoying warmer than normal temperatures, so be sure to bring along your sunscreen. Temperatures in near Earth orbit today will peak at 50 degrees Fahrenheit (10 Celcius).</p>
+-  <h2 class="weather-header">Oort Cloud</h2>
+-  <p class="weather-description">Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.</p>
+-  <h2 class="weather-header">Deep Space</h2>
+-  <p class="weather-description">There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</p>
++page.weather.earth.header: Near Earth
++page.weather.earth.content: So you're looking to visit Earth, excellent! The planet will be enjoying warmer than normal temperatures, so be sure to bring along your sunscreen. Temperatures in near Earth orbit today will peak at 50 degrees Fahrenheit (10 Celcius).
++page.weather.cloud.header: Oort Cloud
++page.weather.cloud.content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
++page.weather.space.header: Deep Space
++page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</p>

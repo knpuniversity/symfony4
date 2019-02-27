@@ -1,0 +1,13 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index fffe99c..da482b3 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -46,7 +46,7 @@
+             <div class="col-sm-12 col-md-4 text-center">
+                 <div class="ad-space mx-auto mt-1 pb-2 pt-2">
+                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
+-                    <p>{{ 'ice_cream_promo_title'|trans }}</p>
++                    <p>{{ 'ice_cream_promo_title'|trans|raw }}</p>
+                     <button class="btn btn-info js-purchase-btn">Buy Now for $9.99!</button>
+                 </div>
+ 
