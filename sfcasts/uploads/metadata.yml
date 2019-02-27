@@ -11,9 +11,9 @@ chapters:
     - assets-context
     - thumbnailing
     - form-image
-    - fixtures-uploading        # raw
-    - flysystem                 # raw
-    - flysystem-defensive       # raw
+    - fixtures-uploading
+    - flysystem
+    - flysystem-defensive
     - flysystem-imagine-bundle  # raw
     - absolute-asset-paths      # raw
     - article-references        # raw
