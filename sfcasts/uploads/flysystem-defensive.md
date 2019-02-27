@@ -1,142 +1,134 @@
-# Flysystem Defensive
+# Flysystem: Streaming & Defensive Coding
 
-Coming soon...
+There are a few minor problems with our new `Flysystem` integration that I want
+to clean up before they bit us!
 
-There's a few minor problems with our new `Flysystem` integration that I want to clean
-up. The first one is that `file_get_contents()` eats memory. It actually reads all of
-these contents into your PHP memory. So it's probably not that big of a deal for a
-2 megabyte file or 4 megabyte file. But if you eventually start uploading he
-quite big files, this could actually cause your phd process to run out of memory.
+## Streaming
 
-Yeah.
+The first issue is that using `file_get_contents()` eats memory: it reads the entire
+contents of the file into PHP's memory. That might not be a huge deal for tiny files,
+but it *could* be a big deal if you start uploading bigger stuff. And, it's just
+not necessary.
 
-So for that reason in general, when do you use `Flysystem` instead of using methods
-like `->write()` or `->update()`, which is the edit we're going to use `->writeStream()`.
+For that reason, in general, when you use `Flysystem`, instead of using methods
+like `->write()` or `->update()`, you should use `->writeStream()` or `->updateStream()`.
 
-It's pretty similar insistence that have pacifier, we can't, that's your pass a file
-stream, which we can create with `$stream = fopen($file->getPathname())` and then
-this case we just need to read it. So we do the `'r'` flag, then we pass it the `$stream`
-down here. That's it. Just about as simple and now if I'm now it's not going to read
-that in a memory. And then just in case here we're going to close the resource. So if
-there, if that `$stream` is still a resource we're going to `fclose()` it and annoying
-thing you need to worry about with the file streams and you need to do `is_resource()`
-here because depending on the adapter, the resource may or may not have been closed
-already.
+It works the same, except that we need to pass a *stream* instead of the contents.
+Create the stream with `$stream = fopen($file->getPathname())` and, because we just
+need to *read* the file, you can use the `r` flag. Now pass stream instead of the
+contents.
 
-Okay.
+Yea... that's it! Same thing, but no memory issues. After, we *do* need to add one
+more detail: if `is_resource($stream)`, then `fclose($stream)`. The "if" is needed
+because, when you use *some* Flysystem adapters, the adapter itself closes the
+stream.
 
-The next thing, it's not really related to `Flysystem` but let's go back to 
-`/admin/article`. Actually let's test this first. We'll need to log back in and let's
-find an article image. Perfect eyebrows for our astronauts update and perfect it
-works. So the thing is is that we actually need to, when we do it, I just did and we
-just updated that file. What we really need to do is make sure that we delete the old
-file.
+## Deleting the Old File
 
-We don't want that old file sticking around it anymore. So to do that on 
-`uploadArticleImage()`, I'm going to add a second argument hint here, which is going to be a
-`?string` called `$existingFilename` is the idea here is you can pass it, they new
-file object. And if there's an existing file name, you'll pass it right here. And
-this function can take care of bleeding. It needs to be nullable because sometimes
-there is not a um, existing file name. Then at the bottom it's pretty simple. We can
-say if the `$existingFilename` was passed, then `$this->filesystem->delete()`. And we
-need to pass it the path to that. So it'd be `self::ARTICLE_IMAGE.'/'.$existingFilename`.
-And that's it. So right now you can see our `astronaut.jpeg` right there. Let's
-go over here and this time let's grab it. Rocket Update. You can say or ask them not
-to a jpeg right there.
+Ok, for problem number to, go back to `/admin/article`. Log back in with password
+`engage`, edit an article, and go select an image - how about `astronaut.jpg`. Hit
+update and... it works! So what's the problem? Well, we just *replaced* an existing
+image with this new one. Does the old file still exist in our uploads directory?
+Absolutely - and it probably shouldn't. When an article image is updated, let's
+delete the old file.
 
-Okay,
+In `UploaderHelper`, add a second argument - a *nullable* string argument called
+`$existingFilename`. This is nullable because sometimes there may *not* be an existing
+file we need to delete. At the bottom, it's beautifully simple: if an
+`$existingFilename` was passed, then `$this->filesystem->delete()` and pass that
+the full path, which will be `self::ARTICLE_IMAGE.'/'.$existingFilename`.
 
-we'll go over, I'm going to go over and we will do `ArticleAdminController` and we're
-gonna need to pass that argument. We need to pass a both places. So this is edit
-here. So an edit and we're going to pass it `$article->getImageFilename()`. And
-you don't technically need to do it in new, we could actually just pass `null` cause
-there's no way there's going to be one. But I'll just pass article. I'll 
-`getImageFilename()`. Um, just for consistency there. And then another place and we need to do
-is our data fixtures. So here, down here we're actually gonna pass and `null`. In this
-case we're never going to, there's not going to ever be an existing one, so we're not
-going to update it.
+Done! You can see the astronaut file that we're using right now. Oh, but first,
+head over to `ArticleAdminController`: we need to pass this new argument.
+Let's see - this is the `edit()` action - so pass `$article->getImageFilename()`.
+In `new()`, you can really just pass `null` - there will *not* be an article image.
+But I'll pass `getImageFilename()` just for consistency.
 
-Okay.
+Oh, and there's one other place we need update: `ArticleFixtures`. Down here, just
+pass `null`: we are never updating some existing image.
 
-All right, so let's try that again. We have our astronaut here. So let's go back
-here. We'll upload rocket this time
+Let's try it! Here is the current astronaut image. Now, move over, upload `rocket.jpg`
+this time and update! Back in the directory... there's rocket and astronaut is gone!
+Love it!
 
-update
+## Avoiding Errors
 
-and there's a rocket and yes, our astronaut is gone. All right, so this created also
-created one small edge case problem, um, which is in theory in a perfect system. This
-file, the existing file is always going to be there. And so there's always going to
-be a file to delete. But when you're developing locally or maybe something weird
-happens on production, let's pretend that the file, the existing file is not there
-for some reason, so I'm actually going to empty my uploads directory entirely. When I
-refresh the form. Actually the uh, this image still shows because the thumbnail is
-still there, but the original image is actually gone. Okay, no problem. Let's
-actually grab earth that jpeg it update and it fails and you'd see it fails on that.
-`$this->filesystem->delete()` line. Now this may be the behavior you want, you
-want, you may want to say, hey, if something so weird happens that the old file names
-not there for some reason I want the whole process to explode when they update the
-new one. But I just want to do something slightly different. I think if the old file
-does not exist for some reason, it shouldn't make the entire process explode.
+Now, in a *perfect* system, the existing file should *always* exist, right? I mean,
+how else would it get there? But what if we're developing locally - and maybe we're
+clearing out the uploads directory during out tests. In that case, it's possible
+that the existing file is *not* there.
 
-So you can see the air that we get here is a file not found exception from 
-`League\Flysystem`. So we can do instead of `UploaderHelper` is, I'm going to wrap this in 
-a `try {} catch () {}`. We're gonna catch that `FileNotFoundException`. The one from 
-`League\Flysystem`
+Try this: empty the `uploads/` directory. Now, upload the form. The image still
+shows up because we're looking at the thumbnail file - but the original image is
+totally gone. Now select `earth.jpeg`, update and... it fails! It fails on
+`$this->filesystem->delete()`.
 
-Okay.
+This *may* be the behavior you want: if something weird happens and the old file
+is gone, *please* explode so I know. But, I'm going to propose something slightly
+different. If the old file doesn't exist for some reason, I don't want the entire
+process to fail - it really doesn't need to.
 
-And that's going to fix that. However, I do not like doing this. Anytime you have a
-try and nothing in the catch, Ooh, that's not a good situation. One of the benefits
-of throwing exceptions is that on our sites, we always configure the exceptions to
-lock to a slack channel. So we can see when things are going wrong. If we swallow
-this air, we might not be a good thing. I kind of want to know that something is not
-right with our system. So to fix that, I basically want to do what I call soft
-failure. I don't want the exception to be thrown, but I want to be notified about it.
-So at the top here, I'm going to autowire the `LoggerInterface`. I'll hit 
-`Option + Enter` `Alt + Enter`, go to initialize fields to create that property and set it. And then
-down here we'll say `$this->logger->alert()`, which is one of the highest levels I usually
-a log alert and higher to my slack channel. It will say Old uploaded file percent s
-was missing one. Trying to delete, I'll pass the `$existingFilename`. That way we know
-that there's some sort of a problem you want to look into. Files are missing for some
-reason, but it's not going to kill the whole process.
+The error from Flysystem is a `FileNotFoundException` from  `League\Flysystem`.
+In `UploaderHelper` wrap that line in a try-catch. Let's catch that
+`FileNotFoundException` - the one from `League\Flysystem`
 
-Yeah,
+## Logging Problems
 
-snack no over here. I'll repost that. Perfect. It works. New files there and um, and
-we actually got a log message. Again, if you configure it out, production to a log to
-slack, then we get something in our slack channel. A really cool thing with the
-Symfony web server, you can actually see all the logs being streamed right here. So
-if you scroll up here, you can actually see alert, old upload a file rocket was
-messing and trying to delete so you can actually see that uploaded. They're written,
-they're all right. The last thing is about um, coding defensively. One of the ways
-that one of the things that you need to know about flysystem if you hold command or
-control and hit right stream here is that if something fails, it,
+That'll fix that problem... but I don't *love* doing this. Honestly, I *hate*
+silencing errors. One of the benefits of throwing an exception is that we can
+configure Symfony to notify us via the logger. At SymfonyCasts, we send all errors
+to a Slack channel so we know if something weird is going on... not that we *ever*
+have bugs. Pfff.
 
-sometimes an exception is thrown, sometimes not. So in this case, this will throw an
-exception. If the resource we path is not, uh, is not a valid handle or if the file
-already exists then it will throw an exception. But for anything else, anything that
-goes wrong like a network error, it may or may not throw an exception. You can see
-what it actually does. Is a bool `true` on success? `false` on failure and exception may
-be thrown. Like for example if you're using, if you're running two s3, the 
-s3 adapter itself might throw an exception but it might not. So basically what I'm
-saying is that if right, if any of these methods fail, um, and exception not be
-thrown, it might just return false. For that reason, I recommend coding a little
-defensively, which means sending this to our `$result` variable and saying 
-`if ($results === false)`, then we're going to throw a new exception that says could not
-write uploaded file percent s we'll pass out the `$newFilename`. I'm going to copy
-that cause I'm gonna do the same thing down here on the delete. You know, if the file
-is not there, you'll get this exception of if something else went wrong, we might
-want to know about that.
+Here's what I propose: a *soft* failure: we don't fail, but we *do* log that an
+error happened. Back on the constructor, autowire a new argument:
+`LoggerInterface $logger`. I'll hit `Alt + Enter` and select initialize fields to
+create that property and set it. Now, down in the catch, say
+`$this->logger->alert()` - alert is one of the highest log levels and I usually
+send all logs that are this level or higher to a Slack channel. Inside, how about:
+"Old uploaded file %s was missing when trying to delete" - and pass
+`$existingFilename`.
 
-So resulting cause false will throw an exception that says,
+Thanks to this, the user gets a smooth experience, but *we* get notified so we
+can figure out how the heck the old file disappeared.
 
-okay,
+Move over and re-POST the form. *Now* it works. And to prove the log worked,
+check out the terminal tab where we're running the Symfony web server: it's streaming
+all of our logs here. Scroll up and... there it is!
 
-did not delete old uploaded file percent ass. And then we'll do the `$existingFilename`
-right there. Now again, if you don't want to, you might not want to throw the
-exception here. You might want to actually log another alert so that this doesn't
-fail catastrophically. This would be a pretty unexpected air. Um, but you know, the
-point is we want to make sure that we're, uh, at least notified about it versus it
-just failing silently. So with all that in place, just to make sure we didn't break
-anything, let's upload. Not Stars because that's too big. Earth from the moon update.
-Perfect. Got It.
+> Old upload a file "rocket..." was missing when trying to delete
+
+## Checking for Filesystem Failure
+
+Ok, there's *one* more thing I want to tighten up. If one of the calls to the
+`Filesystem` object fails... what do you think will happen? An exception? Hold
+Command or Ctrl and click on `writeStream()`. Check out the docs: we *will* get
+an exception if we pass an invalid stream or if the file already exists. But for
+any other type of failure, maybe a network error... instead of an exception, the
+method just returns false!
+
+Actually, that's not *completely* true - it depends on your adapter. For example,
+if you're using the S3 adapter and there's a network error, it *may* throw its
+own type of exception. But, the point is this: if any of the Filesystem methods
+fail, you might *not* get an exception: it might just return false.
+
+
+For that reason, I like to code defensively. Assign this to a `$result` variable.
+Then say: `if ($results === false)`, let's throw our own exception - I *do* want
+to know that something failed:
+
+> Could not write uploaded file "%s"
+
+and pass `$newFilename`. Copy that and do the same for `delete`:
+
+> Could not delete old uploaded file "%s"
+
+with `$existingFilename`. I'm *throwing* this error instead of just logging something
+because this would *truly* be an exceptional case - we shouldn't let things continue.
+
+Let's make sure this all works - move over and select the `stars` file - or...
+actually the "Earth from Moon" photo. Update and... got it!
+
+Next: let's teach LiipImagineBundle to play nice with Flysytem. After all, if we
+move Flysystem to S3, but LiipImagineBundle is still looking for the source files
+locally... well... it's not going to work great.
