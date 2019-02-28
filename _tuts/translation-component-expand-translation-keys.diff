@@ -1,5 +1,5 @@
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 76e1d08..639148e 100644
+index 212dd82..95cb5b6 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -4,9 +4,14 @@ search.placeholder: Search
@@ -11,7 +11,7 @@ index 76e1d08..639148e 100644
 -page.weather.cloud.header: Oort Cloud
 -page.weather.cloud.content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
 -page.weather.space.header: Deep Space
--page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</p>
+-page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!
 +page:
 +    weather:
 +        earth:
@@ -22,4 +22,4 @@ index 76e1d08..639148e 100644
 +            content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
 +        space:
 +            header: Deep Space
-+            content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</p>
++            content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!
