@@ -26,6 +26,8 @@ Now that the *true* uploaded assets are stored in a different directory, we can
 just update this path! In `Article`, change this to `uploads/article_image/`
 and then `$this->getImageFilename()`.
 
+[[[ code('9d9263777d') ]]]
+
 Cool! Try it out! It works! We don't care about the broken images from the fixtures:
 we'll fix them soon. But the *actual* uploaded image *does* render.
 
@@ -38,9 +40,17 @@ uploads to the system, we're going to have more duplication. I don't like having
 these important strings in multiple places.
 
 So, in `UploaderHelper`, why not create a constant for this? Call it `ARTICLE_IMAGE`
-and set it to the directory name: `article_image`. Down below, use that:
-`self::ARTICLE_IMAGE`. And in `Article`, do the same thing:
-`UploaderHelper::ARTICLE_IMAGE`.
+and set it to the directory name: `article_image`. 
+
+[[[ code('50ab40e11c') ]]]
+
+Down below, use that: `self::ARTICLE_IMAGE`. 
+
+[[[ code('87d6087174') ]]]
+
+And in `Article`, do the same thing: `UploaderHelper::ARTICLE_IMAGE`.
+
+[[[ code('151eb6155e') ]]]
 
 Small step, and when we refresh, it works fine.
 
@@ -56,11 +66,17 @@ that URL might even need to be dynamic - we might use a different CDN locally
 versus on production! Nope, I don't want my entity to worry about any of these
 details.
 
-Remove the `uploads/` part from the path. Now `getImagePath()` returns the path to
-the image relative to wherever our *app* decides to store uploads. In `UploaderHelper`,
-add a new `public function getPublicPath()`. This will take a string `$path` - that
-will be something like `article_image/astronaut.jpeg` - and it will return a string,
-which will be the *actual* public path to the file. Inside, `return 'uploads/'.$path;`.
+Remove the `uploads/` part from the path. 
+
+[[[ code('10efe903cd') ]]]
+
+Now `getImagePath()` returns the path to the image relative to wherever our *app* decides 
+to store uploads. In `UploaderHelper`, add a new `public function getPublicPath()`. 
+This will take a string `$path` - that will be something like 
+`article_image/astronaut.jpeg` - and it will return a string, which will be the *actual* 
+public path to the file. Inside, `return 'uploads/'.$path;`.
+
+[[[ code('b21acd1d2e') ]]]
 
 That may feel like a micro improvement, but it's awesome! Thanks to this, we can
 call `getPublicPath()` from anywhere in our app to get the URL to an uploaded asset.
@@ -75,11 +91,18 @@ series. Here's the plan: in the homepage template, instead of using the `asset()
 function, let's use a new function called `uploaded_asset()`. We'll pass it
 `article.imagePath` - and it will ultimately call `getPublicPath()`.
 
+[[[ code('d641287c03') ]]]
+
 In `AppExtension`, copy `getFilters()`, paste and rename it to  `getFunctions()`.
 Return an array, and, inside, add a `new TwigFunction()` with `uploaded_asset`
-and `[$this, 'getUploadedAssetPath']`. Copy that new method name, scroll down
-and add it: `public function getUploadedAssetPath()` with a `string $path` argument.
-It will also return a string.
+and `[$this, 'getUploadedAssetPath']`. 
+
+[[[ code('3c1f7bb9be') ]]]
+
+Copy that new method name, scroll down and add it: `public function getUploadedAssetPath()` 
+with a `string $path` argument. It will also return a string.
+
+[[[ code('f37f829cf6') ]]]
 
 ## Using a Service Subscriber
 
@@ -94,8 +117,14 @@ The short explanation is that this class has a `getSubscribedServices()` method
 where we can choose which services we need. These are then included in the
 `$container` object and we can fetch them out by saying `$this->container->get()`.
 
-Add `UploaderHelper::class` to the array. Then, above, we can
+Add `UploaderHelper::class` to the array. 
+
+[[[ code('fb291236dc') ]]]
+
+Then, above, we can
 `return $this->container->get(UploaderHelper::class)->getPublicPath($path)`.
+
+[[[ code('373aa6a28a') ]]]
 
 Let's give it a try! Refresh! We got it! That took some work, but I promise you'll
 be *super* happy you did this.
