@@ -40,8 +40,8 @@ Down in `getPublicPath()`, `return $this->requestStackContext->getBasePath()`
 and *then* `'uploads/'.$path`.
 
 If our app lives at the root of the domain - like it does right now - this will
-just return `/`. But if it lives at a subdirectory like `thespacebar`, it'll return
-`/thespacebar/`.
+just return and empty string. But if it lives at a subdirectory like `thespacebar`,
+it'll return `/thespacebar`.
 
 Try it! Oh... wow - *huge* error! This `RequestStackContext` service is such a
 low-level service, that Symfony doesn't make it available to be used for autowiring.
