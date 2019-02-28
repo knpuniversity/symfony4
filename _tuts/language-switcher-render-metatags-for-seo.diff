@@ -1,0 +1,16 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index a338510..d24549a 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -6,6 +6,11 @@
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
++        {% for locale in app_locales_array %}
++            <link rel="alternate" hreflang="{{ locale }}" href="{{ url(app.request.get('_route', 'app_homepage'), app.request.get('_route_params', [])|merge({_locale: locale})) }}" />
++        {% endfor %}
++        <link rel="canonical" href="{{ app.request.uri }}">
++
+         {% block stylesheets %}
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+             <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">

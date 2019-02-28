@@ -1,0 +1,13 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index f244d09..a338510 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -50,7 +50,7 @@
+                             {% for locale in app_locales_array %}
+                                 <li class="dropdown-item {% if app.request.locale == locale %}active{% endif %}">
+                                     <a href="{{ path(app.request.get('_route', 'app_homepage'), app.request.get('_route_params', [])|merge({_locale: locale})) }}">
+-                                        {{ ('language.'~locale)|trans }}
++                                        {{ ('language.'~locale)|trans([], null, locale) }}
+                                     </a>
+                                 </li>
+                             {% endfor %}

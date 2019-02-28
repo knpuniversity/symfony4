@@ -134,7 +134,52 @@
             "id": "routes-i18n-use-locale-prefixes-for-annotation-import",
             "name": "Routes i18n: Use locale prefixes for annotation import",
             "description": null
+        },
+        {
+            "id": "language-switcher-dump-current-locale",
+            "name": "Language switcher: Dump current locale",
+            "description": null
+        },
+        {
+            "id": "language-switcher-remove-dump-statements",
+            "name": "Language switcher: Remove dump statements",
+            "description": null
+        },
+        {
+            "id": "language-switcher-render-current-locale-on-html-tag",
+            "name": "Language switcher: Render current locale on HTML tag",
+            "description": null
+        },
+        {
+            "id": "language-switcher-drop-off-the-2nd-locale-part",
+            "name": "Language switcher: Drop off the 2nd locale part",
+            "description": null
+        },
+        {
+            "id": "language-switcher-render-switcher-layout",
+            "name": "Language switcher: Render switcher layout",
+            "description": null
+        },
+        {
+            "id": "language-switcher-set-array-of-locales-on-twig-global-var",
+            "name": "Language switcher: Set array of locales on Twig global var",
+            "description": null
+        },
+        {
+            "id": "language-switcher-translate-locales-into-languages",
+            "name": "Language switcher: Translate locales into languages",
+            "description": null
+        },
+        {
+            "id": "language-switcher-force-locale-for-languages-in-list",
+            "name": "Language switcher: Force locale for languages in list",
+            "description": null
+        },
+        {
+            "id": "language-switcher-render-metatags-for-seo",
+            "name": "Language switcher: Render metatags for SEO",
+            "description": null
         }
     ],
-    "sha": "30ce614b6cb95b467459df7cbfbaaae48e08fc09"
+    "sha": "ec8aa959dc0ef8ae37939fb949c46f943ea789eb"
 }

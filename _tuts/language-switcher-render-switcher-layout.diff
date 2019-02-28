@@ -1,0 +1,54 @@
+diff --git a/public/css/styles.css b/public/css/styles.css
+index ffdebfe..f600e9d 100644
+--- a/public/css/styles.css
++++ b/public/css/styles.css
+@@ -248,3 +248,22 @@ html {height:100%}
+   background-color: #fff;
+   margin-top: 10px;
+ }
++
++.locales {
++    padding-top: 20px;
++}
++
++.locales > a {
++    color: #FFF;
++    text-decoration: none;
++}
++
++.locales li > a {
++    display: block;
++    color: #212529;
++    text-decoration: none;
++}
++
++.locales li.active > a {
++    color: #FFF;
++}
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 1440b50..28128ac 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -40,6 +40,22 @@
+                     <button class="btn btn-info my-2 my-sm-0" type="submit">{{ 'search.button'|trans }}</button>
+                 </form>
+                 <ul class="navbar-nav ml-auto">
++                    <li class="nav-item dropdown locales">
++                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
++                            <i class="fa fa-globe" aria-hidden="true"></i>
++                            {{ app.request.locale|capitalize }}
++                            <span class="caret"></span>
++                        </a>
++                        <ul class="dropdown-menu">
++                            {% for locale in ['en', 'es'] %}
++                                <li class="dropdown-item {% if app.request.locale == locale %}active{% endif %}">
++                                    <a href="{{ path(app.request.get('_route', 'app_homepage'), app.request.get('_route_params', [])|merge({_locale: locale})) }}">
++                                        {{ locale|capitalize }}
++                                    </a>
++                                </li>
++                            {% endfor %}
++                        </ul>
++                    </li>
+                     {% if is_granted('ROLE_USER') %}
+                         <li class="nav-item dropdown" style="margin-right: 75px;">
+                             <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
