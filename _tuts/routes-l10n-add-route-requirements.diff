@@ -1,0 +1,13 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 2778e13..395f6b1 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -24,7 +24,7 @@ class ArticleController extends AbstractController
+     }
+ 
+     /**
+-     * @Route("/{_locale}", name="app_homepage")
++     * @Route("/{_locale}", name="app_homepage", requirements={"_locale": "en|es"})
+      */
+     public function homepage(ArticleRepository $repository)
+     {

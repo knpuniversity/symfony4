@@ -84,7 +84,57 @@
             "id": "translation-component-revert-expanding-translation-keys",
             "name": "Translation Component: Revert expanding translation keys",
             "description": null
+        },
+        {
+            "id": "translation-component-translate-into-spanish",
+            "name": "Translation Component: Translate into Spanish",
+            "description": null
+        },
+        {
+            "id": "translation-component-temporarily-change-locale-to-es",
+            "name": "Translation Component: Temporarily change locale to ES",
+            "description": null
+        },
+        {
+            "id": "translation-component-revert-locale-back-to-en",
+            "name": "Translation Component: Revert locale back to EN",
+            "description": null
+        },
+        {
+            "id": "routes-l10n-localize-homepage",
+            "name": "Routes l10n: Localize homepage",
+            "description": null
+        },
+        {
+            "id": "routes-l10n-add-route-requirements",
+            "name": "Routes l10n: Add route requirements",
+            "description": null
+        },
+        {
+            "id": "routes-l10n-set-supported-locales-to-a-parameter",
+            "name": "Routes l10n: Set supported locales to a parameter",
+            "description": null
+        },
+        {
+            "id": "routes-l10n-localize-weather-page",
+            "name": "Routes l10n: Localize Weather page",
+            "description": null
+        },
+        {
+            "id": "routes-i18n-internationalize-weather-page",
+            "name": "Routes i18n: Internationalize Weather page",
+            "description": null
+        },
+        {
+            "id": "routes-i18n-hide-default-locale-from-urls",
+            "name": "Routes i18n: Hide default locale from URLs",
+            "description": null
+        },
+        {
+            "id": "routes-i18n-use-locale-prefixes-for-annotation-import",
+            "name": "Routes i18n: Use locale prefixes for annotation import",
+            "description": null
         }
     ],
-    "sha": "1fb07ef58efd76b477a4e2dda0a4f2f46e36a235"
+    "sha": "30ce614b6cb95b467459df7cbfbaaae48e08fc09"
 }

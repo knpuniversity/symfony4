@@ -1,0 +1,25 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index ebf000c..1f3633c 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -6,6 +6,7 @@
+ parameters:
+     cache_adapter: cache.adapter.apcu
+     locale: 'en'
++    app_locales: 'en|es'
+ 
+ services:
+     # default configuration for services in *this* file
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 395f6b1..206865c 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -24,7 +24,7 @@ class ArticleController extends AbstractController
+     }
+ 
+     /**
+-     * @Route("/{_locale}", name="app_homepage", requirements={"_locale": "en|es"})
++     * @Route("/{_locale}", name="app_homepage", requirements={"_locale": "%app_locales%"})
+      */
+     public function homepage(ArticleRepository $repository)
+     {

@@ -1,0 +1,39 @@
+diff --git a/config/routes/annotations.yaml b/config/routes/annotations.yaml
+index d49a502..b3052ba 100644
+--- a/config/routes/annotations.yaml
++++ b/config/routes/annotations.yaml
+@@ -1,3 +1,8 @@
+ controllers:
+     resource: ../../src/Controller/
+     type: annotation
++    prefix:
++        en: ''
++        es: '/es'
++    requirements:
++        _locale: '%app_locales%'
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index c3dc30b..c265b81 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -24,7 +24,7 @@ class ArticleController extends AbstractController
+     }
+ 
+     /**
+-     * @Route({"en": "/", "es": "/es"}, name="app_homepage", requirements={"_locale": "%app_locales%"})
++     * @Route("/", name="app_homepage")
+      */
+     public function homepage(ArticleRepository $repository)
+     {
+diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
+index b277e9e..0e1effd 100644
+--- a/src/Controller/WeatherController.php
++++ b/src/Controller/WeatherController.php
+@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
+ class WeatherController extends AbstractController
+ {
+     /**
+-     * @Route({"en": "/weather", "es": "/es/clima"}, name="app_weather", requirements={"_locale": "%app_locales%"})
++     * @Route({"en": "/weather", "es": "/clima"}, name="app_weather")
+      */
+     public function index()
+     {

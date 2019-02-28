@@ -1,0 +1,13 @@
+diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
+index 5dcc833..f657c63 100644
+--- a/src/Controller/WeatherController.php
++++ b/src/Controller/WeatherController.php
+@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
+ class WeatherController extends AbstractController
+ {
+     /**
+-     * @Route("/weather", name="app_weather")
++     * @Route("/{_locale}/weather", name="app_weather", requirements={"_locale": "%app_locales%"})
+      */
+     public function index()
+     {

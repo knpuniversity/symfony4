@@ -1,0 +1,13 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index aaaf9ad..ebf000c 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -5,7 +5,7 @@
+ # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+ parameters:
+     cache_adapter: cache.adapter.apcu
+-    locale: 'es'
++    locale: 'en'
+ 
+ services:
+     # default configuration for services in *this* file
