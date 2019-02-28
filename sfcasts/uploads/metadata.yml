@@ -17,8 +17,8 @@ chapters:
     - flysystem-defensive
     - flysystem-imagine-bundle
     - absolute-asset-paths
-    - article-references        # raw
-    - uploading-private-files   # raw
+    - article-references
+    - uploading-private-files
     - mime-type-validation      # raw
     - downloading-private-files # raw
     - dropzone                  # raw
