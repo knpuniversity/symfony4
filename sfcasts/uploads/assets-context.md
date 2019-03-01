@@ -4,6 +4,8 @@ When we go to the show page... of course, it doesn't work yet! We need to update
 the template. Copy the `uploaded_asset()` code, open `show.html.twig`...
 here it is, and paste.
 
+[[[ code('838e50ff5e') ]]]
+
 Easy! Reload the page now. Oh... it *still* doesn't work. Inspect element on the
 image. Ah, the path is right, but because there is no `/` at the beginning,
 and because the current URL is a sort of sub-directory, it's looking for the image
@@ -12,10 +14,15 @@ in the wrong place. If you hack in the `/`... it pops up!
 Adding this opening slash is actually one of the jobs of the `asset()` function.
 Try this: wrap this entire thing in `asset()`.
 
+[[[ code('4395bfba76') ]]]
+
 Now refresh. It works! But, wrapping `asset()` around `uploaded_asset()` is kind
-of annoying: can't we just handle this internally in `UploaderHelper`? After all,
-this method is supposed to return the public path to an asset: we shouldn't need
-to do any other "fixes" on the path after.
+of annoying: can't we just handle this internally in `UploaderHelper`? 
+
+[[[ code('bc66b2730a') ]]]
+
+After all, this method is supposed to return the public path to an asset: we 
+shouldn't need to do any other "fixes" on the path after.
 
 The easiest way to fix things would be to add a `/` at the beginning. That would
 totally work! But... allow me to nerd-out for a minute and explain an edge-case
@@ -36,8 +43,13 @@ Symfony: it's the service that's used internally by the `asset()` function to
 determine the subdirectory. In the constructor, add another argument:
 `RequestStackContext $requestStackContext`. I'll hit `Alt + Enter` and select
 initialize fields to create that property and set it.
+
+[[[ code('f30228f8f3') ]]]
+
 Down in `getPublicPath()`, `return $this->requestStackContext->getBasePath()`
-and *then* `'uploads/'.$path`.
+and *then* `'/uploads/'.$path`.
+
+[[[ code('b3e0f9f2b7') ]]]
 
 If our app lives at the root of the domain - like it does right now - this will
 just return and empty string. But if it lives at a subdirectory like `thespacebar`,
@@ -60,6 +72,8 @@ that is an *instance* of this class!
 Check it out: copy the full class name and then go into `config/services.yaml`.
 At the bottom, paste the full class name, go copy the service id they suggested,
 and say `@assets.context`.
+
+[[[ code('05bbe3670f') ]]]
 
 This creates a service alias. Basically, there is *now* a new service that lives
 in the container called `Symfony\Component\Asset\Context\RequestStackContext`.
