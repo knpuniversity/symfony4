@@ -95,7 +95,7 @@ rows in the table. That's not a problem on its own... but it *does* cause a prob
 when the migration tries to add the foreign key! The fix depends on your situation.
 If our app were already deployed to production, we would need to follow a 3-step
 process. First, make the property `nullable=true` at first and generate that migration.
-Second, run a script or query that can somehow set the `article_id` for all the
+Second, run a script or query that can somehow set the `author_id` for all the
 existing articles. And finally, change the property to `nullable=false` and
 generate one last migration.
 
