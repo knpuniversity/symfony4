@@ -48,7 +48,9 @@
                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
                     <p><span class="advertisement-text">New:</span> Space Ice Cream!</p>
                     {% set spaceIceCreamPrice = 9.99 %}
-                    <button class="btn btn-info js-purchase-btn">Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!</button>
+                    <button class="btn btn-info js-purchase-btn">
+                        Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!
+                    </button>
                 </div>
 
                 <div class="quote-space pb-2 pt-2 px-5">
