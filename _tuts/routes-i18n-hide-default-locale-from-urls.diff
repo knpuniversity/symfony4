@@ -1,26 +1,30 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 206865c..c3dc30b 100644
+index 206865c..2763a99 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
-@@ -24,7 +24,7 @@ class ArticleController extends AbstractController
+@@ -24,7 +24,11 @@ class ArticleController extends AbstractController
      }
  
      /**
 -     * @Route("/{_locale}", name="app_homepage", requirements={"_locale": "%app_locales%"})
-+     * @Route({"en": "/", "es": "/es"}, name="app_homepage", requirements={"_locale": "%app_locales%"})
++     * @Route({
++     *     "en": "/",
++     *     "es": "/es",
++     *     "uk": "/uk"
++     * }, name="app_homepage", requirements={"_locale": "%app_locales%"})
       */
      public function homepage(ArticleRepository $repository)
      {
 diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
-index ea37b58..b277e9e 100644
+index 6a051aa..086223e 100644
 --- a/src/Controller/WeatherController.php
 +++ b/src/Controller/WeatherController.php
-@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
- class WeatherController extends AbstractController
+@@ -10,7 +10,7 @@ class WeatherController extends AbstractController
  {
      /**
--     * @Route({"en": "/en/weather", "es": "/es/clima"}, name="app_weather", requirements={"_locale": "%app_locales%"})
-+     * @Route({"en": "/weather", "es": "/es/clima"}, name="app_weather", requirements={"_locale": "%app_locales%"})
-      */
-     public function index()
-     {
+      * @Route({
+-     *     "en": "/en/weather",
++     *     "en": "/weather",
+      *     "es": "/es/clima",
+      *     "uk": "/uk/pogoda"
+      * }, name="app_weather", requirements={"_locale": "%app_locales%"})

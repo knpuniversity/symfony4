@@ -1,0 +1,36 @@
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+new file mode 100644
+index 0000000..4bdab23
+--- /dev/null
++++ b/translations/messages.es.yaml
+@@ -0,0 +1,12 @@
++trending_quotes: 'Cotizaciones de Tendencias'
++ice_cream_promo.title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
++search.placeholder: Buscar
++search.button: Buscar
++page.weather.header: Pronóstico Universal
++page.weather.slogan: Tu guía de confianza sobre el clima del universo
++page.weather.earth.header: Cerca de la Tierra
++page.weather.earth.content: Así que estás buscando visitar la Tierra, excelente! El planeta disfrutará de temperaturas más cálidas que las normales, así que asegúrate de llevar tu protector solar. Las temperaturas en la órbita de la Tierra cerca de hoy alcanzarán un máximo de 50 grados Fahrenheit (10 grados centígrados).
++page.weather.cloud.header: Nube de Oort
++page.weather.cloud.content: Hoy estamos experimentando más brisa que el clima normal en la nube. Lo que significa que será un viaje más agitado de lo normal si está de paso. Prepárese para configurar los escudos máximos para minimizar el daño y un viaje al taller de reparaciones.
++page.weather.space.header: Espacio Profundo
++page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+new file mode 100644
+index 0000000..38ce363
+--- /dev/null
++++ b/translations/messages.uk.yaml
+@@ -0,0 +1,12 @@
++trending_quotes: 'Актуальні Цитати'
++ice_cream_promo.title.html: '<span class="advertisement-text">Новинка:</span> Космічне Морозиво!'
++search.placeholder: Пошук
++search.button: Пошук
++page.weather.header: Універсальний прогноз
++page.weather.slogan: Ваш Надійний Довідник по Погоді Всесвіту
++page.weather.earth.header: Земля Поруч
++page.weather.earth.content: Отже, ви хочете відвідати Землю, відмінно! Планета буде насолоджуватися теплішими, ніж звичайні температури, тому обов'язково візьміть сонцезахисний крем. Температура поблизу навколоземної орбіти сьогодні підніметься до 50 градусів за Фаренгейтом (10 градусів Цельсія).
++page.weather.cloud.header: Хмара Оорта
++page.weather.cloud.content: Сьогодні ми зазнаємо значного бризу, ніж зазвичай погода на хмарі. Це означає, що це буде трохи більше трясти ніж зазвичай при проходженні. Підготуйтеся встановити щити до максимуму, щоб мінімізувати пошкодження і поїздку в ремонтну майстерню.
++page.weather.space.header: Глибокий космос
++page.weather.space.content: Це неможливо заперечити. Сьогодні в глибокому космосі буде дуже холодно. Обов'язково пакуйте найтепліше пальто, шапку, рукавиці та чоботи. Я б рекомендував мінімізувати ваш час за межами судна сьогодні, якщо це можливо. Тримайте ваші рукавиці сухими, друзі!

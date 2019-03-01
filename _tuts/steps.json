@@ -86,8 +86,8 @@
             "description": null
         },
         {
-            "id": "translation-component-translate-into-spanish",
-            "name": "Translation Component: Translate into Spanish",
+            "id": "translation-component-translate-into-spanish-and-ukrainian",
+            "name": "Translation Component: Translate into Spanish and Ukrainian",
             "description": null
         },
         {
@@ -133,6 +133,11 @@
         {
             "id": "routes-i18n-use-locale-prefixes-for-annotation-import",
             "name": "Routes i18n: Use locale prefixes for annotation import",
+            "description": null
+        },
+        {
+            "id": "routes-i18n-utf-8-routes",
+            "name": "Routes i18n: UTF-8 routes",
             "description": null
         },
         {
@@ -199,7 +204,32 @@
             "id": "placeholders-translate-missing-to-spanish",
             "name": "Placeholders: Translate missing to Spanish",
             "description": null
+        },
+        {
+            "id": "pluralization-translate-without-pluralization",
+            "name": "Pluralization: Translate without pluralization",
+            "description": null
+        },
+        {
+            "id": "pluralization-pluralize-comments",
+            "name": "Pluralization: Pluralize comments",
+            "description": null
+        },
+        {
+            "id": "pluralization-use-only-count-placeholder",
+            "name": "Pluralization: Use only count placeholder",
+            "description": null
+        },
+        {
+            "id": "pluralization-translate-comments-count-on-article-show-page",
+            "name": "Pluralization: Translate comments count on Article show page",
+            "description": null
+        },
+        {
+            "id": "pluralization-translate-comments-into-ukrainian",
+            "name": "Pluralization: Translate comments into Ukrainian",
+            "description": null
         }
     ],
-    "sha": "6e6c05ff0191271d00a6dab42a6df16d69d6b48e"
+    "sha": "f3c0e777cadd200ef74d05c653bd57873cf5980c"
 }

@@ -1,5 +1,5 @@
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index 9d3c423..bcc7f15 100644
+index 4fe32e5..b95d11c 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
 @@ -1,5 +1,6 @@
@@ -9,8 +9,8 @@ index 9d3c423..bcc7f15 100644
  search.placeholder: Buscar
  search.button: Buscar
  page.weather.header: Pronóstico Universal
-@@ -12,3 +13,4 @@ page.weather.space.header: Espacio Profundo
- page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
+@@ -13,3 +14,4 @@ page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el e
  language.en: Inglés
  language.es: Español
+ language.uk: Ukraniano
 +footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'

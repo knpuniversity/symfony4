@@ -26,7 +26,7 @@ index ffdebfe..f600e9d 100644
 +    color: #FFF;
 +}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 1440b50..28128ac 100644
+index 1440b50..b0cb234 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -40,6 +40,22 @@
@@ -40,7 +40,7 @@ index 1440b50..28128ac 100644
 +                            <span class="caret"></span>
 +                        </a>
 +                        <ul class="dropdown-menu">
-+                            {% for locale in ['en', 'es'] %}
++                            {% for locale in ['en', 'es', 'uk'] %}
 +                                <li class="dropdown-item {% if app.request.locale == locale %}active{% endif %}">
 +                                    <a href="{{ path(app.request.get('_route', 'app_homepage'), app.request.get('_route_params', [])|merge({_locale: locale})) }}">
 +                                        {{ locale|capitalize }}

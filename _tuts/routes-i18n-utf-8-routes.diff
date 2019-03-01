@@ -1,0 +1,15 @@
+diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
+index 9fbad20..cb7567a 100644
+--- a/src/Controller/WeatherController.php
++++ b/src/Controller/WeatherController.php
+@@ -12,8 +12,8 @@ class WeatherController extends AbstractController
+      * @Route({
+      *     "en": "/weather",
+      *     "es": "/clima",
+-     *     "uk": "/pogoda"
+-     * }, name="app_weather")
++     *     "uk": "/погода"
++     * }, name="app_weather", options={"utf8": true})
+      */
+     public function index()
+     {

@@ -1,0 +1,25 @@
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index f70db23..80971b4 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -39,7 +39,7 @@
+     </div>
+     <div class="row">
+         <div class="col-sm-12">
+-            <h3><i class="pr-3 fa fa-comment"></i>{{ article.nonDeletedComments|length }} Comments</h3>
++            <h3><i class="pr-3 fa fa-comment"></i>{{ 'page.article.comments.count'|trans({'%count%': article.nonDeletedComments|length}) }}</h3>
+             <hr>
+ 
+             <div class="row mb-5">
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 1675417..39cb31e 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -11,6 +11,7 @@ page.weather.cloud.header: Oort Cloud
+ page.weather.cloud.content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
+ page.weather.space.header: Deep Space
+ page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!
++page.article.comments.count: '1 Comment|%count% Comments'
+ language.en: English
+ language.es: Spanish
+ language.uk: Ukrainian

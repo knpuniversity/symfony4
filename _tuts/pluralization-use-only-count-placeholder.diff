@@ -1,0 +1,23 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index ccd0aa8..4bbba64 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -24,7 +24,7 @@
+                         <img class="article-img" src="{{ asset(article.imagePath) }}">
+                         <div class="article-title d-inline-block pl-3 align-middle">
+                             <span>{{ article.title }}</span>
+-                            <small>({{ 'comments.count'|trans({'%number%': article.nonDeletedComments|length, '%count%': article.nonDeletedComments|length}) }})</small>
++                            <small>({{ 'comments.count'|trans({'%count%': article.nonDeletedComments|length}) }})</small>
+                             <br>
+                             {% for tag in article.tags %}
+                                 <small>
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 927b5c5..1675417 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -15,4 +15,4 @@ language.en: English
+ language.es: Spanish
+ language.uk: Ukrainian
+ footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'
+-comments.count: '1 comment|%number% comments'
++comments.count: '1 comment|%count% comments'

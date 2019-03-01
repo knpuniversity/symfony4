@@ -1,10 +1,10 @@
 diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
-index 0e1effd..29e7983 100644
+index cb7567a..4de99ee 100644
 --- a/src/Controller/WeatherController.php
 +++ b/src/Controller/WeatherController.php
-@@ -11,8 +11,9 @@ class WeatherController extends AbstractController
-     /**
-      * @Route({"en": "/weather", "es": "/clima"}, name="app_weather")
+@@ -15,8 +15,9 @@ class WeatherController extends AbstractController
+      *     "uk": "/погода"
+      * }, name="app_weather", options={"utf8": true})
       */
 -    public function index()
 +    public function index(Request $request)

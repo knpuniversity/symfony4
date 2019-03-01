@@ -9,26 +9,26 @@ index 5c5baa4..1501b7c 100644
 +    globals:
 +        app_locales_array: '%app_locales_array%'
 diff --git a/config/services.yaml b/config/services.yaml
-index 1f3633c..16e50ec 100644
+index 8542f04..a15b58b 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -7,6 +7,7 @@ parameters:
      cache_adapter: cache.adapter.apcu
      locale: 'en'
-     app_locales: 'en|es'
-+    app_locales_array: [en, es]
+     app_locales: 'en|es|uk'
++    app_locales_array: [en, es, uk]
  
  services:
      # default configuration for services in *this* file
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 28128ac..e1bc2a5 100644
+index b0cb234..e1bc2a5 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -47,7 +47,7 @@
                              <span class="caret"></span>
                          </a>
                          <ul class="dropdown-menu">
--                            {% for locale in ['en', 'es'] %}
+-                            {% for locale in ['en', 'es', 'uk'] %}
 +                            {% for locale in app_locales_array %}
                                  <li class="dropdown-item {% if app.request.locale == locale %}active{% endif %}">
                                      <a href="{{ path(app.request.get('_route', 'app_homepage'), app.request.get('_route_params', [])|merge({_locale: locale})) }}">
