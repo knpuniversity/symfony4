@@ -229,7 +229,12 @@
             "id": "pluralization-translate-comments-into-ukrainian",
             "name": "Pluralization: Translate comments into Ukrainian",
             "description": null
+        },
+        {
+            "id": "pluralization-specify-explicit-intervals",
+            "name": "Pluralization: Specify explicit intervals",
+            "description": null
         }
     ],
-    "sha": "f3c0e777cadd200ef74d05c653bd57873cf5980c"
+    "sha": "c52e474aa877acb29780206170ca02b63447f124"
 }
