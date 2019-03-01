@@ -14,7 +14,7 @@ index d24549a..6e540d9 100644
          </footer>
  
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 853e991..24ef545 100644
+index dcf1a3c..4b2de61 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -12,3 +12,4 @@ page.weather.space.header: Deep Space

@@ -21,11 +21,11 @@ index cb5a9b8..da5ce99 100644
      </div>
  {% endblock %}
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index cf55aa4..f2c3e6f 100644
+index b76b8f6..02df865 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -2,3 +2,12 @@ trending_quotes: 'Trending Quotes'
- ice_cream_promo_title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'
+ ice_cream_promo.title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'
  search.placeholder: Search
  search.button: Search
 +page.weather.header: Universal Forecast

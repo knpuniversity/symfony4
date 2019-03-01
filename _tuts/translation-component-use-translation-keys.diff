@@ -1,15 +1,17 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 18fe8c8..860c941 100644
+index 9449d9d..86eca9d 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
-@@ -46,13 +46,13 @@
+@@ -46,7 +46,7 @@
              <div class="col-sm-12 col-md-4 text-center">
                  <div class="ad-space mx-auto mt-1 pb-2 pt-2">
                      <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
 -                    <p>{{ '<span class="advertisement-text">New:</span> Space Ice Cream!'|trans }}</p>
-+                    <p>{{ 'ice_cream_promo_title'|trans }}</p>
++                    <p>{{ 'ice_cream_promo.title'|trans }}</p>
                      {% set spaceIceCreamPrice = 9.99 %}
-                     <button class="btn btn-info js-purchase-btn">Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!</button>
+                     <button class="btn btn-info js-purchase-btn">
+                         Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!
+@@ -54,7 +54,7 @@
                  </div>
  
                  <div class="quote-space pb-2 pt-2 px-5">
@@ -19,11 +21,11 @@ index 18fe8c8..860c941 100644
  
                      <p class="pt-4"><i class="fa fa-comment"></i> "Let's face it, space is a risky business. I always considered every launch a barely controlled explosion." <br>— <a href="https://en.wikipedia.org/wiki/Aaron_Cohen_(Deputy_NASA_administrator)">Aaron Cohen, NASA Administrator</a></p>
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 2dbe307..bfb4388 100644
+index 2dbe307..de19edb 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,2 +1,2 @@
 -'Trending Quotes': 'Trending Quotes'
 -'<span class="advertisement-text">New:</span> Space Ice Cream!': '__<span class="advertisement-text">New:</span> Space Ice Cream!'
 +'trending_quotes': 'Trending Quotes'
-+'ice_cream_promo_title': '<span class="advertisement-text">New:</span> Space Ice Cream!'
++'ice_cream_promo.title': '<span class="advertisement-text">New:</span> Space Ice Cream!'

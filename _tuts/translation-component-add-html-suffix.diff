@@ -1,21 +1,21 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index ff769f4..79b699e 100644
+index 09a755d..22b5bf9 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -46,7 +46,7 @@
              <div class="col-sm-12 col-md-4 text-center">
                  <div class="ad-space mx-auto mt-1 pb-2 pt-2">
                      <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
--                    <p>{{ 'ice_cream_promo_title'|trans|raw }}</p>
-+                    <p>{{ 'ice_cream_promo_title.html'|trans|raw }}</p>
+-                    <p>{{ 'ice_cream_promo.title'|trans|raw }}</p>
++                    <p>{{ 'ice_cream_promo.title.html'|trans|raw }}</p>
                      {% set spaceIceCreamPrice = 9.99 %}
-                     <button class="btn btn-info js-purchase-btn">Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!</button>
-                 </div>
+                     <button class="btn btn-info js-purchase-btn">
+                         Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index a81875d..212e5f6 100644
+index 034a22f..f41d9b4 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,2 +1,2 @@
  trending_quotes: 'Trending Quotes'
--ice_cream_promo_title: '<span class="advertisement-text">New:</span> Space Ice Cream!'
-+ice_cream_promo_title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'
+-ice_cream_promo.title: '<span class="advertisement-text">New:</span> Space Ice Cream!'
++ice_cream_promo.title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'

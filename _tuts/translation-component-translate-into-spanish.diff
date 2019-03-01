@@ -1,11 +1,11 @@
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
 new file mode 100644
-index 0000000..31de243
+index 0000000..4bdab23
 --- /dev/null
 +++ b/translations/messages.es.yaml
 @@ -0,0 +1,12 @@
 +trending_quotes: 'Cotizaciones de Tendencias'
-+ice_cream_promo_title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
++ice_cream_promo.title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
 +search.placeholder: Buscar
 +search.button: Buscar
 +page.weather.header: Pronóstico Universal

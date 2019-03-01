@@ -1,9 +1,9 @@
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index bfb4388..a81875d 100644
+index de19edb..034a22f 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,2 +1,2 @@
 -'trending_quotes': 'Trending Quotes'
--'ice_cream_promo_title': '<span class="advertisement-text">New:</span> Space Ice Cream!'
+-'ice_cream_promo.title': '<span class="advertisement-text">New:</span> Space Ice Cream!'
 +trending_quotes: 'Trending Quotes'
-+ice_cream_promo_title: '<span class="advertisement-text">New:</span> Space Ice Cream!'
++ice_cream_promo.title: '<span class="advertisement-text">New:</span> Space Ice Cream!'

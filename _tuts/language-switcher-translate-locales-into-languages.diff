@@ -20,7 +20,7 @@ index e1bc2a5..f244d09 100644
                                  </li>
                              {% endfor %}
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 212dd82..853e991 100644
+index 0a40fc4..dcf1a3c 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -10,3 +10,5 @@ page.weather.cloud.header: Oort Cloud
@@ -30,7 +30,7 @@ index 212dd82..853e991 100644
 +language.en: English
 +language.es: Spanish
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index 31de243..f21f0ef 100644
+index 4bdab23..9d3c423 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
 @@ -10,3 +10,5 @@ page.weather.cloud.header: Nube de Oort

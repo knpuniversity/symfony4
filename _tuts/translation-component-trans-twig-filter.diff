@@ -1,8 +1,8 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index a4010f6..7d6d972 100644
+index e530959..bb82761 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
-@@ -52,7 +52,7 @@
+@@ -54,7 +54,7 @@
                  </div>
  
                  <div class="quote-space pb-2 pt-2 px-5">

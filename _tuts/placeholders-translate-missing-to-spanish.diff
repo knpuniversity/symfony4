@@ -1,0 +1,16 @@
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index 9d3c423..bcc7f15 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -1,5 +1,6 @@
+ trending_quotes: 'Cotizaciones de Tendencias'
+ ice_cream_promo.title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
++ice_cream_promo.button: Compre ahora por %price%!
+ search.placeholder: Buscar
+ search.button: Buscar
+ page.weather.header: Pronóstico Universal
+@@ -12,3 +13,4 @@ page.weather.space.header: Espacio Profundo
+ page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
+ language.en: Inglés
+ language.es: Español
++footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'

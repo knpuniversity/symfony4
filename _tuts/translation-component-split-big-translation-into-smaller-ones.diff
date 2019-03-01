@@ -17,7 +17,7 @@ index cbfc7b0..ac46c32 100644
      </div>
  {% endblock %}
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index f2c3e6f..212dd82 100644
+index 02df865..0a40fc4 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -4,10 +4,9 @@ search.placeholder: Search

@@ -194,7 +194,12 @@
             "id": "placeholders-translate-buy-button-with-placeholders",
             "name": "Placeholders: Translate Buy button with placeholders",
             "description": null
+        },
+        {
+            "id": "placeholders-translate-missing-to-spanish",
+            "name": "Placeholders: Translate missing to Spanish",
+            "description": null
         }
     ],
-    "sha": "fae9aa86bc3a6d6f469de39d407a7bfecfeb37a9"
+    "sha": "6e6c05ff0191271d00a6dab42a6df16d69d6b48e"
 }
