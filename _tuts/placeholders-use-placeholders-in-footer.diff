@@ -1,0 +1,27 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 6e540d9..903e22f 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -97,7 +97,11 @@
+         <footer class="footer">
+             <div class="container text-center">
+                 <span class="text-muted">
+-                    {% trans %}footer.html{% endtrans %}
++                    {% trans with {
++                        '%icon%': '<i class="fa fa-heart" style="color: red;"></i>',
++                        '%link_start%': '<a href="https://symfonycasts.com">',
++                        '%link_end%': '</a>',
++                    } %}footer.html{% endtrans %}
+                 </span>
+             </div>
+         </footer>
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 24ef545..7bd512e 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -12,4 +12,4 @@ page.weather.space.header: Deep Space
+ page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!
+ language.en: English
+ language.es: Spanish
+-footer.html: 'Made with <i class="fa fa-heart" style="color: red;"></i> by the guys and gals at <a href="https://symfonycasts.com">SymfonyCasts</a>'
++footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'

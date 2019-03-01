@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index fffe99c..da482b3 100644
+index 860c941..ff769f4 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -46,7 +46,7 @@
@@ -8,6 +8,6 @@ index fffe99c..da482b3 100644
                      <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
 -                    <p>{{ 'ice_cream_promo_title'|trans }}</p>
 +                    <p>{{ 'ice_cream_promo_title'|trans|raw }}</p>
-                     <button class="btn btn-info js-purchase-btn">Buy Now for $9.99!</button>
+                     {% set spaceIceCreamPrice = 9.99 %}
+                     <button class="btn btn-info js-purchase-btn">Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!</button>
                  </div>
- 

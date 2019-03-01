@@ -1,14 +1,15 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index e14a847..fffe99c 100644
+index 18fe8c8..860c941 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
-@@ -46,12 +46,12 @@
+@@ -46,13 +46,13 @@
              <div class="col-sm-12 col-md-4 text-center">
                  <div class="ad-space mx-auto mt-1 pb-2 pt-2">
                      <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
 -                    <p>{{ '<span class="advertisement-text">New:</span> Space Ice Cream!'|trans }}</p>
 +                    <p>{{ 'ice_cream_promo_title'|trans }}</p>
-                     <button class="btn btn-info js-purchase-btn">Buy Now for $9.99!</button>
+                     {% set spaceIceCreamPrice = 9.99 %}
+                     <button class="btn btn-info js-purchase-btn">Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!</button>
                  </div>
  
                  <div class="quote-space pb-2 pt-2 px-5">

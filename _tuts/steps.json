@@ -179,7 +179,22 @@
             "id": "language-switcher-render-metatags-for-seo",
             "name": "Language switcher: Render metatags for SEO",
             "description": null
+        },
+        {
+            "id": "placeholders-translate-footer",
+            "name": "Placeholders: Translate footer",
+            "description": null
+        },
+        {
+            "id": "placeholders-use-placeholders-in-footer",
+            "name": "Placeholders: Use placeholders in footer",
+            "description": null
+        },
+        {
+            "id": "placeholders-translate-buy-button-with-placeholders",
+            "name": "Placeholders: Translate Buy button with placeholders",
+            "description": null
         }
     ],
-    "sha": "ec8aa959dc0ef8ae37939fb949c46f943ea789eb"
+    "sha": "fae9aa86bc3a6d6f469de39d407a7bfecfeb37a9"
 }

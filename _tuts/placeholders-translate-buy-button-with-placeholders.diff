@@ -1,0 +1,26 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 79b699e..318014e 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -48,7 +48,9 @@
+                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
+                     <p>{{ 'ice_cream_promo_title.html'|trans|raw }}</p>
+                     {% set spaceIceCreamPrice = 9.99 %}
+-                    <button class="btn btn-info js-purchase-btn">Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!</button>
++                    <button class="btn btn-info js-purchase-btn">
++                        {{ 'ice_cream_promo.button'|trans({'%price%': '$'~spaceIceCreamPrice|number_format(2)}) }}
++                    </button>
+                 </div>
+ 
+                 <div class="quote-space pb-2 pt-2 px-5">
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 7bd512e..a343c52 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -1,5 +1,6 @@
+ trending_quotes: 'Trending Quotes'
+ ice_cream_promo_title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'
++ice_cream_promo.button: Buy Now for %price%!
+ search.placeholder: Search
+ search.button: Search
+ page.weather.header: Universal Forecast
