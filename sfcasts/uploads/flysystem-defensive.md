@@ -1,12 +1,12 @@
 # Flysystem: Streaming & Defensive Coding
 
-There are a few minor problems with our new `Flysystem` integration that I want
-to clean up before they bit us!
+There are a few minor problems with our new `Flysystem` integration. Let's clean
+them up before they bite us!
 
 ## Streaming
 
-The first issue is that using `file_get_contents()` eats memory: it reads the entire
-contents of the file into PHP's memory. That might not be a huge deal for tiny files,
+The first is that using `file_get_contents()` eats memory: it reads the entire
+contents of the file into PHP's memory. That's not a huge deal for tiny files,
 but it *could* be a big deal if you start uploading bigger stuff. And, it's just
 not necessary.
 
@@ -15,58 +15,56 @@ like `->write()` or `->update()`, you should use `->writeStream()` or `->updateS
 
 It works the same, except that we need to pass a *stream* instead of the contents.
 Create the stream with `$stream = fopen($file->getPathname())` and, because we just
-need to *read* the file, you can use the `r` flag. Now pass stream instead of the
-contents.
+need to *read* the file, use the `r` flag. Now, pass stream instead of the contents.
 
-Yea... that's it! Same thing, but no memory issues. After, we *do* need to add one
-more detail: if `is_resource($stream)`, then `fclose($stream)`. The "if" is needed
-because, when you use *some* Flysystem adapters, the adapter itself closes the
-stream.
+Yea... that's it! Same thing, but no memory issues. But we *do* need to add one
+more detail after: if `is_resource($stream)`, then `fclose($stream)`. The "if"
+is needed because *some* Flysystem adapters close the stream by themselves.
 
 ## Deleting the Old File
 
-Ok, for problem number to, go back to `/admin/article`. Log back in with password
+Ok, for problem number two, go back to `/admin/article`. Log back in with password
 `engage`, edit an article, and go select an image - how about `astronaut.jpg`. Hit
 update and... it works! So what's the problem? Well, we just *replaced* an existing
 image with this new one. Does the old file still exist in our uploads directory?
-Absolutely - and it probably shouldn't. When an article image is updated, let's
+Absolutely! But it probably shouldn't. When an article image is updated, let's
 delete the old file.
 
 In `UploaderHelper`, add a second argument - a *nullable* string argument called
 `$existingFilename`. This is nullable because sometimes there may *not* be an existing
-file we need to delete. At the bottom, it's beautifully simple: if an
-`$existingFilename` was passed, then `$this->filesystem->delete()` and pass that
+file to delete. At the bottom, it's beautifully simple: if an `$existingFilename`
+was passed, then `$this->filesystem->delete()` and pass that
 the full path, which will be `self::ARTICLE_IMAGE.'/'.$existingFilename`.
 
 Done! You can see the astronaut file that we're using right now. Oh, but first,
 head over to `ArticleAdminController`: we need to pass this new argument.
 Let's see - this is the `edit()` action - so pass `$article->getImageFilename()`.
 In `new()`, you can really just pass `null` - there will *not* be an article image.
-But I'll pass `getImageFilename()` just for consistency.
+But I'll pass `getImageFilename()` to be consistent.
 
 Oh, and there's one other place we need update: `ArticleFixtures`. Down here, just
-pass `null`: we are never updating some existing image.
+pass `null`: we are never updating.
 
-Let's try it! Here is the current astronaut image. Now, move over, upload `rocket.jpg`
+Try it! Here is the current astronaut image. Now, move over, upload `rocket.jpg`
 this time and update! Back in the directory... there's rocket and astronaut is gone!
 Love it!
 
 ## Avoiding Errors
 
-Now, in a *perfect* system, the existing file should *always* exist, right? I mean,
-how else would it get there? But what if we're developing locally - and maybe we're
-clearing out the uploads directory during out tests. In that case, it's possible
-that the existing file is *not* there.
+In a *perfect* system, the existing file will *always* exist, right? I mean,
+how could a filename get set on the entity... without being uploaded? Well, what
+if we're developing locally... and maybe we clear out the uploads directory to
+test something - or we clear out the uploads directory in our automated tests.
+What would happen?
 
-Try this: empty the `uploads/` directory. Now, upload the form. The image still
-shows up because we're looking at the thumbnail file - but the original image is
-totally gone. Now select `earth.jpeg`, update and... it fails! It fails on
-`$this->filesystem->delete()`.
+Let's find it! Empty `uploads/`. Back in our browser, the image preview still
+shows up because this is rendering a thumbnail file - which we didn't delete -
+but the original image is totally gone. Select `earth.jpeg`, update and... it fails! It fails on `$this->filesystem->delete()`.
 
 This *may* be the behavior you want: if something weird happens and the old file
-is gone, *please* explode so I know. But, I'm going to propose something slightly
-different. If the old file doesn't exist for some reason, I don't want the entire
-process to fail - it really doesn't need to.
+is gone, *please* explode so that I know. But, I'm going to propose something slightly
+less hardcore. If the old file doesn't exist for some reason, I don't want the entire
+process to fail... it really doesn't need to.
 
 The error from Flysystem is a `FileNotFoundException` from  `League\Flysystem`.
 In `UploaderHelper` wrap that line in a try-catch. Let's catch that
@@ -76,9 +74,9 @@ In `UploaderHelper` wrap that line in a try-catch. Let's catch that
 
 That'll fix that problem... but I don't *love* doing this. Honestly, I *hate*
 silencing errors. One of the benefits of throwing an exception is that we can
-configure Symfony to notify us via the logger. At SymfonyCasts, we send all errors
-to a Slack channel so we know if something weird is going on... not that we *ever*
-have bugs. Pfff.
+configure Symfony to notify us of errors via the logger. At SymfonyCasts, we send
+all errors to a Slack channel so we know if something weird is going on... not that
+we *ever* have bugs. Pfff.
 
 Here's what I propose: a *soft* failure: we don't fail, but we *do* log that an
 error happened. Back on the constructor, autowire a new argument:
@@ -96,7 +94,7 @@ Move over and re-POST the form. *Now* it works. And to prove the log worked,
 check out the terminal tab where we're running the Symfony web server: it's streaming
 all of our logs here. Scroll up and... there it is!
 
-> Old upload a file "rocket..." was missing when trying to delete
+> Old uploaded file "rocket..." was missing when trying to delete
 
 ## Checking for Filesystem Failure
 
@@ -109,12 +107,11 @@ method just returns false!
 
 Actually, that's not *completely* true - it depends on your adapter. For example,
 if you're using the S3 adapter and there's a network error, it *may* throw its
-own type of exception. But, the point is this: if any of the Filesystem methods
+own type of exception. But the point is this: if any of the Filesystem methods
 fail, you might *not* get an exception: it might just return false.
 
-
 For that reason, I like to code defensively. Assign this to a `$result` variable.
-Then say: `if ($results === false)`, let's throw our own exception - I *do* want
+Then say: `if ($result === false)`, let's throw our own exception - I *do* want
 to know that something failed:
 
 > Could not write uploaded file "%s"
@@ -125,10 +122,11 @@ and pass `$newFilename`. Copy that and do the same for `delete`:
 
 with `$existingFilename`. I'm *throwing* this error instead of just logging something
 because this would *truly* be an exceptional case - we shouldn't let things continue.
+But, it's your call.
 
-Let's make sure this all works - move over and select the `stars` file - or...
+Let's make sure this all works: move over and select the `stars` file - or...
 actually the "Earth from Moon" photo. Update and... got it!
 
 Next: let's teach LiipImagineBundle to play nice with Flysytem. After all, if we
 move Flysystem to S3, but LiipImagineBundle is still looking for the source files
-locally... well... it's not going to work great.
+locally... well... we're not going to have a great time.
