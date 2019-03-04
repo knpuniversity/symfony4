@@ -1,0 +1,21 @@
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index d38d576..7b87759 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -1,6 +1,6 @@
+ {{ form_start(articleForm) }}
+     {{ form_row(articleForm.title, {
+-        label: 'Article title'
++        label: 'form.article.title'|trans
+     }) }}
+     {{ form_row(articleForm.author) }}
+     {{ form_row(articleForm.location, {
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index fb58be7..47d9490 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -19,3 +19,4 @@ footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%
+ comments.count: '1 comment|%count% comments'
+ flash.success.article.created: Article Created! Knowledge is power!
+ flash.success.article.updated: Article Updated! Inaccuracies squashed!
++form.article.title: Article title

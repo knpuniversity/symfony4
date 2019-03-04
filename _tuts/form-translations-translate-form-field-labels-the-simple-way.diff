@@ -1,0 +1,13 @@
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 47d9490..a148ad3 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -20,3 +20,8 @@ comments.count: '1 comment|%count% comments'
+ flash.success.article.created: Article Created! Knowledge is power!
+ flash.success.article.updated: Article Updated! Inaccuracies squashed!
+ form.article.title: Article title
++Content: Content
++Author: Author
++Location: Location
++Specific location name: Specific location name
++Published at: Published at

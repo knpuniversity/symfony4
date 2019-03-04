@@ -1,0 +1,25 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index cf03a65..4f55e85 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
+ use Gedmo\Mapping\Annotation as Gedmo;
+ use Gedmo\Timestampable\Traits\TimestampableEntity;
+ use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
++use Symfony\Component\PropertyAccess\PropertyAccess;
+ use Symfony\Component\Validator\Constraints as Assert;
+ use Symfony\Component\Validator\Context\ExecutionContextInterface;
+ 
+@@ -77,6 +78,12 @@ class Article
+         $this->tags = new ArrayCollection();
+     }
+ 
++    public function __call($method, $arguments)
++    {
++        return PropertyAccess::createPropertyAccessor()
++            ->getValue($this->translate(), $method);
++    }
++
+     public function getId()
+     {
+         return $this->id;

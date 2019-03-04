@@ -1,0 +1,35 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index 62ea62a..af22859 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -43,7 +43,7 @@ class ArticleController extends AbstractController
+     {
+         $article = $this->getDoctrine()
+             ->getRepository(Article::class)
+-            ->findOneBySlugAndLocale($slug, $request->getLocale());
++            ->findOneBySlugAndLocale($slug, $request->getLocale(), $request->getDefaultLocale());
+         if (!$article) {
+             throw $this->createNotFoundException('Article not found!');
+         }
+diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
+index 8398192..0a043e5 100644
+--- a/src/Repository/ArticleRepository.php
++++ b/src/Repository/ArticleRepository.php
+@@ -20,14 +20,15 @@ class ArticleRepository extends ServiceEntityRepository
+         parent::__construct($registry, Article::class);
+     }
+ 
+-    public function findOneBySlugAndLocale(string $slug, string $locale): ?Article
++    public function findOneBySlugAndLocale(string $slug, string $locale, string $defaultLocale): ?Article
+     {
+         return $this->createQueryBuilder('a')
+             ->innerJoin('a.translations', 't')
+             ->where('t.slug = :slug')
+-            ->andWhere('t.locale = :locale')
++            ->andWhere('t.locale = :locale OR t.locale = :default_locale')
+             ->setParameter('slug', $slug)
+             ->setParameter('locale', $locale)
++            ->setParameter('default_locale', $defaultLocale)
+             ->setMaxResults(1)
+             ->getQuery()
+             ->getOneOrNullResult();

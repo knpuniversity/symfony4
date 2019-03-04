@@ -1,0 +1,130 @@
+diff --git a/composer.json b/composer.json
+index 17124fb..eda2eef 100644
+--- a/composer.json
++++ b/composer.json
+@@ -4,6 +4,7 @@
+     "require": {
+         "php": "^7.1.3",
+         "ext-iconv": "*",
++        "knplabs/doctrine-behaviors": "^1.6",
+         "knplabs/knp-markdown-bundle": "^1.7",
+         "knplabs/knp-paginator-bundle": "^2.7",
+         "knplabs/knp-time-bundle": "^1.8",
+diff --git a/composer.lock b/composer.lock
+index 0c2f506..1986ac1 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "f9e1b5cef9b90e1e6d92dbfdba5f6b16",
++    "content-hash": "b73457c22881819699341dbb06ba377d",
+     "packages": [
+         {
+             "name": "behat/transliterator",
+@@ -1600,6 +1600,72 @@
+             ],
+             "time": "2014-01-12T16:20:24+00:00"
+         },
++        {
++            "name": "knplabs/doctrine-behaviors",
++            "version": "1.6.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/KnpLabs/DoctrineBehaviors.git",
++                "reference": "9cc036ee32483c306fb32b4efbf33014ddfb654f"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/KnpLabs/DoctrineBehaviors/zipball/9cc036ee32483c306fb32b4efbf33014ddfb654f",
++                "reference": "9cc036ee32483c306fb32b4efbf33014ddfb654f",
++                "shasum": ""
++            },
++            "require": {
++                "behat/transliterator": "~1.0",
++                "doctrine/common": ">=2.2",
++                "php": "~7.0"
++            },
++            "require-dev": {
++                "doctrine/orm": ">=2.4.5",
++                "ext-pdo_mysql": "*",
++                "ext-pdo_pgsql": "*",
++                "ext-pdo_sqlite": "*",
++                "hexmedia/yaml-linter": "~0.1",
++                "jakub-onderka/php-parallel-lint": "~0.8",
++                "phpunit/phpunit": "~4.8"
++            },
++            "suggest": {
++                "symfony/framework-bundle": "To be able to use it as a bundle"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.5.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Knp\\DoctrineBehaviors\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Knplabs",
++                    "homepage": "http://knplabs.com"
++                }
++            ],
++            "description": "Doctrine2 behavior traits",
++            "homepage": "http://knplabs.com",
++            "keywords": [
++                "Blameable",
++                "behaviors",
++                "doctrine2",
++                "filterable",
++                "softdeletable",
++                "timestampable",
++                "translatable",
++                "tree"
++            ],
++            "time": "2018-11-13T10:52:03+00:00"
++        },
+         {
+             "name": "knplabs/knp-components",
+             "version": "v1.3.10",
+diff --git a/config/bundles.php b/config/bundles.php
+index 9c8aa9d..ce89916 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -20,4 +20,5 @@ return [
+     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
+     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
++    Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle::class => ['all' => true],
+ ];
+diff --git a/config/packages/knp_doctrine_behaviors.yaml b/config/packages/knp_doctrine_behaviors.yaml
+new file mode 100644
+index 0000000..1738f47
+--- /dev/null
++++ b/config/packages/knp_doctrine_behaviors.yaml
+@@ -0,0 +1,2 @@
++knp_doctrine_behaviors:
++    translatable: true
+diff --git a/symfony.lock b/symfony.lock
+index 1227bf6..df9fec0 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -110,6 +110,9 @@
+     "jdorn/sql-formatter": {
+         "version": "v1.2.17"
+     },
++    "knplabs/doctrine-behaviors": {
++        "version": "1.6.0"
++    },
+     "knplabs/knp-components": {
+         "version": "v1.3.10"
+     },

@@ -1,0 +1,18 @@
+diff --git a/src/Entity/ArticleTranslation.php b/src/Entity/ArticleTranslation.php
+new file mode 100644
+index 0000000..675e96f
+--- /dev/null
++++ b/src/Entity/ArticleTranslation.php
+@@ -0,0 +1,12 @@
++<?php
++
++namespace App\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * @ORM\Entity()
++ */
++class ArticleTranslation
++{
++}

@@ -1,0 +1,30 @@
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index 80971b4..b3354dc 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -1,5 +1,7 @@
+ {% extends 'content_base.html.twig' %}
+ 
++{% set _translatableArticle = article %}
++
+ {% block title %}Read: {{ article.title }}{% endblock %}
+ 
+ {% block content_body %}
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 903e22f..6f099e7 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -54,7 +54,12 @@
+                         <ul class="dropdown-menu">
+                             {% for locale in app_locales_array %}
+                                 <li class="dropdown-item {% if app.request.locale == locale %}active{% endif %}">
+-                                    <a href="{{ path(app.request.get('_route', 'app_homepage'), app.request.get('_route_params', [])|merge({_locale: locale})) }}">
++                                    {% if app.request.get('_route') == 'article_show' %}
++                                        {% set localizedPath = path('article_show', {slug: _translatableArticle.translate(locale).slug, _locale: locale}) %}
++                                    {% else %}
++                                        {% set localizedPath = path(app.request.get('_route', 'app_homepage'), app.request.get('_route_params', [])|merge({_locale: locale})) %}
++                                    {% endif %}
++                                    <a href="{{ localizedPath }}">
+                                         {{ ('language.'~locale)|trans([], null, locale) }}
+                                     </a>
+                                 </li>

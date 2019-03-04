@@ -1,0 +1,27 @@
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index ba7f782..78efb64 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
+@@ -26,8 +26,10 @@ class ArticleFixtures extends BaseFixture implements DependentFixtureInterface
+     {
+         $this->createMany(10, 'main_articles', function($count) use ($manager) {
+             $article = new Article();
+-            $article->translate()->setTitle($this->faker->randomElement(self::$articleTitles));
+-            $article->translate()->setContent(<<<EOF
++            $randomTitle = $this->faker->randomElement(self::$articleTitles);
++            foreach (['en', 'es', 'uk'] as $locale) {
++                $article->translate($locale)->setTitle($locale.' - '.$randomTitle);
++                $article->translate($locale)->setContent($locale.' - '.<<<EOF
+ Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
+ lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
+ labore minim pork belly spare ribs cupim short loin in. Elit exercitation eiusmod dolore cow
+@@ -45,7 +47,8 @@ strip steak pork belly aliquip capicola officia. Labore deserunt esse chicken lo
+ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim capicola irure pancetta chuck
+ fugiat.
+ EOF
+-            );
++                );
++            }
+             $article->mergeNewTranslations();
+ 
+             // publish most articles

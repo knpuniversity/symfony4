@@ -1,0 +1,46 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 5cec421..595c10f 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -28,7 +28,7 @@ class Article
+ 
+     /**
+      * @ORM\Column(type="string", length=255)
+-     * @Assert\NotBlank(message="Get creative and think of a title!")
++     * @Assert\NotBlank(message="article.title.not_blank")
+      */
+     private $title;
+ 
+@@ -72,7 +72,7 @@ class Article
+     /**
+      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+      * @ORM\JoinColumn(nullable=false)
+-     * @Assert\NotNull(message="Please set an author")
++     * @Assert\NotNull(message="article.author.not_blank")
+      */
+     private $author;
+ 
+diff --git a/translations/validators.en.yaml b/translations/validators.en.yaml
+new file mode 100644
+index 0000000..d5fbb07
+--- /dev/null
++++ b/translations/validators.en.yaml
+@@ -0,0 +1,2 @@
++article.title.not_blank: Get creative and think of a title!
++article.author.not_blank: Please set an author
+diff --git a/translations/validators.es.yaml b/translations/validators.es.yaml
+new file mode 100644
+index 0000000..744f2be
+--- /dev/null
++++ b/translations/validators.es.yaml
+@@ -0,0 +1,2 @@
++article.title.not_blank: ¡Sea creativo y piense en un título!
++article.author.not_blank: Por favor establecer un autor
+diff --git a/translations/validators.uk.yaml b/translations/validators.uk.yaml
+new file mode 100644
+index 0000000..e060098
+--- /dev/null
++++ b/translations/validators.uk.yaml
+@@ -0,0 +1,2 @@
++article.title.not_blank: Будьте творчими і придумайте назву!
++article.author.not_blank: Будь ласка, вкажіть автора

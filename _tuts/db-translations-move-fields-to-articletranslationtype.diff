@@ -1,0 +1,58 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 7626170..f420c9d 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -32,14 +32,6 @@ class ArticleFormType extends AbstractType
+         $isEdit = $article && $article->getId();
+ 
+         $builder
+-            ->add('title', TextType::class, [
+-                'label' => 'form.article.title',
+-                'help' => 'form.article.title.help'
+-            ])
+-            ->add('content', null, [
+-                'label' => 'form.article.content',
+-                'rows' => 15
+-            ])
+             ->add('author', UserSelectTextType::class, [
+                 'label' => 'form.article.author',
+                 'disabled' => $isEdit
+diff --git a/src/Form/ArticleTranslationType.php b/src/Form/ArticleTranslationType.php
+new file mode 100644
+index 0000000..4021cd3
+--- /dev/null
++++ b/src/Form/ArticleTranslationType.php
+@@ -0,0 +1,33 @@
++<?php
++
++namespace App\Form;
++
++use App\Entity\ArticleTranslation;
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\Extension\Core\Type\TextType;
++use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolver;
++
++class ArticleTranslationType extends AbstractType
++{
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        $builder
++            ->add('title', TextType::class, [
++                'label' => 'form.article.title',
++                'help' => 'form.article.title.help'
++            ])
++            ->add('content', null, [
++                'label' => 'form.article.content',
++                'rows' => 15
++            ])
++        ;
++    }
++
++    public function configureOptions(OptionsResolver $resolver)
++    {
++        $resolver->setDefaults([
++            'data_class' => ArticleTranslation::class,
++        ]);
++    }
++}

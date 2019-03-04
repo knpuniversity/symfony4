@@ -1,0 +1,12 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 2a2aa3e..47c3c12 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -54,6 +54,7 @@ class ArticleAdminController extends BaseController
+ 
+         $form->handleRequest($request);
+         if ($form->isSubmitted() && $form->isValid()) {
++            $article->mergeNewTranslations();
+             $em->persist($article);
+             $em->flush();
+ 

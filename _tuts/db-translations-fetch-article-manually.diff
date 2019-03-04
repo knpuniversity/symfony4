@@ -1,0 +1,53 @@
+diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
+index c265b81..62ea62a 100644
+--- a/src/Controller/ArticleController.php
++++ b/src/Controller/ArticleController.php
+@@ -7,6 +7,7 @@ use App\Repository\ArticleRepository;
+ use App\Service\SlackClient;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Psr\Log\LoggerInterface;
++use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\JsonResponse;
+@@ -38,8 +39,15 @@ class ArticleController extends AbstractController
+     /**
+      * @Route("/news/{slug}", name="article_show")
+      */
+-    public function show(Article $article, SlackClient $slack)
++    public function show(Request $request, string $slug, SlackClient $slack)
+     {
++        $article = $this->getDoctrine()
++            ->getRepository(Article::class)
++            ->findOneBySlugAndLocale($slug, $request->getLocale());
++        if (!$article) {
++            throw $this->createNotFoundException('Article not found!');
++        }
++
+         if ($article->getSlug() === 'khaaaaaan') {
+             $slack->sendMessage('Kahn', 'Ah, Kirk, my old friend...');
+         }
+diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
+index 7795362..8398192 100644
+--- a/src/Repository/ArticleRepository.php
++++ b/src/Repository/ArticleRepository.php
+@@ -20,6 +20,19 @@ class ArticleRepository extends ServiceEntityRepository
+         parent::__construct($registry, Article::class);
+     }
+ 
++    public function findOneBySlugAndLocale(string $slug, string $locale): ?Article
++    {
++        return $this->createQueryBuilder('a')
++            ->innerJoin('a.translations', 't')
++            ->where('t.slug = :slug')
++            ->andWhere('t.locale = :locale')
++            ->setParameter('slug', $slug)
++            ->setParameter('locale', $locale)
++            ->setMaxResults(1)
++            ->getQuery()
++            ->getOneOrNullResult();
++    }
++
+     /**
+      * @return Article[]
+      */

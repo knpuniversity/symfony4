@@ -1,0 +1,31 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index cee4cc7..7626170 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -48,9 +48,9 @@ class ArticleFormType extends AbstractType
+                 'label' => 'form.article.location',
+                 'placeholder' => 'form.article.location.placeholder',
+                 'choices' => [
+-                    'The Solar System' => 'solar_system',
+-                    'Near a star' => 'star',
+-                    'Interstellar Space' => 'interstellar_space'
++                    'form.article.location.choices.solar_system' => 'solar_system',
++                    'form.article.location.choices.star' => 'star',
++                    'form.article.location.choices.interstellar_space' => 'interstellar_space'
+                 ],
+                 'required' => false,
+             ])
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 3b50b68..5acea57 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -25,6 +25,9 @@ form.article.content: Content
+ form.article.author: Author
+ form.article.location: Location
+ form.article.location.placeholder: Choose a location
++form.article.location.choices.solar_system: The Solar System
++form.article.location.choices.star: Near a star
++form.article.location.choices.interstellar_space: Interstellar Space
+ form.article.specific_location: Specific location name
+ form.article.specific_location.placeholder: Where exactly?
+ form.article.published_at: Published at

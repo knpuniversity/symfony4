@@ -1,0 +1,60 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index 69781fd..2a2aa3e 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\Routing\Annotation\Route;
++use Symfony\Contracts\Translation\TranslatorInterface;
+ 
+ class ArticleAdminController extends BaseController
+ {
+@@ -18,7 +19,7 @@ class ArticleAdminController extends BaseController
+      * @Route("/admin/article/new", name="admin_article_new")
+      * @IsGranted("ROLE_ADMIN_ARTICLE")
+      */
+-    public function new(EntityManagerInterface $em, Request $request)
++    public function new(TranslatorInterface $translator, EntityManagerInterface $em, Request $request)
+     {
+         $form = $this->createForm(ArticleFormType::class);
+ 
+@@ -30,7 +31,8 @@ class ArticleAdminController extends BaseController
+             $em->persist($article);
+             $em->flush();
+ 
+-            $this->addFlash('success', 'Article Created! Knowledge is power!');
++            $message = $translator->trans('flash.success.article.created');
++            $this->addFlash('success', $message);
+ 
+             return $this->redirectToRoute('admin_article_list');
+         }
+@@ -44,7 +46,7 @@ class ArticleAdminController extends BaseController
+      * @Route("/admin/article/{id}/edit", name="admin_article_edit")
+      * @IsGranted("MANAGE", subject="article")
+      */
+-    public function edit(Article $article, Request $request, EntityManagerInterface $em)
++    public function edit(TranslatorInterface $translator, Article $article, Request $request, EntityManagerInterface $em)
+     {
+         $form = $this->createForm(ArticleFormType::class, $article, [
+             'include_published_at' => true
+@@ -55,7 +57,8 @@ class ArticleAdminController extends BaseController
+             $em->persist($article);
+             $em->flush();
+ 
+-            $this->addFlash('success', 'Article Updated! Inaccuracies squashed!');
++            $message = $translator->trans('flash.success.article.created');
++            $this->addFlash('success', $message);
+ 
+             return $this->redirectToRoute('admin_article_edit', [
+                 'id' => $article->getId(),
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 6dcf7a9..fb58be7 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -17,3 +17,5 @@ language.es: Spanish
+ language.uk: Ukrainian
+ footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'
+ comments.count: '1 comment|%count% comments'
++flash.success.article.created: Article Created! Knowledge is power!
++flash.success.article.updated: Article Updated! Inaccuracies squashed!

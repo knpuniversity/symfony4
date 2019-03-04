@@ -1,0 +1,176 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index b2f7f01..cf03a65 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -28,23 +28,6 @@ class Article
+      */
+     private $id;
+ 
+-    /**
+-     * @ORM\Column(type="string", length=255)
+-     * @Assert\NotBlank(message="article.title.not_blank")
+-     */
+-    private $title;
+-
+-    /**
+-     * @ORM\Column(type="string", length=100, unique=true)
+-     * @Gedmo\Slug(fields={"title"})
+-     */
+-    private $slug;
+-
+-    /**
+-     * @ORM\Column(type="text", nullable=true)
+-     */
+-    private $content;
+-
+     /**
+      * @ORM\Column(type="datetime", nullable=true)
+      */
+@@ -99,43 +82,6 @@ class Article
+         return $this->id;
+     }
+ 
+-    public function getTitle(): ?string
+-    {
+-        return $this->title;
+-    }
+-
+-    public function setTitle(string $title): self
+-    {
+-        $this->title = $title;
+-
+-        return $this;
+-    }
+-
+-
+-    public function getSlug(): ?string
+-    {
+-        return $this->slug;
+-    }
+-
+-    public function setSlug(string $slug): self
+-    {
+-        $this->slug = $slug;
+-
+-        return $this;
+-    }
+-
+-    public function getContent(): ?string
+-    {
+-        return $this->content;
+-    }
+-
+-    public function setContent(?string $content): self
+-    {
+-        $this->content = $content;
+-
+-        return $this;
+-    }
+-
+     public function getPublishedAt(): ?\DateTimeInterface
+     {
+         return $this->publishedAt;
+@@ -268,18 +214,6 @@ class Article
+         return $this;
+     }
+ 
+-    /**
+-     * @Assert\Callback
+-     */
+-    public function validate(ExecutionContextInterface $context, $payload)
+-    {
+-        if (stripos($this->getTitle(), 'the borg') !== false) {
+-            $context->buildViolation('Um.. the Bork kinda makes us nervous')
+-                ->atPath('title')
+-                ->addViolation();
+-        }
+-    }
+-
+     public function getLocation(): ?string
+     {
+         return $this->location;
+diff --git a/src/Entity/ArticleTranslation.php b/src/Entity/ArticleTranslation.php
+index 0420622..f9eb530 100644
+--- a/src/Entity/ArticleTranslation.php
++++ b/src/Entity/ArticleTranslation.php
+@@ -3,7 +3,10 @@
+ namespace App\Entity;
+ 
+ use Doctrine\ORM\Mapping as ORM;
++use Gedmo\Mapping\Annotation as Gedmo;
+ use Knp\DoctrineBehaviors\Model\Translatable\Translation;
++use Symfony\Component\Validator\Constraints as Assert;
++use Symfony\Component\Validator\Context\ExecutionContextInterface;
+ 
+ /**
+  * @ORM\Entity()
+@@ -18,4 +21,69 @@ class ArticleTranslation
+      * @ORM\Column(type="integer")
+      */
+     protected $id;
++
++    /**
++     * @ORM\Column(type="string", length=255)
++     * @Assert\NotBlank(message="article.title.not_blank")
++     */
++    private $title;
++
++    /**
++     * @ORM\Column(type="string", length=100, unique=true)
++     * @Gedmo\Slug(fields={"title"})
++     */
++    private $slug;
++
++    /**
++     * @ORM\Column(type="text", nullable=true)
++     */
++    private $content;
++
++    public function getTitle(): ?string
++    {
++        return $this->title;
++    }
++
++    public function setTitle(string $title): self
++    {
++        $this->title = $title;
++
++        return $this;
++    }
++
++    public function getSlug(): ?string
++    {
++        return $this->slug;
++    }
++
++    public function setSlug(string $slug): self
++    {
++        $this->slug = $slug;
++
++        return $this;
++    }
++
++    public function getContent(): ?string
++    {
++        return $this->content;
++    }
++
++    public function setContent(?string $content): self
++    {
++        $this->content = $content;
++
++        return $this;
++    }
++
++    /**
++     * @Assert\Callback)
++     */
++    public function validate(ExecutionContextInterface $context, $payload)
++    {
++        if (stripos($this->getTitle(), 'the borg') !== false) {
++            $context->buildViolation('Um.. the Bork kinda makes us nervous')
++                ->atPath('title')
++                ->addViolation();
++        }
++    }
+ }

@@ -1,0 +1,12 @@
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index 7b87759..781e079 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -1,6 +1,6 @@
+ {{ form_start(articleForm) }}
+     {{ form_row(articleForm.title, {
+-        label: 'form.article.title'|trans
++        label: 'form.article.title'
+     }) }}
+     {{ form_row(articleForm.author) }}
+     {{ form_row(articleForm.location, {

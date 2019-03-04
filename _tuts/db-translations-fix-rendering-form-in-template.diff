@@ -1,0 +1,24 @@
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index 45aadd9..0d50d2f 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -1,5 +1,4 @@
+ {{ form_start(articleForm) }}
+-    {{ form_row(articleForm.title) }}
+     {{ form_row(articleForm.author) }}
+     {{ form_row(articleForm.location, {
+         attr: {
+@@ -12,10 +11,11 @@
+             {{ form_row(articleForm.specificLocationName) }}
+         {% endif %}
+     </div>
+-    {{ form_row(articleForm.content) }}
+     {% if articleForm.publishedAt is defined %}
+         {{ form_row(articleForm.publishedAt) }}
+     {% endif %}
+ 
++    {{ form_row(articleForm.translate) }}
++
+     <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+ {{ form_end(articleForm) }}
+\ No newline at end of file

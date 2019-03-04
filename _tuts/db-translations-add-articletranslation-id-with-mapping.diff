@@ -1,0 +1,16 @@
+diff --git a/src/Entity/ArticleTranslation.php b/src/Entity/ArticleTranslation.php
+index 96dbf6d..0420622 100644
+--- a/src/Entity/ArticleTranslation.php
++++ b/src/Entity/ArticleTranslation.php
+@@ -11,4 +11,11 @@ use Knp\DoctrineBehaviors\Model\Translatable\Translation;
+ class ArticleTranslation
+ {
+     use Translation;
++
++    /**
++     * @ORM\Id()
++     * @ORM\GeneratedValue()
++     * @ORM\Column(type="integer")
++     */
++    protected $id;
+ }

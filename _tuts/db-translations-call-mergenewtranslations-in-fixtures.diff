@@ -1,0 +1,12 @@
+diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
+index bda813d..ba7f782 100644
+--- a/src/DataFixtures/ArticleFixtures.php
++++ b/src/DataFixtures/ArticleFixtures.php
+@@ -46,6 +46,7 @@ cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim ca
+ fugiat.
+ EOF
+             );
++            $article->mergeNewTranslations();
+ 
+             // publish most articles
+             if ($this->faker->boolean(70)) {

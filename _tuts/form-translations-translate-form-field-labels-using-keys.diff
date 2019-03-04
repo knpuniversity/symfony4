@@ -1,0 +1,54 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 5263eac..a8c62ca 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -36,12 +36,15 @@ class ArticleFormType extends AbstractType
+                 'help' => 'Choose something catchy!'
+             ])
+             ->add('content', null, [
++                'label' => 'form.article.content',
+                 'rows' => 15
+             ])
+             ->add('author', UserSelectTextType::class, [
++                'label' => 'form.article.author',
+                 'disabled' => $isEdit
+             ])
+             ->add('location', ChoiceType::class, [
++                'label' => 'form.article.location',
+                 'placeholder' => 'Choose a location',
+                 'choices' => [
+                     'The Solar System' => 'solar_system',
+@@ -54,6 +57,7 @@ class ArticleFormType extends AbstractType
+ 
+         if ($options['include_published_at']) {
+             $builder->add('publishedAt', null, [
++                'label' => 'form.article.published_at',
+                 'widget' => 'single_text',
+             ]);
+         }
+@@ -103,6 +107,7 @@ class ArticleFormType extends AbstractType
+         }
+ 
+         $form->add('specificLocationName', ChoiceType::class, [
++            'label' => 'form.article.specific_location',
+             'placeholder' => 'Where exactly?',
+             'choices' => $choices,
+             'required' => false,
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index a148ad3..938834c 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -20,8 +20,8 @@ comments.count: '1 comment|%count% comments'
+ flash.success.article.created: Article Created! Knowledge is power!
+ flash.success.article.updated: Article Updated! Inaccuracies squashed!
+ form.article.title: Article title
+-Content: Content
+-Author: Author
+-Location: Location
+-Specific location name: Specific location name
+-Published at: Published at
++form.article.content: Content
++form.article.author: Author
++form.article.location: Location
++form.article.specific_location: Specific location name
++form.article.published_at: Published at

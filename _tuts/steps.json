@@ -234,7 +234,162 @@
             "id": "pluralization-specify-explicit-intervals",
             "name": "Pluralization: Specify explicit intervals",
             "description": null
+        },
+        {
+            "id": "php-translations-translate-flash-messages",
+            "name": "PHP translations: Translate flash messages",
+            "description": null
+        },
+        {
+            "id": "form-translations-translate-form-field-labels-in-template",
+            "name": "Form translations: Translate form field labels in template",
+            "description": null
+        },
+        {
+            "id": "form-translations-just-set-translation-keys-to-labels",
+            "name": "Form translations: Just set translation keys to labels",
+            "description": null
+        },
+        {
+            "id": "form-translations-translate-form-field-labels-the-simple-way",
+            "name": "Form translations: Translate form field labels the simple way",
+            "description": null
+        },
+        {
+            "id": "form-translations-translate-form-field-labels-using-keys",
+            "name": "Form translations: Translate form field labels using keys",
+            "description": null
+        },
+        {
+            "id": "form-translations-move-article-title-label-from-template-to-form",
+            "name": "Form translations: Move article title label from template to form",
+            "description": null
+        },
+        {
+            "id": "form-translations-translate-placeholders-and-help-messages",
+            "name": "Form translations: Translate placeholders and help messages",
+            "description": null
+        },
+        {
+            "id": "form-translations-translate-choices",
+            "name": "Form translations: Translate choices",
+            "description": null
+        },
+        {
+            "id": "form-translations-translate-validation-constraints",
+            "name": "Form translations: Translate validation constraints",
+            "description": null
+        },
+        {
+            "id": "overwrite-translations-translate-security-en-yaml-to-more-locales",
+            "name": "Overwrite translations: Translate security.en.yaml to more locales",
+            "description": null
+        },
+        {
+            "id": "overwrite-translations-overwrite-knppaginatorbundle",
+            "name": "Overwrite translations: Overwrite KnpPaginatorBundle",
+            "description": null
+        },
+        {
+            "id": "db-translations-install-and-configure-knplabs-doctrinebehaviours",
+            "name": "DB translations: Install and configure KnpLabs\/DoctrineBehaviours",
+            "description": null
+        },
+        {
+            "id": "db-translations-create-articletranslation",
+            "name": "DB translations: Create ArticleTranslation",
+            "description": null
+        },
+        {
+            "id": "db-translations-use-translatable-traits",
+            "name": "DB translations: Use translatable traits",
+            "description": null
+        },
+        {
+            "id": "db-translations-add-articletranslation-id-with-mapping",
+            "name": "DB translations: Add ArticleTranslation::id with mapping",
+            "description": null
+        },
+        {
+            "id": "db-translations-move-fields-to-articletranslation",
+            "name": "DB translations: Move fields to ArticleTranslation",
+            "description": null
+        },
+        {
+            "id": "db-translations-generate-migration",
+            "name": "DB translations: Generate migration",
+            "description": null
+        },
+        {
+            "id": "db-translations-fix-calls-in-fixtures",
+            "name": "DB translations: Fix calls in fixtures",
+            "description": null
+        },
+        {
+            "id": "db-translations-call-mergenewtranslations-in-fixtures",
+            "name": "DB translations: Call mergeNewTranslations() in fixtures",
+            "description": null
+        },
+        {
+            "id": "db-translations-call-translate-in-templates",
+            "name": "DB translations: Call translate() in templates",
+            "description": null
+        },
+        {
+            "id": "db-translations-revert-calling-translate",
+            "name": "DB translations: Revert calling translate()",
+            "description": null
+        },
+        {
+            "id": "db-translations-setup-proxy-for-translations",
+            "name": "DB translations: Setup proxy for translations",
+            "description": null
+        },
+        {
+            "id": "db-translations-fetch-article-manually",
+            "name": "DB translations: Fetch Article manually",
+            "description": null
+        },
+        {
+            "id": "db-translations-fetch-article-by-locale-or-defaultlocale",
+            "name": "DB translations: Fetch Article by locale OR defaultLocale",
+            "description": null
+        },
+        {
+            "id": "db-translations-load-more-locales-with-fixtures",
+            "name": "DB translations: Load more locales with fixtures",
+            "description": null
+        },
+        {
+            "id": "db-translations-fix-switching-locale-on-article-show-page",
+            "name": "DB translations: Fix switching locale on Article show page",
+            "description": null
+        },
+        {
+            "id": "db-translations-move-fields-to-articletranslationtype",
+            "name": "DB translations: Move fields to ArticleTranslationType",
+            "description": null
+        },
+        {
+            "id": "db-translations-add-articletranslationtype-to-articleformtype",
+            "name": "DB translations: Add ArticleTranslationType to ArticleFormType",
+            "description": null
+        },
+        {
+            "id": "db-translations-fix-rendering-form-in-template",
+            "name": "DB translations: Fix rendering form in template",
+            "description": null
+        },
+        {
+            "id": "db-translations-call-mergenewtranslations-in-edit",
+            "name": "DB translations: Call mergeNewTranslations() in edit()",
+            "description": null
+        },
+        {
+            "id": "db-translations-pass-article-explicitly-to-the-form-in-new",
+            "name": "DB translations: Pass Article explicitly to the form in new()",
+            "description": null
         }
     ],
-    "sha": "c52e474aa877acb29780206170ca02b63447f124"
+    "sha": "2752a95a3bd74ea4914ae194de6086058cd2c372"
 }

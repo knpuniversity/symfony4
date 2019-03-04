@@ -1,0 +1,7 @@
+diff --git a/translations/KnpPaginatorBundle.en.yaml b/translations/KnpPaginatorBundle.en.yaml
+new file mode 100644
+index 0000000..19464ea
+--- /dev/null
++++ b/translations/KnpPaginatorBundle.en.yaml
+@@ -0,0 +1 @@
++label_previous: Prev

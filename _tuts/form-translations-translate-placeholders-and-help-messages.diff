@@ -1,0 +1,47 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index f84e8bc..cee4cc7 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -34,7 +34,7 @@ class ArticleFormType extends AbstractType
+         $builder
+             ->add('title', TextType::class, [
+                 'label' => 'form.article.title',
+-                'help' => 'Choose something catchy!'
++                'help' => 'form.article.title.help'
+             ])
+             ->add('content', null, [
+                 'label' => 'form.article.content',
+@@ -46,7 +46,7 @@ class ArticleFormType extends AbstractType
+             ])
+             ->add('location', ChoiceType::class, [
+                 'label' => 'form.article.location',
+-                'placeholder' => 'Choose a location',
++                'placeholder' => 'form.article.location.placeholder',
+                 'choices' => [
+                     'The Solar System' => 'solar_system',
+                     'Near a star' => 'star',
+@@ -109,7 +109,7 @@ class ArticleFormType extends AbstractType
+ 
+         $form->add('specificLocationName', ChoiceType::class, [
+             'label' => 'form.article.specific_location',
+-            'placeholder' => 'Where exactly?',
++            'placeholder' => 'form.article.specific_location.placeholder',
+             'choices' => $choices,
+             'required' => false,
+         ]);
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 938834c..3b50b68 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -20,8 +20,11 @@ comments.count: '1 comment|%count% comments'
+ flash.success.article.created: Article Created! Knowledge is power!
+ flash.success.article.updated: Article Updated! Inaccuracies squashed!
+ form.article.title: Article title
++form.article.title.help: Choose something catchy!
+ form.article.content: Content
+ form.article.author: Author
+ form.article.location: Location
++form.article.location.placeholder: Choose a location
+ form.article.specific_location: Specific location name
++form.article.specific_location.placeholder: Where exactly?
+ form.article.published_at: Published at
