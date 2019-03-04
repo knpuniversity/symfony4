@@ -110,8 +110,9 @@ Inside: we need to get the `UploaderHelper` service so we can call `getPublicPat
 on it. Normally we do this by adding it as an argument to the constructor. But,
 in a few places in Symfony, for performance purposes, we should do something *slightly*
 different: we use what's called a "service subscriber", because it allows us to
-fetch the services lazily. If this is a new concept for you, go check out our Symfony
-Fundamentals course - it's a really cool feature.
+fetch the services lazily. If this is a new concept for you, go check out our
+[Symfony Fundamentals course](https://symfonycasts.com/screencast/symfony-doctrine/service-subscriber) -
+it's a really cool feature.
 
 The short explanation is that this class has a `getSubscribedServices()` method
 where we can choose which services we need. These are then included in the
