@@ -1,112 +1,91 @@
 # Absolute Asset Paths
 
-Coming soon...
+One of the things I'm noticing is that this word `uploads` - the directory where
+uploads are being stored - is starting to show up in a few places. We have it here
+in our `liip_imagine` config file, the `oneup_flysystem.yaml` file and in
+`UploaderHelper` - it's used inside `getPublicPath()`.
 
-Yeah.
+## Centralizing the uploads/ Path
 
-What are the things I'm noticing is that this word `uploads` the directory where
-uploads are being stored is starting to show up in a few places. We have it here in
-our LiipImagineBundle. We also have it in one up a Flysystem here. That's where
-they are uploaded to. And also an UploaderHelper, uh, for our public path and method
-we can use to get the absolute public path. Um, it's not a huge problem but I don't
-like repetition. And again, when we try and move this to s three later, um, that's
-gonna be a problem because we're going to need to kind of hunt that down and make it
-work well everywhere. So this is a really nice clean up that we can do. Go to
-`services.yaml` and we're just going to create two new parameters. One called 
-`uploads_dir_name`.
+It's not a *huge* problem, but repitition is a bummer and this will cause some
+issues when moving to S3 later - we'll need to hunt down all of these paths and
+change them to point to the S3 domain.
 
-Okay.
+Let's tighten this up. In `services.yaml`, create two new parameters: The first
+will be `uploads_dir_name` set to `uploads` - this is the name of the directory
+where we are storing uploaded files. Call the second one `uploads_base_url` and
+set this to almost the same thing: `/` and then `%uploads_dir_name%`. This represents
+the base URL to the uploaded assets.
 
-Set you "uploads". And this is going to be basically, what's the name of the directory
-where we are storing uploaded files. Then regret another one called `uploads_base_url`.
-It's gonna look a little weird at first. And then the almost the same thing `/` and then
-`%uploads_dir_name%`. This will be like the base URL that you need to
-use. If you want to get a URL to anything and the `uploads/` directory migrating these
-do new things. We can do quite a bit of cleanup. For example, in LiipImagineBundle
-, we actually need the URL here so we can go over here and referenced the new
-uploads base URL `%uploads_base_url%` and that's done in one up Flysystem. We
-actually need sort of the directory name here. So I'm going to use the uploads, her
-name, `%uploads_dir_name`.
+Thanks to these, we can do some cleanup! In `liip_imagine.yaml`, we need the URL.
+Copy `uploads_base_url` and then use `%uploads_base_url%`.
 
-Okay.
+Next, in `oneup_flysystem.yaml`, we need the directory name. Copy the other parameter:
+`%uploads_dir_name%`.
 
-And then the last place we these things is an `UploaderHelper` and upload helper. Here
-we actually need um, the base URL because this is basically going to be the, that you
-were aware, uh, what servers installed. Usually that's an empty string and then we'll
-have the base you right there. So this is something that we need to use dependency
-injection to get. So I'm actually going to add a new argument to my method here
-called.
+The last place is in `UploaderHelper`. The `getBasePath()` call will give us the
+directory where the site is installed - usually an empty string. Then we need to
+pass in the `uploads_base_url` parameter.
 
-Okay.
+Add a new argument to the constructor: `string $uploadedAssetsBaseUrl`. I'll create
+the property by hand and give it a slightly different name: `$publicAssetBaseUrl`,
+not for any particular reason. Set that in the constructor:
 
-`string $uploadedAssetsBaseUrl`. And then I'm gonna create a new property. I'm gonna
-give it a slightly different name, not for any particular reason called 
-`$publicAssetBaseUrl`. You are out and down here and we'll say 
-`$this->publicAssetBaseUrl = $uploadedAssetsBaseUrl`
+Back in `getPublicPath()`, use this: `getBasePath()` then `$this->publicAssetsBaseUrl`,
+which will contain the `/` at the beginning.
 
+Cool! But, Symfony will not be able to autowire this string argument. You'll
+see the error if you try to reload any page. Yep!
 
-Now we can use this below. We know this is going to be sad to /uploads. So you can
-basically concatenate it right here. Say `$this->publicAssetsBaseUrl`
-that `/` and then the path. Then finally we're going to need to bind this a new
-variable. So obviously it's not gonna be able to auto wire this path here. You can
-see that air if you try to reload any page. Yup. CanNot auto wire this argument. So
-we're gonna go back into `services.yaml` and we can just bind that. So we'll bind
-`$uploadedAssetsBaseUrl: '%uploads_base_url%'`
+We know how to fix that: back in `services.yaml`, add a bind:
+`$uploadedAssetsBaseUrl` set to `%uploads_base_url%`. Now... it works!
 
-Okay, now we'll go back.
+## Linking to the Full Image
 
-Cool. Looks like everything is working. And that was in some ways a small detail, but
-it really tightened everything up here. Um, because we have all this like upload
-directory configuration sort of in this one spot and it's going to let us do
-something really cool here in a second. Now first to make sure. Now first I want to
-really triple check that I have this public path thing working correctly. Remember,
-this is a, we're actually using this right now. This is the, um, early recreated a
-twig extension and it allowed us have an upload `uploaded_asset()` function. And if you
-call this, it eventually actually uses the upload half help bring calls, `getPublicPath()`
-. What I want to do now is, um, we're showing the thumbnail image and our form
-here,
+Small step, but now that all this config is in one spot, we can do something kinda
+cool... with almost no effort. But first, I want to *triple* check that all this
+public path stuff is setup correctly. Our `getPublicPath()` method is currently
+used in one spot: by the `uploaded_asset()` Twig function. But, we're not actually
+*using* this Twig function anywhere at this moment.
 
-okay.
+So try this: in the form, we're showing the thumbnail. It might be useful to allow
+the user to click this and see the *full* size image. That's pretty easy: add
+`<a href="">` and use `uploaded_asset(articleForm.vars.data.imagePath)`.
 
-But what might be useful is to allow the user to actually click this and see the full
-image. So this is pretty easy to do at this point because we have a way to get the
-full path to it. So I'm going to say h a, h a ref = and we'll use `uploaded_asset()`. And
-then we just need to pass it the path. So it's going to be this whole long thing
-here. `articleForm.vars.data.imagePath`. That's it. And we'll wrap our
-image in that. I'll even do a little `target="_blank"`.
+That's it! Wrap this around the `img` tag and let's also add `target="_blank"`.
 
-I'm good.
+Cool. Test that - refresh and... click. Nice! This sends us directly to the *source*
+image.
 
-So I move over and refresh. You can click that and boom, that gives us the full
-absolute path to the, um, to the actual direct image. Now, one last thing I want to
-talk about here, and it's something that I know is going to come up for a lot of us
-right now. If I inspect element on my image, you'll notice that the h ref, both the
-ATF and the thumbnail image are relative. They don't include the hostname. Now,
-that's not a problem, the normal web context. But eventually you're gonna find
-yourself in a situation where you need to render a page as a pdf or you need to send
-an email and you need to reference the uploaded file. And suddenly this is going to
-fail.
+## Absolute URLs
 
-You need to send an email from a console command. Suddenly this is going to fail
-because you're not in a web context. There is no, um, browsers. So there's no current
-host name. So in a lot of cases you're going to find yourself in a situation where
-you want an absolute you were to this and there are a few ways to solve this and I
-honestly went back and forth on the, on the way that I wanted to do it. Now finally
-settled on something that we've used here on Symfony casts for years and that is that
-in `.env` file, we actually create our own environment variable called 
-`SITE_BASE_URL`. And by default I'm gonna set this to our base, our localhost:8000
+Thanks to our setup, we can now solve a really annoying problem. Inspect element
+on the image: notice that both the `href` and the image `src` paths do *not*
+contain the domain name. That's not a problem at *all* in a normal web context.
+But if you ever try to render a page into a PDF or create a console command to
+send an email that references an uploaded file, well... suddenly, those paths will
+start to break! In those contexts, you *need* the URLs to be absolute.
 
-Okay.
+There are a few ways to solve this... and honestly, I went back and forth on the
+best approach. I finally settled on something that we've used here on SymfonyCasts
+for years. Open your in `.env` file. We're going to create a brand new, custom
+environment variable called `SITE_BASE_URL`. Set the default value to
+`https://localhost:8000`.
 
-And of course you can override this if you create a `.env.local` file, um, and
-on production you would do that too. Whatever your production domain is. Then we're
-going to go back into our `services.yaml` file. So `config/services.yaml` and
-for the `uploads_base_url`, this is going to be basically the full URL that we want
-before every single upload an image, I'm going to put `%env()%`
-inside of there use `SITE_BASE_URL`. So just like that, every single path to
-every single uploaded asset is now going to include the absolute, um, uh, path with
-the domain. So try it out. Refresh. Boom. There it is. Look at both local. It's going
-8,000 and locals call on 8,000. I don't really see in Symfony gas. We basically
-always rented the absolute path. We don't really, you know, you couldn't have it. You
-could have something where you toggle it on or off and don't really see the point of
-that. Um, but yeah, there you go. Absolutely. Urls.
+Remember: this file *is* committed to git, so this is the *default* value. You
+can create a `.env.local` file to override this value locally or on production.
+
+Next, go back to `services.yaml`. And for the `uploads_base_url`, use
+`%env()%` and inside, `SITE_BASE_URL` - that's the syntax for referencing an
+environment variable.
+
+And... just like that - *every* single path to every single uploaded asset will now
+be absolute. Seriously! Test it out! Boom! Both the link `href` an the image `src`
+contain the `https://localhost:8000` part.
+
+And, sure, you could add some config so that you could turn this on only when you
+need it... but I don't really see the point. I'll keep absolute URLs always.
+
+Next: let's start uploading *private* assets: stuff that can't be put into the
+`public/` directory because we need to check security before we let a user download
+it.

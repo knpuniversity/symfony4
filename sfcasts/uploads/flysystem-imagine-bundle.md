@@ -1,183 +1,155 @@
-# Flysystem Imagine Bundle
+# Flysystem <3 LiipImagineBundle
 
-Coming soon...
+Flysystem is working awesome! But... there's a problem hiding... a huge problem!
+In *theory*, thanks to Flysystem, we could into the `oneup_flysystem.yaml` file
+right now, change the adapter to S3 and everything would work. In *theory*.
 
-We're using Flysystem, it's working great, but there's sort of a hidden problem. The
-cool thing about Flysystem is that in theory we could go into our `oneup_flysystem.yaml`
-and we could change this to some cloud storage like s3 and everything
-would work right? Well we're cheating a little bit. Specifically the LiipImagineBundle
-is cheating, so check it out. Let's go to our `templates/article/homepage.html.twig`
-and you see what we do here is we call `uploaded_asset()`. We pass that
-`article.imagePath` and that's actually what we piped into the filter. So or what the
-value of that's going into the filters actually `uploads/article_image/` the path of
-the file name.
+## How LiipImagineBundle Finds Images
 
-The
+The problem is LiipImagineBundle. Open up `templates/article/homepage.html.twig`:
+we call `uploaded_asset()`, pass that `article.imagePath` and *that* value is passed
+into `imagine_filter`. So basically, a string like
+`uploads/article_image/something.jpg` is passed to the filter.
 
-imagine bundle by default reads things from the filesystem always. So if we
-refactored this to s3 it would still be looking for that path on the filesystem.
-You can actually see this if you run 
+The problem? By default, LiipImagineBundle *reads* the source image file directly
+from the filesystem. So if we refactored to use S3... well... imagine would be
+looking in the wrong place!
 
-```terminel
+You can actually see by running:
+
+```terminal
 php bin/console debug:config liip_imagine
 ```
 
-Okay,
+This is the current config for this bundle, which includes all of its default values.
+Near the bottom, see that "loaders" section? The "loader" I the piece that's
+responsible for *reading* the source image - and it defaults to use the filesystem,
+and knows to look in the `public/` directory! So when we pass it
+`upload/article_image/` some filename, it finds it perfectly.
 
-you're the bottom. It has something called eight resolver. The resolver actually,
-sorry. You should be looking at loader.
+Very simply: we need this to use Flysystem.
 
-Yeah,
+## Flysystem Loader
 
-the loaders responsibility is given a path. It knows how to find that image, the
-contents of that image. And by default it uses a filesystem,
+Let's go to back to the LiipImagineBundle documentation: find their GitHub page
+and then click down here on the "Download the Bundle" as an easy way to get into
+their full docs. Now, go back to the main page and... down here near the bottom,
+it talks about different "data loaders". The default is "File System", we want
+Flysystem.
 
-uh, to do that. And it knows to look at the `public/` directory. So when we pass it
-`upload/article_image/` the filename, it uploads the file in life is good. So we
-need to change this to use Flysystem and said, so that in case our assets are stored
-on s3, it will know how to load them from s3. So then I can do the
-transformations on it. So actually let's go to back to the LiipImagineBundle
-documentation. I'll find their github page and then I'll click down here on the
-download. The bundle has an easy way to get into their documentation. Then I'll go
-back to their main documentation page. So down here near the bottom it talks about
-different, uh, data loaders. So that's the thing we were just talking about. The
-filesystem load is by default. Flysystem is what we want to use. We've already
-installed the bundles, so we're good there.
+Let's see... yea, we've already installed the bundle. Let's copy this loaders
+section - we already have our Flysystem config all setup. Then, open our
+`liip_imagine.yaml` file and, really, anywhere, paste!
 
-Yeah.
+This creates a loader called `profile_photos` - that name can be anything. Let's
+use `flysystem_loader`. The critical part is the key `flysystem`: that says to
+use the "Flysystem" loader that comes with the bundle. The only thing *it* needs
+to know, is the service id of the filesystem that we want to use.
 
-And we're gonna do is actually copy this loaders section. We already have our
-filesystem's all set up so we're good there. Then we're going to `liip_imagine.yaml`
-and it doesn't matter where, but I'm going to do it up here. I'm going to paste this.
-So this creates a loader called `profile_photos`. That can be anything you want. So I'm
-gonna call it `flysystem_loader`. Key thing here is the key `flysystem` that says to
-use Flysystem nine I need to do is point this at the actual service id of the
-filesystem that you want to use. So if we go back into our `config/services.yaml`
-remember this long name here is actually the id of our service id of our
-filesystem. So I'm going to copy that. Go to `liip_imagine.yaml` and we can paste that
-there.
+For that, go back to `config/services.yaml` and copy the *long* service id from
+the `bind` section. Back in `liip_imagine.yaml`, paste!
 
-So that creates a loader call. They filesystem loader, `flysystem_loader`. You can
-technically have multiple loaders. I usually, I only need one and so down here you
-can say `data_loader` and you pass it the name of we gave it, which is `flysystem_loader`.
-Her up here. And this is going to say "default loader to use for all filter sets". You
-can actually specify in a filter set by filters that basis to a load from different
-loaders. If you need that complexity. I don't need that complexity. I just want to
-say in all cases, I want you to load from the filesystem. All right, so let's try
-that. To try that, we need to go into the um,
+We now have a "loader" called `flysystem_loader`, and a "loader's" job is to...
+um, "load" the source file. You can *technically* have multiple loaders, though
+I've never had to do that. Because we will *always* load our files via Flysystem,
+below, add `data_loader` set to the loader's name: `flysystem_loader`. I'll add
+a comment:
 
-okay.
+> default loader to use for all filter sets
 
-`public/` Directory, let me find it. And we need to delete all of our existing
-thumbnails. I'm gonna Delete the entire `media/cache/` directory. We need to do that so
-that when we refresh the page, it will actually try to use the data loader to go and
-get the contents of the file so that it can actually put them into the media
-directory. So let's go back to how about the homepage and it doesn't work. It's
-inspect element on that. So you can see here it's got the `media/cache/resolve`. That's
-that dynamic. You were l. And then this last part here, `uploads/article_image/lightspeed...png`
-. This is actually the path that we are passing into. Uh, uh, LiipImagineBundle
-This is actually the value that we're getting. If we go back to our homepage
-template, this is actually the value that we're getting from the `uploaded_asset()` call.
-So the problem now is, and it's actually really cool, is that now that we've told
-leap, imagine to use our filesystem while our filesystem it's root is the `uploads/`
-directory. So if you want to read or write a file from our filesystem, you do not
-need to include the `uploads/` part of it. You just need to give it the key
-`article_image/` and then the file name.
+Because, you can actually specify what loader you want to use on each filterset.
+Again, I've never had to do that. Nope, for us: always use flysystem to find the
+source files.
 
-So in other words here, we don't need the `uploaded_asset()` anymore. We're just going to
-say article.imagePath, which will give us the `article_image/` the file
-name and pipe that directly into the `imagine_filter` This is really cool. This makes
-it super simple to do. Thumbnailing
+Cool! Let's try it! Let's go into the `public/` directory... let me find it... and
+delete all the existing thumbnails - let's delete `media/cache/` entirely. By doing
+this, the bundle will use the data loader to get the contents of each image so that
+it can recreate the thumbnails.
 
-okay,
+## Correcting the Path to LiipImagineBundle
 
-you will still need to use the `uploaded_asset()` function is still cool because that's
-what you would use if you didn't want to use any filters. If you just wanted to have
-the absolute path to the original file name, but if you aren't doing thumbnailing,
-then you're just going to pass the raw path. I actually really like this improvement.
-It makes my code simpler. So now in refresh, it still doesn't work. It still doesn't
-work. It's actually do a copy image address here, put that into our browser to see
-what it says. Okay. It says source image for path article, image lightspeed could not
-be found thanks to the flysystem. This should be looking right here. Oh, of course.
-Because we actually deleted all of our article images. Duh. Okay. If we're going to
-actually down to the one, one of the ones that actually still exist, it does actually
-work.
+Testing time! Let's go back to, how about, the homepage. And... it doesn't work.
+Drat! Inspect element. Hmm, it *does* start with the `media/cache/resolve` part.
+Then, the path is at the end - `uploads/article_image/lightspeed...png`. That's
+the path that we're passing to the filter.
 
-Okay.
+Go back to the homepage template. The problem *now* - and it's *really* cool - is
+that we told LiipImagineBundle to use Flysystem to load files... but the *root*
+of our filesystem object is the `public/uploads` directory. In other words, if
+you to read a file from our filesystem, the path needs to be *relative* to this
+directory. In other words, it should *not* contain the `uploads/` part
 
-Yeah, I think we can all right. Restart in there and it's still doesn't work. That's
-actually because if you remember, we um, we actually deleted all of our uploaded
-images, um, from the fixtures and actually just re uploaded a couple of them. So if
-you scroll down a, here we go. Here's actually the earth image that we uploaded. So
-it actually is now working correctly.
+The fix? Remove the `uploaded_asset()` function: we an just pass `article.imagePath`,
+which will be `article_image/` the filename.
 
-Okay.
+I love this! Need to thumbnail something? Just pass it the Flysystem path: you
+don't need the word `uploads` or anything like that. The `uploaded_asset()` function
+*will* still be useful if you want the public path to an asset *without* thumbnailing,
+but if you're using `imagine_filter`, passing the short, relative path is all
+you need.
 
-It's actually run our fixtures load here so we can get a fresh set of uploaded assets
+Try it! Refresh! It still doesn't work? Oh yea! A few minutes ago, we deleted all
+of the original images from the fixtures. But we *did* re-upload a few of them.
+So if you scroll down... here we go - here's the Earth image we uploaded. So, it
+*is* now working perfectly.
+
+Let's reload our fixtures to make sure:
 
 ```terminal-silent
 php bin/console doctrine:fixtures:load
 ```
 
-to really make sure this is working your first that much better. And then we just
-need to make the same change in the two other places where we're uploading or using
-thumbnail images. So in the `templates/` directory `article/show.html.twig`, we'll remove uploaded
-`uploaded_asset` there, refresh Alex, good. And then we'll go back into our admin article
-section will need to log back in with password "engage" because we reload the database.
-Then when we're editing an image, we also needed to do it there. So that is an
-`article_admin/_form.html.twig` take off the `uploaded_asset()`.
+Now the homepage... yes - everything is there. Let's make the same change in the
+other two places we're using thumbnails. Click into the show page. This lives in
+`templates/article/show.html.twig`: remove `uploaded_asset` there. Refresh... good!
+For the other one, go back to the admin article section - log back in with password
+"engage", because we reloaded the database. When we're editing an image, yep,
+also broken.
 
-Got It.
+Find this in `templates/article_admin/_form.html.twig`: take off `uploaded_asset()`.
 
-All right, so the loaders, the thing that's responsible for finding the raw file,
-there's another concept in LiipImagineBundle, there's the loaders and there's
-these things called resolvers saw. Click down on the flysystem resolver. The
-resolver is the thing that's actually responsible for writing the thumbnail. So it
-reads it from the loader, it makes the transformation and then it wants to write it
-somewhere once again. By default LiipImagineBundle just writes things directly to
-the filesystem. So even if we moved Flysystem to s3, it would still
-ultimately be writing all of our files into, onto our server, not on, into this media
-directory, not onto s3. So we're going to change that as well. So we'll go over
-here and I'm going to copy this resolvers section. Go back into our 
-LiipImagineBundle, well pace that we'll do the same thing as before. I'll call it 
-`flysystem_resolver` and we're gonna use the same flysystem service.
+Got it!
 
-Okay.
+## The Resolver: Saving the Images to Flsystem
 
-And I'll get rid of visibility. We'll talk about that later. `cache/` Prefix is
-basically the directory within, uh, the filesystem where the files are going to be
-stored. And then for the `route_url`, this is actually the URL where that all
-paths should be prefixed with. So actually what we want here is `/uploads`. So
-basically if it,
+So, the "data loader" is responsible for reading the *original* image. But, there's
+*another* important concept from LiipImagineBundle called "resolvers". Click down
+on the "Flysystem Resolver" in their docs. The resolver responsible for *saving*
+the thumbnail image back to the filesystem after all of the transformations. By
+default, no surprise, LiipImagineBundle writes things directly to the filesystem.
+So even if we moved Flysystem to s3, LiipImagineBundle would *still* be writing
+the thumbnail files write back to our server - into the `public/media` directory.
 
-okay,
+Let's change that! In the docs, copy the `resolvers` section. Back in our
+`liip_imagine.yaml` file, paste that. It's pretty much the same as before: we'll
+call it `flysystem_resolver` and tell it to *save* the images using the same
+filesystem service. Remove `visibility` - that sets the Flysystem visibility, which
+is a concept we'll talk about soon. True is the default value anyways.
 
-because we know that things that are stored in this filesystem going into the 
-`public/uploads/` directory. So if you want to get a URL to them, you have to put in at
-`/uploads`. We're gonna talk more about this root_url later when he moved to a s3
-, so time to check this out, I'm going to delete the `media/` directory entirely.
+`cache_prefix` is the subdirectory within, the filesystem where the files will
+be stored and the `root_url` is the URL that all the paths will be prefixed with
+when the image paths are rendered. Right now, it needs to be `/uploads`.
 
-Moved back over, refresh
+For example, if LiipImagineBundle stores a file called `media/cache/foo.jpg` into
+Flsystem, we know that the public path to this will be `uploads/media/cache/foo.jpg`.
+We'll talk more about this setting later when we move to s3.
 
-and it works. And check it out. Look where it's stored. It's not storing in
+Ok, delete the `media/` directory entirely. Oh, and I almost forgot the last step:
+add `cache` set to `flysystem_resolver` - let's put an "r" on that.
 
-Oh,
+This tells the bundle to *always* use this resolver. I'm not sure why it's called
+"cache" - the bundle seems to use "resolver" and "cache" to describe this one concept.
 
-oh. And before we try it to make sure that this resolver is used by default, a lot of
-key down here called the `cache:`
+Ok! Moment of truth! Refresh. Ha! It works! Go check out where the thumbnails are
+stored: there is *no* `media/` director anymore! The Flysystem filesystem points
+to the `public/uploads` directory, so the `media/cache` directory lives *there*.
+And thanks to the `/uploads` `root_url`, when it renders the path, it knows to
+start with `/uploads` and then the path in Flysystem.
 
-and then
+I love this! It's a bit tricky to get these two libraries to play together perfectly.
+But now we are *much* more prepared to switch between local uploads and S3.
 
-`flysystem_resolver`. Yup. That's actually put an e on that flag system resolver. It's
-a little weird. They use the word resolvers and then word cache a bit
-interchangeably. But this says to use that resolver all the time, it's always where
-we want to write the, um, the thumbnails. All right, so let's go over refresh and it
-works in checkout where it's stored. Those, there's no `media/` director anymore. The
-flysystem, a filesystem is pointing at the `uploads/` directory. So now it's actually a
-media cache directory within the, um, within the `uploads/` director were the filesystem
-goes and thanks to our `/uploads` here, it knows that when it actually renders the path
-to that thing, it knows it needs to put a `/uploads` in front. And then the path that
-had actually wrote the file too. So this is awesome. It seemed like a small step
-because it was technically already working a second ago, but this is the preparation
-that you need to do if you actually are going to change Flysystem to store your
-files somewhere other than your filesystem.
+Next: we can generate public URLs to thumbnailed files or the original files. But,
+what if you need to force all the URLs to include the domain name? This is something
+you don't think about until you need to generate a PDF or send an email... then,
+it can be a nightmare. Let's add this to our asset system in a way that we love.

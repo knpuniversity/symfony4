@@ -18,6 +18,7 @@ chapters:
     - flysystem-imagine-bundle
     - absolute-asset-paths
     - article-references
+    - references-upload
     - uploading-private-files
     - mime-type-validation      # raw
     - downloading-private-files # raw
