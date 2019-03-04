@@ -36,16 +36,27 @@ Let's go check on the install. Excellent! It's done. And the message is right on
 it says we need to get to work in the new config file: `liip_imagine.yaml`.
 Go open that: `config/packages/liip_imagine.yaml`. Uncomment the root key to activate
 the bundle, leave the `driver` alone - it defaults to `gd` - and uncomment
-`filter_sets`. Let's create our first filter set called `squared_thumbnail_small`.
-We'll use this on the homepage to reduce the images down to 100 by 100. To do that,
-uncomment the `filters` key and I'll copy the `thumbnail` example from below, move
+`filter_sets`. 
+
+[[[ code('42dc9ec09c') ]]]
+
+Let's create our first filter set called `squared_thumbnail_small`. We'll use this 
+on the homepage to reduce the images down to 100 by 100. To do that, uncomment 
+the `filters` key and I'll copy the `thumbnail` example from below, move
 it up here, and uncomment it.
 
+[[[ code('f98898f913') ]]]
+
 Set the size to 200 by 200 so it looks good on Retina displays. The `mode: outbound`
-is *how* the thumbnail is applied - you can also use `inbound`. And... I think
-we're ready to go! Copy the `squared_thumbnail_small` name and go into
+is *how* the thumbnail is applied - you can also use `inbound`. 
+
+[[[ code('781582da8e') ]]]
+
+And... I think we're ready to go! Copy the `squared_thumbnail_small` name and go into
 `homepage.html.twig`. To use this, it's so nice: `|imagine_filter()` and then the
 name.
+
+[[[ code('51429e2725') ]]]
 
 ## The Thumbnailing Process
 
