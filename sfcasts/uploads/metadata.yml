@@ -19,8 +19,8 @@ chapters:
     - absolute-asset-paths
     - article-references
     - uploading-private-files
-    - mime-type-validation      # raw
-    - downloading-private-files # raw
+    - mime-type-validation
+    - downloading-private-files
     - dropzone                  # raw
     - js-rendering              # raw
     - delete-file               # raw
