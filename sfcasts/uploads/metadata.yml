@@ -22,8 +22,8 @@ chapters:
     - uploading-private-files
     - mime-type-validation
     - downloading-private-files
-    - dropzone                  # raw
-    - js-rendering              # raw
+    - dropzone
+    - js-rendering
     - delete-file               # raw
     - edit-filename             # raw
     - reordering                # raw
