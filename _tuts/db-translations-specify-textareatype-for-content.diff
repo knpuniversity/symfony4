@@ -1,0 +1,21 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index a2ca7a4..80a7fa1 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
+ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
++use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\Form\FormEvent;
+@@ -37,7 +38,7 @@ class ArticleFormType extends AbstractType
+                 'label' => 'form.article.title',
+                 'help' => 'form.article.title.help'
+             ])
+-            ->add('content', null, [
++            ->add('content', TextareaType::class, [
+                 'property_path' => 'translate.content',
+                 'label' => 'form.article.content',
+                 'rows' => 15

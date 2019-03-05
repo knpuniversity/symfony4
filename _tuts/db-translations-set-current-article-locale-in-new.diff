@@ -1,13 +1,21 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 47c3c12..9210433 100644
+index f566da3..1b6badf 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
-@@ -21,7 +21,7 @@ class ArticleAdminController extends BaseController
+@@ -21,13 +21,12 @@ class ArticleAdminController extends BaseController
       */
      public function new(TranslatorInterface $translator, EntityManagerInterface $em, Request $request)
      {
 -        $form = $this->createForm(ArticleFormType::class);
-+        $form = $this->createForm(ArticleFormType::class, new Article());
++        $article = new Article();
++        $article->setCurrentLocale($request->getLocale());
++        $form = $this->createForm(ArticleFormType::class, $article);
  
          $form->handleRequest($request);
          if ($form->isSubmitted() && $form->isValid()) {
+-            /** @var Article $article */
+-            $article = $form->getData();
+-
+             $em->persist($article);
+             $article->mergeNewTranslations();
+             $em->flush();

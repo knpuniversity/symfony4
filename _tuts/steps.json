@@ -366,18 +366,23 @@
             "description": null
         },
         {
-            "id": "db-translations-move-fields-to-articletranslationtype",
-            "name": "DB translations: Move fields to ArticleTranslationType",
+            "id": "db-translations-use-property-path-for-translatable-fields",
+            "name": "DB translations: Use property_path for translatable fields",
             "description": null
         },
         {
-            "id": "db-translations-add-articletranslationtype-to-articleformtype",
-            "name": "DB translations: Add ArticleTranslationType to ArticleFormType",
+            "id": "db-translations-specify-textareatype-for-content",
+            "name": "DB translations: Specify TextareaType for content",
             "description": null
         },
         {
-            "id": "db-translations-fix-rendering-form-in-template",
-            "name": "DB translations: Fix rendering form in template",
+            "id": "db-translations-call-mergenewtranslations-in-new",
+            "name": "DB translations: Call mergeNewTranslations() in new()",
+            "description": null
+        },
+        {
+            "id": "db-translations-set-current-article-locale-in-new",
+            "name": "DB translations: Set current Article locale in new()",
             "description": null
         },
         {
@@ -386,10 +391,30 @@
             "description": null
         },
         {
-            "id": "db-translations-pass-article-explicitly-to-the-form-in-new",
-            "name": "DB translations: Pass Article explicitly to the form in new()",
+            "id": "db-translations-call-translatewithoutfallback",
+            "name": "DB translations: Call translateWithoutFallback()",
+            "description": null
+        },
+        {
+            "id": "db-translations-create-a-listener-for-2nd-language-switcher",
+            "name": "DB translations: Create a listener for 2nd language switcher",
+            "description": null
+        },
+        {
+            "id": "locale-in-session-create-listener",
+            "name": "Locale in session: Create listener",
+            "description": null
+        },
+        {
+            "id": "locale-in-session-render-the-2nd-language-switcher",
+            "name": "Locale in session: Render the 2nd language switcher",
+            "description": null
+        },
+        {
+            "id": "locale-in-session-use-locale-from-session-in-controller",
+            "name": "Locale in session: Use locale from session in controller",
             "description": null
         }
     ],
-    "sha": "2752a95a3bd74ea4914ae194de6086058cd2c372"
+    "sha": "29d0973ab63d433e1c3c4ef6b84b9c0768a1ec70"
 }

@@ -1,0 +1,29 @@
+diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
+index a60aae3..d167c7a 100644
+--- a/src/Controller/ArticleAdminController.php
++++ b/src/Controller/ArticleAdminController.php
+@@ -3,6 +3,7 @@
+ namespace App\Controller;
+ 
+ use App\Entity\Article;
++use App\EventSubscriber\TranslatableLocaleSubscriber;
+ use App\Form\ArticleFormType;
+ use App\Repository\ArticleRepository;
+ use Doctrine\ORM\EntityManagerInterface;
+@@ -22,7 +23,7 @@ class ArticleAdminController extends BaseController
+     public function new(TranslatorInterface $translator, EntityManagerInterface $em, Request $request)
+     {
+         $article = new Article();
+-        $article->setCurrentLocale($request->getLocale());
++        $article->setCurrentLocale($request->getSession()->get(TranslatableLocaleSubscriber::SESSION_KEY));
+         $form = $this->createForm(ArticleFormType::class, $article);
+ 
+         $form->handleRequest($request);
+@@ -48,6 +49,7 @@ class ArticleAdminController extends BaseController
+      */
+     public function edit(TranslatorInterface $translator, Article $article, Request $request, EntityManagerInterface $em)
+     {
++        $article->setCurrentLocale($request->getSession()->get(TranslatableLocaleSubscriber::SESSION_KEY));
+         $form = $this->createForm(ArticleFormType::class, $article, [
+             'include_published_at' => true
+         ]);
