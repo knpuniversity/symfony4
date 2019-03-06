@@ -26,6 +26,8 @@ Inside `ArticleFixtures`, create a `public function __construct()`. Add an
 `UploaderHelper $uploaderHelper` argument and I'll hit `ALT + Enter` and select
 initialize fields to create that property and set it.
 
+[[[ code('760f39ea08') ]]]
+
 Next, lets "cut" the 3 files in the `public/images` directory: we're going to
 move them to a different spot, because they no longer need to be publicly
 accessible. You'll see what I mean. In the `src/DataFixtures` directory, create
@@ -39,6 +41,9 @@ Yes! We are planning for disaster!
 Here's the idea: we'll use the `UploaderHelper` down here, point it at one of these
 3 files, and have it, sort of, "fake" upload it. Start with `$randomImage =`, copy
 the faker code, and paste. This is now one of the three random image filenames.
+
+[[[ code('18fcf0d201') ]]]
+
 Next, in `UploaderHelper`, what I'd *like* to do is call `uploadArticleImage()`
 and basically say:
 
@@ -70,6 +75,8 @@ So back in `ArticleFixtures`, instead of creating a `new UploadedFile()`, say
 image: `__DIR__.'/images/'` and then `$randomImage`, which will be one of these
 image filenames.
 
+[[[ code('59030370cc') ]]]
+
 Now, take `$imageFilename` - that'll be whatever the final filename is on the system
 after moving it, and set that onto the entity.
 
@@ -78,15 +85,21 @@ That's beautiful! In `UploaderHelper`, we need to make this work *not* with an
 `File` - again, make sure you get the one from `HttpFoundation` or you will have
 *no* fun. To keep things clear, I'll Refactor -> Rename this variable to `$file`.
 
+[[[ code('ebba0dd608') ]]]
+
 Let's see: everything looks happy, ah - except for `getClientOriginalName()`: that
 method does not exist in `File` - it only exists in `UploadedFile`. Ok, let's get
 fancy then: if `$file` is an `instanceof UploadedFile`, we can say
 `$originalFilename = $file->getClientOriginalName()`. Else, set `$originalFilename`
 to `$file->getFilename()` - that's just the name of the file on the filesytem.
 
+[[[ code('c41aeb9c74') ]]]
+
 After this, delete the `pathinfo()` stuff - we can move that to the next line.
 Inside `urlize()`, re-add the `pathinfo()` and pass the same second argument:
 `PATHINFO_FILENAME`.
+
+[[[ code('c317fd7c09') ]]]
 
 I think that's all we need! Let's completely clear out the `uploads/` directory.
 Now, find your terminal and run:
@@ -120,10 +133,18 @@ Much better. Let's clean out the uploads directory again.
 We *do* want to use `$file->move()` because we *do* want to move the uploaded file
 in normal circumstances. So, to get around this, in the fixtures, let's copy the
 original file to a temporary spot. Start with `$fs = new Filesystem()` - that's
-a handy object for doing filesystem operations. Next,
-`$targetPath = sys_get_temp_dir().'/'.$randomImage`. And then use `$fs->copy()`.
-We want to copy the original file path into `$targetPath`. Inside `File`,
-pass the temporary path.
+a handy object for doing filesystem operations. 
+
+[[[ code('4ba7388dd8') ]]]
+
+Next, `$targetPath = sys_get_temp_dir().'/'.$randomImage`. And then use `$fs->copy()`.
+We want to copy the original file path into `$targetPath`. 
+
+[[[ code('a7187c434a') ]]]
+
+Inside `File`, pass the temporary path.
+
+[[[ code('33ea528fe4') ]]]
 
 Ok, let's try it again!
 
@@ -141,10 +162,18 @@ using our upload system.
 Though, I don't love having *all* of this logic right in the middle of this
 already-long function: it's not super obvious what it does. Let's do some
 cleanup: copy all of this. And at the bottom, create a new
-`private function fakeUploadImage()` that will return a `string`. Paste all that
-logic and return the `$this->uploaderHelper` line. It selects a random image,
-uploads it and returns the path. Back up top, delete all this stuff and say
-`$imageFilename = $this->fakeUploadImage()`.
+`private function fakeUploadImage()` that will return a `string`. 
+
+[[[ code('e542bfdc73') ]]]
+
+Paste all that logic and return the `$this->uploaderHelper` line. It selects a random image,
+uploads it and returns the path. 
+
+[[[ code('d72f10cc88') ]]]
+
+Back up top, delete all this stuff and say `$imageFilename = $this->fakeUploadImage()`.
+
+[[[ code('1c8dfddb65') ]]]
 
 Let's run those fixtures one more time!
 
