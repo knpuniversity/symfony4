@@ -1,0 +1,145 @@
+diff --git a/composer.json b/composer.json
+index 724d92b..fc9fff8 100644
+--- a/composer.json
++++ b/composer.json
+@@ -26,7 +26,8 @@
+         "symfony/validator": "^4.0",
+         "symfony/web-server-bundle": "^4.0",
+         "symfony/yaml": "^4.0",
+-        "twig/extensions": "^1.5"
++        "twig/extensions": "^1.5",
++        "willdurand/js-translation-bundle": "^2.6"
+     },
+     "require-dev": {
+         "doctrine/doctrine-fixtures-bundle": "^3.0",
+diff --git a/composer.lock b/composer.lock
+index a7de935..ca42594 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "856257ee0ceea7abeae1148d7fc78d01",
++    "content-hash": "ce8b3c5737d64f444367ea73b6ec12ff",
+     "packages": [
+         {
+             "name": "a2lix/auto-form-bundle",
+@@ -6592,6 +6592,68 @@
+             ],
+             "time": "2018-12-25T11:19:39+00:00"
+         },
++        {
++            "name": "willdurand/js-translation-bundle",
++            "version": "2.6.6",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/willdurand/BazingaJsTranslationBundle.git",
++                "reference": "9c80406dd4cc195f1f835a52e038fb80a96563b2"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/willdurand/BazingaJsTranslationBundle/zipball/9c80406dd4cc195f1f835a52e038fb80a96563b2",
++                "reference": "9c80406dd4cc195f1f835a52e038fb80a96563b2",
++                "shasum": ""
++            },
++            "require": {
++                "symfony/console": "~2.7|~3.1|~4.0",
++                "symfony/finder": "~2.7|~3.1|~4.0",
++                "symfony/framework-bundle": "~2.7|~3.1|~4.0",
++                "symfony/intl": "~2.7|~3.1|~4.0",
++                "symfony/translation": "~2.7|~3.1|~4.0",
++                "symfony/twig-bundle": "~2.7|~3.1|~4.0"
++            },
++            "replace": {
++                "willdurand/expose-translation-bundle": "2.5.*"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "^4.8|~5.7",
++                "symfony/asset": "~2.7|~3.1|~4.0",
++                "symfony/browser-kit": "~2.7|~3.1|~4.0",
++                "symfony/phpunit-bridge": "~2.7|~3.1|~4.0",
++                "symfony/twig-bundle": "~2.7|~3.1|~4.0",
++                "symfony/yaml": "~2.7|~3.1|~4.0"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "2.7-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Bazinga\\Bundle\\JsTranslationBundle\\": ""
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "William Durand",
++                    "email": "will+git@drnd.me"
++                }
++            ],
++            "description": "A pretty nice way to expose your translation messages to your JavaScript.",
++            "keywords": [
++                "javascript",
++                "symfony",
++                "translation"
++            ],
++            "time": "2018-02-11T14:19:14+00:00"
++        },
+         {
+             "name": "zendframework/zend-code",
+             "version": "3.3.1",
+diff --git a/config/bundles.php b/config/bundles.php
+index 46c1178..7400b06 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -23,4 +23,5 @@ return [
+     Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle::class => ['all' => true],
+     A2lix\AutoFormBundle\A2lixAutoFormBundle::class => ['all' => true],
+     A2lix\TranslationFormBundle\A2lixTranslationFormBundle::class => ['all' => true],
++    Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle::class => ['all' => true],
+ ];
+diff --git a/config/packages/bazinga_js_translation.yaml b/config/packages/bazinga_js_translation.yaml
+new file mode 100644
+index 0000000..2f7f2ce
+--- /dev/null
++++ b/config/packages/bazinga_js_translation.yaml
+@@ -0,0 +1,2 @@
++bazinga_js_translation:
++    locale_fallback: '%locale%'
+diff --git a/config/routes/js_translation.yaml b/config/routes/js_translation.yaml
+new file mode 100644
+index 0000000..c226bb4
+--- /dev/null
++++ b/config/routes/js_translation.yaml
+@@ -0,0 +1,2 @@
++bazinga_js_translation:
++    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
+diff --git a/symfony.lock b/symfony.lock
+index 15e057a..86180dd 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -494,6 +494,18 @@
+     "webmozart/assert": {
+         "version": "1.4.0"
+     },
++    "willdurand/js-translation-bundle": {
++        "version": "2.0",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "2.0",
++            "ref": "02b720a49f6d36b44d557e0b18e48bf09e0a8e07"
++        },
++        "files": [
++            "config/routes/js_translation.yaml"
++        ]
++    },
+     "zendframework/zend-code": {
+         "version": "3.3.1"
+     },

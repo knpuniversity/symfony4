@@ -1,0 +1,66 @@
+diff --git a/public/js/purchase.js b/public/js/purchase.js
+index bd6c34e..e7eb416 100644
+--- a/public/js/purchase.js
++++ b/public/js/purchase.js
+@@ -1,12 +1,13 @@
+ $(document).ready(function() {
+     $('.js-purchase-btn').on('click', function(e) {
+         e.preventDefault();
++        var $btn = $(this);
+ 
+         Swal.fire({
+             type: 'success',
+-            title: 'Excellent Choice!',
+-            html: '<div>You just bought this delicious Ice Cream from the Space!</div>' +
+-                '<div><em>Wait for our intergalactic delivery soon ;)</em></div>',
++            title: $btn.data('popup-title'),
++            html: '<div>'+$btn.data('popup-message-part1')+'</div>' +
++                '<div><em>'+$btn.data('popup-message-part2')+'</em></div>',
+             confirmButtonText: 'Thank you!'
+         })
+     });
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 4bbba64..088dc5f 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -48,7 +48,11 @@
+                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
+                     <p>{{ 'ice_cream_promo.title.html'|trans|raw }}</p>
+                     {% set spaceIceCreamPrice = 9.99 %}
+-                    <button class="btn btn-info js-purchase-btn">
++                    <button class="btn btn-info js-purchase-btn"
++                            data-popup-title="{{ 'ice_cream_promo.popup.title'|trans }}"
++                            data-popup-message-part1="{{ 'ice_cream_promo.popup.message.part1'|trans }}"
++                            data-popup-message-part2="{{ 'ice_cream_promo.popup.message.part2'|trans }}"
++                    >
+                         {{ 'ice_cream_promo.button'|trans({'%price%': '$'~spaceIceCreamPrice|number_format(2)}) }}
+                     </button>
+                 </div>
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 5acea57..76071e4 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -1,6 +1,9 @@
+ trending_quotes: 'Trending Quotes'
+ ice_cream_promo.title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'
+ ice_cream_promo.button: Buy Now for %price%!
++ice_cream_promo.popup.title: Excellent Choice!
++ice_cream_promo.popup.message.part1: You just bought this delicious Ice Cream from the Space!
++ice_cream_promo.popup.message.part2: Wait for our intergalactic delivery soon ;)
+ search.placeholder: Search
+ search.button: Search
+ page.weather.header: Universal Forecast
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index b95d11c..e8741f9 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -1,6 +1,9 @@
+ trending_quotes: 'Cotizaciones de Tendencias'
+ ice_cream_promo.title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
+ ice_cream_promo.button: Compre ahora por %price%!
++ice_cream_promo.popup.title: Excelente Opcion!
++ice_cream_promo.popup.message.part1: Acabas de comprar este delicioso helado del espacio!
++ice_cream_promo.popup.message.part2: Espere nuestra entrega intergaláctica pronto ;)
+ search.placeholder: Buscar
+ search.button: Buscar
+ page.weather.header: Pronóstico Universal

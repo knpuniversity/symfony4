@@ -1,0 +1,14 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 759c750..165a678 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -71,6 +71,8 @@
+ 
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+     <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
+-    <script src="{{ url('bazinga_jstranslation_js') }}"></script>
++    <script src="{{ url('bazinga_jstranslation_js', {
++        locales: app_locales_array|join(',')
++    }) }}"></script>
+     <script src="{{ asset('js/purchase.js') }}"></script>
+ {% endblock %}

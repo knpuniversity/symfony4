@@ -1,0 +1,213 @@
+diff --git a/composer.json b/composer.json
+index eda2eef..724d92b 100644
+--- a/composer.json
++++ b/composer.json
+@@ -4,6 +4,7 @@
+     "require": {
+         "php": "^7.1.3",
+         "ext-iconv": "*",
++        "a2lix/translation-form-bundle": "^3.0",
+         "knplabs/doctrine-behaviors": "^1.6",
+         "knplabs/knp-markdown-bundle": "^1.7",
+         "knplabs/knp-paginator-bundle": "^2.7",
+diff --git a/composer.lock b/composer.lock
+index 1986ac1..a7de935 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,8 +4,157 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "b73457c22881819699341dbb06ba377d",
++    "content-hash": "856257ee0ceea7abeae1148d7fc78d01",
+     "packages": [
++        {
++            "name": "a2lix/auto-form-bundle",
++            "version": "0.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/a2lix/AutoFormBundle.git",
++                "reference": "b5e12103f3aa067cd9698439820f878e7513ce2f"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/a2lix/AutoFormBundle/zipball/b5e12103f3aa067cd9698439820f878e7513ce2f",
++                "reference": "b5e12103f3aa067cd9698439820f878e7513ce2f",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "symfony/config": "^3.4|^4.0",
++                "symfony/dependency-injection": "^3.4|^4.0",
++                "symfony/doctrine-bridge": "^3.4|^4.0",
++                "symfony/form": "^3.4|^4.0",
++                "symfony/http-kernel": "^3.4|^4.0"
++            },
++            "require-dev": {
++                "doctrine/orm": "^2.4",
++                "friendsofphp/php-cs-fixer": "^2.10",
++                "symfony/phpunit-bridge": "^4.0",
++                "symfony/validator": "^3.4|^4.0",
++                "vimeo/psalm": "^1.0"
++            },
++            "suggest": {
++                "a2lix/translation-form-bundle": "For translation form"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "0.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "A2lix\\AutoFormBundle\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "David ALLIX",
++                    "homepage": "http://a2lix.fr"
++                },
++                {
++                    "name": "Contributors",
++                    "homepage": "https://github.com/a2lix/AutoFormBundle/contributors"
++                }
++            ],
++            "description": "Automate form building",
++            "homepage": "https://github.com/a2lix/AutoFormBundle",
++            "keywords": [
++                "automate",
++                "automation",
++                "building",
++                "field",
++                "form",
++                "magic",
++                "symfony"
++            ],
++            "time": "2018-04-03T19:39:07+00:00"
++        },
++        {
++            "name": "a2lix/translation-form-bundle",
++            "version": "3.0.2",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/a2lix/TranslationFormBundle.git",
++                "reference": "dcf0716d8d0103c5389e48fe4a8787274e004728"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/a2lix/TranslationFormBundle/zipball/dcf0716d8d0103c5389e48fe4a8787274e004728",
++                "reference": "dcf0716d8d0103c5389e48fe4a8787274e004728",
++                "shasum": ""
++            },
++            "require": {
++                "a2lix/auto-form-bundle": "^0.1",
++                "php": "^7.1.3",
++                "symfony/config": "^3.4|^4.0",
++                "symfony/dependency-injection": "^3.4|^4.0",
++                "symfony/doctrine-bridge": "^3.4|^4.0",
++                "symfony/event-dispatcher": "^3.4|^4.0",
++                "symfony/form": "^3.4|^4.0",
++                "symfony/http-foundation": "^3.4|^4.0",
++                "symfony/http-kernel": "^3.4|^4.0",
++                "symfony/options-resolver": "^3.4|^4.0"
++            },
++            "require-dev": {
++                "doctrine/orm": "^2.4",
++                "friendsofphp/php-cs-fixer": "^2.10",
++                "knplabs/doctrine-behaviors": "^1.4",
++                "matthiasnoback/symfony-dependency-injection-test": "^2.0",
++                "symfony/phpunit-bridge": "^4.0",
++                "symfony/validator": "^3.4|^4.0",
++                "vimeo/psalm": "^1.0"
++            },
++            "suggest": {
++                "knplabs/doctrine-behaviors": "For Knp strategy",
++                "prezent/doctrine-translatable-bundle": "For Prezent strategy"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "3.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "A2lix\\TranslationFormBundle\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "David ALLIX",
++                    "homepage": "http://a2lix.fr"
++                },
++                {
++                    "name": "Contributors",
++                    "homepage": "https://github.com/a2lix/TranslationFormBundle/contributors"
++                }
++            ],
++            "description": "Translate your doctrine objects easily with some helps",
++            "homepage": "https://github.com/a2lix/TranslationFormBundle",
++            "keywords": [
++                "doctrine2",
++                "form",
++                "i18n",
++                "internationalization",
++                "knplabs",
++                "prezent",
++                "symfony",
++                "translatable",
++                "translation"
++            ],
++            "time": "2018-10-04T20:43:10+00:00"
++        },
+         {
+             "name": "behat/transliterator",
+             "version": "v1.2.0",
+diff --git a/config/bundles.php b/config/bundles.php
+index ce89916..46c1178 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -21,4 +21,6 @@ return [
+     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
+     Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle::class => ['all' => true],
++    A2lix\AutoFormBundle\A2lixAutoFormBundle::class => ['all' => true],
++    A2lix\TranslationFormBundle\A2lixTranslationFormBundle::class => ['all' => true],
+ ];
+diff --git a/config/packages/a2lix_translation_form.yaml b/config/packages/a2lix_translation_form.yaml
+new file mode 100644
+index 0000000..0dc04b9
+--- /dev/null
++++ b/config/packages/a2lix_translation_form.yaml
+@@ -0,0 +1,6 @@
++a2lix_translation_form:
++    locale_provider: default
++    locales: '%app_locales_array%'
++    default_locale: '%locale%'
++    required_locales: [es]
++    templating: "@A2lixTranslationForm/bootstrap_4_layout.html.twig"
+diff --git a/symfony.lock b/symfony.lock
+index df9fec0..15e057a 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -1,4 +1,10 @@
+ {
++    "a2lix/auto-form-bundle": {
++        "version": "0.1"
++    },
++    "a2lix/translation-form-bundle": {
++        "version": "3.0.2"
++    },
+     "behat/transliterator": {
+         "version": "v1.2.0"
+     },

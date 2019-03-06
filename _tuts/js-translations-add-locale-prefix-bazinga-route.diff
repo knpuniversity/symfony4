@@ -1,0 +1,13 @@
+diff --git a/config/routes/js_translation.yaml b/config/routes/js_translation.yaml
+index c226bb4..675087b 100644
+--- a/config/routes/js_translation.yaml
++++ b/config/routes/js_translation.yaml
+@@ -1,2 +1,8 @@
+ bazinga_js_translation:
+     resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
++    prefix:
++        en: ''
++        es: '/es'
++        uk: '/uk'
++    requirements:
++        _locale: '%app_locales%'

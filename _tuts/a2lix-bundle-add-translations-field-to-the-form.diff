@@ -1,0 +1,33 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 45418de..fbcd51c 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Form;
+ 
++use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+ use App\Entity\Article;
+ use App\Entity\User;
+ use App\Repository\ArticleRepository;
+@@ -47,6 +48,7 @@ class ArticleFormType extends AbstractType
+                 ],
+                 'required' => false,
+             ])
++            ->add('translations', TranslationsType::class)
+         ;
+ 
+         if ($options['include_published_at']) {
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index a074197..f6523fe 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -27,5 +27,7 @@
+         {{ form_row(articleForm.publishedAt) }}
+     {% endif %}
+ 
++    {{ form_row(articleForm.translations) }}
++
+     <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+ {{ form_end(articleForm) }}
+\ No newline at end of file

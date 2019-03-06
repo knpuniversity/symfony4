@@ -1,0 +1,42 @@
+diff --git a/public/js/purchase.js b/public/js/purchase.js
+index e7eb416..29cd910 100644
+--- a/public/js/purchase.js
++++ b/public/js/purchase.js
+@@ -5,9 +5,9 @@ $(document).ready(function() {
+ 
+         Swal.fire({
+             type: 'success',
+-            title: $btn.data('popup-title'),
+-            html: '<div>'+$btn.data('popup-message-part1')+'</div>' +
+-                '<div><em>'+$btn.data('popup-message-part2')+'</em></div>',
++            title: Translator.trans('ice_cream_promo.popup.title'),
++            html: '<div>'+Translator.trans('ice_cream_promo.popup.message.part1')+'</div>' +
++                '<div><em>'+Translator.trans('ice_cream_promo.popup.message.part2')+'</em></div>',
+             confirmButtonText: 'Thank you!'
+         })
+     });
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 088dc5f..759c750 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -48,11 +48,7 @@
+                     <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
+                     <p>{{ 'ice_cream_promo.title.html'|trans|raw }}</p>
+                     {% set spaceIceCreamPrice = 9.99 %}
+-                    <button class="btn btn-info js-purchase-btn"
+-                            data-popup-title="{{ 'ice_cream_promo.popup.title'|trans }}"
+-                            data-popup-message-part1="{{ 'ice_cream_promo.popup.message.part1'|trans }}"
+-                            data-popup-message-part2="{{ 'ice_cream_promo.popup.message.part2'|trans }}"
+-                    >
++                    <button class="btn btn-info js-purchase-btn">
+                         {{ 'ice_cream_promo.button'|trans({'%price%': '$'~spaceIceCreamPrice|number_format(2)}) }}
+                     </button>
+                 </div>
+@@ -74,5 +70,7 @@
+     {{ parent() }}
+ 
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
++    <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
++    <script src="{{ url('bazinga_jstranslation_js') }}"></script>
+     <script src="{{ asset('js/purchase.js') }}"></script>
+ {% endblock %}

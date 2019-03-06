@@ -414,7 +414,67 @@
             "id": "locale-in-session-use-locale-from-session-in-controller",
             "name": "Locale in session: Use locale from session in controller",
             "description": null
+        },
+        {
+            "id": "a2lix-bundle-install-and-configure",
+            "name": "A2LiX bundle: Install and configure",
+            "description": null
+        },
+        {
+            "id": "a2lix-bundle-remove-translatable-fields-from-the-form",
+            "name": "A2LiX bundle: Remove translatable fields from the form",
+            "description": null
+        },
+        {
+            "id": "a2lix-bundle-add-translations-field-to-the-form",
+            "name": "A2LiX bundle: Add translations field to the form",
+            "description": null
+        },
+        {
+            "id": "a2lix-bundle-remove-redundant-code",
+            "name": "A2LiX bundle: Remove redundant code",
+            "description": null
+        },
+        {
+            "id": "a2lix-bundle-hide-slug-field",
+            "name": "A2LiX bundle: Hide slug field",
+            "description": null
+        },
+        {
+            "id": "js-translations-translate-with-data-attributes",
+            "name": "JS translations: Translate with data attributes",
+            "description": null
+        },
+        {
+            "id": "js-translations-install-and-configure-the-bundle",
+            "name": "JS translations: Install and configure the bundle",
+            "description": null
+        },
+        {
+            "id": "js-translations-translate-with-js-translator-object",
+            "name": "JS translations: Translate with JS Translator object",
+            "description": null
+        },
+        {
+            "id": "js-translations-add-locale-prefix-bazinga-route",
+            "name": "JS translations: Add locale prefix bazinga route",
+            "description": null
+        },
+        {
+            "id": "js-translations-expose-all-locales",
+            "name": "JS translations: Expose all locales",
+            "description": null
+        },
+        {
+            "id": "js-translations-expose-only-javascript-domain",
+            "name": "JS translations: Expose only javascript domain",
+            "description": null
+        },
+        {
+            "id": "js-translations-load-dumped-translations-in-prod",
+            "name": "JS translations: Load dumped translations in prod",
+            "description": null
         }
     ],
-    "sha": "29d0973ab63d433e1c3c4ef6b84b9c0768a1ec70"
+    "sha": "c559971a714bf134eb41708c2a46b575258dab4f"
 }

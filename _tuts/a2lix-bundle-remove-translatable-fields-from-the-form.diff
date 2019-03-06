@@ -1,0 +1,41 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index ca1f0d1..45418de 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -33,16 +33,6 @@ class ArticleFormType extends AbstractType
+         $isEdit = $article && $article->getId();
+ 
+         $builder
+-            ->add('title', TextType::class, [
+-                'property_path' => 'translateWithoutFallback.title',
+-                'label' => 'form.article.title',
+-                'help' => 'form.article.title.help'
+-            ])
+-            ->add('content', TextareaType::class, [
+-                'property_path' => 'translateWithoutFallback.content',
+-                'label' => 'form.article.content',
+-                'rows' => 15
+-            ])
+             ->add('author', UserSelectTextType::class, [
+                 'label' => 'form.article.author',
+                 'disabled' => $isEdit
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index 450e2ea..a074197 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -11,7 +11,6 @@
+ </div>
+ 
+ {{ form_start(articleForm) }}
+-    {{ form_row(articleForm.title) }}
+     {{ form_row(articleForm.author) }}
+     {{ form_row(articleForm.location, {
+         attr: {
+@@ -24,7 +23,6 @@
+             {{ form_row(articleForm.specificLocationName) }}
+         {% endif %}
+     </div>
+-    {{ form_row(articleForm.content) }}
+     {% if articleForm.publishedAt is defined %}
+         {{ form_row(articleForm.publishedAt) }}
+     {% endif %}
