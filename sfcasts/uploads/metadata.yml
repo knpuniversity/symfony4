@@ -24,7 +24,7 @@ chapters:
     - downloading-private-files
     - dropzone
     - js-rendering
-    - delete-file               # raw
+    - delete-file
     - edit-filename             # raw
     - reordering                # raw
     - aws-s3                    # raw
