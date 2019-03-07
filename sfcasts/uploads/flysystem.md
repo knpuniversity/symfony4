@@ -46,6 +46,8 @@ Ok, go check on Composer. It's done and thanks to the recipe, we have a new
 `config/packages/oneup_flysystem.yaml` file with the same config we just saw
 in the docs.
 
+[[[ code('86edd83eee') ]]]
+
 ## Configuring the Adapter & Filesystem
 
 Let's create 1 adapter and 1 filesystem for our uploads. Call the adapter, how
@@ -55,9 +57,13 @@ talk about private uploads soon - those are files where you need to do some
 security checks before you allow a user to see them. Change the directory to
 `%kernel.project_dir%` and then `/public/uploads`.
 
+[[[ code('adfa37173f') ]]]
+
 That is the *root* of this filesystem: everything will be stored relative to
 this. Give the filesystem a similar name - `public_uploads_filesystem` - and set
 `adapter:` to `public_uploads_adapter`.
+
+[[[ code('9284457b91') ]]]
 
 ## Filesystem Alias?
 
