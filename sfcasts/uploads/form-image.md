@@ -2,8 +2,13 @@
 
 Let's render a thumbnail on the show page too. The size here is restricted to a width
 of 250. Copy the first filter, paste, and call this one, how about,
-`squared_thumbnail_medium`. Set the size to 500 by 500. Copy the name and this
-time go into `show.html.twig`. Add the `|imagine_filter()` and paste!
+`squared_thumbnail_medium`. Set the size to 500 by 500. 
+
+[[[ code('d3a8b175b0') ]]]
+
+Copy the name and this time go into `show.html.twig`. Add the `|imagine_filter()` and paste!
+
+[[[ code('8909b2579a') ]]]
 
 Reload! It works! The first time it has the `resolve` in the URL and is handled
 by a Symfony route & controller. The second time, it points directly to the file
@@ -25,6 +30,8 @@ Create a `<div class="row"></div>` and another `<div class="col-sm-9"><div>` ins
 to set up a mini grid. Move the file field here. Now add a div with `class="col-sm-3"`:
 *this* is where we'll render the image... if there is one.
 
+[[[ code('8f1a25ffbd') ]]]
+
 To do that, we need the `Article` object. Copy the image path logic from the homepage
 and then go find the controller for the admin section: `ArticleAdminController`.
 When we render the template - this is in the `new()` action - we're *only* passing
@@ -37,6 +44,8 @@ print `<img src="{{ }}">` and paste. Replace `article` with `articleForm.vars.da
 And yes, I *should* add an `alt` attribute - please do that! Set the height to 100,
 because the actual thumbnail is 200 for quality reasons.
 
+[[[ code('a6ec01fb4e') ]]]
+
 Try it! Refresh and... yes! To make sure we didn't break anything, try creating
 a new article. Whoops... we broke something!
 
@@ -47,6 +56,8 @@ it depends how you set it up. The easiest fix is to add `|default`. It's kinda w
 when you add `|default`, it *suppresses* the error and just returns `null` if there
 were any problems, which, for the if statement, is the same as `false`. It looks
 weird, but works great. Try it. All better.
+
+[[[ code('d05eaa6040') ]]]
 
 Next, we have a real upload system (yay!) but our article data fixtures are broken:
 they're just setting `imageFilename` to a random filename that won't *actually*
