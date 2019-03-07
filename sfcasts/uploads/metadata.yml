@@ -27,7 +27,7 @@ chapters:
     - dropzone-errors
     - js-rendering
     - delete-file
-    - edit-filename             # raw
+    - edit-filename
     - reordering                # raw
     - aws-s3                    # raw
     - s3-public-private         # raw
