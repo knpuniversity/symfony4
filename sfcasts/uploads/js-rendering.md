@@ -1,170 +1,147 @@
-# Js Rendering
+# Rendering the File List Client Side
 
-Coming soon...
+Here's the plan. Since we're using Dropzone to upload things via Ajax, I want to
+transform this entire section into a fully JavaScript-driven dynamic widget. Some
+of this stuff won't strictly be about handling uploads, but I got a lot of requests
+about showing a full upload "gallery" where you could upload, edit, delete and
+re-order files. So... let's do it!
 
-Here's the plan. Since we're using Dropzone to upload things via Ajax, we're going to
-make this entire section absolutely awesome. It's going to be a kick butt JavaScript
-widget. One piece that's missing right now is that when we upload a new file here,
-like `rocket.jpeg`, it uploads successfully, but you don't actually see it here
-until we refresh. It's not, that's not really raped. So what we're going to do is we,
-to do that, we're going to render this entire list client side. We're going to turn
-this whole thing into a true JavaScript widget and in order to be able to render this
-client side and we're going to create a new API endpoint that's going to return to us
-all of the references for a specific article. So we're going to start inside of our
-`ArticleReferenceAdminController`. Let's see here. Let's create a new 
-`public function` called `getArticleReferences()` have the `@Route()` above this with 
-`/admin/article/{id}/references` So the idea here is I'm sort of creating a, you were 
-out here that is a, this is normally the URL to get information about single article 
-and this is going to get their related references off of them. You were ELLs are not 
-really that important, but you're not trying to create clean stuff. We'll make this method's =
-get notice. You can use the curly brace when you use that or if you just have one
-method, you can leave them off, doesn't matter. And we'll say 
-`name="admin_article_list_references`.
+Select another file to upload, like `rocket.jpeg`. It uploads... but you don't
+see it on the list until we refresh. Lame! Instead of rendering this list inside
+Twig, let's render it via JavaScript. Once we've done that, updating it dynamically
+should be easy!
 
-Awesome.
+## Article References Collection Endpoint
 
-So here I'm the type hint `Article` and of course we need to remember to do our
-security. So when you use the `@isGranted()` inside of here, since we have the
-article arguments and say `MANAGE` and we can pass the `article`. So that's exactly the
-same thing that we've been doing in our other controllers.
+To power the frontend, we need a new API endpoint that will return all of the
+references for a specific Article. We got this: go into
+`ArticleReferenceAdminController` and create a new public function called
+`getArticleReferences()`. Add the `@Route()` above this with
+`/admin/article/{id}/references`.
 
-Okay.
+*This* time, the `id` is the article id. URLs aren't technically important, but
+this is on purpose: in an API, `/admin/article/{id}` would be the URL to get info
+about a specific article. Adding `/references` onto that is a nice way to read
+its references only.
 
-And inside we're going to do the very difficult job of 
-`return $this->json($article->getArticleReferences());`. How nice is it that, all right, 
-so try this out. Let's take off and a year and we'll go to references. And it explodes. 
-Um, semantical Eric could not find constant article. Ah, this is a Ryan error.
+Next let's add the `methods="GET"` - yes you *can* leave off the curly braces
+when there's just one method - and `name="admin_article_list_references`.
 
-Okay.
+Down in the method, this is beautiful. Add the `Article` argument and don't forget
+the security check: `@isGranted("MANAGE", subject="article")`. We can use the annotation
+this time because we *do* have an `article` argument. Then, oh, it's so painful
+for us: `return $this->json($article->getArticleReferences());`. How nice is it!?
 
-Because I need to have `subject="article"`. That's just improper annotations. There we
-go. Here's the error I was expecting. A circular reference has been detected. This is
-the exact same thing we saw a second ago when we tried to serialize a single article
-reference. Um, it got into a circular reference cause then it's serialized the
-article, the article started serialize the article preference and we fixed that by
-doing only the group's main or I need to do the exact same thing here, past `200` as a
-status code.
+Let's check it out: in the browser, take off the `/edit` and replace it with
+`/references`. And... oh boy, it explodes!
 
-Okay.
+> Semantical error: Couldn't find constant article... make sure annotations
+> are installed and enabled.
 
-No custom headers, but we do any of this custom `['groups' => ['main']]` thing. So that one to
-refresh. Perfect. Look at that. Beautiful all the information that we need to render
-this client side.
+Well, they are - but this *is* come from a total rookie mistake I made with my
+annotations. On the `@IsGrante` annotation, it should be `subject="article"`.
+Try it again. *Here* we go - that's the error I was expecting: our favorite
+circular reference has been detected.
 
-So what we're gonna do is I'm not, we're, um, we're not using vue js or not using
-react in this project. Those are both wonderful options. I'm going to try to keep
-things somewhat simple so it's understandable for everyone. So what we're gonna do is
-we're going to create a sort of a react like class inside of our JavaScript that's
-going to handle rendering this area. So first an `edit.html.twig`, but to find
-her UL, and I'm actually going to delete all of this. We're no longer, we're no
-longer going to render this on the service side. In a second you'll see a, we're
-going to render all of this in JavaScript and you'll see that what I was going to
-completely delete that. I'm going to add a new `js` class. So we can target this 
-`js-reference-list`. And I'm also going to add a little `data-url`
-property here and I'm gonna use `{{ path() }}` and I'm going to use that same are not linked to
-this end point here. So I'll copy the new route name that we had and I'll put that
-there and we'll say `id: article.id`. So this is going to be useful cause I'll be
-able to read this in JavaScript so I can know what the URL is to that end point.
+This is the *exact* same thing we saw a second ago when we tried to serialize a
+single `ArticleReference`. And the fix is the same: we need to use the `main` serialization
+group.
 
-All right, perfect. Next in `admin_article_form.js` above and `initializeDropzone()`. Some
-doesn't really matter. I'm actually going to paste in a class. So this uses the new
-ess six class syntax. You knows, I have a note here. It says use Webpack encore. Um,
-the class in tax is not compatible with all browsers. Basically it doesn't work on
-Internet explorer. Um, if you use Webpack encore, that's not a problem because all of
-this code is rewritten for you. I'm just pointing out that we're sending you some new
-es6 features here and those work best when you use Webpack encore.
+Pass 200 as the status code, no custom headers, but one custom `groups` option set to `main`.
 
-Okay.
+Try it again. Gorgeous! That contains *everything* we need to render the list in
+JavaScript.
 
-Before we talk about this class, um, to use it up in, uh, our document out ready,
+## JavaScript Rendering
 
-I'm gonna say `var referenceList = new ReferenceList()`. And we're going to do is we're
-going to pass it, uh, the, that `.js-reference-lists`. So that's the element
-that we just created a class. We just create an honor UL service is going to find the
-UL via jquery. We're going to pass that to our reference list and then a reference
-list. Really it takes care of the rest. So let's walk through the class really
-quickly so you can see what it's doing. It has a `constructor()`. So we passed that
-jquery element and we just store it on `this.element`. It also keeps track of all
-the references data that it has. And so it starts out empty and then a calls. This
-error render and the job of this error render is actually to fill in all of the html
-that's going to go instead of is UL element.
+To do that, we're not going to use Vue.js or React. Those are both *wonderful*
+options, and if you're serious about building some high-quality front-end apps,
+you need to give those a serious look. But, to keep the concepts understandable,
+I'm going to stick to jQuery and a few modern JavaScript techniques.
 
-So what it does is it uses `this.references.map` that's kind of a fancy way to loop
-over the references. Of course, in the very beginning of they are empty, but they
-won't be empty forever. It's going to look over the references and uh, it's going to
-create a new array full of the html needed for each reference. So each reference has
-the `<li>` has the same classes we saw before. We're using, um, a new feature of ESX
-called string interpolation, or we can reference a render variable names inside of
-there. So you see as referencing `reference.originalFilename` and `referenced.id`
-down here. Ultimately these references are going to come from this end points that
-we're going to have access to all of the data that you see here.
+Start in `edit.html.twig`. Find the list and completely empty it: we'll fill this
+in via JavaScript. Add a new class so we can find it there: `js-reference-list`.
+Let's also add a `data-url` attribute: I want to print the URL to our new endpoint
+to make it easy for our JavaScript to fetch the references. Copy the new route name,
+paste into `path` and add pass the `id` route wildcard set to `article.id`.
 
-Okay.
+## The ReferenceList JavaScript Class
 
-And there was also that I am hard code in the URL to this end point. Um, it's not
-really that big of a deal there. You can use fos js routing bundle if you want to
-dynamically
+Next, in `admin_article_form.js`, I'm going to paste in a class that I've started:
+you can copy this from the code block on this page. This uses the newer "class"
+syntax from JavaScript... which is compatible with *most* browsers, but not all
+of them. That's why I've added this note to use Webpack Encore, which will rewrite
+the new syntax so that it's compatible with whatever browsers you need.
 
-okay
+Before we dive into this class, let's start using it up on our `document.ready()`
+function. Say `var referenceList = new ReferenceList()` and pass it
+`$('.js-reference-lists')` - that's the element we just added the attribute to.
 
-render ami routes. But
+And... yea! The class mostly takes care of the rest! In the `constructor()`, we
+take in the jQuery element and store it on `this.element`. It also keeps track of
+all the *references* data that it has, which starts empty. It then calls
+`this.render()`, whose job it is to completely fill the `ul` element.
 
-as long as you are aware that you've hard coded some of your URLs in JavaScript, then
-you'll know if you change it, you URL all that, you're gonna need to update it in
-JavaScript. That was my down here. We basically grab all of that html and we stick it
-into the element. So again, references empty at first, but we immediately make an
-Ajax call. We read the data, a Dashi URL attributes off of our element. We
-immediately make a uh, Ajax request of that when it finishes. We said this, that
-references equal to data. So this is going to be set to all of this data here. And
-then we call this error render again. So all rerender itself so it will be empty for
-just a moment. And then once the Ajax request finishes, it's going to render itself.
+`this.references.map` is a fancy way to loop over the references array, which is
+empty at the start, but won't be forever. For each reference, it creates a string
+of HTML that is basically a copy of what we had in our template before. This uses
+a feature called template literals that allows us to create a multi-line string
+with variables inside - like `reference.originalFilename` and `referenced.id`.
+The data from the references will ultimately come from our new endpoint, so I'm
+using the keys from it.
 
-So with any luck, let's actually go back. Let's refresh this and yes, you saw it, it
-was empty and then it filled in. That is perfect and this is really great because now
-we can very easily add any new rows on up on finish of Ajax. The way we do this is
-down inside of our `Dropzone`. We're going to add inside of a `init`, we're going to do
-another event listener `.on('success')`. This is called after a file is successfully
-uploaded. This is going to take that same `file` and `data` arguments and actually I'm
-just going to `console.log()` and `data` so we can see what that looks like. So let's
-refresh to get that new JavaScript select any file here and I'm looking for is inside
-of our console dot log. Yes, there you go. You see it actually returns the, because
-our end point returns the serialized reference, we get that data right here. That's
-perfect because that's what we need to set onto hour class. So basically if we can
-take that data and add it to the references and then rerender it's going to rerender
-with that new row.
+I *did* hardcode the URL to the download endpoint instead of doing something fancier.
+You could generate that with FOSJsRoutingBundle if you want, but hardcoding it
+is also not a huge deal.
 
-So to allow that, let's add a new function here called `addReference()`. We'll take in
-that reference data down here. We'll say this, not `references.` Yeah.
+Finally, at the bottom, we take all that HTML and stick it into the element. This
+is a bit similar to what React does, but *definitely* less powerful.
 
-Push
+Back up in the constructor, the references array *starts* empty, but we immediately
+make an Ajax call by reading the `data-url` attribute off of our element. When it
+finishes, we set `this.references` to to its data and once again call `this.render()`.
 
-for people that use react. I am Ma
+Phew! Let's see if it actually works! Refresh and... yes! If you watched closely,
+it was empty for a *moment*, then filled in once the AJAX call finished.
 
-and I'm going to say `this.render()` to rerender those. So it's going to rerender
-those all from scratch. I do want to highlight that this is a poor approximation of
-react. Js. Uh, every time we add, make any changes to references, we need to rerender
-everything, uh, whereas react as smarter. It's smart enough to know that we only
-added one new reference, so only kind of rerun a part of itself. So if you're really
-serious about doing some big nice front in which it's like this, use vjs, use react
-at jazz. Um, this is nice for small stuff, but it's not as good as those. All right,
-so now down here, inside of our initialized drops on, we're going to force a
-`referenceList` object to be passed to us. Maybe even going to document that with a
-little APP. Harambe here, how you do it in JavaScript, you can say, this is going to
-be an instance of that reference list class and all the way up on top, I will
-actually pass it in. So we instantiate the reference list, we said its `referenceList`
-op variable, and I'll pass that object into our initialized dropzone.
+## Dynamically Adding the Row
 
-Okay,
+Now that we're rendering this in JavaScript, we have a clean way to add a *new*
+row whenever a file finishes uploading. Back inside the `init` function for Dropzone,
+add another event listener: `this.on('success')` and pass a callback with the same
+`file` and `data` arguments. To start, just `console.log(data)` so we can see what
+it looks like.
 
-so that's awesome because now I can take this reference list here and instead of
-console dot log, we'll say `referenceList.addReference(data)`. We'll pass it data.
+Ok, refresh, select any file and... in the console... nice! We *already* did the
+work of returning the new `ArticleReference` JSON on success... even though we
+didn't need it before. Thanks past us!
 
-Yeah.
+Now, we're dangerous. If we can somehow take that data, put it into the `references`
+property in our class and re-render, we'd be good!
 
-All right, let's give that a try. Refresh the page.
+To help that, add a new function called `addReference()`. This will take in a new
+reference and then push it into `this.references`. Then call `this.render()`.
 
-Okay.
+For people that are used to React, I *do* want to mention two things. First, we're
+*mutating*, um, changing the `this.references` property when we say
+`this.references.push()`. Changing "state", which is basically what this is, is
+a big "no no" in React. But in our simpler system, it's fine. Second, each time
+we call `this.render()`, it is *completely* emptying the `ul` and re-adding all
+the HTML from scratch. Front-end frameworks like React or Vue are *way* smarter
+than this and are able to update *just* the pieces that changed.
 
-And let's see here. Astronaut that Jpeg is our last one. So let's upload Earth for
-Moon Dot Jpeg. It uploads and boom so fast and we can even instantly downloaded. That
-is awesome.
+Anyways, inside of `initializeDropzone()`, add a `referenceList` argument: we're
+going to force this to get passed to us. I'll even document that this will be an
+instance of the `ReferenceList` class.
+
+Back on top, pass in the object - `referenceList`.
+
+And *now* inside success, instead of `console.log()`, we'll say
+`referenceList.addReference(data)`.
+
+Cool! Give your page a nice refresh. And... let's see: `astronaut.jpg` is the last
+file on the list currently. So let's upload `Earth from the Moon.jpeg`. It uploads
+and... boom! So fast! We can even instantly downloaded it.
+
+Next: let's keep leveling up: authors will need a way to *delete* existing file
+references.

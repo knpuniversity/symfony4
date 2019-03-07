@@ -1,123 +1,108 @@
 # Mime Type Validation
 
-Coming soon...
+Unless the authors that can upload these files are super, super trusted, we need
+some validation. At this moment, an author could upload literally *any* file type
+to the system.
 
-Unless the authors that can upload these files are super, super trusted. We need to
-have some validation on there because right now they can literally upload any file
-type they want to the system.
+No problem: find the controller. Hmm, there's no form here. In
+`ArticleAdminController`, we put the validation into the form. Then we could check
+`$form->isValid()` and any errors rendered automatically on the form.
 
-All right, awesome. No problem. Ah, let's go into our Article, our controller. So
-hmm. Now the problem is that we don't have a form before him. He had an 
-`ArticleAdminController`, we just put the validation into the form. `$form->isValid()`, 
-gave us all the air's, everything rendered, everything was just fine. While we're 
-not in a forum, it means you're gonna need to validate directly which, which is 
-totally fine. There's a valley, it's very simple to do at another argument to our 
-controller called the `ValidatorInterface $validator`. This is the service that the 
-form uses internally to do validation.
+## Manually Validating
 
-Okay.
+Because we're *not* inside a form, we need to validate directly... which is totally
+fine! Add another argument: `ValidatorInterface $validator`. This is the service
+that the form system uses internally for validation.
 
-Then before we do anything with that uploaded file, we're going to say it, 
-`$violations=` and we're gonna use the validator. So to do that, you can say 
-`$validator->validate()` and we're going to do here is actually pass it the object 
-that we want to validate the `$uploadedFile`. And then we're going to pass it the constraint that we
-want to validate against. Now remember there are two main constraints with file
-uploads. There's the `Image` constraint where, which we use before. And there's also
-the `File` constraint, which is what we're gonna use here. So this time say `new File()`,
-it's the one from component `Validator`.
+Then, before we do *anything* with that uploaded file, say
+`$violations = $validator->validate()`. Pass this the object that you want to
+validate. For us, it's just the `$uploadedFile` object itself. If we stopped here,
+it would read any validation annotations off of that class and apply those rules.
+But, because this is a core Symfony class, we can't open it up and add those. So,
+pass a second argument: an the constraint to validate against.
 
-And this has an up and the main option, one of the main options with this one has
-`maxSize`. And just to get this working, let's get this tube `1k` so we can see
-the error. So the idea is that if validation of this object against this constraint
-fails, then it's going to return one or more violations. This violations is uh,
-basically an array of errors, but it's not actually an array. It's a special object
-that looks and acts like an a, right? So to figure out they're actually getting
-violations. You can say if `$violations->count()` is greater than `0`, then we have a
-problem. Let's just `dd()` this `$violations` thing so that we can see what it looks like.
-All right, so let's go over, we'll choose our Symfony best practices. That's way more
-than one kilobyte. And let's go over here. We'll choose our Symfony best practices,
-hit upload and awesome. There it is. Constraint violation list. That's the object
-that looks and acts like an array and it just holds basically an array of objects
-called constraint violations. And there you go. It's got a message. The file is too
-large allowed, maximum size is one kilo bytes and you can customize that message and
-that message if you want by passing the `maxSizeMessage` there.
+Remember: there are two main constraints for uploads: the `Image` constraint that
+we used before and the more generic `File` constraint, which we need here because
+the user can upload more than just images. Say `new File()` - the one from the
+`Validator` component.
 
-So in theory you can have multiple validation rules and you can have multiple errors,
-uh, to keep things simple. I'm just going to show whatever the first air is to the
-user. There's usually only one anyways, so let's do that. I'm going to say `
-$violation = $violations` and just get the `[0]` off there that object implements or access so
-you can treat it like an array and to help out my editor, I'm going to tell it this
-is a constraint.
+This constraint has two main options - and the first is `maxSize`. Set it to `1k`
+temporarily - just so we can see the error.
 
-Wow.
+This `$violations`variable is *basically* an array of errors... except it's not
+*actually* an array - it's an object that holds errors. To check if *anything*
+failed validation, we can say if `$violations->count()` is greater than `0`. If
+so, for now, let's just `dd($violations)` so we can see what it looks like.
 
-Violation object because that's what we're seeing over here.
+Cool! Move over, select the Best Practices PDF - that's definitely more than 1kb,
+and upload! Say hello to the `ConstraintViolationList`: a glorified array of
+`ConstraintViolation` error objects. And there's the message: the file is too
+large. If you want, you can customize that message by passing the `maxSizeMessage`
+option... cause it *is* kind of a nerdy message.
 
-Then right now then how are we going to do this air to the user? Eventually we're
-going to turn this into an sort of an Ajax or API end point that communicates and
-JSON, but right now this is just a normal end point or a redirect to another page
-afterwards. So really the best, easiest way to show the air as I said it as a flash
-message, so I'll say `$this->addFlash()`, we'll put it as an error type and they'll say
-`$violation->getMessage()` and then we'll redirect right back to the `admin_article_page`
-and saw a copy of the redirect route on the bottom and I'll put it up here. Now for
-this `addflash()` thing, if you followed our tutorial before, if you go to templates
-`base.html.twi`g, if you scroll down a bit, let's see.
+## Displaying the Validation Errors
 
-Yeah they are.
+So, in theory, you can have multiple validation rules and multiple errors. To
+keep things simple, let's show the first error if there is one. Use
+`$violation = $violations[0]` to get it. The `ConstraintViolationList` class
+implements `ArrayAccess`, which is why we can use this syntax. Oh, and let's help
+out my editor by telling it that this is a `ConstraintViolation` object.
 
-You'll see that we're already rendering these success flash messages, but we don't
-have anything rendering the air flask messages. So let's copy this and we'll loop
-over the air flask messages and say alert dash danger. So those should come out now.
-All right, so refresh this time redirects. Boom, there is our air. And like I said,
-we can customize that text if we want to. All right, but what we really want to do
-here is control the, the types of files that are uploaded. So I'm going to change
-this back to change it to 5m. And the way that you control the `mineTypes`
-is the file types is with eight mime types option. So these are gonna be sort of
-documents that the user uploads. They could be images. So one of these you can do is
-you can say `image/star` tell, I'll allow anything that starts with `image/` this is
-actually what the image constraint checks for internally. And then how about
-`application/pdf`. It's also a lot PDFs. And you know it's a little tricky actually
-because there are probably so many valid file types that we want to accept here. Uh,
-if you want to cheat, there is a nice file. Um,
+And now... hmm... how *should* we show this error to the user? This controller
+will *eventually* turn into an AJAX, or API endpoint that communicates via JSON.
+We'll do that soon when we make the whole reference upload system work via AJAX.
+But because this is still a normal form submit, the easiest option is to put the
+error into a flash message and display it on the next page. Say `$this->addFlash()`,
+pass it an "error" type, and then `$violation->getMessage()`. Finish by stealing
+the redirect code from the bottom to send us back to the edit page.
 
-okay.
+To *render* that flash message, open `templates/base.html.twig` and scroll down...
+I'm looking for the flash message logic we added in our Symfony series. There
+it is! We're rendering `success` messages, but we don't have anything to render
+`error` messages. Copy this, paste, and loop over `error`. Make it look scary
+with `alert-danger`.
 
-Your type shift shift and type mom type extension guesser
+Cool! Test it out - refresh! And... nice! It redirects and *there* is our error.
 
-she can find a class, deepen the core. This is actually a pretty cool glass. It's,
-it's a, it's something where you give it the mime type and gives you the file
-extension and it's got a really nice source. Basically have lots and lots and lots
-and lots of mime types in here. So if you're looking for a specific mime type, um,
-it's really easy to search by extension. So for example, if I want to look for,
-what's the mime? Type Four M. Dot. Docs, Microsoft word.docs. I can look in here for
-quote dot quote. There you go. `application/msword`. So I'm going to close this file
-and I'm just going to paste in a few more types here. So this is ms word. These,
-we'll get like the doc doc x kind of things and actually I forgot one here can do.
-There we go excel.
+## Validating the Mime Types
 
-Wow.
+This is great... but what we *really* want to do is control the *types* of files
+that are uploaded. Change the max size to `5m` and add a `mimeTypes` option set
+to an array. Let's see... what *do* we want to allow? Well, probably *any* image
+is ok - so we can use `image/*` and definitely we should allow `application/pdf`.
+But... what else? It's tricky - there are a lot of mime types out there. A nice
+way to cheat is to press Shift+Shift and look for a core class called
+`MimeTypeExtensionGuesser`.
 
-So you might need to play with this to see, um, what works for you. But that's the
-idea. So this time,
+This is a pretty neat class - it's what Symfony uses behind the scenes to "guess"
+the correct file extension based on the mime type of a file. It's useful right *now*
+because it has a *huge* list of mime types and their extensions. Check it out:
+search for `'doc'`. There it is: `application/msword`. And if you keep digging
+for other things like `docx` or `xls`, you can get a pretty good list of stuff
+you might want to accept.
 
-okay,
+Close this file and go back to the option - I'll paste in a few mime types. This
+covers a lot your standard "document" stuff. Oh, I forgot one! Add
+`application/vnd.ms-excel`.
 
-which is the pdf
+Let's try it out! Go back, select the Best Practices PDF, Upload and... no error!
+Try it again - but with this `earth.zip` file - that's a zip of two of these photos.
+Try it! Error! But *wow* is that a wordy error. You an customize this message with
+the `mimeTypesMessage` option.
 
-cool. That works. You can't see it, but we don't see the validation air. And I also
-have an earth, that zip file here. This is actually just these two photos zipped up,
-but it is a zip file. So let's try that. And cool. The mime type of is invalid
-allowed, mine types are blah blah blah blah. And so you can also customize this
-message cause that's a little bit too technical. Then the last thing, if you just hit
-enter to refresh the form, if you hit upload, you actually get a giant air because we
-didn't select file. So everything kind of blows up inside of our uploader helper. So
-that's actually very easy to fix. The second argument to validate is actually either
-a single constraint object or an array. So I'm actually gonna pass an array here in
-debt. The new file.
+## Requiring the File
 
-Okay.
+Ok: there's *one* last case we need to validate for. Hit enter on the URL to refresh
+the form. Do *nothing* and hit upload. Ah!!! Whoops! Everything explodes inside
+`UploaderHelper`... because there *is* no uploaded file!
 
-And then I'll put `new NotBlank()`, and I'll even put a custom message there, which
-says, please select a file to upload. Nice. All right, so refresh now. So that big
-Auger air yet we get a nice air there. All right, cool. So next, let's talk about how
-we actually allow the user to download these private files.
+Back in the controller, the second argument to `validate()` can accept an *array*
+of validation constraints. Put the `new File` into an array. Then add:
+`new NotBlank()` with a custom message: please select a file to upload.
+
+Refresh one more time. The huge error is replaced by a *much* more pleasant validation
+error.
+
+Next: the author can *upload* a file reference... but it is literally impossible
+for them to *download* it. How can we make these private files accessible, but
+while still checking security first?

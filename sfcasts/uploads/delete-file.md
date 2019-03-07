@@ -1,164 +1,121 @@
-# Delete File
+# Deleting Files
 
-Coming soon...
+The next thing our file gallery needs is the ability to delete existing files.
+I know this tutorial is all about uploading, but in these chapters, we're accidentally
+creating a rich API for our Article references: we already have the ability to
+get all references for a specific article, create a new reference and download
+a reference's file. Now we need an endpoint to delete a reference.
 
-All right. I think the next missing thing with our cool widget over here is the
-ability to delete some of these items. So let's work on that. This is actually Kinda
-cool cause what we're doing here is a little bit of file uploading but also we're
-sort of creating an API for our article reference. We already have the ability to,
-you know, get all references for specific article. We have the ability to download
-them and now we're going to need the ability to delete one. Some are kind of new
-public function at the bottom called `deleteArticleReference()` the `@Route()`
-above this.
+Add a new function at the bottom called `deleteArticleReference()`. Put the
+`@Route()` above this with `/admin/article/references/{id}`,
+`name="admin_article_delete_references"` and - this will be important -
+`methods={"DELETE"}`. We do *not* want to make it possible to make a GET request
+to this endpoint. First, because that's dangerous. And second, if we kept building
+out the API, we would want to have a different endpoint for making a GET request
+to `/admin/article/references/{id}` - it would return the JSON for that one reference.
 
-Okay,
+Inside, add the `ArticleReference $reference` argument and then we'll add our
+normal security check. In fact, copy it from above and put it here.
 
-well mate, the URL `/admin/article/references/{id}`. So I'm kind
-of keeping consistent with what we're using for everything else when you're talking
-about a single reference. Uh, in this case I'm going to say 
-`name="admin_article_delete_references"`. And a key thing here is I need 
-"methods={"DELETE"} this time. We
-don't want the to allow anyone to make a get request to see where all, because if
-you're building an API, if you make a get request to see, well that should probably
-return the JSON for that swan specific reference. Uh, inside, I'll type in the
-argument `ArticleReference $reference`, and then we'll do our normal security thing
-that we did before. Actually copy it from above. So give the article and then deny
-access unless we have that. All right, cool. So how can we, let's talk about
-uploading. How can we delete the file? What we've done this once before and upload
-helper, go do the service and upload or helper. We have functions for uploading
-different types of images. We have functions for getting the public path or reading a
-stream. So it's going to create another great utility function, um, for deleting a
-file. In fact, I'm going to copy of the `reedStream()` function up here, rename that to
-`deleteFile()`.
+## The deleteFile() Service Method
 
-It's won't return anything cause it's just going to delete the file. We'll start the
-same way. We'll grab whichever filesystem we need.
+Ok: how can we delete a file? Through Filesystem of course! And the best place
+for that logic to live is probably `UploaderHelper`. We already have functions for
+uploading two types of files, getting the public path and reading a stream. Copy
+the `reedStream()` function declaration, paste, rename that to `deleteFile()` and
+remove the return type.
 
-Okay.
+We'll start the same way: by grabbing whichever filesystem we need. Next say
+`$result = $filesystem->delete()` and pass that `$path`. Finally, code defensively:
+if `$result === false`, throw a new exception with `Error deleting "%s"` and `$path`.
 
-And they'll say `$result = $filesystem->delete()`, pass of the `$path`. And then to code
-defensively we'll say if that `$result === false`, then we're going to throw a new
-exception with air deleting "%s" and then the `$path`. And we don't need to return
-to anything on the BOP. That nice. So back on our controller and we're going to add
-an `UploaderHelper` arguments and we're also going to need to delete this, uh, our
-reference from the database. So let's go ahead and add the `EntityManagerInterface`
-argument as well. So first delete it from the database `$entityManager->persist()`, not
-persist `$entityManager->remove($reference)` `$entityManager->flush()` and then
+## The DELETE Endpoint
 
-`$uploaderHelper->deleteFile($reference->getFilePath())`. And then we need
-to pass `false` so that it uses the private filesystem. Now one thing we noticed here
-is that, uh, in the real world we could, the removing of the reference could fail for
-some reason, you know, even a database issue. But also this up, this delete file
-could fail. For some reason, especially if we have our files stored on the cloud. So
-you could end up with a situation where the file gets deleted, the rogue, it's
-deleted, the file doesn't get deleted. If you change the order, you could end up with
-a situation when the file gets deleted, but the road doesn't get deleted. So if
-you're, if you're worried about this, you're gonna want to do is actually use a
-doctrine transaction and wrap this entire section and the doctor transaction. Make
-sure that the deleting the file was fully successful and then commit the transaction.
-If there was an exception, you can roll back to transactions so that the file is not
-deleted and the row is not deleted at the bottom. What are we gonna Return? Well, we
-don't really need to return anything, so it's pretty common on delete end points to
-return a `new Response()`. The one from `HttpFoundation` with `null` as the content 
-and a 204 status code, 204 literally means the operation was successful, but we
-have no content to return.
+That's nice! Back on the controller, add an `UploaderHelper` argument, oh and
+we're also going to need the `EntityManagerInterface` service as well. Remove
+the reference from the database with `$entityManager->remove($reference)` and
+`$entityManager->flush()`. Then `$uploaderHelper->deleteFile()` passing that
+`$reference->getFilePath()` and `false` so it uses the private filesystem.
 
-There we go. That is a beautiful end point. So let's get into our JavaScript to
-actually make this happen. So first down in the `render()` function, we're going to add a
-nother um, link over here, kind of a little trash icon to delete this.
+Quick note: in the real world, if there was a problem deleting the file from
+Flysystem - which is *definitely* possible when you're storing in the cloud - then
+you could end up with a situation where the *row* is deleted in the database, but
+the file still exists! If you changed the order, you'd have the opposite problem:
+the file might get deleted, but then the row stays because of a temporary connection
+error to the database.
 
-MMM.
+If you're worried about this, use a Doctrine transaction to wrap *all* of this
+logic. If the file *was* successfully deleted, the commit the transaction. If not,
+roll it back so both the file and row stay in there.
 
-I'm going to make this a `<button>` because it's going to need to be a delete request. So
-it's going to, it's not going to be just something that we can click. I'm going to
-give it a class `js-reference-delete` so we can find it.
+Anyways, what should this endpoint return? Well... how about... nothing! Return
+a `new Response()` - the one from `HttpFoundation` - with `null` as the content
+and a 204 status code. 204 means: the operation was successful but I have nothing
+further to tell you!
 
-Okay.
+## Hooking up the JavaScript
 
-And then I'll give it a couple of classes like `btn` and `btn-link`. Inside the button,
-we'll use a Fontawesome. Again, we'll say `fa fa-trash`.
+That's it! That is a *nice* endpoint! Head back to our JavaScript so we can put
+this all together. First, down in the `render()` function, let's add a little trash
+icon next to the download link. I'll make this a button... just because semantically,
+it requires a DELETE request, so it's not something the user could click without
+JavaScript. Give it a `js-reference-delete` class so we can find it, some styling
+classes and, inside, we'll use FontAwesome for the icon.
 
-Perfect. Okay,
+Copy that class name and go back up to the constructor. Here say
+`this.element.on('click')` and then pass `.js-reference-delete`. This is called
+a delegate event handler. It's handy because allows us to attach a listener to
+any `.js-reference-delete` elements, even if they're added to the HTML *after*
+this line is executed. For the callback, I'll pas an ES6 arrow function so that
+the `this` variable inside is still my `ReferenceList` object. Call a new method:
+`this.handleReferenceDelete()` and pass it the `event` object.
 
-well copied this `js-reference-delete` because we're not using a frontend framework
-like react. We need to kind of bind our, our, um, listeners manually. So Up and
-construct. I'll say `this.element.on('click')`
+Copy that name, head down, and paste to create that. Inside, we need to do two
+things: make the AJAX request to delete the item from the server *and* remove the
+reference from the `references` array and call `this.render()` so it disappears.
 
-not on click. And then I'll pass
+Start with `const $li =`. I'm going to use the `button` that was just clicked to
+find the `<li>` element that's around everything - you'll see why in a second. So,
+`const $li = $(event.currentTarget)` to get the button that was clicked, then
+`.closest('list-group-item')`.
 
-`.js-reference-delete`. This is called a delegate selector. It's really handy
-because it basically means that, um, even if elements are added to the html, after we
-register this listener, those new elements, we'll still get triggered, this listener.
+Now, to make the DELETE request, I need the `id` of this specific article reference.
+To get that, add a new `data-id` attribute on the `li` set to `${reference.id}`.
+I'm adding this here instead of directly on the button so that we can use it when
+other things are clicked if we need to.
 
-And then I'm actually
+*Now* we can say `const id = $li.data.id` and `$li.addClass('disabled')` to make
+it look like we're doing something during the AJAX call. Make that with
+`$.ajax()` with `url` set to `'/admin/article/references/'+id` and `method: 'DELETE'`.
+To handle success, chain a `.then()` on this with another arrow function.
 
-going to, I'll use a new es6 Arrow function so that the, `this` variable inside of here
-is actually this object. And I'll call a new function called `this.handleReferenceDelete()`.
-And I'll pass it `event`. So then I'll copy that function name. We're going on
-here and add a new `handleReferencedDelete()` it. We'll get `event` object. Um,
-perfect. Surgeons out of here is two things. We need to actually make the Ajax
-request to delete the item from the uh, the server. And we also need to remove the
-reference from the references are right in rerender so it actually disappears in the
-rope. So the first thing I'd do is say const l y and I'm actually going to use the
-`<button>` to find the `<li>` element and you'll see why in a second. So 
-`const $li = $(event.currentTarget)` that will return us the element
-that is the `<button>` itself. And then I'll say  `.closest()` and I'll hear, I'll say it,
-`.list-group-items`. So that's a way of saying, hey, go up and find my, go up
-my parental tree until I find that `list-group-item`.
+Now that the article reference has been deleted from the server, let's remove
+it from `this.reerences`. A nice way to do that is by saying:
+`this.references = this.references.filter()` and passing this an arrow function
+with `return reference.id !== id`.
 
-Okay,
+This callback function will be called once for each item in the array. And if the
+function returns true, that item will be put into the new `references` variable.
+If it returns false, it won't be. The end effect is that we can an identical array,
+except *without* the reference that was just deleted.
 
-next I want to actually get the `id` of thus specific, um,
+After this, call `this.render()`.
 
-reference that was just deleted. So to do that, I'm actually going to add any new
-`data-id` attribute on my `li` Adam. This is going to be handy in general because
-it means no matter what, whenever we clicked any `<button>`, we can find the `<li>` and then
-we can get the reference id from that. So I use `${}`. That's how you print things 
-when you're in a string interpolation. And I'll
-say `reference.id`. So now this is why we got the ally up here. We can say 
-`const id = $li.data.id`. And then finally I'll say, I'll hear, I'll
-say `li.addClass('disabled')`. Um, so that basically it looks like we're
-deleting it while the Ajax calls. Finishing down here, we'll just make an Ajax call.
-`$.ajax()`, the URL I'm going to, once again, I'm just hard for the URL
-preferences. `'/admin/article/references'+id`. We're not the method here.
-It needs to be `DELETE`. And then `.then()` I'll pass another inline function,
-Arrow function, and inside of here, now that it's been deleted from the server, we're
-going to actually remove it from um, the remove this reference. We need to remove
-this reference from our references array. So we need to basically find which
-referenced in there has these specific id that was just deleted and remove it. Really
-Nice Way to do this is to say `this.references = this.references.filter()` and pass
-this a
+Let's try it! Refresh and... cool! There's our delete icon - it looks a little weird,
+but we'll fix that soon. Let's see, in `var/upoads`we have a `rocket.jpeg` file.
+Let's delete that one. Ha! It disappeared! The 204 status code looks good and...
+the file is gone!
 
-Arrow function that will receive a `reference` argument. And inside 
-`return reference.id !== id`. So what's going to happen here is, um,
+It's weird when things work on the first try!
 
-this callback function will be called once for each item in the array. And if the
-function returns true, that item will be put into the references. If it returns
-false, it won't be. So basically it's going to make sure it's gonna make that it's
-gonna make it so that this not references contains every single item in the array
-except for the one whose id it was just delete it. I know a little bit complex. This
-is one of the trickier things in JavaScript. And then down here, read, say `this.render()`
-It's not going to rerender without that reference. Inside of there. Again,
-this is very similar to what you're doing. React, react as much more powerful than
-this, but this should get, it was working. Phew. So let's try it. Refresh the page
-and cool. There's our delete icon. It looks a little weird. We'll fix that in a
-second. And let's see here. We have `rocket.jpeg`.
+## Alignment Tweak
 
-So before we even tried downloading a deleting this, let's go to our `var/` directory.
-Okay. So you can see there's our `rocket.jpeg`. Um, there. So let's delete that
-disappeared. The delete requests. Yeah, two minutes, `204` status code that
-looks good and asked the rocket file is gone. So that just worked really, really
-nicely. All right to really make this a look nice and let's fix this alignment issue.
-This is just kind of a styling thing, but you know what this to look good. So down
-here inside the `render()` function, I'm just going to add a couple of classes on my
-first anchor tag on to turn this into a button link as well. That's most and MSA 
-`btn-sm` them to add `btn-sm` also to my other one that's going to fix most of
-the alignment issues right there. There's still a tea. This one is still a touch off
-and um, that's kind of subtle way to fix that is actually to add a style on the icon.
-This says `vertical-align: middle`, right? And that whale should pop it. Justin place.
-Yep. Just a little bit better than ice and now we can delete all kinds of stuff.
+While we're hear, let's fix this alignment issue - it's weirding me out. Down in
+the `render()` function, add a few Bootstrap classes to the download link and
+make the delete button smaller.
 
-Awesome.
+Try that. Better... but it's still just a *touch* off. Add `veritical-align: middle`
+to the download icon. It's subtle but... yep - the buttons are lined up now.
 
-And Boom, they're just getting deleted over here. On the server suite. Next, let's
-talk about allowing the file name to be edited.
+Next: our users are *begging* for another feature: the ability to rename the file
+after it's been uploaded.

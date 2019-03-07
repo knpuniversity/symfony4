@@ -80,5 +80,8 @@ the form. No error... but I have no idea if that worked - we're not rendering
 anything yet. Check out the `var/` directory...
 `var/uploads/article_reference/symfony-best-practices...`, we got it!
 
-Of course, there's absolutely no way for *any* user to access this file, so we'll
-handle that next.
+Of course, there's absolutely no way for *any* user to access this file, but we'll
+handle that soon.
+
+Next: unless we *really* trust our authors, we probably shouldn't let them upload
+*any* file type. Let's tighten that up.
