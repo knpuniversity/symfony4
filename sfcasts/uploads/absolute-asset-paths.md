@@ -1,15 +1,15 @@
 # Absolute Asset Paths
 
-One of the things I'm noticing is that this word `uploads` - the directory where
+One of the things I've noticed is that this word `uploads` - the directory where
 uploads are being stored - is starting to show up in a few places. We have it here
 in our `liip_imagine` config file, the `oneup_flysystem.yaml` file and in
-`UploaderHelper` - it's used inside `getPublicPath()`.
+`UploaderHelper`: it's used in `getPublicPath()`.
 
 ## Centralizing the uploads/ Path
 
-It's not a *huge* problem, but repitition is a bummer and this will cause some
-issues when moving to S3 later - we'll need to hunt down all of these paths and
-change them to point to the S3 domain.
+It's not a *huge* problem, but repetition is a bummer and this will cause some
+issues when moving to S3: we'll need to hunt down all of these paths and change
+them to point to the S3 domain.
 
 Let's tighten this up. In `services.yaml`, create two new parameters: The first
 will be `uploads_dir_name` set to `uploads` - this is the name of the directory
@@ -34,7 +34,7 @@ not for any particular reason. Set that in the constructor:
 Back in `getPublicPath()`, use this: `getBasePath()` then `$this->publicAssetsBaseUrl`,
 which will contain the `/` at the beginning.
 
-Cool! But, Symfony will not be able to autowire this string argument. You'll
+Cool! But, Symfony will not be able to autowire this string argument. You can
 see the error if you try to reload any page. Yep!
 
 We know how to fix that: back in `services.yaml`, add a bind:
@@ -42,14 +42,14 @@ We know how to fix that: back in `services.yaml`, add a bind:
 
 ## Linking to the Full Image
 
-Small step, but now that all this config is in one spot, we can do something kinda
-cool... with almost no effort. But first, I want to *triple* check that all this
-public path stuff is setup correctly. Our `getPublicPath()` method is currently
-used in one spot: by the `uploaded_asset()` Twig function. But, we're not actually
-*using* this Twig function anywhere at this moment.
+Small step, but with all this config in one spot, we can do something kinda cool...
+with almost no effort. But first, I want to *triple* check that all this public
+path stuff is setup correctly. Our `getPublicPath()` method is currently used
+in one spot: by the `uploaded_asset()` Twig function. But, we're not actually
+*using* this Twig function anywhere at the moment.
 
 So try this: in the form, we're showing the thumbnail. It might be useful to allow
-the user to click this and see the *full* size image. That's pretty easy: add
+the user to click this and see the *original* image. That's pretty easy: add
 `<a href="">` and use `uploaded_asset(articleForm.vars.data.imagePath)`.
 
 That's it! Wrap this around the `img` tag and let's also add `target="_blank"`.
@@ -62,9 +62,10 @@ image.
 Thanks to our setup, we can now solve a really annoying problem. Inspect element
 on the image: notice that both the `href` and the image `src` paths do *not*
 contain the domain name. That's not a problem at *all* in a normal web context.
-But if you ever try to render a page into a PDF or create a console command to
-send an email that references an uploaded file, well... suddenly, those paths will
-start to break! In those contexts, you *need* the URLs to be absolute.
+But if you ever try to render a page into a PDF with something like `wkhtmltopdf`
+or create a console command to send an email that references an uploaded file,
+well... suddenly, those paths will start to break! In those contexts, you *need*
+the URLs to be absolute.
 
 There are a few ways to solve this... and honestly, I went back and forth on the
 best approach. I finally settled on something that we've used here on SymfonyCasts
@@ -74,9 +75,11 @@ environment variable called `SITE_BASE_URL`. Set the default value to
 
 Remember: this file *is* committed to git, so this is the *default* value. You
 can create a `.env.local` file to override this value locally or on production.
+Or, of course, if it's easy, you can override this by setting a real environment
+variable.
 
 Next, go back to `services.yaml`. And for the `uploads_base_url`, use
-`%env()%` and inside, `SITE_BASE_URL` - that's the syntax for referencing an
+`%env()%` and inside, `SITE_BASE_URL`: that's the syntax for referencing an
 environment variable.
 
 And... just like that - *every* single path to every single uploaded asset will now
