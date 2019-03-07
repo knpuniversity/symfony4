@@ -1,4 +1,3 @@
-
 # Streaming the File Download
 
 We have a method that will allow us to open a *stream* of the file's contents. But...
