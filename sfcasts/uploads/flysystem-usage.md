@@ -12,7 +12,7 @@ Now, in the method, instead of `$file->move()`, we can say
 `self::ARTICLE_IMAGE.'/'.$newFilename` and then the *contents* of the file:
 `file_get_contents()` with `$file->getPathname()`.
 
-[[[ code('c9e64aa742) ]]]
+[[[ code('c9e64aa742') ]]]
 
 That's it! This `File` object has a *ton* of different methods for getting the
 filename, the full path, the file without the extension and more. Honestly, I get
