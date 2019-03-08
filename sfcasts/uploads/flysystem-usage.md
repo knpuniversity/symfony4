@@ -5,10 +5,14 @@ Config done! Let's get to work in `UploaderHelper`. Instead of passing the
 `FilesystemInterface` - the one from `Flysystem` - `$filesystem`. Use that below,
 and rename the property to `$filesystem`.
 
+[[[ code('3350732bb2') ]]]
+
 Now, in the method, instead of `$file->move()`, we can say
 `$this->filesystem->write()`, which is used to create new files. Pass this
 `self::ARTICLE_IMAGE.'/'.$newFilename` and then the *contents* of the file:
 `file_get_contents()` with `$file->getPathname()`.
+
+[[[ code('c9e64aa742) ]]]
 
 That's it! This `File` object has a *ton* of different methods for getting the
 filename, the full path, the file without the extension and more. Honestly, I get
@@ -61,9 +65,13 @@ the second, because it works better if you have multiple filesystem services, wh
 we will soon. First, rename the argument to be more descriptive, how about
 `$publicUploadFilesystem`.
 
+[[[ code('43bca769f7') ]]]
+
 Then, under bind, set `$publicUploadFilesystem` to the filesystem service id -
 you can see it in the error. It suggests *two* services that implement the
 `FilesystemInterface` type-hint - we want the second one. Type `@` then paste.
+
+[[[ code('93a22bf77e') ]]]
 
 One more time for the fixtures!
 
