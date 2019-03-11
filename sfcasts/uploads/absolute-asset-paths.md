@@ -69,7 +69,7 @@ the URLs to be absolute.
 
 There are a few ways to solve this... and honestly, I went back and forth on the
 best approach. I finally settled on something that we've used here on SymfonyCasts
-for years. Open your in `.env` file. We're going to create a brand new, custom
+for years. Open your `.env` file. We're going to create a brand new, custom
 environment variable called `SITE_BASE_URL`. Set the default value to
 `https://localhost:8000`.
 
@@ -83,7 +83,7 @@ Next, go back to `services.yaml`. And for the `uploads_base_url`, use
 environment variable.
 
 And... just like that - *every* single path to every single uploaded asset will now
-be absolute. Seriously! Test it out! Boom! Both the link `href` an the image `src`
+be absolute. Seriously! Test it out! Boom! Both the link `href` and the image `src`
 contain the `https://localhost:8000` part.
 
 And, sure, you could add some config so that you could turn this on only when you

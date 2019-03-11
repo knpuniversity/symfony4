@@ -110,7 +110,7 @@ Find this in `templates/article_admin/_form.html.twig`: take off `uploaded_asset
 
 And... got it!
 
-## The Resolver: Saving the Images to Flsystem
+## The Resolver: Saving the Images to Flysystem
 
 So, the "data loader" is responsible for reading the *original* image. But, there's
 *another* important concept from LiipImagineBundle called "resolvers". Click down
@@ -132,7 +132,7 @@ be stored and `root_url` is the URL that all the paths will be prefixed with
 when the image paths are rendered. Right now, it needs to be `/uploads`.
 
 For example, if LiipImagineBundle stores a file called `media/cache/foo.jpg` into
-Flsystem, we know that the public path to this will be `/uploads/media/cache/foo.jpg`.
+Flysystem, we know that the public path to this will be `/uploads/media/cache/foo.jpg`.
 We'll talk more about this setting later when we move to s3.
 
 Ok, delete the `media/` directory entirely. Oh, and I almost forgot the last step:
@@ -153,5 +153,5 @@ But now we are *much* more prepared to switch between local uploads and S3.
 Next: we can generate public URLs to thumbnailed files or the original files. But,
 what if you need to force all the URLs to include the domain name? This is something
 you don't think about until you need to generate a PDF or send an email from a
-console command of worker. Then... it can be a nightmare. Let's add this to our
+console command or worker. Then... it can be a nightmare. Let's add this to our
 asset system in a way that we love.
