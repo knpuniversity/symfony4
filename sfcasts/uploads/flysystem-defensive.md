@@ -13,13 +13,19 @@ not necessary.
 For that reason, in general, when you use `Flysystem`, instead of using methods
 like `->write()` or `->update()`, you should use `->writeStream()` or `->updateStream()`.
 
+[[[ code('ff9b354af8') ]]]
+
 It works the same, except that we need to pass a *stream* instead of the contents.
 Create the stream with `$stream = fopen($file->getPathname())` and, because we just
 need to *read* the file, use the `r` flag. Now, pass stream instead of the contents.
 
+[[[ code('30e8034c3f') ]]]
+
 Yea... that's it! Same thing, but no memory issues. But we *do* need to add one
 more detail after: if `is_resource($stream)`, then `fclose($stream)`. The "if"
 is needed because *some* Flysystem adapters close the stream by themselves.
+
+[[[ code('4faedff08c') ]]]
 
 ## Deleting the Old File
 
@@ -31,19 +37,32 @@ Absolutely! But it probably shouldn't. When an article image is updated, let's
 delete the old file.
 
 In `UploaderHelper`, add a second argument - a *nullable* string argument called
-`$existingFilename`. This is nullable because sometimes there may *not* be an existing
+`$existingFilename`. 
+
+[[[ code('703291b6f7') ]]]
+
+This is nullable because sometimes there may *not* be an existing
 file to delete. At the bottom, it's beautifully simple: if an `$existingFilename`
 was passed, then `$this->filesystem->delete()` and pass that
 the full path, which will be `self::ARTICLE_IMAGE.'/'.$existingFilename`.
 
+[[[ code('cca413e8af') ]]]
+
 Done! You can see the astronaut file that we're using right now. Oh, but first,
 head over to `ArticleAdminController`: we need to pass this new argument.
 Let's see - this is the `edit()` action - so pass `$article->getImageFilename()`.
+
+[[[ code('9ad4ef0b1f') ]]]
+
 In `new()`, you can really just pass `null` - there will *not* be an article image.
 But I'll pass `getImageFilename()` to be consistent.
 
+[[[ code('8f025c8616') ]]]
+
 Oh, and there's one other place we need update: `ArticleFixtures`. Down here, just
 pass `null`: we are never updating.
+
+[[[ code('b9bc84baa6') ]]]
 
 Try it! Here is the current astronaut image. Now, move over, upload `rocket.jpg`
 this time and update! Back in the directory... there's rocket and astronaut is gone!
@@ -70,6 +89,8 @@ The error from Flysystem is a `FileNotFoundException` from  `League\Flysystem`.
 In `UploaderHelper` wrap that line in a try-catch. Let's catch that
 `FileNotFoundException` - the one from `League\Flysystem`
 
+[[[ code('8abab61864') ]]]
+
 ## Logging Problems
 
 That'll fix that problem... but I don't *love* doing this. Honestly, I *hate*
@@ -81,11 +102,16 @@ we *ever* have bugs. Pfff.
 Here's what I propose: a *soft* failure: we don't fail, but we *do* log that an
 error happened. Back on the constructor, autowire a new argument:
 `LoggerInterface $logger`. I'll hit `Alt + Enter` and select initialize fields to
-create that property and set it. Now, down in the catch, say
-`$this->logger->alert()` - alert is one of the highest log levels and I usually
-send all logs that are this level or higher to a Slack channel. Inside, how about:
-"Old uploaded file %s was missing when trying to delete" - and pass
+create that property and set it. 
+
+[[[ code('dabaec96ae') ]]]
+
+Now, down in the catch, say `$this->logger->alert()` - alert is one of the highest 
+log levels and I usually send all logs that are this level or higher to a Slack channel. 
+Inside, how about: "Old uploaded file %s was missing when trying to delete" - and pass
 `$existingFilename`.
+
+[[[ code('acdc9b7922') ]]]
 
 Thanks to this, the user gets a smooth experience, but *we* get notified so we
 can figure out how the heck the old file disappeared.
@@ -111,18 +137,28 @@ own type of exception. But the point is this: if any of the Filesystem methods
 fail, you might *not* get an exception: it might just return false.
 
 For that reason, I like to code defensively. Assign this to a `$result` variable.
+
+[[[ code('229a8579d4') ]]]
+
 Then say: `if ($result === false)`, let's throw our own exception - I *do* want
 to know that something failed:
 
 > Could not write uploaded file "%s"
 
-and pass `$newFilename`. Copy that and do the same for `delete`:
+and pass `$newFilename`. 
+
+[[[ code('bb7fdafb53') ]]]
+
+Copy that and do the same for `delete`:
 
 > Could not delete old uploaded file "%s"
 
-with `$existingFilename`. I'm *throwing* this error instead of just logging something
-because this would *truly* be an exceptional case - we shouldn't let things continue.
-But, it's your call.
+with `$existingFilename`. 
+
+[[[ code('c1eb5d642a') ]]]
+
+I'm *throwing* this error instead of just logging something because this would *truly* 
+be an exceptional case - we shouldn't let things continue. But, it's your call.
 
 Let's make sure this all works: move over and select the `stars` file - or...
 actually the "Earth from Moon" photo. Update and... got it!
