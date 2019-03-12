@@ -120,6 +120,12 @@ default, no surprise, LiipImagineBundle writes things directly to the filesystem
 So even if we moved Flysystem to s3, LiipImagineBundle would *still* be writing
 the thumbnail files back to our server - into the `public/media` directory.
 
+***TIP
+You can also completely offload the processing and storage of your files to
+a cloud service like rokka.io by leveraging
+[LiipRokkaImagineBundle](https://github.com/liip/LiipRokkaImagineBundle).
+***
+
 Let's change that! In the docs, copy the `resolvers` section. Back in our
 `liip_imagine.yaml` file, paste that. It's pretty much the same as before: we'll
 call it `flysystem_resolver` and tell it to *save* the images using the same
