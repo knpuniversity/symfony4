@@ -28,7 +28,7 @@ chapters:
     - js-rendering
     - delete-file
     - edit-filename
-    - reordering                # raw
+    - reordering
     - aws-s3                    # raw
     - s3-public-private         # raw
     - cached-s3-filesystem      # raw
