@@ -48,8 +48,12 @@ use `flysystem_loader`. The critical part is the key `flysystem`: that says to
 use the "Flysystem" loader that comes with the bundle. The only thing *it* needs
 to know, is the service id of the filesystem that we want to use.
 
+[[[ code('fe15fdbae2') ]]]
+
 For that, go back to `config/services.yaml` and copy the *long* service id from
 the `bind` section. Back in `liip_imagine.yaml`, paste!
+
+[[[ code('4b1c1cb646') ]]]
 
 We now have a "loader" called `flysystem_loader`, and a "loader's" job is to...
 ya know, "load" the source file. You can *technically* have multiple loaders, though
@@ -57,6 +61,8 @@ I've never had to do that. To *always* have LiipImagineBundle load the files
 via Flysystem, below, add `data_loader` set to the loader's name: `flysystem_loader`. I'll add a comment:
 
 > default loader to use for all filter sets
+
+[[[ code('407f8460cf') ]]]
 
 Because, you can technically specify which loader you want to use on each filterset.
 Again, I've never had to do that: we always want to use flysystem.
@@ -82,6 +88,8 @@ directory. In other words, it should *not* contain the `uploads/` part
 The fix? Remove the `uploaded_asset()` function: we can just pass `article.imagePath`,
 which will be `article_image/` the filename.
 
+[[[ code('5c9c072b82') ]]]
+
 I love this! Need to thumbnail something? Just pass it the Flysystem path: you
 don't need the word `uploads` or anything like that. The `uploaded_asset()` function
 *will* still be useful if you want the public path to an asset *without* thumbnailing,
@@ -102,11 +110,16 @@ php bin/console doctrine:fixtures:load
 Now the homepage... yes - everything is here. Let's make the same change in the
 other two places we're thumbnailing. Click onto the show page. This lives in
 `templates/article/show.html.twig`: remove `uploaded_asset` there. Refresh... good!
+
+[[[ code('437fb9390e') ]]]
+
 For the other one, go back to the admin article section - log back in with password
 "engage", because we reloaded the database. When we're editing an image, yep,
 also broken.
 
 Find this in `templates/article_admin/_form.html.twig`: take off `uploaded_asset()`.
+
+[[[ code('05495f0ba3') ]]]
 
 And... got it!
 
@@ -133,6 +146,8 @@ filesystem service. Remove `visibility` - that sets the Flysystem visibility, wh
 is a concept we'll talk about soon. True is the default value anyways, which basically
 means these files will be publicly accessible.
 
+[[[ code('38a1c77c4c') ]]]
+
 `cache_prefix` is the subdirectory within the filesystem where the files should
 be stored and `root_url` is the URL that all the paths will be prefixed with
 when the image paths are rendered. Right now, it needs to be `/uploads`.
@@ -143,6 +158,8 @@ We'll talk more about this setting later when we move to s3.
 
 Ok, delete the `media/` directory entirely. Oh, and I almost forgot the last step:
 add `cache` set to `flysystem_resolver` - let's put an "r" on that.
+
+[[[ code('38e04a0da6') ]]]
 
 This tells the bundle to *always* use this resolver. I'm not sure why it's called
 "cache" - the bundle seems to use "resolver" and "cache" to describe this one concept.
