@@ -17,11 +17,17 @@ where we are storing uploaded files. Call the second one `uploads_base_url` and
 set this to almost the same thing: `/` and then `%uploads_dir_name%`. This represents
 the base URL to the uploaded assets.
 
+[[[ code('dd0b574f35') ]]]
+
 Thanks to these, we can do some cleanup! In `liip_imagine.yaml`, we need the URL.
 Copy `uploads_base_url` and then use `%uploads_base_url%`.
 
+[[[ code('2aa9eb74f7') ]]]
+
 Next, in `oneup_flysystem.yaml`, we need the directory name. Copy the other parameter:
 `%uploads_dir_name%`.
+
+[[[ code('c352ae4faa') ]]]
 
 The last place is in `UploaderHelper`. The `getBasePath()` call will give us the
 directory where the site is installed - usually an empty string. Then we need to
@@ -31,14 +37,20 @@ Add a new argument to the constructor: `string $uploadedAssetsBaseUrl`. I'll cre
 the property by hand and give it a slightly different name: `$publicAssetBaseUrl`,
 not for any particular reason. Set that in the constructor:
 
+[[[ code('49c02c8939') ]]]
+
 Back in `getPublicPath()`, use this: `getBasePath()` then `$this->publicAssetsBaseUrl`,
 which will contain the `/` at the beginning.
+
+[[[ code('1f011735ef') ]]]
 
 Cool! But, Symfony will not be able to autowire this string argument. You can
 see the error if you try to reload any page. Yep!
 
 We know how to fix that: back in `services.yaml`, add a bind:
 `$uploadedAssetsBaseUrl` set to `%uploads_base_url%`. Now... it works!
+
+[[[ code('36d46faab0') ]]]
 
 ## Linking to the Full Image
 
@@ -53,6 +65,8 @@ the user to click this and see the *original* image. That's pretty easy: add
 `<a href="">` and use `uploaded_asset(articleForm.vars.data.imagePath)`.
 
 That's it! Wrap this around the `img` tag and let's also add `target="_blank"`.
+
+[[[ code('0785fbef18') ]]]
 
 Cool. Test that - refresh and... click. Nice! This sends us directly to the *source*
 image.
@@ -73,6 +87,8 @@ for years. Open your `.env` file. We're going to create a brand new, custom
 environment variable called `SITE_BASE_URL`. Set the default value to
 `https://localhost:8000`.
 
+[[[ code('c6b6b762eb') ]]]
+
 Remember: this file *is* committed to git, so this is the *default* value. You
 can create a `.env.local` file to override this value locally or on production.
 Or, of course, if it's easy, you can override this by setting a real environment
@@ -81,6 +97,8 @@ variable.
 Next, go back to `services.yaml`. And for the `uploads_base_url`, use
 `%env()%` and inside, `SITE_BASE_URL`: that's the syntax for referencing an
 environment variable.
+
+[[[ code('60d333e17a') ]]]
 
 And... just like that - *every* single path to every single uploaded asset will now
 be absolute. Seriously! Test it out! Boom! Both the link `href` and the image `src`
