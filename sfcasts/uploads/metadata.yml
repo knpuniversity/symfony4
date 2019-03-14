@@ -32,5 +32,5 @@ chapters:
     - aws-s3
     - s3-public-private
     - cached-s3-filesystem
-    - signed-urls               # raw
-    - api-uploads               # raw
+    - signed-urls
+    - api-uploads
