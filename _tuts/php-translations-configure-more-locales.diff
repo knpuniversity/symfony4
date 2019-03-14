@@ -1,0 +1,11 @@
+diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
+index bc6cd97..d3446dc 100644
+--- a/config/packages/php_translation.yaml
++++ b/config/packages/php_translation.yaml
+@@ -1,5 +1,5 @@
+ translation:
+-    locales: ["en"]
++    locales: '%app_locales_array%'
+     edit_in_place:
+         enabled: false
+         config_name: app

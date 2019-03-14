@@ -1,0 +1,482 @@
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+index 2e381c8..6c0c783c 100644
+--- a/translations/messages.en.xlf
++++ b/translations/messages.en.xlf
+@@ -274,7 +274,7 @@
+     </unit>
+     <unit id="I8dOP5V" name="form.article.specific_location">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location</source>
+@@ -283,7 +283,7 @@
+     </unit>
+     <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location.placeholder</source>
+@@ -302,7 +302,6 @@
+     <unit id="0niVptT" name="agreeTerms">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>agreeTerms</source>
+@@ -312,7 +311,6 @@
+     <unit id="Knrm5Px" name="plainPassword">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>plainPassword</source>
+@@ -322,7 +320,6 @@
+     <unit id="giREF.l" name="email">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>email</source>
+@@ -332,7 +329,6 @@
+     <unit id="s_.yism" name="translations">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>translations</source>
+diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
+index 0382e5c..d24663b 100644
+--- a/translations/messages.es.xlf
++++ b/translations/messages.es.xlf
+@@ -157,7 +157,6 @@
+     <unit id="OuCVbmM" name="comments.count">
+       <notes>
+         <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>comments.count</source>
+@@ -167,7 +166,6 @@
+     <unit id=".wAO8bF" name="page.article.comments.count">
+       <notes>
+         <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>page.article.comments.count</source>
+@@ -177,7 +175,6 @@
+     <unit id="0niVptT" name="agreeTerms">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>agreeTerms</source>
+@@ -187,7 +184,6 @@
+     <unit id="Knrm5Px" name="plainPassword">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>plainPassword</source>
+@@ -197,7 +193,6 @@
+     <unit id="giREF.l" name="email">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>email</source>
+@@ -207,7 +202,6 @@
+     <unit id="ThZosDK" name="form.article.location.choices.solar_system">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.choices.solar_system</source>
+@@ -217,7 +211,6 @@
+     <unit id="iFvNDB1" name="form.article.location.choices.star">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.choices.star</source>
+@@ -227,7 +220,6 @@
+     <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.choices.interstellar_space</source>
+@@ -237,7 +229,6 @@
+     <unit id="dtcC6Fh" name="form.article.author">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.author</source>
+@@ -247,7 +238,6 @@
+     <unit id="AE8KsgN" name="form.article.location">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location</source>
+@@ -257,7 +247,6 @@
+     <unit id="0mYunZW" name="form.article.published_at">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.published_at</source>
+@@ -266,8 +255,7 @@
+     </unit>
+     <unit id="I8dOP5V" name="form.article.specific_location">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
+-        <note category="state" priority="1">new</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location</source>
+@@ -277,7 +265,6 @@
+     <unit id="s_.yism" name="translations">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>translations</source>
+@@ -287,7 +274,6 @@
+     <unit id="GEDCzUF" name="form.article.location.placeholder">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.placeholder</source>
+@@ -296,8 +282,7 @@
+     </unit>
+     <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
+-        <note category="state" priority="1">new</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location.placeholder</source>
+@@ -308,7 +293,6 @@
+       <notes>
+         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
+         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>flash.success.article.created</source>
+diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
+index fd9567c..af322be 100644
+--- a/translations/messages.uk.xlf
++++ b/translations/messages.uk.xlf
+@@ -157,7 +157,6 @@
+     <unit id="huYz.gS" name="footer.html">
+       <notes>
+         <note category="file-source" priority="1">templates/base.html.twig:105</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>footer.html</source>
+@@ -167,7 +166,6 @@
+     <unit id="X.Xcnm6" name="ice_cream_promo.button">
+       <notes>
+         <note category="file-source" priority="1">templates/article/homepage.html.twig:52</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>ice_cream_promo.button</source>
+@@ -177,7 +175,6 @@
+     <unit id="0niVptT" name="agreeTerms">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>agreeTerms</source>
+@@ -187,7 +184,6 @@
+     <unit id="Knrm5Px" name="plainPassword">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>plainPassword</source>
+@@ -197,7 +193,6 @@
+     <unit id="giREF.l" name="email">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>email</source>
+@@ -207,7 +202,6 @@
+     <unit id="ThZosDK" name="form.article.location.choices.solar_system">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.choices.solar_system</source>
+@@ -217,7 +211,6 @@
+     <unit id="iFvNDB1" name="form.article.location.choices.star">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.choices.star</source>
+@@ -227,7 +220,6 @@
+     <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.choices.interstellar_space</source>
+@@ -237,7 +229,6 @@
+     <unit id="dtcC6Fh" name="form.article.author">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.author</source>
+@@ -247,7 +238,6 @@
+     <unit id="AE8KsgN" name="form.article.location">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location</source>
+@@ -257,7 +247,6 @@
+     <unit id="0mYunZW" name="form.article.published_at">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.published_at</source>
+@@ -266,8 +255,7 @@
+     </unit>
+     <unit id="I8dOP5V" name="form.article.specific_location">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
+-        <note category="state" priority="1">new</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location</source>
+@@ -277,7 +265,6 @@
+     <unit id="s_.yism" name="translations">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>translations</source>
+@@ -287,7 +274,6 @@
+     <unit id="GEDCzUF" name="form.article.location.placeholder">
+       <notes>
+         <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>form.article.location.placeholder</source>
+@@ -296,8 +282,7 @@
+     </unit>
+     <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
+-        <note category="state" priority="1">new</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location.placeholder</source>
+@@ -308,7 +293,6 @@
+       <notes>
+         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
+         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>flash.success.article.created</source>
+diff --git a/translations/validators.en.xlf b/translations/validators.en.xlf
+index 3a8e290..260a335 100644
+--- a/translations/validators.en.xlf
++++ b/translations/validators.en.xlf
+@@ -22,7 +22,6 @@
+     <unit id="XjG4J8y" name="Hmm, user not found!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserSelectTextType.php:41</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Hmm, user not found!</source>
+@@ -33,7 +32,6 @@
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+         <note category="file-source" priority="1">src/Entity/User.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Please enter an email</source>
+@@ -43,7 +41,6 @@
+     <unit id="dQsaO4B" name="Choose a password!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Choose a password!</source>
+@@ -53,7 +50,6 @@
+     <unit id="n5tQhUa" name="Come on, you can think of a password longer than that!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Come on, you can think of a password longer than that!</source>
+@@ -63,7 +59,6 @@
+     <unit id="hKUrW8S" name="I know, it's silly, but you must agree to our terms.">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>I know, it's silly, but you must agree to our terms.</source>
+@@ -73,7 +68,6 @@
+     <unit id="rAXaXII" name="I think you're already registered!">
+       <notes>
+         <note category="file-source" priority="1">src/Entity/User.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>I think you're already registered!</source>
+diff --git a/translations/validators.es.xlf b/translations/validators.es.xlf
+index adfea51..206f94b 100644
+--- a/translations/validators.es.xlf
++++ b/translations/validators.es.xlf
+@@ -22,7 +22,6 @@
+     <unit id="XjG4J8y" name="Hmm, user not found!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserSelectTextType.php:41</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Hmm, user not found!</source>
+@@ -33,7 +32,6 @@
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+         <note category="file-source" priority="1">src/Entity/User.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Please enter an email</source>
+@@ -43,7 +41,6 @@
+     <unit id="dQsaO4B" name="Choose a password!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Choose a password!</source>
+@@ -53,7 +50,6 @@
+     <unit id="n5tQhUa" name="Come on, you can think of a password longer than that!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Come on, you can think of a password longer than that!</source>
+@@ -63,7 +59,6 @@
+     <unit id="hKUrW8S" name="I know, it's silly, but you must agree to our terms.">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>I know, it's silly, but you must agree to our terms.</source>
+@@ -73,7 +68,6 @@
+     <unit id="rAXaXII" name="I think you're already registered!">
+       <notes>
+         <note category="file-source" priority="1">src/Entity/User.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>I think you're already registered!</source>
+diff --git a/translations/validators.uk.xlf b/translations/validators.uk.xlf
+index 52f6bf6..2aa5706 100644
+--- a/translations/validators.uk.xlf
++++ b/translations/validators.uk.xlf
+@@ -22,7 +22,6 @@
+     <unit id="XjG4J8y" name="Hmm, user not found!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/UserSelectTextType.php:41</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Hmm, user not found!</source>
+@@ -33,7 +32,6 @@
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+         <note category="file-source" priority="1">src/Entity/User.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Please enter an email</source>
+@@ -43,7 +41,6 @@
+     <unit id="dQsaO4B" name="Choose a password!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Choose a password!</source>
+@@ -53,7 +50,6 @@
+     <unit id="n5tQhUa" name="Come on, you can think of a password longer than that!">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>Come on, you can think of a password longer than that!</source>
+@@ -63,7 +59,6 @@
+     <unit id="hKUrW8S" name="I know, it's silly, but you must agree to our terms.">
+       <notes>
+         <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>I know, it's silly, but you must agree to our terms.</source>
+@@ -73,7 +68,6 @@
+     <unit id="rAXaXII" name="I think you're already registered!">
+       <notes>
+         <note category="file-source" priority="1">src/Entity/User.php:0</note>
+-        <note category="state" priority="1">new</note>
+       </notes>
+       <segment>
+         <source>I think you're already registered!</source>

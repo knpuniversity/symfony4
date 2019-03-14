@@ -1,0 +1,1435 @@
+diff --git a/translations/KnpPaginatorBundle.en.xlf b/translations/KnpPaginatorBundle.en.xlf
+new file mode 100644
+index 0000000..cf32df1
+--- /dev/null
++++ b/translations/KnpPaginatorBundle.en.xlf
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
++  <file id="KnpPaginatorBundle.en">
++    <unit id="ZjmD79F" name="label_previous">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>label_previous</source>
++        <target>Prev</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/javascript.en.xlf b/translations/javascript.en.xlf
+new file mode 100644
+index 0000000..fc5a7d0
+--- /dev/null
++++ b/translations/javascript.en.xlf
+@@ -0,0 +1,32 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
++  <file id="javascript.en">
++    <unit id="J3w0tcu" name="ice_cream_promo.popup.title">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.popup.title</source>
++        <target>Excellent Choice!</target>
++      </segment>
++    </unit>
++    <unit id="ieY9cMy" name="ice_cream_promo.popup.message.part1">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.popup.message.part1</source>
++        <target>You just bought this delicious Ice Cream from the Space!</target>
++      </segment>
++    </unit>
++    <unit id="5iiVbTX" name="ice_cream_promo.popup.message.part2">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.popup.message.part2</source>
++        <target>Wait for our intergalactic delivery soon ;)</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/javascript.es.xlf b/translations/javascript.es.xlf
+new file mode 100644
+index 0000000..9ec96a3
+--- /dev/null
++++ b/translations/javascript.es.xlf
+@@ -0,0 +1,32 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
++  <file id="javascript.es">
++    <unit id="J3w0tcu" name="ice_cream_promo.popup.title">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.popup.title</source>
++        <target>Excelente Opcion!</target>
++      </segment>
++    </unit>
++    <unit id="ieY9cMy" name="ice_cream_promo.popup.message.part1">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.popup.message.part1</source>
++        <target>Acabas de comprar este delicioso helado del espacio!</target>
++      </segment>
++    </unit>
++    <unit id="5iiVbTX" name="ice_cream_promo.popup.message.part2">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.popup.message.part2</source>
++        <target>Espere nuestra entrega intergaláctica pronto ;)</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/javascript.uk.xlf b/translations/javascript.uk.xlf
+new file mode 100644
+index 0000000..c0844f3
+--- /dev/null
++++ b/translations/javascript.uk.xlf
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
++  <file id="javascript.uk"/>
++</xliff>
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+new file mode 100644
+index 0000000..2e381c8
+--- /dev/null
++++ b/translations/messages.en.xlf
+@@ -0,0 +1,343 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
++  <file id="messages.en">
++    <unit id="nuD.7fQ" name="trending_quotes">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
++      </notes>
++      <segment>
++        <source>trending_quotes</source>
++        <target>Trending Quotes</target>
++      </segment>
++    </unit>
++    <unit id="N7VAztw" name="ice_cream_promo.title.html">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:49</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.title.html</source>
++        <target><![CDATA[<span class="advertisement-text">New:</span> Space Ice Cream!]]></target>
++      </segment>
++    </unit>
++    <unit id="X.Xcnm6" name="ice_cream_promo.button">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:52</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.button</source>
++        <target>Buy Now for %price%!</target>
++      </segment>
++    </unit>
++    <unit id="lQ8QeGr" name="search.placeholder">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:44</note>
++      </notes>
++      <segment>
++        <source>search.placeholder</source>
++        <target>Search</target>
++      </segment>
++    </unit>
++    <unit id="pfR3ajS" name="search.button">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:45</note>
++      </notes>
++      <segment>
++        <source>search.button</source>
++        <target>Search</target>
++      </segment>
++    </unit>
++    <unit id="yOjYJE6" name="page.weather.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:8</note>
++      </notes>
++      <segment>
++        <source>page.weather.header</source>
++        <target>Universal Forecast</target>
++      </segment>
++    </unit>
++    <unit id="qdHAGHc" name="page.weather.slogan">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:9</note>
++      </notes>
++      <segment>
++        <source>page.weather.slogan</source>
++        <target>Your Trusted Guide to the Universe's Weather</target>
++      </segment>
++    </unit>
++    <unit id="8HbH1M_" name="page.weather.earth.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:10</note>
++      </notes>
++      <segment>
++        <source>page.weather.earth.header</source>
++        <target>Near Earth</target>
++      </segment>
++    </unit>
++    <unit id="unXt7Km" name="page.weather.earth.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:11</note>
++      </notes>
++      <segment>
++        <source>page.weather.earth.content</source>
++        <target>So you're looking to visit Earth, excellent! The planet will be enjoying warmer than normal temperatures, so be sure to bring along your sunscreen. Temperatures in near Earth orbit today will peak at 50 degrees Fahrenheit (10 Celcius).</target>
++      </segment>
++    </unit>
++    <unit id="z2PWzQu" name="page.weather.cloud.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:12</note>
++      </notes>
++      <segment>
++        <source>page.weather.cloud.header</source>
++        <target>Oort Cloud</target>
++      </segment>
++    </unit>
++    <unit id="xBfn9HF" name="page.weather.cloud.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:13</note>
++      </notes>
++      <segment>
++        <source>page.weather.cloud.content</source>
++        <target>Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.</target>
++      </segment>
++    </unit>
++    <unit id="n5FsnsL" name="page.weather.space.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:14</note>
++      </notes>
++      <segment>
++        <source>page.weather.space.header</source>
++        <target>Deep Space</target>
++      </segment>
++    </unit>
++    <unit id="sJ7Xefz" name="page.weather.space.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:15</note>
++      </notes>
++      <segment>
++        <source>page.weather.space.content</source>
++        <target>There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!</target>
++      </segment>
++    </unit>
++    <unit id=".wAO8bF" name="page.article.comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
++      </notes>
++      <segment>
++        <source>page.article.comments.count</source>
++        <target>{0} Be the first to Comment|{1} A single Comment only|{2} A few Comments|[3,9] %count% Comments|[10,Inf[ A lot of Comments</target>
++      </segment>
++    </unit>
++    <unit id="GF8cHpg" name="language.en">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.en</source>
++        <target>English</target>
++      </segment>
++    </unit>
++    <unit id="75KepRC" name="language.es">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.es</source>
++        <target>Spanish</target>
++      </segment>
++    </unit>
++    <unit id="p0xDHTG" name="language.uk">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.uk</source>
++        <target>Ukrainian</target>
++      </segment>
++    </unit>
++    <unit id="huYz.gS" name="footer.html">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:105</note>
++      </notes>
++      <segment>
++        <source>footer.html</source>
++        <target>Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%</target>
++      </segment>
++    </unit>
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>1 comment|%count% comments</target>
++      </segment>
++    </unit>
++    <unit id="ynHhXwh" name="flash.success.article.created">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.created</source>
++        <target>Article Created! Knowledge is power!</target>
++      </segment>
++    </unit>
++    <unit id="bxqC4Q4" name="flash.success.article.updated">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.updated</source>
++        <target>Article Updated! Inaccuracies squashed!</target>
++      </segment>
++    </unit>
++    <unit id="T1Uc6GB" name="form.article.title">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.title</source>
++        <target>Article title</target>
++      </segment>
++    </unit>
++    <unit id="4m.wvQM" name="form.article.title.help">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.title.help</source>
++        <target>Choose something catchy!</target>
++      </segment>
++    </unit>
++    <unit id="eQsU6Qt" name="form.article.content">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.content</source>
++        <target>Content</target>
++      </segment>
++    </unit>
++    <unit id="dtcC6Fh" name="form.article.author">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
++      </notes>
++      <segment>
++        <source>form.article.author</source>
++        <target>Author</target>
++      </segment>
++    </unit>
++    <unit id="AE8KsgN" name="form.article.location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
++      </notes>
++      <segment>
++        <source>form.article.location</source>
++        <target>Location</target>
++      </segment>
++    </unit>
++    <unit id="GEDCzUF" name="form.article.location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
++      </notes>
++      <segment>
++        <source>form.article.location.placeholder</source>
++        <target>Choose a location</target>
++      </segment>
++    </unit>
++    <unit id="ThZosDK" name="form.article.location.choices.solar_system">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.solar_system</source>
++        <target>The Solar System</target>
++      </segment>
++    </unit>
++    <unit id="iFvNDB1" name="form.article.location.choices.star">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.star</source>
++        <target>Near a star</target>
++      </segment>
++    </unit>
++    <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.interstellar_space</source>
++        <target>Interstellar Space</target>
++      </segment>
++    </unit>
++    <unit id="I8dOP5V" name="form.article.specific_location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location</source>
++        <target>Specific location name</target>
++      </segment>
++    </unit>
++    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location.placeholder</source>
++        <target>Where exactly?</target>
++      </segment>
++    </unit>
++    <unit id="0mYunZW" name="form.article.published_at">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
++      </notes>
++      <segment>
++        <source>form.article.published_at</source>
++        <target>Published at</target>
++      </segment>
++    </unit>
++    <unit id="0niVptT" name="agreeTerms">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>agreeTerms</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="Knrm5Px" name="plainPassword">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>plainPassword</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="giREF.l" name="email">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>email</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="s_.yism" name="translations">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>translations</source>
++        <target></target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
+new file mode 100644
+index 0000000..0382e5c
+--- /dev/null
++++ b/translations/messages.es.xlf
+@@ -0,0 +1,319 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
++  <file id="messages.es">
++    <unit id="nuD.7fQ" name="trending_quotes">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
++      </notes>
++      <segment>
++        <source>trending_quotes</source>
++        <target>Cotizaciones de Tendencias</target>
++      </segment>
++    </unit>
++    <unit id="N7VAztw" name="ice_cream_promo.title.html">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:49</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.title.html</source>
++        <target><![CDATA[<span class="advertisement-text">Nuevo:</span> Espacio Helado!]]></target>
++      </segment>
++    </unit>
++    <unit id="X.Xcnm6" name="ice_cream_promo.button">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:52</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.button</source>
++        <target>Compre ahora por %price%!</target>
++      </segment>
++    </unit>
++    <unit id="lQ8QeGr" name="search.placeholder">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:44</note>
++      </notes>
++      <segment>
++        <source>search.placeholder</source>
++        <target>Buscar</target>
++      </segment>
++    </unit>
++    <unit id="pfR3ajS" name="search.button">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:45</note>
++      </notes>
++      <segment>
++        <source>search.button</source>
++        <target>Buscar</target>
++      </segment>
++    </unit>
++    <unit id="yOjYJE6" name="page.weather.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:8</note>
++      </notes>
++      <segment>
++        <source>page.weather.header</source>
++        <target>Pronóstico Universal</target>
++      </segment>
++    </unit>
++    <unit id="qdHAGHc" name="page.weather.slogan">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:9</note>
++      </notes>
++      <segment>
++        <source>page.weather.slogan</source>
++        <target>Tu guía de confianza sobre el clima del universo</target>
++      </segment>
++    </unit>
++    <unit id="8HbH1M_" name="page.weather.earth.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:10</note>
++      </notes>
++      <segment>
++        <source>page.weather.earth.header</source>
++        <target>Cerca de la Tierra</target>
++      </segment>
++    </unit>
++    <unit id="unXt7Km" name="page.weather.earth.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:11</note>
++      </notes>
++      <segment>
++        <source>page.weather.earth.content</source>
++        <target>Así que estás buscando visitar la Tierra, excelente! El planeta disfrutará de temperaturas más cálidas que las normales, así que asegúrate de llevar tu protector solar. Las temperaturas en la órbita de la Tierra cerca de hoy alcanzarán un máximo de 50 grados Fahrenheit (10 grados centígrados).</target>
++      </segment>
++    </unit>
++    <unit id="z2PWzQu" name="page.weather.cloud.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:12</note>
++      </notes>
++      <segment>
++        <source>page.weather.cloud.header</source>
++        <target>Nube de Oort</target>
++      </segment>
++    </unit>
++    <unit id="xBfn9HF" name="page.weather.cloud.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:13</note>
++      </notes>
++      <segment>
++        <source>page.weather.cloud.content</source>
++        <target>Hoy estamos experimentando más brisa que el clima normal en la nube. Lo que significa que será un viaje más agitado de lo normal si está de paso. Prepárese para configurar los escudos máximos para minimizar el daño y un viaje al taller de reparaciones.</target>
++      </segment>
++    </unit>
++    <unit id="n5FsnsL" name="page.weather.space.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:14</note>
++      </notes>
++      <segment>
++        <source>page.weather.space.header</source>
++        <target>Espacio Profundo</target>
++      </segment>
++    </unit>
++    <unit id="sJ7Xefz" name="page.weather.space.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:15</note>
++      </notes>
++      <segment>
++        <source>page.weather.space.content</source>
++        <target>No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!</target>
++      </segment>
++    </unit>
++    <unit id="GF8cHpg" name="language.en">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.en</source>
++        <target>Inglés</target>
++      </segment>
++    </unit>
++    <unit id="75KepRC" name="language.es">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.es</source>
++        <target>Español</target>
++      </segment>
++    </unit>
++    <unit id="p0xDHTG" name="language.uk">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.uk</source>
++        <target>Ukraniano</target>
++      </segment>
++    </unit>
++    <unit id="huYz.gS" name="footer.html">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:105</note>
++      </notes>
++      <segment>
++        <source>footer.html</source>
++        <target>Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%</target>
++      </segment>
++    </unit>
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id=".wAO8bF" name="page.article.comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>page.article.comments.count</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="0niVptT" name="agreeTerms">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>agreeTerms</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="Knrm5Px" name="plainPassword">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>plainPassword</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="giREF.l" name="email">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>email</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="ThZosDK" name="form.article.location.choices.solar_system">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.solar_system</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="iFvNDB1" name="form.article.location.choices.star">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.star</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.interstellar_space</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="dtcC6Fh" name="form.article.author">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.author</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="AE8KsgN" name="form.article.location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="0mYunZW" name="form.article.published_at">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.published_at</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="I8dOP5V" name="form.article.specific_location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="s_.yism" name="translations">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>translations</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="GEDCzUF" name="form.article.location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.placeholder</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location.placeholder</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="ynHhXwh" name="flash.success.article.created">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.created</source>
++        <target></target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
+new file mode 100644
+index 0000000..fd9567c
+--- /dev/null
++++ b/translations/messages.uk.xlf
+@@ -0,0 +1,319 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
++  <file id="messages.uk">
++    <unit id="nuD.7fQ" name="trending_quotes">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
++      </notes>
++      <segment>
++        <source>trending_quotes</source>
++        <target>Актуальні Цитати</target>
++      </segment>
++    </unit>
++    <unit id="N7VAztw" name="ice_cream_promo.title.html">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:49</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.title.html</source>
++        <target><![CDATA[<span class="advertisement-text">Новинка:</span> Космічне Морозиво!]]></target>
++      </segment>
++    </unit>
++    <unit id="lQ8QeGr" name="search.placeholder">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:44</note>
++      </notes>
++      <segment>
++        <source>search.placeholder</source>
++        <target>Пошук</target>
++      </segment>
++    </unit>
++    <unit id="pfR3ajS" name="search.button">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:45</note>
++      </notes>
++      <segment>
++        <source>search.button</source>
++        <target>Пошук</target>
++      </segment>
++    </unit>
++    <unit id="yOjYJE6" name="page.weather.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:8</note>
++      </notes>
++      <segment>
++        <source>page.weather.header</source>
++        <target>Універсальний прогноз</target>
++      </segment>
++    </unit>
++    <unit id="qdHAGHc" name="page.weather.slogan">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:9</note>
++      </notes>
++      <segment>
++        <source>page.weather.slogan</source>
++        <target>Ваш Надійний Довідник по Погоді Всесвіту</target>
++      </segment>
++    </unit>
++    <unit id="8HbH1M_" name="page.weather.earth.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:10</note>
++      </notes>
++      <segment>
++        <source>page.weather.earth.header</source>
++        <target>Земля Поруч</target>
++      </segment>
++    </unit>
++    <unit id="unXt7Km" name="page.weather.earth.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:11</note>
++      </notes>
++      <segment>
++        <source>page.weather.earth.content</source>
++        <target>Отже, ви хочете відвідати Землю, відмінно! Планета буде насолоджуватися теплішими, ніж звичайні температури, тому обов'язково візьміть сонцезахисний крем. Температура поблизу навколоземної орбіти сьогодні підніметься до 50 градусів за Фаренгейтом (10 градусів Цельсія).</target>
++      </segment>
++    </unit>
++    <unit id="z2PWzQu" name="page.weather.cloud.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:12</note>
++      </notes>
++      <segment>
++        <source>page.weather.cloud.header</source>
++        <target>Хмара Оорта</target>
++      </segment>
++    </unit>
++    <unit id="xBfn9HF" name="page.weather.cloud.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:13</note>
++      </notes>
++      <segment>
++        <source>page.weather.cloud.content</source>
++        <target>Сьогодні ми зазнаємо значного бризу, ніж зазвичай погода на хмарі. Це означає, що це буде трохи більше трясти ніж зазвичай при проходженні. Підготуйтеся встановити щити до максимуму, щоб мінімізувати пошкодження і поїздку в ремонтну майстерню.</target>
++      </segment>
++    </unit>
++    <unit id="n5FsnsL" name="page.weather.space.header">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:14</note>
++      </notes>
++      <segment>
++        <source>page.weather.space.header</source>
++        <target>Глибокий космос</target>
++      </segment>
++    </unit>
++    <unit id="sJ7Xefz" name="page.weather.space.content">
++      <notes>
++        <note category="file-source" priority="1">templates/weather/index.html.twig:15</note>
++      </notes>
++      <segment>
++        <source>page.weather.space.content</source>
++        <target>Це неможливо заперечити. Сьогодні в глибокому космосі буде дуже холодно. Обов'язково пакуйте найтепліше пальто, шапку, рукавиці та чоботи. Я б рекомендував мінімізувати ваш час за межами судна сьогодні, якщо це можливо. Тримайте ваші рукавиці сухими, друзі!</target>
++      </segment>
++    </unit>
++    <unit id=".wAO8bF" name="page.article.comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
++      </notes>
++      <segment>
++        <source>page.article.comments.count</source>
++        <target>%count% Коментар|%count% Коментарі|%count% Коментарів</target>
++      </segment>
++    </unit>
++    <unit id="GF8cHpg" name="language.en">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.en</source>
++        <target>Англійська</target>
++      </segment>
++    </unit>
++    <unit id="75KepRC" name="language.es">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.es</source>
++        <target>Іспанська</target>
++      </segment>
++    </unit>
++    <unit id="p0xDHTG" name="language.uk">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>language.uk</source>
++        <target>Українська</target>
++      </segment>
++    </unit>
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>%count% коментар|%count% коментарі|%count% коментарів</target>
++      </segment>
++    </unit>
++    <unit id="huYz.gS" name="footer.html">
++      <notes>
++        <note category="file-source" priority="1">templates/base.html.twig:105</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>footer.html</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="X.Xcnm6" name="ice_cream_promo.button">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:52</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>ice_cream_promo.button</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="0niVptT" name="agreeTerms">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>agreeTerms</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="Knrm5Px" name="plainPassword">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>plainPassword</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="giREF.l" name="email">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>email</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="ThZosDK" name="form.article.location.choices.solar_system">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.solar_system</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="iFvNDB1" name="form.article.location.choices.star">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.star</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.interstellar_space</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="dtcC6Fh" name="form.article.author">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.author</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="AE8KsgN" name="form.article.location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="0mYunZW" name="form.article.published_at">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.published_at</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="I8dOP5V" name="form.article.specific_location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="s_.yism" name="translations">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>translations</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="GEDCzUF" name="form.article.location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.location.placeholder</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location.placeholder</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="ynHhXwh" name="flash.success.article.created">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.created</source>
++        <target></target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/security.en.xlf b/translations/security.en.xlf
+new file mode 100644
+index 0000000..b4dfa5a
+--- /dev/null
++++ b/translations/security.en.xlf
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
++  <file id="security.en">
++    <unit id="z3cOUZo" name="Username could not be found.">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>Username could not be found.</source>
++        <target>Oh no! It does not look like that email exists!</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/security.es.xlf b/translations/security.es.xlf
+new file mode 100644
+index 0000000..3b9fa11
+--- /dev/null
++++ b/translations/security.es.xlf
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
++  <file id="security.es">
++    <unit id="z3cOUZo" name="Username could not be found.">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>Username could not be found.</source>
++        <target>¡Oh no! ¡No parece que ese correo electrónico exista!</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/security.uk.xlf b/translations/security.uk.xlf
+new file mode 100644
+index 0000000..6165f21
+--- /dev/null
++++ b/translations/security.uk.xlf
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
++  <file id="security.uk">
++    <unit id="z3cOUZo" name="Username could not be found.">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>Username could not be found.</source>
++        <target>О ні! Це не схоже, що електронна пошта існує!</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/validators.en.xlf b/translations/validators.en.xlf
+new file mode 100644
+index 0000000..3a8e290
+--- /dev/null
++++ b/translations/validators.en.xlf
+@@ -0,0 +1,84 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
++  <file id="validators.en">
++    <unit id="J4Ll2Ko" name="article.title.not_blank">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/ArticleTranslation.php:0</note>
++      </notes>
++      <segment>
++        <source>article.title.not_blank</source>
++        <target>Get creative and think of a title!</target>
++      </segment>
++    </unit>
++    <unit id="h.feJFe" name="article.author.not_blank">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/Article.php:0</note>
++      </notes>
++      <segment>
++        <source>article.author.not_blank</source>
++        <target>Please set an author</target>
++      </segment>
++    </unit>
++    <unit id="XjG4J8y" name="Hmm, user not found!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserSelectTextType.php:41</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Hmm, user not found!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="F5ggQi4" name="Please enter an email">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="file-source" priority="1">src/Entity/User.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Please enter an email</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="dQsaO4B" name="Choose a password!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Choose a password!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="n5tQhUa" name="Come on, you can think of a password longer than that!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Come on, you can think of a password longer than that!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="hKUrW8S" name="I know, it's silly, but you must agree to our terms.">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>I know, it's silly, but you must agree to our terms.</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="rAXaXII" name="I think you're already registered!">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/User.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>I think you're already registered!</source>
++        <target></target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/validators.es.xlf b/translations/validators.es.xlf
+new file mode 100644
+index 0000000..adfea51
+--- /dev/null
++++ b/translations/validators.es.xlf
+@@ -0,0 +1,84 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
++  <file id="validators.es">
++    <unit id="J4Ll2Ko" name="article.title.not_blank">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/ArticleTranslation.php:0</note>
++      </notes>
++      <segment>
++        <source>article.title.not_blank</source>
++        <target>¡Sea creativo y piense en un título!</target>
++      </segment>
++    </unit>
++    <unit id="h.feJFe" name="article.author.not_blank">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/Article.php:0</note>
++      </notes>
++      <segment>
++        <source>article.author.not_blank</source>
++        <target>Por favor establecer un autor</target>
++      </segment>
++    </unit>
++    <unit id="XjG4J8y" name="Hmm, user not found!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserSelectTextType.php:41</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Hmm, user not found!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="F5ggQi4" name="Please enter an email">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="file-source" priority="1">src/Entity/User.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Please enter an email</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="dQsaO4B" name="Choose a password!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Choose a password!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="n5tQhUa" name="Come on, you can think of a password longer than that!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Come on, you can think of a password longer than that!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="hKUrW8S" name="I know, it's silly, but you must agree to our terms.">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>I know, it's silly, but you must agree to our terms.</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="rAXaXII" name="I think you're already registered!">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/User.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>I think you're already registered!</source>
++        <target></target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/validators.uk.xlf b/translations/validators.uk.xlf
+new file mode 100644
+index 0000000..52f6bf6
+--- /dev/null
++++ b/translations/validators.uk.xlf
+@@ -0,0 +1,84 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
++  <file id="validators.uk">
++    <unit id="J4Ll2Ko" name="article.title.not_blank">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/ArticleTranslation.php:0</note>
++      </notes>
++      <segment>
++        <source>article.title.not_blank</source>
++        <target>Будьте творчими і придумайте назву!</target>
++      </segment>
++    </unit>
++    <unit id="h.feJFe" name="article.author.not_blank">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/Article.php:0</note>
++      </notes>
++      <segment>
++        <source>article.author.not_blank</source>
++        <target>Будь ласка, вкажіть автора</target>
++      </segment>
++    </unit>
++    <unit id="XjG4J8y" name="Hmm, user not found!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/UserSelectTextType.php:41</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Hmm, user not found!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="F5ggQi4" name="Please enter an email">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="file-source" priority="1">src/Entity/User.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Please enter an email</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="dQsaO4B" name="Choose a password!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Choose a password!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="n5tQhUa" name="Come on, you can think of a password longer than that!">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>Come on, you can think of a password longer than that!</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="hKUrW8S" name="I know, it's silly, but you must agree to our terms.">
++      <notes>
++        <note category="file-source" priority="1">src/Form/Model/UserRegistrationFormModel.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>I know, it's silly, but you must agree to our terms.</source>
++        <target></target>
++      </segment>
++    </unit>
++    <unit id="rAXaXII" name="I think you're already registered!">
++      <notes>
++        <note category="file-source" priority="1">src/Entity/User.php:0</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
++        <source>I think you're already registered!</source>
++        <target></target>
++      </segment>
++    </unit>
++  </file>
++</xliff>

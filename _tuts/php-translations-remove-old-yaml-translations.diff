@@ -1,0 +1,158 @@
+diff --git a/translations/KnpPaginatorBundle.en.yaml b/translations/KnpPaginatorBundle.en.yaml
+deleted file mode 100644
+index 19464ea..0000000
+--- a/translations/KnpPaginatorBundle.en.yaml
++++ /dev/null
+@@ -1 +0,0 @@
+-label_previous: Prev
+diff --git a/translations/javascript.en.yaml b/translations/javascript.en.yaml
+deleted file mode 100644
+index 0d4061b..0000000
+--- a/translations/javascript.en.yaml
++++ /dev/null
+@@ -1,3 +0,0 @@
+-ice_cream_promo.popup.title: Excellent Choice!
+-ice_cream_promo.popup.message.part1: You just bought this delicious Ice Cream from the Space!
+-ice_cream_promo.popup.message.part2: Wait for our intergalactic delivery soon ;)
+diff --git a/translations/javascript.es.yaml b/translations/javascript.es.yaml
+deleted file mode 100644
+index 2bc441b..0000000
+--- a/translations/javascript.es.yaml
++++ /dev/null
+@@ -1,3 +0,0 @@
+-ice_cream_promo.popup.title: Excelente Opcion!
+-ice_cream_promo.popup.message.part1: Acabas de comprar este delicioso helado del espacio!
+-ice_cream_promo.popup.message.part2: Espere nuestra entrega intergaláctica pronto ;)
+diff --git a/translations/javascript.uk.yaml b/translations/javascript.uk.yaml
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+deleted file mode 100644
+index 5acea57..0000000
+--- a/translations/messages.en.yaml
++++ /dev/null
+@@ -1,33 +0,0 @@
+-trending_quotes: 'Trending Quotes'
+-ice_cream_promo.title.html: '<span class="advertisement-text">New:</span> Space Ice Cream!'
+-ice_cream_promo.button: Buy Now for %price%!
+-search.placeholder: Search
+-search.button: Search
+-page.weather.header: Universal Forecast
+-page.weather.slogan: Your Trusted Guide to the Universe's Weather
+-page.weather.earth.header: Near Earth
+-page.weather.earth.content: So you're looking to visit Earth, excellent! The planet will be enjoying warmer than normal temperatures, so be sure to bring along your sunscreen. Temperatures in near Earth orbit today will peak at 50 degrees Fahrenheit (10 Celcius).
+-page.weather.cloud.header: Oort Cloud
+-page.weather.cloud.content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
+-page.weather.space.header: Deep Space
+-page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!
+-page.article.comments.count: '{0} Be the first to Comment|{1} A single Comment only|{2} A few Comments|[3,9] %count% Comments|[10,Inf[ A lot of Comments'
+-language.en: English
+-language.es: Spanish
+-language.uk: Ukrainian
+-footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'
+-comments.count: '1 comment|%count% comments'
+-flash.success.article.created: Article Created! Knowledge is power!
+-flash.success.article.updated: Article Updated! Inaccuracies squashed!
+-form.article.title: Article title
+-form.article.title.help: Choose something catchy!
+-form.article.content: Content
+-form.article.author: Author
+-form.article.location: Location
+-form.article.location.placeholder: Choose a location
+-form.article.location.choices.solar_system: The Solar System
+-form.article.location.choices.star: Near a star
+-form.article.location.choices.interstellar_space: Interstellar Space
+-form.article.specific_location: Specific location name
+-form.article.specific_location.placeholder: Where exactly?
+-form.article.published_at: Published at
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+deleted file mode 100644
+index b95d11c..0000000
+--- a/translations/messages.es.yaml
++++ /dev/null
+@@ -1,17 +0,0 @@
+-trending_quotes: 'Cotizaciones de Tendencias'
+-ice_cream_promo.title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
+-ice_cream_promo.button: Compre ahora por %price%!
+-search.placeholder: Buscar
+-search.button: Buscar
+-page.weather.header: Pronóstico Universal
+-page.weather.slogan: Tu guía de confianza sobre el clima del universo
+-page.weather.earth.header: Cerca de la Tierra
+-page.weather.earth.content: Así que estás buscando visitar la Tierra, excelente! El planeta disfrutará de temperaturas más cálidas que las normales, así que asegúrate de llevar tu protector solar. Las temperaturas en la órbita de la Tierra cerca de hoy alcanzarán un máximo de 50 grados Fahrenheit (10 grados centígrados).
+-page.weather.cloud.header: Nube de Oort
+-page.weather.cloud.content: Hoy estamos experimentando más brisa que el clima normal en la nube. Lo que significa que será un viaje más agitado de lo normal si está de paso. Prepárese para configurar los escudos máximos para minimizar el daño y un viaje al taller de reparaciones.
+-page.weather.space.header: Espacio Profundo
+-page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
+-language.en: Inglés
+-language.es: Español
+-language.uk: Ukraniano
+-footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+deleted file mode 100644
+index b0e1da2..0000000
+--- a/translations/messages.uk.yaml
++++ /dev/null
+@@ -1,17 +0,0 @@
+-trending_quotes: 'Актуальні Цитати'
+-ice_cream_promo.title.html: '<span class="advertisement-text">Новинка:</span> Космічне Морозиво!'
+-search.placeholder: Пошук
+-search.button: Пошук
+-page.weather.header: Універсальний прогноз
+-page.weather.slogan: Ваш Надійний Довідник по Погоді Всесвіту
+-page.weather.earth.header: Земля Поруч
+-page.weather.earth.content: Отже, ви хочете відвідати Землю, відмінно! Планета буде насолоджуватися теплішими, ніж звичайні температури, тому обов'язково візьміть сонцезахисний крем. Температура поблизу навколоземної орбіти сьогодні підніметься до 50 градусів за Фаренгейтом (10 градусів Цельсія).
+-page.weather.cloud.header: Хмара Оорта
+-page.weather.cloud.content: Сьогодні ми зазнаємо значного бризу, ніж зазвичай погода на хмарі. Це означає, що це буде трохи більше трясти ніж зазвичай при проходженні. Підготуйтеся встановити щити до максимуму, щоб мінімізувати пошкодження і поїздку в ремонтну майстерню.
+-page.weather.space.header: Глибокий космос
+-page.weather.space.content: Це неможливо заперечити. Сьогодні в глибокому космосі буде дуже холодно. Обов'язково пакуйте найтепліше пальто, шапку, рукавиці та чоботи. Я б рекомендував мінімізувати ваш час за межами судна сьогодні, якщо це можливо. Тримайте ваші рукавиці сухими, друзі!
+-page.article.comments.count: '%count% Коментар|%count% Коментарі|%count% Коментарів'
+-language.en: Англійська
+-language.es: Іспанська
+-language.uk: Українська
+-comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
+diff --git a/translations/security.en.yaml b/translations/security.en.yaml
+deleted file mode 100644
+index edd9d58..0000000
+--- a/translations/security.en.yaml
++++ /dev/null
+@@ -1 +0,0 @@
+-'Username could not be found.': 'Oh no! It does not look like that email exists!'
+diff --git a/translations/security.es.yaml b/translations/security.es.yaml
+deleted file mode 100644
+index 03a1cb7..0000000
+--- a/translations/security.es.yaml
++++ /dev/null
+@@ -1 +0,0 @@
+-'Username could not be found.': '¡Oh no! ¡No parece que ese correo electrónico exista!'
+diff --git a/translations/security.uk.yaml b/translations/security.uk.yaml
+deleted file mode 100644
+index 206d627..0000000
+--- a/translations/security.uk.yaml
++++ /dev/null
+@@ -1 +0,0 @@
+-'Username could not be found.': 'О ні! Це не схоже, що електронна пошта існує!'
+diff --git a/translations/validators.en.yaml b/translations/validators.en.yaml
+deleted file mode 100644
+index d5fbb07..0000000
+--- a/translations/validators.en.yaml
++++ /dev/null
+@@ -1,2 +0,0 @@
+-article.title.not_blank: Get creative and think of a title!
+-article.author.not_blank: Please set an author
+diff --git a/translations/validators.es.yaml b/translations/validators.es.yaml
+deleted file mode 100644
+index 744f2be..0000000
+--- a/translations/validators.es.yaml
++++ /dev/null
+@@ -1,2 +0,0 @@
+-article.title.not_blank: ¡Sea creativo y piense en un título!
+-article.author.not_blank: Por favor establecer un autor
+diff --git a/translations/validators.uk.yaml b/translations/validators.uk.yaml
+deleted file mode 100644
+index e060098..0000000
+--- a/translations/validators.uk.yaml
++++ /dev/null
+@@ -1,2 +0,0 @@
+-article.title.not_blank: Будьте творчими і придумайте назву!
+-article.author.not_blank: Будь ласка, вкажіть автора

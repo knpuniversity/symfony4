@@ -1,0 +1,13 @@
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+index 32523ba..d26f8e8 100644
+--- a/translations/messages.en.xlf
++++ b/translations/messages.en.xlf
+@@ -323,7 +323,7 @@
+     <unit id="lpbmgRQ" name="navbar.item.weather">
+       <segment>
+         <source>navbar.item.weather</source>
+-        <target>navbar.item.weather</target>
++        <target>Weather</target>
+       </segment>
+     </unit>
+   </file>

@@ -1,0 +1,15 @@
+diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
+index 6c19f9d..4f19dff 100644
+--- a/src/Form/ArticleFormType.php
++++ b/src/Form/ArticleFormType.php
+@@ -104,6 +104,10 @@ class ArticleFormType extends AbstractType
+             return;
+         }
+ 
++        if (false) {
++            $choices = [];
++        }
++
+         $form->add('specificLocationName', ChoiceType::class, [
+             'label' => 'form.article.specific_location',
+             'placeholder' => 'form.article.specific_location.placeholder',

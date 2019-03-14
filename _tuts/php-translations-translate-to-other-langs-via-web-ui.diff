@@ -1,0 +1,32 @@
+diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
+index 18a4847..fc6f9c2 100644
+--- a/translations/messages.es.xlf
++++ b/translations/messages.es.xlf
+@@ -290,5 +290,11 @@
+         <target>¡Artículo creado! ¡El conocimiento es poder!</target>
+       </segment>
+     </unit>
++    <unit id="wT8Hqm0" name="navbar.item.local_asteroids">
++      <segment>
++        <source>navbar.item.local_asteroids</source>
++        <target>Asteroides Locales</target>
++      </segment>
++    </unit>
+   </file>
+ </xliff>
+diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
+index 9c4a14d..0796f84 100644
+--- a/translations/messages.uk.xlf
++++ b/translations/messages.uk.xlf
+@@ -290,5 +290,11 @@
+         <target>Стаття створена! Знання це сила!</target>
+       </segment>
+     </unit>
++    <unit id="wT8Hqm0" name="navbar.item.local_asteroids">
++      <segment>
++        <source>navbar.item.local_asteroids</source>
++        <target>Місцеві Астероїди</target>
++      </segment>
++    </unit>
+   </file>
+ </xliff>

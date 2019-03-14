@@ -1,0 +1,29 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 6f099e7..16cca60 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -34,7 +34,7 @@
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                 <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
+-                       <a style="color: #fff;" class="nav-link" href="#">Local Asteroids</a>
++                       <a style="color: #fff;" class="nav-link" href="#">{{ 'navbar.item.local_asteroids'|trans }}</a>
+                      </li>
+                      <li class="nav-item">
+                        <a style="color: #fff;" class="nav-link" href="{{ path('app_weather') }}">Weather</a>
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+index f580fd6..e1ae387 100644
+--- a/translations/messages.en.xlf
++++ b/translations/messages.en.xlf
+@@ -314,5 +314,11 @@
+         <target>Translations</target>
+       </segment>
+     </unit>
++    <unit id="wT8Hqm0" name="navbar.item.local_asteroids">
++      <segment>
++        <source>navbar.item.local_asteroids</source>
++        <target>Local Asteroids</target>
++      </segment>
++    </unit>
+   </file>
+ </xliff>

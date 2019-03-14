@@ -474,7 +474,67 @@
             "id": "js-translations-load-dumped-translations-in-prod",
             "name": "JS translations: Load dumped translations in prod",
             "description": null
+        },
+        {
+            "id": "php-translations-install",
+            "name": "PHP Translations: Install",
+            "description": null
+        },
+        {
+            "id": "php-translations-configure-more-locales",
+            "name": "PHP Translations: Configure more locales",
+            "description": null
+        },
+        {
+            "id": "php-translations-extract-translations",
+            "name": "PHP Translations: Extract translations",
+            "description": null
+        },
+        {
+            "id": "php-translations-add-workaround-for-specific-location-choices",
+            "name": "PHP Translations: Add workaround for specific location choices",
+            "description": null
+        },
+        {
+            "id": "php-translations-extract-translations-without-error",
+            "name": "PHP Translations: Extract translations without error",
+            "description": null
+        },
+        {
+            "id": "php-translations-remove-old-yaml-translations",
+            "name": "PHP Translations: Remove old YAML translations",
+            "description": null
+        },
+        {
+            "id": "php-translations-translate-all-missing-translations",
+            "name": "PHP Translations: Translate all missing translations",
+            "description": null
+        },
+        {
+            "id": "php-translations-translate-via-web-ui",
+            "name": "PHP Translations: Translate via Web UI",
+            "description": null
+        },
+        {
+            "id": "php-translations-translate-to-other-langs-via-web-ui",
+            "name": "PHP Translations: Translate to other langs via Web UI",
+            "description": null
+        },
+        {
+            "id": "php-translations-add-missing-translation-key-via-profiler-ui",
+            "name": "PHP Translations: Add missing translation key via Profiler UI",
+            "description": null
+        },
+        {
+            "id": "php-translations-edit-message-via-profiler-ui",
+            "name": "PHP Translations: Edit message via Profiler UI",
+            "description": null
+        },
+        {
+            "id": "php-translations-translate-to-other-langs-via-profiler-ui",
+            "name": "PHP Translations: Translate to other langs via Profiler UI",
+            "description": null
         }
     ],
-    "sha": "c559971a714bf134eb41708c2a46b575258dab4f"
+    "sha": "bc53d2c17b311713a5864ec7b986a2596f92cd6c"
 }

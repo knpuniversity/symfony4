@@ -1,0 +1,29 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 16cca60..8603137 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -37,7 +37,7 @@
+                        <a style="color: #fff;" class="nav-link" href="#">{{ 'navbar.item.local_asteroids'|trans }}</a>
+                      </li>
+                      <li class="nav-item">
+-                       <a style="color: #fff;" class="nav-link" href="{{ path('app_weather') }}">Weather</a>
++                       <a style="color: #fff;" class="nav-link" href="{{ path('app_weather') }}">{{ 'navbar.item.weather'|trans }}</a>
+                      </li>
+                    </ul>
+                 <form class="form-inline my-2 my-lg-0">
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+index e1ae387..32523ba 100644
+--- a/translations/messages.en.xlf
++++ b/translations/messages.en.xlf
+@@ -320,5 +320,11 @@
+         <target>Local Asteroids</target>
+       </segment>
+     </unit>
++    <unit id="lpbmgRQ" name="navbar.item.weather">
++      <segment>
++        <source>navbar.item.weather</source>
++        <target>navbar.item.weather</target>
++      </segment>
++    </unit>
+   </file>
+ </xliff>
