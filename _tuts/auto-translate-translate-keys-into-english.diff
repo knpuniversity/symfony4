@@ -1,0 +1,22 @@
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+index d26f8e8..30ac1bc 100644
+--- a/translations/messages.en.xlf
++++ b/translations/messages.en.xlf
+@@ -326,5 +326,17 @@
+         <target>Weather</target>
+       </segment>
+     </unit>
++    <unit id="oaF40j_" name="navbar.item.login">
++      <segment>
++        <source>navbar.item.login</source>
++        <target>Login</target>
++      </segment>
++    </unit>
++    <unit id="WJEIxkD" name="navbar.item.register">
++      <segment>
++        <source>navbar.item.register</source>
++        <target>Register</target>
++      </segment>
++    </unit>
+   </file>
+ </xliff>

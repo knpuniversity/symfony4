@@ -1,0 +1,17 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 332f945..32f64c7 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -81,10 +81,10 @@
+                         </li>
+                     {% else %}
+                         <li class="nav-item">
+-                            <a style="color: #fff;" class="nav-link" href="{{ path('app_login') }}">{{ 'Login'|trans }}</a>
++                            <a style="color: #fff;" class="nav-link" href="{{ path('app_login') }}">{{ 'navbar.item.login'|trans }}</a>
+                         </li>
+                         <li class="nav-item">
+-                            <a style="color: #fff;" class="nav-link" href="{{ path('app_register') }}">{{ 'Register'|trans }}</a>
++                            <a style="color: #fff;" class="nav-link" href="{{ path('app_register') }}">{{ 'navbar.item.register'|trans }}</a>
+                         </li>
+                     {% endif %}
+                 </ul>

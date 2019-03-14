@@ -1,0 +1,108 @@
+diff --git a/composer.json b/composer.json
+index f4d4c36..c2d754d 100644
+--- a/composer.json
++++ b/composer.json
+@@ -12,6 +12,7 @@
+         "nexylan/slack-bundle": "^2.0",
+         "php-http/guzzle6-adapter": "^1.1",
+         "php-translation/symfony-bundle": "^0.8.1",
++        "php-translation/translator": "^1.0",
+         "sensio/framework-extra-bundle": "^5.1",
+         "stof/doctrine-extensions-bundle": "^1.3",
+         "symfony/asset": "^4.0",
+diff --git a/composer.lock b/composer.lock
+index b0a8ccf..6e45c7e 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "73c5969cf1dad3ce151bd1a8dd8b46e1",
++    "content-hash": "778ee9945bc3ccc271b03dccc58083f3",
+     "packages": [
+         {
+             "name": "a2lix/auto-form-bundle",
+@@ -3333,6 +3333,53 @@
+             "description": "A translation file storage using Symfony translation component.",
+             "time": "2018-07-10T10:32:01+00:00"
+         },
++        {
++            "name": "php-translation/translator",
++            "version": "1.0.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/php-translation/translator.git",
++                "reference": "f659c8e9bfd0fda8ac44f6190e054729d5652618"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/php-translation/translator/zipball/f659c8e9bfd0fda8ac44f6190e054729d5652618",
++                "reference": "f659c8e9bfd0fda8ac44f6190e054729d5652618",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^5.5 || ^7.0",
++                "php-http/client-implementation": "^1.0",
++                "php-http/discovery": "^1.0",
++                "php-http/httplug": "^1.0",
++                "psr/log": "~1.0"
++            },
++            "require-dev": {
++                "guzzlehttp/psr7": "^1.4",
++                "nyholm/nsa": "^1.1",
++                "php-http/curl-client": "^1.7",
++                "php-http/message": "^1.4",
++                "phpunit/phpunit": "^4.8.36 || ^5.5 || ^6.2"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Translation\\Translator\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Tobias Nyholm",
++                    "email": "tobias.nyholm@gmail.com"
++                }
++            ],
++            "description": "Translator services",
++            "time": "2018-06-14T14:42:47+00:00"
++        },
+         {
+             "name": "phpdocumentor/reflection-common",
+             "version": "1.0.1",
+diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
+index d3446dc..6752f15 100644
+--- a/config/packages/php_translation.yaml
++++ b/config/packages/php_translation.yaml
+@@ -3,6 +3,10 @@ translation:
+     edit_in_place:
+         enabled: false
+         config_name: app
++    fallback_translation:
++        enabled: true
++        service: yandex
++        api_key: foobar
+     configs:
+         app:
+             dirs: ["%kernel.project_dir%/templates", "%kernel.project_dir%/src"]
+diff --git a/symfony.lock b/symfony.lock
+index 947d9f6..eea8485 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -218,6 +218,9 @@
+     "php-translation/symfony-storage": {
+         "version": "1.0.1"
+     },
++    "php-translation/translator": {
++        "version": "1.0.0"
++    },
+     "phpdocumentor/reflection-common": {
+         "version": "1.0.1"
+     },

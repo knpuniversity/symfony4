@@ -534,7 +534,37 @@
             "id": "php-translations-translate-to-other-langs-via-profiler-ui",
             "name": "PHP Translations: Translate to other langs via Profiler UI",
             "description": null
+        },
+        {
+            "id": "auto-translate-install-and-configure-translator",
+            "name": "Auto Translate: Install and configure translator",
+            "description": null
+        },
+        {
+            "id": "auto-translate-translate-a-few-navbar-items",
+            "name": "Auto Translate: Translate a few navbar items",
+            "description": null
+        },
+        {
+            "id": "auto-translate-set-up-valid-api-key",
+            "name": "Auto Translate: Set up valid API key",
+            "description": null
+        },
+        {
+            "id": "auto-translate-use-translation-keys",
+            "name": "Auto Translate: Use translation keys",
+            "description": null
+        },
+        {
+            "id": "auto-translate-translate-keys-into-english",
+            "name": "Auto Translate: Translate keys into English",
+            "description": null
+        },
+        {
+            "id": "auto-translate-configure-aggressive-caching",
+            "name": "Auto Translate: Configure aggressive caching",
+            "description": null
         }
     ],
-    "sha": "bc53d2c17b311713a5864ec7b986a2596f92cd6c"
+    "sha": "48593cd689860ae2a043bb2346020aea53616e75"
 }

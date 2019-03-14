@@ -1,0 +1,23 @@
+diff --git a/.env b/.env
+index 3f757f4..9de5484 100644
+--- a/.env
++++ b/.env
+@@ -29,4 +29,5 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
+ 
+ ### CUSTOM VARS
+ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
++TRANSLATOR_API_KEY=foobar
+ ### END CUSTOM VARS
+diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
+index 6752f15..5a07e1b 100644
+--- a/config/packages/php_translation.yaml
++++ b/config/packages/php_translation.yaml
+@@ -6,7 +6,7 @@ translation:
+     fallback_translation:
+         enabled: true
+         service: yandex
+-        api_key: foobar
++        api_key: '%env(TRANSLATOR_API_KEY)%'
+     configs:
+         app:
+             dirs: ["%kernel.project_dir%/templates", "%kernel.project_dir%/src"]
