@@ -53,6 +53,8 @@ the `$articleReferences` property that allows us to say
 I'm just not going to need them: I'll read the references from the article, but
 never set them from this direction.
 
+[[[ code('2d16bec1ee') ]]]
+
 ## Form CollectionType
 
 Ok team: let's think about how we want this to work. The user needs to be able to
@@ -84,6 +86,8 @@ Anyways, let's add an `<hr>` and set up a bit of structure: `div class="row"` an
 `div class="col-sm-8"`. Say "Details" here and move the entire form inside. Now
 add a `div class="col-sm-4"` and say "References".
 
+[[[ code('2cbb758c9b') ]]]
+
 Let's see how this looks... nice! Form on the left, upload widget thingy on the
 right.
 
@@ -91,6 +95,8 @@ Here's the plan: add a `<form>` tag with the normal `method="POST"` and
 `enctype="multipart/form-data"`. Inside, add a single upload field:
 `<input type="file" name="">`, how about `reference`. Then,
 `<button type="submit">`, some classes to make it not ugly, and "Upload".
+
+[[[ code('e5c56592ce') ]]]
 
 Cool! Yes, we *are* going to talk about allowing the user to upload *multiple*
 files at once. Don't worry, things are going to get *much* fancier.
