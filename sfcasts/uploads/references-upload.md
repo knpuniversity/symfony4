@@ -7,6 +7,8 @@ create a new controller for everything related to article references:
 base controller we created in our Symfony series: it extends the normal
 `AbstractController`. So nothing magic happening there.
 
+[[[ code('7b0054ead1') ]]]
+
 ## The Upload Endpoint
 
 Back in the new class, create `public function uploadArticleReference()` and, above,
@@ -14,6 +16,8 @@ Back in the new class, create `public function uploadArticleReference()` and, ab
 Set the URL to, how about, `/admin/article/{id}/references` - where the `{id}` is
 the `Article` id that we want to attach the reference to. Add
 `name="admin_article_add_reference"`. Oh, and let's also set `methods={"POST"}`.
+
+[[[ code('8fcc04542c') ]]]
 
 That's optional, but it'll let us create *another* endpoint later with the same
 URL that can be used to *fetch* all the references for a single article.
@@ -25,9 +29,13 @@ to *edit* this article. In our app, we check that with this
 voter that we created in our Symfony series. It basically makes sure that you are
 the *author* of this article or a super admin.
 
+[[[ code('e4916a51ac') ]]]
+
 Finally, we're ready to fetch the file: add the `Request` argument - the one from
 `HttpFoundation` - and let's `dd($request->files->get())` and then the name from
 the input field: `reference`.
+
+[[[ code('20d7a2fd8c') ]]]
 
 Solid start. Copy the route name and head back to the template. Set the `action`
 attribute to `{{ path() }}`, the route name, and for the placeholder part, I'll
@@ -36,8 +44,12 @@ use multiple lines and pass `id` set to `article.id`. Oh wait... we don't have a
 and we *could* get the `Article` from that... but to shorten things, let's properly
 pass it in.
 
+[[[ code('d7c489d67c') ]]]
+
 Find the `edit()` action of `ArticleAdminController` and pass an `article`
 variable. *Now* we can say `article.id`.
+
+[[[ code('6c618f41e0') ]]]
 
 Phew! Ok, let's check this out: refresh and inspect element on the form. Yep,
 the URL looks right and the `enctype` attribute is there. Ok, try it: select
@@ -59,14 +71,23 @@ updated. If you want to upload a modified file - cool! Delete the old
 `ArticleReference` and upload a new one. You'll see what I mean as we keep
 building this out.
 
+[[[ code('51fc99e245') ]]]
+
 To get started, just `dd($file)`.
+
+[[[ code('43e3a2f400') ]]]
 
 Back in the controller, let's finish this *whole* darn thing. Set the file to an
 `$uploadedFile` object and I'll add the same inline documentation that says that
-this is an `UploadedFile` object - the one from `HttpFoundation`. Then say
-`$filename =`... oh - we don't have the `UploaderHelper` service yet! Add that
-argument: `UploaderHelper $uploaderHelper`. Then
+this is an `UploadedFile` object - the one from `HttpFoundation`. 
+
+[[[ code('0512ca1e17') ]]]
+
+Then say `$filename =`... oh - we don't have the `UploaderHelper` service yet! 
+Add that argument: `UploaderHelper $uploaderHelper`. Then
 `$filename = $uploaderHelper->uploadArticleReference($uploadedFile)`.
+
+[[[ code('fcddf751b6') ]]]
 
 We know that won't work yet... but if we use our *imagination*, we know that...
 someday, it should return the new filename that was stored on the filesystem.
@@ -85,11 +106,15 @@ Instead, add a `public function __construct()` with a required `Article` argumen
 Set *that* onto the `article` property. This is an optional step - but it's always
 nice to think critically about your entities: what methods do you *not* need?
 
+[[[ code('24da272de4') ]]]
+
 ## Saving ArticleReference & the Original Filename
 
 Back up in our controller, say `$articleReference = new ArticleReference()` and
 pass `$article`. Call `$article->setFilename($filename)` to store the unique filename
 where this file was stored on the filesystem.
+
+[[[ code('12a90a0ee0') ]]]
 
 But remember! There are a couple of *new* pieces of info that we can set on
 `ArticleReference` - like the *original* filename. Set that to
@@ -98,16 +123,25 @@ But remember! There are a couple of *new* pieces of info that we can set on
 realistic scenario. But, just in case, add `?? $filename`. So, if the client original
 name is missing for some reason, fall back to `$filename`.
 
+[[[ code('7c1078be32') ]]]
+
 Finally, *just* in case we ever want to know what *type* of file this is, we'll
 store the file's mime type. Set this to `$uploadedFile->getMimeType()`. This can
 *also* return null - so default it to `application/octet-stream`, which is sort
 of a common way to say "I have no idea what this file is".
 
+[[[ code('25a6695883') ]]]
+
 With that done, save this: add the `EntityManagerInterface $entityManager`
 argument, then `$entityManager->persist($articleReference)` and
-`$entityManager->flush()`. Finish with `return redirectToRoute()` and send the
-user back to the edit page: `admin_article_edit` passing this `id` set to
-`$article->getId()`.
+`$entityManager->flush()`. 
+
+[[[ code('d4bc879410') ]]]
+
+Finish with `return redirectToRoute()` and send the user back to the edit page: 
+`admin_article_edit` passing this `id` set to `$article->getId()`.
+
+[[[ code('be01c100ad') ]]]
 
 Yep - that's the route on the edit endpoint.
 
