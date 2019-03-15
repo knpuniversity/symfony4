@@ -1,0 +1,15 @@
+diff --git a/config/packages/php_translation_loco_adapter.yaml b/config/packages/php_translation_loco_adapter.yaml
+index a04a779..0f208ae 100644
+--- a/config/packages/php_translation_loco_adapter.yaml
++++ b/config/packages/php_translation_loco_adapter.yaml
+@@ -3,4 +3,9 @@ translation_adapter_loco:
+     projects:
+         my_project:
+             api_key: '%env(LOCO_PROJECT_API_KEY)%'
+-            domains: ['messages']
++            domains:
++                - KnpPaginatorBundle
++                - javascript
++                - messages
++                - security
++                - validators

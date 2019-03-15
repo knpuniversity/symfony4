@@ -1,0 +1,307 @@
+diff --git a/.env b/.env
+index 9de5484..a7dbbdd 100644
+--- a/.env
++++ b/.env
+@@ -31,3 +31,7 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
+ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
+ TRANSLATOR_API_KEY=foobar
+ ### END CUSTOM VARS
++
++###> php-translation/loco-adapter ###
++LOCO_PROJECT_API_KEY=
++###< php-translation/loco-adapter ###
+diff --git a/composer.json b/composer.json
+index f8dd6ad..ed80c8d 100644
+--- a/composer.json
++++ b/composer.json
+@@ -13,6 +13,7 @@
+         "knplabs/knp-time-bundle": "^1.8",
+         "nexylan/slack-bundle": "^2.0",
+         "php-http/guzzle6-adapter": "^1.1",
++        "php-translation/loco-adapter": "^0.8.0",
+         "php-translation/symfony-bundle": "^0.8.1",
+         "php-translation/translator": "^1.0",
+         "sensio/framework-extra-bundle": "^5.1",
+diff --git a/composer.lock b/composer.lock
+index b15d524..f1fd578 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "0c44b56eee4cd6637716ebfa3043f16a",
++    "content-hash": "aac1f74747250378c7fd945e4b312107",
+     "packages": [
+         {
+             "name": "a2lix/auto-form-bundle",
+@@ -1879,6 +1879,69 @@
+             ],
+             "time": "2018-06-14T14:45:07+00:00"
+         },
++        {
++            "name": "friendsofapi/localise.biz",
++            "version": "0.2.4",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/FriendsOfApi/localise.biz.git",
++                "reference": "df98adf17607789f833a373d4430e3e32b8941c5"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/FriendsOfApi/localise.biz/zipball/df98adf17607789f833a373d4430e3e32b8941c5",
++                "reference": "df98adf17607789f833a373d4430e3e32b8941c5",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.0",
++                "php-http/client-common": "^1.1",
++                "php-http/discovery": "^1.0",
++                "php-http/httplug": "^1.0",
++                "php-http/multipart-stream-builder": "^1.0"
++            },
++            "require-dev": {
++                "guzzlehttp/psr7": "^1.3",
++                "nyholm/nsa": "^1.0",
++                "php-http/curl-client": "^1.6",
++                "php-http/message": "^1.0",
++                "php-http/message-factory": "^1.0",
++                "phpunit/phpunit": "^5.7"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "0.2-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "FAPI\\Localise\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Márk Sági-Kazár",
++                    "email": "mark.sagikazar@gmail.com"
++                },
++                {
++                    "name": "Tobias Nyholm",
++                    "email": "tobias.nyholm@gmail.com"
++                }
++            ],
++            "description": "A community API client for localise.biz translation service",
++            "keywords": [
++                "Localise.biz",
++                "localise",
++                "loco",
++                "translation"
++            ],
++            "time": "2018-01-16T19:57:21+00:00"
++        },
+         {
+             "name": "gedmo/doctrine-extensions",
+             "version": "v2.4.36",
+@@ -3466,6 +3529,63 @@
+             ],
+             "time": "2015-12-19T14:08:53+00:00"
+         },
++        {
++            "name": "php-http/multipart-stream-builder",
++            "version": "1.0.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/php-http/multipart-stream-builder.git",
++                "reference": "1fa3c623fc813a43b39494b2a1612174e36e0fb0"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/php-http/multipart-stream-builder/zipball/1fa3c623fc813a43b39494b2a1612174e36e0fb0",
++                "reference": "1fa3c623fc813a43b39494b2a1612174e36e0fb0",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^5.5 || ^7.0",
++                "php-http/discovery": "^1.0",
++                "php-http/message-factory": "^1.0.2",
++                "psr/http-message": "^1.0"
++            },
++            "require-dev": {
++                "php-http/message": "^1.5",
++                "phpunit/phpunit": "^4.8 || ^5.4",
++                "zendframework/zend-diactoros": "^1.3.5"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "0.3-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Http\\Message\\MultipartStream\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Tobias Nyholm",
++                    "email": "tobias.nyholm@gmail.com"
++                }
++            ],
++            "description": "A builder class that help you create a multipart stream",
++            "homepage": "http://php-http.org",
++            "keywords": [
++                "factory",
++                "http",
++                "message",
++                "multipart stream",
++                "stream"
++            ],
++            "time": "2017-05-21T17:45:25+00:00"
++        },
+         {
+             "name": "php-http/promise",
+             "version": "v1.0.0",
+@@ -3659,6 +3779,61 @@
+             "description": "Extract translations form the source code",
+             "time": "2018-07-09T17:05:17+00:00"
+         },
++        {
++            "name": "php-translation/loco-adapter",
++            "version": "0.8.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/php-translation/loco-adapter.git",
++                "reference": "757741c569312ae14dda456eb46c632101b69ec4"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/php-translation/loco-adapter/zipball/757741c569312ae14dda456eb46c632101b69ec4",
++                "reference": "757741c569312ae14dda456eb46c632101b69ec4",
++                "shasum": ""
++            },
++            "require": {
++                "friendsofapi/localise.biz": "^0.2",
++                "php": "^7.0",
++                "php-translation/common": "^1.0",
++                "php-translation/symfony-storage": "^1.0",
++                "symfony/translation": "^2.7 || ^3.0 || ^4.0",
++                "symfony/yaml": "^2.7 || ^3.0 || ^4.0"
++            },
++            "require-dev": {
++                "guzzlehttp/psr7": "^1.4",
++                "nyholm/symfony-bundle-test": "^1.2.3",
++                "php-http/curl-client": "^1.7",
++                "php-http/httplug-bundle": "^1.3",
++                "php-http/message": "^1.6",
++                "phpunit/phpunit": "^6.2",
++                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "0.7-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Translation\\PlatformAdapter\\Loco\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Tobias Nyholm",
++                    "email": "tobias.nyholm@gmail.com"
++                }
++            ],
++            "description": "Adapter for loco.",
++            "time": "2018-06-27T15:39:36+00:00"
++        },
+         {
+             "name": "php-translation/symfony-bundle",
+             "version": "0.8.1",
+diff --git a/config/bundles.php b/config/bundles.php
+index ece3adc..295f09c 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -26,4 +26,5 @@ return [
+     Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle::class => ['all' => true],
+     Translation\Bundle\TranslationBundle::class => ['all' => true],
+     Cache\AdapterBundle\CacheAdapterBundle::class => ['all' => true],
++    Translation\PlatformAdapter\Loco\Bridge\Symfony\TranslationAdapterLocoBundle::class => ['all' => true],
+ ];
+diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
+index a5d02fa..d90e44d 100644
+--- a/config/packages/php_translation.yaml
++++ b/config/packages/php_translation.yaml
+@@ -14,3 +14,4 @@ translation:
+             output_dir: "%kernel.project_dir%/translations"
+             excluded_names: ["*TestCase.php", "*Test.php"]
+             excluded_dirs: [cache, data, logs]
++            remote_storage: ["php_translation.adapter.loco"]
+diff --git a/config/packages/php_translation_loco_adapter.yaml b/config/packages/php_translation_loco_adapter.yaml
+new file mode 100644
+index 0000000..a04a779
+--- /dev/null
++++ b/config/packages/php_translation_loco_adapter.yaml
+@@ -0,0 +1,6 @@
++translation_adapter_loco:
++    index_parameter: 'id' # 'text' or 'name'. Leave blank for "auto"  See https://localise.biz/api/docs/export/exportlocale
++    projects:
++        my_project:
++            api_key: '%env(LOCO_PROJECT_API_KEY)%'
++            domains: ['messages']
+diff --git a/symfony.lock b/symfony.lock
+index e0787bd..6ed3439 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -128,6 +128,9 @@
+             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
+         }
+     },
++    "friendsofapi/localise.biz": {
++        "version": "0.2.4"
++    },
+     "fzaninotto/faker": {
+         "version": "v1.8.0"
+     },
+@@ -218,6 +221,9 @@
+     "php-http/message-factory": {
+         "version": "v1.0.2"
+     },
++    "php-http/multipart-stream-builder": {
++        "version": "1.0.0"
++    },
+     "php-http/promise": {
+         "version": "v1.0.0"
+     },
+@@ -230,6 +236,18 @@
+     "php-translation/extractor": {
+         "version": "1.7.1"
+     },
++    "php-translation/loco-adapter": {
++        "version": "0.8",
++        "recipe": {
++            "repo": "github.com/symfony/recipes-contrib",
++            "branch": "master",
++            "version": "0.8",
++            "ref": "c97545d1c229338606d881294eceeb4cdc993777"
++        },
++        "files": [
++            "config/packages/php_translation_loco_adapter.yaml"
++        ]
++    },
+     "php-translation/symfony-bundle": {
+         "version": "0.4",
+         "recipe": {

@@ -1,0 +1,17 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 0f94102..e05c208 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -45,11 +45,7 @@
+ 
+             <div class="col-sm-12 col-md-4 text-center">
+                 <div class="ad-space mx-auto mt-1 pb-2 pt-2">
+-                    {% if app.request.locale == 'en' %}
+-                        <img class="advertisement-img" src="{{ asset('images/space-ice-en.png') }}">
+-                    {% else %}
+-                        <img class="advertisement-img" src="{{ asset('images/space-ice.png') }}">
+-                    {% endif %}
++                    <img class="advertisement-img" src="{{ asset('images/space-ice-'~app.request.locale~'.png') }}">
+                     <p>{{ 'ice_cream_promo.title.html'|trans|raw }}</p>
+                     {% set spaceIceCreamPrice = 9.99 %}
+                     <button class="btn btn-info js-purchase-btn">

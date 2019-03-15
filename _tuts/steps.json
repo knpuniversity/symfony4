@@ -564,7 +564,32 @@
             "id": "auto-translate-configure-aggressive-caching",
             "name": "Auto Translate: Configure aggressive caching",
             "description": null
+        },
+        {
+            "id": "loco-install-and-configure-adapter",
+            "name": "Loco: Install and configure adapter",
+            "description": null
+        },
+        {
+            "id": "loco-handle-all-domains",
+            "name": "Loco: Handle ALL domains",
+            "description": null
+        },
+        {
+            "id": "loco-remove-translations-from-git-and-ignore-it",
+            "name": "Loco: Remove translations from Git and ignore it",
+            "description": null
+        },
+        {
+            "id": "localize-images-show-a-different-image-for-english-locale",
+            "name": "Localize images: Show a different image for English locale",
+            "description": null
+        },
+        {
+            "id": "localize-images-show-different-images-for-each-locale",
+            "name": "Localize images: Show different images for each locale",
+            "description": null
         }
     ],
-    "sha": "48593cd689860ae2a043bb2346020aea53616e75"
+    "sha": "6dc98408e162b45ee147d7fb5307601b9390a6e9"
 }
