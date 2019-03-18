@@ -1,11 +1,11 @@
-## Storing Private Files
+# Storing Private Files
 
 Here's the tricky part: we can't just go into `UploaderHelper` and use the Flysystem
 filesystem like we did before to save the uploaded file... because *that* writes
 everything into the `public/uploads/` directory. If we need to check security before
 letting a user download a file, then it *can't* live in the `public/` directory.
 
-And *that* means that we need a *second* Flysystem filesystem: one that can store
+And *that* means we need a *second* Flysystem filesystem: one that can store
 things somewhere *outside* the `public/` directory. Side note: it *is* possible
 to solve the "private" uploads problem with just *one* filesystem using signed URLs,
 and we'll talk about it later when we move to S3.
@@ -15,22 +15,22 @@ and we'll talk about it later when we move to S3.
 But for now, a great solution is to create a *private* filesystem. Open the
 `config/packages/oneup_flysystem.yaml` file. Copy the `public_uploads_adapter`, paste
 and call it `private_uploads_adapter`. You can store the files *anywhere*, as long
-as it's not in `public/`. But, the `var/` directory is sort of meant of this type
+as it's not in `public/`. But, the `var/` directory is sort of meant for this type
 of thing. So let's say: `var/uploads`. Oh, and I could re-use my `uploads_dir_name`
-parameter here - but it won't give us any benefit - that parameter is really meant
-to keep the upload directory and *public* path to assets in sync. But... these files
-won't have a public path anyways - we'll make them downloadable in an entirely
+parameter here - but it won't give us any benefit. That parameter is really meant
+to keep the upload directory and *public* path to assets in sync. But these files
+won't have a public path anyways... we'll make them downloadable in an entirely
 different way.
 
 [[[ code('c426a18368') ]]]
 
-Next, for filesystems, do the same thing: make a `privates_uploads_filesystem` that
+Next, for filesystems, do the same thing: make a `private_uploads_filesystem` that
 will use the `private_uploads_adapter`.
 
 [[[ code('e1c9903026') ]]]
 
 Cool! Next, in `UploaderHelper`, were already passing the `$publicUploadFilesystem`
-as an argument. We'll *also* need the private one. Before we add it here, go into
+as an argument. We will *also* need the private one. Before we add it here, go into
 `services.yaml`. Remember, under `_defaults`, we're binding the
 `$publicUploadFilesystem` argument to the public fileystem service. Let's do the
 same for the private one. Call it `$privateUploadFilesystem` and change the service
@@ -47,32 +47,34 @@ called `$privateFilesystem` and set it below:
 
 ## Re-using the Upload Logic
 
-Ok, we're ready! Most of the logic in `uploadArticleImage()` should be reusable:
+Ok, we're ready! Most of the logic in `uploadArticleImage()` *should* be reusable:
 we're basically going to do the same thing... just through the *private* filesystem:
 we need to figure out the filename and stream it through Flysystem. The only part
-of this method that we *don't* need is the `$existingFilename`: we don't need to
-delete any *existing* filename - we're not going to allow files to be "updated"
-for a specific `ArticleReference`.
+of this method that we *don't* need is the `$existingFilename`. We don't need to
+delete an *existing* file... because we're not going to allow files to be "updated"
+for a specific `ArticleReference` - we'll just have the user delete them and
+re-upload the new file.
 
-Let's refactor: copy all of this code down through the `fclose()` and, at the bottom.
+Refactoring time! Copy all of this code down through the `fclose()` and, at the bottom,
 create a new `private function` called `uploadFile()`. This will take in the
-`File` object that we're uploading and we will also need to pass the directory name -
-you'll see what this in a moment. And then a `bool $isPublic` flag so that this
-method knows whether to store things in the public filesystem or private one. 
+`File` object that we're uploading... and we also need to pass the directory name -
+you'll see what that is in a moment. Then add a `bool $isPublic` flag so that this
+method knows whether to store things in the public or private filesystem.
 
 [[[ code('f30e54b467') ]]]
 
-To start, paste that exact logic 
+To start, paste that exact logic
 
 [[[ code('f0e2f70e58') ]]]
 
-and, at the bottom, `return $newFilename`. Oh, and I should also probably add a return type.
+and, at the bottom, `return $newFilename`. Oh, and I should also probably add a
+return type.
 
 [[[ code('ff72259c20') ]]]
 
 Let's see... the first thing we need to do is handle this `$isPublic` argument. So
-Let's say `$filesystem = $isPublic ?`, and if it *is* public, use `$this->filesystem`,
-otherwise use  `$this->privateFilesystem`. Below, replace `$this->filesystem` with
+Let's say `$filesystem = $isPublic ?` and, if it *is* public, use `$this->filesystem`,
+otherwise use `$this->privateFilesystem`. Below, replace `$this->filesystem` with
 `$filesystem`.
 
 [[[ code('d608066920') ]]]
@@ -84,14 +86,14 @@ the file will be stored.
 [[[ code('4ff6fbea0d') ]]]
 
 All done! Back up in `uploadArticleImage()`, re-select *all* that code we just copied,
-delete it, and replace it with `$newFilename = $this->uploadFile()` passing the
-`$file`, the directory - `self::ARTICLE_IMAGES` - and whether or not this file should
-be public, which is `true`.
+delete it, do a happy dance and replace it with `$newFilename = $this->uploadFile()`
+passing the `$file`, the directory - `self::ARTICLE_IMAGE` - and whether or not
+this file should be public, which is `true`.
 
 [[[ code('00362c424e') ]]]
 
-Let's do the same thing down in `uploadArticleReference`. Oh, but first, we need
-to create another constant for the directory
+Now we can do the same thing down in `uploadArticleReference`. Oh, but first, we
+need to create another constant for the directory
 `const ARTICLE_REFERENCE = 'article_reference`.
 
 [[[ code('41e4badb1b') ]]]
@@ -102,12 +104,12 @@ Back down, all we need is `return $this->uploadFile()`, with `$file`,
 [[[ code('ead926f2bc') ]]]
 
 I think that's it! Let's test this puppy out! Move over and refresh to re-POST
-the form. No error... but I have no idea if that worked - we're not rendering
+the form. No error... but I have no idea if that worked... because we're not rendering
 anything yet. Check out the `var/` directory...
 `var/uploads/article_reference/symfony-best-practices...`, we got it!
 
-Of course, there's absolutely no way for *any* user to access this file, but we'll
-handle that soon.
+Of course, there's absolutely no way for *anyone* to access this file... but we'll
+fix that up soon enough.
 
-Next: unless we *really* trust our authors, we probably shouldn't let them upload
-*any* file type. Let's tighten that up.
+Next: unless we really, *really*, trust our authors, we probably shouldn't let
+them upload *any* file type. Let's tighten up validation.

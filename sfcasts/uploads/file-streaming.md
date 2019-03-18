@@ -10,39 +10,38 @@ Add `$response = new StreamedResponse()`. This takes one argument - a *callback*
 At the bottom, return this.
 
 Here's the idea: we can't just start streaming the response or echo'ing content
-right now inside the controller: Symfony's just not ready for that yet - it has
+right now inside the controller: Symfony's just not ready for that yet, it has
 more work to do, more headers to set, etc. That's why we *normally* create a Response
-object and *later*, when it's ready, Symfony echo's its content for us.
+object and *later*, when it's ready, Symfony echo's the response's content for us.
 
-With a `StreamedResponse`, when Symfony is ready to finally send the data, it will
-execute our callback and we can do *whatever* we want. Heck, we can
+With a `StreamedResponse`, when Symfony is ready to finally send the data, it
+executes our callback and then we can do *whatever* we want. Heck, we can
 `echo 'foo'` and that's what the user would see.
 
-Add a `use` statement to the callback and bring the `$reference` and `$uploaderHelper`
-variables into the callback's scope so we can use them. To send a file stream
-to the user, it looks a little strange. Start with `$outputStream` set to
-`fopen('php://output')` and `wb`.
+Add a `use` statement and bring `$reference` and `$uploaderHelper` into the
+callback's scope so we can use them. To send a file stream to the user, it looks
+a little strange. Start with `$outputStream` set to `fopen('php://output')`
+and `wb`.
 
-We *usually* use `fopen` to write to a file. In this case, the special `php://output`
-allows us to write to the "output" stream - a fancy way of saying that we're basically
-echo'ing anything that we "write" to this stream. Next, set `$fileStream` to
-`$uploaderHelper->readStream()` and pass this the path to the file - something
-like `article_reference/symfony-best-practices-blah-blah.pdf`.
+We *usually* use `fopen` to write to a file. But this special
+`php://output` allows us to write to the "output" stream - a fancy way of saying
+that anything we write to this stream will just get "echo'ed" out. Next, set `$fileStream` to `$uploaderHelper->readStream()` and pass this the path to the
+file - something like `article_reference/symfony-best-practices-blah-blah.pdf`.
 
-Oh, except, we don't have an easy way to do that yet. In our `Article` entity, we
+Oh, except, we don't have an easy way to do that yet! In our `Article` entity, we
 added a nice `getImagePath()` method that read the constant from `UploaderHelper`
-and then added the filename. I like that.
+and added the filename. I like that.
 
 Let's copy that and go do the exact same thing in `ArticleReference`. At the bottom,
 paste and rename this to `getFilePath()`. Let's add a return type too - I probably
-should have done that in `Article` too. Then, re-type the `r` on `UploaderHelper`
-to get the use statement, change the constant to `ARTICLE_REFERENCE` and update
+should have done that in `Article`. Then, re-type the `r` on `UploaderHelper`
+to get the `use` statement, change the constant to `ARTICLE_REFERENCE` and update
 the method call to `getFilename()`.
 
 Great! Back in the controller, pass `$reference->getFilePath()` and then `false`
 for the `$isPublic` argument.
 
-*Finally*, how that we have the "write" stream and a "read" stream, we can use
+*Finally*, now that we have a "write" stream and a "read" stream, we can use
 a function called `stream_copy_to_stream()` to... do exactly that! Copy
 `$fileStream` to `$outputStream`.
 
@@ -51,10 +50,10 @@ but it *avoids* eating memory.
 
 ## Setting the Content-Type
 
-Let's try it! Refresh and... it works... sort of. We *are* sending the file
+Try it out! Refresh and... it works... sort of. We *are* sending the file
 contents... but the browser is *clearly* not handling it well. The reasons is that
-haven't told the browser what *type* of file it is, so it's just treating it like
-the world's ugliest web page.
+we haven't told the browser what *type* of file this is, so it's just treating it
+like the world's ugliest web page.
 
 And... hey! Remember when we stored the `$mimeType` of the file in the database?
 Whelp, that's about to come in handy... big time! Add
@@ -66,8 +65,8 @@ Try it again. Hello PDF!
 
 Another thing you might want to do is *force* the browser to download the file. It's
 really up to you. By default, based on the `Content-Type`, the browser may try to
-open the file - like it is here - or have the user download it. To the browser
-*always* download the file, we can leverage a header called
+open the file - like it is here - or have the user download it. To force the browser
+to *always* download the file, we can leverage a header called
 `Content-Disposition`.
 
 This header has a very specific format, so Symfony comes with a helper to create
@@ -78,12 +77,12 @@ Next, pass it the *filename*.
 
 This is *especially* cool because, without this, the browser would probably try
 to call the file... just... "download" - because that's the last part of the URL.
-But it should *really* use `$reference->getOriginalFilename()`.
+Now it will use `$reference->getOriginalFilename()`.
 
 Before we set this header, I just want you to see what it looks like. So,
 `dd($disposition)`, move over, refresh and... there it is. It's just a string, like
-any other header - but it has this specific format, which is why Symfony has the
-helper method to create it.
+any other header - but it has this specific format, which is why Symfony has a
+helper method.
 
 Set this on the actual response with
 `$response->headers->set('Content-Disposition', $disposition)`.
