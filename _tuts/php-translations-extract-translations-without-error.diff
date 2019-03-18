@@ -1,8 +1,8 @@
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index 2e381c8f..6c0c783c 100644
+index 844f5ba0..43f4c89c 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
-@@ -274,7 +274,7 @@
+@@ -273,7 +273,7 @@
      </unit>
      <unit id="I8dOP5V" name="form.article.specific_location">
        <notes>
@@ -11,7 +11,7 @@ index 2e381c8f..6c0c783c 100644
        </notes>
        <segment>
          <source>form.article.specific_location</source>
-@@ -283,7 +283,7 @@
+@@ -282,7 +282,7 @@
      </unit>
      <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
        <notes>
@@ -20,7 +20,7 @@ index 2e381c8f..6c0c783c 100644
        </notes>
        <segment>
          <source>form.article.specific_location.placeholder</source>
-@@ -302,7 +302,6 @@
+@@ -301,7 +301,6 @@
      <unit id="0niVptT" name="agreeTerms">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -28,7 +28,7 @@ index 2e381c8f..6c0c783c 100644
        </notes>
        <segment>
          <source>agreeTerms</source>
-@@ -312,7 +311,6 @@
+@@ -311,7 +310,6 @@
      <unit id="Knrm5Px" name="plainPassword">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -36,7 +36,7 @@ index 2e381c8f..6c0c783c 100644
        </notes>
        <segment>
          <source>plainPassword</source>
-@@ -322,7 +320,6 @@
+@@ -321,7 +319,6 @@
      <unit id="giREF.l" name="email">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -44,7 +44,7 @@ index 2e381c8f..6c0c783c 100644
        </notes>
        <segment>
          <source>email</source>
-@@ -332,7 +329,6 @@
+@@ -331,7 +328,6 @@
      <unit id="s_.yism" name="translations">
        <notes>
          <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
@@ -53,10 +53,28 @@ index 2e381c8f..6c0c783c 100644
        <segment>
          <source>translations</source>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
-index 0382e5c1..d24663b8 100644
+index ed16d8e3..9fa5cbd5 100644
 --- a/translations/messages.es.xlf
 +++ b/translations/messages.es.xlf
-@@ -157,7 +157,6 @@
+@@ -255,7 +255,7 @@
+     </unit>
+     <unit id="I8dOP5V" name="form.article.specific_location">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location</source>
+@@ -264,7 +264,7 @@
+     </unit>
+     <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
+       <notes>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
+       </notes>
+       <segment>
+         <source>form.article.specific_location.placeholder</source>
+@@ -283,7 +283,6 @@
      <unit id="OuCVbmM" name="comments.count">
        <notes>
          <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
@@ -64,7 +82,7 @@ index 0382e5c1..d24663b8 100644
        </notes>
        <segment>
          <source>comments.count</source>
-@@ -167,7 +166,6 @@
+@@ -293,7 +292,6 @@
      <unit id=".wAO8bF" name="page.article.comments.count">
        <notes>
          <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
@@ -72,7 +90,7 @@ index 0382e5c1..d24663b8 100644
        </notes>
        <segment>
          <source>page.article.comments.count</source>
-@@ -177,7 +175,6 @@
+@@ -303,7 +301,6 @@
      <unit id="0niVptT" name="agreeTerms">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -80,7 +98,7 @@ index 0382e5c1..d24663b8 100644
        </notes>
        <segment>
          <source>agreeTerms</source>
-@@ -187,7 +184,6 @@
+@@ -313,7 +310,6 @@
      <unit id="Knrm5Px" name="plainPassword">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -88,7 +106,7 @@ index 0382e5c1..d24663b8 100644
        </notes>
        <segment>
          <source>plainPassword</source>
-@@ -197,7 +193,6 @@
+@@ -323,7 +319,6 @@
      <unit id="giREF.l" name="email">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -96,65 +114,7 @@ index 0382e5c1..d24663b8 100644
        </notes>
        <segment>
          <source>email</source>
-@@ -207,7 +202,6 @@
-     <unit id="ThZosDK" name="form.article.location.choices.solar_system">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location.choices.solar_system</source>
-@@ -217,7 +211,6 @@
-     <unit id="iFvNDB1" name="form.article.location.choices.star">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location.choices.star</source>
-@@ -227,7 +220,6 @@
-     <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location.choices.interstellar_space</source>
-@@ -237,7 +229,6 @@
-     <unit id="dtcC6Fh" name="form.article.author">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.author</source>
-@@ -247,7 +238,6 @@
-     <unit id="AE8KsgN" name="form.article.location">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location</source>
-@@ -257,7 +247,6 @@
-     <unit id="0mYunZW" name="form.article.published_at">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.published_at</source>
-@@ -266,8 +255,7 @@
-     </unit>
-     <unit id="I8dOP5V" name="form.article.specific_location">
-       <notes>
--        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
--        <note category="state" priority="1">new</note>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
-       </notes>
-       <segment>
-         <source>form.article.specific_location</source>
-@@ -277,7 +265,6 @@
+@@ -333,7 +328,6 @@
      <unit id="s_.yism" name="translations">
        <notes>
          <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
@@ -162,37 +122,29 @@ index 0382e5c1..d24663b8 100644
        </notes>
        <segment>
          <source>translations</source>
-@@ -287,7 +274,6 @@
-     <unit id="GEDCzUF" name="form.article.location.placeholder">
+diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
+index 5f66238b..a8d5155e 100644
+--- a/translations/messages.uk.xlf
++++ b/translations/messages.uk.xlf
+@@ -255,7 +255,7 @@
+     </unit>
+     <unit id="I8dOP5V" name="form.article.specific_location">
        <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
--        <note category="state" priority="1">new</note>
+-        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
        </notes>
        <segment>
-         <source>form.article.location.placeholder</source>
-@@ -296,8 +282,7 @@
+         <source>form.article.specific_location</source>
+@@ -264,7 +264,7 @@
      </unit>
      <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
        <notes>
 -        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
--        <note category="state" priority="1">new</note>
 +        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
        </notes>
        <segment>
          <source>form.article.specific_location.placeholder</source>
-@@ -308,7 +293,6 @@
-       <notes>
-         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
-         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>flash.success.article.created</source>
-diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
-index fd9567c4..af322be1 100644
---- a/translations/messages.uk.xlf
-+++ b/translations/messages.uk.xlf
-@@ -157,7 +157,6 @@
+@@ -283,7 +283,6 @@
      <unit id="huYz.gS" name="footer.html">
        <notes>
          <note category="file-source" priority="1">templates/base.html.twig:105</note>
@@ -200,7 +152,7 @@ index fd9567c4..af322be1 100644
        </notes>
        <segment>
          <source>footer.html</source>
-@@ -167,7 +166,6 @@
+@@ -293,7 +292,6 @@
      <unit id="X.Xcnm6" name="ice_cream_promo.button">
        <notes>
          <note category="file-source" priority="1">templates/article/homepage.html.twig:52</note>
@@ -208,7 +160,7 @@ index fd9567c4..af322be1 100644
        </notes>
        <segment>
          <source>ice_cream_promo.button</source>
-@@ -177,7 +175,6 @@
+@@ -303,7 +301,6 @@
      <unit id="0niVptT" name="agreeTerms">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -216,7 +168,7 @@ index fd9567c4..af322be1 100644
        </notes>
        <segment>
          <source>agreeTerms</source>
-@@ -187,7 +184,6 @@
+@@ -313,7 +310,6 @@
      <unit id="Knrm5Px" name="plainPassword">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -224,7 +176,7 @@ index fd9567c4..af322be1 100644
        </notes>
        <segment>
          <source>plainPassword</source>
-@@ -197,7 +193,6 @@
+@@ -323,7 +319,6 @@
      <unit id="giREF.l" name="email">
        <notes>
          <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -232,65 +184,7 @@ index fd9567c4..af322be1 100644
        </notes>
        <segment>
          <source>email</source>
-@@ -207,7 +202,6 @@
-     <unit id="ThZosDK" name="form.article.location.choices.solar_system">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location.choices.solar_system</source>
-@@ -217,7 +211,6 @@
-     <unit id="iFvNDB1" name="form.article.location.choices.star">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location.choices.star</source>
-@@ -227,7 +220,6 @@
-     <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location.choices.interstellar_space</source>
-@@ -237,7 +229,6 @@
-     <unit id="dtcC6Fh" name="form.article.author">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.author</source>
-@@ -247,7 +238,6 @@
-     <unit id="AE8KsgN" name="form.article.location">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location</source>
-@@ -257,7 +247,6 @@
-     <unit id="0mYunZW" name="form.article.published_at">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.published_at</source>
-@@ -266,8 +255,7 @@
-     </unit>
-     <unit id="I8dOP5V" name="form.article.specific_location">
-       <notes>
--        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
--        <note category="state" priority="1">new</note>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
-       </notes>
-       <segment>
-         <source>form.article.specific_location</source>
-@@ -277,7 +265,6 @@
+@@ -333,7 +328,6 @@
      <unit id="s_.yism" name="translations">
        <notes>
          <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
@@ -298,32 +192,6 @@ index fd9567c4..af322be1 100644
        </notes>
        <segment>
          <source>translations</source>
-@@ -287,7 +274,6 @@
-     <unit id="GEDCzUF" name="form.article.location.placeholder">
-       <notes>
-         <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>form.article.location.placeholder</source>
-@@ -296,8 +282,7 @@
-     </unit>
-     <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
-       <notes>
--        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
--        <note category="state" priority="1">new</note>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
-       </notes>
-       <segment>
-         <source>form.article.specific_location.placeholder</source>
-@@ -308,7 +293,6 @@
-       <notes>
-         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
-         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
--        <note category="state" priority="1">new</note>
-       </notes>
-       <segment>
-         <source>flash.success.article.created</source>
 diff --git a/translations/validators.en.xlf b/translations/validators.en.xlf
 index 3a8e290a..260a3353 100644
 --- a/translations/validators.en.xlf

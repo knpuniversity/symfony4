@@ -114,10 +114,10 @@ index 9f6db38c..00000000
 -</xliff>
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
 deleted file mode 100644
-index 30ac1bc0..00000000
+index d16c73d6..00000000
 --- a/translations/messages.en.xlf
 +++ /dev/null
-@@ -1,342 +0,0 @@
+@@ -1,344 +0,0 @@
 -<?xml version="1.0" encoding="utf-8"?>
 -<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
 -  <file id="messages.en">
@@ -286,7 +286,6 @@ index 30ac1bc0..00000000
 -    <unit id="ynHhXwh" name="flash.success.article.created">
 -      <notes>
 -        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
--        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 -      </notes>
 -      <segment>
 -        <source>flash.success.article.created</source>
@@ -294,6 +293,9 @@ index 30ac1bc0..00000000
 -      </segment>
 -    </unit>
 -    <unit id="bxqC4Q4" name="flash.success.article.updated">
+-      <notes>
+-        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
+-      </notes>
 -      <segment>
 -        <source>flash.success.article.updated</source>
 -        <target>Article Updated! Inaccuracies squashed!</target>
@@ -462,10 +464,10 @@ index 30ac1bc0..00000000
 -</xliff>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
 deleted file mode 100644
-index 05670132..00000000
+index c0ef0ee9..00000000
 --- a/translations/messages.es.xlf
 +++ /dev/null
-@@ -1,306 +0,0 @@
+@@ -1,315 +0,0 @@
 -<?xml version="1.0" encoding="utf-8"?>
 -<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
 -  <file id="messages.es">
@@ -751,7 +753,6 @@ index 05670132..00000000
 -    <unit id="ynHhXwh" name="flash.success.article.created">
 -      <notes>
 -        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
--        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 -      </notes>
 -      <segment>
 -        <source>flash.success.article.created</source>
@@ -770,14 +771,24 @@ index 05670132..00000000
 -        <target>Clima</target>
 -      </segment>
 -    </unit>
+-    <unit id="bxqC4Q4" name="flash.success.article.updated">
+-      <notes>
+-        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
+-        <note category="state" priority="1">new</note>
+-      </notes>
+-      <segment>
+-        <source>flash.success.article.updated</source>
+-        <target>¡Artículo actualizado! ¡Las inexactitudes aplastadas!</target>
+-      </segment>
+-    </unit>
 -  </file>
 -</xliff>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
 deleted file mode 100644
-index 0660aa9b..00000000
+index 581afe62..00000000
 --- a/translations/messages.uk.xlf
 +++ /dev/null
-@@ -1,306 +0,0 @@
+@@ -1,315 +0,0 @@
 -<?xml version="1.0" encoding="utf-8"?>
 -<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
 -  <file id="messages.uk">
@@ -1063,7 +1074,6 @@ index 0660aa9b..00000000
 -    <unit id="ynHhXwh" name="flash.success.article.created">
 -      <notes>
 -        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
--        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 -      </notes>
 -      <segment>
 -        <source>flash.success.article.created</source>
@@ -1080,6 +1090,16 @@ index 0660aa9b..00000000
 -      <segment>
 -        <source>navbar.item.weather</source>
 -        <target>Погода</target>
+-      </segment>
+-    </unit>
+-    <unit id="bxqC4Q4" name="flash.success.article.updated">
+-      <notes>
+-        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
+-        <note category="state" priority="1">new</note>
+-      </notes>
+-      <segment>
+-        <source>flash.success.article.updated</source>
+-        <target>Стаття оновлена! Неточності розчавлені!</target>
 -      </segment>
 -    </unit>
 -  </file>

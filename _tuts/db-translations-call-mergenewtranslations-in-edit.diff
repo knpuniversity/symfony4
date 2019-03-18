@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 1b6badf4..a60aae35 100644
+index 8ffa5213..ee395066 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -55,6 +55,7 @@ class ArticleAdminController extends BaseController
@@ -9,4 +9,4 @@ index 1b6badf4..a60aae35 100644
 +            $article->mergeNewTranslations();
              $em->flush();
  
-             $message = $translator->trans('flash.success.article.created');
+             $message = $translator->trans('flash.success.article.updated');

@@ -29,3 +29,31 @@ index 3b50b684..5acea57d 100644
  form.article.specific_location: Specific location name
  form.article.specific_location.placeholder: Where exactly?
  form.article.published_at: Published at
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index a48c5661..41883ede 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -23,6 +23,9 @@ form.article.content: Contenido
+ form.article.author: Autor
+ form.article.location: Ubicación
+ form.article.location.placeholder: Elegir una ubicación
++form.article.location.choices.solar_system:  El Sistema Solar
++form.article.location.choices.star: Cerca de una estrella
++form.article.location.choices.interstellar_space: Espacio interestelar
+ form.article.specific_location: Nombre de ubicación específica
+ form.article.specific_location.placeholder: ¿Donde exactamente?
+ form.article.published_at: Publicado en
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+index 1dff0912..fe650341 100644
+--- a/translations/messages.uk.yaml
++++ b/translations/messages.uk.yaml
+@@ -23,6 +23,9 @@ form.article.content: Зміст
+ form.article.author: Автор
+ form.article.location: Розташування
+ form.article.location.placeholder: Виберіть місце
++form.article.location.choices.solar_system: Сонячна система
++form.article.location.choices.star: Біля зірки
++form.article.location.choices.interstellar_space: Міжзоряний простір
+ form.article.specific_location: Певна назва місця розташування
+ form.article.specific_location.placeholder: Де саме?
+ form.article.published_at: Опубліковано в

@@ -45,3 +45,35 @@ index 938834c6..3b50b684 100644
  form.article.specific_location: Specific location name
 +form.article.specific_location.placeholder: Where exactly?
  form.article.published_at: Published at
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index 26a87e5e..a48c5661 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -18,8 +18,11 @@ footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCas
+ flash.success.article.created: ¡Artículo creado! ¡El conocimiento es poder!
+ flash.success.article.updated: ¡Artículo actualizado! ¡Las inexactitudes aplastadas!
+ form.article.title: Título del artículo
++form.article.title.help: ¡Elija algo pegadizo!
+ form.article.content: Contenido
+ form.article.author: Autor
+ form.article.location: Ubicación
++form.article.location.placeholder: Elegir una ubicación
+ form.article.specific_location: Nombre de ubicación específica
++form.article.specific_location.placeholder: ¿Donde exactamente?
+ form.article.published_at: Publicado en
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+index 4fe8aa29..1dff0912 100644
+--- a/translations/messages.uk.yaml
++++ b/translations/messages.uk.yaml
+@@ -18,8 +18,11 @@ comments.count: '%count% коментар|%count% коментарі|%count% к
+ flash.success.article.created: Стаття створена! Знання це сила!
+ flash.success.article.updated: Стаття оновлена! Неточності розчавлені!
+ form.article.title: Назва статті
++form.article.title.help: Виберіть щось помітне!
+ form.article.content: Зміст
+ form.article.author: Автор
+ form.article.location: Розташування
++form.article.location.placeholder: Виберіть місце
+ form.article.specific_location: Певна назва місця розташування
++form.article.specific_location.placeholder: Де саме?
+ form.article.published_at: Опубліковано в

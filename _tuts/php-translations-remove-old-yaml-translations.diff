@@ -67,10 +67,10 @@ index 5acea57d..00000000
 -form.article.published_at: Published at
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
 deleted file mode 100644
-index b95d11cd..00000000
+index 41883ede..00000000
 --- a/translations/messages.es.yaml
 +++ /dev/null
-@@ -1,17 +0,0 @@
+@@ -1,31 +0,0 @@
 -trending_quotes: 'Cotizaciones de Tendencias'
 -ice_cream_promo.title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
 -ice_cream_promo.button: Compre ahora por %price%!
@@ -88,12 +88,26 @@ index b95d11cd..00000000
 -language.es: Español
 -language.uk: Ukraniano
 -footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
+-flash.success.article.created: ¡Artículo creado! ¡El conocimiento es poder!
+-flash.success.article.updated: ¡Artículo actualizado! ¡Las inexactitudes aplastadas!
+-form.article.title: Título del artículo
+-form.article.title.help: ¡Elija algo pegadizo!
+-form.article.content: Contenido
+-form.article.author: Autor
+-form.article.location: Ubicación
+-form.article.location.placeholder: Elegir una ubicación
+-form.article.location.choices.solar_system:  El Sistema Solar
+-form.article.location.choices.star: Cerca de una estrella
+-form.article.location.choices.interstellar_space: Espacio interestelar
+-form.article.specific_location: Nombre de ubicación específica
+-form.article.specific_location.placeholder: ¿Donde exactamente?
+-form.article.published_at: Publicado en
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
 deleted file mode 100644
-index b0e1da2d..00000000
+index fe650341..00000000
 --- a/translations/messages.uk.yaml
 +++ /dev/null
-@@ -1,17 +0,0 @@
+@@ -1,31 +0,0 @@
 -trending_quotes: 'Актуальні Цитати'
 -ice_cream_promo.title.html: '<span class="advertisement-text">Новинка:</span> Космічне Морозиво!'
 -search.placeholder: Пошук
@@ -111,6 +125,20 @@ index b0e1da2d..00000000
 -language.es: Іспанська
 -language.uk: Українська
 -comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
+-flash.success.article.created: Стаття створена! Знання це сила!
+-flash.success.article.updated: Стаття оновлена! Неточності розчавлені!
+-form.article.title: Назва статті
+-form.article.title.help: Виберіть щось помітне!
+-form.article.content: Зміст
+-form.article.author: Автор
+-form.article.location: Розташування
+-form.article.location.placeholder: Виберіть місце
+-form.article.location.choices.solar_system: Сонячна система
+-form.article.location.choices.star: Біля зірки
+-form.article.location.choices.interstellar_space: Міжзоряний простір
+-form.article.specific_location: Певна назва місця розташування
+-form.article.specific_location.placeholder: Де саме?
+-form.article.published_at: Опубліковано в
 diff --git a/translations/security.en.yaml b/translations/security.en.yaml
 deleted file mode 100644
 index edd9d58a..00000000

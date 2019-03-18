@@ -12,10 +12,10 @@ index 16cca609..86031376 100644
                     </ul>
                  <form class="form-inline my-2 my-lg-0">
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index e1ae3873..32523baa 100644
+index 724ac29d..0ea51751 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
-@@ -320,5 +320,11 @@
+@@ -322,5 +322,11 @@
          <target>Local Asteroids</target>
        </segment>
      </unit>

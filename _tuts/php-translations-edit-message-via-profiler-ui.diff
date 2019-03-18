@@ -1,8 +1,8 @@
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index 32523baa..d26f8e8c 100644
+index 0ea51751..94de3876 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
-@@ -323,7 +323,7 @@
+@@ -325,7 +325,7 @@
      <unit id="lpbmgRQ" name="navbar.item.weather">
        <segment>
          <source>navbar.item.weather</source>

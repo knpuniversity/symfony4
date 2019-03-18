@@ -1,8 +1,8 @@
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
-index 18a48472..fc6f9c25 100644
+index 959f5461..9cd1126d 100644
 --- a/translations/messages.es.xlf
 +++ b/translations/messages.es.xlf
-@@ -290,5 +290,11 @@
+@@ -289,6 +289,12 @@
          <target>¡Artículo creado! ¡El conocimiento es poder!</target>
        </segment>
      </unit>
@@ -12,13 +12,14 @@ index 18a48472..fc6f9c25 100644
 +        <target>Asteroides Locales</target>
 +      </segment>
 +    </unit>
-   </file>
- </xliff>
+     <unit id="bxqC4Q4" name="flash.success.article.updated">
+       <notes>
+         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
-index 9c4a14d8..0796f84f 100644
+index a9977b01..ae491003 100644
 --- a/translations/messages.uk.xlf
 +++ b/translations/messages.uk.xlf
-@@ -290,5 +290,11 @@
+@@ -289,6 +289,12 @@
          <target>Стаття створена! Знання це сила!</target>
        </segment>
      </unit>
@@ -28,5 +29,6 @@ index 9c4a14d8..0796f84f 100644
 +        <target>Місцеві Астероїди</target>
 +      </segment>
 +    </unit>
-   </file>
- </xliff>
+     <unit id="bxqC4Q4" name="flash.success.article.updated">
+       <notes>
+         <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>

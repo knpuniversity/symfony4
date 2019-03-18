@@ -46,7 +46,7 @@ index 76071e40..5acea57d 100644
  search.button: Search
  page.weather.header: Universal Forecast
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index e8741f9e..b95d11cd 100644
+index 3f25f05c..41883ede 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
 @@ -1,9 +1,6 @@

@@ -106,10 +106,10 @@ index 00000000..c0844f3b
 +</xliff>
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
 new file mode 100644
-index 00000000..2e381c8f
+index 00000000..844f5ba0
 --- /dev/null
 +++ b/translations/messages.en.xlf
-@@ -0,0 +1,343 @@
+@@ -0,0 +1,342 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
 +  <file id="messages.en">
@@ -287,7 +287,6 @@ index 00000000..2e381c8f
 +    <unit id="ynHhXwh" name="flash.success.article.created">
 +      <notes>
 +        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
-+        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 +      </notes>
 +      <segment>
 +        <source>flash.success.article.created</source>
@@ -296,7 +295,7 @@ index 00000000..2e381c8f
 +    </unit>
 +    <unit id="bxqC4Q4" name="flash.success.article.updated">
 +      <notes>
-+        <note category="state" priority="1">obsolete</note>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 +      </notes>
 +      <segment>
 +        <source>flash.success.article.updated</source>
@@ -455,10 +454,10 @@ index 00000000..2e381c8f
 +</xliff>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
 new file mode 100644
-index 00000000..0382e5c1
+index 00000000..ed16d8e3
 --- /dev/null
 +++ b/translations/messages.es.xlf
-@@ -0,0 +1,319 @@
+@@ -0,0 +1,344 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
 +  <file id="messages.es">
@@ -615,6 +614,132 @@ index 00000000..0382e5c1
 +        <target>Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%</target>
 +      </segment>
 +    </unit>
++    <unit id="ynHhXwh" name="flash.success.article.created">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.created</source>
++        <target>¡Artículo creado! ¡El conocimiento es poder!</target>
++      </segment>
++    </unit>
++    <unit id="bxqC4Q4" name="flash.success.article.updated">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.updated</source>
++        <target>¡Artículo actualizado! ¡Las inexactitudes aplastadas!</target>
++      </segment>
++    </unit>
++    <unit id="T1Uc6GB" name="form.article.title">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.title</source>
++        <target>Título del artículo</target>
++      </segment>
++    </unit>
++    <unit id="4m.wvQM" name="form.article.title.help">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.title.help</source>
++        <target>¡Elija algo pegadizo!</target>
++      </segment>
++    </unit>
++    <unit id="eQsU6Qt" name="form.article.content">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.content</source>
++        <target>Contenido</target>
++      </segment>
++    </unit>
++    <unit id="dtcC6Fh" name="form.article.author">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
++      </notes>
++      <segment>
++        <source>form.article.author</source>
++        <target>Autor</target>
++      </segment>
++    </unit>
++    <unit id="AE8KsgN" name="form.article.location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
++      </notes>
++      <segment>
++        <source>form.article.location</source>
++        <target>Ubicación</target>
++      </segment>
++    </unit>
++    <unit id="GEDCzUF" name="form.article.location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
++      </notes>
++      <segment>
++        <source>form.article.location.placeholder</source>
++        <target>Elegir una ubicación</target>
++      </segment>
++    </unit>
++    <unit id="ThZosDK" name="form.article.location.choices.solar_system">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.solar_system</source>
++        <target>El Sistema Solar</target>
++      </segment>
++    </unit>
++    <unit id="iFvNDB1" name="form.article.location.choices.star">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.star</source>
++        <target>Cerca de una estrella</target>
++      </segment>
++    </unit>
++    <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.interstellar_space</source>
++        <target>Espacio interestelar</target>
++      </segment>
++    </unit>
++    <unit id="I8dOP5V" name="form.article.specific_location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location</source>
++        <target>Nombre de ubicación específica</target>
++      </segment>
++    </unit>
++    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location.placeholder</source>
++        <target>¿Donde exactamente?</target>
++      </segment>
++    </unit>
++    <unit id="0mYunZW" name="form.article.published_at">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
++      </notes>
++      <segment>
++        <source>form.article.published_at</source>
++        <target>Publicado en</target>
++      </segment>
++    </unit>
 +    <unit id="OuCVbmM" name="comments.count">
 +      <notes>
 +        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
@@ -665,76 +790,6 @@ index 00000000..0382e5c1
 +        <target></target>
 +      </segment>
 +    </unit>
-+    <unit id="ThZosDK" name="form.article.location.choices.solar_system">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.choices.solar_system</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="iFvNDB1" name="form.article.location.choices.star">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.choices.star</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.choices.interstellar_space</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="dtcC6Fh" name="form.article.author">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.author</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="AE8KsgN" name="form.article.location">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="0mYunZW" name="form.article.published_at">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.published_at</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="I8dOP5V" name="form.article.specific_location">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.specific_location</source>
-+        <target></target>
-+      </segment>
-+    </unit>
 +    <unit id="s_.yism" name="translations">
 +      <notes>
 +        <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
@@ -745,45 +800,14 @@ index 00000000..0382e5c1
 +        <target></target>
 +      </segment>
 +    </unit>
-+    <unit id="GEDCzUF" name="form.article.location.placeholder">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.placeholder</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.specific_location.placeholder</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="ynHhXwh" name="flash.success.article.created">
-+      <notes>
-+        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
-+        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>flash.success.article.created</source>
-+        <target></target>
-+      </segment>
-+    </unit>
 +  </file>
 +</xliff>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
 new file mode 100644
-index 00000000..fd9567c4
+index 00000000..5f66238b
 --- /dev/null
 +++ b/translations/messages.uk.xlf
-@@ -0,0 +1,319 @@
+@@ -0,0 +1,344 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
 +  <file id="messages.uk">
@@ -940,6 +964,132 @@ index 00000000..fd9567c4
 +        <target>%count% коментар|%count% коментарі|%count% коментарів</target>
 +      </segment>
 +    </unit>
++    <unit id="ynHhXwh" name="flash.success.article.created">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.created</source>
++        <target>Стаття створена! Знання це сила!</target>
++      </segment>
++    </unit>
++    <unit id="bxqC4Q4" name="flash.success.article.updated">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.updated</source>
++        <target>Стаття оновлена! Неточності розчавлені!</target>
++      </segment>
++    </unit>
++    <unit id="T1Uc6GB" name="form.article.title">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.title</source>
++        <target>Назва статті</target>
++      </segment>
++    </unit>
++    <unit id="4m.wvQM" name="form.article.title.help">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.title.help</source>
++        <target>Виберіть щось помітне!</target>
++      </segment>
++    </unit>
++    <unit id="eQsU6Qt" name="form.article.content">
++      <notes>
++        <note category="state" priority="1">obsolete</note>
++      </notes>
++      <segment>
++        <source>form.article.content</source>
++        <target>Зміст</target>
++      </segment>
++    </unit>
++    <unit id="dtcC6Fh" name="form.article.author">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
++      </notes>
++      <segment>
++        <source>form.article.author</source>
++        <target>Автор</target>
++      </segment>
++    </unit>
++    <unit id="AE8KsgN" name="form.article.location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
++      </notes>
++      <segment>
++        <source>form.article.location</source>
++        <target>Розташування</target>
++      </segment>
++    </unit>
++    <unit id="GEDCzUF" name="form.article.location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
++      </notes>
++      <segment>
++        <source>form.article.location.placeholder</source>
++        <target>Виберіть місце</target>
++      </segment>
++    </unit>
++    <unit id="ThZosDK" name="form.article.location.choices.solar_system">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.solar_system</source>
++        <target>Сонячна система</target>
++      </segment>
++    </unit>
++    <unit id="iFvNDB1" name="form.article.location.choices.star">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.star</source>
++        <target>Біля зірки</target>
++      </segment>
++    </unit>
++    <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
++      </notes>
++      <segment>
++        <source>form.article.location.choices.interstellar_space</source>
++        <target>Міжзоряний простір</target>
++      </segment>
++    </unit>
++    <unit id="I8dOP5V" name="form.article.specific_location">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location</source>
++        <target>Певна назва місця розташування</target>
++      </segment>
++    </unit>
++    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
++      </notes>
++      <segment>
++        <source>form.article.specific_location.placeholder</source>
++        <target>Де саме?</target>
++      </segment>
++    </unit>
++    <unit id="0mYunZW" name="form.article.published_at">
++      <notes>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
++      </notes>
++      <segment>
++        <source>form.article.published_at</source>
++        <target>Опубліковано в</target>
++      </segment>
++    </unit>
 +    <unit id="huYz.gS" name="footer.html">
 +      <notes>
 +        <note category="file-source" priority="1">templates/base.html.twig:105</note>
@@ -990,76 +1140,6 @@ index 00000000..fd9567c4
 +        <target></target>
 +      </segment>
 +    </unit>
-+    <unit id="ThZosDK" name="form.article.location.choices.solar_system">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.choices.solar_system</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="iFvNDB1" name="form.article.location.choices.star">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.choices.star</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="TUenqog" name="form.article.location.choices.interstellar_space">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:44</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.choices.interstellar_space</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="dtcC6Fh" name="form.article.author">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:37</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.author</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="AE8KsgN" name="form.article.location">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:41</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="0mYunZW" name="form.article.published_at">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:57</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.published_at</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="I8dOP5V" name="form.article.specific_location">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:107</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.specific_location</source>
-+        <target></target>
-+      </segment>
-+    </unit>
 +    <unit id="s_.yism" name="translations">
 +      <notes>
 +        <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
@@ -1067,37 +1147,6 @@ index 00000000..fd9567c4
 +      </notes>
 +      <segment>
 +        <source>translations</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="GEDCzUF" name="form.article.location.placeholder">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.location.placeholder</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
-+      <notes>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:109</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>form.article.specific_location.placeholder</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id="ynHhXwh" name="flash.success.article.created">
-+      <notes>
-+        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
-+        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>flash.success.article.created</source>
 +        <target></target>
 +      </segment>
 +    </unit>

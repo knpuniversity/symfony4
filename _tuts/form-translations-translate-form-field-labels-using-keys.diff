@@ -52,3 +52,31 @@ index a148ad3f..938834c6 100644
 +form.article.location: Location
 +form.article.specific_location: Specific location name
 +form.article.published_at: Published at
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index f380cbf5..26a87e5e 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -17,3 +17,9 @@ language.uk: Ukraniano
+ footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
+ flash.success.article.created: ¡Artículo creado! ¡El conocimiento es poder!
+ flash.success.article.updated: ¡Artículo actualizado! ¡Las inexactitudes aplastadas!
++form.article.title: Título del artículo
++form.article.content: Contenido
++form.article.author: Autor
++form.article.location: Ubicación
++form.article.specific_location: Nombre de ubicación específica
++form.article.published_at: Publicado en
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+index 8ebfc02a..4fe8aa29 100644
+--- a/translations/messages.uk.yaml
++++ b/translations/messages.uk.yaml
+@@ -17,3 +17,9 @@ language.uk: Українська
+ comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
+ flash.success.article.created: Стаття створена! Знання це сила!
+ flash.success.article.updated: Стаття оновлена! Неточності розчавлені!
++form.article.title: Назва статті
++form.article.content: Зміст
++form.article.author: Автор
++form.article.location: Розташування
++form.article.specific_location: Певна назва місця розташування
++form.article.published_at: Опубліковано в
