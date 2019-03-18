@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index a8c62ca..f84e8bc 100644
+index a8c62ca7..f84e8bcf 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -33,6 +33,7 @@ class ArticleFormType extends AbstractType
@@ -11,7 +11,7 @@ index a8c62ca..f84e8bc 100644
              ])
              ->add('content', null, [
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
-index 781e079..45aadd9 100644
+index 781e0792..45aadd94 100644
 --- a/templates/article_admin/_form.html.twig
 +++ b/templates/article_admin/_form.html.twig
 @@ -1,7 +1,5 @@

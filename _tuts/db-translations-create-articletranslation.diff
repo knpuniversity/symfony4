@@ -1,6 +1,6 @@
 diff --git a/src/Entity/ArticleTranslation.php b/src/Entity/ArticleTranslation.php
 new file mode 100644
-index 0000000..675e96f
+index 00000000..675e96fe
 --- /dev/null
 +++ b/src/Entity/ArticleTranslation.php
 @@ -0,0 +1,12 @@

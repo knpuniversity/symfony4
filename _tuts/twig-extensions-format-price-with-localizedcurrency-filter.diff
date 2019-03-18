@@ -1,0 +1,13 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index f414defd..5c727eab 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -54,7 +54,7 @@
+                     <p>{{ 'ice_cream_promo.title.html'|trans|raw }}</p>
+                     {% set spaceIceCreamPrice = 9.99 %}
+                     <button class="btn btn-info js-purchase-btn">
+-                        {{ 'ice_cream_promo.button'|trans({'%price%': '$'~spaceIceCreamPrice|number_format(2)}) }}
++                        {{ 'ice_cream_promo.button'|trans({'%price%': spaceIceCreamPrice|localizedcurrency('USD')}) }}
+                     </button>
+                 </div>
+ 

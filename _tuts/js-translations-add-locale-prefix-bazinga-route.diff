@@ -1,5 +1,5 @@
 diff --git a/config/routes/js_translation.yaml b/config/routes/js_translation.yaml
-index c226bb4..675087b 100644
+index c226bb49..675087bb 100644
 --- a/config/routes/js_translation.yaml
 +++ b/config/routes/js_translation.yaml
 @@ -1,2 +1,8 @@

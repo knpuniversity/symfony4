@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index c2d754d..f8dd6ad 100644
+index c2d754d7..f8dd6ad8 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,8 @@
@@ -12,7 +12,7 @@ index c2d754d..f8dd6ad 100644
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
 diff --git a/composer.lock b/composer.lock
-index 6e45c7e..b15d524 100644
+index 6e45c7e8..b15d524a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -476,7 +476,7 @@ index 6e45c7e..b15d524 100644
              "name": "clue/stream-filter",
              "version": "v1.4.0",
 diff --git a/config/bundles.php b/config/bundles.php
-index 99d2839..ece3adc 100644
+index 99d28391..ece3adc1 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -25,4 +25,5 @@ return [
@@ -487,7 +487,7 @@ index 99d2839..ece3adc 100644
  ];
 diff --git a/config/packages/cache_adapter.yaml b/config/packages/cache_adapter.yaml
 new file mode 100644
-index 0000000..afe3504
+index 00000000..afe35045
 --- /dev/null
 +++ b/config/packages/cache_adapter.yaml
 @@ -0,0 +1,4 @@
@@ -496,7 +496,7 @@ index 0000000..afe3504
 +        apcu:
 +            factory: cache.factory.apcu
 diff --git a/config/packages/httplug.yaml b/config/packages/httplug.yaml
-index 2aadcd1..142a2d3 100644
+index 2aadcd13..142a2d30 100644
 --- a/config/packages/httplug.yaml
 +++ b/config/packages/httplug.yaml
 @@ -2,6 +2,12 @@ httplug:
@@ -520,7 +520,7 @@ index 2aadcd1..142a2d3 100644
 +            factory: 'httplug.factory.guzzle6'
 +            plugins: ['httplug.plugin.cache', 'httplug.plugin.logger']
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index 5a07e1b..a5d02fa 100644
+index 5a07e1b9..a5d02faf 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -3,6 +3,7 @@ translation:
@@ -532,7 +532,7 @@ index 5a07e1b..a5d02fa 100644
          enabled: true
          service: yandex
 diff --git a/symfony.lock b/symfony.lock
-index eea8485..e0787bd 100644
+index eea84853..e0787bde 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -8,6 +8,36 @@

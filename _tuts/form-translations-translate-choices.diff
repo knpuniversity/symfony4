@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index cee4cc7..7626170 100644
+index cee4cc7a..76261701 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -48,9 +48,9 @@ class ArticleFormType extends AbstractType
@@ -16,7 +16,7 @@ index cee4cc7..7626170 100644
                  'required' => false,
              ])
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 3b50b68..5acea57 100644
+index 3b50b684..5acea57d 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -25,6 +25,9 @@ form.article.content: Content

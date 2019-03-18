@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 17124fb..eda2eef 100644
+index 17124fbd..eda2eef4 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -11,7 +11,7 @@ index 17124fb..eda2eef 100644
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
 diff --git a/composer.lock b/composer.lock
-index 0c2f506..1986ac1 100644
+index 0c2f5069..1986ac1d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -97,7 +97,7 @@ index 0c2f506..1986ac1 100644
              "name": "knplabs/knp-components",
              "version": "v1.3.10",
 diff --git a/config/bundles.php b/config/bundles.php
-index 9c8aa9d..ce89916 100644
+index 9c8aa9df..ce89916b 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -20,4 +20,5 @@ return [
@@ -108,14 +108,14 @@ index 9c8aa9d..ce89916 100644
  ];
 diff --git a/config/packages/knp_doctrine_behaviors.yaml b/config/packages/knp_doctrine_behaviors.yaml
 new file mode 100644
-index 0000000..1738f47
+index 00000000..1738f470
 --- /dev/null
 +++ b/config/packages/knp_doctrine_behaviors.yaml
 @@ -0,0 +1,2 @@
 +knp_doctrine_behaviors:
 +    translatable: true
 diff --git a/symfony.lock b/symfony.lock
-index 1227bf6..df9fec0 100644
+index 1227bf62..df9fec08 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -110,6 +110,9 @@

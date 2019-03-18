@@ -1,5 +1,5 @@
 diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
-index da5ce99..cbfc7b0 100644
+index da5ce996..cbfc7b03 100644
 --- a/templates/weather/index.html.twig
 +++ b/templates/weather/index.html.twig
 @@ -7,7 +7,7 @@

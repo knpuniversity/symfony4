@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 3f757f4..9de5484 100644
+index 3f757f48..9de54845 100644
 --- a/.env
 +++ b/.env
 @@ -29,4 +29,5 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
@@ -9,7 +9,7 @@ index 3f757f4..9de5484 100644
 +TRANSLATOR_API_KEY=foobar
  ### END CUSTOM VARS
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index 6752f15..5a07e1b 100644
+index 6752f15f..5a07e1b9 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -6,7 +6,7 @@ translation:

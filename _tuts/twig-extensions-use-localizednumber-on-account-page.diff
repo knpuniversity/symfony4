@@ -1,0 +1,23 @@
+diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
+index 21c63ab5..c4d9db7a 100644
+--- a/templates/account/index.html.twig
++++ b/templates/account/index.html.twig
+@@ -33,15 +33,15 @@
+                 <div class="row overview">
+                     <div class="col-md-4 user-pad text-center">
+                         <h3>COMMENTS</h3>
+-                        <h4>184</h4>
++                        <h4>{{ 184|localizednumber }}</h4>
+                     </div>
+                     <div class="col-md-4 user-pad text-center">
+                         <h3>ARTICLES READ</h3>
+-                        <h4>1,910</h4>
++                        <h4>{{ 1910|localizednumber }}</h4>
+                     </div>
+                     <div class="col-md-4 user-pad text-center">
+                         <h3>LIKES</h3>
+-                        <h4>3,892</h4>
++                        <h4>{{ 3892|localizednumber }}</h4>
+                     </div>
+                 </div>
+             </div>

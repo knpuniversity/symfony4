@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 165a678..8a7bd64 100644
+index 165a678c..8a7bd644 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -72,6 +72,7 @@
@@ -12,7 +12,7 @@ index 165a678..8a7bd64 100644
      <script src="{{ asset('js/purchase.js') }}"></script>
 diff --git a/translations/javascript.en.yaml b/translations/javascript.en.yaml
 new file mode 100644
-index 0000000..0d4061b
+index 00000000..0d4061b2
 --- /dev/null
 +++ b/translations/javascript.en.yaml
 @@ -0,0 +1,3 @@
@@ -21,7 +21,7 @@ index 0000000..0d4061b
 +ice_cream_promo.popup.message.part2: Wait for our intergalactic delivery soon ;)
 diff --git a/translations/javascript.es.yaml b/translations/javascript.es.yaml
 new file mode 100644
-index 0000000..2bc441b
+index 00000000..2bc441b4
 --- /dev/null
 +++ b/translations/javascript.es.yaml
 @@ -0,0 +1,3 @@
@@ -30,9 +30,9 @@ index 0000000..2bc441b
 +ice_cream_promo.popup.message.part2: Espere nuestra entrega intergaláctica pronto ;)
 diff --git a/translations/javascript.uk.yaml b/translations/javascript.uk.yaml
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 76071e4..5acea57 100644
+index 76071e40..5acea57d 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,9 +1,6 @@
@@ -46,7 +46,7 @@ index 76071e4..5acea57 100644
  search.button: Search
  page.weather.header: Universal Forecast
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index e8741f9..b95d11c 100644
+index e8741f9e..b95d11cd 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
 @@ -1,9 +1,6 @@

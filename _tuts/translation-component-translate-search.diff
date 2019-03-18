@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 418f7be..61ff87f 100644
+index 418f7be3..61ff87f5 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -36,8 +36,8 @@
@@ -14,7 +14,7 @@ index 418f7be..61ff87f 100644
                  <ul class="navbar-nav ml-auto">
                      {% if is_granted('ROLE_USER') %}
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index f41d9b4..df1a4ee 100644
+index f41d9b4a..df1a4eed 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,2 +1,3 @@

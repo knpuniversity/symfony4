@@ -1,5 +1,5 @@
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
-index fc6f9c2..0567013 100644
+index fc6f9c25..05670132 100644
 --- a/translations/messages.es.xlf
 +++ b/translations/messages.es.xlf
 @@ -296,5 +296,11 @@
@@ -15,7 +15,7 @@ index fc6f9c2..0567013 100644
    </file>
  </xliff>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
-index 0796f84..0660aa9 100644
+index 0796f84f..0660aa9b 100644
 --- a/translations/messages.uk.xlf
 +++ b/translations/messages.uk.xlf
 @@ -296,5 +296,11 @@

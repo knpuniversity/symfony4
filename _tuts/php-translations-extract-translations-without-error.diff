@@ -1,5 +1,5 @@
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index 2e381c8..6c0c783c 100644
+index 2e381c8f..6c0c783c 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
 @@ -274,7 +274,7 @@
@@ -53,7 +53,7 @@ index 2e381c8..6c0c783c 100644
        <segment>
          <source>translations</source>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
-index 0382e5c..d24663b 100644
+index 0382e5c1..d24663b8 100644
 --- a/translations/messages.es.xlf
 +++ b/translations/messages.es.xlf
 @@ -157,7 +157,6 @@
@@ -189,7 +189,7 @@ index 0382e5c..d24663b 100644
        <segment>
          <source>flash.success.article.created</source>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
-index fd9567c..af322be 100644
+index fd9567c4..af322be1 100644
 --- a/translations/messages.uk.xlf
 +++ b/translations/messages.uk.xlf
 @@ -157,7 +157,6 @@
@@ -325,7 +325,7 @@ index fd9567c..af322be 100644
        <segment>
          <source>flash.success.article.created</source>
 diff --git a/translations/validators.en.xlf b/translations/validators.en.xlf
-index 3a8e290..260a335 100644
+index 3a8e290a..260a3353 100644
 --- a/translations/validators.en.xlf
 +++ b/translations/validators.en.xlf
 @@ -22,7 +22,6 @@
@@ -377,7 +377,7 @@ index 3a8e290..260a335 100644
        <segment>
          <source>I think you're already registered!</source>
 diff --git a/translations/validators.es.xlf b/translations/validators.es.xlf
-index adfea51..206f94b 100644
+index adfea513..206f94bb 100644
 --- a/translations/validators.es.xlf
 +++ b/translations/validators.es.xlf
 @@ -22,7 +22,6 @@
@@ -429,7 +429,7 @@ index adfea51..206f94b 100644
        <segment>
          <source>I think you're already registered!</source>
 diff --git a/translations/validators.uk.xlf b/translations/validators.uk.xlf
-index 52f6bf6..2aa5706 100644
+index 52f6bf60..2aa57066 100644
 --- a/translations/validators.uk.xlf
 +++ b/translations/validators.uk.xlf
 @@ -22,7 +22,6 @@

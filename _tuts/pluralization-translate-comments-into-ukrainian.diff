@@ -1,5 +1,5 @@
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
-index d173050..b0e1da2 100644
+index d1730508..b0e1da2d 100644
 --- a/translations/messages.uk.yaml
 +++ b/translations/messages.uk.yaml
 @@ -10,6 +10,8 @@ page.weather.cloud.header: Хмара Оорта

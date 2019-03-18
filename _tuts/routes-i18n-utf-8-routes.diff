@@ -1,5 +1,5 @@
 diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
-index 9fbad20..cb7567a 100644
+index 9fbad20a..cb7567a5 100644
 --- a/src/Controller/WeatherController.php
 +++ b/src/Controller/WeatherController.php
 @@ -12,8 +12,8 @@ class WeatherController extends AbstractController

@@ -1,5 +1,5 @@
 diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
-index 5c5baa4..1501b7c 100644
+index 5c5baa4b..1501b7c6 100644
 --- a/config/packages/twig.yaml
 +++ b/config/packages/twig.yaml
 @@ -4,3 +4,5 @@ twig:
@@ -9,7 +9,7 @@ index 5c5baa4..1501b7c 100644
 +    globals:
 +        app_locales_array: '%app_locales_array%'
 diff --git a/config/services.yaml b/config/services.yaml
-index 8542f04..a15b58b 100644
+index 8542f045..a15b58b0 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -7,6 +7,7 @@ parameters:
@@ -21,7 +21,7 @@ index 8542f04..a15b58b 100644
  services:
      # default configuration for services in *this* file
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index b0cb234..e1bc2a5 100644
+index b0cb2349..e1bc2a5d 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -47,7 +47,7 @@

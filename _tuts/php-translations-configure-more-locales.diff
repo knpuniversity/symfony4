@@ -1,5 +1,5 @@
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index bc6cd97..d3446dc 100644
+index bc6cd978..d3446dc2 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -1,5 +1,5 @@

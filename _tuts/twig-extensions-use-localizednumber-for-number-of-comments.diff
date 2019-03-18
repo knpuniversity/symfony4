@@ -1,0 +1,18 @@
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 4eac2c24..f414defd 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -24,7 +24,12 @@
+                         <img class="article-img" src="{{ asset(article.imagePath) }}">
+                         <div class="article-title d-inline-block pl-3 align-middle">
+                             <span>{{ article.title }}</span>
+-                            <small>({{ 'comments.count'|trans({'%count%': article.nonDeletedComments|length}) }})</small>
++                            <small>
++                                ({{ 'comments.count'|trans({
++                                    '%count%': article.nonDeletedComments|length,
++                                    '%formatted_number%': article.nonDeletedComments|length|localizednumber
++                                }) }})
++                            </small>
+                             <br>
+                             {% for tag in article.tags %}
+                                 <small>

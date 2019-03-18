@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 4f55e85..58bac92 100644
+index 4f55e850..58bac92f 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -84,6 +84,11 @@ class Article
@@ -15,7 +15,7 @@ index 4f55e85..58bac92 100644
      {
          return $this->id;
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 80a7fa1..ca1f0d1 100644
+index 80a7fa18..ca1f0d14 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -34,12 +34,12 @@ class ArticleFormType extends AbstractType

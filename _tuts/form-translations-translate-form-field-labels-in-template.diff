@@ -1,5 +1,5 @@
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
-index d38d576..7b87759 100644
+index d38d576e..7b877591 100644
 --- a/templates/article_admin/_form.html.twig
 +++ b/templates/article_admin/_form.html.twig
 @@ -1,6 +1,6 @@
@@ -11,7 +11,7 @@ index d38d576..7b87759 100644
      {{ form_row(articleForm.author) }}
      {{ form_row(articleForm.location, {
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index fb58be7..47d9490 100644
+index fb58be7f..47d94900 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -19,3 +19,4 @@ footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%

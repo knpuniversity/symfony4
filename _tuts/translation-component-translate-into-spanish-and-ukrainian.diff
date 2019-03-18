@@ -1,6 +1,6 @@
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
 new file mode 100644
-index 0000000..4bdab23
+index 00000000..4bdab233
 --- /dev/null
 +++ b/translations/messages.es.yaml
 @@ -0,0 +1,12 @@
@@ -18,7 +18,7 @@ index 0000000..4bdab23
 +page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
 new file mode 100644
-index 0000000..38ce363
+index 00000000..38ce363a
 --- /dev/null
 +++ b/translations/messages.uk.yaml
 @@ -0,0 +1,12 @@

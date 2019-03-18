@@ -1,13 +1,13 @@
 diff --git a/translations/security.es.yaml b/translations/security.es.yaml
 new file mode 100644
-index 0000000..03a1cb7
+index 00000000..03a1cb7f
 --- /dev/null
 +++ b/translations/security.es.yaml
 @@ -0,0 +1 @@
 +'Username could not be found.': '¡Oh no! ¡No parece que ese correo electrónico exista!'
 diff --git a/translations/security.uk.yaml b/translations/security.uk.yaml
 new file mode 100644
-index 0000000..206d627
+index 00000000..206d627b
 --- /dev/null
 +++ b/translations/security.uk.yaml
 @@ -0,0 +1 @@

@@ -1,5 +1,5 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index a15b58b..b21e3fc 100644
+index a15b58b0..b21e3fcc 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -22,6 +22,7 @@ services:
@@ -12,7 +12,7 @@ index a15b58b..b21e3fc 100644
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/EventSubscriber/TranslatableLocaleSubscriber.php b/src/EventSubscriber/TranslatableLocaleSubscriber.php
 new file mode 100644
-index 0000000..6d50be0
+index 00000000..6d50be02
 --- /dev/null
 +++ b/src/EventSubscriber/TranslatableLocaleSubscriber.php
 @@ -0,0 +1,43 @@

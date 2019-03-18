@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 9de5484..a7dbbdd 100644
+index 9de54845..a7dbbddb 100644
 --- a/.env
 +++ b/.env
 @@ -31,3 +31,7 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
@@ -11,7 +11,7 @@ index 9de5484..a7dbbdd 100644
 +LOCO_PROJECT_API_KEY=
 +###< php-translation/loco-adapter ###
 diff --git a/composer.json b/composer.json
-index f8dd6ad..ed80c8d 100644
+index f8dd6ad8..ed80c8d7 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -13,6 +13,7 @@
@@ -23,7 +23,7 @@ index f8dd6ad..ed80c8d 100644
          "php-translation/translator": "^1.0",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index b15d524..f1fd578 100644
+index b15d524a..f1fd5785 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -232,7 +232,7 @@ index b15d524..f1fd578 100644
              "name": "php-translation/symfony-bundle",
              "version": "0.8.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index ece3adc..295f09c 100644
+index ece3adc1..295f09cd 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -26,4 +26,5 @@ return [
@@ -242,7 +242,7 @@ index ece3adc..295f09c 100644
 +    Translation\PlatformAdapter\Loco\Bridge\Symfony\TranslationAdapterLocoBundle::class => ['all' => true],
  ];
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index a5d02fa..d90e44d 100644
+index a5d02faf..d90e44df 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -14,3 +14,4 @@ translation:
@@ -252,7 +252,7 @@ index a5d02fa..d90e44d 100644
 +            remote_storage: ["php_translation.adapter.loco"]
 diff --git a/config/packages/php_translation_loco_adapter.yaml b/config/packages/php_translation_loco_adapter.yaml
 new file mode 100644
-index 0000000..a04a779
+index 00000000..a04a7795
 --- /dev/null
 +++ b/config/packages/php_translation_loco_adapter.yaml
 @@ -0,0 +1,6 @@
@@ -263,7 +263,7 @@ index 0000000..a04a779
 +            api_key: '%env(LOCO_PROJECT_API_KEY)%'
 +            domains: ['messages']
 diff --git a/symfony.lock b/symfony.lock
-index e0787bd..6ed3439 100644
+index e0787bde..6ed34391 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -128,6 +128,9 @@

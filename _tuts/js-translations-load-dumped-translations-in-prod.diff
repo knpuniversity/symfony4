@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index e9a5986..206e71e 100644
+index e9a59860..206e71ea 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -1,3 +1,5 @@
@@ -9,7 +9,7 @@ index e9a5986..206e71e 100644
  /.env.local
  /.env.local.php
 diff --git a/config/packages/bazinga_js_translation.yaml b/config/packages/bazinga_js_translation.yaml
-index 2f7f2ce..63bcae7 100644
+index 2f7f2ce1..63bcae70 100644
 --- a/config/packages/bazinga_js_translation.yaml
 +++ b/config/packages/bazinga_js_translation.yaml
 @@ -1,2 +1,5 @@
@@ -19,7 +19,7 @@ index 2f7f2ce..63bcae7 100644
 +    active_domains:
 +        - javascript
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 8a7bd64..96ab8eb 100644
+index 8a7bd644..96ab8eb6 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -71,9 +71,16 @@

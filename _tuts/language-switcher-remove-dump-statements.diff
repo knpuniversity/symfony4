@@ -1,5 +1,5 @@
 diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
-index 4de99ee..cb7567a 100644
+index 4de99ee2..cb7567a5 100644
 --- a/src/Controller/WeatherController.php
 +++ b/src/Controller/WeatherController.php
 @@ -15,9 +15,8 @@ class WeatherController extends AbstractController
@@ -14,7 +14,7 @@ index 4de99ee..cb7567a 100644
      }
  }
 diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
-index ff6af2d..ac46c32 100644
+index ff6af2d0..ac46c322 100644
 --- a/templates/weather/index.html.twig
 +++ b/templates/weather/index.html.twig
 @@ -3,7 +3,6 @@

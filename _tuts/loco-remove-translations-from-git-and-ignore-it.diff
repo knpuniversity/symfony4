@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 206e71e..3766f68 100644
+index 206e71ea..3766f68c 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -1,4 +1,5 @@
@@ -10,7 +10,7 @@ index 206e71e..3766f68 100644
  /.env.local
 diff --git a/translations/KnpPaginatorBundle.en.xlf b/translations/KnpPaginatorBundle.en.xlf
 deleted file mode 100644
-index 4298423..0000000
+index 42984232..00000000
 --- a/translations/KnpPaginatorBundle.en.xlf
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -27,7 +27,7 @@ index 4298423..0000000
 -</xliff>
 diff --git a/translations/javascript.en.xlf b/translations/javascript.en.xlf
 deleted file mode 100644
-index 3adbcce..0000000
+index 3adbcce8..00000000
 --- a/translations/javascript.en.xlf
 +++ /dev/null
 @@ -1,23 +0,0 @@
@@ -56,7 +56,7 @@ index 3adbcce..0000000
 -</xliff>
 diff --git a/translations/javascript.es.xlf b/translations/javascript.es.xlf
 deleted file mode 100644
-index a79f0ca..0000000
+index a79f0cad..00000000
 --- a/translations/javascript.es.xlf
 +++ /dev/null
 @@ -1,23 +0,0 @@
@@ -85,7 +85,7 @@ index a79f0ca..0000000
 -</xliff>
 diff --git a/translations/javascript.uk.xlf b/translations/javascript.uk.xlf
 deleted file mode 100644
-index 9f6db38..0000000
+index 9f6db38c..00000000
 --- a/translations/javascript.uk.xlf
 +++ /dev/null
 @@ -1,23 +0,0 @@
@@ -114,7 +114,7 @@ index 9f6db38..0000000
 -</xliff>
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
 deleted file mode 100644
-index 30ac1bc..0000000
+index 30ac1bc0..00000000
 --- a/translations/messages.en.xlf
 +++ /dev/null
 @@ -1,342 +0,0 @@
@@ -462,7 +462,7 @@ index 30ac1bc..0000000
 -</xliff>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
 deleted file mode 100644
-index 0567013..0000000
+index 05670132..00000000
 --- a/translations/messages.es.xlf
 +++ /dev/null
 @@ -1,306 +0,0 @@
@@ -774,7 +774,7 @@ index 0567013..0000000
 -</xliff>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
 deleted file mode 100644
-index 0660aa9..0000000
+index 0660aa9b..00000000
 --- a/translations/messages.uk.xlf
 +++ /dev/null
 @@ -1,306 +0,0 @@
@@ -1086,7 +1086,7 @@ index 0660aa9..0000000
 -</xliff>
 diff --git a/translations/security.en.xlf b/translations/security.en.xlf
 deleted file mode 100644
-index 799084a..0000000
+index 799084a3..00000000
 --- a/translations/security.en.xlf
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -1103,7 +1103,7 @@ index 799084a..0000000
 -</xliff>
 diff --git a/translations/security.es.xlf b/translations/security.es.xlf
 deleted file mode 100644
-index 24a445b..0000000
+index 24a445b6..00000000
 --- a/translations/security.es.xlf
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -1120,7 +1120,7 @@ index 24a445b..0000000
 -</xliff>
 diff --git a/translations/security.uk.xlf b/translations/security.uk.xlf
 deleted file mode 100644
-index 0ecde53..0000000
+index 0ecde532..00000000
 --- a/translations/security.uk.xlf
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -1137,7 +1137,7 @@ index 0ecde53..0000000
 -</xliff>
 diff --git a/translations/validators.en.xlf b/translations/validators.en.xlf
 deleted file mode 100644
-index 686961b..0000000
+index 686961b8..00000000
 --- a/translations/validators.en.xlf
 +++ /dev/null
 @@ -1,78 +0,0 @@
@@ -1221,7 +1221,7 @@ index 686961b..0000000
 -</xliff>
 diff --git a/translations/validators.es.xlf b/translations/validators.es.xlf
 deleted file mode 100644
-index f0f01f1..0000000
+index f0f01f1d..00000000
 --- a/translations/validators.es.xlf
 +++ /dev/null
 @@ -1,78 +0,0 @@
@@ -1305,7 +1305,7 @@ index f0f01f1..0000000
 -</xliff>
 diff --git a/translations/validators.uk.xlf b/translations/validators.uk.xlf
 deleted file mode 100644
-index 6e42658..0000000
+index 6e42658c..00000000
 --- a/translations/validators.uk.xlf
 +++ /dev/null
 @@ -1,78 +0,0 @@

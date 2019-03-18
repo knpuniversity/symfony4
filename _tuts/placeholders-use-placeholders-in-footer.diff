@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 6e540d9..903e22f 100644
+index 6e540d9f..903e22f9 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -97,7 +97,11 @@
@@ -16,7 +16,7 @@ index 6e540d9..903e22f 100644
              </div>
          </footer>
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index c248700..38ccfcb 100644
+index c2487005..38ccfcbb 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -13,4 +13,4 @@ page.weather.space.content: There's no way to deny it. It is going to be very co

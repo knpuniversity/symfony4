@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index fc9fff8..f4d4c36 100644
+index fc9fff8a..f4d4c36f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -11,6 +11,7 @@
@@ -11,7 +11,7 @@ index fc9fff8..f4d4c36 100644
          "stof/doctrine-extensions-bundle": "^1.3",
          "symfony/asset": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index ca42594..b0a8ccf 100644
+index ca42594d..b0a8ccfc 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -402,7 +402,7 @@ index ca42594..b0a8ccf 100644
              "name": "symfony/debug-bundle",
              "version": "v4.2.3",
 diff --git a/config/bundles.php b/config/bundles.php
-index 7400b06..99d2839 100644
+index 7400b068..99d28391 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -24,4 +24,5 @@ return [
@@ -413,7 +413,7 @@ index 7400b06..99d2839 100644
  ];
 diff --git a/config/packages/dev/php_translation.yaml b/config/packages/dev/php_translation.yaml
 new file mode 100644
-index 0000000..53398fb
+index 00000000..53398fbc
 --- /dev/null
 +++ b/config/packages/dev/php_translation.yaml
 @@ -0,0 +1,5 @@
@@ -424,7 +424,7 @@ index 0000000..53398fb
 +        enabled: true
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
 new file mode 100644
-index 0000000..bc6cd97
+index 00000000..bc6cd978
 --- /dev/null
 +++ b/config/packages/php_translation.yaml
 @@ -0,0 +1,11 @@
@@ -441,7 +441,7 @@ index 0000000..bc6cd97
 +            excluded_dirs: [cache, data, logs]
 diff --git a/config/routes/dev/php_translation.yaml b/config/routes/dev/php_translation.yaml
 new file mode 100644
-index 0000000..cde43b8
+index 00000000..cde43b84
 --- /dev/null
 +++ b/config/routes/dev/php_translation.yaml
 @@ -0,0 +1,6 @@
@@ -453,7 +453,7 @@ index 0000000..cde43b8
 +    resource: '@TranslationBundle/Resources/config/routing_symfony_profiler.yml'
 diff --git a/config/routes/php_translation.yaml b/config/routes/php_translation.yaml
 new file mode 100644
-index 0000000..142c449
+index 00000000..142c4496
 --- /dev/null
 +++ b/config/routes/php_translation.yaml
 @@ -0,0 +1,3 @@
@@ -461,7 +461,7 @@ index 0000000..142c449
 +    resource: '@TranslationBundle/Resources/config/routing_edit_in_place.yml'
 +    prefix:  /admin
 diff --git a/symfony.lock b/symfony.lock
-index 86180dd..947d9f6 100644
+index 86180dd4..947d9f6c 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -146,6 +146,9 @@

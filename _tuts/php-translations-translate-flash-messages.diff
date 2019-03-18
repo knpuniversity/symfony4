@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 69781fd..2a2aa3e 100644
+index 69781fd3..2a2aa3e2 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,7 +49,7 @@ index 69781fd..2a2aa3e 100644
              return $this->redirectToRoute('admin_article_edit', [
                  'id' => $article->getId(),
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 6dcf7a9..fb58be7 100644
+index 6dcf7a98..fb58be7f 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -17,3 +17,5 @@ language.es: Spanish

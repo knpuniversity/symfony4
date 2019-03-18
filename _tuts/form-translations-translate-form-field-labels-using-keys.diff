@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 5263eac..a8c62ca 100644
+index 5263eaca..a8c62ca7 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -36,12 +36,15 @@ class ArticleFormType extends AbstractType
@@ -35,7 +35,7 @@ index 5263eac..a8c62ca 100644
              'choices' => $choices,
              'required' => false,
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index a148ad3..938834c 100644
+index a148ad3f..938834c6 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -20,8 +20,8 @@ comments.count: '1 comment|%count% comments'

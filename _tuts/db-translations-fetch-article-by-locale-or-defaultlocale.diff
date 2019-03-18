@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 62ea62a..af22859 100644
+index 62ea62ab..af228593 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -43,7 +43,7 @@ class ArticleController extends AbstractController
@@ -12,7 +12,7 @@ index 62ea62a..af22859 100644
              throw $this->createNotFoundException('Article not found!');
          }
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index 8398192..0a043e5 100644
+index 8398192a..0a043e59 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
 @@ -20,14 +20,15 @@ class ArticleRepository extends ServiceEntityRepository

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index f4d4c36..c2d754d 100644
+index f4d4c36f..c2d754d7 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -12,6 +12,7 @@
@@ -11,7 +11,7 @@ index f4d4c36..c2d754d 100644
          "stof/doctrine-extensions-bundle": "^1.3",
          "symfony/asset": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index b0a8ccf..6e45c7e 100644
+index b0a8ccfc..6e45c7e8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -78,7 +78,7 @@ index b0a8ccf..6e45c7e 100644
              "name": "phpdocumentor/reflection-common",
              "version": "1.0.1",
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index d3446dc..6752f15 100644
+index d3446dc2..6752f15f 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -3,6 +3,10 @@ translation:
@@ -93,7 +93,7 @@ index d3446dc..6752f15 100644
          app:
              dirs: ["%kernel.project_dir%/templates", "%kernel.project_dir%/src"]
 diff --git a/symfony.lock b/symfony.lock
-index 947d9f6..eea8485 100644
+index 947d9f6c..eea84853 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -218,6 +218,9 @@

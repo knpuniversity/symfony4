@@ -1,5 +1,5 @@
 diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
-index cbfc7b0..ac46c32 100644
+index cbfc7b03..ac46c322 100644
 --- a/templates/weather/index.html.twig
 +++ b/templates/weather/index.html.twig
 @@ -7,7 +7,12 @@
@@ -17,7 +17,7 @@ index cbfc7b0..ac46c32 100644
      </div>
  {% endblock %}
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 02df865..0a40fc4 100644
+index 02df865d..0a40fc4c 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -4,10 +4,9 @@ search.placeholder: Search

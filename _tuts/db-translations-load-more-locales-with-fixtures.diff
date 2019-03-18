@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index ba7f782..78efb64 100644
+index ba7f7828..78efb645 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -26,8 +26,10 @@ class ArticleFixtures extends BaseFixture implements DependentFixtureInterface

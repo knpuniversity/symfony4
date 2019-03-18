@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index e1bc2a5..f244d09 100644
+index e1bc2a5d..f244d096 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -43,14 +43,14 @@
@@ -20,7 +20,7 @@ index e1bc2a5..f244d09 100644
                                  </li>
                              {% endfor %}
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 0a40fc4..723479b 100644
+index 0a40fc4c..723479bc 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -10,3 +10,6 @@ page.weather.cloud.header: Oort Cloud
@@ -31,7 +31,7 @@ index 0a40fc4..723479b 100644
 +language.es: Spanish
 +language.uk: Ukrainian
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index 4bdab23..4fe32e5 100644
+index 4bdab233..4fe32e5a 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
 @@ -10,3 +10,6 @@ page.weather.cloud.header: Nube de Oort
@@ -42,7 +42,7 @@ index 4bdab23..4fe32e5 100644
 +language.es: Español
 +language.uk: Ukraniano
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
-index 38ce363..d173050 100644
+index 38ce363a..d1730508 100644
 --- a/translations/messages.uk.yaml
 +++ b/translations/messages.uk.yaml
 @@ -10,3 +10,6 @@ page.weather.cloud.header: Хмара Оорта

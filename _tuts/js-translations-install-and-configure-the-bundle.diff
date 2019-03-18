@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 724d92b..fc9fff8 100644
+index 724d92b1..fc9fff8a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -26,7 +26,8 @@
@@ -13,7 +13,7 @@ index 724d92b..fc9fff8 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index a7de935..ca42594 100644
+index a7de935c..ca42594d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -95,7 +95,7 @@ index a7de935..ca42594 100644
              "name": "zendframework/zend-code",
              "version": "3.3.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 46c1178..7400b06 100644
+index 46c1178e..7400b068 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -23,4 +23,5 @@ return [
@@ -106,7 +106,7 @@ index 46c1178..7400b06 100644
  ];
 diff --git a/config/packages/bazinga_js_translation.yaml b/config/packages/bazinga_js_translation.yaml
 new file mode 100644
-index 0000000..2f7f2ce
+index 00000000..2f7f2ce1
 --- /dev/null
 +++ b/config/packages/bazinga_js_translation.yaml
 @@ -0,0 +1,2 @@
@@ -114,14 +114,14 @@ index 0000000..2f7f2ce
 +    locale_fallback: '%locale%'
 diff --git a/config/routes/js_translation.yaml b/config/routes/js_translation.yaml
 new file mode 100644
-index 0000000..c226bb4
+index 00000000..c226bb49
 --- /dev/null
 +++ b/config/routes/js_translation.yaml
 @@ -0,0 +1,2 @@
 +bazinga_js_translation:
 +    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
 diff --git a/symfony.lock b/symfony.lock
-index 15e057a..86180dd 100644
+index 15e057af..86180dd4 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -494,6 +494,18 @@

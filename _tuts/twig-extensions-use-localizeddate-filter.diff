@@ -1,0 +1,24 @@
+diff --git a/config/packages/twig_extensions.yaml b/config/packages/twig_extensions.yaml
+index a4f392d9..c12e6504 100644
+--- a/config/packages/twig_extensions.yaml
++++ b/config/packages/twig_extensions.yaml
+@@ -7,5 +7,5 @@ services:
+     # Uncomment any lines below to activate that Twig extension
+     #Twig\Extensions\ArrayExtension: ~
+     #Twig\Extensions\DateExtension: ~
+-    #Twig\Extensions\IntlExtension: ~
++    Twig\Extensions\IntlExtension: ~
+     Twig\Extensions\TextExtension: ~
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index dde155dd..e819bd00 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -12,7 +12,7 @@
+                 <span class="show-article-title ">{{ article.title }}</span>
+                 <br>
+                 <span class="align-left article-details"><img class="article-author-img rounded-circle" src="{{ asset('images/alien-profile.png') }}"> {{ article.author }} </span>
+-                <span class="pl-2 article-details" title="{{ article.publishedAt ? article.publishedAt|date }}" data-toggle="tooltip">
++                <span class="pl-2 article-details" title="{{ article.publishedAt ? article.publishedAt|localizeddate }}" data-toggle="tooltip">
+                     {{ article.publishedAt ? article.publishedAt|ago : 'unpublished' }}
+                 </span>
+                 <span class="pl-2 article-details">

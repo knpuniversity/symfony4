@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 45418de..fbcd51c 100644
+index 45418deb..fbcd51c6 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -2,6 +2,7 @@
@@ -19,7 +19,7 @@ index 45418de..fbcd51c 100644
  
          if ($options['include_published_at']) {
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
-index a074197..f6523fe 100644
+index a0741971..f6523fec 100644
 --- a/templates/article_admin/_form.html.twig
 +++ b/templates/article_admin/_form.html.twig
 @@ -27,5 +27,7 @@

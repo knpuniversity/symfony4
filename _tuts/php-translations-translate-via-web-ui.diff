@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 6f099e7..16cca60 100644
+index 6f099e74..16cca609 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -34,7 +34,7 @@
@@ -12,7 +12,7 @@ index 6f099e7..16cca60 100644
                       <li class="nav-item">
                         <a style="color: #fff;" class="nav-link" href="{{ path('app_weather') }}">Weather</a>
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index f580fd6..e1ae387 100644
+index f580fd6e..e1ae3873 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
 @@ -314,5 +314,11 @@

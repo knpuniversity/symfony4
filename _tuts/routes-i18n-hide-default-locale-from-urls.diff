@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index 206865c..2763a99 100644
+index 206865c5..2763a99b 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -24,7 +24,11 @@ class ArticleController extends AbstractController
@@ -16,7 +16,7 @@ index 206865c..2763a99 100644
      public function homepage(ArticleRepository $repository)
      {
 diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
-index 6a051aa..086223e 100644
+index 6a051aa9..086223e7 100644
 --- a/src/Controller/WeatherController.php
 +++ b/src/Controller/WeatherController.php
 @@ -10,7 +10,7 @@ class WeatherController extends AbstractController

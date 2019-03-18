@@ -1,5 +1,5 @@
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index c05c6a2..0a40fc4 100644
+index c05c6a28..0a40fc4c 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -4,14 +4,9 @@ search.placeholder: Search

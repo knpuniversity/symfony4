@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 9449d9d..86eca9d 100644
+index 9449d9da..86eca9d8 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -46,7 +46,7 @@
@@ -21,7 +21,7 @@ index 9449d9d..86eca9d 100644
  
                      <p class="pt-4"><i class="fa fa-comment"></i> "Let's face it, space is a risky business. I always considered every launch a barely controlled explosion." <br>— <a href="https://en.wikipedia.org/wiki/Aaron_Cohen_(Deputy_NASA_administrator)">Aaron Cohen, NASA Administrator</a></p>
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 2dbe307..de19edb 100644
+index 2dbe3070..de19edbe 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,2 +1,2 @@

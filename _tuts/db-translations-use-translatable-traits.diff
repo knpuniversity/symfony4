@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 595c10f..b2f7f01 100644
+index 595c10fe..b2f7f011 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Criteria;
@@ -19,7 +19,7 @@ index 595c10f..b2f7f01 100644
      /**
       * @ORM\Id()
 diff --git a/src/Entity/ArticleTranslation.php b/src/Entity/ArticleTranslation.php
-index 675e96f..96dbf6d 100644
+index 675e96fe..96dbf6d2 100644
 --- a/src/Entity/ArticleTranslation.php
 +++ b/src/Entity/ArticleTranslation.php
 @@ -3,10 +3,12 @@

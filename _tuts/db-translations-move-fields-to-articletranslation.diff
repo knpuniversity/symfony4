@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index b2f7f01..cf03a65 100644
+index b2f7f011..cf03a65f 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -28,23 +28,6 @@ class Article
@@ -90,7 +90,7 @@ index b2f7f01..cf03a65 100644
      {
          return $this->location;
 diff --git a/src/Entity/ArticleTranslation.php b/src/Entity/ArticleTranslation.php
-index 0420622..f9eb530 100644
+index 04206223..f9eb5307 100644
 --- a/src/Entity/ArticleTranslation.php
 +++ b/src/Entity/ArticleTranslation.php
 @@ -3,7 +3,10 @@

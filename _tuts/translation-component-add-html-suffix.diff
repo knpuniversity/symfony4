@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 09a755d..22b5bf9 100644
+index 09a755dd..22b5bf9c 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -46,7 +46,7 @@
@@ -12,7 +12,7 @@ index 09a755d..22b5bf9 100644
                      <button class="btn btn-info js-purchase-btn">
                          Buy Now for ${{ spaceIceCreamPrice|number_format(2) }}!
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 034a22f..f41d9b4 100644
+index 034a22f9..f41d9b4a 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,2 +1,2 @@

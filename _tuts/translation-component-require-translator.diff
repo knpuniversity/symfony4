@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 5a92133..17124fb 100644
+index 5a92133a..17124fbd 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -19,6 +19,7 @@
@@ -11,7 +11,7 @@ index 5a92133..17124fb 100644
          "symfony/validator": "^4.0",
          "symfony/web-server-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 1d104e5..0c2f506 100644
+index 1d104e51..0c2f5069 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

@@ -1,5 +1,5 @@
 diff --git a/public/css/styles.css b/public/css/styles.css
-index ffdebfe..f600e9d 100644
+index ffdebfe3..f600e9da 100644
 --- a/public/css/styles.css
 +++ b/public/css/styles.css
 @@ -248,3 +248,22 @@ html {height:100%}
@@ -26,7 +26,7 @@ index ffdebfe..f600e9d 100644
 +    color: #FFF;
 +}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 1440b50..b0cb234 100644
+index 1440b503..b0cb2349 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -40,6 +40,22 @@

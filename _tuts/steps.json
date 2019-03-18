@@ -589,7 +589,42 @@
             "id": "localize-images-show-different-images-for-each-locale",
             "name": "Localize images: Show different images for each locale",
             "description": null
+        },
+        {
+            "id": "twig-extensions-use-date-filter",
+            "name": "Twig Extensions: Use date filter",
+            "description": null
+        },
+        {
+            "id": "twig-extensions-enable-tb-tooltips",
+            "name": "Twig Extensions: Enable TB tooltips",
+            "description": null
+        },
+        {
+            "id": "twig-extensions-use-localizeddate-filter",
+            "name": "Twig Extensions: Use localizeddate filter",
+            "description": null
+        },
+        {
+            "id": "twig-extensions-fix-alignment-of-tooltip",
+            "name": "Twig Extensions: Fix alignment of tooltip",
+            "description": null
+        },
+        {
+            "id": "twig-extensions-use-localizednumber-on-account-page",
+            "name": "Twig Extensions: Use localizednumber on Account page",
+            "description": null
+        },
+        {
+            "id": "twig-extensions-use-localizednumber-for-number-of-comments",
+            "name": "Twig Extensions: Use localizednumber for number of comments",
+            "description": null
+        },
+        {
+            "id": "twig-extensions-format-price-with-localizedcurrency-filter",
+            "name": "Twig Extensions: Format price with localizedcurrency filter",
+            "description": null
         }
     ],
-    "sha": "6dc98408e162b45ee147d7fb5307601b9390a6e9"
+    "sha": "2bdecbb5cd8b6edb864851537ff266c88b5be4e8"
 }

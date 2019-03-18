@@ -1,5 +1,5 @@
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index f70db23..80971b4 100644
+index f70db230..80971b42 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -39,7 +39,7 @@
@@ -12,7 +12,7 @@ index f70db23..80971b4 100644
  
              <div class="row mb-5">
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 1675417..39cb31e 100644
+index 1675417c..39cb31ea 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -11,6 +11,7 @@ page.weather.cloud.header: Oort Cloud

@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index ccd0aa8..4bbba64 100644
+index ccd0aa82..4bbba644 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -24,7 +24,7 @@
@@ -12,7 +12,7 @@ index ccd0aa8..4bbba64 100644
                              {% for tag in article.tags %}
                                  <small>
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 927b5c5..1675417 100644
+index 927b5c5a..1675417c 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -15,4 +15,4 @@ language.en: English

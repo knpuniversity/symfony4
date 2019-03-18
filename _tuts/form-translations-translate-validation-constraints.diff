@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 5cec421..595c10f 100644
+index 5cec4217..595c10fe 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -28,7 +28,7 @@ class Article
@@ -22,7 +22,7 @@ index 5cec421..595c10f 100644
  
 diff --git a/translations/validators.en.yaml b/translations/validators.en.yaml
 new file mode 100644
-index 0000000..d5fbb07
+index 00000000..d5fbb079
 --- /dev/null
 +++ b/translations/validators.en.yaml
 @@ -0,0 +1,2 @@
@@ -30,7 +30,7 @@ index 0000000..d5fbb07
 +article.author.not_blank: Please set an author
 diff --git a/translations/validators.es.yaml b/translations/validators.es.yaml
 new file mode 100644
-index 0000000..744f2be
+index 00000000..744f2be4
 --- /dev/null
 +++ b/translations/validators.es.yaml
 @@ -0,0 +1,2 @@
@@ -38,7 +38,7 @@ index 0000000..744f2be
 +article.author.not_blank: Por favor establecer un autor
 diff --git a/translations/validators.uk.yaml b/translations/validators.uk.yaml
 new file mode 100644
-index 0000000..e060098
+index 00000000..e0600981
 --- /dev/null
 +++ b/translations/validators.uk.yaml
 @@ -0,0 +1,2 @@
