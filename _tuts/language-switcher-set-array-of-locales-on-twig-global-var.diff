@@ -21,7 +21,7 @@ index 8542f045..a15b58b0 100644
  services:
      # default configuration for services in *this* file
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index b0cb2349..e1bc2a5d 100644
+index 4c60346c..7c20b1bc 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -47,7 +47,7 @@

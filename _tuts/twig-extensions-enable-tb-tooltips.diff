@@ -12,7 +12,7 @@ index 634cc06b..dde155dd 100644
                  </span>
                  <span class="pl-2 article-details">
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 32f64c7c..7be67342 100644
+index 6dffa6b3..f0b59e8e 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -118,6 +118,7 @@

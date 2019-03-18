@@ -1,5 +1,5 @@
 diff --git a/public/css/styles.css b/public/css/styles.css
-index ffdebfe3..f600e9da 100644
+index ffdebfe3..931fb99d 100644
 --- a/public/css/styles.css
 +++ b/public/css/styles.css
 @@ -248,3 +248,22 @@ html {height:100%}
@@ -7,11 +7,11 @@ index ffdebfe3..f600e9da 100644
    margin-top: 10px;
  }
 +
-+.locales {
-+    padding-top: 20px;
++.locales-extra-offset {
++    padding-top: 11px;
 +}
 +
-+.locales > a {
++.navbar-dark .navbar-nav .locales .nav-link {
 +    color: #FFF;
 +    text-decoration: none;
 +}
@@ -26,15 +26,15 @@ index ffdebfe3..f600e9da 100644
 +    color: #FFF;
 +}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 1440b503..b0cb2349 100644
+index 1440b503..4c60346c 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -40,6 +40,22 @@
                      <button class="btn btn-info my-2 my-sm-0" type="submit">{{ 'search.button'|trans }}</button>
                  </form>
                  <ul class="navbar-nav ml-auto">
-+                    <li class="nav-item dropdown locales">
-+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
++                    <li class="nav-item dropdown locales {{ app.user ? 'locales-extra-offset' }}">
++                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
 +                            <i class="fa fa-globe" aria-hidden="true"></i>
 +                            {{ app.request.locale|capitalize }}
 +                            <span class="caret"></span>

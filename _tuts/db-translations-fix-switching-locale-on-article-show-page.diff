@@ -11,7 +11,7 @@ index 80971b42..b3354dca 100644
  
  {% block content_body %}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 903e22f9..6f099e74 100644
+index e1c552d5..3aa93642 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -54,7 +54,12 @@
