@@ -21,7 +21,7 @@ index 230ad59f..63d7995e 100644
          return new Response(null, 204);
      }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 75a6a247..71ddbdbd 100644
+index f639a014..f7a120d3 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -73,11 +73,9 @@ class UploaderHelper

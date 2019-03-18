@@ -29,7 +29,7 @@ index 6a286e54..55a35a94 100644
      }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 24c406e9..b0ae50cb 100644
+index 1c371891..64d41e76 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -81,6 +81,17 @@ class UploaderHelper
@@ -47,6 +47,6 @@ index 24c406e9..b0ae50cb 100644
 +        }
 +    }
 +
-     private function uploadFile(File $file, string $directory, bool $isPublic)
+     private function uploadFile(File $file, string $directory, bool $isPublic): string
      {
          if ($file instanceof UploadedFile) {
