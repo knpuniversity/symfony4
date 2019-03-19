@@ -112,7 +112,7 @@ Close this file and go back to the option: I'll paste in a few mime types. This
 covers a lot your standard "document" stuff. Oh, I forgot one! Add
 `application/vnd.ms-excel`.
 
-[[[ code('5e178bb774') ]]]
+[[[ code('a07a7391a4') ]]]
 
 Let's try it out! Go back, select the Best Practices PDF, Upload and... no error!
 Try it again - but with this `earth.zip` file - that's a zip of two photos. Submit
