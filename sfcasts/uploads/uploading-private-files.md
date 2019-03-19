@@ -70,20 +70,20 @@ To start, paste that exact logic
 and, at the bottom, `return $newFilename`. Oh, and I should also probably add a
 return type.
 
-[[[ code('ff72259c20') ]]]
+[[[ code('d9f85f5506') ]]]
 
 Let's see... the first thing we need to do is handle this `$isPublic` argument. So
 Let's say `$filesystem = $isPublic ?` and, if it *is* public, use `$this->filesystem`,
 otherwise use `$this->privateFilesystem`. Below, replace `$this->filesystem` with
 `$filesystem`.
 
-[[[ code('d608066920') ]]]
+[[[ code('d11e005714') ]]]
 
 The other thing we need to update is the directory: it's hardcoded to `ARTICLE_IMAGE`.
 Replace that with `$directory`: this is the directory inside the filesystem where
 the file will be stored.
 
-[[[ code('4ff6fbea0d') ]]]
+[[[ code('fcca73d9ee') ]]]
 
 All done! Back up in `uploadArticleImage()`, re-select *all* that code we just copied,
 delete it, do a happy dance and replace it with `$newFilename = $this->uploadFile()`
