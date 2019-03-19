@@ -27,6 +27,7 @@ chapters:
     - dropzone-errors
     - js-rendering
     - delete-file
+    - edit-deserialization
     - edit-filename
     - reordering
     - aws-s3
