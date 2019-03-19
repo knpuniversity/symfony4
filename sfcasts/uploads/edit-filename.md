@@ -88,7 +88,7 @@ behavior. And then also a little another styling thing. I'm just saying `with: a
 that it's gonna make it just print a little bit better. Perfect. All right, let's
 copy that js file name. We're going to do the same thing we did with our delete end
 point, which is that up in our constructor, we're going to attach a behavior to that.
-So `this.element.on('blur')` this time of `.js-edit-filename` then call our rrow function
+So `this.$element.on('blur')` this time of `.js-edit-filename` then call our rrow function
 and inside, and we'll call it new function called 
 
 `handleReferenceEditFilename()`. We'll pass it the `event`.

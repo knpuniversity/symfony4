@@ -61,7 +61,7 @@ Ajax request to record the new order. So over here we can say
 I'll need it later. `= Sortable.create()`, which is how you create this thing. And
 then we need to pass it the kind of parent element that we want to attach this to. So
 in our case, we actually need to attach this to the `<ul>` element that is around
-everything. And this happens to be this, that element. So I can say `this.element`, and
+everything. And this happens to be this, that element. So I can say `this.$element`, and
 this actually wants a DOM node, not the jQuery objects. So we'll use `[0]`.
 
 And when this refresh, and that should be enough, grab anywhere around here. And

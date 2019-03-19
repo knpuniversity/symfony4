@@ -1,29 +1,31 @@
 # Deleting Files
 
-The next thing our file gallery needs is the ability to delete existing files.
-I know this tutorial is all about uploading, but in these chapters, we're accidentally
-creating a rich API for our Article references: we already have the ability to
-get all references for a specific article, create a new reference and download
-a reference's file. Now we need an endpoint to delete a reference.
+The next thing our file gallery needs is the ability to delete files. I know
+this tutorial is all about uploading... but in these chapters, we're sorta,
+*accidentally* creating a nice API for our Article references. We already have
+the ability to get all references for a specific article, create a new
+reference and download a reference's file. Now we need an endpoint to delete
+a reference.
 
 Add a new function at the bottom called `deleteArticleReference()`. Put the
 `@Route()` above this with `/admin/article/references/{id}`,
-`name="admin_article_delete_references"` and - this will be important -
+`name="admin_article_delete_reference"` and - this will be important -
 `methods={"DELETE"}`. We do *not* want to make it possible to make a GET request
-to this endpoint. First, because that's dangerous. And second, if we kept building
-out the API, we would want to have a different endpoint for making a GET request
-to `/admin/article/references/{id}` - it would return the JSON for that one reference.
+to this endpoint. First, because that's crazy-dangerous. And second, because if
+we kept building out the API, we would want to have a different endpoint for
+making a GET request to `/admin/article/references/{id}` that would return the
+JSON for that one reference.
 
 Inside, add the `ArticleReference $reference` argument and then we'll add our
 normal security check. In fact, copy it from above and put it here.
 
 ## The deleteFile() Service Method
 
-Ok: how can we delete a file? Through Filesystem of course! And the best place
-for that logic to live is probably `UploaderHelper`. We already have functions for
-uploading two types of files, getting the public path and reading a stream. Copy
-the `reedStream()` function declaration, paste, rename that to `deleteFile()` and
-remove the return type.
+Ok: how can we delete a file? Through the magic of Flysystem of course! And the
+best place for that logic to live is probably `UploaderHelper`. We already have
+functions for uploading two types of files, getting the public path and reading
+a stream. Copy the `readStream()` function declaration, paste, rename it to
+`deleteFile()` and remove the return type.
 
 We'll start the same way: by grabbing whichever filesystem we need. Next say
 `$result = $filesystem->delete()` and pass that `$path`. Finally, code defensively:
@@ -31,7 +33,7 @@ if `$result === false`, throw a new exception with `Error deleting "%s"` and `$p
 
 ## The DELETE Endpoint
 
-That's nice! Back on the controller, add an `UploaderHelper` argument, oh and
+That's nice! Back in the controller, add an `UploaderHelper` argument, oh and
 we're also going to need the `EntityManagerInterface` service as well. Remove
 the reference from the database with `$entityManager->remove($reference)` and
 `$entityManager->flush()`. Then `$uploaderHelper->deleteFile()` passing that
@@ -45,28 +47,28 @@ the file might get deleted, but then the row stays because of a temporary connec
 error to the database.
 
 If you're worried about this, use a Doctrine transaction to wrap *all* of this
-logic. If the file *was* successfully deleted, the commit the transaction. If not,
-roll it back so both the file and row stay in there.
+logic. If the file *was* successfully deleted, commit the transaction. If not,
+roll it back so both the file and row stay.
 
 Anyways, what should this endpoint return? Well... how about... nothing! Return
 a `new Response()` - the one from `HttpFoundation` - with `null` as the content
 and a 204 status code. 204 means: the operation was successful but I have nothing
-further to tell you!
+else to say!
 
 ## Hooking up the JavaScript
 
 That's it! That is a *nice* endpoint! Head back to our JavaScript so we can put
-this all together. First, down in the `render()` function, let's add a little trash
+this all together. First, down in the `render()` function, add a little trash
 icon next to the download link. I'll make this a button... just because semantically,
-it requires a DELETE request, so it's not something the user could click without
+it requires a DELETE request, so it's not something the user can click without
 JavaScript. Give it a `js-reference-delete` class so we can find it, some styling
 classes and, inside, we'll use FontAwesome for the icon.
 
 Copy that class name and go back up to the constructor. Here say
-`this.element.on('click')` and then pass `.js-reference-delete`. This is called
-a delegate event handler. It's handy because allows us to attach a listener to
+`this.$element.on('click')` and then pass `.js-reference-delete`. This is called
+a delegate event handler. It's handy because it allows us to attach a listener to
 any `.js-reference-delete` elements, even if they're added to the HTML *after*
-this line is executed. For the callback, I'll pas an ES6 arrow function so that
+this line is executed. For the callback, I'll pass an ES6 arrow function so that
 the `this` variable inside is still my `ReferenceList` object. Call a new method:
 `this.handleReferenceDelete()` and pass it the `event` object.
 
@@ -77,44 +79,44 @@ reference from the `references` array and call `this.render()` so it disappears.
 Start with `const $li =`. I'm going to use the `button` that was just clicked to
 find the `<li>` element that's around everything - you'll see why in a second. So,
 `const $li = $(event.currentTarget)` to get the button that was clicked, then
-`.closest('list-group-item')`.
+`.closest('.list-group-item')`.
 
-Now, to make the DELETE request, I need the `id` of this specific article reference.
-To get that, add a new `data-id` attribute on the `li` set to `${reference.id}`.
-I'm adding this here instead of directly on the button so that we can use it when
-other things are clicked if we need to.
+To create the URL for the DELETE request, I need the `id` of this specific
+article reference. To get that, add a new `data-id` attribute on the `li` set
+to `${reference.id}`. I'm adding this here instead of directly on the button so
+that we could re-use it for other behaviors.
 
-*Now* we can say `const id = $li.data.id` and `$li.addClass('disabled')` to make
+*Now* we can say `const id = $li.data('id')` and `$li.addClass('disabled')` to make
 it look like we're doing something during the AJAX call. Make that with
 `$.ajax()` with `url` set to `'/admin/article/references/'+id` and `method: 'DELETE'`.
 To handle success, chain a `.then()` on this with another arrow function.
 
 Now that the article reference has been deleted from the server, let's remove
-it from `this.reerences`. A nice way to do that is by saying:
+it from `this.references`. A nice way to do that is by saying:
 `this.references = this.references.filter()` and passing this an arrow function
 with `return reference.id !== id`.
 
-This callback function will be called once for each item in the array. And if the
+This callback function will be called once for each item in the array. If the
 function returns true, that item will be put into the new `references` variable.
-If it returns false, it won't be. The end effect is that we can an identical array,
+If it returns false, it won't be. The end effect is that we get an identical array,
 except *without* the reference that was just deleted.
 
 After this, call `this.render()`.
 
 Let's try it! Refresh and... cool! There's our delete icon - it looks a little weird,
-but we'll fix that soon. Let's see, in `var/upoads`we have a `rocket.jpeg` file.
-Let's delete that one. Ha! It disappeared! The 204 status code looks good and...
+but we'll fix that in a minute. Let's see, in `var/uploads` we have a `rocket.jpeg`
+file. Let's delete that one. Ha! It disappeared! The 204 status code looks good and...
 the file is gone!
 
-It's weird when things work on the first try!
+It's strange when things work on the first try!
 
 ## Alignment Tweak
 
-While we're hear, let's fix this alignment issue - it's weirding me out. Down in
+While we're here, let's fix this alignment issue - it's weirding me out. Down in
 the `render()` function, add a few Bootstrap classes to the download link and
 make the delete button smaller.
 
-Try that. Better... but it's still just a *touch* off. Add `veritical-align: middle`
+Try that. Better... but it's still just a *touch* off. Add `vertical-align: middle`
 to the download icon. It's subtle but... yep - the buttons are lined up now.
 
 Next: our users are *begging* for another feature: the ability to rename the file
