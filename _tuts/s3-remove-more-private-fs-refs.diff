@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 230ad59f..63d7995e 100644
+index a2f7ed63..745905f2 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -130,7 +130,7 @@ class ArticleReferenceAdminController extends BaseController
+@@ -131,7 +131,7 @@ class ArticleReferenceAdminController extends BaseController
  
          $response = new StreamedResponse(function() use ($reference, $uploaderHelper) {
              $outputStream = fopen('php://output', 'wb');
@@ -11,7 +11,7 @@ index 230ad59f..63d7995e 100644
  
              stream_copy_to_stream($fileStream, $outputStream);
          });
-@@ -155,7 +155,7 @@ class ArticleReferenceAdminController extends BaseController
+@@ -156,7 +156,7 @@ class ArticleReferenceAdminController extends BaseController
          $entityManager->remove($reference);
          $entityManager->flush();
  

@@ -27,7 +27,7 @@ index bec4c243..143d959e 100644
 +    });
 +}
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c3c9bce1..51ceee1c 100644
+index c010682d..e3a6e826 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -27,7 +27,6 @@ class ArticleReferenceAdminController extends BaseController

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index de49b0cf..76ddeff1 100644
+index 7d5bee05..a3b25aae 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
@@ -10,7 +10,7 @@ index de49b0cf..76ddeff1 100644
  use Symfony\Component\Validator\Constraints\File;
  use Symfony\Component\Validator\Constraints\NotBlank;
  use Symfony\Component\Validator\Validator\ValidatorInterface;
-@@ -132,9 +133,31 @@ class ArticleReferenceAdminController extends BaseController
+@@ -133,9 +134,31 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/references/{id}", name="admin_article_update_reference", methods={"PUT"})
       */

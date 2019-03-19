@@ -23,7 +23,7 @@ index 00000000..acddd1fc
 +    public $data;
 +}
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index f567c160..483221ea 100644
+index c72d5725..33aa01e2 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -2,6 +2,7 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 0b295fa2..f3edb9e4 100644
+index 44f7b6ae..9b80facb 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -10,7 +10,7 @@ index 0b295fa2..f3edb9e4 100644
  use Symfony\Component\Validator\ConstraintViolation;
  use Symfony\Component\Validator\Validator\ValidatorInterface;
  
-@@ -27,18 +28,21 @@ class ArticleReferenceAdminController extends BaseController
+@@ -27,19 +28,22 @@ class ArticleReferenceAdminController extends BaseController
  
          $violations = $validator->validate(
              $uploadedFile,
@@ -20,6 +20,7 @@ index 0b295fa2..f3edb9e4 100644
 -                    'image/*',
 -                    'application/pdf',
 -                    'application/msword',
+-                    'application/vnd.ms-excel',
 -                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 -                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 -                    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
@@ -34,6 +35,7 @@ index 0b295fa2..f3edb9e4 100644
 +                        'image/*',
 +                        'application/pdf',
 +                        'application/msword',
++                        'application/vnd.ms-excel',
 +                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 +                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 +                        'application/vnd.openxmlformats-officedocument.presentationml.presentation',

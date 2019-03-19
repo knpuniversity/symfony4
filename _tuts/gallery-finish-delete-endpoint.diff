@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 6a286e54..55a35a94 100644
+index 9d1d8167..d51bce7a 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -10,7 +10,7 @@ index 6a286e54..55a35a94 100644
  use Symfony\Component\HttpFoundation\StreamedResponse;
  use Symfony\Component\Routing\Annotation\Route;
  use Symfony\Component\Validator\Constraints\File;
-@@ -115,9 +116,16 @@ class ArticleReferenceAdminController extends BaseController
+@@ -116,9 +117,16 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/references/{id}", name="admin_article_delete_reference", methods={"DELETE"})
       */

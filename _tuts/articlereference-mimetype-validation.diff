@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index ec03cb1b..0b295fa2 100644
+index ec03cb1b..44f7b6ae 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -28,7 +28,16 @@ class ArticleReferenceAdminController extends BaseController
+@@ -28,7 +28,17 @@ class ArticleReferenceAdminController extends BaseController
          $violations = $validator->validate(
              $uploadedFile,
              new File([
@@ -12,6 +12,7 @@ index ec03cb1b..0b295fa2 100644
 +                    'image/*',
 +                    'application/pdf',
 +                    'application/msword',
++                    'application/vnd.ms-excel',
 +                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 +                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 +                    'application/vnd.openxmlformats-officedocument.presentationml.presentation',

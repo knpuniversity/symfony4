@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 76ddeff1..fac5294b 100644
+index a3b25aae..660155e2 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -133,7 +133,7 @@ class ArticleReferenceAdminController extends BaseController
+@@ -134,7 +134,7 @@ class ArticleReferenceAdminController extends BaseController
      /**
       * @Route("/admin/article/references/{id}", name="admin_article_update_reference", methods={"PUT"})
       */
@@ -11,7 +11,7 @@ index 76ddeff1..fac5294b 100644
      {
          $article = $reference->getArticle();
          $this->denyAccessUnlessGranted('MANAGE', $article);
-@@ -148,6 +148,11 @@ class ArticleReferenceAdminController extends BaseController
+@@ -149,6 +149,11 @@ class ArticleReferenceAdminController extends BaseController
              ]
          );
  

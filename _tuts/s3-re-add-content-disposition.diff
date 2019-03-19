@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 73126131..8aa65dd2 100644
+index 859ec1f4..c216be34 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -129,9 +129,16 @@ class ArticleReferenceAdminController extends BaseController
+@@ -130,9 +130,16 @@ class ArticleReferenceAdminController extends BaseController
          $article = $reference->getArticle();
          $this->denyAccessUnlessGranted('MANAGE', $article);
  

@@ -1,8 +1,8 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c2a9227e..d6d46519 100644
+index 412ef32b..b363052a 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
-@@ -87,6 +87,7 @@ class ArticleReferenceAdminController extends BaseController
+@@ -88,6 +88,7 @@ class ArticleReferenceAdminController extends BaseController
  
              stream_copy_to_stream($fileStream, $outputStream);
          });
