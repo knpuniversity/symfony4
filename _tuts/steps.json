@@ -536,6 +536,16 @@
             "description": null
         },
         {
+            "id": "log-missing-enable-logging",
+            "name": "Log missing: Enable logging",
+            "description": null
+        },
+        {
+            "id": "log-missing-write-to-a-separate-file",
+            "name": "Log missing: Write to a separate file",
+            "description": null
+        },
+        {
             "id": "auto-translate-install-and-configure-translator",
             "name": "Auto Translate: Install and configure translator",
             "description": null
@@ -626,5 +636,5 @@
             "description": null
         }
     ],
-    "sha": "8f43ff5487bdd14a9fc3682096cb55aa6775836a"
+    "sha": "e7fce1d6a26a876e9925d5f5547cffb349476013"
 }

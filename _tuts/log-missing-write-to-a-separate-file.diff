@@ -1,0 +1,13 @@
+diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
+index 96dbf969..0f6e0e8f 100644
+--- a/config/packages/prod/monolog.yaml
++++ b/config/packages/prod/monolog.yaml
+@@ -23,3 +23,8 @@ monolog:
+             handler: deprecation
+             max_level: info
+             channels: ["php"]
++        translator_logging:
++            type: stream
++            path: "%kernel.logs_dir%/translation.log"
++            level: debug
++            channels: ["translation"]

@@ -1,0 +1,9 @@
+diff --git a/config/packages/translation.yaml b/config/packages/translation.yaml
+index e6b1cd66..1b0d68bb 100644
+--- a/config/packages/translation.yaml
++++ b/config/packages/translation.yaml
+@@ -4,3 +4,4 @@ framework:
+         default_path: '%kernel.project_dir%/translations'
+         fallbacks:
+             - '%locale%'
++        logging: true
