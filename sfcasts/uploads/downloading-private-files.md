@@ -53,7 +53,7 @@ and `bool $isPublic` so we know which of these two filesystems to read from.
 
 Above the method, advertise that this will return a `resource` - PHP doesn't have
 a `resource` return type yet. Inside, step 1 is to get the right filesystem using
-the `$isPublic` argument. Then, `$stream = $filesystem->readStream($path)`.
+the `$isPublic` argument. Then, `$resource = $filesystem->readStream($path)`.
 
 That's... pretty much it! But hold Cmd or Ctrl and click to see the `readStream()`
 method. Ah yes, if this fails, Flysystem will return `false`. So let's code defensively:
