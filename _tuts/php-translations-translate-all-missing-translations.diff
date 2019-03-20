@@ -108,7 +108,7 @@ index c0844f3b..9f6db38c 100644
 +  </file>
  </xliff>
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index 43f4c89c..71dc4ff3 100644
+index d35b4aab..f5d5d857 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
 @@ -128,27 +128,18 @@
@@ -139,7 +139,7 @@ index 43f4c89c..71dc4ff3 100644
        <segment>
          <source>language.uk</source>
          <target>Ukrainian</target>
-@@ -191,27 +182,18 @@
+@@ -182,27 +173,18 @@
        </segment>
      </unit>
      <unit id="T1Uc6GB" name="form.article.title">
@@ -167,7 +167,7 @@ index 43f4c89c..71dc4ff3 100644
        <segment>
          <source>form.article.content</source>
          <target>Content</target>
-@@ -304,7 +286,7 @@
+@@ -295,7 +277,7 @@
        </notes>
        <segment>
          <source>agreeTerms</source>
@@ -176,7 +176,7 @@ index 43f4c89c..71dc4ff3 100644
        </segment>
      </unit>
      <unit id="Knrm5Px" name="plainPassword">
-@@ -313,7 +295,7 @@
+@@ -304,7 +286,7 @@
        </notes>
        <segment>
          <source>plainPassword</source>
@@ -185,7 +185,7 @@ index 43f4c89c..71dc4ff3 100644
        </segment>
      </unit>
      <unit id="giREF.l" name="email">
-@@ -322,7 +304,7 @@
+@@ -313,7 +295,7 @@
        </notes>
        <segment>
          <source>email</source>
@@ -194,7 +194,7 @@ index 43f4c89c..71dc4ff3 100644
        </segment>
      </unit>
      <unit id="s_.yism" name="translations">
-@@ -331,7 +313,7 @@
+@@ -322,7 +304,7 @@
        </notes>
        <segment>
          <source>translations</source>
@@ -204,7 +204,7 @@ index 43f4c89c..71dc4ff3 100644
      </unit>
    </file>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
-index 9fa5cbd5..959f5461 100644
+index 348d5bc3..ff2a2fb3 100644
 --- a/translations/messages.es.xlf
 +++ b/translations/messages.es.xlf
 @@ -25,7 +25,7 @@
@@ -216,12 +216,16 @@ index 9fa5cbd5..959f5461 100644
        </segment>
      </unit>
      <unit id="lQ8QeGr" name="search.placeholder">
-@@ -115,31 +115,22 @@
+@@ -115,7 +115,7 @@
        </notes>
        <segment>
          <source>page.weather.space.content</source>
 -        <target>No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!</target>
 +        <target>No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. ¡Mantenga sus mitones amigos secos!</target>
+       </segment>
+     </unit>
+     <unit id=".wAO8bF" name="page.article.comments.count">
+@@ -128,27 +128,18 @@
        </segment>
      </unit>
      <unit id="GF8cHpg" name="language.en">
@@ -249,7 +253,7 @@ index 9fa5cbd5..959f5461 100644
        <segment>
          <source>language.uk</source>
          <target>Ukraniano</target>
-@@ -154,76 +145,49 @@
+@@ -163,76 +154,49 @@
          <target>Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%</target>
        </segment>
      </unit>
@@ -346,7 +350,7 @@ index 9fa5cbd5..959f5461 100644
        </segment>
      </unit>
      <unit id="ThZosDK" name="form.article.location.choices.solar_system">
-@@ -232,7 +196,7 @@
+@@ -241,7 +205,7 @@
        </notes>
        <segment>
          <source>form.article.location.choices.solar_system</source>
@@ -355,7 +359,7 @@ index 9fa5cbd5..959f5461 100644
        </segment>
      </unit>
      <unit id="iFvNDB1" name="form.article.location.choices.star">
-@@ -253,22 +217,22 @@
+@@ -262,22 +226,22 @@
          <target>Espacio interestelar</target>
        </segment>
      </unit>
@@ -386,92 +390,84 @@ index 9fa5cbd5..959f5461 100644
        </segment>
      </unit>
      <unit id="0mYunZW" name="form.article.published_at">
-@@ -280,58 +244,59 @@
+@@ -289,40 +253,59 @@
          <target>Publicado en</target>
        </segment>
      </unit>
--    <unit id="OuCVbmM" name="comments.count">
+-    <unit id="0niVptT" name="agreeTerms">
 +    <unit id="I8dOP5V" name="form.article.specific_location">
        <notes>
--        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
+-        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
 +        <note category="file-source" priority="1">src/Form/ArticleFormType.php:111</note>
        </notes>
        <segment>
--        <source>comments.count</source>
+-        <source>agreeTerms</source>
 -        <target></target>
 +        <source>form.article.specific_location</source>
 +        <target>Nombre de la ubicación específica</target>
        </segment>
      </unit>
--    <unit id=".wAO8bF" name="page.article.comments.count">
+-    <unit id="Knrm5Px" name="plainPassword">
 +    <unit id="s_.yism" name="translations">
        <notes>
--        <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
+-        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
 +        <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
        </notes>
        <segment>
--        <source>page.article.comments.count</source>
+-        <source>plainPassword</source>
 -        <target></target>
 +        <source>translations</source>
 +        <target>Traducciones</target>
        </segment>
      </unit>
--    <unit id="0niVptT" name="agreeTerms">
+-    <unit id="giREF.l" name="email">
 +    <unit id="GEDCzUF" name="form.article.location.placeholder">
        <notes>
 -        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
 +        <note category="file-source" priority="1">src/Form/ArticleFormType.php:43</note>
        </notes>
        <segment>
--        <source>agreeTerms</source>
+-        <source>email</source>
 -        <target></target>
 +        <source>form.article.location.placeholder</source>
 +        <target>Elegir una ubicación</target>
        </segment>
      </unit>
--    <unit id="Knrm5Px" name="plainPassword">
+-    <unit id="s_.yism" name="translations">
 +    <unit id="UI1S6sZ" name="form.article.specific_location.placeholder">
        <notes>
--        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
-+        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
-       </notes>
-       <segment>
--        <source>plainPassword</source>
--        <target></target>
-+        <source>form.article.specific_location.placeholder</source>
-+        <target>¿Donde exactamente?</target>
-       </segment>
-     </unit>
--    <unit id="giREF.l" name="email">
-+    <unit id="ynHhXwh" name="flash.success.article.created">
-       <notes>
--        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
-+        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
-       </notes>
-       <segment>
--        <source>email</source>
--        <target></target>
-+        <source>flash.success.article.created</source>
-+        <target>¡Artículo creado! ¡El conocimiento es poder!</target>
-       </segment>
-     </unit>
--    <unit id="s_.yism" name="translations">
-+    <unit id="bxqC4Q4" name="flash.success.article.updated">
-       <notes>
 -        <note category="file-source" priority="1">src/Form/ArticleFormType.php:36</note>
-+        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
-+        <note category="state" priority="1">new</note>
++        <note category="file-source" priority="1">src/Form/ArticleFormType.php:113</note>
        </notes>
        <segment>
 -        <source>translations</source>
 -        <target></target>
++        <source>form.article.specific_location.placeholder</source>
++        <target>¿Donde exactamente?</target>
++      </segment>
++    </unit>
++    <unit id="ynHhXwh" name="flash.success.article.created">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
++      </notes>
++      <segment>
++        <source>flash.success.article.created</source>
++        <target>¡Artículo creado! ¡El conocimiento es poder!</target>
++      </segment>
++    </unit>
++    <unit id="bxqC4Q4" name="flash.success.article.updated">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
++        <note category="state" priority="1">new</note>
++      </notes>
++      <segment>
 +        <source>flash.success.article.updated</source>
 +        <target>¡Artículo actualizado! ¡Las inexactitudes aplastadas!</target>
        </segment>
      </unit>
    </file>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
-index a8d5155e..a9977b01 100644
+index 4eee6408..430dd88b 100644
 --- a/translations/messages.uk.xlf
 +++ b/translations/messages.uk.xlf
 @@ -119,27 +119,18 @@
@@ -502,37 +498,10 @@ index a8d5155e..a9977b01 100644
        <segment>
          <source>language.uk</source>
          <target>Українська</target>
-@@ -154,76 +145,49 @@
-         <target>%count% коментар|%count% коментарі|%count% коментарів</target>
+@@ -172,49 +163,49 @@
+         <target>Назва статті</target>
        </segment>
      </unit>
--    <unit id="ynHhXwh" name="flash.success.article.created">
--      <notes>
--        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
--      </notes>
--      <segment>
--        <source>flash.success.article.created</source>
--        <target>Стаття створена! Знання це сила!</target>
--      </segment>
--    </unit>
--    <unit id="bxqC4Q4" name="flash.success.article.updated">
--      <notes>
--        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
--      </notes>
--      <segment>
--        <source>flash.success.article.updated</source>
--        <target>Стаття оновлена! Неточності розчавлені!</target>
--      </segment>
--    </unit>
--    <unit id="T1Uc6GB" name="form.article.title">
--      <notes>
--        <note category="state" priority="1">obsolete</note>
--      </notes>
--      <segment>
--        <source>form.article.title</source>
--        <target>Назва статті</target>
--      </segment>
--    </unit>
 -    <unit id="4m.wvQM" name="form.article.title.help">
 +    <unit id="huYz.gS" name="footer.html">
        <notes>
@@ -599,7 +568,7 @@ index a8d5155e..a9977b01 100644
        </segment>
      </unit>
      <unit id="ThZosDK" name="form.article.location.choices.solar_system">
-@@ -253,22 +217,22 @@
+@@ -244,22 +235,22 @@
          <target>Міжзоряний простір</target>
        </segment>
      </unit>
@@ -630,7 +599,7 @@ index a8d5155e..a9977b01 100644
        </segment>
      </unit>
      <unit id="0mYunZW" name="form.article.published_at">
-@@ -280,58 +244,59 @@
+@@ -271,58 +262,59 @@
          <target>Опубліковано в</target>
        </segment>
      </unit>

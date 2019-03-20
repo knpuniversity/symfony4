@@ -23,3 +23,27 @@ index 1675417c..39cb31ea 100644
  language.en: English
  language.es: Spanish
  language.uk: Ukrainian
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index 4ea388ef..ec994b04 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -11,6 +11,7 @@ page.weather.cloud.header: Nube de Oort
+ page.weather.cloud.content: Hoy estamos experimentando más brisa que el clima normal en la nube. Lo que significa que será un viaje más agitado de lo normal si está de paso. Prepárese para configurar los escudos máximos para minimizar el daño y un viaje al taller de reparaciones.
+ page.weather.space.header: Espacio Profundo
+ page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
++page.article.comments.count: '1 Comentario|%count% Comentarios'
+ language.en: Inglés
+ language.es: Español
+ language.uk: Ukraniano
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+index e6ecc926..b0e1da2d 100644
+--- a/translations/messages.uk.yaml
++++ b/translations/messages.uk.yaml
+@@ -10,6 +10,7 @@ page.weather.cloud.header: Хмара Оорта
+ page.weather.cloud.content: Сьогодні ми зазнаємо значного бризу, ніж зазвичай погода на хмарі. Це означає, що це буде трохи більше трясти ніж зазвичай при проходженні. Підготуйтеся встановити щити до максимуму, щоб мінімізувати пошкодження і поїздку в ремонтну майстерню.
+ page.weather.space.header: Глибокий космос
+ page.weather.space.content: Це неможливо заперечити. Сьогодні в глибокому космосі буде дуже холодно. Обов'язково пакуйте найтепліше пальто, шапку, рукавиці та чоботи. Я б рекомендував мінімізувати ваш час за межами судна сьогодні, якщо це можливо. Тримайте ваші рукавиці сухими, друзі!
++page.article.comments.count: '%count% Коментар|%count% Коментарі|%count% Коментарів'
+ language.en: Англійська
+ language.es: Іспанська
+ language.uk: Українська

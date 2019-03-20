@@ -226,13 +226,33 @@
             "description": null
         },
         {
-            "id": "pluralization-translate-comments-into-ukrainian",
-            "name": "Pluralization: Translate comments into Ukrainian",
+            "id": "delete-me",
+            "name": "DELETE ME",
             "description": null
         },
         {
             "id": "pluralization-specify-explicit-intervals",
             "name": "Pluralization: Specify explicit intervals",
+            "description": null
+        },
+        {
+            "id": "intl-formatter-translate-comments-count",
+            "name": "Intl formatter: Translate comments count",
+            "description": null
+        },
+        {
+            "id": "intl-formatter-translate-flash-message-about-just-registered-user",
+            "name": "Intl formatter: Translate flash message about just registered user",
+            "description": null
+        },
+        {
+            "id": "intl-formatter-add-gender-to-the-flash-message",
+            "name": "Intl formatter: Add gender to the flash message",
+            "description": null
+        },
+        {
+            "id": "intl-formatter-translate-how-many-users-are-online",
+            "name": "Intl formatter: Translate how many users are online",
             "description": null
         },
         {
@@ -491,6 +511,11 @@
             "description": null
         },
         {
+            "id": "php-translations-create-intl-icu-xliff-files-manually",
+            "name": "PHP Translations: Create Intl ICU XLIFF files manually",
+            "description": null
+        },
+        {
             "id": "php-translations-add-workaround-for-specific-location-choices",
             "name": "PHP Translations: Add workaround for specific location choices",
             "description": null
@@ -636,5 +661,5 @@
             "description": null
         }
     ],
-    "sha": "e7fce1d6a26a876e9925d5f5547cffb349476013"
+    "sha": "8c7d40d02d05dcfb6d71952fb2cc23a49098695b"
 }

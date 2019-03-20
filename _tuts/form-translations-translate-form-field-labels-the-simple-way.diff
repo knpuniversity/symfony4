@@ -1,8 +1,8 @@
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 47d94900..a148ad3f 100644
+index 4975d53e..d0d9b775 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
-@@ -20,3 +20,8 @@ comments.count: '1 comment|%count% comments'
+@@ -20,3 +20,8 @@ footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%
  flash.success.article.created: Article Created! Knowledge is power!
  flash.success.article.updated: Article Updated! Inaccuracies squashed!
  form.article.title: Article title

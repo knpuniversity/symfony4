@@ -1,8 +1,8 @@
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
-index 9cd1126d..c0ef0ee9 100644
+index eab050c9..e25b377c 100644
 --- a/translations/messages.es.xlf
 +++ b/translations/messages.es.xlf
-@@ -295,6 +295,12 @@
+@@ -304,6 +304,12 @@
          <target>Asteroides Locales</target>
        </segment>
      </unit>
@@ -16,10 +16,10 @@ index 9cd1126d..c0ef0ee9 100644
        <notes>
          <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
-index ae491003..581afe62 100644
+index dfd56981..e27c960e 100644
 --- a/translations/messages.uk.xlf
 +++ b/translations/messages.uk.xlf
-@@ -295,6 +295,12 @@
+@@ -313,6 +313,12 @@
          <target>Місцеві Астероїди</target>
        </segment>
      </unit>

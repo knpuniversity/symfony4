@@ -1,8 +1,8 @@
 diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
-index 21c63ab5..c4d9db7a 100644
+index 3163bcb2..bb1c25ac 100644
 --- a/templates/account/index.html.twig
 +++ b/templates/account/index.html.twig
-@@ -33,15 +33,15 @@
+@@ -36,15 +36,15 @@
                  <div class="row overview">
                      <div class="col-md-4 user-pad text-center">
                          <h3>COMMENTS</h3>

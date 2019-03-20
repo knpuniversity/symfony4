@@ -1,0 +1,69 @@
+diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
+index c1b0b421..4d5a891f 100644
+--- a/src/Controller/AccountController.php
++++ b/src/Controller/AccountController.php
+@@ -3,6 +3,7 @@
+ namespace App\Controller;
+ 
+ use Faker\Factory;
++use Faker\Provider\Person;
+ use Psr\Log\LoggerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Component\Routing\Annotation\Route;
+@@ -21,6 +22,11 @@ class AccountController extends BaseController
+         $faker = Factory::create();
+         $this->addFlash('success', $translator->trans('flash.just_registered_user', [
+             'nickname' => $faker->userName,
++            'gender' => $faker->randomElement([
++                null,
++                Person::GENDER_MALE,
++                Person::GENDER_FEMALE,
++            ]),
+         ]));
+ 
+         $totalUsersOnline = $faker->numberBetween(1, 5);
+diff --git a/translations/messages+intl-icu.en.yaml b/translations/messages+intl-icu.en.yaml
+index fdd23f4b..28dc478e 100644
+--- a/translations/messages+intl-icu.en.yaml
++++ b/translations/messages+intl-icu.en.yaml
+@@ -1,2 +1,9 @@
+ comments.count: '{count, plural, one {1 comment} other {# comments}}'
+-flash.just_registered_user: Say hello to our new user @{nickname} who registered just a few minutes ago!
++flash.just_registered_user: |
++  Say hello to our new user @{nickname}
++  {gender, select,
++    male { - he}
++    female { - she}
++    other { who}
++  }
++  registered just a few minutes ago!
+diff --git a/translations/messages+intl-icu.es.yaml b/translations/messages+intl-icu.es.yaml
+index 1b60e96d..85853318 100644
+--- a/translations/messages+intl-icu.es.yaml
++++ b/translations/messages+intl-icu.es.yaml
+@@ -1,2 +1,9 @@
+ comments.count: '{count, plural, one {1 comentario} other {# comentarios}}'
+-flash.just_registered_user: Saluda a nuestro nuevo usuario @{nickname} quien se registró hace apenas unos minutos!
++flash.just_registered_user: |
++  Saluda a nuestro nuevo usuario @{nickname}
++  {gender, select,
++    male { - el}
++    female { - ella}
++    other { quien}
++  }
++  se registró hace apenas unos minutos!
+diff --git a/translations/messages+intl-icu.uk.yaml b/translations/messages+intl-icu.uk.yaml
+index 44030b36..ca79d2d3 100644
+--- a/translations/messages+intl-icu.uk.yaml
++++ b/translations/messages+intl-icu.uk.yaml
+@@ -1,2 +1,9 @@
+ comments.count: '{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}'
+-flash.just_registered_user: Привітайтеся з нашим новим користувачем @{nickname} який зареєструвався лише кілька хвилин тому!
++flash.just_registered_user: |
++  Привітайтеся з нашим новим користувачем @{nickname}
++  {gender, select,
++    male { - він зареєструвався}
++    female { - вона зареєструвалася}
++    other { який зареєструвався}
++  }
++  лише кілька хвилин тому!

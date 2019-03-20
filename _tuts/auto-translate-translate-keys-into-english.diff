@@ -1,8 +1,8 @@
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index 94de3876..d16c73d6 100644
+index 014b46fc..d2943d95 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
-@@ -328,5 +328,17 @@
+@@ -319,5 +319,17 @@
          <target>Weather</target>
        </segment>
      </unit>

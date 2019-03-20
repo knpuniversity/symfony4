@@ -21,3 +21,21 @@ index 927b5c5a..1675417c 100644
  footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'
 -comments.count: '1 comment|%number% comments'
 +comments.count: '1 comment|%count% comments'
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index b95d11cd..4ea388ef 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -15,3 +15,4 @@ language.en: Inglés
+ language.es: Español
+ language.uk: Ukraniano
+ footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
++comments.count: '1 comentario|%count% comentarios'
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+index d1730508..e6ecc926 100644
+--- a/translations/messages.uk.yaml
++++ b/translations/messages.uk.yaml
+@@ -13,3 +13,4 @@ page.weather.space.content: Це неможливо заперечити. Сьо
+ language.en: Англійська
+ language.es: Іспанська
+ language.uk: Українська
++comments.count: '%count% коментар|%count% коментарі|%count% коментарів'

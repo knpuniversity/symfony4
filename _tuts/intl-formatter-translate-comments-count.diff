@@ -1,0 +1,51 @@
+diff --git a/translations/messages+intl-icu.en.yaml b/translations/messages+intl-icu.en.yaml
+new file mode 100644
+index 00000000..52c5229e
+--- /dev/null
++++ b/translations/messages+intl-icu.en.yaml
+@@ -0,0 +1 @@
++comments.count: '{count, plural, one {1 comment} other {# comments}}'
+diff --git a/translations/messages+intl-icu.es.yaml b/translations/messages+intl-icu.es.yaml
+new file mode 100644
+index 00000000..94fbf366
+--- /dev/null
++++ b/translations/messages+intl-icu.es.yaml
+@@ -0,0 +1 @@
++comments.count: '{count, plural, one {1 comentario} other {# comentarios}}'
+diff --git a/translations/messages+intl-icu.uk.yaml b/translations/messages+intl-icu.uk.yaml
+new file mode 100644
+index 00000000..1f77776d
+--- /dev/null
++++ b/translations/messages+intl-icu.uk.yaml
+@@ -0,0 +1 @@
++comments.count: '{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}'
+diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
+index 125046fe..7be30d03 100644
+--- a/translations/messages.en.yaml
++++ b/translations/messages.en.yaml
+@@ -16,4 +16,4 @@ language.en: English
+ language.es: Spanish
+ language.uk: Ukrainian
+ footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'
+-comments.count: '1 comment|%count% comments'
++#comments.count: '1 comment|%count% comments'
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index da4a84de..afa11516 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -16,4 +16,4 @@ language.en: Inglés
+ language.es: Español
+ language.uk: Ukraniano
+ footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
+-comments.count: '1 comentario|%count% comentarios'
++#comments.count: '1 comentario|%count% comentarios'
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+index 6add4c9b..d3025836 100644
+--- a/translations/messages.uk.yaml
++++ b/translations/messages.uk.yaml
+@@ -14,4 +14,4 @@ page.article.comments.count: '{0} Будьте першим хто проком
+ language.en: Англійська
+ language.es: Іспанська
+ language.uk: Українська
+-comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
++#comments.count: '%count% коментар|%count% коментарі|%count% коментарів'

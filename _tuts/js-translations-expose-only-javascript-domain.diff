@@ -32,7 +32,7 @@ diff --git a/translations/javascript.uk.yaml b/translations/javascript.uk.yaml
 new file mode 100644
 index 00000000..e69de29b
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 76071e40..5acea57d 100644
+index f412eab3..47183d33 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -1,9 +1,6 @@
@@ -46,7 +46,7 @@ index 76071e40..5acea57d 100644
  search.button: Search
  page.weather.header: Universal Forecast
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index 3f25f05c..41883ede 100644
+index 54c8f80a..4e18b9eb 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
 @@ -1,9 +1,6 @@

@@ -1,0 +1,308 @@
+diff --git a/translations/messages+intl-icu.en.xlf b/translations/messages+intl-icu.en.xlf
+new file mode 100644
+index 00000000..c4b494a0
+--- /dev/null
++++ b/translations/messages+intl-icu.en.xlf
+@@ -0,0 +1,44 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
++  <file id="messages-intl-icu.en">
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>{count, plural, one {1 comment} other {# comments}}</target>
++      </segment>
++    </unit>
++    <unit id="4W35VVA" name="flash.just_registered_user">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
++      </notes>
++      <segment>
++        <source>flash.just_registered_user</source>
++        <target>Say hello to our new user @{nickname}
++{gender, select,
++  male { - he}
++  female { - she}
++  other { who}
++}
++registered just a few minutes ago!
++</target>
++      </segment>
++    </unit>
++    <unit id="a4Y7dsB" name="total_users_online">
++      <notes>
++        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
++      </notes>
++      <segment>
++        <source>total_users_online</source>
++        <target>{count, plural, offset:1
++  =1 {Only you}
++  other {You and # more users}
++}
++are online right now.
++</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/messages+intl-icu.es.xlf b/translations/messages+intl-icu.es.xlf
+new file mode 100644
+index 00000000..73dec123
+--- /dev/null
++++ b/translations/messages+intl-icu.es.xlf
+@@ -0,0 +1,44 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
++  <file id="messages-intl-icu.es">
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>{count, plural, one {1 comentario} other {# comentarios}}</target>
++      </segment>
++    </unit>
++    <unit id="4W35VVA" name="flash.just_registered_user">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
++      </notes>
++      <segment>
++        <source>flash.just_registered_user</source>
++        <target>Saluda a nuestro nuevo usuario @{nickname}
++{gender, select,
++  male { - el}
++  female { - ella}
++  other { quien}
++}
++se registró hace apenas unos minutos!
++</target>
++      </segment>
++    </unit>
++    <unit id="a4Y7dsB" name="total_users_online">
++      <notes>
++        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
++      </notes>
++      <segment>
++        <source>total_users_online</source>
++        <target>{count, plural, offset:1
++  =1 {Sólo estás}
++  other {Tú y # más usuarios están}
++}
++en línea ahora.
++</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/messages+intl-icu.uk.xlf b/translations/messages+intl-icu.uk.xlf
+new file mode 100644
+index 00000000..be6a242d
+--- /dev/null
++++ b/translations/messages+intl-icu.uk.xlf
+@@ -0,0 +1,48 @@
++<?xml version="1.0" encoding="utf-8"?>
++<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
++  <file id="messages-intl-icu.uk">
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}</target>
++      </segment>
++    </unit>
++    <unit id="4W35VVA" name="flash.just_registered_user">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
++      </notes>
++      <segment>
++        <source>flash.just_registered_user</source>
++        <target>Привітайтеся з нашим новим користувачем @{nickname}
++{gender, select,
++  male { - він зареєструвався}
++  female { - вона зареєструвалася}
++  other { який зареєструвався}
++}
++лише кілька хвилин тому!
++</target>
++      </segment>
++    </unit>
++    <unit id="a4Y7dsB" name="total_users_online">
++      <notes>
++        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
++      </notes>
++      <segment>
++        <source>total_users_online</source>
++        <target>{count, plural, offset:1
++  =1 {Тільки ви}
++  =2 {Ви і ще # користувач}
++  =3 {Ви і ще # користувачі}
++  =4 {Ви і ще # користувачі}
++  =5 {Ви і ще # користувачі}
++  other {Ви і ще # користувачів}
++}
++зараз онлайн.
++</target>
++      </segment>
++    </unit>
++  </file>
++</xliff>
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+index 3cb15192..6a37b501 100644
+--- a/translations/messages.en.xlf
++++ b/translations/messages.en.xlf
+@@ -1,45 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+   <file id="messages.en">
+-    <unit id="OuCVbmM" name="comments.count">
+-      <notes>
+-        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
+-      </notes>
+-      <segment>
+-        <source>comments.count</source>
+-        <target>{count, plural, one {1 comment} other {# comments}}</target>
+-      </segment>
+-    </unit>
+-    <unit id="4W35VVA" name="flash.just_registered_user">
+-      <notes>
+-        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
+-      </notes>
+-      <segment>
+-        <source>flash.just_registered_user</source>
+-        <target>Say hello to our new user @{nickname}
+-{gender, select,
+-  male { - he}
+-  female { - she}
+-  other { who}
+-}
+-registered just a few minutes ago!
+-</target>
+-      </segment>
+-    </unit>
+-    <unit id="a4Y7dsB" name="total_users_online">
+-      <notes>
+-        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
+-      </notes>
+-      <segment>
+-        <source>total_users_online</source>
+-        <target>{count, plural, offset:1
+-  =1 {Only you}
+-  other {You and # more users}
+-}
+-are online right now.
+-</target>
+-      </segment>
+-    </unit>
+     <unit id="nuD.7fQ" name="trending_quotes">
+       <notes>
+         <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
+diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
+index 4f103444..1bf5bcee 100644
+--- a/translations/messages.es.xlf
++++ b/translations/messages.es.xlf
+@@ -1,45 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
+   <file id="messages.es">
+-    <unit id="OuCVbmM" name="comments.count">
+-      <notes>
+-        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
+-      </notes>
+-      <segment>
+-        <source>comments.count</source>
+-        <target>{count, plural, one {1 comentario} other {# comentarios}}</target>
+-      </segment>
+-    </unit>
+-    <unit id="4W35VVA" name="flash.just_registered_user">
+-      <notes>
+-        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
+-      </notes>
+-      <segment>
+-        <source>flash.just_registered_user</source>
+-        <target>Saluda a nuestro nuevo usuario @{nickname}
+-{gender, select,
+-  male { - el}
+-  female { - ella}
+-  other { quien}
+-}
+-se registró hace apenas unos minutos!
+-</target>
+-      </segment>
+-    </unit>
+-    <unit id="a4Y7dsB" name="total_users_online">
+-      <notes>
+-        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
+-      </notes>
+-      <segment>
+-        <source>total_users_online</source>
+-        <target>{count, plural, offset:1
+-  =1 {Sólo estás}
+-  other {Tú y # más usuarios están}
+-}
+-en línea ahora.
+-</target>
+-      </segment>
+-    </unit>
+     <unit id="nuD.7fQ" name="trending_quotes">
+       <notes>
+         <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
+diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
+index 1c7c9a81..353f3071 100644
+--- a/translations/messages.uk.xlf
++++ b/translations/messages.uk.xlf
+@@ -1,49 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
+   <file id="messages.uk">
+-    <unit id="OuCVbmM" name="comments.count">
+-      <notes>
+-        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
+-      </notes>
+-      <segment>
+-        <source>comments.count</source>
+-        <target>{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}</target>
+-      </segment>
+-    </unit>
+-    <unit id="4W35VVA" name="flash.just_registered_user">
+-      <notes>
+-        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
+-      </notes>
+-      <segment>
+-        <source>flash.just_registered_user</source>
+-        <target>Привітайтеся з нашим новим користувачем @{nickname}
+-{gender, select,
+-  male { - він зареєструвався}
+-  female { - вона зареєструвалася}
+-  other { який зареєструвався}
+-}
+-лише кілька хвилин тому!
+-</target>
+-      </segment>
+-    </unit>
+-    <unit id="a4Y7dsB" name="total_users_online">
+-      <notes>
+-        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
+-      </notes>
+-      <segment>
+-        <source>total_users_online</source>
+-        <target>{count, plural, offset:1
+-  =1 {Тільки ви}
+-  =2 {Ви і ще # користувач}
+-  =3 {Ви і ще # користувачі}
+-  =4 {Ви і ще # користувачі}
+-  =5 {Ви і ще # користувачі}
+-  other {Ви і ще # користувачів}
+-}
+-зараз онлайн.
+-</target>
+-      </segment>
+-    </unit>
+     <unit id="nuD.7fQ" name="trending_quotes">
+       <notes>
+         <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>

@@ -12,10 +12,10 @@ index 3aa93642..704fb5c0 100644
                       <li class="nav-item">
                         <a style="color: #fff;" class="nav-link" href="{{ path('app_weather') }}">Weather</a>
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
-index 71dc4ff3..724ac29d 100644
+index f5d5d857..90ba4a47 100644
 --- a/translations/messages.en.xlf
 +++ b/translations/messages.en.xlf
-@@ -316,5 +316,11 @@
+@@ -307,5 +307,11 @@
          <target>Translations</target>
        </segment>
      </unit>

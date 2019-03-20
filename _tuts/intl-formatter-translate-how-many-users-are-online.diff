@@ -1,0 +1,64 @@
+diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
+index 34284736..3163bcb2 100644
+--- a/templates/account/index.html.twig
++++ b/templates/account/index.html.twig
+@@ -25,12 +25,7 @@
+                                 <h4 class="white"><i class="fa fa-twitter"></i> {{ app.user.twitterUsername }}</h4>
+                             {% endif %}
+                             <p>
+-                                {% if totalUsersOnline > 1 %}
+-                                    You and {{ totalUsersOnline - 1 }} more users
+-                                {% else %}
+-                                    Only you
+-                                {% endif %}
+-                                are online right now.
++                                {{ 'total_users_online'|trans({count: totalUsersOnline}) }}
+                             </p>
+                             <a class="btn btn-labeled btn-info" href="#">
+                                 <span class="btn-label"><i class="fa fa-pencil"></i></span>Update
+diff --git a/translations/messages+intl-icu.en.yaml b/translations/messages+intl-icu.en.yaml
+index 28dc478e..792b9c79 100644
+--- a/translations/messages+intl-icu.en.yaml
++++ b/translations/messages+intl-icu.en.yaml
+@@ -7,3 +7,9 @@ flash.just_registered_user: |
+     other { who}
+   }
+   registered just a few minutes ago!
++total_users_online: |
++  {count, plural, offset:1
++    =1 {Only you}
++    other {You and # more users}
++  }
++  are online right now.
+diff --git a/translations/messages+intl-icu.es.yaml b/translations/messages+intl-icu.es.yaml
+index 85853318..60114c28 100644
+--- a/translations/messages+intl-icu.es.yaml
++++ b/translations/messages+intl-icu.es.yaml
+@@ -7,3 +7,9 @@ flash.just_registered_user: |
+     other { quien}
+   }
+   se registró hace apenas unos minutos!
++total_users_online: |
++  {count, plural, offset:1
++    =1 {Sólo estás}
++    other {Tú y # más usuarios están}
++  }
++  en línea ahora.
+diff --git a/translations/messages+intl-icu.uk.yaml b/translations/messages+intl-icu.uk.yaml
+index ca79d2d3..0edc862a 100644
+--- a/translations/messages+intl-icu.uk.yaml
++++ b/translations/messages+intl-icu.uk.yaml
+@@ -7,3 +7,13 @@ flash.just_registered_user: |
+     other { який зареєструвався}
+   }
+   лише кілька хвилин тому!
++total_users_online: |
++  {count, plural, offset:1
++    =1 {Тільки ви}
++    =2 {Ви і ще # користувач}
++    =3 {Ви і ще # користувачі}
++    =4 {Ви і ще # користувачі}
++    =5 {Ви і ще # користувачі}
++    other {Ви і ще # користувачів}
++  }
++  зараз онлайн.

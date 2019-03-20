@@ -1,0 +1,52 @@
+diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
+index 6e36a01c..c1b0b421 100644
+--- a/src/Controller/AccountController.php
++++ b/src/Controller/AccountController.php
+@@ -6,6 +6,7 @@ use Faker\Factory;
+ use Psr\Log\LoggerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Component\Routing\Annotation\Route;
++use Symfony\Contracts\Translation\TranslatorInterface;
+ 
+ /**
+  * @IsGranted("ROLE_USER")
+@@ -15,13 +16,13 @@ class AccountController extends BaseController
+     /**
+      * @Route("/account", name="app_account")
+      */
+-    public function index(LoggerInterface $logger)
++    public function index(LoggerInterface $logger, TranslatorInterface $translator)
+     {
+         $faker = Factory::create();
+-        $this->addFlash('success', sprintf(
+-            'Say hello to our new user @%s who registered just a few minutes ago!',
+-            $faker->userName
+-        ));
++        $this->addFlash('success', $translator->trans('flash.just_registered_user', [
++            'nickname' => $faker->userName,
++        ]));
++
+         $totalUsersOnline = $faker->numberBetween(1, 5);
+ 
+         $logger->debug('Checking account page for '.$this->getUser()->getEmail());
+diff --git a/translations/messages+intl-icu.en.yaml b/translations/messages+intl-icu.en.yaml
+index 52c5229e..fdd23f4b 100644
+--- a/translations/messages+intl-icu.en.yaml
++++ b/translations/messages+intl-icu.en.yaml
+@@ -1 +1,2 @@
+ comments.count: '{count, plural, one {1 comment} other {# comments}}'
++flash.just_registered_user: Say hello to our new user @{nickname} who registered just a few minutes ago!
+diff --git a/translations/messages+intl-icu.es.yaml b/translations/messages+intl-icu.es.yaml
+index 94fbf366..1b60e96d 100644
+--- a/translations/messages+intl-icu.es.yaml
++++ b/translations/messages+intl-icu.es.yaml
+@@ -1 +1,2 @@
+ comments.count: '{count, plural, one {1 comentario} other {# comentarios}}'
++flash.just_registered_user: Saluda a nuestro nuevo usuario @{nickname} quien se registró hace apenas unos minutos!
+diff --git a/translations/messages+intl-icu.uk.yaml b/translations/messages+intl-icu.uk.yaml
+index 1f77776d..44030b36 100644
+--- a/translations/messages+intl-icu.uk.yaml
++++ b/translations/messages+intl-icu.uk.yaml
+@@ -1 +1,2 @@
+ comments.count: '{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}'
++flash.just_registered_user: Привітайтеся з нашим новим користувачем @{nickname} який зареєструвався лише кілька хвилин тому!

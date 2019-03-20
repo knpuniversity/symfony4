@@ -16,7 +16,7 @@ index cee4cc7a..76261701 100644
                  'required' => false,
              ])
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 3b50b684..5acea57d 100644
+index 5d59108c..47183d33 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -25,6 +25,9 @@ form.article.content: Content
@@ -30,10 +30,10 @@ index 3b50b684..5acea57d 100644
  form.article.specific_location.placeholder: Where exactly?
  form.article.published_at: Published at
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index a48c5661..41883ede 100644
+index a9015766..4e18b9eb 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
-@@ -23,6 +23,9 @@ form.article.content: Contenido
+@@ -25,6 +25,9 @@ form.article.content: Contenido
  form.article.author: Autor
  form.article.location: Ubicación
  form.article.location.placeholder: Elegir una ubicación
@@ -44,7 +44,7 @@ index a48c5661..41883ede 100644
  form.article.specific_location.placeholder: ¿Donde exactamente?
  form.article.published_at: Publicado en
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
-index 1dff0912..fe650341 100644
+index 2414d775..91e20a1e 100644
 --- a/translations/messages.uk.yaml
 +++ b/translations/messages.uk.yaml
 @@ -23,6 +23,9 @@ form.article.content: Зміст

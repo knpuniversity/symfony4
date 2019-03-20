@@ -1,8 +1,8 @@
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
-index 959f5461..9cd1126d 100644
+index ff2a2fb3..eab050c9 100644
 --- a/translations/messages.es.xlf
 +++ b/translations/messages.es.xlf
-@@ -289,6 +289,12 @@
+@@ -298,6 +298,12 @@
          <target>¡Artículo creado! ¡El conocimiento es poder!</target>
        </segment>
      </unit>
@@ -16,10 +16,10 @@ index 959f5461..9cd1126d 100644
        <notes>
          <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
-index a9977b01..ae491003 100644
+index 430dd88b..dfd56981 100644
 --- a/translations/messages.uk.xlf
 +++ b/translations/messages.uk.xlf
-@@ -289,6 +289,12 @@
+@@ -307,6 +307,12 @@
          <target>Стаття створена! Знання це сила!</target>
        </segment>
      </unit>

@@ -1,5 +1,5 @@
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 39cb31ea..6dcf7a98 100644
+index 39cb31ea..125046fe 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -11,7 +11,7 @@ page.weather.cloud.header: Oort Cloud
@@ -7,7 +7,33 @@ index 39cb31ea..6dcf7a98 100644
  page.weather.space.header: Deep Space
  page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!
 -page.article.comments.count: '1 Comment|%count% Comments'
-+page.article.comments.count: '{0} Be the first to Comment|{1} A single Comment only|{2} A few Comments|[3,9] %count% Comments|[10,Inf[ A lot of Comments'
++page.article.comments.count: '{0} Be the first to comment|{1} A single comment only|{2} A few comments|[3,9] %count% comments|[10,Inf[ A lot of comments'
  language.en: English
  language.es: Spanish
  language.uk: Ukrainian
+diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
+index ec994b04..da4a84de 100644
+--- a/translations/messages.es.yaml
++++ b/translations/messages.es.yaml
+@@ -11,7 +11,7 @@ page.weather.cloud.header: Nube de Oort
+ page.weather.cloud.content: Hoy estamos experimentando más brisa que el clima normal en la nube. Lo que significa que será un viaje más agitado de lo normal si está de paso. Prepárese para configurar los escudos máximos para minimizar el daño y un viaje al taller de reparaciones.
+ page.weather.space.header: Espacio Profundo
+ page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
+-page.article.comments.count: '1 Comentario|%count% Comentarios'
++page.article.comments.count: '{0} Sea el primero en comentar|{1} Un solo comentario solo|{2} Algunos comentarios|[3,9] %count% comentarios|[10, Inf[ Un montón de comentarios'
+ language.en: Inglés
+ language.es: Español
+ language.uk: Ukraniano
+diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
+index b0e1da2d..6add4c9b 100644
+--- a/translations/messages.uk.yaml
++++ b/translations/messages.uk.yaml
+@@ -10,7 +10,7 @@ page.weather.cloud.header: Хмара Оорта
+ page.weather.cloud.content: Сьогодні ми зазнаємо значного бризу, ніж зазвичай погода на хмарі. Це означає, що це буде трохи більше трясти ніж зазвичай при проходженні. Підготуйтеся встановити щити до максимуму, щоб мінімізувати пошкодження і поїздку в ремонтну майстерню.
+ page.weather.space.header: Глибокий космос
+ page.weather.space.content: Це неможливо заперечити. Сьогодні в глибокому космосі буде дуже холодно. Обов'язково пакуйте найтепліше пальто, шапку, рукавиці та чоботи. Я б рекомендував мінімізувати ваш час за межами судна сьогодні, якщо це можливо. Тримайте ваші рукавиці сухими, друзі!
+-page.article.comments.count: '%count% Коментар|%count% Коментарі|%count% Коментарів'
++page.article.comments.count: '{0} Будьте першим хто прокоментує|{1} Тільки одін коментар|{2} Декілька коментарів|[3,4] %count% коментарі|[5,9] %count% коментарів|[10, Inf[ Багато коментарів'
+ language.en: Англійська
+ language.es: Іспанська
+ language.uk: Українська

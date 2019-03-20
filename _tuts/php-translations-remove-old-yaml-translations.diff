@@ -26,9 +26,76 @@ index 2bc441b4..00000000
 diff --git a/translations/javascript.uk.yaml b/translations/javascript.uk.yaml
 deleted file mode 100644
 index e69de29b..00000000
+diff --git a/translations/messages+intl-icu.en.yaml b/translations/messages+intl-icu.en.yaml
+deleted file mode 100644
+index 792b9c79..00000000
+--- a/translations/messages+intl-icu.en.yaml
++++ /dev/null
+@@ -1,15 +0,0 @@
+-comments.count: '{count, plural, one {1 comment} other {# comments}}'
+-flash.just_registered_user: |
+-  Say hello to our new user @{nickname}
+-  {gender, select,
+-    male { - he}
+-    female { - she}
+-    other { who}
+-  }
+-  registered just a few minutes ago!
+-total_users_online: |
+-  {count, plural, offset:1
+-    =1 {Only you}
+-    other {You and # more users}
+-  }
+-  are online right now.
+diff --git a/translations/messages+intl-icu.es.yaml b/translations/messages+intl-icu.es.yaml
+deleted file mode 100644
+index 60114c28..00000000
+--- a/translations/messages+intl-icu.es.yaml
++++ /dev/null
+@@ -1,15 +0,0 @@
+-comments.count: '{count, plural, one {1 comentario} other {# comentarios}}'
+-flash.just_registered_user: |
+-  Saluda a nuestro nuevo usuario @{nickname}
+-  {gender, select,
+-    male { - el}
+-    female { - ella}
+-    other { quien}
+-  }
+-  se registró hace apenas unos minutos!
+-total_users_online: |
+-  {count, plural, offset:1
+-    =1 {Sólo estás}
+-    other {Tú y # más usuarios están}
+-  }
+-  en línea ahora.
+diff --git a/translations/messages+intl-icu.uk.yaml b/translations/messages+intl-icu.uk.yaml
+deleted file mode 100644
+index 0edc862a..00000000
+--- a/translations/messages+intl-icu.uk.yaml
++++ /dev/null
+@@ -1,19 +0,0 @@
+-comments.count: '{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}'
+-flash.just_registered_user: |
+-  Привітайтеся з нашим новим користувачем @{nickname}
+-  {gender, select,
+-    male { - він зареєструвався}
+-    female { - вона зареєструвалася}
+-    other { який зареєструвався}
+-  }
+-  лише кілька хвилин тому!
+-total_users_online: |
+-  {count, plural, offset:1
+-    =1 {Тільки ви}
+-    =2 {Ви і ще # користувач}
+-    =3 {Ви і ще # користувачі}
+-    =4 {Ви і ще # користувачі}
+-    =5 {Ви і ще # користувачі}
+-    other {Ви і ще # користувачів}
+-  }
+-  зараз онлайн.
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
 deleted file mode 100644
-index 5acea57d..00000000
+index 47183d33..00000000
 --- a/translations/messages.en.yaml
 +++ /dev/null
 @@ -1,33 +0,0 @@
@@ -45,12 +112,12 @@ index 5acea57d..00000000
 -page.weather.cloud.content: Today we're experiencing breezier than normal weather out in the cloud. Which means that it will be a bumpier than usual ride if you're passing through. Prepare to set shields maximum to minimize damage and a trip to the repair shop.
 -page.weather.space.header: Deep Space
 -page.weather.space.content: There's no way to deny it. It is going to be very cold in deep space today. Be sure to pack your warmest coat, hat, mittens and boots. I would recommend minimizing your time outside of the ship today if possible. Keep your mittens dry friends!
--page.article.comments.count: '{0} Be the first to Comment|{1} A single Comment only|{2} A few Comments|[3,9] %count% Comments|[10,Inf[ A lot of Comments'
+-page.article.comments.count: '{0} Be the first to comment|{1} A single comment only|{2} A few comments|[3,9] %count% comments|[10,Inf[ A lot of comments'
 -language.en: English
 -language.es: Spanish
 -language.uk: Ukrainian
 -footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'
--comments.count: '1 comment|%count% comments'
+-#comments.count: '1 comment|%count% comments'
 -flash.success.article.created: Article Created! Knowledge is power!
 -flash.success.article.updated: Article Updated! Inaccuracies squashed!
 -form.article.title: Article title
@@ -67,10 +134,10 @@ index 5acea57d..00000000
 -form.article.published_at: Published at
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
 deleted file mode 100644
-index 41883ede..00000000
+index 4e18b9eb..00000000
 --- a/translations/messages.es.yaml
 +++ /dev/null
-@@ -1,31 +0,0 @@
+@@ -1,33 +0,0 @@
 -trending_quotes: 'Cotizaciones de Tendencias'
 -ice_cream_promo.title.html: '<span class="advertisement-text">Nuevo:</span> Espacio Helado!'
 -ice_cream_promo.button: Compre ahora por %price%!
@@ -84,10 +151,12 @@ index 41883ede..00000000
 -page.weather.cloud.content: Hoy estamos experimentando más brisa que el clima normal en la nube. Lo que significa que será un viaje más agitado de lo normal si está de paso. Prepárese para configurar los escudos máximos para minimizar el daño y un viaje al taller de reparaciones.
 -page.weather.space.header: Espacio Profundo
 -page.weather.space.content: No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!
+-page.article.comments.count: '{0} Sea el primero en comentar|{1} Un solo comentario solo|{2} Algunos comentarios|[3,9] %count% comentarios|[10, Inf[ Un montón de comentarios'
 -language.en: Inglés
 -language.es: Español
 -language.uk: Ukraniano
 -footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
+-#comments.count: '1 comentario|%count% comentarios'
 -flash.success.article.created: ¡Artículo creado! ¡El conocimiento es poder!
 -flash.success.article.updated: ¡Artículo actualizado! ¡Las inexactitudes aplastadas!
 -form.article.title: Título del artículo
@@ -104,7 +173,7 @@ index 41883ede..00000000
 -form.article.published_at: Publicado en
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
 deleted file mode 100644
-index fe650341..00000000
+index 91e20a1e..00000000
 --- a/translations/messages.uk.yaml
 +++ /dev/null
 @@ -1,31 +0,0 @@
@@ -120,11 +189,11 @@ index fe650341..00000000
 -page.weather.cloud.content: Сьогодні ми зазнаємо значного бризу, ніж зазвичай погода на хмарі. Це означає, що це буде трохи більше трясти ніж зазвичай при проходженні. Підготуйтеся встановити щити до максимуму, щоб мінімізувати пошкодження і поїздку в ремонтну майстерню.
 -page.weather.space.header: Глибокий космос
 -page.weather.space.content: Це неможливо заперечити. Сьогодні в глибокому космосі буде дуже холодно. Обов'язково пакуйте найтепліше пальто, шапку, рукавиці та чоботи. Я б рекомендував мінімізувати ваш час за межами судна сьогодні, якщо це можливо. Тримайте ваші рукавиці сухими, друзі!
--page.article.comments.count: '%count% Коментар|%count% Коментарі|%count% Коментарів'
+-page.article.comments.count: '{0} Будьте першим хто прокоментує|{1} Тільки одін коментар|{2} Декілька коментарів|[3,4] %count% коментарі|[5,9] %count% коментарів|[10, Inf[ Багато коментарів'
 -language.en: Англійська
 -language.es: Іспанська
 -language.uk: Українська
--comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
+-#comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
 -flash.success.article.created: Стаття створена! Знання це сила!
 -flash.success.article.updated: Стаття оновлена! Неточності розчавлені!
 -form.article.title: Назва статті

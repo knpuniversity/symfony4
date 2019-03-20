@@ -106,13 +106,52 @@ index 00000000..c0844f3b
 +</xliff>
 diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
 new file mode 100644
-index 00000000..844f5ba0
+index 00000000..3cb15192
 --- /dev/null
 +++ b/translations/messages.en.xlf
-@@ -0,0 +1,342 @@
+@@ -0,0 +1,372 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
 +  <file id="messages.en">
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>{count, plural, one {1 comment} other {# comments}}</target>
++      </segment>
++    </unit>
++    <unit id="4W35VVA" name="flash.just_registered_user">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
++      </notes>
++      <segment>
++        <source>flash.just_registered_user</source>
++        <target>Say hello to our new user @{nickname}
++{gender, select,
++  male { - he}
++  female { - she}
++  other { who}
++}
++registered just a few minutes ago!
++</target>
++      </segment>
++    </unit>
++    <unit id="a4Y7dsB" name="total_users_online">
++      <notes>
++        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
++      </notes>
++      <segment>
++        <source>total_users_online</source>
++        <target>{count, plural, offset:1
++  =1 {Only you}
++  other {You and # more users}
++}
++are online right now.
++</target>
++      </segment>
++    </unit>
 +    <unit id="nuD.7fQ" name="trending_quotes">
 +      <notes>
 +        <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
@@ -236,7 +275,7 @@ index 00000000..844f5ba0
 +      </notes>
 +      <segment>
 +        <source>page.article.comments.count</source>
-+        <target>{0} Be the first to Comment|{1} A single Comment only|{2} A few Comments|[3,9] %count% Comments|[10,Inf[ A lot of Comments</target>
++        <target>{0} Be the first to comment|{1} A single comment only|{2} A few comments|[3,9] %count% comments|[10,Inf[ A lot of comments</target>
 +      </segment>
 +    </unit>
 +    <unit id="GF8cHpg" name="language.en">
@@ -273,15 +312,6 @@ index 00000000..844f5ba0
 +      <segment>
 +        <source>footer.html</source>
 +        <target>Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%</target>
-+      </segment>
-+    </unit>
-+    <unit id="OuCVbmM" name="comments.count">
-+      <notes>
-+        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
-+      </notes>
-+      <segment>
-+        <source>comments.count</source>
-+        <target>1 comment|%count% comments</target>
 +      </segment>
 +    </unit>
 +    <unit id="ynHhXwh" name="flash.success.article.created">
@@ -454,13 +484,52 @@ index 00000000..844f5ba0
 +</xliff>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
 new file mode 100644
-index 00000000..ed16d8e3
+index 00000000..4f103444
 --- /dev/null
 +++ b/translations/messages.es.xlf
-@@ -0,0 +1,344 @@
+@@ -0,0 +1,372 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
 +  <file id="messages.es">
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>{count, plural, one {1 comentario} other {# comentarios}}</target>
++      </segment>
++    </unit>
++    <unit id="4W35VVA" name="flash.just_registered_user">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
++      </notes>
++      <segment>
++        <source>flash.just_registered_user</source>
++        <target>Saluda a nuestro nuevo usuario @{nickname}
++{gender, select,
++  male { - el}
++  female { - ella}
++  other { quien}
++}
++se registró hace apenas unos minutos!
++</target>
++      </segment>
++    </unit>
++    <unit id="a4Y7dsB" name="total_users_online">
++      <notes>
++        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
++      </notes>
++      <segment>
++        <source>total_users_online</source>
++        <target>{count, plural, offset:1
++  =1 {Sólo estás}
++  other {Tú y # más usuarios están}
++}
++en línea ahora.
++</target>
++      </segment>
++    </unit>
 +    <unit id="nuD.7fQ" name="trending_quotes">
 +      <notes>
 +        <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
@@ -576,6 +645,15 @@ index 00000000..ed16d8e3
 +      <segment>
 +        <source>page.weather.space.content</source>
 +        <target>No hay manera de negarlo. Va a ser muy frío en el espacio profundo de hoy. Asegúrate de empacar tu abrigo, gorro, mitones y botas más cálidos. Recomendaría minimizar su tiempo fuera del barco hoy si es posible. Mantenga sus mitones amigos secos!</target>
++      </segment>
++    </unit>
++    <unit id=".wAO8bF" name="page.article.comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
++      </notes>
++      <segment>
++        <source>page.article.comments.count</source>
++        <target>{0} Sea el primero en comentar|{1} Un solo comentario solo|{2} Algunos comentarios|[3,9] %count% comentarios|[10, Inf[ Un montón de comentarios</target>
 +      </segment>
 +    </unit>
 +    <unit id="GF8cHpg" name="language.en">
@@ -740,26 +818,6 @@ index 00000000..ed16d8e3
 +        <target>Publicado en</target>
 +      </segment>
 +    </unit>
-+    <unit id="OuCVbmM" name="comments.count">
-+      <notes>
-+        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>comments.count</source>
-+        <target></target>
-+      </segment>
-+    </unit>
-+    <unit id=".wAO8bF" name="page.article.comments.count">
-+      <notes>
-+        <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
-+        <note category="state" priority="1">new</note>
-+      </notes>
-+      <segment>
-+        <source>page.article.comments.count</source>
-+        <target></target>
-+      </segment>
-+    </unit>
 +    <unit id="0niVptT" name="agreeTerms">
 +      <notes>
 +        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -804,13 +862,56 @@ index 00000000..ed16d8e3
 +</xliff>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
 new file mode 100644
-index 00000000..5f66238b
+index 00000000..1c7c9a81
 --- /dev/null
 +++ b/translations/messages.uk.xlf
-@@ -0,0 +1,344 @@
+@@ -0,0 +1,378 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
 +  <file id="messages.uk">
++    <unit id="OuCVbmM" name="comments.count">
++      <notes>
++        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
++      </notes>
++      <segment>
++        <source>comments.count</source>
++        <target>{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}</target>
++      </segment>
++    </unit>
++    <unit id="4W35VVA" name="flash.just_registered_user">
++      <notes>
++        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
++      </notes>
++      <segment>
++        <source>flash.just_registered_user</source>
++        <target>Привітайтеся з нашим новим користувачем @{nickname}
++{gender, select,
++  male { - він зареєструвався}
++  female { - вона зареєструвалася}
++  other { який зареєструвався}
++}
++лише кілька хвилин тому!
++</target>
++      </segment>
++    </unit>
++    <unit id="a4Y7dsB" name="total_users_online">
++      <notes>
++        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
++      </notes>
++      <segment>
++        <source>total_users_online</source>
++        <target>{count, plural, offset:1
++  =1 {Тільки ви}
++  =2 {Ви і ще # користувач}
++  =3 {Ви і ще # користувачі}
++  =4 {Ви і ще # користувачі}
++  =5 {Ви і ще # користувачі}
++  other {Ви і ще # користувачів}
++}
++зараз онлайн.
++</target>
++      </segment>
++    </unit>
 +    <unit id="nuD.7fQ" name="trending_quotes">
 +      <notes>
 +        <note category="file-source" priority="1">templates/article/homepage.html.twig:57</note>
@@ -925,7 +1026,7 @@ index 00000000..5f66238b
 +      </notes>
 +      <segment>
 +        <source>page.article.comments.count</source>
-+        <target>%count% Коментар|%count% Коментарі|%count% Коментарів</target>
++        <target>{0} Будьте першим хто прокоментує|{1} Тільки одін коментар|{2} Декілька коментарів|[3,4] %count% коментарі|[5,9] %count% коментарів|[10, Inf[ Багато коментарів</target>
 +      </segment>
 +    </unit>
 +    <unit id="GF8cHpg" name="language.en">
@@ -953,15 +1054,6 @@ index 00000000..5f66238b
 +      <segment>
 +        <source>language.uk</source>
 +        <target>Українська</target>
-+      </segment>
-+    </unit>
-+    <unit id="OuCVbmM" name="comments.count">
-+      <notes>
-+        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
-+      </notes>
-+      <segment>
-+        <source>comments.count</source>
-+        <target>%count% коментар|%count% коментарі|%count% коментарів</target>
 +      </segment>
 +    </unit>
 +    <unit id="ynHhXwh" name="flash.success.article.created">

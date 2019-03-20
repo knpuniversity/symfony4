@@ -49,32 +49,32 @@ index 69781fd3..a3ce115a 100644
              return $this->redirectToRoute('admin_article_edit', [
                  'id' => $article->getId(),
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index 6dcf7a98..fb58be7f 100644
+index 7be30d03..f7af6e23 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
 @@ -17,3 +17,5 @@ language.es: Spanish
  language.uk: Ukrainian
  footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%link_end%'
- comments.count: '1 comment|%count% comments'
+ #comments.count: '1 comment|%count% comments'
 +flash.success.article.created: Article Created! Knowledge is power!
 +flash.success.article.updated: Article Updated! Inaccuracies squashed!
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index b95d11cd..f380cbf5 100644
+index afa11516..651589cd 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
-@@ -15,3 +15,5 @@ language.en: Inglés
- language.es: Español
+@@ -17,3 +17,5 @@ language.es: Español
  language.uk: Ukraniano
  footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
+ #comments.count: '1 comentario|%count% comentarios'
 +flash.success.article.created: ¡Artículo creado! ¡El conocimiento es poder!
 +flash.success.article.updated: ¡Artículo actualizado! ¡Las inexactitudes aplastadas!
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
-index b0e1da2d..8ebfc02a 100644
+index d3025836..360f4231 100644
 --- a/translations/messages.uk.yaml
 +++ b/translations/messages.uk.yaml
 @@ -15,3 +15,5 @@ language.en: Англійська
  language.es: Іспанська
  language.uk: Українська
- comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
+ #comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
 +flash.success.article.created: Стаття створена! Знання це сила!
 +flash.success.article.updated: Стаття оновлена! Неточності розчавлені!

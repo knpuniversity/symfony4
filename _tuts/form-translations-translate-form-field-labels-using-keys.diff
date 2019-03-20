@@ -35,10 +35,10 @@ index 5263eaca..a8c62ca7 100644
              'choices' => $choices,
              'required' => false,
 diff --git a/translations/messages.en.yaml b/translations/messages.en.yaml
-index a148ad3f..938834c6 100644
+index d0d9b775..978abb93 100644
 --- a/translations/messages.en.yaml
 +++ b/translations/messages.en.yaml
-@@ -20,8 +20,8 @@ comments.count: '1 comment|%count% comments'
+@@ -20,8 +20,8 @@ footer.html: 'Made with %icon% by the guys and gals at %link_start%SymfonyCasts%
  flash.success.article.created: Article Created! Knowledge is power!
  flash.success.article.updated: Article Updated! Inaccuracies squashed!
  form.article.title: Article title
@@ -53,11 +53,11 @@ index a148ad3f..938834c6 100644
 +form.article.specific_location: Specific location name
 +form.article.published_at: Published at
 diff --git a/translations/messages.es.yaml b/translations/messages.es.yaml
-index f380cbf5..26a87e5e 100644
+index 651589cd..1484003d 100644
 --- a/translations/messages.es.yaml
 +++ b/translations/messages.es.yaml
-@@ -17,3 +17,9 @@ language.uk: Ukraniano
- footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%'
+@@ -19,3 +19,9 @@ footer.html: 'Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCas
+ #comments.count: '1 comentario|%count% comentarios'
  flash.success.article.created: ¡Artículo creado! ¡El conocimiento es poder!
  flash.success.article.updated: ¡Artículo actualizado! ¡Las inexactitudes aplastadas!
 +form.article.title: Título del artículo
@@ -67,11 +67,11 @@ index f380cbf5..26a87e5e 100644
 +form.article.specific_location: Nombre de ubicación específica
 +form.article.published_at: Publicado en
 diff --git a/translations/messages.uk.yaml b/translations/messages.uk.yaml
-index 8ebfc02a..4fe8aa29 100644
+index 360f4231..4821025d 100644
 --- a/translations/messages.uk.yaml
 +++ b/translations/messages.uk.yaml
 @@ -17,3 +17,9 @@ language.uk: Українська
- comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
+ #comments.count: '%count% коментар|%count% коментарі|%count% коментарів'
  flash.success.article.created: Стаття створена! Знання це сила!
  flash.success.article.updated: Стаття оновлена! Неточності розчавлені!
 +form.article.title: Назва статті
