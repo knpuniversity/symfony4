@@ -22,10 +22,11 @@ class AccountController extends BaseController
             'Say hello to our new user @%s who registered just a few minutes ago!',
             $faker->userName
         ));
+        $totalUsersOnline = $faker->numberBetween(1, 5);
 
         $logger->debug('Checking account page for '.$this->getUser()->getEmail());
         return $this->render('account/index.html.twig', [
-
+            'totalUsersOnline' => $totalUsersOnline,
         ]);
     }
 

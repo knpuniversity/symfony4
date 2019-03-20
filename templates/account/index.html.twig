@@ -24,6 +24,14 @@
                             {% if app.user.twitterUsername %}
                                 <h4 class="white"><i class="fa fa-twitter"></i> {{ app.user.twitterUsername }}</h4>
                             {% endif %}
+                            <p>
+                                {% if totalUsersOnline > 1 %}
+                                    You and {{ totalUsersOnline - 1 }} more users
+                                {% else %}
+                                    Only you
+                                {% endif %}
+                                are online right now.
+                            </p>
                             <a class="btn btn-labeled btn-info" href="#">
                                 <span class="btn-label"><i class="fa fa-pencil"></i></span>Update
                             </a>
