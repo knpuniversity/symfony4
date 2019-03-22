@@ -40,13 +40,21 @@ including a normal JavaScript file that lives in the `public/js/` directory:
 
 To get Dropzone rocking, copy the minified JavaScript file and go to the template
 Actually, copy the whole script tag with SRI - that'll include the nice `integrity`
-attribute. Grab the minified link tag too. We don't have a `stylesheets` block
-yet, so we need to add one: `{% block stylesheets %}{% endblock %}`, call
-`{{ parent() }}` and paste the link tag.
+attribute. 
+
+[[[ code('92ffc96f27') ]]]
+
+Grab the minified link tag too. We don't have a `stylesheets` block yet, so we need 
+to add one: `{% block stylesheets %}{% endblock %}`, call `{{ parent() }}` 
+and paste the link tag.
+
+[[[ code('1709d0b1b0') ]]]
 
 Dropzone basically "takes over" your form tag. You don't need a button anymore...
 or even the file input. The form tag *does* need a `dropzone` class... but that's
 it!
+
+[[[ code('4ef9b74022') ]]]
 
 Try it! Refresh and... hello Dropzone!
 
@@ -59,6 +67,8 @@ Back in the controller, scroll up to the upload endpoint and
 `dump($uploadedFile)`. I'm not using `dd()` - dump and die - because this will
 submit via AJAX - and by using `dump()` without die'ing, we'll be able to see it
 in the profiler.
+
+[[[ code('84b0b9bb81') ]]]
 
 Ok: select a file. The *first* cool thing is that the file upload AJAX request
 showed up down on the web debug toolbar! I'll click the hash and open that up
@@ -93,6 +103,8 @@ Open up `admin_article_form.js`. First, at the very top, add
 configure itself on any form that has the `dropzone` class: we're going to do
 it manually.
 
+[[[ code('d2abf59f3c') ]]]
+
 Try it out - close the extra tab and refresh. Hmm... still there? Maybe a force
 refresh? *Now* it's gone. The `dropzone` class still gives us some styling, but
 it's not functional anymore.
@@ -100,21 +112,36 @@ it's not functional anymore.
 To get it working again, inside the `document.ready()`, call a new `initializeDropzone()`
 function.
 
+[[[ code('e986dd151b') ]]]
+
 Copy that name, and, below, add it: `function initializeDropzone()`. If I were using
 Webpack Encore, I'd probably organize this function into its own file and import
 it.
 
+[[[ code('e06419c492') ]]]
+
 The goal here is to find the `form` element and initialize `Dropzone` on it. To
-do that, let's add another class on the form: `js-reference-dropzone`. Copy that,
-and back inside our JavaScript, say `var formElement = document.querySelector()`
+do that, let's add another class on the form: `js-reference-dropzone`. 
+
+[[[ code('9b900b23a4') ]]]
+
+Copy that, and back inside our JavaScript, say `var formElement = document.querySelector()`
 with `.js-reference-dropzone`.
+
+[[[ code('d8263c983f') ]]]
 
 Yes, yes, I'm using straight JavaScript here instead of jQuery to be a bit more
 hipster - no big reason for that. There's also a jQuery plugin for Dropzone.
 Next, to avoid an error on the "new" form that doesn't have this element, if
-`!formElement`, `return`. Finally, initialize things with
-`var dropzone = new Dropzone(formElement)`. And *now* we can pass an array of
-options. The one we need now is `paramName`. Set it to `reference`.
+`!formElement`, `return`. 
+
+[[[ code('cb6e987392') ]]]
+
+Finally, initialize things with `var dropzone = new Dropzone(formElement)`. 
+And *now* we can pass an array of options. The one we need now is `paramName`. 
+Set it to `reference`.
+
+[[[ code('9a26124424') ]]]
 
 That should do it! Head over and select another file - how about `earth.jpeg`.
 And... cool! It looks like it worked. Click to open the profiler for the AJAX
