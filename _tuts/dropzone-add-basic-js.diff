@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index e3a6e826..c010682d 100644
+index e3a6e82..c010682 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -27,6 +27,7 @@ class ArticleReferenceAdminController extends BaseController
@@ -11,7 +11,7 @@ index e3a6e826..c010682d 100644
          $violations = $validator->validate(
              $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 83bf5d84..b604416a 100644
+index 83bf5d8..9c2f802 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -33,16 +33,21 @@
@@ -30,12 +30,12 @@ index 83bf5d84..b604416a 100644
 +{% block stylesheets %}
 +    {{ parent() }}
 +
-+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet">
++    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" integrity="sha256-e47xOkXs1JXFbjjpoRr1/LhVcqSzRmGmPqsrUQeVs+g=" crossorigin="anonymous" />
 +{% endblock %}
 +
  {% block javascripts %}
      {{ parent() }}
  
-+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
++    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js" integrity="sha256-cs4thShDfjkqFGk5s2Lxj35sgSRr4MRcyccmi0WKqCM=" crossorigin="anonymous"></script>
      <script src="{{ asset('js/admin_article_form.js') }}"></script>
  {% endblock %}

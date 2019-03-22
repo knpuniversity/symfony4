@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 221cda83..47e3f5d1 100644
+index 221cda8..47e3f5d 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -11,7 +11,7 @@ index 221cda83..47e3f5d1 100644
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
 diff --git a/composer.lock b/composer.lock
-index 741d6a0e..1611bfa4 100644
+index 741d6a0..1611bfa 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,90 @@
@@ -169,7 +169,7 @@ index 741d6a0e..1611bfa4 100644
              "name": "nexylan/slack",
              "version": "v2.2.0",
 diff --git a/symfony.lock b/symfony.lock
-index 4fe464ff..6a9636ae 100644
+index 4fe464f..6a9636a 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 5fe26f6d..51f0af8b 100644
+index 5fe26f6..51f0af8 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;

@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 24978c5b..b2220472 100644
+index 24978c5..b222047 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -36,6 +36,7 @@ class ReferenceList
@@ -11,13 +11,13 @@ index 24978c5b..b2220472 100644
          this.render();
  
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index c975795d..d53a0dca 100644
+index b693a08..0eed309 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -37,5 +37,6 @@
      {{ parent() }}
  
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js" integrity="sha256-cs4thShDfjkqFGk5s2Lxj35sgSRr4MRcyccmi0WKqCM=" crossorigin="anonymous"></script>
 +    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js" integrity="sha256-uNITVqEk9HNQeW6mAAm2PJwFX2gN45l8a4yocqsFI6I=" crossorigin="anonymous"></script>
      <script src="{{ asset('js/admin_article_form.js') }}"></script>
  {% endblock %}

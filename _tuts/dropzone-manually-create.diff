@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index bec4c243..143d959e 100644
+index bec4c24..143d959 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -1,4 +1,8 @@
@@ -27,7 +27,7 @@ index bec4c243..143d959e 100644
 +    });
 +}
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c010682d..e3a6e826 100644
+index c010682..e3a6e82 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -27,7 +27,6 @@ class ArticleReferenceAdminController extends BaseController
@@ -39,7 +39,7 @@ index c010682d..e3a6e826 100644
          $violations = $validator->validate(
              $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index b604416a..25c07eb8 100644
+index 9c2f802..a3de83b 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -33,7 +33,7 @@
