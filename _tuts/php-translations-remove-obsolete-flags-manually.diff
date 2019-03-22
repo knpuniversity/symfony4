@@ -1,0 +1,286 @@
+diff --git a/translations/KnpPaginatorBundle.en.xlf b/translations/KnpPaginatorBundle.en.xlf
+index cf32df19..42984232 100644
+--- a/translations/KnpPaginatorBundle.en.xlf
++++ b/translations/KnpPaginatorBundle.en.xlf
+@@ -2,9 +2,6 @@
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+   <file id="KnpPaginatorBundle.en">
+     <unit id="ZjmD79F" name="label_previous">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>label_previous</source>
+         <target>Prev</target>
+diff --git a/translations/javascript.en.xlf b/translations/javascript.en.xlf
+index fc5a7d0e..3adbcce8 100644
+--- a/translations/javascript.en.xlf
++++ b/translations/javascript.en.xlf
+@@ -2,27 +2,18 @@
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+   <file id="javascript.en">
+     <unit id="J3w0tcu" name="ice_cream_promo.popup.title">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.title</source>
+         <target>Excellent Choice!</target>
+       </segment>
+     </unit>
+     <unit id="ieY9cMy" name="ice_cream_promo.popup.message.part1">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.message.part1</source>
+         <target>You just bought this delicious Ice Cream from the Space!</target>
+       </segment>
+     </unit>
+     <unit id="5iiVbTX" name="ice_cream_promo.popup.message.part2">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.message.part2</source>
+         <target>Wait for our intergalactic delivery soon ;)</target>
+diff --git a/translations/javascript.es.xlf b/translations/javascript.es.xlf
+index 59a02511..a79f0cad 100644
+--- a/translations/javascript.es.xlf
++++ b/translations/javascript.es.xlf
+@@ -2,27 +2,18 @@
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
+   <file id="javascript.es">
+     <unit id="J3w0tcu" name="ice_cream_promo.popup.title">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.title</source>
+         <target>¡Excelente Opcion!</target>
+       </segment>
+     </unit>
+     <unit id="ieY9cMy" name="ice_cream_promo.popup.message.part1">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.message.part1</source>
+         <target>¡Acabas de comprar este delicioso helado del espacio!</target>
+       </segment>
+     </unit>
+     <unit id="5iiVbTX" name="ice_cream_promo.popup.message.part2">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.message.part2</source>
+         <target>Espere nuestra entrega intergaláctica pronto ;)</target>
+diff --git a/translations/javascript.uk.xlf b/translations/javascript.uk.xlf
+index a2731b8a..9f6db38c 100644
+--- a/translations/javascript.uk.xlf
++++ b/translations/javascript.uk.xlf
+@@ -2,27 +2,18 @@
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
+   <file id="javascript.uk">
+     <unit id="J3w0tcu" name="ice_cream_promo.popup.title">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.title</source>
+         <target>Відмінний Вибір!</target>
+       </segment>
+     </unit>
+     <unit id="ieY9cMy" name="ice_cream_promo.popup.message.part1">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.message.part1</source>
+         <target>Ви щойно купили це смачне морозиво з космосу!</target>
+       </segment>
+     </unit>
+     <unit id="5iiVbTX" name="ice_cream_promo.popup.message.part2">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>ice_cream_promo.popup.message.part2</source>
+         <target>Чекайте на нашу міжгалактичну доставку найближчим часом ;)</target>
+diff --git a/translations/messages.en.xlf b/translations/messages.en.xlf
+index 0b74d4aa..f5d5d857 100644
+--- a/translations/messages.en.xlf
++++ b/translations/messages.en.xlf
+@@ -128,27 +128,18 @@
+       </segment>
+     </unit>
+     <unit id="GF8cHpg" name="language.en">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.en</source>
+         <target>English</target>
+       </segment>
+     </unit>
+     <unit id="75KepRC" name="language.es">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.es</source>
+         <target>Spanish</target>
+       </segment>
+     </unit>
+     <unit id="p0xDHTG" name="language.uk">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.uk</source>
+         <target>Ukrainian</target>
+@@ -182,27 +173,18 @@
+       </segment>
+     </unit>
+     <unit id="T1Uc6GB" name="form.article.title">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>form.article.title</source>
+         <target>Article title</target>
+       </segment>
+     </unit>
+     <unit id="4m.wvQM" name="form.article.title.help">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>form.article.title.help</source>
+         <target>Choose something catchy!</target>
+       </segment>
+     </unit>
+     <unit id="eQsU6Qt" name="form.article.content">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>form.article.content</source>
+         <target>Content</target>
+diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
+index 6bc84afa..3172bafb 100644
+--- a/translations/messages.es.xlf
++++ b/translations/messages.es.xlf
+@@ -128,27 +128,18 @@
+       </segment>
+     </unit>
+     <unit id="GF8cHpg" name="language.en">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.en</source>
+         <target>Inglés</target>
+       </segment>
+     </unit>
+     <unit id="75KepRC" name="language.es">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.es</source>
+         <target>Español</target>
+       </segment>
+     </unit>
+     <unit id="p0xDHTG" name="language.uk">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.uk</source>
+         <target>Ukraniano</target>
+diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
+index f1c8fc1d..e3775ed3 100644
+--- a/translations/messages.uk.xlf
++++ b/translations/messages.uk.xlf
+@@ -119,27 +119,18 @@
+       </segment>
+     </unit>
+     <unit id="GF8cHpg" name="language.en">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.en</source>
+         <target>Англійська</target>
+       </segment>
+     </unit>
+     <unit id="75KepRC" name="language.es">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.es</source>
+         <target>Іспанська</target>
+       </segment>
+     </unit>
+     <unit id="p0xDHTG" name="language.uk">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>language.uk</source>
+         <target>Українська</target>
+@@ -164,9 +155,6 @@
+       </segment>
+     </unit>
+     <unit id="T1Uc6GB" name="form.article.title">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>form.article.title</source>
+         <target>Назва статті</target>
+diff --git a/translations/security.en.xlf b/translations/security.en.xlf
+index b4dfa5a0..799084a3 100644
+--- a/translations/security.en.xlf
++++ b/translations/security.en.xlf
+@@ -2,9 +2,6 @@
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+   <file id="security.en">
+     <unit id="z3cOUZo" name="Username could not be found.">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>Username could not be found.</source>
+         <target>Oh no! It does not look like that email exists!</target>
+diff --git a/translations/security.es.xlf b/translations/security.es.xlf
+index 3b9fa11c..24a445b6 100644
+--- a/translations/security.es.xlf
++++ b/translations/security.es.xlf
+@@ -2,9 +2,6 @@
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
+   <file id="security.es">
+     <unit id="z3cOUZo" name="Username could not be found.">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>Username could not be found.</source>
+         <target>¡Oh no! ¡No parece que ese correo electrónico exista!</target>
+diff --git a/translations/security.uk.xlf b/translations/security.uk.xlf
+index 6165f217..0ecde532 100644
+--- a/translations/security.uk.xlf
++++ b/translations/security.uk.xlf
+@@ -2,9 +2,6 @@
+ <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
+   <file id="security.uk">
+     <unit id="z3cOUZo" name="Username could not be found.">
+-      <notes>
+-        <note category="state" priority="1">obsolete</note>
+-      </notes>
+       <segment>
+         <source>Username could not be found.</source>
+         <target>О ні! Це не схоже, що електронна пошта існує!</target>

@@ -1,10 +1,11 @@
 diff --git a/.gitignore b/.gitignore
-index 206e71ea..3766f68c 100644
+index 206e71ea..c84d86fb 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -1,4 +1,5 @@
+@@ -1,4 +1,6 @@
  /public/translations
 +/translations/
++!translations/app+intl-icu.*.yaml
  
  ###> symfony/framework-bundle ###
  /.env.local
@@ -108,160 +109,6 @@ index 9f6db38c..00000000
 -      <segment>
 -        <source>ice_cream_promo.popup.message.part2</source>
 -        <target>Чекайте на нашу міжгалактичну доставку найближчим часом ;)</target>
--      </segment>
--    </unit>
--  </file>
--</xliff>
-diff --git a/translations/messages+intl-icu.en.xlf b/translations/messages+intl-icu.en.xlf
-deleted file mode 100644
-index c4b494a0..00000000
---- a/translations/messages+intl-icu.en.xlf
-+++ /dev/null
-@@ -1,44 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
--  <file id="messages-intl-icu.en">
--    <unit id="OuCVbmM" name="comments.count">
--      <notes>
--        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
--      </notes>
--      <segment>
--        <source>comments.count</source>
--        <target>{count, plural, one {1 comment} other {# comments}}</target>
--      </segment>
--    </unit>
--    <unit id="4W35VVA" name="flash.just_registered_user">
--      <notes>
--        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
--      </notes>
--      <segment>
--        <source>flash.just_registered_user</source>
--        <target>Say hello to our new user @{nickname}
--{gender, select,
--  male { - he}
--  female { - she}
--  other { who}
--}
--registered just a few minutes ago!
--</target>
--      </segment>
--    </unit>
--    <unit id="a4Y7dsB" name="total_users_online">
--      <notes>
--        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
--      </notes>
--      <segment>
--        <source>total_users_online</source>
--        <target>{count, plural, offset:1
--  =1 {Only you}
--  other {You and # more users}
--}
--are online right now.
--</target>
--      </segment>
--    </unit>
--  </file>
--</xliff>
-diff --git a/translations/messages+intl-icu.es.xlf b/translations/messages+intl-icu.es.xlf
-deleted file mode 100644
-index 73dec123..00000000
---- a/translations/messages+intl-icu.es.xlf
-+++ /dev/null
-@@ -1,44 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
--  <file id="messages-intl-icu.es">
--    <unit id="OuCVbmM" name="comments.count">
--      <notes>
--        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
--      </notes>
--      <segment>
--        <source>comments.count</source>
--        <target>{count, plural, one {1 comentario} other {# comentarios}}</target>
--      </segment>
--    </unit>
--    <unit id="4W35VVA" name="flash.just_registered_user">
--      <notes>
--        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
--      </notes>
--      <segment>
--        <source>flash.just_registered_user</source>
--        <target>Saluda a nuestro nuevo usuario @{nickname}
--{gender, select,
--  male { - el}
--  female { - ella}
--  other { quien}
--}
--se registró hace apenas unos minutos!
--</target>
--      </segment>
--    </unit>
--    <unit id="a4Y7dsB" name="total_users_online">
--      <notes>
--        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
--      </notes>
--      <segment>
--        <source>total_users_online</source>
--        <target>{count, plural, offset:1
--  =1 {Sólo estás}
--  other {Tú y # más usuarios están}
--}
--en línea ahora.
--</target>
--      </segment>
--    </unit>
--  </file>
--</xliff>
-diff --git a/translations/messages+intl-icu.uk.xlf b/translations/messages+intl-icu.uk.xlf
-deleted file mode 100644
-index be6a242d..00000000
---- a/translations/messages+intl-icu.uk.xlf
-+++ /dev/null
-@@ -1,48 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
--  <file id="messages-intl-icu.uk">
--    <unit id="OuCVbmM" name="comments.count">
--      <notes>
--        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
--      </notes>
--      <segment>
--        <source>comments.count</source>
--        <target>{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}</target>
--      </segment>
--    </unit>
--    <unit id="4W35VVA" name="flash.just_registered_user">
--      <notes>
--        <note category="file-source" priority="1">src/Controller/AccountController.php:23</note>
--      </notes>
--      <segment>
--        <source>flash.just_registered_user</source>
--        <target>Привітайтеся з нашим новим користувачем @{nickname}
--{gender, select,
--  male { - він зареєструвався}
--  female { - вона зареєструвалася}
--  other { який зареєструвався}
--}
--лише кілька хвилин тому!
--</target>
--      </segment>
--    </unit>
--    <unit id="a4Y7dsB" name="total_users_online">
--      <notes>
--        <note category="file-source" priority="1">templates/account/index.html.twig:28</note>
--      </notes>
--      <segment>
--        <source>total_users_online</source>
--        <target>{count, plural, offset:1
--  =1 {Тільки ви}
--  =2 {Ви і ще # користувач}
--  =3 {Ви і ще # користувачі}
--  =4 {Ви і ще # користувачі}
--  =5 {Ви і ще # користувачі}
--  other {Ви і ще # користувачів}
--}
--зараз онлайн.
--</target>
 -      </segment>
 -    </unit>
 -  </file>
@@ -609,10 +456,10 @@ index d2943d95..00000000
 -</xliff>
 diff --git a/translations/messages.es.xlf b/translations/messages.es.xlf
 deleted file mode 100644
-index e25b377c..00000000
+index 981afaa4..00000000
 --- a/translations/messages.es.xlf
 +++ /dev/null
-@@ -1,324 +0,0 @@
+@@ -1,305 +0,0 @@
 -<?xml version="1.0" encoding="utf-8"?>
 -<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
 -  <file id="messages.es">
@@ -769,24 +616,6 @@ index e25b377c..00000000
 -        <target>Hecho con %icon% por los chicos y chicas de %link_start%SymfonyCasts%link_end%</target>
 -      </segment>
 -    </unit>
--    <unit id="OuCVbmM" name="comments.count">
--      <notes>
--        <note category="file-source" priority="1">templates/article/homepage.html.twig:27</note>
--      </notes>
--      <segment>
--        <source>comments.count</source>
--        <target>1 comentario|%count% comentarios</target>
--      </segment>
--    </unit>
--    <unit id=".wAO8bF" name="page.article.comments.count">
--      <notes>
--        <note category="file-source" priority="1">templates/article/show.html.twig:44</note>
--      </notes>
--      <segment>
--        <source>page.article.comments.count</source>
--        <target>1 Comentario|%count% Comentarios</target>
--      </segment>
--    </unit>
 -    <unit id="0niVptT" name="agreeTerms">
 -      <notes>
 -        <note category="file-source" priority="1">src/Form/UserRegistrationFormType.php:20</note>
@@ -928,7 +757,6 @@ index e25b377c..00000000
 -    <unit id="bxqC4Q4" name="flash.success.article.updated">
 -      <notes>
 -        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
--        <note category="state" priority="1">new</note>
 -      </notes>
 -      <segment>
 -        <source>flash.success.article.updated</source>
@@ -939,10 +767,10 @@ index e25b377c..00000000
 -</xliff>
 diff --git a/translations/messages.uk.xlf b/translations/messages.uk.xlf
 deleted file mode 100644
-index e27c960e..00000000
+index cc4b970b..00000000
 --- a/translations/messages.uk.xlf
 +++ /dev/null
-@@ -1,333 +0,0 @@
+@@ -1,311 +0,0 @@
 -<?xml version="1.0" encoding="utf-8"?>
 -<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="uk">
 -  <file id="messages.uk">
@@ -1100,9 +928,6 @@ index e27c960e..00000000
 -      </segment>
 -    </unit>
 -    <unit id="T1Uc6GB" name="form.article.title">
--      <notes>
--        <note category="state" priority="1">obsolete</note>
--      </notes>
 -      <segment>
 -        <source>form.article.title</source>
 -        <target>Назва статті</target>
@@ -1243,15 +1068,6 @@ index e27c960e..00000000
 -        <target>Де саме?</target>
 -      </segment>
 -    </unit>
--    <unit id="ynHhXwh" name="flash.success.article.created">
--      <notes>
--        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:34</note>
--      </notes>
--      <segment>
--        <source>flash.success.article.created</source>
--        <target>Стаття створена! Знання це сила!</target>
--      </segment>
--    </unit>
 -    <unit id="wT8Hqm0" name="navbar.item.local_asteroids">
 -      <segment>
 -        <source>navbar.item.local_asteroids</source>
@@ -1262,16 +1078,6 @@ index e27c960e..00000000
 -      <segment>
 -        <source>navbar.item.weather</source>
 -        <target>Погода</target>
--      </segment>
--    </unit>
--    <unit id="bxqC4Q4" name="flash.success.article.updated">
--      <notes>
--        <note category="file-source" priority="1">src/Controller/ArticleAdminController.php:61</note>
--        <note category="state" priority="1">new</note>
--      </notes>
--      <segment>
--        <source>flash.success.article.updated</source>
--        <target>Стаття оновлена! Неточності розчавлені!</target>
 -      </segment>
 -    </unit>
 -  </file>

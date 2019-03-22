@@ -78,7 +78,7 @@ index b0a8ccfc..6e45c7e8 100644
              "name": "phpdocumentor/reflection-common",
              "version": "1.0.1",
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index d3446dc2..6752f15f 100644
+index 7246b410..701dbc06 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -3,6 +3,10 @@ translation:

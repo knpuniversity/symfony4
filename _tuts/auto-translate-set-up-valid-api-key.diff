@@ -9,7 +9,7 @@ index 3f757f48..9de54845 100644
 +TRANSLATOR_API_KEY=foobar
  ### END CUSTOM VARS
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index 6752f15f..5a07e1b9 100644
+index 701dbc06..3c64b9b8 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -6,7 +6,7 @@ translation:

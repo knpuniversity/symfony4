@@ -506,13 +506,23 @@
             "description": null
         },
         {
+            "id": "php-translations-rename-to-app-domain-and-exclude-it",
+            "name": "PHP Translations: Rename to app domain and exclude it",
+            "description": null
+        },
+        {
+            "id": "php-translations-specify-app-domain-explicitly",
+            "name": "PHP Translations: Specify app domain explicitly",
+            "description": null
+        },
+        {
             "id": "php-translations-extract-translations",
             "name": "PHP Translations: Extract translations",
             "description": null
         },
         {
-            "id": "php-translations-create-intl-icu-xliff-files-manually",
-            "name": "PHP Translations: Create Intl ICU XLIFF files manually",
+            "id": "delete-me-2",
+            "name": "DELETE ME 2",
             "description": null
         },
         {
@@ -533,6 +543,11 @@
         {
             "id": "php-translations-translate-all-missing-translations",
             "name": "PHP Translations: Translate all missing translations",
+            "description": null
+        },
+        {
+            "id": "php-translations-remove-obsolete-flags-manually",
+            "name": "PHP Translations: Remove obsolete flags manually",
             "description": null
         },
         {
@@ -661,5 +676,5 @@
             "description": null
         }
     ],
-    "sha": "de9b22013ece2ac5a7008fdd0be731407d7b3d2c"
+    "sha": "dc0598c5b1e325ad72c5dc9ae4673b9cdb7a1587"
 }

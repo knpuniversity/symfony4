@@ -1,18 +1,48 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 4eac2c24..f414defd 100644
+index 19eba37e..032873c0 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -24,7 +24,12 @@
                          <img class="article-img" src="{{ asset(article.imagePath) }}">
                          <div class="article-title d-inline-block pl-3 align-middle">
                              <span>{{ article.title }}</span>
--                            <small>({{ 'comments.count'|trans({'%count%': article.nonDeletedComments|length}) }})</small>
+-                            <small>({{ 'comments.count'|trans({'%count%': article.nonDeletedComments|length}, 'app') }})</small>
 +                            <small>
 +                                ({{ 'comments.count'|trans({
 +                                    '%count%': article.nonDeletedComments|length,
 +                                    '%formatted_number%': article.nonDeletedComments|length|localizednumber
-+                                }) }})
++                                }, 'app') }})
 +                            </small>
                              <br>
                              {% for tag in article.tags %}
                                  <small>
+diff --git a/translations/app+intl-icu.en.yaml b/translations/app+intl-icu.en.yaml
+index 792b9c79..5d20bebd 100644
+--- a/translations/app+intl-icu.en.yaml
++++ b/translations/app+intl-icu.en.yaml
+@@ -1,4 +1,4 @@
+-comments.count: '{count, plural, one {1 comment} other {# comments}}'
++comments.count: '{count, plural, one {1 comment} other {{formatted_number} comments}}'
+ flash.just_registered_user: |
+   Say hello to our new user @{nickname}
+   {gender, select,
+diff --git a/translations/app+intl-icu.es.yaml b/translations/app+intl-icu.es.yaml
+index 60114c28..f63e5947 100644
+--- a/translations/app+intl-icu.es.yaml
++++ b/translations/app+intl-icu.es.yaml
+@@ -1,4 +1,4 @@
+-comments.count: '{count, plural, one {1 comentario} other {# comentarios}}'
++comments.count: '{count, plural, one {1 comentario} other {{formatted_number} comentarios}}'
+ flash.just_registered_user: |
+   Saluda a nuestro nuevo usuario @{nickname}
+   {gender, select,
+diff --git a/translations/app+intl-icu.uk.yaml b/translations/app+intl-icu.uk.yaml
+index 0edc862a..cf2d6fc7 100644
+--- a/translations/app+intl-icu.uk.yaml
++++ b/translations/app+intl-icu.uk.yaml
+@@ -1,4 +1,4 @@
+-comments.count: '{count, plural, one {1 коментар} few {# коментарі} other {# коментарів}}'
++comments.count: '{count, plural, one {1 коментар} few {{formatted_number} коментарі} other {{formatted_number} коментарів}}'
+ flash.just_registered_user: |
+   Привітайтеся з нашим новим користувачем @{nickname}
+   {gender, select,

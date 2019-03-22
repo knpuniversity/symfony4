@@ -520,7 +520,7 @@ index 2aadcd13..142a2d30 100644
 +            factory: 'httplug.factory.guzzle6'
 +            plugins: ['httplug.plugin.cache', 'httplug.plugin.logger']
 diff --git a/config/packages/php_translation.yaml b/config/packages/php_translation.yaml
-index 5a07e1b9..a5d02faf 100644
+index 3c64b9b8..af5f5e4e 100644
 --- a/config/packages/php_translation.yaml
 +++ b/config/packages/php_translation.yaml
 @@ -3,6 +3,7 @@ translation:

@@ -1,0 +1,39 @@
+diff --git a/src/Controller/AccountController.php b/src/Controller/AccountController.php
+index 4d5a891f..48189a2e 100644
+--- a/src/Controller/AccountController.php
++++ b/src/Controller/AccountController.php
+@@ -27,7 +27,7 @@ class AccountController extends BaseController
+                 Person::GENDER_MALE,
+                 Person::GENDER_FEMALE,
+             ]),
+-        ]));
++        ], 'app'));
+ 
+         $totalUsersOnline = $faker->numberBetween(1, 5);
+ 
+diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
+index 3163bcb2..9105eeb4 100644
+--- a/templates/account/index.html.twig
++++ b/templates/account/index.html.twig
+@@ -25,7 +25,7 @@
+                                 <h4 class="white"><i class="fa fa-twitter"></i> {{ app.user.twitterUsername }}</h4>
+                             {% endif %}
+                             <p>
+-                                {{ 'total_users_online'|trans({count: totalUsersOnline}) }}
++                                {{ 'total_users_online'|trans({count: totalUsersOnline}, 'app') }}
+                             </p>
+                             <a class="btn btn-labeled btn-info" href="#">
+                                 <span class="btn-label"><i class="fa fa-pencil"></i></span>Update
+diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
+index 96ab8eb6..c9b63552 100644
+--- a/templates/article/homepage.html.twig
++++ b/templates/article/homepage.html.twig
+@@ -24,7 +24,7 @@
+                         <img class="article-img" src="{{ asset(article.imagePath) }}">
+                         <div class="article-title d-inline-block pl-3 align-middle">
+                             <span>{{ article.title }}</span>
+-                            <small>({{ 'comments.count'|trans({'%count%': article.nonDeletedComments|length}) }})</small>
++                            <small>({{ 'comments.count'|trans({'%count%': article.nonDeletedComments|length}, 'app') }})</small>
+                             <br>
+                             {% for tag in article.tags %}
+                                 <small>
