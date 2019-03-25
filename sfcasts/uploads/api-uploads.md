@@ -134,7 +134,7 @@ an upload of file object, then it will go through validation. It will, uh, both 
 the upload. Everything should just work. And as you remember from our fixtures, and
 we can't actually create an `UploadedFile` object. That's something that's, that's
 unique. Um, it has some unique properties of true PHP file uploads, but we can create
-a `File` object as reminder of what I'm talking about in the `ArticleFixture` at the
+a `File` object as reminder of what I'm talking about in the `ArticleFixtures` at the
 bottom, we actually created a `new File()` object that's the parent class of the upload a
 file object. And we pass it a `$targetPath`, which was actually a file on the
 filesystem. So we can do the exact same thing here. So check this out. First, let's
