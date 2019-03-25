@@ -8,9 +8,13 @@ But now that we *are* using this as an API endpoint, let's fix that! And... this
 kinda simplifies things. For the validation error, we can say
 `return $this->json($violations, 400)`.
 
+[[[ code('0e52ea3d99') ]]]
+
 How nice is that? And at the bottom, we don't *really* need to return anything
 yet, but it's pretty standard to return the JSON of a resource after creating it.
 So, `return $this->json($articleReference)`.
+
+[[[ code('825f3a394a') ]]]
 
 Let's try it! Move over, refresh... even though we don't need to... and select
 `astronaut.jpg`. This time... it fails! Let's see what the error looks like. Hmm,
@@ -30,10 +34,14 @@ above all the fields that we actually want to serialize, how about `$id`, `$file
 `$originalFilename` and `$mimeType`. We're not actually *using* the JSON response
 yet so it doesn't matter - but we *will* use it in a few minutes.
 
+[[[ code('8cca6c9cca') ]]]
+
 Back in the controller, let's break this onto multiple lines. The second argument
 is the status code and we should actually use `201` - that's the proper status
 code when you've *created* a resource. Next is headers - we don't need anything
 custom, and, for context, add an array with `groups` set to `['main']`.
+
+[[[ code('0e3b051447') ]]]
 
 Let's see if that fixed things. Close the profiler and select "stars". Duh - I totally
 forgot - the stars file is too big - you can see it failed. But when you hover
@@ -52,15 +60,23 @@ the error message, not a nice JSON structure with a `detail` key like we have.
 
 No worries: we just need a little extra JavaScript to help this along. Back in
 `admin_article_form.js`, add another option called `init` and set that to a
-`function`. Dropzone calls this when it's setting itself up, and it's a great
+`function`. 
+
+[[[ code('bdcc0a6cba') ]]]
+
+Dropzone calls this when it's setting itself up, and it's a great
 place to add extra behavior via events. For example, want to do something
 whenever there's an error? Call `this.on('error')` and pass that a callback with
 two arguments: a `file` object that holds details about the file that was uploaded
 and `data` - the data sent back from the server.
 
+[[[ code('89d5cbff9f') ]]]
+
 Because the real validation message lives on the `detail` key, we can say:
 if `data.detail`, `this.emit('error')` passing `file` and the actual error message
 string: `data.detail`.
+
+[[[ code('01d71ab62d') ]]]
 
 That's it! Refresh the *whole* thing... and upload the stars file again. It failed...
 but when we hover on it! Nice! There's our validation error.
