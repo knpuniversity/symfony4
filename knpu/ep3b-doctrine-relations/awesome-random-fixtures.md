@@ -102,11 +102,11 @@ This will require you to have one method. Move to the bottom, then, go to the
 "Code" -> "Generate" menu, or `Command` + `N` on a Mac, select "Implement Methods"
 and choose `getDependencies()`. I'll add the `public` before the function:
 
-[[[ code('76c463f682') ]]]
+[[[ code('10079c555d') ]]]
 
 Just return an array with `ArticleFixtures::class`:
 
-[[[ code('130e254ae3') ]]]
+[[[ code('119ecf733c') ]]]
 
 That's it! Load them again:
 
