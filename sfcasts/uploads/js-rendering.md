@@ -16,8 +16,11 @@ will be easy!
 To power the frontend, we need a new API endpoint that will return all of the
 references for a specific Article. We got this: go into
 `ArticleReferenceAdminController` and create a new public function called
-`getArticleReferences()`. Add the `@Route()` above this with
-`/admin/article/{id}/references`.
+`getArticleReferences()`. 
+
+[[[ code('b0a7a56954') ]]]
+
+Add the `@Route()` above this with `/admin/article/{id}/references`.
 
 *This* time, the `id` is the article id. URLs aren't technically important, but
 this is on purpose: in an API, `/admin/article/{id}` would be the URL to get info
@@ -27,10 +30,14 @@ its references.
 Now add the `methods="GET"` - yes you *can* leave off the curly braces when
 there's just one method - and `name="admin_article_list_references"`.
 
+[[[ code('2ca723abc5') ]]]
+
 Down in the method, add the `Article` argument and don't forget
 the security check: `@IsGranted("MANAGE", subject="article")`. We can use the
 annotation this time because we *do* have an `article` argument. Then, oh, it's
 beautiful: `return $this->json($article->getArticleReferences());`.
+
+[[[ code('68ea869968') ]]]
 
 How nice is it!? Let's check it out: in the browser, take off the `/edit` and
 replace it with `/references`. And... oh boy, it explodes!
@@ -50,6 +57,8 @@ serialization group.
 Pass 200 as the status code, no custom headers, but one custom `groups` option
 set to `main`.
 
+[[[ code('3afcf07699') ]]]
+
 Try it again. Gorgeous! That contains *everything* we need to render the list in
 JavaScript.
 
@@ -66,6 +75,8 @@ Let's also add a `data-url` attribute: I want to print the URL to our new endpoi
 to make it easy for JavaScript to fetch the references. Copy the new route name,
 paste it into `path` and add pass the `id` route wildcard set to `article.id`.
 
+[[[ code('757c1ae67a') ]]]
+
 ## The ReferenceList JavaScript Class
 
 Next, in `admin_article_form.js`, I'm going to paste in a class that I've started:
@@ -74,9 +85,13 @@ syntax from JavaScript... which is compatible with *most* browsers, but not all
 of them. That's why I've added this note to use Webpack Encore, which will rewrite
 the new syntax so that it's compatible with whatever browsers you need.
 
+[[[ code('6d4e2562ce') ]]]
+
 Before we dive into this class, let's start using it up on our `document.ready()`
 function. Say `var referenceList = new ReferenceList()` and pass it
 `$('.js-reference-list')` - that's the element we just added the attribute to.
+
+[[[ code('51b3588b3d') ]]]
 
 And... yea! The class mostly takes care of the rest! In the `constructor()`, we
 take in the jQuery element and store it on `this.$element`. It also keeps track of
@@ -113,6 +128,8 @@ add another event listener: `this.on('success')` and pass a callback with the sa
 `file` and `data` arguments. To start, just `console.log(data)` so we can see what
 it looks like.
 
+[[[ code('95cf0ecb6a') ]]]
+
 Ok, refresh, select any file and... in the console... nice! We *already* did the
 work of returning the new `ArticleReference` JSON on success... even though we
 didn't need it before. Thanks past us!
@@ -122,6 +139,8 @@ the `references` property in our class and re-render, we'll be good!
 
 To help that, add a new function called `addReference()`. This will take in a new
 reference and then push it onto `this.references`. Then call `this.render()`.
+
+[[[ code('9fec26bd45') ]]]
 
 For people that are used to React, I *do* want to mention two things. First, we're
 *mutating*, um, changing the `this.references` property when we say
@@ -135,10 +154,16 @@ Anyways, inside of `initializeDropzone()`, add a `referenceList` argument: we're
 going to force this to get passed to us. I'll even document that this will be an
 instance of the `ReferenceList` class.
 
+[[[ code('ed5c700942') ]]]
+
 Back on top, pass in the object - `referenceList`.
+
+[[[ code(f1e0090247) ]]]
 
 And *now* inside success, instead of `console.log()`, we'll say
 `referenceList.addReference(data)`.
+
+[[[ code('c6f87f5106') ]]]
 
 Cool! Give your page a nice refresh. And... let's see: `astronaut.jpg` is the last
 file on the list currently. So let's upload `Earth from the Moon.jpeg`. It uploads
