@@ -25,6 +25,8 @@ to `admin_article_update_reference` - it should be *reference*, not *references*
 let's fix that in both places - I don't think I'm referencing that route name
 anywhere. And instead of `methods={"DELETE"}`, use `methods={"PUT"}`.
 
+[[[ code('61b8a633d0') ]]]
+
 Cool! Let's think about how we want this endpoint to work. First, our JavaScript
 will send a request with a JSON body that contains the data that should be updated
 on the `ArticleReference`. In this case, the data will have only one field:
@@ -41,16 +43,27 @@ freakin' awesome!
 Let's add a few more arguments: `SerializerInterface $serializer` and `Request` -
 the one from `HttpFoundation` - so we can read the raw JSON body.
 
+[[[ code('3db8482b0c') ]]]
+
 To automagically turn the JSON into an `ArticleReference` object, say
 `$serializer->deserialize()`. The serializer only has these two methods: `serialize()`
-and `deserialize()`. This method needs the raw JSON from the request - that's
-`$request->getContent()`, what *type* of object to turn this into -
-`ArticleReference::class` - and the *format* of the data: `json`, because the
-serializer can also handle XML or any crazy format you dream up.
+and `deserialize()`. 
+
+[[[ code('1314198ce6') ]]]
+
+This method needs the raw JSON from the request - that's `$request->getContent()`, 
+what *type* of object to turn this into - `ArticleReference::class` - and 
+the *format* of the data: `json`, because the serializer can also handle XML 
+or any crazy format you dream up.
+
+[[[ code('9f3f5a5335') ]]]
 
 Finally, we can pass some options - called "context". By default, `deserialize()`
 will always create a *new* object... but we want it to update an *existing*
 object. To do that, pass an option called `object_to_populate` set to `$reference`.
+
+[[[ code('c028ac791c') ]]]
+
 Oh, and when we've been *serializing*, we've been passing a `groups` option, which
 tells the serializer to put the properties from the "main" group into the JSON.
 We can do the same thing here: we don't want a clever user to be able to update
@@ -60,19 +73,27 @@ the `originalFilename`.
 Above `$originalFilename`, turn the groups value into an array and give it a second
 group: `input`.
 
+[[[ code('62998df7db') ]]]
+
 In the controller, *way* back down here, set `groups` to `input`. So if any other
 fields or passed, they'll just be ignored.
+
+[[[ code('edf1d12b88') ]]]
 
 And... yea, that's it! We *do* need to think about validation - but, pff, we'll
 handle that later - like in 2 minutes. Right now we can celebrate with
 `$entityManager->persist($reference)`... which we technically don't need because
 this isn't a new object, but I usually add it, and `$entityManager->flush()`.
 
+[[[ code('e569659455') ]]]
+
 What should we return? Typically after you edit a resource in an API, we return
 that resource again. Scroll all the way up to our upload endpoint and steal the
 JSON logic. We could also refactor this into a private method if we wanted to avoid
 duplication. Back down in *our* method, paste, rename the variable to `$reference`
 and use 200 as the status code: we're not *creating* a resource in this case.
+
+[[[ code('a69b05cc3c') ]]]
 
 Ok, that endpoint should be good! Or at least, we're ready to hook up our JavaScript
 so we can find out if it explodes when we use it! That's next.
