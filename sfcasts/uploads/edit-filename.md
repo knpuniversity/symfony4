@@ -41,7 +41,7 @@ If that doesn't make sense yet, don't worry. To find the reference object that's
 being updated right now, say `const reference = this.references.find()` and pass
 this an arrow function with a reference argument. Inside, `return reference.id === id`.
 
-[[[ code('d23fae88d4') ]]]
+[[[ code('b03d540f57') ]]]
 
 This loops over all the references and returns the first one it finds that matches
 the id... which *should* only be one. Now change the `originalFilename` property
@@ -108,7 +108,7 @@ object with the serializer, add `$violations = $validator->validate()` and pass
 it the `$reference` object. Then if `$violations->count() > 0`,
 `return $this->json($violations, 400)`.
 
-[[[ code('31127faad5') ]]]
+[[[ code('402d3c5446') ]]]
 
 We're actually *not* going to handle that in JavaScript - I'll leave rendering
 the errors up to you - you could highlight the element in red and print the error
