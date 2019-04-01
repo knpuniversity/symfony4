@@ -19,6 +19,8 @@ and make it not nullable. Cool!
 Go find the property... there it is. Make it default to 0: until the user
 decides to reorder stuff, setting them all to 0 is fine.
 
+[[[ code('58764a5770') ]]]
+
 Create the migration with the usual:
 
 ```terminal
@@ -46,6 +48,8 @@ It turns out "Sortable"... is a pretty generic name.
 Click to copy the HTML+SRI script tag, then go find the edit template. Scroll down
 to the JavaScript block and... paste!
 
+[[[ code('73bf340679') ]]]
+
 Hey! We *now* have a global `Sortable` variable.
 
 ## Integrating Sortable
@@ -62,6 +66,8 @@ sortable to the `<ul>` element that's around everything. Fortunately, that's *ex
 what `this.$element` represents! So we can say `this.$element`, and, this actually
 wants a raw HTMLElement, not a jQuery object, so add `[0]`.
 
+[[[ code('23eafae906') ]]]
+
 Give it a test! Refresh... and grab... sweet! When we finish ordering, nothing
 *saves* yet, but we'll get there.
 
@@ -70,12 +76,18 @@ Give it a test! Refresh... and grab... sweet! When we finish ordering, nothing
 Before we do, I think we can make this a bit nicer. Pass a second argument to `create()`:
 an array of options. Pass one called `handle` set to `.drag-handle`.
 
+[[[ code('2902c02a9e') ]]]
+
 With this, instead of being able to grab *anywhere* to start sorting, we'll only
 be able to grab elements with this class. Down in render, how about, *before*
 the text field, add `<span class="drag-handle">`, and `fa` and `fa-reorder`.
 
+[[[ code('e33579ff10') ]]]
+
 Oh, and *while* we're making this fancy, add `animation: 150`... it just makes it
 look cooler. Try it! There's our drag handle and... nice - it's a bit smoother.
+
+[[[ code('7c7fc5c144') ]]]
 
 This library doesn't require *any* CSS, which is cool... but we *can* make it
 a little nicer by adding some. In the `public/css/` directory, open `styles.css`.
@@ -84,6 +96,8 @@ This is a nice, boring, normal CSS file that's included on every page.
 Add `.sortable-ghost`. When you're dragging, Sortable adds this class to *where*
 the element will be added if you stop sorting at that moment. Give this a background
 color. Oh, and also, give the `drag-handle` a `cursor: grab`.
+
+[[[ code('df41a1fa43') ]]]
 
 Try it one more time - do a force refresh if it doesn't show up at first. And...
 there's the blue background!
