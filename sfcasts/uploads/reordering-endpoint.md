@@ -10,6 +10,8 @@ To make an AJAX call when we finishing dragging, add a new option: `onEnd`
 set to an arrow function. Inside `console.log(this.sortable)` - that's the sortable
 object we stored earlier `.toArray()`.
 
+[[[ code('40ae8fba6a') ]]]
+
 Check it out: refresh the page, drag one of these... and go look at the console.
 Woh! Those are the reference ids... in the right order! Try it again: move this one
 up and... yep! The id 11 just moved up a few spots.
@@ -34,6 +36,8 @@ action for getting article references, change the name to
 `reorderArticleReferences` and put `/reorder` on the URL. Make this a
 `method="POST"` and name it `admin_article_reorder_references`.
 
+[[[ code('c5a02f68dc') ]]]
+
 If you're wondering about the URL or the method `POST`, well, this endpoint isn't
 very RESTful.. it doesn't fit into the nice create-read-update-delete model...
 and that's ok. Usually when I have a weird endpoint like this, I use POST.
@@ -43,12 +47,19 @@ an array of the ids in the right order. This array exactly. Add the `Request`
 argument so we can get read that data and the `EntityManagerInterface` so we can
 save stuff.
 
+[[[ code('681b6393bd') ]]]
+
 To decode the JSON *this* time, it's so simple! I'm going to skip using Symfony's
 serializer. Say `$orderedIds = json_decode()` passing that `$request->getContent()`
-and true so it gives us an associative array. Then, if `orderedIds === false`,
-something went wrong. Let's `return this->json()` and, to at least *somewhat*
-match the validation responses we've had so far, let's set a detail key to, how
-about, `Invalid body` with 400 for the status code.
+and true so it gives us an associative array. 
+
+[[[ code('de25c962b9') ]]]
+
+Then, if `orderedIds === false`, something went wrong. Let's `return this->json()` and, 
+to at least *somewhat* match the validation responses we've had so far, let's set 
+a detail key to, how about, `Invalid body` with 400 for the status code.
+
+[[[ code('0695c7b424') ]]]
 
 ## Using the Ordered Ids to Update the Database
 
@@ -58,15 +69,21 @@ array is a map from the position to the id - the keys are 0, 1, 2, 3 and so on.
 After the flip, we have a *very* handy array: the key is the *id* and the value
 is its new position.
 
+[[[ code('c1d8fa3100') ]]]
+
 To use this, `foreach` over `$article->getArticleReferences() as $reference`. And
 inside, `$reference->setPosition()` passing this `$orderedIds[$reference->getId()]`
 to look up the new position.
+
+[[[ code('a46f4b1225') ]]]
 
 And yes, we *could* code more defensively - like checking to make sure each array
 key was actually sent. And I *would* do that if this were a public API that other
 people used, or if invalid data could cause some harm.
 
 Anyways, at the bottom, save: `$entityManager->flush()`.
+
+[[[ code('fad4d9b1c8') ]]]
 
 ## Sending the AJAX Request
 
@@ -77,10 +94,14 @@ which is the path to the `admin_article_list_references` route, so
 `/admin/article/{id}/references`. Not by accident, the URL that *we* want is
 that plus `/reorder`.
 
+[[[ code('2a7a47fe56') ]]]
+
 So let's do a *little* bit of code re-use... and a little bit of hardcoding: in general,
 I don't worry *too* much about hardcoding URLs in JavaScript. Copy
 `this.$element.data('url')` from below, paste, and add `/reorder`. Then, method
 set to `POST` and `data` set to  `JSON.stringify(this.sortable.toArray())`.
+
+[[[ code('f19f00d8a7') ]]]
 
 Ok, let's do this! Move over and refresh. No errors yet... Move "astronaut-1.jpg"
 down two spots and... hey! A 200 status code on that AJAX request! That's a good
@@ -96,6 +117,8 @@ by position.
 
 Open up the `Article` entity and, above `$articleReferences`, add
 `@ORM\OrderBy({"position"="ASC"})`.
+
+[[[ code('ce849729b9') ]]]
 
 Let's go check out the endpoint: I'll click to open the URL in a new tab. Woohoo!
 `astronaut-1.jpg` is *third*! Refresh the main page. Boom! The astronaut is right
