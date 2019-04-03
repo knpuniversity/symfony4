@@ -10,7 +10,7 @@ the example configuration. Our *first* job is to register a service for this
 
 Let's close *all* these files so we can concentrate. Now open `config/services.yaml`
 and, at the bottom, paste that config! But I'm going to simplify this: copy the class
-name, remove it, and paste *that* over the service id. Why? First, because, when
+name, remove it, and paste *that* as the service id. Why? First, because, when
 possible, it's just easier to use the class name as the service id instead of inventing
 new service id strings. And second, this will allow us to *autowire* the `S3Client`
 service into any of our services of controllers.
