@@ -33,6 +33,7 @@ chapters:
     - reordering-endpoint
     - s3-bucket-setup
     - aws-s3
+    - s3-public-paths
     - s3-public-private
     - cached-s3-filesystem
     - signed-urls
