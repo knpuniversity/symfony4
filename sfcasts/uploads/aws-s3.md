@@ -17,6 +17,8 @@ a string id. And second, this will allow us to *autowire* the `S3Client` service
 into any of our services or controllers. We won't need that for what we're doing,
 but it's nice.
 
+[[[ code('3391cc3afb') ]]]
+
 This takes just one argument: a big array of config. This *old* looking API version
 is actually still the most recent. For region, this depends on what region
 you chose for your bucket. Mine is `us-east-1` because I selected Virginia. If
@@ -28,6 +30,8 @@ the user. But, we probably don't want to put their values right here and commit 
 to the repository. Instead, open the `.env` file and, inside of the custom vars
 section we created in a previous tutorial, let's invent two new environment variables
 `AWS_S3_ACCESS_ID` and `AWS_S3_ACCESS_SECRET`.
+
+[[[ code('872a493da5') ]]]
 
 If you want, you *could* copy the values and put them directly into this file. But
 remember, the `.env` file *is* committed to your git repository... and you really
@@ -43,6 +47,8 @@ Environment variables, set! To use them, head back to `services.yaml`. Replace
 the key with the special environment variable syntax: `%env()%` and inside,
 `AW`... go copy the name - `AWS_S3_ACCESS_ID`. Re-use that syntax for the secret:
 `AWS_S3_ACCESS_SECRET`.
+
+[[[ code('bc1969f4b9') ]]]
 
 If you forget about Flysystem for a minute, we now have a *fully* functional `S3Client`
 service that we an autowire and use to do anything with our new bucket! The question
@@ -67,13 +73,20 @@ Once that finishes... there. *Now* we can use this `awss3v3` adapter. Open up
 it with `awss3v3:`. The first sub-key this needs is: `client`, which points to the
 *service* id for the `S3Client`.
 
-Add `client:`, copy the service id, and paste. The adapter also needs to know
-what S3 bucket it should be talking to. This is *also* something that you might
-*not* want to commit to your repository, because production will probably use a
-different bucket than when you're developing locally. So, back in our trusty `.env`
-file, add a third environment variable `AWS_S3_ACCESS_BUCKET`... well, I could
-just call this `AWS_S3_BUCKET`... I didn't *really* mean to keep that `ACCESS` part
-in there. But, no problem.
+[[[ code('673898c385') ]]]
+
+Add `client:`, copy the service id, and paste. 
+
+[[[ code('c3484bb448') ]]]
+
+The adapter also needs to know what S3 bucket it should be talking to. 
+This is *also* something that you might *not* want to commit to your repository, 
+because production will probably use a different bucket than when you're 
+developing locally. So, back in our trusty `.env` file, add a third environment 
+variable `AWS_S3_ACCESS_BUCKET`... well, I could just call this `AWS_S3_BUCKET`... 
+I didn't *really* mean to keep that `ACCESS` part in there. But, no problem.
+
+[[[ code('a1deda7969') ]]]
 
 Just like before, copy that, duplicate it in `.env.local` and give it a real
 value, which... if you go back to S3, is `sfcasts-spacebar`. Paste that.
@@ -81,10 +94,14 @@ value, which... if you go back to S3, is `sfcasts-spacebar`. Paste that.
 Finally, copy the new variable's name, open `oneup_flysystem.yaml`, and set
 `bucket` to `%env(AWS_S3_ACCESS_BUCKET)%`.
 
+[[[ code('8c187d3f55') ]]]
+
 That's it! What about the `private_uploads_adapter`? Well, temporarily, copy
 the config from the public adapter and paste it *exactly* down there. We're
 actually *not* going to need two filesystems anymore... but we'll talk about
 that soon.
+
+[[[ code('8c187d3f55') ]]]
 
 Oh, and don't forget the `%` sign at the end of the `%env()%` syntax! I *did*
 do that correctly in `services.yaml`.
