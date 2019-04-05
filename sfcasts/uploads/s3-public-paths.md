@@ -36,6 +36,8 @@ Change this to `https://s3.amazonaws.com/` and then our bucket name, which is
 already available as an environment variable: `%env()%`, then go copy `AWS_S3_ACCESS_BUCKET`,
 and paste.
 
+[[[ code('7f573eb4bb') ]]]
+
 *This* is our new base URL. What about the `uploads_dir_name` parameter? We're
 not using that at *all* anymore! Trash it.
 
@@ -68,9 +70,14 @@ But ever since we started including the full domain in `$publicAssetBaseUrl`, th
 would create a broken URL! We could remove this. Or, to make it *still* work if
 `$publicAssetsBaseUrl` happens to *not* include the domain, above this, set
 `$fullPath = `, copy the path part, replace that with `$fullPath`, and paste.
+
+[[[ code('bc50111e3b') ]]]
+
 Then, if `strpos($fullPath, '://') !== false`, we know that `$fullpath` is already
 absolute. In that case, return it! That's what our code is doing. But if it's
 *not* absolute, we can keep prefixing the sub-directory.
+
+[[[ code('58e18ed956') ]]]
 
 Hey! The files are uploading to S3 and our public paths are pointing to the new
 URLs *perfectly*. Next, we can simplify! Remember how we have one public filesystem
