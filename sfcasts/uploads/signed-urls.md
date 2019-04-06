@@ -1,100 +1,94 @@
-# Signed Urls
+# Private Downloads & Signed URLs
 
-Coming soon...
+I have *one* more performance enhancement I want to do. If you click download,
+it works great! But if these files were bigger, you'd start to notice that the
+downloads would be kinda slow! Open up `ArticleReferenceAdminController` and search
+for download. Remember: we're reading a stream from S3 and sending that directly
+to the user. That's cool... but it also means that there's a middleman in the process:
+our server! That slows things down. Couldn't we somehow give the user direct access
+to the file on S3?
 
-There's one other performance enhancing that we can do and it relates to download
-them. So right now if I hit download a, it works fine, but if you know, if these were
-got, if these were bigger files, you would notice is that these would actually start
-to slow down a little bit. And the reason is that in our `ArticleReferenceAdminController`
-search for download, you remember we're actually, you're reading a stream
-from S3 and sending that directly to the user. But this also, there's still
-doesn't mean there's sort of a middleman or server has to stream from S3 and
-then we have to send that to the user. There's no real reason to do that. We should
-just be able to have the user download the file directly from S3. The problem is
-that the, the URLs are not public number. These are private files. So if we just go
-into our, um,
+Go back to our bucket, head to its root directory, then click into `article_reference`.
+If you click any of these files, each *does* have a URL. But if you try to go to
+it, it's not public. That's *great* because these files are *meant* to be private...
+but it sorta ruins our idea of pointing users directly to this URL.
 
-okay,
+Well, good news! We *can* have our cake and eat it too... as we say... for some
+reason in English. Um, we *can* have the best of both worlds with... signed URLs.
 
-our bucket, I'll refresh the homepage of our bucket and go into article reference. We
-can click these files, they have a public URL, but if we go to it, it's not really
-public. It's access to tonight so it doesn't work. We can solve this by using
-something called a signed URL and this is a time when we're going to do something
-with our kind of remote filesystem that goes beyond what Flysystem to do can do. And
-so we're going to have to deal with directly with S3 a itself, which actually
-turns out to be pretty easy. Google for "S3 PHP client signed url" and
-you'll find their documentation about this. So it's pretty cool. You can basically do
-is you can say, hey S3 I want to make a get request to download this object.
-Um, and then you can basically say I want you to create a signed URL that is valid
-for 20 minutes switch you can do is you can create a download link that anyone can
-access to download a file but are only exists for a short amount of time. Now to do
-this, we need to interact directly with the S3 clients. And may remember that a
-few minutes ago we actually created an S3 client so that we can use it with 
-Flysystem. So awesome. So we can just use that. The other thing we're going to need to
-do is we're going to need our bucket names that when we actually run this object
-code, here we have the bucket name.
+## Hello Signed URLs
 
-So in article reference in `downloadArticleReference()`, let's add another argument
-here.
+Signed URLs are *not* something that we can create with Flysystem - it's specific
+to S3. So, instead of using our Filesystem object, we'll deal with S3 directly,
+which turns out to be pretty awesome!
 
-Yeah,
+Google for "S3 PHP client signed url" to find their docs about this. Signed URLs
+let *us* say:
 
-removed the `$uploaderHelper` we're actually not going to need that anymore. And
-that's three and said say `S3Client $s3client`. And then we're also going to need 
-these `string $s3BucketName` and this will not auto wire. So I'm going to copy 
-that and go to my `services.yaml` and add a bind for this. So I'm going to buy an 
-`$s3BucketName:` to our
+> Hey S3! I want to create a public URL to download this file... but I only want
+> the link to be valid for, like, 20 minutes.
 
-okay.
+Cool, right! Because the link is temporary, it's ok to let users use it.
 
-And I'll need the bucket name. So I'll copy the environment variable syntax for that.
-There we go. So now I can get the bucket name. Uh, next I want you to copy the
-`$disposition =` line because we're going to put that back in a second. But otherwise
-delete everything inside of here. And actually if you want to, I'll put the
-disposition back. I'll come in and out cause I'm the copies and other stuff.
+We'll do this by interacting with the `S3Client` object directly... which is super
+*awesome* because, a few minutes ago, we registered an `S3Client` service so we
+could use it with Flysystem. Half our job is already done!
 
-Uh,
+The other thing we'll need is the bucket name.
 
-I'll put that back so that I can actually go and copy these a few lines of code from
-their documentation. Perfect. So `$s3Client->getCommand('getObject', [])` my bucket or
-replace that with `$s3BucketName` and then the key, that's like the path to the
-file. So this is going to be `$reference->getFilePath()`,
+## Creating the Signed URL
 
-then `$request = $s3Client->createPresignedRequest()`, you can use whatever
-you want here. Um, it's a pretty small file. You don't need much time. And then
-finally, what we also want to do is create a pre-sign URL. So we can do here is we
-can take that request and we can turn that into a, you were out. So it's going to
-give us a big long, you were held that will temporarily be valid to download that.
-And what we're done going to do is actually just redirected user's browser to that
-URL. So down here we can say `return new RedirectResponse()`, and then the
-code that they had over here was to typecast `(string) $request->getUri()`
+Head back to `downloadArticleReference()`. Remove the `UploaderHelper` argument -
+we won't need that anymore - and add `S3Client $s3client`. Also add `string $s3BucketName`.
+That won't autowire, so copy the argument name, open up `services.yaml` and add a
+bind for this `$s3BucketName:`. For the value, copy the environment variable bucket
+syntax from before and... paste.
 
-and that should be it. Let's try it. Let's go back. We don't really need to refresh
-the page, but we'll do it to be safe and let's download our best practices. Boom.
-Well sort of first thing it did work. That's awesome. Um, but it didn't have as
-download it like we did before and that's because we lost the content disposition
-header that we were setting. But check this out. It's pretty cool. It's actually just
-the, you were out to our specific file, but then the sign you were l Amazon put a
-special signature on the end of this and that's going to make this URL a valid for
-only a short period of time. This is an awesome way to make private files temporarily
-public. All right, so what about our content disposition? Now you know where I can
-actually hit this and it says download what we can put that back.
+Cool! Back in the controller, copy the `$disposition` line - we're going to put
+this back in a minute. Then, delete *everything* after the security check, paste
+the `$disposition` line, but comment it out for now.
 
-One of the cool things is that there are lots of options you can pass to this, uh,
-last argument. Um, and you also have options where you can control, well you want to
-do is basically say, hey S3, I want you to allow the user to access his file.
-And when you do, here are a few response headers that I want you to send to the
-client. So for example, if we want, we can, one of the keys we can do here is we can
-say `ResponseContentType` as an option. They have to set the `Content-Type` header
-and here we can use `$reference->getMimeType()`. The other one we can do is
-`ResponseContentDisposition`. And that's where I'll grab our disposition code down
-here, move that back up above our command and we can set that to the `$disposition`. So
-that should cause those same two headers to come back as they did before. It's now
-when we hit download, boom, it actually downloads that. So that's the way that I
-really recommend having users download files of any significant size from S3
+Ok, let's go steal some code from the docs! We already have the `S3Client` object,
+so just grab the rest. Paste that then... let's see... replace `my-bucket` with
+the `$s3BucketName` variable. For `Key`, that's the *file* path:
+`$reference->getFilePath()`. And, for `$request = $s3Client->createPresignedRequest()`,
+you can use whatever lifetime you want. These files are pretty small, so we don't
+need too much time - but let's make the URLs live for 30 minutes.
 
-mmm.
+Now that we have this "request" thing... how can we get the URL? Back on their docs,
+scroll down... here it is: `$request->getUri()`.
 
-You can also do the same thing with cloudfront. Cloudfront is another service that
-gives me even a faster access to S3 process is fair to similar, et Cetera, et
-cetera. I'll talk about that later.
+When the user hits our endpoint, what *we* want to do is *redirect* them to the
+URL. Do that with `return new RedirectResponse()`, `(string)` - they mentioned
+that in the docs, it turns the URI into a string - then `$request->getUri()`.
+
+Let's try it! Refresh! And... download! Ha! It works! We're loading this directly
+from S3. This long URL contains a signature that proves to S3 that the request
+was pre-authenticated and should last for 30 minutes.
+
+## Forcing S3 Response Headers
+
+But we *did* lose one thing: our `Content-Disposition` header! This gave us two
+nice things: it forced the user to download the file instead of loading it "inline",
+*and* it controlled the download filename.
+
+Hmm, this is tricky. Now that the user is no longer downloading the file directly
+from us, we don't really have a way to set custom *headers* on the response. Well,
+actually, that's a big ol' lie! There are *two* ways to do that. First, you can set
+custom headers on each object in S3. *Or* you can *hint* to S3 that you want *it*
+to set custom headers on your behalf when the user goes to the signed URL.
+
+How? Add another option to `getCommand()`: `ResponseContentType` set to
+`$reference->getMimeType()`. That'll hint to S3 that we want it to set a `Content-Type`
+header on the download response. And `ResponseContentDisposition`. Move the
+`$disposition` code up above, then use that value down here.
+
+Cool, right? Go download the file one more time. Ha! It downloads *and* uses the
+original filename. This is probably the best way to allow users to download private
+files. Oh, and if you need even *faster* downloads... cause S3 isn't *that* fast
+for large files, you can do the same thing with Cloudfront. Cloudfront is another
+service that gives users faster access to S3 files, and has a similar process for
+creating signed URLs.
+
+Ok friends, only *one* thing left, and it's a fun one! Let's talk about how our
+file upload endpoint *might* look different if we were building a pure API.

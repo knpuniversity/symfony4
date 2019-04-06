@@ -1,141 +1,153 @@
-# Cached S3 Filesystem
+# Cached S3 Filesystem For Thumbnails
 
-Coming soon...
+Check this out: I'm going to turn off my Wifi! Gasp! What do you think will happen?
+I mean, other than I'm gonna miss all my Tweets and Instagrams! What will happen
+when I refresh? The page will load, but all the images will be broken, right?
 
-All of our images and files of an S3. Right?
+In the name of science, I command us to try it!
 
-MMM,
+Woh! An error!?
 
-that's no problem. Um, but check this out. I'm actually going to turn my Wifi. No,
-what's going to happen when I do this? I mean, when I refresh the page, obviously
-like all of these links to S3 are not going to work anymore, but actually
-building the page should work. So it might be surprising that one refresh it fails in
-exception has been thrown air executing list objects in SF cast space where s3
-Amazon,
+> Error executing ListObjects on https://sf-casts-spacebar ... Could not
+> contact DNS servers.
 
-blah, blah, blah.
+What? Why is our Symfony app trying to connect to S3?
 
-What's happening here, and it has some details about the thumbnails is it may not
-have been obvious, but on every single request, our site is currently making an API
-request to S3 in fact, maybe multiple S3 requests. And the reason for this
-is the imagined bundle. So you remember this, this thing called the resolver and this
-thing called loader. There's actually three things that happen behind the scenes.
-First, every single time, um, that, for example, we use the `|imagine_filter()` filter.
+Here's the deal: on *every* request... for *every* thumbnail image that will be
+rendered, our Symfony app makes an API request to S3 to figure out if the image
+has already been thumbnailed or if it still needs to be. Specifically, LiipImagineBundle
+is doing this.
 
-Okay?
+This bundle has two key concepts: the resolver and the loader. But there are actually
+*three* things that happen behind the scenes. First, every single time that we use
+`|imagine_filter()`, the resolver takes in that path and has to ask:
 
-The resolver takes in that path and it has to ask, has this already been filmed?
-Nailed, yes or no?
 
-Okay.
+> Has this image already been thumbnailed?
 
-Now if you think about it, the only way for the resolver to know that is actually to
-make an API request to S3 to say, Hey, do you already, does this thumbnail file
-already exist? Yes or no? Because if it does exist,
+And if you think about it, the *only* way for the resolver to figure this out is
+by making an API request to S3 to ask:
 
-okay
+> Yo S3! Does this thumbnail file already exist?
 
-then it won't do anything else. And a little just return that you were out to S3
-what should get it? If it doesn't exist, then it needs to use the loader to download
-the file and then the resolve or we'll actually cache it. So right now there is one
-request per thumbnail image just to see if it lives in the cache and that's super
-wasteful. Having those uh, network requests every time. So we're going to do is cache
-that. So going back to the OneupFlysystemBundle and I'm gonna go back to their
-kind of main part of the documentation, I should probably also turn my wife, I back
-up.
+If it *does* exist, LiipImagineBundle renders a URL that points directly to that
+image on S3. If not, it renders a URL to the Symfony route and controller that will
+use the loader to download the file and the resolver to save it back to S3.
 
-Okay. There we go. And
+Phew! The point is: on page load, our app is making one request to S3 *per* thumbnail
+file that the page renders. Those network requests are *super* wasteful!
 
-that's actually a bad way to do it. Let me go back to their home page. There we go
-back to their home page. And if you searched for cache on their homepage, you'll find
-a link eventually called caching your filesystems. This is a really cool feature of
-fly system where you can actually have some filesystems where you say, hey, when you
-read something, uh, cache it, I don't want you to read it again. And this is
-basically what we want to do for our, for Liip. We want Liip to check one time to see
-whether or not that thumbnail exists, but once it exists, it's not going away. It
-doesn't need to do that check every single time. So I'm gonna copy the composer
-require line. This is going to give us a new cached adapter from fly system
+## The Cached Filesystem
 
-and I would run that. 
+What's the solution? Cache it! Go back to OneupFlysystemBundle and find the main
+page of their docs. Oh! Apparently I need Wifi for that! There we go. Go back
+to their docs homepage and search for "cache". You'll eventually find a link about
+"Caching your filesystem".
+
+This is a *super* neat feature of Flysystem where you can say:
+
+> Hey Flysystem! When you check some file metadata, like whether or not a file
+> exists, cache that so that we don't need to ask S3 every time!
+
+Actually, it's even more interesting & useful. LiipImagineBundle calls the `exists()`
+method on the `Filesystem` object to see if the thumbnail file already exists. If
+that returns *false*, the cached filesystem does *not* cache that. But if it returns
+true, it *does* cache it. The result is this: the first time LiipImagineBundle asks
+if a thumbnail image exists, Flysystem will return false, and Liip will know to
+generate it. The *second* time it asks, because the "false" value wasn't cached,
+Flysystem *will* still talk to S3, which will *now* say:
+
+> Yea! That file *does* exist.
+
+And because the cached adapter *does* cache this, the *third* time LiipImagineBundle
+calls `exists`, Flysystem will immediately return `true` without talking to S3.
+
+To get this rocking, copy the composer require line, find your terminal and
+paste to download this "cached" Flysystem adapter.
 
 ```terminal-silent
 composer require league/flysystem-cached-adapter
 ```
 
-Then while we're waiting, let's go look at the documentation.
-So there's a couple things going on here, but basically what you do is you can take
-an existing filesystem, you can register a cache called my cache, and then basically
-tell your filesystem to use that cache. If that doesn't make sense, that's fine. It
-actually has lots of different cache options. We're going to use the one called PSR6
- You may or may not realize that Symfony has a wonderful cast system built into
-it. So anytime you need cache to anything, you can just reuse Symfonys cache system.
-That's exactly what we're going to do here. So start by going to `config/packages/cache.yaml`
-So this is the configuration for a Symfonys cache system. We talked about
-it in our Symfony series. This app cacheier is basically represents a service that
-you can use a for everything, but you can also optionally create additional pools.
-There are common, like almost a little like namespaces. So check this out. We can
-create a new pool. Call `cache.flysystem.psr6:` the name of this is not
-important at all. This is just kind of the, the name I'm giving this filesystem. And
-then I'm going to say adapter `cache.app`, this basically says `cache.app` is
-actually the main caching service in Symfony.
+While we're waiting, go check out the docs. Here's the "gist" of how this works,
+it's 3 parts. First, you have some existing filesystem - like `my_filesystem`.
+*Second*, via this `cache` key, you register a *new* "cached" adapter and tell
+it how you want things to be cached. And third, you tell your existing filesystem
+to process its logic through that cached adapter. If that doesn't totally make
+sense yet, no worries.
 
-MMM.
+For *how* you want the cached adapter to cache things, there are a *bunch* of
+options. We're going to use the one called PSR6. You may or may not already know
+that Symfony has a *wonderful* cache system built right into it. Anytime you need
+to cache *anything*, you can just use *it*!
 
-And this key here is how you configure out how it actually caches, where we're doing
-some fancy stuff with the cache adapters. So we can have cache on and off in the Dev
-and prod environment. We've talked about that in a previous episode, but what the end
-result of this is actually creates a new service, um, that uses cache gap behind the
-filesystem, but it has its own namespace. So own from flipped. So check this out. We
-can run 
+## Configuring Symfony's Cache Pool
+
+Start by going to `config/packages/cache.yaml`. *This* is where you can configure
+anything related to Symfony's cache system, and we talked a bit about it in our
+Symfony Fundamentals course. The `app` key determines how the `cache.app` service
+caches things, which is a general-purpose cache service you can use for anything,
+including this! *Or*, to be fancier - I like being fancy - you can create a cache
+"pool" *based* on this.
+
+Check it out. Uncomment `pools` and create a new cache pool below this called
+`cache.flysystem.psr6`. The name can be anything. Below, set `adapter` to `cache.app`.
+
+That's it! This creates a *new* cache service called `cache.flysystem.psr6` that,
+really... just uses `cache.app` behind the scenes to cache everything. The *advantage*
+is that this new service will automatically use a cache "namespace" so that its
+keys won't collide with other keys from other parts of your app that *also* use
+`cache.app`.
+
+In your terminal, run:
 
 ```terminal
 php bin/console debug:container psr6
 ```
 
-And there you go. There's our new
-`cache.flysystem.psr6`. That's it. Now we can use that next in one up
-flights. It's dumb. It doesn't matter where, but I'll put it on top. We can not
-create a `cache:` key where we start red, uh, registering these cache adapters so long
-to create a new one called `psr6_app_cache:`
+There it is! A new fancy `cache.flysystem.psr6` service.
 
-that he doesn't matter at all. By the way, psr6 is the standard for
-cacheing interfaces. Then we'll say `psr6:`. This key is important. That's what
-tells, um, the bundle to basically use that new, um, cache adaptive that we just
-installed. And here just gonna tell it the ID
+Back in `oneup_flysystem.yaml`, let's use this! On top... though it doesn't matter
+where, add `cache:` and put one new cached adapter below it: `psr6_app_cache`.
+The name here *also* doesn't matter - but we'll reference it in a minute.
 
-of our service. So service `cache.flysystem.psr6`. So just by doing this,
-we've created a kind of a a cache filesystem, but nobody's using it. Yes to actually
-use it. I'm going to duplicate our `upload_filesystem:` and create a second call
-`cached_uploads_filesystem`. It's gonna use the same adapter. We're still gonna upload S3
-but this time we can add an additional `cache:` onto it and then go grab our `psr6_app_cache`
-from up here. You paste it down there. So now it's still going to read and write
-from the same spot, but it's going to catch anything that it gets and you can control
-the lifetime through here. We're going to keep the lifetime permanent cause we never
-want it to be done. So the, so thanks to this, we now have a new service in our
-container.
+And below *that* add `psr6:`. That exact *key* is the important part: it tells
+the bundle that we're going to pass it a PSR6-style caching object that the adapter
+should use internally. Finally, set `service` to what we created in `cache.yaml`:
+`cache.flysystem.psr6`.
 
-We can see it if we search for `cached_uploads`. There we go. The 
-`oneup_flysystem.cached_uploads_filesystem_filesystem`. And so finally in 
-LiipImagineBundle for the loader. We still want to use the original filesystem. 
-We don't want to do any caching. It doesn't really matter. This does the writing 
-of the file, but for the reading of the
+At this point, we have a new Flysystem *cache* adapter... but nobody is using it.
+To fix that, duplicate `uploads_filesystem` and create a second one called
+`cached_uploads_filesystem`. Make it use the same adapter as before, but with an
+extra key: `cache:` set to the adapter name we used above: `psr6_app_cache`.
 
-right,
+Thanks to this, all Filesystem calls will *first* go through the cached adapter.
+If something is cached, it will return it immediately. Everything else will get
+forwarded to the S3 adapter and work like normal. This is *classic* object
+decoration.
 
-I shouldn't say it for the first one. That one doesn't happen very often. There's no
-reason to cache it. That's all we want. But for this one down here, we do want to use
-the cache system, sort of going to put any little `cached_` at the
-beginning of that. This, the resolver is also responsible for writing, but there's
-never any cache and that happens on writing.
+After all of this work, we should have one new service in the container. Run:
 
-Yeah,
+```terminal
+php bin/console debug:container cached_uploads
+```
 
-and that's it. So just a lot of little layers that you need to hook up together. I'm
-to refresh the page now and everything seems to work just fine and check us out. It's
-actually turn off our Wifi. Refresh the page.
+There it is: `oneup_flysystem.cached_uploads_filesystem_filesystem`. *Finally*,
+go back to `liip_imagine.yaml`. For the loader, we don't really need caching:
+this downloads the source file, which should only happen one time anyways. Let's
+leave it.
 
-Wow.
+But for the resolver, we *do* want to cache this. Add the `cached_` to the service
+id. The resolver is responsible for checking if the thumbnail file exists - something
+we *do* want to cache - *and* for *saving* the cached file. But, "save" operations
+are never cached - so it won't affect that.
 
-Everything's still working. Do a forest refresh to make sure there we go and look at
-loads just fine. Of course, all of the CSS and JavaScript and images are missing, but
-it proves that our page is not making those background requests.
+Let's try this! Refresh the page. Ok, everything seems to work fine. Now, check
+your tweets, like some Instagram photos, then turn off your Wifi again. Moment of
+truth: do a force refresh to *fully* make sure we're reloading. Awesome! Yea, the
+page looks *terrible* - a bunch of things fail. But our server did *not* fail:
+we are *no* longer talking to S3 on every request. *Big* win.
+
+Next, let's use a *super* cool feature of S3 - *signed* URLs - to see an alternate
+way of allowing users to download private files, which, for large stuff, is more
+performant.
