@@ -35,11 +35,16 @@ That wasn't on accident: with S3, we don't need two filesystems anymore! We can
 use the same one for both public and private files, and control the visibility
 on a file-by-file basis.
 
-Check it out: remove the `$filesystem =` part and always use `$this->filesystem`. To
-tell Flysystem that a file should be public or private, add a *third* argument
+Check it out: remove the `$filesystem =` part and always use `$this->filesystem`. 
+
+[[[ code('f6adbbb3f1') ]]]
+
+To tell Flysystem that a file should be public or private, add a *third* argument
 to `writeStream()`: an array of options. The option we want is `visibility`. If
 `$isPublic` is true, use `AdapterInterface` - the one from `Flysystem` -
 `::VISIBILITY_PUBLIC`. Otherwise, `AdapterInterface::VISIBILITY_PRIVATE`.
+
+[[[ code('f4d97470e8') ]]]
 
 Cool, right? That won't instantly change the permissions on the files we've already
 uploaded. So let's go upload a new one. Close the tab, select a new file, how
@@ -58,32 +63,55 @@ S3, we don't need an extra "private" filesystem at all! We can do some serious
 cleanup! Start in `config/packages/oneup_flysystem.yaml`: remove the
 `private_uploads_adapter` and filesystem.
 
+[[[ code('043eb07d5b') ]]]
+
 Next, in `services.yaml`, because there's no `private_upload_filesystem` anymore,
 remove that bind.
+
+[[[ code('c76aad6e67') ]]]
 
 That will break `UploaderHelper` because we're using that bind on top. But...
 we don't need it anymore! Remove the `$privateFilesystem` property and
 the `$privateUploadFilesystem` argument.
+
+[[[ code('82b7442d12') ]]]
 
 But, we're still using that property in two places... the first is down in `readStream`.
 Now that everything is stored in *one* filesystem, delete that old code, remove
 the unused argument and always use `$this->filesystem`. Reading a stream is the
 same for public and private files.
 
+[[[ code('b3f5a5d6e3') ]]]
+
 Repeat that in `deleteFile()`: delete the extra logic & argument, and use `$this->filesystem`
 *always*.
 
+[[[ code('a989ac4499') ]]]
+
 Let's see... these two methods are called from `ArticleReferenceAdminController`.
-Take off that second argument for `readStream()`. Then, search for "delete", and
-remove the second argument from `deleteFile()` as well.
+Take off that second argument for `readStream()`. 
+
+[[[ code('c4c29ea97d') ]]]
+
+Then, search for "delete", and remove the second argument from `deleteFile()` as well.
+
+[[[ code('b8bd3faaa1') ]]]
 
 That felt great! There's one more piece of cleanup we can do, it's optional, but
 nice. Using the word "public" in the adapter and filesystem isn't accurate anymore!
-Let's use `uploads_adapter` and `uploads_filesystem`. We reference this in a few
-spots. In `liip_imagine.yaml`, take out the `public_` in these two spots.
+Let's use `uploads_adapter` and `uploads_filesystem`. 
+
+[[[ code('63910c1d01') ]]]
+
+We reference this in a few spots. In `liip_imagine.yaml`, take out the `public_` 
+in these two spots.
+
+[[[ code('2b8ce1dbc7') ]]]
 
 And in `services.yaml`, update the "bind" in the same way. Hmm, and I think I'll
 change the argument name it's binding to: just `$uploadFilesystem`.
+
+[[[ code('bd907c2335') ]]]
 
 That *will* break `UploaderHelper`: we need to rename the argument there. But,
 let's just see what happens if we... "forget" to do that. Refresh the page:
@@ -100,6 +128,8 @@ delete the bind entirely. Ah, here it is:
 This is saying: Hey! I don't know what you want me to send for this argument!
 Put the bind back, then, in `UploaderHelper`... here it is. Change the argument
 to match the bind: `$uploadFilesystem`.
+
+[[[ code('e2bf705455') ]]]
 
 Oh, and there's one more thing we can get rid of! Do we need the `public/uploads`
 directory anymore? No! Delete it! And inside `.gitignore`, we can remove the
