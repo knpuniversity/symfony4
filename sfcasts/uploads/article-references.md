@@ -86,7 +86,7 @@ Anyways, let's add an `<hr>` and set up a bit of structure: `div class="row"` an
 `div class="col-sm-8"`. Say "Details" here and move the entire form inside. Now
 add a `div class="col-sm-4"` and say "References".
 
-[[[ code('2cbb758c9b') ]]]
+[[[ code('dab375073e') ]]]
 
 Let's see how this looks... nice! Form on the left, upload widget thingy on the
 right.
@@ -96,7 +96,7 @@ Here's the plan: add a `<form>` tag with the normal `method="POST"` and
 `<input type="file" name="">`, how about `reference`. Then,
 `<button type="submit">`, some classes to make it not ugly, and "Upload".
 
-[[[ code('e5c56592ce') ]]]
+[[[ code('e8c865e75e') ]]]
 
 Cool! Yes, we *are* going to talk about allowing the user to upload *multiple*
 files at once. Don't worry, things are going to get *much* fancier.
