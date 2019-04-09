@@ -38,3 +38,4 @@ chapters:
     - cached-s3-filesystem
     - signed-urls
     - api-uploads
+    - api-upload-coded
