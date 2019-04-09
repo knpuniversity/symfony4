@@ -10,13 +10,13 @@ Except... how can we allow *authors* to access them? As a first step, let's at l
 *list* the files on the page. In `edit.html.twig`, add a `<ul>` with some Bootstrap
 classes. 
 
-[[[ code('c90c86991c') ]]]
+[[[ code('3f42539072') ]]]
 
 Then loop with `{% for reference in article.articleReferences %}`. Inside,
 add an `<li>`, a *bunch* of classes to make it look fancy, and then print, how about,
 `reference.originalFilename`.
 
-[[[ code('f548cb4d8b') ]]]
+[[[ code('75c6f44739') ]]]
 
 This is pretty cool: when we move the files onto the server, we give them a weird
 filename. But because we saved the *original* filename, we can show that here: the
@@ -50,7 +50,7 @@ Love it! Copy the route name and head back into the template. Add a `<span>` her
 for styling and an anchor with `href="{{ path() }}"`, the route name, and
 `id: reference.id`. For the text, I'll use the Font Awesome download icon.
 
-[[[ code('9c85ee1acf') ]]]
+[[[ code('7c533b545b') ]]]
 
 Try it out! Refresh and... download! So far so good.
 
