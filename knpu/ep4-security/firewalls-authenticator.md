@@ -86,9 +86,8 @@ php bin/console make:auth
 Call the new class `LoginFormAuthenticator`.
 
 ***TIP
-Very soon, this command will contain more interactive questions and be able
-to generate your entire login form code. That's awesome! But to follow with this
-tutorial choose the "empty" authenticator option.
+This command is now more complete and asks you to choose between an Empty authentication or a Login form authenticator.
+When you choose the second option, it generates more code than on the video.Try it
 ***
 
 Nice! This creates one new file: `src/Security/LoginFormAuthenticator.php`:
