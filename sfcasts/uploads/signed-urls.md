@@ -40,9 +40,14 @@ The other thing we'll need is the bucket name.
 
 Head back to `downloadArticleReference()`. Remove the `UploaderHelper` argument -
 we won't need that anymore - and add `S3Client $s3client`. Also add `string $s3BucketName`.
+
+[[[ code('cd38c547ff') ]]]
+
 That won't autowire, so copy the argument name, open up `services.yaml` and add a
 bind for this `$s3BucketName:`. For the value, copy the environment variable bucket
 syntax from before and... paste.
+
+[[[ code('f6729fbf58') ]]]
 
 Cool! Back in the controller, copy the `$disposition` line - we're going to put
 this back in a minute. Then, delete *everything* after the security check, paste
@@ -55,12 +60,16 @@ the `$s3BucketName` variable. For `Key`, that's the *file* path:
 you can use whatever lifetime you want. These files are pretty small, so we don't
 need too much time - but let's make the URLs live for 30 minutes.
 
+[[[ code('0c13e7cd39') ]]]
+
 Now that we have this "request" thing... how can we get the URL? Back on their docs,
 scroll down... here it is: `$request->getUri()`.
 
 When the user hits our endpoint, what *we* want to do is *redirect* them to the
 URL. Do that with `return new RedirectResponse()`, `(string)` - they mentioned
 that in the docs, it turns the URI into a string - then `$request->getUri()`.
+
+[[[ code('e6b41ac2e7') ]]]
 
 Let's try it! Refresh! And... download! Ha! It works! We're loading this directly
 from S3. This long URL contains a signature that proves to S3 that the request
@@ -80,8 +89,14 @@ to set custom headers on your behalf when the user goes to the signed URL.
 
 How? Add another option to `getCommand()`: `ResponseContentType` set to
 `$reference->getMimeType()`. That'll hint to S3 that we want it to set a `Content-Type`
-header on the download response. And `ResponseContentDisposition`. Move the
-`$disposition` code up above, then use that value down here.
+header on the download response. 
+
+[[[ code('a2045b8a47') ]]]
+
+And `ResponseContentDisposition`. Move the `$disposition` code up above, then 
+use that value down here.
+
+[[[ code('40358975ff') ]]]
 
 Cool, right? Go download the file one more time. Ha! It downloads *and* uses the
 original filename. This is probably the best way to allow users to download private
