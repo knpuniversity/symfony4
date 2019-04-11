@@ -1,0 +1,27 @@
+diff --git a/public/js/article_show.js b/assets/js/article_show.js
+similarity index 100%
+rename from public/js/article_show.js
+rename to assets/js/article_show.js
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index 622cbea2..d8e23221 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -81,5 +81,5 @@
+ {% block javascripts %}
+     {{ parent() }}
+ 
+-    <script src="{{ asset('js/article_show.js') }}"></script>
++    {{ encore_entry_script_tags('article_show') }}
+ {% endblock %}
+diff --git a/webpack.config.js b/webpack.config.js
+index e32133a1..0ecaee14 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -18,6 +18,7 @@ Encore
+      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
+      */
+     .addEntry('app', './assets/js/app.js')
++    .addEntry('article_show', './assets/js/article_show.js')
+     //.addEntry('page1', './assets/js/page1.js')
+     //.addEntry('page2', './assets/js/page2.js')
+ 

@@ -1,0 +1,13 @@
+diff --git a/assets/css/layout/_header.scss b/assets/css/layout/_header.scss
+index 7145c804..51c36700 100644
+--- a/assets/css/layout/_header.scss
++++ b/assets/css/layout/_header.scss
+@@ -10,7 +10,7 @@ html {height:100%}
+ /* NAVIGATION */
+ 
+ .navbar-bg {
+-    background: url('../images/space-nav.jpg');
++    background: url('../../images/space-nav.jpg');
+     background-size: 80%;
+ }
+ 

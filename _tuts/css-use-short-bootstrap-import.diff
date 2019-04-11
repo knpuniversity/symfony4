@@ -1,0 +1,7 @@
+diff --git a/assets/css/app.css b/assets/css/app.css
+index 3a7afdf7..01cd567b 100644
+--- a/assets/css/app.css
++++ b/assets/css/app.css
+@@ -1 +1 @@
+-@import '~bootstrap/dist/css/bootstrap.css';
++@import '~bootstrap';

@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 5263eac..4b969cf 100644
+index 5263eaca..4b969cf9 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -9,6 +9,7 @@ use App\Repository\UserRepository;

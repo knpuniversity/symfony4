@@ -1,5 +1,5 @@
 diff --git a/public/css/styles.css b/public/css/styles.css
-index ffdebfe..477b5d4 100644
+index ffdebfe3..477b5d43 100644
 --- a/public/css/styles.css
 +++ b/public/css/styles.css
 @@ -248,3 +248,11 @@ html {height:100%}
@@ -16,7 +16,7 @@ index ffdebfe..477b5d4 100644
 +}
 \ No newline at end of file
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index b222047..c7b9d34 100644
+index b2220472..c7b9d342 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -36,7 +36,10 @@ class ReferenceList

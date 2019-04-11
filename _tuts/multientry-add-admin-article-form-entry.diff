@@ -1,0 +1,27 @@
+diff --git a/public/js/admin_article_form.js b/assets/js/admin_article_form.js
+similarity index 100%
+rename from public/js/admin_article_form.js
+rename to assets/js/admin_article_form.js
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index 0eed3095..d2697b22 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -38,5 +38,5 @@
+ 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js" integrity="sha256-cs4thShDfjkqFGk5s2Lxj35sgSRr4MRcyccmi0WKqCM=" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js" integrity="sha256-uNITVqEk9HNQeW6mAAm2PJwFX2gN45l8a4yocqsFI6I=" crossorigin="anonymous"></script>
+-    <script src="{{ asset('js/admin_article_form.js') }}"></script>
++    {{ encore_entry_script_tags('admin_article_form') }}
+ {% endblock %}
+diff --git a/webpack.config.js b/webpack.config.js
+index 0ecaee14..98f4b7ab 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -19,6 +19,7 @@ Encore
+      */
+     .addEntry('app', './assets/js/app.js')
+     .addEntry('article_show', './assets/js/article_show.js')
++    .addEntry('admin_article_form', './assets/js/admin_article_form.js')
+     //.addEntry('page1', './assets/js/page1.js')
+     //.addEntry('page2', './assets/js/page2.js')
+ 

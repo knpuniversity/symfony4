@@ -1,0 +1,14 @@
+diff --git a/assets/js/article_show.js b/assets/js/article_show.js
+index e47e84cf..ae010599 100644
+--- a/assets/js/article_show.js
++++ b/assets/js/article_show.js
+@@ -1,6 +1,8 @@
+ import '../css/article_show.scss';
+ import $ from 'jquery';
+-import 'bootstrap';
++// technically, with enableSingleRuntimeChunk(), you can be lazy and
++// not import bootstrap, because it was done in app.js
++//import 'bootstrap';
+ 
+ $(document).ready(function() {
+     $('.js-like-article').tooltip();

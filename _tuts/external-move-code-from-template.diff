@@ -1,0 +1,36 @@
+diff --git a/assets/js/app.js b/assets/js/app.js
+index cdc458d8..a0703cfe 100644
+--- a/assets/js/app.js
++++ b/assets/js/app.js
+@@ -14,3 +14,11 @@ import $ from 'jquery';
+ import getNiceMessage from './get_nice_message';
+ 
+ console.log(getNiceMessage(5));
++
++$('.dropdown-toggle').dropdown();
++$('.custom-file-input').on('change', function(event) {
++    var inputFile = event.currentTarget;
++    $(inputFile).parent()
++        .find('.custom-file-label')
++        .html(inputFile.files[0].name);
++});
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index ba9861d5..4c9c1998 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -93,15 +93,6 @@
+ 
+             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+-            <script>
+-                $('.dropdown-toggle').dropdown();
+-                $('.custom-file-input').on('change', function(event) {
+-                    var inputFile = event.currentTarget;
+-                    $(inputFile).parent()
+-                        .find('.custom-file-label')
+-                        .html(inputFile.files[0].name);
+-                });
+-            </script>
+         {% endblock %}
+     </body>
+ </html>

@@ -1,0 +1,20 @@
+diff --git a/public/images/alien-profile.png b/assets/images/alien-profile.png
+similarity index 100%
+rename from public/images/alien-profile.png
+rename to assets/images/alien-profile.png
+diff --git a/public/images/astronaut-profile.png b/assets/images/astronaut-profile.png
+similarity index 100%
+rename from public/images/astronaut-profile.png
+rename to assets/images/astronaut-profile.png
+diff --git a/public/images/meteor-shower.jpg b/assets/images/meteor-shower.jpg
+similarity index 100%
+rename from public/images/meteor-shower.jpg
+rename to assets/images/meteor-shower.jpg
+diff --git a/public/images/space-ice.png b/assets/images/space-ice.png
+similarity index 100%
+rename from public/images/space-ice.png
+rename to assets/images/space-ice.png
+diff --git a/public/images/space-nav.jpg b/assets/images/space-nav.jpg
+similarity index 100%
+rename from public/images/space-nav.jpg
+rename to assets/images/space-nav.jpg

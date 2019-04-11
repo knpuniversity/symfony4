@@ -1,0 +1,13 @@
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index eb385c7a..f996181f 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -12,7 +12,7 @@
+             }) }}
+         </div>
+         <div class="col-sm-3">
+-            {% if articleForm.vars.data.imageFilename %}
++            {% if articleForm.vars.data.imageFilename|default %}
+                 <a href="{{ uploaded_asset(articleForm.vars.data.imagePath) }}" target="_blank">
+                     <img src="{{ articleForm.vars.data.imagePath|imagine_filter('squared_thumbnail_small') }}" height="100">
+                 </a>

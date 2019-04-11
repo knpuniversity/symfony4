@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index c826739..d6e29a7 100644
+index c8267396..d6e29a77 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -9,6 +9,7 @@
@@ -11,7 +11,7 @@ index c826739..d6e29a7 100644
          "nexylan/slack-bundle": "^2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 23f9273..b014bea 100644
+index 23f92731..b014bea8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -78,7 +78,7 @@ index 23f9273..b014bea 100644
              "name": "liip/imagine-bundle",
              "version": "2.1.0",
 diff --git a/symfony.lock b/symfony.lock
-index d89fbbb..8670ed9 100644
+index d89fbbb1..8670ed91 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -134,6 +134,9 @@

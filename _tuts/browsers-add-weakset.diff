@@ -1,0 +1,13 @@
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index 602b14b4..f9cbeae3 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -48,6 +48,8 @@ $(document).ready(function() {
+ class ReferenceList
+ {
+     constructor($element) {
++        var stuff = new WeakSet([]);
++
+         this.$element = $element;
+         this.sortable = Sortable.create(this.$element[0], {
+             handle: '.drag-handle',

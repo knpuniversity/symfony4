@@ -1,0 +1,69 @@
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index 5f2a78ad..53a5a83a 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -1,4 +1,6 @@
+ import $ from 'jquery';
++import Dropzone from 'dropzone';
++import Sortable from 'sortablejs';
+ 
+ Dropzone.autoDiscover = false;
+ 
+diff --git a/package.json b/package.json
+index b26e3193..b9e50efc 100644
+--- a/package.json
++++ b/package.json
+@@ -3,11 +3,13 @@
+         "@symfony/webpack-encore": "^0.27.0",
+         "bootstrap": "^4.3.1",
+         "core-js": "^3.0.0",
++        "dropzone": "^5.5.1",
+         "font-awesome": "^4.7.0",
+         "jquery": "^3.4.0",
+         "node-sass": "^4.11.0",
+         "popper.js": "^1.15.0",
+         "sass-loader": "^7.0.1",
++        "sortablejs": "^1.8.4",
+         "webpack-notifier": "^1.6.0"
+     },
+     "license": "UNLICENSED",
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index d2697b22..07855d60 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -36,7 +36,5 @@
+ {% block javascripts %}
+     {{ parent() }}
+ 
+-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js" integrity="sha256-cs4thShDfjkqFGk5s2Lxj35sgSRr4MRcyccmi0WKqCM=" crossorigin="anonymous"></script>
+-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js" integrity="sha256-uNITVqEk9HNQeW6mAAm2PJwFX2gN45l8a4yocqsFI6I=" crossorigin="anonymous"></script>
+     {{ encore_entry_script_tags('admin_article_form') }}
+ {% endblock %}
+diff --git a/yarn.lock b/yarn.lock
+index f861dbe8..878dfa23 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -2277,6 +2277,11 @@ dot-prop@^4.1.1:
+   dependencies:
+     is-obj "^1.0.0"
+ 
++dropzone@^5.5.1:
++  version "5.5.1"
++  resolved "https://registry.yarnpkg.com/dropzone/-/dropzone-5.5.1.tgz#06e2f513e61d6aa363d4b556f18574f47cf7ba26"
++  integrity sha512-3VduRWLxx9hbVr42QieQN25mx/I61/mRdUSuxAmDGdDqZIN8qtP7tcKMa3KfpJjuGjOJGYYUzzeq6eGDnkzesA==
++
+ duplexify@^3.4.2, duplexify@^3.6.0:
+   version "3.7.1"
+   resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.7.1.tgz#2a4df5317f6ccfd91f86d6fd25d8d8a103b88309"
+@@ -5825,6 +5830,11 @@ sockjs@0.3.19:
+     faye-websocket "^0.10.0"
+     uuid "^3.0.1"
+ 
++sortablejs@^1.8.4:
++  version "1.8.4"
++  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.8.4.tgz#1bbfeafa96d399b83f28e25d8e49d4fbfd867f30"
++  integrity sha512-Brqnzelu1AhFuc0Fn3N/qFex1tlIiuQIUsfu2J8luJ4cRgXYkWrByxa+y5mWEBlj8A0YoABukflIJwvHyrwJ6Q==
++
+ source-list-map@^2.0.0:
+   version "2.0.1"
+   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"

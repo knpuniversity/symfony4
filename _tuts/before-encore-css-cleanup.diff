@@ -1,0 +1,27 @@
+diff --git a/public/css/styles.css b/public/css/styles.css
+index 477b5d43..20b28110 100644
+--- a/public/css/styles.css
++++ b/public/css/styles.css
+@@ -28,22 +28,6 @@ html {height:100%}
+     border: 1px solid #fff;
+ }
+ 
+-
+-/* LOGIN REGISTRATION */
+-
+-.form-container {
+-    border-left: 1px solid #ddd;
+-    border-right: 1px solid #ddd;
+-    border-bottom: 1px solid #ddd;
+-    background: #fff;
+-}
+-
+-.inactive {
+-    border-color: lightgray lightgray lightgray;
+-    background: darkgray;
+-    color: #fff;
+-}
+-
+ .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+     color: #efefee;
+ }

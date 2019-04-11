@@ -1,0 +1,13 @@
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index 7aee8d4e..687cdf9d 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -9,7 +9,7 @@ $(document).ready(function() {
+     const $autoComplete = $('.js-user-autocomplete');
+     if (!$autoComplete.is(':disabled')) {
+         import('./components/algolia-autocomplete').then((autocomplete) => {
+-            autocomplete($autoComplete, 'users', 'email');
++            autocomplete.default($autoComplete, 'users', 'email');
+         });
+     }
+ 

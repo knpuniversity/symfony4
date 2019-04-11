@@ -1,0 +1,15 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index feae1438..4e70c584 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -51,6 +51,10 @@ Encore
+     // enables Sass/SCSS support
+     .enableSassLoader()
+ 
++    .copyFiles({
++        from: './assets/images'
++    })
++
+     // uncomment if you use TypeScript
+     //.enableTypeScriptLoader()
+ 

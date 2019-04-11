@@ -1,0 +1,42 @@
+diff --git a/public/css/algolia-autocomplete.css b/assets/css/algolia-autocomplete.scss
+similarity index 100%
+rename from public/css/algolia-autocomplete.css
+rename to assets/css/algolia-autocomplete.scss
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index e907530a..062a7ea3 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -2,6 +2,8 @@ import $ from 'jquery';
+ import Dropzone from 'dropzone';
+ import 'dropzone/dist/dropzone.css'
+ import Sortable from 'sortablejs';
++import './components/algolia-autocomplete';
++import '../css/algolia-autocomplete.scss';
+ 
+ Dropzone.autoDiscover = false;
+ 
+diff --git a/public/js/algolia-autocomplete.js b/assets/js/components/algolia-autocomplete.js
+similarity index 100%
+rename from public/js/algolia-autocomplete.js
+rename to assets/js/components/algolia-autocomplete.js
+diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
+index dd65428b..5a6c890e 100644
+--- a/templates/article_admin/new.html.twig
++++ b/templates/article_admin/new.html.twig
+@@ -3,8 +3,6 @@
+ {% block javascripts %}
+     {{ parent() }}
+ 
+-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+-    <script src="{{ asset('js/algolia-autocomplete.js') }}"></script>
+     {{ encore_entry_script_tags('admin_article_form') }}
+ {% endblock %}
+ 
+@@ -12,7 +10,6 @@
+     {{ parent() }}
+ 
+     {{ encore_entry_link_tags('admin_article_form') }}
+-    <link rel="stylesheet" href="{{ asset('css/algolia-autocomplete.css') }}">
+ {% endblock %}
+ 
+ {% block content_body %}

@@ -1,0 +1,19 @@
+diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
+index 19bf4436..5168d4f6 100644
+--- a/public/js/admin_article_form.js
++++ b/public/js/admin_article_form.js
+@@ -1,9 +1,11 @@
+ Dropzone.autoDiscover = false;
+ 
+ $(document).ready(function() {
+-    var referenceList = new ReferenceList($('.js-reference-list'));
+-
+-    initializeDropzone(referenceList);
++    const $referenceList = $('.js-reference-list');
++    if ($referenceList[0]) {
++        var referenceList = new ReferenceList($('.js-reference-list'));
++        initializeDropzone(referenceList);
++    }
+ 
+     var $locationSelect = $('.js-article-form-location');
+     var $specificLocationTarget = $('.js-specific-location-target');

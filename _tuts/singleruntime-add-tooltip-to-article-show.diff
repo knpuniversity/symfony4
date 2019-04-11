@@ -1,0 +1,26 @@
+diff --git a/assets/js/article_show.js b/assets/js/article_show.js
+index 52d31d25..354a7ac0 100644
+--- a/assets/js/article_show.js
++++ b/assets/js/article_show.js
+@@ -2,6 +2,8 @@ import '../css/article_show.scss';
+ import $ from 'jquery';
+ 
+ $(document).ready(function() {
++    $('.js-like-article').tooltip();
++
+     $('.js-like-article').on('click', function(e) {
+         e.preventDefault();
+ 
+diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
+index cef0d0b7..71906675 100644
+--- a/templates/article/show.html.twig
++++ b/templates/article/show.html.twig
+@@ -15,7 +15,7 @@
+                 </span>
+                 <span class="pl-2 article-details">
+                     <span class="js-like-article-count">{{ article.heartCount }}</span>
+-                    <a href="{{ path('article_toggle_heart', {slug: article.slug}) }}" class="fa fa-heart-o like-article js-like-article"></a>
++                    <a href="{{ path('article_toggle_heart', {slug: article.slug}) }}" class="fa fa-heart-o like-article js-like-article" title="Click to Like!"></a>
+                 </span>
+                 <span class="pl-2 article-details">
+                     {% for tag in article.tags %}

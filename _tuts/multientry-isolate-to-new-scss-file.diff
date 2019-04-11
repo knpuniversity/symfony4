@@ -1,0 +1,157 @@
+diff --git a/assets/css/article_show.scss b/assets/css/article_show.scss
+new file mode 100644
+index 00000000..aa9b0fb3
+--- /dev/null
++++ b/assets/css/article_show.scss
+@@ -0,0 +1,71 @@
++/* ARTICLE SHOW PAGE */
++
++.show-article-container {
++    width: 100%;
++    background-color: #fff;
++}
++
++.show-article-container.show-article-container-border-green {
++    border-top: 3px solid green;
++    border-radius: 3px;
++}
++
++.show-article-img {
++    width: 250px;
++    height: auto;
++    border-radius: 5px;
++}
++
++.show-article-title {
++    font-size: 2em;
++}
++
++.like-article, .like-article:hover {
++    color: red;
++    text-decoration: none;
++}
++
++@media (max-width: 991px) {
++    .show-article-title {
++        font-size: 1.5em;
++    }
++
++    .show-article-title-container {
++        max-width: 220px;
++    }
++}
++
++.article-text {
++    margin-top: 20px;
++}
++
++.share-icons i {
++    font-size: 1.5em;
++}
++
++.comment-container {
++    max-width: 600px;
++}
++
++.comment-img {
++    width: 50px;
++    height: auto;
++    border: 1px solid darkgray;
++}
++
++.commenter-name {
++    font-weight: bold;
++}
++
++.comment-form {
++    min-width: 500px;
++}
++
++@media (max-width: 767px) {
++    .comment-form {
++        min-width: 260px;
++    }
++    .comment-container {
++        max-width: 280px;
++    }
++}
+diff --git a/assets/css/components/_articles.scss b/assets/css/components/_articles.scss
+index 5fe7657d..732b7b65 100644
+--- a/assets/css/components/_articles.scss
++++ b/assets/css/components/_articles.scss
+@@ -65,75 +65,3 @@
+     background-color: lightblue;
+     border-radius: 5px;
+ }
+-
+-/* ARTICLE SHOW PAGE */
+-
+-.show-article-container {
+-    width: 100%;
+-    background-color: #fff;
+-}
+-
+-.show-article-container.show-article-container-border-green {
+-    border-top: 3px solid green;
+-    border-radius: 3px;
+-}
+-
+-.show-article-img {
+-    width: 250px;
+-    height: auto;
+-    border-radius: 5px;
+-}
+-
+-.show-article-title {
+-    font-size: 2em;
+-}
+-
+-.like-article, .like-article:hover {
+-    color: red;
+-    text-decoration: none;
+-}
+-
+-@media (max-width: 991px) {
+-    .show-article-title {
+-        font-size: 1.5em;
+-    }
+-
+-    .show-article-title-container {
+-        max-width: 220px;
+-    }
+-}
+-
+-.article-text {
+-    margin-top: 20px;
+-}
+-
+-.share-icons i {
+-    font-size: 1.5em;
+-}
+-
+-.comment-container {
+-    max-width: 600px;
+-}
+-
+-.comment-img {
+-    width: 50px;
+-    height: auto;
+-    border: 1px solid darkgray;
+-}
+-
+-.commenter-name {
+-    font-weight: bold;
+-}
+-
+-.comment-form {
+-    min-width: 500px;
+-}
+-
+-@media (max-width: 767px) {
+-    .comment-form {
+-        min-width: 260px;
+-    }
+-    .comment-container {
+-        max-width: 280px;
+-    }
+-}

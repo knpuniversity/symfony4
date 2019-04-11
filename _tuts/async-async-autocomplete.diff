@@ -1,0 +1,22 @@
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index f9cbeae3..7aee8d4e 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -2,14 +2,15 @@ import $ from 'jquery';
+ import Dropzone from 'dropzone';
+ import 'dropzone/dist/dropzone.css'
+ import Sortable from 'sortablejs';
+-import autocomplete from './components/algolia-autocomplete';
+ 
+ Dropzone.autoDiscover = false;
+ 
+ $(document).ready(function() {
+     const $autoComplete = $('.js-user-autocomplete');
+     if (!$autoComplete.is(':disabled')) {
+-        autocomplete($autoComplete, 'users', 'email');
++        import('./components/algolia-autocomplete').then((autocomplete) => {
++            autocomplete($autoComplete, 'users', 'email');
++        });
+     }
+ 
+     const $referenceList = $('.js-reference-list');

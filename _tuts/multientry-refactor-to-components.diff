@@ -1,0 +1,17 @@
+diff --git a/assets/js/app.js b/assets/js/app.js
+index 0c96c24e..41c3bc1c 100644
+--- a/assets/js/app.js
++++ b/assets/js/app.js
+@@ -12,7 +12,7 @@ import $ from 'jquery';
+ import 'bootstrap'; // adds functions to jQuery
+ // uncomment if you have legacy code that needs global variables
+ //global.$ = $;
+-import getNiceMessage from './get_nice_message';
++import getNiceMessage from './components/get_nice_message';
+ 
+ console.log(getNiceMessage(5));
+ 
+diff --git a/assets/js/get_nice_message.js b/assets/js/components/get_nice_message.js
+similarity index 100%
+rename from assets/js/get_nice_message.js
+rename to assets/js/components/get_nice_message.js

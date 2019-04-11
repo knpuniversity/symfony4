@@ -1,0 +1,305 @@
+diff --git a/.gitignore b/.gitignore
+index a714f0f4..b84a14a3 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -19,3 +19,10 @@
+ ###> liip/imagine-bundle ###
+ /public/media/cache/
+ ###< liip/imagine-bundle ###
++
++###> symfony/webpack-encore-bundle ###
++/node_modules/
++/public/build/
++npm-debug.log
++yarn-error.log
++###< symfony/webpack-encore-bundle ###
+diff --git a/assets/css/app.css b/assets/css/app.css
+new file mode 100644
+index 00000000..cb33b131
+--- /dev/null
++++ b/assets/css/app.css
+@@ -0,0 +1,3 @@
++body {
++    background-color: lightgray;
++}
+diff --git a/assets/js/app.js b/assets/js/app.js
+new file mode 100644
+index 00000000..0648e871
+--- /dev/null
++++ b/assets/js/app.js
+@@ -0,0 +1,14 @@
++/*
++ * Welcome to your app's main JavaScript file!
++ *
++ * We recommend including the built version of this JavaScript file
++ * (and its CSS file) in your base layout (base.html.twig).
++ */
++
++// any CSS you require will output into a single css file (app.css in this case)
++require('../css/app.css');
++
++// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
++// const $ = require('jquery');
++
++console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+diff --git a/composer.json b/composer.json
+index d6e29a77..a2e74289 100644
+--- a/composer.json
++++ b/composer.json
+@@ -27,6 +27,7 @@
+         "symfony/twig-bundle": "^4.0",
+         "symfony/validator": "^4.0",
+         "symfony/web-server-bundle": "^4.0",
++        "symfony/webpack-encore-bundle": "^1.4",
+         "symfony/yaml": "^4.0",
+         "twig/extensions": "^1.5"
+     },
+diff --git a/composer.lock b/composer.lock
+index d6f4de6c..0f12fc76 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "608c49a72b290d0e99c3b29ac6cfa0a5",
++    "content-hash": "1d419e0255badecdf294b930b24fbb77",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -6663,6 +6663,60 @@
+             "homepage": "https://symfony.com",
+             "time": "2019-03-04T10:37:56+00:00"
+         },
++        {
++            "name": "symfony/webpack-encore-bundle",
++            "version": "v1.5.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/webpack-encore-bundle.git",
++                "reference": "2384cfde92226f2447eb422570c322afe2ae15ea"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/2384cfde92226f2447eb422570c322afe2ae15ea",
++                "reference": "2384cfde92226f2447eb422570c322afe2ae15ea",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "symfony/asset": "^3.4 || ^4.0",
++                "symfony/config": "^3.4 || ^4.0",
++                "symfony/contracts": "^1.0",
++                "symfony/dependency-injection": "^3.4 || ^4.0",
++                "symfony/http-kernel": "^3.4 || ^4.0"
++            },
++            "require-dev": {
++                "friendsofphp/php-cs-fixer": "^2.14",
++                "symfony/framework-bundle": "^3.4 || ^4.0",
++                "symfony/phpunit-bridge": "^3.4 || ^4.1",
++                "symfony/twig-bundle": "^3.4 || ^4.0",
++                "twig/twig": "^1.35 || ^2.0"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "thanks": {
++                    "name": "symfony/webpack-encore",
++                    "url": "https://github.com/symfony/webpack-encore"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\WebpackEncoreBundle\\": "src"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Integration with your Symfony app & Webpack Encore!",
++            "time": "2019-04-10T17:55:40+00:00"
++        },
+         {
+             "name": "symfony/yaml",
+             "version": "v4.2.5",
+diff --git a/config/bundles.php b/config/bundles.php
+index dfbdc683..ff98702c 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -22,4 +22,5 @@ return [
+     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
+     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
+     Oneup\FlysystemBundle\OneupFlysystemBundle::class => ['all' => true],
++    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+ ];
+diff --git a/config/packages/assets.yaml b/config/packages/assets.yaml
+new file mode 100644
+index 00000000..051d36dc
+--- /dev/null
++++ b/config/packages/assets.yaml
+@@ -0,0 +1,3 @@
++framework:
++    assets:
++        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+diff --git a/config/packages/prod/webpack_encore.yaml b/config/packages/prod/webpack_encore.yaml
+new file mode 100644
+index 00000000..ae4cbaed
+--- /dev/null
++++ b/config/packages/prod/webpack_encore.yaml
+@@ -0,0 +1,4 @@
++#webpack_encore:
++    # Cache the entrypoints.json (rebuild Symfony's cache when entrypoints.json changes)
++    # Available in version 1.2
++    #cache: true
+\ No newline at end of file
+diff --git a/config/packages/webpack_encore.yaml b/config/packages/webpack_encore.yaml
+new file mode 100644
+index 00000000..c7d5006e
+--- /dev/null
++++ b/config/packages/webpack_encore.yaml
+@@ -0,0 +1,13 @@
++webpack_encore:
++    # The path where Encore is building the assets.
++    # This should match Encore.setOutputPath() in webpack.config.js.
++    output_path: '%kernel.project_dir%/public/build'
++    # If multiple builds are defined (as shown below), you can disable the default build:
++    # output_path: false
++
++    # if using Encore.enableIntegrityHashes() specify the crossorigin attribute value (default: false, or use 'anonymous' or 'use-credentials')
++    # crossorigin: 'anonymous'
++
++    # Cache the entrypoints.json (rebuild Symfony's cache when entrypoints.json changes)
++    # Available in version 1.2
++    #cache: '%kernel.debug%'
+\ No newline at end of file
+diff --git a/package.json b/package.json
+new file mode 100644
+index 00000000..3d6f5024
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,15 @@
++{
++    "devDependencies": {
++        "@symfony/webpack-encore": "^0.27.0",
++        "core-js": "^3.0.0",
++        "webpack-notifier": "^1.6.0"
++    },
++    "license": "UNLICENSED",
++    "private": true,
++    "scripts": {
++        "dev-server": "encore dev-server",
++        "dev": "encore dev",
++        "watch": "encore dev --watch",
++        "build": "encore production --progress"
++    }
++}
+\ No newline at end of file
+diff --git a/symfony.lock b/symfony.lock
+index 42e9fa1e..cc37706d 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -500,6 +500,23 @@
+             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
+         }
+     },
++    "symfony/webpack-encore-bundle": {
++        "version": "1.0",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "1.0",
++            "ref": "134850a60890780e53f5ff024fcfadbe960ab89d"
++        },
++        "files": [
++            "assets/css/app.css",
++            "assets/js/app.js",
++            "config/packages/assets.yaml",
++            "config/packages/webpack_encore.yaml",
++            "package.json",
++            "webpack.config.js"
++        ]
++    },
+     "symfony/yaml": {
+         "version": "v4.1.11"
+     },
+diff --git a/webpack.config.js b/webpack.config.js
+new file mode 100644
+index 00000000..a0b24860
+--- /dev/null
++++ b/webpack.config.js
+@@ -0,0 +1,68 @@
++var Encore = require('@symfony/webpack-encore');
++
++Encore
++    // directory where compiled assets will be stored
++    .setOutputPath('public/build/')
++    // public path used by the web server to access the output path
++    .setPublicPath('/build')
++    // only needed for CDN's or sub-directory deploy
++    //.setManifestKeyPrefix('build/')
++
++    /*
++     * ENTRY CONFIG
++     *
++     * Add 1 entry for each "page" of your app
++     * (including one that's included on every page - e.g. "app")
++     *
++     * Each entry will result in one JavaScript file (e.g. app.js)
++     * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
++     */
++    .addEntry('app', './assets/js/app.js')
++    //.addEntry('page1', './assets/js/page1.js')
++    //.addEntry('page2', './assets/js/page2.js')
++
++    // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
++    .splitEntryChunks()
++
++    // will require an extra script tag for runtime.js
++    // but, you probably want this, unless you're building a single-page app
++    .enableSingleRuntimeChunk()
++
++    /*
++     * FEATURE CONFIG
++     *
++     * Enable & configure other features below. For a full
++     * list of features, see:
++     * https://symfony.com/doc/current/frontend.html#adding-more-features
++     */
++    .cleanupOutputBeforeBuild()
++    .enableBuildNotifications()
++    .enableSourceMaps(!Encore.isProduction())
++    // enables hashed filenames (e.g. app.abc123.css)
++    .enableVersioning(Encore.isProduction())
++
++    // enables @babel/preset-env polyfills
++    .configureBabel(() => {}, {
++        useBuiltIns: 'usage',
++        corejs: 3
++    })
++
++    // enables Sass/SCSS support
++    //.enableSassLoader()
++
++    // uncomment if you use TypeScript
++    //.enableTypeScriptLoader()
++
++    // uncomment to get integrity="..." attributes on your script & link tags
++    // requires WebpackEncoreBundle 1.4 or higher
++    //.enableIntegrityHashes()
++
++    // uncomment if you're having problems with a jQuery plugin
++    //.autoProvidejQuery()
++
++    // uncomment if you use API Platform Admin (composer req api-admin)
++    //.enableReactPreset()
++    //.addEntry('admin', './assets/js/admin.js')
++;
++
++module.exports = Encore.getWebpackConfig();
+\ No newline at end of file

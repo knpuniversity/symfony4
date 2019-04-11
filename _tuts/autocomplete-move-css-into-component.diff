@@ -1,0 +1,23 @@
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index 062a7ea3..d123900c 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -3,7 +3,6 @@ import Dropzone from 'dropzone';
+ import 'dropzone/dist/dropzone.css'
+ import Sortable from 'sortablejs';
+ import './components/algolia-autocomplete';
+-import '../css/algolia-autocomplete.scss';
+ 
+ Dropzone.autoDiscover = false;
+ 
+diff --git a/assets/js/components/algolia-autocomplete.js b/assets/js/components/algolia-autocomplete.js
+index a0055710..1a8cd6ac 100644
+--- a/assets/js/components/algolia-autocomplete.js
++++ b/assets/js/components/algolia-autocomplete.js
+@@ -1,5 +1,6 @@
+ import $ from 'jquery';
+ import 'autocomplete.js/dist/autocomplete.jquery';
++import '../../css/algolia-autocomplete.scss';
+ 
+ $(document).ready(function() {
+     $('.js-user-autocomplete').each(function() {

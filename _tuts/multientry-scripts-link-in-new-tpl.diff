@@ -1,0 +1,19 @@
+diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
+index ee092b20..dd65428b 100644
+--- a/templates/article_admin/new.html.twig
++++ b/templates/article_admin/new.html.twig
+@@ -5,12 +5,13 @@
+ 
+     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+     <script src="{{ asset('js/algolia-autocomplete.js') }}"></script>
+-    <script src="{{ asset('js/admin_article_form.js') }}"></script>
++    {{ encore_entry_script_tags('admin_article_form') }}
+ {% endblock %}
+ 
+ {% block stylesheets %}
+     {{ parent() }}
+ 
++    {{ encore_entry_link_tags('admin_article_form') }}
+     <link rel="stylesheet" href="{{ asset('css/algolia-autocomplete.css') }}">
+ {% endblock %}
+ 

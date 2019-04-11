@@ -1,0 +1,12 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 9883c325..99925f2e 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -9,7 +9,6 @@
+         {% block stylesheets %}
+             {{ encore_entry_link_tags('app') }}
+ 
+-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+             <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+         {% endblock %}

@@ -1,0 +1,13 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index 98f4b7ab..08824eea 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -66,7 +66,7 @@ Encore
+     //.enableIntegrityHashes()
+ 
+     // uncomment if you're having problems with a jQuery plugin
+-    //.autoProvidejQuery()
++    .autoProvidejQuery()
+ 
+     // uncomment if you use API Platform Admin (composer req api-admin)
+     //.enableReactPreset()

@@ -1,0 +1,42 @@
+diff --git a/package.json b/package.json
+index b9e50efc..4eb22290 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,7 @@
+ {
+     "devDependencies": {
+         "@symfony/webpack-encore": "^0.27.0",
++        "autocomplete.js": "^0.36.0",
+         "bootstrap": "^4.3.1",
+         "core-js": "^3.0.0",
+         "dropzone": "^5.5.1",
+diff --git a/yarn.lock b/yarn.lock
+index 878dfa23..308a69af 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -1099,6 +1099,13 @@ atob@^2.1.1:
+   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
+   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+ 
++autocomplete.js@^0.36.0:
++  version "0.36.0"
++  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.36.0.tgz#94fe775fe64b6cd42e622d076dc7fd26bedd837b"
++  integrity sha512-jEwUXnVMeCHHutUt10i/8ZiRaCb0Wo+ZyKxeGsYwBDtw6EJHqEeDrq4UwZRD8YBSvp3g6klP678il2eeiVXN2Q==
++  dependencies:
++    immediate "^3.2.3"
++
+ aws-sign2@~0.7.0:
+   version "0.7.0"
+   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
+@@ -3234,6 +3241,11 @@ ignore-walk@^3.0.1:
+   dependencies:
+     minimatch "^3.0.4"
+ 
++immediate@^3.2.3:
++  version "3.2.3"
++  resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.2.3.tgz#d140fa8f614659bd6541233097ddaac25cdd991c"
++  integrity sha1-0UD6j2FGWb1lQSMwl92qwlzdmRw=
++
+ import-fresh@^2.0.0:
+   version "2.0.0"
+   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-2.0.0.tgz#d81355c15612d386c61f9ddd3922d4304822a546"

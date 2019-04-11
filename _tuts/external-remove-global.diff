@@ -1,0 +1,14 @@
+diff --git a/assets/js/app.js b/assets/js/app.js
+index 22be09d9..cdc458d8 100644
+--- a/assets/js/app.js
++++ b/assets/js/app.js
+@@ -9,7 +9,8 @@
+ require('../css/app.css');
+ 
+ import $ from 'jquery';
+-global.$ = $;
++// uncomment if you have legacy code that needs global variables
++//global.$ = $;
+ import getNiceMessage from './get_nice_message';
+ 
+ console.log(getNiceMessage(5));

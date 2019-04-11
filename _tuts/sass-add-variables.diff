@@ -1,0 +1,30 @@
+diff --git a/assets/css/app.scss b/assets/css/app.scss
+index 40e794e0..7e8eff9d 100644
+--- a/assets/css/app.scss
++++ b/assets/css/app.scss
+@@ -1,3 +1,5 @@
++@import './helper/variables';
++
+ @import '~bootstrap';
+ @import '~font-awesome';
+ 
+diff --git a/assets/css/helper/_variables.scss b/assets/css/helper/_variables.scss
+new file mode 100644
+index 00000000..a447ea2b
+--- /dev/null
++++ b/assets/css/helper/_variables.scss
+@@ -0,0 +1 @@
++$lightgray: '#efefef';
+\ No newline at end of file
+diff --git a/assets/css/layout/_header.scss b/assets/css/layout/_header.scss
+index 51c36700..7b354c18 100644
+--- a/assets/css/layout/_header.scss
++++ b/assets/css/layout/_header.scss
+@@ -1,6 +1,6 @@
+ body {
+     position: relative;
+-    background: #efefee;
++    background: $lightgray;
+     min-height: 45rem;
+     padding-bottom: 80px;
+ }

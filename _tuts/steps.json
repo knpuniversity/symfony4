@@ -629,7 +629,352 @@
             "id": "api-put-back-security",
             "name": "API: Put back security",
             "description": null
+        },
+        {
+            "id": "before-encore-upgrade-deps",
+            "name": "Before Encore: Upgrade deps",
+            "description": null
+        },
+        {
+            "id": "before-encore-css-cleanup",
+            "name": "Before Encore: CSS cleanup",
+            "description": null
+        },
+        {
+            "id": "before-encore-fix-bug-in-new-form",
+            "name": "Before Encore: fix bug in new form",
+            "description": null
+        },
+        {
+            "id": "before-encore-avoid-sortable-in-new-form",
+            "name": "Before Encore: avoid sortable in new form",
+            "description": null
+        },
+        {
+            "id": "install-install-encore",
+            "name": "Install: Install encore",
+            "description": null
+        },
+        {
+            "id": "install-yarn-install",
+            "name": "Install: yarn install",
+            "description": null
+        },
+        {
+            "id": "first-pack-disable-single-entry",
+            "name": "First pack: disable single entry",
+            "description": null
+        },
+        {
+            "id": "first-pack-make-css-more-noticeable",
+            "name": "First pack: make CSS more noticeable",
+            "description": null
+        },
+        {
+            "id": "first-pack-add-link-script-tags",
+            "name": "First pack: add link\/script tags",
+            "description": null
+        },
+        {
+            "id": "first-pack-use-encore-bundle-helpers",
+            "name": "First pack: use encore bundle helpers",
+            "description": null
+        },
+        {
+            "id": "import-use-watch-edit",
+            "name": "Import: use --watch, edit",
+            "description": null
+        },
+        {
+            "id": "import-export-fcn-require",
+            "name": "Import: export fcn & require",
+            "description": null
+        },
+        {
+            "id": "import-use-import-export",
+            "name": "Import: use import\/export",
+            "description": null
+        },
+        {
+            "id": "external-install-jquery",
+            "name": "External: install jquery",
+            "description": null
+        },
+        {
+            "id": "external-just-import-it",
+            "name": "External: Just import it",
+            "description": null
+        },
+        {
+            "id": "external-make-jquery-global",
+            "name": "External: make jQuery global",
+            "description": null
+        },
+        {
+            "id": "external-remove-global",
+            "name": "External: remove global",
+            "description": null
+        },
+        {
+            "id": "external-move-code-from-template",
+            "name": "External: Move $ code from template",
+            "description": null
+        },
+        {
+            "id": "external-remove-popper-bootstrap",
+            "name": "External: Remove popper & bootstrap",
+            "description": null
+        },
+        {
+            "id": "external-install-bootstrap",
+            "name": "External: install bootstrap",
+            "description": null
+        },
+        {
+            "id": "external-add-popper",
+            "name": "External: add popper",
+            "description": null
+        },
+        {
+            "id": "css-remove-global-bootstrap",
+            "name": "CSS: Remove global bootstrap",
+            "description": null
+        },
+        {
+            "id": "css-import-long-form",
+            "name": "CSS: import long-form",
+            "description": null
+        },
+        {
+            "id": "css-use-short-bootstrap-import",
+            "name": "CSS: use short bootstrap import",
+            "description": null
+        },
+        {
+            "id": "css-install-font-awesome",
+            "name": "CSS: Install font-awesome",
+            "description": null
+        },
+        {
+            "id": "css-copy-in-styles",
+            "name": "CSS: copy in styles",
+            "description": null
+        },
+        {
+            "id": "css-move-images",
+            "name": "CSS: move images",
+            "description": null
+        },
+        {
+            "id": "sass-try-to-import-scss",
+            "name": "SASS: try to import .scss",
+            "description": null
+        },
+        {
+            "id": "sass-install-enable",
+            "name": "SASS: install & enable",
+            "description": null
+        },
+        {
+            "id": "sass-organize-into-components",
+            "name": "SASS: Organize into components",
+            "description": null
+        },
+        {
+            "id": "sass-fix-image-path",
+            "name": "SASS: fix image path",
+            "description": null
+        },
+        {
+            "id": "sass-add-variables",
+            "name": "SASS: Add _variables",
+            "description": null
+        },
+        {
+            "id": "sass-override-bootstrap-var",
+            "name": "SASS: Override bootstrap var",
+            "description": null
+        },
+        {
+            "id": "copy-copy-images",
+            "name": "Copy: copy images",
+            "description": null
+        },
+        {
+            "id": "copy-control-destination",
+            "name": "Copy: control destination",
+            "description": null
+        },
+        {
+            "id": "copy-update-image-paths",
+            "name": "Copy: Update image paths",
+            "description": null
+        },
+        {
+            "id": "multientry-refactor-to-components",
+            "name": "MultiEntry: refactor to components\/",
+            "description": null
+        },
+        {
+            "id": "multientry-add-article-show-entry",
+            "name": "MultiEntry: Add article_show entry",
+            "description": null
+        },
+        {
+            "id": "multientry-import-jquery",
+            "name": "MultiEntry: import jquery",
+            "description": null
+        },
+        {
+            "id": "multientry-isolate-to-new-scss-file",
+            "name": "MultiEntry: Isolate to new scss file",
+            "description": null
+        },
+        {
+            "id": "multientry-import-variables",
+            "name": "MultiEntry: import variables",
+            "description": null
+        },
+        {
+            "id": "multientry-import-sass-link-tag",
+            "name": "MultiEntry: import sass + link tag",
+            "description": null
+        },
+        {
+            "id": "multientry-add-admin-article-form-entry",
+            "name": "MultiEntry: Add admin_article_form entry",
+            "description": null
+        },
+        {
+            "id": "multientry-import",
+            "name": "MultiEntry: import $",
+            "description": null
+        },
+        {
+            "id": "multientry-install-dropzone-sortable",
+            "name": "MultiEntry: install Dropzone+Sortable",
+            "description": null
+        },
+        {
+            "id": "multientry-import-dropzone-css",
+            "name": "MultiEntry: import dropzone css",
+            "description": null
+        },
+        {
+            "id": "multientry-scripts-link-in-new-tpl",
+            "name": "MultiEntry: scripts+link in new tpl",
+            "description": null
+        },
+        {
+            "id": "autocomplete-install-it",
+            "name": "Autocomplete: Install it",
+            "description": null
+        },
+        {
+            "id": "autocomplete-move-js-import",
+            "name": "Autocomplete: move js & import",
+            "description": null
+        },
+        {
+            "id": "autocomplete-import-jquery-autocomplete",
+            "name": "Autocomplete: import jQuery & autocomplete",
+            "description": null
+        },
+        {
+            "id": "autocomplete-import-plugin",
+            "name": "Autocomplete: import plugin",
+            "description": null
+        },
+        {
+            "id": "autocomplete-autoprovidejquery",
+            "name": "Autocomplete: autoProvidejQuery",
+            "description": null
+        },
+        {
+            "id": "autocomplete-move-css-into-component",
+            "name": "Autocomplete: move css into component",
+            "description": null
+        },
+        {
+            "id": "autocomplete-export-reusable-function",
+            "name": "Autocomplete: export reusable function",
+            "description": null
+        },
+        {
+            "id": "style-entries-make-2x-style-entries",
+            "name": "Style Entries: make 2x style entries",
+            "description": null
+        },
+        {
+            "id": "browsers-enablepostcssloader",
+            "name": "Browsers: enablePostCssLoader",
+            "description": null
+        },
+        {
+            "id": "browsers-install-it",
+            "name": "Browsers: install it",
+            "description": null
+        },
+        {
+            "id": "browsers-add-postcss-config-js",
+            "name": "Browsers: Add postcss.config.js",
+            "description": null
+        },
+        {
+            "id": "browsers-install-autoprefixer",
+            "name": "Browsers: Install autoprefixer",
+            "description": null
+        },
+        {
+            "id": "browsers-add-old-browserslist",
+            "name": "Browsers: add old browserslist",
+            "description": null
+        },
+        {
+            "id": "browsers-very-new-browserlist",
+            "name": "Browsers: very new browserlist",
+            "description": null
+        },
+        {
+            "id": "browsers-add-weakset",
+            "name": "Browsers: add WeakSet",
+            "description": null
+        },
+        {
+            "id": "browsers-back-to-old-browserslist",
+            "name": "Browsers: back to old browserslist",
+            "description": null
+        },
+        {
+            "id": "singleruntime-add-tooltip-to-article-show",
+            "name": "SingleRuntime: Add tooltip to article_show",
+            "description": null
+        },
+        {
+            "id": "singleruntime-import-bootstrap",
+            "name": "SingleRuntime: Import bootstrap",
+            "description": null
+        },
+        {
+            "id": "singleruntime-enablesingleruntimechunk",
+            "name": "SingleRuntime: enableSingleRuntimeChunk()",
+            "description": null
+        },
+        {
+            "id": "singleruntime-be-lazy-with-bootstrap",
+            "name": "SingleRuntime: Be lazy with Bootstrap",
+            "description": null
+        },
+        {
+            "id": "async-async-autocomplete",
+            "name": "Async: async autocomplete",
+            "description": null
+        },
+        {
+            "id": "async-use-default",
+            "name": "Async: use .default",
+            "description": null
         }
     ],
-    "sha": "b377cb14f89d2032064ea5f7e1c0587815cff040"
+    "sha": "39b3df268e4088bde9536cc333bf44eab1e61dc5"
 }

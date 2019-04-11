@@ -1,0 +1,512 @@
+diff --git a/assets/css/app.css b/assets/css/app.css
+index e825b6ce..667520b9 100644
+--- a/assets/css/app.css
++++ b/assets/css/app.css
+@@ -1,2 +1,245 @@
+ @import '~bootstrap';
+ @import '~font-awesome';
++
++body {
++    position: relative;
++    background: #efefee;
++    min-height: 45rem;
++    padding-bottom: 80px;
++}
++
++html {height:100%}
++
++/* NAVIGATION */
++
++.navbar-bg {
++    background: url('../images/space-nav.jpg');
++    background-size: 80%;
++}
++
++.dropdown-menu, .dropdown-menu.show {
++    right: 0;
++}
++
++.space-brand {
++    color: #fff;
++    font-weight: bold;
++}
++
++.nav-profile-img {
++    width: 50px;
++    border: 1px solid #fff;
++}
++
++.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
++    color: #efefee;
++}
++
++/* ADVERTISEMENT */
++
++.ad-space {
++    background: #fff;
++    border-radius: 5px;
++    border-top: 5px solid green;
++}
++
++.advertisement-img {
++    width: 150px;
++    height: auto;
++    border: 2px solid #efefee;
++    border-radius: 5px;
++}
++
++.advertisement-text {
++    font-weight: bold;
++}
++
++.quote-space {
++    background: #fff;
++    margin-top: 30px;
++    border-radius: 5px;
++    border-top: 5px solid hotpink;
++}
++
++/* ARTICLES */
++
++.main-article {
++    border: 2px solid #efefee;
++    Background: #fff;
++    border-top-left-radius: 6px;
++    border-top-right-radius: 6px;
++}
++
++.main-article img {
++    width: 100%;
++    height: 250px;
++    border-top-right-radius: 5px;
++    border-top-left-radius: 5px;
++    border-top: 5px solid lightblue;
++}
++
++.article-container {
++    border: 1px solid #efefee;
++    border-top-left-radius: 5px;
++    border-bottom-left-radius: 5px;
++    background: #fff;
++}
++
++.main-article-link, .article-container a {
++    text-decoration: none;
++    color: #000;
++}
++
++.main-article-link:hover {
++    text-decoration: none;
++    color: #000;
++}
++
++.article-title {
++    min-width: 300px;
++
++}
++
++@media (max-width: 440px) {
++    .article-title {
++        min-width: 100px;
++        max-width: 245px;
++    }
++}
++
++.article-img {
++    height: 100px;
++    width: 100px;
++    border-top-left-radius: 5px;
++    border-bottom-left-radius: 5px;
++}
++
++.article-author-img {
++    height: 25px;
++    border: 1px solid darkgray;
++}
++
++.article-details {
++    font-size: .8em;
++}
++
++/* PROFILE */
++
++.profile-img {
++    width: 150px;
++    height: auto;
++    border: 2px solid #fff;
++}
++
++.profile-name {
++    font-size: 1.5em;
++}
++
++.my-article-container {
++    background: #FFBC49;
++    border: solid 1px #efefee;
++    border-radius: 5px;
++}
++
++
++/* CREATE ARTICLE */
++
++.create-article-container {
++    min-width: 400px;
++    background-color: lightblue;
++    border-radius: 5px;
++}
++
++/* ARTICLE SHOW PAGE */
++
++.show-article-container {
++    width: 100%;
++    background-color: #fff;
++}
++
++.show-article-container.show-article-container-border-green {
++    border-top: 3px solid green;
++    border-radius: 3px;
++}
++
++.show-article-img {
++    width: 250px;
++    height: auto;
++    border-radius: 5px;
++}
++
++.show-article-title {
++    font-size: 2em;
++}
++
++.like-article, .like-article:hover {
++    color: red;
++    text-decoration: none;
++}
++
++@media (max-width: 991px) {
++    .show-article-title {
++        font-size: 1.5em;
++    }
++
++    .show-article-title-container {
++        max-width: 220px;
++    }
++}
++
++.article-text {
++    margin-top: 20px;
++}
++
++.share-icons i {
++    font-size: 1.5em;
++}
++
++.comment-container {
++    max-width: 600px;
++}
++
++.comment-img {
++    width: 50px;
++    height: auto;
++    border: 1px solid darkgray;
++}
++
++.commenter-name {
++    font-weight: bold;
++}
++
++.comment-form {
++    min-width: 500px;
++}
++
++@media (max-width: 767px) {
++    .comment-form {
++        min-width: 260px;
++    }
++    .comment-container {
++        max-width: 280px;
++    }
++}
++
++
++
++/* FOOTER */
++
++.footer {
++  position: absolute;
++  bottom: 0;
++  width: 100%;
++  height: 60px; /* Set the fixed height of the footer here */
++  line-height: 60px; /* Vertically center the text there */
++  background-color: #fff;
++  margin-top: 10px;
++}
++
++/* Sortable */
++.sortable-ghost {
++    background-color: lightblue;
++}
++.drag-handle {
++    cursor: grab;
++}
+diff --git a/public/css/styles.css b/public/css/styles.css
+deleted file mode 100644
+index 20b28110..00000000
+--- a/public/css/styles.css
++++ /dev/null
+@@ -1,242 +0,0 @@
+-body {
+-    position: relative;
+-    background: #efefee;
+-    min-height: 45rem;
+-    padding-bottom: 80px;
+-}
+-
+-html {height:100%}
+-
+-/* NAVIGATION */
+-
+-.navbar-bg {
+-    background: url('../images/space-nav.jpg');
+-    background-size: 80%;
+-}
+-
+-.dropdown-menu, .dropdown-menu.show {
+-    right: 0;
+-}
+-
+-.space-brand {
+-    color: #fff;
+-    font-weight: bold;
+-}
+-
+-.nav-profile-img {
+-    width: 50px;
+-    border: 1px solid #fff;
+-}
+-
+-.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+-    color: #efefee;
+-}
+-
+-/* ADVERTISEMENT */
+-
+-.ad-space {
+-    background: #fff;
+-    border-radius: 5px;
+-    border-top: 5px solid green;
+-}
+-
+-.advertisement-img {
+-    width: 150px;
+-    height: auto;
+-    border: 2px solid #efefee;
+-    border-radius: 5px;
+-}
+-
+-.advertisement-text {
+-    font-weight: bold;
+-}
+-
+-.quote-space {
+-    background: #fff;
+-    margin-top: 30px;
+-    border-radius: 5px;
+-    border-top: 5px solid hotpink;
+-}
+-
+-/* ARTICLES */
+-
+-.main-article {
+-    border: 2px solid #efefee;
+-    Background: #fff;
+-    border-top-left-radius: 6px;
+-    border-top-right-radius: 6px;
+-}
+-
+-.main-article img {
+-    width: 100%;
+-    height: 250px;
+-    border-top-right-radius: 5px;
+-    border-top-left-radius: 5px;
+-    border-top: 5px solid lightblue;
+-}
+-
+-.article-container {
+-    border: 1px solid #efefee;
+-    border-top-left-radius: 5px;
+-    border-bottom-left-radius: 5px;
+-    background: #fff;
+-}
+-
+-.main-article-link, .article-container a {
+-    text-decoration: none;
+-    color: #000;
+-}
+-
+-.main-article-link:hover {
+-    text-decoration: none;
+-    color: #000;
+-}
+-
+-.article-title {
+-    min-width: 300px;
+-
+-}
+-
+-@media (max-width: 440px) {
+-    .article-title {
+-        min-width: 100px;
+-        max-width: 245px;
+-    }
+-}
+-
+-.article-img {
+-    height: 100px;
+-    width: 100px;
+-    border-top-left-radius: 5px;
+-    border-bottom-left-radius: 5px;
+-}
+-
+-.article-author-img {
+-    height: 25px;
+-    border: 1px solid darkgray;
+-}
+-
+-.article-details {
+-    font-size: .8em;
+-}
+-
+-/* PROFILE */
+-
+-.profile-img {
+-    width: 150px;
+-    height: auto;
+-    border: 2px solid #fff;
+-}
+-
+-.profile-name {
+-    font-size: 1.5em;
+-}
+-
+-.my-article-container {
+-    background: #FFBC49;
+-    border: solid 1px #efefee;
+-    border-radius: 5px;
+-}
+-
+-
+-/* CREATE ARTICLE */
+-
+-.create-article-container {
+-    min-width: 400px;
+-    background-color: lightblue;
+-    border-radius: 5px;
+-}
+-
+-/* ARTICLE SHOW PAGE */
+-
+-.show-article-container {
+-    width: 100%;
+-    background-color: #fff;
+-}
+-
+-.show-article-container.show-article-container-border-green {
+-    border-top: 3px solid green;
+-    border-radius: 3px;
+-}
+-
+-.show-article-img {
+-    width: 250px;
+-    height: auto;
+-    border-radius: 5px;
+-}
+-
+-.show-article-title {
+-    font-size: 2em;
+-}
+-
+-.like-article, .like-article:hover {
+-    color: red;
+-    text-decoration: none;
+-}
+-
+-@media (max-width: 991px) {
+-    .show-article-title {
+-        font-size: 1.5em;
+-    }
+-
+-    .show-article-title-container {
+-        max-width: 220px;
+-    }
+-}
+-
+-.article-text {
+-    margin-top: 20px;
+-}
+-
+-.share-icons i {
+-    font-size: 1.5em;
+-}
+-
+-.comment-container {
+-    max-width: 600px;
+-}
+-
+-.comment-img {
+-    width: 50px;
+-    height: auto;
+-    border: 1px solid darkgray;
+-}
+-
+-.commenter-name {
+-    font-weight: bold;
+-}
+-
+-.comment-form {
+-    min-width: 500px;
+-}
+-
+-@media (max-width: 767px) {
+-    .comment-form {
+-        min-width: 260px;
+-    }
+-    .comment-container {
+-        max-width: 280px;
+-    }
+-}
+-
+-
+-
+-/* FOOTER */
+-
+-.footer {
+-  position: absolute;
+-  bottom: 0;
+-  width: 100%;
+-  height: 60px; /* Set the fixed height of the footer here */
+-  line-height: 60px; /* Vertically center the text there */
+-  background-color: #fff;
+-  margin-top: 10px;
+-}
+-
+-/* Sortable */
+-.sortable-ghost {
+-    background-color: lightblue;
+-}
+-.drag-handle {
+-    cursor: grab;
+-}
+\ No newline at end of file
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index cfada468..2c0c564d 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -8,8 +8,6 @@
+ 
+         {% block stylesheets %}
+             {{ encore_entry_link_tags('app') }}
+-
+-            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+         {% endblock %}
+     </head>
+ 

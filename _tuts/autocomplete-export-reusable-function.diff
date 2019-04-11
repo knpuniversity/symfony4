@@ -1,0 +1,56 @@
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index d123900c..602b14b4 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -2,11 +2,16 @@ import $ from 'jquery';
+ import Dropzone from 'dropzone';
+ import 'dropzone/dist/dropzone.css'
+ import Sortable from 'sortablejs';
+-import './components/algolia-autocomplete';
++import autocomplete from './components/algolia-autocomplete';
+ 
+ Dropzone.autoDiscover = false;
+ 
+ $(document).ready(function() {
++    const $autoComplete = $('.js-user-autocomplete');
++    if (!$autoComplete.is(':disabled')) {
++        autocomplete($autoComplete, 'users', 'email');
++    }
++
+     const $referenceList = $('.js-reference-list');
+     if ($referenceList[0]) {
+         var referenceList = new ReferenceList($('.js-reference-list'));
+diff --git a/assets/js/components/algolia-autocomplete.js b/assets/js/components/algolia-autocomplete.js
+index 1a8cd6ac..90d1d255 100644
+--- a/assets/js/components/algolia-autocomplete.js
++++ b/assets/js/components/algolia-autocomplete.js
+@@ -2,8 +2,8 @@ import $ from 'jquery';
+ import 'autocomplete.js/dist/autocomplete.jquery';
+ import '../../css/algolia-autocomplete.scss';
+ 
+-$(document).ready(function() {
+-    $('.js-user-autocomplete').each(function() {
++export default function($elements, dataKey, displayKey) {
++    $elements.each(function() {
+         var autocompleteUrl = $(this).data('autocomplete-url');
+ 
+         $(this).autocomplete({hint: false}, [
+@@ -12,12 +12,15 @@ $(document).ready(function() {
+                     $.ajax({
+                         url: autocompleteUrl+'?query='+query
+                     }).then(function(data) {
+-                        cb(data.users);
++                        if (dataKey) {
++                            data = data[dataKey];
++                        }
++                        cb(data);
+                     });
+                 },
+-                displayKey: 'email',
++                displayKey: displayKey,
+                 debounce: 500 // only request every 1/2 second
+             }
+         ])
+     });
+-});
++};

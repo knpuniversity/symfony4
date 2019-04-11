@@ -1,5 +1,5 @@
 diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
-index 64c2792..873af73 100644
+index 64c27929..873af73f 100644
 --- a/config/packages/liip_imagine.yaml
 +++ b/config/packages/liip_imagine.yaml
 @@ -16,7 +16,7 @@ liip_imagine:
@@ -12,7 +12,7 @@ index 64c2792..873af73 100644
      # default cache resolver for saving thumbnails
      cache: flysystem_resolver
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index a760f36..c50fbc3 100644
+index a760f365..c50fbc35 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -3,7 +3,7 @@ oneup_flysystem:
@@ -25,7 +25,7 @@ index a760f36..c50fbc3 100644
          public_uploads_filesystem:
              adapter: public_uploads_adapter
 diff --git a/config/services.yaml b/config/services.yaml
-index 578d7df..c0a3106 100644
+index 578d7df1..c0a31067 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -6,6 +6,8 @@
@@ -46,7 +46,7 @@ index 578d7df..c0a3106 100644
      # custom aliases for autowiring
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 33cc20c..989ab93 100644
+index 33cc20c8..989ab93a 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -20,11 +20,14 @@ class UploaderHelper

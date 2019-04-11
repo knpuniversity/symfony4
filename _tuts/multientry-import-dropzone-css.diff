@@ -1,0 +1,24 @@
+diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
+index 53a5a83a..e907530a 100644
+--- a/assets/js/admin_article_form.js
++++ b/assets/js/admin_article_form.js
+@@ -1,5 +1,6 @@
+ import $ from 'jquery';
+ import Dropzone from 'dropzone';
++import 'dropzone/dist/dropzone.css'
+ import Sortable from 'sortablejs';
+ 
+ Dropzone.autoDiscover = false;
+diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
+index 07855d60..8f21014e 100644
+--- a/templates/article_admin/edit.html.twig
++++ b/templates/article_admin/edit.html.twig
+@@ -30,7 +30,7 @@
+ {% block stylesheets %}
+     {{ parent() }}
+ 
+-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" integrity="sha256-e47xOkXs1JXFbjjpoRr1/LhVcqSzRmGmPqsrUQeVs+g=" crossorigin="anonymous" />
++    {{ encore_entry_link_tags('admin_article_form') }}
+ {% endblock %}
+ 
+ {% block javascripts %}

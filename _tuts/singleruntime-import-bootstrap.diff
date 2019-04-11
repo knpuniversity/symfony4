@@ -1,0 +1,11 @@
+diff --git a/assets/js/article_show.js b/assets/js/article_show.js
+index 354a7ac0..e47e84cf 100644
+--- a/assets/js/article_show.js
++++ b/assets/js/article_show.js
+@@ -1,5 +1,6 @@
+ import '../css/article_show.scss';
+ import $ from 'jquery';
++import 'bootstrap';
+ 
+ $(document).ready(function() {
+     $('.js-like-article').tooltip();

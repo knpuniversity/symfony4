@@ -1,0 +1,14 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index a0b24860..04b9c206 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -26,7 +26,8 @@ Encore
+ 
+     // will require an extra script tag for runtime.js
+     // but, you probably want this, unless you're building a single-page app
+-    .enableSingleRuntimeChunk()
++    //.enableSingleRuntimeChunk()
++    .disableSingleRuntimeChunk()
+ 
+     /*
+      * FEATURE CONFIG

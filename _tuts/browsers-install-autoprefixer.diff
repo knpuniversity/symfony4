@@ -1,0 +1,68 @@
+diff --git a/package.json b/package.json
+index b899636d..1672829a 100644
+--- a/package.json
++++ b/package.json
+@@ -2,6 +2,7 @@
+     "devDependencies": {
+         "@symfony/webpack-encore": "^0.27.0",
+         "autocomplete.js": "^0.36.0",
++        "autoprefixer": "^9.5.1",
+         "bootstrap": "^4.3.1",
+         "core-js": "^3.0.0",
+         "dropzone": "^5.5.1",
+diff --git a/yarn.lock b/yarn.lock
+index d11fa99e..b84ef602 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -1106,6 +1106,18 @@ autocomplete.js@^0.36.0:
+   dependencies:
+     immediate "^3.2.3"
+ 
++autoprefixer@^9.5.1:
++  version "9.5.1"
++  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.5.1.tgz#243b1267b67e7e947f28919d786b50d3bb0fb357"
++  integrity sha512-KJSzkStUl3wP0D5sdMlP82Q52JLy5+atf2MHAre48+ckWkXgixmfHyWmA77wFDy6jTHU6mIgXv6hAQ2mf1PjJQ==
++  dependencies:
++    browserslist "^4.5.4"
++    caniuse-lite "^1.0.30000957"
++    normalize-range "^0.1.2"
++    num2fraction "^1.2.2"
++    postcss "^7.0.14"
++    postcss-value-parser "^3.3.1"
++
+ aws-sign2@~0.7.0:
+   version "0.7.0"
+   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
+@@ -1449,7 +1461,7 @@ caniuse-api@^3.0.0:
+     lodash.memoize "^4.1.2"
+     lodash.uniq "^4.5.0"
+ 
+-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000955:
++caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000957:
+   version "1.0.30000957"
+   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000957.tgz#fb1026bf184d7d62c685205358c3b24b9e29f7b3"
+   integrity sha512-8wxNrjAzyiHcLXN/iunskqQnJquQQ6VX8JHfW5kLgAPRSiSuKZiNfmIkP5j7jgyXqAQBSoXyJxfnbCFS0ThSiQ==
+@@ -4394,6 +4406,11 @@ normalize-path@^3.0.0:
+   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
+   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
+ 
++normalize-range@^0.1.2:
++  version "0.1.2"
++  resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
++  integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
++
+ normalize-url@^3.0.0:
+   version "3.3.0"
+   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
+@@ -4436,6 +4453,11 @@ nth-check@^1.0.2, nth-check@~1.0.1:
+   dependencies:
+     boolbase "~1.0.0"
+ 
++num2fraction@^1.2.2:
++  version "1.2.2"
++  resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
++  integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
++
+ number-is-nan@^1.0.0:
+   version "1.0.1"
+   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"

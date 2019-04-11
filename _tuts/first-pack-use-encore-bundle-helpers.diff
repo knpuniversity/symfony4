@@ -1,0 +1,22 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index dedc2d0d..cc2d7e95 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -7,7 +7,7 @@
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+         {% block stylesheets %}
+-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
++            {{ encore_entry_link_tags('app') }}
+ 
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+             <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+@@ -89,7 +89,7 @@
+ 
+ 
+         {% block javascripts %}
+-            <script src="{{ asset('build/app.js') }}"></script>
++            {{ encore_entry_script_tags('app') }}
+ 
+             <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

@@ -1,0 +1,47 @@
+diff --git a/public/css/account.css b/assets/css/account.scss
+similarity index 100%
+rename from public/css/account.css
+rename to assets/css/account.scss
+diff --git a/public/css/login.css b/assets/css/login.scss
+similarity index 100%
+rename from public/css/login.css
+rename to assets/css/login.scss
+diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
+index 21c63ab5..7b5542b4 100644
+--- a/templates/account/index.html.twig
++++ b/templates/account/index.html.twig
+@@ -5,7 +5,7 @@
+ {% block stylesheets %}
+     {{ parent() }}
+ 
+-    <link rel="stylesheet" href="{{ asset('css/account.css') }}">
++    {{ encore_entry_link_tags('account') }}
+ {% endblock %}
+ 
+ {% block body %}
+diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
+index 778f582e..5a13eb58 100644
+--- a/templates/security/login.html.twig
++++ b/templates/security/login.html.twig
+@@ -5,7 +5,7 @@
+ {% block stylesheets %}
+     {{ parent() }}
+ 
+-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
++    {{ encore_entry_link_tags('login') }}
+ {% endblock %}
+ 
+ {% block body %}
+diff --git a/webpack.config.js b/webpack.config.js
+index 08824eea..dffdad46 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -20,6 +20,8 @@ Encore
+     .addEntry('app', './assets/js/app.js')
+     .addEntry('article_show', './assets/js/article_show.js')
+     .addEntry('admin_article_form', './assets/js/admin_article_form.js')
++    .addStyleEntry('account', './assets/css/account.scss')
++    .addStyleEntry('login', './assets/css/login.scss')
+     //.addEntry('page1', './assets/js/page1.js')
+     //.addEntry('page2', './assets/js/page2.js')
+ 

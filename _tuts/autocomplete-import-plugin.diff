@@ -1,0 +1,11 @@
+diff --git a/assets/js/components/algolia-autocomplete.js b/assets/js/components/algolia-autocomplete.js
+index 86ed5646..a0055710 100644
+--- a/assets/js/components/algolia-autocomplete.js
++++ b/assets/js/components/algolia-autocomplete.js
+@@ -1,5 +1,5 @@
+ import $ from 'jquery';
+-import autocomplete from 'autocomplete.js';
++import 'autocomplete.js/dist/autocomplete.jquery';
+ 
+ $(document).ready(function() {
+     $('.js-user-autocomplete').each(function() {
