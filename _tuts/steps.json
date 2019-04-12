@@ -646,6 +646,11 @@
             "description": null
         },
         {
+            "id": "before-encore-stop-using-s3",
+            "name": "Before Encore: stop using S3",
+            "description": null
+        },
+        {
             "id": "before-encore-avoid-sortable-in-new-form",
             "name": "Before Encore: avoid sortable in new form",
             "description": null
@@ -976,5 +981,5 @@
             "description": null
         }
     ],
-    "sha": "39b3df268e4088bde9536cc333bf44eab1e61dc5"
+    "sha": "1777b9840cefb44b273d22e5b5497e47ad1a5de9"
 }

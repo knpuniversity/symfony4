@@ -1,0 +1,129 @@
+diff --git a/.env b/.env
+index 3457f1b7..ef5d1fce 100644
+--- a/.env
++++ b/.env
+@@ -29,10 +29,6 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
+ 
+ ### CUSTOM VARS
+ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
+-
+-AWS_S3_ACCESS_ID=
+-AWS_S3_ACCESS_SECRET=
+-AWS_S3_BUCKET_NAME=
+ ### END CUSTOM VARS
+ 
+ SITE_BASE_URL=https://localhost:8000
+diff --git a/.gitignore b/.gitignore
+index a714f0f4..13e3e58d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -19,3 +19,5 @@
+ ###> liip/imagine-bundle ###
+ /public/media/cache/
+ ###< liip/imagine-bundle ###
++
++/public/uploads
+diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
+index 24b752e1..4f50db58 100644
+--- a/config/packages/liip_imagine.yaml
++++ b/config/packages/liip_imagine.yaml
+@@ -14,8 +14,6 @@ liip_imagine:
+     resolvers:
+         flysystem_resolver:
+             flysystem:
+-                # use the cached version so we're not checking to
+-                # see if the thumbnailed file lives on S3 on every request
+                 filesystem_service: oneup_flysystem.cached_uploads_filesystem_filesystem
+                 cache_prefix: media/cache
+                 root_url: '%uploads_base_url%'
+diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
+index 48ad0555..ae121733 100644
+--- a/config/packages/oneup_flysystem.yaml
++++ b/config/packages/oneup_flysystem.yaml
+@@ -7,9 +7,8 @@ oneup_flysystem:
+ 
+     adapters:
+         uploads_adapter:
+-            awss3v3:
+-                client: Aws\S3\S3Client
+-                bucket: '%env(AWS_S3_BUCKET_NAME)%'
++            local:
++                directory: "%kernel.project_dir%/public/uploads"
+ 
+     filesystems:
+         uploads_filesystem:
+diff --git a/config/services.yaml b/config/services.yaml
+index a3eee8bd..78f42d36 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -6,7 +6,7 @@
+ parameters:
+     cache_adapter: cache.adapter.apcu
+     locale: 'en'
+-    uploads_base_url: 'https://s3.amazonaws.com/%env(AWS_S3_BUCKET_NAME)%'
++    uploads_base_url: '%env(SITE_BASE_URL)%/uploads'
+ 
+ services:
+     # default configuration for services in *this* file
+@@ -23,7 +23,6 @@ services:
+             $isDebug: '%kernel.debug%'
+             $uploadsFilesystem: '@oneup_flysystem.uploads_filesystem_filesystem'
+             $uploadedAssetsBaseUrl: '%uploads_base_url%'
+-            $s3BucketName: '%env(AWS_S3_BUCKET_NAME)%'
+ 
+     # custom aliases for autowiring
+     Nexy\Slack\Client: '@nexy_slack.client'
+@@ -49,12 +48,3 @@ services:
+                 extended_type: Symfony\Component\Form\Extension\Core\Type\TextareaType }
+ 
+     Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
+-
+-    Aws\S3\S3Client:
+-        arguments:
+-            -
+-                version: '2006-03-01'
+-                region: 'us-east-1'
+-                credentials:
+-                    key: '%env(AWS_S3_ACCESS_ID)%'
+-                    secret: '%env(AWS_S3_ACCESS_SECRET)%'
+diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
+index 26986dda..86e6937a 100644
+--- a/src/Controller/ArticleReferenceAdminController.php
++++ b/src/Controller/ArticleReferenceAdminController.php
+@@ -6,7 +6,6 @@ use App\Api\ArticleReferenceUploadApiModel;
+ use App\Entity\Article;
+ use App\Entity\ArticleReference;
+ use App\Service\UploaderHelper;
+-use Aws\S3\S3Client;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Component\HttpFoundation\File\File as FileObject;
+@@ -151,25 +150,13 @@ class ArticleReferenceAdminController extends BaseController
+     /**
+      * @Route("/admin/article/references/{id}/download", name="admin_article_download_reference", methods={"GET"})
+      */
+-    public function downloadArticleReference(ArticleReference $reference, S3Client $s3Client, string $s3BucketName)
++    public function downloadArticleReference(ArticleReference $reference, UploaderHelper $uploaderHelper)
+     {
+         $article = $reference->getArticle();
+         $this->denyAccessUnlessGranted('MANAGE', $article);
+ 
+-        $disposition = HeaderUtils::makeDisposition(
+-            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+-            $reference->getOriginalFilename()
+-        );
+-
+-        $command = $s3Client->getCommand('GetObject', [
+-            'Bucket' => $s3BucketName,
+-            'Key' => $reference->getFilePath(),
+-            'ResponseContentType' => $reference->getMimeType(),
+-            'ResponseContentDisposition' => $disposition,
+-        ]);
+-        $request = $s3Client->createPresignedRequest($command, '+30 minutes');
+-
+-        return new RedirectResponse((string) $request->getUri());
++        // see https://symfonycasts.com/screencast/symfony-uploads for real private uploads handling
++        return new RedirectResponse($uploaderHelper->getPublicPath($article->getImagePath()));
+     }
+ 
+     /**
