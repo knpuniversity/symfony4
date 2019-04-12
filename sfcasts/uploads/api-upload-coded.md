@@ -8,8 +8,11 @@ Our controller is reading this JSON and decoding it into a nice
 
 Decoding is easy enough. But let's make our new model class a bit smarter to help
 with this. First, change the `data` property to be *private*. If we *only* did
-this, the serializer would *no* longer be able to set that onto our object. Hit
-"Send" to see this. Yep! the `data` key is ignored: it's not a field the client
+this, the serializer would *no* longer be able to set that onto our object. 
+
+[[[ code('984869327d') ]]]
+
+Hit "Send" to see this. Yep! the `data` key is ignored: it's not a field the client
 can send, because there's no setter for it and it's not public. Then, validation
 fails because that field is still empty.
 
@@ -17,11 +20,15 @@ So, because I've mysteriously said that we should set the property to private,
 add a `public function setData()` with a nullable string argument... because the
 user could forget to send that field. Inside, `$this->data = $data`.
 
+[[[ code('a61fb9daa7') ]]]
+
 *Now*, create another property: `private $decodedData`. And inside the setter,
 `$this->decodedData = base64_decode($data)`. And because this is private and
 does *not* have a setter method, if a smart user tried to send a `decodedData`
 key on the JSON, it would be ignored. The only valid fields are `filename` - because
 it's public - and `data` - because it has a setter.
+
+[[[ code('561989f6f1') ]]]
 
 Try it again. It's working *and* the decoded data is ready! It's a simple string
 in our case, but this would work equally well if you base64 encoded a PDF, for example.
@@ -45,14 +52,20 @@ a unique, temporary file path. Yep, we're literally going to *save* the file to
 disk so our upload system can process it. We *could* also enhance `UploaderHelper`
 to be able to handle the content as a *string*, but this way will re-use more logic.
 
+[[[ code('20a3b94a3b') ]]]
+
 To get the raw content, go back to the model class. We need a getter. Add
 `public function getDecodedData()` with a nullable string return type. Then,
 `return $this->decodedData`.
+
+[[[ code('dfad00bee2') ]]]
 
 *Now* we can say: `file_put_contents($tmpPath, $uploadedApiModel->getDecodedData())`.
 Oh, I'm not getting any auto-completion on that because PhpStorm doesn't know what
 the `$uploadedApiModel` object is. Add some inline doc to help it. Now, `$this->`,
 got it - `getDecodedData()`.
+
+[[[ code('7cc3e8958d') ]]]
 
 *Finally*, set `$uploadedFile` to a `new File()` - the one from `HttpFoundation`.
 Woh! That was weird - it put the full, long class name here. Technically, that's
@@ -62,6 +75,8 @@ same name: `File`. Let's add our `use` statement manually, then alias is to, how
 about, `FileObject`. I know, a bit ugly, but necessary.
 
 Below, `new FileObject()` and pass it the temporary path. Let's `dd()` that.
+
+[[[ code('3a9a2edfb4') ]]]
 
 Phew! Back on Postman, hit send. Hey! That looks great! Copy that filename, then,
 wait! That was just the directory - copy the *actual* filename - called `pathname`,
@@ -86,6 +101,8 @@ down to `setOriginalFilename()` and paste! And if for some reason it's not set,
 we can still use `$filename` as a backup. But that's definitely impossible for our
 API-style thanks to the validation rules.
 
+[[[ code('c900347eda') ]]]
+
 Deep breath. Let's try it again. Woh! Did that just work? It looks right. Go refresh
 the browser. Ha! We have a `space.txt` file! And we can even download it! Go check
 out S3 - the `article_reference` directory.
@@ -107,17 +124,25 @@ All the way down here, before persist, but *after* we've tried to read the mime
 type from the file, add, if `is_file($uploadedFile->getPathname())`, then delete it:
 `unlink($uploadedFile->getPathname())`.
 
+[[[ code('833c78f80d') ]]]
+
 The `if` is sorta unnecessary, but I like it. To double-check that this works,
 let's `dd($uploadedFile->getPathname())`, go find Postman and send. Copy the
 path, find your terminal, and try to open that file. It's gone!
 
+[[[ code('2a3bce296e') ]]]
+
 Celebrate by removing that `dd()` and sending one last time. I'm *so* happy.
+
+[[[ code('02618c891a') ]]]
 
 Oh, and don't forget to put security back: `@IsGranted("MANAGE", subject="article")`.
 In a real project, wherever I test my API endpoints - like Postman or via functional
 tests, I would actually *authenticate* myself properly so they worked, instead of
 temporarily hacking out security. Generally speaking, removing security is, uh,
 not a *great* idea.
+
+[[[ code('2fbee67ca5') ]]]
 
 Hey! That's it! We did it! Woh! I had a *ton* of a fun making this tutorial - we
 got to play with uploads, a bunch of cool libraries and... the *cloud*. Uploading
