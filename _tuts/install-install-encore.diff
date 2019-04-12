@@ -1,18 +1,19 @@
 diff --git a/.gitignore b/.gitignore
-index a714f0f4..b84a14a3 100644
+index 13e3e58d..ac2c33e9 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -19,3 +19,10 @@
- ###> liip/imagine-bundle ###
+@@ -20,4 +20,11 @@
  /public/media/cache/
  ###< liip/imagine-bundle ###
-+
+ 
 +###> symfony/webpack-encore-bundle ###
 +/node_modules/
 +/public/build/
 +npm-debug.log
 +yarn-error.log
 +###< symfony/webpack-encore-bundle ###
++
+ /public/uploads
 diff --git a/assets/css/app.css b/assets/css/app.css
 new file mode 100644
 index 00000000..cb33b131
