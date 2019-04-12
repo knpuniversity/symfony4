@@ -1,1 +1,4 @@
-chapters: []
+chapters:
+    - encore-install
+    - first-webpack
+    - import-export
