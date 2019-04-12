@@ -93,6 +93,8 @@ including this! *Or*, to be fancier - I like being fancy - you can create a cach
 Check it out. Uncomment `pools` and create a new cache pool below this called
 `cache.flysystem.psr6`. The name can be anything. Below, set `adapter` to `cache.app`.
 
+[[[ code('1a69ab8273') ]]]
+
 That's it! This creates a *new* cache service called `cache.flysystem.psr6` that,
 really... just uses `cache.app` behind the scenes to cache everything. The *advantage*
 is that this new service will automatically use a cache "namespace" so that its
@@ -111,15 +113,21 @@ Back in `oneup_flysystem.yaml`, let's use this! On top... though it doesn't matt
 where, add `cache:` and put one new cached adapter below it: `psr6_app_cache`.
 The name here *also* doesn't matter - but we'll reference it in a minute.
 
+[[[ code('3b2b28efe8') ]]]
+
 And below *that* add `psr6:`. That exact *key* is the important part: it tells
 the bundle that we're going to pass it a PSR6-style caching object that the adapter
 should use internally. Finally, set `service` to what we created in `cache.yaml`:
 `cache.flysystem.psr6`.
 
+[[[ code('b0a8a7c8ec') ]]]
+
 At this point, we have a new Flysystem *cache* adapter... but nobody is using it.
 To fix that, duplicate `uploads_filesystem` and create a second one called
 `cached_uploads_filesystem`. Make it use the same adapter as before, but with an
 extra key: `cache:` set to the adapter name we used above: `psr6_app_cache`.
+
+[[[ code('0c50e07a5a') ]]]
 
 Thanks to this, all Filesystem calls will *first* go through the cached adapter.
 If something is cached, it will return it immediately. Everything else will get
@@ -141,6 +149,8 @@ But for the resolver, we *do* want to cache this. Add the `cached_` to the servi
 id. The resolver is responsible for checking if the thumbnail file exists - something
 we *do* want to cache - *and* for *saving* the cached file. But, "save" operations
 are never cached - so it won't affect that.
+
+[[[ code('5666534001') ]]]
 
 Let's try this! Refresh the page. Ok, everything seems to work fine. Now, check
 your tweets, like some Instagram photos, then turn off your Wifi again. Moment of

@@ -27,6 +27,8 @@ Ok, send the request! Oh... what's this? Check out the preview. The login page,
 of course! Uploading requires a valid user. Just to play around, let's remove
 the `@IsGranted()` temporarily.
 
+[[[ code('05bacdc7a2') ]]]
+
 Try it again. Beautiful! It works!
 
 So, the *first* way to build an upload endpoint for an API is... like this! An
@@ -82,6 +84,8 @@ our *new* thing, else, run the normal code. And... this is pretty cool... the
 *only* part that'll *really* be different is the `$uploadedFile` part. Move that
 into the `else.`
 
+[[[ code('e82860b812') ]]]
+
 In the first part of the if, just like a normal API endpoint, we need to decode
 the JSON request content into something useful. To do that, let's use the serializer!
 Search for "deser", there it is. Earlier, we used `deserialize()` to turn the
@@ -103,6 +107,8 @@ inside, a new class: how about `ArticleReferenceUploadApiModel`. The *whole* poi
 of this class is to help us deal with the data for this endpoint. So, its properties
 should match the data. Add `public $filename` and `public $data`.
 
+[[[ code('b24247546a') ]]]
+
 Yes! Gasp! They're public! Because this class will only be used for this *one*,
 *narrow*, purpose, it's ok to make life a bit easier with public properties. If
 this makes you want to scream and tackle me, I get it! Just make them private and
@@ -111,11 +117,15 @@ add the getter & setter methods. That will work perfectly.
 While we're here, don't forget about validation: add `@Assert\NotBlank` above
 both of these.
 
+[[[ code('96b12c9d37') ]]]
+
 We're ready! Back in the controller add a new argument at the end:
 `SerializerInterface $serializer`. Then, it's beautiful, really
 `$uploadApiModel = $serializer->deserialize()`. This takes three arguments: the
 raw JSON - `$request->getContent()` - the *type* of object it should be turned
 into - `ArticleReferenceUploadApiModel::class` - and the input format, `json`.
+
+[[[ code('c806dc59bb') ]]]
 
 We don't need a context this time, because we're not deserializing into an existing
 object and we don't need to use groups.
@@ -123,8 +133,13 @@ object and we don't need to use groups.
 And because this object has some constraints, we'll need to check validation up
 here: `$violations = $validator->validate($uploadApiModel)`. And if
 `$violations->count() > 0`, return the normal, `$this->json($violations, 400)`.
+
+[[[ code('a9b82a1888') ]]]
+
 At the bottom, let's `dd($uploadApiModel)` so we can see if this crazy idea is
 working.
+
+[[[ code('65c54e695f') ]]]
 
 You ready to try this? Spin back over to Postman, high-five someone near you and...
 send! Hey! Check out that *beautiful* dump! The text is still encoded, but that's
