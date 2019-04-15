@@ -1,7 +1,6 @@
 chapters:
     - encore-install
     - first-webpack
-    - import-export
     - require-import
     - external-libs     #raw
     - code-splitting    #raw
