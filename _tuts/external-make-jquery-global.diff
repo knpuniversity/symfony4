@@ -1,9 +1,9 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index 4145d5f7..22be09d9 100644
+index 79f1b735..042000c4 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -9,6 +9,7 @@
- require('../css/app.css');
+ import '../css/app.css';
  
  import $ from 'jquery';
 +global.$ = $;

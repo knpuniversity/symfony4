@@ -1,10 +1,10 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index e8f5cf69..4145d5f7 100644
+index b17fa380..79f1b735 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -8,9 +8,7 @@
  // any CSS you require will output into a single css file (app.css in this case)
- require('../css/app.css');
+ import '../css/app.css';
  
 -// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 -// const $ = require('jquery');

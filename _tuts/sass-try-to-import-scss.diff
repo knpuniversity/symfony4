@@ -3,15 +3,15 @@ similarity index 100%
 rename from assets/css/app.css
 rename to assets/css/app.scss
 diff --git a/assets/js/app.js b/assets/js/app.js
-index baace652..0c96c24e 100644
+index 7f467b98..5a3c2d20 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -6,7 +6,7 @@
   */
  
  // any CSS you require will output into a single css file (app.css in this case)
--require('../css/app.css');
-+require('../css/app.scss');
+-import '../css/app.css';
++import '../css/app.scss';
  
  import $ from 'jquery';
  import 'bootstrap'; // adds functions to jQuery

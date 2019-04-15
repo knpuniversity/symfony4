@@ -10,12 +10,11 @@ index 40e794e0..7e8eff9d 100644
  
 diff --git a/assets/css/helper/_variables.scss b/assets/css/helper/_variables.scss
 new file mode 100644
-index 00000000..a447ea2b
+index 00000000..b3372312
 --- /dev/null
 +++ b/assets/css/helper/_variables.scss
 @@ -0,0 +1 @@
-+$lightgray: '#efefef';
-\ No newline at end of file
++$lightgray: #efefee;
 diff --git a/assets/css/layout/_header.scss b/assets/css/layout/_header.scss
 index 51c36700..7b354c18 100644
 --- a/assets/css/layout/_header.scss

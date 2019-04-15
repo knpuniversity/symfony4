@@ -1,5 +1,5 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index cdc458d8..a0703cfe 100644
+index 6a178c3f..de35ddb1 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -14,3 +14,11 @@ import $ from 'jquery';
