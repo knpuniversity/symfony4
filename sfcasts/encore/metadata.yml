@@ -2,7 +2,7 @@ chapters:
     - encore-install
     - first-webpack
     - require-import
-    - external-libs     #raw
+    - external-libs
     - code-splitting    #raw
     - css               #raw
     - sass              #raw
@@ -11,3 +11,7 @@ chapters:
     - entry-refactoring #raw
     - autoprovide-jquery-modules #raw
     - add-style-entry   #raw
+    - postcss-browserslist #raw
+    - babel-polyfills   #raw
+    - single-runtime-chunk #raw
+    - async-imports     #raw
