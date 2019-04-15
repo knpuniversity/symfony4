@@ -32,6 +32,19 @@ index 778f582e..5a13eb58 100644
  {% endblock %}
  
  {% block body %}
+diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
+index fd960baa..5f5f111d 100644
+--- a/templates/security/register.html.twig
++++ b/templates/security/register.html.twig
+@@ -29,7 +29,7 @@
+ {% block stylesheets %}
+     {{ parent() }}
+ 
+-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
++    {{ encore_entry_link_tags('login') }}
+ {% endblock %}
+ 
+ {% block body %}
 diff --git a/webpack.config.js b/webpack.config.js
 index 08824eea..dffdad46 100644
 --- a/webpack.config.js

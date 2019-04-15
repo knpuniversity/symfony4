@@ -1,9 +1,9 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index a0703cfe..baace652 100644
+index de35ddb1..7f467b98 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -9,6 +9,7 @@
- require('../css/app.css');
+ import '../css/app.css';
  
  import $ from 'jquery';
 +import 'bootstrap'; // adds functions to jQuery
