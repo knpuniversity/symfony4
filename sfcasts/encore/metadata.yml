@@ -2,3 +2,13 @@ chapters:
     - encore-install
     - first-webpack
     - import-export
+    - require-import
+    - external-libs     #raw
+    - code-splitting    #raw
+    - css               #raw
+    - sass              #raw
+    - copy-files        #raw
+    - multiple-entries  #raw
+    - entry-refactoring #raw
+    - autoprovide-jquery-modules #raw
+    - add-style-entry   #raw
