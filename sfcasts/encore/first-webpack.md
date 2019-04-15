@@ -1,94 +1,89 @@
 # Webpacking our First Assets
 
-We're talking about a lot of stuff in here. Most of it are
-optional features. The two biggest things are these set output path, which is going
-to say that I want my final files to be put into a public build directory. The public
-path to that is /build. And then down here, this ad entry thing in entry is basically
-a standalone JavaScript file that's going to keep that a standalone. It, uh, Java
-JavaScript file. It's kind of
+To start, Webpack only needs to know three things. The first - `setOutputPath()` -
+tells it *where* to put the final, built files and the second - `setPublicPath()` -
+tells it the public path to this directory.
 
-okay.
+## The Entry File
 
-A standalone JavaScript file,
+The *third* important piece, and where *everything* truly starts, is `addEntry()`.
+Here's the idea: we point Webpack at just *one* JavaScript file - `assets/js/app.js`.
+Then, it parses through *all* the import statements it finds, puts all the code
+together, and outputs one file in `public/build` called `app.js`. The first argument -
+`app` - is the entry's name, which can be anything, but it controls the final filename:
+`app` becomes `public/build/app.js`.
 
-okay.
+And the recipe gave us a few files to start. Open up `assets/js/app.js`. *This*
+is the file that Webpack will start reading. There's not much here yet - a `console.log()`
+and... woh! There *is* one cool thing: a `require` call to a CSS file! We'll talk
+more about this later, but in the same way that you can import other JavaScript
+files, you can import CSS too! And, by the way, this `require` function and the
+`import` statement we saw earlier on Webpack's docs, do basically the same thing.
+More on that soon.
 
-That you want your user to execute.
+To make the CSS a bit more obvious, open `app.css` and change the background
+to `lightblue` and add an `!important` so it will override my normal background.
 
-Okay.
+## disableSingleRuntimeChunk()
 
-And you'd see this first key or it key here. It can be anything. That's going to be
-the name of the final, uh, built file. And we just pointed out a JavaScript file.
+Before we execute Encore, back in `webpack.config.js`, we need to make one other
+small tweak. Find the `enableSingleRuntimeChunk()` line, comment it out, and put
+`disableSingleRuntimeChunk()` instead. Don't worry about this yet - we'll
+see *exactly* what it does later.
 
-Okay,
+## Running Encore
 
-so we actually start with a small structure in here. Assets, js, APP dot js.
+Ok! We've told Webpack *where* to put the built files and which *one* file to start
+parsing. Let's do this! Find your terminal and run the Encore executable with:
 
-Okay.
+```terminal
+./node_modules/.bin/encore dev
+```
 
-You look inside there, there's not much, we have a council that log inside of here,
-but we also have require key. We're actually requiring this CSS file. We're gonna
-talk a lot more about this later, but you can actually define your dependencies of
-your CSS in your JavaScript.
+***TIP
+For Windows, your command may need to be `node_modules\bin\encore.cmd dev`
+***
 
-Okay.
+Because we want a development build. And... hey! A nice little notification that
+it worked!
 
-Webpack is going to be able to build all of your JavaScript and all of your CSS.
+And... interesting - it built *two* files: `app.js` and `app.css`. You can see them
+inside the `public/build` directory. The `app.js` file... well... basically just
+contains the code from the `assets/js/app.js` file because... that file didn't
+import any other JavaScript files. We'll change that soon. But our `app` entry
+file *did* require a CSS file. And yea, Webpack understands this!
 
-Okay.
+Here's the *full* flow. First, Webpack looks at `assets/js/app.js`. It then looks
+for *all* the `import` and `require` statements. Each time we import a JavaScript
+file, it puts those contents into the final, built `app.js` file. And each time we
+import a CSS file, it puts *those* contents into the final, built `app.css` file.
 
-In fact, to make this a little bit more obvious to see if this is working, I'm
-actually going to go into APP dot CSS, change this to light blue. Important because
-then when I really see once you put this on the page whether or not this is actually
-working.
+Oh, and the final filename - `app.css`? It's `app.css` because our *entry* is called
+app. If we changed this to `appfoo.css`, renamed the file, then ran Encore again,
+it would *still* build `app.js` and `app.css` files thanks to the first argument
+to `addEntry()`.
 
-Okay.
+## Adding the Script & Links Tags
 
-Alright. And one last thing before we actually try this. Uh, there's a line inside of
-your Webpack cafe called thought enabled single runtime check. Actually it changed
-that too. Dot. Disabled single runtime check. We will talk about what that means
-later, but that's going to be a simple worst set up to start. So yeah, we've told uh,
-a wetback where to put our files. We've told them which one file to parse and then
-it's going to take care of just parsing that file and outputting the JavaScript and
-the CSS file.
+What this means is... we know have *one* JavaScript file that contains *all*
+the code we need and one CSS file that contains all the CSS! All *we* need to do
+is add them to our page!
 
-Okay.
+Open up `templates/base.html.twig`. Let's keep the existing stylesheets for now
+and add a new one: `<link rel="stylesheet" href="">` the `asset()` function
+and the public path: `build/app.css`.
 
-To run this, go back to your terminal and run dot /node modules dot been encore and
-then Dev, because this will be our development build.
+At the bottom, add the `script` tag with `src="{{ asset('build/app.js') }}"`. Oh,
+make that `app.js`.
 
-Okay.
+If you're not familiar with the `asset()` function, it's not doing anything important
+for us. Because the `public/` directory is our document root, we're literally pointing
+to the public path.
 
-And Nice to get a nice little uh, notification
+Let's try it! Move over, refresh and... hello, weird blue background. And in the
+console... yes! There's the log!
 
-and it builds an APP dot CSS and an APP dot js file. You can see those inside of our
-public build directory. That's it. App Dot js contains the js code and because of
-this requires statement, it actually followed it and found this app dot CSS and build
-an APP dot CSS file. This could be called App Foo and this could be called the APP
-Fu. Um, but they're ultimately going to be the apple file's going to call app dot CSS
-because that's the name of our entry in Webpack dot config. That doesn't make total
-sense yet. Don't worry. We're going to talk more about that later.
-
-Okay,
-
-so finally to give us on our page, I'm going to go into templates based studies from
-a twig and I'm gonna keep all my old CSS for now, but we're going to add a link, rel
-= style sheet h ref = and just,
-
-okay.
-
-Is that normal asset build /app dot CSS. And then same thing down at the bottom for
-the script tag. I'll leave my old scripts for now, say script as her c equals.
-
-Okay.
-
-Use the asset function to point to build /APP dot CSS. And if you're not familiar
-with the asset function, it's actually really not important. It's not giving us
-anything, uh, special. We're just literally pointing since public is our build
-directory to app dot CSS. Oh my gosh. Of course you'd be app dot js not CSS. Awesome.
-So now I move over, refresh and hello, blue background. And then the log there is our
-console.log(. So we've just started to scratch the service because you might be
-thinking, what did this do for me? Really? A wetback really hasn't done a lot yet.
-Yes, it is a parsing. It's, it hasn't done much it yet. That's the next one. Talking
-about what Webpack actually does, what it actually gives us. That's awesome. And
-really start leveraging it.
+We've only started to scratch the surface of the possibilities of Webpack. So if
+you're still wondering: "why is going through this build process so useful?". Stay
+tuned. Because next, we're going to talk about the `require` and `import` statements
+and start organizing our code.
