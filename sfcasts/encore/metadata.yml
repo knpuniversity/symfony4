@@ -1,6 +1,7 @@
 chapters:
     - encore-install
     - first-webpack
+    - twig-helpers-scripts
     - require-import
     - external-libs
     - code-splitting    #raw

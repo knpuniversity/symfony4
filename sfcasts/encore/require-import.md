@@ -1,10 +1,14 @@
-# Require Import
+# Modules: require & import
 
-Coming soon...
+Encore is now outputting `app.css` and `app.js` thanks to the `app` entry. And we successfully added the `<link>` tag for `app.css` and, down here, the `<script>`
+here for `app.js`.
 
-What pack or Encore is. Now I'm putting `app.css` and `app.js` thanks to our `app`
-entry point and we successfully added a `<link>` tag to `app.css` and a `<script>` tag down
-here to `app.js` super simple. Now in reality, when you use Encore and Symfony,
+## The Twig Helper Functions
+
+But when you use Encore with Symfony, you *won't* render script and link tags by
+hand. It's *too* much work. I'm kidding. 
+
+Now in reality, when you use Encore and Symfony,
 you're not usually going to create a normal `<link>` tag. Instead, you can use a Twig
 helper that comes from the bundle install called `{{ encore_entry_link_tags() }}`. And here you
 put `app` because this is the name of your entry and then down to the bottom and you
@@ -23,31 +27,31 @@ with each of them. So the interesting thing is that right now each entrypoint ma
 one CSS file and one JavaScript file. But for performance purposes, that's not always
 going to be the case. We'll talk more about that later. But the point is you can run
 around and just say, I want to render all of my, every, all the script has a need for
-my `app` entrypoint. And the bundle takes care of it for you by reading this 
+my `app` entrypoint. And the bundle takes care of it for you by reading this
 `entrypoints.json`.
 
 Yeah.
 
 Now of course, every time that you want to run Encore, every time you make a change,
-right now you're gonna have to rerun the Encore command 
+right now you're gonna have to rerun the Encore command
 
 ```terminal-silent
 ./node_modules/.bin/encore dev
 ```
 
-and that's lame. So of course there is a way that you can do this with a watch. 
-So instead of your normal command, we use the normal hand with the eight `--watch` 
-on the end of it 
+and that's lame. So of course there is a way that you can do this with a watch.
+So instead of your normal command, we use the normal hand with the eight `--watch`
+on the end of it
 
 ```terminal-silent
 ./node_modules/.bin/encore dev --watch
 ```
 
-that boots up Encore and now it just sits there and waits for changes. So let's try 
-this out with the `app.js`. I'll add some exclamation points, save. And if you 
-move over and can you see it actually automatically rebuilt. I go over here 
-and opened my console and refresh. Now you can see it and if you don't see it, 
-show up. Make sure you can do a force refresh to force it. But even this is 
+that boots up Encore and now it just sits there and waits for changes. So let's try
+this out with the `app.js`. I'll add some exclamation points, save. And if you
+move over and can you see it actually automatically rebuilt. I go over here
+and opened my console and refresh. Now you can see it and if you don't see it,
+show up. Make sure you can do a force refresh to force it. But even this is
 a bit too more much work. So I'm gonna hit `control + c` and instead I'm just going to run
 
 ```terminal
@@ -56,7 +60,7 @@ yarn watch
 
 Yeah,
 
-I didn't notice a kind of prints out here that this is the same thing. 
+I didn't notice a kind of prints out here that this is the same thing.
 `encore dev --watch` it start Encore corn the exact same way. And that is not magic. If
 you look inside of your `package.json` File, there's actually a section here
 called scripts. This is something that we got for free when we installed the recipe.
@@ -80,11 +84,11 @@ inside of there. I'm going to go steal this string.
 
 Okay.
 
-I'm going to say `return` that string just to make a little fancy. I'll say 
+I'm going to say `return` that string just to make a little fancy. I'll say
 `+ '!'.repeat(exclamationCount)`. Yes. Because "!" is x
 strings are actually objects. So you can do that. Cool. Now that we have this, we can
 go back into `app.js` and at the top doesn't matter where, but usually you all your
-imports aren't top. I'm gonna say recall, I'm gonna say 
+imports aren't top. I'm gonna say recall, I'm gonna say
 `const getNiceMessage = require('./get_nice_message');`
 
 No, it's the `.js` here is optional. You can add it. It doesn't matter. Um, Webpack
@@ -107,10 +111,10 @@ And that's going to have the same effect. This word `default` here is important.
 can actually with this syntax, export multiple things from a file. When you `export
 default`, it's kind of the way of the standard way you export in one thing. We're not
 going to talk about how you export multiple values, but I just want you to know that
-it's possible. And then over here, we're not going to say 
-`import getNiceMessage from './get_nice_message'`. And it works exactly the same way. 
-Now it turns out this import/export in text, and this is actually the standard, 
-it's syntax that you should use, um, with Webpack. The require thing comes from node. 
+it's possible. And then over here, we're not going to say
+`import getNiceMessage from './get_nice_message'`. And it works exactly the same way.
+Now it turns out this import/export in text, and this is actually the standard,
+it's syntax that you should use, um, with Webpack. The require thing comes from node.
 It works, but it's not the recommended way of doing it. So you as important export. But I
 wanted you to see what the require and the other one looked like. You can even do it
 also for CSS, it's just `import`. There's no from, because we're not, we're just kind
