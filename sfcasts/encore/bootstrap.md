@@ -1,83 +1,103 @@
 # Bootstrap & the Curious Case of jQuery Plugins
 
+The inline code in `base.html.twig` isn't working anymore because we've *eliminated*
+the `$` global variable. Woo! To make it work, let's move *all* this code
+into `app.js`.
 
-so I'm going to comment that out with a, a comment that says that we could uncomment
-that to support legacy code. Of course what we want to do is actually get rid of this
-stuff. So we're going to copy on a move all of my inline script from my base template
-and paste it into this file. And cool thing is where she importing `$`. So
-that's why it's called `$` down hand down here. It's just local variables.
+Instead of global variables, we're importing `$` and that's why it's called `$`
+down here. It's all just local variables.
 
+Try it now. Ok, it *sorta* works. It logs... then explodes. The error has some
+Webpack stuff on it, but it ultimately says:
 
+> dropdown is not a function
 
-Okay.
+Click the `app.js` link. Ah, it's having trouble with the `dropdown()` function.
+*That* is one of the functions that *Bootstrap* adds to jQuery. And... it makes
+sense why it's missing: we're running all of our code here, and *then* including
+Bootstrap. It's simply *not* adding the function in time! Well actually, it's a
+*bit* more than that. *Even* if we moved this script tag up, it *still* wouldn't
+work. Why? Because when you include Bootstrap via a script tag, it *expects*
+jQuery to be a global variable... and that - wonderfully - doesn't exist anymore.
 
-So if we refresh this, it doesn't work well, it's sort of works. Check this out. It
-says, you know, untie type error. Some Webpack stuff. Defaulted dropdown is not a
-function. If you click here, it's having a problem with this.and Trump down thing.
-Okay, so this actually makes sense. That `dropdown()` function comes from bootstrap. It's
-one of the functions that bootstrap adds to jQuery.
+Let's do this properly.
 
-And right now we're running all of our existing uh, code here and then we're
-importing bootstrap. So it's not adding the function in time. It's actually a little
-bit more to it than that. But that's basically the idea and that's fine because we
-want to get rid of this kind of code anyways. We don't want to bootstrap to be
-included. By the way, popper is just included here because it's a dependency of
-bootstrap. So let's actually do this properly. We're going to remove both of those
-and then I'm going to re add bootstrap via
+## Installing Bootstrap
+
+Oh, by the way, this popper.js thing is here because it's needed by Bootstrap.
+You'll see how this works in Webpack in a moment. Delete both of the script tags.
+Then, find your terminal and run:
 
 ```terminal
 yarn add bootstrap --dev
 ```
 
-by the way, you'll see it later. But there's lots of ways to search for packages. Uh, they
-usually have good names, but I've never share. You can search for them yet. 9.7
-million downloads, that's the one we're looking for. So that's how you would figure
-out the correct package name. All right, so that downloaded, and you'll notice here a
-little arrow that says
+Oh, and how did I know that the package name was `bootstrap`? Just because I cheated and searched for it before recording. Go to https://yarnpkg.com/ and search for "Bootstrap". 9.7 million downloads... in the last 30 days... that's probably the
+right one.
 
-> bootstrap has an unmet pure dependency popper
+And... it's done! Oh, and there's a little notice:
 
-We'll come back to that in a second. So in `app.js` installing it is not enough.
-We're not actually using inside of here. So we need to do up here is say `import`
-and then say `bootstrap`. No, nothing that saying `import $ from` or anything
-like that. Boost jquery plugins are weird because they don't return a value. They
-actually modify jQuery and add functions to it. In fact,
+> bootstrap has an unmet peer dependency popper.js
 
-okay,
+We'll come back to that in a minute.
 
-I'm gonna make that note here
+## Importing jQuery Plugins
 
-and internally, the way it knows to do this is that because bootstrap was a
-well-written library inside that bootstrap file, it actually imports jQuery just like
-we are here. And when you import, uh, uh, when two different modules, when two
-different files important the same file, they get back the same instance. So
-basically we sat `$` here a second later bootstrap internally is going to
-import that same jQuery object in, it's going to modify it. So by the time we get
-after line 12 on Hatan now has new functions attitude. But you may have seen the
-build errors. If you go back and look at our yarn, it says failed to compile.
+Back in `app.js` installing Bootstrap isn't enough. On top, add `import 'bootstrap'`.
+Nope, we *don't* need to say `import $ from` or anything like that. Bootstrap
+is a jQuery plugin and jQuery plugins are... super weird. They do *not* return
+a value. Instead, they *modify* jQuery and add functions to it. I'll add a note
+here because... it just *looks* strange: it's weird that adding *this* allows
+me to use the `tooltip()` function, for example.
 
->This dependency was not found
+## How Bootstrap Finds jQuery
 
-`popper.js` In `bootstrap.js`. So `bootstrap.js` itself depends on jQuery, but it
-also depends on this library called popper.js and again, the way it does that
-internally because it's well written, is it imports `popper.js` because popper.js
-is not something that's inside of our project right now. We get this really nice error
-and I'll says down here, we can install with `npm install --save popper.js`.
-We're using yarn. So we will kind of take that recommendation, but we'll install it via
-yarn. So I'll go back to my open tab,
+But wait a second. If Bootstrap *modifies* jQuery... internally, how does it *get*
+the jQuery object in order to do that? I mean, jQuery is no longer global: if
+*we* need it, we need to import it. Well... because Bootstrap is a well-written
+library, it does the *exact* same thing. It *detects* that it's in a Webpack
+environment and, instead of expecting there to be a *global* `jQuery` variable,
+it *imports* `jquery`, *just* like we are.
+
+And, fun fact, when two different files import the *same* module, they get back
+the same, *one* instance of it - a lot like Symfony's container. *We* import jQuery
+and assign it to `$`. Then, a microsecond later, Bootstrap imports that *same*
+object and modifies it. By the time we get past line 12, the `$` variable has the
+new `tooltip()` function.
+
+## Installing popper.js
+
+But... you may have noticed that, while I was talking about how awesome this is
+all going to work... my build was failing!
+
+> This dependency was not found: `popper.js` in `bootstrap.js`
+
+This is awesome! Bootstrap has *two* dependencies: jQuery but *also* another library
+called `popper.js`. Internally, it tries to import *both* of them. But, because
+this is not installed in our project, it fails. By the way, if you're wondering:
+
+> Why doesn't Bootstrap just list this as a dependency in *its* `package.json`
+> so that it's automatically downloaded for us?
+
+Excellent question! And that's *exactly* how we would do it in the PHP world. Short
+answer: Node dependencies are complicated, and so *sometimes* it will work like
+this, but *sometimes* it's a better idea for a library to force *us* to install
+its dependency manually. That's called a "peer" dependency.
+
+Anyways, this is a great error, and it even suggests how to fix it:
+`npm install --save popper.js`. Because we're using yarn, we'll do our version
+of that command. Back in your open terminal tab, run:
 
 ```terminal
 yarn add popper.js --dev
 ```
 
-And as soon as that finishes,
+When that finishes... ah. Because we haven't modified any files, Webpack doesn't
+know it should re-build. Let's go over here and just add a space. That triggers
+a rebuild which is... successful!
 
-uh,
+Try it out - refresh! No errors.
 
-Webpack doesn't know to rebuild yet because we haven't made any changes. So I'm just
-going to go over here and just add a space and save. That triggers a rebuild and the
-build is successful. So move back over. Refresh.
-
-Okay,
-
-no errors. And it works.
+Next! I have a surprise! Webpack has *already* started to silently optimize our
+build through a process called code splitting. Let's see what that means and learn
+how it works.
