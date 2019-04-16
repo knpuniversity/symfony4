@@ -81,7 +81,7 @@ yarn
 ```
 
 Or... `yarn install` if you're less lazy than me - it's the same thing. Node has
-*two* package managers - `yarn` and `node` - I know, kinda weird - but you can install
+*two* package managers - `yarn` and `npm` - I know, kinda weird - but you can install
 and use whichever you want. Anyways, this is downloading our 3 libraries and their
 dependencies into Node's version of the `vendor/` directory: `node_modules/`.
 
