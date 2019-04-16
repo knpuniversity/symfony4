@@ -1,169 +1,102 @@
-# External Libs
+# Importing External Libraries & Global Variables
 
-Coming soon...
+We've included the `app` entry files in our base layout: the `<script>` tag and
+the `<link>` tag both live here. This means that *any* time we have some CSS or
+JavaScript that should be included on every page, we can put it into `app.js`.
 
-We've included the `app` entry inside of our base layout, the `<script>` tag and the
-`<link>` tag both live here. So basically anytime any, uh, CSS or JavaScript that's sort
-of global to our site, we're going to put into `app.js`. So if you look down here,
-I actually do have some inline JavaScript here and I want to refactor all this code
-entirely into our Encore system. So if you look, the first thing we have is we have
-jQuery down here, which makes sense because we are renting, renting right below,
-right below that. So I'm going to remove it. And not surprisingly, when we do this,
-we get a big air. That $ is not defined, no problem. One of the, one of the
-most wonderful things about using encore has that you can install these third party
-libraries properly. So I can spin over, I'm actually gonna open a third tab here. You
-can say 
+Look down at the bottom. Ah... we have a few script tags for external files *and*
+some inline JavaScript. Shame on me! I want to refactor *all* of this into our
+new Encore-powered system.
+
+The first thing we include is jQuery... which makes sense because we're using it
+below. Great! Remove it. Not surprisingly... when we do this, we get a big error:
+
+> $ is not defined
+
+## Installing a Library (jQuery)
+
+No worries! One of the most *wondrous* things about modern JavaScript is that
+you can install third-party libraries properly. I mean, with our package manager.
+Find your terminal and run:
 
 ```terminal
 yarn add jquery --dev
 ```
 
-We put this as `--dev` because technically we don't need these dependencies, 
-um, production, uh, but it doesn't really matter.
+The `--dev` part isn't really important. *Technically* we only need these files
+during the "build" process... they don't need to be included on production... which
+is why the `--dev` makes sense. But in 99% of the cases, it doesn't matter.
 
-Okay.
+And... that was *painless*! We now have jQuery in our app.
 
-And that's it. We now have jquery in our site, so we already know how to require a
-how to import a file that lives right next to us to import a third party file. I'm
-going to say `import $ from`, and then the name of the module `jquery`. Notice
-there's no `./` year when you don't have the `./` it knows that you referring to a
-third party module and specifically it knows to look in the `node_modules/` directory
-because that's where it just installed jQuery. So if you look down here, there it is
-`jquery`. So it's going and grabbing a nose to go and get the main file from this
-repository. In fact, fun fact in case you ever get stuck, how does it know exactly
-which file in here to grab? Well, it looks inside the module. It looks in the 
-`package.json` File and every `package.json` file is going to have a `main` key that
-points to the one file that should be required. So it's actually requiring this
-specific file.
+## Importing a Third-Party Library
 
-Yeah.
+We already know how to import a file that lives in a directory next to us. To
+import a *third* party library, we can say `import $ from`, and then the name of
+the package: `jquery`.
 
-All right, so now that we've imported, we've important jQuery from here, we've set it
-to a `$` variable. That `<script>` tag is included up here, so in theory we
-should have a `$` variable available down there, right? No, it doesn't work
-that way. You can still see that we have `$` is not the find and this is
-coming from, let's see, this not the right spot. Should look at the second one. Here
-we go. It's coming down here from our coat, so this is a really important
-distinction.
+The critical thing is that there is no `.` or `./` at the start. If the path starts
+with a `.`, Webpack knows to look for that file relative to this one. If it does
+*not*, it knows to look for it inside the `node_modules/` directory.
 
-Wow.
+Check it out: open `node_modules` and ... there's it is! A `jquery` directory.
+But how does it know exactly *which* file in here to import? I'm so glad you asked!
+Open jQuery's `package.json` file. Every JavaScript package you install... unless
+it's *seriously* ancient, will have a `main` key that tells Webpack *exactly* which
+file it should import. *We* just say `import 'jquery'`, but it *really* imports
+this specific file.
 
-When you import a file from within Webpack the file that we important behaves
-differently.
+## Global Variables inside Webpack
 
-Yeah,
+Cool! We've imported jQuery in `app.js` and set it to a `$` variable. And because
+that `<script>` tag is included *above* our inline code in `base.html.twig`, the
+`$` variable should be available down here, right?
 
-I mean is we could literally add a `<script>` tag to this same `jquery.js` file and it
-would give different behavior. That's because a well wouldn't written JavaScript
-library has logic internally.
+Nope! `$` is *still* not defined! Wait, the *second* error is more clear. Yep,
+`$` is not defined, coming from our code in `base.html.twig`.
 
-Yeah.
+This uncovers a *super* important detail. When you import a file from a 3rd party
+library, that file behaves *differently* than if you added a `<script>` tag on
+your page that pointed at the *exact* same file! Yea!
 
-To handle this. If you look inside that `jquery.js`, it's a little bit hard to
-read, but what it's basically doing here is it's detecting it's environment. It's
-detecting whether or not it's being used within something like Webpack. It's if 
-if `typeof module.exports === "object"`. If it is, what it does is it actually
-returns the jQuery function, jQuery object from this in the same way that we are
-exporting a value from within our get nice message. It's doing the same thing.
+That's because a well-written library has code internally that detects *how*
+it's being used, and changes what it does.
 
-If it does not detect that. And this code's not too obvious down here, but what this
-actually does is it creates a global variable. So if you include this `jquery.js`
-as a `<script>` tag EOA, it will create a global variable. If you actually import it like
-we're doing here, it does not create a global variable. It just creates in returns,
-does local variable. That's why once we get into our `base.html.twig`.
-The, our son is still undefined and that's actually what we want. We don't want to
-work with global variables any more.
+Check it out: hold Command or Ctrl and click to open `jquery.js`. It's not *super*
+easy to read, look at this: if `typeof module.exports === "object"`. That's *key*.
+*This* is jQuery detecting if it's being used from within an environment like Webpack.
+If it *is*, it *exports* the jQuery object in the same way that we're exporting
+a function from the `get_nice_message.js` file.
 
-Okay?
+But if we are *not* in a module-friendly environment like Webpack... specifically,
+if jQuery is being loaded via a script tag in our browser, it's not too obvious,
+but this code is creating a *global* variable.
 
-So the ultimate solution is that we need to refactor all of this code from our base
-template into Encore properly. However, especially if you are upgrading an existing
-site, you might have a lot of, uh, global, uh, code inline scripts like this that
-require jQuery to be global. If you want, you can say `global.$ = $`
+So, *if* jQuery is in a script tag, we get a global `$` variable. But if you
+*import* it like we're doing here, it does *not* create a global variable. It
+*returns* the jQuery object, which is then set on this *local* variable. Also,
+all modules... or "files" in Webpack live in "isolation": if you set a variable
+in one file, it *won't* be available automatically in any other file, regardless
+of what order they're loaded.
 
-Okay.
+That is probably the *biggest* thing to re-learn in Webpack. Global variables are
+gone. That's *awesome*. But it *also* changes *everything*.
 
- That would actually make jQuery global. There's `global` key here is a
-special key by Webpack in it and we'll know what to do with that. So if we go back
-and refresh now it actually works.
+## Forcing a Global jQuery Variable
 
-Yeah,
+The *ultimate* solution is to refactor all of your code from your templates and
+un-Webpack-ified JavaScript files *into* Encore. But... if you're upgrading an
+*existing* site, phew! You probably have a *ton* of JavaScript that expects there
+to be global `$` or `jQuery` variables. Moving *all* of that into Encore *all*
+at once... it's, uh... not too realistic.
 
-so I'm going to comment that out with a, a comment that says that we could uncomment
-that to support legacy code. Of course what we want to do is actually get rid of this
-stuff. So we're going to copy on a move all of my inline script from my base template
-and paste it into this file. And cool thing is where she importing `$`. So
-that's why it's called `$` down hand down here. It's just local variables.
+So, if you *really* want a global variable, you can add one with `global.$ = $`.
 
-Okay.
+That `global` keyword is special to Webpack. Try it now: refresh! It works!
 
-So if we refresh this, it doesn't work well, it's sort of works. Check this out. It
-says, you know, untie type error. Some Webpack stuff. Defaulted dropdown is not a
-function. If you click here, it's having a problem with this.and Trump down thing.
-Okay, so this actually makes sense. That `dropdown()` function comes from bootstrap. It's
-one of the functions that bootstrap adds to jQuery.
+But... don't do this unless you *have* to. I'll remove it out and add some comments
+to explain that this is useful for legacy code.
 
-And right now we're running all of our existing uh, code here and then we're
-importing bootstrap. So it's not adding the function in time. It's actually a little
-bit more to it than that. But that's basically the idea and that's fine because we
-want to get rid of this kind of code anyways. We don't want to bootstrap to be
-included. By the way, popper is just included here because it's a dependency of
-bootstrap. So let's actually do this properly. We're going to remove both of those
-and then I'm going to re add bootstrap via 
-
-```terminal
-yarn add bootstrap --dev
-```
-
-by the way, you'll see it later. But there's lots of ways to search for packages. Uh, they
-usually have good names, but I've never share. You can search for them yet. 9.7
-million downloads, that's the one we're looking for. So that's how you would figure
-out the correct package name. All right, so that downloaded, and you'll notice here a
-little arrow that says 
-
-> bootstrap has an unmet pure dependency popper 
-
-We'll come back to that in a second. So in `app.js` installing it is not enough. 
-We're not actually using inside of here. So we need to do up here is say `import` 
-and then say `bootstrap`. No, nothing that saying `import $ from` or anything 
-like that. Boost jquery plugins are weird because they don't return a value. They 
-actually modify jQuery and add functions to it. In fact,
-
-okay,
-
-I'm gonna make that note here
-
-and internally, the way it knows to do this is that because bootstrap was a
-well-written library inside that bootstrap file, it actually imports jQuery just like
-we are here. And when you import, uh, uh, when two different modules, when two
-different files important the same file, they get back the same instance. So
-basically we sat `$` here a second later bootstrap internally is going to
-import that same jQuery object in, it's going to modify it. So by the time we get
-after line 12 on Hatan now has new functions attitude. But you may have seen the
-build errors. If you go back and look at our yarn, it says failed to compile. 
-
->This dependency was not found
-
-`popper.js` In `bootstrap.js`. So `bootstrap.js` itself depends on jQuery, but it 
-also depends on this library called popper.js and again, the way it does that 
-internally because it's well written, is it imports `popper.js` because popper.js 
-is not something that's inside of our project right now. We get this really nice error 
-and I'll says down here, we can install with `npm install --save popper.js`. 
-We're using yarn. So we will kind of take that recommendation, but we'll install it via 
-yarn. So I'll go back to my open tab, 
-
-```terminal
-yarn add popper.js --dev
-```
-
-And as soon as that finishes,
-
-uh,
-
-Webpack doesn't know to rebuild yet because we haven't made any changes. So I'm just
-going to go over here and just add a space and save. That triggers a rebuild and the
-build is successful. So move back over. Refresh.
-
-Okay,
-
-no errors. And it works.
+Let's *properly* finish this next by refactoring all our code into `app.js`, which
+will include installing *two* more libraries, including our first jQuery plugin...
+which are kind of a special beast.

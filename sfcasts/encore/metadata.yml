@@ -4,6 +4,7 @@ chapters:
     - twig-helpers-scripts
     - require-import
     - external-libs
+    - bootstrap
     - code-splitting    #raw
     - css               #raw
     - sass              #raw
@@ -16,3 +17,4 @@ chapters:
     - babel-polyfills   #raw
     - single-runtime-chunk #raw
     - async-imports     #raw
+    - production-build  # not recorded yet
