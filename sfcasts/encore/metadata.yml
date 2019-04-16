@@ -5,9 +5,9 @@ chapters:
     - require-import
     - external-libs
     - bootstrap
-    - code-splitting    #raw
-    - css               #raw
-    - sass              #raw
+    - code-splitting
+    - css
+    - sass
     - copy-files        #raw
     - multiple-entries  #raw
     - entry-refactoring #raw
