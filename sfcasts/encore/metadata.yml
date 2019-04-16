@@ -4,9 +4,9 @@ chapters:
     - twig-helpers-scripts
     - require-import
     - external-libs
-    - code-splitting    #raw
-    - css               #raw
-    - sass              #raw
+    - code-splitting
+    - css
+    - sass
     - copy-files        #raw
     - multiple-entries  #raw
     - entry-refactoring #raw
