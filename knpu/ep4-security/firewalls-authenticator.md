@@ -84,8 +84,8 @@ php bin/console make:auth
 ```
 
 ***TIP
-Since MakerBundle v1.8.0 this command asks you to choose between an "Empty authentication"
-or a "Login form authenticator". If you choose the second option, it will generate more
+Since MakerBundle v1.8.0 this command asks you to choose between an "Empty authenticator"
+and a "Login form authenticator". If you choose the second option, it will generate more
 code than on the video. Try it!
 ***
 
