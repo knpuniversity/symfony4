@@ -1,114 +1,117 @@
-# Copy Files
+# Copying Files
 
-Coming soon...
+Do a force refresh on the homepage. Ok, we've got some broken images. Inspect
+that. Of course: this points to `/images/meteor-shower.jpg`.
 
-Okay.
+Open this template: `articles/homepage.html.twig`. There it is: a normal `asset`
+function pointing to `images/meteor-shower.jpg`. That's broken because we moved
+our entire `images/` directory out of public and into `assets/`.
 
-Hey Forrest, refreshing the home page. Whoa. Okay. You can see we actually have a
-couple of broken images. What's doing spect on that? And see what the problem is.
-Okay, so this is an `<img>` tag pointing to `images/meteor-shower.jpg`. In fact, get rid
-of all that.
+There's a nice side-effect of using a build system like Webpack: you don't need to
+keep your CSS, JavaScript or assets in a public directory anymore! You put them
+in `assets/`, organize them *however* you want, and the end-user will only ever see
+the final, built version.
 
-Okay,
+But unless you're building a single page application, you'll probably still have
+some cases where you want to render a good, old-fashioned `img` tag. And because
+this image is *not* being processed through Webpack, it's not being copied into
+the final `build/` directory.
 
-let's go look at that template. This lives in `templates/article/homepage.html.twig`
-and yeah, you can see just a normal boring `{{ asset() }}` tag to `images/meteor-shower.jpg`
-fat's broken because you remember we moved our entire `images/`
-directory out of `public/` and into the `assets/` directory. This is a really nice property
-of having a system like Webpack. You don't need to have most of your public images in
-the public director anymore. You can build them all inside of assets and then Webpack
-takes care of moving them all into the final directory. But unless you're building a
-single page application, you still might have these cases where you just need a good
-old fashioned the `<img>` tag that points to an image. So in this case, this image is
-not being processed through Webpack and so it's not being copied into our final `build/`
-directory. So it's kind of an annoying problem. And so because of that, we added
-something to Webpack Encore to help this. So open up the `webpack.config.js`
-file. And anywhere in here we're going to add a `.copyFiles()` method
+## Hello copyFiles()
 
-and pass us and object. One of the things that I want to mention is that the
-documentation inside of Webpack, it's encore itself is really good. So I'm gonna hold
-`command` or `control` and click into this and it's going to take you into the `index.js`
-file of Webpack Encore, which is almost entirely just methods and documentation
-about those methods. So this is a great resource to figure out how something works.
-So you can see the copy of files is pretty simple. It can be as simple as I want to
-copy everything from `assets/images/` into my `build/` directory. So that's actually
-pretty much exactly what we're going to do. So I'll copy that. Go on 
-`webpack.config.js` and have an extra curly brace there. Perfect. So copy everything from
-`assets/images/` into the `build/` directory. Now remember, every time we make a change to
-our `webpack.config.js` file, we do need to actually go back over here and it
-`control + c` and restart Webpack 
+To make life more joyful, Encore has a feature for *exactly* this situation. Open
+up `webpack.config.js`. And, anywhere in here, say `.copyFiles()` and pass this
+a configuration object.
 
-```terminal-silent
-yarn watch
-```
+Obviously... this function helps you copy files from one place to another. Neato!
+But... how exactly do we use it? One of the nicest things about Encore is that
+its *code* is *extremely* well-documented. Hold Command or Ctrl and click
+`copyFiles()`. It jumps us *straight* to the `index.js` file of Encore... which
+is almost *entirely* small methods with HUGE docs above them! This is a *great*
+resource for finding out, not only *how* you can use a function, but what functions
+and features are even available!
 
-and once this finishes, cool.  So check it out.
+For `copyFiles()`, it can be as simple as:
 
-Okay.
+> I want to copy everything from `assets/images` into my build directory.
 
-And the `public/build/` directory. Yeah, there we go. Meeting your showers, spice, a
-spice, Naf, all the files we have here and our `build/` directory. Um, but it is of lame
-because it just dropped them all directly into `build/`. Uh, just for my own sanity,
-having them in the `images/` directory would be much cooler. So to do that, going back
-to the documentation, there's also a way here that you can tell where you want it to
-go to. And notice this has a couple of wild cards in it, like `[path]` in `[name]` and
-`[ext]` that you can control it. Actually, I'm gonna just went down to here because
-this one has built in a versioning similar to what you've seen. The images directory
-where it actually has different Hash is included. So you kind of get free cache
-busting.
+Yea, that sounds about right. If we did that, we could *then* reference those images
+from our `img` tags. Copy that config, go back to `webpack.config.js` and paste. Oh,
+I have an extra set of curly braces.
 
-So back over here. I'll add that too. And then we're going to rebill encore. Now you
-might think that I need to go over here and actually clean out all these old files so
-that we can delete that. But one other optional feature that we're already using is
-called `.cleanOutputBeforeBuild()`. This basically is going to completely clear out the
-`build/` directory before every time we build. So we don't actually need to clear out
-the old stuff. It will just take care of it itself. So I `control + C` paste and let's
-go check it out.
+And because we just made a change to `webpack.config.js`, find your terminal,
+press control+c, and re-run Encore. When that finishes... go check it out. In
+the `public/build` directory, there they are: `meteor-shower.jpg`, `space-ice.png`
+and so on.
 
-```terminal-silent
-yarn watch
-```
+## Controlling the copy Destination
 
-Nice. Everything is in the `images/` directory and it has this Nice Hash, nobody. Only
-problem now is because we have this hash and the file name. What should we put here
-for the `<img>` tag? Should we put `build/images/meteor-shower.5c77`
-blah blah. We don't want to do that because if we ever update meteor shower, it's not
-going to be very obvious that all of our `<img>` tags just broke and we really want you
-to dynamically, you read this file name that really are we talking about the 
-`entrypoints.json` File, which is what Webpack uses, which is what our twig helpers use
-inside of. For example `base.html.twig` to figure out which `<link>` and `<script>` tags
-to render. There's actually one other JSON file that encore automatically makes it a
-little bit less important but it's called `manifest.json`.
+Um, but it *is* kind of lame that it just dropped them directly into `build/`,
+I'd rather, for my *own* sanity, copy these into `build/images`.
 
-This is literally just a map from the original file name to the final file name,
-which for most, which right now you can see is mostly the same, but later when we,
-when we enable versioning off cross everything, these pads are actually going to be
-different and the really cool thing to hear is that you can see that for our images
-we have the source image, `build/images/meteor-shower.jpg` without the Hash and
-it points to the fine on one with the hash. Now what do we installed? Webpack
-Encore, the recipe bought in a, uh, I `config/packages/assets.yaml` file that we
-didn't talk about and it had just this one line here called `json_manifest_path` set to
-`manifest.json`, the significance of this line here is that anytime we use the
-`{{ asset() }}` function inside of Twig, it's going to take this key and tried to look it up
-inside of our `manifest.json` and if it fights it here, it's going to use this
-path over there. If it doesn't find it, it will just use the, it won't make any
-changes. So this means that if we want to point at `images/meteor-shower.jpg`,
-all we need to do is point at `build/images/meteor-shower.jpg`. So I'll copy that
-path going to homepage and I'm going to paste it here.
+Let's see... go back to the docs. Here it is: you *can* give it a destination...
+and this has a few *wildcards* in it, like `[path]`, `[name]` and `[ext]`.
+Oh, but use this second one instead: it gives us built-in file versioning by including
+a hash of the contents in the filename.
 
-I also have a couple of other `<img>` tags in here. Search for image tag that was going
-to the thumbnail systems, so that's okay.
+Back in our config, paste that. Before we restart Encore, shouldn't we delete
+some of these old files... at least to get them out of the way and clean things up?
+Nope! Well, *yes*, but it's already happening. One *other* optional feature that
+we're using is called `cleanOutputBeforeBuild()`. This is responsible for emptying
+the `build/` directory each time we build.
 
-Okay.
+Ok, go restart Encore: control+C, then `yarn watch`. Let's go check it out!
+Beautiful! Everything *now* copies to `images/` *and* includes a hash.
 
-Yeah, that one's okay. That one's a dynamic image. Um, this one here will change to
-`build/images/alien-profile.jpg` and you're in the bottom `build/images/space-ice.png`
-All right, let's try it. Go back, refresh and it works.
-Inspect element on that. There is, you can see the actual final hash found him. So if
-you update that, it's just going to change the hash, but it'll automatically, they
-were under the right thing. We have a couple of other image tags that I want to fix
-before we keep going. They are an `article/show.html.twig`. So for `<img`
-tags, again, that's another dynamic we uploaded one `build/` another `build/` another
-`build/` and finally one of the bottle. So I clicked now NC, anyone, any of these real
-image files here and yet all of these little avatars here and coming from what we
-just did, it's, there we go. So copy file sports, Super Handy. Built in versioning.
+## Public Path to Versioned Copied Files: manifest.json
+
+Oh, but... that's a problem. What path are we supposed to use for the `img` tag?
+Should we put `build/images/meteor-shower.5c77...jpg`? No, because if we ever updated
+that image, the hash would change and all our `img` tags would break. And because
+they aren't being processed by Webpack, that failure would be the *worst* kind:
+it would fail *silently*!
+
+In the `build/` directory, there are *two* special JSON files generated by Encore.
+The first - `entrypoints.json` - is awesome because the Twig helpers can use it
+to generate all of the script and link tags for an entry. But there's *another*
+file: `manifest.json`.
+
+This is a big, simple, beautiful map that contains *every* file that Encore outputs.
+It maps from the *original* filename to the *final* filename. For most files, because
+we haven't activated versioning globally yet, the paths are the same. But check
+out the images! It maps from `build/images/meteor-shower.jpg` to the *real*, versioned
+path! If we could read this file, we could automagically get the correct hash!
+
+When we installed WebpackEncoreBundle, the recipe added a `config/packages/assets.yaml`
+file. Inside, oh! It has `json_manifest_path` set to the path to `manifest.json`!
+The *significance* of this line is that *anytime* we use the `asset()` function
+in Twig, it will take that path and *look* for it inside of `manifest.json`.
+If it finds it, it will use the final, versioned path.
+
+*This* means that if we want to point to `meteor-shower.jpg`, all *we* need to
+do is use the `build/images/meteor-shower.jpg` path. Copy that, go to the homepage
+template, and paste it here.
+
+There are a few other images tags in this file. Search for `<img`. This is pointing
+to an uploaded file, not a static file - so that's good. Ah, but this one needs
+to change: `build/images/alien-profile.png`. And one more, add `build/` before
+`space-ice.png`.
+
+Let's try it! Move over, refresh and... we got it! Inspect element: it's the final,
+versioned filename. Let's update the *last* `img` tags - they're in `show.html.twig`.
+Search for `img` tags again, then... `build/`, `build/` and `build/`.
+
+Click to go view one of the articles. These comment avatars are *now* using the
+system.
+
+`copyFiles()` is nice because it lets you keep *all* your frontend files in the
+same directory... even if some need to be copied to the build directory. But
+to sweeten the deal, you're rewarded with free asset versioning.
+
+By the way, this function was added by [@Lyrkan](https://github.com/Lyrkan),
+one of the core devs for Encore and... even though it's pretty simple, it's
+an absolutely brilliant implementation that I haven't seen used anywhere else.
+So, if you like it, give him a thanks on Symfony Slack or Twitter.
+
+Next, let's create *multiple* entry points to support page-specific CSS and
+JavaScript.

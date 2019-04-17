@@ -1,124 +1,128 @@
-# Sass
+# Sass & Overriding Bootstrap Variables
 
-Coming soon...
+What if I want to use Sass instead of normal CSS, or maybe Less or Stylus?
+*Normally*, that takes some setup: you need to create a system that can
+compile all of your Sass files into CSS. But with Encore, we get this for free!
 
-What about SAS? What if want to use SAS, uh, or less or stylish instead of just CSS?
-Um, normally that requires a little bit of setup because you actually need to now
-compile your sass into CSS. But with Encore, that's basically you get that for free.
-So let's rename our `app.css` to `app.scss`. Of course, as soon as soon as we do
-that, the build will fail because we need to update the `import` inside of our
+Rename `app.css` to `app.scss`. Of course, when we do that, the build fails because
+we need to update the `import` in `app.js`.
 
-mmm.
+But the build *still* fails. Go check out the error. Woh! That's awesome!
+It basically says:
 
-Instead of our JavaScript file. But the build is still fail. And if you go check out
-the air, it's actually pretty awesome. It basically says, Hey, it looks like you're
-trying to load a sass file. Do you want to use that? You might need to enable it in
-Encore and then install a few libraries. This is the philosophy of Webpack Encore. We
-want to give you a really solid core, uh, but then everything after that is optional
-but super easy to install. So I'm gonna copy this and look at this `.enableSassLoader()`
-If you go back to a `wetback.config.js`. This is actually
-already in here, online, 50 to about there. So `.enablesSassLoader()`. And then the
-other thing we need is yarn. Add this stuff. So it'll tell us exactly what we need to
-install.
+> Hey! How are you? Great weather lately, right? Listen, it looks like you're trying
+> to load a Sass file. That's super! To do that, enable the feature in Encore
+> and install these libraries.
 
-So I'll go to my open tab and I'll hit that 
+This is the philosophy of Encore: give you a really solid, but small-ish core, and
+then offer a *ton* of optional features.
 
-```terminal-silnet
+## Enabling Sass
+
+Go back to `webpack.config.js`. The `enableSassLoader()` line is already here.
+Uncomment it. Back at the terminal, copy the `yarn add` command, go to the open
+tab, and run it!
+
+```terminal-silent
 yarn add sass-loader@^7.0.1 node-sass --dev
 ```
 
-and that might take a minute or two to
-install node-sass is a c library so it actually might need to compile on your system
-and there we go. Excellent. All done. Now the only time that you should have to,
-normally when you were on the watch script, you don't need to restart Encore. The
-only exception to that is when he made a change to your `webpack.config.js`
-file, which we just did, this is just the way Webpack works. It can't reread its
-configuration until you restart it. So that `control + C` and we'll run it
+This *could* take a minute or two: `node-sass` is a C library and it may need to
+*compile* itself depending on your system. Ding!
 
-```terminal
+Thanks to the watch script, we *normally* don't need to worry about stopping
+or restarting Encore. There is *one* notable exception: when you make a change to
+`webpack.config.js`, you *must* stop and restart Encore. That's just a limitation
+of Webpack itself: it can't re-read the fresh configuration until you restart.
+
+Hit `control + C` and then run `yarn watch` again.
+
+```terminal-silent
 yarn watch
-``` 
+```
 
-again.
+And this time... yes! We just added Sass support in like... two minutes - how
+awesome is that?
 
-And this time, hello sass support in 60 seconds. How awesome was that? So this is
-next part is optional, but I'm actually going to organize my code here and a little
-bit and instead of having one big file, so let's create a new directory here called
-`layout/`. And for this top stuff here, I'm going to create a an `_header.scss` and
-little by little I'm just going to refactor all this code into different parts of my
-into different files. So there I'll grab that stuff put into header. Next we have
-this advertisement, so let's create a new directory called `components/`. And inside
-there I'll do `_ad.scss` move the advertisement stuff there. Don't need the header
-anymore.
+## Organizing into Partials
 
-Okay.
+This next part is optional, but I want to get organized... instead of having
+one big file. Create a new directory called layout. And for this top stuff, create
+a file called `_header.scss`. Little-by-little, we're going to move *all* of this
+code into different files. Grab the first section and put it into header. We'll
+import the new files when we finish.
 
-Next up is some articles, stuff's, I'll put that into `components/` as well, `_articles.scss`
-and there and we'll get the main article stuff. Excellent pace. That in next
-is profile, same thing on her `_profile.scss`.
+Next is the "advertisement" CSS. Create another folder called `components/`. And
+inside, a new `_ad.scss` file. I'll delete the header... then move the code there.
 
-Yeah,
+Let's keep going! For the article stuff, create `_articles.scss`, and move the code. Then `_profile.scss`, copy that code... and paste. For the "Create Article"
+and "Article Show" sections, let's copy *all* of that and put it into `_article.scss`.
 
-copy the next little bit. Put that in there. And for just for simplicity, I have a
-great article on the article show page. I'm actually just going to copy those into my
-articles. This is just for organization.
+And for the footer, inside `layout/`, create one more file there called
+`_footer.scss` and... move the footer code. And finally, copy the sortable
+code, create another components partial called `_sortable.scss` and paste.
 
-Here we go.
+*Now* we can import all of this with `@import './layout/header'` and
+`@import './layout/footer'`. Notice: you don't need the `_` or the `.scss` parts:
+that's a Sass thing. Let's add a few more imports for the components: `ad`,
+`articles`, `profile` and `sortable`.
 
-But that's at the bottom of my `_articles.scss`. And finally we have a footer area.
-So inside my `layout/` I'll create one more file call `_footer.scss` and I will put my
-footer code inside of there.
+Phew! That took some work, but I like the result! But, *of course*, Encore is
+here to ruin our party with a build failure:
 
-And
+> Cannot resolve `./images/space-nav.jpeg`
 
-at the bottom here I have one more little components for our sort of a functionality.
-So I'm going to delete that and create one last component called `_sortable.scss`
-and paste that in there. All right, so a little bit of rework there but
-now it's really nice cause we can say `@import './layout/header'` and 
-`@import './layout/footer'`. I noticed we don't include the `_` here or the `.scss`. That's
-a SAS thing. It knows where to find those. And then I'll just do a couple more here
-for the `./components`. So components and I'll just go out for medical medically `/ad`
+We know that error! In `_header.scss`... ah, there it is. The path needs to go
+*up* one more level now. And... it works.
 
-pace that a few times. So we can import `articles`, `profile` and `sortable` of them through.
-And we do that. Notice we get a module, not found air. Interesting. Let's go check
-that out. And if you scroll up here, ah, can I resolve `./images/space-nav.jpeg`.
-We've seen that error before. So this ended up in our head or his file and Yup, you
-can see right up here it's unhappy because now we're extra level deep. So our image
-is not resolving. Supposed to add `../` and that works. So again, you can't
-accidentally have a broken build because it's watching your back. So all have a
-refresh. We should have the same thing as before and we do. So let's flex this a
-little bit. I'm gonna Create a new directory here, call `helper/` and a new file in
-there called `_variables.scss` as and just to make sure this stuff is truly working instead
-of my `_header.scss`. At the top I have our `background`  is this gray. So
-variables, let's set a `$lightgray` variable, sat two pound, sign that value and then
-done the headers. We can just say `$lightgray`, even getting auto completion on that.
+Move over and make sure nothing looks weird. Brilliant!
 
-And as soon as you do that, you can see it fails. Not surprisingly undefined variable
-light gray. That's perfect because inside of our `app.scss` all the way at the top,
-we need to add `@import` our `helper/variables`
+## Adding Variables
 
-and about a second later filled it's successful and everything looks good. So that
-kind of proves that this SASS setup is actually working, but it's actually a little
-bit cooler than this. Remember when we did till they bootstrap until they bootstrap
-it new to load the exact `bootstrap.css` file. Well now that we're in a Sass file,
-it was smart enough to actually import the `bootstrap.scss`. So I'm actually gonna
-hold command and click into that. Again, if you look at the `package.json` File you
-how to `style` attribute, but it also had a `sass` attribute Encore smart enough that now
-that we're inside of a Sass file, it first looks for these Sass file and then it
-falls back and looks for the `style` attribute. So not all libraries have this, but
-some of them do. So it's actually loading `bootstrap.scss`.
+To celebrate that we're processing through Sass, let's at *least* use *one* of its
+features. Create a new directory called `helper/` and a new file called
+`_variables.scss`.
 
-If you look at the `font-awesome/` directory and look at its `package.json`, it
-actually doesn't have a `sass` key. So it's still loading the `font-awesome.css`
-file. If you didn't want to load the Sass, you would actually need to go and point at
-it directly. So it's something that works sometimes, but not all the time to prove
-that bootstraps Sass file as being um, used. Now I'm actually gonna go back and right
-click on my search thing. Notice this as a `btn-info` and it's color. If you
-scroll down here is set to this Hashtag right here. `#1782b8`.
-Let's say that we want to actually change the inf all the info colors to be a little
-bit darker inside the bootstrap, there's a variables file and one of the variables
-that set is called `$info`. So now inside of our variables file we can
-override that. I'll say `$info:` and I'll use the `darken()` function which comes from
-bootstrap. I need to check on that piece, that value, and I'll say 10% all right.
-Once that bill works over, watch closely refresh. Yes, it is a little bit darker. How
-cool is that? So we're now able to control bootstrap as well.
+At the top of `_header.scss`, we have a gray `background` color. Just to prove we
+can do it, in `_variables`, create a new variable called `$lightgray` set to
+`#efefee`.
+
+And back in headers, reference that: `$lightgray`.
+
+We even get auto-completion on that! As *soon* as we save, the build fails!
+
+> Undefined variable lightgray
+
+Perfect! Because... inside of `app.scss`, all the way on top, we still need to
+`@import` the `helper/variables` file. About a second later... ding! It builds
+and... the background is still there.
+
+## Overriding Bootstrap Sass Variables
+
+But wait, there's more! When we import `bootstrap`, Encore has some logic to find
+the right CSS file in that package. But now that we're inside a *Sass* file, it's
+smart enough to *instead* import the `bootstrap.scss` file! Woh!
+
+Check it out. Hold Command or Ctrl and click `~bootstrap` to jump to that directory.
+Then open up `package.json`. This has a `style` key, but it *also* has a `sass`
+key! Because we're importing from inside a Sass file, Encore *first* looks for
+the `sass` key and loads that file. If there isn't a `sass` key, it falls back
+to using `style`.
+
+Now look at the `font-awesome/` directory and find *its* `package.json` file. It
+actually does *not* have a `sass` key! And so, it's *still* loading the
+`font-awesome.css` file, which is fine. If you *did* want to load the Sass file,
+you would just need to point at the file path directly.
+
+Anyways, to *prove* that the Bootstrap Sass file is being loaded, we can override
+some of its variables. See this search button? It's blue because it has the
+`btn-info` class. It's color hash is... here: `#1782b8`.
+
+Suppose you want to change the info color *globally* to be a bit darker. Bootstrap
+lets you do that in Sass by overriding a variable called `$info`.
+
+Try it: inside the variables file, set `$info:` to `darken()`, the hash, and `10%`.
+Once the build finishes... watch closely. It got darker! How cool is that?
+
+Next, let's fix our broken `img` tags thanks to one of my favorite new Encore features
+called `copyFiles()`.
