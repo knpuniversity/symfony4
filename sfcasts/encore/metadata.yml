@@ -8,9 +8,9 @@ chapters:
     - code-splitting
     - css
     - sass
-    - copy-files        #raw
-    - multiple-entries  #raw
-    - entry-refactoring #raw
+    - copy-files
+    - multiple-entries
+    - entry-refactoring
     - autoprovide-jquery-modules #raw
     - add-style-entry   #raw
     - postcss-browserslist #raw
