@@ -83,12 +83,13 @@ first authenticator. Find your terminal and run `make:auth`:
 php bin/console make:auth
 ```
 
-Call the new class `LoginFormAuthenticator`.
-
 ***TIP
-This command is now more complete and asks you to choose between an Empty authentication or a Login form authenticator.
-When you choose the second option, it generates more code than on the video.Try it
+Since MakerBundle v1.8.0 this command asks you to choose between an "Empty authentication"
+or a "Login form authenticator". If you choose the second option, it will generate more
+code than on the video. Try it!
 ***
+
+Call the new class `LoginFormAuthenticator`.
 
 Nice! This creates one new file: `src/Security/LoginFormAuthenticator.php`:
 
