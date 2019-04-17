@@ -67,6 +67,6 @@ Woh! Hey! Shut the front door! Did we just organize our JavaScript without globa
 variables? Yes! We totally did! And that is *no* small thing. Heck, we could stop
 the tutorial right now, and you would *still* have this amazing superpower.
 
-But... we won't! Oh, there is still *so* much cool stuff to talk about. Like,
+But... we won't! There is still *so* much cool stuff to talk about. Like,
 how we can now *super* easily install third-party libraries via Yarn and import
 them in our code. Let's do it!
