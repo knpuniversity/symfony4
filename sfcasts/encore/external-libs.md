@@ -63,11 +63,11 @@ your page that points to the *exact* same file! Yea!
 That's because a well-written library will contain code that detects *how* it's
 being used and then changes its behavior.
 
-Check it out: hold Command or Ctrl and click to open `jquery.js`. It's not *super*
-easy to read, but look at this: if `typeof module.exports === "object"`. That's *key*.
-*This* is jQuery detecting if it's being used from within an environment like Webpack.
-If it *is*, it *exports* the jQuery object in the same way that we're exporting
-a function from the `get_nice_message.js` file.
+Check it out: open `jquery.js`. It's not *super* easy to read, but look at this: 
+if `typeof module.exports === "object"`. That's *key*. *This* is jQuery detecting if 
+it's being used from within an environment like Webpack. If it *is*, it *exports* the 
+jQuery object in the same way that we're exporting a function from the `get_nice_message.js` 
+file.
 
 But if we are *not* in a module-friendly environment like Webpack... specifically,
 if jQuery is being loaded via a script tag in our browser, it's not too obvious,
