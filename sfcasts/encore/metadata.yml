@@ -11,9 +11,9 @@ chapters:
     - copy-files
     - multiple-entries
     - entry-refactoring
-    - autoprovide-jquery-modules #raw
-    - add-style-entry   #raw
-    - postcss-browserslist #raw
+    - autoprovide-jquery-modules
+    - add-style-entry
+    - postcss-browserslist
     - babel-polyfills   #raw
     - single-runtime-chunk #raw
     - async-imports     #raw
