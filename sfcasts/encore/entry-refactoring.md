@@ -1,102 +1,117 @@
 # Entry Refactoring
 
-Coming soon...
+Here's our mission: to get rid of *all* the JavaScript and CSS stuff from our
+`public/` directory. Our next target is `admin_article_form.js`. This probably
+won't come as a *huge* shock, but this is used in the admin section. Go to
+`/admin/article`. If you need to log in, use `admin1@spacebar.com`, password
+`engage`. Then click to edit any of the articles.
 
-This point, my goal is to get rid of all the rest of the stuff that we have in our
-`public/` director, like the CSS and JavaScript files. So let's look at this 
-`admin_article_form.js`. Uh, this is actually used in our admin section. So if you go
-to, let's go to `/admin/article`. If you need to log in and log in as 
-`admin1@spacebar.com` Password, he `engage`.
+This page JavaScript to handle the Dropzone upload and a few other things. Open
+the template: `templates/article_admin/edit.html.twig` and scroll down. Ok: we
+have a traditional `<script>` tag for `admin_article_form.js` as well as two
+external JavaScript files that we'll handle in a minute.
 
-Hm.
+## The Repeatable Process of Refactoring to an Entry
 
-And then click to edit any of the pages. So we have a little bit of JavaScript that
-handles things like dropzone, um, and some other functionality. So if you can only
-look at,
+This is *super* similar to what we just did. First, move `admin_article_form.js`
+into `assets/js`. This will be our *third* entry. So, in `webpack.config.js`
+copy `addEntry()`, call this one `admin_article_form` and point it to
+`admin_article_form.js`. Finally, inside `edit.html.twig`, change this to
+use `{{ encore_entry_script_tags('admin_article_form') }}`.
 
-yeah,
-
-so if you look at this template, it lives in `templates/article_admin/edit.html.twig`
-and scroll down. Okay. So we have, here's our traditional `<link>` tag for
-`admin_article_form.js`. We're also including some other JavaScript files which
-will handle the second, but this is very similar to what we just did. We want to do
-is take our `admin_article_form.js` first and just move it into our `assets/js`
-Directory. This is going to be yet another entry file. So next in `webpack.config.js`
-I'll copy the `addEntry()` and we're going to have one called `admin_article_form`.
-What's points at that `admin_article_form.js` file. And finally inside the 
-`edit.html.twig`, we'll change this to use our `{{ encore_entry_script_tags() }}` or that
-same `admin_article_form` fit because we just updated our `webpack.config.js`
-file move over, rerun 
+Now, stop and restart Encore:
 
 ```terminal
 yarn watch
 ```
 
-and perfect splits everything up.
+Perfect! 3 entries and a lot of good code splitting. But we shouldn't be *too*
+surprised that when we refresh, we get our *favorite* JavaScript error:
 
-Okay.
+> $ is not defined
 
-But not surprisingly when we refresh, we get a JavaScript error are very familiar.
-$ is not defined because the first thing we do in that file is we've talked
-to jquery. So this is easy. Now we're just updating our files to use a new way of
-doing things `import $ from 'jquery'` and we are good to go.
+Let's implement phase 2 of refactoring. In `admin_article_form.js`,
+`import $ from 'jquery'` and... we're good to go!
 
-Nice.
+## Refactoring the External script Tags
 
-So in addition to things out of our `public/`
+In addition to moving things out of `public/`, I *also* want to remove all of
+these external script tags. Actually, there's nothing wrong with including external
+scripts - and you can *definitely* argue that including some things - like
+jQuery - could be good for performance. If you *do* want to keep a few script
+tags for external stuff, check out Webpack's "externals" feature to make it work
+nicely.
 
-directory, I also want to get rid of all of these `<script>` tags in. The reason is the
-script tags. There's nothing wrong with including external scripts, but the script
-tags are creating global variables. So the new way of doing JavaScript is you never
-want to have undefined variable. So if we're going to use a dollar sign variable, we
-need to import dollar sign, but check it out. We're just referencing drop them. Where
-did that come from? Well the answer is it's a global variable created by this drop
-some JavaScript file and there's also one in here for sortable as well down near the
-Bob. I do not want to do that anymore. I don't want to rely on global variables. So
-we are going to go and to kill both of those script tags and it's not a, we're going
-to install them via yarn. So find your terminal, go to your open tab and run 
+The reason I don't like them is that, in the *new* way of writing JavaScript,
+you never want undefined variables. If we need a `$` variable, we need to import
+`$`! But check it out: we're referencing `Dropzone`. Where the heck does that come
+from? Answer: it's a global variable created by this Dropzone script tag! The
+same is true for `Sortable` further down. I *don't* want to rely on global variables
+anymore.
+
+Trash both of these script tags. Then, find your terminal, go to your open
+tab and run:
 
 ```terminal
 yarn add dropzone sortablejs --dev
 ```
 
-I've already looked up for those exact
-package names to make sure that those are correct, that finishes. And then we can go
-over into our `admin_article_form.js`. And these will truly be undefined now. So
-if we refresh, we'll get good. Excellent. error 
+I already looked up those exact package names to make sure they're right.
+Next, inside `admin_article_form.js`, these variables will truly be undefined now.
+Try it: refresh. A most *excellent* error!
 
 > Dropzone is undefined
 
-So we'll `import Dropzone from 'dropzone'` and we'll `import Sortable from 'sortablejs'`
+It sure is! Fix that with `import Dropzone from 'dropzone'` and also
+`import Sortable from 'sortablejs'`.
 
-and now it works. But there's one other thing that you may have noticed in our edit
-template. We also have the CDN link to the, to the um, the CSS file. We also don't
-need that anymore. Get rid of that. And instead in `admin_article_form.js`, we can just
-import the CSS from dropzone directly. So I'm a hold `command` or `control` here to
-click in the dropzone, which takes us over here and use a little trick
+*Now* it works.
 
-to kind of look at this. I'm going to double click drops on here. That'll take us to
-that spot. And I can see inside this there is a `dropzone.css` file. So that's
-actually the path that we want to include. I'm going to require, and we can actually
-do it here, we can say `import 'dropzone/dist/dropzone.css'`
-So most of the time we're lazy and we just actually say the module name, but
-it's totally illegal to say the module names / a specific file name and that will
-import it. Now, as soon as we do that, if you go back over to Encore, you can see
-that for the `admin_article_form`. See, wow, that list is getting really long, but
-inside of here it's actually rendering some CSS files now. So we'll flip back over,
-go to edit age and en suite and just say `{{ encore_entry_link_tags('admin_article_form') }}`.
+## Importing the CSS
 
-Okay.
+But there's *one* more thing hiding in our edit template: we have a CDN link to
+the Dropzone CSS! We don't need that either. Instead, in `admin_article_form.js`,
+we can import the CSS from the dropzone package directly. Hold command or
+control and click to open dropzone. I'll double-click the `dropzone` directory
+to take us there.
 
-All right, so let me move over, refresh and God, I can see the styling here is coming
-from drop zone. If free quick Jopson and actually still working just fine. This a
-JavaScript has also included on another page. It is actually the the new form page.
-If we go back to `/admin/article` and you click create, we still have some problems
-inside of here, so I'll close up `node_modules/`, go back into 
-`templates/article_admin/new.html.twig`. There is js `admin_article_form`. We're just gonna
-replace that with our `<script>` tag over here. And then we'll do the same thing for the
-`<link>` tag. So an `{{ encore_entry_link_tags('admin_article_form') }}` over a refresh, and it's
-still totally going to be broken because we are still young. This is kind of from
-autocomplete that jquery that men, so that's because this thing still has a couple
-of external libraries, uh, that we need to take care of next. So we've sort of half
-fixed this new template, but half haven't fixed it yet. So let's do that next.
+Inside `dist`... there it is: `dropzone.css`. *That's* the path we want to import.
+How? With `import 'dropzone/dist/dropzone.css'`.
+
+Most of the time, we're lazy and we say `import` then the package name. But it's
+totally legal to import the package name */* a specific file path.
+
+As *soon* as we do that, go check out the Encore watch tab. Wow! The code splitting
+is getting crazy! Hiding inside there is *one* CSS file:
+`vendors~admin_article_form.css`.
+
+Flip back to the edit template and add
+`{{ encore_entry_link_tags('admin_article_form') }}`.
+
+Try it! Find your browser and refresh! Ok, it looks like the Dropzone CSS is
+still working. I think we're good!
+
+## Including script & link on the New Page
+
+This *same* JavaScript & CSS code is needed on one other page. Go back to
+`/admin/article` and click create. Oof, we still have some problems here. I'll
+close up `node_modules/` and open `templates/article_admin/new.html.twig`.
+
+Ah, cool. Replace the `admin_article_form.js` script with our helper Twig function.
+
+Under stylesheets, the new page doesn't use Dropzone, so it didn't have that
+same link tag here. Add `{{ encore_entry_link_tags('admin_article_form') }}` anyways
+so that this page has *all* the JS and CSS it needs.
+
+But this *does* highlight one... let's say... "not ideal" thing. Some of the JavaScript
+on the edit page - like the Dropzone & Sortable stuff - isn't needed here... but
+it's part of `admin_article_form.js` anyways. And actually, the reverse is true!
+That autocomplete stuff? That's needed on the "new" page, but not the edit page.
+At the end of the tutorial, we'll talk about async imports, which is one really
+nice way to help avoid packaging code all the time that is only needed *some*
+of the time.
+
+Anyways, if we refresh now... the page is still *totally* broken! Apparently
+this "autocomplete" library we're importing is trying to reference jQuery.
+Let's fix that next... which will involve a... sort of "magical" feature of Webpack
+and Encore.
