@@ -2,12 +2,12 @@
 
 Coming soon...
 
-Head back to the /admin section. A don't have a performance issue here or something.
+Head back to the `/admin` section. A don't have a performance issue here or something.
 We can make much more. Awesome. So if you create a new article, we have a an author
 feel here and it uses a bunch of autocomplete JavaScript. The thing is that if you go
 back and edit an article, we don't have this working on the admin edit and the edit
 page and that's on purpose. We purposely want the author field to be disabled. So
-here's the problem with that. Go Open an article form dot js so we import this auto
+here's the problem with that. Go Open `admin_article_form.js` so we import this auto
 complete um, JavaScript file here, which imp importance. I'm a third party audit
 complete library. It also includes the important some CSS. So it's got, it's not a
 tiny amount of code and if you think about it, since this file is included on both
@@ -16,22 +16,22 @@ page cause we don't need any of that functionality.
 
 The problem is that you can't conditionally do things. Can't put an if statement
 around here and conditionally import that audibly because Webpack needs to know at
-bill time. Should I put the contents of this inside of the final built admin article
-form file or not. Fortunately, there's an awesome feature called a sync imports or we
+build time. Should I put the contents of this inside of the final built `admin_article_form`
+file or not. Fortunately, there's an awesome feature called `async` imports or we
 can work around this because this is really common situation. You might even have a
 situation where you have, for example, some dialog box that pops up, but that
 dialogue box is something that pops up only very, very rarely. So you don't want to
 have a user download all of that extra JavaScript for that dialogue box until they
-actually click the link. So we need to be able to laser Lee load dependencies. Here's
+actually click the link. So we need to be able to lazyly load dependencies. Here's
 how we do it. I'm gonna copy this file path here. Then delete the import import is
-normally are all@thetopofthefileandyeah.here
+normally are all at the top of the file and yeah here
 
 inside the if statement. This is when we know that we want to actually use that
-library. So down here we can use import like a function and pass it the path that we
+library. So down here we can use `import()` like a function and pass it the path that we
 want to complete. This is going to work very similar to an Ajax call. It's not going
-to be instant. So we're going to chain a promise onto it. You want to say dot then
+to be instant. So we're going to chain a promise onto it. You want to say `.then()`
 and here it's going to pass us whatever that library, um, export it as a value. So
-we'll say audit complete and then I'll do an->function right here. And then inside we
+we'll say `autocomplete` and then I'll do arrow function right here. And then inside we
 can move that code there. So it's going to hit her hand port code, it's going to make
 an Async, it's gonna make an Ajax call off that script tag. And then whenever it
 finishes, we will actually call that function. So this is also a perfect time. Do you
@@ -42,10 +42,13 @@ loading animation inside.
 Yeah.
 
 All right. So check this out. Let's go refresh. And while of course it doesn't run
-this, let's go to our article. New Page. Oh auto complete is not a function at an
-article form that j s ah, so this is a little bit of a Gotcha. When your module uses
+this, let's go to our `article/new` Page. Oh 
+
+> autocomplete is not a function 
+
+at an `article_form.js` ah, so this is a little bit of a Gotcha. When your module uses
 the new syntax, the kind of export default, when you use code splitting, you actually
-need to say autocomplete dot default just to kind of a weird thing you need to know
+need to say `autocomplete.default` just to kind of a weird thing you need to know
 about snap and go back and refresh.
 
 Okay.
@@ -55,8 +58,8 @@ network call here, I'm going to go to the script tags look
 
 okay.
 
-It actually downloaded one that that jazz and zero dot js Africans out of there. It
-actually, this pertains the auto complete j car dot js and one dot. JS contains the
+It actually downloaded `1.js` and `0.js` Africans out of there. It
+actually, this pertains the `autocomplete.jquery.js` and `1.js` contains the
 CSS file and the JavaScript file. So it's actually still code splitting those
 components and yeah, it actually includes the CSS file, which is, I know seems kind
 of crazy, but

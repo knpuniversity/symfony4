@@ -14,7 +14,7 @@ chapters:
     - autoprovide-jquery-modules
     - add-style-entry
     - postcss-browserslist
-    - babel-polyfills   #raw
-    - single-runtime-chunk #raw
-    - async-imports     #raw
+    - babel-polyfills
+    - single-runtime-chunk
+    - async-imports
     - production-build  # not recorded yet
