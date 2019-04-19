@@ -1,12 +1,19 @@
 # Importing External Libraries & Global Variables
 
 We already added the `app` entry files to our base layout: the `<script>` tag and
-the `<link>` tag both live here. This means that *any* time we have some CSS or
-JavaScript that should be included on every page, we can put it in `app.js`.
+the `<link>` tag both live here:
 
-Look down at the bottom. Ah... we have a few script tags for external files *and*
-some inline JavaScript. Shame on me! Let's refactor *all* of this into our new
-Encore-powered system.
+[[[ code('3a46b9906a') ]]]
+
+This means that *any* time we have some CSS or JavaScript that should be included
+on every page, we can put it in `app.js`.
+
+Look down at the bottom:
+
+[[[ code('bf055266db') ]]]
+
+Ah... we have a few script tags for external files *and* some inline JavaScript.
+Shame on me! Let's refactor *all* of this into our new Encore-powered system.
 
 The first thing we include is jQuery... which makes sense because we're using it
 below. Great! Get rid of it. Not surprisingly... this gives us a nice, big error:
@@ -34,7 +41,9 @@ And... that was *painless*! We now have jQuery in our app.
 
 We already know how to import a file that lives in a directory next to us. To
 import a *third* party library, we can say `import $ from`, and then the name of
-the package: `jquery`.
+the package: `jquery`:
+
+[[[ code('83f6a2a1b5') ]]]
 
 The critical thing is that there is no `.` or `./` at the start. If the path starts
 with a `.`, Webpack knows to look for that file relative to this one. If there is
@@ -50,8 +59,11 @@ this specific file.
 ## Global Variables inside Webpack
 
 Cool! We've imported jQuery in `app.js` and set it to a `$` variable. And because
-that `<script>` tag is included *above* our inline code in `base.html.twig`, the
-`$` variable should be available down here, right?
+that `<script>` tag is included *above* our inline code in `base.html.twig`:
+
+[[[ code('a618ef0262') ]]]
+
+The `$` variable should be available down here, right?
 
 Nope! `$` is *still* not defined! Wait, the *second* error is more clear. Yep,
 `$` is not defined, coming from our code in `base.html.twig`.
@@ -67,18 +79,23 @@ Check it out: open `jquery.js`. It's not *super* easy to read, but look at this:
 if `typeof module.exports === "object"`. That's *key*. *This* is jQuery detecting if 
 it's being used from within an environment like Webpack. If it *is*, it *exports* the 
 jQuery object in the same way that we're exporting a function from the `get_nice_message.js` 
-file.
+file:
+
+[[[ code('be19fc083c') ]]]
 
 But if we are *not* in a module-friendly environment like Webpack... specifically,
 if jQuery is being loaded via a script tag in our browser, it's not too obvious,
 but this code is creating a *global* variable.
 
 So, *if* jQuery is in a script tag, we get a global `$` variable. But if you
-*import* it like we're doing here, it does *not* create a global variable. It
-*returns* the jQuery object, which is then set on this *local* variable. Also,
-all modules... or "files", in Webpack live in "isolation": if you set a variable
-in one file, it *won't* be available in any other file, regardless of what
-order they're loaded.
+*import* it like we're doing here:
+
+[[[ code('d826525bb3') ]]]
+
+It does *not* create a global variable. It *returns* the jQuery object, which is
+then set on this *local* variable. Also, all modules... or "files", in Webpack
+live in "isolation": if you set a variable in one file, it *won't* be available
+in any other file, regardless of what order they're loaded.
 
 That is probably the *biggest* thing to re-learn in Webpack. Global variables are
 dead. That's *awesome*. But it *also* changes *everything*.
@@ -91,12 +108,16 @@ un-Webpack-ified JavaScript files *into* Encore. But... if you're upgrading an
 to be global `$` or `jQuery` variables. Moving *all* of that into Encore *all*
 at once... it's, uh... not very realistic.
 
-So, if you *really* want a global variable, you can add one with `global.$ = $`.
+So, if you *really* want a global variable, you can add one with `global.$ = $`:
+
+[[[ code('fa8b529568') ]]]
 
 That `global` keyword is special to Webpack. Try it now: refresh! It works!
 
 But... don't do this unless you *have* to. I'll remove it and add some comments
-to explain that this is useful for legacy code.
+to explain that this is useful for legacy code:
+
+[[[ code('3bc08dffa1') ]]]
 
 Let's *properly* finish this next by refactoring all our code into `app.js`, which
 will include installing *two* more libraries and our first jQuery plugin... It
