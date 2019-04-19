@@ -3,10 +3,10 @@
 Here's our mission: to get rid of *all* the JavaScript and CSS stuff from our
 `public/` directory. Our next target is `admin_article_form.js`. This probably
 won't come as a *huge* shock, but this is used in the admin section. Go to
-`/admin/article`. If you need to log in, use `admin1@spacebar.com`, password
+`/admin/article`. If you need to log in, use `admin1@thespacebar.com`, password
 `engage`. Then click to edit any of the articles.
 
-This page JavaScript to handle the Dropzone upload and a few other things. Open
+This page has JavaScript to handle the Dropzone upload and a few other things. Open
 the template: `templates/article_admin/edit.html.twig` and scroll down. Ok: we
 have a traditional `<script>` tag for `admin_article_form.js` as well as two
 external JavaScript files that we'll handle in a minute.

@@ -4,7 +4,7 @@ On the article show page, if you check the console... it's an error!
 
 > $ is undefined
 
-coming from `articles_show.js`. This shouldn't be surprising. And not *just* because
+coming from `article_show.js`. This shouldn't be surprising. And not *just* because
 I seem to make a lot of mistakes. Open that template and go to the bottom. Ah,
 this brings in a `js/article_show.js` file. Go find that: in `public/`, I'll close
 `build/` and... there it is.
@@ -51,7 +51,7 @@ CSS. And so, Webpack is smart enough to *not* output an empty `article_show.css`
 file. But you *could* still plan ahead if you wanted: `encore_entry_link_tags()`
 will print *nothing* if there's no CSS file. So, no harm.
 
-Ok: because made a change to our `webpack.config.js` file, stop and restart Encore:
+Ok: because we made a change to our `webpack.config.js` file, stop and restart Encore:
 
 ```terminal-silent
 yarn watch
@@ -69,20 +69,20 @@ heart icon.
 ## Importing CSS
 
 Because we *haven't* imported any CSS yet from `article_show.js`, we already saw
-that Webpack was smart enough to not to output a CSS file. But! Open up
+that Webpack was smart enough to not output a CSS file. But! Open up
 `_articles.scss`. *Part* of this file is CSS for the article show page... which
 doesn't *really* need to be included on *every* page.
 
 Let's copy *all* of this code, remove it, and, at the root of the `css/` directory,
 create a new file called `article_show.scss` and... paste!
 
-Both `app.js` and `articles_show.js` are *meant* to import *everything* that's
+Both `app.js` and `article_show.js` are *meant* to import *everything* that's
 needed for the layout and for the article show page. `app.scss` and
 `article_show.scss` are kinda the same thing: they should import all the *CSS*
 that's needed for each spot.
 
 At the top of `article_show.scss`, we don't *strictly* need to do this, but let's
-`@import 'helper/variables.scss` to drive home the point that this is a
+`@import 'helper/variables` to drive home the point that this is a
 standalone file that *imports* anything it needs.
 
 *Finally*, back in `article_show.js` add `import '../css/article_show.scss'`.
