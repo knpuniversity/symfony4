@@ -1,6 +1,6 @@
 # Hello Webpack Encore
 
-Yo friends! It's Webpack time! Yeeeeees! Well, maybe not *super* "yeeeeees!"
+Yo friends! It's Webpack time! Yeeeeeeah! Well, maybe not *super* "yeeeeeeah!"
 if *you* are the person responsible for installing and *configuring* Webpack...
 Cause, woh, yea, that can be tough! Unless... you're using Webpack Encore!
 More about that in a few minutes.
@@ -43,7 +43,7 @@ https://symfony.com/download. Run it with:
 symfony serve
 ```
 
-Then, swing back over to your browser and open up http://localhost:8000 to see...
+Then, swing back over to your browser and open up https://localhost:8000 to see...
 The Space Bar! An app we've been working on throughout our Symfony series. And,
 we *did* write some JavaScript and CSS in that series... but we kept it *super*
 traditional: the JavaScript is pretty boring, and there are multiple files but
@@ -53,7 +53,7 @@ This is *not* the way I really code. So, let's do this correctly.
 
 ## Installing WebpackEncoreBundle + Recipe
 
-So even though both Webpack and Encore are *node* libraries, if you're using Symfony,
+So even though both Webpack and Encore are *Node* libraries, if you're using Symfony,
 you'll install Encore via composer... well... sort of. Open a new terminal tab and run:
 
 ```terminal
@@ -68,9 +68,14 @@ This bundle *also* has a Flex *recipe* - oooooOOOOooo - which gives us some file
 to get started! If you want to use Webpack from *outside* of a Symfony app, you would
 just need these files in your app.
 
-Back in the editor, check out `package.json`. *This* is the `composer.json` file
-of the Node world. It requires Encore itself plus two optional packages that we'll
-use.
+Back in the editor, check out `package.json`:
+
+[[[ code('c7464183b0') ]]]
+
+*This* is the `composer.json` file of the Node world. It requires Encore itself
+plus two optional packages that we'll use:
+
+[[[ code('d8e8d4b756') ]]]
 
 ## Installing Encore via Yarn
 
@@ -81,28 +86,40 @@ yarn
 ```
 
 Or... `yarn install` if you're less lazy than me - it's the same thing. Node has
-*two* package managers - `yarn` and `npm` - I know, kinda weird - but you can install
+*two* package managers - "Yarn" and "npm" - I know, kinda weird - but you can install
 and use whichever you want. Anyways, this is downloading our 3 libraries and their
 dependencies into Node's version of the `vendor/` directory: `node_modules/`.
 
-And... done! Congrats! You now have a gigantic `node_modules` directory... because
+And... done! Congrats! You now have a gigantic `node_modules/` directory... because
 JavaScript has tons of dependencies. Oh, the recipe *also* updated our `.gitignore`
-file to *ignore* `node_modules/`. Just like with Composer, there is *no* reason to
-commit this stuff. This *also* ignores `public/build`, which is where Webpack will
-*put* our final, built files.
+file to *ignore* `node_modules/`:
+
+[[[ code('75a4f84a78') ]]]
+
+Just like with Composer, there is *no* reason to commit this stuff. This *also*
+ignores `public/build/`, which is where Webpack will *put* our final, built files.
 
 ## Hello webpack.config.js
 
 In fact, I'll show you why. At the root of your app, the recipe added the most
-important file of all `webpack.config.js`. *This* is the configuration file that
-Encore reads. Actually, if you use Webpack by itself, you would have this *exact*
-same file! Encore is basically a configuration generator: you tell it how you want
-Webpack to behave and then, *all* the way at the bottom, say: please give me the
-standard Webpack config that will give me that behavior. Encore makes things easy,
-but it's *still* true Webpack under-the-hood.
+important file of all `webpack.config.js`:
+
+[[[ code('cd18d48c46') ]]]
+
+*This* is the configuration file that Encore reads. Actually, if you use Webpack
+by itself, you would have this *exact* same file! Encore is basically a configuration
+generator: you tell it how you want Webpack to behave and then, *all* the way
+at the bottom, say:
+
+> Please give me the standard Webpack config that will give me that behavior.
+
+Encore makes things easy, but it's *still* true Webpack under-the-hood.
 
 Most of the stuff in this file is for configuring some optional features that we'll
 talk about along the way - so ignore it all for now. The three *super* important
 things that *we* need to talk about are output path, public path and this `addEntry()`
-thing. Let's do that next, *build* our first Webpack'ed files and include them on
-the page.
+thing:
+
+[[[ code('0907d90e80') ]]]
+
+Let's do that next, *build* our first Webpack'ed files and include them on the page.
