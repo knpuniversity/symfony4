@@ -16,7 +16,7 @@ hand. No way! We're going to be *way* lazier, and use some helper functions
 from WebpackEncoreBundle. For the stylesheets, use `{{ encore_entry_link_tags() }}`
 and pass it `app`, because that's the name of the entry:
 
-[[[ code('8f599d42fd') ]]]
+[[[ code('7842d57c4f') ]]]
 
 At the bottom, replace the script tag with almost the same thing:
 `{{ encore_entry_script_tags('app') }}`:

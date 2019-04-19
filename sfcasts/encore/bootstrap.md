@@ -37,7 +37,7 @@ Let's do this properly.
 
 ## Installing Bootstrap
 
-Oh, by the way, this popper.js thing is here because it's needed by Bootstrap:
+Oh, by the way, this `popper.js` thing is here because it's needed by Bootstrap:
 
 [[[ code('3e07820e6f') ]]]
 
