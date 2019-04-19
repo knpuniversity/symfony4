@@ -6,12 +6,15 @@ have *two* script tags - one for `app.js` but *also* one for `vendors~app.js`.
 What the heck? Go look at the `public/build/` directory. Yeah, there *is* a `vendors~app.js` file.
 
 I *love* this feature. Check out `webpack.config.js`. One of the optional features
-that came pre-enabled is called `splitEntryChunks()`. Here's how it works. We
-tell Webpack to read `app.js`, follow *all* the imports, then eventually create
-one `app.js` file and one `app.css` file. But internally, Webpack uses an
-algorithm that, in this case, determines that it's more efficient if the one
+that came pre-enabled is called `splitEntryChunks()`:
+
+[[[ code('e8f128041c') ]]]
+
+Here's how it works. We tell Webpack to read `app.js`, follow *all* the imports,
+then eventually create one `app.js` file and one `app.css` file. But internally,
+Webpack uses an algorithm that, in this case, determines that it's more efficient if the one
 `app.js` file is split into *two*: `app.js` and `vendors~app.js`. And then, yea,
-we need *two* scripts tags on the page.
+we need *two* script tags on the page.
 
 ## The Logic of Splitting
 
@@ -56,19 +59,54 @@ config object like this. So, if we wanted to apply some of these changes, how
 could we do that in Encore?
 
 The answer lives at the bottom of `webpack.config.js`. At the end, we call
-`Encore.getWebpackConfig()`, which *generates* standard, Webpack config.
+`Encore.getWebpackConfig()`, which *generates* standard Webpack config:
+
+[[[ code('7f2207ee5b') ]]]
+
 If you need to, you can always set this to a variable, *modify* some keys, then
-export the final value when you're finished.
+export the final value when you're finished:
+
+```javascript
+// webpack.config.js
+
+// ...
+
+const config = Encore.getWebpackConfig();
+config.optimization.splitChunks.minSize = 20000;
+
+module.exports = config;
+```
 
 But for most things, there's an easier way. In this case, you can say
 `.configureSplitChunks()` and pass it a callback function. Encore will pass you
-the *default* split chunks configuration and then you can tweak it. This is a common
-way to extend things in Encore.
+the *default* split chunks configuration and then you can tweak it:
+
+```javascript
+// webpack.config.js
+
+// ...
+
+Encore.
+    // ...
+    .splitEntryChunks()
+    .configureSplitChunks(function(splitChunks) {
+        splitChunks.minSize = 20000;
+    })
+    // ...
+;
+
+module.exports = Encore.getWebpackConfig();
+```
+
+This is a common way to extend things in Encore.
 
 But... Webpack does a pretty great job of splitting things out-of-the-box.
 And... if you look at the `entrypoints.json` file, Encore makes sure that this
 file stays up-to-date with exactly *which* script and link tags each entry requires.
-The Twig helpers are already reading this file and taking care of everything.
+The Twig helpers are already reading this file and taking care of everything:
+
+[[[ code('bb4daf0c6a') ]]]
+
 Basically, code splitting is free performance.
 
 Oh, and *all* of this applies to CSS too. In a few minutes, after we've made our
