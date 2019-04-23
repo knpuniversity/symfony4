@@ -1,6 +1,4 @@
-# Autoprovide Jquery Modules
-
-Coming soon...
+# Autoprovide jQuery Modules
 
 There's still some work to do on this `new.html.twig`. We bringing some
 autocomplete stuff. We also link to one of our own,
@@ -12,7 +10,7 @@ pump directory. Yay. Which is Dr Reddy, very traditional and does some autocompl
 stuff with this. Actually does it add some auto completion to this box, which is
 totally not working right now because we've broken everything, so let's fix that.
 First thing is in some of our `new.html.twig`, we have a CDN link to an
-autocomplete library. I'm going to install that 
+autocomplete library. I'm going to install that
 
 ```terminal
 yarn add autocomplete.js --dev
@@ -28,8 +26,8 @@ directory, which is kind of meant to be for reusable little components. And this
 isn't really written like a component yet because these files and here's your
 probably return a value export value, not just run some random code, but we'll work
 on that in a second. I'm also going to take the `algolia-autocomplete.css` file
-and I'm going to move that all the way up here into my `css/` directory and just because
-we can, I'm going to rename that to `.scss`.
+and I'm going to move that all the way up here into my `css/` directory and just
+because we can, I'm going to rename that to `.scss`.
 
 Okay,
 
@@ -42,7 +40,7 @@ nicer and a second. Now in `new.html.twig`. The great thing is, is we don't need
 to import this CSS file anymore, uh, or any of these script files. This is really how
 we want our templates to look. A single a call to `{{ encore_entry_script_tags() }}` and a
 single call to `{{ encore_entry_link_tags() }}`. All right, so you refresh right now, not
-surprisingly, it's still not going to work in the error is our classic 
+surprisingly, it's still not going to work in the error is our classic
 
 > $ is undefined
 
@@ -75,15 +73,15 @@ we were including via `<script>` tag before, so instead of in importing audit pl
 I'm just going to say `import 'autocomplete.js/dist/autocomplete.jquery'`
 Remember we don't import from with Jquery plugins because they actually modify the
 jquery object instead of returning a value. All right, so let's try this move over.
-Refresh and o 
+Refresh and o
 
 > jQuery is not defined
 
-Notice it doesn't say "$ is not defined". It says "jQuery is not defined" and 
-it's coming from inside of `autocomplete.jquery.js` is coming 
-from inside of that third party module on line 241 so this is a tricky thing 
-with jQuery plugins. This is actually the second jquery plugin that we've 
-worked with. The first one was a bootstrap any for remember when did with bootstrap, 
+Notice it doesn't say "$ is not defined". It says "jQuery is not defined" and
+it's coming from inside of `autocomplete.jquery.js` is coming
+from inside of that third party module on line 241 so this is a tricky thing
+with jQuery plugins. This is actually the second jquery plugin that we've
+worked with. The first one was a bootstrap any for remember when did with bootstrap,
 we didn't have any problems. If you look inside of our `app.js` file,
 
 we imported bootstrap and it just worked. Now bootstrap actually modifies jquery, but
@@ -99,7 +97,7 @@ getting less and less popular, but so the basically the module, the filing we're
 trying to import is written incorrectly. Fortunately Webpack amazingly has a way
 around this and `webpack.config.js`, it doesn't matter where, but we
 already have an example down here. There's a spot called `.autoProvidejQuery()`
-uncomment that go and restart encore 
+uncomment that go and restart encore
 
 ```terminal-silent
 yarn watch
@@ -146,10 +144,10 @@ JSON to actually render.
 
 So what I'm basically done is I've taken all this cohere and I've taken out the
 specific parts and replace them with generic variables. So now I'm going say
-`$elements.each()` for the `dataKey`, we can put a little thing here that says 
+`$elements.each()` for the `dataKey`, we can put a little thing here that says
 `if (dataKey)` and `data = data[dataKey]`. And down here we'll just call, call
 `cb(data)`, not on here. Oh, `displaKey: displayKey`. The point is this
-file doesn't do anything anymore. It just exports a re usable function in 
+file doesn't do anything anymore. It just exports a re usable function in
 `admon_article_form.js`. Now we're going to `import autocomplete from './componenta/algolia-autocomplete'`
 
 Yeah. Okay. Yeah.
@@ -165,7 +163,7 @@ Wow.
 
 And then if not `$autoComplete.is(':disabled')` Then we're going to call that function
 `autocomplete()` referencing the very, we brought in here `$autoComplete` comma
-`'users'`. That was the `dataKey` we had before an `'email'` that was the `displayKey`. 
+`'users'`. That was the `dataKey` we had before an `'email'` that was the `displayKey`.
 It's we're calling that function, which is really useful. By the way, the reason I'm doing
 this `:disabled` is the way we originally made these forums is this author field
 is actually disabled on the edit endpoint, so I don't want to actually add the

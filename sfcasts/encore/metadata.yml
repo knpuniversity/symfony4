@@ -11,6 +11,7 @@ chapters:
     - copy-files
     - multiple-entries
     - entry-refactoring
+    - refactor-autocomplete
     - autoprovide-jquery-modules
     - add-style-entry
     - postcss-browserslist
