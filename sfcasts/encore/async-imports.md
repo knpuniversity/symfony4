@@ -77,12 +77,26 @@ a page when the user *goes* to that page... instead of having one *gigantic*
 JavaScript file for your whole site.
 
 By the way, the dynamic import syntax can be even simpler if you use the `await`
-keyword and some fancy destructuring:
+keyword and some fancy destructuring. You'll also need to install a library
+called `regenerator-runtime`. Check out the code on this page for an example.
 
 ```javascript
-const { default: autocomplete } = await import('./components/algolia-autocomplete');
+// and run: yarn add regenerator-runtime --dev
 
-autocomplete($autoComplete, 'users', 'email');
+async function initializeAutocomplete($autoComplete) {
+    const { default: autocomplete } = await import('./components/algolia-autocomplete');
+
+    autocomplete($autoComplete, 'users', 'email');
+}
+
+$(document).ready(function() {
+    const $autoComplete = $('.js-user-autocomplete');
+    if (!$autoComplete.is(':disabled')) {
+        initializeAutocomplete($autoComplete);
+    }
+
+    // ...
+}
 ```
 
 Next: there's just one more thing to talk about: how to build our assets for production,
