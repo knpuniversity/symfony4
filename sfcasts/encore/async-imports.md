@@ -1,77 +1,89 @@
 # Async Imports
 
-Coming soon...
+Head back to `/admin/article`. We have a... sort of... "performance" issue here.
+When you create a new article, we have an author field that uses a bunch of
+autocomplete JavaScript and CSS. The thing is, if you go back and edit an article,
+this is purposely *not* used here.
 
-Head back to the `/admin` section. A don't have a performance issue here or something.
-We can make much more. Awesome. So if you create a new article, we have a an author
-feel here and it uses a bunch of autocomplete JavaScript. The thing is that if you go
-back and edit an article, we don't have this working on the admin edit and the edit
-page and that's on purpose. We purposely want the author field to be disabled. So
-here's the problem with that. Go Open `admin_article_form.js` so we import this auto
-complete um, JavaScript file here, which imp importance. I'm a third party audit
-complete library. It also includes the important some CSS. So it's got, it's not a
-tiny amount of code and if you think about it, since this file is included on both
-the edit and the new form page, all of this code here is totally wasted on the edit
-page cause we don't need any of that functionality.
+So, what's the problem? Open `admin_article_form.js`. We import
+`algolia-autocomplete`... and it imports a third-party library and some CSS. So,
+it's not a *tiny* amount of code to get this working. The `admin_article_form.js`
+entry file is included on both the new *and* edit pages. But really, a big chunk
+of that file is *totally* unused on the edit page. What a waste!
 
-The problem is that you can't conditionally do things. Can't put an if statement
-around here and conditionally import that audibly because Webpack needs to know at
-build time. Should I put the contents of this inside of the final built `admin_article_form`
-file or not. Fortunately, there's an awesome feature called `async` imports or we
-can work around this because this is really common situation. You might even have a
-situation where you have, for example, some dialog box that pops up, but that
-dialogue box is something that pops up only very, very rarely. So you don't want to
-have a user download all of that extra JavaScript for that dialogue box until they
-actually click the link. So we need to be able to lazyly load dependencies. Here's
-how we do it. I'm gonna copy this file path here. Then delete the import import is
-normally are all at the top of the file and yeah here
+## Conditionally Dependencies?
 
-inside the if statement. This is when we know that we want to actually use that
-library. So down here we can use `import()` like a function and pass it the path that we
-want to complete. This is going to work very similar to an Ajax call. It's not going
-to be instant. So we're going to chain a promise onto it. You want to say `.then()`
-and here it's going to pass us whatever that library, um, export it as a value. So
-we'll say `autocomplete` and then I'll do arrow function right here. And then inside we
-can move that code there. So it's going to hit her hand port code, it's going to make
-an Async, it's gonna make an Ajax call off that script tag. And then whenever it
-finishes, we will actually call that function. So this is also a perfect time. Do you
-could add like a loading animation, this word or something where they use or clicked
-on something and then you load it. You could do and loading information there and the
-loading animation inside.
+The problem is that you can't conditionally import things: you can't put an if
+statement around the import, because Webpack needs to know, at build time, whether
+or not it should include the content of that import into the final built
+`admin_article_form.js` file.
 
-Yeah.
+But, this *is* a real-world problem! For example, suppose that when a user clicks
+a specific link on your site, a dialog screen pops up that requires a lot of
+JavaScript and CSS. Cool. But what if *most* users *don't* ever click that link?
+Making *all* your users download the dialog box JavaScript and CSS when only a
+*few* of them will ever need it is a waste! You're slowing down *everyone's* experience.
 
-All right. So check this out. Let's go refresh. And while of course it doesn't run
-this, let's go to our `article/new` Page. Oh 
+We need to be able to lazily load dependencies. And here's how.
 
-> autocomplete is not a function 
+## Hello Async/Dynamic import()
 
-at an `article_form.js` ah, so this is a little bit of a Gotcha. When your module uses
-the new syntax, the kind of export default, when you use code splitting, you actually
-need to say `autocomplete.default` just to kind of a weird thing you need to know
-about snap and go back and refresh.
+Copy the file path then delete the import. All imports are *normally* at the
+top of the file. But now... down inside the if statement, *this* is when we know
+that we need to use that library. Use `import()` like a *function* and pass it the
+path that we want to import.
 
-Okay.
+This works almost exactly like an AJAX call. It's not instant, so it returns a
+*Promise*. Add `.then()` and, for the callback, Webpack will pass us the module
+that we're importing: `autocomplete`. Finish the arrow function, then move the
+old code inside.
 
-No errors and it works in, check this out. We can actually see, if you look at the
-network call here, I'm going to go to the script tags look
+So, it will hit our `import` code, download the JavaScript - just like an AJAX
+call - and when it finishes, call our function. *And*, because the "traditional"
+import call is gone from the top of the file, the autocomplete stuff *won't* be
+included in `admin_article_form.js`. That entry file just got smaller.
+That's freakin' awesome!
 
-okay.
+By the way, if we were running the code, like, after a user *clicked*
+something, there would be a small delay while the JavaScript was being downloaded.
+To make the experience fluid, you could add a loading animation before the `import()`
+call and stop it inside the callback.
 
-It actually downloaded `1.js` and `0.js` Africans out of there. It
-actually, this pertains the `autocomplete.jquery.js` and `1.js` contains the
-CSS file and the JavaScript file. So it's actually still code splitting those
-components and yeah, it actually includes the CSS file, which is, I know seems kind
-of crazy, but
+Ok, let's try this! Go refresh! Oh, duh - this is the edit page. Go back to
+`/admin/article/new`. And... oh!
 
-okay.
+> autocomplete is not a function
 
-It's including the CSS that we need inside of here.
+## Using module_name.default
 
-You can see some comments here about the CSS, but there's not actually anything
-there. But if you go over to the CSS tab, actually asynchronous, they downloaded the
-CSS file as well and applied that to the page. Uh, in fact, you can see it actually
-hacked into the tent. You are header, so it just works. You can split the JavaScript,
-you can slip the CSS. You can imagine how powerful this is with a single page
-application where you can asynchronously load all of the components for the pages
-when they're actually clicked. Instead of having one giant JavaScript file.
+in `article_form.js`. So... this is a little bit of a gotcha. If your module uses
+the newer, trendier, `export default` syntax, when you use "async" or "dynamic"
+imports, you need to say `autocomplete.default` in the callback.
+
+Move back over and refresh again. No errors! And it works! But also, look at the
+Network tab - filter for "scripts". It downloaded `1.js` and `0.js`. The `1.js`
+file contains the *autocomplete* vendor library and `0.js` contains *our* JavaScript.
+It loaded this lazily *and* it's even "code splitting" our lazy JavaScript into
+two files... which is kinda crazy. The `0.js` *also* contains the CSS... well,
+it *says* it does... but it's not really there. *Because*, in the CSS tab, it's
+loaded via its own `0.css` file.
+
+If you look at the DOM, you can even see how Webpack hacked the `script` and `link`
+tags into the `head` of our page: these were *not* there on page-load.
+
+So... dynamic imports... just work! And you can imagine how powerful this could be
+in a single page application where you can asynchronously load the components for
+a page when the user *goes* to that page... instead of having one *gigantic*
+JavaScript file for your whole site.
+
+By the way, the dynamic import syntax can be even simpler if you use the `await`
+keyword and some fancy destructuring:
+
+```javascript
+const { default: autocomplete } = await import('./components/algolia-autocomplete');
+
+autocomplete($autoComplete, 'users', 'email');
+```
+
+Next: there's just one more thing to talk about: how to build our assets for production,
+and some tips on deployment.

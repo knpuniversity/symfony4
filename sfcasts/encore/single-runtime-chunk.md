@@ -1,82 +1,106 @@
-# Single Runtime Chunk
+# The Single Runtime Chunk
 
-Coming soon...
+Head back to the homepage and click any of the articles. In an earlier tutorial,
+we added this heart icon that, when you click it, makes an AJAX request and increases
+the counter. Well, part of this is faked on the backend, but you get the idea.
 
-Hi back to the homepage and just click any of these articles here. One of the bits of
-JavaScript that we uh, added an earlier tutorial and artery factor does this little
-heart icon, which makes an Ajax call and increments the heart thing. So a bit of fake
-code, but behind the scenes is making an Ajax call man, a little bootstrap tool tips.
-When I hover over this it says click to like, so we know that this page template,
-this page is `article/show.html.twig`. And I'll remind you that this
-page has its own, uh, entrypoint its own `article_show.js`. So let's go
-on to `assets/js/article_show.js` and what we can do here is let's find the
-anchor tag here. It is a `href` Papa's on the multiple lines, so it's a little bit
-readable and had a `title="Сlick to Дike"`, so all we need to do is copy this 
-`js-like-article` class here and inside the `article_show.js` right on top.
+To make this more clear, let's add a Bootstrap tooltip: when the user hovers over
+the heart, we can say something like "Click to like". No problem: open up the
+template: `article/show.html.twig`. And I'll remind you that this page has its own
+entry: `article_show.js`. Go open that: `assets/js/article_show.js`.
 
-I'll say `$('.js-like-article').tooltip()`, which is a jQuery plugin that bootstrap
-ads easy, right? Well let's try it. Refresh and it doesn't work. 
+Ok, let's find the anchor tag in the template... there it is... and use multiple
+lines for sanity. Now add `title="Click to Like"`.
 
-> ...tooltip is not a function 
+To make this work, all *we* need to do is copy the `js-like-article` class, go
+back to `article_show.js` and add `$('.js-like-article').tooltip()`, which is
+a function added by Bootstrap.
 
-This may be surprised you, maybe it didn't surprise you. So if you think
-about it at the bottom of our page, the uh, `app.js` `<script>` tags are loaded first.
-And if you'll remember instead of `app.js` we import jQuery and then we import,
-bootstrap and bootstrap. This adds all of those functions like `tooltip()`, they add
-them to the `$` variable. So you might think that because then our articles
-show that js has loaded. You might think that an `article_show.js` when you
-important jquery, you're getting the jQuery object that has already been modified,
-pay, bootstrap. And for the most part that's true. When two different files import
-the same module, they get the exact same object and memory.
+Coolio! Let's try it. Refresh and... of course. It doesn't work:
 
-However, by default Webpack treats different. Entrypoints is two totally separate
-applications. So if we import `$` from here or if we import `$` from
-`get_nice_message.js` for example, which is it, which is important by this, they'll
-get the same jquery variable object. But if when we important `$` from
-`article_show.js` since that's a different entrypoint, it gets a completely
-isolated environment and for the most part this is a good thing. We want our entry
-points to behave like completely isolated environments. It doesn't mean that jquery
-is downloaded two times, it just means that they are, we are given two instances of
-them. So the fix is simple to `import 'bootstrap'`, however, refresh and yet this time
-it works. So the reason I'm showing you this, uh, there's one other reason I'm
-showing you this and that is to talk about a feature that we looked at very briefly.
-The very beginning of our tutorial, which is there we go. `.disableSingleRuntimeChunk()`
-I want you to change is to `.enableSingleRuntimeChunk()` cause we just modified
-Webpack come back over and `control + c` and run it. 
+> ...tooltip is not a function
+
+This may or may *not* surprise you. Think about it: at the bottom of the page,
+the `app.js` `<script>` tags are loaded first. And, if you remember, inside of
+`app.js`, we import `jquery` and then `bootstrap`, which *adds* the `tooltip()`
+function to jQuery.
+
+## Are Modules Shared across Entries?
+
+So, it's *reasonable* to think that, inside `article_show.js`, when we import
+`jquery`, we will get the *same* jQuery object that's already been modified
+by `bootstrap`. And... that's *almost* true. When two different files import
+the same module, they *do* get the exact same object in memory.
+
+However, by default, Webpack treats different entrypoints like totally separate
+applications. So if we import `jquery` from `app.js` and also from
+`get_nice_message.js`, which is part of the same entry, they *will* get the *same*
+jQuery object. But when we import `jquery` from `article_show.js`, we get a
+*different* object in memory. Each entrypoint has an isolated environment.
+It doesn't mean that jQuery is downloaded twice, it just means that we are
+given two different instances.
+
+So the fix is simple: `import 'bootstrap'`.
+
+Refresh and... this time, it works.
+
+## enableSingleRuntimeChunk()
+
+Understanding that modules are *not* shared across entries is good to know.
+But this *also* relates to a feature I want to talk about: the runtime chunk.
+
+In `webpack.config.js`, at the *very* beginning of the tutorial, we commented out
+`enableSingleRuntimeChunk()` and replaced it with `disableSingleRuntimeChunk()`.
+*Now*, let's reverse that.
+
+Because we just modified the Webpack config, come back over, press `control + c`
+and restart it:
 
 ```terminal
 yarn watch
 ```
 
-again Yeah.
+If you watch closely, you'll see an immediate difference. Every single entry
+*now* includes a new file called `runtime.js`, which means that it's a *new* file
+that needs to be included as the *first* script tag before *any* entry. Of course,
+that's not a detail that *we* need to worry about because, when we refresh and view
+the page source, our Twig functions took care of rendering everything.
 
-If you look closely, you're going to immediately see a difference. Every single entry
-point is now pointing to eighth new file called `runtime.js`, which basically means
-it's a new file that needs to be a new `<script>` tag that needs to be included before
-every single file, uh, before every single entrypoint. Of course, that's not
-something that we need to worry about because I want to refresh the page and view
-source our Twig functions. Take care of rendering this for us. There's two important
-things I want you to know about this `runtime.js`. The first thing is it contains
-some of WebPacks runtime code. By enabling the single runtime chunk. What you're
-doing is you're actually saying, hey bootstrap, instead of adding all of this code at
-the beginning of `app.js` and in the beginning of `article_show.js` just include
-it once in `runtime.js`
+Ok, so... why? What did this change and why did we care? There are two things.
 
-which means you have a, everything's a slightly smaller. The other thing is that
-this `runtime.js` which is pretty small, contains a couple of like internal ids
-that point to our, our files, which might change more rapidly. So by isolating
-things, by moving though a runtime code into `runtime.js`, it actually means that
-our other JavaScript files might change less often. And anytime your JavaScript files
-change, less often, it means they're better for caching. So the `runtime.js` will
-change a little bit more often, but it is smaller. So that's less of a big deal. But
-there's one, there's side effect of this, and I'm not sure if it's a good side effect
-or a bad side effect. Go back to `article_show.js` and comment out the 
-`import 'bootstrap'`. If you go back and refresh the page.
+## Single Runtime Chunk & Caching
 
-Okay.
+First, `runtime.js` contains Webpack's "runtime" code: stuff it needs
+to get its job done. By enabling the single runtime chunk you're saying:
 
-It works. So the side effect is that when you have that single runtime chunk, it
-means that all the modules are shared across, um, all of your entry points. They work
-a little bit more like a single application. It's not necessarily a bad thing. You
-just need to be aware of that. In fact, it might be exactly what you want in your
-application.
+> Hey Webpack! Instead of adding this code at the beginning of `app.js` and at
+> the beginning of `article_show.js` and all my other entry files, only add
+> it once to `runtime.js`
+
+The user *now* has to download an extra file, but all the entry files are a bit
+smaller. But, there's *more* to it than that. The `runtime.js` file contains
+something called the "manifest", which is a fancy name that Webpack gives to code
+that contains some internal ids that Webpack uses to identify different parts of
+your code. The *key* this is that those ids often *change* between builds. So,
+by isolating that code into `runtime.js`, it means that our *other* JavaScript
+files - the ones that contain our big code - will change less often: when
+those internal ids change, it will *not* affect their content.
+
+The tl;dr is that the smaller `runtime.js` will change more often, but our bigger
+JavaScript files will change less often. That's great for caching.
+
+## Shared Runtime/Modules
+
+The *other* thing that `enableSingleRuntimeChunk()` changes may or may not be a
+good thing. Go back to `article_show.js` and comment out  `import 'bootstrap'`.
+Now, move over and refresh.
+
+Yea, it *works*! When you enable the single runtime chunk, it has a *side effect*:
+modules are shared *across* your entry points: they all work a bit more like one,
+single application. That's not necessarily a good or bad thing: just something
+to be aware of. I still *do* recommend treating each entry file like its own
+independent environment, even if there *is* some sharing.
+
+Next: it's time to talk about async imports! Have some code that's only used in
+certain situations? Make your built files smaller by loading it... effectively,
+via AJAX.
