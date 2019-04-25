@@ -1,99 +1,74 @@
-# Babel Polyfills
+# Polyfills & Babel
 
-Coming soon...
+Babel is pretty amazing. But, it's even doing something *else* behind the scenes
+that we haven't realized yet! Back in `admin_article_form.js`, and it doesn't
+matter where, but down in `ReferenceList`, I'm going to add
+`var stuff = new WeakSet([]);`
 
-I've just ended this `browserslist` key here to say that we want to support all
-browsers that have at least 0.05% market share, which is not a very realistic number,
-but that's a really great way to say, to kind of force to say that our project even
-needs a support really, really old browsers. And we learned that the autoprefixer
-library, which is, um, being applied by PostCSS, it reads this. And because of that,
-it's now adding lots and lots of vendor prefixes to support older browsers. So it
-turns out that we also talked about how the fact that our JavaScript is also being
-rewritten and the tool that's doing that is called Babel.
+`WeakSet` is an object that was introduced in to JavaScript, um, ECMAScript in 2015.
+Because the Encore watch script is running, go over and refresh the built file.
+Here it is: `var stuff = new WeakSet([]);`.
 
-Okay.
+## New Features & Polyfills
 
-Babel is actually rewriting this `var $autoComplete` when originally it was actually
-`const $autoComplete`. What turns out Babel also reads this browserslist config.
-That's what makes that idea. So, so cool. All the tools, kind of our standardized and
-know to look for this. So right now it's not surprising that the `const` is being
-rewritten to `var` because we've said that we want to support really, really old
-browsers. And `const`, uh, only a few years old. So to see how this, let's see if
-we can get this to work. Let's actually change this to `> 5%` and this
-actually means we only need to support the most absolute, most popular browser is
-probably no old versions. So if we go back and let's rerun Encore
+That's not surprising, right? I mean, we're telling Babel that we *only* need to
+support *really* new browsers, so there's no need to rewrite this to some old,
+compatible code... right? Well, it's more complicated than that. `WeakSet` is not
+a new *syntax* that Babel can simply rewrite to an old syntax: it's an entirely
+new feature! There are a bunch of these and some are *really* important, like the
+`Promise` object and the `fetch()` function for AJAX calls.
+
+To suppose totally new features, you need something called a *polyfill*. A polyfill
+is a normal JavaScript library that *adds* a feature if it's missing. For example,
+there's a polyfill *just* for `WeakSet`, which you could import if you want to make
+sure you can use it safely in *any* browser.
+
+But, keeping track of whether or not you imported a polyfill... and whether or not
+you even *need* a polyfill - mauybe the feature is already available in the browsers
+you need to support - is a pain! So... Encore pre-configures Babel to do it for us.
+
+So check it out. Go back to `package.json` and change this to support older browsers.
+Then, just like before, go to your terminal and manually clear the Babel cache:
+
+```terminal
+rm -rf node_modules/.cache/babel-loader/
+```
+
+And then restart Encore:
 
 ```terminal-silent
 yarn watch
 ```
 
-and then move back over here to our `admin_article_form.js` refresh. In fact, I'll
-do a force refresh and search for `$autoComplete` and ha far is still there. So this is
-a bug currently with Babel and browserslist. A babble for performance has an
-internal cache and that cache doesn't know, doesn't know to update when we change the
-browserslist config. So anytime you change this browserslist config, you need to
-go over into your browser and manually delete a `node_modules/.cache/babel-loader/`
-directory. Soon as we do this, let's rerun encore, 
+Ok, let's go back to the browser, refresh the built JavaScript file and search for
+`WeakSet` set. It *still* looks *exactly* like our original code. But *now*, just
+search for "weak". Woh. These are hard to read, but it's importing something called
+`core-js/modules/es.weak-set`.
 
-```terminal-silent
-yarn watch
-```
+This `core-js` package is a library *full* of polyfills. Babel *realized* that we're
+trying to use `WeakSet` and so it *automatically* added an import statement for
+the polyfill! This is *identical* to us *manually* going to the top of the file
+and adding `import 'core-js/modules/es.weak-set'`. How cool is that?!
 
-now refresh and it
-will search for that `$autoComplete`. And there it is `const $autoComplete` and we can
-look for the `class ReferenceList`. Now that we're only using supporting new browsers,
-we don't need to rewrite to that old code, which is nice because rewriting the old
-code actually makes your files larger.
+## A Polyfill from the Past!
 
-Yeah,
+And... this is *not* the first time Babel has automatically added a polyfill! Open
+up `build/app.js`. Back in the editor, the `get_nice_message` module used a String
+method called `repeat()`. Whelp, it turns out that `.repeat()` is a *fairly* new
+feature!
 
-so it was one of the really, really cool thing that Babel is doing behind the scenes
-to see it. Let's go back into our `admin_article_form.js` and it doesn't really
-matter where, but down in our `ReferenceList`, I'm going to say `var stuff = new WeakSet([]);`
-`WeakSet` is a, uh, an object that was introduced in es2015. So it's
-only about four years old. So most new browser supportive, but some old browsers
-don't. So I have my watch going said already rebuilt stuff. I go back and refresh the
-build file. You can see it right here. `var stuff = new WeakSet([]);` that works. Now
-here's the thing about Babel. He can rewrite new syntax to old syntax, but out of the
-box, if there are completely brand new features like brand new objects or brand new
-functions, you, those are not rewritten. You need something called a polyfill.
-Polyfill is basically a library that adds this object if it doesn't exist for you.
-Fortunately Babel can add these things polyfills automatically for you in Encore is
-preconfigured to do that. So check it out. Let's go back to our `package.json`. Let's
-change this back to support old browsers. Then we'll move over. We will once again
-clear the Babel cache and then restart encore.
+Search for `repeat` in the built file. There it is: it's importing
+`core-js/modules/es.string.repeat`. When I used this function, I wasn't even
+*thinking* about whether or not that feature was new and if it was available in all
+the browsers we need to support! But because Encore has our back, it wasn't a problem.
+That's a powerful idea.
 
-```terminal-silent
-yarn watch
-```
+By the way, this is all configured in `webpack.config.js`:
+it's this `.configureBabel()` method. Generally-speaking, this is how you can configure
+Babel. The `useBuiltIns: 'usage'` and `corejs: 3` are the key parts. Together, these
+say: please automatically import the polyfills when you see that I'm *using* then
+and I've already installed version 3 of `corejs`. That package was pre-installed
+in the original `package.json` we got from the recipe.
 
-Nice. So now I'm gonna go over.
-
-Okay,
-
-refresh that again. In search for a `WeakSet` set. So check this out. It's still says
-
-it still looks normal down here, but if you just look for the word `weak`, you're going
-to find a couple of other references on here. All these things on top, this is a
-little bit hard to read, but it's actually doing is you can see it importing
-something called `var ...js_modules_weak_set...` `core-js/modules/es.weak-set`. This core-js
-library is a library full of polyfills. And what happened is that now Babel, realize
-they were using that WeakSet in, it automatically added, it requires statement
-for this. So this is almost, this is basically the same as if we had gone to the top
-of this file and actually said `import 'core-js/modules/es.weak-set'`. This
-function actually adds that week set functionality. So it happens automatically for
-us. And you may have not realized that we were already using this before. If you look
-in `build/app.js`, I remember one of our files is using a string `repeat()` function.
-
-So it's `get_nice_message.js` We have a nice little, a string `'!'.repeat()`
- well, it turns out `.repeat()` is only a few years old as well. So if you
-search for `repeat` inside of here, check this out. You can see that repeat is right
-there. But before we have more `core-js/modules` imports. So we didn't even realize it,
-but at the, when even when we started this tutorial, we accidentally used a function
-that was relatively new and maybe didn't work in some of the browsers we support. And
-it instantly, uh, added the polyfill forests. That is super powerful idea. By the
-way, this is configured in your `webpack.config.js` files are relatively new
-feature for Encore. It's this `.configureBabel()` it. This is how you can actually
-control the configuration. And it's this `useBuiltIns: 'usage'` and `corejs: 3`
-So `useBuiltIns: 'usage'` says, I want you to, um, uh, bring in the polyfills
-whenever you see that I am using them. That's the `usage` spot. So pretty cool stuff.
+Next: let's demystify a feature that we disabled *way* back at the beginning of
+this tutorial: the single runtime chunk.
