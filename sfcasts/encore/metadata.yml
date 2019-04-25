@@ -14,7 +14,8 @@ chapters:
     - refactor-autocomplete
     - autoprovide-jquery-modules
     - add-style-entry
-    - postcss-browserslist
+    - postcss-browsers
+    - browserslist
     - babel-polyfills
     - single-runtime-chunk
     - async-imports

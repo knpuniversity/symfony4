@@ -1,53 +1,59 @@
-# Add Style Entry
+# addStyleEntry(): CSS-Only Entrypoint
 
-Coming soon...
+There are only two files left inside of the `public/` directory, and they're both
+CSS files! Celebrate by crushing the `js/` directory.
 
-There are now only two files left inside of our public directory. I can kill the `js/`
-directory entirely. Uh, there's two, both just two CSS files. These are included on
-the, let's see, the `account/index.html.twig`. It has its own page specific CSS and
-in `security/login.html.twig`, like it has its own page that CSS and
+Ok, so we have *two* page-specific CSS files left. Open `account/index.html.twig`.
+Yep, this has a link tag to the first... and in `security/login.html.twig`, here's
+the other. Oh, and we also include `login.css` from `register.html.twig`.
 
-okay.
+This is kind of a tricky situation.... because what Webpack *wants* you to do is
+it *always* start with a *JavaScript* entry file. And of course, it you *happen*
+to import some CSS, it'll nicely dump a CSS file. This comes from the single-page
+application mindset: if *everything* in your app is built by JavaScript, then
+of *course* you have a JavaScript file!
 
-And uh, we also include `login.css` over here on `register.html.twig`. So this is a kind of a tricky
-case because what job, what Webpack wants you to do is it always wants you to have an
-entry file, which is always a JavaScript file and then it will output the JavaScript
-file and the final CSS file if you have one. But if you have a case where you just
-simply do not have a JavaScript file, it gets a little bit awkward. So what we could
-do is create an `account.js` and a `login.js` and all those files would do was
-import these CSS files that would work. We would then have an extra empty `account.js`
-and the `login.js`. But that's not that big of a deal. But we do support this
-while we, you know, Encore and we do really recommend that you think of re of doing
-it the proper way. Sometimes we realize that you just have random CSS files so we can
-handle this very easily. So first thing I'm gonna do is I'm going to move both of the
-CSS files up into our `css/` directory and just because we can, I'll make both of these
-`scss` files.
+So... hmm. I mean, we *could* leave those files in `public/` - we don't *need* them
+to go through Webpack. Though... I *would* like to use Sass. Another option could
+be that we create `account.js` and `login.js` files... and each would contain just
+*one* like to import the CSS file. That would work... but then Webpack would output
+empty `account.js` and `login.js` files... which isn't *horrible*, but not idea.
 
-Yeah.
+In the Encore world, just like with Webpack, we really *do* want you to *try* to
+do it the proper way: create a JavaScript entry file and "import" any CSS that is
+needed. But, we *also* recognize that this is a legitimate situation. So, Encore
+has a little extra magic for this.
 
-And then inside of `webpack.config.js` so we can add a special thing called
-`addStyleEntry()`. We'll have one called `account` or `./assets/css/account.scss`
-and the other one called `login` that points to `login.scss`.
+First, move both of the files up into our `assets/zcss/` directory. And just
+because we can, make both of them `scss` files.
 
-Okay.
+Next, in `webpack.config.js` add a special thing called `addStyleEntry()`. We'll
+have one called `account` pointing at `./assets/css/account.scss` and another one
+called `login` pointing to `login.scss`.
 
-It's now if you move over to find your build `control + C` and run
+Easy enough! Find your Encore build, press `control + C`, and re-run Encore:
 
 ```terminal
 yarn watch
 ```
 
-Okay.
+Awesome! We can see that the entry `account` and `login` entries both only dump
+CSS files. Perfect!
 
-And you can see the entry point `account` and `login`, just dumped those CSS files,
+And *this* means that, back in `index.html.twig`, we can replace the link tag
+with `{{ encore_entry_link_tags('account') }}`. Copy that and do the same thing
+in `login.html.twig` for the `login` entry. And then in `register.html.twig`, one
+more time for the `login` entry.
 
-which is perfect. And now means that we can go into our `index.html.twig`. Your place
-was with `{{ encore_entry_link_tags('account') }}`. A copy of that and I'll do the same thing
-inside of `login.html.twig` for the `login` entry and then `register.html.twig`
-for the `login` entry there. And just to make sure this looks okay, we'll check
-the `/account` page profile. Yup. Everything seems to look just fine. So I just want you
-to know that this is available is actually kind of a hack internally. The way encore
-does this is, this is the same as `addEntry()`, except that a Webpack, will still
-output a JavaScript file, an empty `account.js`. So because we're using `addStyleEntry()`
-a Encore just deletes that for you so you don't have to deal with the extra
-`account.js` file, which would have been empty anyways.
+Ok! Let's double-check that the site didn't explode. Go to the `/account` profile
+page. Cool! Everything looks fine.
+
+So... yea, `addStyleEntry()` is available for this. But... to pull it off, Encore
+does some hacking internally. Really, `addStyleEntry()` is the *same* as `addEntry()`,
+which means that Webpack *does* try to output an empty JavaScript file. Encore simply
+deletes that file so you don't have to look at it.
+
+Next, oh, we get to talk about one of my *favorite* things about Webpack and Encore:
+how to *automatically* convert your CSS - and JavaScript - so that it's understood
+by older browsers. *And* how to control *exactly* which browsers your site needs
+to support.
