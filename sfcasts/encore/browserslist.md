@@ -41,7 +41,7 @@ Now, go back, refresh `app.css`, search again for `-webkit` and woh! 992 results
 That's amazing! By the way, there is *also* a tool called
 [BrowserList-GA](https://github.com/browserslist/browserslist-ga) that reads from
 your Google Analytics account and *dumps* a data file with *your* real-world usage
-data. You can then use that in your `browserslist`, by saying something like:
+data. You can then use that in your `browserslist` config, by saying something like:
 `> 0.5% in my stats`, which literally means: support any browsers that is responsible
 for more than .5% of traffic from *my* site's real-world data. Cool.
 

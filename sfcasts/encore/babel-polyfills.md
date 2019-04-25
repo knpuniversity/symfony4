@@ -42,7 +42,7 @@ yarn watch
 ```
 
 Ok, let's go back to the browser, refresh the built JavaScript file and search for
-`WeakSet` set. It *still* looks *exactly* like our original code. But *now*, just
+`WeakSet`. It *still* looks *exactly* like our original code. But *now*, just
 search for "weak". Woh. This is a bit hard to read, but it's importing something
 called `core-js/modules/es.weak-set`.
 
