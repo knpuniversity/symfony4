@@ -2,26 +2,35 @@
 
 We're on a mission to refactor all the old `<script>` and `<link>` tags *out* of
 our templates. For the base layout, we're half way done! There is only *one*
-script tag, which points to the `app` entry. That's *perfect*.
+script tag, which points to the `app` entry:
+
+[[[ code('ad53cd5c97') ]]]
+
+That's *perfect*.
 
 Back on top, we *do* still have multiple link tags, including Bootstrap from a
 CDN, FontAwesome, which I apparently just committed into my `public/css` directory,
-and some custom CSS in `styles.css`.
+and some custom CSS in `styles.css`:
+
+[[[ code('f5f93639ce') ]]]
 
 First, eliminate Bootstrap! In the *same* way that we can properly install JavaScript
-libraries with yarn, we can *also* install CSS libraries! Woo!
+libraries with Yarn, we can *also* install CSS libraries! Woo!
 
-In `app.js`, we're already importing a single `app.css` file. We *could* add another
-import *right* here for the Bootstrap CSS. Instead, I *prefer* to import just *one*
-CSS file per entry. Then, from *within* that CSS file, we can use the standard
-`@import` CSS syntax to import other CSS files. To Webpack, these two approaches
-are identical.
+In `app.js`, we're already importing a single `app.css` file:
+
+[[[ code('c92d28b53e') ]]]
+
+We *could* add another import *right* here for the Bootstrap CSS. Instead,
+I *prefer* to import just *one* CSS file per entry. Then, from *within* that CSS file,
+we can use the standard `@import` CSS syntax to import other CSS files. To Webpack,
+these two approaches are identical.
 
 Now, you *might* be thinking:
 
 > Don't we need to install the bootstrap CSS library?
 
-And... yes! Well, I mean, no! I mean, we already did it! In `node_modules/`, look
+And... yes! Well, I mean, no! Um, I mean, we already did it! In `node_modules/`, look
 for `bootstrap/`. This directory contains JavaScript but it *also* contains the
 Bootstrap CSS.
 
@@ -32,7 +41,9 @@ and... it just works! But we *can't* repeat that same trick for CSS.
 
 Instead, we'll point directly to the path we want, which, in this case is probably
 `dist/css/bootstrap.css`. Here's how: `@import`, `~bootstrap` and the
-path: `/dist/css/bootstrap.css`.
+path: `/dist/css/bootstrap.css`:
+
+[[[ code('536f428d39') ]]]
 
 The `~` part is special to CSS and Webpack. When you want to reference the
 `node_modules/` directory from within a CSS file, you need to start with `~`.
@@ -45,7 +56,9 @@ But yea... that's all we need! Move over and refresh. This looks exactly the sam
 ## Referencing *just* the Package Name
 
 And... remember how I said that we *can't* simply import CSS by referencing *only*
-the package name? That was... kind of a lie. Shorten this to just `~bootstrap`.
+the package name? That was... kind of a lie. Shorten this to just `~bootstrap`:
+
+[[[ code('195ed36b7b') ]]]
 
 Go try it! Refresh and... the same!
 
@@ -80,7 +93,9 @@ Got it! Nice! It has directories for `css/`, `less/`, `scss/` whatever
 format we want. And fortunately, if you look inside `package.json`, it *also*
 has a `style` key.
 
-Easy peasy! In `app.css`, add `@import '~font-awesome'`.
+Easy peasy! In `app.css`, add `@import '~font-awesome'`:
+
+[[[ code('b72fbdea34') ]]]
 
 Done. Find your browser and refresh. Let's see... down here, yes! *This* is a
 FontAwesome icon. It still works!
@@ -92,7 +107,7 @@ some *font* files that the user's browser needs to download: these files here.
 But... these files aren't in our `public` directory... so shouldn't the paths to
 these be broken?
 
-Close up `node_modules` and check out the `public/build/` directory. Whoa! Where
+Close up `node_modules/` and check out the `public/build/` directory. Whoa! Where
 did this `fonts/` directory come from? When Webpack sees that a CSS file
 *refers* to a font file, it *copies* those fonts into this `fonts/` directory
 and *rewrites* the code in the final `app.css` file so that the font paths point
@@ -104,18 +119,27 @@ and the CSS would automatically point to it. That's *free* browser cache busting
 
 ## Moving our CSS into Encore
 
-Ok *one* more link tag to go. Remove it! Then, open `css/styles.css`, copy *all*
-of this, delete that file, and, in `app.css`, highlight the blue background and paste!
+Ok *one* more link tag to go:
+
+[[[ code('f3c5410dd9') ]]]
+
+Remove it! Then, open `css/styles.css`, copy *all* of this, delete that file,
+and, in `app.css`, highlight the blue background and paste!
+
+[[[ code('2a1330f364') ]]]
 
 That's a simple step so... it should work, right? Nope! Check out the build failure:
 
 > Module not found: Can't resolve `../images/space-nav.jpg` in our
-> `assets/css` directory.
+> `assets/css/` directory.
 
 It doesn't show the exact file, but we only have one. Ah, *here's* the problem:
+
+[[[ code('04e825c2a8') ]]]
+
 PhpStorm is super angry about it too! This background image references
-`../images`, which was *perfect* when the code lived in the `public/css` directory.
-But when we moved it, we broke that path!
+`../images/`, which was *perfect* when the code lived in the `public/css/`
+directory. But when we moved it, we broke that path!
 
 This is awesome! Instead of us silently not realizing we did this, we get a
 *build* error. Amazing! We can't break paths without Webpack *screaming*.
