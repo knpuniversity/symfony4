@@ -19,4 +19,4 @@ chapters:
     - babel-polyfills
     - single-runtime-chunk
     - async-imports
-    - production-build  # not recorded yet
+    - production  # raw
