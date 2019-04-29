@@ -1,78 +1,104 @@
-# Production
+# Production Build & Deployment
 
-Coming soon...
+Ok team: just one more thing to talk about: how the heck can we deploy all of this
+to production?
 
-There's one more thing that we need to talk about getting this code up to production.
-So first, not going to a `public/build/` director right now, if you open any of these
-files, you're going to notice that they are not minified. And at the bottom there's
-actually a bunch of sourcemap stuff which helps our browser, uh, debug that code to
-build.
+Well, *before* that, our files aren't event ready for production yet! Open the
+`public/build/` directory. If you open any of these files, you'll notice that they
+are *not* minified. And at the bottom, each has a bunch of extra stuff for "sourcemaps":
+a bit of config that makes debugging our code easier in the browser.
 
-Okay. To build for production, just run 
+## Building For Production
+
+We get *all* of this because we've been creating a *development* build. *Now*, at
+your terminal, run:
 
 ```terminal
 yarn build
 ```
 
-This is actually a shortcut for `yarn encore production`. And you'll remember if you 
-go back to the `package.json` File, we have a bunch of scripts that came 
-with that project. So this is actually the real command here `encore production` 
-instead of `encore dev`, which we've been running until now.
+This is a shortcut for `yarn encore production`. When we installed Encore, we got
+a pre-started `package.json` file with... this `scripts` section. So, the *real*
+command to build for production is `encore production`, or, really:
 
-Okay.
+```terminal-silent
+./node_modules/.bin/encore production
+```
 
-This makes a very, when this finishes, this makes a very different `build/` directory.
-There's a number of things you can see. First of all, a lot of the file names are ops
-UK did. So before you kind of saw things like `app~vendor`, uh, which kind
-of exposed some of our internal, uh, uh, structure of application. Now you're going
-to see a lot of things. It's use numbers like zero, one, two, three, four. Also, if
-you look in any of these files, now you're going to see they are totally minified and
-they're certain, there's no source maps on the bottom. You just do silly. Do see
-still these you deals do still see these licensed headers that can be disabled by
-default for legal purposes. That's the only comments that are kept in any of these
+Anyways, that's the key thing: Encore has two main modes: `dev` and `production`.
+
+And... done! On a big project, this might take a bit longer - production builds
+can be much slower than dev builds.
+
+*Now* we have a *very* different `build/` directory. First, all of the names are
+bit obfuscated. Before, we had names that included things like `app~vendor`, which
+kind of exposed the internal structure of what entry points we had and how they're
+sharing data. No *huge* deal, but that's gone: gone, replaced by these numbered
 files.
 
-Okay,
+Also, if you look inside any of these, they're now totally minified and won't have
+the sourcemap at the bottom. You *will* still see these license headers - that's
+there for legal reasons, though you *can* configure them to removed. Those are
+the only comments that are left in these final files.
 
-so just like that, we have a build that's optimized for production and we can try it
-instantly. If we refresh over here, everything's still works. There's one other thing
-you might notice and that is that every single file now has a hash in it that is
-thanks to in our `webpack.config.js` file if feature in here called 
-`.enableVersioning()` and check this out. We've had this the whole time, but it's using this
-function called `Encore.isProduction()`. So we've disabled versioning of the development
-mode. We've enabled it in the production mode. So as soon as we ran from production,
-boom, we had version file names. And the really awesome thing about this is that
-every time the contents of this `article_show.css` file changes, it's going to
-automatically get a new hash. But we don't need to change anything in our code
-because our twig helpers automatically always updates, uh, render the correct script
-files, link tags or the correct js tabs. So basically we get absolutely free
-versioning on all of our files. As soon as they change the hash will be updated and
-your a user's browser will be busted. This also means that you really should take
-advantage of something called longterm caching, which is where you can tell your web
-server like nginx that every file that it serves from the `/build` directory
-should be cached for like one year or forever.
+And *even* though all the filenames just changed, we instantly move over, refresh,
+and... it works: the Twig helpers are rendering the new filenames.
 
-That means that when your user downloads any of these files, they will never ever ask
-the server for that file ever again. They will cache it locally and use it locally.
-If we ever update one of these files, the Hash will change. It won't be in the user's
-browser cache and they'll ask for a new one. So add expiration caching. Cause it's
-just free performance. So let's talk about deploying this production. So how do we
-deploy this to production? But the answer is it depends. It depends on how
-sophisticated your deployment is. A system is. So if you have a really simple
-deployment system where you basically, you know, um, `git pull` on production and then
-clear the Symfony cache, you're probably going to need to actually install node on
-your production server, run `yarn install`, and then run our `yarn build` up on
-production. That's not ideal. But that is the easiest way to do it, to get those
-files there. If you have a slightly more sophisticated system,
+## Free Versioning
 
-then you can do something way better. The key thing here about encore is that once
-you've run yarn build, the only files that need to get to production are this build
-directory. So you could literally run `yarn build` on some other server or even
-locally, and then just make sure that this `build/` directory gets copied to production.
-That's it. You don't need to have node installed on production. You don't need to run
-yarn. You don't need to run anything on production as long as it's spelled
-directories. There you are. Good. All right, so we haven't even touched all the
-features of encore. We didn't, didn't even talk about the, um, TypeScript support or
-the React to the Vue support. It all works. Those are the things that you're
-interested in. Go try them out. They're awesome. And if you have any questions at
-always, uh, find us in the comments section. All right guys, we'll see you next time.
+In fact, you may have noticed something special about the new filenames: every
+single one now has a *hash* in it. Inside our `webpack.config.js` file, this is
+happening thanks to this line: `enableVersioning()`. And check it out, the first
+argument - which is a boolean of whether or not we want versioning - is using a
+helper called `Encore.isProduction()`. That disables versioning for our dev builds,
+just cause we don't need it, but *enables* it for production.
+
+The *really* awesome thing is that *every* time the *contents* of this
+`article_show.css` file changes, it will automatically get a new hash: the hash
+is built from the *contents* of the file. Of course, we don't need to change
+anything in our code, because the Twig helpers will automatically render the new
+filename in the `script` or `link` tag. Basically... we get free file versioning,
+or browser cache busting.
+
+This *also* means that you should *totally* take advantage of something called
+long-term caching. This is where you configure your web server - like `Nginx` -
+to set an `Expires` header on *every* file it serves from the `/build` directory
+with some super-distant value, like 1 year from now. The result is that, once a
+user has downloaded these files, they will *never* ask our server for them again:
+they'll just use their browser cache. But, as soon as we *update* a file, it'll
+have a new filename and the user's browser will ask for it again. It's just free
+performance. And if you got a step further and put something like CloudFlare in
+front of your site, your server will receive even *less* requests for your assets.
+
+## Deployment
+
+Now that we have these, optimized, versioned files, how can we deploy them up to
+production? Well... it depends. It depends on how sophisticated your deployment
+is.
+
+If you have a really *simple* deployment, where you basically, run `git pull` on
+production and then clear the Symfony cache, you're probably going to need to
+install node on your production server, run `yarn install`, and then run
+`yarn build` up on production, each time you deploy. That's not ideal, but if you
+have a simple deployment system, that *keeps* it simple.
+
+If you have a slightly more sophisticated system, you can do it better. The *key*
+thing to understand is that, once you've run `yarn build`, the *only* thing that
+needs to go to production is the `public/build` directory. So you could literally
+run `yarn build` on a different server - or even locally - and then just make sure
+that this `build/` directory gets copied to production.
+
+That's it! You don't need to have `node` installed on production and you don't
+need to run anything with `yarn`. If you followed our tutorial on Ansistrano, you
+would run `yarn` wherever you're executing Ansistrano, then use the `copy` module
+to copy the directory.
+
+## More Features
+
+Ok, that's it! Actually, there are *more* features inside Encore - many more, like
+enabling TypeScript, React or Vue support. But getting those all going should be
+easy for you now. Go try them, and report back.
+
+And, like always, if you have any questions, find us in the comments section.
+
+All right friends, seeya next time.
