@@ -56,8 +56,7 @@ Each "entry", or "entry point" is like a standalone application that contains
 *everything* it needs.
 
 And now that we have this new `article_show` entry, inside `show.html.twig`,
-instead of our *manual* `<script>` tag, use `{{ encore_entry_script_tags() }}`
-`article_show`:
+instead of our *manual* `<script>` tag, use `{{ encore_entry_script_tags('article_show') }}`:
 
 [[[ code('f9968a593b') ]]]
 
