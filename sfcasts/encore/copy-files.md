@@ -74,8 +74,14 @@ happening. One *other* optional feature that we're using is called `cleanOutputB
 
 This is responsible for emptying the `build/` directory each time we build.
 
-Ok, go restart Encore: `Ctrl`+`C`, then `yarn watch`. Let's go check it out!
-Beautiful! Everything *now* copies to `images/` *and* includes a hash.
+Ok, go restart Encore: `Ctrl`+`C`, then:
+
+```terminal
+yarn watch
+```
+
+Let's go check it out! Beautiful! Everything *now* copies to `images/` *and* includes
+a hash.
 
 ## Public Path to Versioned Copied Files: manifest.json
 
