@@ -119,7 +119,7 @@ it's used by *both* entries and so isolated it into its own file so it could be
 re-used.
 
 Anyways, back in `show.html.twig` copy the `javascripts` block, paste, rename it
-to `stylesheets` and then change to `{{ encore_entry_link_tags() }}`:
+to `stylesheets` and then change to `encore_entry_link_tags()`:
 
 [[[ code('509ed6581f') ]]]
 
