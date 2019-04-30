@@ -3,9 +3,13 @@
 Do a force refresh on the homepage. Ok, we've got some broken images. Inspect
 that. Of course: this points to `/images/meteor-shower.jpg`.
 
-Open this template: `articles/homepage.html.twig`. There it is: a normal `asset`
-function pointing to `images/meteor-shower.jpg`. That's broken because we moved
-our entire `images/` directory out of public and into `assets/`.
+Open this template: `article/homepage.html.twig`. There it is:
+
+[[[ code('fa1a3ce0f4') ]]]
+
+A normal `asset()` function pointing to `images/meteor-shower.jpg`.
+That's broken because we moved our entire `images/` directory out of `public/`
+and into `assets/`.
 
 There's a nice side-effect of using a build system like Webpack: you don't need to
 keep your CSS, JavaScript or assets in a public directory anymore! You put them
@@ -17,15 +21,17 @@ some cases where you want to render a good, old-fashioned `img` tag. And because
 this image is *not* being processed through Webpack, it's not being copied into
 the final `build/` directory.
 
-## Hello copyFiles()
+## Hello `copyFiles()`
 
 To make life more joyful, Encore has a feature for *exactly* this situation. Open
 up `webpack.config.js`. And, anywhere in here, say `.copyFiles()` and pass this
-a configuration object.
+a configuration object:
+
+[[[ code('a1a4c74683') ]]]
 
 Obviously... this function helps you copy files from one place to another. Neato!
 But... how exactly do we use it? One of the nicest things about Encore is that
-its *code* is *extremely* well-documented. Hold Command or Ctrl and click
+its *code* is *extremely* well-documented. Hold `Command` or `Ctrl` and click
 `copyFiles()`. It jumps us *straight* to the `index.js` file of Encore... which
 is almost *entirely* small methods with HUGE docs above them! This is a *great*
 resource for finding out, not only *how* you can use a function, but what functions
@@ -37,30 +43,38 @@ For `copyFiles()`, it can be as simple as:
 
 Yea, that sounds about right. If we did that, we could *then* reference those images
 from our `img` tags. Copy that config, go back to `webpack.config.js` and paste. Oh,
-I have an extra set of curly braces.
+I have an extra set of curly braces:
+
+[[[ code('c6da6536e5') ]]]
 
 And because we just made a change to `webpack.config.js`, find your terminal,
-press control+c, and re-run Encore. When that finishes... go check it out. In
-the `public/build` directory, there they are: `meteor-shower.jpg`, `space-ice.png`
+press `Ctrl`+`C`, and re-run Encore. When that finishes... go check it out. In
+the `public/build/` directory, there they are: `meteor-shower.jpg`, `space-ice.png`
 and so on.
 
 ## Controlling the copy Destination
 
 Um, but it *is* kind of lame that it just dropped them directly into `build/`,
-I'd rather, for my *own* sanity, copy these into `build/images`.
+I'd rather, for my *own* sanity, copy these into `build/images/`.
 
 Let's see... go back to the docs. Here it is: you *can* give it a destination...
 and this has a few *wildcards* in it, like `[path]`, `[name]` and `[ext]`.
 Oh, but use this second one instead: it gives us built-in file versioning by including
 a hash of the contents in the filename.
 
-Back in our config, paste that. Before we restart Encore, shouldn't we delete
-some of these old files... at least to get them out of the way and clean things up?
-Nope! Well, *yes*, but it's already happening. One *other* optional feature that
-we're using is called `cleanOutputBeforeBuild()`. This is responsible for emptying
-the `build/` directory each time we build.
+Back in our config, paste that:
 
-Ok, go restart Encore: control+C, then `yarn watch`. Let's go check it out!
+[[[ code('b744845f0b') ]]]
+
+Before we restart Encore, shouldn't we delete some of these old files... at least
+to get them out of the way and clean things up? Nope! Well, *yes*, but it's already
+happening. One *other* optional feature that we're using is called `cleanOutputBeforeBuild()`:
+
+[[[ code('247e30958e') ]]]
+
+This is responsible for emptying the `build/` directory each time we build.
+
+Ok, go restart Encore: `Ctrl`+`C`, then `yarn watch`. Let's go check it out!
 Beautiful! Everything *now* copies to `images/` *and* includes a hash.
 
 ## Public Path to Versioned Copied Files: manifest.json
@@ -83,23 +97,35 @@ out the images! It maps from `build/images/meteor-shower.jpg` to the *real*, ver
 path! If we could read this file, we could automagically get the correct hash!
 
 When we installed WebpackEncoreBundle, the recipe added a `config/packages/assets.yaml`
-file. Inside, oh! It has `json_manifest_path` set to the path to `manifest.json`!
+file. Inside, oh! It has `json_manifest_path` set to the path to `manifest.json`:
+
+[[[ code('b9513c014f') ]]]
+
 The *significance* of this line is that *anytime* we use the `asset()` function
 in Twig, it will take that path and *look* for it inside of `manifest.json`.
 If it finds it, it will use the final, versioned path.
 
 *This* means that if we want to point to `meteor-shower.jpg`, all *we* need to
 do is use the `build/images/meteor-shower.jpg` path. Copy that, go to the homepage
-template, and paste it here.
+template, and paste it here:
+
+[[[ code('7f8e27d36d') ]]]
 
 There are a few other images tags in this file. Search for `<img`. This is pointing
-to an uploaded file, not a static file - so that's good. Ah, but this one needs
-to change: `build/images/alien-profile.png`. And one more, add `build/` before
-`space-ice.png`.
+to an uploaded file, not a static file - so, that's good. Ah, but this one needs
+to change: `build/images/alien-profile.png`:
+
+[[[ code('3376234017') ]]]
+
+And one more, add `build/` before `space-ice.png`:
+
+[[[ code('d97aee4ec4') ]]]
 
 Let's try it! Move over, refresh and... we got it! Inspect element: it's the final,
 versioned filename. Let's update the *last* `img` tags - they're in `show.html.twig`.
-Search for `img` tags again, then... `build/`, `build/` and `build/`.
+Search for `img` tags again, then... `build/`, `build/` and `build/`:
+
+[[[ code('9f14bf4d41') ]]]
 
 Click to go view one of the articles. These comment avatars are *now* using the
 system.
