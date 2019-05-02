@@ -1,4 +1,4 @@
-# Autoprovide jQuery for Mischievous Packages
+# Auto-Provide jQuery for Mischievous Packages
 
 Everything *should* be working... but nope! We've got this
 

@@ -1,4 +1,4 @@
-# Support any Browser with PostCSS & babel
+# Support any Browser with PostCSS & Babel
 
 Go back to `/admin/article` and click to edit one of the articles. View the
 source and search for `.js`. Okay, we have several JavaScript files, because
