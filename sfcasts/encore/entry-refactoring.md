@@ -1,23 +1,34 @@
 # Entry Refactoring
 
 Here's our mission: to get rid of *all* the JavaScript and CSS stuff from our
-`public/` directory. Our next target is `admin_article_form.js`. This probably
-won't come as a *huge* shock, but this is used in the admin section. Go to
-`/admin/article`. If you need to log in, use `admin1@thespacebar.com`, password
+`public/` directory. Our next target is `admin_article_form.js`:
+
+[[[ code('c4e833da8f') ]]]
+
+This probably won't come as a *huge* shock, but this is used in the admin section.
+Go to `/admin/article`. If you need to log in, use `admin1@thespacebar.com`, password
 `engage`. Then click to edit any of the articles.
 
 This page has JavaScript to handle the Dropzone upload and a few other things. Open
-the template: `templates/article_admin/edit.html.twig` and scroll down. Ok: we
-have a traditional `<script>` tag for `admin_article_form.js` as well as two
-external JavaScript files that we'll handle in a minute.
+the template: `templates/article_admin/edit.html.twig` and scroll down. Ok: we have
+a traditional `<script>` tag for `admin_article_form.js` as well as two
+external JavaScript files that we'll handle in a minute:
+
+[[[ code('templates/article_admin/edit.html.twig') ]]]
 
 ## The Repeatable Process of Refactoring to an Entry
 
 This is *super* similar to what we just did. First, move `admin_article_form.js`
 into `assets/js`. This will be our *third* entry. So, in `webpack.config.js`
 copy `addEntry()`, call this one `admin_article_form` and point it to
-`admin_article_form.js`. Finally, inside `edit.html.twig`, change this to
-use `{{ encore_entry_script_tags('admin_article_form') }}`.
+`admin_article_form.js`:
+
+[[[ code('9158285de9') ]]]
+
+Finally, inside `edit.html.twig`, change this to use
+`{{ encore_entry_script_tags('admin_article_form') }}`:
+
+[[[ code('templates/article_admin/edit.html.twig') ]]]
 
 Now, stop and restart Encore:
 
@@ -31,23 +42,37 @@ surprised that when we refresh, we get our *favorite* JavaScript error:
 > $ is not defined
 
 Let's implement phase 2 of refactoring. In `admin_article_form.js`,
-`import $ from 'jquery'` and... we're good to go!
+`import $ from 'jquery'`:
+
+[[[ code('0c59adcba5') ]]]
+
+And... we're good to go!
 
 ## Refactoring the External script Tags
 
 In addition to moving things out of `public/`, I *also* want to remove all of
-these external script tags. Actually, there's nothing wrong with including external
-scripts - and you can *definitely* argue that including some things - like
-jQuery - could be good for performance. If you *do* want to keep a few script
-tags for external stuff, check out Webpack's "externals" feature to make it work
-nicely.
+these external script tags:
+
+[[[ code('0c59adcba5') ]]]
+
+Actually, there's nothing wrong with including external scripts - and you can
+*definitely* argue that including some things - like jQuery - could be good
+for performance. If you *do* want to keep a few script tags for external stuff,
+check out Webpack's "externals" feature to make it work nicely.
 
 The reason I don't like them is that, in the *new* way of writing JavaScript,
 you never want undefined variables. If we need a `$` variable, we need to import
-`$`! But check it out: we're referencing `Dropzone`. Where the heck does that come
-from? Answer: it's a global variable created by this Dropzone script tag! The
-same is true for `Sortable` further down. I *don't* want to rely on global variables
-anymore.
+`$`! But check it out: we're referencing `Dropzone`:
+
+[[[ code('4aa18d42dc') ]]]
+
+Where the heck does that come from? Answer: it's a global variable created by this
+Dropzone script tag!
+
+[[[ code('edit.html.twig') ]]]
+
+The same is true for `Sortable` further down. I *don't* want to rely on global
+variables anymore.
 
 Trash both of these script tags. Then, find your terminal, go to your open
 tab and run:
@@ -63,20 +88,27 @@ Try it: refresh. A most *excellent* error!
 > Dropzone is undefined
 
 It sure is! Fix that with `import Dropzone from 'dropzone'` and also
-`import Sortable from 'sortablejs'`.
+`import Sortable from 'sortablejs'`:
+
+[[[ code('e3e6a6fb74') ]]]
 
 *Now* it works.
 
 ## Importing the CSS
 
 But there's *one* more thing hiding in our edit template: we have a CDN link to
-the Dropzone CSS! We don't need that either. Instead, in `admin_article_form.js`,
-we can import the CSS from the dropzone package directly. Hold command or
-control and click to open dropzone. I'll double-click the `dropzone` directory
-to take us there.
+the Dropzone CSS!
+
+[[[ code('edit.html.twig') ]]]
+
+We don't need that either. Instead, in `admin_article_form.js`, we can import
+the CSS from the dropzone package directly. Hold `Command` or `Control` and click
+to open dropzone. I'll double-click the `dropzone` directory to take us there.
 
 Inside `dist`... there it is: `dropzone.css`. *That's* the path we want to import.
-How? With `import 'dropzone/dist/dropzone.css'`.
+How? With `import 'dropzone/dist/dropzone.css'`:
+
+[[[ code('2822519ad5') ]]]
 
 Most of the time, we're lazy and we say `import` then the package name. But it's
 totally legal to import the package name */* a specific file path.
@@ -86,7 +118,9 @@ is getting crazy! Hiding inside there is *one* CSS file:
 `vendors~admin_article_form.css`.
 
 Flip back to the edit template and add
-`{{ encore_entry_link_tags('admin_article_form') }}`.
+`{{ encore_entry_link_tags('admin_article_form') }}`:
+
+[[[ code('edit.twig.html') ]]]
 
 Try it! Find your browser and refresh! Ok, it looks like the Dropzone CSS is
 still working. I think we're good!
@@ -95,13 +129,19 @@ still working. I think we're good!
 
 This *same* JavaScript & CSS code is needed on one other page. Go back to
 `/admin/article` and click create. Oof, we still have some problems here. I'll
-close up `node_modules/` and open `templates/article_admin/new.html.twig`.
+close up `node_modules/` and open `templates/article_admin/new.html.twig`:
 
-Ah, cool. Replace the `admin_article_form.js` script with our helper Twig function.
+[[[ code('new.html.twig') ]]]
+
+Ah, cool. Replace the `admin_article_form.js` script with our helper Twig function:
+
+[[[ code('new.html.twig') ]]]
 
 Under stylesheets, the new page doesn't use Dropzone, so it didn't have that
 same link tag here. Add `{{ encore_entry_link_tags('admin_article_form') }}` anyways
-so that this page has *all* the JS and CSS it needs.
+so that this page has *all* the JS and CSS it needs:
+
+[[[ code('new.html.twig') ]]]
 
 But this *does* highlight one... let's say... "not ideal" thing. Some of the JavaScript
 on the edit page - like the Dropzone & Sortable stuff - isn't needed here... but
@@ -112,6 +152,9 @@ nice way to help avoid packaging code all the time that is only needed *some*
 of the time.
 
 Anyways, if we refresh now... the page is still *totally* broken! Apparently
-this "autocomplete" library we're importing is trying to reference jQuery.
+this "autocomplete" library we're importing is trying to reference jQuery:
+
+[[[ code('new.html.twig') ]]]
+
 Let's fix that next... which will involve a... sort of "magical" feature of Webpack
 and Encore.
