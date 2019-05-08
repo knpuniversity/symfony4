@@ -3,7 +3,7 @@
 Ok team: just one more thing to talk about: how the heck can we deploy all of this
 to production?
 
-Well, *before* that, our files aren't event ready for production yet! Open the
+Well, *before* that, our files aren't even ready for production yet! Open the
 `public/build/` directory. If you open any of these files, you'll notice that they
 are *not* minified. And at the bottom, each has a bunch of extra stuff for "sourcemaps":
 a bit of config that makes debugging our code easier in the browser.
@@ -33,12 +33,12 @@ can be much slower than dev builds.
 *Now* we have a *very* different `build/` directory. First, all of the names are
 bit obfuscated. Before, we had names that included things like `app~vendor`, which
 kind of exposed the internal structure of what entry points we had and how they're
-sharing data. No *huge* deal, but that's gone: gone, replaced by these numbered
+sharing data. No *huge* deal, but that's gone: replaced by these numbered
 files.
 
 Also, if you look inside any of these, they're now totally minified and won't have
 the sourcemap at the bottom. You *will* still see these license headers - that's
-there for legal reasons, though you *can* configure them to removed. Those are
+there for legal reasons, though you *can* configure them to be removed. Those are
 the only comments that are left in these final files.
 
 And *even* though all the filenames just changed, we instantly move over, refresh,
