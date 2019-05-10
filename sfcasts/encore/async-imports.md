@@ -49,8 +49,7 @@ something, there would be a small delay while the JavaScript was being downloade
 To make the experience fluid, you could add a loading animation before the `import()`
 call and stop it inside the callback.
 
-Ok, let's try this! Go refresh! Oh, duh - this is the edit page. Go back to
-`/admin/article/new`. And... oh!
+Ok, let's try this! Go back to `/admin/article/new`. And... oh!
 
 > autocomplete is not a function
 
