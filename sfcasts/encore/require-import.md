@@ -1,4 +1,4 @@
-# Modules: `require()` & `import`
+# Modules: require() & import()
 
 Let's get back to talking about the *real* power of Webpack: the ability to import
 or require JavaScript files. Pretend that building this string is actually a lot
