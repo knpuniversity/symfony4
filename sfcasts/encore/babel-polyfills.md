@@ -3,7 +3,9 @@
 Babel is pretty amazing. But, it's even doing something *else* automatically
 that we haven't realized yet! Back in `admin_article_form.js`, and it doesn't
 matter where, but down in `ReferenceList`, I'm going to add
-`var stuff = new WeakSet([]);`
+`var stuff = new WeakSet([]);`:
+
+[[[ code('03d5713625') ]]]
 
 `WeakSet` is an object that was introduced to JavaScript, um, ECMAScript in 2015.
 Because the Encore watch script is running, go over and refresh the built file.
@@ -28,7 +30,10 @@ you even *need* a polyfill - maybe the feature is *already* available in the bro
 you need to support - is a pain! So... Encore pre-configures Babel to... just do
 it for us.
 
-Check it out. Go back to `package.json` and change this to support older browsers.
+Check it out. Go back to `package.json` and change this to support older browsers:
+
+[[[ code('db2f41248e') ]]]
+
 Then, just like before, go to your terminal and manually clear the Babel cache:
 
 ```terminal
@@ -55,21 +60,30 @@ and adding `import 'core-js/modules/es.weak-set'`. How cool is that?!
 
 And... this is *not* the first time Babel has automatically added a polyfill! Open
 up `build/app.js`. Back in the editor, the `get_nice_message` module used a String
-method called `repeat()`. Whelp, it turns out that `repeat()` is a *fairly* new
-feature!
+method called `repeat()`:
 
-Search for `repeat` in the built file. There it is: it's importing
+[[[ code('1bbafe3598') ]]]
+
+Whelp, it turns out that `repeat()` is a *fairly* new feature!
+
+Search for "repeat" in the built file. There it is: it's importing
 `core-js/modules/es.string.repeat`. When I used this function, I wasn't even
 *thinking* about whether or not that feature was new and if it was available in
 the browsers we need to support! But because Encore has our back, it wasn't a problem.
 That's a powerful idea.
 
 By the way, this is all configured in `webpack.config.js`: it's this
-`.configureBabel()` method. Generally-speaking, this is how you can configure
-Babel. The `useBuiltIns: 'usage'` and `corejs: 3` are the key parts. Together, these
-say: please automatically import polyfills when you see that I'm *using* a new
-feature *and* I've already installed version 3 of `corejs`. That package was
-pre-installed in the original `package.json` we got from the recipe.
+`.configureBabel()` method:
+
+[[[ code('94a3df93bc') ]]]
+
+Generally-speaking, this is how you can configure Babel. The `useBuiltIns: 'usage'`
+and `corejs: 3` are the key parts. Together, these say:
+
+> Please, automatically import polyfills when you see that I'm *using* a new
+> feature *and* I've already installed version 3 of `corejs`.
+
+That package was pre-installed in the original `package.json` we got from the recipe.
 
 Next: let's demystify a feature that we disabled *way* back at the beginning of
 this tutorial: the single runtime chunk.
