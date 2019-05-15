@@ -3,9 +3,18 @@
 There are only two files left in the `public/` directory, and they're both
 CSS files! Celebrate by crushing your `js/` directory.
 
-We have *two* page-specific CSS files left. Open `account/index.html.twig`.
+We have *two* page-specific CSS files left. Open `account/index.html.twig`:
+
+[[[ code('1760f9706b') ]]]
+
 Yep, this has a link tag to the first... and in `security/login.html.twig`, here's
-the other. Oh, and we also include `login.css` from `register.html.twig`.
+the other:
+
+[[[ code('d96e22dcb2') ]]]
+
+Oh, and we also include `login.css` from `register.html.twig`:
+
+[[[ code('505b5b61ae') ]]]
 
 This is kind of a tricky situation.... because what Webpack *wants* you to do is
 *always* start with a *JavaScript* entry file. And of course, if you *happen*
@@ -29,9 +38,11 @@ because we can, make both of them `scss` files.
 
 Next, in `webpack.config.js` add a special thing called `addStyleEntry()`. We'll
 have one called `account` pointing to `./assets/css/account.scss` and another one
-called `login` pointing to `login.scss`.
+called `login` pointing to `login.scss`:
 
-Easy enough! Find your Encore build, press `control + C`, and restart it:
+[[[ code('3d0b511abf') ]]]
+
+Easy enough! Find your Encore build, press `Control` + `C`, and restart it:
 
 ```terminal
 yarn watch
@@ -41,9 +52,17 @@ Awesome! We can see that the `account` and `login` entries both only dump
 CSS files.
 
 And *this* means that, back in `index.html.twig`, we can replace the link tag
-with `{{ encore_entry_link_tags('account') }}`. Copy that and do the same thing
-in `login.html.twig` for the `login` entry. And then in `register.html.twig`, one
-more time for `login`.
+with `{{ encore_entry_link_tags('account') }}`:
+
+[[[ code('2e4a506a27') ]]]
+
+Copy that and do the same thing in `login.html.twig` for the `login` entry:
+
+[[[ code('f2e8b5dde1') ]]]
+
+And then in `register.html.twig`, one more time for `login`:
+
+[[[ code('096a6dd796') ]]]
 
 Ok! Let's double-check that the site doesn't explode. Go to the `/account` profile
 page. Everything looks fine.
