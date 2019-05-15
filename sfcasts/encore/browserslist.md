@@ -17,14 +17,19 @@ site needs to support, in a *bunch* of useful ways. Then, *any* tool that needs
 this information can read it from a central spot.
 
 Check it out: open up your `package.json` file. Yes, *this* is where we'll configure
-what browsers we need to support. Add a new key: `browserslist` set to an array.
+what browsers we need to support. Add a new key: `browserslist` set to an array:
+
+[[[ code('447cc72470') ]]]
+
 You can do a *ton* of things in here - like say that you want to support the last
 "2" versions of every browser *or* any browser that is used by more than 1% of the
 web *or* some *specific* browser that you know is used a lot on your site. Yea,
 `browserslist` uses *real-world* usage data to figure out *which* browsers you
 should support!
 
-Let's use a simple example: `> .05%`.
+Let's use a simple example: `> .05%`:
+
+[[[ code('d9563d245a') ]]]
 
 This is actually a pretty *unrealistic* setting. This says: I want to support all
 browsers that have *at least* .05% of the global browser usage. So this will include
@@ -53,9 +58,12 @@ file. Inside, search for `$autocomplete`. Yep! We saw earlier that Babel is outp
 `var $autoComplete`, even though this was *originally* `const $autoComplete`.
 That makes sense: we said that we want to support *really* old browsers.
 
-So... what if we change the `browserslist` config to `> 5%`? That's probably still
-a *bit* unrealistic: this will only support the *most* popular browsers and versions:
-pretty much *no* old stuff. Stop and re-run Encore:
+So... what if we change the `browserslist` config to `> 5%`?
+
+[[[ code('660028a629') ]]]
+
+That's probably still a *bit* unrealistic: this will only support the *most* popular
+browsers and versions: pretty much *no* old stuff. Stop and re-run Encore:
 
 ```terminal-silent
 yarn watch
