@@ -3,17 +3,20 @@
 Go back to `/admin/article` and click to edit one of the articles. View the
 source and search for `.js`. Okay, we have several JavaScript files, because
 Webpack is splitting them. Click to look at `build/admin_article_form.js`, which
-will probably contain all the non-vendor code from that entrypoint.
+will probably contain all the non-vendor code from that entry point.
 
 The top of the file contains some Webpack boootstrap stuff, then our code is below,
 still mixed in with some things that makes Webpack work.
 
 Now, check this out: in the *original* `admin_article_form.js` file, we created
-a class called `ReferenceList`... and we also use the `const` keyword for
-`const $autoComplete`. Back in the compiled file, search for `$autoComplete`. Woh!
-It's not `const $autoComplete`, it's `var $autoComplete`! And if you search for
-`ReferenceList`... and get down to the class... there's no class syntax! It's
-wrapped in some sort of a "pure" function thingy.
+a class called `ReferenceList`:
+
+[[[ code('6b2c2229f5') ]]]
+
+And we also use the `const` keyword for `const $autoComplete`. Back in the compiled
+file, search for `$autoComplete`. Woh! It's not `const $autoComplete`, it's
+`var $autoComplete`! And if you search for `ReferenceList`... and get down to the
+class... there's no class syntax! It's wrapped in some sort of a "pure" function thingy.
 
 Surprise! Something is *rewriting* our code! But, who? And, why?
 
@@ -45,7 +48,9 @@ For example, if you're using a `border-radius` and need to support older browser
 you need to add some vendor prefixes, like `-webkit-border-radius`. You can see
 one we added manually down here: we have `box-shadow`, but we *also*
 have `-webkit-box-shadow` to make it work in some older browsers... which we might
-not even need, depending on what browsers we decide we need to support.
+not even need, depending on what browsers we decide we need to support:
+
+[[[ code('b3ea9c347d') ]]]
 
 *Anyways*, forgetting about Webpack and Babel for a minute, in the CSS world, you
 do *not* need to add these vendor prefixes by hand. Nope! There's a wonderful
@@ -56,9 +61,12 @@ adds the vendor prefixes for you.
 ## Enabling PostCSS
 
 Because that sounds *amazing*... let's add it! In `webpack.config.js`, anywhere,
-but how about below `.enableSassLoader()`, add `.enablePostCssLoader()`. PostCSS
-is a library that allows you to run things at the "end" of your CSS being processed.
-And it's the easiest way to integrate `autoprefixer`.
+but how about below `.enableSassLoader()`, add `.enablePostCssLoader()`:
+
+[[[ code('f05adc0370') ]]]
+
+PostCSS is a library that allows you to run things at the "end" of your CSS being
+processed. And it's the easiest way to integrate `autoprefixer`.
 
 Next, because we just changed our `webpack.config.js` file, go restart Encore:
 
@@ -82,9 +90,11 @@ yarn watch
 Hmm, *another* error! This is kinda cool: to use PostCSS, you *need* to create a
 `postcss.config.js` file. Encore walks you through that process and sets it up
 to use `autoprefixer` to start. Copy that, go to the root of your project, create
-the `postcss.config.js` file and paste.
+the `postcss.config.js` file and paste:
 
-Ok, hit `Control + C` and try that again:
+[[[ code('6b41d99074') ]]]
+
+Ok, hit `Control` + `C` and try that again:
 
 ```terminal-silent
 yarn watch
