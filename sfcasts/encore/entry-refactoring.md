@@ -14,7 +14,7 @@ the template: `templates/article_admin/edit.html.twig` and scroll down. Ok: we h
 a traditional `<script>` tag for `admin_article_form.js` as well as two
 external JavaScript files that we'll handle in a minute:
 
-[[[ code('templates/article_admin/edit.html.twig') ]]]
+[[[ code('66a12a291c') ]]]
 
 ## The Repeatable Process of Refactoring to an Entry
 
@@ -28,7 +28,7 @@ copy `addEntry()`, call this one `admin_article_form` and point it to
 Finally, inside `edit.html.twig`, change this to use
 `{{ encore_entry_script_tags('admin_article_form') }}`:
 
-[[[ code('templates/article_admin/edit.html.twig') ]]]
+[[[ code('2979ee16bc') ]]]
 
 Now, stop and restart Encore:
 
@@ -69,7 +69,7 @@ you never want undefined variables. If we need a `$` variable, we need to import
 Where the heck does that come from? Answer: it's a global variable created by this
 Dropzone script tag!
 
-[[[ code('edit.html.twig') ]]]
+[[[ code('4a73d3ab31') ]]]
 
 The same is true for `Sortable` further down. I *don't* want to rely on global
 variables anymore.
@@ -99,11 +99,11 @@ It sure is! Fix that with `import Dropzone from 'dropzone'` and also
 But there's *one* more thing hiding in our edit template: we have a CDN link to
 the Dropzone CSS!
 
-[[[ code('edit.html.twig') ]]]
+[[[ code('8741ca6424') ]]]
 
 We don't need that either. Instead, in `admin_article_form.js`, we can import
-the CSS from the dropzone package directly. Hold `Command` or `Control` and click
-to open dropzone. I'll double-click the `dropzone` directory to take us there.
+the CSS from the Dropzone package directly. Hold `Command` or `Control` and click
+to open Dropzone. I'll double-click the `dropzone` directory to take us there.
 
 Inside `dist`... there it is: `dropzone.css`. *That's* the path we want to import.
 How? With `import 'dropzone/dist/dropzone.css'`:
@@ -120,7 +120,7 @@ is getting crazy! Hiding inside there is *one* CSS file:
 Flip back to the edit template and add
 `{{ encore_entry_link_tags('admin_article_form') }}`:
 
-[[[ code('edit.twig.html') ]]]
+[[[ code('75b672d9f1') ]]]
 
 Try it! Find your browser and refresh! Ok, it looks like the Dropzone CSS is
 still working. I think we're good!
@@ -131,17 +131,17 @@ This *same* JavaScript & CSS code is needed on one other page. Go back to
 `/admin/article` and click create. Oof, we still have some problems here. I'll
 close up `node_modules/` and open `templates/article_admin/new.html.twig`:
 
-[[[ code('new.html.twig') ]]]
+[[[ code('8cf7d5a120') ]]]
 
 Ah, cool. Replace the `admin_article_form.js` script with our helper Twig function:
 
-[[[ code('new.html.twig') ]]]
+[[[ code('9af42f768e') ]]]
 
 Under stylesheets, the new page doesn't use Dropzone, so it didn't have that
 same link tag here. Add `{{ encore_entry_link_tags('admin_article_form') }}` anyways
 so that this page has *all* the JS and CSS it needs:
 
-[[[ code('new.html.twig') ]]]
+[[[ code('f97e04a129') ]]]
 
 But this *does* highlight one... let's say... "not ideal" thing. Some of the JavaScript
 on the edit page - like the Dropzone & Sortable stuff - isn't needed here... but
