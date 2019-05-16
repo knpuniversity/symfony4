@@ -6,8 +6,15 @@ autocomplete JavaScript and CSS. The thing is, if you go back and edit an articl
 this is purposely *not* used here.
 
 So, what's the problem? Open `admin_article_form.js`. We import
-`algolia-autocomplete`... and it imports a third-party library and some CSS. So,
-it's not a *tiny* amount of code to get this working. The `admin_article_form.js`
+`algolia-autocomplete`:
+
+[[[ code('0aab5d825d') ]]]
+
+And it imports a third-party library and some CSS:
+
+[[[ code('26f1c66490') ]]]
+
+So, it's not a *tiny* amount of code to get this working. The `admin_article_form.js`
 entry file is included on both the new *and* edit pages. But really, a big chunk
 of that file is *totally* unused on the edit page. What a waste!
 
@@ -28,15 +35,23 @@ We need to be able to lazily load dependencies. And here's how.
 
 ## Hello Async/Dynamic import()
 
-Copy the file path then delete the import. All imports are *normally* at the
-top of the file. But now... down inside the if statement, *this* is when we know
-that we need to use that library. Use `import()` like a *function* and pass it the
-path that we want to import.
+Copy the file path then delete the import:
+
+[[[ code('50d4d3d80b') ]]]
+
+All imports are *normally* at the top of the file. But now... down inside
+the if statement, *this* is when we know that we need to use that library.
+Use `import()` like a *function* and pass it the path that we want to import.
 
 This works almost exactly like an AJAX call. It's not instant, so it returns a
 *Promise*. Add `.then()` and, for the callback, Webpack will pass us the module
-that we're importing: `autocomplete`. Finish the arrow function, then move the
-old code inside.
+that we're importing: `autocomplete`:
+
+[[[ code('b4ddc26e42') ]]]
+
+Finish the arrow function, then move the old code inside:
+
+[[[ code('ca3fcd86ba') ]]]
 
 So, it will hit our `import` code, download the JavaScript - just like an AJAX
 call - and when it finishes, call our function. *And*, because the "traditional"
@@ -56,8 +71,12 @@ Ok, let's try this! Go back to `/admin/article/new`. And... oh!
 ## Using module_name.default
 
 in `article_form.js`. So... this is a little bit of a gotcha. If your module uses
-the newer, trendier, `export default` syntax, when you use "async" or "dynamic"
-imports, you need to say `autocomplete.default` in the callback.
+the newer, trendier, `export default` syntax:
+
+[[[ code('752589da9b') ]]]
+
+When you use "async" or "dynamic" imports, you need to say `autocomplete.default()`
+in the callback.
 
 Move back over and refresh again. No errors! And it works! But also, look at the
 Network tab - filter for "scripts". It downloaded `1.js` and `0.js`. The `1.js`

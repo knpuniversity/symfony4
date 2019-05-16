@@ -7,14 +7,22 @@ the counter. Well, part of this is faked on the backend, but you get the idea.
 To make this more clear, let's add a Bootstrap tooltip: when the user hovers over
 the heart, we can say something like "Click to like". No problem: open up the
 template: `article/show.html.twig`. And I'll remind you that this page has its own
-entry: `article_show.js`. Go open that: `assets/js/article_show.js`.
+entry: `article_show.js`:
+
+[[[ code('00fcd8271c') ]]]
+
+Go open that: `assets/js/article_show.js`.
 
 Ok, let's find the anchor tag in the template... there it is... and use multiple
-lines for sanity. Now add `title="Click to Like"`.
+lines for sanity. Now add `title="Click to Like"`:
+
+[[[ code('9b6348db3f') ]]]
 
 To make this work, all *we* need to do is copy the `js-like-article` class, go
 back to `article_show.js` and add `$('.js-like-article').tooltip()`, which is
-a function added by Bootstrap.
+a function added by Bootstrap:
+
+[[[ code('8bde946eb3') ]]]
 
 Coolio! Let's try it. Refresh and... of course. It doesn't work:
 
@@ -23,7 +31,9 @@ Coolio! Let's try it. Refresh and... of course. It doesn't work:
 This may or may *not* surprise you. Think about it: at the bottom of the page,
 the `app.js` `<script>` tags are loaded first. And, if you remember, inside of
 `app.js`, we import `jquery` and then `bootstrap`, which *adds* the `tooltip()`
-function to jQuery.
+function to jQuery:
+
+[[[ code('d012d8d10e') ]]]
 
 ## Are Modules Shared across Entries?
 
@@ -34,11 +44,14 @@ the same module, they *do* get the exact same object in memory.
 
 However, by default, Webpack treats different entrypoints like totally separate
 applications. So if we import `jquery` from `app.js` and also from
-`get_nice_message.js`, which is part of the same entry, they *will* get the *same*
-jQuery object. But when we import `jquery` from `article_show.js`, we get a
-*different* object in memory. Each entrypoint has an isolated environment.
-It doesn't mean that jQuery is downloaded twice, it just means that we are
-given two different instances.
+`get_nice_message.js`, which is part of the same entry:
+
+[[[ code('0e092b4631') ]]]
+
+They *will* get the *same* jQuery object. But when we import `jquery` from
+`article_show.js`, we get a *different* object in memory. Each entrypoint
+has an isolated environment. It doesn't mean that jQuery is downloaded twice,
+it just means that we are given two different instances.
 
 So the fix is simple: `import 'bootstrap'`.
 
@@ -50,10 +63,15 @@ Understanding that modules are *not* shared across entries is good to know.
 But this *also* relates to a feature I want to talk about: the runtime chunk.
 
 In `webpack.config.js`, at the *very* beginning of the tutorial, we commented out
-`enableSingleRuntimeChunk()` and replaced it with `disableSingleRuntimeChunk()`.
-*Now*, let's reverse that.
+`enableSingleRuntimeChunk()` and replaced it with `disableSingleRuntimeChunk()`:
 
-Because we just modified the Webpack config, come back over, press `control + c`
+[[[ code('c45f831f27') ]]]
+
+*Now*, let's reverse that:
+
+[[[ code('cc50030c55') ]]]
+
+Because we just modified the Webpack config, come back over, press `Control` + `C`
 and restart it:
 
 ```terminal
@@ -80,11 +98,11 @@ to get its job done. By enabling the single runtime chunk you're saying:
 The user *now* has to download an extra file, but all the entry files are a bit
 smaller. But, there's *more* to it than that. The `runtime.js` file contains
 something called the "manifest", which is a fancy name that Webpack gives to code
-that contains some internal ids that Webpack uses to identify different parts of
-your code. The *key* this is that those ids often *change* between builds. So,
+that contains some internal IDs that Webpack uses to identify different parts of
+your code. The *key* this is that those IDs often *change* between builds. So,
 by isolating that code into `runtime.js`, it means that our *other* JavaScript
 files - the ones that contain our big code - will change less often: when
-those internal ids change, it will *not* affect their content.
+those internal IDs change, it will *not* affect their content.
 
 The tl;dr is that the smaller `runtime.js` will change more often, but our bigger
 JavaScript files will change less often. That's great for caching.
