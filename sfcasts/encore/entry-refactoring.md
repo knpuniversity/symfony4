@@ -53,7 +53,7 @@ And... we're good to go!
 In addition to moving things out of `public/`, I *also* want to remove all of
 these external script tags:
 
-[[[ code('0c59adcba5') ]]]
+[[[ code('2354404dc6') ]]]
 
 Actually, there's nothing wrong with including external scripts - and you can
 *definitely* argue that including some things - like jQuery - could be good
@@ -152,9 +152,6 @@ nice way to help avoid packaging code all the time that is only needed *some*
 of the time.
 
 Anyways, if we refresh now... the page is still *totally* broken! Apparently
-this "autocomplete" library we're importing is trying to reference jQuery:
-
-[[[ code('new.html.twig') ]]]
-
+this "autocomplete" library we're importing is trying to reference jQuery.
 Let's fix that next... which will involve a... sort of "magical" feature of Webpack
 and Encore.
