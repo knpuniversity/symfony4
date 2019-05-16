@@ -30,7 +30,7 @@ What can we do?
 ## autoProvidejQuery()
 
 Well... it's Webpack to the rescue! Open up `webpack.config.js` and find some
-commented-out code: `autoProvidejQuery()`. Uncomment that.
+commented-out code: `autoProvidejQuery()`. Uncomment that:
 
 [[[ code('c0f424bc82') ]]]
 
