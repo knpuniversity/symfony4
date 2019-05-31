@@ -90,6 +90,12 @@ adds the `use` statement on top. Then add `"/"`:
 
 [[[ code('e9f8d1dc4a') ]]]
 
+***TIP
+When you auto-complete the `@Route` annotation, be sure to choose the
+one from `Symfony\Component\Routing` - the one we chose is now deprecated.
+Both work the same.
+***
+
 That's it! The route is defined *right* above the controller, which is why I *love*
 annotation routes: everything is in one place. But don't trust me, find your browser
 and refresh. It's a traaaap! I mean, it works!
