@@ -92,6 +92,11 @@ Add one new key: `encoders`. Below that, put the class name for your `User` clas
 
 [[[ code('a4b78cdbb5') ]]]
 
+***TIP
+In Symfony 4.3, you should use `auto` as your algorithm. This will use the
+*best* possible algorithm available on your system.
+***
+
 There are at least two good algorithm options here: `bcrypt` and `argon2i`. The
 `argon2i` encoder is actually a bit more secure. But, it's only available on PHP 7.2
 or by installing an extension called Sodium. 
