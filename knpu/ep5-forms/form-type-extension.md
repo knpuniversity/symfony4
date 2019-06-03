@@ -73,9 +73,18 @@ we *also* need to fill in this method in Symfony 4.1... it's a bit redundant, wh
 is why Symfony 4.2 will be *so* much cooler.
 
 ***TIP
-Since Symfony 4.2, the getExtendedType() method is deprecated. Instead, change the
-name to `public static function getExtendedTypes()` (static and ending with "s") and 
-return an array, e.g. `return [TextareaType::class]`.
+Since Symfony 4.2 `getExtendedType()` method is deprecated in favour of `getExtendedTypes()` but you still need a dummy implementation of `getExtendedType()`
+```
+public function getExtendedType()
+{
+   return '';
+}
+
+public function getExtentedTypes(): iterable
+{
+   return [SomeType::class];
+}
+```
 ***
 
 [[[ code('5dbb6758b7') ]]]
