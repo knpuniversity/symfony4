@@ -73,7 +73,7 @@ we *also* need to fill in this method in Symfony 4.1... it's a bit redundant, wh
 is why Symfony 4.2 will be *so* much cooler.
 
 ***TIP
-Since Symfony 4.2 `getExtendedType()` method is deprecated in favour of `getExtendedTypes()` but you still need a dummy implementation of `getExtendedType()`
+Since Symfony 4.2 `getExtendedType()` method is deprecated in favor of `getExtendedTypes()` but you still need a dummy implementation of `getExtendedType()`
 ```
 public function getExtendedType()
 {
