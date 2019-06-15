@@ -20,7 +20,7 @@ we're doing nothing.! So, instead of sending an error back to the user, the requ
 So when it hits our security check in `AccountController`, Symfony activates the
 "entry point", which redirects the user to `/login`.
 
-## onAuthenticationError()
+## onAuthenticationFailure()
 
 But... that's not what we want at all! If an API client sends a bad API token, we need
 to tell them! Bad API client! Let's return a new `JsonResponse()` with a `message`
