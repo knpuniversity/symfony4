@@ -19,6 +19,11 @@ it.
 At first, it might seem like we're just making life more difficult! But actually,
 Symfony 4 simply has a new philosophy.
 
+***TIP
+You may not see the `public: false` defined anymore because that’s the default value
+starting in Symfony 4.
+***
+
 Open `services.yaml` and, below `_defaults`, check out the `public: false` config:
 
 [[[ code('acc89f3246') ]]]
