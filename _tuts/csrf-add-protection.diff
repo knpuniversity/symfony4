@@ -1,5 +1,5 @@
 diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
-index df0f8a09..b5365884 100644
+index df0f8a0..b536588 100644
 --- a/src/Security/LoginFormAuthenticator.php
 +++ b/src/Security/LoginFormAuthenticator.php
 @@ -7,20 +7,25 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -50,7 +50,7 @@ index df0f8a09..b5365884 100644
      }
  
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index af1ae0fb..02c15cdf 100644
+index af1ae0f..02c15cd 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -19,6 +19,11 @@

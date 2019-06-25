@@ -1,6 +1,6 @@
 diff --git a/public/css/algolia-autocomplete.css b/public/css/algolia-autocomplete.css
 new file mode 100644
-index 00000000..8093cda1
+index 0000000..8093cda
 --- /dev/null
 +++ b/public/css/algolia-autocomplete.css
 @@ -0,0 +1,26 @@
@@ -32,7 +32,7 @@ index 00000000..8093cda1
 +}
 diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
 new file mode 100644
-index 00000000..8c60c0f6
+index 0000000..8c60c0f
 --- /dev/null
 +++ b/public/js/algolia-autocomplete.js
 @@ -0,0 +1,12 @@
@@ -49,7 +49,7 @@ index 00000000..8c60c0f6
 +    ]);
 +});
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
-index c2fd5e28..f8e64501 100644
+index c2fd5e2..f8e6450 100644
 --- a/src/Form/UserSelectTextType.php
 +++ b/src/Form/UserSelectTextType.php
 @@ -37,7 +37,10 @@ class UserSelectTextType extends AbstractType
@@ -65,7 +65,7 @@ index c2fd5e28..f8e64501 100644
      }
  }
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 962b02d7..194a7ed8 100644
+index 962b02d..194a7ed 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -1,5 +1,18 @@

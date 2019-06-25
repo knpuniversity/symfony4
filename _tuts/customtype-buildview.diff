@@ -1,5 +1,5 @@
 diff --git a/src/Form/UserSelectTextType.php b/src/Form/UserSelectTextType.php
-index b90bd10d..39b9cd1b 100644
+index b90bd10..39b9cd1 100644
 --- a/src/Form/UserSelectTextType.php
 +++ b/src/Form/UserSelectTextType.php
 @@ -7,6 +7,8 @@ use App\Repository\UserRepository;

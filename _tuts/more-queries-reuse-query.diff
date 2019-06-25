@@ -1,5 +1,5 @@
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index 143e4887..94bfa611 100644
+index 143e488..94bfa61 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
 @@ -4,6 +4,7 @@ namespace App\Repository;

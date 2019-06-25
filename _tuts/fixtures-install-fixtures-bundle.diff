@@ -1,5 +1,5 @@
 diff --git a/README.md b/README.md
-index 63790990..39c97f39 100644
+index 6379099..39c97f3 100644
 --- a/README.md
 +++ b/README.md
 @@ -37,6 +37,7 @@ the database & tables!
@@ -11,7 +11,7 @@ index 63790990..39c97f39 100644
  
  If you get an error that the database exists, that should
 diff --git a/composer.json b/composer.json
-index 22f9f31f..9f8f45c5 100644
+index 22f9f31..9f8f45c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -20,6 +20,7 @@
@@ -23,7 +23,7 @@ index 22f9f31f..9f8f45c5 100644
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index abd965bd..fd085ef9 100644
+index abd965b..fd085ef 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -161,7 +161,7 @@ index abd965bd..fd085ef9 100644
              "name": "easycorp/easy-log-handler",
              "version": "v1.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 3cae3ddc..a3e56b0e 100644
+index 3cae3dd..a3e56b0 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -16,4 +16,5 @@ return [
@@ -172,9 +172,9 @@ index 3cae3ddc..a3e56b0e 100644
  ];
 diff --git a/src/DataFixtures/.gitignore b/src/DataFixtures/.gitignore
 new file mode 100644
-index 00000000..e69de29b
+index 0000000..e69de29
 diff --git a/symfony.lock b/symfony.lock
-index 97cf042e..1e038070 100644
+index 97cf042..1e03807 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -20,6 +20,9 @@

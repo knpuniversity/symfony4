@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 15b0d296..5966e58d 100644
+index 15b0d29..5966e58 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -32,4 +32,12 @@ class SecurityController extends AbstractController
@@ -17,7 +17,7 @@ index 15b0d296..5966e58d 100644
  }
 diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
 new file mode 100644
-index 00000000..bf43f32b
+index 0000000..bf43f32
 --- /dev/null
 +++ b/templates/security/register.html.twig
 @@ -0,0 +1,42 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Security/ApiTokenAuthenticator.php b/src/Security/ApiTokenAuthenticator.php
-index 151c2faa..aecacc4a 100644
+index 151c2fa..aecacc4 100644
 --- a/src/Security/ApiTokenAuthenticator.php
 +++ b/src/Security/ApiTokenAuthenticator.php
 @@ -3,6 +3,7 @@

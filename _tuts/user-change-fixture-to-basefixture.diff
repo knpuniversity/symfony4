@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/UserFixture.php b/src/DataFixtures/UserFixture.php
-index 5a8d46b0..cfb03741 100644
+index 5a8d46b..cfb0374 100644
 --- a/src/DataFixtures/UserFixture.php
 +++ b/src/DataFixtures/UserFixture.php
 @@ -2,12 +2,11 @@

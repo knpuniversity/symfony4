@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 302ac6ff..69e90ab3 100644
+index 302ac6f..69e90ab 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -44,7 +44,7 @@ class Article

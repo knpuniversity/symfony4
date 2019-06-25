@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 2ce2c9df..e8cddf2c 100644
+index 2ce2c9d..e8cddf2 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -25,7 +25,7 @@
@@ -12,7 +12,7 @@ index 2ce2c9df..e8cddf2c 100644
                          </div>
                      </a>
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index c9d06b57..a08bbb0e 100644
+index c9d06b5..a08bbb0 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -14,12 +14,12 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index dcf0a180..b43b3298 100644
+index dcf0a18..b43b329 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -3,11 +3,9 @@
@@ -37,7 +37,7 @@ index dcf0a180..b43b3298 100644
          return $this->render('article/show.html.twig', [
              'title' => ucwords(str_replace('-', ' ', $slug)),
 diff --git a/src/Service/MarkdownHelper.php b/src/Service/MarkdownHelper.php
-index 2d5e017d..62964857 100644
+index 2d5e017..6296485 100644
 --- a/src/Service/MarkdownHelper.php
 +++ b/src/Service/MarkdownHelper.php
 @@ -7,12 +7,21 @@ use Symfony\Component\Cache\Adapter\AdapterInterface;
