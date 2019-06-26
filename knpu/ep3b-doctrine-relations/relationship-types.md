@@ -59,7 +59,7 @@ a string, so that we can use the tag in a URL later.
 
 Cool! Before generating the migration, open the new class:
 
-[[[ code('b427551ab9') ]]]
+[[[ code('451a04c6a9') ]]]
 
 No surprises: `name` and `slug`. At the top, use our favorite `TimestampableEntity`
 trait:
@@ -69,7 +69,7 @@ trait:
 And, just like we did in `Article`, configure the slug to generate automatically. Copy
 the slug annotation and paste that above the `slug` property:
 
-[[[ code('d828d1f932') ]]]
+[[[ code('5d6dce47cf') ]]]
 
 Oh, but we need a `use` statement for the annotation. An easy way to add it is to
 temporarily type `@Slug` on the next line and hit tab to auto-complete it. Then,
@@ -79,7 +79,7 @@ delete it: that was enough to make sure the `use` statement was added on top:
 
 Let's also make the `slug` column unique:
 
-[[[ code('84c698aebf') ]]]
+[[[ code('fa35db7f4d') ]]]
 
 Great! The entity is ready. Go back to your terminal and make that migration!
 
@@ -100,7 +100,7 @@ php bin/console make:migration
 
 Got it! Open that class to make sure it looks right:
 
-[[[ code('4e8ad5eb5b') ]]]
+[[[ code('d20958c10a') ]]]
 
 Yep: `CREATE TABLE tag`. Go run it:
 
