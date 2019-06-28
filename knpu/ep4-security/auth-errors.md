@@ -5,7 +5,7 @@ is only possible right now if we use a non-existent email address. Oh!
 
 > Cannot redirect to an empty URL
 
-## Filling in getLogUrl()
+## Filling in getLoginUrl()
 
 Hmm: this is coming from `AbstractFormLoginAuthenticator` *our* authenticator's
 base class. If you dug a bit, you'd find out that, on failure, that authenticator
