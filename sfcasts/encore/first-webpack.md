@@ -84,7 +84,7 @@ to `addEntry()`:
 
 ## Adding the Script & Links Tags
 
-What this means is... we know have *one* JavaScript file that contains *all*
+What this means is... we now have *one* JavaScript file that contains *all*
 the code we need and one CSS file that contains all the CSS! All *we* need to do
 is add them to our page!
 
