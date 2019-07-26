@@ -80,7 +80,7 @@ public function getExtendedType()
    return '';
 }
 
-public function getExtendedTypes(): iterable
+public static function getExtendedTypes(): iterable
 {
    return [SomeType::class];
 }
