@@ -121,6 +121,58 @@ Yes! The *whole* page prints: `MarkdownHelper` is never instantiated.
 
 Go back and remove that die statement.
 
+***TIP
+There is a better way for [creating lazy-Loaded Twig extensions][lazy_twig_extensions]
+since Twig v1.26. First of all, create a separate class, e.g. `AppRuntime`, that implements
+`RuntimeExtensionInterface` and inject `MarkdownHelper` object there. Also, move
+`processMarkdown()` method there:
+
+```php
+namespace App\Twig;
+
+use App\Service\MarkdownHelper;
+use Twig\Extension\RuntimeExtensionInterface;
+
+class AppRuntime implements RuntimeExtensionInterface
+{
+    private $markdownHelper;
+
+    public function __construct(MarkdownHelper $markdownHelper)
+    {
+        $this->markdownHelper = $markdownHelper;
+    }
+
+    public function processMarkdown($value)
+    {
+        return $this->markdownHelper->parse($value);
+    }
+}
+```
+
+And then, in `AppExtension`, remove `MarkdownHelper` at all and point the `cached_markdown`
+filter to `[AppRuntime::class, 'processMarkdown']` instead:
+
+```php
+namespace App\Twig;
+
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
+class AppExtension extends AbstractExtension
+{
+    public function getFilters(): array
+    {
+        return [
+            new TwigFilter('cached_markdown', [AppRuntime::class, 'processMarkdown'], ['is_safe' => ['html']]),
+        ];
+    }
+}
+```
+
+That's it! Now our Twig extension does not have any direct dependencies, and `AppRuntime`
+object will be created only when `cached_markdown` is called.
+***
+
 Here's the super-duper-important takeaway: I want you to use *normal* dependency
 injection everywhere - just pass each service you need through the constructor,
 *without* all this fancy service-subscriber stuff.
@@ -128,3 +180,6 @@ injection everywhere - just pass each service you need through the constructor,
 But then, in just a *couple* of places in Symfony, the main ones being Twig extensions,
 event subscribers and security voters - a few topics we'll talk about in the future -
 you should consider using a service subscriber instead to avoid a performance hit.
+
+
+[lazy_twig_extensions]: https://symfony.com/doc/current/templating/twig_extension.html#creating-lazy-loaded-twig-extensions
