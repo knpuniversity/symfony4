@@ -76,7 +76,9 @@ the newer, trendier, `export default` syntax:
 [[[ code('752589da9b') ]]]
 
 When you use "async" or "dynamic" imports, you need to say `autocomplete.default()`
-in the callback.
+in the callback:
+
+[[[ code('529209c423') ]]]
 
 Move back over and refresh again. No errors! And it works! But also, look at the
 Network tab - filter for "scripts". It downloaded `1.js` and `0.js`. The `1.js`
