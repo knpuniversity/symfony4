@@ -121,7 +121,7 @@ that makes sense.
 With that fixed, let's rename the class *back* from this ridiculous name to
 `CommentFixture`:
 
-[[[ code('c4ae6af9c0') ]]]
+[[[ code('f17aee0acf') ]]]
 
 To celebrate, move over, refresh and... awesome! 8, random comments. We rock!
 
