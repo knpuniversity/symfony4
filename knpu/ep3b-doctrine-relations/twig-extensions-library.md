@@ -146,7 +146,7 @@ we can activate the extensions by uncommenting the ones we need:
 [[[ code('33acfcd655') ]]]
 
 Actually - because knowledge is power! - there are a few things going on. Thanks
-to the `Twig\Extensions\TwigExtension: ~` part, that class becomes registered as
+to the `Twig\Extensions\TextExtension: ~` part, that class becomes registered as
 as service. Remember: each class in the `src/` directory is *automatically* registered
 as a service. But because this class lives in `vendor/`, we need to register it
 by hand. Oh, and the `~` means `null`: it means we don't need to configure this service
