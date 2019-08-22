@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 4948bac..22f9f31 100644
+index 4948bacc..22f9f31f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -11,7 +11,7 @@ index 4948bac..22f9f31 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 8cb6993..abd965b 100644
+index 8cb6993e..abd965bd 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -226,7 +226,7 @@ index 8cb6993..abd965b 100644
              "name": "symfony/twig-bridge",
              "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index aaa4908..3cae3dd 100644
+index aaa49082..3cae3ddc 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -15,4 +15,5 @@ return [
@@ -237,7 +237,7 @@ index aaa4908..3cae3dd 100644
  ];
 diff --git a/config/packages/translation.yaml b/config/packages/translation.yaml
 new file mode 100644
-index 0000000..1edfbe2
+index 00000000..1edfbe23
 --- /dev/null
 +++ b/config/packages/translation.yaml
 @@ -0,0 +1,7 @@
@@ -249,7 +249,7 @@ index 0000000..1edfbe2
 +        fallbacks:
 +            - '%locale%'
 diff --git a/config/services.yaml b/config/services.yaml
-index 4754e66..ca97330 100644
+index 4754e665..ca973308 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -2,6 +2,7 @@
@@ -261,7 +261,7 @@ index 4754e66..ca97330 100644
  services:
      # default configuration for services in *this* file
 diff --git a/symfony.lock b/symfony.lock
-index 9132796..97cf042 100644
+index 91327965..97cf042e 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -92,6 +92,9 @@
@@ -295,4 +295,4 @@ index 9132796..97cf042 100644
      },
 diff --git a/translations/.gitignore b/translations/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b

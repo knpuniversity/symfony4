@@ -1,8 +1,8 @@
 diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
-index 29b9a7c..82bc217 100644
+index b1208a6c..a5b274e8 100644
 --- a/src/Repository/CommentRepository.php
 +++ b/src/Repository/CommentRepository.php
-@@ -34,7 +34,8 @@ class CommentRepository extends ServiceEntityRepository
+@@ -25,7 +25,8 @@ class CommentRepository extends ServiceEntityRepository
       */
      public function findAllWithSearch(?string $term)
      {

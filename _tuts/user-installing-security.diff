@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 3179297..30228bc 100644
+index 3179297a..30228bc8 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -17,6 +17,7 @@
@@ -11,7 +11,7 @@ index 3179297..30228bc 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index d75150b..307efb3 100644
+index d75150be..307efb32 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -327,7 +327,7 @@ index d75150b..307efb3 100644
              "name": "symfony/stopwatch",
              "version": "v4.1.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 80c373b..9c8aa9d 100644
+index 80c373b7..9c8aa9df 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -19,4 +19,5 @@ return [
@@ -338,7 +338,7 @@ index 80c373b..9c8aa9d 100644
  ];
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
 new file mode 100644
-index 0000000..fb4c593
+index 00000000..fb4c593e
 --- /dev/null
 +++ b/config/packages/security.yaml
 @@ -0,0 +1,24 @@
@@ -367,7 +367,7 @@ index 0000000..fb4c593
 +        # - { path: ^/admin, roles: ROLE_ADMIN }
 +        # - { path: ^/profile, roles: ROLE_USER }
 diff --git a/symfony.lock b/symfony.lock
-index eaa396b..74cfd6d 100644
+index eaa396b7..74cfd6d8 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -290,6 +290,9 @@

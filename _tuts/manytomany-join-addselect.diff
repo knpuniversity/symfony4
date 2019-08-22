@@ -1,8 +1,8 @@
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index 2435455..7795362 100644
+index f5eac5c3..b6a21a80 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
-@@ -26,6 +26,8 @@ class ArticleRepository extends ServiceEntityRepository
+@@ -27,6 +27,8 @@ class ArticleRepository extends ServiceEntityRepository
      public function findAllPublishedOrderedByNewest()
      {
          return $this->addIsPublishedQueryBuilder()
@@ -12,7 +12,7 @@ index 2435455..7795362 100644
              ->getQuery()
              ->getResult()
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index 22cde30..6af365b 100644
+index 22cde306..6af365b4 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -26,6 +26,12 @@

@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 68cb6d2..d037b8d 100644
+index 68cb6d28..d037b8de 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -1,4 +1,3 @@
@@ -18,7 +18,7 @@ index 68cb6d2..d037b8d 100644
 +###< symfony/phpunit-bridge ###
 diff --git a/bin/phpunit b/bin/phpunit
 new file mode 100755
-index 0000000..75d5be8
+index 00000000..75d5be85
 --- /dev/null
 +++ b/bin/phpunit
 @@ -0,0 +1,18 @@
@@ -41,7 +41,7 @@ index 0000000..75d5be8
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index 148daee..754d714 100644
+index 148daeeb..754d714b 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -15,6 +15,7 @@
@@ -53,7 +53,7 @@ index 148daee..754d714 100644
          "symfony/profiler-pack": "^1.0"
      },
 diff --git a/composer.lock b/composer.lock
-index cf964be..5a6f32f 100644
+index cf964be6..5a6f32f7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -506,7 +506,7 @@ index cf964be..5a6f32f 100644
              "name": "symfony/polyfill-php72",
              "version": "v1.6.0",
 diff --git a/config/bundles.php b/config/bundles.php
-index 20ea58b..b543674 100644
+index 20ea58b7..b5436745 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -6,4 +6,6 @@ return [
@@ -518,7 +518,7 @@ index 20ea58b..b543674 100644
  ];
 diff --git a/config/packages/dev/easy_log_handler.yaml b/config/packages/dev/easy_log_handler.yaml
 new file mode 100644
-index 0000000..27bfc60
+index 00000000..27bfc608
 --- /dev/null
 +++ b/config/packages/dev/easy_log_handler.yaml
 @@ -0,0 +1,16 @@
@@ -540,7 +540,7 @@ index 0000000..27bfc60
 +#            id:   EasyCorp\EasyLog\EasyLogHandler
 diff --git a/config/packages/dev/monolog.yaml b/config/packages/dev/monolog.yaml
 new file mode 100644
-index 0000000..3662592
+index 00000000..36625928
 --- /dev/null
 +++ b/config/packages/dev/monolog.yaml
 @@ -0,0 +1,19 @@
@@ -565,7 +565,7 @@ index 0000000..3662592
 +            channels: ["!event", "!doctrine", "!console"]
 diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
 new file mode 100644
-index 0000000..90e1a4c
+index 00000000..90e1a4c1
 --- /dev/null
 +++ b/config/packages/prod/monolog.yaml
 @@ -0,0 +1,17 @@
@@ -588,7 +588,7 @@ index 0000000..90e1a4c
 +            channels: ["!event", "!doctrine"]
 diff --git a/config/packages/test/monolog.yaml b/config/packages/test/monolog.yaml
 new file mode 100644
-index 0000000..2762653
+index 00000000..2762653c
 --- /dev/null
 +++ b/config/packages/test/monolog.yaml
 @@ -0,0 +1,7 @@
@@ -601,7 +601,7 @@ index 0000000..2762653
 +            channels: ["!event"]
 diff --git a/config/services_test.yaml b/config/services_test.yaml
 new file mode 100644
-index 0000000..876c36b
+index 00000000..876c36bd
 --- /dev/null
 +++ b/config/services_test.yaml
 @@ -0,0 +1,9 @@
@@ -616,7 +616,7 @@ index 0000000..876c36b
 +    # test.App\Service\MyService: '@App\Service\MyService'
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
 new file mode 100644
-index 0000000..e578316
+index 00000000..e578316a
 --- /dev/null
 +++ b/phpunit.xml.dist
 @@ -0,0 +1,35 @@
@@ -656,7 +656,7 @@ index 0000000..e578316
 +    </listeners>
 +</phpunit>
 diff --git a/symfony.lock b/symfony.lock
-index 3741f5d..024b695 100644
+index 3741f5d2..024b695c 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -26,6 +26,18 @@
@@ -727,4 +727,4 @@ index 3741f5d..024b695 100644
      },
 diff --git a/tests/.gitignore b/tests/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b

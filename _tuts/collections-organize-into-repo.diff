@@ -1,12 +1,12 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index c670d0e..809136f 100644
+index c670d0e7..5d61c77e 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -2,6 +2,7 @@
  
  namespace App\Entity;
  
-+use App\Repository\CommentRepository;
++use App\Repository\ArticleRepository;
  use Doctrine\Common\Collections\ArrayCollection;
  use Doctrine\Common\Collections\Collection;
  use Doctrine\Common\Collections\Criteria;
@@ -18,24 +18,24 @@ index c670d0e..809136f 100644
 -            ->andWhere(Criteria::expr()->eq('isDeleted', false))
 -            ->orderBy(['createdAt' => 'DESC'])
 -        ;
-+        $criteria = CommentRepository::createNonDeletedCriteria();
++        $criteria = ArticleRepository::createNonDeletedCriteria();
  
          return $this->comments->matching($criteria);
      }
-diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
-index df33fdd..5963fbb 100644
---- a/src/Repository/CommentRepository.php
-+++ b/src/Repository/CommentRepository.php
+diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
+index 24354554..f5eac5c3 100644
+--- a/src/Repository/ArticleRepository.php
++++ b/src/Repository/ArticleRepository.php
 @@ -4,6 +4,7 @@ namespace App\Repository;
  
- use App\Entity\Comment;
+ use App\Entity\Article;
  use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 +use Doctrine\Common\Collections\Criteria;
+ use Doctrine\ORM\QueryBuilder;
  use Symfony\Bridge\Doctrine\RegistryInterface;
  
- /**
-@@ -19,6 +20,14 @@ class CommentRepository extends ServiceEntityRepository
-         parent::__construct($registry, Comment::class);
+@@ -32,6 +33,14 @@ class ArticleRepository extends ServiceEntityRepository
+         ;
      }
  
 +    public static function createNonDeletedCriteria(): Criteria
@@ -46,6 +46,6 @@ index df33fdd..5963fbb 100644
 +        ;
 +    }
 +
- //    /**
- //     * @return Comment[] Returns an array of Comment objects
- //     */
+     /*
+     public function findOneBySomeField($value): ?Article
+     {
