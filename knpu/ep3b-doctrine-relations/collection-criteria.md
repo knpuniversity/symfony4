@@ -78,11 +78,11 @@ it there!
 In `ArticleRepository`, create a `public static function` called
 `createNonDeletedCriteria()` that will return a `Criteria` object:
 
-[[[ code('6fc72ef9a4') ]]]
+[[[ code('2ec96be987') ]]]
 
 In `Article`, copy the `Criteria` code, paste it here, and return:
 
-[[[ code('4f2c62af65') ]]]
+[[[ code('7ad7ce016a') ]]]
 
 These are the *only* static methods that you should ever have in your repository.
 It *needs* to be static simply so that we can use it from inside `Article`. That's
@@ -90,7 +90,7 @@ because entity classes don't have access to services.
 
 Use it with `$criteria = ArticleRepository::createNonDeletedCriteria()`:
 
-[[[ code('3fb8c9fc6f') ]]]
+[[[ code('6054bdf48f') ]]]
 
 Side note: we *could* have also put this method into the `CommentRepository`.
 When you start working with related entities, sometimes, it's not clear exactly
@@ -112,7 +112,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function findAllPublishedOrderedByNewest()
     {
         $this->createQueryBuilder('a')
-            ->addCriteria(CommentRepository::createNonDeletedCriteria());
+            ->addCriteria(self::createNonDeletedCriteria());
 
         return $this->addIsPublishedQueryBuilder()
             ->orderBy('a.publishedAt', 'DESC')
