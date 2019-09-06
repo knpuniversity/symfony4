@@ -43,12 +43,12 @@ Inside, we *could* call `$user->setAgreedTermsAt()` and pass the current date.
 rename it to `agreeTerms()`, but with no arguments. Inside say
 `$this->agreedTermsAt = new \DateTime()`.
 
-[[[ code('76649a9c08') ]]]
+[[[ code('f95f804288') ]]]
 
 This gives us a clean, *meaningful* method. In `SecurityController`, call that:
 `$user->agreeTerms()`.
 
-[[[ code('a47f21d16f') ]]]
+[[[ code('5cb99a48f9') ]]]
 
 Ok team, let's try this. Refresh the page. *Annoyingly*, I still can't see the
 checkbox. Let's hack that for now: add a little extra padding on this div. There
@@ -79,7 +79,7 @@ database, but forgot to update it in the fixtures. No problem: open `UserFixture
 In the first block, add `$user->agreeTerms()`. Copy that, and do the same for
 the admin users.
 
-[[[ code('bba1f6f59b') ]]]
+[[[ code('2767875818') ]]]
 
 Cool! Try it again:
 
