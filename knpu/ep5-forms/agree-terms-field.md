@@ -40,13 +40,13 @@ legal reasons.
 
 Inside, we *could* call `$user->setAgreedTermsAt()` and pass the current date.
 *Or*, we can do something a bit cleaner. Find the  `setAgreedTermsAt()` method and
-rename it to `agreeTerms()`, but with no arguments. Inside say
+rename it to `agreeToTerms()`, but with no arguments. Inside say
 `$this->agreedTermsAt = new \DateTime()`.
 
 [[[ code('76649a9c08') ]]]
 
 This gives us a clean, *meaningful* method. In `SecurityController`, call that:
-`$user->agreeTerms()`.
+`$user->agreeToTerms()`.
 
 [[[ code('a47f21d16f') ]]]
 
@@ -76,7 +76,7 @@ php bin/console doctrine:fixtures:load
 
 It... explodes! Duh! I made the new `agreedTermsAt` field *required* in the
 database, but forgot to update it in the fixtures. No problem: open `UserFixture`.
-In the first block, add `$user->agreeTerms()`. Copy that, and do the same for
+In the first block, add `$user->agreeToTerms()`. Copy that, and do the same for
 the admin users.
 
 [[[ code('bba1f6f59b') ]]]
