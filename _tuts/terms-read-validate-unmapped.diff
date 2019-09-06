@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index fdf81e82..0a2418b0 100644
+index fdf81e82..55ae6c30 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -54,6 +54,10 @@ class SecurityController extends AbstractController
@@ -8,13 +8,13 @@ index fdf81e82..0a2418b0 100644
              ));
 +            // be absolutely sure they agree
 +            if (true === $form['agreeTerms']->getData()) {
-+                $user->agreeToTerms();
++                $user->agreeTerms();
 +            }
  
              $em = $this->getDoctrine()->getManager();
              $em->persist($user);
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 60364b7d..101c0eb5 100644
+index 60364b7d..8ed997b0 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -262,10 +262,8 @@ class User implements UserInterface
@@ -22,7 +22,7 @@ index 60364b7d..101c0eb5 100644
      }
  
 -    public function setAgreedTermsAt(\DateTimeInterface $agreedTermsAt): self
-+    public function agreeToTerms()
++    public function agreeTerms()
      {
 -        $this->agreedTermsAt = $agreedTermsAt;
 -

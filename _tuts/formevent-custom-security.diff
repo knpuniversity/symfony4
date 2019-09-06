@@ -28,7 +28,7 @@ index f1b51d4a..ad70d8ba 100644
          $article->setLocation($request->query->get('location'));
          $form = $this->createForm(ArticleFormType::class, $article);
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 101c0eb5..522103ac 100644
+index 8ed997b0..c22fd3bb 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -62,7 +62,7 @@ class User implements UserInterface
