@@ -984,7 +984,27 @@
             "id": "async-use-default",
             "name": "Async: use .default",
             "description": null
+        },
+        {
+            "id": "mailer-preconditions",
+            "name": "Mailer: Preconditions",
+            "description": null
+        },
+        {
+            "id": "mailer-install",
+            "name": "Mailer: Install",
+            "description": null
+        },
+        {
+            "id": "mailer-create-simple-email",
+            "name": "Mailer: Create simple email",
+            "description": null
+        },
+        {
+            "id": "mailer-send-the-email",
+            "name": "Mailer: Send the email",
+            "description": null
         }
     ],
-    "sha": "533a5422ae15614f9c7ca63eb035083b8c09431c"
+    "sha": "fdd7983cc52c6c224b47ab1e8110c6d569ef0b28"
 }

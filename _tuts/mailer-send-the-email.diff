@@ -1,0 +1,30 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 4919f790..d54e93c7 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -8,6 +8,7 @@ use App\Form\UserRegistrationFormType;
+ use App\Security\LoginFormAuthenticator;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\Mailer\MailerInterface;
+ use Symfony\Component\Mime\Email;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+@@ -44,7 +45,7 @@ class SecurityController extends AbstractController
+     /**
+      * @Route("/register", name="app_register")
+      */
+-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $formAuthenticator)
++    public function register(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $formAuthenticator)
+     {
+         $form = $this->createForm(UserRegistrationFormType::class);
+         $form->handleRequest($request);
+@@ -76,6 +77,8 @@ class SecurityController extends AbstractController
+                 ->subject('Welcome!')
+                 ->text('Thank you for your registration! ❤️');
+ 
++            $mailer->send($email);
++
+             return $guardHandler->authenticateUserAndHandleSuccess(
+                 $user,
+                 $request,

@@ -1,0 +1,25 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 21e1cdf1..4919f790 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -8,6 +8,7 @@ use App\Form\UserRegistrationFormType;
+ use App\Security\LoginFormAuthenticator;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\Mime\Email;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+@@ -69,6 +70,12 @@ class SecurityController extends AbstractController
+             $em->persist($user);
+             $em->flush();
+ 
++            $email = (new Email())
++                ->from('hello@symfonycasts.com')
++                ->to($user->getEmail())
++                ->subject('Welcome!')
++                ->text('Thank you for your registration! ❤️');
++
+             return $guardHandler->authenticateUserAndHandleSuccess(
+                 $user,
+                 $request,
