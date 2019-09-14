@@ -1004,7 +1004,52 @@
             "id": "mailer-send-the-email",
             "name": "Mailer: Send the email",
             "description": null
+        },
+        {
+            "id": "mailer-uncomment-mailer-dsn",
+            "name": "Mailer: Uncomment MAILER_DSN",
+            "description": null
+        },
+        {
+            "id": "twig-create-html-email-template",
+            "name": "Twig: Create HTML email template",
+            "description": null
+        },
+        {
+            "id": "twig-replace-placeholders-with-dynamic-data",
+            "name": "Twig: Replace placeholders with dynamic data",
+            "description": null
+        },
+        {
+            "id": "twig-use-email-var",
+            "name": "Twig: Use email var",
+            "description": null
+        },
+        {
+            "id": "twig-use-named-address",
+            "name": "Twig: Use named address",
+            "description": null
+        },
+        {
+            "id": "twig-install-markdown-library",
+            "name": "Twig: Install Markdown library",
+            "description": null
+        },
+        {
+            "id": "twig-embed-logo-image",
+            "name": "Twig: Embed logo image",
+            "description": null
+        },
+        {
+            "id": "twig-inline-css-from-style-tag",
+            "name": "Twig: Inline CSS from style tag",
+            "description": null
+        },
+        {
+            "id": "twig-inline-css-from-file",
+            "name": "Twig: Inline CSS from file",
+            "description": null
         }
     ],
-    "sha": "fdd7983cc52c6c224b47ab1e8110c6d569ef0b28"
+    "sha": "a837c4578090f88a84a6a4d1aa15025b94378e9b"
 }

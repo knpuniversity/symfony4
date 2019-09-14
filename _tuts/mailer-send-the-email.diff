@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 4919f790..d54e93c7 100644
+index 6a64b3da..e13b365c 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -8,6 +8,7 @@ use App\Form\UserRegistrationFormType;
@@ -20,8 +20,8 @@ index 4919f790..d54e93c7 100644
          $form = $this->createForm(UserRegistrationFormType::class);
          $form->handleRequest($request);
 @@ -76,6 +77,8 @@ class SecurityController extends AbstractController
-                 ->subject('Welcome!')
-                 ->text('Thank you for your registration! ❤️');
+                 ->subject('Welcome to the Space Bar!')
+                 ->text("Nice to meet you {$user->getFirstName()}! ❤️");
  
 +            $mailer->send($email);
 +

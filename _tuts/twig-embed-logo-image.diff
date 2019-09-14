@@ -1,0 +1,25 @@
+diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
+index 5c5baa4b..053629ec 100644
+--- a/config/packages/twig.yaml
++++ b/config/packages/twig.yaml
+@@ -1,5 +1,7 @@
+ twig:
+     default_path: '%kernel.project_dir%/templates'
++    paths:
++        'assets/images': images
+     debug: '%kernel.debug%'
+     strict_variables: '%kernel.debug%'
+     form_themes:
+diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
+index 2cf4e2bd..d67c3308 100644
+--- a/templates/email/welcome.html.twig
++++ b/templates/email/welcome.html.twig
+@@ -58,7 +58,7 @@
+     <div class="container">
+         <div class="header text-center">
+             <a href="{{ url('app_homepage') }}">
+-                <img src="{{ absolute_url(asset('build/images/email/logo.png')) }}" class="logo" alt="SpaceBar Logo">
++                <img src="{{ email.image('@images/email/logo.png') }}" class="logo" alt="SpaceBar Logo">
+             </a>
+         </div>
+         <div class="content">

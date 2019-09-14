@@ -1,0 +1,42 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 594ea746..d4173b63 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Mailer\MailerInterface;
+ use Symfony\Component\Mime\Email;
++use Symfony\Component\Mime\NamedAddress;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+@@ -73,12 +74,13 @@ class SecurityController extends AbstractController
+             $em->flush();
+ 
+             $email = (new TemplatedEmail())
+-                ->from('hello@symfonycasts.com')
+-                ->to($user->getEmail())
++                ->from(new NamedAddress('hello@symfonycasts.com', 'The Space Bar'))
++                ->to(new NamedAddress($user->getEmail(), $user->getFirstName()))
+                 ->subject('Welcome to the Space Bar!')
+                 ->htmlTemplate('email/welcome.html.twig')
+                 ->context([
+-                    'user' => $user,
++                    // You can pass whatever data you want
++                    //'user' => $user,
+                 ]);
+ 
+             $mailer->send($email);
+diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
+index 6b895d25..2cf4e2bd 100644
+--- a/templates/email/welcome.html.twig
++++ b/templates/email/welcome.html.twig
+@@ -62,7 +62,7 @@
+             </a>
+         </div>
+         <div class="content">
+-            <h1 class="text-center">Nice to meet you {{ user.firstName }}!</h1>
++            <h1 class="text-center">Nice to meet you {{ email.toName }}!</h1>
+             <p class="block">
+                 Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
+                 Get started on your first article and connect with the space bar community.

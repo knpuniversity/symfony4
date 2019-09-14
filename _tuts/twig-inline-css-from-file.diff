@@ -1,0 +1,128 @@
+diff --git a/assets/css/email.css b/assets/css/email.css
+new file mode 100644
+index 00000000..b3dfcb45
+--- /dev/null
++++ b/assets/css/email.css
+@@ -0,0 +1,46 @@
++body {
++    margin: 0;
++    padding: 0;
++    background-color: #f3f3f3;
++    font-family: Helvetica, Arial, sans-serif;
++}
++h1 {
++    background-color: #264459;
++    color: #ffffff;
++    padding: 30px 0 50px 0;
++    font-weight: normal;
++}
++hr {
++    border: none;
++    border-top: 3px solid #264459;
++    margin: 20px;
++}
++.container {
++    background-color: #fefefe;
++    width: 580px;
++    margin: 0 auto;
++}
++.bottom {
++    background-color: #efefee;
++}
++.block {
++    margin: 0;
++    padding: 10px 20px 20px 20px;
++}
++.logo {
++    width: 100%;
++}
++.text-center {
++    text-align: center;
++}
++.btn {
++    display: inline-block;
++    padding: 10px 20px;
++    background-color: #264459;
++    color: #fefefe;
++    border: 1px solid #fff;
++    border-radius: 3px;
++    font-size: 20px;
++    font-weight: bold;
++    text-decoration: none;
++}
+diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
+index 053629ec..6cb3f350 100644
+--- a/config/packages/twig.yaml
++++ b/config/packages/twig.yaml
+@@ -2,6 +2,7 @@ twig:
+     default_path: '%kernel.project_dir%/templates'
+     paths:
+         'assets/images': images
++        'assets/css': styles
+     debug: '%kernel.debug%'
+     strict_variables: '%kernel.debug%'
+     form_themes:
+diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
+index 104a245b..63796a82 100644
+--- a/templates/email/welcome.html.twig
++++ b/templates/email/welcome.html.twig
+@@ -1,58 +1,10 @@
+ <!doctype html>
+-{% filter inline_css %}
++{% filter inline_css(source('@styles/email.css')) %}
+ <html lang="en">
+ <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <meta name="viewport" content="width=device-width">
+     <title>{{ email.subject }}</title>
+-    <style>
+-        body {
+-            margin: 0;
+-            padding: 0;
+-            background-color: #f3f3f3;
+-            font-family: Helvetica, Arial, sans-serif;
+-        }
+-        h1 {
+-            background-color: #264459;
+-            color: #ffffff;
+-            padding: 30px 0 50px 0;
+-            font-weight: normal;
+-        }
+-        hr {
+-            border: none;
+-            border-top: 3px solid #264459;
+-            margin: 20px;
+-        }
+-        .container {
+-            background-color: #fefefe;
+-            width: 580px;
+-            margin: 0 auto;
+-        }
+-        .bottom {
+-            background-color: #efefee;
+-        }
+-        .block {
+-            margin: 0;
+-            padding: 10px 20px 20px 20px;
+-        }
+-        .logo {
+-            width: 100%;
+-        }
+-        .text-center {
+-            text-align: center;
+-        }
+-        .btn {
+-            display: inline-block;
+-            padding: 10px 20px;
+-            background-color: #264459;
+-            color: #fefefe;
+-            border: 1px solid #fff;
+-            border-radius: 3px;
+-            font-size: 20px;
+-            font-weight: bold;
+-            text-decoration: none;
+-        }
+-    </style>
+ </head>
+ <body>
+ <div class="body">

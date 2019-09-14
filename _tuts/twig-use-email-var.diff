@@ -1,0 +1,13 @@
+diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
+index 2cbfee21..6b895d25 100644
+--- a/templates/email/welcome.html.twig
++++ b/templates/email/welcome.html.twig
+@@ -3,7 +3,7 @@
+ <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <meta name="viewport" content="width=device-width">
+-    <title>Welcome to the Space Bar!</title>
++    <title>{{ email.subject }}</title>
+     <style>
+         body {
+             margin: 0;

@@ -1,0 +1,34 @@
+diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
+index 6d363ced..2cbfee21 100644
+--- a/templates/email/welcome.html.twig
++++ b/templates/email/welcome.html.twig
+@@ -57,24 +57,24 @@
+ <div class="body">
+     <div class="container">
+         <div class="header text-center">
+-            <a href="#homepage">
+-                <img src="path/to/logo.png" class="logo" alt="SpaceBar Logo">
++            <a href="{{ url('app_homepage') }}">
++                <img src="{{ absolute_url(asset('build/images/email/logo.png')) }}" class="logo" alt="SpaceBar Logo">
+             </a>
+         </div>
+         <div class="content">
+-            <h1 class="text-center">Nice to meet you %name%!</h1>
++            <h1 class="text-center">Nice to meet you {{ user.firstName }}!</h1>
+             <p class="block">
+                 Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
+                 Get started on your first article and connect with the space bar community.
+             </p>
+             <p class="block text-center">
+-                <a href="#new" class="btn">Get writing!</a>
++                <a href="{{ url('admin_article_new') }}" class="btn">Get writing!</a>
+             </p>
+             <p class="block">
+                 Check out our existing articles and share your thoughts in the comments!
+             </p>
+             <p class="block text-center">
+-                <a href="#homepage" class="btn">Get reading!</a>
++                <a href="{{ url('app_homepage') }}" class="btn">Get reading!</a>
+             </p>
+             <p class="block">
+                 We're so excited that you've decided to join us in our corner of the universe,
