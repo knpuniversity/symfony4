@@ -1,0 +1,53 @@
+diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
+index 22aca9d2..0e54321a 100644
+--- a/src/Command/AuthorWeeklyReportSendCommand.php
++++ b/src/Command/AuthorWeeklyReportSendCommand.php
+@@ -5,24 +5,29 @@ namespace App\Command;
+ use App\Entity\Article;
+ use App\Entity\User;
+ use Doctrine\ORM\EntityManagerInterface;
++use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+ use Symfony\Component\Console\Command\Command;
+ use Symfony\Component\Console\Input\InputArgument;
+ use Symfony\Component\Console\Input\InputInterface;
+ use Symfony\Component\Console\Input\InputOption;
+ use Symfony\Component\Console\Output\OutputInterface;
+ use Symfony\Component\Console\Style\SymfonyStyle;
++use Symfony\Component\Mailer\MailerInterface;
++use Symfony\Component\Mime\NamedAddress;
+ 
+ class AuthorWeeklyReportSendCommand extends Command
+ {
+     protected static $defaultName = 'app:author-weekly-report:send';
+ 
+     private $entityManager;
++    private $mailer;
+ 
+-    public function __construct(EntityManagerInterface $entityManager)
++    public function __construct(EntityManagerInterface $entityManager, MailerInterface $mailer)
+     {
+         parent::__construct(null);
+ 
+         $this->entityManager = $entityManager;
++        $this->mailer = $mailer;
+     }
+ 
+     protected function configure()
+@@ -50,6 +55,17 @@ class AuthorWeeklyReportSendCommand extends Command
+             if (!count($articles)) {
+                 continue;
+             }
++
++            $email = (new TemplatedEmail())
++                ->from(new NamedAddress('hello@symfonycasts.com', 'The Space Bar'))
++                ->to(new NamedAddress($author->getEmail(), $author->getFirstName()))
++                ->subject('Your weekly report on the Space Bar!')
++                ->htmlTemplate('email/author-weekly-report.html.twig')
++                ->context([
++                    'author' => $author,
++                    'articles' => $articles,
++                ]);
++            $this->mailer->send($email);
+         }
+         $io->progressFinish();
+ 

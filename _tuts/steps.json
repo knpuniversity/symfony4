@@ -1049,7 +1049,42 @@
             "id": "twig-inline-css-from-file",
             "name": "Twig: Inline CSS from file",
             "description": null
+        },
+        {
+            "id": "command-create-a-new-command",
+            "name": "Command: Create a new command",
+            "description": null
+        },
+        {
+            "id": "command-fetch-all-subscribed-to-newsletter",
+            "name": "Command: Fetch all subscribed to newsletter",
+            "description": null
+        },
+        {
+            "id": "command-fetch-articles-published-last-week",
+            "name": "Command: Fetch articles published last week",
+            "description": null
+        },
+        {
+            "id": "command-build-and-send-the-email",
+            "name": "Command: Build and send the email",
+            "description": null
+        },
+        {
+            "id": "command-create-the-email-template",
+            "name": "Command: Create the email template",
+            "description": null
+        },
+        {
+            "id": "command-refactor-to-base-email-template",
+            "name": "Command: Refactor to base email template",
+            "description": null
+        },
+        {
+            "id": "command-replace-template-placeholders-with-dynamic-data",
+            "name": "Command: Replace template placeholders with dynamic data",
+            "description": null
         }
     ],
-    "sha": "935a9e0b6d413e6d5119b7c16f2ef603ad4e8399"
+    "sha": "25492dc6d90f900937bb2428071329e610d251af"
 }

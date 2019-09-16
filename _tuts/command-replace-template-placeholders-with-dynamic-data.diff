@@ -1,0 +1,34 @@
+diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
+index c56ce950..99c683b6 100644
+--- a/templates/email/author-weekly-report.html.twig
++++ b/templates/email/author-weekly-report.html.twig
+@@ -3,7 +3,7 @@
+ {% block content %}
+     <hr>
+     <p class="block">
+-        What a week %name%! Here's a quick review of what you've been up to on the Space Bar this week
++        What a week {{ email.toName }}! Here's a quick review of what you've been up to on the Space Bar this week
+     </p>
+     <div class="block">
+     <table>
+@@ -12,14 +12,16 @@
+             <th>Title</th>
+             <th>Comments</th>
+         </tr>
++        {% for article in articles %}
+         <tr>
+-            <td>1</td>
+-            <td>Article Title</td>
+-            <td>99</td>
++            <td>{{ loop.index }}</td>
++            <td>{{ article.title }}</td>
++            <td>{{ article.comments|length }}</td>
+         </tr>
++        {% endfor %}
+     </table>
+     </div>
+     <p class="block text-center">
+-        <a href="#homepage" class="btn">Check on the Space Bar</a>
++        <a href="{{ url('app_homepage') }}" class="btn">Check on the Space Bar</a>
+     </p>
+ {% endblock %}
