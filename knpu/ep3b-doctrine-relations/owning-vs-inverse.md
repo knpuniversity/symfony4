@@ -47,7 +47,7 @@ php bin/console doctrine:fixtures:load
 Ok, no errors! Check the database:
 
 ```terminal
-php bin/console doctrine:query:sql 'SELECT * FROM comment"
+php bin/console doctrine:query:sql 'SELECT * FROM comment'
 ```
 
 Yea! It *does* still work! The comments saved correctly, *and* each has its
