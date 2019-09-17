@@ -1,0 +1,14 @@
+diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
+index 7cc8e531..ef7898a9 100644
+--- a/src/Command/AuthorWeeklyReportSendCommand.php
++++ b/src/Command/AuthorWeeklyReportSendCommand.php
+@@ -76,7 +76,8 @@ class AuthorWeeklyReportSendCommand extends Command
+                 ->context([
+                     'author' => $author,
+                     'articles' => $articles,
+-                ]);
++                ])
++                ->attach($pdf, sprintf('weekly-report-%s.pdf', date('Y-m-d')));
+             $this->mailer->send($email);
+         }
+         $io->progressFinish();

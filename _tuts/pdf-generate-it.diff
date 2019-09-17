@@ -1,0 +1,17 @@
+diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
+index 17e68272..7cc8e531 100644
+--- a/src/Command/AuthorWeeklyReportSendCommand.php
++++ b/src/Command/AuthorWeeklyReportSendCommand.php
+@@ -62,6 +62,12 @@ class AuthorWeeklyReportSendCommand extends Command
+                 continue;
+             }
+ 
++
++            $html = $this->twig->render('email/_report-table.html.twig', [
++                'articles' => $articles,
++            ]);
++            $pdf = $this->pdf->getOutputFromHtml($html);
++
+             $email = (new TemplatedEmail())
+                 ->from(new NamedAddress('hello@symfonycasts.com', 'The Space Bar'))
+                 ->to(new NamedAddress($author->getEmail(), $author->getFirstName()))

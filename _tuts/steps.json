@@ -1084,7 +1084,27 @@
             "id": "command-replace-template-placeholders-with-dynamic-data",
             "name": "Command: Replace template placeholders with dynamic data",
             "description": null
+        },
+        {
+            "id": "pdf-install-knpsnappybundle",
+            "name": "PDF: Install KnpSnappyBundle",
+            "description": null
+        },
+        {
+            "id": "pdf-move-report-table-to-separate-template",
+            "name": "PDF: Move report table to separate template",
+            "description": null
+        },
+        {
+            "id": "pdf-generate-it",
+            "name": "PDF: Generate it",
+            "description": null
+        },
+        {
+            "id": "pdf-attach-it-to-email",
+            "name": "PDF: Attach it to email",
+            "description": null
         }
     ],
-    "sha": "25492dc6d90f900937bb2428071329e610d251af"
+    "sha": "2c1572d0f2af63af7fb131e3031af03f72f0c4f4"
 }
