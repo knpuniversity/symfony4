@@ -1,0 +1,13 @@
+diff --git a/.env b/.env
+index 5787deef..39def304 100644
+--- a/.env
++++ b/.env
+@@ -34,7 +34,7 @@ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
+ SITE_BASE_URL=https://localhost:8000
+ 
+ ###> symfony/mailer ###
+-MAILER_DSN=smtp://localhost
++MAILER_DSN=smtp://null
+ ###< symfony/mailer ###
+ 
+ ###> knplabs/knp-snappy-bundle ###

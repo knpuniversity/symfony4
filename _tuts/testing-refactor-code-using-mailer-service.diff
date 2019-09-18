@@ -1,0 +1,161 @@
+diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
+index 23b96bc7..7fc187d7 100644
+--- a/src/Command/AuthorWeeklyReportSendCommand.php
++++ b/src/Command/AuthorWeeklyReportSendCommand.php
+@@ -4,6 +4,7 @@ namespace App\Command;
+ 
+ use App\Entity\Article;
+ use App\Entity\User;
++use App\Service\Mailer;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Knp\Snappy\Pdf;
+ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+@@ -23,17 +24,13 @@ class AuthorWeeklyReportSendCommand extends Command
+ 
+     private $entityManager;
+     private $mailer;
+-    private $pdf;
+-    private $twig;
+ 
+-    public function __construct(EntityManagerInterface $entityManager, MailerInterface $mailer, Pdf $pdf, Environment $twig)
++    public function __construct(EntityManagerInterface $entityManager, Mailer $mailer)
+     {
+         parent::__construct(null);
+ 
+         $this->entityManager = $entityManager;
+         $this->mailer = $mailer;
+-        $this->pdf = $pdf;
+-        $this->twig = $twig;
+     }
+ 
+     protected function configure()
+@@ -62,23 +59,7 @@ class AuthorWeeklyReportSendCommand extends Command
+                 continue;
+             }
+ 
+-
+-            $html = $this->twig->render('email/_report-table.html.twig', [
+-                'articles' => $articles,
+-            ]);
+-            $pdf = $this->pdf->getOutputFromHtml($html);
+-
+-            $email = (new TemplatedEmail())
+-                ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
+-                ->to(new NamedAddress($author->getEmail(), $author->getFirstName()))
+-                ->subject('Your weekly report on the Space Bar!')
+-                ->htmlTemplate('email/author-weekly-report.html.twig')
+-                ->context([
+-                    'author' => $author,
+-                    'articles' => $articles,
+-                ])
+-                ->attach($pdf, sprintf('weekly-report-%s.pdf', date('Y-m-d')));
+-            $this->mailer->send($email);
++            $this->mailer->sendAuthorWeeklyReportMessage($author, $articles);
+         }
+         $io->progressFinish();
+ 
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 240f35d4..106a217b 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -6,6 +6,7 @@ use App\Entity\User;
+ use App\Form\Model\UserRegistrationFormModel;
+ use App\Form\UserRegistrationFormType;
+ use App\Security\LoginFormAuthenticator;
++use App\Service\Mailer;
+ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+@@ -47,7 +48,7 @@ class SecurityController extends AbstractController
+     /**
+      * @Route("/register", name="app_register")
+      */
+-    public function register(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $formAuthenticator)
++    public function register(Mailer $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $formAuthenticator)
+     {
+         $form = $this->createForm(UserRegistrationFormType::class);
+         $form->handleRequest($request);
+@@ -73,17 +74,7 @@ class SecurityController extends AbstractController
+             $em->persist($user);
+             $em->flush();
+ 
+-            $email = (new TemplatedEmail())
+-                ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
+-                ->to(new NamedAddress($user->getEmail(), $user->getFirstName()))
+-                ->subject('Welcome to the Space Bar!')
+-                ->htmlTemplate('email/welcome.html.twig')
+-                ->context([
+-                    // You can pass whatever data you want
+-                    //'user' => $user,
+-                ]);
+-
+-            $mailer->send($email);
++            $mailer->sendWelcomeMessage($user);
+ 
+             return $guardHandler->authenticateUserAndHandleSuccess(
+                 $user,
+diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
+index a7465f11..8a658531 100644
+--- a/src/Service/Mailer.php
++++ b/src/Service/Mailer.php
+@@ -2,14 +2,59 @@
+ 
+ namespace App\Service;
+ 
++use App\Entity\User;
++use Knp\Snappy\Pdf;
++use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+ use Symfony\Component\Mailer\MailerInterface;
++use Symfony\Component\Mime\NamedAddress;
++use Twig\Environment;
+ 
+ class Mailer
+ {
+     private $mailer;
++    private $pdf;
++    private $twig;
+ 
+-    public function __construct(MailerInterface $mailer)
++    public function __construct(MailerInterface $mailer, Pdf $pdf, Environment $twig)
+     {
+         $this->mailer = $mailer;
++        $this->pdf = $pdf;
++        $this->twig = $twig;
++    }
++
++    public function sendWelcomeMessage(User $user)
++    {
++        $email = (new TemplatedEmail())
++            ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
++            ->to(new NamedAddress($user->getEmail(), $user->getFirstName()))
++            ->subject('Welcome to the Space Bar!')
++            ->htmlTemplate('email/welcome.html.twig')
++            ->context([
++                // You can pass whatever data you want
++                //'user' => $user,
++            ]);
++
++        $this->mailer->send($email);
++    }
++
++    public function sendAuthorWeeklyReportMessage(User $author, array $articles)
++    {
++        $html = $this->twig->render('email/_report-table.html.twig', [
++            'articles' => $articles,
++        ]);
++        $pdf = $this->pdf->getOutputFromHtml($html);
++
++        $email = (new TemplatedEmail())
++            ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
++            ->to(new NamedAddress($author->getEmail(), $author->getFirstName()))
++            ->subject('Your weekly report on the Space Bar!')
++            ->htmlTemplate('email/author-weekly-report.html.twig')
++            ->context([
++                'author' => $author,
++                'articles' => $articles,
++            ])
++            ->attach($pdf, sprintf('weekly-report-%s.pdf', date('Y-m-d')));
++
++        $this->mailer->send($email);
+     }
+ }

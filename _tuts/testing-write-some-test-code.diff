@@ -1,0 +1,36 @@
+diff --git a/tests/MailerTest.php b/tests/MailerTest.php
+index 2dd0fad9..7f795e90 100644
+--- a/tests/MailerTest.php
++++ b/tests/MailerTest.php
+@@ -2,12 +2,28 @@
+ 
+ namespace App\Tests;
+ 
++use App\Entity\User;
++use App\Service\Mailer;
++use Knp\Snappy\Pdf;
+ use PHPUnit\Framework\TestCase;
++use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
++use Symfony\Component\Mailer\MailerInterface;
++use Twig\Environment;
+ 
+-class MailerTest extends TestCase
++class MailerTest extends WebTestCase
+ {
+-    public function testSomething()
++    public function testSendingWelcomeMessage()
+     {
+-        $this->assertTrue(true);
++        $kernel = self::bootKernel();
++        $symfonyMailer = self::$container->get(MailerInterface::class);
++        $pdf = self::$container->get(Pdf::class);
++        $twig = self::$container->get(Environment::class);
++
++        $user = new User();
++        $user->setFirstName('Victor');
++        $user->setEmail('victor@symfonycasts.com');
++
++        $mailer = new Mailer($symfonyMailer, $pdf, $twig);
++        $mailer->sendWelcomeMessage($user);
+     }
+ }

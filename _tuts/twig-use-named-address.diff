@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 594ea746..d4173b63 100644
+index ed9041aa..240f35d4 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,9 +14,9 @@ index 594ea746..d4173b63 100644
              $em->flush();
  
              $email = (new TemplatedEmail())
--                ->from('hello@symfonycasts.com')
+-                ->from('alienmailcarrier@example.com')
 -                ->to($user->getEmail())
-+                ->from(new NamedAddress('hello@symfonycasts.com', 'The Space Bar'))
++                ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
 +                ->to(new NamedAddress($user->getEmail(), $user->getFirstName()))
                  ->subject('Welcome to the Space Bar!')
                  ->htmlTemplate('email/welcome.html.twig')

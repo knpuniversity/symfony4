@@ -1,5 +1,5 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 7cc8e531..ef7898a9 100644
+index 97af5e1d..23b96bc7 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -76,7 +76,8 @@ class AuthorWeeklyReportSendCommand extends Command

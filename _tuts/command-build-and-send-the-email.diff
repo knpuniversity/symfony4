@@ -1,5 +1,5 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 22aca9d2..0e54321a 100644
+index 22aca9d2..11823ddb 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -5,24 +5,29 @@ namespace App\Command;
@@ -39,7 +39,7 @@ index 22aca9d2..0e54321a 100644
              }
 +
 +            $email = (new TemplatedEmail())
-+                ->from(new NamedAddress('hello@symfonycasts.com', 'The Space Bar'))
++                ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
 +                ->to(new NamedAddress($author->getEmail(), $author->getFirstName()))
 +                ->subject('Your weekly report on the Space Bar!')
 +                ->htmlTemplate('email/author-weekly-report.html.twig')

@@ -1,0 +1,21 @@
+diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
+new file mode 100644
+index 00000000..a7465f11
+--- /dev/null
++++ b/src/Service/Mailer.php
+@@ -0,0 +1,15 @@
++<?php
++
++namespace App\Service;
++
++use Symfony\Component\Mailer\MailerInterface;
++
++class Mailer
++{
++    private $mailer;
++
++    public function __construct(MailerInterface $mailer)
++    {
++        $this->mailer = $mailer;
++    }
++}

@@ -200,7 +200,7 @@ index 00000000..0b9e24b0
 +        binary:     '%env(WKHTMLTOIMAGE_PATH)%'
 +        options:    []
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 0e54321a..17e68272 100644
+index 11823ddb..a2699069 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -5,6 +5,7 @@ namespace App\Command;

@@ -1,0 +1,34 @@
+diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
+index 8a658531..c25a84e7 100644
+--- a/src/Service/Mailer.php
++++ b/src/Service/Mailer.php
+@@ -22,7 +22,7 @@ class Mailer
+         $this->twig = $twig;
+     }
+ 
+-    public function sendWelcomeMessage(User $user)
++    public function sendWelcomeMessage(User $user): TemplatedEmail
+     {
+         $email = (new TemplatedEmail())
+             ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
+@@ -35,9 +35,11 @@ class Mailer
+             ]);
+ 
+         $this->mailer->send($email);
++
++        return $email;
+     }
+ 
+-    public function sendAuthorWeeklyReportMessage(User $author, array $articles)
++    public function sendAuthorWeeklyReportMessage(User $author, array $articles): TemplatedEmail
+     {
+         $html = $this->twig->render('email/_report-table.html.twig', [
+             'articles' => $articles,
+@@ -56,5 +58,7 @@ class Mailer
+             ->attach($pdf, sprintf('weekly-report-%s.pdf', date('Y-m-d')));
+ 
+         $this->mailer->send($email);
++
++        return $email;
+     }
+ }

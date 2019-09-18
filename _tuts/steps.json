@@ -1104,7 +1104,42 @@
             "id": "pdf-attach-it-to-email",
             "name": "PDF: Attach it to email",
             "description": null
+        },
+        {
+            "id": "testing-create-mailer-service",
+            "name": "Testing: Create Mailer service",
+            "description": null
+        },
+        {
+            "id": "testing-refactor-code-using-mailer-service",
+            "name": "Testing: Refactor code using Mailer service",
+            "description": null
+        },
+        {
+            "id": "testing-create-a-unit-test",
+            "name": "Testing: Create a unit test",
+            "description": null
+        },
+        {
+            "id": "testing-write-some-test-code",
+            "name": "Testing: Write some test code",
+            "description": null
+        },
+        {
+            "id": "testing-return-email-objects-in-mailer",
+            "name": "Testing: Return email objects in Mailer",
+            "description": null
+        },
+        {
+            "id": "testing-add-some-assertions",
+            "name": "Testing: Add some assertions",
+            "description": null
+        },
+        {
+            "id": "testing-set-null-transport-globally",
+            "name": "Testing: Set Null transport globally",
+            "description": null
         }
     ],
-    "sha": "2c1572d0f2af63af7fb131e3031af03f72f0c4f4"
+    "sha": "fc9863160a40dbb5af4ccced3be3bd0e6ffecb42"
 }

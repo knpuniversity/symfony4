@@ -4202,7 +4202,7 @@ literal 0
 HcmV?d00001
 
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index e13b365c..594ea746 100644
+index df7bb13f..ed9041aa 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -6,6 +6,7 @@ use App\Entity\User;
@@ -4219,7 +4219,7 @@ index e13b365c..594ea746 100644
  
 -            $email = (new Email())
 +            $email = (new TemplatedEmail())
-                 ->from('hello@symfonycasts.com')
+                 ->from('alienmailcarrier@example.com')
                  ->to($user->getEmail())
                  ->subject('Welcome to the Space Bar!')
 -                ->text("Nice to meet you {$user->getFirstName()}! ❤️");
