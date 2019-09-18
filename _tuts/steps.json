@@ -1086,6 +1086,11 @@
             "description": null
         },
         {
+            "id": "command-fix-links",
+            "name": "Command: Fix links",
+            "description": null
+        },
+        {
             "id": "pdf-install-knpsnappybundle",
             "name": "PDF: Install KnpSnappyBundle",
             "description": null
@@ -1141,5 +1146,5 @@
             "description": null
         }
     ],
-    "sha": "fc9863160a40dbb5af4ccced3be3bd0e6ffecb42"
+    "sha": "f6ad0608eb92e0eefc549925d127c1ef02ee3b5d"
 }

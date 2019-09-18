@@ -1,0 +1,28 @@
+diff --git a/.env b/.env
+index 2e169779..6a8db271 100644
+--- a/.env
++++ b/.env
+@@ -31,7 +31,9 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
+ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
+ ### END CUSTOM VARS
+ 
+-SITE_BASE_URL=https://localhost:8000
++SITE_BASE_SCHEME=https
++SITE_BASE_HOST=localhost:8000
++SITE_BASE_URL=$SITE_BASE_SCHEME://$SITE_BASE_HOST
+ 
+ ###> symfony/mailer ###
+ MAILER_DSN=smtp://localhost
+diff --git a/config/services.yaml b/config/services.yaml
+index 78f42d36..934bf994 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -7,6 +7,8 @@ parameters:
+     cache_adapter: cache.adapter.apcu
+     locale: 'en'
+     uploads_base_url: '%env(SITE_BASE_URL)%/uploads'
++    router.request_context.scheme: '%env(SITE_BASE_SCHEME)%'
++    router.request_context.host: '%env(SITE_BASE_HOST)%'
+ 
+ services:
+     # default configuration for services in *this* file
