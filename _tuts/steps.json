@@ -1144,7 +1144,22 @@
             "id": "testing-set-null-transport-globally",
             "name": "Testing: Set Null transport globally",
             "description": null
+        },
+        {
+            "id": "sendgrid-install-it",
+            "name": "SendGrid: Install it",
+            "description": null
+        },
+        {
+            "id": "messenger-install-it",
+            "name": "Messenger: Install it",
+            "description": null
+        },
+        {
+            "id": "messenger-configure-it",
+            "name": "Messenger: Configure it",
+            "description": null
         }
     ],
-    "sha": "f6ad0608eb92e0eefc549925d127c1ef02ee3b5d"
+    "sha": "e6718b4801baa1dca911406b631ed854cf71829f"
 }

@@ -1,0 +1,118 @@
+diff --git a/.env b/.env
+index 414d7ab4..ee6774d3 100644
+--- a/.env
++++ b/.env
+@@ -43,3 +43,8 @@ MAILER_DSN=smtp://null
+ WKHTMLTOPDF_PATH=/usr/local/bin/wkhtmltopdf
+ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
+ ###< knplabs/knp-snappy-bundle ###
++
++###> symfony/sendgrid-mailer ###
++# SENDGRID_KEY=
++# MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
++###< symfony/sendgrid-mailer ###
+diff --git a/composer.json b/composer.json
+index 7dfd244e..25c945e5 100644
+--- a/composer.json
++++ b/composer.json
+@@ -26,6 +26,7 @@
+         "symfony/mailer": "4.3.*",
+         "symfony/orm-pack": "^1.0",
+         "symfony/security-bundle": "^4.0",
++        "symfony/sendgrid-mailer": "4.3.*",
+         "symfony/serializer-pack": "^1.0",
+         "symfony/twig-bundle": "^4.0",
+         "symfony/validator": "^4.0",
+diff --git a/composer.lock b/composer.lock
+index faa443bc..6ea39b43 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "c59efc39dd7c6b978e14adddb7a446f6",
++    "content-hash": "ca84313feb4a0b45cb3b3b1e96d77766",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -6645,6 +6645,59 @@
+             "homepage": "https://symfony.com",
+             "time": "2019-08-26T08:26:39+00:00"
+         },
++        {
++            "name": "symfony/sendgrid-mailer",
++            "version": "v4.3.4",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/sendgrid-mailer.git",
++                "reference": "f48c722d475506c63cfcaf2e38aa57b8a576fea9"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/sendgrid-mailer/zipball/f48c722d475506c63cfcaf2e38aa57b8a576fea9",
++                "reference": "f48c722d475506c63cfcaf2e38aa57b8a576fea9",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "symfony/mailer": "^4.3.4"
++            },
++            "require-dev": {
++                "symfony/http-client": "^4.3"
++            },
++            "type": "symfony-bridge",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.3-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Mailer\\Bridge\\Sendgrid\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony Sendgrid Mailer Bridge",
++            "homepage": "https://symfony.com",
++            "time": "2019-08-22T08:16:11+00:00"
++        },
+         {
+             "name": "symfony/serializer",
+             "version": "v4.3.4",
+diff --git a/symfony.lock b/symfony.lock
+index 47551be5..18e0196b 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -482,6 +482,15 @@
+     "symfony/security-http": {
+         "version": "v4.2.3"
+     },
++    "symfony/sendgrid-mailer": {
++        "version": "4.3",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "4.3",
++            "ref": "ed69bc442325accbf79e8c93e1ae88c9abe7fd12"
++        }
++    },
+     "symfony/serializer": {
+         "version": "v4.1.11"
+     },

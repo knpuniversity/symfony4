@@ -1,0 +1,164 @@
+diff --git a/.env b/.env
+index ee6774d3..a4b5ee31 100644
+--- a/.env
++++ b/.env
+@@ -48,3 +48,10 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
+ # SENDGRID_KEY=
+ # MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
+ ###< symfony/sendgrid-mailer ###
++
++###> symfony/messenger ###
++# Choose one of the transports below
++# MESSENGER_TRANSPORT_DSN=amqp://guest:guest@localhost:5672/%2f/messages
++# MESSENGER_TRANSPORT_DSN=doctrine://default
++# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
++###< symfony/messenger ###
+diff --git a/composer.json b/composer.json
+index 25c945e5..fee6e1e4 100644
+--- a/composer.json
++++ b/composer.json
+@@ -24,6 +24,7 @@
+         "symfony/form": "^4.0",
+         "symfony/framework-bundle": "^4.0",
+         "symfony/mailer": "4.3.*",
++        "symfony/messenger": "4.3.*",
+         "symfony/orm-pack": "^1.0",
+         "symfony/security-bundle": "^4.0",
+         "symfony/sendgrid-mailer": "4.3.*",
+diff --git a/composer.lock b/composer.lock
+index 6ea39b43..58baf5f7 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "ca84313feb4a0b45cb3b3b1e96d77766",
++    "content-hash": "97f158c0044fbadcf07eeec9b8240fb0",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -5552,6 +5552,80 @@
+             "homepage": "https://symfony.com",
+             "time": "2019-08-22T08:16:11+00:00"
+         },
++        {
++            "name": "symfony/messenger",
++            "version": "v4.3.4",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/messenger.git",
++                "reference": "ac9ab05acc8eba0ac311eb8511484f0c5155cde2"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/messenger/zipball/ac9ab05acc8eba0ac311eb8511484f0c5155cde2",
++                "reference": "ac9ab05acc8eba0ac311eb8511484f0c5155cde2",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "psr/log": "~1.0"
++            },
++            "conflict": {
++                "symfony/debug": "<4.1",
++                "symfony/event-dispatcher": "<4.3"
++            },
++            "require-dev": {
++                "doctrine/dbal": "^2.5",
++                "psr/cache": "~1.0",
++                "symfony/console": "~3.4|~4.0",
++                "symfony/debug": "~4.1",
++                "symfony/dependency-injection": "~3.4.19|^4.1.8",
++                "symfony/doctrine-bridge": "~3.4|~4.0",
++                "symfony/event-dispatcher": "~4.3",
++                "symfony/http-kernel": "~3.4|~4.0",
++                "symfony/process": "~3.4|~4.0",
++                "symfony/property-access": "~3.4|~4.0",
++                "symfony/serializer": "~3.4|~4.0",
++                "symfony/service-contracts": "^1.1",
++                "symfony/stopwatch": "~3.4|~4.0",
++                "symfony/validator": "~3.4|~4.0",
++                "symfony/var-dumper": "~3.4|~4.0"
++            },
++            "suggest": {
++                "enqueue/messenger-adapter": "For using the php-enqueue library as a transport."
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.3-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Messenger\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Samuel Roze",
++                    "email": "samuel.roze@gmail.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony Messenger Component",
++            "homepage": "https://symfony.com",
++            "time": "2019-08-23T06:45:45+00:00"
++        },
+         {
+             "name": "symfony/mime",
+             "version": "v4.3.4",
+diff --git a/config/packages/messenger.yaml b/config/packages/messenger.yaml
+new file mode 100644
+index 00000000..6b7319ce
+--- /dev/null
++++ b/config/packages/messenger.yaml
+@@ -0,0 +1,14 @@
++framework:
++    messenger:
++        # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
++        # failure_transport: failed
++
++        transports:
++            # https://symfony.com/doc/current/messenger.html#transport-configuration
++            # async: '%env(MESSENGER_TRANSPORT_DSN)%'
++            # failed: 'doctrine://default?queue_name=failed'
++            # sync: 'sync://'
++
++        routing:
++            # Route your messages to the transports
++            # 'App\Message\YourMessage': async
+diff --git a/symfony.lock b/symfony.lock
+index 18e0196b..b273cb2e 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -392,6 +392,18 @@
+             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+         }
+     },
++    "symfony/messenger": {
++        "version": "4.3",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "4.3",
++            "ref": "8a2675c061737658bed85102e9241c752620e575"
++        },
++        "files": [
++            "config/packages/messenger.yaml"
++        ]
++    },
+     "symfony/mime": {
+         "version": "v4.3.4"
+     },
