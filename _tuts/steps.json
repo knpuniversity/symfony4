@@ -991,6 +991,11 @@
             "description": null
         },
         {
+            "id": "mailer-commit-encore-assets",
+            "name": "Mailer: commit Encore assets",
+            "description": null
+        },
+        {
             "id": "mailer-adding-starting-files",
             "name": "Mailer: adding starting files",
             "description": null
@@ -1176,5 +1181,5 @@
             "description": null
         }
     ],
-    "sha": "c211c6da95598fe5a41d866eb2b2dca494f85c91"
+    "sha": "8b430dd6cd31b1e0179b33a76b0e116874ae04d2"
 }
