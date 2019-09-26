@@ -1,0 +1,29 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 1e6d8962..ed9041aa 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -76,7 +76,10 @@ class SecurityController extends AbstractController
+                 ->from('alienmailcarrier@example.com')
+                 ->to($user->getEmail())
+                 ->subject('Welcome to the Space Bar!')
+-                ->htmlTemplate('email/welcome.html.twig');
++                ->htmlTemplate('email/welcome.html.twig')
++                ->context([
++                    'user' => $user,
++                ]);
+ 
+             $mailer->send($email);
+ 
+diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
+index ef4663eb..2cbfee21 100644
+--- a/templates/email/welcome.html.twig
++++ b/templates/email/welcome.html.twig
+@@ -62,7 +62,7 @@
+             </a>
+         </div>
+         <div class="content">
+-            <h1 class="text-center">Nice to meet you %name%!</h1>
++            <h1 class="text-center">Nice to meet you {{ user.firstName }}!</h1>
+             <p class="block">
+                 Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
+                 Get started on your first article and connect with the space bar community.

@@ -4522,6 +4522,47 @@ index 027bd5d7..980c7395 100644
          ;
      }
  
+diff --git a/src/Migrations/Version20190926151031.php b/src/Migrations/Version20190926151031.php
+new file mode 100644
+index 00000000..0284ed6c
+--- /dev/null
++++ b/src/Migrations/Version20190926151031.php
+@@ -0,0 +1,35 @@
++<?php
++
++declare(strict_types=1);
++
++namespace DoctrineMigrations;
++
++use Doctrine\DBAL\Schema\Schema;
++use Doctrine\Migrations\AbstractMigration;
++
++/**
++ * Auto-generated Migration: Please modify to your needs!
++ */
++final class Version20190926151031 extends AbstractMigration
++{
++    public function getDescription() : string
++    {
++        return '';
++    }
++
++    public function up(Schema $schema) : void
++    {
++        // this up() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE user ADD subscribe_to_newsletter TINYINT(1) NOT NULL');
++    }
++
++    public function down(Schema $schema) : void
++    {
++        // this down() migration is auto-generated, please modify it to your needs
++        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
++
++        $this->addSql('ALTER TABLE user DROP subscribe_to_newsletter');
++    }
++}
 diff --git a/symfony.lock b/symfony.lock
 index cc37706d..8dbf5e93 100644
 --- a/symfony.lock

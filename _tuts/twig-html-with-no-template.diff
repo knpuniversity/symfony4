@@ -1,0 +1,14 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index df7bb13f..642ff88b 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -75,7 +75,8 @@ class SecurityController extends AbstractController
+                 ->from('alienmailcarrier@example.com')
+                 ->to($user->getEmail())
+                 ->subject('Welcome to the Space Bar!')
+-                ->text("Nice to meet you {$user->getFirstName()}! ❤️");
++                ->text("Nice to meet you {$user->getFirstName()}! ❤️")
++                ->html("<h1>Nice to meet you {$user->getFirstName()}! ❤️</h1>");
+ 
+             $mailer->send($email);
+ 
