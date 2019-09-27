@@ -1,1 +1,7 @@
-chapters: []
+chapters:
+    - email-object
+    - config-mailcatcher
+    - html-emails
+    - dynamic-mails
+    - embedded-image
+    - inline-css
