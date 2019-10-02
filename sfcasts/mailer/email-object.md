@@ -3,9 +3,6 @@
 Coming soon...
 
 Ah, yes, here we are, two decades,
-
-okay.
-
 Into the two thousands and emails are still a thing. They're still the center of our
 life and the center of our online accounts, which means that we as developers, we
 still have the job of sending emails, they're great for marketing, uh, et cetera, et
@@ -23,28 +20,32 @@ really is just fun to use and you're going to be able to create super high quali
 emails. As always,
 
 you should,
-
 unless you feel like just mailing it in, you should totally download the course code
 and code along with me. You can download the course code from this page. When you
 unzip it you'll find a that's not right. When you end Zipit you'll find a start
-directory that looks like the code that you see here. You can open up the rebrand.md
+directory that looks like the code that you see here. You can open up the `README.md`
 file for all the setup instructions. The last step will be to open a terminal moving
-to the project and use the Symfony.
+to the project and use the Symfony. Um, binary to start a web server with 
 
-Yeah.
+```terminal
+symfony serve
+```
 
-Um, binary to start a web server with Symfony surf
-
-Battlestar up a web server, um, local host Connie a thousand we can spit over, go to
-local, I'll say thousand and welcome to this space bar. A project you'd probably
-recognize cause we have a lot of our Symfony for tutorials built on top of it. This
+Battlestar up a web server, um, `localhost:8000` we can spit over, go to
+`localhost:8000` and welcome to this space bar. A project you'd probably
+recognize cause we have a lot of our Symfony 4 tutorials built on top of it. This
 mill, the Miller. This tutorial will be, you will be using Miller 4.3 but there are a
 few cool features coming in. Symfony 4.4 so don't worry, we're going to talk about
 those as we go. All right, so like most things in the Symfony, we don't have a mailer
 library in the middle of component is not installed by the faults. So many to go over
-open a new terminal tab and run a composer require Symfony. Slash. Mailer. Now one
-important thing is that, um, at the time of this recording, if you did compose your
-required mailer, that actually wouldn't give you the Symfony mailer. It would give
+open a new terminal tab and run a 
+
+```terminal
+composer require symfony/mailer 
+```
+
+Now one important thing is that, um, at the time of this recording, if you did 
+`composer require mailer`, that actually wouldn't give you the Symfony mailer. It would give
 you a Swift mailer bundle. So until Symfony 4.3 Swift mailer was the library. That
 Symfony used to send emails. And even when you're Googling documentation Symfony
 email, be careful because you might actually end up on these Swift Miller dock. So
@@ -56,12 +57,12 @@ So after the install finishes as usual, it gives us some nice, um, details here.
 and we're going to talk about all of this. All right, so what's the first email we
 should send? Well, one of the most obvious is at registration email after user
 registers. We should probably send them an email. So this controlling for this lives
-in source controller security controller. If you look down here, we have a register
-actions. Very traditional, has a Symfony form, saves a user object to the database,
+in `src/Controller/SecurityController`. If you look down here, we have a `register()`
+actions. Very traditional, has a Symfony form, saves a `User` object to the database,
 uh, saves it to database, and then ultimately redirects the user down here. So when
 you want to send an email right here, right after the user safe, but before it's
 redirected. So the way you do that is beautiful. We're gonna create an email opted
-with email = new email. The one from the mind components because actually the mailer
+with `$email = (new Email())`. The one from the Mime components because actually the mailer
 is actually two different components.
 
 The a mailer, the mailer components, and also another component called mime, which is
@@ -70,20 +71,21 @@ structuring messages. So a lot of times you'll see mine as well. Now I've put th
 email object and parentheses here because that allows us to immediately chain off of
 it and start sending some data. And all of these methods on it here are going to be,
 are going to be very, very familiar to you, to you. So we're gonna need to set up
-from address, let's say alien mailer@example.com and of course he went on to send
-that to which we'll send to the user that just registered. So user error, get email,
-then we'll need a subject. How about welcome to [inaudible] to the space bar. And
-finally we actually need a content to ours. And um, if you've done emails before, you
-know that there's HTML content and text content. We're going to talk about that
-later. For now, let's just set the text content of the email and I'll put this in
-double quotes and say nice to meet you. And then use the fancy syntax to print out
-and user arrow, get first name
+`->from()` address, let's say `alienmailer@example.com` and of course he went on `->to()` send
+that to which we'll send to the user that just registered. So `$user->getEmail()`,
+then we'll need a `->subject()`. How about 
 
-and then a little heart emoticon.
+> Welcome to the Space Bar! 
+
+And finally we actually need a content to ours. And um, if you've done emails before, you
+know that there's HTML content and text content. We're going to talk about that
+later. For now, let's just set the `->text()` content of the email and I'll put this in
+double quotes and say nice to meet you. And then use the fancy syntax to print out
+and `$user->getFirstName()` and then a little heart emoticon.
 
 Oops, that's what I term.
 
-No, I use the fancy syntax, user Aero kit, first name and then a little heart in
+No, I use the fancy syntax, `$user->getFirstName()` and then a little heart in
 emoticon.
 
 Perfect. And there are other methods on this object. We have like CC, um, BCC, um,
@@ -94,10 +96,10 @@ and those and those types of things. So that's it. Like what does an email, it's
 these things. We have a nice, beautiful object that we can use to grit that email. So
 how do we send the email? What would we installed the messenger component? What that
 really gave us was one of the things that gave us was a new mailers service and we
-can type into it with mailer interface. So whenever you need it, let's actually go up
-to the top of our controller. I'll add it as the first argument mailer interface
-mailer down here. What methods do you use that object have on it? How about may other
-arrow? Only one said, it's just that simple email [inaudible]
+can type into it with `MailerInterface`. So whenever you need it, let's actually go up
+to the top of our controller. I'll add it as the first argument `MailerInterface $mailer`
+down here. What methods do you use that object have on it? How about 
+`$mailer->` Only one `send()`, it's just that simple `$email` [inaudible]
 
 right when you do, how do you,
 
@@ -109,8 +111,11 @@ actually my name.
 Okay.
 
 My name, my name is Fox email. The truth is out there. An example, that com, any
-password agree to the terms register and Oh, environment variable, not found a
-mailer_D S N probably should have expected that because we haven't configured a, how
+password agree to the terms register and Oh, 
+
+> Environment variable not found: MAILER_DSN 
+
+probably should have expected that because we haven't configured a, how
 the mailer should be, uh, sent yet. So next, let's talk about how we configure
 sending emails, um, the different options for that and a really great tool that we
 can use for debugging emails while we're developing.
