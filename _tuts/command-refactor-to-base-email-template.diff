@@ -1,5 +1,5 @@
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index 63d8e503..d6a51447 100644
+index 4dbccf9c..308d1c07 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -1,40 +1,38 @@
@@ -11,7 +11,7 @@ index 63d8e503..d6a51447 100644
 -        <row>
 -            <columns>
 -                <p>
--                    What a week %name%! Here's a quick review of what you've been up to on the Space Bar this week
+-                    What a week {{ email.toName }}! Here's a quick review of what you've been up to on the Space Bar this week
 -                </p>
 -            </columns>
 -        </row>
@@ -51,7 +51,7 @@ index 63d8e503..d6a51447 100644
 +    <row>
 +        <columns>
 +            <p>
-+                What a week %name%! Here's a quick review of what you've been up to on the Space Bar this week
++                What a week {{ email.toName }}! Here's a quick review of what you've been up to on the Space Bar this week
 +            </p>
 +        </columns>
 +    </row>

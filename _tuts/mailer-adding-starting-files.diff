@@ -4201,6 +4201,173 @@ k#Sa+%y7Iq;AQHSwk#>S|apOyiKE>WkM@vr=r(qNFFBa_yK>z>%
 literal 0
 HcmV?d00001
 
+diff --git a/tutorial/inky/author-weekly-report.html.twig b/tutorial/inky/author-weekly-report.html.twig
+new file mode 100644
+index 00000000..59698193
+--- /dev/null
++++ b/tutorial/inky/author-weekly-report.html.twig
+@@ -0,0 +1,38 @@
++<container>
++    {# Header #}
++    <hr>
++    <spacer size="20"></spacer>
++    <row>
++        <columns>
++            <p>
++                What a week {{ email.toName }}! Here's a quick review of what you've been up to on the Space Bar this week
++            </p>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <table>
++                <tr>
++                    <th>#</th>
++                    <th>Title</th>
++                    <th>Comments</th>
++                </tr>
++                <tr>
++                    <td>1</td>
++                    <td>Article Title</td>
++                    <td>99</td>
++                </tr>
++            </table>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <center>
++                <spacer size="20"></spacer>
++                <button href="{{ url('app_homepage') }}">Check on the Space Bar</button>
++                <spacer size="20"></spacer>
++            </center>
++        </columns>
++    </row>
++    {# Footer #}
++</container>
+diff --git a/tutorial/inky/email.css b/tutorial/inky/email.css
+new file mode 100644
+index 00000000..c7ddf596
+--- /dev/null
++++ b/tutorial/inky/email.css
+@@ -0,0 +1,36 @@
++body {
++    margin: 0;
++    padding: 0;
++    background-color: #f3f3f3;
++    font-family: Helvetica, Arial, sans-serif;
++}
++h1 {
++    background-color: #264459;
++    color: #ffffff;
++    /*padding: 30px 0 50px 0;*/
++    font-weight: normal;
++}
++hr {
++    border: none;
++    border-top: 3px solid #264459;
++    margin: 20px;
++}
++.welcome {
++    background-color: #264459;
++}
++.bottom {
++    background-color: #efefee;
++}
++.logo {
++    width: 100%;
++}
++.text-center {
++    text-align: center;
++}
++table.button a {
++    background-color: #264459;
++}
++table.button table td {
++    background-color: #264459;
++    border: 2px solid #264459;
++}
+diff --git a/tutorial/inky/welcome.html.twig b/tutorial/inky/welcome.html.twig
+new file mode 100644
+index 00000000..cd729ee2
+--- /dev/null
++++ b/tutorial/inky/welcome.html.twig
+@@ -0,0 +1,75 @@
++<container>
++    <row class="header">
++        <columns>
++            <a href="{{ url('app_homepage') }}">
++                <img src="{{ email.image('@images/email/logo.png') }}" class="logo" alt="SpaceBar Logo">
++            </a>
++        </columns>
++    </row>
++    <row class="welcome">
++        <columns>
++            <spacer size="35"></spacer>
++            <h1>
++                <center>
++                    Nice to meet you {{ email.toName }}!
++                </center>
++            </h1>
++            <spacer size="10"></spacer>
++        </columns>
++    </row>
++    <spacer size="30"></spacer>
++    <row>
++        <columns>
++            <p>
++                Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
++                Get started on your first article and connect with the space bar community.
++            </p>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <center>
++                <button href="{{ url('admin_article_new') }}">Get writing!</button>
++            </center>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <p>
++                Check out our existing articles and share your thoughts in the comments!
++            </p>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <center>
++                <button href="{{ url('app_homepage') }}">Get reading!</button>
++            </center>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <p>
++                We're so excited that you've decided to join us in our corner of the universe,
++                it's a friendly one with other creative and insightful writers just like you!
++                Need help from a friend? We're always just a message away.
++            </p>
++        </columns>
++    </row>
++    <row class="footer">
++        <columns>
++            <p>Cheers,</p>
++            <p>Your friendly <em>Space Bar Team</em></p>
++        </columns>
++    </row>
++    <row class="bottom">
++        <columns>
++            <center>
++                <spacer size="20"></spacer>
++                <div>
++                    Sent with ❤️ from the friendly folks at The Space Bar
++                </div>
++            </center>
++        </columns>
++    </row>
++</container>
 diff --git a/tutorial/welcome.html.twig b/tutorial/welcome.html.twig
 new file mode 100644
 index 00000000..6d363ced

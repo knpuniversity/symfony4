@@ -1,16 +1,7 @@
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index d6a51447..8a1523e8 100644
+index 308d1c07..8a1523e8 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
-@@ -6,7 +6,7 @@
-     <row>
-         <columns>
-             <p>
--                What a week %name%! Here's a quick review of what you've been up to on the Space Bar this week
-+                What a week {{ email.toName }}! Here's a quick review of what you've been up to on the Space Bar this week
-             </p>
-         </columns>
-     </row>
 @@ -18,11 +18,13 @@
                      <th>Title</th>
                      <th>Comments</th>

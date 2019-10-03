@@ -1,20 +1,6 @@
-diff --git a/assets/css/email.css b/assets/css/email.css
-index 1969877a..925407ff 100644
---- a/assets/css/email.css
-+++ b/assets/css/email.css
-@@ -10,6 +10,9 @@ h1 {
-     /*padding: 30px 0 50px 0;*/
-     font-weight: normal;
- }
-+hr {
-+    border: 2px solid #264459;
-+}
- .welcome {
-     background-color: #264459;
- }
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
 new file mode 100644
-index 00000000..63d8e503
+index 00000000..4dbccf9c
 --- /dev/null
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -0,0 +1,40 @@
@@ -26,7 +12,7 @@ index 00000000..63d8e503
 +        <row>
 +            <columns>
 +                <p>
-+                    What a week %name%! Here's a quick review of what you've been up to on the Space Bar this week
++                    What a week {{ email.toName }}! Here's a quick review of what you've been up to on the Space Bar this week
 +                </p>
 +            </columns>
 +        </row>
