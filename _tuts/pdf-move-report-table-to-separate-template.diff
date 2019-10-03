@@ -19,28 +19,28 @@ index 00000000..1e80d0bf
 +    {% endfor %}
 +</table>
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index 99c683b6..a3ff8617 100644
+index 8a1523e8..7a96d0c4 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
-@@ -6,20 +6,7 @@
-         What a week {{ email.toName }}! Here's a quick review of what you've been up to on the Space Bar this week
-     </p>
-     <div class="block">
--    <table>
--        <tr>
--            <th>#</th>
--            <th>Title</th>
--            <th>Comments</th>
--        </tr>
--        {% for article in articles %}
--        <tr>
--            <td>{{ loop.index }}</td>
--            <td>{{ article.title }}</td>
--            <td>{{ article.comments|length }}</td>
--        </tr>
--        {% endfor %}
--    </table>
-+        {{ include('email/_report-table.html.twig') }}
-     </div>
-     <p class="block text-center">
-         <a href="{{ url('app_homepage') }}" class="btn">Check on the Space Bar</a>
+@@ -12,20 +12,7 @@
+     </row>
+     <row>
+         <columns>
+-            <table>
+-                <tr>
+-                    <th>#</th>
+-                    <th>Title</th>
+-                    <th>Comments</th>
+-                </tr>
+-                {% for article in articles %}
+-                <tr>
+-                    <td>{{ loop.index }}</td>
+-                    <td>{{ article.title }}</td>
+-                    <td>{{ article.comments|length }}</td>
+-                </tr>
+-                {% endfor %}
+-            </table>
++            {{ include('email/_report-table.html.twig') }}
+         </columns>
+     </row>
+     <row>

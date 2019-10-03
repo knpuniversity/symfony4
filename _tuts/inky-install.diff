@@ -1,0 +1,183 @@
+diff --git a/composer.json b/composer.json
+index 2001c42c..ea5bd1f0 100644
+--- a/composer.json
++++ b/composer.json
+@@ -32,7 +32,8 @@
+         "symfony/webpack-encore-bundle": "^1.4",
+         "symfony/yaml": "^4.0",
+         "twig/cssinliner-extension": "^2.0",
+-        "twig/extensions": "^1.5"
++        "twig/extensions": "^1.5",
++        "twig/inky-extension": "^2.0"
+     },
+     "require-dev": {
+         "doctrine/doctrine-fixtures-bundle": "^3.0",
+diff --git a/composer.lock b/composer.lock
+index b723e05e..8abe62f0 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "13e0a4c6bb3c440d091c5771d689a9a1",
++    "content-hash": "03ffa87543186aea3da17f4f5b7d9ca7",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -2416,6 +2416,53 @@
+             ],
+             "time": "2018-07-10T12:53:54+00:00"
+         },
++        {
++            "name": "lorenzo/pinky",
++            "version": "1.0.5",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/lorenzo/pinky.git",
++                "reference": "2bc1a9d5696d6496df5d5682962929165a823e57"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/lorenzo/pinky/zipball/2bc1a9d5696d6496df5d5682962929165a823e57",
++                "reference": "2bc1a9d5696d6496df5d5682962929165a823e57",
++                "shasum": ""
++            },
++            "require": {
++                "ext-xsl": "*",
++                "php": ">=5.6.0"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "^5.7"
++            },
++            "type": "library",
++            "autoload": {
++                "files": [
++                    "src/pinky.php"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Jose Lorenzo Rodriguez",
++                    "email": "jose.zap@gmail.com"
++                }
++            ],
++            "description": "A Foundation for Emails (Inky) template transpiler",
++            "keywords": [
++                "email",
++                "foundation",
++                "inky",
++                "template",
++                "zurb"
++            ],
++            "time": "2019-09-16T21:23:31+00:00"
++        },
+         {
+             "name": "michelf/php-markdown",
+             "version": "1.8.0",
+@@ -7582,6 +7629,61 @@
+             ],
+             "time": "2018-12-05T18:34:18+00:00"
+         },
++        {
++            "name": "twig/inky-extension",
++            "version": "v2.0.29",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/twigphp/inky-extension.git",
++                "reference": "dbb0833049727ca8e5c36e976957652967c1368b"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/twigphp/inky-extension/zipball/dbb0833049727ca8e5c36e976957652967c1368b",
++                "reference": "dbb0833049727ca8e5c36e976957652967c1368b",
++                "shasum": ""
++            },
++            "require": {
++                "lorenzo/pinky": "^1.0.5",
++                "php": "^7.0",
++                "twig/twig": "^1.34 || ^2.4"
++            },
++            "require-dev": {
++                "symfony/phpunit-bridge": "^4.1.8"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Twig\\Inky\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com",
++                    "homepage": "http://fabien.potencier.org",
++                    "role": "Lead Developer"
++                }
++            ],
++            "description": "A Twig extension for the inky email templating engine",
++            "homepage": "https://twig.symfony.com",
++            "keywords": [
++                "email",
++                "emails",
++                "inky",
++                "twig"
++            ],
++            "time": "2019-09-22T19:16:32+00:00"
++        },
+         {
+             "name": "twig/twig",
+             "version": "v2.11.3",
+diff --git a/config/bundles.php b/config/bundles.php
+index 790297b7..4c34153a 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -24,4 +24,5 @@ return [
+     Oneup\FlysystemBundle\OneupFlysystemBundle::class => ['all' => true],
+     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+     Twig\CssInliner\Bundle\TwigCssInlinerBundle::class => ['all' => true],
++    Twig\Inky\Bundle\TwigInkyBundle::class => ['all' => true],
+ ];
+diff --git a/symfony.lock b/symfony.lock
+index 90b44c6e..92866770 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -152,6 +152,9 @@
+             "ref": "523b4b0cfb88dc8637cb56e427e6be7718bdce32"
+         }
+     },
++    "lorenzo/pinky": {
++        "version": "1.0.5"
++    },
+     "michelf/php-markdown": {
+         "version": "1.8.0"
+     },
+@@ -580,6 +583,15 @@
+             "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
+         }
+     },
++    "twig/inky-extension": {
++        "version": "1.0",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "1.0",
++            "ref": "98aa25792ca5b18aebbac6644a150ac90867408d"
++        }
++    },
+     "twig/twig": {
+         "version": "v2.6.2"
+     },

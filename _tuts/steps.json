@@ -1071,6 +1071,21 @@
             "description": null
         },
         {
+            "id": "inky-install",
+            "name": "Inky: Install",
+            "description": null
+        },
+        {
+            "id": "inky-use-in-template",
+            "name": "Inky: Use in template",
+            "description": null
+        },
+        {
+            "id": "inky-add-styles-to-template",
+            "name": "Inky: Add styles to template",
+            "description": null
+        },
+        {
             "id": "command-create-a-new-command",
             "name": "Command: Create a new command",
             "description": null
@@ -1181,5 +1196,5 @@
             "description": null
         }
     ],
-    "sha": "8b430dd6cd31b1e0179b33a76b0e116874ae04d2"
+    "sha": "13574d0b169c0e9c4ca0f5cd65887cde757e7e38"
 }

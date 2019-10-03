@@ -1,119 +1,254 @@
-diff --git a/templates/email/base.html.twig b/templates/email/base.html.twig
-new file mode 100644
-index 00000000..15704336
---- /dev/null
-+++ b/templates/email/base.html.twig
-@@ -0,0 +1,34 @@
-+<!doctype html>
-+{% filter inline_css(source('@styles/email.css')) %}
-+<html lang="en">
-+<head>
-+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-+    <meta name="viewport" content="width=device-width">
-+    <title>{{ email.subject }}</title>
-+</head>
-+<body>
-+<div class="body">
-+    <div class="container">
-+        <div class="header text-center">
-+            <a href="{{ url('app_homepage') }}">
-+                <img src="{{ email.image('@images/email/logo.png') }}" class="logo" alt="SpaceBar Logo">
-+            </a>
-+        </div>
-+        <div class="content">
-+            {% block content %}
-+            {% endblock %}
-+        </div>
-+        <div class="footer">
-+            <p class="block">
-+                Cheers,<br><br>
-+                Your friendly <em>Space Bar Team</em>
-+            </p>
-+            <p class="block bottom text-center">
-+                Sent with ❤️ from the friendly folks at The Space Bar
-+            </p>
-+        </div>
-+    </div>
-+</div>
-+</body>
-+</html>
-+{% endfilter %}
-diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 63796a82..ab011719 100644
---- a/templates/email/welcome.html.twig
-+++ b/templates/email/welcome.html.twig
-@@ -1,51 +1,23 @@
--<!doctype html>
--{% filter inline_css(source('@styles/email.css')) %}
--<html lang="en">
--<head>
--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
--    <meta name="viewport" content="width=device-width">
--    <title>{{ email.subject }}</title>
--</head>
--<body>
--<div class="body">
--    <div class="container">
--        <div class="header text-center">
--            <a href="{{ url('app_homepage') }}">
--                <img src="{{ email.image('@images/email/logo.png') }}" class="logo" alt="SpaceBar Logo">
--            </a>
--        </div>
--        <div class="content">
--            <h1 class="text-center">Nice to meet you {{ email.toName }}!</h1>
--            <p class="block">
--                Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
--                Get started on your first article and connect with the space bar community.
--            </p>
--            <p class="block text-center">
--                <a href="{{ url('admin_article_new') }}" class="btn">Get writing!</a>
--            </p>
--            <p class="block">
--                Check out our existing articles and share your thoughts in the comments!
--            </p>
--            <p class="block text-center">
--                <a href="{{ url('app_homepage') }}" class="btn">Get reading!</a>
--            </p>
--            <p class="block">
--                We're so excited that you've decided to join us in our corner of the universe,
--                it's a friendly one with other creative and insightful writers just like you!
--                Need help from a friend? We're always just a message away.
--            </p>
--        </div>
--        <div class="footer">
--            <p class="block">
--                Cheers,<br><br>
--                Your friendly <em>Space Bar Team</em>
--            </p>
--            <p class="block bottom text-center">
--                Sent with ❤️ from the friendly folks at The Space Bar
--            </p>
--        </div>
--    </div>
--</div>
--</body>
--</html>
--{% endfilter %}
+diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
+index 63d8e503..d6a51447 100644
+--- a/templates/email/author-weekly-report.html.twig
++++ b/templates/email/author-weekly-report.html.twig
+@@ -1,40 +1,38 @@
+-{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
+-    <container>
+-        {# Header #}
+-        <hr>
+-        <spacer size="20"></spacer>
+-        <row>
+-            <columns>
+-                <p>
+-                    What a week %name%! Here's a quick review of what you've been up to on the Space Bar this week
+-                </p>
+-            </columns>
+-        </row>
+-        <row>
+-            <columns>
+-                <table>
+-                    <tr>
+-                        <th>#</th>
+-                        <th>Title</th>
+-                        <th>Comments</th>
+-                    </tr>
+-                    <tr>
+-                        <td>1</td>
+-                        <td>Article Title</td>
+-                        <td>99</td>
+-                    </tr>
+-                </table>
+-            </columns>
+-        </row>
+-        <row>
+-            <columns>
+-                <center>
+-                    <spacer size="20"></spacer>
+-                    <button href="{{ url('app_homepage') }}">Check on the Space Bar</button>
+-                    <spacer size="20"></spacer>
+-                </center>
+-            </columns>
+-        </row>
+-        {# Footer #}
+-    </container>
+-{% endapply %}
 +{% extends 'email/base.html.twig' %}
 +
 +{% block content %}
-+    <h1 class="text-center">Nice to meet you {{ email.toName }}!</h1>
-+    <p class="block">
-+        Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
-+        Get started on your first article and connect with the space bar community.
-+    </p>
-+    <p class="block text-center">
-+        <a href="{{ url('admin_article_new') }}" class="btn">Get writing!</a>
-+    </p>
-+    <p class="block">
-+        Check out our existing articles and share your thoughts in the comments!
-+    </p>
-+    <p class="block text-center">
-+        <a href="{{ url('app_homepage') }}" class="btn">Get reading!</a>
-+    </p>
-+    <p class="block">
-+        We're so excited that you've decided to join us in our corner of the universe,
-+        it's a friendly one with other creative and insightful writers just like you!
-+        Need help from a friend? We're always just a message away.
-+    </p>
++    <hr>
++    <spacer size="20"></spacer>
++    <row>
++        <columns>
++            <p>
++                What a week %name%! Here's a quick review of what you've been up to on the Space Bar this week
++            </p>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <table>
++                <tr>
++                    <th>#</th>
++                    <th>Title</th>
++                    <th>Comments</th>
++                </tr>
++                <tr>
++                    <td>1</td>
++                    <td>Article Title</td>
++                    <td>99</td>
++                </tr>
++            </table>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <center>
++                <spacer size="20"></spacer>
++                <button href="{{ url('app_homepage') }}">Check on the Space Bar</button>
++                <spacer size="20"></spacer>
++            </center>
++        </columns>
++    </row>
++{% endblock %}
+diff --git a/templates/email/base.html.twig b/templates/email/base.html.twig
+new file mode 100644
+index 00000000..a3d42c80
+--- /dev/null
++++ b/templates/email/base.html.twig
+@@ -0,0 +1,31 @@
++{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
++    <container>
++        <row class="header">
++            <columns>
++                <a href="{{ url('app_homepage') }}">
++                    <img src="{{ email.image('@images/email/logo.png') }}" class="logo" alt="SpaceBar Logo">
++                </a>
++            </columns>
++        </row>
++
++        {% block content %}
++        {% endblock %}
++
++        <row class="footer">
++            <columns>
++                <p>Cheers,</p>
++                <p>Your friendly <em>Space Bar Team</em></p>
++            </columns>
++        </row>
++        <row class="bottom">
++            <columns>
++                <center>
++                    <spacer size="20"></spacer>
++                    <div>
++                        Sent with ❤️ from the friendly folks at The Space Bar
++                    </div>
++                </center>
++            </columns>
++        </row>
++    </container>
++{% endapply %}
+diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
+index 40506599..9d5c2d31 100644
+--- a/templates/email/welcome.html.twig
++++ b/templates/email/welcome.html.twig
+@@ -1,77 +1,54 @@
+-{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
+-    <container>
+-        <row class="header">
+-            <columns>
+-                <a href="{{ url('app_homepage') }}">
+-                    <img src="{{ email.image('@images/email/logo.png') }}" class="logo" alt="SpaceBar Logo">
+-                </a>
+-            </columns>
+-        </row>
+-        <row class="welcome">
+-            <columns>
+-                <spacer size="35"></spacer>
+-                <h1>
+-                    <center>
+-                        Nice to meet you {{ email.toName }}!
+-                    </center>
+-                </h1>
+-                <spacer size="10"></spacer>
+-            </columns>
+-        </row>
+-        <spacer size="30"></spacer>
+-        <row>
+-            <columns>
+-                <p>
+-                    Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
+-                    Get started on your first article and connect with the space bar community.
+-                </p>
+-            </columns>
+-        </row>
+-        <row>
+-            <columns>
++{% extends 'email/base.html.twig' %}
++
++{% block content %}
++    <row class="welcome">
++        <columns>
++            <spacer size="35"></spacer>
++            <h1>
+                 <center>
+-                    <button href="{{ url('admin_article_new') }}">Get writing!</button>
++                    Nice to meet you {{ email.toName }}!
+                 </center>
+-            </columns>
+-        </row>
+-        <row>
+-            <columns>
+-                <p>
+-                    Check out our existing articles and share your thoughts in the comments!
+-                </p>
+-            </columns>
+-        </row>
+-        <row>
+-            <columns>
+-                <center>
+-                    <button href="{{ url('app_homepage') }}">Get reading!</button>
+-                </center>
+-            </columns>
+-        </row>
+-        <row>
+-            <columns>
+-                <p>
+-                    We're so excited that you've decided to join us in our corner of the universe,
+-                    it's a friendly one with other creative and insightful writers just like you!
+-                    Need help from a friend? We're always just a message away.
+-                </p>
+-            </columns>
+-        </row>
+-        <row class="footer">
+-            <columns>
+-                <p>Cheers,</p>
+-                <p>Your friendly <em>Space Bar Team</em></p>
+-            </columns>
+-        </row>
+-        <row class="bottom">
+-            <columns>
+-                <center>
+-                    <spacer size="20"></spacer>
+-                    <div>
+-                        Sent with ❤️ from the friendly folks at The Space Bar
+-                    </div>
+-                </center>
+-            </columns>
+-        </row>
+-    </container>
+-{% endapply %}
++            </h1>
++            <spacer size="10"></spacer>
++        </columns>
++    </row>
++    <spacer size="30"></spacer>
++    <row>
++        <columns>
++            <p>
++                Welcome to <strong>the Space Bar</strong>, we can't wait to read what you have to write.
++                Get started on your first article and connect with the space bar community.
++            </p>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <center>
++                <button href="{{ url('admin_article_new') }}">Get writing!</button>
++            </center>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <p>
++                Check out our existing articles and share your thoughts in the comments!
++            </p>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <center>
++                <button href="{{ url('app_homepage') }}">Get reading!</button>
++            </center>
++        </columns>
++    </row>
++    <row>
++        <columns>
++            <p>
++                We're so excited that you've decided to join us in our corner of the universe,
++                it's a friendly one with other creative and insightful writers just like you!
++                Need help from a friend? We're always just a message away.
++            </p>
++        </columns>
++    </row>
 +{% endblock %}
