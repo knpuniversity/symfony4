@@ -3,5 +3,5 @@ chapters:
     - config-mailcatcher
     - html-emails
     - dynamic-mails
-    - embedded-image     #raw
+    - embedded-image
     - inline-css         #raw
