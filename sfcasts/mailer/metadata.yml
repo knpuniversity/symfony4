@@ -1,7 +1,7 @@
 chapters:
     - email-object
     - config-mailcatcher
-    - html-emails        #raw
+    - html-emails
     - dynamic-mails      #raw
     - embedded-image     #raw
     - inline-css         #raw
