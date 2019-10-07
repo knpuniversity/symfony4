@@ -1,0 +1,14 @@
+diff --git a/config/services_dev.yaml b/config/services_dev.yaml
+index fb930dbb..680b1251 100644
+--- a/config/services_dev.yaml
++++ b/config/services_dev.yaml
+@@ -1,2 +1,9 @@
+ parameters:
+     cache_adapter: 'cache.adapter.filesystem'
++
++    mailer.dev.set_recipients:
++        class: Symfony\Component\Mailer\EventListener\EnvelopeListener
++        tags: ['kernel.event_subscriber']
++        arguments:
++            $sender: null
++            $recipients: ['ryan@symfonycasts.com']

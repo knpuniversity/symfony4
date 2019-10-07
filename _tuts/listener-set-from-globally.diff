@@ -1,0 +1,67 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 934bf994..ca72d6fb 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -50,3 +50,7 @@ services:
+                 extended_type: Symfony\Component\Form\Extension\Core\Type\TextareaType }
+ 
+     Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
++
++    mailer.set_from:
++        class: App\EventListener\SetFromListener
++        tags: ['kernel.event_subscriber']
+\ No newline at end of file
+diff --git a/src/EventListener/SetFromListener.php b/src/EventListener/SetFromListener.php
+new file mode 100644
+index 00000000..e66d903c
+--- /dev/null
++++ b/src/EventListener/SetFromListener.php
+@@ -0,0 +1,28 @@
++<?php
++
++namespace App\EventListener;
++
++use Symfony\Component\EventDispatcher\EventSubscriberInterface;
++use Symfony\Component\Mailer\Event\MessageEvent;
++use Symfony\Component\Mime\Email;
++use Symfony\Component\Mime\NamedAddress;
++
++class SetFromListener implements EventSubscriberInterface
++{
++    public static function getSubscribedEvents()
++    {
++        return [
++            MessageEvent::class => 'onMessage',
++        ];
++    }
++
++    public function onMessage(MessageEvent $event)
++    {
++        $email = $event->getMessage();
++        if (!$email instanceof Email) {
++            return;
++        }
++
++        $email->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'));
++    }
++}
+diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
+index c25a84e7..4f697103 100644
+--- a/src/Service/Mailer.php
++++ b/src/Service/Mailer.php
+@@ -25,7 +25,6 @@ class Mailer
+     public function sendWelcomeMessage(User $user): TemplatedEmail
+     {
+         $email = (new TemplatedEmail())
+-            ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
+             ->to(new NamedAddress($user->getEmail(), $user->getFirstName()))
+             ->subject('Welcome to the Space Bar!')
+             ->htmlTemplate('email/welcome.html.twig')
+@@ -47,7 +46,6 @@ class Mailer
+         $pdf = $this->pdf->getOutputFromHtml($html);
+ 
+         $email = (new TemplatedEmail())
+-            ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
+             ->to(new NamedAddress($author->getEmail(), $author->getFirstName()))
+             ->subject('Your weekly report on the Space Bar!')
+             ->htmlTemplate('email/author-weekly-report.html.twig')
