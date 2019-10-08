@@ -1,4 +1,5 @@
 chapters:
+    - install-mailer
     - email-object
     - config-mailcatcher
     - html-emails
