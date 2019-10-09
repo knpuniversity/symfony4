@@ -3,6 +3,7 @@ chapters:
     - email-object
     - config-mailcatcher
     - html-emails
+    - absolute-urls
     - dynamic-mails
     - embedded-image
     - inline-css

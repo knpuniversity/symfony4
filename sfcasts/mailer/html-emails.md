@@ -1,119 +1,74 @@
-# Html Emails
+# HTML Emails with Twig
 
-Coming soon...
+Every email can contain content in *two* formats: a "text" part and an HTML part...
+and an email can contain *just* the text part, just the HTML part or both. Of course,
+these days, *most* email clients support HTML, so that's the format you *really*
+need to focus on. But there *are* still some situations where having a text version
+is useful - so we won't *completely* forget about it. You'll see what I mean.
 
-Every email can have a text part and HTML part or you can send an email that has an
-HTML version and also a text version. Now these days, most mail clients are going to
-display the HTML version. So that's the one that you really are going to want to
-focus on it and that we're going to focus on. But in some cases they might, you might
-have a male client or some situation where it only shows the text email. I think it
-also helps with accessibility. So you're going to want to make sure that your text,
-uh, you do have a text part of your email and it's at least, um, something that's
-readable and mailer is going to help make this very, very easy. So [inaudible] first
-of all has to be sent right now. And this email doesn't have any HTML part, it only
-has a text version.
+The email we just sent did *not* contain the HTML "part" - only the text version.
+How do we also include an HTML version of the content? Back in the controller,
+you can almost *guess* how: copy the `->text(...)` line, delete the semicolon,
+paste and change the method to `html()`. It's that simple! To make it fancier,
+put an `<h1>` around this.
 
-So how do we send HTML? Well back in our controller, you can kind of guess and a copy
-of this `->text(...)` line here and delete the semi colon paste. We'll change the nothing to
-`html()` and we'll put an `<h1>` around that. Just to make it extra obvious what's going
-on. That's it. That's now an email that has a text part and an HTML part. And I want
-you to see what that looks like. So I'm going to go back to my browser. A hit back to
-go to the registration page, change the email address a little bit. Type in a
-password.
+This email now has two "parts" to it: an text part and an HTML part. The user's
+email client will choose which to show, usually HTML. Let's see what this looks
+like in Mailtrap. Click back to get to the registration form again, change the
+email address, add a password and... register! No errors! Go check out Mailtrap.
 
-hit enter. Perfect. It worked. And then go back and you can see the new email up
-here. Yeah, this time we have an HTML version of it and one of the things I like
-about mail trap is how you can very easily see the HTML source. Um, but you can see
-the each demo version and you can, you can see the text version. Another really cool
-thing, especially as we start to get more advanced, is be able to see what the RA
-email looks like. And this is actually what mailers sent to this thing. You can see
-as the things you expect like from two in subject, but then also has this kind of
-content type boundaries stuff. So you can see it as a content type text plane where
-it has the plain text email, then a content type text us HTML, which it has the HTML
-version. These multiple parts is what Symfony's a mime type component and really
-helps you build. So we don't have to worry about all these led tails, but this is
-actually what an email looks like behind the scenes.
+Yeah! This time we have an HTML version! One of the things I love about Mailtrap
+is how easily we can see the original HTML source, the text or the rendered HTML.
 
-All right, so clearly we're not going to just put HTML on right inside of our
-controller like this. Normally, what do we want to regenerate HTML instead of
-Symfony, we're going to use the TWIG, we're going to use
-a template file for that. And mailer comes with really smooth integration with TWIC.
-So first, if you've done a little the course code, you should have a `tutorial/`
-directory if they `welcome.html.twig` a template inside. Let's open up the
-`templates/` directory. I'm gonna create a new sub directory called `email/`, and then
+## MIME: The "Multipart" Behind Emails
 
-I'm going to paste that inside of there. So we have a new
+*Or*, you can check what the "Raw" message looks like. It turns out that what an
+email looks like behind-the-scenes is almost *exactly* what an HTTP response looks
+like what we return from our app: it has some headers on top, like `To`,
+`From` and `Subject`. But, the *content* *is* a bit different. Normally, our
+app returns an HTTP response whose *content* is probably HTML or JSON. But this
+email's content contains *two* formats all at once: HTML and text.
 
-`templates/email/welcome.html.twig`. And if you look at this right now and say full
-HTML page here, um, we have some inline styles, which I'm going to talk a little bit
-about later, like an actual `<style>` tag. And then right now this is a nice welcome
-email, but it's 100% static cause you can see there's nothing actually filled in. I
-even have this little `%name%` here. That's not a variable. That's just
-something that we need to fill in later
+Check out the `Content-Type` header: it's `multipart/alternative` and then has
+this weird `boundary` string - `_=_symfony` then some random numbers and letters.
+Below, we can see the content: the plain-text version of the email on top and
+the `text/html` version below that. That weird `boundary` string is placed between
+these two... and literally acts as a *separator*: it's how the email client knows
+when the "text" content stops and the next "part" of the message - the HTML part -
+begins. Isn't that cool? I mean, if this isn't a hot topic for your next dinner
+party, I don't know what is.
 
-to use this inside of a mailer. What you're going to do is change from `Email` to
-`TemplatedEmail` and I'll hold command or control and click into that. And you can see
-the `TemplatedEmail` extends `Email`. So it's still the same email class. It just
-adds a couple of methods on here to help with a templates. One of those methods. Now
-we have this, we can use one of those methods. I'm going to delete the texts in HTML
-and instead say `htmlTemplate()` and here we're just going to pass the normal path to
-this template. So `email/welcome.html.twig`. And it's just that
-simple. Before we try this, let's make a couple of things dynamic inside of 
-`welcome.html.twig`. A first you can see that we have at links inside of here. What's right
-now is just `#homepage`
+*This* is what the Symfony's Mime component helps us build. I mean, sheesh, this
+is ugly. But all *we* had to do was use the `text()` method to add text content
+and the `html()` method to add HTML content.
 
-That's not actually what we want. Now if we were, if this was a normal Symfony
-template, we would use the `{{ path('') }}` function and then in our app, if you look at uh,
-`ArticleController`, you can see that the homepage, the name of the rock for the
-homemade is `app_homepage`. So I'd normally put path `app_homepage`. The problem
-with you than any of the path functions that this will generate. Uh, this will
-generate links that are not absolute. It will just be / we need the domain name to be
-included in that. So change `{{ path() }}` to you, `{{ url() }}` that's the only thing that you need to
-change. There's a couple other spots where we link to stuff down here. There's a spot
-to create a new article or they replaced that with URL and the name of that. If you
-looked in the application, the name of that is `admin_article_new`.
+## Using Twig
 
-And then there's one more down here for the home page. So we'll say 
-`{{ url('app_homepage') }}`. Now the other thing that you've seen here that's important is we do
-have one link to an image file. So the same thing here. This actually needs to be um,
-uh, an absolute URL. So first of all, forgetting about emails. Um, this project uses
-Webpack Encore for its assets. So I have an `assets/` director here. I have an `images/`
-directory here, `email/logo.png`. um, but when you, uh, run Webpack, the end
-result is that this actually copies that into a `public/build/images/` directory
+So... as simple as this Email was to build, we're not *really* going to put HTML
+right inside of our controller like this. Normally, when we need to write some HTMl
+in Symfony, we put that in a Twig template. When you need HTML for an email, we'll
+do the *exact* same thing. Mailer's integration with Twig is *awesome*./
 
-and then there's an email directory and it gets copied here. You don't need to worry
-about running Encore. I've, uh, if you download the source code, I've actually
-included the final, built a directory here. But the point is, regardless of whether
-using the Encore, not the path we actually want to link to, is this 
-`build/images/email/logo.png` here. Now the way we do that in Symfony is we use the 
-`{{ asset() }}` function. So in this case we just do the path to this is actually 
-`build/images/email/logo.png`. uh, because I'm using Encore, I don't need to include this
-version hash inside of there. The asset function going to automatically add that for
-me. If that doesn't make it, if you're not using Encore and that doesn't make sense
-to you, that's fine. You just want to use the `{{ asset() }}` function like you normally would
-to a link to whatever the final path is. Now, but we have the same problem as we have
-with the uh, links. Though we don't want this to just renders 
-`/build/images/email/logo.png`. we want this to include the domain name in front of it. So to
-get that, we're going to wrap this in `{{ absolute_url() }}` around the `asset()` function
-and that should do it. All right, ready to try this?
+First, if you downloaded the the course code, you should have a `tutorial/`
+directory with a `welcome.html.twig` template file inside. Open up the `templates/`
+directory. To organize our email-related templates, let's create a new sub-directory
+called `email/`. Then, paste the `welcome.html.twig` template inside.
 
-Let's move over. I'll go back, change the email address again, type a new password,
-hit enter, no errors which is always good and there it is. The emails already there
-waiting for us and we got it. Check this out. It looks much better. We actually have
-our image showing up here. If I hover over the URL, as you can see this is actually
-one of the `localhost:8000` they get writing down here is showing `localhost:8000`
-this is a little more obvious in the HTML source. Can you say everything has
-those full URLs that are pointing to the image and the URL. Also as a bonus, we still
-have a text part. All we sent inside of our controller was each time on template.
-We're no longer sending the text thing but one of the things you get out of the box
-is that if you don't send set a text part specifically, then Symfony is going to
-automatically strip the slashes out of your HTML and include that as the text type.
+Say hello to our fancy new `templates/email/welcome.html.twig` file. This is a
+*full* HTML page with embedded styling via a `<style>` tag... and... nothing
+else interesting: it's 100% static. This `%name%` thing I added here isn't a variable:
+it's just a reminder of something that we need to make dynamic later.
 
-Now you can see the top is not perfect because it has a bunch of styles in it and
-things that we don't want. Um, we're gonna fix that later, but the bottom is actually
-pretty awesome. It looks pretty good, especially for not putting any effort into
-that. All right, next let's talk about, um, of course the one problem. This is great.
-Of course, the problem is that this is all still hard-coded. We still, we need to
-actually make this name thing dynamic. So now let's learn a little bit more how we
-can pass variables into our template and also what other information is available
-inside of here for us to customize things.
+But first, let's use this! As *soon* as your email needs to leverage a Twig template,
+you need to change from the `Email` class to `TemplatedEmail`.
+
+Hold Command or Ctrl and click that class to jump into it. Ah, this `TemplatedEmail`
+class *extends* the normal `Email`: we're really still using the same class as
+before, but now with a few extra methods related to templates. One of those. Now
+we have this, we can use one of those methods. Remove *both* the `html()` and
+`text()` calls - you'll see why in a minute - and replace them with
+`->htmlTemplate()` and then the normal path to the template: `email/welcome.html.twig`.
+
+And... that's it! Before we try this, let's make a few things in the template
+dynamic, like the URLs and the image path. But, there's an important thing to
+remember with emails: paths *must* be absolute. That's next.
