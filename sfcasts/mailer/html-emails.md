@@ -1,74 +1,79 @@
-# HTML Emails with Twig
+# Absolute URLs to Routes & Assets
 
-Every email can contain content in *two* formats: a "text" part and an HTML part...
-and an email can contain *just* the text part, just the HTML part or both. Of course,
-these days, *most* email clients support HTML, so that's the format you *really*
-need to focus on. But there *are* still some situations where having a text version
-is useful - so we won't *completely* forget about it. You'll see what I mean.
+The HTML content of our email will use *this* template... which is still *totally*
+static. For example, see this link going to `#homepage`? That was just a placeholder
+I added. Normally in a template, we would use the `{{ path() }}` function to
+generate the URL to this route. The name of the route is... check out
+`ArticleController`... there it is: the homepage route name is `app_homepage`.
+So we would normally say `path('app_homepage')`.
 
-The email we just sent did *not* contain the HTML "part" - only the text version.
-How do we also include an HTML version of the content? Back in the controller,
-you can almost *guess* how: copy the `->text(...)` line, delete the semicolon,
-paste and change the method to `html()`. It's that simple! To make it fancier,
-put an `<h1>` around this.
+## Using the url() Function
 
-This email now has two "parts" to it: an text part and an HTML part. The user's
-email client will choose which to show, usually HTML. Let's see what this looks
-like in Mailtrap. Click back to get to the registration form again, change the
-email address, add a password and... register! No errors! Go check out Mailtrap.
+The *problem* is that this will generate a *relative* URL - it will literally
+generate `href="/"`. But for an email, all paths need to be *absolute*. To force
+that, change `path()` to `url()`.
 
-Yeah! This time we have an HTML version! One of the things I love about Mailtrap
-is how easily we can see the original HTML source, the text or the rendered HTML.
+That's it! Symfony will detect the domain name - `localhost:8000` while we're
+coding locally - and use that to prefix the URL.
 
-## MIME: The "Multipart" Behind Emails
+Let's fix a few other URLs: for the link to create a new article, replace the
+hardcoded string with `url()` and the name of *that* route, which if you looked
+in the app, is `admin_article_new`. At the bottom, there's one more link to the
+homepage. Say  `{{ url('app_homepage') }}`.
 
-*Or*, you can check what the "Raw" message looks like. It turns out that what an
-email looks like behind-the-scenes is almost *exactly* what an HTTP response looks
-like what we return from our app: it has some headers on top, like `To`,
-`From` and `Subject`. But, the *content* *is* a bit different. Normally, our
-app returns an HTTP response whose *content* is probably HTML or JSON. But this
-email's content contains *two* formats all at once: HTML and text.
+## A Bit about Webpack Encore & Images
 
-Check out the `Content-Type` header: it's `multipart/alternative` and then has
-this weird `boundary` string - `_=_symfony` then some random numbers and letters.
-Below, we can see the content: the plain-text version of the email on top and
-the `text/html` version below that. That weird `boundary` string is placed between
-these two... and literally acts as a *separator*: it's how the email client knows
-when the "text" content stops and the next "part" of the message - the HTML part -
-begins. Isn't that cool? I mean, if this isn't a hot topic for your next dinner
-party, I don't know what is.
+Links, done! But there's on other path we need to fix: the path to this image.
+But, forget about emails for a minute. This project uses Webpack Encore to compile
+its assets: I have `assets/` directory at the root, an `images` directory inside
+that, and an `email/logo.png` file that I want to reference. You don't need to run
+Encore, but if you *did*, I've configured it to *copy* that file into a
+`public/build/images/` directory. There it is:
+`public/build/images/email/logo.66125181.png`.
 
-*This* is what the Symfony's Mime component helps us build. I mean, sheesh, this
-is ugly. But all *we* had to do was use the `text()` method to add text content
-and the `html()` method to add HTML content.
+If you downloaded the starting code for the tutorial, you don't need to worry about
+running Encore... only because we ran it *for* you and included the final, built
+`public/build` directory. I mean, you totally *can* run Encore if you want - but
+the built files are already there.
 
-## Using Twig
+The point is, whether you're using Encore or not, your end goal will be to generate
+an absolute URL to a file that lives somewhere in your `public/` directory.
+To do that in Twig, we use the `{{ asset() }}` function. Pass this
+`build/images/email/logo.png`. Because we're using Encore, we don't need to include
+this version hash that's part of the *real* file: the asset function will add that
+automatically. Go team!
 
-So... as simple as this Email was to build, we're not *really* going to put HTML
-right inside of our controller like this. Normally, when we need to write some HTMl
-in Symfony, we put that in a Twig template. When you need HTML for an email, we'll
-do the *exact* same thing. Mailer's integration with Twig is *awesome*./
+If you're not using Encore, it's the same process: just use `asset()` then include
+the actual path to the physical file, relative to the `public/` directory.
 
-First, if you downloaded the the course code, you should have a `tutorial/`
-directory with a `welcome.html.twig` template file inside. Open up the `templates/`
-directory. To organize our email-related templates, let's create a new sub-directory
-called `email/`. Then, paste the `welcome.html.twig` template inside.
+## Absolute Image Paths
 
-Say hello to our fancy new `templates/email/welcome.html.twig` file. This is a
-*full* HTML page with embedded styling via a `<style>` tag... and... nothing
-else interesting: it's 100% static. This `%name%` thing I added here isn't a variable:
-it's just a reminder of something that we need to make dynamic later.
+But... this leaves us with the *same* problem we had when we generated the URLs.
+By default, the `asset()` function generates *relative* URLs: they don't contain
+the domain name. To fix that, wrap this in another function: `absolute_url()`.
 
-But first, let's use this! As *soon* as your email needs to leverage a Twig template,
-you need to change from the `Email` class to `TemplatedEmail`.
+And... done! Ready to try this? Move over to the site, go back, change the email
+address again... we're going to do this a lot... type a new password, wave a magic
+wand, and hit enter. Ok... no errors - good sign!
 
-Hold Command or Ctrl and click that class to jump into it. Ah, this `TemplatedEmail`
-class *extends* the normal `Email`: we're really still using the same class as
-before, but now with a few extra methods related to templates. One of those. Now
-we have this, we can use one of those methods. Remove *both* the `html()` and
-`text()` calls - you'll see why in a minute - and replace them with
-`->htmlTemplate()` and then the normal path to the template: `email/welcome.html.twig`.
+Over in Mailtrap, it's already there! Oh, it looks *so* much better: we even have
+a working image and, if we hover of a link, the URL *does* contain our domain:
+`localhost:8000`. This is even more obvious in the HTML source: everything has
+a full URL.
 
-And... that's it! Before we try this, let's make a few things in the template
-dynamic, like the URLs and the image path. But, there's an important thing to
-remember with emails: paths *must* be absolute. That's next.
+## Automatic "Text" Part
+
+Woh, and... our email *also* has a text part! How did that happen? In the controller,
+we *only* called `htmlTemplate()` - we *removed* our call to the `text()` method.
+Well... thank you Mailer. If you set the HTML on an email but do *not* explicitly
+set the text, Symfony automatically adds it for you by calling `strip_slashes()`
+on your HTML. That's *awesome*.
+
+Well... awesome... but not *totally* perfect: it included all the styles on top!
+Don't worry: we'll fix that soon... kinda on accident. But the bottom looks pretty
+great... with *zero* effort.
+
+Next, the URLs and image paths in our app are dynamic... but nothing else is! Any
+email needs to have *real* data, like the name of the user.. or their favorite color.
+Let's make the email *truly* dynamic by passing in variables. We'll also find out
+what *other* information is available for free from inside the template.
