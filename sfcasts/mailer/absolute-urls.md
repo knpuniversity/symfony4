@@ -1,64 +1,80 @@
 # Absolute URLs to Routes & Assets
 
-Coming soon...
+The HTML content of our email will use *this* template... which is still *totally*
+static. For example, see this link going to `#homepage`? That's just a placeholder.
+Normally in a template, we would use the `{{ path() }}` function to generate a URL
+to the homepage route. The name of that route is... check out `ArticleController`...
+there it is: the homepage route name is `app_homepage`. So we would normally
+say `path('app_homepage')`.
 
-And it's just that
-simple. Before we try this, let's make a couple of things dynamic inside of
-`welcome.html.twig`. A first you can see that we have at links inside of here. What's right
-now is just `#homepage`
+## Using the url() Function
 
-That's not actually what we want. Now if we were, if this was a normal Symfony
-template, we would use the `{{ path('') }}` function and then in our app, if you look at uh,
-`ArticleController`, you can see that the homepage, the name of the rock for the
-homemade is `app_homepage`. So I'd normally put path `app_homepage`. The problem
-with you than any of the path functions that this will generate. Uh, this will
-generate links that are not absolute. It will just be / we need the domain name to be
-included in that. So change `{{ path() }}` to you, `{{ url() }}` that's the only thing that you need to
-change. There's a couple other spots where we link to stuff down here. There's a spot
-to create a new article or they replaced that with URL and the name of that. If you
-looked in the application, the name of that is `admin_article_new`.
+The *problem* is that this will generate a *relative* URL - it will literally
+generate `href="/"`. But for an email, all paths must be *absolute*. To force
+that, change `path()` to `url()`.
 
-And then there's one more down here for the home page. So we'll say
-`{{ url('app_homepage') }}`. Now the other thing that you've seen here that's important is we do
-have one link to an image file. So the same thing here. This actually needs to be um,
-uh, an absolute URL. So first of all, forgetting about emails. Um, this project uses
-Webpack Encore for its assets. So I have an `assets/` director here. I have an `images/`
-directory here, `email/logo.png`. um, but when you, uh, run Webpack, the end
-result is that this actually copies that into a `public/build/images/` directory
+That's it! Symfony will detect the domain name - `localhost:8000` while we're
+coding locally - and use that to prefix the URL.
 
-and then there's an email directory and it gets copied here. You don't need to worry
-about running Encore. I've, uh, if you download the source code, I've actually
-included the final, built a directory here. But the point is, regardless of whether
-using the Encore, not the path we actually want to link to, is this
-`build/images/email/logo.png` here. Now the way we do that in Symfony is we use the
-`{{ asset() }}` function. So in this case we just do the path to this is actually
-`build/images/email/logo.png`. uh, because I'm using Encore, I don't need to include this
-version hash inside of there. The asset function going to automatically add that for
-me. If that doesn't make it, if you're not using Encore and that doesn't make sense
-to you, that's fine. You just want to use the `{{ asset() }}` function like you normally would
-to a link to whatever the final path is. Now, but we have the same problem as we have
-with the uh, links. Though we don't want this to just renders
-`/build/images/email/logo.png`. we want this to include the domain name in front of it. So to
-get that, we're going to wrap this in `{{ absolute_url() }}` around the `asset()` function
-and that should do it. All right, ready to try this?
+Let's fix a few other URLs: for the link to create a new article, replace the
+hardcoded string with `url()` and the name of *that* route, which if you looked
+in the app, is `admin_article_new`. At the bottom, there's one more link to the
+homepage. Say  `{{ url('app_homepage') }}`.
 
-Let's move over. I'll go back, change the email address again, type a new password,
-hit enter, no errors which is always good and there it is. The emails already there
-waiting for us and we got it. Check this out. It looks much better. We actually have
-our image showing up here. If I hover over the URL, as you can see this is actually
-one of the `localhost:8000` they get writing down here is showing `localhost:8000`
-this is a little more obvious in the HTML source. Can you say everything has
-those full URLs that are pointing to the image and the URL. Also as a bonus, we still
-have a text part. All we sent inside of our controller was each time on template.
-We're no longer sending the text thing but one of the things you get out of the box
-is that if you don't send set a text part specifically, then Symfony is going to
-automatically strip the slashes out of your HTML and include that as the text type.
+## A Bit about Webpack Encore & Images
 
-Now you can see the top is not perfect because it has a bunch of styles in it and
-things that we don't want. Um, we're gonna fix that later, but the bottom is actually
-pretty awesome. It looks pretty good, especially for not putting any effort into
-that. All right, next let's talk about, um, of course the one problem. This is great.
-Of course, the problem is that this is all still hard-coded. We still, we need to
-actually make this name thing dynamic. So now let's learn a little bit more how we
-can pass variables into our template and also what other information is available
-inside of here for us to customize things.
+Links, done! But there's one other path we need to fix: the path to this image.
+But... forget about emails for a minute. This project uses Webpack Encore to compile
+its assets: I have an `assets/` directory at the root, an `images` directory inside
+that, and an `email/logo.png` file that I want to reference. You don't need to run
+Encore, but if you *did*, I've configured it to *copy* that file into a
+`public/build/images/` directory. There it is:
+`public/build/images/email/logo.66125181.png`.
+
+If you downloaded the starting code for the tutorial, you don't need to worry about
+running Encore... only because we ran it *for* you and included the final, built
+`public/build` directory. I mean, you *can* run Encore if you want - you just
+don't need to because the built files are already there.
+
+The point is, whether you're using Encore or not, the end goal is to generate
+an absolute URL to a file that lives somewhere in your `public/` directory.
+To do that in Twig, we use the `{{ asset() }}` function. Pass this
+`build/images/email/logo.png`. Because we're using Encore, we don't need to include
+the version hash that's part of the *real* file: the asset function will add that
+automatically. Go team!
+
+If you're not using Encore, it's the same process: just use `asset()` then include
+the actual path to the physical file, *relative* to the `public/` directory.
+
+## Absolute Image Paths
+
+But... this leaves us with the *same* problem we had for the generated URLs!
+By default, the `asset()` function generates *relative* URLs: they don't contain
+the domain name. To fix that, wrap this in another function: `absolute_url()`.
+
+And... done! Ready to try this? Move over to the site, go back, change the email
+address again... we're going to do this a lot... type a new password, wave a magic
+wand and... hit enter. Ok... no errors... a good sign!
+
+Over in Mailtrap, it's already there! Oh, it looks *so* much better: we even have
+a working image and, if we hover over a link, the URL *does* contain our domain:
+`localhost:8000`. This is even more obvious in the HTML source: everything has
+a full URL.
+
+## Automatic "Text" Part
+
+Woh, and... our email *also* has a text part! How did that happen? In the controller,
+we *only* called `htmlTemplate()` - we *removed* our call to the `text()` method.
+Well... thank you Mailer. If you set the HTML on an email but do *not* explicitly
+set the text, Symfony automatically adds it for you by calling `strip_slashes()`
+on your HTML. That's *awesome*.
+
+Well... awesome... but not *totally* perfect: it included all the styles on top!
+Don't worry: we'll fix that soon... kinda on accident. But the bottom looks pretty
+great... with *zero* effort.
+
+Next, the URLs and image paths in our email *are* now dynamic... but nothing else
+is! Any self-respecting email must have *real* data, like the name of the user...
+or their favorite color. Let's make the email *truly* dynamic by passing in variables.
+We'll also find out what *other* information is available for free from inside
+an email template.
