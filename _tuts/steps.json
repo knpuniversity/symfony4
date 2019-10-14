@@ -1001,6 +1001,11 @@
             "description": null
         },
         {
+            "id": "mailer-encore-one-more-build",
+            "name": "Mailer: Encore, one more build",
+            "description": null
+        },
+        {
             "id": "mailer-install",
             "name": "Mailer: Install",
             "description": null
@@ -1206,5 +1211,5 @@
             "description": null
         }
     ],
-    "sha": "30b1ceb89fed5b0546a69c3b511e011e5559bf66"
+    "sha": "95019a0b0a3ae2c99ef0087cd1ccadfdcf1d0e79"
 }
