@@ -1,35 +1,49 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 23b96bc7..7fc187d7 100644
+index 2375550d..529acac7 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -4,6 +4,7 @@ namespace App\Command;
+@@ -2,19 +2,15 @@
  
- use App\Entity\Article;
- use App\Entity\User;
+ namespace App\Command;
+ 
 +use App\Service\Mailer;
- use Doctrine\ORM\EntityManagerInterface;
- use Knp\Snappy\Pdf;
- use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-@@ -23,17 +24,13 @@ class AuthorWeeklyReportSendCommand extends Command
+ use App\Repository\ArticleRepository;
+ use App\Repository\UserRepository;
+-use Knp\Snappy\Pdf;
+-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+ use Symfony\Component\Console\Command\Command;
+ use Symfony\Component\Console\Input\InputArgument;
+ use Symfony\Component\Console\Input\InputInterface;
+ use Symfony\Component\Console\Input\InputOption;
+ use Symfony\Component\Console\Output\OutputInterface;
+ use Symfony\Component\Console\Style\SymfonyStyle;
+-use Symfony\Component\Mailer\MailerInterface;
+-use Symfony\Component\Mime\NamedAddress;
+-use Twig\Environment;
  
-     private $entityManager;
+ class AuthorWeeklyReportSendCommand extends Command
+ {
+@@ -23,18 +19,14 @@ class AuthorWeeklyReportSendCommand extends Command
+     private $userRepository;
+     private $articleRepository;
      private $mailer;
 -    private $pdf;
 -    private $twig;
  
--    public function __construct(EntityManagerInterface $entityManager, MailerInterface $mailer, Pdf $pdf, Environment $twig)
-+    public function __construct(EntityManagerInterface $entityManager, Mailer $mailer)
+-    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer, Pdf $pdf, Environment $twig)
++    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, Mailer $mailer)
      {
          parent::__construct(null);
  
-         $this->entityManager = $entityManager;
+         $this->userRepository = $userRepository;
+         $this->articleRepository = $articleRepository;
          $this->mailer = $mailer;
 -        $this->pdf = $pdf;
 -        $this->twig = $twig;
      }
  
      protected function configure()
-@@ -62,23 +59,7 @@ class AuthorWeeklyReportSendCommand extends Command
+@@ -61,23 +53,7 @@ class AuthorWeeklyReportSendCommand extends Command
                  continue;
              }
  

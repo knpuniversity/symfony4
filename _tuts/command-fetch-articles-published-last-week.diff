@@ -1,25 +1,40 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 0cbf5aea..22aca9d2 100644
+index 5f9b66c0..49edae93 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -2,6 +2,7 @@
  
  namespace App\Command;
  
-+use App\Entity\Article;
- use App\Entity\User;
- use Doctrine\ORM\EntityManagerInterface;
++use App\Repository\ArticleRepository;
+ use App\Repository\UserRepository;
  use Symfony\Component\Console\Command\Command;
-@@ -41,6 +42,14 @@ class AuthorWeeklyReportSendCommand extends Command
+ use Symfony\Component\Console\Input\InputArgument;
+@@ -15,12 +16,14 @@ class AuthorWeeklyReportSendCommand extends Command
+     protected static $defaultName = 'app:author-weekly-report:send';
+ 
+     private $userRepository;
++    private $articleRepository;
+ 
+-    public function __construct(UserRepository $userRepository)
++    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository)
+     {
+         parent::__construct(null);
+ 
+         $this->userRepository = $userRepository;
++        $this->articleRepository = $articleRepository;
+     }
+ 
+     protected function configure()
+@@ -39,6 +42,13 @@ class AuthorWeeklyReportSendCommand extends Command
          $io->progressStart(count($authors));
          foreach ($authors as $author) {
              $io->progressAdvance();
 +
-+            $articles = $this->entityManager
-+                ->getRepository(Article::class)
++            $articles = $this->articleRepository
 +                ->findAllPublishedLastWeekByAuthor($author);
-+            // Skip authors who does not have published articles for the last week
-+            if (!count($articles)) {
++            // Skip authors who do not have published articles for the last week
++            if (count($articles) === 0) {
 +                continue;
 +            }
          }

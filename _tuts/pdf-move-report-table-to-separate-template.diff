@@ -19,7 +19,7 @@ index 00000000..1e80d0bf
 +    {% endfor %}
 +</table>
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index 8a1523e8..7a96d0c4 100644
+index 03956daa..14094df4 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -12,20 +12,7 @@

@@ -1,27 +1,26 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 317ac926..0cbf5aea 100644
+index 317ac926..5f9b66c0 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -2,6 +2,8 @@
+@@ -2,6 +2,7 @@
  
  namespace App\Command;
  
-+use App\Entity\User;
-+use Doctrine\ORM\EntityManagerInterface;
++use App\Repository\UserRepository;
  use Symfony\Component\Console\Command\Command;
  use Symfony\Component\Console\Input\InputArgument;
  use Symfony\Component\Console\Input\InputInterface;
-@@ -13,28 +15,35 @@ class AuthorWeeklyReportSendCommand extends Command
+@@ -13,28 +14,34 @@ class AuthorWeeklyReportSendCommand extends Command
  {
      protected static $defaultName = 'app:author-weekly-report:send';
  
-+    private $entityManager;
++    private $userRepository;
 +
-+    public function __construct(EntityManagerInterface $entityManager)
++    public function __construct(UserRepository $userRepository)
 +    {
 +        parent::__construct(null);
 +
-+        $this->entityManager = $entityManager;
++        $this->userRepository = $userRepository;
 +    }
 +
      protected function configure()
@@ -45,8 +44,7 @@ index 317ac926..0cbf5aea 100644
  
 -        if ($input->getOption('option1')) {
 -            // ...
-+        $authors = $this->entityManager
-+            ->getRepository(User::class)
++        $authors = $this->userRepository
 +            ->findAllSubscribedToNewsletter();
 +        $io->progressStart(count($authors));
 +        foreach ($authors as $author) {

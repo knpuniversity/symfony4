@@ -1,8 +1,8 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 97af5e1d..23b96bc7 100644
+index 0752666e..2375550d 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -76,7 +76,8 @@ class AuthorWeeklyReportSendCommand extends Command
+@@ -75,7 +75,8 @@ class AuthorWeeklyReportSendCommand extends Command
                  ->context([
                      'author' => $author,
                      'articles' => $articles,

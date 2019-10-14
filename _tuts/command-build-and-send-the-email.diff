@@ -1,11 +1,11 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 22aca9d2..11823ddb 100644
+index 49edae93..e270b883 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -5,24 +5,29 @@ namespace App\Command;
- use App\Entity\Article;
- use App\Entity\User;
- use Doctrine\ORM\EntityManagerInterface;
+@@ -4,12 +4,15 @@ namespace App\Command;
+ 
+ use App\Repository\ArticleRepository;
+ use App\Repository\UserRepository;
 +use Symfony\Bridge\Twig\Mime\TemplatedEmail;
  use Symfony\Component\Console\Command\Command;
  use Symfony\Component\Console\Input\InputArgument;
@@ -18,23 +18,25 @@ index 22aca9d2..11823ddb 100644
  
  class AuthorWeeklyReportSendCommand extends Command
  {
-     protected static $defaultName = 'app:author-weekly-report:send';
+@@ -17,13 +20,15 @@ class AuthorWeeklyReportSendCommand extends Command
  
-     private $entityManager;
+     private $userRepository;
+     private $articleRepository;
 +    private $mailer;
  
--    public function __construct(EntityManagerInterface $entityManager)
-+    public function __construct(EntityManagerInterface $entityManager, MailerInterface $mailer)
+-    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository)
++    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer)
      {
          parent::__construct(null);
  
-         $this->entityManager = $entityManager;
+         $this->userRepository = $userRepository;
+         $this->articleRepository = $articleRepository;
 +        $this->mailer = $mailer;
      }
  
      protected function configure()
-@@ -50,6 +55,17 @@ class AuthorWeeklyReportSendCommand extends Command
-             if (!count($articles)) {
+@@ -49,6 +54,17 @@ class AuthorWeeklyReportSendCommand extends Command
+             if (count($articles) === 0) {
                  continue;
              }
 +

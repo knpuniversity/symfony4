@@ -200,18 +200,18 @@ index 00000000..0b9e24b0
 +        binary:     '%env(WKHTMLTOIMAGE_PATH)%'
 +        options:    []
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 11823ddb..a2699069 100644
+index e270b883..aca29111 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -5,6 +5,7 @@ namespace App\Command;
- use App\Entity\Article;
- use App\Entity\User;
- use Doctrine\ORM\EntityManagerInterface;
+@@ -4,6 +4,7 @@ namespace App\Command;
+ 
+ use App\Repository\ArticleRepository;
+ use App\Repository\UserRepository;
 +use Knp\Snappy\Pdf;
  use Symfony\Bridge\Twig\Mime\TemplatedEmail;
  use Symfony\Component\Console\Command\Command;
  use Symfony\Component\Console\Input\InputArgument;
-@@ -14,6 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
+@@ -13,6 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  use Symfony\Component\Console\Style\SymfonyStyle;
  use Symfony\Component\Mailer\MailerInterface;
  use Symfony\Component\Mime\NamedAddress;
@@ -219,19 +219,20 @@ index 11823ddb..a2699069 100644
  
  class AuthorWeeklyReportSendCommand extends Command
  {
-@@ -21,13 +23,17 @@ class AuthorWeeklyReportSendCommand extends Command
- 
-     private $entityManager;
+@@ -21,14 +23,18 @@ class AuthorWeeklyReportSendCommand extends Command
+     private $userRepository;
+     private $articleRepository;
      private $mailer;
 +    private $pdf;
 +    private $twig;
  
--    public function __construct(EntityManagerInterface $entityManager, MailerInterface $mailer)
-+    public function __construct(EntityManagerInterface $entityManager, MailerInterface $mailer, Pdf $pdf, Environment $twig)
+-    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer)
++    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer, Pdf $pdf, Environment $twig)
      {
          parent::__construct(null);
  
-         $this->entityManager = $entityManager;
+         $this->userRepository = $userRepository;
+         $this->articleRepository = $articleRepository;
          $this->mailer = $mailer;
 +        $this->pdf = $pdf;
 +        $this->twig = $twig;
