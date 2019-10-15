@@ -1,9 +1,9 @@
 diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
-index 8a658531..c25a84e7 100644
+index 9a4eb4ec..b056ed99 100644
 --- a/src/Service/Mailer.php
 +++ b/src/Service/Mailer.php
 @@ -22,7 +22,7 @@ class Mailer
-         $this->twig = $twig;
+         $this->pdf = $pdf;
      }
  
 -    public function sendWelcomeMessage(User $user)

@@ -199,46 +199,6 @@ index 00000000..0b9e24b0
 +        enabled:    true
 +        binary:     '%env(WKHTMLTOIMAGE_PATH)%'
 +        options:    []
-diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index e270b883..aca29111 100644
---- a/src/Command/AuthorWeeklyReportSendCommand.php
-+++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -4,6 +4,7 @@ namespace App\Command;
- 
- use App\Repository\ArticleRepository;
- use App\Repository\UserRepository;
-+use Knp\Snappy\Pdf;
- use Symfony\Bridge\Twig\Mime\TemplatedEmail;
- use Symfony\Component\Console\Command\Command;
- use Symfony\Component\Console\Input\InputArgument;
-@@ -13,6 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
- use Symfony\Component\Console\Style\SymfonyStyle;
- use Symfony\Component\Mailer\MailerInterface;
- use Symfony\Component\Mime\NamedAddress;
-+use Twig\Environment;
- 
- class AuthorWeeklyReportSendCommand extends Command
- {
-@@ -21,14 +23,18 @@ class AuthorWeeklyReportSendCommand extends Command
-     private $userRepository;
-     private $articleRepository;
-     private $mailer;
-+    private $pdf;
-+    private $twig;
- 
--    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer)
-+    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer, Pdf $pdf, Environment $twig)
-     {
-         parent::__construct(null);
- 
-         $this->userRepository = $userRepository;
-         $this->articleRepository = $articleRepository;
-         $this->mailer = $mailer;
-+        $this->pdf = $pdf;
-+        $this->twig = $twig;
-     }
- 
-     protected function configure()
 diff --git a/symfony.lock b/symfony.lock
 index 92866770..87107b74 100644
 --- a/symfony.lock
