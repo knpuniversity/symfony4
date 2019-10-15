@@ -43,7 +43,7 @@ part of a cool new system called Flex. More about that soon!
 When this finishes, you can now run:
 
 ```terminal
-./bin/console server:run
+php ./bin/console server:run
 ```
 
 This does *basically* the same thing as before... but the command is shorter. And
@@ -57,7 +57,7 @@ So, what amazing things can this `bin/console` robot do? Find your open terminal
 tab and just run:
 
 ```terminal
-./bin/console
+php ./bin/console
 ```
 
 Yes! This is a list of *all* of the `bin/console` commands. Some of these are debugging
