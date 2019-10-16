@@ -1,9 +1,9 @@
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index 4dbccf9c..ab4a8131 100644
+index 67e314da..ab4a8131 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -1,40 +1,38 @@
--{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
+-{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
 -    <container>
 -        {# Header #}
 -        <hr>
@@ -83,11 +83,11 @@ index 4dbccf9c..ab4a8131 100644
 +{% endblock %}
 diff --git a/templates/email/emailBase.html.twig b/templates/email/emailBase.html.twig
 new file mode 100644
-index 00000000..a3d42c80
+index 00000000..2edeed11
 --- /dev/null
 +++ b/templates/email/emailBase.html.twig
 @@ -0,0 +1,31 @@
-+{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
++{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
 +    <container>
 +        <row class="header">
 +            <columns>
@@ -119,11 +119,11 @@ index 00000000..a3d42c80
 +    </container>
 +{% endapply %}
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 40506599..06ca765b 100644
+index 7e39a362..06ca765b 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,77 +1,54 @@
--{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
+-{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
 -    <container>
 -        <row class="header">
 -            <columns>

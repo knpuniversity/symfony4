@@ -1,10 +1,10 @@
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 63796a82..5d4773d1 100644
+index e3d9feab..c22101f0 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,51 +1,77 @@
 -<!doctype html>
--{% filter inline_css(source('@styles/email.css')) %}
+-{% apply inline_css(source('@styles/email.css')) %}
 -<html lang="en">
 -<head>
 -    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -53,8 +53,7 @@ index 63796a82..5d4773d1 100644
 -</div>
 -</body>
 -</html>
--{% endfilter %}
-+{% apply inky %}
++{% apply inky_to_html %}
 +    <container>
 +        <row class="header">
 +            <columns>
@@ -130,4 +129,4 @@ index 63796a82..5d4773d1 100644
 +            </columns>
 +        </row>
 +    </container>
-+{% endapply %}
+ {% endapply %}

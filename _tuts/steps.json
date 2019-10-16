@@ -1006,6 +1006,11 @@
             "description": null
         },
         {
+            "id": "mailer-delete-me",
+            "name": "Mailer: delete me",
+            "description": null
+        },
+        {
             "id": "mailer-install",
             "name": "Mailer: Install",
             "description": null
@@ -1066,8 +1071,18 @@
             "description": null
         },
         {
+            "id": "twig-install-twig-extra-bundle",
+            "name": "Twig: install twig-extra-bundle",
+            "description": null
+        },
+        {
             "id": "twig-inline-css-from-style-tag",
             "name": "Twig: Inline CSS from style tag",
+            "description": null
+        },
+        {
+            "id": "twig-install-twig-cssinliner-extra",
+            "name": "Twig: install twig\/cssinliner-extra",
             "description": null
         },
         {
@@ -1076,13 +1091,18 @@
             "description": null
         },
         {
-            "id": "inky-install",
-            "name": "Inky: Install",
+            "id": "inky-delete-me",
+            "name": "Inky: delete me",
             "description": null
         },
         {
             "id": "inky-use-in-template",
             "name": "Inky: Use in template",
+            "description": null
+        },
+        {
+            "id": "inky-install-extension",
+            "name": "Inky: install extension",
             "description": null
         },
         {
@@ -1231,5 +1251,5 @@
             "description": null
         }
     ],
-    "sha": "1891d456b8bf7073305eab5aacaf1fb38e790710"
+    "sha": "9d0d43e5b814f84e658f26b8382d5c24e0752012"
 }

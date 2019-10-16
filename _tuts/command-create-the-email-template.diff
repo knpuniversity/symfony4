@@ -1,10 +1,10 @@
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
 new file mode 100644
-index 00000000..4dbccf9c
+index 00000000..67e314da
 --- /dev/null
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -0,0 +1,40 @@
-+{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
++{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
 +    <container>
 +        {# Header #}
 +        <hr>

@@ -12,7 +12,7 @@ index 414d7ab4..ee6774d3 100644
 +# MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
 +###< symfony/sendgrid-mailer ###
 diff --git a/composer.json b/composer.json
-index a560e29f..bcb76dff 100644
+index 2463e7d3..e41fcb32 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -26,6 +26,7 @@
@@ -24,15 +24,15 @@ index a560e29f..bcb76dff 100644
          "symfony/twig-bundle": "^4.0",
          "symfony/validator": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 579fa149..0bc91dd5 100644
+index 2aaa3bd4..6fbea482 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "5cbe90ec970d6e1cfbc076a338467bb9",
-+    "content-hash": "aea61caac51017f0ceafec5281389ead",
+-    "content-hash": "9709182d7eb3dc58ec1a89766540348a",
++    "content-hash": "b80311874e9c6bdaac32748a49f63a13",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -97,7 +97,7 @@ index 579fa149..0bc91dd5 100644
              "name": "symfony/serializer",
              "version": "v4.3.4",
 diff --git a/symfony.lock b/symfony.lock
-index 87107b74..93127361 100644
+index 8df18298..ae314f95 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -485,6 +485,15 @@

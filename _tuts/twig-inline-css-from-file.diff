@@ -63,13 +63,13 @@ index 053629ec..6cb3f350 100644
      strict_variables: '%kernel.debug%'
      form_themes:
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 104a245b..63796a82 100644
+index 60a6ef96..e3d9feab 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,58 +1,10 @@
  <!doctype html>
--{% filter inline_css %}
-+{% filter inline_css(source('@styles/email.css')) %}
+-{% apply inline_css %}
++{% apply inline_css(source('@styles/email.css')) %}
  <html lang="en">
  <head>
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

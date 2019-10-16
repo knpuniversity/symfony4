@@ -1,27 +1,27 @@
 diff --git a/composer.json b/composer.json
-index 2001c42c..ea5bd1f0 100644
+index 49964e8c..74fddb01 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -32,7 +32,8 @@
-         "symfony/webpack-encore-bundle": "^1.4",
+@@ -33,7 +33,8 @@
          "symfony/yaml": "^4.0",
-         "twig/cssinliner-extension": "^2.0",
--        "twig/extensions": "^1.5"
-+        "twig/extensions": "^1.5",
-+        "twig/inky-extension": "^2.0"
+         "twig/cssinliner-extra": "^2.12",
+         "twig/extensions": "^1.5",
+-        "twig/extra-bundle": "^2.12"
++        "twig/extra-bundle": "^2.12",
++        "twig/inky-extra": "^2.12"
      },
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index b723e05e..8abe62f0 100644
+index 3e28b74f..50cd590f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "13e0a4c6bb3c440d091c5771d689a9a1",
-+    "content-hash": "03ffa87543186aea3da17f4f5b7d9ca7",
+-    "content-hash": "beb99de072f86b2819bfb8175a3f0f8b",
++    "content-hash": "71d19ef67b41798f671bf26a57c86415",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -79,41 +79,41 @@ index b723e05e..8abe62f0 100644
          {
              "name": "michelf/php-markdown",
              "version": "1.8.0",
-@@ -7582,6 +7629,61 @@
+@@ -7641,6 +7688,61 @@
              ],
-             "time": "2018-12-05T18:34:18+00:00"
+             "time": "2019-09-07T07:26:32+00:00"
          },
 +        {
-+            "name": "twig/inky-extension",
-+            "version": "v2.0.29",
++            "name": "twig/inky-extra",
++            "version": "v2.12.0",
 +            "source": {
 +                "type": "git",
-+                "url": "https://github.com/twigphp/inky-extension.git",
-+                "reference": "dbb0833049727ca8e5c36e976957652967c1368b"
++                "url": "https://github.com/twigphp/inky-extra.git",
++                "reference": "e1753cf5aa499641eac53cf3803f4b40cfec288d"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/twigphp/inky-extension/zipball/dbb0833049727ca8e5c36e976957652967c1368b",
-+                "reference": "dbb0833049727ca8e5c36e976957652967c1368b",
++                "url": "https://api.github.com/repos/twigphp/inky-extra/zipball/e1753cf5aa499641eac53cf3803f4b40cfec288d",
++                "reference": "e1753cf5aa499641eac53cf3803f4b40cfec288d",
 +                "shasum": ""
 +            },
 +            "require": {
 +                "lorenzo/pinky": "^1.0.5",
-+                "php": "^7.0",
-+                "twig/twig": "^1.34 || ^2.4"
++                "php": "^7.1.3",
++                "twig/twig": "^2.4|^3.0"
 +            },
 +            "require-dev": {
-+                "symfony/phpunit-bridge": "^4.1.8"
++                "symfony/phpunit-bridge": "^4.4@dev"
 +            },
 +            "type": "library",
 +            "extra": {
 +                "branch-alias": {
-+                    "dev-master": "1.0-dev"
++                    "dev-master": "2.12-dev"
 +                }
 +            },
 +            "autoload": {
 +                "psr-4": {
-+                    "Twig\\Inky\\": "src/"
++                    "Twig\\Extra\\Inky\\": "src/"
 +                }
 +            },
 +            "notification-url": "https://packagist.org/downloads/",
@@ -136,23 +136,13 @@ index b723e05e..8abe62f0 100644
 +                "inky",
 +                "twig"
 +            ],
-+            "time": "2019-09-22T19:16:32+00:00"
++            "time": "2019-09-17T06:08:14+00:00"
 +        },
          {
              "name": "twig/twig",
              "version": "v2.11.3",
-diff --git a/config/bundles.php b/config/bundles.php
-index 790297b7..4c34153a 100644
---- a/config/bundles.php
-+++ b/config/bundles.php
-@@ -24,4 +24,5 @@ return [
-     Oneup\FlysystemBundle\OneupFlysystemBundle::class => ['all' => true],
-     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-     Twig\CssInliner\Bundle\TwigCssInlinerBundle::class => ['all' => true],
-+    Twig\Inky\Bundle\TwigInkyBundle::class => ['all' => true],
- ];
 diff --git a/symfony.lock b/symfony.lock
-index 90b44c6e..92866770 100644
+index 2f57f8aa..cbbaa52b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -152,6 +152,9 @@
@@ -165,18 +155,12 @@ index 90b44c6e..92866770 100644
      "michelf/php-markdown": {
          "version": "1.8.0"
      },
-@@ -580,6 +583,15 @@
-             "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
-         }
+@@ -577,6 +580,9 @@
+     "twig/extra-bundle": {
+         "version": "v2.12.0"
      },
-+    "twig/inky-extension": {
-+        "version": "1.0",
-+        "recipe": {
-+            "repo": "github.com/symfony/recipes",
-+            "branch": "master",
-+            "version": "1.0",
-+            "ref": "98aa25792ca5b18aebbac6644a150ac90867408d"
-+        }
++    "twig/inky-extra": {
++        "version": "v2.12.0"
 +    },
      "twig/twig": {
          "version": "v2.6.2"

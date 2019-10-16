@@ -14,7 +14,7 @@ index ee6774d3..a4b5ee31 100644
 +# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
 +###< symfony/messenger ###
 diff --git a/composer.json b/composer.json
-index bcb76dff..79374a57 100644
+index e41fcb32..fb31636e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -24,6 +24,7 @@
@@ -26,15 +26,15 @@ index bcb76dff..79374a57 100644
          "symfony/security-bundle": "^4.0",
          "symfony/sendgrid-mailer": "4.3.*",
 diff --git a/composer.lock b/composer.lock
-index 0bc91dd5..444969d1 100644
+index 6fbea482..1f6c611e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "aea61caac51017f0ceafec5281389ead",
-+    "content-hash": "9c2f08d137db1901f92e943bd6d13d0d",
+-    "content-hash": "b80311874e9c6bdaac32748a49f63a13",
++    "content-hash": "d87078c68cf805ed9c2fc007f25ba533",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -140,7 +140,7 @@ index 00000000..6b7319ce
 +            # Route your messages to the transports
 +            # 'App\Message\YourMessage': async
 diff --git a/symfony.lock b/symfony.lock
-index 93127361..67cd336d 100644
+index ae314f95..81c18160 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -395,6 +395,18 @@

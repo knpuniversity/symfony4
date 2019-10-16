@@ -1406,12 +1406,12 @@ index 00000000..acd1b982
 +    table.button.small-expanded center {
 +      min-width: 0; } }
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 5d4773d1..40506599 100644
+index c22101f0..7e39a362 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,4 +1,4 @@
--{% apply inky %}
-+{% apply inky|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
+-{% apply inky_to_html %}
++{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
      <container>
          <row class="header">
              <columns>
