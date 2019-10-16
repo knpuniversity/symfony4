@@ -1,118 +1,109 @@
-# Embedded Image
+# Embedded Images
 
-Coming soon...
+Look book at the HTML source. When we added the logo earlier, we added it as
+a normal `img` tag. The only thing special was that we needed to use the
+`absolute_url` function in Twig to make sure the path contained our domain.
 
-So when we add, send an HTML email, as we've seen, a mailer automatically generates a
-text version for us and other than this extra style stuff up here, which is we don't
-really want it, does a pretty good job. And actually this style thing will go away in
-a few minutes when we refactor our styles to another, um, to another file. But
-there's actually a really simple way to make the text content even better without any
-more work. Find a terminal and running 
+## Linking versus Embedding Images
 
-```terminal
-composer require league/html-to-markdown
-```
+It turns out there are *two* ways to put images into your emails. The first is
+this one: a normal, boring 	`img` tag that links to your site. The *other* option
+is to *embed* the image in the email itself.
 
-This is a library that's good at changing HTML to markdown what it's actually gonna
-in. As soon as you install it mailer, we use it internally to transform your HTML
-into markdown emails, which actually really look really good in text. So check this
-out. Let's go back to our site. Went back to page, bumped the email again, submit
+There are pros and cons to both. For example, if you link directly to an image
+on your site... and you delete that image... if the user opens up the email,
+that image will be broken. But... the fact that you're linking to an image on
+your site means that you could *change* the image... and it would change on all
+the emails.
 
-and there's our new email. The HTML looks the same, but check out the text. Now.
-First of all, this was smart enough to get rid of the style tax. So that style of
-things are gone, but it did some cool stuff and actually embedded the logo, which if
-somewhere we're rendering this in markdown down, that would actually be helpful. The
-most important thing here is actually just gives it some nice structure here. It
-knows that bolds should we have star stars like markdown just reads like really nice
-text. So this is a nice way to get better text emails for free. Um, and then you
-don't really need to worry about them too much.
+We'll talk a more about *when* you should link to an image versus embed an image
+in a few minutes. But first, let's see *how* we could embed this logo.
 
-now look back on the HTML thing. The image up here is actually a link directing to
-our site, just normal image tag and it points directly to our, our real file on our
-site. It turns out there are two ways to put images into your emails. The first one
-is this one. It's a normal boring image tag that links to our website. The other one
-is to embed the image in the email itself and there are pros and cons to both of
-them. Um, for example, when you link directly to the site, what happens if we delete
-this file later? Well then it's not going to show up in the emails correctly, which
-maybe is a problem.
+Remember, the *source* logo image is located at `assets/images/email/logo.png`.
+This is the *physical* file we want to embed.
 
-Of course, the fact that it's linking to our site means that we could just change. If
-we needed to make some changes in the logo on her site, we could and it would
-automatically show up on the email because it's centralized.
+## Adding a Twig Path to Images
 
-We're going to talk a little bit more about when you should link versus when you
-should embed. But first I want to show you how we can embed this logo instead of
-linking it. A, remember the source version of this logo was actually an 
-`images/email/logo.png`. so this is the physical file that we want to embed into our email.
+How do we embed it? We're going to do it *entirely* from inside of Twig with
+a special function that *points* to that image.
 
-Now to start this, this actually going to do this
-from instead of twig, where she in our image tag when I point it at this 
-`images/email/logo.png` file. Now to do that,
+But to do this, we need a way to *refer* to that image from inside of Twig.
+We're going to do that by adding a new twig *path*. Open up
+`config/packages/twig.yaml`... and I'll close a few files.
 
-we're going to set up something called a twig path. We're basically gonna teach twig,
-um, to know that we're gonna teach twig. That's what I do for the twig path. Let me
-show you open up `config/packages/twig.yaml`. Let me close mailer that yam on that
-end instead of here. One of the keys you can put in here that's not very well known
-to super handy is called paths. And here when I'm going to put is I'm going to put
-`assets/images`. So I'm literally pointing to `assets/images` and I'm gonna set that to
-the word `images`, which could be anything. Now the point of forgetting about mailer,
-the point of the paths here is that if you create a, it's for you to actually be able
-to define that different directories where your templates would live.
+One of the keys you can put in here is called *paths*... and it's *super* cool.
+Add one new "path" below this: `assets/images` -  I'm literally referring to the
+`assets/images` directory - set to the word... how about... `images` - that part
+could be anything.
 
-So for example, if for some reason we actually stored some templates in the 
-`assets/images` directory, we would actually be able to refer reference those now as 
-`@images/foo.html.twig`. So I mean there's a food at a small twig tweak
-template. The reason of course we don't have `templates/` in this director, we have
-images, but this little trick here is going to allow us to reference images inside
-this image directory from inside of twig. So the fact that we called this images,
-that's going to be the key thing that we use. So now I'm going to go over back to
-walk them down each month, twig and remove all of this asset stuff.
+Ok... so *what* did this just do? Forget about emails *entirely* for a minute.
+Out-of-the-box, when you render a template with Twig, it knows to look for that
+file in the `templates/` directory... and *only* in the `templates/` directory.
+If you have template files that live somewhere else, *that* is where "paths"
+is handy. For example, pretend that for *some* crazy reason, we decided to put
+a template inside the `assets/images/` directory called `dark-energy.html.twig`.
+Thanks to the item we added under `paths`, we could *render* that template by
+using a special path `@images/dark-energy.html.twig`.
 
-And when gonna replace this with `{{ email.image() }}`. And actually if I remember, I
-remember the emails actually this wrapped template email. I'm actually calling this
-image function here, which is a way for us to embed an image inside of this file. And
-here we're going to pass it `@images/email/logo.png`. so the `@images` part
-here is because we defined in images path inside of R a configuration file. It tell
-us wait to look and `assets/images` for that assets, images. And then we put the path
-after that which is `email/logo.png`, `email/logo.png`. so that
-tells it to embed the image right there. All right, let's see what difference that
-made. So I'll go back to our site, do our normal thing here.
+This feature is referred to as "namespaced Twig paths". You configure *any*
+directory, set it to a string "namespace" - like `images` - then you refer to that
+directory from twig by using `@` then the namespace.
 
-I've re registering and back there is a new email and perfect in here at least it
-looks exactly the same. But if you look at the HTML source, it's really interesting.
-It turns out the image source is not at our site. Now it's not this CID colon thing
-and then this long string. So what happened internally is if you go to raw here, you
-can see the um, uh, here's the text version of our email. Below this we're going to
-see the HTML version of our email. So `text/html`, and eventually down here you're
-actually going to see our logo. So you can see here it's given this content ID of CF,
-all this long stuff at Symfony, and then it has the binary content there. So when we
-use, instead of our, uh, message itself, it references this content ID and then the
-mailer, your mail client knows to actually go and load that up.
+## Embedding an Image
 
-So it's actually kind of like an attachment, but it still shows up in line. Now,
-which one should we use? Linking or embedding? Well, this is a really tough thing
-because every, because of the problem of every male client doing different things,
-some male clients will, will render an embedded image, but we'll require the user to
-click some link that says show images from sender before they show one that is a
-linked version. Other male clients won't show the embedded version at all. They'll
-show this actually as an attachment. So the general rule of thumb is that if you're
-linking to a generic image, um, that's part of your emails layout. You should use the
-link method, the one that actually links directly to your website. If what you are,
-if the image you're showing is something that's specific to that email, like maybe
-it's a picture, uh, it's uh, picture that one of a that was uploaded to your site and
-you want to send an email showing somebody that it was there, then if it's specific
-to that email, then it usually makes more sense to embed it because then it's part of
-the email and you don't need to keep it hosted somewhere.
+In our case, we're not planning on putting a *template* inside the `assets/images/`
+directory and rendering it. Instead, we're going to leverage the Twig path to
+refer to the *logo* image.
 
-So, um, use both of those. Well, those are very easy to do in Symfony. And, uh,
-that's the rule of thumb. Next, if you look at this check HTML tab, you'll see this
-actually helps you validate what things you're using in your HTML that might not be
-compatible with different male clients. Because the most hardest thing was sending
-emails really is that different mail clients. Two different things. And one of the
-things you'll notice is that these style attribute doesn't work in some really
-important male clients. It turns out that if you want CSS to work inside of your
-emails, you can't use an inline style tab like this, and you can't use a link tag to
-an external CSS file. The only way to get it to dependently work is to add style
-attributes to every single element that needs a style. Of course. That's horrible. So
-next we're going to talk about something called CSS Inlining or mailer is going to
-handle this for you.
+Back in the template, remove *all* the asset stuff that was pointing to the logo.
+Replace it with `{{ email.image() }}`. Remember, the `email` variable is an instance
+of this `WrappedTemplatedEmail` class. We're literally calling this `image()`.
+We pass it the physical file to an image, and it takes care of *embedding* it.
+
+What's the *path* to the logo file? It's `@images/email/logo.png`.
+
+Yep, thanks to our config `@images` points to `assets/images`, and then we put the
+path after that - `email/logo.png`.
+
+## The "cid" and how Images are Embedded
+
+So... what difference does this make in the final email? Let's find out! Go back
+to the site and do our normal thing to re-submit the registration form. Over in
+Mailtrap... ok cool - the email *looks* exactly the same. The difference is hiding
+in the HTML source. Woh! Instead of the image `src` being a URL that points to
+our site... it's some weird `cid:` then a long string.
+
+This is *great* email nerdery. Check out the "Raw" tab. We already know that the
+content of the email has multiple parts: here's the text version, below is the
+`text/html` version and... below *that*, there is now a *third* part of the
+email content: the logo image! It has a `Content-ID` header - this long `cfdf933`
+string - and then the base64-encoded image contents below.
+
+The `Content-Id` is the *key* - inside the message itself, *that* is what the
+`cid` is referring to. This tells the mail client to go find that "part" of the
+original message and display it here.
+
+So it's kind of like an email attachment, except that it is displayed *within*
+the email. We'll talk about *true* email attachments later.
+
+## Linking Versus Embedding
+
+So, which method should we use to add images to an email - linking or embedding?
+Oof, that's a tough question, because there is a *lot* of variability of how
+different email clients display images that use these two methods. For example,
+some email clients will make the user click some "Show images from sender" before
+displaying them. And others won't display them in the email at *all* - they will
+instead put them at the bottom more like an attachment.
+
+The general rule of thumb is this: if you need to include the same image for
+everyone - like a logo or anything that's part of the email's layout - *link*
+to the image. But if what you're displaying is *specific* to that email - like
+the email is showing you an image that was just shared with your account on the
+site - then embed the image. When you embed, the image doesn't need to be hosted
+publicly anywhere because it's literally contained *inside* the email..
+
+Next, I already mentioned that the `style` tag doesn't work in gmail... which means
+that our email would be *completely* unstyled for anyone using gmail. That's...
+a huge problem. To fix this, *every* style you need *must* be attached directly
+to the element that needs it via a `style` attribute... which is *insane*! But
+no worries - Mailer can help, with something called CSS inlining.

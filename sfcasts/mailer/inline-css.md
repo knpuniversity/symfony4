@@ -16,7 +16,7 @@ mailer that's gonna do a forest. So first it's actually an external tool. We're 
 install, I'm going to say 
 
 ```terminal
-composer require twig/cssinliner=extension
+composer require twig/cssinliner-extension
 ```
 
 This is, this will give us a new twig tag, which takes advantage of a third party
