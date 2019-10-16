@@ -7,3 +7,6 @@ chapters:
     - dynamic-mails
     - embedded-image
     - inline-css
+    - inky #raw
+    - console-command #raw
+    - console-email #raw
