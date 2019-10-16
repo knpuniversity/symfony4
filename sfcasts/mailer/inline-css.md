@@ -1,91 +1,104 @@
-# Inline Css
+# Automatic CSS Inlining
 
-Coming soon...
+Our email looks good in Mailtrap, but will it look good in Gmail or Outlook? That's
+one of the things that Mailtrap *can't* answer: it lets us see a *ton* of great
+info about our email... but it is *not* showing an accurate representation of
+*how* it would be displayed in the real world. If you need to be *super* strict
+about making sure your email looks everywhere, check out services like Litmus.
 
-our email. It looks good in MailTrap, but will it look good and Jean, Gmail or
-outlook? Well, generally speaking, when mail plans render emails, they do
-a bad job and there are a number of very unreasonable rules that you need to follow
-if you want your HTML emails to look decent. The first one is that you probably need
-to use a table layout instead of actual like float based layout. We're going to talk
-about that later. Right now we're using more of a kind of traditional CSS layout. And
-the second one is that you can't use external CSS files or even a `<style>` tag. If you
-want styles on your elements, you literally need to add `style=""` two every single HTML
-element, which is insane. That is no way to live. So we are not going to do that, but
-we do need that to often only happen in our email. We're going to use a tool from
-mailer that's gonna do a forest. So first it's actually an external tool. We're gonna
-install, I'm going to say 
+But generally speaking, there are *two* big rules you should follow if you want
+your emails to look good everywhere. First, use a *table-based* layout instead
+of floating or Flex-box. We'll talk about how to do this... without hating it...
+a bit later. The *second* rule is that you *can't* use CSS files or *even* add
+a `<style>` tag. These will *not* work in gmail. If you want to style your elements...
+which you totally *do*... then you literally need to add `style=""` to *every* HTML
+element.
+
+That's... insane! That is *no* way to live. So... we are *not* going to do that.
+Well... what I mean is, we are not going to do that *manually*.
+
+## The inline_css Filter
+
+Start by installing a new library:
 
 ```terminal
 composer require twig/cssinliner-extension
 ```
 
-This is, this will give us a new twig tag, which takes advantage of a third party
-library that's really, really good at inlining styles to use this. It's
-awesome. We're just going to go all the way to the top of our template and we're
-going to add a new tag called `{% filter inline_css %}` adds
-that new filter. This is a way to, um, you want me to see filters as pipe inline CSS.
-You can also do it in this long format because we want to filter this entire file. So
-all the way at the bottom, I'm going to say `{% endfilter %}`. What that's gonna do is it's
-actually going to read all of our styles that we have inside of here and then
-automatically convert those into style tags on the individual HTML elements. Yeah,
-it's crazy. So let's see this. So let's go back, bump the email again, type the
-password, hit enter and go check out that email. So it looks the same inside of here,
-but if you look at the HTML source, the style stuff is still there.
+This Twig extension will give us a new Twig *filter* that will automatically add
+all the style attributes *for* us. This idea is called CSS "inlining". It's also
+*awesome*.
 
-But now it's okay if it's ignored because look at, it's all been, the styles have
-been applied to each element as inline `style` attributes. This is one of my absolute
-favorite features of mailer. Um, at Symfony cast, we've, we've used that library and
-done this manually before, but the fact that it just works out of the box is
-beautiful. Now another thing is that you're, as cool as it says, you're probably not
-going to want to have your styles in line like this. Especially if you start having
-multiple emails. You're probably going to want each email to share a common CSS file.
-Um, so instead I'm going to copy all of this CSS here, delete it, remove the `<style>`
-tag, and instead we're going to the CSS `assets/css` directory and let's create a new
-`email.css` file.
+*All* the way at the top of our template, add `{% filter inline_css %}`. In Twig,
+you *normally* use a filter with the `|` symbol - like `foo|inline_css`. But if
+you want to run a *lot* of stuff through a filter, you can do it with this handy
+`filter` *tag*. At the bottom of the template, say `{% endfilter %}`.
 
-Okay.
+And... that's it! This passes our *entire* template through this filter... which
+is *super* smart. It reads the CSS from inside the `style` attribute and uses
+that to add `style` attributes to every HTML element that it finds. Yea... it's
+crazy!
 
-And I will paste
+Let's see this in action. Hit back on your browser, change the email, type a
+password, hit enter and... go check out that email! It still looks the same here.
+Check out the HTML source. The `style` tag *is* still there but if you scroll...
+*wow*. The styles *have* been applied to each element.
 
+This is one of my absolute *favorite* features of mailer. It's a huge chore that...
+just works.
 
-So basically with this inline CSS filter, one of the things you can do is you can
-say, I want to inline, I want to add inline styles to everything within this filter.
-But you can tell it, use this as external file as these sources, CSS. So again,
-pointed at the email, that CSS file. To do that, we're going to go back to 
-`config/packages/twig.yaml` and we're gonna need to add a second path here so that we can
-refer to the `assets/css` directory. So this will be very similar, similar, we'll say
-`assets/css`. And then how about let's put `styles`. So now means that we can use
-this `@styles` keyword to refer to files and the `assets/css` directory. Now I'm
-`welcome.html.twig` we can add a predeceased `inline_css()`. Then we're
-going to use a function called `source()`, which is, that's a standard twig function you
-don't see very often and we're going to say `@styles/` and then the name of our file
-`email.css`. So what the `source()` function does, it actually says go find this file
-using twigs. Normally you rules and the literally read its source code. Basically
-`file_get_contents()` and pass the final contents to `inline_css()`. So we're actually
-passing through and ICSs here is actually just a big string of the styles that we
-want to inline inside of this spot.
-So lets go make sure this works. We'll go back.
+## Inlining External CSS Files
 
-Bumper the middle again, type of password, submit and it looks good. And this time if
-you look at HTML source added benefit is there's no style tag here unnecessarily
-anymore. But we do have all of our inline CSS. Now if you're using, one of the
-questions you might have is what if I want to use SAS for my CSS file and I'm using
-Webpack Encore to turn my SCSS file, uh, into a CSS file. Well the thing is you do
-need to point this to a final CSS file, not a, a a sass file. So what you do there is
-you'd use Encore to do your normal processing and then you'd end up with some file in
-your `public/build` directory, which is a CSS file. So you basically just set up a path
-that instead of looking at assets, last CSS is looking in your `public/build`
-directory. Now, the only tricky part of that is if you're using, um, asset versioning
-where in production there, each CSS file is actually going to have a random string.
-You will need to do a little bit more work there. Yeah,
+And *now* we can go a step further. I don't *love* having all my email styles
+inside a `style` attribute. It works... but will be a problem once our app needs
+to send *two* emails: we don't want to duplicate this.
 
-What you're gonna need to do is, um, probably write a custom twig function here
+Nope, in the real world, we put CSS into a CSS *files*. Let's do that. Copy
+*all* of the styles and delete them. Inside the  `assets/css` directory, let's
+create a new `email.css` file. Paste!
 
-and uh,
-that would, um, where you can pass it in the, you know, `email.css` path here and
-it would actually go and use the Symfony funk normal Symfony functionality to look up
-the correct version, um, path and um, and render and render it because, uh, load that
-file a, file your contents and render it. So ultimately, one way or another, all you
-need to have here is you need to pass this a string. If you need to create a custom
-function to load that string from some custom place, you can absolutely do that. But,
-uh, it's going to take care of the rest. Next, let's do something.
+So far, we've seen that the `inline_css` filter is smart enough to *notice*
+any `style` tags in the template and use that CSS to style the HTML tags. But
+you can *also* point the filter to an *external* CSS file.
+
+Go back to `config/packages/twig.yaml`. To point to the CSS file, we need to add
+another Twig path: let's set the `assets/css` directory to `styles`. So, `@styles`
+will point to `assets/css/`.
+
+Back in `welcome.html.twig`, we can pass an argument to `inline_css()`: some
+*string* styles that it should use for styling. To get that, use the `source()`
+function and then `@styles/` and then the name of our file `email.css`.
+
+The `source()` function is a standard Twig function... that you don't see very
+often. It tells Twig to go find the file - which could be a CSS file or another
+Twig template - and return its *contents*. It's basically a `file_get_contents()`
+for Twig... which is *perfect*, because `inline_css()` doesn't want a *file* path,
+it wants the *string* styles it should use.
+
+Lets try this! Hit back once again in your browser, bump the email, type a password,
+submit and... it looks good! And *this* time in the HTML source, the `style` tag
+is *not* there... but the inline *styles* still are. That's another benefit of
+the CSS *file* - it got rid of the extra `style` attribute, which makes our email
+a little bit smaller.
+
+## Using Sass or Encore for Email CSS?
+
+By the way, if you prefer to use Sass or LESS for your CSS and are using Webpack
+Encore to compile all of that into your final CSS file, then you have a problem.
+You *must* pass a *CSS* file to `inline_css` - you can't pass it a Sass file and
+expect it to know how to process that. Instead, you need to point `inline_css`
+at the final, *built* version of your CSS - the file that lives in `public/build/`.
+
+Doing that is easy enough - you could add another Twig path - maybe called
+`encore` - that refers to the `public/build` directory. Except... if you're
+using versioned filenames... then how do you know exactly what the built filename
+will be?
+
+This is a *long* way of saying that pointing to a CSS file with `inline_css` is
+easy... but pointing to a Sass file is... trickier. Later, we'll walk you through
+how to do it.
+
+But first! The two rules of making an email look good in every email client are,
+one, use a table-based layout instead of floats or flex-box. And two, inline
+your styles. We've done the first, *now* its time to do the second. Does this mean
+we need to rewrite our HTML to use ugly, annoying tables? Actually... no!
