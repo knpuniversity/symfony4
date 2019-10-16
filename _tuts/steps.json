@@ -1141,6 +1141,16 @@
             "description": null
         },
         {
+            "id": "pdf-add-bootstrap-classes-for-the-table",
+            "name": "PDF: Add Bootstrap classes for the table",
+            "description": null
+        },
+        {
+            "id": "pdf-create-a-base-template",
+            "name": "PDF: Create a base template",
+            "description": null
+        },
+        {
             "id": "pdf-generate-it",
             "name": "PDF: Generate it",
             "description": null
@@ -1148,6 +1158,16 @@
         {
             "id": "pdf-attach-it-to-email",
             "name": "PDF: Attach it to email",
+            "description": null
+        },
+        {
+            "id": "pdf-fix-styles-by-adding-base-url",
+            "name": "PDF: Fix styles by adding base URL",
+            "description": null
+        },
+        {
+            "id": "pdf-fix-styles-by-resetting-encore",
+            "name": "PDF: Fix styles by resetting Encore",
             "description": null
         },
         {
@@ -1211,5 +1231,5 @@
             "description": null
         }
     ],
-    "sha": "241dd560954165643cb29d0d9000c0c2074ac90e"
+    "sha": "1891d456b8bf7073305eab5aacaf1fb38e790710"
 }

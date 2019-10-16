@@ -1,0 +1,25 @@
+diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
+index 6cb3f350..961a7eef 100644
+--- a/config/packages/twig.yaml
++++ b/config/packages/twig.yaml
+@@ -7,3 +7,5 @@ twig:
+     strict_variables: '%kernel.debug%'
+     form_themes:
+         - bootstrap_4_layout.html.twig
++    globals:
++        site_base_url: '%env(SITE_BASE_SCHEME)%://%env(SITE_BASE_HOST)%'
+diff --git a/templates/email/author-weekly-report-pdf.html.twig b/templates/email/author-weekly-report-pdf.html.twig
+index a44238b7..f2fd3716 100644
+--- a/templates/email/author-weekly-report-pdf.html.twig
++++ b/templates/email/author-weekly-report-pdf.html.twig
+@@ -7,7 +7,9 @@
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+ 
+-    {{ encore_entry_link_tags('app') }}
++    {% for path in encore_entry_css_files('app') %}
++        <link rel="stylesheet" href="{{ site_base_url ~ path }}">
++    {% endfor %}
+ </head>
+ <body>
+     <div class="container">

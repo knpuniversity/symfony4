@@ -1,9 +1,9 @@
 diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
-index 9a4eb4ec..b056ed99 100644
+index b92b9db1..2c2ee1ee 100644
 --- a/src/Service/Mailer.php
 +++ b/src/Service/Mailer.php
-@@ -22,7 +22,7 @@ class Mailer
-         $this->pdf = $pdf;
+@@ -25,7 +25,7 @@ class Mailer
+         $this->entrypointLookup = $entrypointLookup;
      }
  
 -    public function sendWelcomeMessage(User $user)
@@ -11,7 +11,7 @@ index 9a4eb4ec..b056ed99 100644
      {
          $email = (new TemplatedEmail())
              ->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'))
-@@ -35,9 +35,11 @@ class Mailer
+@@ -38,9 +38,11 @@ class Mailer
              ]);
  
          $this->mailer->send($email);
@@ -22,9 +22,9 @@ index 9a4eb4ec..b056ed99 100644
 -    public function sendAuthorWeeklyReportMessage(User $author, array $articles)
 +    public function sendAuthorWeeklyReportMessage(User $author, array $articles): TemplatedEmail
      {
-         $html = $this->twig->render('email/_report-table.html.twig', [
-             'articles' => $articles,
-@@ -56,5 +58,7 @@ class Mailer
+         $this->entrypointLookup->reset();
+         $html = $this->twig->render('email/author-weekly-report-pdf.html.twig', [
+@@ -60,5 +62,7 @@ class Mailer
              ->attach($pdf, sprintf('weekly-report-%s.pdf', date('Y-m-d')));
  
          $this->mailer->send($email);

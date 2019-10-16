@@ -46,10 +46,10 @@ index 00000000..e66d903c
 +    }
 +}
 diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
-index b056ed99..073f7570 100644
+index 2c2ee1ee..9a5b3194 100644
 --- a/src/Service/Mailer.php
 +++ b/src/Service/Mailer.php
-@@ -25,7 +25,6 @@ class Mailer
+@@ -28,7 +28,6 @@ class Mailer
      public function sendWelcomeMessage(User $user): TemplatedEmail
      {
          $email = (new TemplatedEmail())
@@ -57,7 +57,7 @@ index b056ed99..073f7570 100644
              ->to(new NamedAddress($user->getEmail(), $user->getFirstName()))
              ->subject('Welcome to the Space Bar!')
              ->htmlTemplate('email/welcome.html.twig')
-@@ -47,7 +46,6 @@ class Mailer
+@@ -51,7 +50,6 @@ class Mailer
          $pdf = $this->pdf->getOutputFromHtml($html);
  
          $email = (new TemplatedEmail())
