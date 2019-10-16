@@ -5,6 +5,7 @@ chapters:
     - html-emails
     - absolute-urls
     - dynamic-mails
+    - pretty-text
     - embedded-image
     - inline-css
     - inky #raw
