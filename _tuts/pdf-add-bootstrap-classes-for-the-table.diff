@@ -1,0 +1,10 @@
+diff --git a/templates/email/_report-table.html.twig b/templates/email/_report-table.html.twig
+index 1e80d0bf..75d3a41f 100644
+--- a/templates/email/_report-table.html.twig
++++ b/templates/email/_report-table.html.twig
+@@ -1,4 +1,4 @@
+-<table>
++<table class="table table-striped">
+     <tr>
+         <th>#</th>
+         <th>Title</th>

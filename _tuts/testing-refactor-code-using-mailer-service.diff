@@ -1,16 +1,14 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 3e81bf49..529acac7 100644
+index 34c33ad8..b2faff4a 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -2,19 +2,15 @@
+@@ -4,18 +4,13 @@ namespace App\Command;
  
- namespace App\Command;
- 
-+use App\Service\Mailer;
  use App\Repository\ArticleRepository;
  use App\Repository\UserRepository;
 -use Knp\Snappy\Pdf;
 -use Symfony\Bridge\Twig\Mime\TemplatedEmail;
++use App\Service\Mailer;
  use Symfony\Component\Console\Command\Command;
  use Symfony\Component\Console\Input\InputArgument;
  use Symfony\Component\Console\Input\InputInterface;
@@ -19,18 +17,20 @@ index 3e81bf49..529acac7 100644
  use Symfony\Component\Console\Style\SymfonyStyle;
 -use Symfony\Component\Mailer\MailerInterface;
 -use Symfony\Component\Mime\NamedAddress;
+-use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
 -use Twig\Environment;
  
  class AuthorWeeklyReportSendCommand extends Command
  {
-@@ -23,18 +19,14 @@ class AuthorWeeklyReportSendCommand extends Command
+@@ -24,20 +19,14 @@ class AuthorWeeklyReportSendCommand extends Command
      private $userRepository;
      private $articleRepository;
      private $mailer;
 -    private $twig;
 -    private $pdf;
+-    private $entrypointLookup;
  
--    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer, Environment $twig, Pdf $pdf)
+-    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, MailerInterface $mailer, Environment $twig, Pdf $pdf, EntrypointLookupInterface $entrypointLookup)
 +    public function __construct(UserRepository $userRepository, ArticleRepository $articleRepository, Mailer $mailer)
      {
          parent::__construct(null);
@@ -40,15 +40,16 @@ index 3e81bf49..529acac7 100644
          $this->mailer = $mailer;
 -        $this->twig = $twig;
 -        $this->pdf = $pdf;
+-        $this->entrypointLookup = $entrypointLookup;
      }
  
      protected function configure()
-@@ -61,23 +53,7 @@ class AuthorWeeklyReportSendCommand extends Command
+@@ -64,23 +53,7 @@ class AuthorWeeklyReportSendCommand extends Command
                  continue;
              }
  
--
--            $html = $this->twig->render('email/_report-table.html.twig', [
+-            $this->entrypointLookup->reset();
+-            $html = $this->twig->render('email/author-weekly-report-pdf.html.twig', [
 -                'articles' => $articles,
 -            ]);
 -            $pdf = $this->pdf->getOutputFromHtml($html);
@@ -109,10 +110,10 @@ index 240f35d4..106a217b 100644
              return $guardHandler->authenticateUserAndHandleSuccess(
                  $user,
 diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
-index a7465f11..9a4eb4ec 100644
+index a7465f11..b92b9db1 100644
 --- a/src/Service/Mailer.php
 +++ b/src/Service/Mailer.php
-@@ -2,14 +2,59 @@
+@@ -2,14 +2,63 @@
  
  namespace App\Service;
  
@@ -121,6 +122,7 @@ index a7465f11..9a4eb4ec 100644
 +use Symfony\Bridge\Twig\Mime\TemplatedEmail;
  use Symfony\Component\Mailer\MailerInterface;
 +use Symfony\Component\Mime\NamedAddress;
++use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
 +use Twig\Environment;
  
  class Mailer
@@ -128,13 +130,15 @@ index a7465f11..9a4eb4ec 100644
      private $mailer;
 +    private $twig;
 +    private $pdf;
++    private $entrypointLookup;
  
 -    public function __construct(MailerInterface $mailer)
-+    public function __construct(MailerInterface $mailer, Environment $twig, Pdf $pdf)
++    public function __construct(MailerInterface $mailer, Environment $twig, Pdf $pdf, EntrypointLookupInterface $entrypointLookup)
      {
          $this->mailer = $mailer;
 +        $this->twig = $twig;
 +        $this->pdf = $pdf;
++        $this->entrypointLookup = $entrypointLookup;
 +    }
 +
 +    public function sendWelcomeMessage(User $user)
@@ -154,7 +158,8 @@ index a7465f11..9a4eb4ec 100644
 +
 +    public function sendAuthorWeeklyReportMessage(User $author, array $articles)
 +    {
-+        $html = $this->twig->render('email/_report-table.html.twig', [
++        $this->entrypointLookup->reset();
++        $html = $this->twig->render('email/author-weekly-report-pdf.html.twig', [
 +            'articles' => $articles,
 +        ]);
 +        $pdf = $this->pdf->getOutputFromHtml($html);
