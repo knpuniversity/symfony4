@@ -64,7 +64,7 @@ Add a `public function __construct()` method with a `User` argument:
 
 [[[ code('77f0148494') ]]]
 
-Because ever `ApiToken` needs a `User`, why not make it required when the object
+Because every `ApiToken` needs a `User`, why not make it required when the object
 is instantiated? Oh, and we can *also* generate the random `token` string here. Use
 `$this->token = bin2hex(random_bytes(60))`. Then `$this->user = $user`:
 
