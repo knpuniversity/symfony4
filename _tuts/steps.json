@@ -161,11 +161,6 @@
             "description": null
         },
         {
-            "id": "rendering-delete-me1",
-            "name": "Rendering: delete me1",
-            "description": null
-        },
-        {
             "id": "rendering-install-liipimaginebundle",
             "name": "Rendering: Install LiipImagineBundle",
             "description": null
@@ -388,11 +383,6 @@
         {
             "id": "dropzone-fix-api-groups",
             "name": "Dropzone: fix API groups",
-            "description": null
-        },
-        {
-            "id": "dropzone-delete-me-1",
-            "name": "Dropzone: delete me 1",
             "description": null
         },
         {
@@ -1006,11 +996,6 @@
             "description": null
         },
         {
-            "id": "mailer-delete-me",
-            "name": "Mailer: delete me",
-            "description": null
-        },
-        {
             "id": "mailer-install",
             "name": "Mailer: Install",
             "description": null
@@ -1088,11 +1073,6 @@
         {
             "id": "twig-inline-css-from-file",
             "name": "Twig: Inline CSS from file",
-            "description": null
-        },
-        {
-            "id": "inky-delete-me",
-            "name": "Inky: delete me",
             "description": null
         },
         {
