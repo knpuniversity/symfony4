@@ -1,25 +1,25 @@
 diff --git a/composer.json b/composer.json
-index 4bbc84aa..b408e12c 100644
+index db78f196..7b44b5fe 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -31,6 +31,7 @@
+@@ -32,6 +32,7 @@
          "symfony/web-server-bundle": "^4.0",
          "symfony/webpack-encore-bundle": "^1.4",
          "symfony/yaml": "^4.0",
 +        "twig/cssinliner-extra": "^2.12",
-         "twig/extensions": "^1.5",
-         "twig/extra-bundle": "^2.12"
+         "twig/extensions": "^1.5"
      },
+     "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 5b261712..ef13c9cf 100644
+index c7f4dbd2..6ca5daa3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "52c7cf647e78299daa266a91aaa5a53d",
-+    "content-hash": "952713042731d2b781e65d750ee0d451",
+-    "content-hash": "e9539dde38ca1486ab90694a06f4a36e",
++    "content-hash": "4e733c8f3a0cc53cdf851e1aed7271bb",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -83,7 +83,7 @@ index 5b261712..ef13c9cf 100644
          {
              "name": "symfony/debug",
              "version": "v4.3.4",
-@@ -7373,6 +7426,107 @@
+@@ -7401,6 +7454,107 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-20T14:27:59+00:00"
          },
@@ -192,7 +192,7 @@ index 5b261712..ef13c9cf 100644
              "name": "twig/extensions",
              "version": "v1.5.4",
 diff --git a/symfony.lock b/symfony.lock
-index 598b8256..2f57f8aa 100644
+index a6fccf20..8e120824 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -284,6 +284,12 @@
@@ -208,7 +208,7 @@ index 598b8256..2f57f8aa 100644
      "symfony/debug": {
          "version": "v4.1.11"
      },
-@@ -553,6 +559,12 @@
+@@ -556,6 +562,12 @@
      "symfony/yaml": {
          "version": "v4.1.11"
      },

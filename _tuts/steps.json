@@ -1056,8 +1056,13 @@
             "description": null
         },
         {
-            "id": "twig-install-twig-extra-bundle",
-            "name": "Twig: install twig-extra-bundle",
+            "id": "twig-upgrading-to-twig-2-12",
+            "name": "Twig: upgrading to Twig 2.12",
+            "description": null
+        },
+        {
+            "id": "twig-install-twig-pack",
+            "name": "Twig: install twig-pack",
             "description": null
         },
         {
@@ -1231,5 +1236,5 @@
             "description": null
         }
     ],
-    "sha": "ffc040eabb47d8022ded36ff389a64206ffc0a00"
+    "sha": "e57c90f1b5b4f3d1c970ea739089624c19a15fa6"
 }

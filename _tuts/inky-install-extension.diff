@@ -1,27 +1,27 @@
 diff --git a/composer.json b/composer.json
-index b408e12c..2b71e8bf 100644
+index 7b44b5fe..2060210e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,7 +33,8 @@
+         "symfony/webpack-encore-bundle": "^1.4",
          "symfony/yaml": "^4.0",
          "twig/cssinliner-extra": "^2.12",
-         "twig/extensions": "^1.5",
--        "twig/extra-bundle": "^2.12"
-+        "twig/extra-bundle": "^2.12",
+-        "twig/extensions": "^1.5"
++        "twig/extensions": "^1.5",
 +        "twig/inky-extra": "^2.12"
      },
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index ef13c9cf..c81ef0e3 100644
+index 6ca5daa3..a068f8bb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "952713042731d2b781e65d750ee0d451",
-+    "content-hash": "c6e8b1af3dfd7a658914312d280ad386",
+-    "content-hash": "4e733c8f3a0cc53cdf851e1aed7271bb",
++    "content-hash": "50aea8617805a4888773a6f4d6844e6b",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -79,9 +79,9 @@ index ef13c9cf..c81ef0e3 100644
          {
              "name": "michelf/php-markdown",
              "version": "1.8.0",
-@@ -7641,6 +7688,61 @@
+@@ -7669,6 +7716,61 @@
              ],
-             "time": "2019-09-07T07:26:32+00:00"
+             "time": "2019-10-17T07:27:12+00:00"
          },
 +        {
 +            "name": "twig/inky-extra",
@@ -140,9 +140,9 @@ index ef13c9cf..c81ef0e3 100644
 +        },
          {
              "name": "twig/twig",
-             "version": "v2.11.3",
+             "version": "v2.12.1",
 diff --git a/symfony.lock b/symfony.lock
-index 2f57f8aa..cbbaa52b 100644
+index 8e120824..22760415 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -152,6 +152,9 @@
@@ -155,9 +155,9 @@ index 2f57f8aa..cbbaa52b 100644
      "michelf/php-markdown": {
          "version": "1.8.0"
      },
-@@ -577,6 +580,9 @@
+@@ -580,6 +583,9 @@
      "twig/extra-bundle": {
-         "version": "v2.12.0"
+         "version": "v2.12.1"
      },
 +    "twig/inky-extra": {
 +        "version": "v2.12.0"
