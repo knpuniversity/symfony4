@@ -8,6 +8,7 @@ chapters:
     - pretty-text
     - embedded-image
     - inline-css
+    - css-files
     - inky #raw
     - console-command #raw
     - console-email #raw
