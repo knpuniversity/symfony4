@@ -12,7 +12,7 @@ index 6a8db271..5b5f4d02 100644
 +WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
 +###< knplabs/knp-snappy-bundle ###
 diff --git a/composer.json b/composer.json
-index 74fddb01..2463e7d3 100644
+index 2b71e8bf..11869cd2 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -7,6 +7,7 @@
@@ -24,15 +24,15 @@ index 74fddb01..2463e7d3 100644
          "league/flysystem-aws-s3-v3": "^1.0",
          "league/flysystem-cached-adapter": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 50cd590f..2aaa3bd4 100644
+index c81ef0e3..bbd0f17d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "71d19ef67b41798f671bf26a57c86415",
-+    "content-hash": "9709182d7eb3dc58ec1a89766540348a",
+-    "content-hash": "c6e8b1af3dfd7a658914312d280ad386",
++    "content-hash": "dda23c43bd45f1c1ab126e51750c82e2",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

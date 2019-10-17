@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 4e7c1ce3..0e65d5e0 100644
+index d27dc581..4bbc84aa 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -31,7 +31,8 @@
@@ -13,30 +13,18 @@ index 4e7c1ce3..0e65d5e0 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 35d1c0d0..6fc20d73 100644
+index 9647df1f..5b261712 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "f59609515718b3871514ee0cf22c648f",
-+    "content-hash": "30ae435697a4f572a45a3300ab68ce0b",
+-    "content-hash": "80e2d9223773c3e7ef6d51530b838552",
++    "content-hash": "52c7cf647e78299daa266a91aaa5a53d",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -2446,9 +2446,9 @@
-             "authors": [
-                 {
-                     "name": "Michel Fortin",
--                    "role": "Developer",
-                     "email": "michel.fortin@michelf.ca",
--                    "homepage": "https://michelf.ca/"
-+                    "homepage": "https://michelf.ca/",
-+                    "role": "Developer"
-                 },
-                 {
-                     "name": "John Gruber",
 @@ -7428,6 +7428,65 @@
              ],
              "time": "2018-12-05T18:34:18+00:00"
@@ -114,10 +102,10 @@ index ff98702c..b9437f84 100644
 +    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 90ae4fc1..3b53b184 100644
+index f8977310..598b8256 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -565,6 +565,9 @@
+@@ -562,6 +562,9 @@
              "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
          }
      },

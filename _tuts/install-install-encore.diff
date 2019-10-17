@@ -44,7 +44,7 @@ index 00000000..0648e871
 +
 +console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 diff --git a/composer.json b/composer.json
-index d6e29a77..a2e74289 100644
+index 2ecbad69..6c5156c6 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -56,18 +56,27 @@ index d6e29a77..a2e74289 100644
          "twig/extensions": "^1.5"
      },
 diff --git a/composer.lock b/composer.lock
-index d6f4de6c..0f12fc76 100644
+index 6b27577d..1cfec518 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "608c49a72b290d0e99c3b29ac6cfa0a5",
-+    "content-hash": "1d419e0255badecdf294b930b24fbb77",
+-    "content-hash": "492dcd2a55a58b51f261cc6c32330f6c",
++    "content-hash": "8d429f75f1944db5037e8be13a7c000d",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
+@@ -5268,7 +5268,7 @@
+                 },
+                 {
+                     "name": "Gert de Pagter",
+-                    "email": "backendtea@gmail.com"
++                    "email": "BackEndTea@gmail.com"
+                 }
+             ],
+             "description": "Symfony polyfill for ctype functions",
 @@ -6663,6 +6663,60 @@
              "homepage": "https://symfony.com",
              "time": "2019-03-04T10:37:56+00:00"

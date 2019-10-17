@@ -11,7 +11,7 @@ index 4c881d3e..dfd32027 100644
 +/public/media/cache/
 +###< liip/imagine-bundle ###
 diff --git a/composer.json b/composer.json
-index 5a92133a..38c27f4a 100644
+index 5c5432a5..8af7058c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -7,6 +7,7 @@
@@ -19,19 +19,19 @@ index 5a92133a..38c27f4a 100644
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
 +        "liip/imagine-bundle": "^2.1",
-         "nexylan/slack-bundle": "^2.0",
+         "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 1d104e51..47ee2af8 100644
+index 72a5e8b4..be6b9a39 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "99620a5b0e104ec32099d33fdb556fb1",
-+    "content-hash": "3cb230aeebc6ab559defc1a8bf0042e7",
+-    "content-hash": "2ea48fcb79e0dc037b4c00078e26f8a8",
++    "content-hash": "f89a2f5e2d1b8ef4ab9b5befb2861169",
      "packages": [
          {
              "name": "behat/transliterator",

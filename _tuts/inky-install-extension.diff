@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 49964e8c..74fddb01 100644
+index b408e12c..2b71e8bf 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,7 +33,8 @@
@@ -13,15 +13,15 @@ index 49964e8c..74fddb01 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 3e28b74f..50cd590f 100644
+index ef13c9cf..c81ef0e3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "beb99de072f86b2819bfb8175a3f0f8b",
-+    "content-hash": "71d19ef67b41798f671bf26a57c86415",
+-    "content-hash": "952713042731d2b781e65d750ee0d451",
++    "content-hash": "c6e8b1af3dfd7a658914312d280ad386",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 221cda83..47e3f5d1 100644
+index b5df31df..ad629d76 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -11,15 +11,15 @@ index 221cda83..47e3f5d1 100644
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
 diff --git a/composer.lock b/composer.lock
-index 741d6a0e..1611bfa4 100644
+index 6d22ad50..db40a7ba 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,90 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "420b6029f3d3ce2fb3b61a104532ab87",
-+    "content-hash": "d2c540565f10bf62dc932d9b38482a53",
+-    "content-hash": "569cce480364cac7a7f1b30af4182f08",
++    "content-hash": "6f253ee3fdf84a309146f63949785fda",
      "packages": [
 +        {
 +            "name": "aws/aws-sdk-php",
