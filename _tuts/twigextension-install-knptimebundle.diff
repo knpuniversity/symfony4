@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 4948bacc..22f9f31f 100644
+index 9299abb4..2f1a1138 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -7,19 +7,19 @@ index 4948bacc..22f9f31f 100644
          "ext-iconv": "*",
          "knplabs/knp-markdown-bundle": "^1.7",
 +        "knplabs/knp-time-bundle": "^1.8",
-         "nexylan/slack-bundle": "^2.0",
+         "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 8cb6993e..abd965bd 100644
+index 2419191b..89962014 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "0f380499d2c218687c113c47559f9f96",
-+    "content-hash": "a0649d6d11cc49429116c2afbe832bbd",
+-    "content-hash": "61b476976f60b4ec86899f2733705359",
++    "content-hash": "5595bb0e0c7cfeef89ee31bb18460245",
      "packages": [
          {
              "name": "clue/stream-filter",

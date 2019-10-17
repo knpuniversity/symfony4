@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 841578e2..3179297a 100644
+index c893c39d..19d353dc 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -8,18 +8,18 @@ index 841578e2..3179297a 100644
          "knplabs/knp-markdown-bundle": "^1.7",
 +        "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
-         "nexylan/slack-bundle": "^2.0",
+         "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
 diff --git a/composer.lock b/composer.lock
-index b13dbb57..e6ae491c 100644
+index d69ecfe2..1a177d20 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "141ad460f20e9850012df6588efbb272",
-+    "content-hash": "1c899fd1c15555907b12927410cd50cf",
+-    "content-hash": "d5b0dce476c0d3663f3a8b52e23520cf",
++    "content-hash": "d8e2a40dbfed111436a6037507788acf",
      "packages": [
          {
              "name": "behat/transliterator",

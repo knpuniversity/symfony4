@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 9f8f45c5..18f4576e 100644
+index 95121869..ee09b412 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -22,6 +22,7 @@
@@ -11,7 +11,7 @@ index 9f8f45c5..18f4576e 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index fd085ef9..ec469896 100644
+index b565a7ff..5c3a4ba5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -5072,6 +5072,56 @@

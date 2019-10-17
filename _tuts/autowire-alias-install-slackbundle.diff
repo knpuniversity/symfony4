@@ -1,18 +1,18 @@
 diff --git a/composer.json b/composer.json
-index 6208f306..802ae07d 100644
+index 6208f306..2c7e34ef 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,8 @@
          "php": "^7.1.3",
          "ext-iconv": "*",
          "knplabs/knp-markdown-bundle": "^1.7",
-+        "nexylan/slack-bundle": "^2.0",
++        "nexylan/slack-bundle": "^2.0,<2.2.0",
 +        "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 2adb87f4..df2ab78f 100644
+index 2adb87f4..7401bb08 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,60 @@
@@ -20,7 +20,7 @@ index 2adb87f4..df2ab78f 100644
          "This file is @generated automatically"
      ],
 -    "content-hash": "ba7e2c44f7076dd2c0bec4680c9b872f",
-+    "content-hash": "f4a569dccefa0ba0b0e72f5d57eb3406",
++    "content-hash": "86e9b8256b98ec8d9944492339764461",
      "packages": [
 +        {
 +            "name": "clue/stream-filter",
@@ -1478,6 +1478,16 @@ index 2adb87f4..df2ab78f 100644
          {
              "name": "symfony/var-dumper",
              "version": "v4.0.4",
+@@ -3026,5 +4151,8 @@
+         "php": "^7.1.3",
+         "ext-iconv": "*"
+     },
+-    "platform-dev": []
++    "platform-dev": [],
++    "platform-overrides": {
++        "php": "7.1.3"
++    }
+ }
 diff --git a/config/bundles.php b/config/bundles.php
 index e278c0b4..56ef227a 100644
 --- a/config/bundles.php

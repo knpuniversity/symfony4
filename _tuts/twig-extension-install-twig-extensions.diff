@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 5ff18692..841578e2 100644
+index c91ca974..c893c39d 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,7 +18,8 @@
@@ -13,15 +13,15 @@ index 5ff18692..841578e2 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 11aa21a0..b13dbb57 100644
+index e5043a72..d69ecfe2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "91fd1ee6146cce9a3fa44ef420e4d22c",
-+    "content-hash": "141ad460f20e9850012df6588efbb272",
+-    "content-hash": "f449c8990e7706f7759bff8481ff99d8",
++    "content-hash": "d5b0dce476c0d3663f3a8b52e23520cf",
      "packages": [
          {
              "name": "behat/transliterator",

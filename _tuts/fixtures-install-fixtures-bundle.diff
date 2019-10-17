@@ -11,7 +11,7 @@ index 63790990..39c97f39 100644
  
  If you get an error that the database exists, that should
 diff --git a/composer.json b/composer.json
-index 22f9f31f..9f8f45c5 100644
+index 2f1a1138..95121869 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -20,6 +20,7 @@
@@ -23,15 +23,15 @@ index 22f9f31f..9f8f45c5 100644
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index abd965bd..fd085ef9 100644
+index 89962014..b565a7ff 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "a0649d6d11cc49429116c2afbe832bbd",
-+    "content-hash": "a17f599ae08ff3e657ea6f2305abcc01",
+-    "content-hash": "5595bb0e0c7cfeef89ee31bb18460245",
++    "content-hash": "fb1146ad675d47078b149ee9d783952a",
      "packages": [
          {
              "name": "clue/stream-filter",
