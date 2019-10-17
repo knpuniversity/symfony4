@@ -1,34 +1,61 @@
-# Inky
+# Ink: Automatic CSS Email Framework
 
-Coming soon...
+Our email template is HTML... very *traditional* HTML. What I mean is, this is
+the type of HTML and CSS you would see on a normal website. And, at least inside
+Mailtrap... it looks good! But a *big* lesson of sending emails is that their HTML
+is often *not* rendered like a normal browser would render it. Some email clients
+don't support float... or flexbox... so if you're using *those* to establish an
+email layout then... oof, it's going to look *bad* for some people... like people
+using gmail.
 
-Our email template is literally a HTML, very traditional HTML. This is the type of
-HTML that you would see inside of a website, um, and over in mail trout. If we look
-at one of those, it looks good over here, but one of the trickiest things about
-emails is that a lot of email clients don't have support for the HTML and CSS that
-you're used to. For example, if you try to float elements next to each other or use
-Flexbox, there's a good chance that stuff's not going to work and even though the
-reality is if you want to write an email that's going to look consistently good in
-every email client, the best practice is actually to use a table layout, which if you
-have been around for a long time like me, you know what that is. It's literally where
-instead of proper dibs, you use tables and table cells for your entire layout, which
-no one wants to code like that. Fortunately, there's a really cool library and email
-tool that can help us get the output, can help us write good clean code like this,
-but get output that is actually a table output. Let me show you what I mean first.
-We're going to stall neutral, so go to your terminal and composer require twig /inky
-dash extension.
+If you want to write an email that's going to look consistently good in every
+email client, the best practice is actually to use *tables* for your layout. If
+you have *no* idea what a table layout is... oh, you are *so*, *so* lucky. Back
+in the dark ages of the Internet, back before CSS float and flexbox existed,
+every webpage's layout consisted of tables, rows and cells. It was tables, inside
+of tables, inside of tables. It was... a nightmare.
 
-Oh, that's downloading. I'll go over and Google for it. Inky framework to find
-something called Zerbe inky [inaudible] inc. as you can see here, this is actually a
-CSS framework for responsive HTML emails that works on any device, even outlook. I'm
-gonna go to the docs on this and I'm basically gonna give you that. The idea here and
-this deserve is basically two pieces. First, it's a CSS file, just like bootstrap CSS
-that helps you style your emails. But more interesting thing if you click use inky
-down here is that it allows you to, I'm going to click switch to inky and allows you
-to write HTML using these fake container row column elements and then when it
-actually delivers the email, it transforms that into all these crazy table things you
-need to get that table out so you get a table out, but you can write really nice
-HTML. All right, so let's move back over. Perfect. That finished installing. Now if
+So... um... am I saying that the nightmare of table-based layouts is still a
+reality for emails? Yes... and no. Mailer has another trick up its sleeve.
+
+## Hello Ink / Foundation for Emails
+
+To see it, install a new library:
+
+```terminal
+composer require twig/inky-extension
+```
+
+While that's downloading, Google for "Inky Framework" to find something called
+"Ink" by "Zurb". Let me define... a few things. Zurb is the name of a company.
+That company created "Foundation" a CSS framework that's probably the second
+most famous in the world behind Bootstrap. "Ink" is the name of a CSS framework
+that's designed *specifically* for emails. And actually, they've renamed "Ink"
+to just "Foundation for Emails".
+
+So, Ink, or Foundation for Emails is a CSS framework for responsive HTML emails
+that works on any device, even Outlook. Click on the docs.
+
+Foundation for emails is basically two parts. First, it's a CSS file that defines
+useful CSS classes and a grid structure for designing emails. Again... it's just
+like Bootstrap CSS for emails.
+
+## The Inky Templating Language
+
+That CSS file is super handy. But the *second* part of foundation for emails is
+even *more* interesting. Click the "Inky" link on the left. The *second* part
+of this library is centered around a custom templating language called "Inky".
+It's a simple, but *fascinating* tool. Click the "Switch to Inky" link.
+
+Here's the idea: *we* write HTML using some custom Inky HTML tags, like
+`<container>`, `<row>` and `<columns>`... as well as a few others like
+`<button>` and `<menu>`. Then, Inky will *transform* this pretty HTML into the
+crazy, ugly table-layout required for it to render in an email! Yea, it lets us
+have table-based emails... without needing to use tables! Yeehaw!
+
+## Using the
+
+ove back over. Perfect. That finished installing. Now if
 you download with the course code, then you should have a tutorial directory and
 inside there is the welcome to each
 
