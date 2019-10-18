@@ -20,18 +20,12 @@ reality for emails? Yes... and no. Mailer has another trick up its sleeve.
 
 ## Hello Ink / Foundation for Emails
 
-To see it, install a new library:
-
-```terminal
-composer require twig/inky-extension
-```
-
-While that's downloading, Google for "Inky Framework" to find something called
-"Ink" by "Zurb". Let me define... a few things. Zurb is the name of a company.
-That company created "Foundation" a CSS framework that's probably the second
-most famous in the world behind Bootstrap. "Ink" is the name of a CSS framework
-that's designed *specifically* for emails. And actually, they've renamed "Ink"
-to just "Foundation for Emails".
+Google for "Inky Framework" to find something called "Ink" by "Zurb". Let me
+define... a few things. Zurb is the name of a company. That company created
+"Foundation" a CSS framework that's probably the second most famous in the
+world behind Bootstrap. "Ink" is the name of a CSS framework that's designed
+*specifically* for emails. And actually, they've renamed "Ink" to just
+"Foundation for Emails".
 
 So, Ink, or Foundation for Emails is a CSS framework for responsive HTML emails
 that works on any device, even Outlook. Click on the docs.
@@ -55,88 +49,83 @@ have table-based emails... without needing to use tables! Yeehaw!
 
 ## Using the
 
-ove back over. Perfect. That finished installing. Now if
-you download with the course code, then you should have a tutorial directory and
-inside there is the welcome to each
+Now if you downloaded the course code, you should have a `tutorial/` directory,
+which olds the original `welcome.html.twig` *and* an `inky/` directory with an
+*updated* `welcome.html.twig`.
 
-tunnel HTML. That toy template that we originally used. There's also an inky
-directory with an updated welcome to age two month twig. This is basically the same
-template but written in the markup that inky wants. You can see container row
-columns, that kind of thing. So I'm going to copy this walking by age two, not twig.
-And then just to be clear, I'll close that and then let's go to templates. Email.
-Welcome to aides to my twig and I am going to paste this. And this is exactly the
-same as before, other than the markup. It's exactly the same as before. It still has
-all of the uh, dynamic. You were owls, um, and saying, you know, has the emails, uh,
-the email name on it, it's just got different markup. Now I noticed one thing as a
-second ago, we had added some input for an email that CSS right now that's gone.
-We're going to put that back in a second, but don't forget about it. Don't worry
-about CSS right now. Now, if we send this email right now, it would literally send
-with this Mark up to transform this into the table based markup or we're going to do
-is we're an astronomer. This whole thing
+This is basically the same template but written with that special "Inky" markup:
+containers, rows, columns, etc. Copy the contents... and let's close a few things.
+Now open up `templates/email/welcome.html.twig` and *completely* replace this file
+with the updated version.
 
-with apply, inky inky is the name of a filter. So we're applying the inky filter to
-this entire file. We'll all the way to the bottom down here and I'll say and
+It's *really* the same email as before: it still has the dynamic URLs and is printing
+the recipient's name... it's just different markup. Oh, and notice that the
+`inline_css()` stuff we added a few minutes ago is *gone*! Gasp! Don't worry: we'll
+put that back in a minute. But until then, forget about CSS.
 
-apply it
+If we sent this email right now, it would *literally* send with this markup. To
+*transform* this into the table-based markup we want, we'll use another special
+filter on the *entire* template. On top, add `{% apply inky_to_html %}`... and
+*all* the way at the bottom, put `{% endapply %}`. I'll indent it to make it
+look nice.
 
-and just to make it style, just to make it nice. I'll actually indent everything. All
-right, so let's try that. I'm going to move back over. Let's go to our registration
-form. The truth is out there at 11, at example.com.
+Let's try it! Find your browser and make sure you're on the registration page.
+Let's register as `thetruthisoutthere11@example.com`, any password, check the
+terms, register and... error!
 
-Okay,
+Ah, but we know this error! Well, not this *exact* error, but almost! This is
+Twig telling us that we're trying to use a filter that requires an extra library.
+Cool! Copy the composer require line, move back over to your terminal, and paste:
 
-in the password, agree to the terms register and okay, let's go check this out. Go
-over to MailTrap. There's a new email and okay, it looks terrible because we don't
-have any CSS, but check out the HTML source. Yes, it is actually transformed this
-into table elements. So just like that we have something that is, um, much more, it's
-going to work a lot more email clients. Now to actually get that to look good, we
-need to include the foundation CSS. So I'm gonna go back to, uh, the documentation.
-Click on CSS version, and then you can click download foundation for emails. Now when
-you unzip that, you're going to inside, you're going to find a CSS. And if you unzip
-that inside, you're going to find
+```terminal
+composer require twig/inky-extra
+```
 
-[inaudible]
+When that finishes... move back to your browser, go *back* to the registration
+form, tweak that email and... deep breath... register! I think it worked!
+Let's go check it out.
 
-feelings about that
+There's the new email. Oof, it looks *terrible*... but that's only because we haven't
+added any CSS yet. But check out the HTML source. Yes! It *transformed* our clean
+markup into table elements! We just took a *huge* step towards making our emails
+look good in every email client... without needing to write bad markup.
 
-[inaudible].
+## Inlining the foundation-emails CSS
 
-And if you unzip that, you're going to find just a CSS directory. And what we want to
-copy there is this foundation dash emails dot CSS. So I'm gonna copy that back over
-and we'll just put this in our assets CSS directory where we already have an emailed
-that CSS with some custom CSS for our particular emails. We'll paste in our
-foundation dash emails that CSS. And if you remember from before the, when we get
-this is we use a a, a filter called inline CSS. So now we want to apply both the inky
-filter and the inline CSS filter to this entire email. To do that, you can actually
-pipe the inky filter into in line_CSS. And then here we're gonna pass source. And
-then we're gonna pass at Stiles /foundation bash, emails dot CSS. Now as a reminder,
-if you look in your config packages, tweak .yaml file, we set up an alias that said
-anytime we say ass styles, that's actually pointing at the assets CSS directory. So
-that's why we'd say at styles and then /foundation dash emails dot CSS. And actually
-the other three, you still wanna include our email that CSS. So I'm actually on a
-copy of this and we can pass a second argument that to inline CSS and we're just
-going to point this at our
+Tpo get this to look good, we need to include some CSS from Foundation for Emails.
+Go back to the documentation, click on the "CSS Version" link and click download.
+When you unzip this, you'll find a `foundation-emails.css` file inside. Copy that...
+and paste it into, how about, the `assets/css` directory.
 
-email that CSS
+How do we include this in our email template? We already know how: the `inline_css`
+filter. But instead of adding *another* apply tag around the entire template, we
+can piggyback off of inky! Add `|inline_css` and pass this `source()` and the path
+to the CSS file: `@styles/foundation-emails.css`.
 
-okay.
+Remember: if you look in `config/packages/twig.yaml`, file, we set up a path that
+allows us to say `@styles` to refer to the `assets/css` directory. That's how this
+path works.
 
-And that should do it. Oh one last change before we do this is in our original email
-that CSS, if you go back to our tutorial directory here and there, inky directory, I
-also included an email that CSS, what happened here is in our original CSS, now that
-we're using a uh, uh, a third party CSS system, we don't need to define some of these
-things are actually redundant, like the button and the tech center. So if you can see
-this is basically a simpler version with those things removed. Some, a copy of the
-inky, the one from the tutorial directory, paste it over. This just makes that file a
-little bit shorter cause we don't need them to reinvent all the, all those wheels.
+And... I still *do* want to include my custom `email.css` code. Copy the `source()`
+stuff, add a *second* argument to `inline_css` - you can pass this as *many* arguments
+of CSS as you want - and point this at `email.css`.
 
-All right, so let's try this and see the whole thing in action. So I'll spend back
-over, go back to the registration page, up to the email type password, hit enter and
-go check it out in male trap. There it is. It looks awesome. In fact, it looks
-exactly like it looked before. The big takeaway though is if you look in the HTML
-source, we are now dealing with entirely a table layout. So if we want to know more
-about foundation, you can look at its documentation, but it's basically just a CSS
-framework and the biggest differences that you're going to use these container row
-and columns a to basically make the exact email layout that you want. It's going to
-take care of all the ugly details of making sure that that is using really old markup
-that works everywhere. So it's pretty awesome.
+That should do it! Oh, but before we try this, back in the `tutorial/`, that `inky/`
+directory *also* holds an `email.css` file. Now that we're using a CSS framework
+for our emails, some of the code in our original `email.css`... just isn't needed
+anymore! This new `email.css` is basically the same as the original one... but with
+some extra stuff removed. Copy the code from thew file, and paste it over the
+one in `assets/css`.
+
+Ok, time to see the final product! Go back to the registration page, update the
+email, add a password, enter and... go find check out Mailtrap. There it is and
+it looks awesome. Well, it looks *exactly* like it did before, but in the HTML
+source, now that we have a table-based layout, we know this will display more
+consistently across all email clients.
+
+So that's "Foundation for Emails": it's, one, a CSS framework for emails... a lot
+like Bootstrap for emails... and two, a tool to transform the pretty markup known
+as Inky into the ugly table-based HTML that the CSS framework needs.
+
+Next, let's bootstrap a console command that will send some emails! It turns out
+that sending emails in a console command requires an extra trick.
