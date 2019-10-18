@@ -9,6 +9,6 @@ chapters:
     - embedded-image
     - inline-css
     - css-files
-    - inky #raw
+    - inky
     - console-command #raw
     - console-email #raw
