@@ -10,5 +10,5 @@ chapters:
     - inline-css
     - css-files
     - inky
-    - console-command #raw
+    - console-command
     - console-email #raw
