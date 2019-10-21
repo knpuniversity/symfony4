@@ -1166,8 +1166,8 @@
             "description": null
         },
         {
-            "id": "pdf-fix-styles-by-adding-base-url",
-            "name": "PDF: Fix styles by adding base URL",
+            "id": "pdf-fix-styles-using-absolute-url",
+            "name": "PDF: Fix styles using absolute URL",
             "description": null
         },
         {
@@ -1236,5 +1236,5 @@
             "description": null
         }
     ],
-    "sha": "e57c90f1b5b4f3d1c970ea739089624c19a15fa6"
+    "sha": "2220d7bb2a3ce6a026b92de81d1aecf0a16c310e"
 }
