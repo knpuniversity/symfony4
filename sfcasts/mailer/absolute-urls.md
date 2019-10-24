@@ -29,7 +29,7 @@ its assets: I have an `assets/` directory at the root, an `images` directory ins
 that, and an `email/logo.png` file that I want to reference. You don't need to run
 Encore, but if you *did*, I've configured it to *copy* that file into a
 `public/build/images/` directory. There it is:
-`public/build/images/email/logo.66125181.png`.
+`public/build/images/email/logo.66125a81.png`.
 
 If you downloaded the starting code for the tutorial, you don't need to worry about
 running Encore... only because we ran it *for* you and included the final, built
