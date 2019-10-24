@@ -1,121 +1,119 @@
-# Console Command
+# Let's Make a Console Command!
 
-Coming soon...
+We've created exactly *one* email... and done some pretty cool stuff with that.
+Let's introduce a *second* email... but with a twist: instead of sending this
+email when a user does something on the site - like register - we're going to send
+this email from a console command. And that... changes a few things.
 
-so far we've created exactly one email. We've done lots of cool stuff with that, but
-we still have just this one email. So let's introduce a second email to our system.
-And what's going to be unique about this email is that instead of us sending it, for
-example, when we register, we're going to send this from within a console command.
-And that's actually gonna change a couple of things. It's also gonna give us the
-opportunity to, um, and as soon as we have two MLS, we're actually gonna start to see
-a little bit of duplication between them, which we can also fix. So we're going to
-create a new custom console command. And the idea is that one of the fields on user
-is called `$subscribeToNewsletter`. And this is actually a field that's meant to be
-used by the authors on our site. So once a week we're going to have a Cron job that's
-going to find all the users in the system with `$subscribeToNewsletter` equal to
-`true`. And it's going to send them a report about the articles that they wrote during
-the week. So like, Hey, end of the week, here are the five articles that you
-published this week. So the kickoff, the command
+Let's create the custom console command first. Here's my idea: one of the fields
+on `User` is called `$subscribeToNewsletter`. In our pretend app, if this field
+is set to true for an *author* - someone that *writes* content on our site - once
+a week, via CRON job, we'll run a command that will send them an update on what
+the published during the last 7 days.
 
-let's go around 
+## Making the Command
+
+Let's bootstrap the command... the lazy way. Find your terminal and run:
 
 ```terminal
 php bin/console make:command
-``` 
- 
-and let's call this `app:author-weekly-report:send` Perfect move over. We can look 
-in the `src/Command` directory
-and here is our shiny new console command. All right, so let's start customizing this
-a bit. We don't need any arguments or options and I'll change the description to send
-weekly reports to authors. Now the first thing we're going to need to do here is
-we're going to need to query for all the users that have this `$subscribeToNewsletter`
-equal to `true`. Um, I don't have to, but I'm going to write a custom 
-`UserRepository` method for that real quick. So down here I'll say 
-`public function findAllSubscribedToNewsletter()`. This will return an `array`. 
-Well, they're real simple queer
-here, we'll say `$this->createQueryBuilder()`. Use the `u` alias then 
-`->andWhere('u.subscribeToNewsletter = 1')`, and then `->getQuery()` and `->getResults()`. 
-And then above this, I'm going to advertise that this returns not exactly an array of 
-actually it returns a an array of users.
+```
 
-well, `User[]`. Alright to use this inside of our
-console command, we will do our normal thing where we override the constructor. We
-will add a
+Call it `app:author-weekly-report:send`. Perfect! Back in the editor, head to the
+`src/Command` directory to find... our shiny new console command. Let's start
+customizing this: we don't need any arguments or options... and I'll change the
+description:
 
-`public function __construct()`. And you noticed when they did that it actually
-filled in a name argument and called parent constructor. I'm actually going to remove
-that, but one of the unique things about console commands is that when you, um, over
-on the construct you actually need to call the parent constructors so that I can set
-some stuff up. It's not that important. It's just a detail that you need to take care
-of. Now we can do our normal `UserRepository $userRepository` arguments. I'll go hit
-option All + Enter and select "Initialize fields" to create that property and set it. Perfect.
-All right, down to the bottom, I'm going to clear everything out except for our nice
-`$io` object, which is a nice object to help us just print things. And here. We'll start
-with `$authors = $this->userRepository->findAllSubscribedToNewsletter()`, and
-then Z we extra fancy. Let's create a progress bar. So I'll say `$io->progressStart()`
-start. Then we'll feed for each of our `$authors` as `$author`.
+> Send weekly reports to authors.
 
-Then inside of here we can say `->progressAdvance()` to go. Want ahead. Oh, and of
-course for the progress start I had to tell it how many things we're going to have on
-our progress far. So I'll do `count($authors)` and we'll leave the four H empty for a
-second. And at the bottom we'll say `$io->progressFinish()`. Finally, `$io->success()`
-to say 
+The *first* thing we need to do is find *all* users that have this
+`$subscribeToNewsletter` property set to `true` in the database. To get our app
+squeaky clean, let's add custom repository method for that in `UserRepository`.
+How about: `public function findAllSubscribedToNewsletter()`. This will return
+an `array`. Inside, return `$this->createQueryBuilder()`, `u` as the alias,
+`->andWhere('u.subscribeToNewsletter = 1')`, `->getQuery()` and `->getResults()`.
+Above the method, we can advertise that this *specifically* returns an array of
+`User` objects.
+
+## Autowiring Services into the Command
+
+Back in the command, let's autowire the repository by adding a constructor. This
+is one of the *rare* cases where we have a parent class... and the parent class
+has a construct. I'll go to the Code -> Generate menu - or Command + N on a Mac -
+and select "Override methods" to override the constructor.
+
+Notice that this added a `$name` argument - that's an argument in the parent
+constructor and *called* the parent constructor. That's important: the parent
+class needs to set some stuff up. But, we don't need to pass the command name:
+Symfony gets that from a static property on our class. Instead, make the first
+argument: `UserRepository $userRepository`. Hit Alt + Enter and select
+"Initialize fields" to create that property and set it. Perfect.
+
+Next, in `execute()`, clear *everything* out except for the `$io` variable, which
+is a nice little object that helps us print things and interact with the user.
+Start with `$authors = $this->userRepository->findAllSubscribedToNewsletter()`.
+
+Well, this really returns *all* users... not just authors - but we'll filter them
+out in a minute. To be extra fancy, we need a progress bar! Start one with
+`$io->progressStart()`. Then, foreach over `$authors as $author`, and advance
+the progress inside.
+
+Oh, and of course, for `progressStart()`, I need to tell it how *many* things
+data points we're going to advance. Use `count($authors)`. Leave the inside of the
+`foreach` empty for now, and after, say `$io->progressFinish()`. Finally, for a
+big happy message, add `$io->success()`
 
 > Weekly reports were sent to authors!
 
-Perfect. So I'm not doing anything
-with the authors yet, but let's just see if this is working. I'll go up and copy my
-console, command my console name and scroll down in your 
+Brilliant! We're not *doing* anything yet... but let's try it! Copy the command
+name, find your terminal, and do it!
 
 ```terminal
 php bin/console app:author-weekly-report:send
 ```
 
-And there it is so fast you couldn't even see the progress bar moving.
+Super fast!
 
-All right, so the next thing we need to do is inside of this for each we need to find
-all of the authors that this all of the articles that this author has written in the
-past week. So to do that, I'm going to open the article repository and we'll add a
-new one, a function to it called `findAllPublishedLastWeekByAuthor()` and we'll
-take a cert, a single argument, which is going to be a `User` object called the `$author`.
-And this is also gonna return to and `array` of um, articles. In fact, let's advertise
-that on top. We'll say `@return Article[]`. Once again,
-it's a pretty simple queer here we'll say `return $this->createQueryBuilder()`,
-passing the `a` is the alias
+## Counting Published Articles
 
-and then we need to and where's here? The first one is we need to say `->andWhere()`
-`a.author` is going to be equal to the `:author` will set that parameter in a second and
-then `andWhere('a.publishedAt > :week_ago')`. Go now to settle
-those parameters. I'll say `setParameter()` for the `author`. We're going to pass the
-`$author` variable, the `User` object, so it will query for only that author and then for
-the and then call `setParameter()` again and pass it a `week_ago` and pass it a 
-`new \DateTime()` and we can say `-1 week`. Finally the bottom was like `getQuery()`, do the
-normal `getQuery()` and then `getResult()`. Love it. All right, back in a command. Same
-thing to use this we're going to auto wire
+Inside the `foreach`, the next step is to find all the articles this user published -
+if any - from the past week. Open up `ArticleRepository`... and add a new method
+for this: `findAllPublishedLastWeekByAuthor()` with a single argument: the `User`
+object. This will return an `array`... of articles: let's advertise that above.
+The query itself is pretty simple: `return $this->createQueryBuilder()` with
+`->andWhere('a.author = :author)` to limit to only *this* author - we'll set the
+`:author` parameter in a second - then `->andWhere('a.publishedAt > :week_ago')`.
+For the placeholders, call `setParameter()` to set `author` to the `$author`
+variable, and `->setParameter()` again to set `week_ago` to a new
+`new \DateTime('-1 week')`. Finish with the normal `->getQuery()` and `->getResult()`.
 
-`ArticleRepository $articleRepository`. Alt + Enter to initialize that field and then
-down here in the bottom inside we will say 
-`$articles = $this->articleRepository->findAllPublishedLastWeekByAuthor()` 
-and pass that `$author`. Now with both of these
-cases, both queering for the authors and also querying for the articles, this does
-assume that we don't have tons of authors and each article and each author doesn't
-have a tons of articles published in the past week. So if you had many, many, many
-authors, you might need to make this command a little smarter to only query for some
-little by little. So that you don't return all of them at once, but that's not really
-what we're talking about in this tutorial. So I'm just doing it the simple way. Down
-here, up a little. We'll say before we asked you to send emails, we'll say if 
-`count($articles)` is zero, then we're just going to `continue;`
+Boom! Back in the command, autowire the repository via the *second* constructor
+argument: `ArticleRepository $articleRepository`. Hot Alt + Enter to initialize
+that field.
 
-> Skip authors who do not have published articles for the last week. 
+Down in execute, we can say
+`$articles = $this->articleRepository->findAllPublishedLastWeekByAuthor()`
+and pass that `$author`.
 
-Alright. I think we're good. I mean, there's no email logic in here yet. This is just a fun
-exercise and creating articles. So let's spin back over once more. Copy of that, run
-that command 
+Phew! Because we're actually querying for *all* users, not everyone will be an
+author... and even less will have authored any articles in the past 7 days.
+Let's skip those to avoid sending empty emails: if  `count($articles)` is zero,
+then `continue`.
+
+By the way, in a real app, where you would have hundreds, thousands or even more
+users, querying for *all* of them that have subscribed is *not* going to work.
+Instead, I would make my query smarter by *only* returning users that are authors
+or even query for a smaller number, keep track of which you've sent to already,
+then run the command over and over again until everyone has gotten their update.
+The point is - I'm being a little loose with how much data I'm querying for: be
+careful in a real app.
+
+Ok, I think we're good! I mean, we're not *actually* emailing yet, but let's
+make sure it runs. Find your terminal and run the command again:
 
 ```terminal-silent
 php bin/console app:author-weekly-report:send
 ```
 
-and perfect. So next, let's actually send an email from inside of this
-template. See what unique challenges this has, uh, because we're running it from the
-console environment.
+All smooth. Next... let's actually send some emails... and fix the duplication
+we're going to have between our two email templates.
