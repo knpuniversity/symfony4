@@ -1,4 +1,4 @@
-# The "email" Variable & Recipient "Name"
+# Email Context & the Magic "email" Variable
 
 When you set the HTML part of an email, Mailer helps out by creating
 the "text" version for us! It's not perfect... and we'll fix that soon...
