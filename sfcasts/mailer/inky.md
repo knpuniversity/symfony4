@@ -127,5 +127,13 @@ So that's "Foundation for Emails": it's, one, a CSS framework for emails... a lo
 like Bootstrap for emails... and two, a tool to transform the pretty markup known
 as Inky into the ugly table-based HTML that the CSS framework needs.
 
+## Watch your Email Sizes
+
+Before we keep going, one thing to watch out for *regardless* of how you're styling
+your emails, is email size. It's *far* from a science, but gmail tends to truncate
+emails once their size is greater than about 100kb - it hides the rest of the email
+with a link to see more. Keep that in mind, but more than anything, test your emails
+to make sure they look good in the real world!
+
 Next, let's bootstrap a console command that will send some emails! It turns out
 that sending emails in a console command requires an extra trick.
