@@ -1,79 +1,93 @@
 # Router Request Context: Fix Paths in the CLI
 
-move back over. There it is and yes you can see it ascending with that nice layout
+We've sent the email, but it's missing its core content: info about the articles
+that each author wrote last week. That's no problem for us: we're already passing
+an `articles` variable to the template via `context()`. In the template, replace
+the `<tr>` with `{% for article in articles %}`, add the `<tr>`, a `<td>` and
+print some data: `{{ loop.index }}` to number the list, 1, 2, 3, 4, etc,
+`{{ article.title }}` and finally, how about: `{{ article.comments|length }}`.
 
-[inaudible]
-
-so let's actually make this stuff dynamic here. Now as a reminder, we're already
-sending in an `$articles` variable, so this is actually now going to be very, very easy.
-I'm just gonna get rid of this `<tr>` here, say `{% for article in articles %}` and for
-`<tr>` here we'll say, how about `{{ loop.index }}` That's a nice old secret there.
-It's ITR, not for the first TD. We'll say loop that index and those just give us a nice little
-number and then `{{ article.title }}` and finally we can do a little `{{ article.comments|length }}`
-to below preview there. All right, so I'll spin back over.
+That's good enough. Double check that by running the command:
 
 ```terminal-silent
 php bin/console app:author-weekly-report:send
 ```
 
-It would have
-been console to run that report and cool. There it is. 11 comments and we're good to
-go. If you want to get extra fancy, we get to actually turn this into a link, but
-actually we already have a link and the link is broken, so if you look inside of
-here, we do have a link down here to the homepage using `{{ url('app_homepage') }}`
-But if I click on that link, it just goes to localhost
+And... in Mailtrap... we're good.
 
-Now we know that the,
+## Why is the Link Broken
 
-we know that the `url()` function here tells Symfony to generate this as an absolute URL.
-But if you look in the H, if you look actually do inspect element on that link here,
-you're going to see that in this actually `href="http://localhost` not `localhost:8000`.
-And the same would happen if this were on production would say `localhost` instead of
-you know, your real domain.com the issue is that when you run it, the way that
-Symfony figures out what your apps, what the domain name is of your site is normally
-like if we fill out the registration form, when, when we submit the registration
-form, Symfony looks at what the URL is that's being submitted from and uses that as
-the domain name. When you run a console, command Symfony actually has idea what
-domain name the site is. And so it just guesses `localhost`, which of course is wrong.
-So that's the trick with sending, um, and you're sending
-uh, emails with a console command is you need to worry about that. So the way to fix
-this is a little bit of configuration now first in the `.env` file, one of the
-things that we already have configured on our site.
+*Now* let's turn to the glaring, horrible bug in our email! Ah! As I mentioned a
+few minutes ago, if you hover over the link its, gasp, broken! For some reason,
+it points to `localhost` not our *real* domain... which is `localhost:8000` - close,
+but not right.
 
-Okay.
+Hmm. In the template... yea... that looks right: `{{ url('app_homepage') }}`.
+Ok, then why - when we click on the link - is it broken!
 
-And this is for a totally different reason. Uh, we already have this `SITE_BASE_URL`
-environment variable that we've defined for our actual application. I'll show you if
-you go to `config/services.yaml` this is actually something that we use for our upload
-functionality of our site. It tells us kind of like where they uploads actually
-exists. So it has nothing to do with Symfony. This is just something that we decided
-to have. Now one of the things that you can do is to fix this problem by uploading is
-you can actually tell Symfony what your domain specifically is. Now to do that,
-you're going to say it router, that you have to set up a special parameter called
-`router.request_context.scheme`. And you're gonna set that to something like
-`https`. And then there's another one called `router.request_context.host`
+We know that the `url()` function tells Symfony to generate an *absolute* URL.
+And... it *is*.  I'll run "Inspect Element" on the broken link button. Check out
+the `href`: `http://localhost` *not* `localhost:8000`. The *same* thing would
+happen if you deployed this to production: it would *always* say `localhost`.
+The URL *is* absolute... it's just wrong!
 
-And you'll set that to, in our case, something like the `localhost:8000` or
-whatever your domain name is. Now obviously we don't want to hard code those in here.
-And really we already have an environment variable that has that information kind of
-mixed up into it. So here's what we can do. We can create two new environment
-variables. We don't call it `SITE_BASE_SCHEME`. And we'll start that.
-The `https` make another one called `SITE_BASE_HOST` equal to `localhost:8000`
-now the cool thing about these is that we can use these inside of
-`services.yaml` for those values. So instead of hard footing H to BS here you can say
-`%env(SITE_BASE_SCHEME)%` And then the
-same thing down here for below we can say for the host we can say `%env(SITE_BASE_HOST)%`
+Why? Think about it: in the registration email - where this *did* work - how did
+Symfony know what our domain was when it generated the link? Did we configure that
+somewhere? Nope! When you submit the registration form, Symfony simply looks at
+what the *current* domain is - `localhost:8000` - and uses *that* for all absolute
+URLs.
 
-Cool.
+But when you're in a console command, there is no request! Symfony has *no* idea
+if the code behind this site is deployed to `localhost:8000`, `example.com`,
+or `????NEED FUN DOMAIN HERE`. So, it just guesses `localhost`... which is *totally*
+wrong.
 
-Now the only problem with this setup is that we do have some duplication. Now like
-segues URL is duplicated with these types of things. So to fix that, we can actually
-leverage a nice little trick with environment variables, which is actually, um, we
-can reference environment variables in here. So we replace `https` with
-`$SITE_BASE_SCHEME` that is legal and `://` and then `$SITE_BASE_HOST`
-So basically broken or `SITE_BASE_URL` are on the
-smaller pieces and use that to set these to kind of magic, very important variables
-that need parameters need to be set. And this is actually what Symfony uses when it
-generates absolute you where else? So now when we spin back over and run our console
-command, let's move back over and go to MailTrap and this time asks `localhost:8000`
-at this pointing to our correct URL. Got next. Let's do some attachments.
+If you're sending emails from the command line - or rendering templates for *any*
+reason that need absolute URLS - you need to help Symfony: you need to *tell* it
+what domain to use.
+
+## Setting router.request_context
+
+To fix this, start by looking inside our `.env` file. One of our keys here is called
+`SITE_BASE_URL` and it's the URL to our app. But, but, but! This is *not* a standard
+Symfony environment variable and Symfony is *not* currently using this. Nope, this
+is an environment variable that *we* invented in our file uploads tutorial for a
+totally different purpose. You can see it used in `config/services.yaml`. It has
+*nothing* to do with Symfony.
+
+*Anyways*, to fix the path problem, you need to set two special parameters. The
+first is `router.request_context.scheme`, which you'll set to `https` or `http`.
+The other is `router.request_context.host` which, for our local development, will
+be `localhost:8000`.
+
+Now obviously, we don't want to hardcode these - at least not the second value:
+it will be different on production. Instead, we'll need to set these as a new
+environment variable. And... hey! In `.env`, we already have one... except that
+we kind of need to split it into two pieces. Hmm.
+
+Check this out, create two new environment variables: `SITE_BASE_SCHEME` set to
+`https` and `SITE_BASE_HOST` set to `localhost:8000`. Back in `services.yaml`,
+use these values: `%env(SITE_BASE_SCHEME)%` and `%env(SITE_BASE_HOST)%`
+
+Cool!
+
+## Using Environment Variables... in Environment Variables
+
+The only problem with this setup is that we *do* have some duplication. Fortunately,
+one of the properties of environment variables is that... um... they can contain
+environment variables! For `SITE_BASE_URL`, set it to `$SITE_BASE_SCHEME` - yep,
+that's legal - `://` and then `$SITE_BASE_HOST`.
+
+I *love* that trick. Anyways, now that we've set those two parameters, Symfony
+will use *them* to generate the URL instead of trying to guess it. Try the command
+one last time:
+
+```terminal-silent
+php bin/console app:author-weekly-report:send
+```
+
+And... check it out in Mailtrap! Yes! *This* time the link points to
+`localhost:8000`.
+
+Next! Let's talk about attaching files to an email. Hmm, but to make it more
+interesting, let's *first* learn how to generate a styled PDF.
