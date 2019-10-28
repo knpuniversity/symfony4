@@ -1,4 +1,4 @@
-# Transport Config & Mailcatcher
+# Transport Config & Mailtrap
 
 We've already learned quite a bit about how to customize a specific email... with
 a *lot* more coming. But how do we customize how an email is *sent*. In Symfony,
