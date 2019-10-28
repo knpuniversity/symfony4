@@ -19,7 +19,7 @@ git commit -m "making so much good progress"
 ## Installing the Security Checker
 
 Let's install a new feature called the Symfony Security Checker. This is a *great*
-tool.... but... full disclosure: we're *mostly* installing it to show of the *recipe*
+tool.... but... full disclosure: we're *mostly* installing it to show off the *recipe*
 system. Ooooo. Run:
 
 ```terminal
