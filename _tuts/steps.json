@@ -1151,6 +1151,11 @@
             "description": null
         },
         {
+            "id": "pdf-basic-pdf-template",
+            "name": "PDF: basic PDF template",
+            "description": null
+        },
+        {
             "id": "pdf-create-a-base-template",
             "name": "PDF: Create a base template",
             "description": null
@@ -1186,8 +1191,18 @@
             "description": null
         },
         {
+            "id": "testing-move-entrypoint-reset-after-render",
+            "name": "Testing: move entrypoint reset after render",
+            "description": null
+        },
+        {
             "id": "testing-create-a-unit-test",
             "name": "Testing: Create a unit test",
+            "description": null
+        },
+        {
+            "id": "testing-move-into-service",
+            "name": "Testing: move into Service\/",
             "description": null
         },
         {
@@ -1208,6 +1223,36 @@
         {
             "id": "testing-set-null-transport-globally",
             "name": "Testing: Set Null transport globally",
+            "description": null
+        },
+        {
+            "id": "functional-install-browser-kit",
+            "name": "Functional: install browser-kit",
+            "description": null
+        },
+        {
+            "id": "functional-make-functional-test",
+            "name": "Functional: make:functional-test",
+            "description": null
+        },
+        {
+            "id": "functional-move-into-controller",
+            "name": "Functional: move into Controller\/",
+            "description": null
+        },
+        {
+            "id": "functional-registration-test",
+            "name": "Functional: registration test",
+            "description": null
+        },
+        {
+            "id": "functional-fix-test-cache",
+            "name": "Functional: fix test cache",
+            "description": null
+        },
+        {
+            "id": "functional-show-4-4-asserts",
+            "name": "Functional: show 4.4 asserts",
             "description": null
         },
         {
@@ -1261,5 +1306,5 @@
             "description": null
         }
     ],
-    "sha": "7fc1a6b3dd2f1c76019e19a22e3eeb103d34d242"
+    "sha": "faa513422deeb032c13354143c66b261e730318d"
 }

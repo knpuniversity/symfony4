@@ -1,28 +1,28 @@
-diff --git a/tests/MailerTest.php b/tests/MailerTest.php
-index 7f795e90..7201660e 100644
---- a/tests/MailerTest.php
-+++ b/tests/MailerTest.php
+diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
+index cbebe14f..48fe1372 100644
+--- a/tests/Service/MailerTest.php
++++ b/tests/Service/MailerTest.php
 @@ -8,6 +8,7 @@ use Knp\Snappy\Pdf;
  use PHPUnit\Framework\TestCase;
  use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  use Symfony\Component\Mailer\MailerInterface;
 +use Symfony\Component\Mime\NamedAddress;
+ use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
  use Twig\Environment;
  
- class MailerTest extends WebTestCase
-@@ -24,6 +25,14 @@ class MailerTest extends WebTestCase
+@@ -26,6 +27,14 @@ class MailerTest extends WebTestCase
          $user->setEmail('victor@symfonycasts.com');
  
-         $mailer = new Mailer($symfonyMailer, $pdf, $twig);
+         $mailer = new Mailer($symfonyMailer, $twig, $pdf, $entrypointLookup);
 -        $mailer->sendWelcomeMessage($user);
 +        $email = $mailer->sendWelcomeMessage($user);
 +
-+        $this->assertEquals('Welcome to the Space Bar!', $email->getSubject());
++        $this->assertSame('Welcome to the Space Bar!', $email->getSubject());
 +        $this->assertCount(1, $email->getTo());
 +        /** @var NamedAddress[] $namedAddresses */
 +        $namedAddresses = $email->getTo();
 +        $this->assertInstanceOf(NamedAddress::class, $namedAddresses[0]);
-+        $this->assertEquals('Victor', $namedAddresses[0]->getName());
-+        $this->assertEquals('victor@symfonycasts.com', $namedAddresses[0]->getAddress());
++        $this->assertSame('Victor', $namedAddresses[0]->getName());
++        $this->assertSame('victor@symfonycasts.com', $namedAddresses[0]->getAddress());
      }
  }

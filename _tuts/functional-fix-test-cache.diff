@@ -1,0 +1,16 @@
+diff --git a/config/services_test.yaml b/config/services_test.yaml
+index 876c36bd..fb930dbb 100644
+--- a/config/services_test.yaml
++++ b/config/services_test.yaml
+@@ -1,9 +1,2 @@
+-services:
+-    _defaults:
+-        public: true
+-
+-    # If you need to access services in a test, create an alias
+-    # and then fetch that alias from the container. As a convention,
+-    # aliases are prefixed with test. For example:
+-    #
+-    # test.App\Service\MyService: '@App\Service\MyService'
++parameters:
++    cache_adapter: 'cache.adapter.filesystem'

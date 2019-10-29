@@ -46,7 +46,7 @@ index 00000000..e66d903c
 +    }
 +}
 diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
-index 2c2ee1ee..9a5b3194 100644
+index 93abe19a..7a0ee073 100644
 --- a/src/Service/Mailer.php
 +++ b/src/Service/Mailer.php
 @@ -28,7 +28,6 @@ class Mailer

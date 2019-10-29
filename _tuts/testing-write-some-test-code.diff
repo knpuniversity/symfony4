@@ -1,10 +1,10 @@
-diff --git a/tests/MailerTest.php b/tests/MailerTest.php
-index 2dd0fad9..7f795e90 100644
---- a/tests/MailerTest.php
-+++ b/tests/MailerTest.php
-@@ -2,12 +2,28 @@
+diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
+index 87ed9247..cbebe14f 100644
+--- a/tests/Service/MailerTest.php
++++ b/tests/Service/MailerTest.php
+@@ -2,12 +2,30 @@
  
- namespace App\Tests;
+ namespace App\Tests\Service;
  
 +use App\Entity\User;
 +use App\Service\Mailer;
@@ -12,6 +12,7 @@ index 2dd0fad9..7f795e90 100644
  use PHPUnit\Framework\TestCase;
 +use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 +use Symfony\Component\Mailer\MailerInterface;
++use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
 +use Twig\Environment;
  
 -class MailerTest extends TestCase
@@ -21,16 +22,17 @@ index 2dd0fad9..7f795e90 100644
 +    public function testSendingWelcomeMessage()
      {
 -        $this->assertTrue(true);
-+        $kernel = self::bootKernel();
++        self::bootKernel();
 +        $symfonyMailer = self::$container->get(MailerInterface::class);
 +        $pdf = self::$container->get(Pdf::class);
 +        $twig = self::$container->get(Environment::class);
++        $entrypointLookup = self::$container->get(EntrypointLookupInterface::class);
 +
 +        $user = new User();
 +        $user->setFirstName('Victor');
 +        $user->setEmail('victor@symfonycasts.com');
 +
-+        $mailer = new Mailer($symfonyMailer, $pdf, $twig);
++        $mailer = new Mailer($symfonyMailer, $twig, $pdf, $entrypointLookup);
 +        $mailer->sendWelcomeMessage($user);
      }
  }

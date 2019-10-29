@@ -1,5 +1,5 @@
 diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
-index b92b9db1..2c2ee1ee 100644
+index 8a4871c6..93abe19a 100644
 --- a/src/Service/Mailer.php
 +++ b/src/Service/Mailer.php
 @@ -25,7 +25,7 @@ class Mailer
@@ -22,8 +22,8 @@ index b92b9db1..2c2ee1ee 100644
 -    public function sendAuthorWeeklyReportMessage(User $author, array $articles)
 +    public function sendAuthorWeeklyReportMessage(User $author, array $articles): TemplatedEmail
      {
-         $this->entrypointLookup->reset();
          $html = $this->twig->render('email/author-weekly-report-pdf.html.twig', [
+             'articles' => $articles,
 @@ -60,5 +62,7 @@ class Mailer
              ->attach($pdf, sprintf('weekly-report-%s.pdf', date('Y-m-d')));
  

@@ -1,0 +1,183 @@
+diff --git a/composer.json b/composer.json
+index b87e0f22..47a55e3f 100644
+--- a/composer.json
++++ b/composer.json
+@@ -41,6 +41,7 @@
+         "doctrine/doctrine-fixtures-bundle": "^3.0",
+         "easycorp/easy-log-handler": "^1.0.2",
+         "fzaninotto/faker": "^1.7",
++        "symfony/browser-kit": "4.3.*",
+         "symfony/debug-bundle": "^3.3|^4.0",
+         "symfony/dotenv": "^4.0",
+         "symfony/maker-bundle": "^1.0",
+diff --git a/composer.lock b/composer.lock
+index c28cf78f..86f57f58 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "ae3bd520ae14e5294ecccf8e5698afa7",
++    "content-hash": "603fbd4aad94af6499d9f47dbfdbb8c7",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -8481,6 +8481,65 @@
+             ],
+             "time": "2019-09-01T07:51:21+00:00"
+         },
++        {
++            "name": "symfony/browser-kit",
++            "version": "v4.3.5",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/browser-kit.git",
++                "reference": "78b7611c45039e8ce81698be319851529bf040b1"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/78b7611c45039e8ce81698be319851529bf040b1",
++                "reference": "78b7611c45039e8ce81698be319851529bf040b1",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "symfony/dom-crawler": "~3.4|~4.0"
++            },
++            "require-dev": {
++                "symfony/css-selector": "~3.4|~4.0",
++                "symfony/http-client": "^4.3",
++                "symfony/mime": "^4.3",
++                "symfony/process": "~3.4|~4.0"
++            },
++            "suggest": {
++                "symfony/process": ""
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.3-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\BrowserKit\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony BrowserKit Component",
++            "homepage": "https://symfony.com",
++            "time": "2019-09-10T11:25:17+00:00"
++        },
+         {
+             "name": "symfony/debug-bundle",
+             "version": "v4.3.4",
+@@ -8547,6 +8606,67 @@
+             "homepage": "https://symfony.com",
+             "time": "2019-07-19T08:33:28+00:00"
+         },
++        {
++            "name": "symfony/dom-crawler",
++            "version": "v4.3.5",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/dom-crawler.git",
++                "reference": "e9f7b4d19d69b133bd638eeddcdc757723b4211f"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/e9f7b4d19d69b133bd638eeddcdc757723b4211f",
++                "reference": "e9f7b4d19d69b133bd638eeddcdc757723b4211f",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3",
++                "symfony/polyfill-ctype": "~1.8",
++                "symfony/polyfill-mbstring": "~1.0"
++            },
++            "conflict": {
++                "masterminds/html5": "<2.6"
++            },
++            "require-dev": {
++                "masterminds/html5": "^2.6",
++                "symfony/css-selector": "~3.4|~4.0"
++            },
++            "suggest": {
++                "symfony/css-selector": ""
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.3-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\DomCrawler\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony DomCrawler Component",
++            "homepage": "https://symfony.com",
++            "time": "2019-09-28T21:25:05+00:00"
++        },
+         {
+             "name": "symfony/dotenv",
+             "version": "v4.3.4",
+diff --git a/symfony.lock b/symfony.lock
+index 6eed8dc3..ed8e055f 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -284,6 +284,9 @@
+     "symfony/asset": {
+         "version": "v4.1.11"
+     },
++    "symfony/browser-kit": {
++        "version": "v4.3.5"
++    },
+     "symfony/cache": {
+         "version": "v4.1.11"
+     },
+@@ -326,6 +329,9 @@
+     "symfony/doctrine-bridge": {
+         "version": "v4.1.11"
+     },
++    "symfony/dom-crawler": {
++        "version": "v4.3.5"
++    },
+     "symfony/dotenv": {
+         "version": "v4.1.11"
+     },
