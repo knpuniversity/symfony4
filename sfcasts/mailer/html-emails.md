@@ -13,6 +13,8 @@ you can almost *guess* how: copy the `->text(...)` line, delete the semicolon,
 paste and change the method to `html()`. It's that simple! To make it fancier,
 put an `<h1>` around this.
 
+[[[ code('af4c4b92f2') ]]]
+
 This email now has two "parts": a text part and an HTML part. The user's
 email client will choose which to show, usually HTML. Let's see what this looks
 like in Mailtrap. Click back to get to the registration form again, change the
@@ -71,6 +73,8 @@ before, but with a few extra methods related to templates. Let's use one of thes
 Remove *both* the `html()` and `text()` calls - you'll see why in a minute -
 and replace them with `->htmlTemplate()` and then the normal path to the
 template: `email/welcome.html.twig`.
+
+[[[ code('36aefd68cf') ]]]
 
 And... that's it! Before we try this, let's make a few things in the template
 dynamic, like the URLs and the image path. But, there's an important thing to
