@@ -1,0 +1,29 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 934bf994..85e9f3bd 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -4,7 +4,7 @@
+ # Put parameters here that don't need to change on each machine where the app is deployed
+ # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+ parameters:
+-    cache_adapter: cache.adapter.apcu
++    cache_adapter: cache.adapter.filesystem
+     locale: 'en'
+     uploads_base_url: '%env(SITE_BASE_URL)%/uploads'
+     router.request_context.scheme: '%env(SITE_BASE_SCHEME)%'
+diff --git a/config/services_dev.yaml b/config/services_dev.yaml
+deleted file mode 100644
+index fb930dbb..00000000
+--- a/config/services_dev.yaml
++++ /dev/null
+@@ -1,2 +0,0 @@
+-parameters:
+-    cache_adapter: 'cache.adapter.filesystem'
+diff --git a/config/services_prod.yaml b/config/services_prod.yaml
+new file mode 100644
+index 00000000..c1bd1dce
+--- /dev/null
++++ b/config/services_prod.yaml
+@@ -0,0 +1,2 @@
++parameters:
++    cache_adapter: 'cache.adapter.apcu'

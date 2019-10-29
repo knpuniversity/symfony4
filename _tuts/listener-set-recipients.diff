@@ -1,11 +1,10 @@
 diff --git a/config/services_dev.yaml b/config/services_dev.yaml
-index fb930dbb..680b1251 100644
---- a/config/services_dev.yaml
+new file mode 100644
+index 00000000..e3e396de
+--- /dev/null
 +++ b/config/services_dev.yaml
-@@ -1,2 +1,9 @@
- parameters:
-     cache_adapter: 'cache.adapter.filesystem'
-+
+@@ -0,0 +1,7 @@
++services:
 +    mailer.dev.set_recipients:
 +        class: Symfony\Component\Mailer\EventListener\EnvelopeListener
 +        tags: ['kernel.event_subscriber']

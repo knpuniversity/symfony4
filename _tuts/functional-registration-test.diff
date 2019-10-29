@@ -1,5 +1,5 @@
 diff --git a/tests/Controller/SecurityControllerTest.php b/tests/Controller/SecurityControllerTest.php
-index 99534f74..9a6148c5 100644
+index 99534f74..ca298163 100644
 --- a/tests/Controller/SecurityControllerTest.php
 +++ b/tests/Controller/SecurityControllerTest.php
 @@ -9,9 +9,18 @@ class SecurityControllerTest extends WebTestCase
@@ -8,18 +8,18 @@ index 99534f74..9a6148c5 100644
          $client = static::createClient();
 -        $crawler = $client->request('GET', '/');
 +        $crawler = $client->request('GET', '/register');
-+
-+        $this->assertResponseIsSuccessful();
+ 
+         $this->assertResponseIsSuccessful();
+-        $this->assertSelectorTextContains('h1', 'Hello World');
 +
 +        $button = $crawler->selectButton('Register');
 +        $form = $button->form();
 +        $form['user_registration_form[firstName]']->setValue('Ryan');
 +        $form['user_registration_form[email]']->setValue(sprintf('foo%s@example.com', rand()));
-+        $form['user_registration_form[plainPassword]']->setValue('bar');
++        $form['user_registration_form[plainPassword]']->setValue('space_rocks');
 +        $form['user_registration_form[agreeTerms]']->tick();
 +        $client->submit($form);
- 
-         $this->assertResponseIsSuccessful();
--        $this->assertSelectorTextContains('h1', 'Hello World');
++
++        $this->assertResponseRedirects();
      }
  }

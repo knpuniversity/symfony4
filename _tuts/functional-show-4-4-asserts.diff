@@ -1,11 +1,11 @@
 diff --git a/tests/Controller/SecurityControllerTest.php b/tests/Controller/SecurityControllerTest.php
-index 9a6148c5..8c8fd710 100644
+index ca298163..ee22c905 100644
 --- a/tests/Controller/SecurityControllerTest.php
 +++ b/tests/Controller/SecurityControllerTest.php
 @@ -22,5 +22,11 @@ class SecurityControllerTest extends WebTestCase
          $client->submit($form);
  
-         $this->assertResponseIsSuccessful();
+         $this->assertResponseRedirects();
 +
 +        /* Symfony 4.4:
 +        $this->assertEmailCount(1);

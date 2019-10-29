@@ -1,8 +1,9 @@
 diff --git a/config/services_test.yaml b/config/services_test.yaml
-index 876c36bd..fb930dbb 100644
+deleted file mode 100644
+index 876c36bd..00000000
 --- a/config/services_test.yaml
-+++ b/config/services_test.yaml
-@@ -1,9 +1,2 @@
++++ /dev/null
+@@ -1,9 +0,0 @@
 -services:
 -    _defaults:
 -        public: true
@@ -12,5 +13,3 @@ index 876c36bd..fb930dbb 100644
 -    # aliases are prefixed with test. For example:
 -    #
 -    # test.App\Service\MyService: '@App\Service\MyService'
-+parameters:
-+    cache_adapter: 'cache.adapter.filesystem'

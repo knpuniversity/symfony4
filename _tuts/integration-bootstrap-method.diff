@@ -1,25 +1,22 @@
 diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
-index 87ed9247..0e8d7369 100644
+index 894ff87a..3fa67b27 100644
 --- a/tests/Service/MailerTest.php
 +++ b/tests/Service/MailerTest.php
-@@ -2,12 +2,31 @@
+@@ -2,6 +2,7 @@
  
  namespace App\Tests\Service;
  
-+use App\Entity\User;
-+use App\Service\Mailer;
-+use Knp\Snappy\Pdf;
- use PHPUnit\Framework\TestCase;
-+use Symfony\Component\Mailer\MailerInterface;
-+use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
-+use Twig\Environment;
- 
- class MailerTest extends TestCase
- {
--    public function testSomething()
-+    public function testSendWelcomeMessage()
-     {
--        $this->assertTrue(true);
++use App\Entity\Article;
+ use App\Entity\User;
+ use App\Service\Mailer;
+ use Knp\Snappy\Pdf;
+@@ -38,4 +39,22 @@ class MailerTest extends TestCase
+         $this->assertSame('Victor', $namedAddresses[0]->getName());
+         $this->assertSame('victor@symfonycasts.com', $namedAddresses[0]->getAddress());
+     }
++
++    public function testIntegrationSendAuthorWeeklyReportMessage()
++    {
 +        $symfonyMailer = $this->createMock(MailerInterface::class);
 +        $symfonyMailer->expects($this->once())
 +            ->method('send');
@@ -33,6 +30,6 @@ index 87ed9247..0e8d7369 100644
 +        $user->setEmail('victor@symfonycasts.com');
 +
 +        $mailer = new Mailer($symfonyMailer, $twig, $pdf, $entrypointLookup);
-+        $mailer->sendWelcomeMessage($user);
-     }
++        $email = $mailer->sendWelcomeMessage($user);
++    }
  }

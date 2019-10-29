@@ -1,16 +1,16 @@
 diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
-index cbebe14f..48fe1372 100644
+index 0e8d7369..894ff87a 100644
 --- a/tests/Service/MailerTest.php
 +++ b/tests/Service/MailerTest.php
-@@ -8,6 +8,7 @@ use Knp\Snappy\Pdf;
+@@ -7,6 +7,7 @@ use App\Service\Mailer;
+ use Knp\Snappy\Pdf;
  use PHPUnit\Framework\TestCase;
- use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  use Symfony\Component\Mailer\MailerInterface;
 +use Symfony\Component\Mime\NamedAddress;
  use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
  use Twig\Environment;
  
-@@ -26,6 +27,14 @@ class MailerTest extends WebTestCase
+@@ -27,6 +28,14 @@ class MailerTest extends TestCase
          $user->setEmail('victor@symfonycasts.com');
  
          $mailer = new Mailer($symfonyMailer, $twig, $pdf, $entrypointLookup);
