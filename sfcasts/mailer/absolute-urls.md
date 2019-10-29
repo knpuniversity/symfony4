@@ -13,13 +13,20 @@ The *problem* is that this will generate a *relative* URL - it will literally
 generate `href="/"`. But for an email, all paths must be *absolute*. To force
 that, change `path()` to `url()`.
 
+[[[ code('b19565bf93') ]]]
+
 That's it! Symfony will detect the domain name - `localhost:8000` while we're
 coding locally - and use that to prefix the URL.
 
 Let's fix a few other URLs: for the link to create a new article, replace the
 hardcoded string with `url()` and the name of *that* route, which if you looked
-in the app, is `admin_article_new`. At the bottom, there's one more link to the
-homepage. Say  `{{ url('app_homepage') }}`.
+in the app, is `admin_article_new`. 
+
+[[[ code('25fb95d6f8') ]]]
+
+At the bottom, there's one more link to the homepage. Say  `{{ url('app_homepage') }}`.
+
+[[[ code('ba1ae525c7') ]]]
 
 ## A Bit about Webpack Encore & Images
 
@@ -51,6 +58,8 @@ the actual path to the physical file, *relative* to the `public/` directory.
 But... this leaves us with the *same* problem we had for the generated URLs!
 By default, the `asset()` function generates *relative* URLs: they don't contain
 the domain name. To fix that, wrap this in another function: `absolute_url()`.
+
+[[[ code('e014661c5c') ]]]
 
 And... done! Ready to try this? Move over to the site, go back, change the email
 address again... we're going to do this a lot... type a new password, wave a magic
