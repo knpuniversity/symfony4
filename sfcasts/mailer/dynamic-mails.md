@@ -15,9 +15,13 @@ do this is *not* via a second argument to `htmlTemplate()`. Nope, to pass variab
 into the templates, call `context()` and give this an `array`. Let's pass a
 `user` variable set to the `$user` that was just registered.
 
+[[[ code('b1fc955800') ]]]
+
 As *soon* as we do this, in `welcome.html.twig`, we can replace that weird `%name%`
 placeholder with `{{ user.firstName }}`... because `user` is a instance of our
 `User` entity... and it has a `getFirstName()` method on it.
+
+[[[ code('aaad760d8b') ]]]
 
 Let's try it! In your browser, go back one page, tweak the email, type a password,
 hit enter and then... there it is! Nice to meet you "Fox".
@@ -60,6 +64,8 @@ it doesn't hurt to have it and make it match the email's subject. Now that we
 know about the `email` variable, we can do this properly. Change the text to
 `{{ email.subject }}`.
 
+[[[ code('0643783682') ]]]
+
 ## NamedAddress and email.toName()
 
 Back inside `WrappedTemplatedEmail`, all the way on top, one of my *favorite*
@@ -78,17 +84,26 @@ two arguments: the address that we're sending to - `$user->getEmail()` - *and*
 the "name" that you want to identify this person as. Let's use
 `$user->getFirstName()`.
 
+[[[ code('b8c20ef12a') ]]]
+
 We can do the same thing with from. I'll copy the from email address and replace
 it with `new NamedAddress()`, `alienmailer@example.com` and for the name, we're
 sending as `The Space Bar`.
+
+[[[ code('fd97b7dcdb') ]]]
 
 This is actually even cooler than it looks... and helps us in *two* ways. First,
 in `welcome.html.twig`, we can use the `email` object to get the name of the person
 we're sending to instead of needing the `user` variable.
 
 To prove it, let's get crazy and comment-out the `user`  variable in context.
+
+[[[ code('deef9b0c79') ]]]
+
 In the template, use `{{ email.toName }}`. This will call the `toName()` method...
 which *should* give us the first name.
+
+[[[ code('9b388ed7b1') ]]]
 
 This is nice... but the *real* advantage of `NamedAddress` can be seen in
 the inbox.
