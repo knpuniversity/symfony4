@@ -91,8 +91,12 @@ the email. We'll talk about *true* email attachments later.
 So, which method should we use to add images to an email: linking or embedding?
 Oof, that's a tough question. Embedding an image makes it more robust: if the
 source image is deleted or your server isn't available, it still shows up. It
-also makes the email "heavier", which is probably ok as long as you keep it to
-a few megabytes. Some email clients will also make a user click a
+also makes the email "heavier". This *can* be a problem: if the *total* size
+of an email gets too big - even 100kb - it *could* start to affect deliverability:
+a bigger size sometimes counts against your email's SPAM score. Deliverability
+is an art, but this is something to be aware of.
+
+Some email clients will also make a user click a
 "Show images from sender" link before displaying *linked* images... but they will
 display embedded images immediately. But I've also seen some inconsistent handling
 of embedded images in gmail.
@@ -101,9 +105,9 @@ So... the general rule of thumb... if there is one, is this: if you need to
 include the same image for everyone - like a logo or anything that's part of the
 email's layout - *link* to the image. But if what you're displaying is *specific*
 to that email - like the email is showing you a photo that was just shared with
-your account on the site - then embed the image. When you embed, the image
-doesn't need to be hosted publicly anywhere because it's literally contained
-*inside* the email.
+your account on the site - theni you can embed the image, if it's small. When you
+embed, the image doesn't need to be hosted publicly anywhere because it's literally
+contained *inside* the email.
 
 Next, I already mentioned that the `style` tag doesn't work in gmail... which means
 that our email will be *completely* unstyled for anyone using gmail. That's...

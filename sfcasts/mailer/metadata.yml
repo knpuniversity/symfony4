@@ -12,5 +12,6 @@ chapters:
     - inky
     - console-command
     - console-email
+    - route-context
     - create-pdf
     - pdf-styles
