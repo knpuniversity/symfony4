@@ -1,0 +1,28 @@
+diff --git a/package.json b/package.json
+index 17bf64db..395451f3 100644
+--- a/package.json
++++ b/package.json
+@@ -7,6 +7,7 @@
+         "core-js": "^3.0.0",
+         "dropzone": "^5.5.1",
+         "font-awesome": "^4.7.0",
++        "foundation-emails": "^2.2.1",
+         "jquery": "^3.4.0",
+         "node-sass": "^4.11.0",
+         "popper.js": "^1.15.0",
+diff --git a/yarn.lock b/yarn.lock
+index 8f567e79..ec99e746 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -2823,6 +2823,11 @@ forwarded@~0.1.2:
+   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
+   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
+ 
++foundation-emails@^2.2.1:
++  version "2.2.1"
++  resolved "https://registry.yarnpkg.com/foundation-emails/-/foundation-emails-2.2.1.tgz#1f3442762395d063d5a62d790740b2433aab1747"
++  integrity sha1-HzRCdiOV0GPVpi15B0CyQzqrF0c=
++
+ fragment-cache@^0.2.1:
+   version "0.2.1"
+   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"

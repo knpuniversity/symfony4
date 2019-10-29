@@ -1,0 +1,55 @@
+diff --git a/public/build/entrypoints.json b/public/build/entrypoints.json
+index 4198b91f..68c13122 100644
+--- a/public/build/entrypoints.json
++++ b/public/build/entrypoints.json
+@@ -49,6 +49,16 @@
+       "css": [
+         "/build/login.css"
+       ]
++    },
++    "email": {
++      "js": [
++        "/build/runtime.js",
++        "/build/vendors~email.js"
++      ],
++      "css": [
++        "/build/vendors~email.css",
++        "/build/email.css"
++      ]
+     }
+   }
+ }
+\ No newline at end of file
+diff --git a/public/build/manifest.json b/public/build/manifest.json
+index 87b4ac98..728688f5 100644
+--- a/public/build/manifest.json
++++ b/public/build/manifest.json
+@@ -8,6 +8,7 @@
+   "build/app.js": "/build/app.js",
+   "build/article_show.css": "/build/article_show.css",
+   "build/article_show.js": "/build/article_show.js",
++  "build/email.css": "/build/email.css",
+   "build/login.css": "/build/login.css",
+   "build/runtime.js": "/build/runtime.js",
+   "build/vendors~admin_article_form.css": "/build/vendors~admin_article_form.css",
+@@ -15,6 +16,8 @@
+   "build/vendors~admin_article_form~app.js": "/build/vendors~admin_article_form~app.js",
+   "build/vendors~admin_article_form~app~article_show.js": "/build/vendors~admin_article_form~app~article_show.js",
+   "build/vendors~app.js": "/build/vendors~app.js",
++  "build/vendors~email.css": "/build/vendors~email.css",
++  "build/vendors~email.js": "/build/vendors~email.js",
+   "build/fonts/fontawesome-webfont.eot": "/build/fonts/fontawesome-webfont.674f50d2.eot",
+   "build/fonts/fontawesome-webfont.woff2": "/build/fonts/fontawesome-webfont.af7ae505.woff2",
+   "build/fonts/fontawesome-webfont.ttf": "/build/fonts/fontawesome-webfont.b06871f2.ttf",
+diff --git a/webpack.config.js b/webpack.config.js
+index 10eb54b9..b354761d 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -22,6 +22,7 @@ Encore
+     .addEntry('admin_article_form', './assets/js/admin_article_form.js')
+     .addStyleEntry('account', './assets/css/account.scss')
+     .addStyleEntry('login', './assets/css/login.scss')
++    .addStyleEntry('email', './assets/css/email.scss')
+     //.addEntry('page1', './assets/js/page1.js')
+     //.addEntry('page2', './assets/js/page2.js')
+ 

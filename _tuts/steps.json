@@ -1234,7 +1234,32 @@
             "id": "messenger-configure-it",
             "name": "Messenger: Configure it",
             "description": null
+        },
+        {
+            "id": "webpack-encore-install-foundation-emails-package",
+            "name": "Webpack Encore: Install foundation-emails package",
+            "description": null
+        },
+        {
+            "id": "webpack-encore-import-foundation-css",
+            "name": "Webpack Encore: Import Foundation CSS",
+            "description": null
+        },
+        {
+            "id": "webpack-encore-add-new-style-entry",
+            "name": "Webpack Encore: Add new style entry",
+            "description": null
+        },
+        {
+            "id": "webpack-encore-create-new-twig-function",
+            "name": "Webpack Encore: Create new Twig function",
+            "description": null
+        },
+        {
+            "id": "webpack-encore-use-in-the-template",
+            "name": "Webpack Encore: Use in the template",
+            "description": null
         }
     ],
-    "sha": "2220d7bb2a3ce6a026b92de81d1aecf0a16c310e"
+    "sha": "7fc1a6b3dd2f1c76019e19a22e3eeb103d34d242"
 }
