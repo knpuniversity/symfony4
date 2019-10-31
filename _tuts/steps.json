@@ -1216,21 +1216,6 @@
             "description": null
         },
         {
-            "id": "testing-delete-me-1",
-            "name": "Testing: delete me 1",
-            "description": null
-        },
-        {
-            "id": "testing-delete-me-2",
-            "name": "Testing: delete me 2",
-            "description": null
-        },
-        {
-            "id": "testing-delete-me-3",
-            "name": "Testing: delete me 3",
-            "description": null
-        },
-        {
             "id": "testing-return-email-objects-in-mailer",
             "name": "Testing: Return email objects in Mailer",
             "description": null
@@ -1263,11 +1248,6 @@
         {
             "id": "integration-fix-test-cache",
             "name": "Integration: fix test cache",
-            "description": null
-        },
-        {
-            "id": "testing-delete-me-4",
-            "name": "Testing: delete me 4",
             "description": null
         },
         {
