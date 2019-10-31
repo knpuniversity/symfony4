@@ -1,76 +1,98 @@
 # Styling PDFs with CSS
 
-We've just used snappy to render a template via twig, take that HTML and give us back
-PDF content. So this actually represents like the PDF content itself to attach this
-to an email. It's pretty much how you'd expect it's `->attach()`.
+We just used Twig to render a template and give us some HTML. Then, we passed
+that HTML to Snappy, which uses `wkhtmltopdf` to turn that into a PDF. If *all*
+has gone well, the `$pdf` variable represents PDF content that we could do anything
+with, like save to a file *or* attach to an email. Why, what a wonderful idea!
 
-What's cool here is that you can actually pass this a string PDF where you can pass
-us a resource. Uh, that's important because if you are attaching a really large file,
-you wouldn't want to read that entire file into content with `file_get_contents()`, um,
-that'd be too big of memory. So instead you could actually open it with `fopen()` and
-past that here. And then you could send a large attachment without actually reading
-that into memory. But we just have a string. So we're going to say `$pdf`. And then, uh,
-for the name that's going to be attached to the email, we'll say
-`weekly-report-%s.pdf` and we'll just pass that little `date('Y-m-d')`.
-love it. All right, so let's try this.
+Adding an attachment to an email... probably looks exactly like you expect:
+`->attach()`. The first argument is the file *contents* - so `$pdf`. If you
+need to attach something *big*, you can also use a file *resource* here - like
+use `fopen` on a file and pass the file handle so you don't need to read the
+whole thing into memory. The second argument will be the filename for the
+attachment. Let's uses `weekly-report-%s.pdf` and pass today's day for the
+wildcard: `date('Y-m-d')`.
 
-I'll move over to a terminal in our and
+Love it! We're ready to try this thing. Find your terminal and run:
 
 ```terminal
 php bin/console app:author-weekly-report:send
 ```
 
-now as a reminder, even though this looks like it's sending to six authors, it's
-really just going through six authors and seeing if any of them have sent a, um, have
-created any content within the past week. So I'm going to move over now to male trap
-and you can see that actually sent two emails from me. If they didn't send any emails
-from you, re load your fixtures with `doctrine:fixtures:load` a, there's some random
-NYSED data. So hopefully you'll get some better data there and you can actually see a
-couple of emails sent. All right, so let's check this out. The email itself, of
-course it looks the same. There's just one article, but now you can check out
-attachments. `weekly-report-2019-10-28.pdf` click to open that and it works. But it
-looks terrible. That definitely does not have a bootstrap CSS applied to it.
+As a reminder, even though this *looks* like it's sending to six authors, it's
+a lie! It's *really* looping over 6 *possible* authors, but only sending emails
+to those that have written an article within the past 7 days. Because the database
+fixtures for this project have a bunch of randomness, this might send to 5 users,
+2 users... or 0 users. If it doesn't send *any* emails, try reloading your fixtures
+by running:
 
-Why?
+```terminal-silent
+php bin/console doctrine:fixtures:load
+```
 
-Well, what's tricky is even though we have a full HTML page here, there's not really
-an easy way to preview what the contents of this look like in a browser. You know
-other than rendering it manually from a controller. When you run on-call entry link
-tags, what that does is it creates one or multiple link tags depending on how many
-you need, but the paths are relative. So behind the scenes, if you picture what WK
-HTML to PDF is doing, what snappy does is it takes that HTML content that we passed
-it. Thanks the HTML content, we passed it, it saved that to a temporary file on your
-filesystem and then runs `wkhtmltopdf` and points it at that, uh file.
+If you are *so* lucky that it's sending *more* than 2 emails, you'll get an error
+from Mailtrap, because it limits sending 2 emails per 10 seconds on the free plan.
+You can ignore the error or reload the fixtures.
 
-So if any, if there are any CSS or image pads in that file that just have relative
-paths like `/main.css`, those aren't going to load all of the pads in a, in a PDF
-need to have absolute pads with the domain. So one of the trickier things with
-rendering PDFs, so the fix here is pretty simple. Instead of `{{ encore_entry_link_tags() }}`
-which prints the `<link>` tags for us, we can actually say `{% for path in encore_entry_css_files('app') %}`
-and we'll pass that our app. So instead of just printing out all the link tags
-we want, this allows us to loop over all of the link tags that we need for our app
-entry. And then we can just make the link tags by ourselves. So we'll say
-`<link rel="stylesheet" href="">` and then we'll use the normal way that we've been using
-inside of our templates. Um, uh, for console commands to make things absolute, which
-is `absolute_url()` and pass that `path`. So now on the CSS, it's going to have our full
-domain to that CSS file. So when `wkhtmltopdf` renders it, it is going to
-be able to go out and download our CSS file and everything should work fine.
+In my case, in Mailtrap... yea! This sent 2 emails. If I click on the first one...
+it looks good... and it has an attachment! Let's open it up!
 
-So let's go back over, send that run our command again,
+Oh... ok... I guess it *technically* worked... but it looks *terrible*. This
+definitely did *not* have Bootstrap CSS applied to it. The question is: why not?
+
+## Where are my Styles
+
+Debugging this can be tricky because even though this was *originally* generated
+from an HTML page, we can't exactly "Inspect Element" on a PDF and see what went
+wrong.
+
+So... let's... think about what's happening. The `encore_entry_link_tags()`
+function creates one or more link tags to CSS files, which live in the `public/build`
+directory. But those paths are *relative* - like `href="/builds/app.css"`.
+
+We *also* know that the `getOutputFromHtml()` method works by taking the HTML,
+saving it to a temporary file and then *effectively* loading that file in a browser...
+and create a PDF from what it looks like. If you loaded a random HTML file on
+your computer into a browser... and that HTML file had a CSS link tag to
+`/builds/app.css`, what would happen? Well, it would look for that file on
+the *filesystem* - like literally a `/builds/` directory at the root of your drive.
+
+*That* is what's happening behind the scenes. So, the CSS never loads... and the
+PDF looks like it was designed... well... by me. We can do better.
+
+## Making Absolute CSS Paths
+
+Once you understand what's going on, the fix is pretty simple. Replace
+`{{ encore_entry_link_tags() }}` with
+`{% for path in encore_entry_css_files('app') %}`.
+
+Instead of printing all the link tags we need, this just loops over all of the
+CSS files we need to include. Inside, add `<link rel="stylesheet" href="">` and
+the make the path absolute with `absolute_url(path)`.
+
+We saw this earlier: we used it to make sure the path to our logo - before we
+embedded it - contained the domain name. *Now* when `wkhtmltopdf`, more or less,
+opens the temporary HTML file in a browser, it will download the link tags from
+our public site and all *should* be happy with the world.
+
+Let's try it! Run the console command:
 
 ```terminal-silent
 php bin/console app:author-weekly-report:send
 ```
 
-move back over in end. Let's
-see, I'll refresh there. They go 2 new emails and I'll check the attachment on the
-first one.
+Move back over and... I'll refresh Mailtrap... great! 2 new emails. Check the
+attachment on the first one. It looks great! I mean, hopefully you're better at
+styling than I am... and can make this look *even* better, with a hot-pink background
+and unicorn Emojis. The point is: the CSS *is* being loaded.
 
-it looks great. I mean hopefully you're better at styling than I am, so you can make
-this look even better. But it does have the styling on there. It's not a particularly
-interesting table, but you can see that the CSS is being loaded. Let's check the
-other one just to be sure. And this one looks terrible. Interesting. The first email
-is good, the second email looks bad. This is a little gotcha. That's specific to
+Let's check the other email to be sure. What? This one looks terrible! The first
+PDF is good... and the second one... which was generated the *excat* same way
+has no styling!? What madness is this!
+
+HERE!
+
+This is a little gotcha. That's specific to
 Encore
 
 four
