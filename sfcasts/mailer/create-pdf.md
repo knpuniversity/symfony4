@@ -98,7 +98,9 @@ hack in a `background-color: #fff`.
 
 By the way, if our app needed to generate *multiple* PDF files, to avoid duplication,
 I would *absolutely* create a PDF "base template" - like `pdfBase.html.twig` -
-so that every PDF can share the same look and feel.
+so that every PDF can share the same look and feel. Also, I'm *not* bringing in
+any JavaScript tags, but you *could* if your JavaScript is responsible for helping
+render how your page looks.
 
 ## Using Snappy
 
