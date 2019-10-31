@@ -1,9 +1,13 @@
 diff --git a/tests/Controller/SecurityControllerTest.php b/tests/Controller/SecurityControllerTest.php
-index 99534f74..ca298163 100644
+index 99534f74..f0e77a98 100644
 --- a/tests/Controller/SecurityControllerTest.php
 +++ b/tests/Controller/SecurityControllerTest.php
-@@ -9,9 +9,18 @@ class SecurityControllerTest extends WebTestCase
-     public function testSomething()
+@@ -6,12 +6,21 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
+ class SecurityControllerTest extends WebTestCase
+ {
+-    public function testSomething()
++    public function testRegister()
      {
          $client = static::createClient();
 -        $crawler = $client->request('GET', '/');
