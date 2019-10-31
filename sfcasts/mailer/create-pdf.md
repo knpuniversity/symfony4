@@ -1,135 +1,139 @@
-# Create Pdf
+# Lets Generate a PDF!
 
-Coming soon...
+How can we make the email we're sending from the console command *cooler*? By adding
+an attachment! Wait, hmm. That's probably *too* easy - Mailer makes attachments
+simple. Ok, then... how about this: in addition to having the table inside the
+email that summarizes what the author has written during the past week, let's
+generate a PDF with a similar table and attach *it* to the email.
 
-We're now sending an email from our accustom console command, which, which is pretty
-cool. Um, we've fixed our duplication in our tent and our email templates and we've
-even fixed the paths inside of here so that they work instead of a consult man, I
-want to go over to the next level. I now want to attach a PDF to this email. So in
-addition to having this table here that summarizes everything that this author has
-written in the past week, I wanna attach this table as a PDF. So first we're going to
-do is focus on how to create a PDF and how to style it nicely. The tool that I'll
-like to use to run PDFs is snappy bundle. So if I a terminal and run a 
+So that's the first challenge: how can we generate a PDF... and hopefully enjoy
+the process!
+
+## Installing Snappy & wkhtmltopdf
+
+My favorite tool for creating PDFs is called Snappy. Fly over to your terminal
+and install it with:
 
 ```terminal
 composer require knplabs/knp-snappy-bundle
 ```
 
-Now snappy bundle is really just a
-small layer around a command line utility called the `wkhtmltopdf`,
-which is for a long time been the defacto standard for generating PDFs. You create a
-big HTML page with CSS style CSS. You give that to `wkhtmltopdf` and it gives
-you back a PDF that is styled exactly like that. We'll look inside of a browser. So
-you're also want to make sure that `wkhtmltopdf` is installed on your system 
+Snappy is a wrapper around a command-line utility called `wkhtmltopdf`. It has
+some quirks, but is a *super* powerful too: you create some HTML that's styled
+with CSS, give it to `wkhtmltopdf`, it *renders* that like a browser would, and
+gives you back a PDF version. Snappy makes working with `wkhtmltopdf` pretty easy,
+but you'll need to make sure it's installed on your system. I installed it on my
+Mac via `brew`.
 
 ```terminal-silent
 wkhtmltopdf --version
 ```
 
-and you're going to want to make sure that it is a where it is on my system. 
+Also check where it's installed with `which` or `whereis`:
 
 ```terminal-silent
 which wkhtmltopdf
 ```
 
-It's in `/usr/local/bin/wkhtmltopdf`. If yours live somewhere else, then you need to tweak
-some configuration. When we installed that bundle, that bumbles recipe, edit a new
-section down here to our `.env` file. You can see the `WKHTMLTOPDF_PATH` is the one
-I have on my machine, so if yours is different, you can modify this path here or in
-`.env.local`. Don't worry about `wkhtmltoimage` cause we're not going to use that
+Mine is installed at `/usr/local/bin/wkhtmltopdf`. If your binary live somewhere
+else, then you'll need to tweak some config. When we installed that bundle, that
+bundle's recipe added a new section to the bottom of our `.env` file with two
+new environment variables. These are both used by a new `knp_snappy.yaml` file
+that was *also* added by the bundle.
 
-now. Open up `templates/email/author-weekly-report.html.twig`
-remember the goal with snappy is to generate a full HTML page and then give that to
-snappy. We could actually just render this entire email and pass that to snappy. But
-that's not really gonna work because this has the, this requires the `email` object.
-And if we just rendered this normally via twig, we're not going to have that, uh,
-that `email` variable plus the way we want our PDF to look is probably not going to be
-exactly like our, um, our email. We're probably not gonna want this, uh, logo header
-up there. So instead of I'm going gonna do is on a copy of this entire table. That is
-really what we want as a PDF. And in the templates email directory, I'll create a new
-file called `_report-table.html.twig`, all that toy and I'll paste that in
-there. I'm also up here going to add a little class `class="table table-striped"`,
-these are Twitter, these are CSS classes. And when we render our email, um, these
-aren't going to have any effect because there's no CSS that affects those
+The  `WKHTMLTOPDF_PATH` variable already equals what I have on my machine. So
+if *your* path is different, copy this, paste it in your `.env.local`, and customize
+it. Oh, and don't worry about `wkhtmltoimage`: we won't use that utility.
 
-But when you render the PDF in a second, we are actually going to import our normal
-CSS and I want to make sure that actually we are going to have this a be styled. That
-was a terrible explanation. Anyways, back in `author-weekly-report.html.twig`
-we can remove the table and instead of say `{{ include('email/_report-table.html.twig') }}`
-let's wait. Now as I mentioned, what we're going to get to
-snappy is actually a full HTML page with CSS, not just a little fragment like you see
-in this template. We could do that, but then there wouldn't be any styling. It
-wouldn't look very good, so instead of any templates email directory, create a new
-file. Let's call it `author-weekly-report-pdf.html.twig`
+## Creating the PDF Templates
 
-to create the full HTML body here in Peter's dorm, you can use the shortcut
-exclamation point tab. That's going to give you a nice full age, Tim, a body inside
-of here because I'm planning on bringing the Twitter bootstrap CSS that we use on our
-normal site. I'm going to add a little bit of Mark up here cause I did `class="container"`
-`<div class="row">` `<div class="col-sm-12">` and it's out of
-here. I'll put a lot of it, a little `<h1>` that will say weekly report and then we
-can print the date by saying that `{{ 'now'|date('Y-m-d') }}` well this will bring in 
-the table itself, so `{{ include('email/_report-table.html.twig') }}`
+Ultimately, to create the PDF, we're going to render a template with Twig and
+pass it to Snappy so it can do its work. Open up
+`templates/email/author-weekly-report.html.twig`.
 
-Now if we just rendered this, if we just passed this to snappy, it would work, but
-there's no CSS at all. If you look in our base that aged him a twig, this project
-uses webcam, Webpack Encore and we use this Encore entry links tag to basically say
-bring in all of our CSS in the app entry. Even if you're not using Encore, the point
-is that you have some CSS that you normally bring into your application. I'm actually
-gonna copy that line, close that template and put that in my PDF template. So I'm
-going to include the normal CSS that my site uses, which is going into, which is
-going to include bootstrap, which is going to help me, uh, with some styling here. By
-the way, if you are generating multiple PDFs in your site, you probably refactor this
-template into some sort of a `pdfBase.html.twig`, that all of your
-PDF templates could extent that way all your PDFs gonna have the same look and feel.
-Oh, and because we're using the site CSS, one thing you'll notice is that our site
-actually has a gray background.
+Hmm. In theory, we *could* just render *this* template and use its HTML. But...
+that won't work because it relies on the special `email` variable. And more importantly,
+we probably won't want the PDF to look *exactly* like the email - we don't really
+want the logo on top, for example.
 
-Okay.
+No problem: let's do some organizing! Copy the table code. Then, in the
+`templates/email` directory, I'll create a new file called `_report-table.html.twig`
+and paste! Let's make this fancier by adding `class="table table-striped"`.
 
-If you looked in the CSS tags in there, you'd see
+Those CSS classes come from Bootstrap CSS, which our *site* uses, but our emails
+do *not*. So when we render this table in the email, these won't do anything.
+But my *hope* is that when we generate the PDF, we will *include* Bootstrap CSS
+so that the table styles nicely.
 
-that's applied to the body tag. So I'm just going to override that here. A really
-easy way on the body tags. So the background color is white.
+Back in `author-weekly-report.html.twig`, take out that able and just say
+`{{ include('email/_report-table.html.twig') }}`
 
-Alright, so we have a template we can render that's going to give us what we want an
-email to want it. We want our PDF to look like. So back in `AuthorWeeklyReportSendCommand`
-Right before we create our email. This is when we're going to want to
-generate the PDF so we can attach it. To generate the PDF, we're going to need two
-new services in our command. The first one used is going to be the type hint
-`Environment`. It feels a little bit weird, but you see this one from twig. That's
-actually the type that you use. If you ever want to use the tweak object directly,
-we're gonna use the TWIG object directly to render our new PDF template. The other
-thing we're gonna need is a service from snappy. That's going to help us turn that
-HTML into the PDF content. And the type in for that is just `Pdf. So I'll do 
-`Pdf $pdf`. As a reminder, you can always go over and run 
+*Now* we can create a template that we'll render to get the HTML for the PDF.
+Well, we *could* just render this `_report-table.html.twig` template... but
+because it doesn't have an HTML body or CSS, it would look... terrible.
+
+Instead, in `templates/email/`, create a new file: `author-weekly-report-pdf.html.twig`.
+To add some basic HTML, I'll use a PhpStorm that I *just* learned! Add an
+exclamation point then hit "tab". Boom!
+
+Because we're going to add Bootstrap CSS to this template, let's add a little
+Bootstrap structure: a `<div class="container">`, `<div class="row">` and
+`<div class="col-sm-12">`. Inside, how about an `<h1>` with "Weekly Report" and
+today's date, which we can get with `{{ 'now'|date('Y-m-d') }}`. Bring in the
+table with `{{ include('email/_report-table.html.twig') }}`.
+
+## Adding CSS to the Template
+
+If we *just* rendered this and passed the HTML to Snappy, it *would* work, but
+we contain *no* CSS styling... so it would look like it was from the 90's. If
+you look in our `base.html.twig`, this project uses Webpack Encore. The
+`encore_entry_link_tags()` function basically adds the base CSS, which includes
+Bootstrap.
+
+Copy this line, close that template, and add this to the PDF template. Even if
+you're not using Encore, the point is that an *easy* way to style your PDF is
+by bring in the same CSS that your site uses. Oh, and because our site has a
+gray background... but I want my PDF to *not* share *that* specific styling, I'll
+hack in a `background-color: #fff`.
+
+By the way, if our app needed to generate *multiple* PDF files, to avoid duplication,
+I would *absolutely* create a PDF "base template" - like `pdfBase.html.twig` -
+so that every PDF can share the same look and feel.
+
+## Using Snappy
+
+Ok, let's do this! Back in `AuthorWeeklyReportSendCommand`, right before we create
+the `Email`, we need to generate a PDF we can attach it. To do that, our command
+needs *two* new services: `Environment $twig` - yes, it looks weird, but the type-hint
+to get Twig directly is called `Environment` - and `Pdf $pdf`. That *second* service
+comes from SnappyBundle.
+
+As a reminder, if you don't know what type-hint to use, you can always spin over
+to your terminal and run:
 
 ```terminal
 php bin/console debug:autowiring pdf
 ```
 
-to find that type pens that you can use inside of your application. All right, back down
-in the body of our command, right before we send the email, this is when we are going
-to generate that, uh, that template. So first I'm going to say `$html =` and
-we're going to render this template just using normal twig code. The way you do that
-is `$this->twig->render()`.
+There it is.
 
-Oh, and you know what? I'm not saying tweak here because this is being called because
-up here I forgot to initialize both those fields. So that Alt + Enter
-and select an "Initialize fields" to create both those fields and set them all right,
-that's thank you PHPStorm for catching that. Okay, now we'll say
-`$this->twig->render()` this time it finds it and we'll say 
-`email/author-weekly-report-pdf.html.twig`. And the only variables we need to pass into this,
-um, are actually the one from `_report-table.html.twig`, which is we need to pass in the
-articles in that list. So I'll pass in an `articles` variable set to our `$articles`
-variable here, right? So that just gives us an HTML page to turn that into a PDF
-content. We can say `$pdf = $this->pdf->getOutputFromHtml($html)`. This is a really cool
-thing where you can pass in html string and it's going to give you back these binary
-PDF string and content
+Ok, step 1 is to use Twig to render the template and get the HTML:
+`$html = $this->twig->render()`. Oh... PhpStorm doesn't like that... because I
+forgot to add the properties! I'll put my cursor on the new arguments, hit Alt+Enter,
+and select "Initialize Fields" to create those 2 properties and set them.
 
-So at this point, we have a PDF string content, which we could use for anything, and
-we could attach it to an email. If this were a controller, we could stream that back
-to the user. We can do whatever we want with that. So next, let's actually attach to
-this email and send it. When we do that, we're going to notice a problem. We're going
-to be missing styles inside of that, inside of that PDF.
-so let's try that and fix that next. Okay.
+*Now*, back to work: `$this->twig->render()` and pass this the template name -
+`email/author-weekly-report-pdf.html.twig` - and an array of the variables it
+needs... which I think is just `articles`. Pass `'articles' => $articles`.
+
+To turn that HTML into PDF content, we can say
+`$pdf = $this->pdf->getOutputFromHtml($html)`.
+
+Cool, right! Behind the scenes, this simple method does a lot: it takes the HTML
+content, saves it to a temporary file, then executes `wkhtmltopdf` and *points*
+it at this file. As long as `wkhtmltopdf` is set up correctly and our HTML
+generates a nice-looking page, it should work!
+
+Next, let's attach the PDF to our email, send it and... see what it looks like!
+Spoiler-alert: it's going to look terrible! Even though we included some CSS in
+our template, it's *not* going to work immediately.

@@ -1,6 +1,4 @@
-# Pdf Styles
-
-Coming soon...
+# Styling PDFs with CSS
 
 We've just used snappy to render a template via twig, take that HTML and give us back
 PDF content. So this actually represents like the PDF content itself to attach this
@@ -12,11 +10,11 @@ you wouldn't want to read that entire file into content with `file_get_contents(
 that'd be too big of memory. So instead you could actually open it with `fopen()` and
 past that here. And then you could send a large attachment without actually reading
 that into memory. But we just have a string. So we're going to say `$pdf`. And then, uh,
-for the name that's going to be attached to the email, we'll say 
+for the name that's going to be attached to the email, we'll say
 `weekly-report-%s.pdf` and we'll just pass that little `date('Y-m-d')`.
 love it. All right, so let's try this.
 
-I'll move over to a terminal in our and 
+I'll move over to a terminal in our and
 
 ```terminal
 php bin/console app:author-weekly-report:send
@@ -51,14 +49,14 @@ rendering PDFs, so the fix here is pretty simple. Instead of `{{ encore_entry_li
 which prints the `<link>` tags for us, we can actually say `{% for path in encore_entry_css_files('app') %}`
 and we'll pass that our app. So instead of just printing out all the link tags
 we want, this allows us to loop over all of the link tags that we need for our app
-entry. And then we can just make the link tags by ourselves. So we'll say 
+entry. And then we can just make the link tags by ourselves. So we'll say
 `<link rel="stylesheet" href="">` and then we'll use the normal way that we've been using
 inside of our templates. Um, uh, for console commands to make things absolute, which
 is `absolute_url()` and pass that `path`. So now on the CSS, it's going to have our full
 domain to that CSS file. So when `wkhtmltopdf` renders it, it is going to
 be able to go out and download our CSS file and everything should work fine.
 
-So let's go back over, send that run our command again, 
+So let's go back over, send that run our command again,
 
 ```terminal-silent
 php bin/console app:author-weekly-report:send
@@ -88,7 +86,7 @@ need to put that in there and if you call it more than once per request or once 
 command, it's going to return nothing. There's a very good reason for this, but in
 this context it can be a gotcha. So the fix is to autowire one more function into
 our command. I know it's getting a little bit crowded here and it's a lower level
-function. Don't class you don't need normally need to worry about, it's called 
+function. Don't class you don't need normally need to worry about, it's called
 `EntrypointLookupInterface`?
 
 Let's say `$entrypointLookup`
@@ -98,7 +96,7 @@ Let's say `$entrypointLookup`
 I render all the, we can do it right after, it doesn't really matter. We're going to
 say `$this->entrypointLookup->reset()`. That's basically going to say
 forget about any previous renderings you've done during this command and render
-everything fresh. So last time and move over. Run a command 
+everything fresh. So last time and move over. Run a command
 
 ```terminal-silent
 php bin/console app:author-weekly-report:send
