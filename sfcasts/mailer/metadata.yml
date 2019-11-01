@@ -16,7 +16,7 @@ chapters:
     - snappy-wkhtmltopdf
     - create-pdf
     - pdf-styles
-    - service-organization  #raw
-    - unit-test #raw
+    - service-organization
+    - unit-test
     - integration-test #raw
     - functional-test #raw
