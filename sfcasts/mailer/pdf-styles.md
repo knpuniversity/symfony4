@@ -52,42 +52,37 @@ Let's check the other email to be sure. What? This one looks terrible! The first
 PDF is good... and the second one... which was generated the *exact* same way...
 has no styling!? What madness is this!
 
-HERE!
+## Encore: Missing CSS after First PDF?
 
-This is a little gotcha. That's specific to
-Encore
+This is a little gotcha... that's specific to Encore. For reasons that are... not
+that interesting right now - you can ask me in the comments - when you call an
+Encore TWig function the first time, it returns all the CSS files that you need
+for the `app` entrypoint. But when we go through the loop the second time, render
+a second template and call `encore_entry_css_files()` for a second time,
+Encore returns an empty array. Basically, you can only call an Encore function
+once per request... or once per console command execution. Every time after, the
+method will return nothing.
 
-four
+There's a good reason for this... but it's *totally* messing us up this time!
+No worries, once you know what's going on, the fix is pretty simple. Find the
+constructor and add one more argument - I know, it's getting a bit crowded. It's
+`EntrypointLookupInterface $entrypointLookup`. I'll do my normal Alt + Enter and
+"Initialize fields" to create that property and set it.
 
-for reasons that are not that interesting. But if you want to know, you can ask in
-the comments section. When you call in Encore function the first time it returns all
-of the CSS files that you need for the app entry point. But the second time that we
-run through, we go through the loop and the second time that we render this template
-and the second time that we call this `encore_entry_css_files()` function Encore returns
-an empty array. So basically you can only call one of the Encore functions once per
-request. By the way, I forgot to mention why I didn't do the JavaScript files. You
-need to put that in there and if you call it more than once per request or once per
-command, it's going to return nothing. There's a very good reason for this, but in
-this context it can be a gotcha. So the fix is to autowire one more function into
-our command. I know it's getting a little bit crowded here and it's a lower level
-function. Don't class you don't need normally need to worry about, it's called
-`EntrypointLookupInterface`?
+Down below, right before we render... or right after... it won't matter, say
+`$this->entrypointLookup->reset()`. This tells Encore to *forget* that it
+rendered anything and forces it to return the same array of CSS files on each call.
 
-Let's say `$entrypointLookup`
-
-`EntrypointLookupInterface` and `$entrypointLookup`. I'll do my normal Alt + Enter
-"Initialize fields" to create that property and set it and then down here, right before
-I render all the, we can do it right after, it doesn't really matter. We're going to
-say `$this->entrypointLookup->reset()`. That's basically going to say
-forget about any previous renderings you've done during this command and render
-everything fresh. So last time and move over. Run a command
+This *should* make our PDF wonderful. Run the command one more time:
 
 ```terminal-silent
 php bin/console app:author-weekly-report:send
 ```
 
-spin back over to metal
-trap. I'll refresh. So my files shop there and let's check the second one in here.
-I'm pretty sure the first one is going to be okay. Open up that attachment and
-perfect. It looks good. Both of these files render just fine. Next, let's do
-something different. I can't remember what it is.
+Fly over to Mailtrap and... I'll refresh. Ok, two emails - let's check the second,
+that's the one what was broken before. The attachment... looks *perfect*.
+
+Next, I like to keep my email logic close together and organized - it helps me
+to keep emails consistent and easily remember what emails we're sending. Let's
+refactor the emails into a service next... and eventually, use that to write
+a unit test.
