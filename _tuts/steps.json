@@ -1251,6 +1251,16 @@
             "description": null
         },
         {
+            "id": "integration-add-var-dump",
+            "name": "Integration: add var_dump()",
+            "description": null
+        },
+        {
+            "id": "integration-remove-var-dump",
+            "name": "Integration: remove var_dump()",
+            "description": null
+        },
+        {
             "id": "functional-install-browser-kit",
             "name": "Functional: install browser-kit",
             "description": null
@@ -1341,5 +1351,5 @@
             "description": null
         }
     ],
-    "sha": "b2708bdccc73b55bf0a359fb8be172b697c820ea"
+    "sha": "b2da6dfd79159f95628abd6d4ca33387b167268e"
 }

@@ -1,0 +1,11 @@
+diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
+index 38fc5a85..8cb0199b 100644
+--- a/tests/Service/MailerTest.php
++++ b/tests/Service/MailerTest.php
+@@ -60,5 +60,6 @@ class MailerTest extends KernelTestCase
+         $mailer = new Mailer($symfonyMailer, $twig, $pdf, $entrypointLookup);
+         $email = $mailer->sendAuthorWeeklyReportMessage($user, [$article]);
+         $this->assertCount(1, $email->getAttachments());
++        var_dump($email->getAttachments());
+     }
+ }
