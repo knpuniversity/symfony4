@@ -13,6 +13,7 @@ chapters:
     - console-command
     - console-email
     - route-context
+    - snappy-wkhtmltopdf
     - create-pdf
     - pdf-styles
     - service-organization
