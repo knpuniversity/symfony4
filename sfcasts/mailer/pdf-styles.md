@@ -1,46 +1,7 @@
 # Styling PDFs with CSS
 
-We just used Twig to render a template and give us some HTML. Then, we passed
-that HTML to Snappy, which uses `wkhtmltopdf` to turn that into a PDF. If *all*
-has gone well, the `$pdf` variable represents PDF content that we could do anything
-with, like save to a file *or* attach to an email. Why, what a wonderful idea!
-
-Adding an attachment to an email... probably looks exactly like you expect:
-`->attach()`. The first argument is the file *contents* - so `$pdf`. If you
-need to attach something *big*, you can also use a file *resource* here - like
-use `fopen` on a file and pass the file handle so you don't need to read the
-whole thing into memory. The second argument will be the filename for the
-attachment. Let's uses `weekly-report-%s.pdf` and pass today's day for the
-wildcard: `date('Y-m-d')`.
-
-Love it! We're ready to try this thing. Find your terminal and run:
-
-```terminal
-php bin/console app:author-weekly-report:send
-```
-
-As a reminder, even though this *looks* like it's sending to six authors, it's
-a lie! It's *really* looping over 6 *possible* authors, but only sending emails
-to those that have written an article within the past 7 days. Because the database
-fixtures for this project have a bunch of randomness, this might send to 5 users,
-2 users... or 0 users. If it doesn't send *any* emails, try reloading your fixtures
-by running:
-
-```terminal-silent
-php bin/console doctrine:fixtures:load
-```
-
-If you are *so* lucky that it's sending *more* than 2 emails, you'll get an error
-from Mailtrap, because it limits sending 2 emails per 10 seconds on the free plan.
-You can ignore the error or reload the fixtures.
-
-In my case, in Mailtrap... yea! This sent 2 emails. If I click on the first one...
-it looks good... and it has an attachment! Let's open it up!
-
-Oh... ok... I guess it *technically* worked... but it looks *terrible*. This
-definitely did *not* have Bootstrap CSS applied to it. The question is: why not?
-
-## Where are my Styles
+Our PDF attachment looks *terrible*. I don't know *why*, but the CSS is *definitely*
+not working.
 
 Debugging this can be tricky because even though this was *originally* generated
 from an HTML page, we can't exactly "Inspect Element" on a PDF and see what went
