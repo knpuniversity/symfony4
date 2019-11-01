@@ -18,5 +18,5 @@ chapters:
     - pdf-styles
     - service-organization
     - unit-test
-    - integration-test #raw
+    - integration-test
     - functional-test #raw
