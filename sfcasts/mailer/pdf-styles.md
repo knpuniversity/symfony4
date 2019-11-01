@@ -3,20 +3,20 @@
 Our PDF attachment looks *terrible*. I don't know *why*, but the CSS is *definitely*
 not working.
 
-Debugging this can be tricky because even though this was *originally* generated
+Debugging this can be tricky because, even though this was *originally* generated
 from an HTML page, we can't exactly "Inspect Element" on a PDF and see what went
 wrong.
 
 So... let's... think about what's happening. The `encore_entry_link_tags()`
 function creates one or more link tags to CSS files, which live in the `public/build`
-directory. But those paths are *relative* - like `href="/builds/app.css"`.
+directory. But the paths it generates are *relative* - like `href="/build/app.css"`.
 
 We *also* know that the `getOutputFromHtml()` method works by taking the HTML,
 saving it to a temporary file and then *effectively* loading that file in a browser...
-and create a PDF from what it looks like. If you loaded a random HTML file on
-your computer into a browser... and that HTML file had a CSS link tag to
-`/builds/app.css`, what would happen? Well, it would look for that file on
-the *filesystem* - like literally a `/builds/` directory at the root of your drive.
+and creating a PDF from what it looks like. If you load a random HTML file on
+your computer into a browser... and that HTML file has a CSS link tag to
+`/build/app.css`, what would happen? Well, it would look for that file on
+the *filesystem* - like literally a `/build/` directory at the root of your drive.
 
 *That* is what's happening behind the scenes. So, the CSS never loads... and the
 PDF looks like it was designed... well... by me. We can do better.
@@ -27,9 +27,9 @@ Once you understand what's going on, the fix is pretty simple. Replace
 `{{ encore_entry_link_tags() }}` with
 `{% for path in encore_entry_css_files('app') %}`.
 
-Instead of printing all the link tags we need, this just loops over all of the
-CSS files we need to include. Inside, add `<link rel="stylesheet" href="">` and
-the make the path absolute with `absolute_url(path)`.
+Instead of printing all the link tags for all the CSS files we need, this allows
+us to loop over them. Inside, add `<link rel="stylesheet" href="">` and
+then make the path absolute with `absolute_url(path)`.
 
 We saw this earlier: we used it to make sure the path to our logo - before we
 embedded it - contained the domain name. *Now* when `wkhtmltopdf`, more or less,
@@ -44,11 +44,12 @@ php bin/console app:author-weekly-report:send
 
 Move back over and... I'll refresh Mailtrap... great! 2 new emails. Check the
 attachment on the first one. It looks great! I mean, hopefully you're better at
-styling than I am... and can make this look *even* better, with a hot-pink background
-and unicorn Emojis. The point is: the CSS *is* being loaded.
+styling than I am... and can make this look *even* better, maybe with a hot-pink
+background and unicorn Emojis? I'm still working on my vision. The point is: the
+CSS *is* being loaded.
 
 Let's check the other email to be sure. What? This one looks terrible! The first
-PDF is good... and the second one... which was generated the *excat* same way
+PDF is good... and the second one... which was generated the *exact* same way...
 has no styling!? What madness is this!
 
 HERE!
