@@ -15,7 +15,7 @@ chapters:
     - route-context
     - create-pdf
     - pdf-styles
-    - service-organization  #raw
+    - service-organization
     - unit-test #raw
     - integration-test #raw
     - functional-test #raw
