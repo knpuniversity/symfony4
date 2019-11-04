@@ -9,6 +9,8 @@ Nope, in the real world, we put CSS into CSS *files*. Let's do that. Copy
 *all* of the styles and delete them. Inside the  `assets/css` directory, let's
 create a new `email.css` file. Paste!
 
+[[[ code('1f07197944') ]]]
+
 So far, we've seen that the `inline_css` filter is smart enough to *notice*
 any `style` tags in the template and use that CSS to style the HTML tags. But
 you can *also* point the filter to an *external* CSS file.
@@ -17,9 +19,13 @@ Go back to `config/packages/twig.yaml`. To point to the CSS file, we need to add
 another Twig path: let's set the `assets/css` directory to `styles`. So, `@styles`
 will point here.
 
+[[[ code('bde6202b85') ]]]
+
 Back in `welcome.html.twig`, we can pass an argument to `inline_css()`: a
 *string* of styles that it should use. To get that, use the `source()`
 function, `@styles/` and then the name of our file `email.css`.
+
+[[[ code('b7ab5e74c8') ]]]
 
 The `source()` function is a standard Twig function... that you don't see very
 often. It tells Twig to go find the file - which could be a CSS file or another
