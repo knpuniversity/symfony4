@@ -19,4 +19,4 @@ chapters:
     - service-organization
     - unit-test
     - integration-test
-    - functional-test #raw
+    - functional-test
