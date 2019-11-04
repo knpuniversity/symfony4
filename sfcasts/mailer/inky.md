@@ -71,6 +71,8 @@ filter on the *entire* template. On top, add `{% apply inky_to_html %}`... and
 *all* the way at the bottom, put `{% endapply %}`. I'll indent this to make it
 look nice.
 
+[[[ code('a1250e71f4') ]]]
+
 Let's try it! Find your browser and make sure you're on the registration page.
 Let's register as `thetruthisoutthere11@example.com`, any password, check the
 terms, register and... error!
@@ -112,11 +114,15 @@ And... I still *do* want to include my custom `email.css` code. Copy the `source
 stuff, add a *second* argument to `inline_css` - you can pass this as *many* arguments
 of CSS as you want - and point this at `email.css`.
 
+[[[ code('edc181a642') ]]]
+
 That should do it! Oh, but before we try this, back in `tutorial/`, that `inky/`
 directory *also* holds an `email.css` file. Now that we're using a CSS framework,
 some of the code in our original `email.css`... just isn't needed anymore! This
 new `email.css` is basically the same as the original one... but with some extra
 stuff removed. Copy the code from the file, and paste it over the one in `assets/css`.
+
+[[[ code('765a078bec') ]]]
 
 Ok, time to see the final product! Go back to the registration page, update the
 email, add a password, enter and... go check out Mailtrap. There it is and...
