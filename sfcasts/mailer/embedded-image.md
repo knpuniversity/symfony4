@@ -36,6 +36,8 @@ it's *super* cool. Add one new "path" below this: `assets/images` - I'm
 literally referring to the `assets/images` directory - set to the word... how
 about... `images`. That part could be anything.
 
+[[[ code('82601793d0') ]]]
+
 Ok... so *what* did this just do? Forget about emails *entirely* for a minute.
 Out-of-the-box, when you render a template with Twig, it knows to look for that
 file in the `templates/` directory... and *only* in the `templates/` directory.
@@ -61,6 +63,8 @@ of this `WrappedTemplatedEmail` class. We're literally calling this `image()` me
 we pass it the physical path to an image file, and it takes care of *embedding* it.
 
 What's the *path* to the logo file? It's `@images/email/logo.png`.
+
+[[[ code('4752c27b66') ]]]
 
 Yep, thanks to our config, `@images` points to `assets/images`, and then we put
 the path after that - `email/logo.png`.
