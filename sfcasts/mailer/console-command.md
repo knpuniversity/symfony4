@@ -20,20 +20,34 @@ php bin/console make:command
 ```
 
 Call it `app:author-weekly-report:send`. Perfect! Back in the editor, head to the
-`src/Command` directory to find... our shiny new console command. Let's start
-customizing this: we don't need any arguments or options... and I'll change the
-description:
+`src/Command` directory to find... our shiny new console command. 
+
+[[[ code('c91c8fc95f') ]]]
+
+Let's start customizing this: we don't need any arguments or options... 
+and I'll change the description:
 
 > Send weekly reports to authors.
+
+[[[ code('ac4b04f289') ]]]
 
 The *first* thing we need to do is find *all* users that have this
 `$subscribeToNewsletter` property set to `true` in the database. To keep our code
 squeaky clean, let's add a custom repository method for that in `UserRepository`.
 How about `public function findAllSubscribedToNewsletter()`. This will return
-an `array`. Inside, return `$this->createQueryBuilder()`, `u` as the alias,
+an `array`. 
+
+[[[ code('42fba0aeda') ]]]
+
+Inside, return `$this->createQueryBuilder()`, `u` as the alias,
 `->andWhere('u.subscribeToNewsletter = 1')`, `->getQuery()` and `->getResult()`.
+
+[[[ code('598441309b') ]]]
+
 Above the method, we can advertise that this *specifically* returns an array of
 `User` objects.
+
+[[[ code('c1735048ca') ]]]
 
 ## Autowiring Services into the Command
 
@@ -49,15 +63,24 @@ Symfony already gets that from a static property on our class. Instead, make the
 first argument: `UserRepository $userRepository`. Hit Alt + Enter and select
 "Initialize fields" to create that property and set it. Perfect.
 
+[[[ code('fd5d224245') ]]]
+
 Next, in `execute()`, clear *everything* out except for the `$io` variable, which
 is a nice little object that helps us print things and interact with the user...
-in a pretty way. Start with
-`$authors = $this->userRepository->findAllSubscribedToNewsletter()`.
+in a pretty way. 
+
+[[[ code('63b3944598') ]]]
+
+Start with `$authors = $this->userRepository->findAllSubscribedToNewsletter()`.
+
+[[[ code('1caa981410') ]]]
 
 Well, this really returns *all* users... not just authors - but we'll filter them
 out in a minute. To be extra fancy, let's add a progress bar! Start one with
 `$io->progressStart()`. Then, foreach over `$authors as $author`, and advance
 the progress inside.
+
+[[[ code('50b3d2db93') ]]]
 
 Oh, and of course, for `progressStart()`, I need to tell it how *many* data
 points we're going to advance. Use `count($authors)`. Leave the inside of the
@@ -65,6 +88,8 @@ points we're going to advance. Use `count($authors)`. Leave the inside of the
 big happy message, add `$io->success()`
 
 > Weekly reports were sent to authors!
+
+[[[ code('1756d2ede3') ]]]
 
 Brilliant! We're not *doing* anything yet... but let's try it! Copy the command
 name, find your terminal, and do it!
@@ -81,6 +106,9 @@ Inside the `foreach`, the next step is to find all the articles this user publis
 if any - from the past week. Open up `ArticleRepository`... and add a new method
 for this - `findAllPublishedLastWeekByAuthor()` - with a single argument: the `User`
 object. This will return an `array`... of articles: let's advertise that above.
+
+[[[ code('3f38bdcbe6') ]]]
+
 The query itself is pretty simple: `return $this->createQueryBuilder()` with
 `->andWhere('a.author = :author)` to limit to only *this* author - we'll set the
 `:author` parameter in a second - then `->andWhere('a.publishedAt > :week_ago')`.
@@ -88,18 +116,26 @@ For the placeholders, call `setParameter()` to set `author` to the `$author`
 variable, and `->setParameter()` again to set `week_ago` to a
 `new \DateTime('-1 week')`. Finish with the normal `->getQuery()` and `->getResult()`.
 
+[[[ code('85ce0fcbe9') ]]]
+
 Boom! Back in the command, autowire the repository via the *second* constructor
 argument: `ArticleRepository $articleRepository`. Hit Alt + Enter to initialize
 that field.
+
+[[[ code('69ffcbeed2') ]]]
 
 Down in execute, we can say
 `$articles = $this->articleRepository->findAllPublishedLastWeekByAuthor()`
 and pass that `$author`.
 
+[[[ code('1e7716c3df') ]]]
+
 Phew! Because we're actually querying for *all* users, not everyone will be an
 author... and even less will have authored some articles in the past 7 days.
 Let's skip those to avoid sending empty emails: if  `count($articles)` is zero,
 then `continue`.
+
+[[[ code('2216f5d9e5') ]]]
 
 By the way, in a real app, where you would have hundreds, thousands or even more
 users, querying for *all* that have subscribed is *not* going to work. Instead,
