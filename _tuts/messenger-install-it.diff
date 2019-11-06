@@ -1,11 +1,11 @@
 diff --git a/.env b/.env
-index ee6774d3..a4b5ee31 100644
+index 55dd4100..cd78595b 100644
 --- a/.env
 +++ b/.env
-@@ -48,3 +48,10 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
- # SENDGRID_KEY=
- # MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
+@@ -50,3 +50,10 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
  ###< symfony/sendgrid-mailer ###
+ 
+ DEV_MAIL_RECIPIENT=someone@example.com
 +
 +###> symfony/messenger ###
 +# Choose one of the transports below
@@ -26,9 +26,18 @@ index de3d528b..dadd525f 100644
          "symfony/security-bundle": "^4.0",
          "symfony/sendgrid-mailer": "4.3.*",
 diff --git a/composer.lock b/composer.lock
-index 9deeaf49..9ce21fc2 100644
+index 9deeaf49..24a6bfc4 100644
 --- a/composer.lock
 +++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "0a58cdfcfb9febb67f25fde07561d2f3",
++    "content-hash": "c25074318fcc25973d86f99304e74b81",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
 @@ -5599,6 +5599,80 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-22T08:16:11+00:00"

@@ -1,16 +1,3 @@
-diff --git a/config/services.yaml b/config/services.yaml
-index 85e9f3bd..f7fbf6c5 100644
---- a/config/services.yaml
-+++ b/config/services.yaml
-@@ -50,3 +50,7 @@ services:
-                 extended_type: Symfony\Component\Form\Extension\Core\Type\TextareaType }
- 
-     Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
-+
-+    mailer.set_from:
-+        class: App\EventListener\SetFromListener
-+        tags: ['kernel.event_subscriber']
-\ No newline at end of file
 diff --git a/src/EventListener/SetFromListener.php b/src/EventListener/SetFromListener.php
 new file mode 100644
 index 00000000..e66d903c

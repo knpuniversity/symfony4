@@ -1,8 +1,8 @@
 diff --git a/.env b/.env
-index a4b5ee31..6787e2f0 100644
+index cd78595b..639dc17b 100644
 --- a/.env
 +++ b/.env
-@@ -52,6 +52,6 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
+@@ -54,6 +54,6 @@ DEV_MAIL_RECIPIENT=someone@example.com
  ###> symfony/messenger ###
  # Choose one of the transports below
  # MESSENGER_TRANSPORT_DSN=amqp://guest:guest@localhost:5672/%2f/messages
