@@ -7,6 +7,8 @@ If you downloaded the course code, you should have a `tutorial/` directory with 
 `inky/` directory and a file inside called `author-weekly-report.html.twig`. Copy
 that and throw it into `templates/email/`.
 
+[[[ code('6413fbfadf') ]]]
+
 Nice! This template is already written using the Inky markup: the markup that Inky
 will translate into HTML that will work in any email client. But mostly, other
 than a link to the homepage and the user's name, this is a boring, empty email:
@@ -19,17 +21,32 @@ on top of the new template. This will translate the markup to Inky *and* inline
 our CSS. At the bottom, add `endapply`... and I'll indent everything to satisfy
 my burning inner need for order in the universe!
 
+[[[ code('2cf07ef0ef') ]]]
+
 To *send* this email, we know the drill! In the command, start with
 `$email = (new TemplatedEmail())`, `->from()` and... ah: let's cheat a little.
+
+[[[ code('063efee3c4') ]]]
+
 Go back to `src/Controller/SecurityController.php`, find the `register()` method
 and copy *its* `from()` line: we'll probably always send *from* the same user.
 And yes, we'll learn how *not* to duplicate this later. I'll re-type the
 "S" on `NamedAddress` and hit tab to add the missing `use` statement on top.
 
+[[[ code('d646cfb25a') ]]]
+
 Ok, let's finish the rest: `->to()` with `new NamedAddress()`
 `$author->getEmail()` and `$author->getFirstName()`,
+
+[[[ code('a383b8b3c3') ]]]
+
 `->subject('Your weekly report on The Space Bar!')` and
+
+[[[ code('36d52ece7c') ]]]
+
 `->htmlTemplate()` to render `email/author-weekly-report.html.twig`.
+
+[[[ code('0d7aa70fc5') ]]]
 
 Do we need to pass any variables to the template? *Technically*... no: the only
 variable we're using so far is the built-in `email` variable. But we *will* need
@@ -37,14 +54,20 @@ the articles, so let's call `->context([])`. Pass this an `author` variable...
 I'm not sure if we'll actually need that... and the `$articles` that this author
 recently wrote.
 
+[[[ code('ddfe1deac6') ]]]
+
 Done! Another beautiful `Email` object. We're a machine! How do we send it? Oh,
 we know that too: we need the mailer service. Add a *third* argument to the
 constructor: `MailerInterface $mailer`. I'll do our usual Alt+Enter trick and
 select "Initialize Fields" to create that property and set it.
 
+[[[ code('9fee46579d') ]]]
+
 Back down below, give a co-worker a serious "nod"... as if you're about to take
 on a task of great gravity... but instead, send an email:
 `$this->mailer->send($email)`.
+
+[[[ code('88a060774a') ]]]
 
 Love that. In our fixtures, thanks to some randomness we're using, about 75% of
 users will be subscribed to the newsletter. Before we run the command, let's make
@@ -97,10 +120,14 @@ and paste in `emailBase`. Then... select the *middle* of the template and delete
 We basically want the header, the footer and, in the middle, a block for the
 content. Add `{% block content %}{% endblock %}`.
 
+[[[ code('099c3cde96') ]]]
+
 That block name could be anything. Now that we have *this* nifty template, back
 in `welcome.html.twig`, life gets simpler. On top, start with
 `{% extends 'email/emailBase.html.twig' %}`. Then, delete the `apply` and `endapply`,
 and replace it with `{% block content %}`... and `{% endblock %}`.
+
+[[[ code('6f231377b0') ]]]
 
 If you're wondering why we don't need the `inky_to_html` and `inline_css` filter
 stuff anymore, it's because the contents of this template will be put into a block
@@ -115,6 +142,8 @@ Perfecto! Repeat this beautiful code in `author-weekly-report.html.twig`:
 `{% extends 'email/emailBase.html.twig' %}`, `{% block content %}` and *all* the
 way at the bottom, `{% endblock %}`. We can also remove the `container` element...
 and unindent.
+
+[[[ code('1ac75ed0ce') ]]]
 
 That felt *great*! Let's see how it looks: run our weekly report:
 
