@@ -1326,6 +1326,11 @@
             "description": null
         },
         {
+            "id": "messenger-use-in-memory-in-test",
+            "name": "Messenger: use in-memory:\/\/ in test",
+            "description": null
+        },
+        {
             "id": "webpack-encore-install-foundation-emails-package",
             "name": "Webpack Encore: Install foundation-emails package",
             "description": null
@@ -1351,5 +1356,5 @@
             "description": null
         }
     ],
-    "sha": "654a937b52c3788f0edc3eb740f189683e02688a"
+    "sha": "50a0559a960ae90ece89756a061524916a988867"
 }
