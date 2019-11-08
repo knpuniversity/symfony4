@@ -1,60 +1,74 @@
-# Sendgrid
+# Production Settings with SendGrid
 
-Coming soon...
+In `.env`, we're using the `null` transport. In `.env.local`, we're overriding
+that to send to Mailtrap. This is great for development, but it's time to make
+sure our app is ready to send *real* emails through a *real* email server.
 
-So far. If you look at `.env` in by default, we have our `MAILER_DSN` is set to use the
-null transport as a reminder in Symfony 4.4 the syntax for the null transport will
-no, I'm not going to say that and we're overriding that in `.env.local` to
-send to MailTrap. This is great for development a, but it's time to actually send to
-a real email provider. Now Symfony Mailer supports sending to any SMTP server. You
-can put the username password here and the SMTP server afterwards. Then the port just
-like we're doing for MailTrap, but it also has built in special support for most of
-the major cloud providers. For example, SendGrid, so let's use SendGrid. I'm going
-to comment out my `MAILER_DSN` in that `.env.local` and replace it with 
-smtp://sendgrid. Now in Symfony four point as I mentioned, the way that
-smeller delivers emails is called a transport. A. One of the built in transports is
-the SMTP transport. Another built in transport is the null transport, and then it has
-transports specific to other, specific to other cloud providers like SendGrid and
-other things. In Symfony 4.3 the way it figures out which transport to use is this.
-`sendgrid` is the host name here in Symfony 4.4. This will change. It will be, it will
-look like `sendgrid://default` and Symfony 4.4. The transport you're choosing is
-actually, um, the first part
+To do that, I recommend using some cloud-based email service and Symfony Mailer
+supports sending to *any* service that supports the SMTP protocol... which is
+all of them. We did this for Mailtrap using the
+`{username}:{password}@{server}:{port}`
+syntax.
 
-you'll see the same thing with the Null transport in Symfony 4.4. This would look
-like day I and = `null://`, and uh, and then `default` to the where that
-default is meaningless. So that's just a change to be aware of the transport in 4.4
-will be this starting a string. But I'll talk about the, I'll point and I'll point
-that out if there's any other changes along the way, but either way, whether you're
-in 4.3 or 4.4, this is how you say, I want to use the SendGrid transport. Now,
+But to make life *even* nicer, Mailer has *special* support for the most common
+email services - like SendGrid, Postmark, Mailgun, Amazon SES and a few others.
+Let's use SendGrid.
+
+Before we even *create* an account on SendGrid, let's jump in and start configuring
+it. In `.env.local`, comment out the Mailtrap `MAILER_DSN` and replace it with
+`MAILER_DSN=smtp://sendgrid`. In Symfony 4.4, the syntax changed to
+`sendgrid://default`.
+
+## All About Transports
+
+So far, we've seen two *transports* - two *ways* of sending emails: the `smtp`
+transport and the `null` transport. Symfony *also* has a `sendgrid` transport.
+In Symfony 4.3, you *choose* which transport you want by saying `smtp://` and
+then the name of some available transport, like `null` or `sendgrid`. In
+Symfony 4.4 and higher, this is different. The syntax is the *transport* name,
+like `null` or `sendgrid` *then* `://` and whatever other options you need to
+pass to that transport. The word `default` is a dummy placeholder when you don't
+need to configure a server, like for the `null` transport or for `sendgrid`,
+because that transport already knows internally what the address is to the SendGrid
+servers.
+
+Anyways, whether you're in Symfony 4.3 with the old syntax or Symfony 4.4 with
+the new one, *this* is how you say: "I want to use the SendGrid transport".
+
+Some of you might currently be *screaming*
+
+> Wait! That can't *possibly* be *all* the config we need to
+
+this is how you say, I want to use the SendGrid transport. Now,
 obviously we haven't configured any keys. We didn't even have a SendGrid account yet,
 but let's at least see what happens.
 
 let's go back over. Let's go to the registration page and immediately we get an error:
 
-> Unable to send emails via Sendgrid as the bridge is not installed. 
+> Unable to send emails via Sendgrid as the bridge is not installed.
 
-So this is another example of a Symfony making it very easy to do something. 
-But um, but in order to say small, it's a not coming with this feature by default. 
-So let's come copy that `composer require` line there and we'll spend them or 
+So this is another example of a Symfony making it very easy to do something.
+But um, but in order to say small, it's a not coming with this feature by default.
+So let's come copy that `composer require` line there and we'll spend them or
 do a terminal and paste
 
 ```terminal-silent
 composer require symfony/sendgrid-mailer
 ```
 
-And you'll notice this actually configures a recipes. So I'm going to do 
+And you'll notice this actually configures a recipes. So I'm going to do
 
 ```terminal
 git status
 ```
 
 and you can see that in addition to the normal things, they made a change toward that
-end file. So I'll do it that 
+end file. So I'll do it that
 
 ```terminal
 git diff .env
-``` 
- 
+```
+
 and cool. It actually changed a
 section ever. That new section at the bottom. So let's go check that out. This is
 just the, and this makes sense because we installed SendGrid, it added a little
