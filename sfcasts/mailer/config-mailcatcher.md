@@ -54,10 +54,10 @@ you can send to. But instead of *delivering* the messages, it holds onto them an
 you can view them all in a fake inbox in your browser. MailCatcher is written in
 Ruby and a similar tool - MailHog - is written in Go. Those are both *great* options.
 
-## Hello MailTrap
+## Hello Mailtrap
 
 But... to save me the headache of getting those running, I'm going to use a *third*
-option called MailTrap. Head to [mailtrap.io](https://mailtrap.io/). This is
+option called Mailtrap. Head to [mailtrap.io](https://mailtrap.io/). This is
 basically a "hosted" version of those tools: it gives us a fake SMTP server and
 fake inbox, but we don't need to install anything. *And* it has an excellent free
 plan.
@@ -65,23 +65,23 @@ plan.
 After you register, you'll end up in a spot like this: with a "Demo inbox". Click
 into that Demo inbox. On the right, you'll see a bunch of information about
 how to connect to this. At the time of recording, they *do* have specific instructions
-for Symfony 4... but these are for using MailTrap with *SwiftMailer*, not Symfony
+for Symfony 4... but these are for using Mailtrap with *SwiftMailer*, not Symfony
 Mailer.
 
 No worries, setup is dead simple. The DSN follows a standard structure:
-`username:password@server:port`. Copy the username from MailTrap, paste,
+`username:password@server:port`. Copy the username from Mailtrap, paste,
 add a colon, copy and paste the password, then `@` the server - `smtp.mailtrap.io` -
 one more colon, and the port. We could use any of these. Try `2525`.
 
 Done! If we haven't messed anything up, our email *should* be delivered
-to our MailTrap inbox. Let's try it! Refresh the form submit and... ah! Validation
+to our Mailtrap inbox. Let's try it! Refresh the form submit and... ah! Validation
 error. The last time we tried this, the email failed to send but the user *was*
 saved to the database. Make the email unique by adding a "2". Then click the terms,
 enter any password and... register!
 
-Ok, no errors! Go check MailTrap! There it is! It's got the subject, *text*
+Ok, no errors! Go check Mailtrap! There it is! It's got the subject, *text*
 content, but no HTML content because we haven't set that yet. There are also
-a couple of other cool debugging features in MailTrap - we'll talk about some of
+a couple of other cool debugging features in Mailtrap - we'll talk about some of
 these soon.
 
 Now that we've got some success, it's time to attack the obvious shortcoming

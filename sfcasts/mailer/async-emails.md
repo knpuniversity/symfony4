@@ -50,7 +50,7 @@ I'm going to move over. Refresh the registration page. Everything's good. It
 registered as Fox. The truth is out there. 15 example.com. Any password agree to the
 terms and registered and you may not have noticed it there, but if we actually
 profiled the registration before and after that change, that registration was way
-faster because it didn't actually deliver the email. Check it out in MailTrap.
+faster because it didn't actually deliver the email. Check it out in Mailtrap.
 There's no new messages here. I can refresh nothing. It is not being delivered. Where
 did the message go? Well, because we're using the doctrine transport. It's an a new
 database table. We can actually see it by running bin console doctrine query SQL,
@@ -116,7 +116,7 @@ if we
 
 tried to do messenger consume, that would actually send that message from the test
 environment, which technically isn't a problem because it's just going to go to
-MailTrap. But it is a little bit weird. So because of that in the test environment
+Mailtrap. But it is a little bit weird. So because of that in the test environment
 only instead of using the doctrine transport, I like to use something called the
 in-memory transport. So I'm gonna copy messenger,_transport_DSN, then opened up the
 that in that test environment, paste this here and replace doctrine with in dash

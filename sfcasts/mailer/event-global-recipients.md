@@ -3,8 +3,8 @@
 Coming soon...
 
 I want to propose two possible cool things that we could do to every email that we
-sent. The first one is that while we're developing, if we decide to use a MailTrap,
-great, then all of our emails are going to go to MailTrap. But if we decide that we
+sent. The first one is that while we're developing, if we decide to use a Mailtrap,
+great, then all of our emails are going to go to Mailtrap. But if we decide that we
 want to actually use SendGrid and send real emails in the development environment,
 the tricky thing is that it means that whenever you register, you need to use a real
 email address that you own so that you get the email in your inbox. What would be

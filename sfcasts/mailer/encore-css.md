@@ -176,7 +176,7 @@ email. So I'll hit back.
 Okay.
 
 Bumped an email type any password, hit register and wow. Okay, great. No errors
-didn't mean to sound so surprised. Go up. I'll refresh. MailTrap okay. Now I remember
+didn't mean to sound so surprised. Go up. I'll refresh. Mailtrap okay. Now I remember
 because we've refactored to use, um, a messenger that email's not going to be sent
 until we consume messenger. So I'm actually gonna open up a new tab or a bin console,
 messenger, colon consumed dash BV. There it is. You can see the messages found. The
