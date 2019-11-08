@@ -1,10 +1,10 @@
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index e3d9feab..c22101f0 100644
+index 50845f0c..c22101f0 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,51 +1,77 @@
--<!doctype html>
 -{% apply inline_css(source('@styles/email.css')) %}
+-<!doctype html>
 -<html lang="en">
 -<head>
 -    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
