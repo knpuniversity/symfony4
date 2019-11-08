@@ -64,7 +64,7 @@ with the `|` symbol - like `foo|inline_css`. But if you want to run a *lot* of
 stuff through a filter, you can do it with this handy `apply` *tag*. At the bottom
 of the template, say `{% endapply %}`.
 
-[[[ code('749ae17a1c') ]]]
+[[[ code('34723445f2') ]]]
 
 And... that's it! This passes our *entire* template through this filter... which
 is *super* smart. It reads the CSS from inside the `style` tag and uses

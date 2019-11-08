@@ -25,7 +25,7 @@ Back in `welcome.html.twig`, we can pass an argument to `inline_css()`: a
 *string* of styles that it should use. To get that, use the `source()`
 function, `@styles/` and then the name of our file `email.css`.
 
-[[[ code('b7ab5e74c8') ]]]
+[[[ code('edd3642fff') ]]]
 
 The `source()` function is a standard Twig function... that you don't see very
 often. It tells Twig to go find the file - which could be a CSS file or another
