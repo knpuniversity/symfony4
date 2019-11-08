@@ -21,7 +21,7 @@ chapters:
     - integration-test
     - functional-test
     - sendgrid
-    - sender-authentication   # raw
+    - sender-authentication
     - event-global-recipients # raw
     - global-from  # raw
     - async-emails # raw
