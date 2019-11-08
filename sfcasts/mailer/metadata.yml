@@ -20,6 +20,7 @@ chapters:
     - unit-test
     - integration-test
     - functional-test
+    - emails-test-env
     - sendgrid
     - sender-authentication
     - event-global-recipients # raw
