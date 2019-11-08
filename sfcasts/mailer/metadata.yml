@@ -20,3 +20,9 @@ chapters:
     - unit-test
     - integration-test
     - functional-test
+    - sendgrid     # raw
+    - sender-authentication   # raw
+    - event-global-recipients # raw
+    - global-from  # raw
+    - async-emails # raw
+    - encore-css   # raw
