@@ -1,8 +1,8 @@
 diff --git a/.env b/.env
-index cd78595b..639dc17b 100644
+index eee59101..41eb0890 100644
 --- a/.env
 +++ b/.env
-@@ -54,6 +54,6 @@ DEV_MAIL_RECIPIENT=someone@example.com
+@@ -56,6 +56,6 @@ DEV_MAIL_RECIPIENT=someone@example.com
  ###> symfony/messenger ###
  # Choose one of the transports below
  # MESSENGER_TRANSPORT_DSN=amqp://guest:guest@localhost:5672/%2f/messages

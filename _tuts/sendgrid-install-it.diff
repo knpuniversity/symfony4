@@ -1,8 +1,8 @@
 diff --git a/.env b/.env
-index 414d7ab4..ee6774d3 100644
+index 44b2278e..67652a8c 100644
 --- a/.env
 +++ b/.env
-@@ -43,3 +43,8 @@ MAILER_DSN=smtp://null
+@@ -45,3 +45,8 @@ MAILER_DSN=smtp://null
  WKHTMLTOPDF_PATH=/usr/local/bin/wkhtmltopdf
  WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
  ###< knplabs/knp-snappy-bundle ###

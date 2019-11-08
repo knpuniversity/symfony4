@@ -1,8 +1,8 @@
 diff --git a/.env b/.env
-index 55dd4100..cd78595b 100644
+index 03c8fcad..eee59101 100644
 --- a/.env
 +++ b/.env
-@@ -50,3 +50,10 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
+@@ -52,3 +52,10 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
  ###< symfony/sendgrid-mailer ###
  
  DEV_MAIL_RECIPIENT=someone@example.com
