@@ -3,9 +3,15 @@
 We sent the email, but it's missing its core content: info about the articles
 that each author wrote last week. That's no problem for us: we're already passing
 an `articles` variable to the template via `context()`. In the template, replace
-the `<tr>` with `{% for article in articles %}`, add the `<tr>`, a `<td>` and
-print some data: `{{ loop.index }}` to number the list, 1, 2, 3, 4, etc,
-`{{ article.title }}` and finally, how about: `{{ article.comments|length }}`.
+the `<tr>` with `{% for article in articles %}`: 
+
+[[[ code('8cbb5d987a') ]]]
+
+add the `<tr>`, a `<td>` and print some data: `{{ loop.index }}` 
+to number the list, 1, 2, 3, 4, etc, `{{ article.title }}` and finally, 
+how about: `{{ article.comments|length }}`.
+
+[[[ code('4d375d3efe') ]]]
 
 That's good enough. Double check that by running the command:
 
@@ -24,6 +30,8 @@ but not right.
 
 Hmm. In the template... yea... that looks right: `{{ url('app_homepage') }}`.
 Ok, then why - when we click on the link - is it broken?
+
+[[[ code('d899eda6a7') ]]]
 
 We know that the `url()` function tells Symfony to generate an *absolute* URL.
 And... it *is*. I'll run "Inspect Element" on the broken link button. Check out
@@ -49,7 +57,11 @@ what domain to use.
 ## Setting router.request_context
 
 To fix this, start by looking inside our `.env` file. One of our keys here is called
-`SITE_BASE_URL`. *It* is the URL to our app. But, but, but! This is *not* a standard
+`SITE_BASE_URL`. 
+
+[[[ code('3522bc679b') ]]]
+
+*It* is the URL to our app. But, but, but! This is *not* a standard
 Symfony environment variable and Symfony is *not* currently using this. Nope, this
 is an environment variable that *we* invented in our file uploads tutorial for a
 totally different purpose. You can see it used in `config/services.yaml`. It has
@@ -66,8 +78,14 @@ environment variables. And... hey! In `.env`, the `SITE_BASE_URL` is *almost*
 what we need... we just need it to be kind of split into two pieces. Hmm.
 
 Check this out, create two new environment variables: `SITE_BASE_SCHEME` set to
-`https` and `SITE_BASE_HOST` set to `localhost:8000`. Back in `services.yaml`,
-use these values: `%env(SITE_BASE_SCHEME)%` and `%env(SITE_BASE_HOST)%`
+`https` and `SITE_BASE_HOST` set to `localhost:8000`. 
+
+[[[ code('356162f44f') ]]]
+
+Back in `services.yaml`, use these values: `%env(SITE_BASE_SCHEME)%` 
+and `%env(SITE_BASE_HOST)%`
+
+[[[ code('414154c720') ]]]
 
 Cool!
 
@@ -77,6 +95,8 @@ The problem is that we now have some duplication. Fortunately, one of the
 properties of environment variables is that... um... they can contain environment
 variables! For `SITE_BASE_URL`, set it to `$SITE_BASE_SCHEME` - yep, that's legal -
 `://` and then `$SITE_BASE_HOST`.
+
+[[[ code('3a4b5c4236') ]]]
 
 I *love* that trick. Anyways, now that we've set those two parameters, Symfony
 will use *them* to generate the URL instead of trying to guess it. Try the command
