@@ -1,149 +1,96 @@
 # Production Settings with SendGrid
 
-In `.env`, we're using the `null` transport. In `.env.local`, we're overriding
-that to send to Mailtrap. This is great for development, but it's time to make
-sure our app is ready to send *real* emails through a *real* email server.
+If we're going to send emails with SendGrid... we need an account! Head to
+`sendgrid.com` and click to register. I'll create a shiny new `symfonycasts` username,
+a thoughtful password, my email, am I hopefully *not* a robot... if I am... I'm
+*at least* self-aware. Does that count? And... create account! Oh man! Registration
+step 2! Let's fill these out and... done!
 
-To do that, I recommend using some cloud-based email service and Symfony Mailer
-supports sending to *any* service that supports the SMTP protocol... which is
-all of them. We did this for Mailtrap using the
-`{username}:{password}@{server}:{port}`
-syntax.
+SendGrid *just* sent us an email to verify our account and I've already got my
+inbox open and waiting. There it is! I'll click to confirm my email and... we're
+good!
 
-But to make life *even* nicer, Mailer has *special* support for the most common
-email services - like SendGrid, Postmark, Mailgun, Amazon SES and a few others.
-Let's use SendGrid.
+## Creating the SendGrid API Key
 
-Before we even *create* an account on SendGrid, let's jump in and start configuring
-it. In `.env.local`, comment out the Mailtrap `MAILER_DSN` and replace it with
-`MAILER_DSN=smtp://sendgrid`. In Symfony 4.4, the syntax changed to
-`sendgrid://default`.
+Back on the SendGrid "guide" page, on a high-level, we need some sort of API key
+or username & password that we can use to send through our account. Click "Start"
+and then "Choose" the SMTP Relay option.
 
-## All About Transports
+Yea, I know, I know: SendGrid says that the Web API method is recommended. Most
+Cloud providers give you these two options: send through the traditional SMTP relay
+*or* use some custom API endpoints that they expose. They recommend the API way
+because, if you're creating all of your emails by hand, it's probably easier: just
+send your subject, to, from, body, etc to an API endpoint, and it takes care of
+creating the email behind-the-scenes. The API probably also has a few extra,
+SendGrid-specific features *if* you need to do something really custom.
 
-So far, we've seen two *transports* - two *ways* of sending emails: the `smtp`
-transport and the `null` transport. Symfony *also* has a `sendgrid` transport.
-In Symfony 4.3, you *choose* which transport you want by saying `smtp://` and
-then the name of some available transport, like `null` or `sendgrid`. In
-Symfony 4.4 and higher, this is different. The syntax is the *transport* name,
-like `null` or `sendgrid` *then* `://` and whatever other options you need to
-pass to that transport. The word `default` is a dummy placeholder when you don't
-need to configure a server, like for the `null` transport or for `sendgrid`,
-because that transport already knows internally what the address is to the SendGrid
-servers.
+But because Mailer - and really the Mime component - are handling all of the complexity
+of creating the email *for* us, it's actually much easier to use the SMTP relay.
 
-Anyways, whether you're in Symfony 4.3 with the old syntax or Symfony 4.4 with
-the new one, *this* is how you say: "I want to use the SendGrid transport".
+*Finally*, it's time to create an API key that will authenticate us over SMTP.
+Give the key a name - just so you can recognize what it's for later and hit
+"Create Key".
 
-Some of you might currently be *screaming*
+Check out our beautiful new SendGrid API key. Hmm, actually, down here, it's
+called a "Password". In reality, this *is* a SendGrid API key - you *could* use
+it to send emails through their RESTful API. But because SMTP authentication works
+via a username and password, SendGrid tells us to use `apikey` as the username
+and this as the password. It also tells us exactly which what server and port
+to use. Copy the password.
 
-> Wait! That can't *possibly* be *all* the config we need to
+## Configuring the SMTP Way vs the SendGrid Transport Way
 
-this is how you say, I want to use the SendGrid transport. Now,
-obviously we haven't configured any keys. We didn't even have a SendGrid account yet,
-but let's at least see what happens.
+This is *everything* we need. And, in `.env.local`, we could use this info to
+fill in the normal `smtp://username:password@server:port` format. That would
+*totally* work.
 
-let's go back over. Let's go to the registration page and immediately we get an error:
+*Or*, we could use the SendGrid transport to make life easier: just
+`smtp://` - the long API key - then `@sendgrid`.
 
-> Unable to send emails via Sendgrid as the bridge is not installed.
+The `sendgrid` transport is just a small wrapper around the SMTP transport to
+make life easier: it *knows* that the `username` is always `apikey`... and that
+the server is always `smtp.sendgrid.net` - so you don't need to fill those in.
 
-So this is another example of a Symfony making it very easy to do something.
-But um, but in order to say small, it's a not coming with this feature by default.
-So let's come copy that `composer require` line there and we'll spend them or
-do a terminal and paste
+In 4.4, the new syntax will look like this:
 
-```terminal-silent
-composer require symfony/sendgrid-mailer
+```
+sendgrid://KEY@default
 ```
 
-And you'll notice this actually configures a recipes. So I'm going to do
+By the way, the SendGrid transport can actually use SMTP behind the scenes *or*
+use the SendGrid API. In fact, most transports are like this. Symfony chooses
+the *best* one by default - usually smtp - but you could force it to use the
+API by using `sendgrid+api://`.
 
-```terminal
-git status
-```
+## Sending an Email!
 
-and you can see that in addition to the normal things, they made a change toward that
-end file. So I'll do it that
+Ok team - let's try this! Back in the browser, tell SendGrid that we *have*
+updated our settings and click "Next".
 
-```terminal
-git diff .env
-```
+At this point, unless we've made a mistake, it *should* work: SendGrid is waiting
+for us to try it. So... let's do that! Back on our site, hit enter on the
+registration page. This time, because we're going to send a *real* email - yay! -
+I'll register with a *real* address: `ryan@symfonycasts.com`. Type in a fun password,
+agree to terms and... go!
 
-and cool. It actually changed a
-section ever. That new section at the bottom. So let's go check that out. This is
-just the, and this makes sense because we installed SendGrid, it added a little
-example configuration here for how we might configure these SendGrid transport and
-Symfony 4.4. This what you'll see in your changes to `MAILER_DSN=sendgrid://key@sendgrid`
+No errors!? Ho, ho! Because it *probably* worked. I'll tell SendGrid to
+"Verify Integration" - that'll make it *look* for the email we just ent.
 
-Notice also, it's actually taking advantage of the fact that you can, um, create an
-environment variable called `SENDGRID_KEY` and then refer to it as `$SENDGRID_KEY`
-below. Uh, we're not going to use that, but that's just a little example of some
-fanciness that you can do with, uh, with environment variables. You'll see in a
-second, we're going to configure this in a more straightforward way. All right, so we
-don't even have a SendGrid account yet. So let's actually create one. I'm going to
-`sendgrid.com` and let's create a new account. I'll call it `symfonycasts`, poppin
-password, and I'll use `ryan@symfonycasts.com`. And I'm hopefully not a robot except
-and create account, which it's not letting do. And I'll click to create the account.
-Yeah, fill out some information here and then click get started.
+## Our Message is Spammy
 
-No, actually over here and I might actually have my email open. So just to make sure
-things work, I'll click over here and confirm my email address so that they are happy
-and then I'll close that. All right. Awesome. So back in SendGrid, the first thing
-we're gonna need to do is actually uh, um, on this, uh, guide page is hit start. Now
-there's two main ways for us to set this up. There's a web API or there's the SMTP
-relay. Now they say recommend as the web API, but we're going to choose the SMTP
-relay. The reason that this is their recommended ways, this is if you were built, if
-you were sending emails by hand, you're writing code to send emails by hand. It's
-probably easier for you to use an API to send them. But because Mailer in the Mime
-component are creating all of the email complexity for us, it's actually better for
-us to use the SMTP relay, which is actually more powerful.
+While we're waiting... ah! I see a new message in my inbox! And it looks *perfect*.
+If you don't see anything, double-check your spam folder. Because... the email
+we sent is actually *super* spammy. Why? See how we're sending from
+`alienmailer@example.com`? Do we *own* the `example.com` domain? No! And even if
+we did, we have *not* proven that our SendGrid account is *allowed* to send emails
+on behalf of that domain. This is *the* biggest mistake you can make when sending
+emails and we'll talk more about how to fix it in a few minutes.
 
-all right. The next step is actually to create an API key. So I will say, um, give
-your first
+But first, back on SendGrid... hmm. It didn't see my email? It *definitely* sent.
+Hit to verify again - sometimes this works quickly... but I've even had to hit
+this button 3-4 times before it worked... so keep trying.
 
-key and name, like create and it's going to create this long key down here, which is
-going to be really important. Now notice the, they should tell you like which exact
-server to send, which ports to use, which use the name and which password to use.
-Which means if you look at our dot, invent local file, we could use just like the
-normal SMTP, you can say `smtp://username:password@server` and the
-uh, buttons. Then we're going to use, well by using the SendGrid transport,
-it's just going to basically make our life a little bit easier. So all we need to do
-is take that key we had and say `smtp://` that long key `@sendgrid`. I'll get rid
-of the line break there. So let's make sure that looks right. Yep. And ends and dash
-O internally because reason to send good transport, a Symfony is going to, um, know
-how to transform that and cause the actual SMTP server that needs to be used. Now as
-reminder and Symfony. Um, 4.4, it will be `sendgrid://`, and then the
-key, which would be our long key there `@default` and the `default` here is
-meaningless.
-
-All right, so let's try it. It says once you've set this up, um, we'll click, I've
-updated my settings and then he says next, verify integration.so let's click that
-
-Perfect. And what I want you to do here is send an email from our code using that new
-configuration. So that's easy enough. Let's go back here. I'll hit enter on the
-registration page and this time because we're going to send a real email, let's, I'm
-going to send it to my, my actual, uh, to some real inbox that I have. I use Ryan at
-Symfony cast since I have that account open already, I agree to terms register and,
-okay, no error. So let's go over to SendGrid here and we'll hit verify integration.
-And this may take a minute or so. It's looking on its servers to see whether or not
-it saw an email that was just sent from us. But while we're waiting for that, if you
-look over here, it actually arrives. So this is my inbox and you can see the email
-there. By the way, if you don't, so we can check it out and it looks beautiful. So
-there we are sending through a real transport.
-
-If you don't see anything, uh, double check your spam, double check your spam because
-actually our email looks very spammy right now cause you'll notice it says that we're
-sending from `alienmailer@example.com`. Well we don't own the example.com
-domain. So this should look a little bit spammy. Go back to SendGrid.
-
-Um, and then I have [inaudible] here.
-
-Oh but actually didn't see my emo but let's try it again cause it definitely sent,
-could be
-and that time it worked at my tech, a couple tries, I'm not sure why. Then you can
-hit view email activity. Um, sometimes this is a little bit out of date. So you see
-it says it doesn't see anything, uh, yet inside of here, even though we actually did
-just send an email. Oh, actually we can see your email in there. Awesome. So next I
-want to talk a little bit about why this is probably going to end up in spam in most
-cases. And what we can do to avoid that. It talks about, uh, this is a, and some
-configuration that we must set up.
+Finally, it works. Next, our great new email system... will probably result in
+pretty much *every* email we send going straight to Spam. We need to *prove*
+that we are *allowed* to send from whatever domain our "from" address is set to.
+Let's tackle "Sender authentication".

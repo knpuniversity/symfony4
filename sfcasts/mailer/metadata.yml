@@ -21,6 +21,7 @@ chapters:
     - integration-test
     - functional-test
     - emails-test-env
+    - transports
     - sendgrid
     - sender-authentication
     - event-global-recipients
