@@ -23,7 +23,7 @@ chapters:
     - emails-test-env
     - sendgrid
     - sender-authentication
-    - event-global-recipients # raw
+    - event-global-recipients
     - global-from  # raw
     - async-emails # raw
     - encore-css   # raw
