@@ -25,5 +25,5 @@ chapters:
     - sender-authentication
     - event-global-recipients
     - global-from
-    - async-emails # raw
-    - encore-css   # raw
+    - async-emails
+    - encore-css
