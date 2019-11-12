@@ -24,6 +24,6 @@ chapters:
     - sendgrid
     - sender-authentication
     - event-global-recipients
-    - global-from  # raw
+    - global-from
     - async-emails # raw
     - encore-css   # raw
