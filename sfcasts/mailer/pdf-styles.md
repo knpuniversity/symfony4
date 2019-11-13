@@ -27,9 +27,13 @@ Once you understand what's going on, the fix is pretty simple. Replace
 `{{ encore_entry_link_tags() }}` with
 `{% for path in encore_entry_css_files('app') %}`.
 
+[[[ code('7822dca71f') ]]]
+
 Instead of printing all the link tags for all the CSS files we need, this allows
 us to loop over them. Inside, add `<link rel="stylesheet" href="">` and
 then make the path absolute with `absolute_url(path)`.
+
+[[[ code('38b379a6a2') ]]]
 
 We saw this earlier: we used it to make sure the path to our logo - before we
 embedded it - contained the hostname. *Now* when `wkhtmltopdf`, more or less,
@@ -69,9 +73,13 @@ add one more argument - I know, it's getting a bit crowded. It's
 `EntrypointLookupInterface $entrypointLookup`. I'll do my normal Alt + Enter and
 select "Initialize fields" to create that property and set it.
 
+[[[ code('7e9aae6907') ]]]
+
 Down below, right before we render... or right after... it won't matter, say
 `$this->entrypointLookup->reset()`. This tells Encore to *forget* that it
 rendered anything and forces it to return the same array of CSS files on each call.
+
+[[[ code('6563cc419d') ]]]
 
 This *should* make our PDF wonderful. Run the command one more time:
 
