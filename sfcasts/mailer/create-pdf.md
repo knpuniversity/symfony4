@@ -8,6 +8,8 @@ needs *two* new services: `Environment $twig` - yes, it looks weird, but the typ
 to get Twig directly is called `Environment` - and `Pdf $pdf`. That *second* service
 comes from SnappyBundle.
 
+[[[ code('b50ffc2043') ]]]
+
 As a reminder, if you don't know what type-hint to use, you can always spin over
 to your terminal and run:
 
@@ -22,12 +24,18 @@ Ok, step 1 is to use Twig to render the template and get the HTML:
 forgot to add the properties! I'll put my cursor on the new arguments, hit Alt+Enter,
 and select "Initialize Fields" to create those 2 properties and set them.
 
+[[[ code('186eaa54b8') ]]]
+
 *Now*, back to work: `$this->twig->render()` and pass this the template name -
 `email/author-weekly-report-pdf.html.twig` - and an array of the variables it
 needs... which I think is just `articles`. Pass `'articles' => $articles`.
 
+[[[ code('c1c3ce1a7e') ]]]
+
 To turn that HTML into PDF content, we can say
 `$pdf = $this->pdf->getOutputFromHtml($html)`.
+
+[[[ code('a3914a8cae') ]]]
 
 Cool, right! Behind the scenes, this simple method does a lot: it takes the HTML
 content, saves it to a temporary file, then executes `wkhtmltopdf` and *points*
@@ -47,6 +55,8 @@ use `fopen` on a file and pass the file handle so you don't need to read the
 whole thing into memory. The second argument will be the filename for the
 attachment. Let's uses `weekly-report-%s.pdf` and pass today's date for the
 wildcard: `date('Y-m-d')`.
+
+[[[ code('405d8391de') ]]]
 
 Love it! We're ready to try this thing. Find your terminal and run:
 

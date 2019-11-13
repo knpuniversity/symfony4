@@ -38,8 +38,13 @@ which wkhtmltopdf
 Mine is installed at `/usr/local/bin/wkhtmltopdf`. If your binary live somewhere
 else, you'll need to tweak some config. When we installed the bundle, the
 bundle's recipe added a new section to the bottom of our `.env` file with two
-new environment variables. These are both used inside a new `knp_snappy.yaml` file
-that was *also* added by the bundle.
+new environment variables. 
+
+[[[ code('15dbd16f7c') ]]]
+
+These are both used inside a new `knp_snappy.yaml` file that was *also* added by the bundle.
+
+[[[ code('588aa1f85d') ]]]
 
 The  `WKHTMLTOPDF_PATH` variable already equals what I have on my machine. So
 if *your* path is different, copy this, paste it to your `.env.local` file, and
@@ -51,6 +56,8 @@ Ultimately, to create the PDF, we're going to render a template with Twig and
 pass the HTML from that to Snappy so it can do its work. Open up
 `templates/email/author-weekly-report.html.twig`.
 
+[[[ code('59c1ebc0c2') ]]]
+
 Hmm. In theory, we *could* just render *this* template and use its HTML. But...
 that won't work because it relies on the special `email` variable. And more
 importantly, we probably don't want the PDF to look *exactly* like the email - we
@@ -58,7 +65,13 @@ don't want the logo on top, for example.
 
 No problem: let's do some organizing! Copy the table code. Then, in the
 `templates/email` directory, I'll create a new file called `_report-table.html.twig`
-and paste! Let's make this fancier by adding `class="table table-striped"`. Oo, fancy!
+and paste! 
+
+[[[ code('b7764dd176') ]]]
+
+Let's make this fancier by adding `class="table table-striped"`. Oo, fancy!
+
+[[[ code('90f6b94aaf') ]]]
 
 Those CSS classes come from Bootstrap CSS, which our *site* uses, but our emails
 do *not*. So when we render this table in the email, these won't do anything.
@@ -67,6 +80,8 @@ and our table will look pretty.
 
 Back in `author-weekly-report.html.twig`, take out that table and just say
 `{{ include('email/_report-table.html.twig') }}`
+
+[[[ code('27182b97c2') ]]]
 
 *Now* we can create a template that we will render to get the HTML for the PDF.
 Well, we *could* just render this `_report-table.html.twig` template... but
@@ -77,11 +92,22 @@ Instead, in `templates/email/`, create a new file:
 shortcut that I *just* learned! Add an exclamation point then hit "tab". Boom!
 Thanks Victor!
 
+[[[ code('c8573d74dd') ]]]
+
 Because we're going to add Bootstrap CSS to this template, let's add a little
 Bootstrap structure: `<div class="container">`, `<div class="row">` and
-`<div class="col-sm-12">`. Inside, how about an `<h1>` with "Weekly Report" and
-today's date, which we can get with `{{ 'now'|date('Y-m-d') }}`. Bring in the
-table with `{{ include('email/_report-table.html.twig') }}`.
+`<div class="col-sm-12">`. 
+
+[[[ code('df146c0798') ]]]
+
+Inside, how about an `<h1>` with "Weekly Report" and today's date, which we can get 
+with `{{ 'now'|date('Y-m-d') }}`. 
+
+[[[ code('eff902eaff') ]]]
+
+Bring in the table with `{{ include('email/_report-table.html.twig') }}`.
+
+[[[ code('9ffe02fdd1') ]]]
 
 ## Adding CSS to the Template
 
@@ -91,8 +117,11 @@ would contain *no* CSS styling... so it would look like it was designed in the
 `encore_entry_link_tags()` function basically adds the base CSS, which includes
 Bootstrap.
 
-Copy this line, close that template, and add this to the PDF template. Even if
-you're not using Encore, the point is that an *easy* way to style your PDF is
+Copy this line, close that template, and add this to the PDF template. 
+
+[[[ code('6d7dbfefd8') ]]]
+
+Even if you're not using Encore, the point is that an *easy* way to style your PDF is
 by bringing in the same CSS that your site uses. Oh, and because our site has a
 gray background... but I want my PDF to *not* share *that* specific styling, I'll
 hack in a `background-color: #fff`.
