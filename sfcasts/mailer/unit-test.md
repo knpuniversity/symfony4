@@ -39,6 +39,11 @@ about any deprecated code that the code in your tests hit. This is a great tool
 when you're getting ready to upgrade your app to the next major Symfony version.
 But more on that in a future tutorial. We'll just ignore these.
 
+***SEEALSO
+If PHPUnit is a new tool for you or you just want to go deeper - we have
+a separate course about it, check it out [here][phpunit_tutorial]!
+***
+
 ## Writing the Unit Test
 
 Let's get to work! So... what *are* we going to test? Well, we probably want to
@@ -129,3 +134,6 @@ Actually... the "email" part of this method is, once again, *pretty* simple.
 The *complex* part is the PDF-generation logic. Want to test to make sure the
 template *actually* renders correctly and the PDF is *truly* created? We can't do
 that with a pure unit test... but we *can* with an integration test. That's next.
+
+
+[phpunit_tutorial]: https://symfonycasts.com/screencast/phpunit
