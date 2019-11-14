@@ -27,4 +27,5 @@ chapters:
     - event-global-recipients
     - global-from
     - async-emails
+    - async-attachments
     - encore-css
