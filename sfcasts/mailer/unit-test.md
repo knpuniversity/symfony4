@@ -40,8 +40,8 @@ when you're getting ready to upgrade your app to the next major Symfony version.
 But more on that in a future tutorial. We'll just ignore these.
 
 ***SEEALSO
-If PHPUnit is a new tool for you or you just want to go deeper - we have
-a separate course about it, check it out [here][phpunit_tutorial]!
+If PHPUnit is new for you - or you just want to go deeper - check out
+our dedicated [PHPUnit Tutorial](https://symfonycasts.com/screencast/phpunit).
 ***
 
 ## Writing the Unit Test
@@ -134,6 +134,3 @@ Actually... the "email" part of this method is, once again, *pretty* simple.
 The *complex* part is the PDF-generation logic. Want to test to make sure the
 template *actually* renders correctly and the PDF is *truly* created? We can't do
 that with a pure unit test... but we *can* with an integration test. That's next.
-
-
-[phpunit_tutorial]: https://symfonycasts.com/screencast/phpunit
