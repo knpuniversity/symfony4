@@ -1,95 +1,89 @@
 # Attachments with Async Messenger Emails
 
-message sitting here in all its glory. I needed to double check, but I think in order
-for that to work, you needed to have the route context stuff set, which we do. Okay.
-So let's check out our other email from the console command bet should work just the
-same. So I'm gonna hit control C to exit out of the worker and just to make sure my
-data's fresh, I'm gonna reload the fixtures
+Our registration email is being sent asynchronously via Messenger. And actually,
+*every* email our app sends will now be async. Let's double-check that the
+weekly report emails are still working.
 
-```terminal-silent
+Hit Ctrl+C to stop the worker process and, just to make sure our database if ful
+of *fresh* data, reload the fixtures:
+
+```terminal
 php bin/console doctrine:fixtures:load
 ```
 
-and then run
+Now run:
 
 ```terminal
 php bin/console app:author-weekly-report:send
 ```
 
-and Whoa, it explodes. Incorrect string value. Wow. Okay.
-So I wanted to show you this because in the real world you might hit this. One of the
-limitations of the doctrine transport is that you can't send it binary data. And
-because our console command creates,
+## Problems with Binary Attachments
 
-okay, should've done that.
+Ah! Explosion! Incorrect string value? Wow. Okay. What we're seeing is a real-world
+limitation of the doctrine transport: it can't handle binary data. This *may* change
+in Symfony 4.4 - there's a pull request for it... but it may not be merged in time.
 
-And because our console commands sends the author of your prequel send author weekly
-report message, it creates a PDF and attach that PDF messenger tries to put that
-binary and PDF into the queue. The talk can transfer, doesn't support that. And this
-may be something that's fixed in Symfony 4.4 automatically, or you may be able to opt
-into fixing it with a configuration option. I'm not sure yet. So there are two
-options to fix this. The first is instead of doctrine, you can use another transport
-like AMQP. The second thing, if you absolutely need to use doctrine and you
-absolutely need to send a PDF attachments, there's another option here. Instead of
-saying attached, you can say attach from path and here you can pass it the path to a
-PDF file. Ultimately what gets stored in the, um, in the queue is just that string
-and then the file is loaded when you actually send the message. The only caveat is
-that that file needs to exist. You need to put that file on the filesystem and then
-it needs to exist when the worker actually, um, uh, uh, works on it. Um, but the
-attachment path is a way to get around that.
+Why does our email container binary data? Remember: the method that creates the
+author weekly report email *also* generates a PDF and attaches it. That PDF is
+binary... so when Messenger sends tries to put it into a column that doesn't support
+binary data... boom! Weird explosion.
 
-There's one other thing that I want to show with a messenger. Oh, I want, you're
-using messenger. Run your test
+If this is a problem for you, there are two fixes. First, instead of Doctrine, use
+another transport - like AMQP. Second, if you need to use doctrine and you *do*
+send binary attachments, instead of saying `->attach()` you can say
+`->attachFromPath()` and pass this a *path* on the filesystem to the file. By doing
+this, the *path* to the file is what is stored in the queue. The only caveat is
+that the worker needs to have access to the file at that path.
+
+## Messenger and Tests
+
+There's one other thing I want to show with a messenger. Run the tests!
 
 ```terminal
 php bin/phpunit
 ```
 
-Awesome.
-
-There are a whole bunch of deprecation notices, but they pats, but check this out.
-Rerun our `doctrine:query:sql`.
+Awesome! There are a *bunch* of deprecation notices, but the tests *pass*. However,
+run that Doctrine query again to see the queue:
 
 ```terminal
 php bin/console doctrine:query:sql 'SELECT * FROM messenger_messages'
 ```
 
-It depends on definitely how you have your database
-credentials set up and that invoice and that local. But there's a pretty good chance
-that when you run select star for messages, you're going to see a new message in
-there. This is actually the message that was sent during our functional test test
-controller security test. Inside of here, we made a test that actually went to
-register and registered and of course that sent an email. Well, if your dev and test
-environments share the same database, then you're actually gonna end up with a new
-entry inside of there from the test. Which is kind of a bummer because it means that
-if we
+Uh oh... the email - the one from our functional test to the registration page -
+was added to our queue! Why is that a problem? Well, it's not a *huge* problem...
+but if we run the `messenger:consume` command...
 
-tried to do messenger:consume,
-
-```terminal
+```terminal-silent
 php bin/console messenger:consume -vv
 ```
 
-that would actually send that message from the test
-environment, which technically isn't a problem because it's just going to go to
-Mailtrap. But it is a little bit weird. So because of that in the test environment
-only instead of using the doctrine transport, I like to use something called the
-in-memory transport. So I'm gonna copy `MESSENGER_TRANSPORT_DSN`, then opened up the
-`.env.test` environment, paste this here and replace doctrine with `in-memory`
-investment memory. So `in-memory://`and that's it. The number
-of transport is basically a fake transport. It says if something is sent there, don't
-actually do anything with it. It just kind of holds onto it. And then at the end of
-the test it just goes away forever. So with this, it just cleans things up. Cause if
-we run our tests
+That would actually send that email! That's not a *huge* issue... but it's not ideal.
+
+If you've configured your `test` environment to use a different database than
+normal, you're good: your test database queue table *will* fill up with messages,
+but you'll never run the `messenger:consume` command from that environment anyways.
+
+## Overriding the Transport in the test Environment
+
+But there's also a way to solve this directly in Messenger. In `.env`, copy
+`MESSENGER_TRANSPORT_DSN` and open up `.env.test`. Paste this but replace `doctrine`
+with `in-memory`: `in-memory://`
+
+This transport... is useless! And I *love* it. When Messenger sends something to
+an "in-memory" transport, the message... actually goes nowhere - it's just discarded.
+
+Run the tests again:
 
 ```terminal-silent
 php bin/phpunit
 ```
 
-after we run our tests,
+And... check the database:
 
 ```terminal-silent
 php bin/console doctrine:query:sql 'SELECT * FROM messenger_messages'
 ```
 
-the database table is empty. So we're good there. Next, let's talk about Encore.
+No messages! Next, lets finish our grand journey through Messenger by integrating
+our Email styling with Webpack Encore.
