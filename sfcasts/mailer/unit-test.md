@@ -17,7 +17,7 @@ php bin/console make:unit-test
 Answer `MailerTest`. This generates a *super* simple unit test file:
 `tests/MailerTest.php`. 
 
-[[[ code('b30a2671c7') ]]]
+[[[ code('a5d775c90cb') ]]]
 
 The idea is that this will test the `Mailer` class,
 which lives in the `Service/` directory. Inside `tests/`, create a new
@@ -59,7 +59,7 @@ instantiating the class you want to test.
 
 Back in `MailerTest`, rename the method to `testSendWelcomeMessage()`. 
 
-[[[ code('868da9c817') ]]]
+[[[ code('79fbc5e113') ]]]
 
 Then add `$mailer = new Mailer()`. For this to work, we need to pass the 4 dependencies:
 objects of the types `MailerInterface`, `Twig`, `Pdf` and `EntrypointLookupInterface`.
@@ -145,7 +145,7 @@ check pretty much *anything* on that email.
 I'll paste in some asserts. These check the subject, that the email is sent to
 exactly one person *and* checks to make sure that the "to" has the right info.
 
-[[[ code('864fc3f982') ]]]
+[[[ code('5e9fb75299') ]]]
 
 Let's give this a try! Move over and run:
 
