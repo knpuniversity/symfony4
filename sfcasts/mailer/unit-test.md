@@ -45,6 +45,11 @@ about any deprecated code that the code in your tests hit. This is a great tool
 when you're getting ready to upgrade your app to the next major Symfony version.
 But more on that in a future tutorial. We'll just ignore these.
 
+***SEEALSO
+If PHPUnit is new for you - or you just want to go deeper - check out
+our dedicated [PHPUnit Tutorial](https://symfonycasts.com/screencast/phpunit).
+***
+
 ## Writing the Unit Test
 
 Let's get to work! So... what *are* we going to test? Well, we probably want to

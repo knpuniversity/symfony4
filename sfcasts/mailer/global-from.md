@@ -1,86 +1,94 @@
-# Global From
+# Setting "From" Globally
 
-Coming soon...
+I don't like to have this `->from()` on every single email that I create.
+This will probably *always* be the same, so let's set it globally.
 
-The other thing I really like to do is I don't like to have this `from()` on every single
-email that I create because probably we want this from to be the same for every
-single email and now that we know that mail or dispatches an event, every time it
-sends a message, we could probably hook into that event to globally set the from on
-every single message. But wait a second, a moment ago, we configure the 
-`EnvelopeListener` as a service and we use it in the dev environment to
-globally set the recipients. And as you can see here, we can also pass a sender
-as the first argument. And if a center is set that overrides the sender on the
-message. So is this setting the from just as easy as actually passing a value to the
-first argument of `EnvelopeListener`? The answer is NO! remember a second
-ago how I explained that an email is a message and then an envelope around that
-message when you're
+We know that Mailer dispatches an event each time it sends an email. So, we
+could probably create a *listener* for that event and set the `from` address
+from there!
 
-the `to()` on an email is the, is what goes on the message and the sender is actually
-what goes and the recipients is actually what goes on the envelope and impacts, uh,
-where it's actually delivered. The same is true when it comes to the `from()` versus the
-sender. And this one is a little bit more subtle. The center once again ends up
-basically being written on the envelope and it's who it says that the message is
-actually being delivered
+But wait. A minute ago, we configured `EnvelopeListener` as a service in the
+`dev` environment and used it to globally override the recipients. This class
+*also* allows us to pass a "sender" as the first argument. If we did, it would
+override the sender on this "envelope" thing.
 
-on, on the envelope. But it's the, from that is actually written on the message. And
-so it's the from that is actually going to impact what you see inside of your email
-itself.
+So, is setting the `from` globally as easy as passing a value to the first argument
+of `EnvelopeListener`? Is this video about 10 seconds from being over?
 
-So actually it's kind of silly as it sounds. If we overrode, if we set the sender only,
-Today the center is actually not enough. If we right now if we set the
-no, let's do it that way.
+## From Versus Sender
 
-So if you sell only the `from()` Mailer automatically takes the from and makes that the
-sender on the envelope. But if we removed this line here and only set the sender, we
-would actually get an air because we would now have a message with the Audi from on
-it. So basically what we want to set is not the sender but the from, which is a long
-way of saying that this stuff is confusing and silly. But the point is we can't use
-envelope listener because what we really need to override is the from not the center.
-So no problem, we're just going to create our own event listener. So in the `src/`
-directory, I'm going to create a new directory called `EventListener`. And then inside
-there and you PHP class called `SetFromListener`, make this implement 
-`EventSubscriberInterface`, the interface for all subscribers. And then I'll go to the 
-Code -> Generate menu or Command + N on a Mac and hit "Implement Methods" to add the one,
-get subscribed events here, returned an array. And the message we, the event we want
-to listen to is called a `MessageEvent`. So a `MessageEvent::class`, and it's say
-`=>` and we'll say on, we'll say `onMessage`, this becomes the name of our, that
-method that will be in the instead of here.
+Sadly... no. Remember when I mentioned that an email is two parts: a message and
+then an envelope around that message? When you set the `->to()` on an Email, that
+goes into the message. The *recipients* is what goes on the *envelope*... which
+*totally* impacts *where* the email is delivered, but does *not* impact who the
+email *appears* to be addressed to when reading the email.
 
-on top, I'll say `public function onMessage()` and because we're listening to the
-`MessageEvent` class, that's what we're going to get past here. So I'll say a
-`MessageEvent $event` So cool. So what's inside of this event anyways?
-Well, the most important thing that's out of here is the email that you can say 
-`$email = $event->getMessage()`. Now if you look at that, I'm going to hold command and
-click that get message. You see that this returns something called a `RawMessage`,
-which you know at first you're sort of like, what is this `RawMessage` thing? So far
-we've been working with `Email` objects or `TemplatedEmail` objects. Well if you do a
-little bit of digging, if you open `TemplatedEmail` and you'll see Templeton email,
-equal extends `Email`, `Email` extends `Message` and `Message` extends `RawMessage`.
-Basically what you send. Typically what we actually pass to mail or down here is an
-instance of `TemplatedEmail` or `Email`, but on a really, really low level, all
-that mailer really needs here is a `RawMessage`, so when you're adding a listener it's
-possible to it.
+The same is true when it comes to `from()` versus "sender". But this... is even
+more subtle. The "sender" is the address that's written on the *envelope* and
+the `from` is what *actually* goes into the message - this is the part that
+the user will see when reading the email. It's a weird distinction: it's like
+if someone mailed a letter on your behalf: *they* would be the sender - with
+*their* address on the envelope. But when you opened the envelope, the message
+inside would be signed *from* you.
 
-I'm not, I'll close a couple of classes. The point is when you have a listener here
-and you say `$event->getMessage()`, this is going to pass back whatever object was
-actually sent to the `send()` method, which in our case it's always going to be a
-`TemplatedEmail` object, but just to be safe we'll say if not `$email` instance of
-`Email`, so it's not at least an email instance. Make sure you get the one from the
-Mime component. We'll just return. This must be, this must be S this shouldn't
-happen, but in theory if some third party bundle, we're doing something really low
-level, you can do this. You can also throw an exception here. Then down here, now
-that we know that this is an instance of email, we can say `$email->from()`, and
-let's go grab the from from our class here. I'll hit undo copy of that.
+The *point* is, setting the "sender" is not enough. When we set the `from()`,
+Mailer *does* automatically use that to set the "sender" on the envelope... unless
+it was set explicitly. But it does *not* do it the other way around: if we removed
+the `->from()` line and only set the sender, Mailer would give us a huge error
+because the message would have *no* from.
 
-Is that `->from(new NamedAddress(alienmailer@example.com, 'The Space Bar'));`. And I'll re
-type the S on named address and hit tab to add that use statement on top. That's it.
-So we've now globally set the from, I'll go back to my mailer and we'll delete it
-from send walk a message and the second email as well. All right, so let's try it. Go
-back over and I'll click back because we can register as any user because we know in
-the development environment, regardless of the email here, all messages will be
-delivered to `ryan@symfonycasts.com` type any password, hit register and let's go
-check out her inbox. There it is.
+So what does this all mean? It means `EnvelopeListener` can't help us: we need to
+override the "from", not the "sender". No problem: let's create our own event
+listener.
 
-welcome to the space bar. And you can see here it's um, from alien mailer. Add
-example, that com. So the global from still is sent in. The email looks great. Next,
-let's talk about something different.
+## Creating the Event Subscriber
+
+In the `src/` directory, create a new directory called `EventListener`. And inside,
+a new PHP class called `SetFromListener`. Make this implement
+`EventSubscriberInterface`: the interface for all subscribers. I'll go to the
+"Code -> Generate" menu - or Command + N on a Mac - and hit "Implement Methods"
+to add the one method required by this interface: `getSubscribedEvents()`.
+
+Inside, return an array: we want to listen to `MessageEvent`. So:
+`MessageEvent::class => 'onMessage'`. When this event occurs, call the `onMessage`
+method... which we need to create!
+
+On top, add `public function onMessage()`. Because we're listening to
+`MessageEvent`, *that* will be the first argument: `MessageEvent $event`.
+
+So... what's inside of this event object anyways? Surprise! The original Email!
+Ok, maybe that's not *too* surprising. Add `$email = $event->getMessage()`.
+
+But... is that... *truly* our original Email object... or is it something else?
+Hold Command or Ctrl and click the `getMessage()` method to jump inside. Hmm, this
+returns something called a `RawMessage`. What's that?
+
+*We* have been working with `Email` objects or `TemplatedEmail` objects. Open up
+`TemplatedEmail` and... let's dig! `TemplatedEmail` extends `Email`... `Email`
+extends `Message`... and `Message` extends... ah ha! `RawMessage`!
+
+Oooook. *We* typically work with `TemplatedEmail` or `Email`, but on a really,
+really low level, all Mailer *really* needs is an instance of `RawMessage`. Let's...
+close a few files. The point is: when we call `$event->getMessage()`, this will
+return whatever object was actually passed to the `send()` method... which in our
+case is always going to be a `TemplatedEmail` object. But just to be safe, let's
+add if `!$email instanceof Email` - make sure you get the one from the Mime
+component - just return. This shouldn't happen... but could in theory if a
+third-party bundle sends emails. If you want to be safe, you could also
+throw an exception here so you *know* if this happens.
+
+Anyways, now that we're sure this is an `Email` object, we can say `$email->from()`...
+go steal the `from()` inside `Mailer`... and paste here. Re-type the "S" on
+`NamedAddress` and hit tab to add its `use` statement on top.
+
+That's it! We just *globally* set the from! Back in `Mailer`, delete it from
+`sendWelcomeMessage()`... and also from the weekly report email.
+
+Testing time! Register with *any* email - because we know that all emails are being
+delivered to `ryan@symfonycasts.com` in the development environment - any password,
+hit register and... run over to the inbox!
+
+There it is! Welcome to The Space Bar *from* `alienmailer@example.com`.
+
+Next, sending an email requires a network call... so it's a *heavy* operation.
+We can speed up the user experience by sending emails asynchronously via Messenger.

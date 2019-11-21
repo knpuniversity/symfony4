@@ -1,191 +1,103 @@
-# Encore Css
+# Styling Emails with Encore & Sass Part 1
 
-Coming soon...
+Our app uses Webpack Encore to manage its frontend assets. It's not something we
+talked much about because, if you downloaded the course code from this page, it
+already included the final `build/` directory. I did this so we didn't need to
+worry about setting up Encore *just* to get the site working.
 
-This app actually uses Webpack Encore to build its assets and it's not something we
-worried about because if you download the source, the course code, it actually
-included the final `build/` directory, so you didn't need to know about Encore run
-Encore on the site works just because all of this stuff was prebuilt [inaudible], but
-if you are using Encore then I want to talk a little bit more about the integration
-of Encore and the CSS. With mailer for example, there are two things, two sort of
-shortcuts that we took a for example in `assets/css/foundation-emails.css`,
-this is actually something we downloaded directly from foundation. It's a vendor, a
-CSS file. Typically when you use an Encore, you are going to install vendor libraries
-via yarn instead of committing them directly into your project. The other one was
-this `emails.css` file. If we wanted to use SASS instead, well then we need to know
-how to process this, this process this through Encore, so let's do that first. I'm
-gonna flip over and run 
+But if you *are* using Encore, we can make a few improvements to how we're
+styling our emails. Specifically, we took *two* shortcuts. First, the
+`assets/css/foundation-emails.css` file is something we downloaded from
+the Foundation website. That's not how we would *normally* do things with Encore.
+If we need to use a third-party library, we typically install it with `yarn` instead
+of committing it directly.
+
+The other shortcut was with this `emails.css` file. I'd *rather* use Sass... but
+to do that, I need to process it through Encore.
+
+## Installing Foundation Emails via Yarn
+
+Let's get to work! Over in the terminal, start by installing all the current
+Encore dependencies with:
 
 ```terminal
 yarn install
 ```
 
-to download all of our yard dependencies.
-Next, let's install foundation with 
+When that finishes, install Foundation for Emails with:
 
 ```terminal
 yarn add foundation-emails --dev
 ```
 
-If you looked at the package manager, you'd find that that's the name of the package
-to get foundation perfect. The end result of this is that we have a giant 
-`node_modules/` directory here and somewhere way down in this giant directory. We can say
-foundation for that for emails and you can see inside of here it actually has
-`foundation-emails.css`. It also has a sass file. If you wanted to import at
-VSS, we'll keep it simple and import the CSS file. Now before we make actually any
-changes, I'm going to go over here and run 
+The *end* result is that we now have a giant `node_modules/` directory and...
+somewhere *way* down in this giant directory... we'll find a
+`foundation-emails` directory with a `foundation-emails.css` file inside. They
+also have a Sass file if you want to import *that* and control things further...
+but the CSS file is good enough for us.
+
+Before we make any real changes, make sure Encore can build by running:
 
 ```terminal
 yarn dev --watch
 ```
 
-just to make sure that my Encore assets can build correctly right now. Perfect.
+And... excellent! Everything is working.
 
-All right, so step one is instead of relying on this committed foundation-emails
-let's delete that so I'll right click, go to Refactor -> Delete.
+## Using Sass & Importing Foundation Emails
 
-The second thing is to make things more complicated. I'm going to rename `email.css`
-Refactor -> Rename to `email.scss`. So this is now a SASS file.
+Now that we've installed Foundation for Emails properly, let's delete the committed
+file: I'll right click and go to "Refactor -> Delete". Next, because I want to
+use Sass for our custom email styling, right click on `email.css`, go to
+"Refactor -> Rename" and call it `email.scss`.
 
-And then one of the things that you can do when you using Encore is that from within
-a sass file you can another file. So really if you think about what does the total
-CSS that all of our emails need, we need our emails to load our custom CSS and we
-also need to load the new foundations uh, file. So we can import that here by saying
-`@import`. And then I'll say `~` that tells 'em Webpack Encore to look in the
-`node_modules/`, directory and `foundation-emails/dist/foundation-emails.css`
-Perfect.
+Because this file will be processed through Encore, we can import the
+`foundation-email.css` file from right here with `@import`, a `~` - that tells
+Webpack to look in the `node_modules/` directory - then
+`foundation-emails/dist/foundation-emails.css`.
 
-Now as a reminder, I'll close up `node_modules/`. If you're looking templates, email,
-email based at each month, week. When do you use inline SCSS? We are pointing it at
-the `foundation-emails.css` file and the `email.css` file. Really, we now just
-will only only want to point it at `email.scss` because in theory it contains both
-of those files. The problem is that this is now a sass file in `inline_css` only works
-with CSS files. So you can't point this to a sass file and expect it to work. And
-even if it were a CSS file, this import is not going to work unless we process this
-through Webpack Encore first. So let's fine. We're going to do is we're going to
-treat our `email.scss` like a normal CSS files it as if this Ray file that we
-wanted to include on a page in our site. So I'm going to go to the `webpack.config.js`
-dot JS file and I'm actually going to add another style entry `addStyleEntry()` called
-`email` and we're going to point it at that `/assets/css/email.scss`
+This feels good! I'll close up `node_modules/`... cause it's giant.
 
-Alright, let's go over here and because we changed our Webpack file, we'll run, we
-will stop on-court and restart it. 
+## Creating the Email Entry
+
+Now open up the email layout file: `templates/emailBase.html.twig`. When we used
+`inline_css()`, we pointed it at the `foundation-emails.css` file *and* the
+`email.css` file. But now... we only really need to point it at `email.scss`...
+because, in theory, that will include the styles from *both* files.
+
+The problem is that this is now a *Sass* file... and `inline_css` only works
+with CSS files: we can't point it at a Sass file and expect it transform the Sass
+into CSS. And even if it *were* a CSS file, the `@import` won't work unless we
+process this through Encore.
+
+So here's the plan: we're going to pretend that `email.scss` is just an ordinary
+CSS file that we want to include on some page on our site. Open up
+`webpack.config.js`. Whenever we have some page-specific CSS or JS, we add a
+new *entry* for it. In this case, because we don't need any JavaScript, we can
+add a "style" entry. Say `.addStyleEntry()` - call the entry, how about, `email`,
+and point it at the file: `./assets/css/email.scss`.
+
+To get Webpack to see the updated config, in the terminal, press Ctrl+C to stop
+Encore and restart it:
 
 ```terminal-silent
 yarn dev --watch
 ```
 
-All right, perfect. Now check this out. Down here
-you can already see Entrypoint email was dumped and of course it dumped some. And
-uh, you can see it actually dumped two CSS files for this. Let's go look in the
-public build directory.
+And... it builds! Interesting: the `email` entrypoint dumped *two* CSS files.
+Let's look at the `public/build` directory. Yep: `email.css` and also this
+`vendors~email.css`.
 
-And yet there's `email.css` and also this `vendors~email.css`. So
-this is one of the properties. This is one of the optimizations that Encore makes
-when you do this split entry jumps thing without going into too much and you can
-learn about it in our Encore tutorial. But basically the point is that if we want to
-all the contents of email that scss actually the final built content actually live in
-`email.css` and `vendor~emails.css` and we actually need to include
-both of those files. If we want our emails to look good, snap pretends to that is a
-bit of a challenge, you know, because technically we could right here, point a use to
-source files to point at `vendor~emails.css` and `emails.css`. The problem is
-that Webpack splits the files in a very dynamic fashion.
+This is thanks to an optimization that Wepback Encore makes when you use
+`splitEntryChunks()`... which you can learn *all* about in our Encore tutorial.
+But the basic point is that if we want *all* of the CSS from the built `email.scss`
+file, we need to include *both* `email.css` *and* `vendor~email.css`.
 
-So based on whatever's most efficient, it might tomorrow start splitting these into
-three files or only one file. Also in production, these file names would change and
-they would start including a hash on them like `email.12345.css`
-That changes every time the content of the email changes. This is why
-normally for example, in `base.html.twig` we just call it `encore_entry_link_tags()`
-that takes care of everything. It actually looks in the `public/build/` directory
-for an `entrypoints.json` file, and this actually tells it all of the files that
-it needs to include for the entrypoint, sorry for the app CSS or for the app
-JavaScript. So if we look down here for our email one, you can see that it's
-advertising that we said the two files that we need. The problem is that we don't
-want to just output link tags. We actually need to read the source code of those
-files.
+Ok, easy, right? In the template, we could load the source of `vendor~email.css`
+and `email.css`. The *problem* is that Webpack splits the files in a very dynamic
+fashion: if it finds a more efficient way to split the files tomorrow - maybe
+into *three* files - it will! Plus, when we do our production build, the files
+will include a dynamic *hash* in their filename - like `email.123abc.css`.
 
-Now [inaudible] by using another Encore function called `encore_entry_css_files()` and
-some serious twig magic, we can actually do this, but it's kind of so crazy and so
-magic that instead I'm going to create a new twig function whose job is to load all
-of the source CSS for specific entry. So I'll actually show you what it's going to
-look like. First, I'm going to make a new function where I can say 
-`encore_entry_css_source()` and then pass it `email`. That's gonna be smart enough to find all the CSS
-files that are needed for the email entry point, load their contents and return them
-as one big giant string. To do this, to add that custom function, our application
-already has a custom twig function called `AppExtension`. So inside of here
-
-I'm just going to add a `new TwigFunction()` called `encore_entry_css_source`
-
-and the method that we'll call in this method book called `getEncoreEntryCssSource`
-So I'll copy that name then down here.
-
-Call `public function getEncoreEntryCssSource()`.says a source that's going to take a 
-`string $entryname` and it's also gonna just return a `string` of the CSS source. Now
-in order to, um, Symfony fortunately already has a built in service that's smart
-enough of smart enough to look in the `entrypoints.json` and returned the files that
-you need for specific entry the way get that services to type hint, a entry point
-collection and `EntrypointLookupInterface`.
-
-Now for reasons I don't want to get into in this tutorial, instead of using proper
-constructor injection, we're using something down here called a service locator and
-there's a performance reason for that and you can read about it in this tutorial. The
-point is regardless of whether you're using the kind of facet fancy locator injection
-or whether you want to use kind of the normal um, a constructor injection, we need
-the `EntrypointLookupInterface` service. So because in this case, because I'm using
-this service locator thing, I'm going to go down to `getSubscribedServices()`
-and certain `EntrypointLookupInterface::class` and that will suck it into
-this method. Then up and `getEncoreEntryCssSource()`. We can start with 
-`$files = $this->container->get()`. And your `EntrypointLookupInterface::class`. So when you're using
-the service locator pattern, that's how you would get that service out. Otherwise, if
-you're doing it to the constructor, it's just `$this->entrypointLookup`. And then
-this has a handy thing on it called `getCssFiles()` and we pass it the `$entryName`. So
-this should return to us in array with something like these two paths, uh, built in
-there.
-
-so we will foreach over `$files` as `$file` and above, that's all credit in new `$source`
-variable set to an empty string. Now all we needed to do was take these pads and
-actually go look for that path inside of the public directory and open and open that
-file up. I could hard code the path to the public directory right here. Instead I'm
-going to set up a new parameter and inject it. So open up your `config/services.yaml`
-file. And one of the things we talked about in previous tutorial is this global `bind`
-functionality that's under defaults. This is a way for us to set, um, scalar
-arguments that we want to be autowirable into our system. So I'm not going to do
-one here called `string $publicDir` set to `%kernel.project_dir%`
-That's a built in parameter that is the full path through our project `/public`
-now is saying `string $publicDir` dear here. What that literally means is the `string` part
-is actually optional.
-
-now putting `$publicDir` here, that literally means that we can go to any service
-and up in the constructor we can have, I'll add `string $publicDir` and Symfonys to
-get to know what value to pass to the public during this wouldn't normally be auto
-wired well because it's not a service bypassing a `string $publicDir` , the `string`
-parts actually optional. That's a new feature and 4.2 and actually means that you
-have to type it this with `string` in order for that, a autowiring to work. So it's a
-little bit more responsible. We didn't use that up here on these other ones. Uh, but
-we could have, so we're gonna have `AppExtension` `string $publicDir` there. I'll hit 
-Alt + Enter and Go to "Initialize fields" to create that property and set it you okay?
-Finally we can go down here and we can say 
-`$source .= file_get_contents($this->publicDir.$file)` And those files should have 
-an opening `/` on them.
-So we shouldn't need a `/` in the middle and the bottom or `return $source`. Whew. Okay,
-let's try this. We're already running Encore, so it's already dumped our `email.css`
-and `vendors~email.css`. So all we need to do is actually just go and try to send an
-email. So I'll hit back.
-
-Okay.
-
-Bumped an email type any password, hit register and wow. Okay, great. No errors
-didn't mean to sound so surprised. Go up. I'll refresh. Mailtrap okay. Now I remember
-because we've refactored to use, um, a messenger that email's not going to be sent
-until we consume messenger. So I'm actually gonna open up a new tab or a 
-
-```terminal
-php bin/console messenger:consume -vv
-```
-
-There it is. You can see the messages found. The
-messages got sent, spin over and there it is. And the styling looks great. All the
-styles are in line. The styles are actually coming from CSS and SASS. So a little bit
-of setup with Encore. Um, but you can absolutely get it working and it's a great way.
-All right guys, I hope you absolutely loved this tutorial. I hope you want to mail
-things. I like you. Okay. Bye. Bye.
+So... we need to do a bit more work to reliably load this stuff through
+`inline_css()`. Let's do that next with a custom Twig function.
