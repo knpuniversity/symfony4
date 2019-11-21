@@ -15,11 +15,17 @@ php bin/console make:unit-test
 ```
 
 Answer `MailerTest`. This generates a *super* simple unit test file:
-`tests/MailerTest.php`. The idea is that this will test the `Mailer` class,
+`tests/MailerTest.php`. 
+
+[[[ code('b30a2671c7') ]]]
+
+The idea is that this will test the `Mailer` class,
 which lives in the `Service/` directory. Inside `tests/`, create a new
 `Service/` directory to match that and move `MailerTest` inside. You typically
 want your test directory structure to match your `src/` structure. Inside the file,
 don't forget to add `\Service` to the namespace to match the new location.
+
+[[[ code('868da9c817') ]]]
 
 ## Running the Tests
 
@@ -46,8 +52,11 @@ test that the mail was actually *sent*... and maybe we'll assert a few things
 about the `Email` object itself. Unit tests always start the same way: by
 instantiating the class you want to test.
 
-Back in `MailerTest`, rename the method to `testSendWelcomeMessage()`. Then add
-`$mailer = new Mailer()`. For this to work, we need to pass the 4 dependencies:
+Back in `MailerTest`, rename the method to `testSendWelcomeMessage()`. 
+
+[[[ code('868da9c817') ]]]
+
+Then add `$mailer = new Mailer()`. For this to work, we need to pass the 4 dependencies:
 objects of the types `MailerInterface`, `Twig`, `Pdf` and `EntrypointLookupInterface`.
 In a unit test, instead of using *real* objects that really *do* send emails...
 or render Twig templates, we use mocks.
@@ -56,21 +65,29 @@ For the first, say `$symfonyMailer = this->createMock()`... and because the firs
 argument needs to be an instance of `MailerInterface`, that's what we'll mock:
 `MailerInterface::class`.
 
+[[[ code('f0e8c5e83f') ]]]
+
 To make sure we don't forget to actually *send* the email, we can add an assertion
 to this mock: we can tell PHPUnit that the `send` method *must* be called exactly
 one time. Do that with `$symfonyMailer->expects($this->once())` that the
 `->method('send')` is called.
+
+[[[ code('20c27cdb0c') ]]]
 
 Let's create the 3 other mocks: `$pdf = this->createMock(Pdf::class)`... and the
 other two are for `Environment` and `EntrypointLookupInterface`:
 `$twig = $this->createMock(Environment::class)` and
 `$entrypointLookup = $this->createMock(EntrypointLookupInterface::class)`.
 
+[[[ code('62303f5963') ]]]
+
 These three objects aren't even used in this method... so we don't need to add
 any assertions to them or configure any behavior. Finish the `new Mailer()` line
 by passing `$symfonyMailer`, `$twig`, `$pdf` and `$entrypointLookup`. Then, call
 the method: `$mailer->sendWelcomeMessage()`. Oh, to do *this*, we need a `User`
 object.
+
+[[[ code('3e42083f2a') ]]]
 
 Should we mock the `User` object? We could, but as a general rule, I like to mock
 services but manually instantiate simple "data" objects, like Doctrine entities.
@@ -83,6 +100,8 @@ we use from `User` is the email and first name. For `$user->setFirstName()`, let
 pass the name of my brave co-author for this tutorial: `Victor`!
 And for `$user->setEmail()`, him again `victor@symfonycasts.com`. Give this
 `$user` variable to the `sendWelcomeMessage()` method.
+
+[[[ code('6f172e98e2') ]]]
 
 By the way, if you're enjoying this tutorial, you can thank Victor personally
 by emailing him photos of your cat *or* by sending tuna *directly* to his cat Ponka.
@@ -112,12 +131,17 @@ then advertise that this method returns a `TemplatedEmail`. I'll do the same
 for the other method: `return $email` and add the `TemplatedEmail` return
 type.
 
+[[[ code('864fc3f982') ]]]
+
 You don't *have* to do this, but it'll make our unit test more useful and keep
 it simple. *Now* we can say `$email = $mailer->sendWelcomeMessage()` and we can
 check pretty much *anything* on that email.
 
 I'll paste in some asserts. These check the subject, that the email is sent to
 exactly one person *and* checks to make sure that the "to" has the right info.
+
+[[[ code('864fc3f982') ]]]
+
 Let's give this a try! Move over and run:
 
 ```terminal
