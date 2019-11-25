@@ -14,6 +14,8 @@ values won't be committed.
 Back in `.env`, let's set `MAILER_DSN` back to the original value, which was
 `smtp://localhost`.
 
+[[[ code('bf89266131') ]]]
+
 And yes, this *does* mean that when a developer clones the project, unless they
 customize `MAILER_DSN` in their *own* `.env.local` file, they'll get an error
 if they try to register... or do anything that sends an email. We'll talk more
@@ -54,23 +56,39 @@ Access granted! I want to test `SecurityController` - specifically the
 for the unit test: call the class `SecurityControllerTest`.
 
 Done! This creates a simple functional test class directly inside of `tests/`.
+
+[[[ code('53843a858b') ]]]
+
 We don't *have* to, but to make this match the `src/Controller` directory structure,
 create a new `Controller/` folder inside of `tests/`... and move the test file there.
 Don't forget to add `\Controller` to the end of its namespace.
 
+[[[ code('89a905ed73')]]]
+
 And, again, to stay somewhat conventional, let's rename the method to `testRegister()`.
+
+[[[ code('069c4d54a2') ]]]
 
 ## Writing the Registration Functional Test
 
 We won't go *too* deep into the details of how to write functional tests, but
 it's a *pretty* simple idea. First, we create a `$client` object - which is almost
 like a "browser": it helps us make requests to our app. In this case, we want to make
-a `GET` request to `/register` to load the form. The `assertResponseIsSuccessful()`
-method is a helper assertion from Symfony that will make sure the response wasn't
-an error or a redirect.
+a `GET` request to `/register` to load the form. 
+
+[[[ code('cbdf049ae1') ]]]
+
+The `assertResponseIsSuccessful()` method is a helper assertion from Symfony 
+that will make sure the response wasn't an error or a redirect.
+
+[[[ code('1244213569') ]]]
 
 Now... I'll remove the `assertSelectorTextContains()`... and paste in the rest
-of the test. Let's see: this goes to `/register`, finds the `Register` button
+of the test. 
+
+[[[ code('8fb6f53dfa') ]]]
+
+Let's see: this goes to `/register`, finds the `Register` button
 by its text, and then fills out all the form fields. These funny-looking
 values are literally the *name* attributes of each element if you looked at the
 source HTML. After submitting the form, we assert that the response is a redirect...
