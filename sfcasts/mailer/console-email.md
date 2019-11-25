@@ -35,6 +35,11 @@ And yes, we'll learn how *not* to duplicate this later. I'll re-type the
 
 [[[ code('d646cfb25a') ]]]
 
+***TIP
+In Symfony 4.4 and higher, use `new Address()` - it works the same way
+as the old `NamedAddress`.
+***
+
 Ok, let's finish the rest: `->to()` with `new NamedAddress()`
 `$author->getEmail()` and `$author->getFirstName()`,
 

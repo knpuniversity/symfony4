@@ -68,6 +68,11 @@ know about the `email` variable, we can do this properly. Change the text to
 
 ## NamedAddress and email.toName()
 
+***TIP
+In Symfony 4.4 and higher, you won't see `NamedAddress` mentioned here.
+But the idea is the same: an address can consist of an email and a "name".
+***
+
 Back inside `WrappedTemplatedEmail`, all the way on top, one of my *favorite*
 methods is `toName()`. When you're sending an email to just *one* person, this
 is a *super* nice way to get that person's name. It's interesting... if the
@@ -78,6 +83,11 @@ What is that `NamedAddress`? Go back to `SecurityController`. Hmm, for the `to()
 address... we passed an email *string*... and that's a *totally* legal thing
 to do. But instead of a string, this method *also* accepts a `NamedAddress`
 object... or even an *array* of `NamedAddress` objects.
+
+***TIP
+In Symfony 4.4 and higher, use `new Address()` - it works the same way
+as the `NamedAddress` we describe here.
+***
 
 Check this out: replace the email string with a `new NamedAddress()`. This takes
 two arguments: the address that we're sending to - `$user->getEmail()` - *and*

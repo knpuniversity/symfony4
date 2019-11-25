@@ -81,6 +81,11 @@ Anyways, now that we're sure this is an `Email` object, we can say `$email->from
 go steal the `from()` inside `Mailer`... and paste here. Re-type the "S" on
 `NamedAddress` and hit tab to add its `use` statement on top.
 
+***TIP
+In Symfony 4.4 and higher, use `new Address()` - it works the same way
+as the old `NamedAddress`.
+***
+
 That's it! We just *globally* set the from! Back in `Mailer`, delete it from
 `sendWelcomeMessage()`... and also from the weekly report email.
 

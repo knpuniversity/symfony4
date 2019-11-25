@@ -43,6 +43,11 @@ so I'll re-type the "L" on `TemplatedEmail` and hit tab, then re-type the `S`
 on `NamedAddress` and hit tab once more... to add those `use` statements to the
 top of this file. Then change `$mailer` to `$this->mailer`.
 
+***TIP
+In Symfony 4.4 and higher, use `new Address()` - it works the same way
+as the old `NamedAddress`.
+***
+
 [[[ code('62bce3f20b')]]]
 
 I love it! This will simplify life dramatically in `SecurityController`. Delete
