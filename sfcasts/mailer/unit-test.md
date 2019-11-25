@@ -17,7 +17,7 @@ php bin/console make:unit-test
 Answer `MailerTest`. This generates a *super* simple unit test file:
 `tests/MailerTest.php`. 
 
-[[[ code('a5d775c90cb') ]]]
+[[[ code('a5d775c90c') ]]]
 
 The idea is that this will test the `Mailer` class,
 which lives in the `Service/` directory. Inside `tests/`, create a new
