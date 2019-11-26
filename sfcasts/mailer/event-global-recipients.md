@@ -57,8 +57,11 @@ of the `to()` address on the email.
 ## Setting up the Dev Email
 
 To do this, in `.env`, let's create a *brand* new, shiny environment variable:
-`DEV_MAIL_RECIPIENT` set to, how about, `someone@example.com`. That's not a real
-email, because each developer should need to copy this variable, open
+`DEV_MAIL_RECIPIENT` set to, how about, `someone@example.com`. 
+
+[[[ code('6fbea2b6c9') ]]]
+
+That's not a real email, because each developer should need to copy this variable, open
 their own `.env.local` file, and customize it to whatever *they* want.
 
 ## Registering EnvelopeListener in dev Only
@@ -72,14 +75,21 @@ services file: `services:`, then the magic `_defaults:` to set up some *default*
 options that we want to apply to *every* service registered in this file. The
 default config we want is `autowire: true` and `autoconfigure: true`.
 
+[[[ code('99ac03a920') ]]]
+
 Now, let's register `EnvelopeListener` as a service. Copy its namespace, paste,
-add a `\` then go copy the class name and put that here too. For arguments, the
-class has two: `$sender` and an array of `$recipients`. We'll focus on setting
-the "sender" globally in a few minutes... but for right now, I *don't* want to
-use that feature... so we can set the argument to `null`. Under arguments, use
-`- null` for sender and, for recipients, `- []` with
+add a `\` then go copy the class name and put that here too. 
+
+[[[ code('fdf960c18e') ]]]
+
+For arguments, the class has two: `$sender` and an array of `$recipients`. 
+We'll focus on setting the "sender" globally in a few minutes... but for right now,
+I *don't* want to use that feature... so we can set the argument to `null`. 
+Under arguments, use `- null` for sender and, for recipients, `- []` with
 one email inside. To reference the environment variable we created, say `%env()%`,
 then copy the variable name - `DEV_MAIL_RECIPIENT` - and paste it in the middle.
+
+[[[ code('54ebeabc66') ]]]
 
 That should be it! This will register the service and, thanks to `autoconfigure`,
 Symfony will configure it as an event subscriber.
