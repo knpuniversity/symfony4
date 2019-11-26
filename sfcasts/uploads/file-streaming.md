@@ -95,6 +95,11 @@ This is *especially* cool because, without this, the browser would probably try
 to call the file... just... "download" - because that's the last part of the URL.
 Now it will use `$reference->getOriginalFilename()`.
 
+***TIP
+If your original filename is not in ASCII characters, add a 3rd argument to 
+`HeaderUtils::makeDisposition` to provide a "fallback" filename.
+***
+
 [[[ code('98cbd1bccb') ]]]
 
 Before we set this header, I just want you to see what it looks like. So,
