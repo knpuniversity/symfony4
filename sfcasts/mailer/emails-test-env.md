@@ -32,9 +32,13 @@ useful transport ever: the `null` transport! When you deliver an email via the
 Hey! That's *exactly* what we want to do in the test environment! Inside `.env.test`,
 change `MAILER_DSN` to `smtp://null`.
 
+[[[ code('a895faae89') ]]]
+
 Side note! This syntax *changed* in Symfony 4.4 to `null://default` - where the
 *start* of the string defines the transport *type*. We'll talk more about transports
 in a few minutes when we start using SendGrid.
+
+[[[ code('842a4b6a93') ]]]
 
 Anyways, let's try the test *now*:
 
@@ -65,6 +69,8 @@ some time to configure their `.env.local` file to use Mailtrap.
 Let's do this: change `MAILER_DSN` to `smtp://null`. Use `null://default` on
 Symfony 4.4 or higher.
 
+[[[ code('86db688f30') ]]]
+
 Over in `.env.test`, we don't need to override anything. So, remove `MAILER_DSN`.
 
 ## Asserting Emails were Sent
@@ -91,6 +97,8 @@ one email was sent and then *fetches* the `Email` object itself, which you can t
 use to make sure *any* part of it is correct.
 
 I'll comment these out for now.
+
+[[[ code('1a4e672826') ]]]
 
 Next, it's time to send some *real* emails people! It's time to get ready
 for production! Let's register with a cloud email sender and get it working in
