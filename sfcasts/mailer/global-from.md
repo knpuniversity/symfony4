@@ -49,15 +49,23 @@ a new PHP class called `SetFromListener`. Make this implement
 "Code -> Generate" menu - or Command + N on a Mac - and hit "Implement Methods"
 to add the one method required by this interface: `getSubscribedEvents()`.
 
+[[[ code('c08d681156') ]]]
+
 Inside, return an array: we want to listen to `MessageEvent`. So:
 `MessageEvent::class => 'onMessage'`. When this event occurs, call the `onMessage`
 method... which we need to create!
 
+[[[ code('f428d7ea49') ]]]
+
 On top, add `public function onMessage()`. Because we're listening to
 `MessageEvent`, *that* will be the first argument: `MessageEvent $event`.
 
+[[[ code('97abe7e994') ]]]
+
 So... what's inside of this event object anyways? Surprise! The original Email!
 Ok, maybe that's not *too* surprising. Add `$email = $event->getMessage()`.
+
+[[[ code('a784d38038') ]]]
 
 But... is that... *truly* our original Email object... or is it something else?
 Hold Command or Ctrl and click the `getMessage()` method to jump inside. Hmm, this
@@ -77,9 +85,13 @@ component - just return. This shouldn't happen... but could in theory if a
 third-party bundle sends emails. If you want to be safe, you could also
 throw an exception here so you *know* if this happens.
 
+[[[ code('30cad89ca1') ]]]
+
 Anyways, now that we're sure this is an `Email` object, we can say `$email->from()`...
 go steal the `from()` inside `Mailer`... and paste here. Re-type the "S" on
 `NamedAddress` and hit tab to add its `use` statement on top.
+
+[[[ code('2ed910816a') ]]]
 
 ***TIP
 In Symfony 4.4 and higher, use `new Address()` - it works the same way
