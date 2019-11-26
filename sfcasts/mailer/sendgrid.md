@@ -46,6 +46,10 @@ In `.env.local`, we could use all that info to fill in the normal
 *Or*, we could use the SendGrid transport to make life easier: just
 `smtp://` - the long API key - then `@sendgrid`.
 
+```
+MAILER_DSN=smtp://API_KEY@sendgrid
+```
+
 The `sendgrid` transport is just a small wrapper around the SMTP transport to
 make life easier: because it *knows* that the `username` is always `apikey`... and
 that the server is always `smtp.sendgrid.net`, we don't need to fill those in.
