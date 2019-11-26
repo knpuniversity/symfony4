@@ -19,6 +19,13 @@ it. In `.env.local`, comment-out the Mailtrap `MAILER_DSN` and replace it with
 `MAILER_DSN=smtp://sendgrid`. In Symfony 4.4, the syntax changed to
 `sendgrid://default`.
 
+```
+#MAILER_DSN=smtp://USERNAME:PASSWORD@smtp.mailtrap.io:2525
+MAILER_DSN=smtp://sendgrid
+# Symfony 4.4+ syntax
+#MAILER_DSN=sendgrid://default
+```
+
 ## All About Transports
 
 So far, we've seen two *transports* - two *ways* of *delivering* emails: the `smtp`
@@ -76,10 +83,14 @@ git diff .env
 ```
 
 Cool! The recipe added a new section to the bottom! Back in our editor, let's
-see what's going on in `.env`. Yea... this makes sense. We know that mailer
-is configured via a `MAILER_DSN` environment variable... and so when we installed
-the SendGrid mailer package, its recipe added a *suggestion* of how that variable
-should look in order to work with SendGrid.
+see what's going on in `.env`:
+
+[[[ code('3b4998982f') ]]]
+
+Yea... this makes sense. We know that mailer is configured via a `MAILER_DSN` 
+environment variable... and so when we installed the SendGrid mailer package, 
+its recipe added a *suggestion* of how that variable should look in order 
+to work with SendGrid.
 
 ## SendGrid Symfony 4.4 Config Format
 
