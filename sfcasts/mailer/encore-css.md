@@ -89,7 +89,8 @@ Let's look at the `public/build` directory. Yep: `email.css` and also this
 `vendors~email.css`.
 
 This is thanks to an optimization that Wepback Encore makes when you use
-`splitEntryChunks()`... which you can learn *all* about in our Encore tutorial.
+`splitEntryChunks()`... which you can learn *all* about in our
+[Encore tutorial](https://symfonycasts.com/screencast/webpack-encore).
 But the basic point is that if we want *all* of the CSS from the built `email.scss`
 file, we need to include *both* `email.css` *and* `vendor~email.css`.
 
