@@ -1,0 +1,14 @@
+diff --git a/README.md b/README.md
+index 1d7c652a..14f75544 100644
+--- a/README.md
++++ b/README.md
+@@ -1,7 +1,7 @@
+-# File Uploads in Symfony
++# Symfony Mailer: Love Sending Emails Again
+ 
+ Well hi there! This repository holds the code and script
+-for the [File Uploads in Symfony](https://symfonycasts.com/screencast/symfony-uploads) course on SymfonyCasts.
++for the [Symfony Mailer: Love Sending Emails Again](https://symfonycasts.com/screencast/mailer) course on SymfonyCasts.
+ 
+ ## Setup
+ 
