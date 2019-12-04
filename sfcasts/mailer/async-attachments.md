@@ -71,6 +71,8 @@ But there's also a way to solve this directly in Messenger. In `.env`, copy
 `MESSENGER_TRANSPORT_DSN` and open up `.env.test`. Paste this but replace `doctrine`
 with `in-memory`. So: `in-memory://`
 
+[[[ code('854ee71758') ]]]
+
 This transport... is useless! And I *love* it. When Messenger sends something to
 an "in-memory" transport, the message... actually goes nowhere - it's just discarded.
 
