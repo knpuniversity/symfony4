@@ -30,11 +30,18 @@ where we can say `encore_entry_css_source()`, pass it `email`, and *it* will fig
 out all the CSS files it needs, load their contents, and return it as one big,
 giant, beautiful string.
 
+[[[ code('90624228a5') ]]]
+
 To create the function, our app already has a Twig extension called `AppExtension`.
-Inside, say `new TwigFunction()`, call it `encore_entry_css_source()` and when
-this function is used, Twig should call a `getEncoreEntryCssSource` method. Copy
-that name and create it below: `public function getEncoreEntryCssSource()` with
+Inside, say `new TwigFunction()`, call it `encore_entry_css_source` and when
+this function is used, Twig should call a `getEncoreEntryCssSource` method. 
+
+[[[ code('9a5f7dc259') ]]]
+
+Copy that name and create it below: `public function getEncoreEntryCssSource()` with
 a `string $entryName` argument. This will return the `string` CSS source.
+
+[[[ code('9a5f7dc259') ]]]
 
 Inside, we need to look into the `entrypoints.json` file to find the CSS filenames
 needed for this `$entryName`. Fortunately, Symfony has a service that already
@@ -47,15 +54,23 @@ about this in, oddly-enough, our
 [tutorial about Symfony & Doctrine](https://symfonycasts.com/screencast/symfony-doctrine/service-subscriber).
 
 To fetch the service, go down to `getSubscribedServices()` and add
-`EntrypointLookupInterface::class`. Back up in `getEncoreEntryCssSource()`,
-we can say `$files = $this->container->get(EntrypointLookupInterface::class)` -
+`EntrypointLookupInterface::class`. 
+
+[[[ code('817057c49f') ]]]
+
+Back up in `getEncoreEntryCssSource()`, we can say 
+`$files = $this->container->get(EntrypointLookupInterface::class)` -
 that's how you access the service using a service subscriber - then
 `->getCssFiles($entryName)`.
+
+[[[ code('ce969c4f4d') ]]]
 
 This will return an array with something like these two paths. Next, `foreach`
 over `$files as $file` and, above create a new `$source` variable set to an empty
 string. All we need to do now is look for each file inside the `public/` directory
 and fetch its contents.
+
+[[[ code('82542b6ca3') ]]]
 
 ## Adding a publicDir Binding
 
@@ -68,6 +83,8 @@ scalar arguments to be autowired into our services. Add a new one:
 `string $publicDir` set to `%kernel.project_dir%` - that's a built-in parameter -
 `/public`.
 
+[[[ code('11fc14383f') ]]]
+
 This `string` part before `$publicDir` is optional. But by adding it, we're
 *literally* saying that this value should be passed if an argument is exactly
 `string $publicDir`. Being able to add the type-hint to a bind is a new
@@ -76,9 +93,13 @@ feature in Symfony 4.2. We didn't use it on the earlier binds... but we could ha
 Back in `AppExtension`, add the `string $publicDir` argument. I'll hit
 "Alt + Enter" and go to "Initialize fields" to create that property and set it.
 
+[[[ code('663ec2572e') ]]]
+
 Down in the method, we can say
 `$source .= file_get_contents($this->publicDir.$file)` - each `$file` path should
 already have a `/` at the beginning. Finish the method with `return $source`.
+
+[[[ code('4f31937a60') ]]]
 
 Whew! Let's try this! We're already running Encore... so it already dumped the
 `email.css` and `vendors~email.css` files. Ok, let's go send an email. I'll hit

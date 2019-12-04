@@ -56,14 +56,18 @@ Because this file will be processed through Encore, we can import the
 Webpack to look in the `node_modules/` directory - then
 `foundation-emails/dist/foundation-emails.css`.
 
+[[[ code('a11c9502a6') ]]]
+
 This feels good! I'll close up `node_modules/`... cause it's giant.
 
 ## Creating the Email Entry
 
-Now open up the email layout file: `templates/emailBase.html.twig`. When we used
+Now open up the email layout file: `templates/email/emailBase.html.twig`. When we used
 `inline_css()`, we pointed it at the `foundation-emails.css` file *and* the
 `email.css` file. But now... we only really need to point it at `email.scss`...
 because, in theory, that will include the styles from *both* files.
+
+[[[ code('d626d1374f') ]]]
 
 The problem is that this is now a *Sass* file... and `inline_css` only works
 with CSS files: we can't point it at a Sass file and expect it transform the Sass
@@ -76,6 +80,8 @@ CSS file that we want to include on some page on our site. Open up
 new *entry* for it. In this case, because we don't need any JavaScript, we can
 add a "style" entry. Say `.addStyleEntry()` - call the entry, how about, `email`,
 and point it at the file: `./assets/css/email.scss`.
+
+[[[ code('5fa91e4e69') ]]]
 
 To get Webpack to see the updated config, in the terminal, press Ctrl+C to stop
 Encore and restart it:

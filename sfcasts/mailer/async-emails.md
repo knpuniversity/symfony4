@@ -27,14 +27,21 @@ But, it's also simple to get set up and running. Let's see how.
 The recipe for Messenger just did a few things: it created a new `messenger.yaml`
 configuration file and also added a section in `.env`. Let's go find that.
 
+[[[ code('99e2496a4c') ]]]
+
 Here's the 30 second description of how to get Messenger set up. In order to do
 some work "later" - like sending an email - you need to configure a "queueing"
 system where details about that work - called "messages" - will be sent. Messenger
 calls these transports. Because we're already using Doctrine, the easiest "queueing"
 system is a database table. Uncomment that `MESSENGER_TRANSPORT_DSN` to use it.
 
-Next, open `config/packages/messenger.yaml` - that's the new config file - and
-uncomment the transport called `async`.
+Next, open `config/packages/messenger.yaml` - that's the new config file:
+
+[[[ code('b8d5f6fe86') ]]]
+
+and uncomment the transport called `async`.
+
+[[[ code('4711d75365') ]]]
 
 ## Making Emails Async
 
@@ -55,6 +62,8 @@ email - right now. We do that via the `routing` section. Go copy the namespace o
 the `SendEmailMessage` class and, under `routing`, I'll clear out the comments and
 say `Symfony\Component\Mailer\Messenger\`, copy the class name, and paste:
 `SendEmailMessage`. Set this to `async`.
+
+[[[ code('056afa8159') ]]]
 
 Hey! We just made *all* emails async! Woo! Let's try it: find the registration
 page.... register as "Fox", email `thetruthisoutthere15@example.com`, any password,
