@@ -36,7 +36,7 @@ To create the function, our app already has a Twig extension called `AppExtensio
 Inside, say `new TwigFunction()`, call it `encore_entry_css_source` and when
 this function is used, Twig should call a `getEncoreEntryCssSource` method. 
 
-[[[ code('9a5f7dc259') ]]]
+[[[ code('7201d02949') ]]]
 
 Copy that name and create it below: `public function getEncoreEntryCssSource()` with
 a `string $entryName` argument. This will return the `string` CSS source.
