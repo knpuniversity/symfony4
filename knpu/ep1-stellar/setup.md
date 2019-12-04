@@ -39,7 +39,7 @@ To download your new Symfony project, run `composer create-project symfony/skele
 and put this into a new directory called `the_spacebar`.
 
 ```terminal-silent
-composer create-project symfony/skeleton:^4 the_spacebar
+composer create-project 'symfony/skeleton:^4' the_spacebar
 ```
 
 That's the name of our project! "The Spacebar" will be *the* place for people from
