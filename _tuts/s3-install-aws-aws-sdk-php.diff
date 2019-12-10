@@ -11,7 +11,7 @@ index b5df31df..ad629d76 100644
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
 diff --git a/composer.lock b/composer.lock
-index 6d22ad50..db40a7ba 100644
+index e3dc6a82..6a424dbe 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,90 @@

@@ -11,7 +11,7 @@ index ad629d76..1692f43c 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index db40a7ba..2755bf68 100644
+index 6a424dbe..02b90974 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
