@@ -88,10 +88,10 @@ directly, Symfony is passing us a *container* that *holds* the `MarkdownHelper`.
 But, the *key* difference is that, thanks to this trick, the `MarkdownHelper`
 service is *not* instantiated until and unless we fetch it out of this container.
 
-## Understanding getSubscribedEvents()
+## Understanding getSubscribedServices()
 
 Oh, and to *hopefully* make things a bit more clear, you can actually return a
-key-value pair from `getSubscribedEvents()`, like `'foo' => MarkdownHelper::class`:
+key-value pair from `getSubscribedServices()`, like `'foo' => MarkdownHelper::class`:
 
 ```php
 class AppExtension extends AbstractExtension implements ServiceSubscriberInterface
