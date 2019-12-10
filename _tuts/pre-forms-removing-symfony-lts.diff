@@ -21,7 +21,7 @@ index 4aa3db4f..d0c8d5a9 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 8e029304..054ddcb2 100644
+index fecf53b2..6aa7dcfe 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -33,7 +33,7 @@ index 8e029304..054ddcb2 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4400,94 +4400,6 @@
+@@ -4400,100 +4400,6 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -44,6 +44,12 @@ index 8e029304..054ddcb2 100644
 -                "type": "git",
 -                "url": "https://github.com/symfony/lts.git",
 -                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/lts/zipball/c1affae45b78aee036effa1759237e7fa96d4af2",
+-                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2",
+-                "shasum": ""
 -            },
 -            "conflict": {
 -                "symfony/asset": ">=5",
@@ -123,12 +129,12 @@ index 8e029304..054ddcb2 100644
 -            "description": "Enforces Long Term Supported versions of Symfony components",
 -            "homepage": "https://symfony.com",
 -            "abandoned": "symfony/flex",
--            "time": "2018-04-03T05:04:16+00:00"
+-            "time": "2018-10-03T12:03:19+00:00"
 -        },
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -6922,9 +6834,7 @@
+@@ -6928,9 +6834,7 @@
      ],
      "aliases": [],
      "minimum-stability": "stable",

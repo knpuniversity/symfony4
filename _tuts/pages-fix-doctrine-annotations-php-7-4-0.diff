@@ -1,0 +1,114 @@
+diff --git a/composer.lock b/composer.lock
+index 9d1fa126..a713548f 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,20 +4,20 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "37ef99d8270e7a03d984f5ed5b737885",
++    "content-hash": "a4ffa34aeeb5f71c735150158413f641",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+-            "version": "v1.6.0",
++            "version": "v1.8.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/doctrine/annotations.git",
+-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5"
++                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
+-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
++                "url": "https://api.github.com/repos/doctrine/annotations/zipball/904dca4eb10715b92569fbcd79e201d5c349b6bc",
++                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc",
+                 "shasum": ""
+             },
+             "require": {
+@@ -26,12 +26,12 @@
+             },
+             "require-dev": {
+                 "doctrine/cache": "1.*",
+-                "phpunit/phpunit": "^6.4"
++                "phpunit/phpunit": "^7.5"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.6.x-dev"
++                    "dev-master": "1.7.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -44,6 +44,10 @@
+                 "MIT"
+             ],
+             "authors": [
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
+                 {
+                     "name": "Roman Borschel",
+                     "email": "roman@code-factory.org"
+@@ -52,10 +56,6 @@
+                     "name": "Benjamin Eberlei",
+                     "email": "kontakt@beberlei.de"
+                 },
+-                {
+-                    "name": "Guilherme Blanco",
+-                    "email": "guilhermeblanco@gmail.com"
+-                },
+                 {
+                     "name": "Jonathan Wage",
+                     "email": "jonwage@gmail.com"
+@@ -72,7 +72,7 @@
+                 "docblock",
+                 "parser"
+             ],
+-            "time": "2017-12-06T07:11:42+00:00"
++            "time": "2019-10-01T18:55:10+00:00"
+         },
+         {
+             "name": "doctrine/cache",
+@@ -1461,6 +1461,17 @@
+         {
+             "name": "symfony/lts",
+             "version": "dev-master",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/lts.git",
++                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/lts/zipball/c1affae45b78aee036effa1759237e7fa96d4af2",
++                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2",
++                "shasum": ""
++            },
+             "conflict": {
+                 "symfony/asset": ">=5",
+                 "symfony/browser-kit": ">=5",
+@@ -1538,7 +1549,8 @@
+             ],
+             "description": "Enforces Long Term Supported versions of Symfony components",
+             "homepage": "https://symfony.com",
+-            "time": "2018-04-03T05:04:16+00:00"
++            "abandoned": "symfony/flex",
++            "time": "2018-10-03T12:03:19+00:00"
+         },
+         {
+             "name": "symfony/polyfill-ctype",
+@@ -1971,5 +1983,8 @@
+         "php": "^7.1.3",
+         "ext-iconv": "*"
+     },
+-    "platform-dev": []
++    "platform-dev": [],
++    "platform-overrides": {
++        "php": "7.1.3"
++    }
+ }

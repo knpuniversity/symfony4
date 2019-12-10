@@ -21,6 +21,11 @@
             "description": null
         },
         {
+            "id": "pages-fix-doctrine-annotations-php-7-4-0",
+            "name": "Pages: fix doctrine\/annotations php 7.4.0",
+            "description": null
+        },
+        {
             "id": "pages-convert-route-to-annotation",
             "name": "Pages: Convert route to annotation",
             "description": null
@@ -2141,5 +2146,5 @@
             "description": null
         }
     ],
-    "sha": "1d2e35f8d3ef58cefb3cc35664c647e38d5a2b2f"
+    "sha": "4e7da825e0ee78089819cf3baf15eed3ff61898c"
 }

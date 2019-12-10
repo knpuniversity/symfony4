@@ -21,15 +21,15 @@ index 9bc218ba..27e21023 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 7535eaf8..1c09126e 100644
+index 57a37cf1..de04ebd6 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "4d1f923925b8c9bf0d237750491d5344",
-+    "content-hash": "6fb7af769a0a1498a051a965be2bff65",
+-    "content-hash": "6f52e078656126367d29c3c0a28e7265",
++    "content-hash": "25dca78652995144111080d7e0af6d9b",
      "packages": [
          {
              "name": "doctrine/annotations",
@@ -68,7 +68,7 @@ index 7535eaf8..1c09126e 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/asset.git",
-@@ -1721,16 +1721,16 @@
+@@ -1727,16 +1727,16 @@
          },
          {
              "name": "symfony/process",
@@ -89,7 +89,7 @@ index 7535eaf8..1c09126e 100644
                  "shasum": ""
              },
              "require": {
-@@ -1766,7 +1766,7 @@
+@@ -1772,7 +1772,7 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -98,7 +98,7 @@ index 7535eaf8..1c09126e 100644
          },
          {
              "name": "symfony/routing",
-@@ -1847,16 +1847,16 @@
+@@ -1853,16 +1853,16 @@
          },
          {
              "name": "symfony/twig-bridge",
@@ -119,7 +119,7 @@ index 7535eaf8..1c09126e 100644
                  "shasum": ""
              },
              "require": {
-@@ -1933,20 +1933,20 @@
+@@ -1939,20 +1939,20 @@
              ],
              "description": "Symfony Twig Bridge",
              "homepage": "https://symfony.com",
@@ -145,7 +145,7 @@ index 7535eaf8..1c09126e 100644
                  "shasum": ""
              },
              "require": {
-@@ -2006,11 +2006,11 @@
+@@ -2012,11 +2012,11 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
@@ -159,7 +159,7 @@ index 7535eaf8..1c09126e 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/web-server-bundle.git",
-@@ -2193,62 +2193,6 @@
+@@ -2199,62 +2199,6 @@
          }
      ],
      "packages-dev": [
@@ -222,7 +222,7 @@ index 7535eaf8..1c09126e 100644
          {
              "name": "easycorp/easy-log-handler",
              "version": "v1.0.4",
-@@ -2377,55 +2321,9 @@
+@@ -2383,55 +2327,9 @@
              ],
              "time": "2017-06-19T01:22:40+00:00"
          },
@@ -279,7 +279,7 @@ index 7535eaf8..1c09126e 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -2547,7 +2445,7 @@
+@@ -2553,7 +2451,7 @@
          },
          {
              "name": "symfony/monolog-bridge",
@@ -288,7 +288,7 @@ index 7535eaf8..1c09126e 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/monolog-bridge.git",
-@@ -2676,16 +2574,16 @@
+@@ -2682,16 +2580,16 @@
          },
          {
              "name": "symfony/phpunit-bridge",
@@ -309,7 +309,7 @@ index 7535eaf8..1c09126e 100644
                  "shasum": ""
              },
              "require": {
-@@ -2738,7 +2636,7 @@
+@@ -2744,7 +2642,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -318,7 +318,7 @@ index 7535eaf8..1c09126e 100644
          },
          {
              "name": "symfony/polyfill-php72",
-@@ -2825,7 +2723,7 @@
+@@ -2831,7 +2729,7 @@
          },
          {
              "name": "symfony/stopwatch",
@@ -327,7 +327,7 @@ index 7535eaf8..1c09126e 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/stopwatch.git",
-@@ -2874,16 +2772,16 @@
+@@ -2880,16 +2778,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -348,7 +348,7 @@ index 7535eaf8..1c09126e 100644
                  "shasum": ""
              },
              "require": {
-@@ -2939,20 +2837,20 @@
+@@ -2945,20 +2843,20 @@
                  "debug",
                  "dump"
              ],
@@ -374,7 +374,7 @@ index 7535eaf8..1c09126e 100644
                  "shasum": ""
              },
              "require": {
-@@ -3005,7 +2903,7 @@
+@@ -3011,7 +2909,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

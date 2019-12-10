@@ -20,19 +20,19 @@ index 754d714b..7e34b4c7 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 5a6f32f7..724b8841 100644
+index df321079..9a03c01a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "1f3dd87404ed65db8ece95a1f2f0a5cb",
-+    "content-hash": "431eea624912e17d378671fd909e4585",
+-    "content-hash": "e1c810c82260f3067abe1d921bb4b115",
++    "content-hash": "40d6b4970779be1aefe433168dc571b2",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2432,37 +2432,6 @@
+@@ -2438,37 +2438,6 @@
              "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },

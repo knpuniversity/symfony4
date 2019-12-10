@@ -1,20 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index f93a4757..981676d6 100644
+index f2899081..84c3e471 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -2697,11 +2697,6 @@
-         {
-             "name": "symfony/lts",
-             "version": "dev-master",
--            "source": {
--                "type": "git",
--                "url": "https://github.com/symfony/lts.git",
--                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2"
--            },
-             "conflict": {
-                 "symfony/asset": ">=5",
-                 "symfony/browser-kit": ">=5",
-@@ -3604,6 +3599,57 @@
+@@ -3610,6 +3610,57 @@
              ],
              "time": "2017-06-19T01:22:40+00:00"
          },
@@ -72,7 +60,7 @@ index f93a4757..981676d6 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.0.4",
-@@ -3728,28 +3774,34 @@
+@@ -3734,28 +3785,34 @@
          },
          {
              "name": "symfony/maker-bundle",
@@ -112,7 +100,7 @@ index f93a4757..981676d6 100644
                  "friendsofphp/php-cs-fixer": "^2.8",
                  "symfony/phpunit-bridge": "^3.4|^4.0",
                  "symfony/process": "^3.4|^4.0"
-@@ -3775,13 +3827,15 @@
+@@ -3781,13 +3838,15 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],

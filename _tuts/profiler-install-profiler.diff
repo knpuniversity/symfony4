@@ -13,19 +13,19 @@ index ebc8b216..148daeeb 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 363e0737..cf964be6 100644
+index 13ef3684..ab1af7f0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "91932e7e92f62e293d44d4855ec3000c",
-+    "content-hash": "b2cf3c381eba6cc0a63a721a8a55f8b3",
+-    "content-hash": "ad266c9fdad874f694e6b333eb1af1bc",
++    "content-hash": "04203d85a367df02fd7fb3ee2de24310",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2295,6 +2295,273 @@
+@@ -2301,6 +2301,273 @@
                  "environment"
              ],
              "time": "2018-07-26T11:22:46+00:00"

@@ -11,7 +11,7 @@ index d0c8d5a9..12dd94cc 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 054ddcb2..d36d3eb2 100644
+index 6aa7dcfe..b21a62be 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

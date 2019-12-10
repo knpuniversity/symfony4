@@ -53,19 +53,19 @@ index 148daeeb..754d714b 100644
          "symfony/profiler-pack": "^1.0"
      },
 diff --git a/composer.lock b/composer.lock
-index cf964be6..5a6f32f7 100644
+index ab1af7f0..df321079 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "b2cf3c381eba6cc0a63a721a8a55f8b3",
-+    "content-hash": "1f3dd87404ed65db8ece95a1f2f0a5cb",
+-    "content-hash": "04203d85a367df02fd7fb3ee2de24310",
++    "content-hash": "e1c810c82260f3067abe1d921bb4b115",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2193,6 +2193,134 @@
+@@ -2199,6 +2199,134 @@
              ],
              "time": "2017-11-29T09:37:33+00:00"
          },
@@ -200,7 +200,7 @@ index cf964be6..5a6f32f7 100644
          {
              "name": "sensiolabs/security-checker",
              "version": "v5.0.3",
-@@ -2239,6 +2367,102 @@
+@@ -2245,6 +2373,102 @@
              "description": "A security checker for your composer.lock",
              "time": "2018-12-19T17:14:59+00:00"
          },
@@ -303,7 +303,7 @@ index cf964be6..5a6f32f7 100644
          {
              "name": "symfony/dotenv",
              "version": "v4.0.14",
-@@ -2296,6 +2520,201 @@
+@@ -2302,6 +2526,201 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },

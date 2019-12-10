@@ -59,7 +59,7 @@ index cb0d75e0..9299abb4 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 981676d6..2419191b 100644
+index 84c3e471..1b323686 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -71,67 +71,89 @@ index 981676d6..2419191b 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -128,16 +128,16 @@
+@@ -128,42 +128,653 @@
          },
          {
              "name": "doctrine/cache",
 -            "version": "v1.7.1",
 +            "version": "v1.8.0",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/doctrine/cache.git",
--                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a"
++            "source": {
++                "type": "git",
++                "url": "https://github.com/doctrine/cache.git",
 +                "reference": "d768d58baee9a4862ca783840eca1b9add7a7f57"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/doctrine/cache/zipball/b3217d58609e9c8e661cd41357a54d926c4a2a1a",
--                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a",
++            },
++            "dist": {
++                "type": "zip",
 +                "url": "https://api.github.com/repos/doctrine/cache/zipball/d768d58baee9a4862ca783840eca1b9add7a7f57",
 +                "reference": "d768d58baee9a4862ca783840eca1b9add7a7f57",
-                 "shasum": ""
-             },
-             "require": {
-@@ -148,8 +148,9 @@
-             },
-             "require-dev": {
-                 "alcaeus/mongo-php-adapter": "^1.1",
++                "shasum": ""
++            },
++            "require": {
++                "php": "~7.1"
++            },
++            "conflict": {
++                "doctrine/common": ">2.2,<2.4"
++            },
++            "require-dev": {
++                "alcaeus/mongo-php-adapter": "^1.1",
 +                "doctrine/coding-standard": "^4.0",
-                 "mongodb/mongodb": "^1.1",
--                "phpunit/phpunit": "^5.7",
++                "mongodb/mongodb": "^1.1",
 +                "phpunit/phpunit": "^7.0",
-                 "predis/predis": "~1.0"
-             },
-             "suggest": {
-@@ -158,7 +159,7 @@
-             "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "1.7.x-dev"
++                "predis/predis": "~1.0"
++            },
++            "suggest": {
++                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
 +                    "dev-master": "1.8.x-dev"
-                 }
-             },
-             "autoload": {
-@@ -193,43 +194,785 @@
-                 }
-             ],
-             "description": "Caching library offering an object-oriented API for many cache backends",
--            "homepage": "http://www.doctrine-project.org",
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Roman Borschel",
++                    "email": "roman@code-factory.org"
++                },
++                {
++                    "name": "Benjamin Eberlei",
++                    "email": "kontakt@beberlei.de"
++                },
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
++                {
++                    "name": "Jonathan Wage",
++                    "email": "jonwage@gmail.com"
++                },
++                {
++                    "name": "Johannes Schmitt",
++                    "email": "schmittjoh@gmail.com"
++                }
++            ],
++            "description": "Caching library offering an object-oriented API for many cache backends",
 +            "homepage": "https://www.doctrine-project.org",
-             "keywords": [
-                 "cache",
-                 "caching"
-             ],
--            "time": "2017-08-25T07:02:50+00:00"
++            "keywords": [
++                "cache",
++                "caching"
++            ],
 +            "time": "2018-08-21T18:01:43+00:00"
-         },
-         {
-             "name": "doctrine/collections",
-             "version": "v1.5.0",
-             "source": {
-                 "type": "git",
--                "url": "https://github.com/doctrine/collections.git",
--                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf"
++        },
++        {
++            "name": "doctrine/collections",
++            "version": "v1.5.0",
++            "source": {
++                "type": "git",
 +                "url": "https://github.com/doctrine/collections.git",
 +                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf"
 +            },
@@ -675,97 +697,106 @@ index 981676d6..2419191b 100644
 +        {
 +            "name": "doctrine/inflector",
 +            "version": "v1.3.0",
-+            "source": {
-+                "type": "git",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/doctrine/cache.git",
+-                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a"
 +                "url": "https://github.com/doctrine/inflector.git",
 +                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
-+            },
-+            "dist": {
-+                "type": "zip",
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/cache/zipball/b3217d58609e9c8e661cd41357a54d926c4a2a1a",
+-                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a",
 +                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
 +                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
-+                "shasum": ""
-+            },
-+            "require": {
+                 "shasum": ""
+             },
+             "require": {
+-                "php": "~7.1"
+-            },
+-            "conflict": {
+-                "doctrine/common": ">2.2,<2.4"
 +                "php": "^7.1"
-+            },
-+            "require-dev": {
+             },
+             "require-dev": {
+-                "alcaeus/mongo-php-adapter": "^1.1",
+-                "mongodb/mongodb": "^1.1",
+-                "phpunit/phpunit": "^5.7",
+-                "predis/predis": "~1.0"
+-            },
+-            "suggest": {
+-                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
 +                "phpunit/phpunit": "^6.2"
-+            },
-+            "type": "library",
-+            "extra": {
-+                "branch-alias": {
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.7.x-dev"
 +                    "dev-master": "1.3.x-dev"
-+                }
-+            },
-+            "autoload": {
-+                "psr-4": {
+                 }
+             },
+             "autoload": {
+                 "psr-4": {
+-                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
 +                    "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
-+                    "name": "Roman Borschel",
-+                    "email": "roman@code-factory.org"
-+                },
-+                {
-+                    "name": "Benjamin Eberlei",
-+                    "email": "kontakt@beberlei.de"
-+                },
-+                {
-+                    "name": "Guilherme Blanco",
-+                    "email": "guilhermeblanco@gmail.com"
-+                },
-+                {
-+                    "name": "Jonathan Wage",
-+                    "email": "jonwage@gmail.com"
-+                },
-+                {
-+                    "name": "Johannes Schmitt",
-+                    "email": "schmittjoh@gmail.com"
-+                }
-+            ],
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -192,44 +803,96 @@
+                     "email": "schmittjoh@gmail.com"
+                 }
+             ],
+-            "description": "Caching library offering an object-oriented API for many cache backends",
 +            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-+            "homepage": "http://www.doctrine-project.org",
-+            "keywords": [
+             "homepage": "http://www.doctrine-project.org",
+             "keywords": [
+-                "cache",
+-                "caching"
 +                "inflection",
 +                "pluralize",
 +                "singularize",
 +                "string"
-+            ],
+             ],
+-            "time": "2017-08-25T07:02:50+00:00"
 +            "time": "2018-01-09T20:05:19+00:00"
-+        },
-+        {
+         },
+         {
+-            "name": "doctrine/collections",
+-            "version": "v1.5.0",
 +            "name": "doctrine/instantiator",
 +            "version": "1.1.0",
-+            "source": {
-+                "type": "git",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/doctrine/collections.git",
+-                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf"
 +                "url": "https://github.com/doctrine/instantiator.git",
 +                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda"
-+            },
-+            "dist": {
-+                "type": "zip",
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/collections/zipball/a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
+-                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
 +                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
 +                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
-+                "shasum": ""
-+            },
-+            "require": {
-+                "php": "^7.1"
-+            },
-+            "require-dev": {
+                 "shasum": ""
+             },
+             "require": {
+                 "php": "^7.1"
+             },
+             "require-dev": {
+-                "doctrine/coding-standard": "~0.1@dev",
+-                "phpunit/phpunit": "^5.7"
 +                "athletic/athletic": "~0.1.8",
 +                "ext-pdo": "*",
 +                "ext-phar": "*",
 +                "phpunit/phpunit": "^6.2.3",
 +                "squizlabs/php_codesniffer": "^3.0.2"
-+            },
-+            "type": "library",
-+            "extra": {
-+                "branch-alias": {
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.3.x-dev"
 +                    "dev-master": "1.2.x-dev"
 +                }
 +            },
@@ -814,26 +845,27 @@ index 981676d6..2419191b 100644
 +            "extra": {
 +                "branch-alias": {
 +                    "dev-master": "1.0.x-dev"
-+                }
-+            },
-+            "autoload": {
-+                "psr-0": {
+                 }
+             },
+             "autoload": {
+                 "psr-0": {
+-                    "Doctrine\\Common\\Collections\\": "lib/"
 +                    "Doctrine\\Common\\Lexer\\": "lib/"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
-+                    "name": "Roman Borschel",
-+                    "email": "roman@code-factory.org"
-+                },
-+                {
-+                    "name": "Guilherme Blanco",
-+                    "email": "guilhermeblanco@gmail.com"
-+                },
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -241,66 +904,151 @@
+                     "name": "Roman Borschel",
+                     "email": "roman@code-factory.org"
+                 },
+-                {
+-                    "name": "Benjamin Eberlei",
+-                    "email": "kontakt@beberlei.de"
+-                },
+                 {
+                     "name": "Guilherme Blanco",
+                     "email": "guilhermeblanco@gmail.com"
+                 },
 +                {
 +                    "name": "Johannes Schmitt",
 +                    "email": "schmittjoh@gmail.com"
@@ -854,27 +886,22 @@ index 981676d6..2419191b 100644
 +                "type": "git",
 +                "url": "https://github.com/doctrine/migrations.git",
 +                "reference": "0101f5bd7f4e5043bf8630db2930f8fd7da552b6"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/doctrine/collections/zipball/a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
--                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
++            },
++            "dist": {
++                "type": "zip",
 +                "url": "https://api.github.com/repos/doctrine/migrations/zipball/0101f5bd7f4e5043bf8630db2930f8fd7da552b6",
 +                "reference": "0101f5bd7f4e5043bf8630db2930f8fd7da552b6",
-                 "shasum": ""
-             },
-             "require": {
--                "php": "^7.1"
++                "shasum": ""
++            },
++            "require": {
 +                "doctrine/dbal": "^2.6",
 +                "ocramius/package-versions": "^1.3",
 +                "ocramius/proxy-manager": "^2.0.2",
 +                "php": "^7.1",
 +                "symfony/console": "^3.4||^4.0",
 +                "symfony/stopwatch": "^3.4||^4.0"
-             },
-             "require-dev": {
--                "doctrine/coding-standard": "~0.1@dev",
--                "phpunit/phpunit": "^5.7"
++            },
++            "require-dev": {
 +                "doctrine/coding-standard": "^5.0",
 +                "doctrine/orm": "^2.6",
 +                "ext-pdo_sqlite": "*",
@@ -891,41 +918,30 @@ index 981676d6..2419191b 100644
 +            "suggest": {
 +                "jdorn/sql-formatter": "Allows to generate formatted SQL with the diff command.",
 +                "symfony/yaml": "Allows the use of yaml for migration configuration files."
-             },
++            },
 +            "bin": [
 +                "bin/doctrine-migrations"
 +            ],
-             "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "1.3.x-dev"
++            "type": "library",
++            "extra": {
++                "branch-alias": {
 +                    "dev-master": "2.0.x-dev"
-                 }
-             },
-             "autoload": {
--                "psr-0": {
--                    "Doctrine\\Common\\Collections\\": "lib/"
++                }
++            },
++            "autoload": {
 +                "psr-4": {
 +                    "Doctrine\\Migrations\\": "lib/Doctrine/Migrations"
-                 }
-             },
-             "notification-url": "https://packagist.org/downloads/",
-@@ -237,70 +980,75 @@
-                 "MIT"
-             ],
-             "authors": [
--                {
--                    "name": "Roman Borschel",
--                    "email": "roman@code-factory.org"
--                },
-                 {
-                     "name": "Benjamin Eberlei",
-                     "email": "kontakt@beberlei.de"
-                 },
--                {
--                    "name": "Guilherme Blanco",
--                    "email": "guilhermeblanco@gmail.com"
--                },
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Benjamin Eberlei",
++                    "email": "kontakt@beberlei.de"
++                },
                  {
                      "name": "Jonathan Wage",
                      "email": "jonwage@gmail.com"
@@ -996,10 +1012,10 @@ index 981676d6..2419191b 100644
 +                "phpunit/phpunit": "^6.5",
 +                "squizlabs/php_codesniffer": "^3.2",
 +                "symfony/yaml": "~3.4|~4.0"
-+            },
+             },
 +            "suggest": {
 +                "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
-             },
++            },
 +            "bin": [
 +                "bin/doctrine"
 +            ],
@@ -1264,239 +1280,79 @@ index 981676d6..2419191b 100644
          {
              "name": "knplabs/knp-markdown-bundle",
              "version": "1.7.0",
-@@ -752,45 +1583,154 @@
-             "time": "2018-01-15T00:49:33+00:00"
+@@ -866,6 +1697,124 @@
+             "description": "Symfony bundle integration of maknz/slack library",
+             "time": "2018-01-18T01:13:27+00:00"
          },
-         {
--            "name": "nexylan/slack",
--            "version": "v2.0.0",
-+            "name": "nexylan/slack",
-+            "version": "v2.0.0",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/nexylan/slack.git",
-+                "reference": "884fe1db0316f042e53989cbb06f343304dec75e"
-+            },
-+            "dist": {
-+                "type": "zip",
-+                "url": "https://api.github.com/repos/nexylan/slack/zipball/884fe1db0316f042e53989cbb06f343304dec75e",
-+                "reference": "884fe1db0316f042e53989cbb06f343304dec75e",
-+                "shasum": ""
-+            },
-+            "require": {
-+                "ext-mbstring": "*",
-+                "php": "^7.1",
-+                "php-http/client-common": "^1.7",
-+                "php-http/client-implementation": "^1.0",
-+                "php-http/discovery": "^1.3",
-+                "symfony/options-resolver": "^3.4 || ^4.0"
-+            },
-+            "require-dev": {
-+                "guzzlehttp/psr7": "^1.4",
-+                "mockery/mockery": "^1.0",
-+                "php-http/message": "^1.6",
-+                "php-http/mock-client": "^1.1"
-+            },
-+            "suggest": {
-+                "nexylan/slack-bundle": "Required for Symfony bundle support"
-+            },
-+            "type": "library",
-+            "extra": {
-+                "branch-alias": {
-+                    "dev-master": "2.x-dev"
-+                }
-+            },
-+            "autoload": {
-+                "psr-4": {
-+                    "Nexy\\Slack\\": "src/"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
-+                    "name": "maknz",
-+                    "email": "github@mak.geek.nz"
-+                },
-+                {
-+                    "name": "Sullivan SENECHAL",
-+                    "email": "soullivaneuh@gmail.com"
-+                }
-+            ],
-+            "description": "A simple PHP package for sending messages to Slack, with a focus on ease of use and elegant syntax.",
-+            "keywords": [
-+                "slack",
-+                "webhook"
-+            ],
-+            "time": "2018-01-17T16:48:45+00:00"
-+        },
-+        {
-+            "name": "nexylan/slack-bundle",
-+            "version": "v2.0.0",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/nexylan/slack-bundle.git",
-+                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d"
-+            },
-+            "dist": {
-+                "type": "zip",
-+                "url": "https://api.github.com/repos/nexylan/slack-bundle/zipball/f8d0537dce96539eb94a184fa83be3070bafec2d",
-+                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d",
-+                "shasum": ""
-+            },
-+            "require": {
-+                "nexylan/slack": "^2.0",
-+                "php": "^7.1",
-+                "php-http/httplug-bundle": "^1.8",
-+                "symfony/http-kernel": "^3.4 || ^4.0"
-+            },
-+            "require-dev": {
-+                "matthiasnoback/symfony-dependency-injection-test": "^2.3",
-+                "php-http/mock-client": "^1.1",
-+                "phpunit/phpunit": "^6.5"
-+            },
-+            "suggest": {
-+                "eightpoints/guzzle-bundle": "Make a custom Guzzle instance for Slack with ease"
-+            },
-+            "type": "symfony-bundle",
-+            "extra": {
-+                "branch-alias": {
-+                    "dev-master": "2.x-dev"
-+                }
-+            },
-+            "autoload": {
-+                "psr-4": {
-+                    "Nexy\\SlackBundle\\": "src"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
-+                    "name": "Sullivan SENECHAL",
-+                    "email": "soullivaneuh@gmail.com"
-+                }
-+            ],
-+            "description": "Symfony bundle integration of maknz/slack library",
-+            "time": "2018-01-18T01:13:27+00:00"
-+        },
 +        {
 +            "name": "ocramius/package-versions",
 +            "version": "1.3.0",
-             "source": {
-                 "type": "git",
--                "url": "https://github.com/nexylan/slack.git",
--                "reference": "884fe1db0316f042e53989cbb06f343304dec75e"
++            "source": {
++                "type": "git",
 +                "url": "https://github.com/Ocramius/PackageVersions.git",
 +                "reference": "4489d5002c49d55576fa0ba786f42dbb009be46f"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/nexylan/slack/zipball/884fe1db0316f042e53989cbb06f343304dec75e",
--                "reference": "884fe1db0316f042e53989cbb06f343304dec75e",
++            },
++            "dist": {
++                "type": "zip",
 +                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/4489d5002c49d55576fa0ba786f42dbb009be46f",
 +                "reference": "4489d5002c49d55576fa0ba786f42dbb009be46f",
-                 "shasum": ""
-             },
-             "require": {
--                "ext-mbstring": "*",
--                "php": "^7.1",
--                "php-http/client-common": "^1.7",
--                "php-http/client-implementation": "^1.0",
--                "php-http/discovery": "^1.3",
--                "symfony/options-resolver": "^3.4 || ^4.0"
++                "shasum": ""
++            },
++            "require": {
 +                "composer-plugin-api": "^1.0.0",
 +                "php": "^7.1.0"
-             },
-             "require-dev": {
--                "guzzlehttp/psr7": "^1.4",
--                "mockery/mockery": "^1.0",
--                "php-http/message": "^1.6",
--                "php-http/mock-client": "^1.1"
--            },
--            "suggest": {
--                "nexylan/slack-bundle": "Required for Symfony bundle support"
++            },
++            "require-dev": {
 +                "composer/composer": "^1.6.3",
 +                "ext-zip": "*",
 +                "infection/infection": "^0.7.1",
 +                "phpunit/phpunit": "^7.0.0"
-             },
--            "type": "library",
++            },
 +            "type": "composer-plugin",
-             "extra": {
++            "extra": {
 +                "class": "PackageVersions\\Installer",
-                 "branch-alias": {
--                    "dev-master": "2.x-dev"
++                "branch-alias": {
 +                    "dev-master": "2.0.x-dev"
-                 }
-             },
-             "autoload": {
-                 "psr-4": {
--                    "Nexy\\Slack\\": "src/"
++                }
++            },
++            "autoload": {
++                "psr-4": {
 +                    "PackageVersions\\": "src/PackageVersions"
-                 }
-             },
-             "notification-url": "https://packagist.org/downloads/",
-@@ -799,58 +1739,58 @@
-             ],
-             "authors": [
-                 {
--                    "name": "maknz",
--                    "email": "github@mak.geek.nz"
--                },
--                {
--                    "name": "Sullivan SENECHAL",
--                    "email": "soullivaneuh@gmail.com"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
 +                    "name": "Marco Pivetta",
 +                    "email": "ocramius@gmail.com"
-                 }
-             ],
--            "description": "A simple PHP package for sending messages to Slack, with a focus on ease of use and elegant syntax.",
--            "keywords": [
--                "slack",
--                "webhook"
--            ],
--            "time": "2018-01-17T16:48:45+00:00"
++                }
++            ],
 +            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
 +            "time": "2018-02-05T13:05:30+00:00"
-         },
-         {
--            "name": "nexylan/slack-bundle",
--            "version": "v2.0.0",
++        },
++        {
 +            "name": "ocramius/proxy-manager",
 +            "version": "2.1.1",
-             "source": {
-                 "type": "git",
--                "url": "https://github.com/nexylan/slack-bundle.git",
--                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d"
++            "source": {
++                "type": "git",
 +                "url": "https://github.com/Ocramius/ProxyManager.git",
 +                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/nexylan/slack-bundle/zipball/f8d0537dce96539eb94a184fa83be3070bafec2d",
--                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d",
++            },
++            "dist": {
++                "type": "zip",
 +                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
 +                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
-                 "shasum": ""
-             },
-             "require": {
--                "nexylan/slack": "^2.0",
--                "php": "^7.1",
--                "php-http/httplug-bundle": "^1.8",
--                "symfony/http-kernel": "^3.4 || ^4.0"
++                "shasum": ""
++            },
++            "require": {
 +                "ocramius/package-versions": "^1.1.1",
 +                "php": "^7.1.0",
 +                "zendframework/zend-code": "^3.1.0"
-             },
-             "require-dev": {
--                "matthiasnoback/symfony-dependency-injection-test": "^2.3",
--                "php-http/mock-client": "^1.1",
--                "phpunit/phpunit": "^6.5"
++            },
++            "require-dev": {
 +                "couscous/couscous": "^1.5.2",
 +                "ext-phar": "*",
 +                "humbug/humbug": "dev-master@DEV",
@@ -1506,43 +1362,35 @@ index 981676d6..2419191b 100644
 +                "phpunit/phpunit": "^5.6.4",
 +                "phpunit/phpunit-mock-objects": "^3.4.1",
 +                "squizlabs/php_codesniffer": "^2.7.0"
-             },
-             "suggest": {
--                "eightpoints/guzzle-bundle": "Make a custom Guzzle instance for Slack with ease"
++            },
++            "suggest": {
 +                "ocramius/generated-hydrator": "To have very fast object to array to object conversion for ghost objects",
 +                "zendframework/zend-json": "To have the JsonRpc adapter (Remote Object feature)",
 +                "zendframework/zend-soap": "To have the Soap adapter (Remote Object feature)",
 +                "zendframework/zend-xmlrpc": "To have the XmlRpc adapter (Remote Object feature)"
-             },
--            "type": "symfony-bundle",
++            },
 +            "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "2.x-dev"
++            "extra": {
++                "branch-alias": {
 +                    "dev-master": "3.0.x-dev"
-                 }
-             },
-             "autoload": {
--                "psr-4": {
--                    "Nexy\\SlackBundle\\": "src"
++                }
++            },
++            "autoload": {
 +                "psr-0": {
 +                    "ProxyManager\\": "src"
-                 }
-             },
-             "notification-url": "https://packagist.org/downloads/",
-@@ -859,12 +1799,21 @@
-             ],
-             "authors": [
-                 {
--                    "name": "Sullivan SENECHAL",
--                    "email": "soullivaneuh@gmail.com"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
 +                    "name": "Marco Pivetta",
 +                    "email": "ocramius@gmail.com",
 +                    "homepage": "http://ocramius.github.io/"
-                 }
-             ],
--            "description": "Symfony bundle integration of maknz/slack library",
--            "time": "2018-01-18T01:13:27+00:00"
++                }
++            ],
 +            "description": "A library providing utilities to generate, instantiate and generally operate with Object Proxies",
 +            "homepage": "https://github.com/Ocramius/ProxyManager",
 +            "keywords": [
@@ -1553,9 +1401,10 @@ index 981676d6..2419191b 100644
 +                "service proxies"
 +            ],
 +            "time": "2017-05-04T11:12:50+00:00"
-         },
++        },
          {
              "name": "php-http/cache-plugin",
+             "version": "v1.5.0",
 @@ -2104,6 +3053,74 @@
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"
@@ -1735,19 +1584,7 @@ index 981676d6..2419191b 100644
          {
              "name": "symfony/event-dispatcher",
              "version": "v4.0.14",
-@@ -2697,6 +3802,11 @@
-         {
-             "name": "symfony/lts",
-             "version": "dev-master",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/symfony/lts.git",
-+                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2"
-+            },
-             "conflict": {
-                 "symfony/asset": ">=5",
-                 "symfony/browser-kit": ">=5",
-@@ -2831,6 +3941,34 @@
+@@ -2842,6 +3947,34 @@
              ],
              "time": "2018-01-18T22:19:33+00:00"
          },
@@ -1782,7 +1619,7 @@ index 981676d6..2419191b 100644
          {
              "name": "symfony/polyfill-ctype",
              "version": "v1.9.0",
-@@ -2891,16 +4029,16 @@
+@@ -2902,16 +4035,16 @@
          },
          {
              "name": "symfony/polyfill-mbstring",
@@ -1803,7 +1640,7 @@ index 981676d6..2419191b 100644
                  "shasum": ""
              },
              "require": {
-@@ -2946,7 +4084,7 @@
+@@ -2957,7 +4090,7 @@
                  "portable",
                  "shim"
              ],
@@ -1812,7 +1649,7 @@ index 981676d6..2419191b 100644
          },
          {
              "name": "symfony/process",
-@@ -3468,6 +4606,113 @@
+@@ -3479,6 +4612,113 @@
                  "templating"
              ],
              "time": "2017-09-27T18:10:31+00:00"

@@ -21,39 +21,19 @@ index 62a94866..9c5804af 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 9d1fa126..cb688d4c 100644
+index a713548f..fcd1ee3b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "37ef99d8270e7a03d984f5ed5b737885",
-+    "content-hash": "8b8707c26461af181f593457014cf1cf",
+-    "content-hash": "a4ffa34aeeb5f71c735150158413f641",
++    "content-hash": "b752e8cc3ef7a39d963fe0de2337329c",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -1461,6 +1461,11 @@
-         {
-             "name": "symfony/lts",
-             "version": "dev-master",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/symfony/lts.git",
-+                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2"
-+            },
-             "conflict": {
-                 "symfony/asset": ">=5",
-                 "symfony/browser-kit": ">=5",
-@@ -1538,6 +1543,7 @@
-             ],
-             "description": "Enforces Long Term Supported versions of Symfony components",
-             "homepage": "https://symfony.com",
-+            "abandoned": "symfony/flex",
-             "time": "2018-04-03T05:04:16+00:00"
-         },
-         {
-@@ -1902,6 +1908,108 @@
+@@ -1914,6 +1914,108 @@
          }
      ],
      "packages-dev": [

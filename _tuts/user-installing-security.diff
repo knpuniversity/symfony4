@@ -11,7 +11,7 @@ index 19d353dc..1af499a0 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 54dcb81a..29af158f 100644
+index 4cd67bd6..99e6b235 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -88,7 +88,7 @@ index 54dcb81a..29af158f 100644
          {
              "name": "symfony/lts",
              "version": "dev-master",
-@@ -4525,6 +4583,73 @@
+@@ -4531,6 +4589,73 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-03T11:13:38+00:00"
          },
@@ -162,7 +162,7 @@ index 54dcb81a..29af158f 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4602,6 +4727,163 @@
+@@ -4608,6 +4733,163 @@
              ],
              "time": "2018-08-03T07:58:40+00:00"
          },

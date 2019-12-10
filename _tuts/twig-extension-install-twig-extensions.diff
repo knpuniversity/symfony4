@@ -13,7 +13,7 @@ index c91ca974..c893c39d 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index e5043a72..d69ecfe2 100644
+index 75aac594..7f8e85fe 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -25,7 +25,7 @@ index e5043a72..d69ecfe2 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4916,6 +4916,62 @@
+@@ -4922,6 +4922,62 @@
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"
          },
