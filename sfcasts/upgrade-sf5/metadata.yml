@@ -1,1 +1,6 @@
-chapters: []
+chapters:
+    - flex-symfony-require
+    - upgrade-4.4
+    - recipe-commands
+    - console-recipe
+    - framework-bundle-recipe
