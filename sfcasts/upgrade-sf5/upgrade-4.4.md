@@ -2,46 +2,7 @@
 
 Coming soon...
 
-We just ran composer, update, Symfony. Slash. Star, but thanks to our extra Symfony
-require key. It just upgraded things. The latest 4.3 version, it didn't upgrade
-anything to 4.4 this helps keep all of those Symfony packages at 4.3 so let's change
-that to 4.4 point star. Then we'll move over. Run composer, update, Symfony. Slash.
-Star once again
-
-and yes, this time we can see it's updating all of the Symfony packages to the latest
-4.4 release. So upgrading is to 4.2 upgrading a minor version is just that easy or
-wait, there's one small catch here. It actually upgraded most Symfony packages to 4.4
-but not everything. Check this out. I'm gonna run a composer show. Symfony. Slash.
-Mailer. If I scroll up, it's still on 4.3 why? Well go over to composer dot. JSON and
-find Symfony mailer in here. Look its version in our proposed adjacent file. Unlike
-something like Symfony form or Symfony framework bundle, which was carrot 4.0 which
-means that it's effectively, that effectively means a four point star Symfony mailer
-is 4.3 point star. Now there's two things I want to say about this. Usually when you
-compose or require a package name, composer puts a version inside your composer.json
-file that uses the carrot. That's why you see carrot 3.0 care at 1.1 however, when
-however Symfony flex changes that for Symfony packages. When you're using Symfony
-FAC, when he's Symfony flax and you install one of the main Symfony packages, it
-actually uses the four point version point star format and it's not a huge deal, but
-it does that because we, because the best practice is for you to specifically control
-the minor version of all of your Symfony packages so that you can upgrade them all at
-the same time. Exactly like we're doing right now.
-
-However, Symfony flex didn't always do this. That's why in my project do you see
-certain things like Symfony form using the old using the carrot format and then for
-later tutorials like the Symfony mail or tutorial, you see it using the 4.3 or point
-star format. So going forward you're going to see Symfony flex always doing the four
-point, uh, using this star format for some free packages, not using the carrot format
-anymore. The second thing to know about this is that the extra Symfony require here
-4.4 point star. It's not that it's going to force all of your Symfony packages to
-version 4.4 point star. It's that it's going to make sure that they,
-
-it's more that it strongly suggests that they go to 4.4 point star, but if you have a
-key up here that says 4.3 point star, then there's a good chance that then it's going
-to win. So the point is that just the point is that for all of our Symfony packages
-we want, it's two things for all of our Symfony packages. We want them to use the
-four point version, point star format. And when we upgrade, we're going to want to
-change both that format like 4.4 point star and also the extra Symfony required down
-here. And yes, that might seem a little bit redundant, but changing the version up
+And yes, that might seem a bit redundant. but changing the version up
 here to 4.4 point star gives you very clear control and then the Symfony extra, the
 extra Symfony required on here is an added layer that ultimately really helps with
 performance. So let's get to work here a little bit. I'm actually going to update all
