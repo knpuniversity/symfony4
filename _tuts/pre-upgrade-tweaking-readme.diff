@@ -1,0 +1,14 @@
+diff --git a/README.md b/README.md
+index 41d123c1..718bb016 100644
+--- a/README.md
++++ b/README.md
+@@ -1,7 +1,7 @@
+-# Symfony Mailer: Love Sending Emails Again
++# Upgrading & What's New in Symfony 5 Tutorial
+ 
+ Well hi there! This repository holds the code and script
+-for the [Symfony Mailer: Love Sending Emails Again](https://symfonycasts.com/screencast/mailer) course on SymfonyCasts.
++for the [Upgrading & What's New in Symfony 5](https://symfonycasts.com/screencast/symfony5-upgrade) course on SymfonyCasts.
+ 
+ ## Setup
+ 

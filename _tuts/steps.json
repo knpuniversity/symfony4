@@ -1371,6 +1371,11 @@
             "description": null
         },
         {
+            "id": "pre-upgrade-tweaking-readme",
+            "name": "PRE UPGRADE: Tweaking README",
+            "description": null
+        },
+        {
             "id": "upgrade-4-4-upgrade-patch-symfony",
             "name": "Upgrade 4.4: upgrade patch symfony\/*",
             "description": null
@@ -1536,5 +1541,5 @@
             "description": null
         }
     ],
-    "sha": "21e892fb831ece4cfedcd1d6b3b5e0e703d66b05"
+    "sha": "1ad01913b70c66684398f85586c62e892a34c208"
 }
