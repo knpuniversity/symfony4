@@ -1,0 +1,13 @@
+diff --git a/symfony.lock b/symfony.lock
+index 1628e8fb..1c529cfb 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -413,7 +413,7 @@
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+             "version": "4.3",
+-            "ref": "6e5921f710bec05533f664e0b9a3d838545edd82"
++            "ref": "15658c2a0176cda2e7dba66276a2030b52bd81b2"
+         },
+         "files": [
+             "config/packages/mailer.yaml"

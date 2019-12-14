@@ -1,0 +1,185 @@
+diff --git a/.gitignore b/.gitignore
+index baa77a0a..c4874525 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -2,6 +2,7 @@
+ /.env.local
+ /.env.local.php
+ /.env.*.local
++/config/secrets/prod/prod.decrypt.private.php
+ /public/bundles/
+ /var/
+ /vendor/
+diff --git a/config/packages/cache.yaml b/config/packages/cache.yaml
+index bff190ab..5e9ee9f3 100644
+--- a/config/packages/cache.yaml
++++ b/config/packages/cache.yaml
+@@ -1,10 +1,10 @@
+ framework:
+     cache:
+-        # Put the unique name of your app here: the prefix seed
+-        # is used to compute stable namespaces for cache keys.
++        # Unique name of your app: used to compute stable namespaces for cache keys.
+         #prefix_seed: your_vendor_name/app_name
+ 
+-        # The app cache caches to the filesystem by default.
++        # The "app" cache stores to the filesystem by default.
++        # The data in this cache should persist between deploys.
+         # Other options include:
+ 
+         # Redis
+diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
+index 60f24ae2..6089f4bd 100644
+--- a/config/packages/framework.yaml
++++ b/config/packages/framework.yaml
+@@ -1,13 +1,14 @@
+ framework:
+     secret: '%env(APP_SECRET)%'
+-    #default_locale: en
+     #csrf_protection: true
+     #http_method_override: true
+ 
+     # Enables session support. Note that the session will ONLY be started if you read or write from it.
+     # Remove or comment this section to explicitly disable session support.
+     session:
+-        handler_id: ~
++        handler_id: null
++        cookie_secure: auto
++        cookie_samesite: lax
+ 
+     #esi: true
+     #fragments: true
+diff --git a/config/routes/dev/framework.yaml b/config/routes/dev/framework.yaml
+new file mode 100644
+index 00000000..bcbbf13d
+--- /dev/null
++++ b/config/routes/dev/framework.yaml
+@@ -0,0 +1,3 @@
++_errors:
++    resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
++    prefix: /_error
+diff --git a/config/services.yaml b/config/services.yaml
+index c230130c..d44cf00b 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -15,9 +15,6 @@ services:
+     _defaults:
+         autowire: true      # Automatically injects dependencies in your services.
+         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+-        public: false       # Allows optimizing the container by removing unused services; this also means
+-                            # fetching services directly from the container via $container->get() won't work.
+-                            # The best practice is to be explicit about your dependencies anyway.
+ 
+         # setup special, global autowiring rules
+         bind:
+diff --git a/public/index.php b/public/index.php
+index e30f90c0..f094a9b1 100644
+--- a/public/index.php
++++ b/public/index.php
+@@ -1,7 +1,7 @@
+ <?php
+ 
+ use App\Kernel;
+-use Symfony\Component\Debug\Debug;
++use Symfony\Component\ErrorHandler\Debug;
+ use Symfony\Component\HttpFoundation\Request;
+ 
+ require dirname(__DIR__).'/config/bootstrap.php';
+diff --git a/src/Kernel.php b/src/Kernel.php
+index edb95a08..316d0be5 100644
+--- a/src/Kernel.php
++++ b/src/Kernel.php
+@@ -13,19 +13,9 @@ class Kernel extends BaseKernel
+ {
+     use MicroKernelTrait;
+ 
+-    const CONFIG_EXTS = '.{php,xml,yaml,yml}';
++    private const CONFIG_EXTS = '.{php,xml,yaml,yml}';
+ 
+-    public function getCacheDir()
+-    {
+-        return $this->getProjectDir().'/var/cache/'.$this->environment;
+-    }
+-
+-    public function getLogDir()
+-    {
+-        return $this->getProjectDir().'/var/log';
+-    }
+-
+-    public function registerBundles()
++    public function registerBundles(): iterable
+     {
+         $contents = require $this->getProjectDir().'/config/bundles.php';
+         foreach ($contents as $class => $envs) {
+@@ -35,27 +25,30 @@ class Kernel extends BaseKernel
+         }
+     }
+ 
+-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
++    public function getProjectDir(): string
++    {
++        return \dirname(__DIR__);
++    }
++
++    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
+     {
+         $container->addResource(new FileResource($this->getProjectDir().'/config/bundles.php'));
+-        // Feel free to remove the "container.autowiring.strict_mode" parameter
+-        // if you are using symfony/dependency-injection 4.0+ as it's the default behavior
+-        $container->setParameter('container.autowiring.strict_mode', true);
+-        $container->setParameter('container.dumper.inline_class_loader', true);
++        $container->setParameter('container.dumper.inline_class_loader', \PHP_VERSION_ID < 70400);
++        $container->setParameter('container.dumper.inline_factories', true);
+         $confDir = $this->getProjectDir().'/config';
+ 
+         $loader->load($confDir.'/{packages}/*'.self::CONFIG_EXTS, 'glob');
+-        $loader->load($confDir.'/{packages}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, 'glob');
++        $loader->load($confDir.'/{packages}/'.$this->environment.'/*'.self::CONFIG_EXTS, 'glob');
+         $loader->load($confDir.'/{services}'.self::CONFIG_EXTS, 'glob');
+         $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
+     }
+ 
+-    protected function configureRoutes(RouteCollectionBuilder $routes)
++    protected function configureRoutes(RouteCollectionBuilder $routes): void
+     {
+         $confDir = $this->getProjectDir().'/config';
+ 
++        $routes->import($confDir.'/{routes}/'.$this->environment.'/*'.self::CONFIG_EXTS, '/', 'glob');
+         $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, '/', 'glob');
+-        $routes->import($confDir.'/{routes}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, '/', 'glob');
+         $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, '/', 'glob');
+     }
+ }
+diff --git a/symfony.lock b/symfony.lock
+index 50f510b9..5f04f9ac 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -376,13 +376,24 @@
+         "version": "v4.1.11"
+     },
+     "symfony/framework-bundle": {
+-        "version": "3.3",
++        "version": "4.4",
+         "recipe": {
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+-            "version": "3.3",
+-            "ref": "af951c413e84511daefa4ddb3eb8166108a30b6c"
+-        }
++            "version": "4.4",
++            "ref": "23ecaccc551fe2f74baf613811ae529eb07762fa"
++        },
++        "files": [
++            "config/bootstrap.php",
++            "config/packages/cache.yaml",
++            "config/packages/framework.yaml",
++            "config/packages/test/framework.yaml",
++            "config/routes/dev/framework.yaml",
++            "config/services.yaml",
++            "public/index.php",
++            "src/Controller/.gitignore",
++            "src/Kernel.php"
++        ]
+     },
+     "symfony/http-foundation": {
+         "version": "v4.1.11"

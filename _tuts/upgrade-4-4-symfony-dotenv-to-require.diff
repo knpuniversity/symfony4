@@ -1,0 +1,986 @@
+diff --git a/composer.json b/composer.json
+index 1517be54..2efa04a4 100644
+--- a/composer.json
++++ b/composer.json
+@@ -5,6 +5,7 @@
+         "php": "^7.1.3",
+         "ext-iconv": "*",
+         "aws/aws-sdk-php": "^3.87",
++        "easycorp/easy-log-handler": "^1.0",
+         "knplabs/knp-markdown-bundle": "^1.7",
+         "knplabs/knp-paginator-bundle": "^2.7",
+         "knplabs/knp-snappy-bundle": "^1.6",
+@@ -20,11 +21,13 @@
+         "stof/doctrine-extensions-bundle": "^1.3",
+         "symfony/asset": "4.4.*",
+         "symfony/console": "4.4.*",
++        "symfony/dotenv": "4.4.*",
+         "symfony/flex": "^1.0",
+         "symfony/form": "4.4.*",
+         "symfony/framework-bundle": "4.4.*",
+         "symfony/mailer": "4.4.*",
+         "symfony/messenger": "4.4.*",
++        "symfony/monolog-bundle": "^3.5",
+         "symfony/orm-pack": "^1.0",
+         "symfony/security-bundle": "4.4.*",
+         "symfony/sendgrid-mailer": "4.4.*",
+@@ -41,13 +44,10 @@
+     },
+     "require-dev": {
+         "doctrine/doctrine-fixtures-bundle": "^3.0",
+-        "easycorp/easy-log-handler": "^1.0.2",
+         "fzaninotto/faker": "^1.7",
+         "symfony/browser-kit": "4.4.*",
+         "symfony/debug-bundle": "4.4.*",
+-        "symfony/dotenv": "4.4.*",
+         "symfony/maker-bundle": "^1.0",
+-        "symfony/monolog-bundle": "^3.0",
+         "symfony/phpunit-bridge": "4.4.*",
+         "symfony/profiler-pack": "^1.0",
+         "symfony/var-dumper": "4.4.*"
+diff --git a/composer.lock b/composer.lock
+index b8225fec..3f7c2f5d 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "1dcb5496225ec403030d1c2e3f4df29d",
++    "content-hash": "f4f2be9c87bdcf14fdabe4630b65f11c",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -1384,6 +1384,56 @@
+             ],
+             "time": "2018-06-14T14:45:07+00:00"
+         },
++        {
++            "name": "easycorp/easy-log-handler",
++            "version": "v1.0.9",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/EasyCorp/easy-log-handler.git",
++                "reference": "224e1dfcf9455aceee89cd0af306ac097167fac1"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/EasyCorp/easy-log-handler/zipball/224e1dfcf9455aceee89cd0af306ac097167fac1",
++                "reference": "224e1dfcf9455aceee89cd0af306ac097167fac1",
++                "shasum": ""
++            },
++            "require": {
++                "monolog/monolog": "~1.6|~2.0",
++                "php": ">=7.1",
++                "symfony/yaml": "^3.4|^4.0|^5.0"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "EasyCorp\\EasyLog\\": "src"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Javier Eguiluz",
++                    "email": "javiereguiluz@gmail.com"
++                },
++                {
++                    "name": "Project Contributors",
++                    "homepage": "https://github.com/EasyCorp/easy-log-handler"
++                }
++            ],
++            "description": "A handler for Monolog that optimizes log messages to be processed by humans instead of software. Improve your productivity with logs that are easy to understand.",
++            "homepage": "https://github.com/EasyCorp/easy-log-handler",
++            "keywords": [
++                "easy",
++                "log",
++                "logging",
++                "monolog",
++                "productivity"
++            ],
++            "time": "2019-10-24T07:13:31+00:00"
++        },
+         {
+             "name": "egulias/email-validator",
+             "version": "2.1.11",
+@@ -2640,6 +2690,84 @@
+             ],
+             "time": "2018-01-15T00:49:33+00:00"
+         },
++        {
++            "name": "monolog/monolog",
++            "version": "1.25.2",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/Seldaek/monolog.git",
++                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
++                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.3.0",
++                "psr/log": "~1.0"
++            },
++            "provide": {
++                "psr/log-implementation": "1.0.0"
++            },
++            "require-dev": {
++                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
++                "doctrine/couchdb": "~1.0@dev",
++                "graylog2/gelf-php": "~1.0",
++                "jakub-onderka/php-parallel-lint": "0.9",
++                "php-amqplib/php-amqplib": "~2.4",
++                "php-console/php-console": "^3.1.3",
++                "phpunit/phpunit": "~4.5",
++                "phpunit/phpunit-mock-objects": "2.3.0",
++                "ruflin/elastica": ">=0.90 <3.0",
++                "sentry/sentry": "^0.13",
++                "swiftmailer/swiftmailer": "^5.3|^6.0"
++            },
++            "suggest": {
++                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
++                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
++                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
++                "ext-mongo": "Allow sending log messages to a MongoDB server",
++                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
++                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
++                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
++                "php-console/php-console": "Allow sending log messages to Google Chrome",
++                "rollbar/rollbar": "Allow sending log messages to Rollbar",
++                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
++                "sentry/sentry": "Allow sending log messages to a Sentry server"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "2.0.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Monolog\\": "src/Monolog"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Jordi Boggiano",
++                    "email": "j.boggiano@seld.be",
++                    "homepage": "http://seld.be"
++                }
++            ],
++            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
++            "homepage": "http://github.com/Seldaek/monolog",
++            "keywords": [
++                "log",
++                "logging",
++                "psr-3"
++            ],
++            "time": "2019-11-13T10:00:05+00:00"
++        },
+         {
+             "name": "mtdowling/jmespath.php",
+             "version": "2.4.0",
+@@ -3948,16 +4076,16 @@
+         },
+         {
+             "name": "psr/log",
+-            "version": "1.1.0",
++            "version": "1.1.2",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/php-fig/log.git",
+-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
++                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
++                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
++                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
+                 "shasum": ""
+             },
+             "require": {
+@@ -3966,7 +4094,7 @@
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.0.x-dev"
++                    "dev-master": "1.1.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -3991,7 +4119,7 @@
+                 "psr",
+                 "psr-3"
+             ],
+-            "time": "2018-11-20T15:27:04+00:00"
++            "time": "2019-11-01T11:05:21+00:00"
+         },
+         {
+             "name": "ralouphie/getallheaders",
+@@ -4780,6 +4908,63 @@
+             "homepage": "https://symfony.com",
+             "time": "2019-12-01T08:39:58+00:00"
+         },
++        {
++            "name": "symfony/dotenv",
++            "version": "v4.4.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/dotenv.git",
++                "reference": "7abe2c6d7d232cf5a88e79a57479876b35704a01"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/dotenv/zipball/7abe2c6d7d232cf5a88e79a57479876b35704a01",
++                "reference": "7abe2c6d7d232cf5a88e79a57479876b35704a01",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3"
++            },
++            "require-dev": {
++                "symfony/process": "^3.4.2|^4.0|^5.0"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.4-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\Dotenv\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Registers environment variables from a .env file",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "dotenv",
++                "env",
++                "environment"
++            ],
++            "time": "2019-11-23T14:53:46+00:00"
++        },
+         {
+             "name": "symfony/error-handler",
+             "version": "v4.4.1",
+@@ -5808,23 +5993,41 @@
+             "time": "2019-11-30T08:27:26+00:00"
+         },
+         {
+-            "name": "symfony/options-resolver",
++            "name": "symfony/monolog-bridge",
+             "version": "v4.4.1",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/symfony/options-resolver.git",
+-                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f"
++                "url": "https://github.com/symfony/monolog-bridge.git",
++                "reference": "7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/2be23e63f33de16b49294ea6581f462932a77e2f",
+-                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f",
++                "url": "https://api.github.com/repos/symfony/monolog-bridge/zipball/7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041",
++                "reference": "7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": "^7.1.3"
++                "monolog/monolog": "^1.25.1",
++                "php": "^7.1.3",
++                "symfony/http-kernel": "^4.3",
++                "symfony/service-contracts": "^1.1|^2"
+             },
+-            "type": "library",
++            "conflict": {
++                "symfony/console": "<3.4",
++                "symfony/http-foundation": "<3.4"
++            },
++            "require-dev": {
++                "symfony/console": "^3.4|^4.0|^5.0",
++                "symfony/http-client": "^4.4|^5.0",
++                "symfony/security-core": "^3.4|^4.0|^5.0",
++                "symfony/var-dumper": "^3.4|^4.0|^5.0"
++            },
++            "suggest": {
++                "symfony/console": "For the possibility to show log messages in console commands depending on verbosity settings.",
++                "symfony/http-kernel": "For using the debugging handlers together with the response life cycle of the HTTP kernel.",
++                "symfony/var-dumper": "For using the debugging handlers like the console handler or the log server handler."
++            },
++            "type": "symfony-bridge",
+             "extra": {
+                 "branch-alias": {
+                     "dev-master": "4.4-dev"
+@@ -5832,7 +6035,7 @@
+             },
+             "autoload": {
+                 "psr-4": {
+-                    "Symfony\\Component\\OptionsResolver\\": ""
++                    "Symfony\\Bridge\\Monolog\\": ""
+                 },
+                 "exclude-from-classmap": [
+                     "/Tests/"
+@@ -5852,49 +6055,161 @@
+                     "homepage": "https://symfony.com/contributors"
+                 }
+             ],
+-            "description": "Symfony OptionsResolver Component",
++            "description": "Symfony Monolog Bridge",
+             "homepage": "https://symfony.com",
+-            "keywords": [
+-                "config",
+-                "configuration",
+-                "options"
+-            ],
+-            "time": "2019-10-28T21:57:16+00:00"
++            "time": "2019-11-26T23:16:41+00:00"
+         },
+         {
+-            "name": "symfony/orm-pack",
+-            "version": "v1.0.7",
++            "name": "symfony/monolog-bundle",
++            "version": "v3.5.0",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/symfony/orm-pack.git",
+-                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c"
++                "url": "https://github.com/symfony/monolog-bundle.git",
++                "reference": "dd80460fcfe1fa2050a7103ad818e9d0686ce6fd"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/c57f5e05232ca40626eb9fa52a32bc8565e9231c",
+-                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c",
++                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
++                "reference": "dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
+                 "shasum": ""
+             },
+             "require": {
+-                "doctrine/doctrine-bundle": "^1.6.10|^2.0",
+-                "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
+-                "doctrine/orm": "^2.5.11",
+-                "php": "^7.0"
++                "monolog/monolog": "~1.22 || ~2.0",
++                "php": ">=5.6",
++                "symfony/config": "~3.4 || ~4.0 || ^5.0",
++                "symfony/dependency-injection": "~3.4.10 || ^4.0.10 || ^5.0",
++                "symfony/http-kernel": "~3.4 || ~4.0 || ^5.0",
++                "symfony/monolog-bridge": "~3.4 || ~4.0 || ^5.0"
+             },
+-            "type": "symfony-pack",
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "description": "A pack for the Doctrine ORM",
+-            "time": "2019-10-18T05:41:09+00:00"
+-        },
+-        {
+-            "name": "symfony/polyfill-ctype",
+-            "version": "v1.13.1",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/polyfill-ctype.git",
++            "require-dev": {
++                "symfony/console": "~3.4 || ~4.0 || ^5.0",
++                "symfony/phpunit-bridge": "^3.4.19 || ^4.0 || ^5.0",
++                "symfony/yaml": "~3.4 || ~4.0 || ^5.0"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "3.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Bundle\\MonologBundle\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "http://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony MonologBundle",
++            "homepage": "http://symfony.com",
++            "keywords": [
++                "log",
++                "logging"
++            ],
++            "time": "2019-11-13T13:11:14+00:00"
++        },
++        {
++            "name": "symfony/options-resolver",
++            "version": "v4.4.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/options-resolver.git",
++                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/2be23e63f33de16b49294ea6581f462932a77e2f",
++                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1.3"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.4-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Component\\OptionsResolver\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony OptionsResolver Component",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "config",
++                "configuration",
++                "options"
++            ],
++            "time": "2019-10-28T21:57:16+00:00"
++        },
++        {
++            "name": "symfony/orm-pack",
++            "version": "v1.0.7",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/orm-pack.git",
++                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/c57f5e05232ca40626eb9fa52a32bc8565e9231c",
++                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c",
++                "shasum": ""
++            },
++            "require": {
++                "doctrine/doctrine-bundle": "^1.6.10|^2.0",
++                "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
++                "doctrine/orm": "^2.5.11",
++                "php": "^7.0"
++            },
++            "type": "symfony-pack",
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "description": "A pack for the Doctrine ORM",
++            "time": "2019-10-18T05:41:09+00:00"
++        },
++        {
++            "name": "symfony/polyfill-ctype",
++            "version": "v1.13.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/polyfill-ctype.git",
+                 "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
+             },
+             "dist": {
+@@ -8528,56 +8843,6 @@
+             ],
+             "time": "2019-06-12T12:03:37+00:00"
+         },
+-        {
+-            "name": "easycorp/easy-log-handler",
+-            "version": "v1.0.7",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/EasyCorp/easy-log-handler.git",
+-                "reference": "5f95717248d20684f88cfb878d8bf3d78aadcbba"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/EasyCorp/easy-log-handler/zipball/5f95717248d20684f88cfb878d8bf3d78aadcbba",
+-                "reference": "5f95717248d20684f88cfb878d8bf3d78aadcbba",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "monolog/monolog": "~1.6",
+-                "php": ">=5.3.0",
+-                "symfony/yaml": "~2.3|~3.0|~4.0"
+-            },
+-            "type": "library",
+-            "autoload": {
+-                "psr-4": {
+-                    "EasyCorp\\EasyLog\\": "src"
+-                }
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Javier Eguiluz",
+-                    "email": "javiereguiluz@gmail.com"
+-                },
+-                {
+-                    "name": "Project Contributors",
+-                    "homepage": "https://github.com/EasyCorp/easy-log-handler"
+-                }
+-            ],
+-            "description": "A handler for Monolog that optimizes log messages to be processed by humans instead of software. Improve your productivity with logs that are easy to understand.",
+-            "homepage": "https://github.com/EasyCorp/easy-log-handler",
+-            "keywords": [
+-                "easy",
+-                "log",
+-                "logging",
+-                "monolog",
+-                "productivity"
+-            ],
+-            "time": "2018-07-27T15:41:37+00:00"
+-        },
+         {
+             "name": "fzaninotto/faker",
+             "version": "v1.8.0",
+@@ -8628,84 +8893,6 @@
+             ],
+             "time": "2018-07-12T10:23:15+00:00"
+         },
+-        {
+-            "name": "monolog/monolog",
+-            "version": "1.25.1",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/Seldaek/monolog.git",
+-                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+-                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "php": ">=5.3.0",
+-                "psr/log": "~1.0"
+-            },
+-            "provide": {
+-                "psr/log-implementation": "1.0.0"
+-            },
+-            "require-dev": {
+-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+-                "doctrine/couchdb": "~1.0@dev",
+-                "graylog2/gelf-php": "~1.0",
+-                "jakub-onderka/php-parallel-lint": "0.9",
+-                "php-amqplib/php-amqplib": "~2.4",
+-                "php-console/php-console": "^3.1.3",
+-                "phpunit/phpunit": "~4.5",
+-                "phpunit/phpunit-mock-objects": "2.3.0",
+-                "ruflin/elastica": ">=0.90 <3.0",
+-                "sentry/sentry": "^0.13",
+-                "swiftmailer/swiftmailer": "^5.3|^6.0"
+-            },
+-            "suggest": {
+-                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+-                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+-                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+-                "ext-mongo": "Allow sending log messages to a MongoDB server",
+-                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+-                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+-                "php-console/php-console": "Allow sending log messages to Google Chrome",
+-                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+-                "sentry/sentry": "Allow sending log messages to a Sentry server"
+-            },
+-            "type": "library",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "2.0.x-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "Monolog\\": "src/Monolog"
+-                }
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Jordi Boggiano",
+-                    "email": "j.boggiano@seld.be",
+-                    "homepage": "http://seld.be"
+-                }
+-            ],
+-            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+-            "homepage": "http://github.com/Seldaek/monolog",
+-            "keywords": [
+-                "log",
+-                "logging",
+-                "psr-3"
+-            ],
+-            "time": "2019-09-06T13:49:17+00:00"
+-        },
+         {
+             "name": "nikic/php-parser",
+             "version": "v4.2.4",
+@@ -8943,63 +9130,6 @@
+             "homepage": "https://symfony.com",
+             "time": "2019-10-29T11:38:30+00:00"
+         },
+-        {
+-            "name": "symfony/dotenv",
+-            "version": "v4.4.1",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/dotenv.git",
+-                "reference": "7abe2c6d7d232cf5a88e79a57479876b35704a01"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/7abe2c6d7d232cf5a88e79a57479876b35704a01",
+-                "reference": "7abe2c6d7d232cf5a88e79a57479876b35704a01",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "php": "^7.1.3"
+-            },
+-            "require-dev": {
+-                "symfony/process": "^3.4.2|^4.0|^5.0"
+-            },
+-            "type": "library",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "4.4-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "Symfony\\Component\\Dotenv\\": ""
+-                },
+-                "exclude-from-classmap": [
+-                    "/Tests/"
+-                ]
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
+-                },
+-                {
+-                    "name": "Symfony Community",
+-                    "homepage": "https://symfony.com/contributors"
+-                }
+-            ],
+-            "description": "Registers environment variables from a .env file",
+-            "homepage": "https://symfony.com",
+-            "keywords": [
+-                "dotenv",
+-                "env",
+-                "environment"
+-            ],
+-            "time": "2019-11-23T14:53:46+00:00"
+-        },
+         {
+             "name": "symfony/maker-bundle",
+             "version": "v1.14.3",
+@@ -9068,136 +9198,6 @@
+             ],
+             "time": "2019-11-07T00:56:03+00:00"
+         },
+-        {
+-            "name": "symfony/monolog-bridge",
+-            "version": "v4.4.1",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/monolog-bridge.git",
+-                "reference": "7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/monolog-bridge/zipball/7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041",
+-                "reference": "7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "monolog/monolog": "^1.25.1",
+-                "php": "^7.1.3",
+-                "symfony/http-kernel": "^4.3",
+-                "symfony/service-contracts": "^1.1|^2"
+-            },
+-            "conflict": {
+-                "symfony/console": "<3.4",
+-                "symfony/http-foundation": "<3.4"
+-            },
+-            "require-dev": {
+-                "symfony/console": "^3.4|^4.0|^5.0",
+-                "symfony/http-client": "^4.4|^5.0",
+-                "symfony/security-core": "^3.4|^4.0|^5.0",
+-                "symfony/var-dumper": "^3.4|^4.0|^5.0"
+-            },
+-            "suggest": {
+-                "symfony/console": "For the possibility to show log messages in console commands depending on verbosity settings.",
+-                "symfony/http-kernel": "For using the debugging handlers together with the response life cycle of the HTTP kernel.",
+-                "symfony/var-dumper": "For using the debugging handlers like the console handler or the log server handler."
+-            },
+-            "type": "symfony-bridge",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "4.4-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "Symfony\\Bridge\\Monolog\\": ""
+-                },
+-                "exclude-from-classmap": [
+-                    "/Tests/"
+-                ]
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
+-                },
+-                {
+-                    "name": "Symfony Community",
+-                    "homepage": "https://symfony.com/contributors"
+-                }
+-            ],
+-            "description": "Symfony Monolog Bridge",
+-            "homepage": "https://symfony.com",
+-            "time": "2019-11-26T23:16:41+00:00"
+-        },
+-        {
+-            "name": "symfony/monolog-bundle",
+-            "version": "v3.5.0",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/monolog-bundle.git",
+-                "reference": "dd80460fcfe1fa2050a7103ad818e9d0686ce6fd"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
+-                "reference": "dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "monolog/monolog": "~1.22 || ~2.0",
+-                "php": ">=5.6",
+-                "symfony/config": "~3.4 || ~4.0 || ^5.0",
+-                "symfony/dependency-injection": "~3.4.10 || ^4.0.10 || ^5.0",
+-                "symfony/http-kernel": "~3.4 || ~4.0 || ^5.0",
+-                "symfony/monolog-bridge": "~3.4 || ~4.0 || ^5.0"
+-            },
+-            "require-dev": {
+-                "symfony/console": "~3.4 || ~4.0 || ^5.0",
+-                "symfony/phpunit-bridge": "^3.4.19 || ^4.0 || ^5.0",
+-                "symfony/yaml": "~3.4 || ~4.0 || ^5.0"
+-            },
+-            "type": "symfony-bundle",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "3.x-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "Symfony\\Bundle\\MonologBundle\\": ""
+-                },
+-                "exclude-from-classmap": [
+-                    "/Tests/"
+-                ]
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
+-                },
+-                {
+-                    "name": "Symfony Community",
+-                    "homepage": "http://symfony.com/contributors"
+-                }
+-            ],
+-            "description": "Symfony MonologBundle",
+-            "homepage": "http://symfony.com",
+-            "keywords": [
+-                "log",
+-                "logging"
+-            ],
+-            "time": "2019-11-13T13:11:14+00:00"
+-        },
+         {
+             "name": "symfony/phpunit-bridge",
+             "version": "v4.4.1",
+diff --git a/config/bundles.php b/config/bundles.php
+index 628c5cc4..e7f8a24e 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -6,7 +6,6 @@ return [
+     Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
+     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
+     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
+-    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
+     Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
+     Http\HttplugBundle\HttplugBundle::class => ['all' => true],
+@@ -25,4 +24,5 @@ return [
+     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
+     Knp\Bundle\SnappyBundle\KnpSnappyBundle::class => ['all' => true],
++    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+ ];
+diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
+index 96dbf969..5bcdf06e 100644
+--- a/config/packages/prod/monolog.yaml
++++ b/config/packages/prod/monolog.yaml
+@@ -4,9 +4,7 @@ monolog:
+             type: fingers_crossed
+             action_level: error
+             handler: nested
+-            excluded_404s:
+-                # regex: exclude all 404 errors from the logs
+-                - ^/
++            excluded_http_codes: [404, 405]
+         nested:
+             type: stream
+             path: "%kernel.logs_dir%/%kernel.environment%.log"
+diff --git a/symfony.lock b/symfony.lock
+index 7d44dbd0..8704b429 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -93,7 +93,10 @@
+             "branch": "master",
+             "version": "1.0",
+             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
+-        }
++        },
++        "files": [
++            "config/packages/dev/easy_log_handler.yaml"
++        ]
+     },
+     "egulias/email-validator": {
+         "version": "2.1.11"
+@@ -174,7 +177,7 @@
+         "version": "1.8.0"
+     },
+     "monolog/monolog": {
+-        "version": "1.24.0"
++        "version": "1.25.2"
+     },
+     "mtdowling/jmespath.php": {
+         "version": "2.4.0"
+@@ -336,7 +339,7 @@
+         "version": "v4.3.5"
+     },
+     "symfony/dotenv": {
+-        "version": "v4.1.11"
++        "version": "v4.4.1"
+     },
+     "symfony/error-handler": {
+         "version": "v4.4.1"
+@@ -423,16 +426,21 @@
+         "version": "v4.3.4"
+     },
+     "symfony/monolog-bridge": {
+-        "version": "v4.1.11"
++        "version": "v4.4.1"
+     },
+     "symfony/monolog-bundle": {
+-        "version": "3.1",
++        "version": "3.3",
+         "recipe": {
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+-            "version": "3.1",
+-            "ref": "18ebf5a940573a20de06f9c4060101eeb438cf3d"
+-        }
++            "version": "3.3",
++            "ref": "6240c6d43e8237a32452f057f81816820fd56ab6"
++        },
++        "files": [
++            "config/packages/dev/monolog.yaml",
++            "config/packages/prod/monolog.yaml",
++            "config/packages/test/monolog.yaml"
++        ]
+     },
+     "symfony/options-resolver": {
+         "version": "v4.1.11"

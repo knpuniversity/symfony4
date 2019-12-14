@@ -1359,7 +1359,182 @@
             "id": "webpack-encore-use-in-the-template",
             "name": "Webpack Encore: Use in the template",
             "description": null
+        },
+        {
+            "id": "pre-upgrade-remove-old-use-statements",
+            "name": "PRE UPGRADE: remove old use statements",
+            "description": null
+        },
+        {
+            "id": "pre-upgrade-commit-new-email-encore-assets",
+            "name": "PRE UPGRADE: commit new email Encore assets",
+            "description": null
+        },
+        {
+            "id": "upgrade-4-4-upgrade-patch-symfony",
+            "name": "Upgrade 4.4: upgrade patch symfony\/*",
+            "description": null
+        },
+        {
+            "id": "upgrade-4-4-extra-symfony-require-4-4",
+            "name": "Upgrade 4.4: extra.symfony.require 4.4.*",
+            "description": null
+        },
+        {
+            "id": "upgrade-4-4-update-symfony",
+            "name": "Upgrade 4.4: update symfony\/*",
+            "description": null
+        },
+        {
+            "id": "upgrade-4-4-change-reqs-to-4-4",
+            "name": "Upgrade 4.4: change reqs to 4.4.*",
+            "description": null
+        },
+        {
+            "id": "upgrade-4-4-symfony-dotenv-to-require",
+            "name": "Upgrade 4.4: symfony\/dotenv to require",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-console",
+            "name": "Recipes: update symfony\/console",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-flex",
+            "name": "Recipes: update symfony\/flex",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-framework-bundle",
+            "name": "Recipes: update symfony\/framework-bundle",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-twig-bundle",
+            "name": "Recipes: update symfony\/twig-bundle",
+            "description": null
+        },
+        {
+            "id": "recipes-manually-remove-twig-yaml-dev-routing",
+            "name": "Recipes: manually remove twig.yaml dev routing",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-mailer",
+            "name": "Recipes: update symfony\/mailer",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-sendgrid-mailer",
+            "name": "Recipes: update symfony\/sendgrid-mailer",
+            "description": null
+        },
+        {
+            "id": "recipes-update-mailer-null-syntax",
+            "name": "Recipes: update mailer null syntax",
+            "description": null
+        },
+        {
+            "id": "recipes-delete-me",
+            "name": "Recipes: delete me",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-phpunit-bridge",
+            "name": "Recipes: update symfony\/phpunit-bridge",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-routing",
+            "name": "Recipes: update symfony\/routing",
+            "description": null
+        },
+        {
+            "id": "recipes-manually-remove-test-routing-yaml",
+            "name": "Recipes: manually remove test routing.yaml",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-security-bundle",
+            "name": "Recipes: update symfony\/security-bundle",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-translation",
+            "name": "Recipes: update symfony\/translation",
+            "description": null
+        },
+        {
+            "id": "recipes-manually-remove-locale",
+            "name": "Recipes: manually remove locale",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-validator",
+            "name": "Recipes: update symfony\/validator",
+            "description": null
+        },
+        {
+            "id": "recipes-update-symfony-webpack-encore-bundle",
+            "name": "Recipes: update symfony\/webpack-encore-bundle",
+            "description": null
+        },
+        {
+            "id": "deprecations-remove-webserverbundle",
+            "name": "Deprecations: remove WebServerBundle",
+            "description": null
+        },
+        {
+            "id": "deprecations-upgrade-liipimaginebundle",
+            "name": "Deprecations: upgrade LiipImagineBundle",
+            "description": null
+        },
+        {
+            "id": "deprecations-update-liipimaginebundle-recipe",
+            "name": "Deprecations: update LiipImagineBundle recipe",
+            "description": null
+        },
+        {
+            "id": "deprecations-update-doctrinebundle",
+            "name": "Deprecations: update DoctrineBundle",
+            "description": null
+        },
+        {
+            "id": "deprecations-upgrade-paginator",
+            "name": "Deprecations: Upgrade paginator",
+            "description": null
+        },
+        {
+            "id": "deprecations-change-php-platform-version",
+            "name": "Deprecations: change php platform version",
+            "description": null
+        },
+        {
+            "id": "deprecations-actually-upgrade-paginator",
+            "name": "Deprecations: Actually upgrade paginator",
+            "description": null
+        },
+        {
+            "id": "deprecations-getextendedtypes-form",
+            "name": "Deprecations: getExtendedTypes() form",
+            "description": null
+        },
+        {
+            "id": "deprecations-managerregistry-in-repos",
+            "name": "Deprecations: ManagerRegistry in repos",
+            "description": null
+        },
+        {
+            "id": "deprecations-namedaddress",
+            "name": "Deprecations: NamedAddress",
+            "description": null
+        },
+        {
+            "id": "deprecations-return-0-in-command",
+            "name": "Deprecations: return 0 in command",
+            "description": null
         }
     ],
-    "sha": "01f1746bb883f6a241fbbac0aac927f2a6b8421a"
+    "sha": "21e892fb831ece4cfedcd1d6b3b5e0e703d66b05"
 }

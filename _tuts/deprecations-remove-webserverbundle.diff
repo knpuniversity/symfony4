@@ -1,0 +1,139 @@
+diff --git a/.gitignore b/.gitignore
+index f91075c2..38a8ee2a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -7,11 +7,6 @@
+ /var/
+ /vendor/
+ ###< symfony/framework-bundle ###
+-
+-###> symfony/web-server-bundle ###
+-/.web-server-pid
+-###< symfony/web-server-bundle ###
+-
+ ###> symfony/phpunit-bridge ###
+ .phpunit
+ .phpunit.result.cache
+diff --git a/composer.json b/composer.json
+index 2efa04a4..507a0927 100644
+--- a/composer.json
++++ b/composer.json
+@@ -35,7 +35,6 @@
+         "symfony/twig-bundle": "4.4.*",
+         "symfony/twig-pack": "^1.0",
+         "symfony/validator": "4.4.*",
+-        "symfony/web-server-bundle": "4.4.*",
+         "symfony/webpack-encore-bundle": "^1.4",
+         "symfony/yaml": "4.4.*",
+         "twig/cssinliner-extra": "^2.12",
+diff --git a/composer.lock b/composer.lock
+index 3f7c2f5d..f0d0bb86 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "f4f2be9c87bdcf14fdabe4630b65f11c",
++    "content-hash": "b031589f4243854f7c72e2c39be26714",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -8052,65 +8052,6 @@
+             ],
+             "time": "2019-12-01T08:39:58+00:00"
+         },
+-        {
+-            "name": "symfony/web-server-bundle",
+-            "version": "v4.4.1",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/web-server-bundle.git",
+-                "reference": "301dad4563b21a791a796da9a736408215b9e9fc"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/web-server-bundle/zipball/301dad4563b21a791a796da9a736408215b9e9fc",
+-                "reference": "301dad4563b21a791a796da9a736408215b9e9fc",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "php": "^7.1.3",
+-                "symfony/config": "^3.4|^4.0|^5.0",
+-                "symfony/console": "^3.4|^4.0|^5.0",
+-                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
+-                "symfony/http-kernel": "^3.4|^4.0|^5.0",
+-                "symfony/polyfill-ctype": "~1.8",
+-                "symfony/process": "^3.4.2|^4.0.2|^5.0"
+-            },
+-            "suggest": {
+-                "symfony/expression-language": "For using the filter option of the log server.",
+-                "symfony/monolog-bridge": "For using the log server."
+-            },
+-            "type": "symfony-bundle",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "4.4-dev"
+-                }
+-            },
+-            "autoload": {
+-                "psr-4": {
+-                    "Symfony\\Bundle\\WebServerBundle\\": ""
+-                },
+-                "exclude-from-classmap": [
+-                    "/Tests/"
+-                ]
+-            },
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "authors": [
+-                {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
+-                },
+-                {
+-                    "name": "Symfony Community",
+-                    "homepage": "https://symfony.com/contributors"
+-                }
+-            ],
+-            "description": "Symfony WebServerBundle",
+-            "homepage": "https://symfony.com",
+-            "time": "2019-11-26T23:16:41+00:00"
+-        },
+         {
+             "name": "symfony/webpack-encore-bundle",
+             "version": "v1.7.2",
+diff --git a/config/bundles.php b/config/bundles.php
+index e7f8a24e..9d730ce2 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -2,7 +2,6 @@
+ 
+ return [
+     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
+-    Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
+     Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
+     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
+     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
+diff --git a/symfony.lock b/symfony.lock
+index 62701692..62bcd22d 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -638,15 +638,6 @@
+             "ref": "6bdfa1a95f6b2e677ab985cd1af2eae35d62e0f6"
+         }
+     },
+-    "symfony/web-server-bundle": {
+-        "version": "3.3",
+-        "recipe": {
+-            "repo": "github.com/symfony/recipes",
+-            "branch": "master",
+-            "version": "3.3",
+-            "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
+-        }
+-    },
+     "symfony/webpack-encore-bundle": {
+         "version": "1.6",
+         "recipe": {

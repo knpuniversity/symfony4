@@ -1,0 +1,48 @@
+diff --git a/config/packages/test/validator.yaml b/config/packages/test/validator.yaml
+new file mode 100644
+index 00000000..1e5ab788
+--- /dev/null
++++ b/config/packages/test/validator.yaml
+@@ -0,0 +1,3 @@
++framework:
++    validation:
++        not_compromised_password: false
+diff --git a/config/packages/validator.yaml b/config/packages/validator.yaml
+index a695e1a6..350786a1 100644
+--- a/config/packages/validator.yaml
++++ b/config/packages/validator.yaml
+@@ -1,3 +1,8 @@
+ framework:
+     validation:
+         email_validation_mode: html5
++
++        # Enables validator auto-mapping support.
++        # For instance, basic validation constraints will be inferred from Doctrine's metadata.
++        #auto_mapping:
++        #    App\Entity\: []
+diff --git a/symfony.lock b/symfony.lock
+index 1a217574..0ce1a398 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -611,13 +611,17 @@
+         "version": "v1.0.0"
+     },
+     "symfony/validator": {
+-        "version": "4.1",
++        "version": "4.3",
+         "recipe": {
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+-            "version": "4.1",
+-            "ref": "0cdc982334f45d554957a6167e030482795bf9d7"
+-        }
++            "version": "4.3",
++            "ref": "d902da3e4952f18d3bf05aab29512eb61cabd869"
++        },
++        "files": [
++            "config/packages/test/validator.yaml",
++            "config/packages/validator.yaml"
++        ]
+     },
+     "symfony/var-dumper": {
+         "version": "v4.1.11"

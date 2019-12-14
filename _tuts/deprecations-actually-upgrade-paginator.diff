@@ -1,0 +1,223 @@
+diff --git a/composer.lock b/composer.lock
+index 45c108a3..5df4cc69 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "b031589f4243854f7c72e2c39be26714",
++    "content-hash": "fd4ca571753b5f1a0b09f30a20e8c66c",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -1871,43 +1871,52 @@
+         },
+         {
+             "name": "knplabs/knp-components",
+-            "version": "v1.3.10",
++            "version": "v2.3.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/KnpLabs/knp-components.git",
+-                "reference": "fc1755ba2b77f83a3d3c99e21f3026ba2a1429be"
++                "reference": "d61c56ff4d427a14f0c308ee388fb75e94d01a7c"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/fc1755ba2b77f83a3d3c99e21f3026ba2a1429be",
+-                "reference": "fc1755ba2b77f83a3d3c99e21f3026ba2a1429be",
++                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/d61c56ff4d427a14f0c308ee388fb75e94d01a7c",
++                "reference": "d61c56ff4d427a14f0c308ee388fb75e94d01a7c",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.3.2"
++                "php": "^7.2",
++                "symfony/event-dispatcher": "^3.4 || ^4.0 || ^5.0",
++                "symfony/http-foundation": "^3.4 || ^4.0 || ^5.0"
+             },
+             "require-dev": {
+-                "doctrine/mongodb-odm": "~1.0@beta",
+-                "doctrine/orm": "~2.4",
+-                "doctrine/phpcr-odm": "~1.2",
+-                "jackalope/jackalope-doctrine-dbal": "~1.2",
+-                "phpunit/phpunit": "~4.2",
+-                "ruflin/elastica": "~1.0",
+-                "symfony/event-dispatcher": "~2.5",
+-                "symfony/property-access": ">=2.3"
++                "doctrine/mongodb-odm": "^2.0",
++                "doctrine/orm": "^2.4",
++                "doctrine/phpcr-odm": "^1.2",
++                "jackalope/jackalope-doctrine-dbal": "^1.2",
++                "phpunit/phpunit": "^8.0",
++                "ruflin/elastica": "^1.0",
++                "symfony/http-kernel": "^3.4 || ^4.0 || ^5.0",
++                "symfony/property-access": "^3.4 || ^4.0 || ^5.0"
+             },
+             "suggest": {
++                "doctrine/common": "to allow usage pagination with Doctrine ArrayCollection",
++                "doctrine/mongodb-odm": "to allow usage pagination with Doctrine ODM MongoDB",
++                "doctrine/orm": "to allow usage pagination with Doctrine ORM",
++                "doctrine/phpcr-odm": "to allow usage pagination with Doctrine ODM PHPCR",
++                "propel/propel1": "to allow usage pagination with Propel ORM",
++                "ruflin/elastica": "to allow usage pagination with ElasticSearch Client",
++                "solarium/solarium": "to allow usage pagination with Solarium Client",
+                 "symfony/property-access": "To allow sorting arrays"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.3.x-dev"
++                    "dev-master": "2.4.0-dev"
+                 }
+             },
+             "autoload": {
+-                "psr-0": {
+-                    "Knp\\Component": "src"
++                "psr-4": {
++                    "Knp\\Component\\": "src/Knp/Component"
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -1917,11 +1926,11 @@
+             "authors": [
+                 {
+                     "name": "KnpLabs Team",
+-                    "homepage": "http://knplabs.com"
++                    "homepage": "https://knplabs.com"
+                 },
+                 {
+                     "name": "Symfony Community",
+-                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
++                    "homepage": "https://github.com/KnpLabs/knp-components/contributors"
+                 }
+             ],
+             "description": "Knplabs component library",
+@@ -1933,7 +1942,7 @@
+                 "pager",
+                 "paginator"
+             ],
+-            "time": "2018-09-11T07:54:48+00:00"
++            "time": "2019-11-25T10:00:08+00:00"
+         },
+         {
+             "name": "knplabs/knp-markdown-bundle",
+@@ -2000,37 +2009,39 @@
+         },
+         {
+             "name": "knplabs/knp-paginator-bundle",
+-            "version": "v2.8.0",
++            "version": "v5.0.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
+-                "reference": "f4ece5b347121b9fe13166264f197f90252d4bd2"
++                "reference": "dcbd60ebf494cc10cedcd65237edc8d632cf675b"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/f4ece5b347121b9fe13166264f197f90252d4bd2",
+-                "reference": "f4ece5b347121b9fe13166264f197f90252d4bd2",
++                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/dcbd60ebf494cc10cedcd65237edc8d632cf675b",
++                "reference": "dcbd60ebf494cc10cedcd65237edc8d632cf675b",
+                 "shasum": ""
+             },
+             "require": {
+-                "knplabs/knp-components": "~1.2",
+-                "php": ">=5.3.3",
+-                "symfony/framework-bundle": "~2.7|~3.0|~4.0",
+-                "twig/twig": "~1.12|~2"
++                "knplabs/knp-components": "^2.0",
++                "php": "^7.2",
++                "symfony/framework-bundle": "^4.3 || ^5.0",
++                "symfony/translation": "^4.3 || ^5.0",
++                "twig/twig": "^2.0 || ^3.0"
+             },
+             "require-dev": {
+-                "phpunit/phpunit": "~4.8.35|~5.4.3|~6.4",
+-                "symfony/expression-language": "~2.7|~3.0|~4.0"
++                "phpunit/phpunit": "^7.5 || ^8.4",
++                "symfony/expression-language": "^4.3 || ^5.0",
++                "symfony/templating": "^3.4 || ^4.0"
+             },
+             "type": "symfony-bundle",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "2.8.x-dev"
++                    "dev-master": "5.0.x-dev"
+                 }
+             },
+             "autoload": {
+                 "psr-4": {
+-                    "Knp\\Bundle\\PaginatorBundle\\": ""
++                    "Knp\\Bundle\\PaginatorBundle\\": "src"
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -2058,7 +2069,7 @@
+                 "paginator",
+                 "symfony"
+             ],
+-            "time": "2018-05-16T12:15:58+00:00"
++            "time": "2019-11-27T08:58:44+00:00"
+         },
+         {
+             "name": "knplabs/knp-snappy",
+@@ -8438,16 +8449,16 @@
+         },
+         {
+             "name": "twig/twig",
+-            "version": "v2.12.1",
++            "version": "v2.12.2",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/twigphp/Twig.git",
+-                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5"
++                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
+-                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
++                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
++                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
+                 "shasum": ""
+             },
+             "require": {
+@@ -8501,7 +8512,7 @@
+             "keywords": [
+                 "templating"
+             ],
+-            "time": "2019-10-17T07:34:53+00:00"
++            "time": "2019-11-11T16:52:09+00:00"
+         },
+         {
+             "name": "webmozart/assert",
+@@ -9305,11 +9316,11 @@
+     "prefer-stable": false,
+     "prefer-lowest": false,
+     "platform": {
+-        "php": "^7.1.3",
++        "php": "^7.2.5",
+         "ext-iconv": "*"
+     },
+     "platform-dev": [],
+     "platform-overrides": {
+-        "php": "7.1.3"
++        "php": "7.2.5"
+     }
+ }
+diff --git a/symfony.lock b/symfony.lock
+index 65a6e4ed..c02857f5 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -211,7 +211,7 @@
+         }
+     },
+     "php": {
+-        "version": "7.1.3"
++        "version": "7.2.5"
+     },
+     "php-http/client-common": {
+         "version": "1.9.1"

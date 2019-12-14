@@ -1,0 +1,13 @@
+diff --git a/composer.json b/composer.json
+index 507a0927..11526a7a 100644
+--- a/composer.json
++++ b/composer.json
+@@ -7,7 +7,7 @@
+         "aws/aws-sdk-php": "^3.87",
+         "easycorp/easy-log-handler": "^1.0",
+         "knplabs/knp-markdown-bundle": "^1.7",
+-        "knplabs/knp-paginator-bundle": "^2.7",
++        "knplabs/knp-paginator-bundle": "^5.0",
+         "knplabs/knp-snappy-bundle": "^1.6",
+         "knplabs/knp-time-bundle": "^1.8",
+         "league/flysystem-aws-s3-v3": "^1.0",

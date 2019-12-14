@@ -1,0 +1,13 @@
+diff --git a/.env b/.env
+index 15a65042..11ce5020 100644
+--- a/.env
++++ b/.env
+@@ -36,7 +36,7 @@ SITE_BASE_HOST=localhost:8000
+ SITE_BASE_URL=$SITE_BASE_SCHEME://$SITE_BASE_HOST
+ 
+ ###> symfony/mailer ###
+-MAILER_DSN=smtp://null
++MAILER_DSN=null://null
+ # in Symfony 4.4 and higher, the syntax is
+ # MAILER_DSN=null://default
+ ###< symfony/mailer ###

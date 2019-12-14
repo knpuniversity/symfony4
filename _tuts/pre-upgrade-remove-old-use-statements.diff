@@ -1,0 +1,17 @@
+diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
+index 106a217b..7c64b9eb 100644
+--- a/src/Controller/SecurityController.php
++++ b/src/Controller/SecurityController.php
+@@ -7,12 +7,8 @@ use App\Form\Model\UserRegistrationFormModel;
+ use App\Form\UserRegistrationFormType;
+ use App\Security\LoginFormAuthenticator;
+ use App\Service\Mailer;
+-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+-use Symfony\Component\Mailer\MailerInterface;
+-use Symfony\Component\Mime\Email;
+-use Symfony\Component\Mime\NamedAddress;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;

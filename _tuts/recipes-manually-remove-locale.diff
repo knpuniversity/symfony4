@@ -1,0 +1,12 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index d44cf00b..312f7af4 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -5,7 +5,6 @@
+ # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+ parameters:
+     cache_adapter: cache.adapter.filesystem
+-    locale: 'en'
+     uploads_base_url: '%env(SITE_BASE_URL)%/uploads'
+     router.request_context.scheme: '%env(SITE_BASE_SCHEME)%'
+     router.request_context.host: '%env(SITE_BASE_HOST)%'

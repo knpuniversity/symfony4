@@ -1,0 +1,44 @@
+diff --git a/config/packages/test/twig.yaml b/config/packages/test/twig.yaml
+new file mode 100644
+index 00000000..8c6e0b40
+--- /dev/null
++++ b/config/packages/test/twig.yaml
+@@ -0,0 +1,2 @@
++twig:
++    strict_variables: true
+diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
+index 6cb3f350..84d4e7d2 100644
+--- a/config/packages/twig.yaml
++++ b/config/packages/twig.yaml
+@@ -7,3 +7,4 @@ twig:
+     strict_variables: '%kernel.debug%'
+     form_themes:
+         - bootstrap_4_layout.html.twig
++    exception_controller: null
+diff --git a/symfony.lock b/symfony.lock
+index 5f04f9ac..1628e8fb 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -575,13 +575,18 @@
+         "version": "v4.1.11"
+     },
+     "symfony/twig-bundle": {
+-        "version": "3.3",
++        "version": "4.4",
+         "recipe": {
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+-            "version": "3.3",
+-            "ref": "369b5b29dc52b2c190002825ae7ec24ab6f962dd"
+-        }
++            "version": "4.4",
++            "ref": "15a41bbd66a1323d09824a189b485c126bbefa51"
++        },
++        "files": [
++            "config/packages/test/twig.yaml",
++            "config/packages/twig.yaml",
++            "templates/base.html.twig"
++        ]
+     },
+     "symfony/twig-pack": {
+         "version": "v1.0.0"

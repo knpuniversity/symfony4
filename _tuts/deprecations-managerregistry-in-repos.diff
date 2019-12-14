@@ -1,0 +1,134 @@
+diff --git a/src/Repository/ApiTokenRepository.php b/src/Repository/ApiTokenRepository.php
+index 6c3bf6fa..11cdf3f7 100644
+--- a/src/Repository/ApiTokenRepository.php
++++ b/src/Repository/ApiTokenRepository.php
+@@ -4,7 +4,7 @@ namespace App\Repository;
+ 
+ use App\Entity\ApiToken;
+ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+-use Symfony\Bridge\Doctrine\RegistryInterface;
++use Doctrine\Common\Persistence\ManagerRegistry;
+ 
+ /**
+  * @method ApiToken|null find($id, $lockMode = null, $lockVersion = null)
+@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
+  */
+ class ApiTokenRepository extends ServiceEntityRepository
+ {
+-    public function __construct(RegistryInterface $registry)
++    public function __construct(ManagerRegistry $registry)
+     {
+         parent::__construct($registry, ApiToken::class);
+     }
+diff --git a/src/Repository/ArticleReferenceRepository.php b/src/Repository/ArticleReferenceRepository.php
+index aedb99be..de063a05 100644
+--- a/src/Repository/ArticleReferenceRepository.php
++++ b/src/Repository/ArticleReferenceRepository.php
+@@ -4,7 +4,7 @@ namespace App\Repository;
+ 
+ use App\Entity\ArticleReference;
+ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+-use Symfony\Bridge\Doctrine\RegistryInterface;
++use Doctrine\Common\Persistence\ManagerRegistry;
+ 
+ /**
+  * @method ArticleReference|null find($id, $lockMode = null, $lockVersion = null)
+@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
+  */
+ class ArticleReferenceRepository extends ServiceEntityRepository
+ {
+-    public function __construct(RegistryInterface $registry)
++    public function __construct(ManagerRegistry $registry)
+     {
+         parent::__construct($registry, ArticleReference::class);
+     }
+diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
+index 5d3323ae..6b995d85 100644
+--- a/src/Repository/ArticleRepository.php
++++ b/src/Repository/ArticleRepository.php
+@@ -5,8 +5,8 @@ namespace App\Repository;
+ use App\Entity\Article;
+ use App\Entity\User;
+ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
++use Doctrine\Common\Persistence\ManagerRegistry;
+ use Doctrine\ORM\QueryBuilder;
+-use Symfony\Bridge\Doctrine\RegistryInterface;
+ 
+ /**
+  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
+@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
+  */
+ class ArticleRepository extends ServiceEntityRepository
+ {
+-    public function __construct(RegistryInterface $registry)
++    public function __construct(ManagerRegistry $registry)
+     {
+         parent::__construct($registry, Article::class);
+     }
+diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
+index cea2a74a..d2d49df2 100644
+--- a/src/Repository/CommentRepository.php
++++ b/src/Repository/CommentRepository.php
+@@ -5,8 +5,8 @@ namespace App\Repository;
+ use App\Entity\Comment;
+ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+ use Doctrine\Common\Collections\Criteria;
++use Doctrine\Common\Persistence\ManagerRegistry;
+ use Doctrine\ORM\QueryBuilder;
+-use Symfony\Bridge\Doctrine\RegistryInterface;
+ 
+ /**
+  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
+@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
+  */
+ class CommentRepository extends ServiceEntityRepository
+ {
+-    public function __construct(RegistryInterface $registry)
++    public function __construct(ManagerRegistry $registry)
+     {
+         parent::__construct($registry, Comment::class);
+     }
+diff --git a/src/Repository/TagRepository.php b/src/Repository/TagRepository.php
+index 10644ef9..879837b8 100644
+--- a/src/Repository/TagRepository.php
++++ b/src/Repository/TagRepository.php
+@@ -4,7 +4,7 @@ namespace App\Repository;
+ 
+ use App\Entity\Tag;
+ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+-use Symfony\Bridge\Doctrine\RegistryInterface;
++use Doctrine\Common\Persistence\ManagerRegistry;
+ 
+ /**
+  * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
+@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
+  */
+ class TagRepository extends ServiceEntityRepository
+ {
+-    public function __construct(RegistryInterface $registry)
++    public function __construct(ManagerRegistry $registry)
+     {
+         parent::__construct($registry, Tag::class);
+     }
+diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
+index d153145e..32164053 100644
+--- a/src/Repository/UserRepository.php
++++ b/src/Repository/UserRepository.php
+@@ -4,7 +4,7 @@ namespace App\Repository;
+ 
+ use App\Entity\User;
+ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+-use Symfony\Bridge\Doctrine\RegistryInterface;
++use Doctrine\Common\Persistence\ManagerRegistry;
+ 
+ /**
+  * @method User|null find($id, $lockMode = null, $lockVersion = null)
+@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
+  */
+ class UserRepository extends ServiceEntityRepository
+ {
+-    public function __construct(RegistryInterface $registry)
++    public function __construct(ManagerRegistry $registry)
+     {
+         parent::__construct($registry, User::class);
+     }

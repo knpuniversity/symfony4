@@ -1,0 +1,53 @@
+diff --git a/src/EventListener/SetFromListener.php b/src/EventListener/SetFromListener.php
+index e66d903c..c0f07f25 100644
+--- a/src/EventListener/SetFromListener.php
++++ b/src/EventListener/SetFromListener.php
+@@ -4,8 +4,8 @@ namespace App\EventListener;
+ 
+ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+ use Symfony\Component\Mailer\Event\MessageEvent;
++use Symfony\Component\Mime\Address;
+ use Symfony\Component\Mime\Email;
+-use Symfony\Component\Mime\NamedAddress;
+ 
+ class SetFromListener implements EventSubscriberInterface
+ {
+@@ -23,6 +23,6 @@ class SetFromListener implements EventSubscriberInterface
+             return;
+         }
+ 
+-        $email->from(new NamedAddress('alienmailcarrier@example.com', 'The Space Bar'));
++        $email->from(new Address('alienmailcarrier@example.com', 'The Space Bar'));
+     }
+ }
+diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
+index 7a0ee073..4855ef5d 100644
+--- a/src/Service/Mailer.php
++++ b/src/Service/Mailer.php
+@@ -6,7 +6,7 @@ use App\Entity\User;
+ use Knp\Snappy\Pdf;
+ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+ use Symfony\Component\Mailer\MailerInterface;
+-use Symfony\Component\Mime\NamedAddress;
++use Symfony\Component\Mime\Address;
+ use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
+ use Twig\Environment;
+ 
+@@ -28,7 +28,7 @@ class Mailer
+     public function sendWelcomeMessage(User $user): TemplatedEmail
+     {
+         $email = (new TemplatedEmail())
+-            ->to(new NamedAddress($user->getEmail(), $user->getFirstName()))
++            ->to(new Address($user->getEmail(), $user->getFirstName()))
+             ->subject('Welcome to the Space Bar!')
+             ->htmlTemplate('email/welcome.html.twig')
+             ->context([
+@@ -50,7 +50,7 @@ class Mailer
+         $pdf = $this->pdf->getOutputFromHtml($html);
+ 
+         $email = (new TemplatedEmail())
+-            ->to(new NamedAddress($author->getEmail(), $author->getFirstName()))
++            ->to(new Address($author->getEmail(), $author->getFirstName()))
+             ->subject('Your weekly report on the Space Bar!')
+             ->htmlTemplate('email/author-weekly-report.html.twig')
+             ->context([

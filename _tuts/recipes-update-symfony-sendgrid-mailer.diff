@@ -1,0 +1,34 @@
+diff --git a/.env b/.env
+index 02de0c98..15a65042 100644
+--- a/.env
++++ b/.env
+@@ -47,8 +47,7 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
+ ###< knplabs/knp-snappy-bundle ###
+ 
+ ###> symfony/sendgrid-mailer ###
+-# SENDGRID_KEY=
+-# MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
++# MAILER_DSN=sendgrid://KEY@default
+ ###< symfony/sendgrid-mailer ###
+ 
+ DEV_MAIL_RECIPIENT=someone@example.com
+diff --git a/symfony.lock b/symfony.lock
+index 1c529cfb..fdf01f1f 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -536,12 +536,12 @@
+         "version": "v4.2.3"
+     },
+     "symfony/sendgrid-mailer": {
+-        "version": "4.3",
++        "version": "4.4",
+         "recipe": {
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+-            "version": "4.3",
+-            "ref": "ed69bc442325accbf79e8c93e1ae88c9abe7fd12"
++            "version": "4.4",
++            "ref": "b46e4f8f1adb2864f0aa9c0ff57aea3324a07199"
+         }
+     },
+     "symfony/serializer": {

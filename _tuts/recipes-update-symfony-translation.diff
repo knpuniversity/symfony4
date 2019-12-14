@@ -1,0 +1,32 @@
+diff --git a/config/packages/translation.yaml b/config/packages/translation.yaml
+index e6b1cd66..05a2b3d8 100644
+--- a/config/packages/translation.yaml
++++ b/config/packages/translation.yaml
+@@ -1,6 +1,6 @@
+ framework:
+-    default_locale: '%locale%'
++    default_locale: en
+     translator:
+         default_path: '%kernel.project_dir%/translations'
+         fallbacks:
+-            - '%locale%'
++            - en
+diff --git a/symfony.lock b/symfony.lock
+index aac7df22..1a217574 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -580,8 +580,12 @@
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+             "version": "3.3",
+-            "ref": "1fb02a6e1c8f3d4232cce485c9afa868d63b115a"
+-        }
++            "ref": "2ad9d2545bce8ca1a863e50e92141f0b9d87ffcd"
++        },
++        "files": [
++            "config/packages/translation.yaml",
++            "translations/.gitignore"
++        ]
+     },
+     "symfony/translation-contracts": {
+         "version": "v1.1.6"

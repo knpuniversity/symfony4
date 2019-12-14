@@ -1,0 +1,19 @@
+diff --git a/src/Form/TypeExtension/TextareaSizeExtension.php b/src/Form/TypeExtension/TextareaSizeExtension.php
+index ac35e81a..b136f811 100644
+--- a/src/Form/TypeExtension/TextareaSizeExtension.php
++++ b/src/Form/TypeExtension/TextareaSizeExtension.php
+@@ -31,8 +31,13 @@ class TextareaSizeExtension implements FormTypeExtensionInterface
+         ]);
+     }
+ 
++    public static function getExtendedTypes(): iterable
++    {
++        return [TextareaType::class];
++    }
++
+     public function getExtendedType()
+     {
+-        return TextareaType::class;
++        // not used anymore - remove in 5.0
+     }
+ }
