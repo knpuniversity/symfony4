@@ -2,7 +2,7 @@
 
 We just ran:
 
-```terminal-silent
+```terminal
 composer update symfony/*
 ```
 
@@ -11,12 +11,12 @@ currently set to `4.3.*`, it only upgraded things to the latest 4.3 version - no
 4.4. Let's change this to `4.4.*`.
 
 But wait... why are we upgrading to Symfony 4.4? Isn't this a tutorial about upgrading
-to Symfony 5? Why not just go straight there? The reason is due to Symfony's
-*amazing* upgrade system. Symfony *never* breaks backwards compatibility for a
+to Symfony 5? Why not just go straight there? The reason is due to Symfony's, honestly,
+*incredible* upgrade policy. Symfony *never* breaks backwards compatibility for a
 minor release - like from `4.3` to `4.4`. Instead, it *deprecates* code... and
 you can *see* what deprecated code you're using with some special tools. By upgrading
 to 4.4, we'll be able to see the *full* list of deprecated things we need to fix.
-We'll see this later.
+Then we can fix them before upgrading to Symfony 5. We'll see this later.
 
 Anyways, find your terminal and, once again, run:
 
@@ -24,12 +24,12 @@ Anyways, find your terminal and, once again, run:
 composer update symfony/*
 ```
 
-Yea! this time it *is* updating the Symfony packages to 4.4. That was easy!
+Yea! This time it *is* updating the Symfony packages to 4.4. That was easy!
 
 ## composer.json Version Constraints for symfony/ Packages
 
 Except... come on... it's never *quite* that easy. In fact, *some* Symfony packages
-did *not* upgrade. Check this out: run
+did *not* upgrade. Check it out. Run:
 
 ```terminal
 composer show symfony/mailer
@@ -46,7 +46,7 @@ some packages - like `symfony/form` or `symfony/framework-bundle` are set to
 
 There are two things I need to say about this. First, *usually* when you run
 `compose require some/package`, when Composer updates your `composer.json`
-file, it uses the "carrot" (`^`) format. That's why you `^3.0` and `^1.1`.
+file, it uses the "caret" (`^`) format. That's why you see `^3.0` and `^1.1`.
 
 *But*, when you use Symfony Flex and `composer require` a Symfony package, it
 *changes* that to use the `*` format - like `4.3.*`. That's not a huge deal. In
@@ -55,12 +55,12 @@ is typically to control the "minor" version of your Symfony packages - that's th
 middle number - so that you can upgrade them all at the same time.
 
 But... Flex didn't *always* do this. That's why, in my project, you see a mixture:
-some libraries like `symfony/form` have the "carrot" format and other libraries - that
+some libraries like `symfony/form` have the "caret" format and other libraries - that
 were installed more recently like `symfony/mailer` - use the "star" format.
 
 ## Symfony Flex: symfony.extra.require is a "Soft" Requirement
 
-The *second* thing I need to tell you is that the `extra.symfony.require` value -
+The *second* thing I need to tell you is that the `extra.symfony.require` config -
 set to `4.4.*` now - is... more of a "suggestion". It doesn't *force* all Symfony
 packages to this version. More accurately it says:
 
@@ -68,20 +68,21 @@ packages to this version. More accurately it says:
 > a version matching 4.4.*
 
 But if you have a package that is *specifically* locked to `4.3.*`, it won't
-*override* that. *That* is why `symfony/mailer` didn't upgrade.
+*override* that and *force* it to `4.4.*`. *That* is why `symfony/mailer`
+didn't upgrade.
 
 ## Changing symfony/ composer.json Versions
 
-If all this explanation didn't make sense... or you just done care - Hey, that's
-fair! - here is what you need to know. Whenever you upgrade Symfony to a new
-minor version - like 4.3 to 4.4, you need to do two things: update the
-`extra.symfony.require` value *and* update *all* of the package versions to
+If all this explanation doesn't make total sense... or you just done care - Hey,
+that's ok! Here is what you need to know: whenever you upgrade Symfony to a new
+minor version - like 4.3 to 4.4, you need to do two things: (1) update the
+`extra.symfony.require` value *and* (2) update *all* the package versions to
 `4.4.*`.
 
-And if that seems a bit redundant, it... kinda is! But changing the version
-next to the package to `4.4.*` gives you *clear* control of what's going on: it's
-how Composer *normally* works. And then the `extra.symfony.require` key gives
-you a big performance boost in the background.
+If that seems a bit redundant, it... kinda is! But changing the version
+next to the package to `4.4.*` gives you *clear* control of what's going on... and
+it's how Composer *normally* works. And then, the `extra.symfony.require` config
+gives us a big performance boost in the background.
 
 Let's do this next, upgrade to Symfony 4.4 and fix a few packages that ended up
 inside our "dev" dependencies incorrectly.

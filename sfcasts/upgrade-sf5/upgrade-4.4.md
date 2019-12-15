@@ -6,7 +6,7 @@ And yes, that might seem a bit redundant. but changing the version up
 here to 4.4 point star gives you very clear control and then the Symfony extra, the
 extra Symfony required on here is an added layer that ultimately really helps with
 performance. So let's get to work here a little bit. I'm actually going to update all
-of my uh, existing formats here. So I'm gonna change this carrot 4.24 point, uh, four
+of my uh, existing formats here. So I'm gonna change this caret 4.24 point, uh, four
 point star Sydney asset and a copy of that and repeat that on a bunch of other things
 and upgraded Symfony messengers to the latest notice I'm skipping or Oh, our M pack
 
