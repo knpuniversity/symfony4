@@ -75,7 +75,7 @@ a full URL.
 Woh, and... our email *also* has a text part! How did that happen? In the controller,
 we *only* called `htmlTemplate()` - we *removed* our call to the `text()` method.
 Well... thank you Mailer. If you set the HTML on an email but do *not* explicitly
-set the text, Symfony automatically adds it for you by calling `strip_slashes()`
+set the text, Symfony automatically adds it for you by calling `strip_tags()`
 on your HTML. That's *awesome*.
 
 Well... awesome... but not *totally* perfect: it included all the styles on top!
