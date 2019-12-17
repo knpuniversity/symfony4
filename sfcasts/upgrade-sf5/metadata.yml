@@ -4,4 +4,4 @@ chapters:
     - upgrade-4.4
     - recipe-commands
     - console-recipe
-    - framework-bundle-recipe #raw
+    - framework-bundle-recipe
