@@ -2,6 +2,6 @@ chapters:
     - flex-symfony-require
     - version-constraints
     - upgrade-4.4
-    - recipe-commands #raw
-    - console-recipe #raw
+    - recipe-commands
+    - console-recipe
     - framework-bundle-recipe #raw
