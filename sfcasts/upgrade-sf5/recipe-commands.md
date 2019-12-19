@@ -1,83 +1,105 @@
 # Upgrading Recipes: New Commands!
 
-Coming soon...
+Fun fact time! When you start a brand new Symfony project, behind the scenes, what
+you're *actually* doing is cloning from this repository: `symfony/skeleton`. Yep,
+your app *literally* starts as a single `composer.json` file. But *seconds* later,
+a new Symfony app will be filled with the directory structure and about 15 files.
+15 other files.
 
-Fun fact. If you start a brand new Symfony 4 or Symfony 5 project behind the
-scenes, what you're doing is you're actually cloning from this repository. 
-`symfony/skeleton`. Yes, your project literally starts as a single `composer.json` file,
-but by the time you see it, there's actually a bunch of other files.
+## All Config Files Come from a Recipe
 
-and the reason is that everything you see in your directory when you start a new
-project is actually added by a recipe. So even like the most core files, like for
-example, `public/index.php`, this is the file that our web browser hits. We never
-have to look in here. That bootstraps a framework. This was, it was added by a
-recipe, one of the recipes for one from one of the packages inside of this 
-`composer.json` file. Another example is `config/bootstrap.php`. This is a super low
-level boring file that handles bootstrapping the environment variables. It's super
-important that everyone has the exact same copy of this file to make sure that the
-behavior is consistent everywhere and then configuration files. All of these
-configuration files are originally added by different recipes. For example, 
-`cache.yaml` wasn't uh, is installed from the recipe from `symfony/cache`
+*All* of those things are added by different *recipes*. So even the most "core"
+files - for example, `public/index.php`, the file that our web browser executes,
+is added by a recipe! We pretty much *never* need to look inside here or do anything,
+even though it's *critical* to our app working.
 
-Now the interesting thing is that over time, a lot of times these recipes
-update like the cache dot. If we installed the `symfony/cache` component today, it
-might give us a slightly different `cache.yaml` file. Now, there are three reasons that
-a recipe, my update first and we might re someone might update a recipe just because
-they want to add more examples or maybe tweak the documentation to make it more clear
-how to use some file. That's not really that important for us to update into our
-application. The second reason is that they might add new keys to a configuration
-file that activates a new feature that's available that is not critical to update
-into our, it's that critical if we update that into our applications, but that is a
-little bit more important in the third reason that RSP, my update is because it might
-actually change a file to fix something important. Like for example, this has
-happened historically, historically, they've ever been small tweaks to the 
-`bootstrap.php` file to make sure that the environment variables have just the right behavior
-and all the situations, those types of updates we do want in our application, we want
-our `bootstrap.php` to look exactly like it should so that we get the best
-behavior.
+Another example is `config/bootstrap.php`: the boring, low-level file that
+initializes and normalizes environment variables. It's important that all Symfony
+projects have the same version of this file. If they didn't, some apps might work
+different than others, even if they use the same version of Symfony. That also means
+you might get weird behavior even if you follow the documentation perfectly.
 
-Now, a moment ago when we did all the composer upgrading, one of the packages that we
-upgraded was actually `symfony/flex` itself. We upgraded it to `1.6.0` well. Guess
-what? Starting in Symfony `1.6.0` there are some brand new fancy, amazing, incredible
-commands added to composer to help us upgrade our recipes. It still takes a little
-bit of work and a little bit of care, but it's now very possible. A big thanks to
-community member and my friend max Helios who really helped get this done. All right,
-so let's check this out. Move over to your terminal and run 
+All of the configuration files were *also* originally added by recipes. For example,
+`cache.yaml` comes from - surprise! - the recipe for `symfony/cache`.
+
+## Why Recipes Update
+
+Over time, the recipes *themselves* tend to change. If we installed the
+`symfony/cache` component today, it *might* give us a slightly *different*
+`cache.yaml` file.
+
+There are three reasons that a recipe might change. First, someone might update
+a recipe *just* because they want to add more examples or add some more documentation
+comments to a config file. Those changes aren't super important.
+
+Second, a recipe might update when someone add a config key in a configuration file
+to activate a new feature that's probably from a new version of that library. These
+changes aren't *critical* to know about... but it *is* nice to know if a new feature
+is available. We saw that a few minutes ago when the updated MonologBundle told
+us about a cool new option for filtering logs by status code.
+
+The third reason a recipe might update is because something needs to be fixed,
+or we decide that we want to change some behavior. These changes *are* important.
+
+Let me give you an example: during the first year after Symfony 4.0, several small
+but important tweaks were made to the  `bootstrap.php` file to make sure that the
+environment variables have *just* the right behavior. If you started your project
+on Symfony 4.0 and never "updated" the `bootstrap.php` file, your app will be
+handling environment variables in a different way than other apps. That's... not
+great: we want our `bootstrap.php` file to look *exactly* like it should.
+
+## New Recipe Commands!
+
+A few minutes ago, when we did all the composer updating stuff, one of the packages
+that we upgraded was `symfony/flex` itself: we upgraded it to `1.6.0`. Well guess
+what?! Starting in Flex `1.6.0`, there are some brand new fancy, amazing, incredible
+commands inside Composer to help us inspect & upgrade our recipes. It still takes
+a little bit of work and care, but the process is now very possible. A big thanks to
+community member and friend [maxhelias](https://github.com/maxhelias) who really
+helped get this done.
+
+Let's go check this out! Move over to your terminal and run:
 
 ```terminal
 composer recipes
 ```
 
-this gives you a print out of all of the recipes that have been installed into our
-system, including whether or not there is an update available. Now, because my
-project was originally created in Symfony 4.0 it's fairly old and a lot of these
-things have recipes, have updates available,
+Cool! This lists *every* recipe that we have installed and whether or not there is
+an update available. Heck, it will even show you if a package that's installed
+*has* a recipe that you're missing - maybe because it was added later.
 
-and also because the, the recipe system is relatively new. There's just been a lot of
-updates over the past two years, so there's a little bit more work to do if we want
-to update all of these recipes. Now let's look at one of these specifically compose
-the `twig/extensions`. This is not a particularly important library, but we can run a
+Because my project was originally created on Symfony 4.0, it's fairly old and a
+*lot* of recipes have updates. The recipe system is *also* relatively new, so I
+think there were more updates during the first 2 years of that system than there
+will be in the *next* two years. We've got some work to do. Of course, we could
+just *ignore* these recipe updates... but we're risking our app not working quite
+right or missing info about new features.
+
+## Inspecting the twig/extension Recipe
+
+Let's look at one of these more closely. How about `twig/extensions`. This is not
+a particularly important library, but it's a nice one to start with. Run:
 
 ```terminal
 composer recipes twig/extensions
 ```
 
-to get details about that specific one. Now
-what you can see here, as you can see, it actually has a link to the installed
-version of the recipe so I can go back over to the browser and put that in and you'll
-see that this is what the recipe look like. The moment that we installed it. And if
-you look over here, the latest recipe, we can also look at the latest recipe and it
-looks like this.
+to see more details. Interesting: it has a link to the installed version of the
+recipe. Let's go check that out in the browser. Paste and... this is what the
+recipe looked like the *moment* we installed it. We can also go grab the URL to
+see what the *latest* version of the recipe looks like.
 
-Now, if we looked at the history of this, you can see that's the one that we have
-installed is the, has the nine, eight, six. It's actually this commit right here. So
-this recipe is out of date, but the only change that's been made to it is this one
-commit. And if you search down here for `twig/extensions` to see all the changes
-that were made, this is a completely superficial change. We changed till date to know
-because they mean the same thing, but no is more obvious. So that is not at all an
-important, uh, an important thing for us to update. So I'm just going to skip that
-one for now. And actually more importantly, I want to focus on, because we're
-updating Symfony, I want to focus on upgrading the recipes for everything that starts
-with `symfony/`. So next, let's start actually upgrading some of these recipes. A
-few of these like `symfony/console`, a `symfony/framework-bundle` are critically
-important to make sure that you have consistent behavior in your application.
+Check out the commit history. The version of the recipe *we* have installed has
+a commit hash starting with `c986`. Back on the history, hey! That commit is
+right here! So this recipe *is* out of date, but the *only* change that's been
+made is this *one* commit. Inside it... search for `twig/extensions` to find
+its changes. Ha! It's completely superficial: we changed from using tilde (`~`)
+to `null`, but just for clarity: those are equivalent in YAML.
+
+Yep! The update to `twig/extension` is not important *at all*. We *could* still
+update it - and I'll show you how next. But, I'm going to skip it for now. Because...
+this is a tutorial about upgrading Symfony! So I want to focus on upgrading the
+recipes for everything that starts with `symfony/`.
+
+Let's start that process next by focusing on, surprisingly, one of the *most*
+important recipes: `symfony/console`.
