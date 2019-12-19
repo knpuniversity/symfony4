@@ -9,7 +9,7 @@ Let's add the changes we *know* we want to keep to git:
 git add composer.json composer.lock symfony.lock
 ```
 
-For the *other* changes - the ones the recipes made - we need to be *very* careful.
+For the *other* changes - the ones the recipe made - we need to be *very* careful.
 Why? Because recipes don't really "upgrade" in some clean way. Nope, when we
 removed the packages, some config files we *deleted*... which means any custom
 code we had in those was *removed*. When we reinstalled the packages, the recipes
@@ -72,7 +72,7 @@ git checkout config/packages/dev/monolog.yaml
 Now you can safely commit these changes however you want, like:
 
 ```terminal
-git commit -m "moving packages into require-dev"
+git commit -m "moving packages into require"
 ```
 
 I'll let you make that commit.

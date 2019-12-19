@@ -27,7 +27,7 @@ packages so you can manage their versions. That's not required, but also not a
 bad idea.
 
 WebpackEncoreBundle is another example of a package that isn't part of the main
-repository - you can see that its version if totally different.
+repository - you can see that its version is totally different.
 
 Don't forget to also check the `require-dev` section: there are a bunch here.
 Including `symfony/debug-bundle`, which has a funny-looking version because
