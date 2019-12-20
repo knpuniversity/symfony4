@@ -6,5 +6,6 @@ chapters:
     - recipe-commands
     - console-recipe
     - framework-bundle-recipe
+    - kernel-update
     - twig-recipe #raw
     - final-recipe-updates #raw
