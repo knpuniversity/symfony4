@@ -21,7 +21,7 @@ trying to write documentation for thousands of projects that all work a *little*
 bit differently. It's literally my nightmare.
 
 All of the configuration files were *also* originally added by recipes. For example,
-`cache.yaml` comes from - surprise! - the recipe for `symfony/cache`.
+`cache.yaml` comes from the recipe for `symfony/framework-bundle``.
 
 ## Why Recipes Update
 
