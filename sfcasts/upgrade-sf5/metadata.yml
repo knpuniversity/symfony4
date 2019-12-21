@@ -7,5 +7,6 @@ chapters:
     - console-recipe
     - framework-bundle-recipe
     - kernel-update
-    - twig-recipe #raw
+    - twig-recipe
+    - mailer-recipes
     - final-recipe-updates #raw
