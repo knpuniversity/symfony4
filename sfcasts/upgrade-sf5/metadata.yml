@@ -9,4 +9,6 @@ chapters:
     - kernel-update
     - twig-recipe
     - mailer-recipes
-    - final-recipe-updates #raw
+    - phpunit-routing-recipes
+    - final-recipe-updates
+    - webpack-encore-recipe

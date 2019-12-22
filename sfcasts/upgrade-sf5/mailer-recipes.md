@@ -1,58 +1,129 @@
 # Updating the Mailer Recipe(s)
 
-Coming soon...
+The next recipe on our list is `symfony/mailer`... which is an *especially* interesting
+one because, until Symfony 4.4, `symfony/mailer` was marked as "experimental".
+That means that there *are* some backwards-compatibility breaks between
+Symfony 4.3 and 4.4. The recipe update *might* help us find out about a few
+of these.
 
-it's been back over and you get status one more time and I'll get, I'll commit that
-we're updating. Updating Symfony twigs, a Symfony /twig bundle.
+Run:
 
-All right here I'm gonna run a composer recipes again and let's do one other one
-Symfony. Slash. Mailer. It's the next one down on the list. So I'll say oppose
-recipes, Symfony slash, mailer. Cause that gives me a nice command here to see what's
-kind of up day. I'll copy the recipes and stock command run that. And this one
-created one new file apparently, but that's where it gets status. Apparently the only
-made changes to dot N so I'll do get SP and what you can see here is it changed some
-of the comments that I gave you. It said, um, uh, and Symfony 4.4 and higher the
-syntax for the null transparent as null colon slash. Slash. Um, and then it gives you
-an example of the SMTP, uh, example in here. Um, and you can see this here. This top
-line is actually my code here. So this is what's being replaced. So in Symfony 4.4,
-um, the, the syntax for using the Knoll transport actually changed.
+```terminal
+composer recipes symfony/mailer
+```
 
-So I don't want to actually just have these as comments. So I'm to heads no to this
-change, yes to the Symfony of that lock file. And then do get checkout dash end and
-then go over to my desk and file and down here for the mailer stuff we are going to
-use, we do need to change these syntax to use the new normal a thing. And actually
-you can use anything here for Tafolla = no colon //null which is actually what's in
-the docs. So really we didn't want the recipe update in this case but it kind of
-reminded me that Symfony of that mailer 4.4 had a backwards compatibility change that
-we needed to check into.
+Then copy the `recipes:install` command and run it:
 
-Symfony mailer is also another one where I can go to [inaudible] dot com /Symfony's
-/mailer where it's a pretty good idea to check out the change log. Since Symfony
-mailer went from um, still wasn't stable into Symfony 4.4. So you can see here it's
-talking about the changes, a couple of the backwards compatibility changes that might
-be relevant to you. We're going to talk more about some of these later. If you run a
-composer recipes, again, there's one other one that is a relevant here to Symfony
-mailer. It's Symfony SendGrid mailer, a package that helps us send with SendGrid,
-some that run composer recipes or I'm just going to skip, skip and say composer
-recipes. Install Symfony /SendGrid dash mailer dash dash force dash V. and then we'll
-do get add dash P to figure out what that did. And the only change that made, Oh,
-this here, this no colon and /no, that's the chain that this made on the say.
+```terminal-silent
+composer recipes:install symfony/mailer --force -v
+```
 
-Why did that, the other change that made is down here in the same dotN file is it
-changed the mailer DSN example from what we had before to send grid colon //key at
-defaults. That's another one of the changes that are similar to the, uh, no one
-above. That's another change that was made in simply pour wine for the format that
-you use for SendGrid changed. So I'm going to yes to that. Notice these are both
-comments. So these are just example code. But if we were using, um, the other thing
-we need to check is a, see if we're using this the old format in our.in that local
-file. So open up that and that local, I'm not using it in the project at this point,
-but if I did have a mailer DSN using SendGrid inside that file, I'd want to make sure
-that it was using the new updated format. So this recipe format, this recipe updates
-actually notifying us of a change in how that package is configured. And then down
-here will say yes, of course, to the Symfony dot lock file,
+According to the output, this only touched *one* file. Let's see for sure. Run:
 
-and we'll commit that.
+```terminal
+git status
+```
 
-Let's do one more get status. Yep. We're good. We'll come at that with updating
-Symfony mailer recipe packages. All right. At this point, we're most of the way
-through updating the recipes. Let's get the last few done and let's keep on going.
+Yep! Only `.env` was changed. Run:
+
+```terminal
+git add -p
+```
+
+Hmm. It looks like it *removed* two comment lines, which mention that the
+`MAILER_DSN` for the `null` transport looks different in Symfony 4.4. And then
+it added an example of using the `smtp` transport. The top line is my custom
+code.
+
+I don't *really* want these changes. I mean, I *do* still want to define a
+`MAILER_DSN` environment variable and I *do* still want to use the `null` transport.
+Except... the removed note *did* just remind me about a syntax change in the
+`null` transport for Symfony 4.4. That note was *removed* in the latest version
+of the recipe because, *if* you installed `symfony/mailer` 4.4 today, you
+would *not* need to know about the new and old syntax.
+
+Hit "n" to *not* add this change... for now. Then hit "y" for the `symfony.lock`
+update.
+
+## The Updated Null Mailer Transport Syntax
+
+Let's see how things look:
+
+```terminal
+git status
+```
+
+Undo the changes:
+
+```terminal
+git checkout .env
+```
+
+Open `.env` in our editor... and find the "mailer" section. Even though we
+didn't accept the new recipe changes, we *do* need to update our syntax. Copy
+the example and paste. Actually, the `default` part can be anything - you'll
+sometimes see `null`.
+
+And *now* if you wanted to delete the extra comments about Symfony 4.4, you totally
+could... and probably should.
+
+So... we basically didn't use *anything* from the updated recipe, but it *did*
+remind us of a change we needed to make.
+
+## Checking the CHANGELOG
+
+And because `symfony/mailer` may have *other* backwards-compatibility breaks,
+it's not a bad idea to check its CHANGELOG. I'll go to
+https://github.com/symfony/mailer... and click to see it. Yep! You can see
+info about the `null` change and a few others. We'll see one of these later.
+
+Back at your terminal, run:
+
+```terminal
+composer recipes
+```
+
+again. There's *one* other recipe that's relevant to symfony/mailer. It's
+`symfony/sendgrid-mailer`: a package that helps us send emails through SendGrid.
+Let's skip straight to updating this:
+
+```terminal
+composer recipes:install symfony/sendgrid-mailer --force -v
+```
+
+And then step through the changes with:
+
+```terminal
+git add -p
+```
+
+The first change is inside `.env`. Oh! Ha! That's the change *we* made, I forgot
+to add it. Hit "y" to add it now.
+
+The *other* change is *also* in `.env`: it changed the `MAILER_DSN` example from
+something starting with `smtp://` to `sendgrid://`. Similar to the `null` transport
+situation, `symfony/mailer` 4.4 *also* changed the syntax for a few *other*
+transports.
+
+I'm going to say "y" to accept this change: both the old and new code were just
+examples anyway.
+
+*But*, there is one *other* spot you need to check: we need to see if we're using
+the old format in the `.env.local` file. Go open that up. In this project, nope!
+I'm not overriding that. If we *did* have `smtp://sendgrid` in *any* env files,
+or configured as a *real* environment variable, maybe on production, that would
+need to be updated.
+
+For the last change - to `symfony.lock` - hit "y" to add it. Run:
+
+```terminal
+git status
+```
+
+to make sure we're not missing anything. Looks good! Commit!
+
+```terminal
+git commit -m "updating symfony/mailer recipe packages"
+```
+
+Done! We're down to the *last* few recipe updates. Let's *crush* them.
