@@ -1,7 +1,7 @@
 # Updating security, translation & validator Recipes
 
-The `composer recipes` command is telling me that we only have *three* more
-main Symfony recipes to update. Let's get to it. The next one is for the
+The `composer recipes` command tells us that we only have *three* more main Symfony
+recipes to update. Let's get to it! The next one is for
 `security-bundle`. Update it:
 
 ## Updating symfony/securtity-bundle Recipe
@@ -22,7 +22,7 @@ file from the recipe.
 
 And... we want to keep pretty much *all* of our stuff: our custom encoder, user
 provider and firewall config. Let's look closely to see if there's anything
-interesting in the updated code. Oh, there is *one* change: `anonymous: true`
+interesting in the *new* code. Oh, there is *one* change: `anonymous: true`
 was changed to `anonymous: lazy`.
 
 This is a new feature from Symfony 4.4. It basically means that, instead of
@@ -39,16 +39,16 @@ with:
 git checkout config/packages/security.yaml
 ```
 
-Now, open that file in your editor, find `anonymous` and change this to `lazy`.
+Now, open that file in your editor, find `anonymous` and change it to `lazy`.
 
-Ok, let's keep going:
+Let's keep going:
 
 ```terminal
 git add -p
 ```
 
-This time, say "y" to add the change... and "y" again for the `symfony.lock`
-file. Let's commit!
+This time, say "y" to add the change... and "y" again for `symfony.lock`.
+Let's commit!
 
 ```terminal
 git commit -m "upgrading security recipe"
@@ -58,13 +58,13 @@ Done!
 
 ## Upgrading the symfony/translation Recipe
 
-Let's see what's next:
+What's next? Let's find out:
 
 ```terminal
 composer recipes
 ```
 
-Next is translation! Update it:
+Ah, translation! Update it:
 
 ```terminal-silent
 composer recipes:install symfony/translation --force -v
@@ -76,14 +76,14 @@ And walk through the changes:
 git add -p
 ```
 
-In `translation.yaml`, all the `%locale%` were replaced with just `en`. The
-`locale` parameter is set in our `config/services.yaml` file - this was
+In `translation.yaml`, all the `%locale%` parameters were replaced with just `en`.
+The `locale` parameter is set in our `config/services.yaml` file: this was
 *originally* added by a recipe.
 
-So what's going on here? For simplification, instead of setting that parameter
-and then using it in this *one* file, the recipe was updated remove the parameter
-and set the locale directly. You don't need to make this change if you don't want
-to.
+So... what's going on here? *Purely* for simplification, instead of setting that
+parameter and then using it in this *one* file, the recipe was updated to remove
+the parameter and set the locale directly. You don't need to make this change if
+you don't want to.
 
 But I'll say "y" and then "y" again for the `symfony.lock` file. Back in
 services.yaml, manually remove the `locale` parameter.
@@ -104,7 +104,7 @@ Then:
 git add -p
 ```
 
-To accept this *one* change. Commit!
+And accept this *one* change. Commit!
 
 ```terminal
 git commit -m "updating translation recipe"
@@ -112,13 +112,13 @@ git commit -m "updating translation recipe"
 
 ## Updating the symfony/validator recipe
 
-What's next? Run:
+We're on a roll!
 
 ```terminal
 composer recipes
 ```
 
-We're *so* close. Next is the validator recipe. Update it:
+Oh, *so* close. Next is the validator recipe. Update it:
 
 ```terminal-silent
 composer recipes:install symfony/validator --force -v
@@ -131,9 +131,9 @@ git add -p
 ```
 
 The first change is in `config/packages/validator.yaml`: it adds some new config
-that's commented out. This activates a new validation featured called auto-mapping.
+that's commented out. This activates a new validation feature called auto-mapping.
 It's *really* cool - and we're going to talk about it later. Hit "y" to add
-these comments and... yep! This is the `symfony.lock` file - press "y" again.
+these comments and... yep! This is the `symfony.lock` file. Press "y" again.
 
 That was easy! Let's commit. Actually, I *should* have run `git status`, because
 this recipe *also* added a *new* file. We'll see it in a minute:
@@ -151,6 +151,7 @@ composer recipes
 ```
 
 We *are*! Well, there is *one* more that starts with `symfony/`:
-`webpack-encore-bundle`. This bundle *isn't* part of the main Symfony repository...
-so you can update it now or later. If want to, let's update it next. Otherwise
-you can skip ahead to finding and fixing deprecations.
+`webpack-encore-bundle`. But that bundle *isn't* part of the main Symfony
+repository... so you can update it now or later. If you're interested, let's
+update it next. If you're not, skip ahead one chapter to start finding and
+fixing deprecations.
