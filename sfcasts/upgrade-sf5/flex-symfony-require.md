@@ -67,12 +67,18 @@ So, I have... kind of a silly question: what does it *mean* to upgrade Symfony?
 Because Symfony isn't just one big library: it's a *huge* number of smaller components.
 
 Go to the project and open `composer.json`. Our app has grown pretty big:
-it has a lot of dependencies... and about half of these start with `symfony/`.
+it has a lot of dependencies... and about half of these start with `symfony/`:
+
+[[[ code('16699717a7') ]]]
+
 When we talk about upgrading Symfony, we're *really* talking about upgrading
 all of the libraries that start with `symfony/`. Well, not *all* of the libraries:
 a few packages - like `symfony/webpack-encore-bundle` - are *not* part of the main
-Symfony code and follow their own versioning strategy. You can upgrade those
-whenever you want.
+Symfony code and follow their own versioning strategy:
+
+[[[ code('0f008395b2') ]]]
+
+You can upgrade those whenever you want.
 
 But the *vast* majority of the `symfony/` packages are part of the main Symfony
 library and we *usually* upgrade them all at the same time. You don't *have* to,
@@ -91,13 +97,20 @@ of something different.
 ## extra.symfony.require
 
 Look inside your `composer.json` file for a key called `extra` and make sure
-it has a `symfony` key below it and another called `require`. This is a special
-piece of config that's used by Symfony Flex. Remember, Flex is the Composer plugin
-that give us the recipe system and a few other goodies. Flex reads
-`extra.symfony.require` and does two things. First, behind the scenes, it tells
-Composer that all the `symfony/` repositories should be locked at version `4.3.*`.
+it has a `symfony` key below it and another called `require`:
+
+[[[ code('195bdd4757') ]]]
+
+This is a special piece of config that's used by Symfony Flex. Remember, Flex
+is the Composer plugin that give us the recipe system and a few other goodies.
+Flex reads `extra.symfony.require` and does two things. First, behind the scenes,
+it tells Composer that all the `symfony/` repositories should be locked at version
+`4.3.*`.
 
 Scroll back up to the `require` section. See how `symfony/form` is set to `^4.0`?
+
+[[[ code('53299a5546') ]]]
+
 In Composer land, that format *effectively* means `4.*`. If we ran `composer update`,
 it would upgrade it to the latest "4" version. So, 4.4.
 
