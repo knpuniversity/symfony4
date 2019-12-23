@@ -109,7 +109,7 @@ it tells Composer that all the `symfony/` repositories should be locked at versi
 
 Scroll back up to the `require` section. See how `symfony/form` is set to `^4.0`?
 
-[[[ code('53299a5546') ]]]
+[[[ code('dc133c352a') ]]]
 
 In Composer land, that format *effectively* means `4.*`. If we ran `composer update`,
 it would upgrade it to the latest "4" version. So, 4.4.
