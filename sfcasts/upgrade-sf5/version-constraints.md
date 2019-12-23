@@ -6,9 +6,14 @@ We just ran:
 composer update symfony/*
 ```
 
-Thanks to the `extra.symfony.require` key in our `composer.json` file - which is
-currently set to `4.3.*`, it only upgraded things to the latest 4.3 version - not
-4.4. Let's change this to `4.4.*`.
+Thanks to the `extra.symfony.require` key in our `composer.json` file:
+
+[[[ code('6149fccb88') ]]]
+
+Which is currently set to `4.3.*`, it only upgraded things to the latest 4.3
+version - not 4.4. Let's change this to `4.4.*`:
+
+[[[ code('8697469c52') ]]]
 
 But wait... why are we upgrading to Symfony 4.4? Isn't this a tutorial about upgrading
 to Symfony 5? Why not just go straight there? The reason is due to Symfony's, honestly,
@@ -37,10 +42,13 @@ composer show symfony/mailer
 
 Scroll up: woh! This is still on version 4.3! Why?
 
-Open up the `composer.json` file and find `symfony/mailer`. Interesting:
-some packages - like `symfony/form` or `symfony/framework-bundle` are set to
-`^4.0` - which more or less means `4.*`. But the `symfony/mailer` version if
-`4.3.*`.
+Open up the `composer.json` file and find `symfony/mailer`:
+
+[[[ code('bde3823699') ]]]
+
+Interesting: some packages - like `symfony/form` or `symfony/framework-bundle`
+are set to `^4.0` - which more or less means `4.*`. But the `symfony/mailer`
+version if `4.3.*`.
 
 ## Symfony Flex: composer.json Version Formatting
 
