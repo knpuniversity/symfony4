@@ -44,7 +44,7 @@ so that everything matches *and* we get that performance boost in Composer.
 Let's do this! Find your terminal and run:
 
 ```terminal
-composer require symfony/*
+composer update symfony/*
 ```
 
 And... yea! It's upgrading the last few libraries that were *previously* locked
