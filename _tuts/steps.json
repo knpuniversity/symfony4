@@ -1521,6 +1521,11 @@
             "description": null
         },
         {
+            "id": "deprecations-swap-extensions-bundle-package",
+            "name": "Deprecations: swap extensions bundle package",
+            "description": null
+        },
+        {
             "id": "deprecations-getextendedtypes-form",
             "name": "Deprecations: getExtendedTypes() form",
             "description": null
@@ -1528,6 +1533,11 @@
         {
             "id": "deprecations-managerregistry-in-repos",
             "name": "Deprecations: ManagerRegistry in repos",
+            "description": null
+        },
+        {
+            "id": "deprecations-fix-extends-controller",
+            "name": "Deprecations: fix extends Controller",
             "description": null
         },
         {
@@ -1539,7 +1549,17 @@
             "id": "deprecations-return-0-in-command",
             "name": "Deprecations: return 0 in command",
             "description": null
+        },
+        {
+            "id": "doctrinebundle-unpack-orm-pack",
+            "name": "DoctrineBundle: unpack orm-pack",
+            "description": null
+        },
+        {
+            "id": "doctrinebundle-doctrinebundle-2-0-only",
+            "name": "DoctrineBundle: DoctrineBundle 2.0 only",
+            "description": null
         }
     ],
-    "sha": "1ad01913b70c66684398f85586c62e892a34c208"
+    "sha": "cfb6658e250d4bf4d88a043866b2a97e32575335"
 }

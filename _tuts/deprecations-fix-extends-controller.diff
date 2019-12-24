@@ -1,0 +1,21 @@
+diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
+index ef6b7299..29215950 100644
+--- a/src/Controller/CommentAdminController.php
++++ b/src/Controller/CommentAdminController.php
+@@ -5,6 +5,7 @@ namespace App\Controller;
+ use App\Repository\CommentRepository;
+ use Knp\Component\Pager\PaginatorInterface;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+@@ -12,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ /**
+  * @IsGranted("ROLE_ADMIN_COMMENT")
+  */
+-class CommentAdminController extends Controller
++class CommentAdminController extends AbstractController
+ {
+     /**
+      * @Route("/admin/comment", name="comment_admin")
