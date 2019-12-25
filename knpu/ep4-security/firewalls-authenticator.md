@@ -67,6 +67,12 @@ Oh, and see this `anonymous: true` part?
 
 [[[ code('e09d08a770') ]]]
 
+***TIP
+Starting with Symfony 4.4.1 and 5.0.1, instead of `anonymous: true` you will see
+`anonymous: lazy`. Both should not behave in any noticeably different way - it's
+basically the same.
+***
+
 Keep that. This allows *anonymous* requests to pass through this firewall so that
 users can access your public pages, without needing to login. *Even* if you want
 to require authentication on *every* page of your site, keep this. There's a different
