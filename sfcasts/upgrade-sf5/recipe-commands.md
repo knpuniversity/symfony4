@@ -26,7 +26,7 @@ All of the configuration files were *also* originally added by recipes. For exam
 ## Why Recipes Update
 
 Over time, the recipes *themselves* tend to change. If we installed the
-`symfony/cache` component today, it *might* give us a slightly *different*
+`symfony/framework-bundle` today, it *might* give us a slightly *different*
 `cache.yaml` file.
 
 There are three reasons that a recipe might change. First, someone might update
