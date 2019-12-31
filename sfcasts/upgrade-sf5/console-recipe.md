@@ -121,7 +121,7 @@ Let's go find that: `symfony/framework-bundle/4.2/config/bootstrap.php`.
 of code we're looking at - lines 9 through 12 - have two different commits. Let's
 look at just one of them:
 
-> Allow correct environment to be loaded when `.env.php.local` exists
+> Allow correct environment to be loaded when `.env.local.php` exists
 
 And we can even click to see the pull request:
 [#647](https://github.com/symfony/recipes/pull/647) if you want *really* dive
