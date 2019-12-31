@@ -1,6 +1,6 @@
 diff --git a/assets/css/article_show.scss b/assets/css/article_show.scss
 new file mode 100644
-index 00000000..aa9b0fb3
+index 000000000..aa9b0fb38
 --- /dev/null
 +++ b/assets/css/article_show.scss
 @@ -0,0 +1,71 @@
@@ -76,7 +76,7 @@ index 00000000..aa9b0fb3
 +    }
 +}
 diff --git a/assets/css/components/_articles.scss b/assets/css/components/_articles.scss
-index 5fe7657d..732b7b65 100644
+index 5fe7657d9..732b7b652 100644
 --- a/assets/css/components/_articles.scss
 +++ b/assets/css/components/_articles.scss
 @@ -65,75 +65,3 @@

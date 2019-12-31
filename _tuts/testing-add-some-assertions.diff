@@ -1,5 +1,5 @@
 diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
-index 0e8d7369..894ff87a 100644
+index 0e8d7369b..894ff87ad 100644
 --- a/tests/Service/MailerTest.php
 +++ b/tests/Service/MailerTest.php
 @@ -7,6 +7,7 @@ use App\Service\Mailer;

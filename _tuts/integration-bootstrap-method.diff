@@ -1,5 +1,5 @@
 diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
-index 894ff87a..3fa67b27 100644
+index 894ff87ad..3fa67b27a 100644
 --- a/tests/Service/MailerTest.php
 +++ b/tests/Service/MailerTest.php
 @@ -2,6 +2,7 @@

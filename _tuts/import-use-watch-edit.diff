@@ -1,5 +1,5 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index 0648e871..2cb1da50 100644
+index 0648e871c..2cb1da506 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -11,4 +11,4 @@ require('../css/app.css');

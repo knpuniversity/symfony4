@@ -1,5 +1,5 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index c8aec34f..34c33ad8 100644
+index c8aec34f2..34c33ad83 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -14,6 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;

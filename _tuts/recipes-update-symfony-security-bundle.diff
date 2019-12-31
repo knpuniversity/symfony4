@@ -1,5 +1,5 @@
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index a48752a7..8401b335 100644
+index a48752a7f..8401b3357 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -19,7 +19,7 @@ security:
@@ -12,7 +12,7 @@ index a48752a7..8401b335 100644
              guard:
                  authenticators:
 diff --git a/symfony.lock b/symfony.lock
-index 2d2ff076..aac7df22 100644
+index 2d2ff076f..aac7df22d 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -527,13 +527,16 @@

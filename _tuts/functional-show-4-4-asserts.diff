@@ -1,5 +1,5 @@
 diff --git a/tests/Controller/SecurityControllerTest.php b/tests/Controller/SecurityControllerTest.php
-index f0e77a98..fb3e1ec0 100644
+index f0e77a988..fb3e1ec0a 100644
 --- a/tests/Controller/SecurityControllerTest.php
 +++ b/tests/Controller/SecurityControllerTest.php
 @@ -22,5 +22,11 @@ class SecurityControllerTest extends WebTestCase

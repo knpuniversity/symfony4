@@ -1,5 +1,5 @@
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index 50b80766..a760f365 100644
+index 50b807665..a760f365c 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -1,10 +1,9 @@
@@ -18,7 +18,7 @@ index 50b80766..a760f365 100644
 +        public_uploads_filesystem:
 +            adapter: public_uploads_adapter
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 189e8be1..d9e7962a 100644
+index 189e8be18..d9e7962a1 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,6 +3,7 @@

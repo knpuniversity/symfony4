@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 3f757f48..ef5d1fce 100644
+index 3f757f486..ef5d1fce3 100644
 --- a/.env
 +++ b/.env
 @@ -30,3 +30,5 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
@@ -9,7 +9,7 @@ index 3f757f48..ef5d1fce 100644
 +
 +SITE_BASE_URL=https://localhost:8000
 diff --git a/config/services.yaml b/config/services.yaml
-index c0a31067..ad8a105c 100644
+index c0a31067e..ad8a105cc 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -7,7 +7,7 @@ parameters:

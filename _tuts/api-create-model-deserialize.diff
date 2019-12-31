@@ -1,6 +1,6 @@
 diff --git a/src/Api/ArticleReferenceUploadApiModel.php b/src/Api/ArticleReferenceUploadApiModel.php
 new file mode 100644
-index 00000000..acddd1fc
+index 000000000..acddd1fce
 --- /dev/null
 +++ b/src/Api/ArticleReferenceUploadApiModel.php
 @@ -0,0 +1,18 @@
@@ -23,7 +23,7 @@ index 00000000..acddd1fc
 +    public $data;
 +}
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c72d5725..33aa01e2 100644
+index c72d57251..33aa01e27 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -2,6 +2,7 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index 79f1b735..042000c4 100644
+index 79f1b7357..042000c46 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -9,6 +9,7 @@

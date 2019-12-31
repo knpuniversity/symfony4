@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index ed9041aa..240f35d4 100644
+index ed9041aa0..240f35d45 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +28,7 @@ index ed9041aa..240f35d4 100644
  
              $mailer->send($email);
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 6b895d25..2cf4e2bd 100644
+index 6b895d25f..2cf4e2bd6 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -62,7 +62,7 @@

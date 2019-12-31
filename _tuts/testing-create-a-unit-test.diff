@@ -1,6 +1,6 @@
 diff --git a/tests/MailerTest.php b/tests/MailerTest.php
 new file mode 100644
-index 00000000..2dd0fad9
+index 000000000..2dd0fad94
 --- /dev/null
 +++ b/tests/MailerTest.php
 @@ -0,0 +1,13 @@

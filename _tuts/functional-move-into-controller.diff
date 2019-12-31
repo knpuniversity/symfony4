@@ -2,7 +2,7 @@ diff --git a/tests/SecurityControllerTest.php b/tests/Controller/SecurityControl
 similarity index 91%
 rename from tests/SecurityControllerTest.php
 rename to tests/Controller/SecurityControllerTest.php
-index 2e43a58c..99534f74 100644
+index 2e43a58c1..99534f742 100644
 --- a/tests/SecurityControllerTest.php
 +++ b/tests/Controller/SecurityControllerTest.php
 @@ -1,6 +1,6 @@

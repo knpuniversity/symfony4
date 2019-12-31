@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index d27dc581..db78f196 100644
+index d27dc5812..db78f196f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -11,7 +11,7 @@ index d27dc581..db78f196 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/webpack-encore-bundle": "^1.4",
 diff --git a/composer.lock b/composer.lock
-index eff34639..34862711 100644
+index eff346396..34862711f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -125,7 +125,7 @@ index eff34639..34862711 100644
              "name": "twig/twig",
              "version": "v2.12.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index ff98702c..b9437f84 100644
+index ff98702cb..b9437f84c 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -23,4 +23,5 @@ return [
@@ -135,7 +135,7 @@ index ff98702c..b9437f84 100644
 +    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index f8977310..a6fccf20 100644
+index f89773102..a6fccf20d 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -500,6 +500,9 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/css/email.css b/assets/css/email.css
-index b3dfcb45..c7ddf596 100644
+index b3dfcb45e..c7ddf596d 100644
 --- a/assets/css/email.css
 +++ b/assets/css/email.css
 @@ -7,7 +7,7 @@ body {
@@ -53,7 +53,7 @@ index b3dfcb45..c7ddf596 100644
  }
 diff --git a/assets/css/foundation-emails.css b/assets/css/foundation-emails.css
 new file mode 100644
-index 00000000..acd1b982
+index 000000000..acd1b9827
 --- /dev/null
 +++ b/assets/css/foundation-emails.css
 @@ -0,0 +1,1348 @@
@@ -1406,7 +1406,7 @@ index 00000000..acd1b982
 +    table.button.small-expanded center {
 +      min-width: 0; } }
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index c22101f0..7e39a362 100644
+index c22101f09..7e39a362c 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,4 +1,4 @@

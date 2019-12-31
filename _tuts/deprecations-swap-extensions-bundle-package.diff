@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 3e71ab44..39f4f43f 100644
+index 3e71ab443..39f4f43f4 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -19,7 +19,7 @@ index 3e71ab44..39f4f43f 100644
          "symfony/console": "4.4.*",
          "symfony/dotenv": "4.4.*",
 diff --git a/composer.lock b/composer.lock
-index 5df4cc69..fa4b91c2 100644
+index d5e0e44e9..b0bbfbcbf 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,81 @@
@@ -306,7 +306,7 @@ index 5df4cc69..fa4b91c2 100644
          },
          {
              "name": "doctrine/dbal",
-@@ -809,16 +891,16 @@
+@@ -808,16 +890,16 @@
          },
          {
              "name": "doctrine/event-manager",
@@ -327,7 +327,7 @@ index 5df4cc69..fa4b91c2 100644
                  "shasum": ""
              },
              "require": {
-@@ -828,7 +910,7 @@
+@@ -827,7 +909,7 @@
                  "doctrine/common": "<2.9@dev"
              },
              "require-dev": {
@@ -336,7 +336,7 @@ index 5df4cc69..fa4b91c2 100644
                  "phpunit/phpunit": "^7.0"
              },
              "type": "library",
-@@ -847,6 +929,10 @@
+@@ -846,6 +928,10 @@
                  "MIT"
              ],
              "authors": [
@@ -347,7 +347,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Roman Borschel",
                      "email": "roman@code-factory.org"
-@@ -855,10 +941,6 @@
+@@ -854,10 +940,6 @@
                      "name": "Benjamin Eberlei",
                      "email": "kontakt@beberlei.de"
                  },
@@ -358,7 +358,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Jonathan Wage",
                      "email": "jonwage@gmail.com"
-@@ -872,27 +954,29 @@
+@@ -871,27 +953,29 @@
                      "email": "ocramius@gmail.com"
                  }
              ],
@@ -396,7 +396,7 @@ index 5df4cc69..fa4b91c2 100644
                  "shasum": ""
              },
              "require": {
-@@ -917,6 +1001,10 @@
+@@ -916,6 +1000,10 @@
                  "MIT"
              ],
              "authors": [
@@ -407,7 +407,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Roman Borschel",
                      "email": "roman@code-factory.org"
-@@ -925,10 +1013,6 @@
+@@ -924,10 +1012,6 @@
                      "name": "Benjamin Eberlei",
                      "email": "kontakt@beberlei.de"
                  },
@@ -418,7 +418,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Jonathan Wage",
                      "email": "jonwage@gmail.com"
-@@ -946,7 +1030,7 @@
+@@ -945,7 +1029,7 @@
                  "singularize",
                  "string"
              ],
@@ -427,7 +427,7 @@ index 5df4cc69..fa4b91c2 100644
          },
          {
              "name": "doctrine/instantiator",
-@@ -1006,28 +1090,30 @@
+@@ -1005,28 +1089,30 @@
          },
          {
              "name": "doctrine/lexer",
@@ -465,7 +465,7 @@ index 5df4cc69..fa4b91c2 100644
                  }
              },
              "autoload": {
-@@ -1040,14 +1126,14 @@
+@@ -1039,14 +1125,14 @@
                  "MIT"
              ],
              "authors": [
@@ -484,7 +484,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Johannes Schmitt",
                      "email": "schmittjoh@gmail.com"
-@@ -1062,7 +1148,7 @@
+@@ -1061,7 +1147,7 @@
                  "parser",
                  "php"
              ],
@@ -493,7 +493,7 @@ index 5df4cc69..fa4b91c2 100644
          },
          {
              "name": "doctrine/migrations",
-@@ -1230,16 +1316,16 @@
+@@ -1229,16 +1315,16 @@
          },
          {
              "name": "doctrine/persistence",
@@ -514,7 +514,7 @@ index 5df4cc69..fa4b91c2 100644
                  "shasum": ""
              },
              "require": {
-@@ -1254,19 +1340,20 @@
+@@ -1253,19 +1339,20 @@
                  "doctrine/common": "<2.10@dev"
              },
              "require-dev": {
@@ -539,7 +539,7 @@ index 5df4cc69..fa4b91c2 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -1274,6 +1361,10 @@
+@@ -1273,6 +1360,10 @@
                  "MIT"
              ],
              "authors": [
@@ -550,7 +550,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Roman Borschel",
                      "email": "roman@code-factory.org"
-@@ -1282,10 +1373,6 @@
+@@ -1281,10 +1372,6 @@
                      "name": "Benjamin Eberlei",
                      "email": "kontakt@beberlei.de"
                  },
@@ -561,7 +561,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Jonathan Wage",
                      "email": "jonwage@gmail.com"
-@@ -1308,7 +1395,7 @@
+@@ -1307,7 +1394,7 @@
                  "orm",
                  "persistence"
              ],
@@ -570,7 +570,7 @@ index 5df4cc69..fa4b91c2 100644
          },
          {
              "name": "doctrine/reflection",
-@@ -1495,16 +1582,16 @@
+@@ -1494,16 +1581,16 @@
          },
          {
              "name": "gedmo/doctrine-extensions",
@@ -591,7 +591,7 @@ index 5df4cc69..fa4b91c2 100644
                  "shasum": ""
              },
              "require": {
-@@ -1513,14 +1600,15 @@
+@@ -1512,14 +1599,15 @@
                  "php": ">=5.3.2"
              },
              "conflict": {
@@ -611,7 +611,7 @@ index 5df4cc69..fa4b91c2 100644
              },
              "suggest": {
                  "doctrine/mongodb-odm": "to use the extensions with the MongoDB ODM",
-@@ -1542,10 +1630,6 @@
+@@ -1541,10 +1629,6 @@
                  "MIT"
              ],
              "authors": [
@@ -622,7 +622,7 @@ index 5df4cc69..fa4b91c2 100644
                  {
                      "name": "Gediminas Morkevicius",
                      "email": "gediminas.morkevicius@gmail.com"
-@@ -1553,6 +1637,10 @@
+@@ -1552,6 +1636,10 @@
                  {
                      "name": "Gustavo Falco",
                      "email": "comfortablynumb84@gmail.com"
@@ -633,7 +633,7 @@ index 5df4cc69..fa4b91c2 100644
                  }
              ],
              "description": "Doctrine2 behavioral extensions",
-@@ -1572,7 +1660,7 @@
+@@ -1571,7 +1659,7 @@
                  "tree",
                  "uploadable"
              ],
@@ -642,7 +642,7 @@ index 5df4cc69..fa4b91c2 100644
          },
          {
              "name": "guzzlehttp/guzzle",
-@@ -4247,71 +4335,6 @@
+@@ -4246,71 +4334,6 @@
              ],
              "time": "2019-07-08T08:31:25+00:00"
          },
@@ -715,7 +715,7 @@ index 5df4cc69..fa4b91c2 100644
              "name": "symfony/asset",
              "version": "v4.4.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 9d730ce2..646871a6 100644
+index 9d730ce27..646871a63 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -15,7 +15,6 @@ return [
@@ -733,7 +733,7 @@ index 9d730ce2..646871a6 100644
 +    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index c02857f5..aeb5cb58 100644
+index c02857f58..aeb5cb58f 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,16 @@

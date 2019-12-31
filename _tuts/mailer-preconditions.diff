@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 6c5156c6..201325d0 100644
+index 6c5156c6c..201325d0e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -11,7 +11,7 @@
@@ -21,7 +21,7 @@ index 6c5156c6..201325d0 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 606bb3c3..5963eb18 100644
+index 606bb3c3b..5963eb18a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,20 +4,20 @@
@@ -4302,7 +4302,7 @@ index 606bb3c3..5963eb18 100644
      ],
      "aliases": [],
 diff --git a/package.json b/package.json
-index c55a2a16..17bf64db 100644
+index c55a2a16f..17bf64dbf 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,6 @@
@@ -4322,7 +4322,7 @@ index c55a2a16..17bf64db 100644
          "sortablejs": "^1.8.4",
          "webpack-notifier": "^1.6.0"
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index c2393a05..21e1cdf1 100644
+index c2393a05d..21e1cdf1f 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -53,6 +53,7 @@ class SecurityController extends AbstractController
@@ -4342,7 +4342,7 @@ index c2393a05..21e1cdf1 100644
              $em = $this->getDoctrine()->getManager();
              $em->persist($user);
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index d298ef4d..3b86b24c 100644
+index d298ef4d9..3b86b24c4 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -59,7 +59,7 @@ EOF
@@ -4355,7 +4355,7 @@ index d298ef4d..3b86b24c 100644
  
              $imageFilename = $this->fakeUploadImage();
 diff --git a/src/DataFixtures/UserFixture.php b/src/DataFixtures/UserFixture.php
-index 6f8974cd..e1ec2393 100644
+index 6f8974cd1..e1ec23937 100644
 --- a/src/DataFixtures/UserFixture.php
 +++ b/src/DataFixtures/UserFixture.php
 @@ -27,6 +27,9 @@ class UserFixture extends BaseFixture
@@ -4369,7 +4369,7 @@ index 6f8974cd..e1ec2393 100644
              $user->setPassword($this->passwordEncoder->encodePassword(
                  $user,
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 522103ac..ec141552 100644
+index 522103aca..ec141552c 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -71,6 +71,11 @@ class User implements UserInterface
@@ -4400,7 +4400,7 @@ index 522103ac..ec141552 100644
 +    }
  }
 diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
-index a882c901..b3d0f8e6 100644
+index a882c9011..b3d0f8e61 100644
 --- a/src/Form/Model/UserRegistrationFormModel.php
 +++ b/src/Form/Model/UserRegistrationFormModel.php
 @@ -20,8 +20,15 @@ class UserRegistrationFormModel
@@ -4420,7 +4420,7 @@ index a882c901..b3d0f8e6 100644
 +    public $subscribeToNewsletter;
  }
 diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
-index 027bd5d7..980c7395 100644
+index 027bd5d72..980c7395e 100644
 --- a/src/Form/UserRegistrationFormType.php
 +++ b/src/Form/UserRegistrationFormType.php
 @@ -22,7 +22,11 @@ class UserRegistrationFormType extends AbstractType
@@ -4437,7 +4437,7 @@ index 027bd5d7..980c7395 100644
  
 diff --git a/src/Migrations/Version20190926151031.php b/src/Migrations/Version20190926151031.php
 new file mode 100644
-index 00000000..0284ed6c
+index 000000000..0284ed6c0
 --- /dev/null
 +++ b/src/Migrations/Version20190926151031.php
 @@ -0,0 +1,35 @@
@@ -4477,7 +4477,7 @@ index 00000000..0284ed6c
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index cc37706d..03f8da69 100644
+index cc37706d9..03f8da69b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -236,9 +236,6 @@
@@ -4570,7 +4570,7 @@ index cc37706d..03f8da69 100644
          "version": "v4.1.11"
      },
 diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
-index 5f5f111d..75522b29 100644
+index 5f5f111d6..75522b297 100644
 --- a/templates/security/register.html.twig
 +++ b/templates/security/register.html.twig
 @@ -40,12 +40,16 @@
@@ -4591,7 +4591,7 @@ index 5f5f111d..75522b29 100644
  
                  <button class="btn btn-lg btn-primary btn-block" type="submit">
 diff --git a/yarn.lock b/yarn.lock
-index b84ef602..8f567e79 100644
+index b84ef602e..8f567e793 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2,41 +2,41 @@

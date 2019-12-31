@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 5b5f4d02..44b2278e 100644
+index 5b5f4d029..44b2278ea 100644
 --- a/.env
 +++ b/.env
 @@ -36,7 +36,9 @@ SITE_BASE_HOST=localhost:8000
@@ -14,7 +14,7 @@ index 5b5f4d02..44b2278e 100644
  
  ###> knplabs/knp-snappy-bundle ###
 diff --git a/.env.test b/.env.test
-index 862a5b59..414430e7 100644
+index 862a5b597..414430e7f 100644
 --- a/.env.test
 +++ b/.env.test
 @@ -2,7 +2,3 @@

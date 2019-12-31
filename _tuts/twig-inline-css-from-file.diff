@@ -1,6 +1,6 @@
 diff --git a/assets/css/email.css b/assets/css/email.css
 new file mode 100644
-index 00000000..b3dfcb45
+index 000000000..b3dfcb45e
 --- /dev/null
 +++ b/assets/css/email.css
 @@ -0,0 +1,46 @@
@@ -51,7 +51,7 @@ index 00000000..b3dfcb45
 +    text-decoration: none;
 +}
 diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
-index 053629ec..6cb3f350 100644
+index 053629ec4..6cb3f3506 100644
 --- a/config/packages/twig.yaml
 +++ b/config/packages/twig.yaml
 @@ -2,6 +2,7 @@ twig:
@@ -63,7 +63,7 @@ index 053629ec..6cb3f350 100644
      strict_variables: '%kernel.debug%'
      form_themes:
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 0b89dec2..50845f0c 100644
+index 0b89dec25..50845f0cc 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,58 +1,10 @@

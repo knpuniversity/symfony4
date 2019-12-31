@@ -1,5 +1,5 @@
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index c50fbc35..2161581f 100644
+index c50fbc354..2161581f7 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -4,6 +4,13 @@ oneup_flysystem:
@@ -17,7 +17,7 @@ index c50fbc35..2161581f 100644
 +        private_uploads_filesystem:
 +            adapter: private_uploads_adapter
 diff --git a/config/services.yaml b/config/services.yaml
-index ad8a105c..d134ff65 100644
+index ad8a105cc..d134ff65a 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -23,6 +23,7 @@ services:
@@ -29,7 +29,7 @@ index ad8a105c..d134ff65 100644
  
      # custom aliases for autowiring
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index b671a215..5fe26f6d 100644
+index b671a2159..5fe26f6d8 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -16,15 +16,18 @@ class UploaderHelper

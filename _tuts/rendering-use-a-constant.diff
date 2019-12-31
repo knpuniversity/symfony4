@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index f701cf50..eb36fa25 100644
+index f701cf509..eb36fa259 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -3,6 +3,7 @@
@@ -20,7 +20,7 @@ index f701cf50..eb36fa25 100644
  
      /**
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 660bd3dd..d245323f 100644
+index 660bd3ddc..d245323ff 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;

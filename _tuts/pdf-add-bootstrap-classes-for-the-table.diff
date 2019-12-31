@@ -1,5 +1,5 @@
 diff --git a/templates/email/_report-table.html.twig b/templates/email/_report-table.html.twig
-index 1e80d0bf..75d3a41f 100644
+index 1e80d0bfb..75d3a41f4 100644
 --- a/templates/email/_report-table.html.twig
 +++ b/templates/email/_report-table.html.twig
 @@ -1,4 +1,4 @@

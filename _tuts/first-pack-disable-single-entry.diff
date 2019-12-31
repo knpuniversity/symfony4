@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index a0b24860..04b9c206 100644
+index a0b248601..04b9c2069 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -26,7 +26,8 @@ Encore

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index acb0f4d1..14c4338f 100644
+index acb0f4d1e..14c4338ff 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -63,7 +63,14 @@ class ArticleReferenceAdminController extends BaseController
@@ -19,7 +19,7 @@ index acb0f4d1..14c4338f 100644
  
      /**
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index 69ee29fb..01ba991c 100644
+index 69ee29fb5..01ba991c5 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
 @@ -4,6 +4,7 @@ namespace App\Entity;

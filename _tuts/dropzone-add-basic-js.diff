@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index e3a6e826..c010682d 100644
+index e3a6e8261..c010682db 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -27,6 +27,7 @@ class ArticleReferenceAdminController extends BaseController
@@ -11,7 +11,7 @@ index e3a6e826..c010682d 100644
          $violations = $validator->validate(
              $uploadedFile,
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 83bf5d84..9c2f8021 100644
+index 83bf5d842..9c2f80217 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -33,16 +33,21 @@

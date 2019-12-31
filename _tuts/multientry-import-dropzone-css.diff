@@ -1,5 +1,5 @@
 diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
-index 53a5a83a..e907530a 100644
+index 53a5a83a6..e907530a8 100644
 --- a/assets/js/admin_article_form.js
 +++ b/assets/js/admin_article_form.js
 @@ -1,5 +1,6 @@
@@ -10,7 +10,7 @@ index 53a5a83a..e907530a 100644
  
  Dropzone.autoDiscover = false;
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 07855d60..8f21014e 100644
+index 07855d600..8f21014ea 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -30,7 +30,7 @@

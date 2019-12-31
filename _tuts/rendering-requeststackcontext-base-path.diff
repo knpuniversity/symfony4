@@ -1,5 +1,5 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 100dad35..baa5f2d7 100644
+index 100dad35e..baa5f2d7d 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -3,6 +3,7 @@
@@ -35,7 +35,7 @@ index 100dad35..baa5f2d7 100644
      }
  }
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index f09523a7..08a9a295 100644
+index f09523a71..08a9a295a 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -5,7 +5,7 @@

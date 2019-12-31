@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 561c1fc4..5a693fff 100644
+index 561c1fc47..5a693fff1 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -72,4 +72,12 @@ class ArticleReferenceAdminController extends BaseController
@@ -16,7 +16,7 @@ index 561c1fc4..5a693fff 100644
 +    }
  }
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 557ccf79..83bf5d84 100644
+index 557ccf796..83bf5d842 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -19,6 +19,12 @@

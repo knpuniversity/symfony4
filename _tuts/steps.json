@@ -1501,8 +1501,8 @@
             "description": null
         },
         {
-            "id": "deprecations-update-doctrinebundle",
-            "name": "Deprecations: update DoctrineBundle",
+            "id": "deprecations-delete-me",
+            "name": "Deprecations: delete me",
             "description": null
         },
         {
@@ -1526,13 +1526,38 @@
             "description": null
         },
         {
+            "id": "doctrine-unpack-orm-pack",
+            "name": "Doctrine: unpack orm-pack",
+            "description": null
+        },
+        {
+            "id": "doctrine-doctrinebundle-2-0-only",
+            "name": "Doctrine: DoctrineBundle 2.0 only",
+            "description": null
+        },
+        {
+            "id": "doctrine-upgrade-a-lot-of-doctrine-stuff",
+            "name": "Doctrine: upgrade a lot of Doctrine stuff",
+            "description": null
+        },
+        {
+            "id": "doctrine-repository-autowire-update",
+            "name": "Doctrine: repository autowire update",
+            "description": null
+        },
+        {
+            "id": "doctrine-update-recipe",
+            "name": "Doctrine: update recipe",
+            "description": null
+        },
+        {
             "id": "deprecations-getextendedtypes-form",
             "name": "Deprecations: getExtendedTypes() form",
             "description": null
         },
         {
-            "id": "deprecations-managerregistry-in-repos",
-            "name": "Deprecations: ManagerRegistry in repos",
+            "id": "deprecations-delete-me-1",
+            "name": "Deprecations: delete me 1",
             "description": null
         },
         {
@@ -1551,15 +1576,30 @@
             "description": null
         },
         {
-            "id": "doctrinebundle-unpack-orm-pack",
-            "name": "DoctrineBundle: unpack orm-pack",
+            "id": "doctrinebundle-delete-me1",
+            "name": "DoctrineBundle: delete me1",
             "description": null
         },
         {
-            "id": "doctrinebundle-doctrinebundle-2-0-only",
-            "name": "DoctrineBundle: DoctrineBundle 2.0 only",
+            "id": "doctrinebundle-delete-me2",
+            "name": "DoctrineBundle: delete me2",
+            "description": null
+        },
+        {
+            "id": "doctrinebundle-delete-me3",
+            "name": "DoctrineBundle: delete me3",
+            "description": null
+        },
+        {
+            "id": "doctrinebundle-delete-me5",
+            "name": "DoctrineBundle: delete me5",
+            "description": null
+        },
+        {
+            "id": "5-0-change-reqs-to-5-0",
+            "name": "5.0: change reqs to 5.0.*",
             "description": null
         }
     ],
-    "sha": "cfb6658e250d4bf4d88a043866b2a97e32575335"
+    "sha": "fb5df8eccc15b8025e0334fde17fbea125e55073"
 }

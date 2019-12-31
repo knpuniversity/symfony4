@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 41eb0890..02de0c98 100644
+index 41eb08900..02de0c98d 100644
 --- a/.env
 +++ b/.env
 @@ -1,5 +1,5 @@
@@ -10,7 +10,7 @@ index 41eb0890..02de0c98 100644
  #  * .env                contains default values for the environment variables needed by the app
  #  * .env.local          uncommitted file with local overrides
 diff --git a/symfony.lock b/symfony.lock
-index 2e580d72..50f510b9 100644
+index 2e580d722..50f510b9b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -366,8 +366,11 @@

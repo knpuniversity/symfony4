@@ -1,5 +1,5 @@
 diff --git a/templates/email/emailBase.html.twig b/templates/email/emailBase.html.twig
-index 2edeed11..401ac018 100644
+index 2edeed117..401ac0188 100644
 --- a/templates/email/emailBase.html.twig
 +++ b/templates/email/emailBase.html.twig
 @@ -1,4 +1,4 @@

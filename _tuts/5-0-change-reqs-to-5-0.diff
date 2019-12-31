@@ -1,0 +1,66 @@
+diff --git a/composer.json b/composer.json
+index f2ddd6c5b..81f17dbd5 100644
+--- a/composer.json
++++ b/composer.json
+@@ -22,23 +22,23 @@
+         "oneup/flysystem-bundle": "^3.0",
+         "php-http/guzzle6-adapter": "^1.1",
+         "sensio/framework-extra-bundle": "^5.1",
+-        "symfony/asset": "4.4.*",
+-        "symfony/console": "4.4.*",
+-        "symfony/dotenv": "4.4.*",
++        "symfony/asset": "5.0.*",
++        "symfony/console": "5.0.*",
++        "symfony/dotenv": "5.0.*",
+         "symfony/flex": "^1.0",
+-        "symfony/form": "4.4.*",
+-        "symfony/framework-bundle": "4.4.*",
+-        "symfony/mailer": "4.4.*",
+-        "symfony/messenger": "4.4.*",
++        "symfony/form": "5.0.*",
++        "symfony/framework-bundle": "5.0.*",
++        "symfony/mailer": "5.0.*",
++        "symfony/messenger": "5.0.*",
+         "symfony/monolog-bundle": "^3.5",
+-        "symfony/security-bundle": "4.4.*",
+-        "symfony/sendgrid-mailer": "4.4.*",
++        "symfony/security-bundle": "5.0.*",
++        "symfony/sendgrid-mailer": "5.0.*",
+         "symfony/serializer-pack": "^1.0",
+-        "symfony/twig-bundle": "4.4.*",
++        "symfony/twig-bundle": "5.0.*",
+         "symfony/twig-pack": "^1.0",
+-        "symfony/validator": "4.4.*",
++        "symfony/validator": "5.0.*",
+         "symfony/webpack-encore-bundle": "^1.4",
+-        "symfony/yaml": "4.4.*",
++        "symfony/yaml": "5.0.*",
+         "twig/cssinliner-extra": "^2.12",
+         "twig/extensions": "^1.5",
+         "twig/inky-extra": "^2.12"
+@@ -46,12 +46,12 @@
+     "require-dev": {
+         "doctrine/doctrine-fixtures-bundle": "^3.0",
+         "fzaninotto/faker": "^1.7",
+-        "symfony/browser-kit": "4.4.*",
+-        "symfony/debug-bundle": "4.4.*",
++        "symfony/browser-kit": "5.0.*",
++        "symfony/debug-bundle": "5.0.*",
+         "symfony/maker-bundle": "^1.0",
+-        "symfony/phpunit-bridge": "4.4.*",
++        "symfony/phpunit-bridge": "5.0.*",
+         "symfony/profiler-pack": "^1.0",
+-        "symfony/var-dumper": "4.4.*"
++        "symfony/var-dumper": "5.0.*"
+     },
+     "config": {
+         "preferred-install": {
+@@ -98,7 +98,7 @@
+         "symfony": {
+             "id": "01C1TW989CK77ZA7B2H4HC9WAG",
+             "allow-contrib": true,
+-            "require": "4.4.*"
++            "require": "5.0.*"
+         }
+     }
+ }

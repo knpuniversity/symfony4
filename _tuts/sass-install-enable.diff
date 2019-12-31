@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 305606cd..b26e3193 100644
+index 305606cd1..b26e3193c 100644
 --- a/package.json
 +++ b/package.json
 @@ -5,7 +5,9 @@
@@ -13,7 +13,7 @@ index 305606cd..b26e3193 100644
      },
      "license": "UNLICENSED",
 diff --git a/webpack.config.js b/webpack.config.js
-index 04b9c206..feae1438 100644
+index 04b9c2069..feae1438e 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -49,7 +49,7 @@ Encore
@@ -26,7 +26,7 @@ index 04b9c206..feae1438 100644
      // uncomment if you use TypeScript
      //.enableTypeScriptLoader()
 diff --git a/yarn.lock b/yarn.lock
-index 2fc02c80..f861dbe8 100644
+index 2fc02c809..f861dbe83 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -899,7 +899,7 @@ ajv-keywords@^3.1.0:

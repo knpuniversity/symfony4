@@ -1,0 +1,116 @@
+diff --git a/.env b/.env
+index 11ce50206..c75b88193 100644
+--- a/.env
++++ b/.env
+@@ -21,9 +21,10 @@ APP_SECRET=96457dc35ef41bcf506c3e2226804b8d
+ ###< symfony/framework-bundle ###
+ 
+ ###> doctrine/doctrine-bundle ###
+-# Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url
++# Format described at https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url
+ # For an SQLite database, use: "sqlite:///%kernel.project_dir%/var/data.db"
+-# Configure your db driver and server_version in config/packages/doctrine.yaml
++# For a PostgreSQL database, use: "postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVersion=11&charset=utf8"
++# IMPORTANT: You MUST configure your server version, either here or in config/packages/doctrine.yaml
+ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
+ ###< doctrine/doctrine-bundle ###
+ 
+diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
+index 9521fad7d..616c64070 100644
+--- a/config/packages/doctrine.yaml
++++ b/config/packages/doctrine.yaml
+@@ -1,24 +1,13 @@
+-parameters:
+-    # Adds a fallback DATABASE_URL if the env var is not set.
+-    # This allows you to run cache:warmup even if your
+-    # environment variables are not available yet.
+-    # You should not need to change this value.
+-    env(DATABASE_URL): ''
+-
+ doctrine:
+     dbal:
+-        # configure these for your database server
+-        driver: 'pdo_mysql'
+-        server_version: '5.7'
+-        charset: utf8mb4
+-        default_table_options:
+-            charset: utf8mb4
+-            collate: utf8mb4_unicode_ci
+-
+         url: '%env(resolve:DATABASE_URL)%'
++
++        # IMPORTANT: You MUST configure your server version,
++        # either here or in the DATABASE_URL env var (see .env file)
++        server_version: '5.7'
+     orm:
+         auto_generate_proxy_classes: true
+-        naming_strategy: doctrine.orm.naming_strategy.underscore
++        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+         auto_mapping: true
+         mappings:
+             App:
+diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
+index 0a7c53b44..084f59a05 100644
+--- a/config/packages/prod/doctrine.yaml
++++ b/config/packages/prod/doctrine.yaml
+@@ -2,26 +2,14 @@ doctrine:
+     orm:
+         auto_generate_proxy_classes: false
+         metadata_cache_driver:
+-            type: service
+-            id: doctrine.system_cache_provider
++            type: pool
++            pool: doctrine.system_cache_pool
+         query_cache_driver:
+-            type: service
+-            id: doctrine.system_cache_provider
++            type: pool
++            pool: doctrine.system_cache_pool
+         result_cache_driver:
+-            type: service
+-            id: doctrine.result_cache_provider
+-
+-services:
+-    doctrine.result_cache_provider:
+-        class: Symfony\Component\Cache\DoctrineProvider
+-        public: false
+-        arguments:
+-            - '@doctrine.result_cache_pool'
+-    doctrine.system_cache_provider:
+-        class: Symfony\Component\Cache\DoctrineProvider
+-        public: false
+-        arguments:
+-            - '@doctrine.system_cache_pool'
++            type: pool
++            pool: doctrine.result_cache_pool
+ 
+ framework:
+     cache:
+diff --git a/symfony.lock b/symfony.lock
+index e25e17835..ec80ed926 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -45,13 +45,19 @@
+         "version": "v2.9.2"
+     },
+     "doctrine/doctrine-bundle": {
+-        "version": "1.6",
++        "version": "2.0",
+         "recipe": {
+             "repo": "github.com/symfony/recipes",
+             "branch": "master",
+-            "version": "1.6",
+-            "ref": "453e89b78ded666f351617baca5ae40d20622351"
+-        }
++            "version": "2.0",
++            "ref": "a9f2463b9f73efe74482f831f03a204a41328555"
++        },
++        "files": [
++            "config/packages/doctrine.yaml",
++            "config/packages/prod/doctrine.yaml",
++            "src/Entity/.gitignore",
++            "src/Repository/.gitignore"
++        ]
+     },
+     "doctrine/doctrine-fixtures-bundle": {
+         "version": "3.0",

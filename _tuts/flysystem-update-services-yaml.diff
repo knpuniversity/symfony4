@@ -1,5 +1,5 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index 6f7700c6..578d7df1 100644
+index 6f7700c6f..578d7df11 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -20,7 +20,7 @@ services:
@@ -12,7 +12,7 @@ index 6f7700c6..578d7df1 100644
      # custom aliases for autowiring
      Nexy\Slack\Client: '@nexy_slack.client'
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index d9e7962a..6331c549 100644
+index d9e7962a1..6331c5498 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -16,9 +16,9 @@ class UploaderHelper

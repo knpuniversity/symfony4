@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 8367ae37..df7bb13f 100644
+index 8367ae379..df7bb13f5 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -8,6 +8,7 @@ use App\Form\UserRegistrationFormType;

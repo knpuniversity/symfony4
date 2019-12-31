@@ -1,5 +1,5 @@
 diff --git a/config/packages/cache.yaml b/config/packages/cache.yaml
-index 6417c63f..bff190ab 100644
+index 6417c63f0..bff190ab9 100644
 --- a/config/packages/cache.yaml
 +++ b/config/packages/cache.yaml
 @@ -15,5 +15,6 @@ framework:
@@ -12,7 +12,7 @@ index 6417c63f..bff190ab 100644
 +            cache.flysystem.psr6:
 +                adapter: cache.app
 diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
-index 7332ea47..24b752e1 100644
+index 7332ea476..24b752e16 100644
 --- a/config/packages/liip_imagine.yaml
 +++ b/config/packages/liip_imagine.yaml
 @@ -14,7 +14,9 @@ liip_imagine:
@@ -27,7 +27,7 @@ index 7332ea47..24b752e1 100644
                  root_url: '%uploads_base_url%'
  
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index fcf44369..48ad0555 100644
+index fcf44369a..48ad0555c 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -1,5 +1,10 @@

@@ -1,6 +1,6 @@
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
 new file mode 100644
-index 00000000..67e314da
+index 000000000..67e314da9
 --- /dev/null
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -0,0 +1,40 @@

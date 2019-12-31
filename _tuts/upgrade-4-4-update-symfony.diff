@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 8c26e991..25bf28b9 100644
+index 8c26e9912..25bf28b97 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -2333,7 +2333,7 @@ index 8c26e991..25bf28b9 100644
              "name": "symfony/web-profiler-bundle",
              "version": "v4.3.9",
 diff --git a/symfony.lock b/symfony.lock
-index fed6e88a..7d44dbd0 100644
+index fed6e88ad..7d44dbd08 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -338,6 +338,9 @@

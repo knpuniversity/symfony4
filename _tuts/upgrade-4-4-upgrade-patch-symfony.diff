@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 5ba031d9..8c26e991 100644
+index 5ba031d90..8c26e9912 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -3004,15 +3004,15 @@
@@ -1949,7 +1949,7 @@ index 5ba031d9..8c26e991 100644
      ],
      "aliases": [],
 diff --git a/symfony.lock b/symfony.lock
-index 4f79e73f..fed6e88a 100644
+index 4f79e73f4..fed6e88ad 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -203,6 +203,9 @@

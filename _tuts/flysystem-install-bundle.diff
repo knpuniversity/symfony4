@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 8af7058c..b5df31df 100644
+index 8af7058c4..b5df31df8 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -9,6 +9,7 @@
@@ -11,7 +11,7 @@ index 8af7058c..b5df31df 100644
          "sensio/framework-extra-bundle": "^5.1",
          "stof/doctrine-extensions-bundle": "^1.3",
 diff --git a/composer.lock b/composer.lock
-index f9f1ed25..e3dc6a82 100644
+index f9f1ed25f..e3dc6a82f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -215,7 +215,7 @@ index f9f1ed25..e3dc6a82 100644
              "name": "php-http/cache-plugin",
              "version": "1.6.0",
 diff --git a/config/bundles.php b/config/bundles.php
-index 2ea3a624..dfbdc683 100644
+index 2ea3a6248..dfbdc683d 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -21,4 +21,5 @@ return [
@@ -226,7 +226,7 @@ index 2ea3a624..dfbdc683 100644
  ];
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
 new file mode 100644
-index 00000000..50b80766
+index 000000000..50b807665
 --- /dev/null
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -0,0 +1,10 @@
@@ -241,7 +241,7 @@ index 00000000..50b80766
 +            adapter: default_adapter
 +            alias: League\Flysystem\Filesystem
 diff --git a/symfony.lock b/symfony.lock
-index 2224a416..4fe464ff 100644
+index 2224a416a..4fe464ffd 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -125,6 +125,9 @@

@@ -1,5 +1,5 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index 4b2f7050..d2231ada 100644
+index 4b2f7050d..d2231adac 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -6,8 +6,7 @@
@@ -13,7 +13,7 @@ index 4b2f7050..d2231ada 100644
  services:
      # default configuration for services in *this* file
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 64d41e76..b6d03a12 100644
+index 64d41e76f..b6d03a122 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -60,9 +60,15 @@ class UploaderHelper

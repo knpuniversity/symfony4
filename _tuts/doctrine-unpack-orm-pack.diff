@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 39f4f43f..a5616634 100644
+index 39f4f43f4..893175a5b 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -6,6 +6,9 @@
@@ -12,71 +12,16 @@ index 39f4f43f..a5616634 100644
          "easycorp/easy-log-handler": "^1.0",
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^5.0",
-@@ -19,24 +22,23 @@
-         "oneup/flysystem-bundle": "^3.0",
-         "php-http/guzzle6-adapter": "^1.1",
-         "sensio/framework-extra-bundle": "^5.1",
--        "symfony/asset": "4.4.*",
--        "symfony/console": "4.4.*",
--        "symfony/dotenv": "4.4.*",
-+        "symfony/asset": "5.0.*",
-+        "symfony/console": "5.0.*",
-+        "symfony/dotenv": "5.0.*",
-         "symfony/flex": "^1.0",
--        "symfony/form": "4.4.*",
--        "symfony/framework-bundle": "4.4.*",
--        "symfony/mailer": "4.4.*",
--        "symfony/messenger": "4.4.*",
-+        "symfony/form": "5.0.*",
-+        "symfony/framework-bundle": "5.0.*",
-+        "symfony/mailer": "5.0.*",
-+        "symfony/messenger": "5.0.*",
+@@ -28,7 +31,6 @@
+         "symfony/mailer": "4.4.*",
+         "symfony/messenger": "4.4.*",
          "symfony/monolog-bundle": "^3.5",
 -        "symfony/orm-pack": "^1.0",
--        "symfony/security-bundle": "4.4.*",
--        "symfony/sendgrid-mailer": "4.4.*",
-+        "symfony/security-bundle": "5.0.*",
-+        "symfony/sendgrid-mailer": "5.0.*",
+         "symfony/security-bundle": "4.4.*",
+         "symfony/sendgrid-mailer": "4.4.*",
          "symfony/serializer-pack": "^1.0",
--        "symfony/twig-bundle": "4.4.*",
-+        "symfony/twig-bundle": "5.0.*",
-         "symfony/twig-pack": "^1.0",
--        "symfony/validator": "4.4.*",
-+        "symfony/validator": "5.0.*",
-         "symfony/webpack-encore-bundle": "^1.4",
--        "symfony/yaml": "4.4.*",
-+        "symfony/yaml": "5.0.*",
-         "twig/cssinliner-extra": "^2.12",
-         "twig/extensions": "^1.5",
-         "twig/inky-extra": "^2.12"
-@@ -44,12 +46,12 @@
-     "require-dev": {
-         "doctrine/doctrine-fixtures-bundle": "^3.0",
-         "fzaninotto/faker": "^1.7",
--        "symfony/browser-kit": "4.4.*",
--        "symfony/debug-bundle": "4.4.*",
-+        "symfony/browser-kit": "5.0.*",
-+        "symfony/debug-bundle": "5.0.*",
-         "symfony/maker-bundle": "^1.0",
--        "symfony/phpunit-bridge": "4.4.*",
-+        "symfony/phpunit-bridge": "5.0.*",
-         "symfony/profiler-pack": "^1.0",
--        "symfony/var-dumper": "4.4.*"
-+        "symfony/var-dumper": "5.0.*"
-     },
-     "config": {
-         "preferred-install": {
-@@ -96,7 +98,7 @@
-         "symfony": {
-             "id": "01C1TW989CK77ZA7B2H4HC9WAG",
-             "allow-contrib": true,
--            "require": "4.4.*"
-+            "require": "5.0.*"
-         }
-     }
- }
 diff --git a/composer.lock b/composer.lock
-index fa4b91c2..2f39793d 100644
+index b0bbfbcbf..655eab28c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -84,11 +29,11 @@ index fa4b91c2..2f39793d 100644
          "This file is @generated automatically"
      ],
 -    "content-hash": "36a5cc8fc7844cdc07a29a03206ce717",
-+    "content-hash": "cd5da00bc0a12c6381e1e7bf532596f2",
++    "content-hash": "1dd1cbd99e2b065afdcdead91ca20792",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
-@@ -6212,34 +6212,6 @@
+@@ -6211,34 +6211,6 @@
              ],
              "time": "2019-10-28T21:57:16+00:00"
          },

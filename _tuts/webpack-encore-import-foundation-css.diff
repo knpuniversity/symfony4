@@ -2,7 +2,7 @@ diff --git a/assets/css/email.css b/assets/css/email.scss
 similarity index 91%
 rename from assets/css/email.css
 rename to assets/css/email.scss
-index c7ddf596..313fefdd 100644
+index c7ddf596d..313fefdd7 100644
 --- a/assets/css/email.css
 +++ b/assets/css/email.scss
 @@ -1,3 +1,5 @@

@@ -1,5 +1,5 @@
 diff --git a/public/build/entrypoints.json b/public/build/entrypoints.json
-index 4198b91f..68c13122 100644
+index 4198b91f7..68c131224 100644
 --- a/public/build/entrypoints.json
 +++ b/public/build/entrypoints.json
 @@ -49,6 +49,16 @@
@@ -21,7 +21,7 @@ index 4198b91f..68c13122 100644
  }
 \ No newline at end of file
 diff --git a/public/build/manifest.json b/public/build/manifest.json
-index 87b4ac98..728688f5 100644
+index 87b4ac986..728688f50 100644
 --- a/public/build/manifest.json
 +++ b/public/build/manifest.json
 @@ -8,6 +8,7 @@
@@ -42,7 +42,7 @@ index 87b4ac98..728688f5 100644
    "build/fonts/fontawesome-webfont.woff2": "/build/fonts/fontawesome-webfont.af7ae505.woff2",
    "build/fonts/fontawesome-webfont.ttf": "/build/fonts/fontawesome-webfont.b06871f2.ttf",
 diff --git a/webpack.config.js b/webpack.config.js
-index 10eb54b9..b354761d 100644
+index 10eb54b9c..b354761d9 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -22,6 +22,7 @@ Encore

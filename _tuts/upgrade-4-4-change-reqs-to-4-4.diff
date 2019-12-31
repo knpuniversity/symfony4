@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 1ebc59e6..1517be54 100644
+index 1ebc59e66..1517be541 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,23 +18,23 @@
@@ -59,7 +59,7 @@ index 1ebc59e6..1517be54 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 25bf28b9..b8225fec 100644
+index 25bf28b97..b8225fecb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

@@ -3,7 +3,7 @@ similarity index 100%
 rename from assets/css/app.css
 rename to assets/css/app.scss
 diff --git a/assets/js/app.js b/assets/js/app.js
-index 7f467b98..5a3c2d20 100644
+index 7f467b988..5a3c2d202 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -6,7 +6,7 @@

@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 67652a8c..03c8fcad 100644
+index 67652a8cd..03c8fcad9 100644
 --- a/.env
 +++ b/.env
 @@ -50,3 +50,5 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
@@ -10,7 +10,7 @@ index 67652a8c..03c8fcad 100644
 +DEV_MAIL_RECIPIENT=someone@example.com
 diff --git a/config/services_dev.yaml b/config/services_dev.yaml
 new file mode 100644
-index 00000000..31d8f354
+index 000000000..31d8f3543
 --- /dev/null
 +++ b/config/services_dev.yaml
 @@ -0,0 +1,9 @@
