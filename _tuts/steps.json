@@ -1526,6 +1526,11 @@
             "description": null
         },
         {
+            "id": "doctrine-small-update",
+            "name": "Doctrine: small update",
+            "description": null
+        },
+        {
             "id": "doctrine-unpack-orm-pack",
             "name": "Doctrine: unpack orm-pack",
             "description": null
@@ -1601,5 +1606,5 @@
             "description": null
         }
     ],
-    "sha": "fb5df8eccc15b8025e0334fde17fbea125e55073"
+    "sha": "ccc7ae0283844762ebbe55052ff71a03549b130a"
 }

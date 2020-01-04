@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 655eab28c..c4b75728a 100644
+index 99ddfa5e8..c4b75728a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -84,7 +84,7 @@ index 655eab28c..c4b75728a 100644
                  {
                      "name": "Jonathan Wage",
                      "email": "jonwage@gmail.com"
-@@ -634,39 +633,52 @@
+@@ -634,41 +633,51 @@
              "keywords": [
                  "abstraction",
                  "database",
@@ -114,18 +114,18 @@ index 655eab28c..c4b75728a 100644
          },
          {
              "name": "doctrine/doctrine-bundle",
--            "version": "1.11.2",
+-            "version": "1.12.6",
 +            "version": "2.0.6",
              "source": {
                  "type": "git",
                  "url": "https://github.com/doctrine/DoctrineBundle.git",
--                "reference": "28101e20776d8fa20a00b54947fbae2db0d09103"
+-                "reference": "08f944760ac471aa97a9b0386dfdb559db80b32d"
 +                "reference": "0ef972d3b730f975c80db9fffa4b2a0258c91442"
              },
              "dist": {
                  "type": "zip",
--                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/28101e20776d8fa20a00b54947fbae2db0d09103",
--                "reference": "28101e20776d8fa20a00b54947fbae2db0d09103",
+-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/08f944760ac471aa97a9b0386dfdb559db80b32d",
+-                "reference": "08f944760ac471aa97a9b0386dfdb559db80b32d",
 +                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/0ef972d3b730f975c80db9fffa4b2a0258c91442",
 +                "reference": "0ef972d3b730f975c80db9fffa4b2a0258c91442",
                  "shasum": ""
@@ -134,89 +134,58 @@ index 655eab28c..c4b75728a 100644
 -                "doctrine/dbal": "^2.5.12",
 -                "doctrine/doctrine-cache-bundle": "~1.2",
 +                "doctrine/dbal": "^2.9.0",
-+                "doctrine/persistence": "^1.3.3",
+                 "doctrine/persistence": "^1.3.3",
                  "jdorn/sql-formatter": "^1.2.16",
                  "php": "^7.1",
--                "symfony/config": "^3.4|^4.1",
--                "symfony/console": "^3.4|^4.1",
--                "symfony/dependency-injection": "^3.4|^4.1",
--                "symfony/doctrine-bridge": "^3.4|^4.1",
--                "symfony/framework-bundle": "^3.4|^4.1"
+-                "symfony/cache": "^3.4.30|^4.3.3",
+-                "symfony/config": "^3.4.30|^4.3.3",
+-                "symfony/console": "^3.4.30|^4.3.3",
+-                "symfony/dependency-injection": "^3.4.30|^4.3.3",
+-                "symfony/doctrine-bridge": "^3.4.30|^4.3.3",
+-                "symfony/framework-bundle": "^3.4.30|^4.3.3",
 +                "symfony/cache": "^4.3.3|^5.0",
 +                "symfony/config": "^4.3.3|^5.0",
 +                "symfony/console": "^3.4.30|^4.3.3|^5.0",
 +                "symfony/dependency-injection": "^4.3.3|^5.0",
 +                "symfony/doctrine-bridge": "^4.3.7|^5.0",
 +                "symfony/framework-bundle": "^3.4.30|^4.3.3|^5.0",
-+                "symfony/service-contracts": "^1.1.1|^2.0"
+                 "symfony/service-contracts": "^1.1.1|^2.0"
              },
              "conflict": {
-                 "doctrine/orm": "<2.6",
-@@ -675,15 +687,15 @@
-             "require-dev": {
+@@ -679,14 +688,13 @@
                  "doctrine/coding-standard": "^6.0",
                  "doctrine/orm": "^2.6",
+                 "ocramius/proxy-manager": "^2.1",
 -                "php-coveralls/php-coveralls": "^2.1",
--                "phpunit/phpunit": "7.0",
--                "symfony/cache": "^3.4|^4.1",
-+                "ocramius/proxy-manager": "^2.1",
-+                "phpunit/phpunit": "^7.5",
+                 "phpunit/phpunit": "^7.5",
                  "symfony/phpunit-bridge": "^4.2",
--                "symfony/property-info": "^3.4|^4.1",
--                "symfony/validator": "^3.4|^4.1",
--                "symfony/web-profiler-bundle": "^3.4|^4.1",
--                "symfony/yaml": "^3.4|^4.1",
--                "twig/twig": "^1.34|^2.4"
+-                "symfony/property-info": "^3.4.30|^4.3.3",
+-                "symfony/twig-bridge": "^3.4|^4.1",
+-                "symfony/validator": "^3.4.30|^4.3.3",
+-                "symfony/web-profiler-bundle": "^3.4.30|^4.3.3",
+-                "symfony/yaml": "^3.4.30|^4.3.3",
 +                "symfony/property-info": "^4.3.3|^5.0",
 +                "symfony/twig-bridge": "^3.4.30|^4.3.3|^5.0",
 +                "symfony/validator": "^3.4.30|^4.3.3|^5.0",
 +                "symfony/web-profiler-bundle": "^3.4.30|^4.3.3|^5.0",
 +                "symfony/yaml": "^3.4.30|^4.3.3|^5.0",
-+                "twig/twig": "^1.34|^2.12"
+                 "twig/twig": "^1.34|^2.12"
              },
              "suggest": {
-                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
-@@ -692,7 +704,7 @@
+@@ -696,7 +704,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
--                    "dev-master": "1.11.x-dev"
+-                    "dev-master": "1.12.x-dev"
 +                    "dev-master": "2.0.x-dev"
                  }
              },
              "autoload": {
-@@ -706,20 +718,20 @@
-             ],
-             "authors": [
-                 {
--                    "name": "Symfony Community",
--                    "homepage": "http://symfony.com/contributors"
-+                    "name": "Fabien Potencier",
-+                    "email": "fabien@symfony.com"
-                 },
-                 {
-                     "name": "Benjamin Eberlei",
-                     "email": "kontakt@beberlei.de"
-                 },
-                 {
--                    "name": "Doctrine Project",
--                    "homepage": "http://www.doctrine-project.org/"
-+                    "name": "Symfony Community",
-+                    "homepage": "http://symfony.com/contributors"
-                 },
-                 {
--                    "name": "Fabien Potencier",
--                    "email": "fabien@symfony.com"
-+                    "name": "Doctrine Project",
-+                    "homepage": "http://www.doctrine-project.org/"
-                 }
-             ],
-             "description": "Symfony DoctrineBundle",
-@@ -730,136 +742,48 @@
+@@ -734,136 +742,48 @@
                  "orm",
                  "persistence"
              ],
--            "time": "2019-06-04T07:35:05+00:00"
+-            "time": "2019-12-19T09:08:00+00:00"
 -        },
 -        {
 -            "name": "doctrine/doctrine-cache-bundle",
@@ -363,7 +332,7 @@ index 655eab28c..c4b75728a 100644
              },
              "notification-url": "https://packagist.org/downloads/",
              "license": [
-@@ -867,16 +791,16 @@
+@@ -871,16 +791,16 @@
              ],
              "authors": [
                  {
@@ -384,7 +353,7 @@ index 655eab28c..c4b75728a 100644
                  }
              ],
              "description": "Symfony DoctrineMigrationsBundle",
-@@ -886,7 +810,7 @@
+@@ -890,7 +810,7 @@
                  "migrations",
                  "schema"
              ],
@@ -393,7 +362,7 @@ index 655eab28c..c4b75728a 100644
          },
          {
              "name": "doctrine/event-manager",
-@@ -1151,16 +1075,16 @@
+@@ -1155,16 +1075,16 @@
          },
          {
              "name": "doctrine/migrations",
@@ -414,7 +383,7 @@ index 655eab28c..c4b75728a 100644
                  "shasum": ""
              },
              "require": {
-@@ -1168,8 +1092,8 @@
+@@ -1172,8 +1092,8 @@
                  "ocramius/package-versions": "^1.3",
                  "ocramius/proxy-manager": "^2.0.2",
                  "php": "^7.1",
@@ -425,7 +394,7 @@ index 655eab28c..c4b75728a 100644
              },
              "require-dev": {
                  "doctrine/coding-standard": "^6.0",
-@@ -1182,8 +1106,8 @@
+@@ -1186,8 +1106,8 @@
                  "phpstan/phpstan-phpunit": "^0.10",
                  "phpstan/phpstan-strict-rules": "^0.10",
                  "phpunit/phpunit": "^7.0",
@@ -436,7 +405,7 @@ index 655eab28c..c4b75728a 100644
              },
              "suggest": {
                  "jdorn/sql-formatter": "Allows to generate formatted SQL with the diff command.",
-@@ -1195,7 +1119,7 @@
+@@ -1199,7 +1119,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -445,7 +414,7 @@ index 655eab28c..c4b75728a 100644
                  }
              },
              "autoload": {
-@@ -1229,7 +1153,7 @@
+@@ -1233,7 +1153,7 @@
                  "migrations",
                  "php"
              ],
@@ -454,7 +423,7 @@ index 655eab28c..c4b75728a 100644
          },
          {
              "name": "doctrine/orm",
-@@ -3040,16 +2964,16 @@
+@@ -3044,16 +2964,16 @@
          },
          {
              "name": "ocramius/package-versions",
@@ -475,7 +444,7 @@ index 655eab28c..c4b75728a 100644
                  "shasum": ""
              },
              "require": {
-@@ -3061,7 +2985,7 @@
+@@ -3065,7 +2985,7 @@
                  "doctrine/coding-standard": "^5.0.1",
                  "ext-zip": "*",
                  "infection/infection": "^0.7.1",
@@ -484,7 +453,7 @@ index 655eab28c..c4b75728a 100644
              },
              "type": "composer-plugin",
              "extra": {
-@@ -3086,37 +3010,38 @@
+@@ -3090,37 +3010,38 @@
                  }
              ],
              "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
@@ -538,7 +507,7 @@ index 655eab28c..c4b75728a 100644
              },
              "suggest": {
                  "ocramius/generated-hydrator": "To have very fast object to array to object conversion for ghost objects",
-@@ -3155,7 +3080,7 @@
+@@ -3159,7 +3080,7 @@
                  "proxy pattern",
                  "service proxies"
              ],
@@ -547,7 +516,7 @@ index 655eab28c..c4b75728a 100644
          },
          {
              "name": "oneup/flysystem-bundle",
-@@ -4529,16 +4454,16 @@
+@@ -4533,16 +4454,16 @@
          },
          {
              "name": "symfony/config",
@@ -568,7 +537,7 @@ index 655eab28c..c4b75728a 100644
                  "shasum": ""
              },
              "require": {
-@@ -4589,7 +4514,7 @@
+@@ -4593,7 +4514,7 @@
              ],
              "description": "Symfony Config Component",
              "homepage": "https://symfony.com",
@@ -577,7 +546,7 @@ index 655eab28c..c4b75728a 100644
          },
          {
              "name": "symfony/console",
-@@ -4778,16 +4703,16 @@
+@@ -4782,16 +4703,16 @@
          },
          {
              "name": "symfony/dependency-injection",
@@ -598,7 +567,7 @@ index 655eab28c..c4b75728a 100644
                  "shasum": ""
              },
              "require": {
-@@ -4847,7 +4772,7 @@
+@@ -4851,7 +4772,7 @@
              ],
              "description": "Symfony DependencyInjection Component",
              "homepage": "https://symfony.com",
@@ -607,7 +576,7 @@ index 655eab28c..c4b75728a 100644
          },
          {
              "name": "symfony/doctrine-bridge",
-@@ -5186,7 +5111,7 @@
+@@ -5190,7 +5111,7 @@
          },
          {
              "name": "symfony/filesystem",
@@ -616,7 +585,7 @@ index 655eab28c..c4b75728a 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/filesystem.git",
-@@ -7330,20 +7255,20 @@
+@@ -7334,20 +7255,20 @@
          },
          {
              "name": "symfony/service-contracts",
@@ -642,7 +611,7 @@ index 655eab28c..c4b75728a 100644
                  "psr/container": "^1.0"
              },
              "suggest": {
-@@ -7352,7 +7277,7 @@
+@@ -7356,7 +7277,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -651,7 +620,7 @@ index 655eab28c..c4b75728a 100644
                  }
              },
              "autoload": {
-@@ -7384,11 +7309,11 @@
+@@ -7388,11 +7309,11 @@
                  "interoperability",
                  "standards"
              ],
@@ -665,7 +634,7 @@ index 655eab28c..c4b75728a 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/stopwatch.git",
-@@ -8560,26 +8485,29 @@
+@@ -8564,26 +8485,29 @@
          },
          {
              "name": "zendframework/zend-code",
@@ -701,7 +670,7 @@ index 655eab28c..c4b75728a 100644
                  "zendframework/zend-coding-standard": "^1.0",
                  "zendframework/zend-stdlib": "^2.7 || ^3.0"
              },
-@@ -8590,8 +8518,9 @@
+@@ -8594,8 +8518,9 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -713,24 +682,16 @@ index 655eab28c..c4b75728a 100644
                  }
              },
              "autoload": {
-@@ -8609,7 +8538,8 @@
-                 "code",
+@@ -8614,7 +8539,7 @@
                  "zf"
              ],
+             "abandoned": "laminas/laminas-code",
 -            "time": "2019-08-31T14:14:34+00:00"
-+            "abandoned": "laminas/laminas-code",
 +            "time": "2019-12-10T19:21:15+00:00"
          },
          {
              "name": "zendframework/zend-eventmanager",
-@@ -8663,33 +8593,37 @@
-                 "events",
-                 "zf2"
-             ],
-+            "abandoned": "laminas/laminas-eventmanager",
-             "time": "2018-04-25T15:33:34+00:00"
-         }
-     ],
+@@ -8675,27 +8600,30 @@
      "packages-dev": [
          {
              "name": "doctrine/data-fixtures",
@@ -767,7 +728,7 @@ index 655eab28c..c4b75728a 100644
                  "doctrine/orm": "^2.5.4",
                  "phpunit/phpunit": "^7.0"
              },
-@@ -8702,7 +8636,7 @@
+@@ -8708,7 +8636,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -776,7 +737,7 @@ index 655eab28c..c4b75728a 100644
                  }
              },
              "autoload": {
-@@ -8725,39 +8659,42 @@
+@@ -8731,39 +8659,42 @@
              "keywords": [
                  "database"
              ],
@@ -829,7 +790,7 @@ index 655eab28c..c4b75728a 100644
                  }
              },
              "autoload": {
-@@ -8771,16 +8708,16 @@
+@@ -8777,16 +8708,16 @@
              ],
              "authors": [
                  {
@@ -850,7 +811,7 @@ index 655eab28c..c4b75728a 100644
                  }
              ],
              "description": "Symfony DoctrineFixturesBundle",
-@@ -8789,7 +8726,7 @@
+@@ -8795,7 +8726,7 @@
                  "Fixture",
                  "persistence"
              ],

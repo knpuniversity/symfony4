@@ -21,7 +21,7 @@ index 39f4f43f4..893175a5b 100644
          "symfony/sendgrid-mailer": "4.4.*",
          "symfony/serializer-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index b0bbfbcbf..655eab28c 100644
+index 5fa12dc11..99ddfa5e8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -33,7 +33,7 @@ index b0bbfbcbf..655eab28c 100644
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
-@@ -6211,34 +6211,6 @@
+@@ -6215,34 +6215,6 @@
              ],
              "time": "2019-10-28T21:57:16+00:00"
          },
