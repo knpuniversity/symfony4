@@ -62,8 +62,10 @@ composer recipes install symfony/console --force -v
 
 Nice! Thanks to the `-v` flag, it tells us what files it worked on. It says:
 
-> created bin/console
-> create config/bootstrap.php
+```bash
+Created bin/console
+Created config/bootstrap.php
+```
 
 Well, really, it *modified* those files... but at least in the version of Flex
 I'm using, it always says "created".

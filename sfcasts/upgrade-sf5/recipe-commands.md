@@ -10,18 +10,27 @@ directories and about 15 files.
 
 *All* of those things are added by different *recipes*. So even the most "core"
 files - for example, `public/index.php`, the file that our web server executes,
-is added by a recipe! We pretty much *never* need to look inside here or do anything,
-even though it's *critical* to our app working.
+is added by a recipe!
 
-Another example is `config/bootstrap.php`: the boring, low-level file that
-initializes and normalizes environment variables. It's important that all Symfony
-projects have the same version of this file. If they didn't, some apps might work
-different than others... even if they have the same version of Symfony. Think of
-trying to write documentation for thousands of projects that all work a *little*
-bit differently. It's literally my nightmare.
+[[[ code('0f45ff649c') ]]]
+
+We pretty much *never* need to look inside here or do anything, even though it's
+*critical* to our app working.
+
+Another example is `config/bootstrap.php`:
+
+[[[ code('94eca5784e') ]]]
+
+the boring, low-level file that initializes and normalizes environment variables.
+It's important that all Symfony projects have the same version of this file.
+If they didn't, some apps might work different than others... even if they have
+the same version of Symfony. Think of trying to write documentation for thousands
+of projects that all work a *little* bit differently. It's literally my nightmare.
 
 All of the configuration files were *also* originally added by recipes. For example,
-`cache.yaml` comes from the recipe for `symfony/framework-bundle``.
+`cache.yaml` comes from the recipe for `symfony/framework-bundle`:
+
+[[[ code('4aefb7feb1') ]]]
 
 ## Why Recipes Update
 
@@ -53,10 +62,13 @@ great: we want our `bootstrap.php` file to look *exactly* like it should.
 ## New Recipe Commands!
 
 A few minutes ago, when we did all the composer updating stuff, one of the packages
-that we upgraded was `symfony/flex` itself: we upgraded it to `1.6.0`. Well guess
-what?! Starting in Flex `1.6.0`, there are some brand new fancy, amazing, incredible
-commands inside Composer to help inspect & upgrade recipes. It still takes a
-little bit of work and care, but the process is now very possible. A big thanks to
+that we upgraded was `symfony/flex` itself: we upgraded it to `1.6.0`:
+
+[[[ code('dced1a48f3') ]]]
+
+Well guess what?! Starting in Flex `1.6.0`, there are some brand new fancy, amazing,
+incredible commands inside Composer to help inspect & upgrade recipes. It still takes
+a little bit of work and care, but the process is now very possible. A big thanks to
 community member and friend [maxhelias](https://github.com/maxhelias) who really
 helped to get this done.
 
