@@ -93,8 +93,7 @@ uses that. No big deal. The `getCacheDir()` and `getLogDir()` methods aren't
 needed anymore because they're implemented by the *parent* class with the
 same logic. Removing them is a nice cleanup.
 
-And `registerBundles()` now has an `iterable` return type: another thing that
-we *would* have seen as a deprecation warning.
+And `registerBundles()` now has an `iterable` return type.
 
 I'll clear my screen then answer "y" to add these changes.
 
