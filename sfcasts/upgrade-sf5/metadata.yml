@@ -12,3 +12,4 @@ chapters:
     - phpunit-routing-recipes
     - final-recipe-updates
     - webpack-encore-recipe
+    - first-deprecations
