@@ -38,9 +38,7 @@ code.
 I don't *really* want these changes. I mean, I *do* still want to define a
 `MAILER_DSN` environment variable and I *do* still want to use the `null` transport.
 Except... the removed note *did* just remind me about a syntax change in the
-`null` transport for Symfony 4.4. That note was *removed* in the latest version
-of the recipe because, *if* you installed `symfony/mailer` 4.4 today, you
-would *not* need to know about the new and old syntax.
+`null` transport for Symfony 4.4.
 
 Hit "n" to *not* add this change... for now. Then hit "y" for the `symfony.lock`
 update.
