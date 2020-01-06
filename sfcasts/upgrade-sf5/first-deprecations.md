@@ -24,6 +24,10 @@ all your deprecated code, just deploy it to production, wait a few hours or days
 and check the log to make sure it doesn't contain anything new. *Then* you know it's
 safe to upgrade.
 
+By the way, Symfony Insight has special integration to identify and fix
+deprecation warnings. So if you want some extra help... or an "easy" button,
+give it a try.
+
 ## Removing WebServerBundle
 
 So let's start crushing our deprecations. I'll refresh the homepage and open the

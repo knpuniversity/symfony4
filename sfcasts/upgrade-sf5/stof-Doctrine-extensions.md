@@ -1,63 +1,94 @@
-# Stof Doctrine Extensions
+# Upgrading/Migrating from StofDoctrineExtensions
 
-Coming soon...
+Let's see how our deprecation list is looking: refresh the homepage, open the
+profiler and... we still have the `TreeBuilder::root()` deprecation coming from
+`stof_doctrine_extension`.
 
-Let's take a look at how things are deprecations are looking at this moment. So I'll
-go refresh the home page and let's open up our profiler and okay, so we still have
-the tree builder root thing coming from staff doctrine extension. So let's find the
-stuff, doctrine extensions, bundle package name. I'll copy that. And again we'll hope
-that just upgrading this from version 1.3 to 1.4 or 1.5 will be enough. So I'll say
-composer update stop /doctrine /dash extensions bundle. But like with the campy page
-knitted bundle, we don't get an update. So now we need to figure out what's going on
-with this. So I'll Google for stuff, doctrine extensions bundle and have it over to
-the get hub page. And the first thing I'm gonna look at is like what is the latest
-release? And you can see that we're using version 1.3 0.0 and the latest version is
-1.3 0.0 from almost from over two years ago. Adding support for Symfony four. So
-unfortunately if you look into this bundle, which I really like, it is a bit
-abandoned. Fortunately by digging in a little bit, you can see that the community has
-done a wonderful job here of actually forking this library
+You know the drill: try to upgrade this the *layzy* way: find the library name
+and copy it. We're *hoping* a minor upgrade - maybe from 1.3 to 1.4 or 1.5 - will
+fix things for us. Update!
 
-[inaudible].
+```terminal
+composer update stof/doctrine-extensions-bundle
+```
 
-I'm actually going to copy that and let's copy that entire package name and I'm going
-to Google for that.
+And... once again... *nothing* happens. Let's go hunting for answers! Google
+for StofDoctrineExtensionsBundle and... find its GitHub page. The *first* thing
+I want to look at is what is the latest version? It's, oh: 1.3.0 - that's the
+version *we're* using and it's 2 years old!
 
-[inaudible]
+This is an example of a bundle that, at least at the time of this recording, does
+*not* yet support Symfony 5. So... what do we do? If you look at the issues or
+pull requests, of a library in this situation, you will *hopefully* find some
+conversation about it - *hopefully* it's something that's coming soon. But in
+this case, as much as I like this bundle, it's basically abandoned.
 
-Oh I found it's packages page and let's actually click over to the get hub page. So
-basically what happened here is this user here, um, forked stops library and he's at,
-they've actually been doing a really wonderful job maintaining it. You can see it has
-the same tag history version 1.3 0.0 and they've added a 1.4 added 75 just four and
-1.4 0.1 and 1.4 0.2 so they're actually doing a really nice job of maintaining this
-library. It's the exact same package. It's got all the same code as before. They've
-just actually added a fixing bugs, added Symfony five support and it's under a new
-name. So we're now going to switch to this library so we can get a version that's
-compatible with simply five. So here's how this is going to work. I'll copy the stock
-package name again. I'm going to say composer remove stuffed /doctrine extensions
-bundle.
+## Hello fork: antishov/doctrine-extensions-bundle
 
-And when we do that, we're going to get a huge air. Um, don't worry cause it actually
-did remove it, but our code is relying on some of that. So since that code has gone,
-uh, it's temporarily going to be broken. Now I'm gonna move back over and click back
-to the homepage here of this fork. Go down to the read meat and compose copy the
-compose require line with their name instead of staff in the beginning. And we'll
-paste that. This is going to reinstall the package at a newer version and it's
-actually going to install a recipe, which again, this user has done a really good
-job. I've actually created a recipe that's basically identical to the original one.
-So really is everything. It looks and feels like the original one. So I'm gonna do
-it, get status here, because this did just re-install the recipe.
+That *does* happen sometimes. After all, most open source maintainers are volunteers.
+*However*, if you dig a little bit, you'll find out that someone in the community
+has done a *really* nice job of forking this library and creating some new releases.
 
-So let's add compose that JSON, compose it out, lock Symfony, that lock, because we
-know we need those files. And now I want to do get add dash P. now the first change
-is in bundles. That PHP, you can see it didn't really remove this because if we say
-yes here, it just added the same one down at the bottom. So that's actually really a
-meaningless change. And then because it uninstalled the package and re-install the
-recipe, it actually deleted my custom code and stopped doctrine extensions that
-Yamhill. So I'm going to say no to that change.
+Copy the library name, Google for it and... let's see... here is its
+[GitHub page](https://github.com/antishov/StofDoctrineExtensionsBundle). Click
+to view the releases.
 
-Perfect. So I'll come. So I'll commit
+Basically, someone forked the library, kept *all* the code and release history,
+but started making fixing and creating new releases... including a release that
+adds Symfony 5 support.
 
-that we're using a doctrine extension well on the fork and they'll say get
-checkout.to get rid of those custom changes. So it was a bit of a weird one, but if
-we close everything up and refresh, now our deprecations go from 25 to 16 that took a
-bunch of the spots off. So next, let's work on something different.
+## Changing to antishov/doctrine-extensions-bundle
+
+Perfect! Let's switch to use this fork. Copy the `stof` package name again, and
+remove it:
+
+```terminal
+composer remove stof/doctrine-extensions-bundle
+```
+
+Composer removes it then... explodes! That's ok: it *was* removed... but because
+our app needs this library... it's temporarily not too happy with us. Now go
+back to the homepage of the fork, find the `composer require` line, copy it,
+and re-install the library:
+
+```terminal
+composer require antishov/doctrine-extensions-bundle
+```
+
+This *basically* gives us the same library but at a newer version. The author
+*also* created an identical recipe for this package - so even the recipe gets
+re-installed nicely.
+
+Commit the files we *know* we want to keep:
+
+```terminal
+git add composer.json composer.lock symfony.lock
+```
+
+*Now* selectively-choose the changes from the update recipe by running:
+
+```terminal
+git add -p
+```
+
+This is `bundles.php` - it *looks* like it removed the bundle... but if you hit
+"y", it just moved it. A meaningless change. And next, because it re-installed
+the recipe, it removed our custom changes. Hit "n" to skip those changes.
+
+Let's commit!
+
+```terminal
+git commit -m "using doctrine extensions bundle fork"
+```
+
+And then, revert the changes to the config file:
+
+```terminal
+git checkout .
+```
+
+So... that update was weird. Let's close some tabs and fresh. *Yas*! The deprecations
+jump from 25 to 16.
+
+Let's keep going! The next deprecations are going to uncover that we *also* need
+to upgrade DoctrineBundle from version 1 to 2 - a significant jump.
