@@ -13,3 +13,6 @@ chapters:
     - final-recipe-updates
     - webpack-encore-recipe
     - first-deprecations
+    - knp-paginator-update #raw
+    - stof-Doctrine-extensions #raw
+    - doctrine-bundle-2.0 #raw
