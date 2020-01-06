@@ -62,7 +62,9 @@ get checkout config/services.yaml
 ```
 
 Move back and look at the file in our editor... the custom code is back!
-*Now* manually take out the `public: false` line and the comments below it.
+*Now* manually take out the `public: false` line and the comments below it:
+
+[[[ code('32ca7a5d94') ]]]
 
 Let's continue the process. Start again with:
 
@@ -127,7 +129,9 @@ git status
 ```
 
 Oh! The recipe added a *new* file: `config/routes/dev/framework.yaml`. Interesting.
-Let's go open that: `config/routes/dev/framework.yaml`.
+Let's go open that: `config/routes/dev/framework.yaml`:
+
+[[[ code('9c26384e7d') ]]]
 
 You may or may not know, but Symfony has a feature that allows you to test what your
 production error pages look like. Just go to `/_error/404` to see the 404 page
@@ -138,8 +142,12 @@ happens on production.
 only.
 
 Previously, if you open the `twig.yaml` file in the same directory, this feature
-came from TwigBundle. Now it lives inside FrameworkBundle. *That* is why the
-framework-bundle recipe added the new file.
+came from TwigBundle:
+
+[[[ code('ff521262e7') ]]]
+
+Now it lives inside FrameworkBundle. *That* is why the framework-bundle recipe
+added the new file.
 
 Hmm... but since we haven't updated the TwigBundle recipe yet, we temporarily
 have *two* routing files that are trying to add a route to the *same* `/_error`
