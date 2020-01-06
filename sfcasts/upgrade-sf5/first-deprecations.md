@@ -1,63 +1,106 @@
 # Fixing the First Deprecations
 
-Okay. We are now on Symfony 4.4 and we've upgraded all of the Symfony recipes. Now
-our path is fairly straightforward. Our job is to find and fix all of the deprecated
-code that we're using. As soon as we've done that, it will be safe to upgrade the
-Symfony 5.0 so how do we find all of the deprecated code paths we're using after off,
-there's some function that's deprecated. How would we know that? There's two main
-ways that you configure it out. The first one is down here on the web debug toolbar.
-This literally tells us that this page load hit 49 deprecations. We're going to show
-that in a second.
+We've upgraded to Symfony 4.4 *and* updated all of our Symfony recipes. *Now*,
+our path to Symfony 5 is pretty straightforward. We need to find and fix all of
+the deprecated code that we're using. As *soon* as we've done that, it will be
+safe to tweak our `composer.json` file and go to 5.0.
 
-However, even if you fix all of the deprecations that you can find on your site,
-there always might be some edge case page or edge case situation you didn't think of
-trying locally and so, so you might not even, so you, there might always be some
-cases that you didn't think of. So the second way to find applications is after you
-fixed most of them, you can check the deprecations log on production. Check this out
-in my config packages at prod monolog.yaml file. There's two handlers down here
-called deprecation and deprecation filter. In production mode, you're going to have a
-prod dot deprecations dot log file. So once you fixed all the deprecations, you know
-of, you can go onto production and check this log file to make sure nothing new is
-going into it. Once you're satisfied, all the deprecations are gone and your ready to
-upgrade.
+## Finding Deprecated Code
 
-All right, so let's start talking about the deprecations. I'm going to refresh the
-homepage and then in the new window, open up the uh, the profiler to the
-deprecations. Fixing the deprecations is a, in some ways straightforward and, but in
-other ways it's kind of a wild thing cause there's many different things that you
-might need to do to fix a deprecation. The first one here is pretty straight forward.
-It says the web server bundle is deprecated since Symfony 4.4 if you're ready.
-Remember when we started her web server over here we use the Symfony serve command.
-This comes from the nicest Symfony binary, which is a actually a binary built in. Go.
-Or before this existed, we used to use a bin console server, call and run command
-that comes from the web server bundle that's now deprecated. This is a super easy
-thing to fix. If you look in our composer dot JSON file, we have a Symfony /web
-server bundle here. I'm going to copy that move over and run composer, remove Symfony
-/web server bundle that's going to remove that bundle. And actually it's going to
-upgrade a couple of my packages. A patch version 4.4 0.2 has come out since then. It
-also unconfigured as the recipe. So it's a it on registers itself. It also makes a
-change in that get ignore
+So how *do* we figure out what deprecated functions, config options or classes
+we might be using? There are two *main* ways. The best is down here on the web debug
+toolbar. This *literally* tells us that during the loading of this page, we called
+49 deprecated things. We'll look at these in a minute and start eliminating them.
 
-which, uh, stops, um, ignoring a file that, that a bundle would sometimes create. So
-one deprecation done. So let's go back and look at our list. These second one down
-here is something a call about, uh, calling event dispatcher dispatch method with the
-event name as the first argument is deprecated since Symfony 4.3. So one of the
-trickiest things about fixing deprecations is that you need to find out where this is
-actually coming from. And to make things worse, a lot of times it's not coming from
-our code, it's coming from third party libraries that we rely on. So in this case, if
-you hit show trace here, it gives you a little trace about where this is coming from.
-It's not super obvious, uh, but if you kind of look up here, you can see something
-about leap. Imagine if I hover over this, you'll see that this is coming from leap.
+But *even* once you get this number down to zero... you can't be *totally* sure
+that you've fixed *all* your deprecated. Like, what if you're using a deprecated
+function *only* on some obscure AJAX call... and you forgot to check that.
 
-Imagine bundle. So leap, imagine bundle is calling some deprecated code. Now there's
-only one way to fix that and that is to upgrade leap. Imagine bundle. The easiest way
-to do this is to go over find that package. So leap /imagine bubble and then move
-over and just run composer update, leap. /imagine bundle. What we're hoping is that a
-minor upgrade, like you know, maybe 2.1 to 2.2 is going to take care of this upgrade.
-And actually you can see it upgraded from 2.1 to 2.2 did that fix the deprecation? I
-have no idea. I'm being lazy. I'm just upgrading. So let's go find out how close the
-profiler. Refresh the homepage and cool. You can see the deprecations went from 48 to
-29 that's a good sign. I'll open that in a new tab and awesome. It looks like that
-stuff is gone. So next, let's keep going with this. I'm, we're going to focus on
-these tree builder root things next, which are also going to involve upgrading
-bundles, but those upgrades are going to be a little bit more complex.
+That's why Symfony has a *second* way to find deprecated code: a deprecations
+log file on production. Open up `config/packages/prod/monolog.yaml`. This has two
+handlers - `deprecation` and `deprecation_filter` that, together, add a log entry
+each time you hit deprecated code on production. So once you *think* you've fixed
+all your deprecated code, just deploy it to production, wait a few hours or days,
+and check the log to make sure it doesn't contain anything new. *Then* you know it's
+safe to upgrade.
+
+## Removing WebServerBundle
+
+So let's start crushing our deprecations. I'll refresh the homepage and open the
+deprecations counter link in a new window. Fixing deprecated code can be... a bit
+of an adventure because you might need to change a class name, method name, remove
+a bundle, upgrade a 3rd party library, tweak some config or anything else you
+can think of.
+
+The first deprecation is pretty simple: it says the `WebServerBundle` is deprecated
+since Symfony 4.4.
+
+At the beginning of this tutorial, we started a local web server by running:
+
+```terminal
+symfony serve
+```
+
+This `symfony` thing is the Symfony binary: a nice development tool that, in addition
+to other things, is able to start a development server. Before this existed, we
+*used* to start a local web server by running:
+
+```terminal
+php bin/console server:run
+```
+
+A console command that came from the WebServerBundle. That's now deprecated...
+because the Symfony binary is better.
+
+So this deprecation is easy to fix. Inside `composer.json`, find the
+`symfony/web-server-bundle` line, copy it, find your terminal and remove it:
+
+```terminal
+composer remove symfony/web-server-bundle
+```
+
+Oh! It's over-achieving! In addition to removing that bundle, it's upgrading a
+few related packages to the latest bug fix version. This also *unconfigured*
+the recipe: it removed the bundle from `bundles.php` *and* removed an entry from
+`.gitignore` that we don't need anymore.
+
+## Updating a 3rd Party Bundle
+
+Hey! One deprecation is gone! Let's go find another one! Hmm, the second one
+is something about:
+
+> calling the `EventDispatcher::dispatch()` method with the event name as the
+> first argument is deprecated since Symfony 4.3.
+
+One of the trickiest things about fixing deprecations is that you need to find
+out *where* this is actually coming from. To make things even *more* interesting...
+pretty often, a deprecation won't be triggered directly by *our* code, but by
+a third-party bundle that were using.
+
+In this case, if you show the trace, it gives info about where this is coming from.
+It's not super obvious... but if you closely up here, it mentions LiipImagineBundle.
+
+Ok, so LiipImagineBundle appears to be calling some deprecated code, which means
+that our current version will *definitely* not be compatible with Symfony 5.
+Fortunately, there's only *one* way to fix deprecated code that's called from
+a vendor library: upgrade it!
+
+Let's do this in the *laziest* way possible. Inside `composer.json`, find that
+package, copy its name, and run:
+
+```terminal
+composer update liip/imagine-bundle
+```
+
+What we're *hoping* is that this deprecation *has* been fixed and - *ideally* -
+that we only need to upgrade a "minor" version to get that fix - like maybe upgrading
+from 2.1 to 2.2 will have the fix.
+
+And actually... yea! It *did* upgrade from 2.1 to 2.2. Did that fix the deprecation?
+I have no idea! Let's find out! Close the profiler tab and refresh the homepage.
+Good sign: the deprecations went from 48 to 29. I'll open the deprecations in a
+new tab and... awesome: it looks like that specific deprecation is gone.
+
+Next: let's keep going! We're going to focus on these `TreeBuilder::root()`
+deprecations next. These are *also* coming from third-party libraries. But upgrading
+them will be bit more complex.
