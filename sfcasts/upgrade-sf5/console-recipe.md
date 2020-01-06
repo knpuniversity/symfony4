@@ -50,14 +50,14 @@ obvious. And when it's not, with a little digging, we can find the reason.
 ## Let's update a Recipe
 
 Okay, so how do we *actually* upgrade a recipe to the latest version? You can see
-the answer down here: `composer recipes install symfony/console --force -v`.
+the answer down here: `composer recipes:install symfony/console --force -v`.
 
 But, it's not *really* a smart "update" system. That command tells Flex to
 completely re-install the `symfony/console` recipe using the latest version. Try
 it:
 
 ```terminal-silent
-composer recipes install symfony/console --force -v
+composer recipes:install symfony/console --force -v
 ```
 
 Nice! Thanks to the `-v` flag, it tells us what files it worked on. It says:
