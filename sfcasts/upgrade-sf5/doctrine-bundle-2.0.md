@@ -1,23 +1,36 @@
 # Upgrading to DoctrineBundle 2.0
 
-For checkout. Our deprecations right now there's actually a lot of stuff related to
-doctrine and the doctrine part of upgrading 75 is a little bit weird because at the
-same time Symfony is going from version four does a version five. There is a new
-version of doctrine bundle and doctrine is splitting some libraries in certain ways.
-There's a lot of stuff going on. So if I search specifically for doctrine bundle, we
-will see something here that actually says that there is some missing get metadata
-driver class in a doctrine bundle doctrine extension class. Basically this is it. A
-very simple way of also saying that doctrine bundle is another thing that needs to
-upgrade. Now if we look, if we go to, if we Google for doctrine bundle and find it's
-get up repository. If you did some digging into this, you would find out that the
-version of this package that we need is actually version two, version 2.0 that's the
-first version that's um, uh, compatible with Symfony five.
+Let's look at the latest list of deprecated code. Hmm... there's a lot of stuff
+related to Doctrine. Ok: two tricky are happening in the Doctrine world that
+make upgrading to Symfony 5 a *bit* more confusing. First, DoctrineBundle has a
+new *major* version - 2.0 - and Doctrine itself is being split into smaller packages.
+Both things are great... but there are a lot of "moving pieces" right now.
 
-There's also a version one point 12, which is currently being maintained, but that
-doesn't support somebody five. So we need to get up to version 2.0 so let's start
-with our simplest way of doing this, which is always composer up doctrine at
-/doctrine and dash bundle to see if maybe that gets us up to a high enough version
-and it does upgrade us but only to one that 12 dot. Six okay, so probably we need to
+## DoctrineBundle & Symfony 5 Compatibility
+
+If you search this page for DoctrineBundle, there's one deprecation: some missing
+`getMetadataDriverClass()` method in a `DoctrineExtension` class. So far... this
+is nothing new: a third-party library is using some deprecated code... which means
+that *we* need to upgrade it.
+
+Google for DoctrineBundle and find its GitHub page. If you did some digging, you'd
+learn that if you want Symfony 5 support, you need version *2* or higher of this
+bundle. There's also a version 1.2 that's being maintained... but it won't work
+with Symfony 5.
+
+## Upgrading DoctrineBundle
+
+So let's start with our normal, lazy way o upgrading. In your terminal, run:
+
+```terminal
+composer update doctrine/doctrine-bundle
+```
+
+It *does* upgrade... but only to 1.12.6.
+
+---> HERE
+
+so probably we need to
 go into our composer.json file and fix its version constraint. So I'll search for
 doctrine /doctrine and Nasha bundle and here and interesting. It's actually not in my
 composer. Dot. JSON on file. That means it's a dependency of something else. Let's do

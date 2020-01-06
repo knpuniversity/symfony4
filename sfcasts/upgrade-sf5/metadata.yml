@@ -15,4 +15,4 @@ chapters:
     - first-deprecations
     - knp-paginator-update
     - stof-Doctrine-extensions
-    - doctrine-bundle-2.0 #raw
+    - doctrine-bundle-2.0
