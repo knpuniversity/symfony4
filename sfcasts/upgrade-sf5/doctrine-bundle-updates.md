@@ -1,132 +1,235 @@
 # DoctrineBundle Updates & Recipe Upgrade
 
-Coming soon...
+We just upgraded from DoctrineBundle version 1 to version 2 and... it broke our
+app. That's lame! Let's fix it! Hmm:
 
-All right, so let's see what's going on with this. Cannot auto wire service problem
-down here because we just upgraded a major version. What we really need to do is go
-to doctrine bundle and look for some sort of a change log or an upgrade log and they
-do have one here for upgrading to 2.0 and there's actually quite a bit of stuff here
-about dropping old versions of PHP. Um, uh, and most of it is not that important.
-However, there are, there is one specific thing that is very important here and that
-is the that previously if you wanted to get the doctrine service, you could use the
-registry interface and you should now use manager registry. Where do we use registry
-interface off? You move over to your terminal and run, get grep registry interface.
-You'll see that we use this in every single repository class.
+> Cannot autowire service `ApiTokenRepository`: argument `$registry` references
+> interface `RegistryInterface` but not such service exists.
 
-This is actually something that make entity generates for us and it used to generate
-it with this registry interface type bet. So this is a fairly simple but fix that we
-just need to get through. I'm actually going to open every single repository class
-that I have and on all of them we're going to change registry interface here to
-manage your registry. Now you want to get the one from doctrine. Slash. Persistence.
-There's also one from doctrine. /common. Slash. Persistence. That's another one of
-those doctrine changes that's happening right now. They used to have a package called
-doctrine common, which contained lots of common different libraries. Doctors is now
-splitting those into their own packages. So the persistence directory of doctrine
-common is now its own package. So you should use the new one. The old one is a
-deprecated. What makes it a little more complicated is the change log actually
-references the old one, but you should, you should use the new one from just
-doctrine. Persistence, not from common. Also clean up my old registry interface you
-statements. So let's just repeat that a bunch more times. Rent, manage your registry,
-move the you statements, manage your registry, remove the use statement, manage your
-registry
+## Checking the CHANGELOG
 
-and done
+Hmm. Ya know, instead of trying to figure this out... and hopefully finding any
+other breaking changes, let's just go look at the CHANGELOG. Go back to the
+DoctrineBundle GitHub homepage. And... ah! Even better: upgrade guide files!
+Open `UPGRADE-2.0.md`.
 
-so. Now if we move our eye over, I can just run bin console a second ago. That would
-have exploded with that same air. Things now seem to be working now because we just
-upgraded doctrine. Bundles are very important. A librarian because we just upgraded
-version one, version two. I also want to upgrade its recipe. So if you run composer
-recipes, you'll see that it was one of the library's important libraries that has an
-update available. And I said, Hey, let's just wait until later. So let's go ahead and
-do that. Now I'm going to run a composer recipes doctrine /dr dash bundle, which
-gives us some information about the updates and then I'll copy the, uh, update
-command and paste that. Then as usual, you can see this modified several different
-files. We're going to commit this stuff very carefully, so I'll clear the screen and
-do my get add bash P, and the first change is inside of the dot end file.
+Hmm, there's a lot here: dropping old versions of PHP & Symfony and changes to
+commands. But if you look at each, you'll find that *most* of these are *very*
+minor. The *most* important changes are under "Services aliases". Previously,
+if you wanted to get the `doctrine` service, you could use the `RegistryInterface`
+type-hint for autowiring. Now you should use `ManagerRegistry`.
 
-There are some, uh, comment changes including an example for how to use Postgres QL,
-but one of the really important things that it mentions here is a new note that says
-that the server version is now required in this file or in config packages.com. Dot.
-Yammel. This is basically where you say that you're using my SQL version 5.7 or
-you're using Maria DB version 11.1 or Postgres. Um, version 11. Doctor needs to know
-this so that it knows how, what kind of queries to make. So you can either put this
-at the end of your, um, database you wear out like this, or you can commit it into
-doctrine.yaml which is what I'm going to do because I prefer to have my server
-version that I use on production committed into a file so that the SQL that's
-generated every, anywhere on any machine is always consistent.
+## From RegistryInterface to ManagerRegistry in Repository Classes
 
-So I am gonna do, I do want to accept all of these new, uh, comment changes, but I
-want to keep my old database. You where else I'm gonna copy my old database. You were
-all hit. Why to accept these changes and then hit cue to exit out of this. I'm not
-going to move over and close a couple of things up. Let's open our dot and fear. I'll
-search for database URL and I'm going to put my old value right there. All right, so
-let's keep going. I'll run, get add dash P again. We'll say yes to our database. URL
-change, yes to that compose that JSON change. In fact, let me hit Q again. Let's go
-ahead and add the stuff that we know we want. Compose that JSON, compose it out, lock
-a Symfony, that lock and all those source repository changes are the ones that we
-made so we know that those changes are good.
+Where do we use `RegistryInterface`? Move over to your terminal and run:
 
-I'll run get status again. There we go. Now we can just walk through the remaining
-changes so you can see it removed. Doc from cache bundle. I already talked about
-that. And the next change changes are in doctrine that Yamhill, and there are several
-interesting things here. The first thing is that there used to be a parameter that
-[inaudible] that was called [inaudible] database. You were out, this was basically a
-work around around a doctrine bundle air that would happen if the database you were
-environment variable wasn't set. These days, the database URL is always set it at the
-very least in your dot end file. So we don't need that anymore. So that's just a good
-thing to get rid of.
+```terminal
+git grep RegistryInterface
+```
 
-Okay.
+We use it in *every* single repository class. This is code that the
+`make:entity` command generated *for* us. The newest version of that bundle
+use the *new* type-hint.
 
-The second thing is the driver PDO. My SQL is no longer needed inside of there. Our
-database URL always contains whether or not we're using my SQL or Postgres Postgres,
-so it's just not necessary in here. Server version is actually moved down here. I'll
-talk about that in a second. And the next thing is interesting changes. This char set
-and stuff down here. This is really important if you're using my SQL so that your
-database tables are allow are can store UTF eight data starting in document bundle
-2.0 these are the default values so you no longer need them. So that's just a nice
-little cleanup. Now down here it talks about server version and how you need to set
-that either here or inside your die and file. We are going to set the server version
-here and I'll uncomment this out in just a second. The last change here is a little
-naming strategy thing. How if this is how it names your tables and columns, uh,
-there's a new number aware_strategy, which is basically the same. So we're going to
-say yes to that as well.
+Fixing this is as simple as changing a type-hint... it's just tedious. Open up
+*every* repository class. And, one-by-one, I'll change `RegistryInterface` to
+`ManageRegistry` in the constructor. Use the `ManagerRegistry` from
+`Doctrine\Persistence`. There is *also* one from `Doctrine/Common\Persistence`.
 
-Then I'm going to hit Q to quit out of this and go back and find that config packages
-doctrine.yaml and let's [inaudible] out the server version and adjust this to
-whatever your server version is. All right, flip back over. I'll clear the screen
-again. Get add dash P say yes to our server version change. And then the last
-significant changes in config packages, prod doctrine.yaml. This is the file that
-sets up your doctrine metadata to be cacheed in the prod environment. Previously, the
-way we did this is when we installed the original old recipe, it actually created
-several different, um, a cache services down here under the services key and then
-used them up here for the metadata cache driver and the query cache driver starting
-in document bundle 2.0 it basically creates these services for you so that you can
-have a much simpler configuration inside of this file.
+That's another Doctrine change that's happening right now. Doctrine originally
+had a package called `doctrine/common`, which contained a lot of... well...
+"common" classes that many other Doctrine libraries needed. Doctrine is now
+splitting `doctrine/common` into *smaller*, individual packages. Basically,
+the `Persistence` directory of `doctrine/common` is now its own package and you
+should use classes from it: the old one is deprecated.
 
-So this is a great change. We're going to say yes to it and we're done. Phew. So
-let's commit that with upgrading to doctrine. Bundle 2.0 then to celebrate. Let's
-move over and check how things are looking. So I'll go back to my homepage refresh
-and we're down to 11 deprecations. Let me open these up now. One thing you're going
-to see in here is there's a lot of things that are still about doctrine and they all
-mentioned doctrine. Persistence 1.3 that doctrine /persistence library is one of
-those that was extracted from doctrines slash. Comment [inaudible] so why are we
-getting all these doctrine persistence things? The answer is actually these are not
-things that we have done and they're not even things that doctrine bundle is doing.
-If you do some research on this, these are things that, there's two things I want to
-say about this. First of all, while this is a deprecation, this is not a Symfony
-deprecation. This is talking about something that's going to change. Um, when we
-upgrade doctrine persistence in the future, we're only interested in upgrading
-Symfony four to Symfony five. So this is a deprecation that we do not need to fix
-right now. The other thing is that this deprecation is actually not coming from our
-code. It's coming from doctrine itself. Doctrine. Slash. O. R, M.
+What makes this a bit more confusing is the UPGRADE log  references the old,
+deprecated one. It's all good stuff, but like I said: there are a lot of moving
+pieces right now.
 
-there's currently a pull request open on doctrine /RM number seven nine five three
-that removes these up. It's that updates doctrine /ORM to remove these doctrines.
-/persistence. Deprecations. It's currently targeted for version 2.8 of doctrine ORM.
-So hopefully in some in the future that will be up. That will be merged and released
-and you can upgrade to doctrine /ORM 2.8 and it will remove these deprecations. But
-as I said, they're not a problem right now. So as we continue working through these
-deprecations, we are going to ignore any of the ones from doctrine /persistence cause
-they're not blockers for upgrade and Symfony. So next, let's start squashing the last
-few deprecations that we have.
+I'll also remove the old `RegistryInterface` use statement. Let's repeat this
+a *bunch* more times: change to `ManagerRegistry`, remove the `use` statement
+and repeat. Let's see how fast I can do this. Done! Ah, but I think I sprained
+a finger.
+
+Let's see if we're good! Spin over and just run:
+
+```terminal
+php bin/console
+```
+
+*Before* those changes, running this would have caused an *explosion* - the same
+one that we saw after running `composer update`. So... we're good! We're on a
+Symfony5-compatible version of DoctrineBundle
+
+## Upgrading the DoctrineBundle Recipe
+
+But because this library is *so* important... and because we just did a *major*
+version upgrade, I also want to upgrade its recipe. Run:
+
+```terminal
+composer recipes
+```
+
+Ok, yea, DotrineBundle is one of the *few* recipes that still have an update
+available. Run:
+
+```terminal
+composer recipes doctrine/doctrine-bundle
+```
+
+to get more info and copy the update command. Run it!
+
+```terminal-silent
+composer recipes:install doctrine/doctrine-bundle --force -v
+```
+
+Ok, it looks like this updated several files. Let's step through the changes:
+I'll clear the screen and run:
+
+```terminal
+git add -p
+```
+
+## .env Changes and serverVersion
+
+The first changes are inside `.env`: it added a PostgreSQL example and, oh, this
+comment is important: it mentions that the `serverVersion` setting is
+*required* in this file or in `config/packages/doctrine.yaml`. That's actually
+not a new thing, but now the recipe gives you a bit more info about it.
+
+This setting tells Doctrine what *version* of your database you're using, like
+MySQL 5.7 or `mariadb-10.2.12`. Doctrine uses that to know which features are
+supported by your database.
+
+The point is: this is something Doctrine *needs* to know and you can add that
+configuration inside your `DATABASE_URL` environment variable *or* in
+`doctrine.yaml`, which is what *I* prefer. I like to set this to my production
+database version and commit it to `doctrine.yaml` so that the project works
+the same on any machine.
+
+So I want to accept these new comment changes but keep my *existing* `DATABASE_URL`
+setting. Copy it, hit "y" to accept the changes, then "q" to quit from this
+mode.
+
+Back in our editor... find `.env`, look for `DATABASE_URL`, and paste out old
+setting.
+
+Let's keep going! Run:
+
+```terminal
+git add -p
+```
+
+And accept the change we just made to `.env`. The next update is in `composer.json`,
+we definitely want this. Then... actually, hit "q" to quit this. Let's add the
+files we *know* we want:
+
+```terminal
+git add composer.json composer.lock symfony.lock src/Repository
+```
+
+Run:
+
+```terminal
+git status
+```
+
+Much better! Back to:
+
+```terminal
+git add -p
+```
+
+## Updates to doctrine.yaml
+
+In `bundles.php`, it removed DoctrineCacheBundle - that's a good change - and
+then we're inside of `doctrine.yaml`.
+
+There are a *bunch* of interesting updates here. First, there *used* to be a
+parameter called `env(DATABASE_URL)`. This was a workaround to prevent Doctrine
+from exploding in some edge cases - it's no longer needed. Woo!
+
+Next, the `driver` setting isn't needed inside here because that part is *always*
+contained inside the `DATABASE_URL`. It's just extra, so we can remove it. And
+`server_version` was just moved further down.
+
+The recipe *also* removed these `charset` options, and that *is* interesting.
+If you use MySQL, these settings are needed to ensure that you correctly store
+unicode characters. Starting in DoctrineBundle 2.0, these values are no longer
+needed: they are the *default*. That's a nice cleanup.
+
+Below, the `server_version` is *now* commented-out by default: you need to choose
+to put it in this file or inside your environment variable. I'll uncomment this
+in a minute.
+
+Finally, this `naming_strategy` is a minor change: it controls how table and
+columns names are generated from class and property names. The new setting handles
+situations when there is a number in the name. It's a good change... and the old
+setting is deprecated, but it *could* cause Doctrine to try to rename some
+properties. You can run:
+
+```terminal
+php bin/console doctrine:schema:update --dump-sql
+```
+
+after making this change to be sure. Enter "y" to accept *all* these changes,
+then "q" to quit. Find this file: `config/packages/doctrine.yaml`, uncomment
+`server_version` and adjust it to whatever you need for your app.
+
+## Production doctrine.yaml Cache Changes
+
+Now, back to work:
+
+```terminal
+git add -p
+```
+
+Enter "y" for our `server_version` change. The *last* big update is in
+`config/packages/prod/doctrine.yaml`. This file configures caching settings
+for the `prod` environment: this is stuff you *do* want. When we originally
+installed the bundle, the old recipe created several cache services down here
+under the `services` key... and then used them above for the different cache
+drivers.
+
+Basically, in DoctrineBundle 2.0, these services are created for you. This means
+the config can be drastically simplified. Say "y" to this change.
+
+And... we're done! Phew! Commit this:
+
+```terminal
+git commit -m "upgrading to DoctrineBundfle 2.0"
+```
+
+And celebrate!
+
+## The doctrine/persistence 1.3 Deprecations
+
+Let's go see how the deprecations look now. When I refresh the homepage... down
+to 11 deprecations! Let's check them out.
+
+Hmm, a lot of them are *still* from doctrine... they all mention a deprecation
+in `doctrine/persistence` 1.3. `doctrine/persistence` is one of the libraries
+that was extracted from `doctrines/common`.
+
+Ok, but why are we getting all these deprecations? Where are they coming from?
+
+I have 2 things to say about this. First, because this is a deprecation warning
+about a change in `doctrine/persistence` 2.0... and because we're focusing right
+now on upgrading to Symfony 5.0, this is *not* a deprecation we need to fix. We
+can save it for later.
+
+Second, if you Google'd this deprecation, you'd find that this deprecation is
+*not* coming from our code: it's coming from Doctrine *itself*, specifically
+`doctrine/orm`.
+
+There's currently a pull request open on `doctrine/orm` -
+[number 7953](https://github.com/doctrine/orm/pull/7953) that fixes these.
+Basically, `doctrine/orm` is using some deprecated code from `doctrine/persistence`,
+but the fix hasn't been merged yet. The fix is targeted for version 2.8 of
+`doctrine/orm`. So hopefully when that's released on the future, you'll be able
+to update to it to remove this deprecation. But as I said... it's not a problem
+right now: we can keep working through the Symfony-related deprecations and
+ignore these.
+
+And... that list is getting pretty short! Let's finish them next.
