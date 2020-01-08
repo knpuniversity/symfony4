@@ -1,11 +1,19 @@
 # Updating the TwigBundle Recipe
 
 The updated `framework-bundle` recipe gave us this new routing file:
-`config/routes/dev/framework.yaml`, which loads a `/_error/{statusCode}` route
-where we can test what our *production* error pages look like.
+`config/routes/dev/framework.yaml`:
+
+[[[ code('7d837093c6') ]]]
+
+Which loads a `/_error/{statusCode}` route where we can test what our *production*
+error pages look like.
 
 This feature *used* to live in TwigBundle... which is why `twig.yaml` has
-basically the exact same import. This is a minor problem. In your terminal, run:
+basically the exact same import:
+
+[[[ code('78b65d2d63') ]]]
+
+This is a minor problem. In your terminal, run:
 
 ```terminal
 php bin/console debug:router
@@ -33,7 +41,7 @@ Get some info about it:
 composer recipes symfony/twig-bundle
 ```
 
-... then copy the `recipes:install` command and run it:
+Then copy the `recipes:install` command and run it:
 
 ```terminal-silent
 composer recipes:install symfony/twig-bundle --force -v
@@ -93,7 +101,9 @@ git checkout config/packages/twig.yaml
 Oh, and I guess I should spell "checkout" right.
 
 Now, spin back over, open that file - `config/packages/twig.yaml` - and add
-`exception_controller: null`.
+`exception_controller: null`:
+
+[[[ code('7138e28526') ]]]
 
 Nice! Let's... keep going: start the `git add -p` system again:
 
@@ -126,10 +136,13 @@ inside it, let's revert the changes we don't want:
 git checkout templates/base.html.twig
 ```
 
-Go open the new file: `config/packages/test/twig.yaml`. Ah, super minor:
-it sets `strict_variables` to `true` for our tests. This settings tells Twig
-to throw an exception if we try to use an undefined variable in a template. If
-we ever did that, we probably *would* want Twig to explode in our tests so we
+Go open the new file: `config/packages/test/twig.yaml`:
+
+[[[ code('78c6cf3c48') ]]]
+
+Ah, super minor: it sets `strict_variables` to `true` for our tests. This settings
+tells Twig to throw an exception if we try to use an undefined variable in a template.
+If we ever did that, we probably *would* want Twig to explode in our tests so we
 know about it. That's a good change. Add that file:
 
 ```terminal
