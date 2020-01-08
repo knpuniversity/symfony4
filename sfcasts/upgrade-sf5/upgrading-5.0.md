@@ -1,35 +1,53 @@
 # Upgrading to Symfony 5.0
 
-Coming Soon...
+We've done it! We've fixed *all* of the deprecations in our app... except for the
+`doctrine/persistence` stuff, which we don't need to worry about because we're
+not upgrading that library. That means... we are ready to upgrade to Symfony5!
 
-Our app is now ready for Symfony 5.0 and we know because we have done various things
-to figure out that there are no deprecations left. Well there are a few but they
-relate to doctrine persistence, not something that we need to worry about when we're
-upgrading Symfony. So how do we upgrade from Symfony four to 4.4 to Symfony 5.0 and
-the answer is that we already know we're going to follow the exact same process that
-we used to upgrade from 4.3 to 4.4 so open up your composer dot JSON file. Remember
-what we're really doing is updating all of these Symfony /libraries, well not all of
-them, a few of them are not part of the main repository like monolog bundle, but all
-of these that have 4.4 point star, we need to change those to 5.0 point star. And
-also down here in the extra Symfony requires section.
+## Changing composer.json for Symfony 5.0
 
-We'll need to change this also to 5.0 point star, which is a little performance boost
-to tell composer only to focus on that version. So very simply I can do a find
-replace so for 4.4 point star we replace that with 5.0 point star and I'll hit
-replace all. Now of you'll probably want to make sure that the D didn't accidentally
-match any non Symfony packages that have that same version. Looks like we are good so
-we are now ready to go so just like before I'll actually close this tab and hit
-control C to get out of my log. Just like when we upgraded before, well now say
-composer, update Symfony, /star and it's just that simple except this is not going to
-work and it's probably not going to work in your project either. We're likely to see
-a bunch of dependency errors.
+How... do we actually do that? We already know! It's the *exact* same process that
+we used to upgrade from 4.3 to 4.4.
 
-Our first one is about doctrine ORM. This is a fancy way of saying that the current
-dr NorAm is not compatible with Symfony five which means that we need to update it.
-Is this similar to when we were updating a third party libraries because they used
-deprecated code. In this case, we needed to update this third party library so that
-we can get a version that is compatible as Symfony five and there might, and actually
-we're sort of hoping that there's a version compatible with somebody five. It's
+Open up `composer.json`. Our goal is to update *all* of these `symfony/` libraries
+to 5.0. Well, not quite *all* of them - a few are not part of the main Symfony
+library, like `monolog-bundle`. But basically, everything that has `4.4.*` now
+needs to be `5.0.*`.
+
+We also need to update one more thing: the `extra.symfony.require` value. This
+is primarily a performance optimization that helps Composer filter out extra
+Symfony versions when it's trying to resolve packages. This *also* needs to change
+to `5.0.*`.
+
+Let's... do it all at once: Find `4.4.*`, replace it with `5.0.*` and hit
+"Replace all". And then... make sure that this didn't accidentally replace any
+non-Symfony packages that may have had the same version.... looks good.
+
+## Updating Symfony Packages in Composer
+
+We're ready! Back at your terminal... I'll hit Ctrl+C to stop the log tail,
+and run the same command we did when upgrading from Symfony 4.3 to 4.4:
+
+```terminal
+composer update symfony/*
+```
+
+That's it! It's that easy! We're done! Kidding - it's never *that* easy: you will
+almost *definitely* get some dependency errors. Ah, here's our first.
+
+## Composer Dependency Fun
+
+These errors are always a *little* hard to read. This says that the current version
+of `doctrine/orm` in our project is not compatible with Symfony 5... which means
+that it *also* needs to be updated. This is similar to what happened when we were
+updating 3rd-party libraries because they triggered deprecated code. In this
+case, `doctrine/orm` wasn't triggering any deprecated code, but we need to update
+it to a newer version that supports Symfony 5, specifically `symfony/console`
+version 5.
+
+HERE!
+
+It's
 possible that there isn't one yet. So let's add doctrine /or M to our list of
 packages to update and try it again and we get a another air, the exact same thing
 this time about KP labs that can't be markdown bundle. So again, the easiest thing to
