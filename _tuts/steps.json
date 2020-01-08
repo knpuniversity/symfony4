@@ -1441,11 +1441,6 @@
             "description": null
         },
         {
-            "id": "recipes-delete-me",
-            "name": "Recipes: delete me",
-            "description": null
-        },
-        {
             "id": "recipes-update-symfony-phpunit-bridge",
             "name": "Recipes: update symfony\/phpunit-bridge",
             "description": null
@@ -1498,11 +1493,6 @@
         {
             "id": "deprecations-update-liipimaginebundle-recipe",
             "name": "Deprecations: update LiipImagineBundle recipe",
-            "description": null
-        },
-        {
-            "id": "deprecations-delete-me",
-            "name": "Deprecations: delete me",
             "description": null
         },
         {
@@ -1561,11 +1551,6 @@
             "description": null
         },
         {
-            "id": "deprecations-delete-me-1",
-            "name": "Deprecations: delete me 1",
-            "description": null
-        },
-        {
             "id": "deprecations-fix-extends-controller",
             "name": "Deprecations: fix extends Controller",
             "description": null
@@ -1578,26 +1563,6 @@
         {
             "id": "deprecations-return-0-in-command",
             "name": "Deprecations: return 0 in command",
-            "description": null
-        },
-        {
-            "id": "doctrinebundle-delete-me1",
-            "name": "DoctrineBundle: delete me1",
-            "description": null
-        },
-        {
-            "id": "doctrinebundle-delete-me2",
-            "name": "DoctrineBundle: delete me2",
-            "description": null
-        },
-        {
-            "id": "doctrinebundle-delete-me3",
-            "name": "DoctrineBundle: delete me3",
-            "description": null
-        },
-        {
-            "id": "doctrinebundle-delete-me5",
-            "name": "DoctrineBundle: delete me5",
             "description": null
         },
         {
