@@ -17,5 +17,6 @@ chapters:
     - stof-doctrine-extensions
     - doctrine-bundle-2.0
     - doctrine-bundle-updates
+    - our-deprecations
     - last-deprecations
     - upgrading-5.0
