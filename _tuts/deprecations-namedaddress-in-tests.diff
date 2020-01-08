@@ -1,0 +1,25 @@
+diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
+index 38fc5a855..bb5a8e023 100644
+--- a/tests/Service/MailerTest.php
++++ b/tests/Service/MailerTest.php
+@@ -9,7 +9,7 @@ use Knp\Snappy\Pdf;
+ use PHPUnit\Framework\TestCase;
+ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+ use Symfony\Component\Mailer\MailerInterface;
+-use Symfony\Component\Mime\NamedAddress;
++use Symfony\Component\Mime\Address;
+ use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
+ use Twig\Environment;
+ 
+@@ -34,9 +34,9 @@ class MailerTest extends KernelTestCase
+ 
+         $this->assertSame('Welcome to the Space Bar!', $email->getSubject());
+         $this->assertCount(1, $email->getTo());
+-        /** @var NamedAddress[] $namedAddresses */
++        /** @var Address[] $namedAddresses */
+         $namedAddresses = $email->getTo();
+-        $this->assertInstanceOf(NamedAddress::class, $namedAddresses[0]);
++        $this->assertInstanceOf(Address::class, $namedAddresses[0]);
+         $this->assertSame('Victor', $namedAddresses[0]->getName());
+         $this->assertSame('victor@symfonycasts.com', $namedAddresses[0]->getAddress());
+     }

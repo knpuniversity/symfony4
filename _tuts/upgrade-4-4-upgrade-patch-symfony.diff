@@ -1,27 +1,7 @@
 diff --git a/composer.lock b/composer.lock
-index 5ba031d90..8c26e9912 100644
+index 6598cf614..85a4f1903 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -3004,15 +3004,15 @@
-             "authors": [
-                 {
-                     "name": "Jim Schmid",
--                    "role": "Developer",
-                     "email": "js@1up.io",
--                    "homepage": "http://1up.io"
-+                    "homepage": "http://1up.io",
-+                    "role": "Developer"
-                 },
-                 {
-                     "name": "David Greminger",
--                    "role": "Developer",
-                     "email": "dg@1up.io",
--                    "homepage": "http://1up.io"
-+                    "homepage": "http://1up.io",
-+                    "role": "Developer"
-                 }
-             ],
-             "description": "Integrates Flysystem filesystem abstraction library to your Symfony2 project.",
 @@ -4173,7 +4173,7 @@
          },
          {
@@ -1594,7 +1574,7 @@ index 5ba031d90..8c26e9912 100644
          },
          {
              "name": "tijsverkoyen/css-to-inline-styles",
-@@ -8610,16 +8608,16 @@
+@@ -8612,16 +8610,16 @@
          },
          {
              "name": "symfony/browser-kit",
@@ -1615,7 +1595,7 @@ index 5ba031d90..8c26e9912 100644
                  "shasum": ""
              },
              "require": {
-@@ -8665,11 +8663,11 @@
+@@ -8667,11 +8665,11 @@
              ],
              "description": "Symfony BrowserKit Component",
              "homepage": "https://symfony.com",
@@ -1629,7 +1609,7 @@ index 5ba031d90..8c26e9912 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -8735,16 +8733,16 @@
+@@ -8737,16 +8735,16 @@
          },
          {
              "name": "symfony/dom-crawler",
@@ -1650,7 +1630,7 @@ index 5ba031d90..8c26e9912 100644
                  "shasum": ""
              },
              "require": {
-@@ -8792,27 +8790,27 @@
+@@ -8794,27 +8792,27 @@
              ],
              "description": "Symfony DomCrawler Component",
              "homepage": "https://symfony.com",
@@ -1684,7 +1664,7 @@ index 5ba031d90..8c26e9912 100644
              },
              "type": "library",
              "extra": {
-@@ -8849,44 +8847,44 @@
+@@ -8851,44 +8849,44 @@
                  "env",
                  "environment"
              ],
@@ -1747,7 +1727,7 @@ index 5ba031d90..8c26e9912 100644
              },
              "type": "symfony-bundle",
              "extra": {
-@@ -8917,20 +8915,20 @@
+@@ -8919,20 +8917,20 @@
                  "scaffold",
                  "scaffolding"
              ],
@@ -1773,7 +1753,7 @@ index 5ba031d90..8c26e9912 100644
                  "shasum": ""
              },
              "require": {
-@@ -8983,34 +8981,34 @@
+@@ -8985,34 +8983,34 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -1821,7 +1801,7 @@ index 5ba031d90..8c26e9912 100644
              },
              "type": "symfony-bundle",
              "extra": {
-@@ -9031,13 +9029,13 @@
+@@ -9033,13 +9031,13 @@
                  "MIT"
              ],
              "authors": [
@@ -1839,7 +1819,7 @@ index 5ba031d90..8c26e9912 100644
                  }
              ],
              "description": "Symfony MonologBundle",
-@@ -9046,20 +9044,20 @@
+@@ -9048,20 +9046,20 @@
                  "log",
                  "logging"
              ],
@@ -1865,7 +1845,7 @@ index 5ba031d90..8c26e9912 100644
                  "shasum": ""
              },
              "require": {
-@@ -9069,7 +9067,7 @@
+@@ -9071,7 +9069,7 @@
                  "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
              },
              "suggest": {
@@ -1874,7 +1854,7 @@ index 5ba031d90..8c26e9912 100644
              },
              "bin": [
                  "bin/simple-phpunit"
-@@ -9077,7 +9075,7 @@
+@@ -9079,7 +9077,7 @@
              "type": "symfony-bridge",
              "extra": {
                  "branch-alias": {
@@ -1883,7 +1863,7 @@ index 5ba031d90..8c26e9912 100644
                  },
                  "thanks": {
                      "name": "phpunit/phpunit",
-@@ -9111,7 +9109,7 @@
+@@ -9113,7 +9111,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -1892,7 +1872,7 @@ index 5ba031d90..8c26e9912 100644
          },
          {
              "name": "symfony/profiler-pack",
-@@ -9143,16 +9141,16 @@
+@@ -9145,16 +9143,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -1913,7 +1893,7 @@ index 5ba031d90..8c26e9912 100644
                  "shasum": ""
              },
              "require": {
-@@ -9215,20 +9213,20 @@
+@@ -9217,20 +9215,20 @@
                  "debug",
                  "dump"
              ],
@@ -1939,7 +1919,7 @@ index 5ba031d90..8c26e9912 100644
                  "shasum": ""
              },
              "require": {
-@@ -9281,7 +9279,7 @@
+@@ -9283,7 +9281,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

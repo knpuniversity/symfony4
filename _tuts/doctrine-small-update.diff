@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index b0bbfbcbf..5fa12dc11 100644
+index 6730a28bf..7f0038a69 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -645,28 +645,31 @@
@@ -112,19 +112,3 @@ index b0bbfbcbf..5fa12dc11 100644
          },
          {
              "name": "doctrine/doctrine-cache-bundle",
-@@ -8637,6 +8641,7 @@
-                 "code",
-                 "zf"
-             ],
-+            "abandoned": "laminas/laminas-code",
-             "time": "2019-08-31T14:14:34+00:00"
-         },
-         {
-@@ -8691,6 +8696,7 @@
-                 "events",
-                 "zf2"
-             ],
-+            "abandoned": "laminas/laminas-eventmanager",
-             "time": "2018-04-25T15:33:34+00:00"
-         }
-     ],

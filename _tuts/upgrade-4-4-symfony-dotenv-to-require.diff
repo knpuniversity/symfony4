@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 1517be541..2efa04a48 100644
+index 3e330df0d..decf26cda 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -39,15 +39,15 @@ index 1517be541..2efa04a48 100644
          "symfony/profiler-pack": "^1.0",
          "symfony/var-dumper": "4.4.*"
 diff --git a/composer.lock b/composer.lock
-index b8225fecb..3f7c2f5d3 100644
+index 5f2aece7f..f83affb94 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "1dcb5496225ec403030d1c2e3f4df29d",
-+    "content-hash": "f4f2be9c87bdcf14fdabe4630b65f11c",
+-    "content-hash": "c267e1e80b0b1051bedcd3e3303ace57",
++    "content-hash": "14db07b5c32c1d4a116808b28633f279",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -547,7 +547,7 @@ index b8225fecb..3f7c2f5d3 100644
                  "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
              },
              "dist": {
-@@ -8528,56 +8843,6 @@
+@@ -8530,56 +8845,6 @@
              ],
              "time": "2019-06-12T12:03:37+00:00"
          },
@@ -604,7 +604,7 @@ index b8225fecb..3f7c2f5d3 100644
          {
              "name": "fzaninotto/faker",
              "version": "v1.8.0",
-@@ -8628,84 +8893,6 @@
+@@ -8630,84 +8895,6 @@
              ],
              "time": "2018-07-12T10:23:15+00:00"
          },
@@ -689,7 +689,7 @@ index b8225fecb..3f7c2f5d3 100644
          {
              "name": "nikic/php-parser",
              "version": "v4.2.4",
-@@ -8943,63 +9130,6 @@
+@@ -8945,63 +9132,6 @@
              "homepage": "https://symfony.com",
              "time": "2019-10-29T11:38:30+00:00"
          },
@@ -753,7 +753,7 @@ index b8225fecb..3f7c2f5d3 100644
          {
              "name": "symfony/maker-bundle",
              "version": "v1.14.3",
-@@ -9068,136 +9198,6 @@
+@@ -9070,136 +9200,6 @@
              ],
              "time": "2019-11-07T00:56:03+00:00"
          },

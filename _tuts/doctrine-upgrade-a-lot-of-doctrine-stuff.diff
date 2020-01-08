@@ -1,16 +1,7 @@
 diff --git a/composer.lock b/composer.lock
-index 99ddfa5e8..c4b75728a 100644
+index e59d924f9..37ae367b9 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-         "This file is @generated automatically"
-     ],
--    "content-hash": "1dd1cbd99e2b065afdcdead91ca20792",
-+    "content-hash": "7b8ebd9fdabf4123fd81610849a76512",
-     "packages": [
-         {
-             "name": "antishov/doctrine-extensions-bundle",
 @@ -563,31 +563,30 @@
          },
          {
@@ -833,7 +824,7 @@ index 646871a63..630e8cdc5 100644
      Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
      Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
 diff --git a/symfony.lock b/symfony.lock
-index aeb5cb58f..e25e17835 100644
+index 7382b0781..d218e70c5 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -53,9 +53,6 @@

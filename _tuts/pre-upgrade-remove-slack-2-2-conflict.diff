@@ -1,0 +1,62 @@
+diff --git a/composer.json b/composer.json
+index dadd525fe..2d02cd103 100644
+--- a/composer.json
++++ b/composer.json
+@@ -13,7 +13,7 @@
+         "league/flysystem-cached-adapter": "^1.0",
+         "league/html-to-markdown": "^4.8",
+         "liip/imagine-bundle": "^2.1",
+-        "nexylan/slack-bundle": "^2.1,<2.2.0",
++        "nexylan/slack-bundle": "^2.1",
+         "oneup/flysystem-bundle": "^3.0",
+         "php-http/guzzle6-adapter": "^1.1",
+         "sensio/framework-extra-bundle": "^5.1",
+diff --git a/composer.lock b/composer.lock
+index 5ba031d90..6598cf614 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "c25074318fcc25973d86f99304e74b81",
++    "content-hash": "c0b2ccde49de4be97497e74cfc7e3566",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -3004,15 +3004,15 @@
+             "authors": [
+                 {
+                     "name": "Jim Schmid",
+-                    "role": "Developer",
+                     "email": "js@1up.io",
+-                    "homepage": "http://1up.io"
++                    "homepage": "http://1up.io",
++                    "role": "Developer"
+                 },
+                 {
+                     "name": "David Greminger",
+-                    "role": "Developer",
+                     "email": "dg@1up.io",
+-                    "homepage": "http://1up.io"
++                    "homepage": "http://1up.io",
++                    "role": "Developer"
+                 }
+             ],
+             "description": "Integrates Flysystem filesystem abstraction library to your Symfony2 project.",
+@@ -8197,6 +8197,7 @@
+                 "code",
+                 "zf"
+             ],
++            "abandoned": "laminas/laminas-code",
+             "time": "2019-08-31T14:14:34+00:00"
+         },
+         {
+@@ -8251,6 +8252,7 @@
+                 "events",
+                 "zf2"
+             ],
++            "abandoned": "laminas/laminas-eventmanager",
+             "time": "2018-04-25T15:33:34+00:00"
+         }
+     ],

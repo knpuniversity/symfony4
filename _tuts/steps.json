@@ -1371,6 +1371,11 @@
             "description": null
         },
         {
+            "id": "pre-upgrade-remove-slack-2-2-conflict",
+            "name": "PRE UPGRADE: remove slack 2.2 conflict",
+            "description": null
+        },
+        {
             "id": "pre-upgrade-tweaking-readme",
             "name": "PRE UPGRADE: Tweaking README",
             "description": null
@@ -1561,6 +1566,11 @@
             "description": null
         },
         {
+            "id": "deprecations-namedaddress-in-tests",
+            "name": "Deprecations: NamedAddress in tests",
+            "description": null
+        },
+        {
             "id": "deprecations-return-0-in-command",
             "name": "Deprecations: return 0 in command",
             "description": null
@@ -1569,7 +1579,17 @@
             "id": "5-0-change-reqs-to-5-0",
             "name": "5.0: change reqs to 5.0.*",
             "description": null
+        },
+        {
+            "id": "5-0-change-to-php-7-3",
+            "name": "5.0: change to php 7.3",
+            "description": null
+        },
+        {
+            "id": "5-0-update",
+            "name": "5.0: update!",
+            "description": null
         }
     ],
-    "sha": "ccc7ae0283844762ebbe55052ff71a03549b130a"
+    "sha": "ff3ca441a63d17871bf1fb02936c7587e0a6534b"
 }

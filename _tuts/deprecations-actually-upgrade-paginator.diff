@@ -1,16 +1,7 @@
 diff --git a/composer.lock b/composer.lock
-index eb76676b6..d5e0e44e9 100644
+index 4b9af29cb..353872251 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-         "This file is @generated automatically"
-     ],
--    "content-hash": "b031589f4243854f7c72e2c39be26714",
-+    "content-hash": "fd4ca571753b5f1a0b09f30a20e8c66c",
-     "packages": [
-         {
-             "name": "aws/aws-sdk-php",
 @@ -1870,43 +1870,52 @@
          },
          {
@@ -194,7 +185,7 @@ index eb76676b6..d5e0e44e9 100644
          },
          {
              "name": "webmozart/assert",
-@@ -9304,11 +9315,11 @@
+@@ -9306,11 +9317,11 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {
