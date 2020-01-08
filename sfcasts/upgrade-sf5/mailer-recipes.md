@@ -57,10 +57,15 @@ Undo the changes:
 git checkout .env
 ```
 
-Open `.env` in our editor... and find the "mailer" section. Even though we
-didn't accept the new recipe changes, we *do* need to update our syntax. Copy
-the example and paste. Actually, the `default` part can be anything - you'll
-sometimes see `null`.
+Open `.env` in our editor... and find the "mailer" section:
+
+[[[ code('dc00bdb9a5') ]]]
+
+Even though we didn't accept the new recipe changes, we *do* need to update
+our syntax. Copy the example and paste. Actually, the `default` part can be
+anything - you'll sometimes see `null`:
+
+[[[ code('7d17a17f86') ]]]
 
 And *now* if you wanted to delete the extra comments about Symfony 4.4, you totally
 could... and probably should.
