@@ -1,135 +1,215 @@
-# Upgrading to Symfony 4.4
+# Upgrading to Symfony 5.0
 
-To upgrade from Symfony 4.3 to 4.4 - that's a "minor" version upgrade - we need
-to change the `extra.symfony.require` value to `4.4.*` - done! - *and* update
-each Symfony package version to that same value.
+We've done it! We've fixed *all* of the deprecations in our app... except for the
+`doctrine/persistence` stuff, which we don't need to worry about because we're
+not upgrading that library. That means... we are ready to upgrade to Symfony5!
 
-## Updating Versions of Individual Symfony Packages
+## Changing composer.json for Symfony 5.0
 
-Let's get to work! I'll start with `symfony/asset`: change it to `4.4.*`. Copy
-that and start repeating it:
+How... do we actually do that? We already know! It's the *exact* same process that
+we used to upgrade from 4.3 to 4.4.
 
-[[[ code('85ad576dc9') ]]]
+Open up `composer.json`. Our goal is to update *all* of these `symfony/` libraries
+to 5.0. Well, not quite *all* of them - a few are not part of the main Symfony
+library, like `monolog-bundle`. But basically, everything that has `4.4.*` now
+needs to be `5.0.*`.
 
-I *will* skip a *few* packages that start with `symfony/` because they are *not*
-part of the main Symfony repository - like `symfony/flex`:
+We also need to update one more thing: the `extra.symfony.require` value. This
+is primarily a performance optimization that helps Composer filter out extra
+Symfony versions when it's trying to resolve packages. This *also* needs to change
+to `5.0.*`.
 
-[[[ code('f97beae84f') ]]]
+Let's... do it all at once: Find `4.4.*`, replace it with `5.0.*` and hit
+"Replace all". And then... make sure that this didn't accidentally replace any
+non-Symfony packages that may have had the same version.... looks good.
 
-These follow their own release schedules... so they usually have a version that's
-very different than everything else.
+## Updating Symfony Packages in Composer
 
-All "packs" - those are the, sort of, "fake" packages that just require other
-packages for convenience - are another example:
-
-[[[ code('9d3f92e486') ]]]
-
-These usually allow pretty much any version of the libraries inside of them - so
-any Symfony packages *will* update correctly. If you want more control over the
-versions, remember that you can run:
-
-```terminal
-composer unpack symfony/orm-pack
-```
-
-When you do that, Flex will remove this line and replace it with the individual
-packages so you can manage their versions. That's not required, but also not a
-bad idea.
-
-WebpackEncoreBundle is another example of a package that isn't part of the main
-repository - you can see that its version is totally different:
-
-[[[ code('6e631baf1a') ]]]
-
-Don't forget to also check the `require-dev` section: there are a bunch here:
-
-[[[ code('032319a652') ]]]
-
-Including `symfony/debug-bundle`, which has a funny-looking version because
-I unpacked it from a `debug-pack` in one of our courses. And both MakerBundle and
-MonologBundle are not in the main repository:
-
-[[[ code('64c0144965') ]]]
-
-If you're not sure, you can search Packagist.org for `symfony/symfony`. That package
-lists *all* of the packages that make up this "main" repository I keep talking about.
-
-Update `phpunit-bridge`, leave the `profile-pack` version and update `var-dumper`:
-
-[[[ code('2fabdf7079') ]]]
-
-Perfect! We have `4.4.*` everywhere up here *and* `4.4.*` for `extra.symfony.require`
-so that everything matches *and* we get that performance boost in Composer.
-
-Let's do this! Find your terminal and run:
+We're ready! Back at your terminal... I'll hit Ctrl+C to stop the log tail,
+and run the same command we did when upgrading from Symfony 4.3 to 4.4:
 
 ```terminal
 composer update symfony/*
 ```
 
-And... yea! It's upgrading the last few libraries that were *previously* locked
-to `4.3`. Congratulations! You just upgraded *all* Symfony packages to 4.4.
+That's it! It's that easy! We're done! Kidding - it's never *that* easy: you will
+almost *definitely* get some dependency errors. Ah, here's our first.
 
-## Fixing some require-dev Packages
+## Composer: Many Packages Need to Update
 
-Before we move on, I noticed a small problem in `composer.json`: the `symfony/dotenv`
-package is in my `require-dev` section:
+These errors are always a *little* hard to read. This says that the current version
+of `doctrine/orm` in our project is not compatible with Symfony 5... which means
+that it *also* needs to be updated. This is similar to what happened when we were
+updating 3rd-party libraries because they triggered deprecated code. In this
+case, `doctrine/orm` wasn't triggering any deprecated code, but we need to update
+it to a newer version that supports Symfony 5, specifically `symfony/console`
+version 5.
 
-[[[ code('39d9c375d9') ]]]
-
-When we put something in `require-dev`, we're saying:
-
-> This package is *not* needed when I run my code on production.
-
-It *was* true that when Symfony 4.0 was released, the DotEnv component was used
-in the development environment only - as a way to help set environment variables
-more easily. That's not true anymore: Symfony apps now *always* load the `.env`
-files.
-
-The `symfony/monolog-bundle` package - which gives us the `logger` service -
-should *also* live under `require` - along with its supporting package:
-`easy-log-handler`:
-
-[[[ code('6105998897') ]]]
-
-Logging is something we *always* want.
-
-Let's fix these. Copy the `symfony/dotenv` package name, find your terminal,
-and *remove* these three packages:
-
-```terminal
-composer remove --dev symfony/dotenv symfony/monolog-bundle easycorp/easy-log-handler
-```
-
-An easy way to move a package from `require-dev` to `require` and make sure that
-Composer notices, is to remove the package and re-add it.
-
-When we do that... our code explodes! No problem: our app *totally* needs the DotEnv
-component... so it's temporarily freaking out. You'll also notice that, if you run:
-
-```terminal
-git status
-```
-
-Removing these packages *also* removed their recipes. Re-add the libraries by
-using that same command, but replacing `remove` with `require` and getting rid
-of the `--dev` flag:
+And... it's possible that there is *not* yet a release of `doctrine/orm` that
+supports Symfony 5 - we hit that problem earlier with StofDoctrineExtensionsBundle.
+But let's try it: add `doctrine/orm` to our update list and try it again:
 
 ```terminal-silent
-composer require symfony/dotenv symfony/monolog-bundle easycorp/easy-log-handler
+composer update symfony/* doctrine/orm
 ```
 
-This should add those back under the `require` section - yep, here is one - *and*
-it will reinstall the *latest* version of their recipes... which means that the
-recipe *could* be slightly newer than the one we had before:
+And... another error. Actually, the *same* error but this time for
+`knplabs/knp-markdown-bundle`. We don't *know* if this bundle has a
+Symfony5-compatible release... and even if it does... it might require a *major*
+version upgrade. But the easiest thing to do is add it to our list and hope it
+will work. Try it:
 
-[[[ code('f5e06cb7f8') ]]]
-
-This is... accidentally... the first example of upgrading a recipe. Run:
-
-```terminal
-git status
+```terminal-silent
+composer update symfony/* doctrine/orm knplabs/knp-markdown-bundle
 ```
 
-Cool. Should we commit all of these changes? Not so fast. When a recipe is updated,
-you need to *selectively* add each change. Let's learn how next.
+So... this is going to happen *several* more times - this is the same error for
+`knplabs/knp-snappy-bundle`. Little-by-little, we're discovering *all* the packages
+that we need to upgrade to be compatible with Symfony 5. *Instead* of doing this,
+you *can* also choose the easy route: just run `composer update` and allow Composer
+to update *everything*. I prefer to upgrade more cautiously than that... but it's
+not a bad option. After all, our Composer version constraints don't allow any
+*major* version upgrades: so running `composer update` *still* won't allow any
+*major* upgrades without you tweaking your `composer.json` file.
+
+But let's keep going with the cautious way: copy the package name and add it to
+our update command:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle
+```
+
+Let's keep trying and... I'll fast-forward us through a few more of these errors:
+this is for `liip/imagine-bundle` - add that to the update command - then
+`oneup/flysystem-bundle`... and now `sensio/framework-extra-bundle`: add that to
+our very-long update command:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle
+```
+
+## Updating --with-dependencies
+
+Hmm, but this *next* error looks a bit different: it's something about
+`doctrine/orm` and `doctrine/instantiator`. If you look closely, this says that
+in order to get Symfony 5 support, we need `doctrine/orm` version 2.7, but
+version 2.7 requires `doctrine/instantiator` 1.3... and our project is currently
+locked at version 1.2.
+
+Our app doesn't require `doctrine/instantiator` directly: it's a dependency of
+`doctrine/orm`. We saw this earlier when we were updating
+`doctrine-migrations-bundle` and we *also* needed to allow its dependency -
+`doctrine/migrations` to update.
+
+We allow that by adding `--with-dependencies` to the update command:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                --with-dependencies
+```
+
+## Updating our PHP Version
+
+And... this gets us to our next error. Oh, interesting: apparently
+`nexylan/slack-bundle` version 2.2.1 requires PHP 7.3! We saw a similar error
+earlier, which caused us to decide that our production app would now need to
+at *least* run PHP 7.2. We enforced that by adding a `config.platform.php` setting
+in `composer.json` to 7.2.5, which basically says:
+
+> Hey Composer! Pretend I'm using PHP 7.2.5 and don't let me use any packages
+> that require a higher version of PHP.
+
+So... hmm. Apparently the version of `nexylan/slack-bundle` that supports Symfony 5
+*requires* PHP 7.3. Basically... unless we want to stop using that bundle, it
+means that *we* need to start using PHP 7.3 as well.
+
+Fortunately, I'm already using PHP 7.3 locally: so I just need to go change my
+`config.platform.php` setting to 7.3 and also makes sure that we have 7.3 on
+production.
+
+Inside 	`composer.json`, search for `platform`: there it is. Let's use 7.3.0. And,
+even though it doesn't affect anything in a project like this, also change the
+version under the `require` key.
+
+Ok, *now* try to update:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                --with-dependencies
+```
+
+Bah! I should've seen that coming: it's *still* complaining about
+`nexylan/slack-bundle`: it's reminding us that we need to *also* allow that bundle
+to update. Add it to our list:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                nexylan/slack-bundle \
+                --with-dependencies
+```
+
+And try it. Bah! Another package needs to be update. I *swear* we're almost done.
+Add that to our *gigantic* update command:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                nexylan/slack-bundle \
+                knplabs/knp-time-bundle \
+                --with-dependencies
+```
+
+## Other than Symfony: (Mostly) Only Safe Minor Upgrades
+
+And... whaaaat? It's working! It's upgrading a *ton* of packages, including
+the Symfony stuff to 5.0.2. *And*, because we didn't change any other version
+constraints inside `composer.json`, we know that all of these upgrades are just
+*minor* version upgrades at best. For example, `nexylan/slack-bundle` went from
+2.1 to 2.2. Even if there *was* a new version 3 of this bundle, we know that it
+wouldn't upgrade to it because its version constraint is `^2.1`, which allows
+2.1 or higher, but *not* 3.
+
+Well, that's not *completely* true: check out `nexylan/slack`: it when from
+version 2.3 to 3 - that *is* a major upgrade. That's because this is one of those
+*transitive* dependencies: this package isn't in our `composer.json`, it only
+lives in our project because `nexylan/slack-bundle` requires it. So unless we're
+using its code directly - which *is* possible, but less likely - the major upgrade
+won't affect us.
+
+Ok, so we are now on Symfony 5. Woo! Try out the homepage. It works! The little
+icon on the bottom right of the web debug toolbar shows 5.0.2.
+
+Next, let's celebrate by trying out a few new features! We'll start by talking
+about Symfony's new "secrets management".
