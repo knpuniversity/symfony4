@@ -1589,7 +1589,57 @@
             "id": "5-0-update",
             "name": "5.0: update!",
             "description": null
+        },
+        {
+            "id": "secrets-tmp-dump-mailer-dsn",
+            "name": "Secrets: tmp dump MAILER_DSN",
+            "description": null
+        },
+        {
+            "id": "secrets-remove-mailer-dsn-env-var",
+            "name": "Secrets: remove MAILER_DSN env var",
+            "description": null
+        },
+        {
+            "id": "secrets-mailer-dsn-to-dev-vault",
+            "name": "Secrets: MAILER_DSN to dev vault",
+            "description": null
+        },
+        {
+            "id": "secrets-prod-vault-mailer-dsn",
+            "name": "Secrets: prod vault MAILER_DSN",
+            "description": null
+        },
+        {
+            "id": "secrets-prod-environment",
+            "name": "Secrets: prod environment",
+            "description": null
+        },
+        {
+            "id": "secrets-remove-apcu",
+            "name": "Secrets: remove apcu",
+            "description": null
+        },
+        {
+            "id": "secrets-back-to-dev-env",
+            "name": "Secrets: back to dev env",
+            "description": null
+        },
+        {
+            "id": "secrets-local-vault",
+            "name": "Secrets: \"local\" vault",
+            "description": null
+        },
+        {
+            "id": "secrets-remove-local-dev-vault",
+            "name": "Secrets: remove local dev vault",
+            "description": null
+        },
+        {
+            "id": "secrets-env-test",
+            "name": "Secrets: .env.test",
+            "description": null
         }
     ],
-    "sha": "ff3ca441a63d17871bf1fb02936c7587e0a6534b"
+    "sha": "d7b5d85e73a4dcfb6ecd652ec9b6e841bc1536f9"
 }
