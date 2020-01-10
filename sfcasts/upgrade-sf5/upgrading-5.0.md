@@ -35,7 +35,7 @@ composer update symfony/*
 That's it! It's that easy! We're done! Kidding - it's never *that* easy: you will
 almost *definitely* get some dependency errors. Ah, here's our first.
 
-## Composer Dependency Fun
+## Composer: Many Packages Need to Update
 
 These errors are always a *little* hard to read. This says that the current version
 of `doctrine/orm` in our project is not compatible with Symfony 5... which means
@@ -45,84 +45,171 @@ case, `doctrine/orm` wasn't triggering any deprecated code, but we need to updat
 it to a newer version that supports Symfony 5, specifically `symfony/console`
 version 5.
 
-HERE!
+And... it's possible that there is *not* yet a release of `doctrine/orm` that
+supports Symfony 5 - we hit that problem earlier with StofDoctrineExtensionsBundle.
+But let's try it: add `doctrine/orm` to our update list and try it again:
 
-It's
-possible that there isn't one yet. So let's add doctrine /or M to our list of
-packages to update and try it again and we get a another air, the exact same thing
-this time about KP labs that can't be markdown bundle. So again, the easiest thing to
-do here is to add that to our composer update list to say, Hey, if that needs to be
-updated to a new version, let's do it.
+```terminal-silent
+composer update symfony/* doctrine/orm
+```
 
-And now we get the exact same error again with campy snappy bundle. So you kind of
-get into this repetitive process of trying to figure out all of the different
-libraries that you need to upgrade so that everything is compatible with Symfony five
-now you could just run composer update and be done with it because that will allow
-all packages to be updated. That's not my preference because I like to have a little
-more control. And update as little as possible at every time, but I wouldn't make
-this process a lot easier but let's keep going the hard way. I'm going to copy KP
-labs can be snappy bundle. Add that to the update command and try it again and we'll
-see this a couple more times. This time with leap. Imagine bundle so I will copy that
-and paste it next with one up fly system bundle, same thing, copy that and paste it
-so that we're allowing it to upgrade and then Sensio /framework, extra bundle. We'll
-add that to our now very long composer update command.
+And... another error. Actually, the *same* error but this time for
+`knplabs/knp-markdown-bundle`. We don't *know* if this bundle has a
+Symfony5-compatible release... and even if it does... it might require a *major*
+version upgrade. But the easiest thing to do is add it to our list and hope it
+will work. Try it:
 
-Now the next era looks a little bit different. You can see it's talking about
-doctrine or M and it's talking about doctrine and stantiating. If you look closely at
-this, what this is saying is that in order to get Symfony for support, we really need
-doctrine ORM version 2.7 but version 2.7 requires doctrine instantiate or 1.3 and our
-library is currently locked at version 1.2 now our project doesn't use doctrine
-instantiate or directly it's a dependency of doctrine. Slash. ORM. This is, we saw
-this earlier with something that I'll have to look up. This is a situation where you
-need to tell a composer, Hey, update document or M but also allow any of its
-dependencies to update. So we will add the dash dash with dash dependencies flag to
-the end of my command that fixes that air and gets us to the next one.
+```terminal-silent
+composer update symfony/* doctrine/orm knplabs/knp-markdown-bundle
+```
 
-Next Elan Slack Bumble version 2.2 0.1 requires PHP 7.3 and if you remember we said a
-config platform PHP and our composer Jay sent is 7.2 0.5 if you did a little digging,
-what you'd find out is that the latest version of the next SeaLand Slack bundle
-requires BHB 7.3 and we need that new version in order to get Symfony five support.
-So like it or not, we're going to need to start using PHP 7.3 fortunately I'm already
-using PHP 7.3 locally. I just need to go change my config platform PHP to 7.3 and
-also makes sure that we have 7.3 on production. So inside my composer.json, I'll look
-for platform. There it is. Let's use 7.3 0.0 and then we don't really need to change
-this but there's also a spot under the require key. I'll that to 7.3 0.0 and we'll
-run that command again.
+So... this is going to happen *several* more times - this is the same error for
+`knplabs/knp-snappy-bundle`. Little-by-little, we're discovering *all* the packages
+that we need to upgrade to be compatible with Symfony 5. *Instead* of doing this,
+you *can* also choose the easy route: just run `composer update` and allow Composer
+to update *everything*. I prefer to upgrade more cautiously than that... but it's
+not a bad option. After all, our Composer version constraints don't allow any
+*major* version upgrades: so running `composer update` *still* won't allow any
+*major* upgrades without you tweaking your `composer.json` file.
 
-Yeah
+But let's keep going with the cautious way: copy the package name and add it to
+our update command:
 
-and here we kind of get a,
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle
+```
 
-this kind of goes back to um, the first areas we're getting, which is basically this
-is a long way of saying that we need to let next Elan Slack bundle also update. So
-I'm going to copy it, paste its name and yes we also get another air related to campy
-time bundle. It's not sad. The current version we have is requires Symfony
-translation, which doesn't allow five we need to update to a new version. So let's
-also add KMP labs /Canva time bundle to our gigantic composer update command, which
-again, if you want to cheat you can just say composer update with no arguments and
-that's an easier way to do this. And it works. It is upgrading a ton of packages
-including our Symfony stuff to Symfony 5.0 0.2 that is awesome.
+Let's keep trying and... I'll fast-forward us through a few more of these errors:
+this is for `liip/imagine-bundle` - add that to the update command - then
+`oneup/flysystem-bundle`... and now `sensio/framework-extra-bundle`: add that to
+our very-long update command:
 
-We also know because we didn't change any of our, any of our other constraints
-instead of composed at JSON that any packages that are being updated are only
-upgrading of minor versions. For example, next one Slack bundle went from 2.1 to 2.2
-we knew even before looking at this list that that didn't go to version three because
-if you look inside of here we have carrot 2.1 this allows to point anything. So long
-way of saying that we don't need to, this was a safe update because things only
-upgraded a minor version. Now that's not entirely true because you've looked at next
-line /Slack. This did go from version to diversion three that's because that's a
-transitive dependency. That's not something that's in our composer.json, we only,
-it's only in our project because next Allen Slack Bumba uses it so that should be
-safe cause we're probably not using that code to directly. But if you want to be
-extra safe, you could check out the change log of any libraries that went up. A major
-version like this. But Hey, we're done. We are now in simply five. So check it out.
-I'll refresh the homepage. It works of course, on the first dry.
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle
+```
 
-Yeah. What does the rest of word [inaudible]
+## Updating --with-dependencies
 
-and when we clicked to go to the logs, actually shows me a warning. Failed to unsee.
-Realize the security token from the session. I think that's a onetime temporary thing
-because of an update or refresh it again. There we go. Now I had the deprecations.
-Everything works. We still those annoying doctrine, persistence things, but we are on
-Symfony five. So next, let's start looking at a couple of the new features, uh, of
-75. Some of my favorite things that you can now play with.
+Hmm, but this *next* error looks a bit different: it's something about
+`doctrine/orm` and `doctrine/instantiator`. If you look closely, this says that
+in order to get Symfony 5 support, we need `doctrine/orm` version 2.7, but
+version 2.7 requires `doctrine/instantiator` 1.3... and our project is currently
+locked at version 1.2.
+
+Our app doesn't require `doctrine/instantiator` directly: it's a dependency of
+`doctrine/orm`. We saw this earlier when we were updating
+`doctrine-migrations-bundle` and we *also* needed to allow its dependency -
+`doctrine/migrations` to update.
+
+We allow that by adding `--with-dependencies` to the update command:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                --with-dependencies
+```
+
+## Updating our PHP Version
+
+And... this gets us to our next error. Oh, interesting: apparently
+`nexylan/slack-bundle` version 2.2.1 requires PHP 7.3! We saw a similar error
+earlier, which caused us to decide that our production app would now need to
+at *least* run PHP 7.2. We enforced that by adding a `config.platform.php` setting
+in `composer.json` to 7.2.5, which basically says:
+
+> Hey Composer! Pretend I'm using PHP 7.2.5 and don't let me use any packages
+> that require a higher version of PHP.
+
+So... hmm. Apparently the version of `nexylan/slack-bundle` that supports Symfony 5
+*requires* PHP 7.3. Basically... unless we want to stop using that bundle, it
+means that *we* need to start using PHP 7.3 as well.
+
+Fortunately, I'm already using PHP 7.3 locally: so I just need to go change my
+`config.platform.php` setting to 7.3 and also makes sure that we have 7.3 on
+production.
+
+Inside 	`composer.json`, search for `platform`: there it is. Let's use 7.3.0. And,
+even though it doesn't affect anything in a project like this, also change the
+version under the `require` key.
+
+Ok, *now* try to update:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                --with-dependencies
+```
+
+Bah! I should've seen that coming: it's *still* complaining about
+`nexylan/slack-bundle`: it's reminding us that we need to *also* allow that bundle
+to update. Add it to our list:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                nexylan/slack-bundle \
+                --with-dependencies
+```
+
+And try it. Bah! Another package needs to be update. I *swear* we're almost done.
+Add that to our *gigantic* update command:
+
+```terminal-silent
+composer update symfony/* \
+				doctrine/orm \
+                knplabs/knp-markdown-bundle \
+                knplabs/knp-snappy-bundle \
+                liip/imagine-bundle \
+                oneup/flysystem-bundle \
+                sensio/framework-extra-bundle \
+                nexylan/slack-bundle \
+                knplabs/knp-time-bundle \
+                --with-dependencies
+```
+
+## Other than Symfony: (Mostly) Only Safe Minor Upgrades
+
+And... whaaaat? It's working! It's upgrading a *ton* of packages, including
+the Symfony stuff to 5.0.2. *And*, because we didn't change any other version
+constraints inside `composer.json`, we know that all of these upgrades are just
+*minor* version upgrades at best. For example, `nexylan/slack-bundle` went from
+2.1 to 2.2. Even if there *was* a new version 3 of this bundle, we know that it
+wouldn't upgrade to it because its version constraint is `^2.1`, which allows
+2.1 or higher, but *not* 3.
+
+Well, that's not *completely* true: check out `nexylan/slack`: it when from
+version 2.3 to 3 - that *is* a major upgrade. That's because this is one of those
+*transitive* dependencies: this package isn't in our `composer.json`, it only
+lives in our project because `nexylan/slack-bundle` requires it. So unless we're
+using its code directly - which *is* possible, but less likely - the major upgrade
+won't affect us.
+
+Ok, so we are now on Symfony 5. Woo! Try out the homepage. It works! The little
+icon on the bottom right of the web debug toolbar shows 5.0.2.
+
+Next, let's celebrate by trying out a few new features! We'll start by talking
+about Symfony's new "secrets management".
