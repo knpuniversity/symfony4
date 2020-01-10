@@ -1376,6 +1376,11 @@
             "description": null
         },
         {
+            "id": "pre-upgrade-remove-apcu-for-ease",
+            "name": "PRE UPGRADE: remove apcu for ease",
+            "description": null
+        },
+        {
             "id": "pre-upgrade-tweaking-readme",
             "name": "PRE UPGRADE: Tweaking README",
             "description": null
@@ -1616,8 +1621,8 @@
             "description": null
         },
         {
-            "id": "secrets-remove-apcu",
-            "name": "Secrets: remove apcu",
+            "id": "secrets-delete-me",
+            "name": "Secrets: delete me",
             "description": null
         },
         {
@@ -1711,5 +1716,5 @@
             "description": null
         }
     ],
-    "sha": "83ff8ea20400848603b97a66b40fbb2d83b97a1b"
+    "sha": "69c00ad4321ace03a543be2b4c10a1fa78ef441a"
 }
