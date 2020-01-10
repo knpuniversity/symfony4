@@ -20,3 +20,6 @@ chapters:
     - our-deprecations
     - last-deprecations
     - upgrading-5.0
+    - secrets-vault-setup
+    - prod-vault #raw
+    - local-overrides #raw
