@@ -1,0 +1,12 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 3b0f714b1..5e68091de 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
+ 
+ /**
+  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
++ * @Assert\EnableAutoMapping()
+  */
+ class Article
+ {

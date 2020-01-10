@@ -1,0 +1,13 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 4e6b0828c..b09b61250 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -107,7 +107,7 @@ class Article
+         return $this->title;
+     }
+ 
+-    public function setTitle(string $title): self
++    public function setTitle(?string $title): self
+     {
+         $this->title = $title;
+ 

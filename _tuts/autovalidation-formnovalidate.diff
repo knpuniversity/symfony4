@@ -1,0 +1,11 @@
+diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
+index f996181fd..421ce11fb 100644
+--- a/templates/article_admin/_form.html.twig
++++ b/templates/article_admin/_form.html.twig
+@@ -37,5 +37,5 @@
+         {{ form_row(articleForm.publishedAt) }}
+     {% endif %}
+ 
+-    <button type="submit" class="btn btn-primary">{{ button_text }}</button>
++    <button type="submit" class="btn btn-primary" formnovalidate>{{ button_text }}</button>
+ {{ form_end(articleForm) }}

@@ -1639,7 +1639,77 @@
             "id": "secrets-env-test",
             "name": "Secrets: .env.test",
             "description": null
+        },
+        {
+            "id": "secrets-remove-debug-code",
+            "name": "Secrets: remove debug code",
+            "description": null
+        },
+        {
+            "id": "autovalidation-formnovalidate",
+            "name": "AutoValidation: formnovalidate",
+            "description": null
+        },
+        {
+            "id": "autovalidation-remove-notblank",
+            "name": "AutoValidation: remove NotBlank",
+            "description": null
+        },
+        {
+            "id": "autovalidation-add-enableautomapping",
+            "name": "AutoValidation: add EnableAutoMapping",
+            "description": null
+        },
+        {
+            "id": "autovalidation-nullable-true",
+            "name": "AutoValidation: nullable=true",
+            "description": null
+        },
+        {
+            "id": "autovalidation-remove-doctrine-metadata",
+            "name": "AutoValidation: remove Doctrine metadata",
+            "description": null
+        },
+        {
+            "id": "autovalidation-nullable-argument",
+            "name": "AutoValidation: nullable argument",
+            "description": null
+        },
+        {
+            "id": "autovalidation-put-everything-back",
+            "name": "AutoValidation: put everything back",
+            "description": null
+        },
+        {
+            "id": "autovalidation-re-add-notblank",
+            "name": "AutoValidation: re-add NotBlank",
+            "description": null
+        },
+        {
+            "id": "encoder-add-migrate-from-encoder",
+            "name": "Encoder: add migrate_from encoder",
+            "description": null
+        },
+        {
+            "id": "encoder-migrate-from",
+            "name": "Encoder: migrate_from",
+            "description": null
+        },
+        {
+            "id": "encoder-add-guard-passwordauthenticatedinterface",
+            "name": "Encoder: Add Guard PasswordAuthenticatedInterface",
+            "description": null
+        },
+        {
+            "id": "encoder-userrepo-passwordupgraderinterface",
+            "name": "Encoder: UserRepo PasswordUpgraderInterface",
+            "description": null
+        },
+        {
+            "id": "encoder-add-upgradepassword-logic",
+            "name": "Encoder: add upgradePassword() logic",
+            "description": null
         }
     ],
-    "sha": "d7b5d85e73a4dcfb6ecd652ec9b6e841bc1536f9"
+    "sha": "83ff8ea20400848603b97a66b40fbb2d83b97a1b"
 }

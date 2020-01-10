@@ -1,0 +1,20 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index a704008f7..39e28b623 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -1,8 +1,14 @@
+ security:
+     encoders:
++        legacy_bcrypt:
++            algorithm: bcrypt
++
+         App\Entity\User:
+-            #algorithm: bcrypt
+             algorithm: sodium
++            migrate_from:
++                # allow existing bcrypt accounts to log in
++                # and migrate to sodium
++                - legacy_bcrypt
+ 
+     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+     providers:

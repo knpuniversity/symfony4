@@ -1,0 +1,14 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index 8401b3357..a704008f7 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -1,7 +1,8 @@
+ security:
+     encoders:
+         App\Entity\User:
+-            algorithm: bcrypt
++            #algorithm: bcrypt
++            algorithm: sodium
+ 
+     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+     providers:

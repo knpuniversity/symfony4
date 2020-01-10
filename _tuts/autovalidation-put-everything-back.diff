@@ -1,0 +1,29 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index b09b61250..5e68091de 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -28,11 +28,15 @@ class Article
+      */
+     private $id;
+ 
++    /**
++     * @ORM\Column(type="string", length=255)
++     */
+     private $title;
+     // @Assert\NotBlank(message="Get creative and think of a title!")
+ 
+     /**
+      * @ORM\Column(type="string", length=100, unique=true)
++     * @Gedmo\Slug(fields={"title"})
+      */
+     private $slug;
+ 
+@@ -107,7 +111,7 @@ class Article
+         return $this->title;
+     }
+ 
+-    public function setTitle(?string $title): self
++    public function setTitle(string $title): self
+     {
+         $this->title = $title;
+ 

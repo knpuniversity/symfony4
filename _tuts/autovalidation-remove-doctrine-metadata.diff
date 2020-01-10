@@ -1,0 +1,20 @@
+diff --git a/src/Entity/Article.php b/src/Entity/Article.php
+index 9fd06d865..4e6b0828c 100644
+--- a/src/Entity/Article.php
++++ b/src/Entity/Article.php
+@@ -28,15 +28,11 @@ class Article
+      */
+     private $id;
+ 
+-    /**
+-     * @ORM\Column(type="string", length=255, nullable=true)
+-     */
+     private $title;
+     // @Assert\NotBlank(message="Get creative and think of a title!")
+ 
+     /**
+      * @ORM\Column(type="string", length=100, unique=true)
+-     * @Gedmo\Slug(fields={"title"})
+      */
+     private $slug;
+ 
