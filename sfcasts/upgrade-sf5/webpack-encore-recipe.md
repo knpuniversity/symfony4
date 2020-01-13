@@ -68,7 +68,7 @@ The first - `app.css` - is an example CSS file that the Encore recipe adds.
 We're not using it in our app - so we don't need it. Delete it!
 
 ```terminal
-git rm assets/css/app.css
+rm assets/css/app.css
 ```
 
 The next new file - `config/packages/validator.yaml` is one I missed earlier from
