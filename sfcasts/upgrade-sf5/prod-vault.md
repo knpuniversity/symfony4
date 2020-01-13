@@ -1,65 +1,152 @@
 # Production Secrets
 
-Coming soon...
+Whenever you add a new secret, you need to make sure that you add it to the `dev`
+environment *and* the `prod` environment. That's because each *set* of secrets,
+or "vault" as I've been calling it, is specific to the *environment*. This vault
+of secrets, for example, will *only* be loaded in the `dev` environment. So,
+unless we *also* add `MAILER_DSN` to a `prod` vault, the `prod` environment will
+be *totally* broken. And busted production environments are... a bummer.
 
-Whenever you add a new secret, you need to make sure that you add it to the dev
-environment and the prod environment. That's because these, this vault of secrets is
-only going to be loaded in the dev environment, so if so, unless we also added to the
-prod vault. Right now our product environment is going to be broken. How do we add
-this key to a prod environment? It's with the same command because before Ben
-consults secrets colon set, but with a dash dash N = prod and we'll set mailer_D, S N
-here, I'll paste in my production. Send grid value. You can't see it there just
-because it's being hidden, hidden, hidden for security. Now once again, because this
-is the first time we've added a key to the prod vault it behind, it also added the
-new prod decrypt and encrypt keys for us in a distant to actually encrypting the
-value.
+## Creating the Production (prod) Vault
 
-Now once again, this encrypted public key is something you should commit to your
-repository. It only gives people access to add new keys to your vault, which you'll
-probably want any developer on your team to be able to add new keys. But this prod
-decrypt private that PHP is something that you do not want to commit. This is going
-to allow someone to read your production secrets. This is somewhere you should keep
-very safe with your deploy system, but it should not be committed to your repository
-and actually for to get status and get ad config and then get status. You can see
-that by default it is not um, committing that uh, private decrypt key. That's because
-in our dot get ignore file. We are ignoring the private key. We got this when we
-upgraded the Symfony framework bundle. So that is awesome because we, and just like
-in the dev vault, we can look at the secrets by saying secrets on list dash dash N =
-prod. And because we do locally right now have the decrypt key, we can say dash dash
-reveal to see what it looks like.
+So, how *do* we add this key to a `prod` environment vault? With the same command
+as before: `secrets:set`, but *this* time with `--env=prod`. We'll set the
+`MAILER_DSN` secret:
 
-So now if we commit this adding mailer DSN to prod vault, this is awesome because we
-actually have our secrets safely committed to the repository. The only, which means
-we only have to keep track of one kind of secret sensitive value and it's this
-private. When we deploy to production, our only job is that we need to somehow create
-this file which has this long value inside of it. So right now if we refresh our
-page, it still shows us the no nothing because we are still in the dev environment.
-So let's go to our [inaudible] and file and just temporarily I'm going to change our
-environment to prod, then move over and run bin console, cache, colon clear. I don't
-need to have a dash dash and prod here because I just changed that in my debt and
-file. Perfect.
+```terminal-silent
+php bin/console secrets:set --env=prod MAILER_DSN
+```
 
-Now a new mover, it works. Our prod value comes out from the prod vault. Now just to
-show you how this all works, I'm going to actually right click on this and go to
-right click on this and go to refactor rename. And I'm just going to click a fool in
-front of it right now. Basically that's me. I'm effectively doing that. So that
-Symfony won't see that file anymore that I'm pretending as if we deleted that file.
-Yeah, actually not. Let's just delete it. So right now, just so we can see how this
-works, I'm going to open my prod kit file. I'm going to copy this and I am then going
-to delete it as soon as you do this. If we refresh now we get a 500 air and let's
-see, let's go over here and tail VAR, log prod that log.
+I'll paste in my production SendGrid value... which you can't see because the
+command hides the input to be safe.
 
-And we can see the problem environment variable not found mailer underscored DSN. So
-if you don't have that private key there, it's not gonna be able to decrypt it. And
-that's the area that you're going to get. So you go back here now and actually I can
-do command Z to undo that deleted file and now and refresh. We've got it back and
-let's switch back to the dev environment just to make our life easier. So that's it.
-You have a dev vault, you have a prod vault, you can commit your secret keys now to,
-uh, your repository and you only have one secret thing you need to keep track of on
-deployed. But there is one piece left this, which uncovers a couple of interesting
-things. And the question is, what if I need to override a value in my dev vault on my
-local machine? Like for example, in my dev vault right now I'm using the Knoll
-transport, but what if I temporarily want to change that to male traps so I can
-actually see emails being sent locally? How can we do that? Well, they handle that.
-Symfony has what's sort of called a local vault set up, which is a beautifully simple
-concept. Let's talk about it next.
+Cool! *Just* like last time, because this is the first time we've added a key to
+the `prod` vault it automatically *created* the vault for us, which just means
+that it created the decrypt and encrypt keys.
+
+## Production Encrypt & Decrypt Keys
+
+Just like with the `dev` environment, the encrypt key file *is* safe to commit
+to your repository. Heck, you could post it onto the Internet! It only gives people
+the power to *add* things to your vault, which is probably something that you do
+want any developer to be able to do.
+
+But the decrypt key file should *not* be committed to the repository. It is
+*incredibly* sensitive: it has the power to decrypt *all* of your production
+secrets! We decided that it was *probably* ok to commit the `dev` decrypt key...
+because the dev keys are probably not very sensitive, but you should *not* commit
+this one. Or, if you do - just realize that everyone who has access to view files
+in your repository will have access to all your secrets... and you might as well
+just commit them as plain-text values.
+
+We'll talk more about the decrypt key in a few minute.
+
+Let's add the new vault files to git:
+
+```terminal
+git add config/
+```
+
+Then:
+
+```terminal
+git status
+```
+
+Oh! This did *not* add the private decrypt key. That's no accident: our `.gitignore`
+file is *specifically* ignoring this. This line was added when we updated the
+`symfony/framework-bundle` recipe.
+
+## Listing & Revealing prod Secrets
+
+Anyways, *just* like with the `dev` vault, we can list the secrets:
+
+```terminal
+php bin/console secrets:list --env=prod
+```
+
+And because my app *does* currently have the decrypt key, we can add `--reveal`
+to see their values:
+
+```terminal-silent
+php bin/console secrets:list --env=prod --reveal
+```
+
+## Secrets are Committed
+
+Ok, let's commit!
+
+```terminal
+git commit -m "Adding MAILER_DSN to prod vault"
+```
+
+Do you realize how awesome that was? We just *safely* committed our secrets to
+the repository! They're version controlled, we can see that they were added on
+a pull request and even see who and when they were added. That's a huge step!
+
+## Deploying with the Decrypt Key
+
+Now, instead of needing to figure our how and where to securely store *all* our
+sensitive values so that we can add them to our app when we deploy, there is now
+just *one* sensitive value: the decrypt key file.
+
+When we deploy to production, the *only* thing we need to worry about now is
+creating that decrypt file with this long value inside. How? That depends completely
+on your deploy. For example, with SymfonyCloud - which is what we use - we set
+the key that's inside of the decrypt file as a SymfonyCloud "variable". Then, on
+build, we use that to re-create the private, decrypt file. Whoever or whatever is
+responsible for deploying your app should be the *one*, um, "thing" that has access
+to the private key.
+
+## Seeing the prod Secret Value
+
+Let's go make sure this whole `prod` vault thing works. Right now, if we refresh
+the page, it still shows us the null value because we are *still* in the `dev`
+environment.
+
+Open up your `.env` file and, temporarily, change `APP_ENV` to `prod`. Then, find
+your console and clear the cache:
+
+```terminal
+php bin/console cache:clear
+```
+
+I don't need to add `--env=prod` *now* because that is *already* the current
+environment thanks to the `APP_ENV` change.
+
+Ok, go try it! Refresh and... yes! That's the value from the `prod` vault! Symfony
+automatically used the private key to decrypt it.
+
+## And if the Decrypt Key is Missing?
+
+What would happen if the decrypt key wasn't there? Let's find out! Temporarily
+delete the decrypt key - but make sure you can get it back - if you lose this
+key, you won't *ever* be able to decrypt your secrets and you'll need to create
+a *new* private key and re-add them all again.
+
+Refresh now to see... oh! Giant 500 page... but we can't see the error. Check
+out the logs:
+
+```terminal
+tail var/log/prod.log
+```
+
+And... there it is:
+
+> Environment variable not found: MAILER_DSN
+
+Of you *don't* have the private key... bad things will happen. Let's go
+*undelete* that private key file. Refresh: all better. Let's also change back to
+the `dev` environment to make life nicer.
+
+So... that's it! You have a `dev` vault and a `prod` vault, you can commit your
+encrypted secrets via git and you only need to handle one sensitive value: the
+private decrypt.
+
+But... what if a developer needs to locally override a value in the `dev`
+environment? For example, in our `dev` vault, `MAILER_DSN` uses the `null` transport
+so that emails are *not* sent. What if I need to temporarily change MailTrap so
+that I can test the emails?
+
+The answer: the "local" vault... a little bit of coolness that will open up a
+couple of neat possibilities. That's next.
