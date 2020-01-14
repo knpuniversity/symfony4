@@ -71,7 +71,7 @@ We're not using it in our app - so we don't need it. Delete it!
 rm assets/css/app.css
 ```
 
-The next new file - `config/packages/validator.yaml` is one I missed earlier from
+The next new file - `config/packages/test/validator.yaml` is one I missed earlier from
 the validator recipe. Let's check it out, it's super minor:
 
 [[[ code('7456f8f05c') ]]]
