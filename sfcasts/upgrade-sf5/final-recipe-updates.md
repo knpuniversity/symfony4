@@ -39,7 +39,9 @@ with:
 git checkout config/packages/security.yaml
 ```
 
-Now, open that file in your editor, find `anonymous` and change it to `lazy`.
+Now, open that file in your editor, find `anonymous` and change it to `lazy`:
+
+[[[ code('ed7429b6fa') ]]]
 
 Let's keep going:
 
@@ -77,8 +79,11 @@ git add -p
 ```
 
 In `translation.yaml`, all the `%locale%` parameters were replaced with just `en`.
-The `locale` parameter is set in our `config/services.yaml` file: this was
-*originally* added by a recipe.
+The `locale` parameter is set in our `config/services.yaml` file:
+
+[[[ code('e8555b7f68') ]]]
+
+This was *originally* added by a recipe.
 
 So... what's going on here? *Purely* for simplification, instead of setting that
 parameter and then using it in this *one* file, the recipe was updated to remove
@@ -86,7 +91,9 @@ the parameter and set the locale directly. You don't need to make this change if
 you don't want to.
 
 But I'll say "y" and then "y" again for the `symfony.lock` file. Back in
-services.yaml, manually remove the `locale` parameter.
+services.yaml, manually remove the `locale` parameter:
+
+[[[ code('9284fc5f11') ]]]
 
 Why didn't the recipe remove that for me? Well, again, *removing* things - like
 old files or even old parameters - is not something the recipe update system
