@@ -21,10 +21,13 @@ function *only* on some obscure AJAX call... and you forgot to check that.
 That's why Symfony has a *second* way to find this stuff: a deprecations
 log file on production. Open up `config/packages/prod/monolog.yaml`. This has two
 handlers - `deprecation` and `deprecation_filter` - that, together, add a log entry
-each time your app uses deprecated code on production. So once you *think* you've
-fixed all your deprecated code, deploy it to production, wait a few hours or days,
-and check the log to make sure it doesn't contain anything new. *Then* you'll
-*know* it's safe to upgrade.
+each time your app uses deprecated code on production:
+
+[[[ code('a6b3c452dd') ]]]
+
+So once you *think* you've fixed all your deprecated code, deploy it to production,
+wait a few hours or days, and check the log to make sure it doesn't contain
+anything new. *Then* you'll *know* it's safe to upgrade.
 
 By the way, Symfony Insight has a special feature to identify and fix deprecation
 warnings. So if you want some extra help... or an "easy" button, give it a try.
@@ -58,7 +61,11 @@ A console command that comes from WebServerBundle. That's now deprecated...
 because the Symfony binary is shinier and more powerful.
 
 So this deprecation is easy to fix. Inside `composer.json`, find the
-`symfony/web-server-bundle` line, copy it, go to your terminal and remove it:
+`symfony/web-server-bundle` line:
+
+[[[ code('9473d71b2f') ]]]
+
+Copy it, go to your terminal and remove it:
 
 ```terminal
 composer remove symfony/web-server-bundle
@@ -74,7 +81,7 @@ a line from `.gitignore` that we don't need anymore.
 Hey! One deprecation is gone! Let's go find another one! Hmm, the second
 is something about:
 
-> calling the `EventDispatcher::dispatch()` method with the event name as the
+> Calling the `EventDispatcher::dispatch()` method with the event name as the
 > first argument is deprecated since Symfony 4.3.
 
 One of the trickiest things about fixing deprecations is that you need to find
@@ -91,7 +98,11 @@ Fortunately, there's *one* clear way to fix deprecated code that's called from
 a vendor library: upgrade it!
 
 Let's do this in the *laziest* way possible. Inside `composer.json`, find that
-package, copy its name, and run:
+package:
+
+[[[ code('4493b2182b') ]]]
+
+Copy its name, and run:
 
 ```terminal
 composer update liip/imagine-bundle
