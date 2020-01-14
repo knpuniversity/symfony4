@@ -23,3 +23,4 @@ chapters:
     - secrets-vault-setup
     - prod-vault
     - local-overrides
+    - vault-dumping-tests
