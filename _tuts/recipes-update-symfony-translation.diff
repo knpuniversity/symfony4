@@ -1,5 +1,5 @@
 diff --git a/config/packages/translation.yaml b/config/packages/translation.yaml
-index e6b1cd667..05a2b3d82 100644
+index e6b1cd66..05a2b3d8 100644
 --- a/config/packages/translation.yaml
 +++ b/config/packages/translation.yaml
 @@ -1,6 +1,6 @@
@@ -12,7 +12,7 @@ index e6b1cd667..05a2b3d82 100644
 -            - '%locale%'
 +            - en
 diff --git a/symfony.lock b/symfony.lock
-index aac7df22d..1a2175745 100644
+index aac7df22..1a217574 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -580,8 +580,12 @@

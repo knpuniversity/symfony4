@@ -1,5 +1,5 @@
 diff --git a/assets/js/components/algolia-autocomplete.js b/assets/js/components/algolia-autocomplete.js
-index fa62249c9..86ed56462 100644
+index fa62249c..86ed5646 100644
 --- a/assets/js/components/algolia-autocomplete.js
 +++ b/assets/js/components/algolia-autocomplete.js
 @@ -1,3 +1,6 @@

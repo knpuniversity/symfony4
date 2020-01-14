@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 23bf03c3c..2e1697790 100644
+index 23bf03c3..2e169779 100644
 --- a/.env
 +++ b/.env
 @@ -34,5 +34,5 @@ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....

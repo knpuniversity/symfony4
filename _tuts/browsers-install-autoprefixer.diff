@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index b899636d5..1672829a8 100644
+index b899636d..1672829a 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index b899636d5..1672829a8 100644
          "core-js": "^3.0.0",
          "dropzone": "^5.5.1",
 diff --git a/yarn.lock b/yarn.lock
-index d11fa99e5..b84ef602e 100644
+index d11fa99e..b84ef602 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1106,6 +1106,18 @@ autocomplete.js@^0.36.0:

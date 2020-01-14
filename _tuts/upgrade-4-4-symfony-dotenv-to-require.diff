@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 3e330df0d..decf26cda 100644
+index 3e330df0..decf26cd 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -39,7 +39,7 @@ index 3e330df0d..decf26cda 100644
          "symfony/profiler-pack": "^1.0",
          "symfony/var-dumper": "4.4.*"
 diff --git a/composer.lock b/composer.lock
-index 5f2aece7f..f83affb94 100644
+index 5f2aece7..f83affb9 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -891,7 +891,7 @@ index 5f2aece7f..f83affb94 100644
              "name": "symfony/phpunit-bridge",
              "version": "v4.4.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 628c5cc44..e7f8a24e7 100644
+index 628c5cc4..e7f8a24e 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -6,7 +6,6 @@ return [
@@ -909,7 +909,7 @@ index 628c5cc44..e7f8a24e7 100644
 +    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
  ];
 diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
-index 96dbf9693..5bcdf06ea 100644
+index 96dbf969..5bcdf06e 100644
 --- a/config/packages/prod/monolog.yaml
 +++ b/config/packages/prod/monolog.yaml
 @@ -4,9 +4,7 @@ monolog:
@@ -924,7 +924,7 @@ index 96dbf9693..5bcdf06ea 100644
              type: stream
              path: "%kernel.logs_dir%/%kernel.environment%.log"
 diff --git a/symfony.lock b/symfony.lock
-index 7d44dbd08..8704b429c 100644
+index 7d44dbd0..8704b429 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -93,7 +93,10 @@

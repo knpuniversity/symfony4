@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index dfd32027c..a714f0f4b 100644
+index dfd32027..a714f0f4 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -16,8 +16,6 @@
@@ -13,4 +13,4 @@ index dfd32027c..a714f0f4b 100644
  ###< liip/imagine-bundle ###
 diff --git a/public/uploads/.gitignore b/public/uploads/.gitignore
 deleted file mode 100644
-index e69de29bb..000000000
+index e69de29b..00000000

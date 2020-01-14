@@ -1,5 +1,5 @@
 diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
-index 38fc5a855..bb5a8e023 100644
+index 38fc5a85..bb5a8e02 100644
 --- a/tests/Service/MailerTest.php
 +++ b/tests/Service/MailerTest.php
 @@ -9,7 +9,7 @@ use Knp\Snappy\Pdf;

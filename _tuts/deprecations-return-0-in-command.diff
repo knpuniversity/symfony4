@@ -1,5 +1,5 @@
 diff --git a/src/Command/ArticleStatsCommand.php b/src/Command/ArticleStatsCommand.php
-index 0f43e5a29..61df983ef 100644
+index 0f43e5a2..61df983e 100644
 --- a/src/Command/ArticleStatsCommand.php
 +++ b/src/Command/ArticleStatsCommand.php
 @@ -46,5 +46,7 @@ class ArticleStatsCommand extends Command
@@ -11,7 +11,7 @@ index 0f43e5a29..61df983ef 100644
      }
  }
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index b2faff4a9..6ce16cb2d 100644
+index b2faff4a..6ce16cb2 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -58,5 +58,7 @@ class AuthorWeeklyReportSendCommand extends Command

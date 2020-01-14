@@ -1,6 +1,6 @@
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
 new file mode 100644
-index 000000000..192754f46
+index 00000000..192754f4
 --- /dev/null
 +++ b/src/Service/UploaderHelper.php
 @@ -0,0 +1,22 @@

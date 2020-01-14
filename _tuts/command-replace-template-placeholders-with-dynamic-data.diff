@@ -1,5 +1,5 @@
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index ab4a8131d..03956daac 100644
+index ab4a8131..03956daa 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -18,11 +18,13 @@

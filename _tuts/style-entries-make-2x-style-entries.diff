@@ -7,7 +7,7 @@ similarity index 100%
 rename from public/css/login.css
 rename to assets/css/login.scss
 diff --git a/templates/account/index.html.twig b/templates/account/index.html.twig
-index 21c63ab51..7b5542b44 100644
+index 21c63ab5..7b5542b4 100644
 --- a/templates/account/index.html.twig
 +++ b/templates/account/index.html.twig
 @@ -5,7 +5,7 @@
@@ -20,7 +20,7 @@ index 21c63ab51..7b5542b44 100644
  
  {% block body %}
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 778f582e3..5a13eb58e 100644
+index 778f582e..5a13eb58 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -5,7 +5,7 @@
@@ -33,7 +33,7 @@ index 778f582e3..5a13eb58e 100644
  
  {% block body %}
 diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
-index fd960baa1..5f5f111d6 100644
+index fd960baa..5f5f111d 100644
 --- a/templates/security/register.html.twig
 +++ b/templates/security/register.html.twig
 @@ -29,7 +29,7 @@
@@ -46,7 +46,7 @@ index fd960baa1..5f5f111d6 100644
  
  {% block body %}
 diff --git a/webpack.config.js b/webpack.config.js
-index 08824eead..dffdad463 100644
+index 08824eea..dffdad46 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -20,6 +20,8 @@ Encore

@@ -1,5 +1,5 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 317ac926b..5f9b66c08 100644
+index 317ac926..5f9b66c0 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -2,6 +2,7 @@
@@ -57,7 +57,7 @@ index 317ac926b..5f9b66c08 100644
      }
  }
 diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
-index 70b7bed84..d153145ea 100644
+index 70b7bed8..d153145e 100644
 --- a/src/Repository/UserRepository.php
 +++ b/src/Repository/UserRepository.php
 @@ -44,6 +44,17 @@ class UserRepository extends ServiceEntityRepository

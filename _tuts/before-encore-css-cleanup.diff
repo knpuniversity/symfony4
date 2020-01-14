@@ -1,5 +1,5 @@
 diff --git a/public/css/styles.css b/public/css/styles.css
-index 477b5d431..20b281105 100644
+index 477b5d43..20b28110 100644
 --- a/public/css/styles.css
 +++ b/public/css/styles.css
 @@ -28,22 +28,6 @@ html {height:100%}

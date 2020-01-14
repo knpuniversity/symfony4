@@ -1,5 +1,5 @@
 diff --git a/assets/css/app.scss b/assets/css/app.scss
-index 40e794e02..7e8eff9d3 100644
+index 40e794e0..7e8eff9d 100644
 --- a/assets/css/app.scss
 +++ b/assets/css/app.scss
 @@ -1,3 +1,5 @@
@@ -10,13 +10,13 @@ index 40e794e02..7e8eff9d3 100644
  
 diff --git a/assets/css/helper/_variables.scss b/assets/css/helper/_variables.scss
 new file mode 100644
-index 000000000..b33723122
+index 00000000..b3372312
 --- /dev/null
 +++ b/assets/css/helper/_variables.scss
 @@ -0,0 +1 @@
 +$lightgray: #efefee;
 diff --git a/assets/css/layout/_header.scss b/assets/css/layout/_header.scss
-index 51c367007..7b354c18b 100644
+index 51c36700..7b354c18 100644
 --- a/assets/css/layout/_header.scss
 +++ b/assets/css/layout/_header.scss
 @@ -1,6 +1,6 @@

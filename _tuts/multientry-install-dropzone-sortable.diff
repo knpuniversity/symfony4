@@ -1,5 +1,5 @@
 diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
-index 5f2a78ade..53a5a83a6 100644
+index 5f2a78ad..53a5a83a 100644
 --- a/assets/js/admin_article_form.js
 +++ b/assets/js/admin_article_form.js
 @@ -1,4 +1,6 @@
@@ -10,7 +10,7 @@ index 5f2a78ade..53a5a83a6 100644
  Dropzone.autoDiscover = false;
  
 diff --git a/package.json b/package.json
-index b26e3193c..b9e50efc6 100644
+index b26e3193..b9e50efc 100644
 --- a/package.json
 +++ b/package.json
 @@ -3,11 +3,13 @@
@@ -28,7 +28,7 @@ index b26e3193c..b9e50efc6 100644
      },
      "license": "UNLICENSED",
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index d2697b22a..07855d600 100644
+index d2697b22..07855d60 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -36,7 +36,5 @@
@@ -40,7 +40,7 @@ index d2697b22a..07855d600 100644
      {{ encore_entry_script_tags('admin_article_form') }}
  {% endblock %}
 diff --git a/yarn.lock b/yarn.lock
-index f861dbe83..878dfa23d 100644
+index f861dbe8..878dfa23 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2277,6 +2277,11 @@ dot-prop@^4.1.1:

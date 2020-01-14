@@ -1,5 +1,5 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
-index 52cfa201d..52d508a1d 100644
+index 52cfa201..52d508a1 100644
 --- a/src/Form/ArticleFormType.php
 +++ b/src/Form/ArticleFormType.php
 @@ -17,6 +17,7 @@ use Symfony\Component\Form\FormEvents;

@@ -1,5 +1,5 @@
 diff --git a/.env.test b/.env.test
-index 414430e7f..e3f57bf74 100644
+index 414430e7..e3f57bf7 100644
 --- a/.env.test
 +++ b/.env.test
 @@ -2,3 +2,4 @@

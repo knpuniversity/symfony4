@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 559adea55..d37a3ddf9 100644
+index 559adea5..d37a3ddf 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -8,6 +8,7 @@ use App\Repository\ArticleRepository;

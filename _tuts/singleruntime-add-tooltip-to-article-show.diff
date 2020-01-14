@@ -1,5 +1,5 @@
 diff --git a/assets/js/article_show.js b/assets/js/article_show.js
-index 52d31d25b..354a7ac0a 100644
+index 52d31d25..354a7ac0 100644
 --- a/assets/js/article_show.js
 +++ b/assets/js/article_show.js
 @@ -2,6 +2,8 @@ import '../css/article_show.scss';
@@ -12,7 +12,7 @@ index 52d31d25b..354a7ac0a 100644
          e.preventDefault();
  
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index cef0d0b75..71906675d 100644
+index cef0d0b7..71906675 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -15,7 +15,7 @@

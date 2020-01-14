@@ -1,12 +1,12 @@
 diff --git a/assets/css/app.css b/assets/css/app.css
-index 01cd567b0..e825b6ced 100644
+index 01cd567b..e825b6ce 100644
 --- a/assets/css/app.css
 +++ b/assets/css/app.css
 @@ -1 +1,2 @@
  @import '~bootstrap';
 +@import '~font-awesome';
 diff --git a/package.json b/package.json
-index 09ee8a9d3..305606cd1 100644
+index 09ee8a9d..305606cd 100644
 --- a/package.json
 +++ b/package.json
 @@ -3,6 +3,7 @@
@@ -19,7 +19,7 @@ index 09ee8a9d3..305606cd1 100644
          "webpack-notifier": "^1.6.0"
 diff --git a/public/css/font-awesome.css b/public/css/font-awesome.css
 deleted file mode 100644
-index ee906a819..000000000
+index ee906a81..00000000
 --- a/public/css/font-awesome.css
 +++ /dev/null
 @@ -1,2337 +0,0 @@
@@ -6536,7 +6536,7 @@ de*jv40|X!y3}<W?od?mU{cQ|D^cBO5od6617EJ&E
 
 diff --git a/public/fonts/fontawesome-webfont.svg b/public/fonts/fontawesome-webfont.svg
 deleted file mode 100644
-index 855c845e5..000000000
+index 855c845e..00000000
 --- a/public/fonts/fontawesome-webfont.svg
 +++ /dev/null
 @@ -1,2671 +0,0 @@
@@ -14611,7 +14611,7 @@ zS7jB5f%YHF1(sTSKSuTtezZh?ey859@nDV}*wx8We3^(^>c;D^k{15Qf0gLJdBw#%
 zK4AOfnWngIHTLC=dT)#w{3rZBSpE+*HU0+;Htp>`-fzW8*#W`aU5e&a;9&m+kS-Mo
 
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 99925f2ee..cfada468f 100644
+index 99925f2e..cfada468 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -9,7 +9,6 @@
@@ -14623,7 +14623,7 @@ index 99925f2ee..cfada468f 100644
          {% endblock %}
      </head>
 diff --git a/yarn.lock b/yarn.lock
-index 25386808c..2fc02c809 100644
+index 25386808..2fc02c80 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2559,6 +2559,11 @@ follow-redirects@^1.0.0:

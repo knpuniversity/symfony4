@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 18df93805..6d8cb28df 100644
+index 18df9380..6d8cb28d 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -19,7 +19,7 @@ index 18df93805..6d8cb28df 100644
          "symfony/console": "4.4.*",
          "symfony/dotenv": "4.4.*",
 diff --git a/composer.lock b/composer.lock
-index 353872251..6730a28bf 100644
+index 35387225..6730a28b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -6,6 +6,79 @@
@@ -712,7 +712,7 @@ index 353872251..6730a28bf 100644
              "name": "symfony/asset",
              "version": "v4.4.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 9d730ce27..646871a63 100644
+index 9d730ce2..646871a6 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -15,7 +15,6 @@ return [
@@ -730,7 +730,7 @@ index 9d730ce27..646871a63 100644
 +    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index c02857f58..aeb5cb58f 100644
+index c02857f5..aeb5cb58 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,16 @@

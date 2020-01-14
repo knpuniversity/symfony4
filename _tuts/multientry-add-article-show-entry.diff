@@ -3,7 +3,7 @@ similarity index 100%
 rename from public/js/article_show.js
 rename to assets/js/article_show.js
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 622cbea26..d8e232218 100644
+index 622cbea2..d8e23221 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -81,5 +81,5 @@
@@ -14,7 +14,7 @@ index 622cbea26..d8e232218 100644
 +    {{ encore_entry_script_tags('article_show') }}
  {% endblock %}
 diff --git a/webpack.config.js b/webpack.config.js
-index e32133a12..0ecaee142 100644
+index e32133a1..0ecaee14 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -18,6 +18,7 @@ Encore

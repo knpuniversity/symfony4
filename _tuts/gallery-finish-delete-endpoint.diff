@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 9d1d81672..d51bce7a6 100644
+index 9d1d8167..d51bce7a 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -29,7 +29,7 @@ index 9d1d81672..d51bce7a6 100644
      }
  }
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 1c371891b..64d41e76f 100644
+index 1c371891..64d41e76 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -81,6 +81,17 @@ class UploaderHelper

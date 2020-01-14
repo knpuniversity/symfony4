@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 4eb22290b..b899636d5 100644
+index 4eb22290..b899636d 100644
 --- a/package.json
 +++ b/package.json
 @@ -9,6 +9,7 @@
@@ -11,7 +11,7 @@ index 4eb22290b..b899636d5 100644
          "sortablejs": "^1.8.4",
          "webpack-notifier": "^1.6.0"
 diff --git a/yarn.lock b/yarn.lock
-index 308a69af2..d11fa99e5 100644
+index 308a69af..d11fa99e 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1778,6 +1778,16 @@ core-util-is@1.0.2, core-util-is@~1.0.0:

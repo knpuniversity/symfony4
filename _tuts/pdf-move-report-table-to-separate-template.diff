@@ -1,6 +1,6 @@
 diff --git a/templates/email/_report-table.html.twig b/templates/email/_report-table.html.twig
 new file mode 100644
-index 000000000..1e80d0bfb
+index 00000000..1e80d0bf
 --- /dev/null
 +++ b/templates/email/_report-table.html.twig
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 000000000..1e80d0bfb
 +    {% endfor %}
 +</table>
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index 03956daac..14094df4f 100644
+index 03956daa..14094df4 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -12,20 +12,7 @@

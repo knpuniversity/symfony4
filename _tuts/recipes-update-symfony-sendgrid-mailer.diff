@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 02de0c98d..15a650426 100644
+index 02de0c98..15a65042 100644
 --- a/.env
 +++ b/.env
 @@ -47,8 +47,7 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
@@ -13,7 +13,7 @@ index 02de0c98d..15a650426 100644
  
  DEV_MAIL_RECIPIENT=someone@example.com
 diff --git a/symfony.lock b/symfony.lock
-index 1c529cfb5..fdf01f1f4 100644
+index 1c529cfb..fdf01f1f 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -536,12 +536,12 @@

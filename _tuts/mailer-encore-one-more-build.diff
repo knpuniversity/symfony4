@@ -4202,7 +4202,7 @@ literal 0
 HcmV?d00001
 
 diff --git a/public/build/manifest.json b/public/build/manifest.json
-index 67dedb2d6..87b4ac986 100644
+index 67dedb2d..87b4ac98 100644
 --- a/public/build/manifest.json
 +++ b/public/build/manifest.json
 @@ -21,6 +21,7 @@

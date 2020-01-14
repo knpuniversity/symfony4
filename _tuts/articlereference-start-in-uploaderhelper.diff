@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index c01578241..a1d2ae59e 100644
+index c0157824..a1d2ae59 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -3,7 +3,11 @@
@@ -41,7 +41,7 @@ index c01578241..a1d2ae59e 100644
      }
  }
 diff --git a/src/Entity/ArticleReference.php b/src/Entity/ArticleReference.php
-index 9687fb736..7b0789404 100644
+index 9687fb73..7b078940 100644
 --- a/src/Entity/ArticleReference.php
 +++ b/src/Entity/ArticleReference.php
 @@ -37,6 +37,11 @@ class ArticleReference
@@ -71,7 +71,7 @@ index 9687fb736..7b0789404 100644
      {
          return $this->filename;
 diff --git a/src/Service/UploaderHelper.php b/src/Service/UploaderHelper.php
-index 989ab93a3..b671a2159 100644
+index 989ab93a..b671a215 100644
 --- a/src/Service/UploaderHelper.php
 +++ b/src/Service/UploaderHelper.php
 @@ -68,6 +68,11 @@ class UploaderHelper

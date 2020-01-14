@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index 4b90a2aa6..f421c8826 100644
+index 4b90a2aa..f421c882 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -8,6 +8,7 @@ use App\Entity\Tag;

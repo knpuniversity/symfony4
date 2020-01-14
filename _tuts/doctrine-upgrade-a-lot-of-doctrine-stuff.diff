@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index e59d924f9..37ae367b9 100644
+index e59d924f..37ae367b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -563,31 +563,30 @@
@@ -812,7 +812,7 @@ index e59d924f9..37ae367b9 100644
          {
              "name": "fzaninotto/faker",
 diff --git a/config/bundles.php b/config/bundles.php
-index 646871a63..630e8cdc5 100644
+index 646871a6..630e8cdc 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -10,7 +10,6 @@ return [
@@ -824,7 +824,7 @@ index 646871a63..630e8cdc5 100644
      Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
      Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
 diff --git a/symfony.lock b/symfony.lock
-index 7382b0781..d218e70c5 100644
+index 7382b078..d218e70c 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -53,9 +53,6 @@

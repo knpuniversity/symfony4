@@ -1,5 +1,5 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index 934bf9944..85e9f3bdf 100644
+index 934bf994..85e9f3bd 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -4,7 +4,7 @@
@@ -13,7 +13,7 @@ index 934bf9944..85e9f3bdf 100644
      router.request_context.scheme: '%env(SITE_BASE_SCHEME)%'
 diff --git a/config/services_dev.yaml b/config/services_dev.yaml
 deleted file mode 100644
-index fb930dbbf..000000000
+index fb930dbb..00000000
 --- a/config/services_dev.yaml
 +++ /dev/null
 @@ -1,2 +0,0 @@
@@ -21,7 +21,7 @@ index fb930dbbf..000000000
 -    cache_adapter: 'cache.adapter.filesystem'
 diff --git a/config/services_prod.yaml b/config/services_prod.yaml
 new file mode 100644
-index 000000000..c1bd1dce9
+index 00000000..c1bd1dce
 --- /dev/null
 +++ b/config/services_prod.yaml
 @@ -0,0 +1,2 @@

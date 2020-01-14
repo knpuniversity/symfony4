@@ -1,6 +1,6 @@
 diff --git a/config/services_test.yaml b/config/services_test.yaml
 deleted file mode 100644
-index 876c36bda..000000000
+index 876c36bd..00000000
 --- a/config/services_test.yaml
 +++ /dev/null
 @@ -1,9 +0,0 @@
