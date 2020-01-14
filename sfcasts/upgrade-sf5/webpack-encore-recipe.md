@@ -81,7 +81,7 @@ and is a security-related feature that just *isn't* needed in your tests.
 
 The last new file is in the same directory - `webpack_encore.yaml`:
 
-[[[ code('') ]]]
+[[[ code('703b4b0b5e') ]]]
 
 Which... contains some commented-out example code. Let's add both of these new files:
 
