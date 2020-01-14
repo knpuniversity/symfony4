@@ -72,12 +72,18 @@ rm assets/css/app.css
 ```
 
 The next new file - `config/packages/validator.yaml` is one I missed earlier from
-the validator recipe. Let's check it out. It's super minor: it *disables* a validator
-in the test environment that makes a network request and is a security-related
-feature that just *isn't* needed in your tests.
+the validator recipe. Let's check it out, it's super minor:
 
-The last new file is in the same directory - `webpack_encore.yaml` which... contains
-some commented-out example code. Let's add both of these new files:
+[[[ code('7456f8f05c') ]]]
+
+It *disables* a validator in the test environment that makes a network request
+and is a security-related feature that just *isn't* needed in your tests.
+
+The last new file is in the same directory - `webpack_encore.yaml`:
+
+[[[ code('') ]]]
+
+Which... contains some commented-out example code. Let's add both of these new files:
 
 ```terminal
 git add config/packages/test
