@@ -49,7 +49,7 @@ let's add the change.
 
 ## Updating phpunit.xml.dist
 
-The *last* update is for `phpunit.xml.dist`: PHPUnit's configuration file. You
+The *last* update is for `phpunit.xml.dist` - PHPUnit's configuration file. You
 *may* have some customizations here that you want to keep - so be careful. The
 recipe updates are tiny: these changed from `<env` to `<server` - a mostly
 meaningless change to how environment variables are added - and it looks like
@@ -96,18 +96,24 @@ git status
 ```
 
 Woh! A new `routing.yaml` file for the `prod` environment! If you open that -
-`config/packages/prod/routing.yaml` - it has `strict_requirements: null`. It's
-part of that reorganization I was just talking about. Add that change:
+`config/packages/prod/routing.yaml` - it has `strict_requirements: null`:
+
+[[[ code('4e1dc0fbf4') ]]]
+
+It's part of that reorganization I was just talking about. Add that change:
 
 ```terminal
 git add config/packages/prod/routing.yaml
 ```
 
 The *last* change - which we need to do manually - is to delete
-`config/packages/test/routing.yaml`. It's *another* file with
-`strict_requirements` and it is *gone* from the new recipe. Why? It's just not
-needed anymore: if you followed the logic, you'd find that `strict_requirements`
-is already `true` in the `test` environment. Delete it:
+`config/packages/test/routing.yaml`:
+
+[[[ code('44734037d1') ]]]
+
+It's *another* file with `strict_requirements` and it is *gone* from the new recipe.
+Why? It's just not needed anymore: if you followed the logic, you'd find that
+`strict_requirements` is already `true` in the `test` environment. Delete it:
 
 ```terminal
 git rm config/packages/test/routing.yaml
