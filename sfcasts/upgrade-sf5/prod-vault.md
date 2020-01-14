@@ -86,7 +86,7 @@ a pull request and even see who and when they were added. That's a huge step!
 
 ## Deploying with the Decrypt Key
 
-Now, instead of needing to figure our how and where to securely store *all* our
+Now, instead of needing to figure out how and where to securely store *all* our
 sensitive values so that we can add them to our app when we deploy, there is now
 just *one* sensitive value: the decrypt key file.
 
