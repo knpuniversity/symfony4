@@ -1,79 +1,119 @@
 # Overriding Secrets Locally & Test Secrets
 
-Coming soon...
+What if I need to override a secret value on my local machine? `MAILER_DSN` is a
+perfect example: in the `dev` secrets vault, it's set to use the `null` transport.
+What if I need to see what the emails look like and I so I want to override that
+locally to send to Mailtrap?
 
-What if I need to override a secret value on my local machine? Miller is actually a
-perfect example. In our development secrets vault, we configure a mailer DSN to use
-the null transport, which means it doesn't actually send emails, but if I'm testing
-emails and I do want to override this maybe to send things to mail trap, how do I do
-that? Well of course I could have run over here and run and say Ben console secrets
-set mailer DSN and I could actually change that value in the vault. The problem is
-that that is going to modify my mailer DSM vault file in. Then I'm going to have to
-be super careful not to commit that, so not a great solution. Fortunately there is a
-system inside of the secrets vault to take care of this. It is run that same at
-secrets on set mailer DSN but pass a dash dash local on it. It looks exactly the same
-way
+Well, we *could* run over here and say:
 
-when I paste in a my mail chat value here and interesting. So this did not make any
-changes to our development vault at all. When you use that dash dash local flag, it's
-Bay. All it does is put the file into a dot N. dot. Dev dot local file. Now you
-probably already know that you can create, add that in that local file in this file
-is loaded, but it's ignore from get and in fact you can actually have a dot N. dot.
-Dev dot. Local and a dot M. dot. Prod that local that are also not committed. And
-this one's only loaded in the dev environment, so it's acts very closely to the same
-as dot M. dot. Local. The point is this local vault thing is nothing more than a
-fancy way of setting an environment variable in a local file.
+```terminal
+php bin/console secrets:set MAILER_DSN
+```
 
-And that makes sense. As I mentioned earlier, when you use the environment variable
-system, Symfony first looks for mailer DSN as an environment variable. If it finds
-it, it uses it. And now in the development environment on my machine, it will find it
-only if it doesn't find an environment variable, does it then go look in the vault.
-So when I go and refresh this, now I have successfully overwritten that. So you can
-use this cool Ben console secrets colon set thing. But really all you need to
-understand is that if you want to override an environment variable locally, if you
-want to override a secret value locally, just set it as an environment variable. Um,
-I could even, I don't love having this, that M, that dev dot local file. It seems
-excessive. So if I wanted to, I could even delete that and just pop it into my dot M
-that local file and it's going to work just as well. But I'm going to, no, that was
-telling them that I'm going to remove it. So this fact, the fact that environment
-variables override secrets unlocks three possibilities. The first is the, for what
-you just saw, we can very easily override secrets locally just by creating an
-environment variable. The second interesting thing is that on deploy,
+And then modify the vault value. But... ugh - then I have to be *super* careful
+not to commit that change... and eventually... I probably will on accident.
+Fortunately... there's a built-in solution for this!
 
-we can dump all of our secrets from our Prague vault into a dot and that local file,
-check this out. I'm going to run it. VIN console secrets, colon decrypt to local dash
-dash force, which, uh, tells assessment to override any entries that are in there
-already. Dash dash N = prod. Right now you don't see any output from the command.
-There's a pull request open to add a little more friendly output for this did is this
-created a dot N. dot. Prod dot local file. Basically it went through the entire
-production vault here and dump them into this.M. dot. Product local file. So now in
-the production environment, it reads from this file, it's not reading at all from the
-vault. Why is that interesting? Well, it's interesting for two reasons. The first is
-that during your deploy, you can somehow make this user deploy system to make this
-prod decrypt, that private dot PHP file, uh, to create this, you can then run this
-secrets decrypt to local command and then delete that private key file immediately.
+## Setting a Secret into the "Local" Vault
 
-That private key file then does not need to live on your production server at all. It
-just needs to live in kind of your, during your build process. The second reason is
-this also gives you a minor performance boost because you're not decrypting the
-values. Now you might be thinking, isn't this less secure? Because now all of my
-environment variables are in plain text in this file. And the answer is no, you're
-secret files on production are never completely safe. It's all about knowing the
-attack vector. If somebody can somehow get access to this file, then they can read
-that. They can, they can read your sensitive value. But if you're using the private
-key file on production, then if someone got access to that file, then they could
-still decrypt your passwords. So it's no more or less secure than having the private
-key up on production. The third interesting thing that this,
+Pretend like you want to override the `MAILER_DSN` value, but add an extra flag
+to the end `--local`:
 
-okay,
+```terminal-silent
+php bin/console secrets:set MAILER_DSN --local
+```
 
-I believe that M that pride to local just to get it out of the way. The third
-interesting thing that this,
+So far... this looks identical to before. I'll paste in my Mailtrap value... which
+the command hides for security reasons. And... *fascinating*! This didn't change
+our `dev` vault at all! Nope, it apparently added the secret to `.env.dev.local`.
 
-uh,
 
-that we can do now that we understand that environment variables over at secrets is
-we can fix our test environment. Think about it in the test environment, there is not
+Symfony allows you to create a `.env.local` file as a way to the values in `.env`.
+And thanks to our `.gitignore`, `.env.local` is ignored from git. Well, it's not
+as common, but you can *also* create a `.env.dev.local` file. It works the same
+way: it overrides `.env` and isn't committed. The only difference - which is super
+minor - is that it's *only* loaded in the `dev` environment.
+
+The point is: this "local" vault thing is nothing more than a fancy way of setting
+an environment variable to this "local" file.
+
+## Environment Variables Override Secrets
+
+And... wait: that's kind of beautiful! I mentioned earlier that when you use the
+environment variable system - when you use that `%env()%` syntax - Symfony *first*
+looks for `MAILER_DSN` as an *environment* variable. If it finds it, it uses it.
+And only if it does *not* find it, does it *then* go and try to see if it is a
+secret.
+
+So now, in the `dev` environment on my machine, it *will* find `MAILER_DSN` as
+an environment variable! Go refresh the page to prove it. There it is: my local
+override.
+
+You can use this cool `secrets:set --local` thing if you want... but really all
+you need to understand is that if you want to override a secret value locally,
+just set it as an environment variable.
+
+And, personally, I don't love having `.env.local` *and* `.env.dev.local` - it just
+seems pointless. So I would delete `.env.dev.local` and instead put my overridden
+`MAILER_DSN` directly into `.env.local`.
+
+But, don't do that - delete the override entirely - it'll help me show you one
+more thing.
+
+Now that we understand that environment variables override secrets, we can
+unlock three possibilities. The first is what we just saw: we can override a
+secret locally by creating an environment variable.
+
+## Dumping Secrets on Deploy: secrets:decrypt-to-local
+
+The second thing is that, during deployment, we can dump our production secrets
+into a local file. Check it out. Run:
+
+```terminal
+php bin/console secrets:decrypt-to-local --force --env=prod
+```
+
+And... no output. Lame! *SO* lame that in Symfony 5.1 this command *will* have
+output - that pull request is already merged.
+
+Anyways, this just created a new `.env.prod.local` file... which contains *all*
+or `prod` secrets... which is just one right now. This means that, when we're in
+the `prod` environment, it will read from *this* file and will *never* read secrets
+from the vault.
+
+Why... is that interesting? Um, good question. Two reasons. First, while deploying,
+you can add the decrypt key file, run this command, then *delete* the key file.
+The private key file then does not need to live on your production server at all.
+That's one less thing that could be exposed if someone got access to your servers.
+
+And second, this will give you a *minor* performance boost because the secrets
+don't need to be decrypted at runtime.
+
+Now, you might be thinking:
+
+> Wait, wait, wait Ryan: we went to *all* this trouble to encrypt our secrets,
+> and now you want me to store them plaintext on production? Are you mad?
+
+I never get mad! The truth is, your sensitive values are *never* fully safe on
+production: there is always *some* way - called an "attack vector" to get them.
+If someone gets access to the files on your server, then they would already have
+your encrypted keys *and* the private key to decrypt them. Storing the secrets in
+plaintext but *removing* the secret from production is really the same thing from
+a security standpoint.
+
+The point is: there's no security difference. Let's delete the `.env.prod.local`,
+we don't need that locally.
+
+## Secrets for the test Environment
+
+The *third* interesting thing that we can do now that we understand that environment
+variables override secrets relates to the `test` environment. Because... our
+`test` environment is *totally* broken right now.
+
+---> HERE
+
+Think about it in the test environment, there is not
 going to be a mailer, DSN environment variable set right now, but we can leverage the
 new thing we learned to fix that. So first I'm gonna run over and say PHP bin /PHP
 unit to run our tests

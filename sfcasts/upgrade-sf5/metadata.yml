@@ -22,4 +22,4 @@ chapters:
     - upgrading-5.0
     - secrets-vault-setup
     - prod-vault
-    - local-overrides #raw
+    - local-overrides

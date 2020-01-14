@@ -145,7 +145,7 @@ private decrypt.
 
 But... what if a developer needs to locally override a value in the `dev`
 environment? For example, in our `dev` vault, `MAILER_DSN` uses the `null` transport
-so that emails are *not* sent. What if I need to temporarily change MailTrap so
+so that emails are *not* sent. What if I need to temporarily change Mailtrap so
 that I can test the emails?
 
 The answer: the "local" vault... a little bit of coolness that will open up a
