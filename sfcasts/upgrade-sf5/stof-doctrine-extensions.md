@@ -2,11 +2,14 @@
 
 Let's see how our deprecation todo list is looking: refresh the homepage, open the
 profiler and... we still have the `TreeBuilder::root()` deprecation coming from
-`stof_doctrine_extension`.
+`stof_doctrine_extension`'s.
 
 You know the drill: try to upgrade this the *lazy* way: find the package name
-and copy it. We're *hoping* a minor upgrade - maybe from 1.3 to 1.4 - will
-fix things. Update!
+and copy it:
+
+[[[ code('c0c68d2440') ]]]
+
+We're *hoping* a minor upgrade - maybe from 1.3 to 1.4 - will fix things. Update!
 
 ```terminal
 composer update stof/doctrine-extensions-bundle
