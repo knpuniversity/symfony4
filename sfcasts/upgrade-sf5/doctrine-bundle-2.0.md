@@ -3,7 +3,7 @@
 Let's look at the latest list of deprecated code. Hmm... there's a lot of stuff
 related to Doctrine. Ok: two tricky things are happening in the Doctrine world
 right now that make upgrading to Symfony 5... a *bit* more confusing. First,
-DoctrineBundle has a new *major* version - 2.0. And second Doctrine itself is
+DoctrineBundle has a new *major* version - 2.0. And second, Doctrine itself is
 being split into smaller packages. Both things are great... but it means there
 are some extra "moving pieces".
 
@@ -50,9 +50,17 @@ the pack. Run:
 composer unpack symfony/orm-pack
 ```
 
-Very simply, this removes `symfony/orm-pack` from our `composer.json` file and
-*replaces* it with the libraries that it requires. Change the `doctrine-bundle`
-version to *just* `^2.0`.
+Very simply, this removes `symfony/orm-pack` from our `composer.json` file:
+
+[[[ code('34e5f887c0') ]]]
+
+And *replaces* it with the libraries that it requires:
+
+[[[ code('9442f84580') ]]]
+
+Change the `doctrine-bundle` version to *just* `^2.0`:
+
+[[[ code('84ddf1a552') ]]]
 
 ## Handling Composer Update Problems
 
@@ -73,15 +81,19 @@ composer update doctrine/doctrine-bundle doctrine/doctrine-fixtures-bundle
 ```
 
 We *may* need to change that bundle's version constraints to allow *it* to upgrade
-to a new major version... I honestly don't really know. My hope is that a
-newer 3.something version will allow `doctrine-bundle` 2.0. But when we check
-on Composer... bah! It didn't work! But *this* time because of a *different* library:
-`doctrine-migrations-bundle`. That *also* needs to be updated. No problem: copy
-its name and add it to the end of our `composer update` line:
+to a new major version:
+
+[[[ code('2c46a42d11') ]]]
+
+I honestly don't really know. My hope is that a newer 3.something version will
+allow `doctrine-bundle` 2.0. But when we check on Composer... bah! It didn't work!
+But *this* time because of a *different* library: `doctrine-migrations-bundle`.
+That *also* needs to be updated. No problem: copy its name and add it to the end
+of our `composer update` line:
 
 ```terminal-silent
 composer update doctrine/doctrine-bundle \
-				doctrine/doctrine-fixtures-bundle \
+                doctrine/doctrine-fixtures-bundle \
                 doctrine/doctrine-migrations-bundle
 ```
 
@@ -104,7 +116,7 @@ update as *little* as possible at one time. Try the command:
 
 ```terminal-silent
 composer update doctrine/doctrine-bundle \
-				doctrine/doctrine-fixtures-bundle \
+                doctrine/doctrine-fixtures-bundle \
                 doctrine/doctrine-migrations-bundle \
                 --with-dependencies
 ```
