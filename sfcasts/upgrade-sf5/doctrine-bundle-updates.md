@@ -33,8 +33,14 @@ uses `ManagerRegistry`.
 
 Fixing this is as simple as changing a type-hint... it's just tedious. Open up
 *every* repository class. And, one-by-one, I'll change `RegistryInterface` to
-`ManageRegistry` in the constructor. Use `ManagerRegistry` from
-`Doctrine\Persistence`. There is *also* one from `Doctrine\Common\Persistence`.
+`ManageRegistry` in the constructor:
+
+[[[ code('57a72c9b20') ]]]
+
+Use `ManagerRegistry` from `Doctrine\Persistence`. There is *also* one
+from `Doctrine\Common\Persistence`:
+
+[[[ code('d3a46a66bb') ]]]
 
 ## doctrine/common Split into doctrine/persistence (and other Packages)
 
@@ -50,8 +56,19 @@ class name. Like I said: there are a lot of moving pieces right now.
 
 I'll also remove the old `RegistryInterface` use statement. Repeat this a
 *bunch* more times: change to `ManagerRegistry`, remove the `use` statement
-and keep going. Do you want to see how fast I can type? Suuuuuuper faaaaaaaast.
-Ah! I sprained a finger.
+and keep going:
+
+[[[ code('4b36f2171c') ]]]
+
+[[[ code('0726d13aca') ]]]
+
+Do you want to see how fast I can type?
+
+[[[ code('ce4058cb8b') ]]]
+
+[[[ code('337de80472') ]]]
+
+Suuuuuuper faaaaaaaast. Ah! I sprained a finger.
 
 Let's see if we're good! Spin over and just run:
 
@@ -72,7 +89,7 @@ version upgrade, I also want to upgrade its recipe. Run:
 composer recipes
 ```
 
-Ok, yea, DotrineBundle is one of the *few* recipes that still have an update
+Ok, yea, DoctrineBundle is one of the *few* recipes that still have an update
 available. Run:
 
 ```terminal
@@ -114,7 +131,9 @@ So... I guess I want these new comment changes, except that I want to keep my
 quit the patch mode.
 
 Back in our editor... find `.env`, look for `DATABASE_URL`, and paste our original
-value.
+value:
+
+[[[ code('b28e939d8f') ]]]
 
 Let's keep going!
 
@@ -176,7 +195,9 @@ php bin/console doctrine:schema:update --dump-sql
 
 after making this change to be sure. Enter "y" to accept *all* these changes,
 then "q" to quit. Find this file - `config/packages/doctrine.yaml` - uncomment
-`server_version` and adjust it to whatever you need for your app.
+`server_version` and adjust it to whatever you need for your app:
+
+[[[ code('31668f52ec') ]]]
 
 ## Production doctrine.yaml Cache Changes
 
