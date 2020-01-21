@@ -20,7 +20,10 @@ composer update knplabs/knp-paginator-bundle
 ```
 
 My *hope* is that a minor upgrade - something like 2.8 to 2.9, which my
-`composer.json` version constraint allows - will be enough to fix the deprecation.
+`composer.json` version constraint allows - will be enough to fix the deprecation:
+
+[[[ code('df267f5d6b') ]]]
+
 And... absolutely *nothing* happens. It didn't upgrade the library at *all*!
 Boo.
 
@@ -36,7 +39,9 @@ Woh! The latest version is 5.0! And it says:
 
 That's what we want! So, to get a version of this library that works with
 Symfony 5, we need to upgrade to 5.0 of the bundle. Back in `composer.json`, change
-the version to `^5.0`.
+the version to `^5.0`:
+
+[[[ code('6364b31da5') ]]]
 
 And yes, because we're upgrading to a new *major* version - heck, we're upgrading
 *3* new major versions - this *could* contain some backwards-incompatible changes
@@ -54,13 +59,19 @@ And... this fails. Boo! Let's see: we tried to get version 5.0 of the bundle... 
 it requires PHP 7.2 or higher... and my PHP version is 7.3.6... but is overwritten
 by my `config.platform.php` version... which is 7.1.3.
 
-Wow! That's a fancy way of saying that version 5 of this library requires a higher
-version of PHP than I'm using. Except... well... that's not totally right.
-I'm using PHP 7.3, but in my `composer.json` file... if you search for `config`,
-here it is: I added a `config.platform.php` key set to 7.1.3. This is an optional
-setting and you might not have this in your app... but I *do* recommend adding it.
-It tells Composer to *pretend* like I'm using PHP 7.1.3 when downloading
-dependencies *even* though I'm *actually* using PHP 7.3.
+Wow! That's a fancy way of saying that:
+
+> Version 5 of this library requires a higher version of PHP than I'm using
+
+Except... well... that's not totally right. I'm using PHP 7.3, but in my `composer.json`
+file... if you search for `config`, here it is: I added a `config.platform.php` key
+set to 7.1.3:
+
+[[[ code('efd98912cb') ]]]
+
+This is an optional setting and you might not have this in your app... but I *do*
+recommend adding it. It tells Composer to *pretend* like I'm using PHP 7.1.3 when
+downloading dependencies *even* though I'm *actually* using PHP 7.3.
 
 Why would I want that? By setting this value to whatever PHP version you have on
 production, it will make sure you don't accidentally download any packages that
@@ -69,7 +80,9 @@ work on your local machine with its *higher* PHP version... by explode on produc
 So if our goal is to upgrade to Symfony 5, our production server will need to
 *at least* be set to Symfony 5's minimum PHP version, which is 7.2.5. And
 for consistency... even though it doesn't affect anything, under the `require`
-key, update this too.
+key, update this too:
+
+[[[ code('b686fb4472') ]]]
 
 ## Updating --with-dependencies
 

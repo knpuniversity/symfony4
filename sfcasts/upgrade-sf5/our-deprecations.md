@@ -13,11 +13,13 @@ deprecations left... and they look like the same thing: something about
 
 This `TextareaSizeExtension` class is a "form type extension" that we built in
 an earlier tutorial. Let's go check it out:
-`src/Form/TypeExtension/TextareaSizeExtension.php`
+`src/Form/TypeExtension/TextareaSizeExtension.php`:
+
+[[[ code('6ba90ef3f4') ]]]
 
 And... PhpStorm is *immediately* mad at us:
 
-> class must be declared abstract or implement method `getExtendedTypes()`.
+> Class must be declared abstract or implement method `getExtendedTypes()`.
 
 This is the error you see when you have a class that implements an interface but
 is *missing* one of the methods that the interface requires. But in this case,
@@ -42,15 +44,22 @@ Our job is to add this new static `getExtendedTypes()` method that returns
 
 We got this! At the bottom of our class, add
 `public static function getExtendedTypes()` with an `iterable` return type.
-Inside, return an array with the same class as the old method.
+Inside, return an array with the same class as the old method:
 
-As soon as we do this, the old, `getExtendedType()` method won't be called anymore.
+[[[ code('79394af9fa') ]]]
+
+As soon as we do this, the old, `getExtendedType()` method won't be called anymore:
+
+[[[ code('ce6e083615') ]]]
+
 And it will be *gone* from the interface in Symfony 5.0. But we *do* need to keep it
 temporarily... because, again, for backwards compatibility, it *does* still exist
 on the interface in Symfony 4.4. If we removed it from our class, PHP would
 be super angry. I'll add a comment:
 
-> not used anymore, remove in 5.0
+> not used anymore - remove in 5.0
+
+[[[ code('3a273a568f') ]]]
 
 Cool! Let's go close the profiler, refresh and open the new deprecations list.
 And... hey! Ignoring the `doctrine/persistence` stuff, our homepage is now *free*
@@ -72,14 +81,22 @@ This will force Symfony to rebuild its container, a process which *itself* can
 sometimes contain deprecation warnings. Refresh the homepage now: still 10
 deprecation warnings but... oh! One of these is different!
 
-> `CommentAdminController` extends `Controller`: that is deprecated, use
+> `CommentAdminController` extends `Controller` that is deprecated, use
 > `AbstractController` instead.
 
 ## Controller to AbstractController
 
-Let's go find this: `src/Controller/CommentAdminController.php`. Very simply:
-change `extends Controller` to `extends AbstractController`. I'll also remove
-the old `use` statement.
+Let's go find this: `src/Controller/CommentAdminController.php`:
+
+[[[ code('0d2f32673c') ]]]
+
+Very simply: change `extends Controller` to `extends AbstractController`:
+
+[[[ code('ca89d54fde') ]]]
+
+I'll also remove the old `use` statement:
+
+[[[ code('b9dc206307') ]]]
 
 These two base-classes work *almost* the same. The only difference is that,
 once you use `AbstractController`, you can't use `$this->get()` or
@@ -109,11 +126,18 @@ git grep NamedAddress
 It's used in `SetFromListener`, `Mailer` and `MailerTest`. Let's do some updating.
 I'll start with `src/Service/Mailer.php`: change the `use` statement from
 `NamedAddress` to `Address`, then search for `NamedAddress` and remove the `Named`
-part here and in one other place.
+part here and in one other place:
 
-Next is `EventListener\SetFromListener`. Make the same change on top... and below.
-The last place is inside of `tests/`: `Service\MailerTest`. Let's see: remove
-`Named` from the `use` statement... and then it's used below in 2 places.
+[[[ code('1ac2e60207') ]]]
+
+Next is `EventListener/SetFromListener`. Make the same change on top... and below:
+
+[[[ code('e89ce9687a') ]]]
+
+The last place is inside of `tests/`: `Service/MailerTest`. Let's see: remove
+`Named` from the `use` statement... and then it's used below in 2 places:
+
+[[[ code('3fd525edd1') ]]]
 
 Got it! Let's try the registration page now: refresh and... validation error.
 Change to a new email, agree to the terms and... got it!
