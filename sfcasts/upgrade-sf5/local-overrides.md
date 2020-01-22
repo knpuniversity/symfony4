@@ -2,8 +2,8 @@
 
 What if I need to override a secret value on my local machine? `MAILER_DSN` is a
 perfect example: in the `dev` secrets vault, it's set to use the `null` transport.
-What if I need to see what the emails look like and I so I want to override that
-locally to send to Mailtrap?
+What if I need to see what an email looks like... and I so I need to override that
+value locally to send to Mailtrap?
 
 Well, we *could* run over here and say:
 
