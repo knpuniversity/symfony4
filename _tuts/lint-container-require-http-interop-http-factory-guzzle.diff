@@ -1,0 +1,96 @@
+diff --git a/composer.json b/composer.json
+index 02e3fd61..91d6cee3 100644
+--- a/composer.json
++++ b/composer.json
+@@ -10,6 +10,7 @@
+         "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
+         "doctrine/orm": "^2.5.11",
+         "easycorp/easy-log-handler": "^1.0",
++        "http-interop/http-factory-guzzle": "^1.0",
+         "knplabs/knp-markdown-bundle": "^1.7",
+         "knplabs/knp-paginator-bundle": "^5.0",
+         "knplabs/knp-snappy-bundle": "^1.6",
+diff --git a/composer.lock b/composer.lock
+index 3f49f95d..f2f58e8c 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "d0124513bab5dc6a6e31571ecfe22b8c",
++    "content-hash": "b8a8aa2d531f75c5a2d8f6234105fba5",
+     "packages": [
+         {
+             "name": "antishov/doctrine-extensions-bundle",
+@@ -1772,6 +1772,56 @@
+             ],
+             "time": "2019-07-01T23:21:34+00:00"
+         },
++        {
++            "name": "http-interop/http-factory-guzzle",
++            "version": "1.0.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/http-interop/http-factory-guzzle.git",
++                "reference": "34861658efb9899a6618cef03de46e2a52c80fc0"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/http-interop/http-factory-guzzle/zipball/34861658efb9899a6618cef03de46e2a52c80fc0",
++                "reference": "34861658efb9899a6618cef03de46e2a52c80fc0",
++                "shasum": ""
++            },
++            "require": {
++                "guzzlehttp/psr7": "^1.4.2",
++                "psr/http-factory": "^1.0"
++            },
++            "provide": {
++                "psr/http-factory-implementation": "^1.0"
++            },
++            "require-dev": {
++                "http-interop/http-factory-tests": "^0.5",
++                "phpunit/phpunit": "^6.5"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Http\\Factory\\Guzzle\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "PHP-FIG",
++                    "homepage": "http://www.php-fig.org/"
++                }
++            ],
++            "description": "An HTTP Factory using Guzzle PSR7",
++            "keywords": [
++                "factory",
++                "http",
++                "psr-17",
++                "psr-7"
++            ],
++            "time": "2018-07-31T19:32:56+00:00"
++        },
+         {
+             "name": "imagine/imagine",
+             "version": "1.2.3",
+diff --git a/symfony.lock b/symfony.lock
+index 1bbd39eb..dd1d8a34 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -131,6 +131,9 @@
+     "guzzlehttp/psr7": {
+         "version": "1.5.2"
+     },
++    "http-interop/http-factory-guzzle": {
++        "version": "1.0.0"
++    },
+     "imagine/imagine": {
+         "version": "v0.7.1"
+     },

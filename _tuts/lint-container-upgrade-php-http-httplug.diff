@@ -1,0 +1,191 @@
+diff --git a/composer.json b/composer.json
+index 787cbfef..02e3fd61 100644
+--- a/composer.json
++++ b/composer.json
+@@ -20,7 +20,7 @@
+         "liip/imagine-bundle": "^2.1",
+         "nexylan/slack-bundle": "^2.1",
+         "oneup/flysystem-bundle": "^3.0",
+-        "php-http/guzzle6-adapter": "^1.1",
++        "php-http/guzzle6-adapter": "^2.0",
+         "sensio/framework-extra-bundle": "^5.1",
+         "symfony/asset": "5.0.*",
+         "symfony/console": "5.0.*",
+diff --git a/composer.lock b/composer.lock
+index 762451c5..3f49f95d 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "c2b43c18da5de2f10dafe12e1941e1ea",
++    "content-hash": "d0124513bab5dc6a6e31571ecfe22b8c",
+     "packages": [
+         {
+             "name": "antishov/doctrine-extensions-bundle",
+@@ -3194,30 +3194,35 @@
+         },
+         {
+             "name": "php-http/client-common",
+-            "version": "1.10.0",
++            "version": "2.1.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/php-http/client-common.git",
+-                "reference": "c0390ae3c8f2ae9d50901feef0127fb9e396f6b4"
++                "reference": "a8b29678d61556f45d6236b1667db16d998ceec5"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/php-http/client-common/zipball/c0390ae3c8f2ae9d50901feef0127fb9e396f6b4",
+-                "reference": "c0390ae3c8f2ae9d50901feef0127fb9e396f6b4",
++                "url": "https://api.github.com/repos/php-http/client-common/zipball/a8b29678d61556f45d6236b1667db16d998ceec5",
++                "reference": "a8b29678d61556f45d6236b1667db16d998ceec5",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": "^5.4 || ^7.0",
+-                "php-http/httplug": "^1.1",
++                "php": "^7.1",
++                "php-http/httplug": "^2.0",
+                 "php-http/message": "^1.6",
+                 "php-http/message-factory": "^1.0",
+-                "symfony/options-resolver": "^2.6 || ^3.0 || ^4.0 || ^5.0"
++                "symfony/options-resolver": " ^3.4.20 || ~4.0.15 || ~4.1.9 || ^4.2.1 || ^5.0"
+             },
+             "require-dev": {
++                "doctrine/instantiator": "^1.1",
+                 "guzzlehttp/psr7": "^1.4",
+-                "phpspec/phpspec": "^2.5 || ^3.4 || ^4.2"
++                "phpspec/phpspec": "^5.1",
++                "phpspec/prophecy": "^1.8",
++                "sebastian/comparator": "^3.0"
+             },
+             "suggest": {
++                "ext-json": "To detect JSON responses with the ContentTypePlugin",
++                "ext-libxml": "To detect XML responses with the ContentTypePlugin",
+                 "php-http/cache-plugin": "PSR-6 Cache plugin",
+                 "php-http/logger-plugin": "PSR-3 Logger plugin",
+                 "php-http/stopwatch-plugin": "Symfony Stopwatch plugin"
+@@ -3225,7 +3230,7 @@
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.10.x-dev"
++                    "dev-master": "2.0.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -3251,7 +3256,7 @@
+                 "http",
+                 "httplug"
+             ],
+-            "time": "2019-11-18T08:54:36+00:00"
++            "time": "2019-11-18T08:58:18+00:00"
+         },
+         {
+             "name": "php-http/discovery",
+@@ -3320,35 +3325,38 @@
+         },
+         {
+             "name": "php-http/guzzle6-adapter",
+-            "version": "v1.1.1",
++            "version": "v2.0.1",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/php-http/guzzle6-adapter.git",
+-                "reference": "a56941f9dc6110409cfcddc91546ee97039277ab"
++                "reference": "6074a4b1f4d5c21061b70bab3b8ad484282fe31f"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/php-http/guzzle6-adapter/zipball/a56941f9dc6110409cfcddc91546ee97039277ab",
+-                "reference": "a56941f9dc6110409cfcddc91546ee97039277ab",
++                "url": "https://api.github.com/repos/php-http/guzzle6-adapter/zipball/6074a4b1f4d5c21061b70bab3b8ad484282fe31f",
++                "reference": "6074a4b1f4d5c21061b70bab3b8ad484282fe31f",
+                 "shasum": ""
+             },
+             "require": {
+                 "guzzlehttp/guzzle": "^6.0",
+-                "php": ">=5.5.0",
+-                "php-http/httplug": "^1.0"
++                "php": "^7.1",
++                "php-http/httplug": "^2.0",
++                "psr/http-client": "^1.0"
+             },
+             "provide": {
+                 "php-http/async-client-implementation": "1.0",
+-                "php-http/client-implementation": "1.0"
++                "php-http/client-implementation": "1.0",
++                "psr/http-client-implementation": "1.0"
+             },
+             "require-dev": {
+                 "ext-curl": "*",
+-                "php-http/adapter-integration-tests": "^0.4"
++                "php-http/client-integration-tests": "^2.0",
++                "phpunit/phpunit": "^7.4"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.2-dev"
++                    "dev-master": "2.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -3376,35 +3384,36 @@
+                 "Guzzle",
+                 "http"
+             ],
+-            "time": "2016-05-10T06:13:32+00:00"
++            "time": "2018-12-16T14:44:03+00:00"
+         },
+         {
+             "name": "php-http/httplug",
+-            "version": "v1.1.0",
++            "version": "2.1.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/php-http/httplug.git",
+-                "reference": "1c6381726c18579c4ca2ef1ec1498fdae8bdf018"
++                "reference": "72d2b129a48f0490d55b7f89be0d6aa0597ffb06"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/php-http/httplug/zipball/1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
+-                "reference": "1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
++                "url": "https://api.github.com/repos/php-http/httplug/zipball/72d2b129a48f0490d55b7f89be0d6aa0597ffb06",
++                "reference": "72d2b129a48f0490d55b7f89be0d6aa0597ffb06",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.4",
++                "php": "^7.0",
+                 "php-http/promise": "^1.0",
++                "psr/http-client": "^1.0",
+                 "psr/http-message": "^1.0"
+             },
+             "require-dev": {
+-                "henrikbjorn/phpspec-code-coverage": "^1.0",
+-                "phpspec/phpspec": "^2.4"
++                "friends-of-phpspec/phpspec-code-coverage": "^4.1",
++                "phpspec/phpspec": "^4.3.4|^5.0|^6.0"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.1-dev"
++                    "dev-master": "2.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -3432,7 +3441,7 @@
+                 "client",
+                 "http"
+             ],
+-            "time": "2016-08-31T08:30:17+00:00"
++            "time": "2019-12-27T10:07:11+00:00"
+         },
+         {
+             "name": "php-http/httplug-bundle",
