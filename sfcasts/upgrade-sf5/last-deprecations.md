@@ -15,7 +15,7 @@ tail -f var/log/dev.log
 ```
 
 Symfony writes a *lot* of stuff to this log file... *including* any deprecation
-warnings: "User Deprecated". Hit Ctrl+C to exit the "tail" mode and run this again,
+warnings: "User Deprecated". Hit `Ctrl`+`C` to exit the "tail" mode and run this again,
 but this time "pipe" it to `grep Deprecated`:
 
 ```terminal-silent
@@ -61,17 +61,26 @@ It worked perfectly. But if you go back to the logs and look closely... ah! A
 > `ArticleStatsCommand::execute()` return value should always be of the type
 > `int` since Symfony 4.4, NULL returned.
 
-Interesting. Let's open that command: `src/Command/ArticleStatsCommand.php`.
+Interesting. Let's open that command: `src/Command/ArticleStatsCommand.php`:
+
+[[[ code('19d8be88dc') ]]]
+
 Since Symfony 4.4, the `execute()` method of every command *must* return an integer.
-At the bottom, `return 0`.
+At the bottom, `return 0`:
+
+[[[ code('224eec8a00') ]]]
 
 This ends up being the "exit code" that the command returns when you run it. Zero
 means successful and pretty much anything else - like 1 - means that the command
 *failed*.
 
 Copy the return and open the other command class. At the bottom of `execute()`,
-`return 0`. And... let's make sure that we don't have any other return statements
-earlier. Nope, it looks good.
+`return 0`:
+
+[[[ code('a8ceba0e0b') ]]]
+
+And... let's make sure that we don't have any other return statements earlier.
+Nope, it looks good.
 
 ## Production Deprecation Log
 
@@ -80,8 +89,11 @@ are we sure that all the deprecated code is gone? Maybe? There are 2 final trick
 
 First, as I mentioned earlier, at this point, I would deploy my code to production
 and watch the `prod.deprecations.log` file for any new entries... ignoring any
-`doctrine/persistence` stuff. If nothing new is added, it's almost definitely
-safe to upgrade.
+`doctrine/persistence` stuff:
+
+[[[ code('df5f77ca53') ]]]
+
+If nothing new is added, it's almost definitely safe to upgrade.
 
 ## Deprecations in Tests
 
