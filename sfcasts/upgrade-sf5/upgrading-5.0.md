@@ -10,22 +10,33 @@ How... do we actually upgrade? We already know: it's the *exact* same process
 we used to upgrade from 4.3 to 4.4.
 
 Open up `composer.json`. Our goal is to update *all* of these `symfony/` libraries
-to 5.0. Well, not quite *all* of them - a few are not part of the main Symfony
+to 5.0:
+
+[[[ code('70d3479779') ]]]
+
+Well, not quite *all* of them - a few are not part of the main Symfony
 library, like `monolog-bundle`. But basically, everything that has `4.4.*` now
 needs to be `5.0.*`.
 
-We also need to update one more thing: the `extra.symfony.require` value. This
-is primarily a performance optimization that helps Composer filter out extra
+We also need to update one more thing: the `extra.symfony.require` value:
+
+[[[ code('9d565c38a3') ]]]
+
+This is primarily a performance optimization that helps Composer filter out extra
 Symfony versions when it's trying to resolve packages. This *also* needs to change
 to `5.0.*`.
 
 Let's... do it all at once: Find `4.4.*`, replace it with `5.0.*` and hit
-"Replace all". And then... make sure that this didn't accidentally replace any
-non-Symfony packages that may have had the same version.... looks good.
+"Replace all":
+
+[[[ code('3cb3759685') ]]]
+
+And then... make sure that this didn't accidentally replace any non-Symfony
+packages that may have had the same version.... looks good.
 
 ## Updating Symfony Packages in Composer
 
-We're ready! At your terminal... I'll hit Ctrl+C to stop the log tail....
+We're ready! At your terminal... I'll hit `Ctrl`+`C` to stop the log tail....
 and run the same command we used when upgrading from Symfony 4.3 to 4.4:
 
 ```terminal
@@ -77,7 +88,7 @@ add it to the update command:
 
 ```terminal-silent
 composer update symfony/* \
-				doctrine/orm \
+                doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle
 ```
@@ -89,7 +100,7 @@ our very-long update command:
 
 ```terminal-silent
 composer update symfony/* \
-				doctrine/orm \
+                doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
                 liip/imagine-bundle \
@@ -114,7 +125,7 @@ We allow that by adding `--with-dependencies` to the update command:
 
 ```terminal-silent
 composer update symfony/* \
-				doctrine/orm \
+                doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
                 liip/imagine-bundle \
@@ -142,15 +153,17 @@ Fortunately, I'm already using PHP 7.3 locally: so I just need to change my
 `config.platform.php` setting to 7.3 and also makes sure that we have 7.3 on
 production.
 
-Inside 	`composer.json`, search for `platform`: there it is. Use 7.3.0. And,
+Inside `composer.json`, search for `platform`: there it is. Use 7.3.0. And,
 even though it doesn't affect anything in a project, also change the version
-under the `require` key.
+under the `require` key:
+
+[[[ code('9b51c3b29e') ]]]
 
 Ok, *now* try to update:
 
 ```terminal-silent
 composer update symfony/* \
-				doctrine/orm \
+                doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
                 liip/imagine-bundle \
@@ -165,7 +178,7 @@ to update. Add it to our list:
 
 ```terminal-silent
 composer update symfony/* \
-				doctrine/orm \
+                doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
                 liip/imagine-bundle \
@@ -180,7 +193,7 @@ done. Add that to our *gigantic* update command:
 
 ```terminal-silent
 composer update symfony/* \
-				doctrine/orm \
+                doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
                 liip/imagine-bundle \
@@ -199,7 +212,9 @@ constraints inside `composer.json`, we know that all of these upgrades are just
 *minor* version upgrades at best. For example, `nexylan/slack-bundle` went from
 2.1 to 2.2. Even if there *were* a new version 3 of this bundle, we know that it
 wouldn't upgrade to it because its version constraint is `^2.1`, which allows
-2.1 or higher, but *not* 3.
+2.1 or higher, but *not* 3:
+
+[[[ code('02e0358a29') ]]]
 
 Well, that's not *completely* true: check out `nexylan/slack`: it went from
 version 2.3 to 3: that *is* a major upgrade. That's because this is one of those
