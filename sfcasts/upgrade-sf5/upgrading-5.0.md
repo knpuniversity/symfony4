@@ -208,7 +208,7 @@ lives in our project because `nexylan/slack-bundle` requires it. So unless we're
 using its code directly - which *is* possible, but less likely - the major upgrade
 won't affect us. If you're worried, check its CHANGELOG.
 
-Ok, so we are now on Symfony 5. Woo! Try out the homepage. It works! The little
+Ok, so we are now on Symfony 5. Woo! The little
 icon on the bottom right of the web debug toolbar shows 5.0.2.
 
 Next, let's celebrate by trying out some new features! We'll start by talking
