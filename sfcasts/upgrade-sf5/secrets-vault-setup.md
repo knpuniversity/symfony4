@@ -10,12 +10,18 @@ Here's the deal: every app has a set of config values that need to be different
 from machine to machine, like different on my local machine versus production.
 In Symfony, we store these as environment variables.
 
-One example is `MAILER_DSN`. While developing, I want to use the `null` transport
-to *avoid* sending real emails. But on production, this value will be different,
-maybe pointing to my SendGrid account.
+One example is `MAILER_DSN`:
+
+[[[ code('d261fea96e') ]]]
+
+While developing, I want to use the `null` transport to *avoid* sending real
+emails. But on production, this value will be different, maybe pointing to my
+SendGrid account.
 
 We reference environment variables with a special syntax - this one is in
-`config/packages/mailer.yaml`: `%env()%` with the variable name inside: `MAILER_DSN`.
+`config/packages/mailer.yaml`: `%env()%` with the variable name inside: `MAILER_DSN`:
+
+[[[ code('38590b2053') ]]]
 
 If you look at the full list of environment variables, you'll notice that there
 are two types: sensitive and non-sensitive variables.
@@ -25,10 +31,13 @@ probably contains a username & password or API key: something that, if someone
 got access to it, would allow them to use our account. So, it's not something that
 we want to commit to our project.
 
-But other values are *not* sensitive, like `WKHTMLTOPDF_PATH`. This might need to
-be *different* on production, but the value is not sensitive: we don't need to keep
-it a secret. We *could* actually commit its production value somewhere in our app
-to make deployment easier if we wanted to.
+But other values are *not* sensitive, like `WKHTMLTOPDF_PATH`:
+
+[[[ code('cb21718ff1') ]]]
+
+This might need to be *different* on production, but the value is not sensitive:
+we don't need to keep it a secret. We *could* actually commit its production
+value somewhere in our app to make deployment easier if we wanted to.
 
 So... why are we talking about this? Because, these sensitive, or "secret"
 environment variables make life tricky. When we deploy, we need to *somehow* set
@@ -68,16 +77,24 @@ going to move this to be an "encrypted secret".
 
 To see how this all works clearly, let's add some debugging code to dump the
 `MAILER_DSN` value. Open `config/services.yaml` and add a new bind - `$mailerDsn`
-set to `%env(MAILER_DSN)%` - so we can use this as an argument somewhere. I forgot
-my closing quote... which Symfony will "gently" remind me in a minute.
+set to `%env(MAILER_DSN)%` - so we can use this as an argument somewhere:
+
+[[[ code('bcdfdbc88f') ]]]
+
+I forgot my closing quote... which Symfony will "gently" remind me in a minute.
 
 Next, open `src/Controller/ArticleController.php`. In the homepage action,
-thanks to the bind, we can add a `$mailerDsn` argument. Dump that and die.
+thanks to the bind, we can add a `$mailerDsn` argument. Dump that and die:
+
+[[[ code('4399a6b996') ]]]
+
 Now, refresh the homepage. Booo. Let's go fix my missing quote in the YAML
 file. Refresh again and... perfect: the current value is `null://null`.
 
 That's no surprise: that's the value in `.env` and we are *not* overriding it
-in `.env.local`.
+in `.env.local`:
+
+[[[ code('72b8b55fae') ]]]
 
 ## Converting an Env Var to a Secret
 
@@ -85,10 +102,13 @@ Ok, as *soon* as you have an environment variable that you want to *convert* to
 a secret, you need to fully *remove* it as an environment variable: do *not* set
 it as an environment variable anywhere anymore. I'll remove `MAILER_DSN` from
 `.env` and if we *were* overriding it in `.env.local`, I would also remove
-it from there.
+it from there:
+
+[[[ code('a79f134654') ]]]
 
 Not surprisingly, when you refresh, we're greeted with a great big ugly error:
-the environment variable is not found.
+
+> The environment variable is not found.
 
 ## Bootstrapping the Secrets Vault
 
@@ -162,9 +182,13 @@ git commit -m "setting up dev environment vault"
 ## %env()% Automatically Looks for Secrets
 
 And *now* I have a pleasant surprise: go over and refresh the homepage. It works!
-That's by design: the `%env()%` syntax is smart. It *first* looks for a `MAILER_DSN`
-environment variable. If it finds one, it uses it. If it does *not*, it *then*
-looks for a `MAILER_DSN` secret. *That's* why... it just works.
+That's by design: the `%env()%` syntax is smart:
+
+[[[ code('b13db1a931') ]]]
+
+It *first* looks for a `MAILER_DSN` environment variable. If it finds one,
+it uses it. If it does *not*, it *then* looks for a `MAILER_DSN` secret.
+*That's* why... it just works.
 
 ## bin/console secrets:list
 
