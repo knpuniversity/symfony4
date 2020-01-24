@@ -24,6 +24,6 @@ chapters:
     - prod-vault
     - local-overrides
     - vault-dumping-tests
-    - auto-mapping  #raw
-    - migrate-password-hashing #raw
+    - auto-mapping
+    - migrate-password-hashing
     - preload-lint-container #raw
