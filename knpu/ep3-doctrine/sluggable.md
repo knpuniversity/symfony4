@@ -24,8 +24,15 @@ This *bundle* - `StofDoctrineExtensionsBundle` - helps to *integrate* that libra
 into a Symfony project. Copy the `composer require` line, find your terminal, and
 paste!
 
+***TIP
+The StofDoctrineExtensionBundle does not currently support Symfony 5. But a community
+member has created a fork that does. Use: `composer require antishov/doctrine-extensions-bundle`
+to download the fork instead. It's the same bundle, with same configuration,
+but with newer releases.
+***
+
 ```terminal-silent
-composer require stof/doctrine-extensions-bundle
+composer require antishov/doctrine-extensions-bundle
 ```
 
 While that's working, let's go check out the documentation. This is a *wonderful*
