@@ -1,111 +1,158 @@
 # Migrate Password Hashing
 
-Coming soon...
+On our `User` entity, this `$password` field - which is stored in the database -
+does *not* contain a plain-text version of your user's password. Next to allowing
+SQL injection attacks, storing plain-text passwords is *just* about the worst thing
+you can do in a web app.
 
-We all know that on our `User` entity, this `$password` field is a hash to pastor because
-we never want to store plain text passwords. There are multiple algorithms that you
-can use to hash passwords and this is controlled in `config/packages/security.yaml`
-So this section up here says that whenever someone registers, when you're
-going to use it and `bcrypt` to hash their password and when they log in, we will
-use `bcrypt` to compare the passwords as a security best practice over time, better
-and better algorithms come out. And as a security best practice, you typically want
-to make sure that you're always using the latest algorithm. Otherwise, if somehow
-your hash passwords got exposed, it's possible that someone could crack them. It's
-probably not going to happen to your application. Um, but if we can use the latest
-algorithm, like why wouldn't we?
+## Hashing Algorithms Over Time
 
-So right now I want to change `bcrypt`, I'm gonna come out the `bcrypt` algorithm and
-change it to `sodium`, which is a algorithm that is generally considered to be a little
-bit more robust than `bcrypt`. So done. Right. Well, the problem is that you can't
-just change from one algorithm to another one usually. Normally that would mean that
-any existing users whose passwords are in are hashed in the database. Using
-`bcrypt` wouldn't be able to log in because Symfony would now be expecting those
-to be hashed with `sodium`. Now in the case of `bcrypt` and `sodium`, they're actually
-compatible with each other. So you would still be able to login with many algorithms.
-You can't change from one to another, one without, uh, existing users being affected
-badly.
+Anyways, what's *actually* stored on this field is a "hash" or kind of "fingerprint"
+of the plaintext password and there are multiple hashing algorithms available.
+The one *you're* using is configured in `config/packages/security.yaml`.
 
-In Symfony 4.4 there's a new wonderful way to handle this where you can have great
-security without any work. Here's how it works. Add a new encoder up here. It can be
-called anything. I'll call it `legacy_bcrypt` and I'm going to copy whatever config
-I had on my original encoder. I'm not copying down here now to my real
-encoder, the one that will be used for app and the user. I'll add a `migrate_from`. And
-then down here I'll just list `legacy_bcrypt`. And if you had multiple old and
-coders, you could put that one below. This basically says when somebody logs in, try
-to use the `sodium` algorithm. If that doesn't work, try to use the `legacy_bcrypt` and
-coder. So now we could have, so now we can have multiple uh, hash. It's in the
-database. I'm actually going to log out and let's make sure this works. I'll log in
-as `admin1@thespacebar.com` password `engage` and it works. All right, so checkouts
-spit over to your terminal and run 
+The `encoders` section says that whenever we encode, or really, "hash" a password -
+like when someone registers or when they log in - the `bcrypt` algorithm will be
+used. That's great. But... over time, as processing power of computers get better
+and better, it becomes more and more possible that *if* your database or passwords
+somehow got exposed, someone could use a computer to *crack* them. It probably
+*won't* happen, but because of this, it's a security best-practice to change your
+algorithm over time to one that requires more processing power.
+
+## Changing Algorithms
+
+Comment-out the `bcrypt` algorithm and replace it with `sodium`. This stuff can
+be confusing. Sodium is a hashing library that uses the Argon2 algorithm, which
+is *currently* considered the best possible algorithm.
+
+So... great! We just changed from `bcrypt` to Argon2 and increased the security
+of our application... right? No so far. You -usually - can't just change from
+one algorithm to another. Why? The problem is that all your *existing* users have
+their passwords hashed with bcrypt. If *those* users tried to log in, suddenly
+Symfony would use `sodium` to hash the submitted password and the two hashed
+passwords wouldn't match!
+
+Now, the *full* truth is that, in *this* case - going from `bcrypt` to `sodium`,
+nothing would break: Sodium is smart enough to detect that the existing passwords
+are hashed with bcrypt and use it instead. But in general, you can't change from
+one algorithm to another without breaking things. And even in this case, don't
+we want to re-hash all our existing users to the better algorithm?
+
+## The migrate_from Encoder Option
+
+Symfony 4.4 comes with a wonderful new feature to help with this - submitted by
+the amazing [Nicolas Grekas](https://github.com/nicolas-grekas), who is also
+responsible - along with [Jérémy Derussé](https://github.com/jderusse)
+for the secrets management system.
+
+Here's how it works: add a new encoder, it can be called anything, how about
+`legacy_bcrypt`. Make sure it has the *exact* configuration of your original
+encoder.
+
+Now, under the *new* encoder - the one that will be used for my `User` class -
+add a new option :`migrate_from`. Below that, add a list of all encoders that
+existing users might be using - for us, just `legacy_bcrypt`.
+
+That's it! This says:
+
+> Hey! When somebody logs in, try to use the `sodium` algorithm. If that doesn't
+> work, try the `legacy_bcrypt`. If *that* doesn't work, panic! I mean, if that
+> doesn't work, the password is invalid.
+
+Thanks to this, we can have a database where *some* passwords are hashed with
+sodium and others are hashed with bcrypt. Let's try it: log out and try to log
+back in: `admin1@thespacebar.com`, password `engage`. Got it!
+
+## Seeing the Hashed Passwords
+
+It's *also* kinda fun to see how this looks in the database. Find your terminal
+and run:
 
 ```terminal
 php bin/console doctrine:query:sql 'SELECT email, password FROM user'
 ```
 
-So as you can see, all the passwords start with this dollar sign
-to Y thing. This is the `bcrypt` format and it shouldn't be a surprise. All these
-users were created when `bcrypt` was the algorithm we were using in our application.
-So now I'm going to go back over to my browser, log out and register a new user.
+Interesting: every hashed password starts with the same `$2y` things. That's no
+accident: thats what the bcrypt hashing format looks like.
 
-Well registers, `Ryan` `spacecadet@example.com` and I'll use the same password,
-`engage`, but that doesn't matter and I'll register. Okay, go back and run that query
-again. 
+Let's see what sodium-encoded passwords look like: go back to your browser, log
+out, and register as a new user: `Ryan`, `spacecadet@example.com`, the same
+password - `engage`, but that doesn't matter - and register!
 
-```terminal-silent
-php bin/console doctrine:query:sql 'SELECT email, password FROM user'
-```
-
-Awesome. So you can see that the new user uses the new `argon` algorithm. So the
-old users use the old algorithm, which isn't as good and any new users use the new
-algorithm. So this is great, but it would be even better if we could upgrade the old
-password out, uh, hashes to the, to use the new, uh, `sodium`.
-
-Owl, uh, Hasher due to the nature of hash and these passwords, we can't, we can't
-decrypt them. We can't do that unless we had the original plain text password for all
-of these old users, which obviously we can't get. So it's not possible to just
-upgrade all of your existing users to use the new algorithm. Except there is one time
-when we do have the plaintext password. At the moment, any of these old users log in,
-we have the plain text password and we could add that moment, use the new hash
-algorithm and, and update the database using it. In fact, that's exactly what 
-`migrate_from` does automatically. We just need to do two extra things in our code to enable it
-to finish its work. The first one is because we're using the guard off vacation, I'm
-going to put up `Security/LoginFormAuthenticator`. This is the authenticator that
-handles the log in form and we need to implement a new interface here. So I'll say
-`implements PasswordAuthenticatedInterface`. Basically we need to tell the system
-what the plain text password is. So I'll go down here and I'll go to command generate
-or Command + N on a Mac and `getPassword`. And if you look up here and 
-`getCredentials()`, we return an array with the `email`, `password`, `csrf_token` down here.
-We're past that same `$credentials`. So we'll `return $credentials['password']`
-
-The other thing we need to do is, because we're using doctrine, go into the
-`Repository/UserRepository` and implement a new interface here as well called
-`PasswordUpgraderInterface`. This will also require one new method. So I'll put on
-here, go to code generate or Command + N on a Mac, "Implement Methods" per 
-`upgradePassword()`. So the idea is when we login,
-
-the security system will call and `getPassword()` to get the plain text password and
-then it will encode it using the new encoder and pass it to this `upgradePassword()`
-method. In this method, we need to set that on the `User` object and save it to the
-database. By the way, this rehashing is only done when it needed. It's only done one
-Symfony did techs that the user is using the old algorithm and use it. The new ones.
-There is no extra performance hit for normal users. So actually let me add a little
-PHP doc up above this. It says that the `$user` variable is actually going to be a `User`
-object because that's, we know that will be our `User` object and then I can say
-`$user->setPassword($newEncodedPassword)`. And then `$this->getEntityManager()->flush($user)`
-
-All right, let's check this out. So I'm gonna go back over here. Let's log out.
-
-Long back in, we use my `admin1@spacebar.com` pass for an `engage` sign in.
-It works. And here's the real test. Spin over here and run our query again, 
+Ok! Try that query again:
 
 ```terminal-silent
 php bin/console doctrine:query:sql 'SELECT email, password FROM user'
 ```
 
-and let's
-scroll all the way up. Let's see here. Avenues or is, there we go. Boom. Okay. Admin
-zero still has the old `bcrypt`, but admin one, the person who just logged in is now
-using our `argon`. So with a little bit of config and those two extra methods, you can
-now guarantee that new users, users will use the new algorithm. All of you as users
-will be able to log in and old users will have their hashed password upgraded over
-time. So nice and secure without any headaches.
+Cool! It's *pretty* obvious the new user's password is hashed with argon.
+
+## Upgrading old Password
+
+We now have a database mixed with passwords using the older algorithm and the
+newer algorithm. That's fine... but in a *perfect* world, we could re-hash *all*
+the passwords using the newer algorithm.
+
+But... we can't do that. To hash a password, we need the original *plain* password
+for each user, which we don't have. So it's *not* possible to upgrade all
+existing users to the new algorithm.
+
+Except, hmm, there is *one* time when we *do* have the plaintext password: at
+the moment any old user logs into our site. At *that* moment, in theory, we
+*could* re-hash their password using sodium and save it to the database. That
+would actually be pretty awesome.
+
+And... that's *precisely* what  `migrate_from` does automatically. Well, *almost*
+automatically: we need to do things in our code to enable it.
+
+## Guard PasswordAuthenticatedInterface
+
+First, *if* you're using Guard authentication for your log in form, your
+authenticator needs a new interface. I'll open up
+`src/Security/LoginFormAuthenticator.php`. Add a new interface:
+`implements PasswordAuthenticatedInterface`.\
+
+Basically. we need to tell the system what the plain-text password is. I'll scroll
+down and then go to the Command -> Generator menu - or Command + N on a Mac - and
+generate a new `getPassword()` method.
+
+Look up at `getCredentials()`: we return an array with the `email`, `password`,
+and `csrf_token` keys. In `getPassword()`, we're passed that array as the
+`$credentials`. To get the password, `return $credentials['password']`.
+
+## UserRepository PasswordUpgraderInterface
+
+The *second* change we need to make is inside `src/Repository/UserRepository.php`.
+Implement a new interface here too called `PasswordUpgraderInterface`. This
+requires one new method. Go to the Code -> Generate menu - or Command + N on a Mac,
+select "Implement Methods" and choose `upgradePassword()`.
+
+Here's the idea: when we log in, *if* the user's password is hashed with an old
+algorithm, the security system will call `getPassword()` on our authenticator
+to get the plain-text password and then hash it using the latest algorithm.
+To save that value to the `user` table, it will call this `upgradePassword()`
+method and pass us the new hashed value.
+
+Our job is to update the database. Let's add a little PHPDoc above this method:
+we know the `$user` variable will be *our* `User` object. Now add
+`$user->setPassword($newEncodedPassword)` and then
+`$this->getEntityManager()->flush($user)`.
+
+That's it! Test drive time! Find your browser and log out. Log back in with
+`admin1@spacebar.com`, password `engage`. It works. But the *real* test is what
+the database looks like! Run that query again:
+
+```terminal-silent
+php bin/console doctrine:query:sql 'SELECT email, password FROM user'
+```
+
+Scroll up and... there it is! `admin0` still has the `bcrypt` format but `admin1` -
+the user *we* just logged in as - has an argon-hashed password!
+
+So that's it! By adding a few lines of config and two simple methods, our existing
+users will be upgraded to the latest algorithm safely over time.
+
+Next, we're *just* about done with our tour through my favorite new Symfony 5
+features. But before we're done, I want to talk about PHP 7.4 preloading and
+a way to double-check that service wiring across your *entire* app is working
+correctly.

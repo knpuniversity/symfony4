@@ -26,4 +26,5 @@ chapters:
     - vault-dumping-tests
     - auto-mapping
     - migrate-password-hashing
-    - preload-lint-container #raw
+    - preload
+    - lint-container
