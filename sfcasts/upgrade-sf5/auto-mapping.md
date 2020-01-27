@@ -1,84 +1,135 @@
-# Auto Mapping
+# Validation Auto-Mapping
 
-Coming soon...
+Head over to `/admin/article` and log in as an admin user:
+`admin1@thespacebar.com` password `engage`. Use this unchecked, powerful admin
+access to go to `/admin/article` and click to create a new article.
 
+I *love* the new "secrets" Symfony... but what I'm about to show you might be
+my *second* favorite new feature. It actually comes from Symfony 4.3 but was
+improved in 4.4. It's called: validation auto-mapping... and it's one more step
+towards robots doing my programming for me.
 
-head over to `/admin/article` login with `admin1@thespacebar.com` password `engage`. 
-Okay. And then he
-had to create a new article, one of my favorite new features in Symfony 4.4 actually
-it comes from Symfony 4.3 but was improved in Symfony 4.4 is something called
-validation auto mapping. It's a super smart feature. So over here I'm going to go
-into `templates/article_admin/_form.html.twig`. This is the form that
-renders this page. And to help us play with validation on the button, I'm going to
-add it `formnovalidate`
+Start by going into `templates/article_admin/_form.html.twig`. This is the form
+that renders the article admin page. To help us play with validation, on the button,
+add a new `formnovalidate` attribute.
 
-over here. If I refresh that will let me submit the entire form blank so we can see
-the validation errors. We already have several validation errors, uh, which are
-coming from the annotations on our `Article`. For example, `@Assert\NotBlank` is on
-`$title`. So no surprise if I took this `@Assert\NotBlank` deleted it and delete it is
-I'll actually just put it below the property just so I have a copy of it. But if I
-remove that constraint when I go over here and resubmit the form blank, you
-validation error is gone from article title. All right, so here's the new feature, go
-back into `Article` and on top of the class add `@Assert\EnableAutoMapping`.
+Thanks to that, after you refresh, HTML5 validation is *disabled* and we can submit
+the entire form blank to see... our server-side validation errors. These come from
+the annotations on our `Article` class, like `@Assert\NotBlank` above `$title`.
 
-as soon as I do that and go back and refresh the error is back "This value should not be null"
-it has different wording, but it automatically added a `NotNull`
-constraints to this field. How the heck did that work? It guesses the validation
-constraints based off of the doctrine meta-data. So this is actually `nullable=false`
-by defaults and also off the co how our source code looks itself. I'll show you an
-example of that in a second. By the way, to get the most out of this feature, make
-sure that you have `symfony/property-info` installed. 
+So it's *no* surprise that if we remove the `@Assert\NotBlank` annotation...
+I'll move it as a comment below the property - that's as good as deleting it - and
+then re-submit the blank form... the validation error is *gone* from the title field.
+
+## @Assert\EnableAutoMapping
+
+Ready for the magic? Go back to `Article` and, on top of the class, add
+`@Assert\EnableAutoMapping()`.
+
+As *soon* as we do that, we can refresh to see... a Rick Roll! Kidding! We refresh
+and... the validation error is *back* for the `title` field!
+
+> This value should not be null
+
+Yep! An `@NotNull` constraint was *automatically* added to the property! How the
+heck did that work? The system - validation auto-mapping - automatically adds
+some sensible validation constraints based off of your Doctrine metadata. The
+Doctrine `Column` annotation has a `nullable` option its *default* value is
+`nullable=false`. In other words, the `title` column is required in the database!
+
+Auto-mapping can *also* add constraints based *solely* on how your code is written...
+I'll show you an example of that in a few minutes. Oh, and by the way, to make sure
+you get the most out of this feature, make sure you have `symfony/property-info`
+installed.
 
 ```terminal-silent
 composer show symfony/property-info
 ```
 
-If that package doesn't come up,
-install that because this is used to grab some of that metadata. All right? So, for
-example, if we change this to `nullable=true`, which means that this is now optional in
-the database and go over and refresh the error is gone. Well, it's actually even
-cooler than that. So I'm going to undo that.
+If that package doesn't come up, install it to allow the feature to get as *much*
+info as possible.
 
-I'm actually going to take off the `@ORM\Column` entirely. So I'm going to pretend
-like I'm not saving this the database. I also need to remove this `@Gedmo\Slug`
-just to avoid an error. So what's going to happen now for if we refresh, my guess is
-that we won't get a validation error because there's no doctrine metadata that says
-whether this field is required or not. But when we refresh, we do get another `NotNull`
-know. So now that there's no doctrine metadata here, instead Symfony looks on the
-setter method. If there is one for `$title`. So if you search for `setTitle()` Symfony sees
-that there's a `setTitle()` method here. It sees that it requires a `string`. And because
-this is not nullable, it assumes that the `$title` is a required field.
+## Auto-Mapping is Smart
 
-Check this out. Add a little question Mark before a string to make it nullable.
-Refresh in the error is gone. So let's put everything back to go back to where we
-were in the beginning. So what I love about this feature is it's just smart. It works
-really well. So even if I add back my `@Assert\NotBlank`, wow. And go back and
-refresh, check this out. I don't get two errors, I don't get the `NotNull` error and my
-custom, `NotBlank`. It's smart enough to realize that because we have a `NotBlank`
-annotation constraint on this that it doesn't need to add the `NotNull` that would 
-be duplicating.
+Let's play with this a bit more, like change this to `nullable=true`. The means
+that the column should now be *optional* in the database. What happens when we
+submit the form now? The validation error is gone: the `NotNull` constraint was
+*not* added.
 
-In addition to the `NotNull` constraint. It's also gonna automatically put `Length`
-constraints on here. So, uh, you know, because this is a `255` length, if I get,
+Oh, but it gets even *cooler* than this. Remove the `@ORM\Column` entirely - we'll
+pretend like this property isn't even being saved to the database. I also need
+to remove this `@Gedmo\Slug` annotation just to avoid an error.
 
-so if I type a super creative title over and over and over again and just paste that
-all a lot of times and it enter, now I'm gonna get this value is too long. It should
-have 255 characters or less. Just nice. It just helps me with all that sanity
-validation. Now occasionally this feature can cause a problem and most notably in the
-`User` class it's can sometimes create a problem because if you add
+What do you think will happen now? Well think about it: the auto-mapping system
+won't be able to ask Doctrine if this property is required or not... so my guess
+is that it *won't* be add any constraints. Try it! Refresh!
 
-`AutoMapping` to this class, it's actually going to make your `$password` fields
-required, which we actually don't want because we want the F the registration form to
-submit successfully without that being required. And then usually we would then
-manually set that field to the encoded password. So if you have this problem, just be
-aware of it. You can also on a field you can say at `@Assets\DisableAutoMapping`
-and that would disabled just for that one field. 
+Duh, duh, duh! The `NotNull` validation is back! Whaaaaat? The Doctrine metadata
+is just *one* source of info for auto-mapping: it can also look directly at your
+source code. In this case, Symfony looks for a setter method. Search for
+`setTitle()`. Ah yes, The `$title` argument is type-hinted with `string`. And because
+that type-hint does *not* allow null, it assumes that `$title` must be required.
 
-All right, next let's talk about hashing passwords and making sure that you are hashed.
-Passers in. The database are always using the strongest algorithm. Oh one more thing.
-You can also control this feature a bit and `config/packages/validator.yaml`
-by default, the feature is only enabled if you add that annotation` @Assert\EnableAutoMapping`
-but you can also enable it for specific namespaces automatically. So if I
-uncommon in this out, it would activate it for all of my entities. Even if I didn't
-have that annotation, I prefer to opt into it, but other people like to have it be
-automatic. It's up to you.
+Watch this: add a `?` before `string` to make `null` an allowed value. Refresh
+now and... the error is gone.
+
+## Avoiding Duplicate Constraints
+
+Let's put *everything* back to go back to where it was in the beginning. What I
+*love* about this feature is that... it's just so smart! It simply *reflects*
+what your code is already communicating.
+
+And even if I add back the my `@Assert\NotBlank` annotation and refresh... check
+it out. We don't get 2 errors! The auto-mapping system is smart enough to realize
+that, because I added a `NotBlank` annotation constraint on this property, it should
+not *also* add the `NoNull` constraint: that would basically be duplication and
+the user would see two errors. Like I said, it's smart.
+
+## Automatic Length Annotation
+
+And it's not all about the `NotNull` constraint. The length of this column in the
+database is 255 - that's the default for a `string` type. Let's type a super-creative
+title over and over and over and over again... until we know that we're over that
+limit. Submit and... awesome:
+
+> This valid is too long. IT should have 255 characters or less.
+
+Behind-the-scenes, auto-mapping *also* added a `@Length` annotation to limit this
+field to the database limit. Say goodbye to forgetting this field and letting
+long data get truncated!
+
+## Disabling Auto-Mapping when it Doesn't Make Sense
+
+As *cool* as this feature is, automatic functionality will never work in *all*
+cases. And that's fine for two reasons. First, it's *your* choice to opt-into
+this feature by adding the `@EnableAutoMapping` annotation. And second, you can
+disable it on a field-by-field basis.
+
+A great example of when this feature can be a problem is in the `User` class.
+Imagine we added `@EnableAutoMapping` here and created a registration form to
+help create this object. Well... that's going to be a problem because it will add
+a `NotNull` constraint to the `$password` field! And we *don't* want that!
+In a typical registration form - like the one that the `make:registration-form`
+command creates - the `$password` property is set to its hashed value *after*
+the form is validated. Basically, this is not a field the user sets directly
+and having the `NotNull` constraint causes a validation error on submit.
+
+How do you solve this? You could disable auto-mapping for the whole class. Or,
+if you want, just disable it for the `$password` property by adding
+`@Assert\DisableAutoMapping`. This is the *one* ugly case for this feature, but
+it's easy to fix.
+
+## Configuring Auto-Mapping Globally
+
+Oh, and one more thing! You can control this feature a bit in
+`config/packages/validator.yaml`. By default, you need to enable auto-mapping
+on a class-by-class basis by adding the `@Assert\EnableAutoMapping` annotation.
+But, you can also *automatically* enable it for specific namespaces. If we
+uncommented this `App\Entity` line out, every entity will get auto-mapped
+validation without the extra annotation. I like being a bit more explicit - but
+it's your call.
+
+Next, ready to talk about something super geeky? No, not Star Trek, but that
+would awesome. This is *even* better: let's chat about password hashing algorithms
+and safely *upgrading* hashed passwords in your database to stay up-to-date with
+security best-practices.
