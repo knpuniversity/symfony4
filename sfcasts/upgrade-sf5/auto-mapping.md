@@ -26,7 +26,7 @@ then re-submit the blank form... the validation error is *gone* from that field.
 Ready for the magic? Go back to `Article` and, on top of the class, add
 `@Assert\EnableAutoMapping()`.
 
-As *soon* as we do that, we can refresh to see... a Rick Roll! Kidding! We refresh
+As *soon* as we do that, we can refresh to see...  Kidding! We refresh
 to see... the validation error is *back* for the `title` field!
 
 > This value should not be null
