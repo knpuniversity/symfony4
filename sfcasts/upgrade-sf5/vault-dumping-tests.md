@@ -62,7 +62,7 @@ php bin/phpunit
 
 Ignore the deprecation warnings. Woh! *Huge* error. If you look closely... yep:
 
-> Environment variable not found MAILER_DSN
+> Environment variable not found: "MAILER_DSN"
 
 ## New in 4.4: Easier HTML Errors in Tests
 
@@ -75,7 +75,9 @@ I didn't need to scroll so far up.
 
 So we *do* need to specify a `MAILER_DSN` secret to use in the `test` environment.
 But for simplicity, instead of making another vault, let's just add it to `.env.test`.
-I'll copy my old `null` transport value from `.env`, and put it into `.env.test`.
+I'll copy my old `null` transport value from `.env`, and put it into `.env.test`:
+
+[[[ code('d78bb4528a') ]]]
 
 Done! So *really*, when you need to add a new secret, you need to add it to your
 dev vault, prod vault *and* `.env.test`.
@@ -88,8 +90,13 @@ php bin/phpunit
 
 Much better! So... that's it for the secrets system! Pretty freakin' cool! Let's
 clean up our debugging code... nobody likes data being dumped on production. I'll
-remove the bind.... then go to `ArticleController` and take out the `$mailerDsn`
-stuff there.
+remove the bind:
+
+[[[ code('866ddc4149') ]]]
+
+then go to `ArticleController` and take out the `$mailerDsn` stuff there:
+
+[[[ code('e688e8e0ad') ]]]
 
 Next, let's talk about a really cool new feature called "validation auto mapping".
 It's a wicked-smart feature that automatically adds validation constraints based
