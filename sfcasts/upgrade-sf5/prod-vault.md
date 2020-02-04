@@ -53,8 +53,11 @@ git status
 ```
 
 Oh! This did *not* add the private decrypt key. That's no accident: our `.gitignore`
-file is *specifically* ignoring this. This line was added when we updated the
-`symfony/framework-bundle` recipe.
+file is *specifically* ignoring this:
+
+[[[ code('d773257e99') ]]]
+
+This line was added when we updated the `symfony/framework-bundle` recipe.
 
 ## Listing & Revealing prod Secrets
 
@@ -114,8 +117,11 @@ Let's go make sure this whole `prod` vault idea works. Right now, if we refresh
 the page, it still shows us the null value because we are *still* in the `dev`
 environment.
 
-Open up your `.env` file and, temporarily, change `APP_ENV` to `prod`. Then, find
-your console and clear the cache:
+Open up your `.env` file and, temporarily, change `APP_ENV` to `prod`:
+
+[[[ code('a8241f8c3b') ]]]
+
+Then, find your console and clear the cache:
 
 ```terminal
 php bin/console cache:clear
@@ -143,14 +149,16 @@ tail var/log/prod.log
 
 And... there it is:
 
-> Environment variable not found: MAILER_DSN
+> Environment variable not found: "MAILER_DSN".
 
 If you *don't* have the private key... bad things will happen. Let's go
 *undelete* that private key file. Refresh: all better. Let's also change back to
-the `dev` environment to make life nicer.
+the `dev` environment to make life nicer:
+
+[[[ code('27d1d65351') ]]]
 
 So... that's it! You have a `dev` vault and a `prod` vault, you can commit your
-encrypted secrets via git and you only need to handle one sensitive value at deploy:
+encrypted secrets via Git and you only need to handle one sensitive value at deploy:
 the private decrypt key.
 
 But... what if a developer needs to locally override a value in the `dev`
