@@ -15,9 +15,12 @@ bugs on production.
 Another type of error that Symfony's container will catch immediately is a missing
 argument. For example, imagine you registered a service and forgot to configure
 an argument. Or, better example, Symfony couldn't figure out what to pass to this
-`Mailer` argument for some reason. If that happened, you'll get an error when the
-container builds... meaning that *every* page will be broken - even if a page
-doesn't use this service.
+`Mailer` argument for some reason:
+
+[[[ code('f1c7a8ffdf') ]]]
+
+If that happened, you'll get an error when the container builds... meaning
+that *every* page will be broken - even if a page doesn't use this service.
 
 ## Detecting Type Problems
 
@@ -34,7 +37,7 @@ php bin/console lint:container
 
 And... oh! Woh! This is a perfect example!
 
-> Invalid definition for service `nexy_slack.client`. Argument one of
+> Invalid definition for service `nexy_slack.client`. Argument 1 of
 > `Nexy\Slack\Client` accepts a Psr `ClientInterface`, `HttpMethodsClient` passed.
 
 Apparently the container is configured to pass the wrong type of object to this
@@ -56,13 +59,17 @@ needs to be at version 2 to make the bundle happy. We have version 1 and a few
 other libraries depend on it.
 
 The fix is to go to `composer.json` and change the `guzzle6-adapter` to
-version 2. Why? Again, if you dug into this, you'd find that we need version 2
+version 2:
+
+[[[ code('7843d9a5df') ]]]
+
+Why? Again, if you dug into this, you'd find that we need version 2
 of `guzzle6-adapter` in order to be compatible with version 2 of `httplug`...
 which is needed to be compatible with the bundle. Sheesh.
 
 Now run `composer update` with all three of these libraries:
 `php-http/httplug`, `php-http/client-commmon` - so that it can upgrade to a new
-version that allows version 2 of httplug - and `guzzle6-adapter`:
+version that allows version 2 of HTTPlug - and `guzzle6-adapter`:
 
 ```terminal-silent
 composer update php-http/httplug php-http/client-commmon php-http/guzzle6-adapter
