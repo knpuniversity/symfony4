@@ -187,7 +187,7 @@ Symfony to use our `LoginFormAuthenticator` class to authenticate the user and
 redirect by using its `onAuthenticationSuccess()` method.
 
 Check it out: add two arguments to our controller. First, a service called
-`GuardAuthenticationHandler $guardHandler`. Second, the authenticator that you
+`GuardAuthenticatorHandler $guardHandler`. Second, the authenticator that you
 want to authenticate through: `LoginFormAuthenticator $formAuthenticator`:
 
 [[[ code('63c5e4fe18') ]]]
