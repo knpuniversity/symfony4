@@ -32,7 +32,7 @@ our `dev` vault at all! Nope, it apparently added the secret to `.env.dev.local`
 
 Quick review about `.env` files: Symfony allows you to create a `.env.local` file
 as a way to override values in `.env`. And thanks to our `.gitignore`,
-`.env.local` is ignored from git. And, though it's not as common, you can *also*
+`.env.local` is ignored from Git. And, though it's not as common, you can *also*
 create a `.env.dev.local` file. It works the same way: it overrides `.env` and
 isn't committed. The only difference - which is super minor - is that it's
 *only* loaded in the `dev` environment.
