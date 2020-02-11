@@ -45,7 +45,7 @@ service! This service comes from NexylanSlackBundle - I broke something when I
 upgraded that bundle... and didn't even realize it because I haven't navigated
 to a page that uses that service!
 
-## Fixing our lint Oroblem
+## Fixing our lint Problem
 
 After some digging, it turns out that the bundle has a *tiny* bug that allowed
 us to accidentally use a version of a dependency that is too old. Run:
