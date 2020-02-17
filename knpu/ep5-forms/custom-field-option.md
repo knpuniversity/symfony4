@@ -39,7 +39,7 @@ a `string $email`. Inside return the normal `$userRepository->findOneBy()` with
 
 [[[ code('62b5a2dd4d') ]]]
 
-Next, check out the `build()` method. See this array of `$options`? That will *now*
+Next, check out the `buildForm()` method. See this array of `$options`? That will *now*
 include `finder_callback`, which will either be our default value, or some other
 callback if it was overridden.
 
@@ -67,7 +67,7 @@ option works, just open up the class!
 
 For example, we know that this field is a `DateTimeType`. Press Shift+Shift and
 look for `DateTimeType` - open the one from the Form component. I love it - these
-classes will look a lot like our own custom field type class! This one has a `build()`
+classes will look a lot like our own custom field type class! This one has a `buildForm()`
 method that adds some transformers. And if you scroll down far enough, cool! Here
 is the `configureOptions()` method where *all* of the valid options are defined
 for this field.
