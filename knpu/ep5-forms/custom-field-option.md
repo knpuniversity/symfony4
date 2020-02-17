@@ -39,7 +39,7 @@ a `string $email`. Inside return the normal `$userRepository->findOneBy()` with
 
 [[[ code('62b5a2dd4d') ]]]
 
-Next, check out the `build()` method. See this array of `$options`? That will *now*
+Next, check out the `buildForm()` method. See this array of `$options`? That will *now*
 include `finder_callback`, which will either be our default value, or some other
 callback if it was overridden.
 
