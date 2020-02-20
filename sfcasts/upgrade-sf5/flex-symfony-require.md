@@ -128,7 +128,7 @@ Let's see this `4.3.*` require thing in action. Spin over to the terminal, open
 up a new tab and run:
 
 ```terminal
-composer update symfony/*
+composer update "symfony/*"
 ```
 
 If we did *not* have Symfony Flex installed, we would expect that `symfony/form`
@@ -142,6 +142,6 @@ that start with `symfony/*` but that aren't part of the main Symfony code. Flex
 has no effect on these: they upgrade normally, and that's fine.
 
 So upgrading the "patch" version of Symfony to get bug fixes and security releases
-is *just* as simple as running `composer update symfony/*`. But to upgrade to the
+is *just* as simple as running `composer update "symfony/*"`. But to upgrade to the
 next *minor* version, we need to change the `extra.symfony.require` key. Except...
 there will be one other trick. Let's see what it is next.
