@@ -3,7 +3,7 @@
 We just ran:
 
 ```terminal
-composer update symfony/*
+composer update "symfony/*"
 ```
 
 Thanks to the `extra.symfony.require` key in our `composer.json` file:
@@ -26,7 +26,7 @@ Then we can fix them before upgrading to Symfony 5. We'll see this later.
 Anyways, find your terminal and, once again, run:
 
 ```terminal
-composer update symfony/*
+composer update "symfony/*"
 ```
 
 Yea! This time it *is* updating the Symfony packages to 4.4. That was easy!
