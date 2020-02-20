@@ -6,7 +6,7 @@ send messages to a Slack channel. To install it, find the `composer require`
 line, copy that, move over to your terminal and paste:
 
 ```terminal-silent
-composer require nexylan/slack-bundle php-http/guzzle6-adapter:1.1.1
+composer require nexylan/slack-bundle:2.2.0 php-http/guzzle6-adapter:1.1.1
 ```
 
 Interesting: this installs the bundle *and* some other library called `guzzle6-adapter`.
