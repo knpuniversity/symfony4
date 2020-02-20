@@ -40,7 +40,7 @@ We're ready! At your terminal... I'll hit `Ctrl`+`C` to stop the log tail....
 and run the same command we used when upgrading from Symfony 4.3 to 4.4:
 
 ```terminal
-composer update symfony/*
+composer update "symfony/*"
 ```
 
 That's it! It's that easy! We're done! Kidding - it's never *that* easy: you will
@@ -59,7 +59,7 @@ supports Symfony 5 - we hit that problem earlier with StofDoctrineExtensionsBund
 But... let's blindly try it! Add `doctrine/orm` to our update list and try again:
 
 ```terminal-silent
-composer update symfony/* doctrine/orm
+composer update "symfony/*" doctrine/orm
 ```
 
 And... another error. Actually, the *same* error but this time for
@@ -69,7 +69,7 @@ Symfony5-compatible release either... and even if it does... it might require a
 for the best. Try it:
 
 ```terminal-silent
-composer update symfony/* doctrine/orm knplabs/knp-markdown-bundle
+composer update "symfony/*" doctrine/orm knplabs/knp-markdown-bundle
 ```
 
 So... this is going to happen *several* more times - this is the same error for
@@ -87,7 +87,7 @@ Let's keep going with my cowardly, I mean, cautious way: copy the package name a
 add it to the update command:
 
 ```terminal-silent
-composer update symfony/* \
+composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle
@@ -99,7 +99,7 @@ for `liip/imagine-bundle` - add that to the update command - then
 our very-long update command:
 
 ```terminal-silent
-composer update symfony/* \
+composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
@@ -124,7 +124,7 @@ Our app doesn't require `doctrine/instantiator` directly: it's a dependency of
 We allow that by adding `--with-dependencies` to the update command:
 
 ```terminal-silent
-composer update symfony/* \
+composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
@@ -162,7 +162,7 @@ under the `require` key:
 Ok, *now* try to update:
 
 ```terminal-silent
-composer update symfony/* \
+composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
@@ -177,7 +177,7 @@ Bah! I should've seen that coming: it's *still* complaining about
 to update. Add it to our list:
 
 ```terminal-silent
-composer update symfony/* \
+composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
@@ -192,7 +192,7 @@ And try it. Surprise! Another package needs to be update. I *swear* we're almost
 done. Add that to our *gigantic* update command:
 
 ```terminal-silent
-composer update symfony/* \
+composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
                 knplabs/knp-snappy-bundle \
