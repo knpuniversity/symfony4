@@ -60,7 +60,7 @@ php bin/console doctrine:fixtures:load
 > `__construct()` references `FilesystemInterface` but no such service exists.
 
 There are two ways to fix this. First, we could re-add the `alias` option and
-point it at this `FilesytemInterface`. *Or*, we can create a new bind. I'll do
+point it at this `FilesystemInterface`. *Or*, we can create a new bind. I'll do
 the second, because it works better if you have multiple filesystem services, which
 we will soon. First, rename the argument to be more descriptive, how about
 `$publicUploadFilesystem`.
