@@ -91,7 +91,11 @@ we need to add an `@Gedmo\Slug()` annotation above the slug field. Let's do it! 
 [[[ code('7d70322fe7') ]]]
 
 That's all we need! Back in `ArticleFixtures`, we no longer need to set the slug
-manually. Try it out: find your terminal, and load those fixtures!
+manually (remove it):
+
+[[[ code('ec6e9ab960') ]]]
+
+Try it out: find your terminal, and load those fixtures!
 
 ```terminal
 php bin/console doctrine:fixtures:load
