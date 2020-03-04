@@ -41,7 +41,7 @@ we need. Scroll down to find a section called "Activate the extensions you want"
 
 As we saw, there are a *lot* of different, possible behaviors. For performance
 reasons, when you install this bundle, you need to *explicitly* say which behaviors
-you want, like `timestampable`, by setting it to true.
+you want, like `timestampable`, by setting it to true. 
 
 ## Contrib Recipes
 
