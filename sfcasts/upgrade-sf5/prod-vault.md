@@ -127,7 +127,7 @@ Then, find your console and clear the cache:
 php bin/console cache:clear
 ```
 
-I don't need to add `--env=prod` *now* because we are *already* in the ``prod``
+I don't need to add `--env=prod` *now* because we are *already* in the `prod`
 environment thanks to the `APP_ENV` change.
 
 Ok, go try it! Refresh and... yes! That's the value from the `prod` vault! Symfony
