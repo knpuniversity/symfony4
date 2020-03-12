@@ -22,7 +22,7 @@ php bin/console make:command
 Call it `app:author-weekly-report:send`. Perfect! Back in the editor, head to the
 `src/Command` directory to find... our shiny new console command. 
 
-[[[ code('c91c8fc95f') ]]]
+[[[ code('04ab805225') ]]]
 
 Let's start customizing this: we don't need any arguments or options... 
 and I'll change the description:
@@ -89,7 +89,7 @@ big happy message, add `$io->success()`
 
 > Weekly reports were sent to authors!
 
-[[[ code('1756d2ede3') ]]]
+[[[ code('e1e9ef383d') ]]]
 
 Brilliant! We're not *doing* anything yet... but let's try it! Copy the command
 name, find your terminal, and do it!
