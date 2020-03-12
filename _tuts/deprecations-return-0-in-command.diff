@@ -10,15 +10,3 @@ index 0f43e5a2..61df983e 100644
 +        return 0;
      }
  }
-diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index b2faff4a..6ce16cb2 100644
---- a/src/Command/AuthorWeeklyReportSendCommand.php
-+++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -58,5 +58,7 @@ class AuthorWeeklyReportSendCommand extends Command
-         $io->progressFinish();
- 
-         $io->success('Weekly reports were sent to authors!');
-+
-+        return 0;
-     }
- }

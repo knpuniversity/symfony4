@@ -1,9 +1,9 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
 new file mode 100644
-index 00000000..317ac926
+index 00000000..b789f03e
 --- /dev/null
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
-@@ -0,0 +1,40 @@
+@@ -0,0 +1,42 @@
 +<?php
 +
 +namespace App\Command;
@@ -28,7 +28,7 @@ index 00000000..317ac926
 +        ;
 +    }
 +
-+    protected function execute(InputInterface $input, OutputInterface $output)
++    protected function execute(InputInterface $input, OutputInterface $output): int
 +    {
 +        $io = new SymfonyStyle($input, $output);
 +        $arg1 = $input->getArgument('arg1');
@@ -42,5 +42,7 @@ index 00000000..317ac926
 +        }
 +
 +        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
++
++        return 0;
 +    }
 +}

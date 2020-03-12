@@ -1,5 +1,5 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 34c33ad8..b2faff4a 100644
+index 8370dbbb..0f54234d 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -4,18 +4,13 @@ namespace App\Command;
