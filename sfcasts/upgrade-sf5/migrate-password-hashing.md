@@ -14,7 +14,7 @@ Anyways, what's *actually* stored on this field is a "hash" or kind of "fingerpr
 of the plaintext password and there are multiple hashing algorithms available.
 The one *you're* using is configured in `config/packages/security.yaml`:
 
-[[[[ code('b91b201db8') ]]]]
+[[[ code('b91b201db8') ]]]
 
 The `encoders` section says that whenever we encode, or really, "hash" a password -
 like when someone registers or when they log in - the `bcrypt` algorithm will be
