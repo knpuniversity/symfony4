@@ -16,10 +16,12 @@ and `$message`:
 [[[ code('601d9eb122') ]]]
 
 Next, copy the code from the controller, paste, and make the from and message parts
-dynamic. Oh, but let's rename the variable to `$slackMessage` - having *two* `$message`
-variables is no fun.
+dynamic:
 
 [[[ code('3cd3cdaa44') ]]]
+
+Oh, but let's rename the variable to `$slackMessage` - having *two* `$message` variables
+is no fun.
 
 At this point, we just need the Slack client service. You know the drill: create
 a constructor! Type-hint the argument with `Client` from `Nexy\Slack`:
