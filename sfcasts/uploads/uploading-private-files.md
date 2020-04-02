@@ -33,7 +33,7 @@ Cool! Next, in `UploaderHelper`, were already passing the `$publicUploadFilesyst
 as an argument. We will *also* need the private one. Before we add it here, go into
 `services.yaml`. Remember, under `_defaults`, we're binding the
 `$publicUploadFilesystem` argument to the public fileystem service. Let's do the
-same for the private one. Call it `$privateUploadFilesystem` and change the service
+same for the private one. Call it `$privateUploadsFilesystem` and change the service
 id to point to the "private" one.
 
 [[[ code('ef6159e6b3') ]]]
