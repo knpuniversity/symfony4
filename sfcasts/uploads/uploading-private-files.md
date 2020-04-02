@@ -29,7 +29,7 @@ will use the `private_uploads_adapter`.
 
 [[[ code('e1c9903026') ]]]
 
-Cool! Next, in `UploaderHelper`, were already passing the `$publicUploadFilesystem`
+Cool! Next, in `UploaderHelper`, we're already passing the `$publicUploadFilesystem`
 as an argument. We will *also* need the private one. Before we add it here, go into
 `services.yaml`. Remember, under `_defaults`, we're binding the
 `$publicUploadFilesystem` argument to the public fileystem service. Let's do the
