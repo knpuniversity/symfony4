@@ -73,7 +73,7 @@ php bin/console debug:router
 ```
 
 There it is! The first time we refresh, LiipImagineBundle generates this URL.
-When our browser tries to download the image, it's handle by a controller from
+When our browser tries to download the image, it's handled by a controller from
 the bundle. That controller opens the original image, applies all the filters -
 just a thumbnail in our case - and returns the transformed image. That's a *slow*
 operation: our browser has to wait for all of that to finish.
