@@ -56,7 +56,7 @@ index 2ecbad69..6c5156c6 100644
          "twig/extensions": "^1.5"
      },
 diff --git a/composer.lock b/composer.lock
-index dcb9c217..606bb3c3 100644
+index fcbd91b7..357ccb7f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

@@ -39,7 +39,7 @@ index 3e330df0..decf26cd 100644
          "symfony/profiler-pack": "^1.0",
          "symfony/var-dumper": "4.4.*"
 diff --git a/composer.lock b/composer.lock
-index 5f2aece7..f83affb9 100644
+index 2a4df54d..22dc0499 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -51,7 +51,7 @@ index 5f2aece7..f83affb9 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -1384,6 +1384,56 @@
+@@ -1384,6 +1384,57 @@
              ],
              "time": "2018-06-14T14:45:07+00:00"
          },
@@ -103,12 +103,13 @@ index 5f2aece7..f83affb9 100644
 +                "monolog",
 +                "productivity"
 +            ],
++            "abandoned": true,
 +            "time": "2019-10-24T07:13:31+00:00"
 +        },
          {
              "name": "egulias/email-validator",
              "version": "2.1.11",
-@@ -2640,6 +2690,84 @@
+@@ -2640,6 +2691,84 @@
              ],
              "time": "2018-01-15T00:49:33+00:00"
          },
@@ -193,7 +194,7 @@ index 5f2aece7..f83affb9 100644
          {
              "name": "mtdowling/jmespath.php",
              "version": "2.4.0",
-@@ -3948,16 +4076,16 @@
+@@ -3948,16 +4077,16 @@
          },
          {
              "name": "psr/log",
@@ -214,7 +215,7 @@ index 5f2aece7..f83affb9 100644
                  "shasum": ""
              },
              "require": {
-@@ -3966,7 +4094,7 @@
+@@ -3966,7 +4095,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -223,7 +224,7 @@ index 5f2aece7..f83affb9 100644
                  }
              },
              "autoload": {
-@@ -3991,7 +4119,7 @@
+@@ -3991,7 +4120,7 @@
                  "psr",
                  "psr-3"
              ],
@@ -232,7 +233,7 @@ index 5f2aece7..f83affb9 100644
          },
          {
              "name": "ralouphie/getallheaders",
-@@ -4780,6 +4908,63 @@
+@@ -4780,6 +4909,63 @@
              "homepage": "https://symfony.com",
              "time": "2019-12-01T08:39:58+00:00"
          },
@@ -296,7 +297,7 @@ index 5f2aece7..f83affb9 100644
          {
              "name": "symfony/error-handler",
              "version": "v4.4.1",
-@@ -5808,23 +5993,41 @@
+@@ -5808,23 +5994,41 @@
              "time": "2019-11-30T08:27:26+00:00"
          },
          {
@@ -345,7 +346,7 @@ index 5f2aece7..f83affb9 100644
              "extra": {
                  "branch-alias": {
                      "dev-master": "4.4-dev"
-@@ -5832,7 +6035,7 @@
+@@ -5832,7 +6036,7 @@
              },
              "autoload": {
                  "psr-4": {
@@ -354,7 +355,7 @@ index 5f2aece7..f83affb9 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -5852,49 +6055,161 @@
+@@ -5852,48 +6056,160 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -414,7 +415,6 @@ index 5f2aece7..f83affb9 100644
 -            "version": "v1.13.1",
 -            "source": {
 -                "type": "git",
--                "url": "https://github.com/symfony/polyfill-ctype.git",
 +            "require-dev": {
 +                "symfony/console": "~3.4 || ~4.0 || ^5.0",
 +                "symfony/phpunit-bridge": "^3.4.19 || ^4.0 || ^5.0",
@@ -543,11 +543,10 @@ index 5f2aece7..f83affb9 100644
 +            "version": "v1.13.1",
 +            "source": {
 +                "type": "git",
-+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                 "url": "https://github.com/symfony/polyfill-ctype.git",
                  "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
              },
-             "dist": {
-@@ -8530,56 +8845,6 @@
+@@ -8530,57 +8846,6 @@
              ],
              "time": "2019-06-12T12:03:37+00:00"
          },
@@ -599,12 +598,13 @@ index 5f2aece7..f83affb9 100644
 -                "monolog",
 -                "productivity"
 -            ],
+-            "abandoned": true,
 -            "time": "2018-07-27T15:41:37+00:00"
 -        },
          {
              "name": "fzaninotto/faker",
              "version": "v1.8.0",
-@@ -8630,84 +8895,6 @@
+@@ -8631,84 +8896,6 @@
              ],
              "time": "2018-07-12T10:23:15+00:00"
          },
@@ -689,7 +689,7 @@ index 5f2aece7..f83affb9 100644
          {
              "name": "nikic/php-parser",
              "version": "v4.2.4",
-@@ -8945,63 +9132,6 @@
+@@ -8946,63 +9133,6 @@
              "homepage": "https://symfony.com",
              "time": "2019-10-29T11:38:30+00:00"
          },
@@ -753,7 +753,7 @@ index 5f2aece7..f83affb9 100644
          {
              "name": "symfony/maker-bundle",
              "version": "v1.14.3",
-@@ -9070,136 +9200,6 @@
+@@ -9071,136 +9201,6 @@
              ],
              "time": "2019-11-07T00:56:03+00:00"
          },

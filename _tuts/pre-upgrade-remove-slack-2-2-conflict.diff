@@ -12,7 +12,7 @@ index dadd525f..2d02cd10 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 5ba031d9..6598cf61 100644
+index 2d257eb9..b0f162ee 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -44,19 +44,3 @@ index 5ba031d9..6598cf61 100644
                  }
              ],
              "description": "Integrates Flysystem filesystem abstraction library to your Symfony2 project.",
-@@ -8197,6 +8197,7 @@
-                 "code",
-                 "zf"
-             ],
-+            "abandoned": "laminas/laminas-code",
-             "time": "2019-08-31T14:14:34+00:00"
-         },
-         {
-@@ -8251,6 +8252,7 @@
-                 "events",
-                 "zf2"
-             ],
-+            "abandoned": "laminas/laminas-eventmanager",
-             "time": "2018-04-25T15:33:34+00:00"
-         }
-     ],

@@ -59,7 +59,7 @@ index 6541eb45..3e330df0 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index bd7a8d9b..5f2aece7 100644
+index af452da7..2a4df54d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -646,7 +646,7 @@ index bd7a8d9b..5f2aece7 100644
          },
          {
              "name": "symfony/twig-pack",
-@@ -8749,27 +8761,27 @@
+@@ -8750,27 +8762,27 @@
          },
          {
              "name": "symfony/browser-kit",
@@ -683,7 +683,7 @@ index bd7a8d9b..5f2aece7 100644
              },
              "suggest": {
                  "symfony/process": ""
-@@ -8777,7 +8789,7 @@
+@@ -8778,7 +8790,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -692,7 +692,7 @@ index bd7a8d9b..5f2aece7 100644
                  }
              },
              "autoload": {
-@@ -8804,7 +8816,7 @@
+@@ -8805,7 +8817,7 @@
              ],
              "description": "Symfony BrowserKit Component",
              "homepage": "https://symfony.com",
@@ -701,7 +701,7 @@ index bd7a8d9b..5f2aece7 100644
          },
          {
              "name": "symfony/debug-bundle",
-@@ -9283,42 +9295,40 @@
+@@ -9284,42 +9296,40 @@
          },
          {
              "name": "symfony/web-profiler-bundle",
@@ -759,7 +759,7 @@ index bd7a8d9b..5f2aece7 100644
                  }
              },
              "autoload": {
-@@ -9345,7 +9355,7 @@
+@@ -9346,7 +9356,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

@@ -11,7 +11,7 @@ index 02e3fd61..91d6cee3 100644
          "knplabs/knp-paginator-bundle": "^5.0",
          "knplabs/knp-snappy-bundle": "^1.6",
 diff --git a/composer.lock b/composer.lock
-index 3f49f95d..f2f58e8c 100644
+index 6b4ac5f5..06945f18 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 3f49f95d..f2f58e8c 100644
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
-@@ -1772,6 +1772,56 @@
+@@ -1773,6 +1773,56 @@
              ],
              "time": "2019-07-01T23:21:34+00:00"
          },

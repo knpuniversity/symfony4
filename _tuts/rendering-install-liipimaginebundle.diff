@@ -23,7 +23,7 @@ index 5c5432a5..8af7058c 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 87af7c16..f9f1ed25 100644
+index 222169ff..1c96164e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

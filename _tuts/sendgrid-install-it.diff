@@ -24,7 +24,7 @@ index 47a55e3f..de3d528b 100644
          "symfony/twig-bundle": "^4.0",
          "symfony/twig-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index c856e0f0..2e38f2d3 100644
+index fcbf4a07..bfb056de 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

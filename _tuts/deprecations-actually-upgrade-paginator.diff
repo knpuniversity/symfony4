@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index 4b9af29c..35387225 100644
+index 33e0db3d..e5e2f194 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -1870,43 +1870,52 @@
+@@ -1871,43 +1871,52 @@
          },
          {
              "name": "knplabs/knp-components",
@@ -71,7 +71,7 @@ index 4b9af29c..35387225 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -1916,11 +1925,11 @@
+@@ -1917,11 +1926,11 @@
              "authors": [
                  {
                      "name": "KnpLabs Team",
@@ -85,7 +85,7 @@ index 4b9af29c..35387225 100644
                  }
              ],
              "description": "Knplabs component library",
-@@ -1932,7 +1941,7 @@
+@@ -1933,7 +1942,7 @@
                  "pager",
                  "paginator"
              ],
@@ -94,7 +94,7 @@ index 4b9af29c..35387225 100644
          },
          {
              "name": "knplabs/knp-markdown-bundle",
-@@ -1999,37 +2008,39 @@
+@@ -2000,37 +2009,39 @@
          },
          {
              "name": "knplabs/knp-paginator-bundle",
@@ -146,7 +146,7 @@ index 4b9af29c..35387225 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2057,7 +2068,7 @@
+@@ -2058,7 +2069,7 @@
                  "paginator",
                  "symfony"
              ],
@@ -155,7 +155,7 @@ index 4b9af29c..35387225 100644
          },
          {
              "name": "knplabs/knp-snappy",
-@@ -8437,16 +8448,16 @@
+@@ -8438,16 +8449,16 @@
          },
          {
              "name": "twig/twig",
@@ -176,7 +176,7 @@ index 4b9af29c..35387225 100644
                  "shasum": ""
              },
              "require": {
-@@ -8500,7 +8511,7 @@
+@@ -8501,7 +8512,7 @@
              "keywords": [
                  "templating"
              ],
@@ -185,7 +185,7 @@ index 4b9af29c..35387225 100644
          },
          {
              "name": "webmozart/assert",
-@@ -9306,11 +9317,11 @@
+@@ -9307,11 +9318,11 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {

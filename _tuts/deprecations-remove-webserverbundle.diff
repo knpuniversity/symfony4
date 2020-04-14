@@ -27,7 +27,7 @@ index decf26cd..be2c1ae2 100644
          "symfony/yaml": "4.4.*",
          "twig/cssinliner-extra": "^2.12",
 diff --git a/composer.lock b/composer.lock
-index f83affb9..c254b31b 100644
+index 22dc0499..7f329a35 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -39,7 +39,7 @@ index f83affb9..c254b31b 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -8052,65 +8052,6 @@
+@@ -8053,65 +8053,6 @@
              ],
              "time": "2019-12-01T08:39:58+00:00"
          },

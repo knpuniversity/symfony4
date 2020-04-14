@@ -21,7 +21,7 @@ index 6c5156c6..201325d0 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 606bb3c3..5963eb18 100644
+index 357ccb7f..030218d0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,20 +4,20 @@
@@ -1627,13 +1627,13 @@ index 606bb3c3..5963eb18 100644
          },
          {
 -            "name": "symfony/flex",
--            "version": "v1.2.1",
+-            "version": "v1.2.7",
 +            "name": "symfony/finder",
 +            "version": "v4.3.4",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/symfony/flex.git",
--                "reference": "305a6cd75a54992f47f46eb655245b6c9a06997a"
+-                "reference": "8618b243d44bac71e4006062f245d807d84f7a6c"
 +                "url": "https://github.com/symfony/finder.git",
 +                "reference": "86c1c929f0a4b24812e1eb109262fc3372c8e9f2"
 +            },
@@ -1688,8 +1688,8 @@ index 606bb3c3..5963eb18 100644
              },
              "dist": {
                  "type": "zip",
--                "url": "https://api.github.com/repos/symfony/flex/zipball/305a6cd75a54992f47f46eb655245b6c9a06997a",
--                "reference": "305a6cd75a54992f47f46eb655245b6c9a06997a",
+-                "url": "https://api.github.com/repos/symfony/flex/zipball/8618b243d44bac71e4006062f245d807d84f7a6c",
+-                "reference": "8618b243d44bac71e4006062f245d807d84f7a6c",
 +                "url": "https://api.github.com/repos/symfony/flex/zipball/4467ab35c82edebac58fe58c22cea166a805eb1f",
 +                "reference": "4467ab35c82edebac58fe58c22cea166a805eb1f",
                  "shasum": ""
@@ -1708,7 +1708,7 @@ index 606bb3c3..5963eb18 100644
                  }
              ],
              "description": "Composer plugin for Symfony",
--            "time": "2019-04-03T17:16:03+00:00"
+-            "time": "2019-06-15T07:15:42+00:00"
 +            "time": "2019-07-19T08:59:18+00:00"
          },
          {
@@ -3738,7 +3738,7 @@ index 606bb3c3..5963eb18 100644
                  "zendframework/zend-stdlib": "^2.7 || ^3.0"
              },
              "suggest": {
-@@ -6994,13 +7406,13 @@
+@@ -6994,14 +7406,14 @@
              "license": [
                  "BSD-3-Clause"
              ],
@@ -3751,12 +3751,13 @@ index 606bb3c3..5963eb18 100644
 -                "zf2"
 +                "zf"
              ],
+             "abandoned": "laminas/laminas-code",
 -            "time": "2018-08-13T20:36:59+00:00"
 +            "time": "2019-08-31T14:14:34+00:00"
          },
          {
              "name": "zendframework/zend-eventmanager",
-@@ -7060,16 +7472,16 @@
+@@ -7062,16 +7474,16 @@
      "packages-dev": [
          {
              "name": "doctrine/data-fixtures",
@@ -3777,7 +3778,7 @@ index 606bb3c3..5963eb18 100644
                  "shasum": ""
              },
              "require": {
-@@ -7116,38 +7528,39 @@
+@@ -7118,38 +7530,39 @@
              "keywords": [
                  "database"
              ],
@@ -3824,7 +3825,7 @@ index 606bb3c3..5963eb18 100644
                  }
              },
              "autoload": {
-@@ -7179,7 +7592,7 @@
+@@ -7181,7 +7594,7 @@
                  "Fixture",
                  "persistence"
              ],
@@ -3833,7 +3834,7 @@ index 606bb3c3..5963eb18 100644
          },
          {
              "name": "easycorp/easy-log-handler",
-@@ -7283,16 +7696,16 @@
+@@ -7286,16 +7699,16 @@
          },
          {
              "name": "monolog/monolog",
@@ -3854,7 +3855,7 @@ index 606bb3c3..5963eb18 100644
                  "shasum": ""
              },
              "require": {
-@@ -7357,20 +7770,20 @@
+@@ -7360,20 +7773,20 @@
                  "logging",
                  "psr-3"
              ],
@@ -3880,7 +3881,7 @@ index 606bb3c3..5963eb18 100644
                  "shasum": ""
              },
              "require": {
-@@ -7378,7 +7791,7 @@
+@@ -7381,7 +7794,7 @@
                  "php": ">=7.0"
              },
              "require-dev": {
@@ -3889,7 +3890,7 @@ index 606bb3c3..5963eb18 100644
              },
              "bin": [
                  "bin/php-parse"
-@@ -7408,20 +7821,20 @@
+@@ -7411,20 +7824,20 @@
                  "parser",
                  "php"
              ],
@@ -3915,7 +3916,7 @@ index 606bb3c3..5963eb18 100644
                  "shasum": ""
              },
              "require": {
-@@ -7447,7 +7860,7 @@
+@@ -7450,7 +7863,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -3924,7 +3925,7 @@ index 606bb3c3..5963eb18 100644
                  }
              },
              "autoload": {
-@@ -7474,20 +7887,20 @@
+@@ -7477,20 +7890,20 @@
              ],
              "description": "Symfony DebugBundle",
              "homepage": "https://symfony.com",
@@ -3950,7 +3951,7 @@ index 606bb3c3..5963eb18 100644
                  "shasum": ""
              },
              "require": {
-@@ -7499,7 +7912,7 @@
+@@ -7502,7 +7915,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3959,7 +3960,7 @@ index 606bb3c3..5963eb18 100644
                  }
              },
              "autoload": {
-@@ -7531,20 +7944,20 @@
+@@ -7534,20 +7947,20 @@
                  "env",
                  "environment"
              ],
@@ -3985,7 +3986,7 @@ index 606bb3c3..5963eb18 100644
                  "shasum": ""
              },
              "require": {
-@@ -7560,12 +7973,14 @@
+@@ -7563,12 +7976,14 @@
                  "symfony/http-kernel": "^3.4|^4.0"
              },
              "require-dev": {
@@ -4002,7 +4003,7 @@ index 606bb3c3..5963eb18 100644
                  "symfony/yaml": "^3.4|^4.0"
              },
              "type": "symfony-bundle",
-@@ -7597,27 +8012,27 @@
+@@ -7600,27 +8015,27 @@
                  "scaffold",
                  "scaffolding"
              ],
@@ -4037,7 +4038,7 @@ index 606bb3c3..5963eb18 100644
              },
              "conflict": {
                  "symfony/console": "<3.4",
-@@ -7625,20 +8040,18 @@
+@@ -7628,20 +8043,18 @@
              },
              "require-dev": {
                  "symfony/console": "~3.4|~4.0",
@@ -4059,7 +4060,7 @@ index 606bb3c3..5963eb18 100644
                  }
              },
              "autoload": {
-@@ -7665,34 +8078,34 @@
+@@ -7668,34 +8081,34 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -4106,7 +4107,7 @@ index 606bb3c3..5963eb18 100644
              },
              "type": "symfony-bundle",
              "extra": {
-@@ -7728,24 +8141,24 @@
+@@ -7731,24 +8144,24 @@
                  "log",
                  "logging"
              ],
@@ -4137,7 +4138,7 @@ index 606bb3c3..5963eb18 100644
              },
              "conflict": {
                  "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
-@@ -7759,7 +8172,7 @@
+@@ -7762,7 +8175,7 @@
              "type": "symfony-bridge",
              "extra": {
                  "branch-alias": {
@@ -4146,7 +4147,7 @@ index 606bb3c3..5963eb18 100644
                  },
                  "thanks": {
                      "name": "phpunit/phpunit",
-@@ -7793,62 +8206,7 @@
+@@ -7796,62 +8209,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -4210,7 +4211,7 @@ index 606bb3c3..5963eb18 100644
          },
          {
              "name": "symfony/profiler-pack",
-@@ -7880,16 +8238,16 @@
+@@ -7883,16 +8241,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -4231,7 +4232,7 @@ index 606bb3c3..5963eb18 100644
                  "shasum": ""
              },
              "require": {
-@@ -7918,7 +8276,7 @@
+@@ -7921,7 +8279,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -4240,7 +4241,7 @@ index 606bb3c3..5963eb18 100644
                  }
              },
              "autoload": {
-@@ -7952,34 +8310,34 @@
+@@ -7955,34 +8313,34 @@
                  "debug",
                  "dump"
              ],
@@ -4283,7 +4284,7 @@ index 606bb3c3..5963eb18 100644
                  "symfony/messenger": "<4.2",
                  "symfony/var-dumper": "<3.4"
              },
-@@ -7991,7 +8349,7 @@
+@@ -7994,7 +8352,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -4292,7 +4293,7 @@ index 606bb3c3..5963eb18 100644
                  }
              },
              "autoload": {
-@@ -8018,7 +8376,7 @@
+@@ -8021,7 +8379,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

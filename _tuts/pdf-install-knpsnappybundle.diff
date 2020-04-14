@@ -24,7 +24,7 @@ index 2060210e..b87e0f22 100644
          "league/flysystem-aws-s3-v3": "^1.0",
          "league/flysystem-cached-adapter": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index d4507d55..14072908 100644
+index f5f0b7b3..50a68504 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

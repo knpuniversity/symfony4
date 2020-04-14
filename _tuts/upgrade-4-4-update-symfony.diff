@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 85a4f190..bd7a8d9b 100644
+index feaa0107..af452da7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -2042,7 +2042,7 @@ index 85a4f190..bd7a8d9b 100644
          },
          {
              "name": "tijsverkoyen/css-to-inline-styles",
-@@ -8669,33 +8808,33 @@
+@@ -8670,33 +8809,33 @@
          },
          {
              "name": "symfony/debug-bundle",
@@ -2086,7 +2086,7 @@ index 85a4f190..bd7a8d9b 100644
              },
              "suggest": {
                  "symfony/config": "For service container configuration",
-@@ -8704,7 +8843,7 @@
+@@ -8705,7 +8844,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -2095,7 +2095,7 @@ index 85a4f190..bd7a8d9b 100644
                  }
              },
              "autoload": {
-@@ -8731,20 +8870,20 @@
+@@ -8732,20 +8871,20 @@
              ],
              "description": "Symfony DebugBundle",
              "homepage": "https://symfony.com",
@@ -2121,7 +2121,7 @@ index 85a4f190..bd7a8d9b 100644
                  "shasum": ""
              },
              "require": {
-@@ -8757,7 +8896,7 @@
+@@ -8758,7 +8897,7 @@
              },
              "require-dev": {
                  "masterminds/html5": "^2.6",
@@ -2130,7 +2130,7 @@ index 85a4f190..bd7a8d9b 100644
              },
              "suggest": {
                  "symfony/css-selector": ""
-@@ -8765,7 +8904,7 @@
+@@ -8766,7 +8905,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -2139,7 +2139,7 @@ index 85a4f190..bd7a8d9b 100644
                  }
              },
              "autoload": {
-@@ -8792,32 +8931,32 @@
+@@ -8793,32 +8932,32 @@
              ],
              "description": "Symfony DomCrawler Component",
              "homepage": "https://symfony.com",
@@ -2179,7 +2179,7 @@ index 85a4f190..bd7a8d9b 100644
                  }
              },
              "autoload": {
-@@ -8849,7 +8988,7 @@
+@@ -8850,7 +8989,7 @@
                  "env",
                  "environment"
              ],
@@ -2188,7 +2188,7 @@ index 85a4f190..bd7a8d9b 100644
          },
          {
              "name": "symfony/maker-bundle",
-@@ -8921,32 +9060,33 @@
+@@ -8922,32 +9061,33 @@
          },
          {
              "name": "symfony/monolog-bridge",
@@ -2231,7 +2231,7 @@ index 85a4f190..bd7a8d9b 100644
              },
              "suggest": {
                  "symfony/console": "For the possibility to show log messages in console commands depending on verbosity settings.",
-@@ -8956,7 +9096,7 @@
+@@ -8957,7 +9097,7 @@
              "type": "symfony-bridge",
              "extra": {
                  "branch-alias": {
@@ -2240,7 +2240,7 @@ index 85a4f190..bd7a8d9b 100644
                  }
              },
              "autoload": {
-@@ -8983,7 +9123,7 @@
+@@ -8984,7 +9124,7 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -2249,7 +2249,7 @@ index 85a4f190..bd7a8d9b 100644
          },
          {
              "name": "symfony/monolog-bundle",
-@@ -9141,82 +9281,6 @@
+@@ -9142,82 +9282,6 @@
              "description": "A pack for the Symfony web profiler",
              "time": "2018-12-10T12:11:44+00:00"
          },

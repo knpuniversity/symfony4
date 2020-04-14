@@ -11,7 +11,7 @@ index d27dc581..db78f196 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/webpack-encore-bundle": "^1.4",
 diff --git a/composer.lock b/composer.lock
-index eff34639..34862711 100644
+index 795cd733..1a155097 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

@@ -11,7 +11,7 @@ index b87e0f22..47a55e3f 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 14072908..c856e0f0 100644
+index 50a68504..fcbf4a07 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 14072908..c856e0f0 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -8481,6 +8481,65 @@
+@@ -8484,6 +8484,65 @@
              ],
              "time": "2019-09-01T07:51:21+00:00"
          },
@@ -89,7 +89,7 @@ index 14072908..c856e0f0 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.3.4",
-@@ -8547,6 +8606,67 @@
+@@ -8550,6 +8609,67 @@
              "homepage": "https://symfony.com",
              "time": "2019-07-19T08:33:28+00:00"
          },

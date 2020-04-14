@@ -19,7 +19,7 @@ index 18df9380..6d8cb28d 100644
          "symfony/console": "4.4.*",
          "symfony/dotenv": "4.4.*",
 diff --git a/composer.lock b/composer.lock
-index 35387225..6730a28b 100644
+index e5e2f194..861ee2a0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -6,6 +6,79 @@
@@ -567,7 +567,7 @@ index 35387225..6730a28b 100644
          },
          {
              "name": "doctrine/reflection",
-@@ -1494,16 +1581,16 @@
+@@ -1495,16 +1582,16 @@
          },
          {
              "name": "gedmo/doctrine-extensions",
@@ -588,7 +588,7 @@ index 35387225..6730a28b 100644
                  "shasum": ""
              },
              "require": {
-@@ -1512,14 +1599,15 @@
+@@ -1513,14 +1600,15 @@
                  "php": ">=5.3.2"
              },
              "conflict": {
@@ -608,7 +608,7 @@ index 35387225..6730a28b 100644
              },
              "suggest": {
                  "doctrine/mongodb-odm": "to use the extensions with the MongoDB ODM",
-@@ -1541,10 +1629,6 @@
+@@ -1542,10 +1630,6 @@
                  "MIT"
              ],
              "authors": [
@@ -619,7 +619,7 @@ index 35387225..6730a28b 100644
                  {
                      "name": "Gediminas Morkevicius",
                      "email": "gediminas.morkevicius@gmail.com"
-@@ -1552,6 +1636,10 @@
+@@ -1553,6 +1637,10 @@
                  {
                      "name": "Gustavo Falco",
                      "email": "comfortablynumb84@gmail.com"
@@ -630,7 +630,7 @@ index 35387225..6730a28b 100644
                  }
              ],
              "description": "Doctrine2 behavioral extensions",
-@@ -1571,7 +1659,7 @@
+@@ -1572,7 +1660,7 @@
                  "tree",
                  "uploadable"
              ],
@@ -639,7 +639,7 @@ index 35387225..6730a28b 100644
          },
          {
              "name": "guzzlehttp/guzzle",
-@@ -4246,71 +4334,6 @@
+@@ -4247,71 +4335,6 @@
              ],
              "time": "2019-07-08T08:31:25+00:00"
          },
