@@ -21,7 +21,7 @@ index 4aa3db4f..d0c8d5a9 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index fecf53b2..6aa7dcfe 100644
+index 8394b236..f61a8482 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -33,7 +33,7 @@ index fecf53b2..6aa7dcfe 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4400,100 +4400,6 @@
+@@ -4402,100 +4402,6 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -134,7 +134,7 @@ index fecf53b2..6aa7dcfe 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -6928,9 +6834,7 @@
+@@ -6933,9 +6839,7 @@
      ],
      "aliases": [],
      "minimum-stability": "stable",

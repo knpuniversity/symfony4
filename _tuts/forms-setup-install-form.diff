@@ -11,7 +11,7 @@ index d0c8d5a9..12dd94cc 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 6aa7dcfe..b21a62be 100644
+index f61a8482..42fd280c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,9 +23,9 @@ index 6aa7dcfe..b21a62be 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4084,6 +4084,87 @@
+@@ -4086,6 +4086,87 @@
              "description": "Composer plugin for Symfony",
-             "time": "2018-09-03T08:17:12+00:00"
+             "time": "2019-06-15T07:15:42+00:00"
          },
 +        {
 +            "name": "symfony/form",
@@ -111,7 +111,7 @@ index 6aa7dcfe..b21a62be 100644
          {
              "name": "symfony/framework-bundle",
              "version": "v4.1.6",
-@@ -4400,6 +4481,81 @@
+@@ -4402,6 +4483,81 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -193,7 +193,7 @@ index 6aa7dcfe..b21a62be 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -4540,6 +4696,64 @@
+@@ -4542,6 +4698,64 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },

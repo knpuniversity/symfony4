@@ -53,7 +53,7 @@ index 148daeeb..754d714b 100644
          "symfony/profiler-pack": "^1.0"
      },
 diff --git a/composer.lock b/composer.lock
-index ab1af7f0..df321079 100644
+index a739a27a..3d8f68db 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -65,7 +65,7 @@ index ab1af7f0..df321079 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2199,6 +2199,134 @@
+@@ -2201,6 +2201,134 @@
              ],
              "time": "2017-11-29T09:37:33+00:00"
          },
@@ -200,7 +200,7 @@ index ab1af7f0..df321079 100644
          {
              "name": "sensiolabs/security-checker",
              "version": "v5.0.3",
-@@ -2245,6 +2373,102 @@
+@@ -2247,6 +2375,102 @@
              "description": "A security checker for your composer.lock",
              "time": "2018-12-19T17:14:59+00:00"
          },
@@ -303,7 +303,7 @@ index ab1af7f0..df321079 100644
          {
              "name": "symfony/dotenv",
              "version": "v4.0.14",
-@@ -2302,6 +2526,201 @@
+@@ -2304,6 +2528,201 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },

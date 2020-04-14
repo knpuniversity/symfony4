@@ -11,10 +11,10 @@ index 95121869..ee09b412 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index d2d91c5d..30974257 100644
+index 5161cc62..35fcc415 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -5078,6 +5078,56 @@
+@@ -5080,6 +5080,56 @@
              ],
              "time": "2018-01-10T08:34:20+00:00"
          },

@@ -11,15 +11,15 @@ index 1c336be9..62a94866 100644
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 774d326e..9d1fa126 100644
+index ab3f9157..b3803e65 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,411 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "86646ac463b740e13dba7d92249d91da",
-+    "content-hash": "37ef99d8270e7a03d984f5ed5b737885",
+-    "content-hash": "72148cb5968c5f7364b7821e81c3b545",
++    "content-hash": "a4ffa34aeeb5f71c735150158413f641",
      "packages": [
 +        {
 +            "name": "doctrine/annotations",

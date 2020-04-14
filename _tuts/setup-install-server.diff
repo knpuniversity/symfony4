@@ -36,19 +36,19 @@ index 6f479f8e..1c336be9 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 41ab882f..774d326e 100644
+index 4e7e5838..ab3f9157 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "57477e4987d8974ffe98f879ec7f80f7",
-+    "content-hash": "86646ac463b740e13dba7d92249d91da",
+-    "content-hash": "d804c19f99942f2321db01ddf5e00b33",
++    "content-hash": "72148cb5968c5f7364b7821e81c3b545",
      "packages": [
          {
              "name": "psr/cache",
-@@ -1185,6 +1185,55 @@
+@@ -1199,6 +1199,55 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },
@@ -104,7 +104,7 @@ index 41ab882f..774d326e 100644
          {
              "name": "symfony/routing",
              "version": "v4.0.14",
-@@ -1262,6 +1311,64 @@
+@@ -1276,6 +1325,64 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },

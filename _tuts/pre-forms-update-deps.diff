@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 167e547b..fecf53b2 100644
+index 1787ad4d..8394b236 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -1600,16 +1600,16 @@
@@ -278,7 +278,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4035,20 +4035,20 @@
+@@ -4035,7 +4035,7 @@
              ],
              "description": "Symfony Finder Component",
              "homepage": "https://symfony.com",
@@ -287,29 +287,7 @@ index 167e547b..fecf53b2 100644
          },
          {
              "name": "symfony/flex",
--            "version": "v1.1.0",
-+            "version": "v1.1.1",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/symfony/flex.git",
--                "reference": "d6f5fed47ddad2eb25d5cc19316692203a2898eb"
-+                "reference": "9fb60f232af0764d58002e7872acb43a74506d25"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/symfony/flex/zipball/d6f5fed47ddad2eb25d5cc19316692203a2898eb",
--                "reference": "d6f5fed47ddad2eb25d5cc19316692203a2898eb",
-+                "url": "https://api.github.com/repos/symfony/flex/zipball/9fb60f232af0764d58002e7872acb43a74506d25",
-+                "reference": "9fb60f232af0764d58002e7872acb43a74506d25",
-                 "shasum": ""
-             },
-             "require": {
-@@ -4082,20 +4082,20 @@
-                 }
-             ],
-             "description": "Composer plugin for Symfony",
--            "time": "2018-08-21T07:51:18+00:00"
-+            "time": "2018-09-03T08:17:12+00:00"
+@@ -4088,16 +4088,16 @@
          },
          {
              "name": "symfony/framework-bundle",
@@ -330,7 +308,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4119,6 +4119,7 @@
+@@ -4121,6 +4121,7 @@
                  "symfony/asset": "<3.4",
                  "symfony/console": "<3.4",
                  "symfony/form": "<4.1",
@@ -338,7 +316,7 @@ index 167e547b..fecf53b2 100644
                  "symfony/property-info": "<3.4",
                  "symfony/serializer": "<4.1",
                  "symfony/stopwatch": "<3.4",
-@@ -4198,20 +4199,20 @@
+@@ -4200,20 +4201,20 @@
              ],
              "description": "Symfony FrameworkBundle",
              "homepage": "https://symfony.com",
@@ -364,7 +342,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4252,20 +4253,20 @@
+@@ -4254,20 +4255,20 @@
              ],
              "description": "Symfony HttpFoundation Component",
              "homepage": "https://symfony.com",
@@ -390,7 +368,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4339,11 +4340,11 @@
+@@ -4341,11 +4342,11 @@
              ],
              "description": "Symfony HttpKernel Component",
              "homepage": "https://symfony.com",
@@ -404,7 +382,7 @@ index 167e547b..fecf53b2 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/inflector.git",
-@@ -4495,16 +4496,16 @@
+@@ -4497,16 +4498,16 @@
          },
          {
              "name": "symfony/options-resolver",
@@ -425,7 +403,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4545,7 +4546,7 @@
+@@ -4547,7 +4548,7 @@
                  "configuration",
                  "options"
              ],
@@ -434,7 +412,7 @@ index 167e547b..fecf53b2 100644
          },
          {
              "name": "symfony/orm-pack",
-@@ -4694,16 +4695,16 @@
+@@ -4696,16 +4697,16 @@
          },
          {
              "name": "symfony/process",
@@ -455,7 +433,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4739,20 +4740,20 @@
+@@ -4741,20 +4742,20 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -481,7 +459,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4806,11 +4807,11 @@
+@@ -4808,11 +4809,11 @@
                  "property path",
                  "reflection"
              ],
@@ -495,7 +473,7 @@ index 167e547b..fecf53b2 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/property-info.git",
-@@ -4886,16 +4887,16 @@
+@@ -4888,16 +4889,16 @@
          },
          {
              "name": "symfony/routing",
@@ -516,7 +494,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -4959,20 +4960,20 @@
+@@ -4961,20 +4962,20 @@
                  "uri",
                  "url"
              ],
@@ -542,7 +520,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5036,20 +5037,20 @@
+@@ -5038,20 +5039,20 @@
              ],
              "description": "Symfony Security Component",
              "homepage": "https://symfony.com",
@@ -568,7 +546,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5116,20 +5117,20 @@
+@@ -5118,20 +5119,20 @@
              ],
              "description": "Symfony SecurityBundle",
              "homepage": "https://symfony.com",
@@ -594,7 +572,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5196,7 +5197,7 @@
+@@ -5198,7 +5199,7 @@
              ],
              "description": "Symfony Serializer Component",
              "homepage": "https://symfony.com",
@@ -603,7 +581,7 @@ index 167e547b..fecf53b2 100644
          },
          {
              "name": "symfony/serializer-pack",
-@@ -5231,16 +5232,16 @@
+@@ -5233,16 +5234,16 @@
          },
          {
              "name": "symfony/stopwatch",
@@ -624,7 +602,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5276,11 +5277,11 @@
+@@ -5278,11 +5279,11 @@
              ],
              "description": "Symfony Stopwatch Component",
              "homepage": "https://symfony.com",
@@ -638,7 +616,7 @@ index 167e547b..fecf53b2 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/templating.git",
-@@ -5336,16 +5337,16 @@
+@@ -5338,16 +5339,16 @@
          },
          {
              "name": "symfony/translation",
@@ -659,7 +637,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5401,20 +5402,20 @@
+@@ -5403,20 +5404,20 @@
              ],
              "description": "Symfony Translation Component",
              "homepage": "https://symfony.com",
@@ -685,7 +663,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5431,7 +5432,7 @@
+@@ -5433,7 +5434,7 @@
                  "symfony/dependency-injection": "~3.4|~4.0",
                  "symfony/expression-language": "~3.4|~4.0",
                  "symfony/finder": "~3.4|~4.0",
@@ -694,7 +672,7 @@ index 167e547b..fecf53b2 100644
                  "symfony/http-foundation": "~3.4|~4.0",
                  "symfony/http-kernel": "~3.4|~4.0",
                  "symfony/polyfill-intl-icu": "~1.0",
-@@ -5491,20 +5492,20 @@
+@@ -5493,20 +5494,20 @@
              ],
              "description": "Symfony Twig Bridge",
              "homepage": "https://symfony.com",
@@ -720,7 +698,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5565,11 +5566,11 @@
+@@ -5567,11 +5568,11 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
@@ -734,7 +712,7 @@ index 167e547b..fecf53b2 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/web-server-bundle.git",
-@@ -5628,16 +5629,16 @@
+@@ -5630,16 +5631,16 @@
          },
          {
              "name": "symfony/yaml",
@@ -755,7 +733,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -5683,7 +5684,7 @@
+@@ -5685,7 +5686,7 @@
              ],
              "description": "Symfony Yaml Component",
              "homepage": "https://symfony.com",
@@ -764,7 +742,31 @@ index 167e547b..fecf53b2 100644
          },
          {
              "name": "twig/extensions",
-@@ -6318,7 +6319,7 @@
+@@ -5910,6 +5911,7 @@
+                 "code",
+                 "zf2"
+             ],
++            "abandoned": "laminas/laminas-code",
+             "time": "2018-08-13T20:36:59+00:00"
+         },
+         {
+@@ -5964,6 +5966,7 @@
+                 "events",
+                 "zf2"
+             ],
++            "abandoned": "laminas/laminas-eventmanager",
+             "time": "2018-04-25T15:33:34+00:00"
+         }
+     ],
+@@ -6137,6 +6140,7 @@
+                 "monolog",
+                 "productivity"
+             ],
++            "abandoned": true,
+             "time": "2018-07-27T15:41:37+00:00"
+         },
+         {
+@@ -6320,7 +6324,7 @@
          },
          {
              "name": "symfony/debug-bundle",
@@ -773,7 +775,7 @@ index 167e547b..fecf53b2 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -6383,7 +6384,7 @@
+@@ -6385,7 +6389,7 @@
          },
          {
              "name": "symfony/dotenv",
@@ -782,7 +784,7 @@ index 167e547b..fecf53b2 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/dotenv.git",
-@@ -6440,16 +6441,16 @@
+@@ -6442,16 +6446,16 @@
          },
          {
              "name": "symfony/maker-bundle",
@@ -803,7 +805,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -6502,20 +6503,20 @@
+@@ -6504,20 +6508,20 @@
                  "scaffold",
                  "scaffolding"
              ],
@@ -829,7 +831,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -6524,6 +6525,7 @@
+@@ -6526,6 +6530,7 @@
                  "symfony/http-kernel": "~3.4|~4.0"
              },
              "conflict": {
@@ -837,7 +839,7 @@ index 167e547b..fecf53b2 100644
                  "symfony/http-foundation": "<3.4"
              },
              "require-dev": {
-@@ -6533,7 +6535,7 @@
+@@ -6535,7 +6540,7 @@
                  "symfony/var-dumper": "~3.4|~4.0"
              },
              "suggest": {
@@ -846,7 +848,7 @@ index 167e547b..fecf53b2 100644
                  "symfony/event-dispatcher": "Needed when using log messages in console commands.",
                  "symfony/http-kernel": "For using the debugging handlers together with the response life cycle of the HTTP kernel.",
                  "symfony/var-dumper": "For using the debugging handlers like the console handler or the log server handler."
-@@ -6568,7 +6570,7 @@
+@@ -6570,7 +6575,7 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -855,7 +857,7 @@ index 167e547b..fecf53b2 100644
          },
          {
              "name": "symfony/monolog-bundle",
-@@ -6635,16 +6637,16 @@
+@@ -6637,16 +6642,16 @@
          },
          {
              "name": "symfony/phpunit-bridge",
@@ -876,7 +878,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -6697,7 +6699,7 @@
+@@ -6699,7 +6704,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -885,7 +887,7 @@ index 167e547b..fecf53b2 100644
          },
          {
              "name": "symfony/polyfill-php72",
-@@ -6784,16 +6786,16 @@
+@@ -6786,16 +6791,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -906,7 +908,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -6855,20 +6857,20 @@
+@@ -6857,20 +6862,20 @@
                  "debug",
                  "dump"
              ],
@@ -932,7 +934,7 @@ index 167e547b..fecf53b2 100644
                  "shasum": ""
              },
              "require": {
-@@ -6921,7 +6923,7 @@
+@@ -6923,7 +6928,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

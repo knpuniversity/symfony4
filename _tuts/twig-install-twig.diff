@@ -11,7 +11,7 @@ index 9c5804af..ebc8b216 100644
          "symfony/yaml": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index fcd1ee3b..13ef3684 100644
+index 93d28471..f42bdfa2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -67,7 +67,7 @@ index fcd1ee3b..13ef3684 100644
          },
          {
              "name": "doctrine/lexer",
-@@ -1671,16 +1671,16 @@
+@@ -1673,16 +1673,16 @@
          },
          {
              "name": "symfony/process",
@@ -88,7 +88,7 @@ index fcd1ee3b..13ef3684 100644
                  "shasum": ""
              },
              "require": {
-@@ -1716,7 +1716,7 @@
+@@ -1718,7 +1718,7 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -97,7 +97,7 @@ index fcd1ee3b..13ef3684 100644
          },
          {
              "name": "symfony/routing",
-@@ -1795,18 +1795,181 @@
+@@ -1797,18 +1797,181 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -283,7 +283,7 @@ index fcd1ee3b..13ef3684 100644
                  "shasum": ""
              },
              "require": {
-@@ -1815,7 +1978,7 @@
+@@ -1817,7 +1980,7 @@
                  "symfony/console": "~3.4|~4.0",
                  "symfony/dependency-injection": "~3.4|~4.0",
                  "symfony/http-kernel": "~3.4|~4.0",
@@ -292,7 +292,7 @@ index fcd1ee3b..13ef3684 100644
              },
              "suggest": {
                  "symfony/expression-language": "For using the filter option of the log server.",
-@@ -1851,7 +2014,7 @@
+@@ -1853,7 +2016,7 @@
              ],
              "description": "Symfony WebServerBundle",
              "homepage": "https://symfony.com",
@@ -301,7 +301,7 @@ index fcd1ee3b..13ef3684 100644
          },
          {
              "name": "symfony/yaml",
-@@ -1911,6 +2074,72 @@
+@@ -1913,6 +2076,72 @@
              "description": "Symfony Yaml Component",
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"
