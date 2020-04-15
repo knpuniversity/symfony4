@@ -142,10 +142,17 @@ You don't *have* to do this, but it'll make our unit test more useful and keep
 it simple. *Now* we can say `$email = $mailer->sendWelcomeMessage()` and we can
 check pretty much *anything* on that email.
 
-I'll paste in some asserts. These check the subject, that the email is sent to
-exactly one person *and* checks to make sure that the "to" has the right info.
+I'll paste in some asserts:
 
 [[[ code('5e9fb75299') ]]]
+
+***TIP
+In Symfony 4.4 and higher, use `new Address()` - it works the same way as the
+`NamedAddress` we use here.
+***
+
+These check the subject, that the email is sent to exactly one person *and* checks
+to make sure that the "to" has the right info.
 
 Let's give this a try! Move over and run:
 
