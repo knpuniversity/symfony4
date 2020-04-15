@@ -39,7 +39,7 @@ index 3e330df0..decf26cd 100644
          "symfony/profiler-pack": "^1.0",
          "symfony/var-dumper": "4.4.*"
 diff --git a/composer.lock b/composer.lock
-index 2a4df54d..22dc0499 100644
+index 9f0437e5..e72d77d4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -51,9 +51,9 @@ index 2a4df54d..22dc0499 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -1384,6 +1384,57 @@
+@@ -1430,6 +1430,57 @@
              ],
-             "time": "2018-06-14T14:45:07+00:00"
+             "time": "2020-03-27T11:06:43+00:00"
          },
 +        {
 +            "name": "easycorp/easy-log-handler",
@@ -109,7 +109,7 @@ index 2a4df54d..22dc0499 100644
          {
              "name": "egulias/email-validator",
              "version": "2.1.11",
-@@ -2640,6 +2691,84 @@
+@@ -2686,6 +2737,84 @@
              ],
              "time": "2018-01-15T00:49:33+00:00"
          },
@@ -194,7 +194,7 @@ index 2a4df54d..22dc0499 100644
          {
              "name": "mtdowling/jmespath.php",
              "version": "2.4.0",
-@@ -3948,16 +4077,16 @@
+@@ -3994,16 +4123,16 @@
          },
          {
              "name": "psr/log",
@@ -215,7 +215,7 @@ index 2a4df54d..22dc0499 100644
                  "shasum": ""
              },
              "require": {
-@@ -3966,7 +4095,7 @@
+@@ -4012,7 +4141,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -224,7 +224,7 @@ index 2a4df54d..22dc0499 100644
                  }
              },
              "autoload": {
-@@ -3991,7 +4120,7 @@
+@@ -4037,7 +4166,7 @@
                  "psr",
                  "psr-3"
              ],
@@ -233,7 +233,7 @@ index 2a4df54d..22dc0499 100644
          },
          {
              "name": "ralouphie/getallheaders",
-@@ -4780,6 +4909,63 @@
+@@ -4826,6 +4955,63 @@
              "homepage": "https://symfony.com",
              "time": "2019-12-01T08:39:58+00:00"
          },
@@ -297,7 +297,7 @@ index 2a4df54d..22dc0499 100644
          {
              "name": "symfony/error-handler",
              "version": "v4.4.1",
-@@ -5808,23 +5994,41 @@
+@@ -5854,23 +6040,41 @@
              "time": "2019-11-30T08:27:26+00:00"
          },
          {
@@ -346,7 +346,7 @@ index 2a4df54d..22dc0499 100644
              "extra": {
                  "branch-alias": {
                      "dev-master": "4.4-dev"
-@@ -5832,7 +6036,7 @@
+@@ -5878,7 +6082,7 @@
              },
              "autoload": {
                  "psr-4": {
@@ -355,7 +355,7 @@ index 2a4df54d..22dc0499 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -5852,48 +6056,160 @@
+@@ -5898,48 +6102,160 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -546,7 +546,7 @@ index 2a4df54d..22dc0499 100644
                  "url": "https://github.com/symfony/polyfill-ctype.git",
                  "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
              },
-@@ -8530,57 +8846,6 @@
+@@ -8576,57 +8892,6 @@
              ],
              "time": "2019-06-12T12:03:37+00:00"
          },
@@ -604,7 +604,7 @@ index 2a4df54d..22dc0499 100644
          {
              "name": "fzaninotto/faker",
              "version": "v1.8.0",
-@@ -8631,84 +8896,6 @@
+@@ -8677,84 +8942,6 @@
              ],
              "time": "2018-07-12T10:23:15+00:00"
          },
@@ -689,7 +689,7 @@ index 2a4df54d..22dc0499 100644
          {
              "name": "nikic/php-parser",
              "version": "v4.2.4",
-@@ -8946,63 +9133,6 @@
+@@ -8992,63 +9179,6 @@
              "homepage": "https://symfony.com",
              "time": "2019-10-29T11:38:30+00:00"
          },
@@ -753,7 +753,7 @@ index 2a4df54d..22dc0499 100644
          {
              "name": "symfony/maker-bundle",
              "version": "v1.14.3",
-@@ -9071,136 +9201,6 @@
+@@ -9117,136 +9247,6 @@
              ],
              "time": "2019-11-07T00:56:03+00:00"
          },

@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index 861ee2a0..de577687 100644
+index c0bb5928..174dd021 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -645,28 +645,31 @@
+@@ -656,28 +656,31 @@
          },
          {
              "name": "doctrine/doctrine-bundle",
@@ -43,7 +43,7 @@ index 861ee2a0..de577687 100644
              },
              "conflict": {
                  "doctrine/orm": "<2.6",
-@@ -675,15 +678,16 @@
+@@ -686,15 +689,16 @@
              "require-dev": {
                  "doctrine/coding-standard": "^6.0",
                  "doctrine/orm": "^2.6",
@@ -67,7 +67,7 @@ index 861ee2a0..de577687 100644
              },
              "suggest": {
                  "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
-@@ -692,7 +696,7 @@
+@@ -703,7 +707,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -76,7 +76,7 @@ index 861ee2a0..de577687 100644
                  }
              },
              "autoload": {
-@@ -706,20 +710,20 @@
+@@ -717,20 +721,20 @@
              ],
              "authors": [
                  {
@@ -103,7 +103,7 @@ index 861ee2a0..de577687 100644
                  }
              ],
              "description": "Symfony DoctrineBundle",
-@@ -730,7 +734,7 @@
+@@ -741,7 +745,7 @@
                  "orm",
                  "persistence"
              ],

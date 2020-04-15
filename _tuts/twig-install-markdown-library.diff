@@ -11,7 +11,7 @@ index 156ed18d..d27dc581 100644
          "nexylan/slack-bundle": "^2.1,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index eb6ec0d8..b3e670fd 100644
+index fe798df9..8d38895c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index eb6ec0d8..b3e670fd 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -2252,6 +2252,70 @@
+@@ -2298,6 +2298,70 @@
              "description": "An adapter decorator to enable meta-data caching.",
              "time": "2018-07-09T20:51:04+00:00"
          },
@@ -95,7 +95,7 @@ index eb6ec0d8..b3e670fd 100644
              "name": "liip/imagine-bundle",
              "version": "2.1.0",
 diff --git a/symfony.lock b/symfony.lock
-index 94c6b1f3..f8977310 100644
+index 85821cfa..00ffc377 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -140,6 +140,9 @@

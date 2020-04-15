@@ -1,8 +1,164 @@
 diff --git a/composer.lock b/composer.lock
-index 33e0db3d..e5e2f194 100644
+index 866c6fcd..d3eb1951 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -1871,43 +1871,52 @@
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "fd9a7eff51a90b5476d6522913a55fae",
++    "content-hash": "7f780f972bbcc8b6cdd7f28ead6a196a",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",
+@@ -491,31 +491,30 @@
+         },
+         {
+             "name": "doctrine/dbal",
+-            "version": "v2.9.3",
++            "version": "v2.10.1",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/doctrine/dbal.git",
+-                "reference": "7345cd59edfa2036eb0fa4264b77ae2576842035"
++                "reference": "c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/7345cd59edfa2036eb0fa4264b77ae2576842035",
+-                "reference": "7345cd59edfa2036eb0fa4264b77ae2576842035",
++                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8",
++                "reference": "c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8",
+                 "shasum": ""
+             },
+             "require": {
+                 "doctrine/cache": "^1.0",
+                 "doctrine/event-manager": "^1.0",
+                 "ext-pdo": "*",
+-                "php": "^7.1"
++                "php": "^7.2"
+             },
+             "require-dev": {
+-                "doctrine/coding-standard": "^5.0",
+-                "jetbrains/phpstorm-stubs": "^2018.1.2",
+-                "phpstan/phpstan": "^0.10.1",
+-                "phpunit/phpunit": "^7.4",
+-                "symfony/console": "^2.0.5|^3.0|^4.0",
+-                "symfony/phpunit-bridge": "^3.4.5|^4.0.5"
++                "doctrine/coding-standard": "^6.0",
++                "jetbrains/phpstorm-stubs": "^2019.1",
++                "phpstan/phpstan": "^0.11.3",
++                "phpunit/phpunit": "^8.4.1",
++                "symfony/console": "^2.0.5|^3.0|^4.0|^5.0"
+             },
+             "suggest": {
+                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
+@@ -526,7 +525,7 @@
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "2.9.x-dev",
++                    "dev-master": "2.10.x-dev",
+                     "dev-develop": "3.0.x-dev"
+                 }
+             },
+@@ -562,14 +561,25 @@
+             "keywords": [
+                 "abstraction",
+                 "database",
++                "db2",
+                 "dbal",
++                "mariadb",
++                "mssql",
+                 "mysql",
+-                "persistence",
++                "oci8",
++                "oracle",
++                "pdo",
+                 "pgsql",
+-                "php",
+-                "queryobject"
++                "postgresql",
++                "queryobject",
++                "sasql",
++                "sql",
++                "sqlanywhere",
++                "sqlite",
++                "sqlserver",
++                "sqlsrv"
+             ],
+-            "time": "2019-11-02T22:19:34+00:00"
++            "time": "2020-01-04T12:56:21+00:00"
+         },
+         {
+             "name": "doctrine/doctrine-bundle",
+@@ -1017,28 +1027,30 @@
+         },
+         {
+             "name": "doctrine/lexer",
+-            "version": "1.0.2",
++            "version": "1.2.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/doctrine/lexer.git",
+-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
++                "reference": "5242d66dbeb21a30dd8a3e66bf7a73b66e05e1f6"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
+-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
++                "url": "https://api.github.com/repos/doctrine/lexer/zipball/5242d66dbeb21a30dd8a3e66bf7a73b66e05e1f6",
++                "reference": "5242d66dbeb21a30dd8a3e66bf7a73b66e05e1f6",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.3.2"
++                "php": "^7.2"
+             },
+             "require-dev": {
+-                "phpunit/phpunit": "^4.5"
++                "doctrine/coding-standard": "^6.0",
++                "phpstan/phpstan": "^0.11.8",
++                "phpunit/phpunit": "^8.2"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.0.x-dev"
++                    "dev-master": "1.2.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -1051,14 +1063,14 @@
+                 "MIT"
+             ],
+             "authors": [
+-                {
+-                    "name": "Roman Borschel",
+-                    "email": "roman@code-factory.org"
+-                },
+                 {
+                     "name": "Guilherme Blanco",
+                     "email": "guilhermeblanco@gmail.com"
+                 },
++                {
++                    "name": "Roman Borschel",
++                    "email": "roman@code-factory.org"
++                },
+                 {
+                     "name": "Johannes Schmitt",
+                     "email": "schmittjoh@gmail.com"
+@@ -1073,7 +1085,7 @@
+                 "parser",
+                 "php"
+             ],
+-            "time": "2019-06-08T11:03:04+00:00"
++            "time": "2019-10-30T14:39:59+00:00"
+         },
+         {
+             "name": "doctrine/migrations",
+@@ -1917,43 +1929,52 @@
          },
          {
              "name": "knplabs/knp-components",
@@ -71,7 +227,7 @@ index 33e0db3d..e5e2f194 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -1917,11 +1926,11 @@
+@@ -1963,11 +1984,11 @@
              "authors": [
                  {
                      "name": "KnpLabs Team",
@@ -85,7 +241,7 @@ index 33e0db3d..e5e2f194 100644
                  }
              ],
              "description": "Knplabs component library",
-@@ -1933,7 +1942,7 @@
+@@ -1979,7 +2000,7 @@
                  "pager",
                  "paginator"
              ],
@@ -94,7 +250,7 @@ index 33e0db3d..e5e2f194 100644
          },
          {
              "name": "knplabs/knp-markdown-bundle",
-@@ -2000,37 +2009,39 @@
+@@ -2046,37 +2067,39 @@
          },
          {
              "name": "knplabs/knp-paginator-bundle",
@@ -146,7 +302,7 @@ index 33e0db3d..e5e2f194 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2058,7 +2069,7 @@
+@@ -2104,7 +2127,7 @@
                  "paginator",
                  "symfony"
              ],
@@ -155,7 +311,7 @@ index 33e0db3d..e5e2f194 100644
          },
          {
              "name": "knplabs/knp-snappy",
-@@ -8438,16 +8449,16 @@
+@@ -8484,16 +8507,16 @@
          },
          {
              "name": "twig/twig",
@@ -176,7 +332,7 @@ index 33e0db3d..e5e2f194 100644
                  "shasum": ""
              },
              "require": {
-@@ -8501,7 +8512,7 @@
+@@ -8547,7 +8570,7 @@
              "keywords": [
                  "templating"
              ],
@@ -185,7 +341,7 @@ index 33e0db3d..e5e2f194 100644
          },
          {
              "name": "webmozart/assert",
-@@ -9307,11 +9318,11 @@
+@@ -9353,12 +9376,12 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {
@@ -197,7 +353,8 @@ index 33e0db3d..e5e2f194 100644
      "platform-overrides": {
 -        "php": "7.1.3"
 +        "php": "7.2.5"
-     }
+     },
+     "plugin-api-version": "1.1.0"
  }
 diff --git a/symfony.lock b/symfony.lock
 index 65a6e4ed..c02857f5 100644

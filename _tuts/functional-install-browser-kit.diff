@@ -11,7 +11,7 @@ index b87e0f22..47a55e3f 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 50a68504..fcbf4a07 100644
+index dc33a805..33475237 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 50a68504..fcbf4a07 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -8484,6 +8484,65 @@
+@@ -8530,6 +8530,65 @@
              ],
              "time": "2019-09-01T07:51:21+00:00"
          },
@@ -89,7 +89,7 @@ index 50a68504..fcbf4a07 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.3.4",
-@@ -8550,6 +8609,67 @@
+@@ -8596,6 +8655,67 @@
              "homepage": "https://symfony.com",
              "time": "2019-07-19T08:33:28+00:00"
          },
@@ -158,10 +158,10 @@ index 50a68504..fcbf4a07 100644
              "name": "symfony/dotenv",
              "version": "v4.3.4",
 diff --git a/symfony.lock b/symfony.lock
-index 6eed8dc3..ed8e055f 100644
+index 8a7561bb..e8a58986 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -284,6 +284,9 @@
+@@ -287,6 +287,9 @@
      "symfony/asset": {
          "version": "v4.1.11"
      },
@@ -171,7 +171,7 @@ index 6eed8dc3..ed8e055f 100644
      "symfony/cache": {
          "version": "v4.1.11"
      },
-@@ -326,6 +329,9 @@
+@@ -329,6 +332,9 @@
      "symfony/doctrine-bridge": {
          "version": "v4.1.11"
      },

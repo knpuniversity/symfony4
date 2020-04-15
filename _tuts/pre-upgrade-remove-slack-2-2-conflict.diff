@@ -12,7 +12,7 @@ index dadd525f..2d02cd10 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 2d257eb9..b0f162ee 100644
+index 0acec6f4..f65a618a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -24,7 +24,7 @@ index 2d257eb9..b0f162ee 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -3004,15 +3004,15 @@
+@@ -3050,15 +3050,15 @@
              "authors": [
                  {
                      "name": "Jim Schmid",

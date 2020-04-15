@@ -56,7 +56,7 @@ index 2ecbad69..6c5156c6 100644
          "twig/extensions": "^1.5"
      },
 diff --git a/composer.lock b/composer.lock
-index fcbd91b7..357ccb7f 100644
+index a9f7857f..cb0c4ec2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -68,7 +68,7 @@ index fcbd91b7..357ccb7f 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -6663,6 +6663,60 @@
+@@ -6715,6 +6715,60 @@
              "homepage": "https://symfony.com",
              "time": "2019-03-04T10:37:56+00:00"
          },
@@ -202,10 +202,10 @@ index 00000000..3d6f5024
 +}
 \ No newline at end of file
 diff --git a/symfony.lock b/symfony.lock
-index 42e9fa1e..cc37706d 100644
+index 27a9d951..5b0aa8ea 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -500,6 +500,23 @@
+@@ -503,6 +503,23 @@
              "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
          }
      },

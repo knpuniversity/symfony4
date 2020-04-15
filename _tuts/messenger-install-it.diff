@@ -26,7 +26,7 @@ index de3d528b..dadd525f 100644
          "symfony/security-bundle": "^4.0",
          "symfony/sendgrid-mailer": "4.3.*",
 diff --git a/composer.lock b/composer.lock
-index bfb056de..2d257eb9 100644
+index e230cb95..0acec6f4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -38,7 +38,7 @@ index bfb056de..2d257eb9 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -5599,6 +5599,80 @@
+@@ -5645,6 +5645,80 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-22T08:16:11+00:00"
          },
@@ -140,10 +140,10 @@ index 00000000..6b7319ce
 +            # Route your messages to the transports
 +            # 'App\Message\YourMessage': async
 diff --git a/symfony.lock b/symfony.lock
-index c7f182f1..4f79e73f 100644
+index ddab9293..fed6e88a 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -401,6 +401,18 @@
+@@ -404,6 +404,18 @@
              "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
          }
      },

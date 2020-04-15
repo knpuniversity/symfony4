@@ -11,7 +11,7 @@ index db78f196..7b44b5fe 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 1a155097..65290c29 100644
+index 974763b1..653705e1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 1a155097..65290c29 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -4324,6 +4324,59 @@
+@@ -4370,6 +4370,59 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-26T08:26:39+00:00"
          },
@@ -83,7 +83,7 @@ index 1a155097..65290c29 100644
          {
              "name": "symfony/debug",
              "version": "v4.3.4",
-@@ -7401,6 +7454,107 @@
+@@ -7447,6 +7500,107 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-20T14:27:59+00:00"
          },
@@ -192,10 +192,10 @@ index 1a155097..65290c29 100644
              "name": "twig/extensions",
              "version": "v1.5.4",
 diff --git a/symfony.lock b/symfony.lock
-index a6fccf20..8e120824 100644
+index 2a896a0e..327a0d13 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -284,6 +284,12 @@
+@@ -287,6 +287,12 @@
              "ref": "0fa049c19069a65f52c1c181d64be3de672c1504"
          }
      },
@@ -208,7 +208,7 @@ index a6fccf20..8e120824 100644
      "symfony/debug": {
          "version": "v4.1.11"
      },
-@@ -556,6 +562,12 @@
+@@ -559,6 +565,12 @@
      "symfony/yaml": {
          "version": "v4.1.11"
      },

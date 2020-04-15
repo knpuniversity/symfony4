@@ -59,7 +59,7 @@ index 6541eb45..3e330df0 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index af452da7..2a4df54d 100644
+index ca390c27..9f0437e5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -71,7 +71,7 @@ index af452da7..2a4df54d 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -5198,31 +5198,31 @@
+@@ -5244,31 +5244,31 @@
          },
          {
              "name": "symfony/framework-bundle",
@@ -116,7 +116,7 @@ index af452da7..2a4df54d 100644
              },
              "conflict": {
                  "phpdocumentor/reflection-docblock": "<3.0",
-@@ -5232,50 +5232,57 @@
+@@ -5278,50 +5278,57 @@
                  "symfony/browser-kit": "<4.3",
                  "symfony/console": "<4.3",
                  "symfony/dom-crawler": "<4.3",
@@ -207,7 +207,7 @@ index af452da7..2a4df54d 100644
              },
              "suggest": {
                  "ext-apcu": "For best performance of the system caches",
-@@ -5290,7 +5297,7 @@
+@@ -5336,7 +5343,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -216,7 +216,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -5317,7 +5324,7 @@
+@@ -5363,7 +5370,7 @@
              ],
              "description": "Symfony FrameworkBundle",
              "homepage": "https://symfony.com",
@@ -225,7 +225,7 @@ index af452da7..2a4df54d 100644
          },
          {
              "name": "symfony/http-foundation",
-@@ -5599,16 +5606,16 @@
+@@ -5645,16 +5652,16 @@
          },
          {
              "name": "symfony/mailer",
@@ -246,7 +246,7 @@ index af452da7..2a4df54d 100644
                  "shasum": ""
              },
              "require": {
-@@ -5616,21 +5623,27 @@
+@@ -5662,21 +5669,27 @@
                  "php": "^7.1.3",
                  "psr/log": "~1.0",
                  "symfony/event-dispatcher": "^4.3",
@@ -283,7 +283,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -5657,20 +5670,20 @@
+@@ -5703,20 +5716,20 @@
              ],
              "description": "Symfony Mailer Component",
              "homepage": "https://symfony.com",
@@ -309,7 +309,7 @@ index af452da7..2a4df54d 100644
                  "shasum": ""
              },
              "require": {
-@@ -5678,25 +5691,24 @@
+@@ -5724,25 +5737,24 @@
                  "psr/log": "~1.0"
              },
              "conflict": {
@@ -349,7 +349,7 @@ index af452da7..2a4df54d 100644
              },
              "suggest": {
                  "enqueue/messenger-adapter": "For using the php-enqueue library as a transport."
-@@ -5704,7 +5716,7 @@
+@@ -5750,7 +5762,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -358,7 +358,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -5731,20 +5743,20 @@
+@@ -5777,20 +5789,20 @@
              ],
              "description": "Symfony Messenger Component",
              "homepage": "https://symfony.com",
@@ -384,7 +384,7 @@ index af452da7..2a4df54d 100644
                  "shasum": ""
              },
              "require": {
-@@ -5752,14 +5764,17 @@
+@@ -5798,14 +5810,17 @@
                  "symfony/polyfill-intl-idn": "^1.10",
                  "symfony/polyfill-mbstring": "^1.0"
              },
@@ -404,7 +404,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -5790,7 +5805,7 @@
+@@ -5836,7 +5851,7 @@
                  "mime",
                  "mime-type"
              ],
@@ -413,7 +413,7 @@ index af452da7..2a4df54d 100644
          },
          {
              "name": "symfony/options-resolver",
-@@ -6494,60 +6509,59 @@
+@@ -6540,60 +6555,59 @@
          },
          {
              "name": "symfony/security-bundle",
@@ -506,7 +506,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -6574,7 +6588,7 @@
+@@ -6620,7 +6634,7 @@
              ],
              "description": "Symfony SecurityBundle",
              "homepage": "https://symfony.com",
@@ -515,7 +515,7 @@ index af452da7..2a4df54d 100644
          },
          {
              "name": "symfony/security-core",
-@@ -6830,29 +6844,29 @@
+@@ -6876,29 +6890,29 @@
          },
          {
              "name": "symfony/sendgrid-mailer",
@@ -552,7 +552,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -6879,7 +6893,7 @@
+@@ -6925,7 +6939,7 @@
              ],
              "description": "Symfony Sendgrid Mailer Bridge",
              "homepage": "https://symfony.com",
@@ -561,7 +561,7 @@ index af452da7..2a4df54d 100644
          },
          {
              "name": "symfony/serializer",
-@@ -7394,53 +7408,51 @@
+@@ -7440,53 +7454,51 @@
          },
          {
              "name": "symfony/twig-bundle",
@@ -637,7 +637,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -7467,7 +7479,7 @@
+@@ -7513,7 +7525,7 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
@@ -646,7 +646,7 @@ index af452da7..2a4df54d 100644
          },
          {
              "name": "symfony/twig-pack",
-@@ -8750,27 +8762,27 @@
+@@ -8796,27 +8808,27 @@
          },
          {
              "name": "symfony/browser-kit",
@@ -683,7 +683,7 @@ index af452da7..2a4df54d 100644
              },
              "suggest": {
                  "symfony/process": ""
-@@ -8778,7 +8790,7 @@
+@@ -8824,7 +8836,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -692,7 +692,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -8805,7 +8817,7 @@
+@@ -8851,7 +8863,7 @@
              ],
              "description": "Symfony BrowserKit Component",
              "homepage": "https://symfony.com",
@@ -701,7 +701,7 @@ index af452da7..2a4df54d 100644
          },
          {
              "name": "symfony/debug-bundle",
-@@ -9284,42 +9296,40 @@
+@@ -9330,42 +9342,40 @@
          },
          {
              "name": "symfony/web-profiler-bundle",
@@ -759,7 +759,7 @@ index af452da7..2a4df54d 100644
                  }
              },
              "autoload": {
-@@ -9346,7 +9356,7 @@
+@@ -9392,7 +9402,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

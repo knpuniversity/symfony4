@@ -21,10 +21,10 @@ index 6d8cb28d..2558dc8d 100644
          "symfony/sendgrid-mailer": "4.4.*",
          "symfony/serializer-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index de577687..abf0114a 100644
+index 174dd021..e89fa63e 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -6216,34 +6216,6 @@
+@@ -6260,34 +6260,6 @@
              ],
              "time": "2019-10-28T21:57:16+00:00"
          },

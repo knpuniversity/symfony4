@@ -13,7 +13,7 @@ index 7b44b5fe..2060210e 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 65290c29..f5f0b7b3 100644
+index 653705e1..e583e913 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -25,7 +25,7 @@ index 65290c29..f5f0b7b3 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -2416,6 +2416,53 @@
+@@ -2462,6 +2462,53 @@
              ],
              "time": "2018-07-10T12:53:54+00:00"
          },
@@ -79,7 +79,7 @@ index 65290c29..f5f0b7b3 100644
          {
              "name": "michelf/php-markdown",
              "version": "1.8.0",
-@@ -7669,6 +7716,61 @@
+@@ -7715,6 +7762,61 @@
              ],
              "time": "2019-10-17T07:27:12+00:00"
          },
@@ -142,7 +142,7 @@ index 65290c29..f5f0b7b3 100644
              "name": "twig/twig",
              "version": "v2.12.1",
 diff --git a/symfony.lock b/symfony.lock
-index 8e120824..22760415 100644
+index 327a0d13..b8bf57b0 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -152,6 +152,9 @@
@@ -155,7 +155,7 @@ index 8e120824..22760415 100644
      "michelf/php-markdown": {
          "version": "1.8.0"
      },
-@@ -580,6 +583,9 @@
+@@ -583,6 +586,9 @@
      "twig/extra-bundle": {
          "version": "v2.12.1"
      },

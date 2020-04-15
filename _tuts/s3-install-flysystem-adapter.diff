@@ -11,7 +11,7 @@ index ad629d76..1692f43c 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 9587356a..304a6c09 100644
+index 40c55734..8e9f5ec1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 9587356a..304a6c09 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -2080,6 +2080,53 @@
+@@ -2137,6 +2137,53 @@
              ],
              "time": "2019-02-01T08:50:36+00:00"
          },
@@ -78,7 +78,7 @@ index 9587356a..304a6c09 100644
              "name": "liip/imagine-bundle",
              "version": "2.1.0",
 diff --git a/symfony.lock b/symfony.lock
-index 6a9636ae..d89fbbb1 100644
+index 1cf35d2a..b9d13378 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -131,6 +131,9 @@

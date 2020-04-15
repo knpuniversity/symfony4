@@ -24,7 +24,7 @@ index 47a55e3f..de3d528b 100644
          "symfony/twig-bundle": "^4.0",
          "symfony/twig-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index fcbf4a07..bfb056de 100644
+index 33475237..e230cb95 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -36,7 +36,7 @@ index fcbf4a07..bfb056de 100644
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -6692,6 +6692,59 @@
+@@ -6738,6 +6738,59 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-26T08:26:39+00:00"
          },
@@ -97,10 +97,10 @@ index fcbf4a07..bfb056de 100644
              "name": "symfony/serializer",
              "version": "v4.3.4",
 diff --git a/symfony.lock b/symfony.lock
-index ed8e055f..c7f182f1 100644
+index e8a58986..ddab9293 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -491,6 +491,15 @@
+@@ -494,6 +494,15 @@
      "symfony/security-http": {
          "version": "v4.2.3"
      },
