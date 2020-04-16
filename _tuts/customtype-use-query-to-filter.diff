@@ -1,5 +1,5 @@
 diff --git a/public/js/algolia-autocomplete.js b/public/js/algolia-autocomplete.js
-index f7074647..fa62249c 100644
+index f707464..fa62249 100644
 --- a/public/js/algolia-autocomplete.js
 +++ b/public/js/algolia-autocomplete.js
 @@ -6,7 +6,7 @@ $(document).ready(function() {
@@ -12,7 +12,7 @@ index f7074647..fa62249c 100644
                          cb(data.users);
                      });
 diff --git a/src/Controller/AdminUtilityController.php b/src/Controller/AdminUtilityController.php
-index de6bd08f..4f86cca2 100644
+index de6bd08..4f86cca 100644
 --- a/src/Controller/AdminUtilityController.php
 +++ b/src/Controller/AdminUtilityController.php
 @@ -6,6 +6,7 @@ use App\Repository\UserRepository;
@@ -36,7 +36,7 @@ index de6bd08f..4f86cca2 100644
          return $this->json([
              'users' => $users
 diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
-index fe3ab5ee..70b7bed8 100644
+index fe3ab5e..70b7bed 100644
 --- a/src/Repository/UserRepository.php
 +++ b/src/Repository/UserRepository.php
 @@ -31,6 +31,19 @@ class UserRepository extends ServiceEntityRepository

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 5c31db06..d83d69ca 100644
+index 5c31db0..d83d69c 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -33,7 +33,9 @@ class ArticleAdminController extends AbstractController
@@ -23,7 +23,7 @@ index 5c31db06..d83d69ca 100644
      public function list(ArticleRepository $articleRepo)
      {
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 5ce805d2..a069251b 100644
+index 5ce805d..a069251 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -64,6 +64,12 @@

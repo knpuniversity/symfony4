@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index 24745d60..90f23e0f 100644
+index 24745d6..90f23e0 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -4,9 +4,11 @@ namespace App\DataFixtures;
@@ -37,7 +37,7 @@ index 24745d60..90f23e0f 100644
 +    }
  }
 diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
-index 191afe99..ed8d012d 100644
+index 191afe9..ed8d012 100644
 --- a/src/DataFixtures/BaseFixture.php
 +++ b/src/DataFixtures/BaseFixture.php
 @@ -58,4 +58,14 @@ abstract class BaseFixture extends Fixture

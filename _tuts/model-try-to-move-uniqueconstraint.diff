@@ -1,5 +1,5 @@
 diff --git a/src/Form/Model/UserRegistrationFormModel.php b/src/Form/Model/UserRegistrationFormModel.php
-index e0fa870e..8ab99017 100644
+index e0fa870..8ab9901 100644
 --- a/src/Form/Model/UserRegistrationFormModel.php
 +++ b/src/Form/Model/UserRegistrationFormModel.php
 @@ -2,8 +2,15 @@

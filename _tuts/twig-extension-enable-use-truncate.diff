@@ -1,5 +1,5 @@
 diff --git a/config/packages/twig_extensions.yaml b/config/packages/twig_extensions.yaml
-index 417b7bc3..39c0f021 100644
+index 417b7bc..39c0f02 100644
 --- a/config/packages/twig_extensions.yaml
 +++ b/config/packages/twig_extensions.yaml
 @@ -7,4 +7,4 @@ services:
@@ -9,7 +9,7 @@ index 417b7bc3..39c0f021 100644
 -    #Twig\Extensions\TextExtension: ~
 +    Twig\Extensions\TextExtension: ~
 diff --git a/templates/comment_admin/index.html.twig b/templates/comment_admin/index.html.twig
-index ab6d40c8..d0a6334d 100644
+index ab6d40c..d0a6334 100644
 --- a/templates/comment_admin/index.html.twig
 +++ b/templates/comment_admin/index.html.twig
 @@ -30,7 +30,7 @@

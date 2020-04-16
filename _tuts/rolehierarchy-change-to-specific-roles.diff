@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index 5da7588e..455e672d 100644
+index 5da7588..455e672 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ index 5da7588e..455e672d 100644
  class ArticleAdminController extends AbstractController
  {
 diff --git a/src/Controller/CommentAdminController.php b/src/Controller/CommentAdminController.php
-index 026e68d1..ef6b7299 100644
+index 026e68d..ef6b729 100644
 --- a/src/Controller/CommentAdminController.php
 +++ b/src/Controller/CommentAdminController.php
 @@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +25,7 @@ index 026e68d1..ef6b7299 100644
  class CommentAdminController extends Controller
  {
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 1b48f0c9..5a777016 100644
+index 1b48f0c..5a77701 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -40,7 +40,7 @@

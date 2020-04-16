@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Comment.php b/src/Entity/Comment.php
-index b080adb8..cc6b85de 100644
+index b080adb..cc6b85d 100644
 --- a/src/Entity/Comment.php
 +++ b/src/Entity/Comment.php
 @@ -3,12 +3,15 @@

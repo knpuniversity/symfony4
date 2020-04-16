@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 8dcecc71..be007a4f 100644
+index 8dcecc7..be007a4 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -3,6 +3,7 @@
@@ -43,7 +43,7 @@ index 8dcecc71..be007a4f 100644
      }
  }
 diff --git a/src/Form/UserRegistrationFormType.php b/src/Form/UserRegistrationFormType.php
-index 8a949167..d31b94b5 100644
+index 8a94916..d31b94b 100644
 --- a/src/Form/UserRegistrationFormType.php
 +++ b/src/Form/UserRegistrationFormType.php
 @@ -13,10 +13,7 @@ class UserRegistrationFormType extends AbstractType
@@ -58,7 +58,7 @@ index 8a949167..d31b94b5 100644
      }
  
 diff --git a/templates/security/register.html.twig b/templates/security/register.html.twig
-index c726e5e8..651ab1fe 100644
+index c726e5e..651ab1f 100644
 --- a/templates/security/register.html.twig
 +++ b/templates/security/register.html.twig
 @@ -12,7 +12,15 @@

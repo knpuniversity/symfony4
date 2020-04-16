@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index c9f6d3c3..64a188e4 100644
+index c9f6d3c..64a188e 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -179,6 +179,14 @@ class Article
@@ -18,7 +18,7 @@ index c9f6d3c3..64a188e4 100644
      {
          if (!$this->comments->contains($comment)) {
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 3720dbde..4e7a3dfc 100644
+index 3720dbd..4e7a3df 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -39,7 +39,7 @@

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 2c7e34ef..cb0d75e0 100644
+index 2c7e34e..cb0d75e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -21,6 +21,7 @@
@@ -11,7 +11,7 @@ index 2c7e34ef..cb0d75e0 100644
          "symfony/phpunit-bridge": "^3.3|^4.0",
          "symfony/profiler-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index ea138362..b5f54c25 100644
+index ea13836..b5f54c2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -88,7 +88,7 @@ index ea138362..b5f54c25 100644
              "name": "symfony/monolog-bridge",
              "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 56ef227a..de7f7749 100644
+index 56ef227..de7f774 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -11,4 +11,5 @@ return [
@@ -98,7 +98,7 @@ index 56ef227a..de7f7749 100644
 +    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 9d6f928d..fce23724 100644
+index 9d6f928..fce2372 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -194,6 +194,15 @@
