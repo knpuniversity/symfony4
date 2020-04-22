@@ -85,6 +85,12 @@ Cool! Copy the composer require line, move back over to your terminal, and paste
 composer require twig/inky-extra
 ```
 
+***TIP
+Make sure you have XSL extension installed for your PHP to be able to use Inky.
+To check it - you can run `php -m | grep xsl` in your console and check the output
+has "xsl".
+***
+
 When that finishes... move back to your browser, go *back* to the registration
 form, tweak that email and... deep breath... register! I think it worked!
 Let's go check it out.
