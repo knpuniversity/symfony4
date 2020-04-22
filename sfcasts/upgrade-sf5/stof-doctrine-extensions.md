@@ -15,10 +15,17 @@ We're *hoping* a minor upgrade - maybe from 1.3 to 1.4 - will fix things. Update
 composer update stof/doctrine-extensions-bundle
 ```
 
-And... once again... *nothing* happens. Let's go hunting for answers! Google
-for StofDoctrineExtensionsBundle and... find its GitHub page. The *first* question
-I have is: what is the latest version? It's, oh: 1.3.0 - that's the version
-*we're* using... and it's 2 years old!
+And... once again... *nothing* happens.
+
+***TIP
+Symfony 5 support was added with release v1.4.0 of `stof/doctrine-extensions-bundle`
+so you can continue using this package and skip installing `antishov/doctrine-extensions-bundle`
+fork as we do below.
+***
+
+Let's go hunting for answers! Google for StofDoctrineExtensionsBundle and... find its
+GitHub page. The *first* question I have is: what is the latest version? It's, oh:
+1.3.0 - that's the version *we're* using... and it's 2 years old!
 
 This is an example of a bundle that, at least at the time of this recording, does
 *not* yet support Symfony 5. So... what do we do? Panic! Ahhhh.
