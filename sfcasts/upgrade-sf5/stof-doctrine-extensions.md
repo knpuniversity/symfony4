@@ -18,9 +18,9 @@ composer update stof/doctrine-extensions-bundle
 And... once again... *nothing* happens.
 
 ***TIP
-Symfony 5 support was added with release v1.4.0 of `stof/doctrine-extensions-bundle`
+Symfony 5 support was added in release v1.4.0 of `stof/doctrine-extensions-bundle`
 so you can continue using this package and skip installing `antishov/doctrine-extensions-bundle`
-fork as we do below.
+fork as we do further.
 ***
 
 Let's go hunting for answers! Google for StofDoctrineExtensionsBundle and... find its
