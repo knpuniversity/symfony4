@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 3132b99..b5ac2c1 100644
+index 3132b99c..b5ac2c15 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -72,6 +72,7 @@ class Article
@@ -11,7 +11,7 @@ index 3132b99..b5ac2c1 100644
      private $author;
  
 diff --git a/src/Form/DataTransformer/EmailToUserTransformer.php b/src/Form/DataTransformer/EmailToUserTransformer.php
-index d4dca50..ab5c249 100644
+index d4dca50b..ab5c2494 100644
 --- a/src/Form/DataTransformer/EmailToUserTransformer.php
 +++ b/src/Form/DataTransformer/EmailToUserTransformer.php
 @@ -31,6 +31,10 @@ class EmailToUserTransformer implements DataTransformerInterface

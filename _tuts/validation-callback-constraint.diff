@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index d1e88bd..3132b99 100644
+index d1e88bd9..3132b99c 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;

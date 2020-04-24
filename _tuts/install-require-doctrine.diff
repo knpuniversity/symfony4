@@ -1,5 +1,5 @@
 diff --git a/.env.dist b/.env.dist
-index ceef5fd..01b48ec 100644
+index ceef5fd0..01b48ec0 100644
 --- a/.env.dist
 +++ b/.env.dist
 @@ -12,3 +12,10 @@ APP_SECRET=5ea3114a349591bd131296e00f21c20a
@@ -14,7 +14,7 @@ index ceef5fd..01b48ec 100644
 +DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 +###< doctrine/doctrine-bundle ###
 diff --git a/README.md b/README.md
-index 58be06d..6379099 100644
+index 58be06d5..63790990 100644
 --- a/README.md
 +++ b/README.md
 @@ -21,6 +21,28 @@ composer install
@@ -47,7 +47,7 @@ index 58be06d..6379099 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.json b/composer.json
-index cb0d75e..9299abb 100644
+index cb0d75e0..9299abb4 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -13,6 +13,7 @@
@@ -59,7 +59,7 @@ index cb0d75e..9299abb 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 8855559..3649b3d 100644
+index 88555597..6ff19b14 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -71,48 +71,158 @@ index 8855559..3649b3d 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -128,42 +128,653 @@
+@@ -60,20 +60,21 @@
+         },
+         {
+             "name": "doctrine/annotations",
+-            "version": "v1.8.0",
++            "version": "1.10.2",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/doctrine/annotations.git",
+-                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc"
++                "reference": "b9d758e831c70751155c698c2f7df4665314a1cb"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/904dca4eb10715b92569fbcd79e201d5c349b6bc",
+-                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc",
++                "url": "https://api.github.com/repos/doctrine/annotations/zipball/b9d758e831c70751155c698c2f7df4665314a1cb",
++                "reference": "b9d758e831c70751155c698c2f7df4665314a1cb",
+                 "shasum": ""
+             },
+             "require": {
+                 "doctrine/lexer": "1.*",
++                "ext-tokenizer": "*",
+                 "php": "^7.1"
+             },
+             "require-dev": {
+@@ -83,7 +84,7 @@
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.7.x-dev"
++                    "dev-master": "1.9.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -124,20 +125,20 @@
+                 "docblock",
+                 "parser"
+             ],
+-            "time": "2019-10-01T18:55:10+00:00"
++            "time": "2020-04-20T09:18:32+00:00"
          },
          {
              "name": "doctrine/cache",
 -            "version": "v1.7.1",
-+            "version": "v1.8.0",
++            "version": "1.10.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/doctrine/cache.git",
+-                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a"
++                "reference": "382e7f4db9a12dc6c19431743a2b096041bcdd62"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/cache/zipball/b3217d58609e9c8e661cd41357a54d926c4a2a1a",
+-                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a",
++                "url": "https://api.github.com/repos/doctrine/cache/zipball/382e7f4db9a12dc6c19431743a2b096041bcdd62",
++                "reference": "382e7f4db9a12dc6c19431743a2b096041bcdd62",
+                 "shasum": ""
+             },
+             "require": {
+@@ -148,8 +149,9 @@
+             },
+             "require-dev": {
+                 "alcaeus/mongo-php-adapter": "^1.1",
++                "doctrine/coding-standard": "^6.0",
+                 "mongodb/mongodb": "^1.1",
+-                "phpunit/phpunit": "^5.7",
++                "phpunit/phpunit": "^7.0",
+                 "predis/predis": "~1.0"
+             },
+             "suggest": {
+@@ -158,7 +160,7 @@
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.7.x-dev"
++                    "dev-master": "1.9.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -171,6 +173,10 @@
+                 "MIT"
+             ],
+             "authors": [
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
+                 {
+                     "name": "Roman Borschel",
+                     "email": "roman@code-factory.org"
+@@ -179,10 +185,81 @@
+                     "name": "Benjamin Eberlei",
+                     "email": "kontakt@beberlei.de"
+                 },
++                {
++                    "name": "Jonathan Wage",
++                    "email": "jonwage@gmail.com"
++                },
++                {
++                    "name": "Johannes Schmitt",
++                    "email": "schmittjoh@gmail.com"
++                }
++            ],
++            "description": "PHP Doctrine Cache library is a popular cache implementation that supports many different drivers such as redis, memcache, apc, mongodb and others.",
++            "homepage": "https://www.doctrine-project.org/projects/cache.html",
++            "keywords": [
++                "abstraction",
++                "apcu",
++                "cache",
++                "caching",
++                "couchdb",
++                "memcached",
++                "php",
++                "redis",
++                "xcache"
++            ],
++            "time": "2019-11-29T15:36:20+00:00"
++        },
++        {
++            "name": "doctrine/collections",
++            "version": "1.6.4",
 +            "source": {
 +                "type": "git",
-+                "url": "https://github.com/doctrine/cache.git",
-+                "reference": "d768d58baee9a4862ca783840eca1b9add7a7f57"
++                "url": "https://github.com/doctrine/collections.git",
++                "reference": "6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/doctrine/cache/zipball/d768d58baee9a4862ca783840eca1b9add7a7f57",
-+                "reference": "d768d58baee9a4862ca783840eca1b9add7a7f57",
++                "url": "https://api.github.com/repos/doctrine/collections/zipball/6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7",
++                "reference": "6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7",
 +                "shasum": ""
 +            },
 +            "require": {
-+                "php": "~7.1"
-+            },
-+            "conflict": {
-+                "doctrine/common": ">2.2,<2.4"
++                "php": "^7.1.3"
 +            },
 +            "require-dev": {
-+                "alcaeus/mongo-php-adapter": "^1.1",
-+                "doctrine/coding-standard": "^4.0",
-+                "mongodb/mongodb": "^1.1",
++                "doctrine/coding-standard": "^6.0",
++                "phpstan/phpstan-shim": "^0.9.2",
 +                "phpunit/phpunit": "^7.0",
-+                "predis/predis": "~1.0"
-+            },
-+            "suggest": {
-+                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
++                "vimeo/psalm": "^3.2.2"
 +            },
 +            "type": "library",
 +            "extra": {
 +                "branch-alias": {
-+                    "dev-master": "1.8.x-dev"
++                    "dev-master": "1.6.x-dev"
 +                }
 +            },
 +            "autoload": {
 +                "psr-4": {
-+                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
++                    "Doctrine\\Common\\Collections\\": "lib/Doctrine/Common/Collections"
 +                }
 +            },
 +            "notification-url": "https://packagist.org/downloads/",
@@ -120,6 +230,10 @@ index 8855559..3649b3d 100644
 +                "MIT"
 +            ],
 +            "authors": [
+                 {
+                     "name": "Guilherme Blanco",
+                     "email": "guilhermeblanco@gmail.com"
+                 },
 +                {
 +                    "name": "Roman Borschel",
 +                    "email": "roman@code-factory.org"
@@ -128,106 +242,44 @@ index 8855559..3649b3d 100644
 +                    "name": "Benjamin Eberlei",
 +                    "email": "kontakt@beberlei.de"
 +                },
-+                {
-+                    "name": "Guilherme Blanco",
-+                    "email": "guilhermeblanco@gmail.com"
-+                },
-+                {
-+                    "name": "Jonathan Wage",
-+                    "email": "jonwage@gmail.com"
-+                },
-+                {
-+                    "name": "Johannes Schmitt",
-+                    "email": "schmittjoh@gmail.com"
-+                }
-+            ],
-+            "description": "Caching library offering an object-oriented API for many cache backends",
-+            "homepage": "https://www.doctrine-project.org",
-+            "keywords": [
-+                "cache",
-+                "caching"
-+            ],
-+            "time": "2018-08-21T18:01:43+00:00"
-+        },
-+        {
-+            "name": "doctrine/collections",
-+            "version": "v1.5.0",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/doctrine/collections.git",
-+                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf"
-+            },
-+            "dist": {
-+                "type": "zip",
-+                "url": "https://api.github.com/repos/doctrine/collections/zipball/a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
-+                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
-+                "shasum": ""
-+            },
-+            "require": {
-+                "php": "^7.1"
-+            },
-+            "require-dev": {
-+                "doctrine/coding-standard": "~0.1@dev",
-+                "phpunit/phpunit": "^5.7"
-+            },
-+            "type": "library",
-+            "extra": {
-+                "branch-alias": {
-+                    "dev-master": "1.3.x-dev"
-+                }
-+            },
-+            "autoload": {
-+                "psr-0": {
-+                    "Doctrine\\Common\\Collections\\": "lib/"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
-+                    "name": "Roman Borschel",
-+                    "email": "roman@code-factory.org"
-+                },
-+                {
-+                    "name": "Benjamin Eberlei",
-+                    "email": "kontakt@beberlei.de"
-+                },
-+                {
-+                    "name": "Guilherme Blanco",
-+                    "email": "guilhermeblanco@gmail.com"
-+                },
-+                {
-+                    "name": "Jonathan Wage",
-+                    "email": "jonwage@gmail.com"
-+                },
-+                {
-+                    "name": "Johannes Schmitt",
-+                    "email": "schmittjoh@gmail.com"
-+                }
-+            ],
-+            "description": "Collections Abstraction library",
-+            "homepage": "http://www.doctrine-project.org",
-+            "keywords": [
+                 {
+                     "name": "Jonathan Wage",
+                     "email": "jonwage@gmail.com"
+@@ -192,44 +269,733 @@
+                     "email": "schmittjoh@gmail.com"
+                 }
+             ],
+-            "description": "Caching library offering an object-oriented API for many cache backends",
+-            "homepage": "http://www.doctrine-project.org",
++            "description": "PHP Doctrine Collections library that adds additional functionality on top of PHP arrays.",
++            "homepage": "https://www.doctrine-project.org/projects/collections.html",
+             "keywords": [
+-                "cache",
+-                "caching"
 +                "array",
 +                "collections",
-+                "iterator"
-+            ],
-+            "time": "2017-07-22T10:37:32+00:00"
-+        },
-+        {
++                "iterators",
++                "php"
+             ],
+-            "time": "2017-08-25T07:02:50+00:00"
++            "time": "2019-11-13T13:07:11+00:00"
+         },
+         {
+-            "name": "doctrine/collections",
+-            "version": "v1.5.0",
 +            "name": "doctrine/common",
-+            "version": "v2.10.0",
-+            "source": {
-+                "type": "git",
++            "version": "2.12.0",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/doctrine/collections.git",
+-                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf"
 +                "url": "https://github.com/doctrine/common.git",
-+                "reference": "30e33f60f64deec87df728c02b107f82cdafad9d"
++                "reference": "2053eafdf60c2172ee1373d1b9289ba1db7f1fc6"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/doctrine/common/zipball/30e33f60f64deec87df728c02b107f82cdafad9d",
-+                "reference": "30e33f60f64deec87df728c02b107f82cdafad9d",
++                "url": "https://api.github.com/repos/doctrine/common/zipball/2053eafdf60c2172ee1373d1b9289ba1db7f1fc6",
++                "reference": "2053eafdf60c2172ee1373d1b9289ba1db7f1fc6",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -243,14 +295,16 @@ index 8855559..3649b3d 100644
 +            },
 +            "require-dev": {
 +                "doctrine/coding-standard": "^1.0",
-+                "phpunit/phpunit": "^6.3",
++                "phpstan/phpstan": "^0.11",
++                "phpstan/phpstan-phpunit": "^0.11",
++                "phpunit/phpunit": "^7.0",
 +                "squizlabs/php_codesniffer": "^3.0",
 +                "symfony/phpunit-bridge": "^4.0.5"
 +            },
 +            "type": "library",
 +            "extra": {
 +                "branch-alias": {
-+                    "dev-master": "2.10.x-dev"
++                    "dev-master": "2.11.x-dev"
 +                }
 +            },
 +            "autoload": {
@@ -264,16 +318,16 @@ index 8855559..3649b3d 100644
 +            ],
 +            "authors": [
 +                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
++                {
 +                    "name": "Roman Borschel",
 +                    "email": "roman@code-factory.org"
 +                },
 +                {
 +                    "name": "Benjamin Eberlei",
 +                    "email": "kontakt@beberlei.de"
-+                },
-+                {
-+                    "name": "Guilherme Blanco",
-+                    "email": "guilhermeblanco@gmail.com"
 +                },
 +                {
 +                    "name": "Jonathan Wage",
@@ -295,29 +349,33 @@ index 8855559..3649b3d 100644
 +                "doctrine",
 +                "php"
 +            ],
-+            "time": "2018-11-21T01:24:55+00:00"
++            "time": "2020-01-10T15:49:25+00:00"
 +        },
 +        {
 +            "name": "doctrine/dbal",
-+            "version": "v2.9.2",
++            "version": "v2.9.3",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/doctrine/dbal.git",
-+                "reference": "22800bd651c1d8d2a9719e2a3dc46d5108ebfcc9"
-+            },
-+            "dist": {
-+                "type": "zip",
-+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/22800bd651c1d8d2a9719e2a3dc46d5108ebfcc9",
-+                "reference": "22800bd651c1d8d2a9719e2a3dc46d5108ebfcc9",
-+                "shasum": ""
-+            },
-+            "require": {
++                "reference": "7345cd59edfa2036eb0fa4264b77ae2576842035"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/doctrine/collections/zipball/a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
+-                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
++                "url": "https://api.github.com/repos/doctrine/dbal/zipball/7345cd59edfa2036eb0fa4264b77ae2576842035",
++                "reference": "7345cd59edfa2036eb0fa4264b77ae2576842035",
+                 "shasum": ""
+             },
+             "require": {
 +                "doctrine/cache": "^1.0",
 +                "doctrine/event-manager": "^1.0",
 +                "ext-pdo": "*",
-+                "php": "^7.1"
-+            },
-+            "require-dev": {
+                 "php": "^7.1"
+             },
+             "require-dev": {
+-                "doctrine/coding-standard": "~0.1@dev",
+-                "phpunit/phpunit": "^5.7"
 +                "doctrine/coding-standard": "^5.0",
 +                "jetbrains/phpstorm-stubs": "^2018.1.2",
 +                "phpstan/phpstan": "^0.10.1",
@@ -349,16 +407,16 @@ index 8855559..3649b3d 100644
 +            ],
 +            "authors": [
 +                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
++                {
 +                    "name": "Roman Borschel",
 +                    "email": "roman@code-factory.org"
 +                },
 +                {
 +                    "name": "Benjamin Eberlei",
 +                    "email": "kontakt@beberlei.de"
-+                },
-+                {
-+                    "name": "Guilherme Blanco",
-+                    "email": "guilhermeblanco@gmail.com"
 +                },
 +                {
 +                    "name": "Jonathan Wage",
@@ -377,7 +435,7 @@ index 8855559..3649b3d 100644
 +                "php",
 +                "queryobject"
 +            ],
-+            "time": "2018-12-31T03:27:51+00:00"
++            "time": "2019-11-02T22:19:34+00:00"
 +        },
 +        {
 +            "name": "doctrine/doctrine-bundle",
@@ -516,7 +574,7 @@ index 8855559..3649b3d 100644
 +                "exclude-from-classmap": [
 +                    "/Tests/"
 +                ]
-+            },
+             },
 +            "notification-url": "https://packagist.org/downloads/",
 +            "license": [
 +                "MIT"
@@ -622,16 +680,16 @@ index 8855559..3649b3d 100644
 +        },
 +        {
 +            "name": "doctrine/event-manager",
-+            "version": "v1.0.0",
++            "version": "1.1.0",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/doctrine/event-manager.git",
-+                "reference": "a520bc093a0170feeb6b14e9d83f3a14452e64b3"
++                "reference": "629572819973f13486371cb611386eb17851e85c"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/a520bc093a0170feeb6b14e9d83f3a14452e64b3",
-+                "reference": "a520bc093a0170feeb6b14e9d83f3a14452e64b3",
++                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/629572819973f13486371cb611386eb17851e85c",
++                "reference": "629572819973f13486371cb611386eb17851e85c",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -641,7 +699,7 @@ index 8855559..3649b3d 100644
 +                "doctrine/common": "<2.9@dev"
 +            },
 +            "require-dev": {
-+                "doctrine/coding-standard": "^4.0",
++                "doctrine/coding-standard": "^6.0",
 +                "phpunit/phpunit": "^7.0"
 +            },
 +            "type": "library",
@@ -661,16 +719,16 @@ index 8855559..3649b3d 100644
 +            ],
 +            "authors": [
 +                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
++                {
 +                    "name": "Roman Borschel",
 +                    "email": "roman@code-factory.org"
 +                },
 +                {
 +                    "name": "Benjamin Eberlei",
 +                    "email": "kontakt@beberlei.de"
-+                },
-+                {
-+                    "name": "Guilherme Blanco",
-+                    "email": "guilhermeblanco@gmail.com"
 +                },
 +                {
 +                    "name": "Jonathan Wage",
@@ -685,118 +743,113 @@ index 8855559..3649b3d 100644
 +                    "email": "ocramius@gmail.com"
 +                }
 +            ],
-+            "description": "Doctrine Event Manager component",
++            "description": "The Doctrine Event Manager is a simple PHP event system that was built to be used with the various Doctrine projects.",
 +            "homepage": "https://www.doctrine-project.org/projects/event-manager.html",
 +            "keywords": [
 +                "event",
-+                "eventdispatcher",
-+                "eventmanager"
++                "event dispatcher",
++                "event manager",
++                "event system",
++                "events"
 +            ],
-+            "time": "2018-06-11T11:59:03+00:00"
++            "time": "2019-11-10T09:48:07+00:00"
 +        },
 +        {
 +            "name": "doctrine/inflector",
-+            "version": "v1.3.0",
-             "source": {
-                 "type": "git",
--                "url": "https://github.com/doctrine/cache.git",
--                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a"
++            "version": "1.3.1",
++            "source": {
++                "type": "git",
 +                "url": "https://github.com/doctrine/inflector.git",
-+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/doctrine/cache/zipball/b3217d58609e9c8e661cd41357a54d926c4a2a1a",
--                "reference": "b3217d58609e9c8e661cd41357a54d926c4a2a1a",
-+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
-+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
-                 "shasum": ""
-             },
-             "require": {
--                "php": "~7.1"
--            },
--            "conflict": {
--                "doctrine/common": ">2.2,<2.4"
++                "reference": "ec3a55242203ffa6a4b27c58176da97ff0a7aec1"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/doctrine/inflector/zipball/ec3a55242203ffa6a4b27c58176da97ff0a7aec1",
++                "reference": "ec3a55242203ffa6a4b27c58176da97ff0a7aec1",
++                "shasum": ""
++            },
++            "require": {
 +                "php": "^7.1"
-             },
-             "require-dev": {
--                "alcaeus/mongo-php-adapter": "^1.1",
--                "mongodb/mongodb": "^1.1",
--                "phpunit/phpunit": "^5.7",
--                "predis/predis": "~1.0"
--            },
--            "suggest": {
--                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
++            },
++            "require-dev": {
 +                "phpunit/phpunit": "^6.2"
-             },
-             "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "1.7.x-dev"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
 +                    "dev-master": "1.3.x-dev"
-                 }
-             },
-             "autoload": {
-                 "psr-4": {
--                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
++                }
++            },
++            "autoload": {
++                "psr-4": {
 +                    "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector"
-                 }
-             },
-             "notification-url": "https://packagist.org/downloads/",
-@@ -192,44 +803,96 @@
-                     "email": "schmittjoh@gmail.com"
-                 }
-             ],
--            "description": "Caching library offering an object-oriented API for many cache backends",
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
++                {
++                    "name": "Roman Borschel",
++                    "email": "roman@code-factory.org"
++                },
++                {
++                    "name": "Benjamin Eberlei",
++                    "email": "kontakt@beberlei.de"
++                },
++                {
++                    "name": "Jonathan Wage",
++                    "email": "jonwage@gmail.com"
++                },
++                {
++                    "name": "Johannes Schmitt",
++                    "email": "schmittjoh@gmail.com"
++                }
++            ],
 +            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-             "homepage": "http://www.doctrine-project.org",
-             "keywords": [
--                "cache",
--                "caching"
++            "homepage": "http://www.doctrine-project.org",
++            "keywords": [
 +                "inflection",
 +                "pluralize",
 +                "singularize",
 +                "string"
-             ],
--            "time": "2017-08-25T07:02:50+00:00"
-+            "time": "2018-01-09T20:05:19+00:00"
-         },
-         {
--            "name": "doctrine/collections",
--            "version": "v1.5.0",
++            ],
++            "time": "2019-10-30T19:59:35+00:00"
++        },
++        {
 +            "name": "doctrine/instantiator",
-+            "version": "1.1.0",
-             "source": {
-                 "type": "git",
--                "url": "https://github.com/doctrine/collections.git",
--                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf"
++            "version": "1.3.0",
++            "source": {
++                "type": "git",
 +                "url": "https://github.com/doctrine/instantiator.git",
-+                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/doctrine/collections/zipball/a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
--                "reference": "a01ee38fcd999f34d9bfbcee59dbda5105449cbf",
-+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
-+                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
-                 "shasum": ""
-             },
-             "require": {
-                 "php": "^7.1"
-             },
-             "require-dev": {
--                "doctrine/coding-standard": "~0.1@dev",
--                "phpunit/phpunit": "^5.7"
-+                "athletic/athletic": "~0.1.8",
++                "reference": "ae466f726242e637cebdd526a7d991b9433bacf1"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/ae466f726242e637cebdd526a7d991b9433bacf1",
++                "reference": "ae466f726242e637cebdd526a7d991b9433bacf1",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1"
++            },
++            "require-dev": {
++                "doctrine/coding-standard": "^6.0",
 +                "ext-pdo": "*",
 +                "ext-phar": "*",
-+                "phpunit/phpunit": "^6.2.3",
-+                "squizlabs/php_codesniffer": "^3.0.2"
-             },
-             "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "1.3.x-dev"
++                "phpbench/phpbench": "^0.13",
++                "phpstan/phpstan-phpunit": "^0.11",
++                "phpstan/phpstan-shim": "^0.11",
++                "phpunit/phpunit": "^7.0"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
 +                    "dev-master": "1.2.x-dev"
 +                }
 +            },
@@ -817,67 +870,72 @@ index 8855559..3649b3d 100644
 +                }
 +            ],
 +            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
-+            "homepage": "https://github.com/doctrine/instantiator",
++            "homepage": "https://www.doctrine-project.org/projects/instantiator.html",
 +            "keywords": [
 +                "constructor",
 +                "instantiate"
 +            ],
-+            "time": "2017-07-22T11:58:36+00:00"
++            "time": "2019-10-21T16:45:58+00:00"
 +        },
 +        {
 +            "name": "doctrine/lexer",
-+            "version": "v1.0.1",
++            "version": "1.0.2",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/doctrine/lexer.git",
-+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
++                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/83893c552fd2045dd78aef794c31e694c37c0b8c",
-+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
++                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
++                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
 +                "shasum": ""
 +            },
 +            "require": {
 +                "php": ">=5.3.2"
 +            },
++            "require-dev": {
++                "phpunit/phpunit": "^4.5"
++            },
 +            "type": "library",
 +            "extra": {
 +                "branch-alias": {
 +                    "dev-master": "1.0.x-dev"
-                 }
-             },
-             "autoload": {
-                 "psr-0": {
--                    "Doctrine\\Common\\Collections\\": "lib/"
-+                    "Doctrine\\Common\\Lexer\\": "lib/"
-                 }
-             },
-             "notification-url": "https://packagist.org/downloads/",
-@@ -241,66 +904,151 @@
-                     "name": "Roman Borschel",
-                     "email": "roman@code-factory.org"
-                 },
--                {
--                    "name": "Benjamin Eberlei",
--                    "email": "kontakt@beberlei.de"
--                },
-                 {
-                     "name": "Guilherme Blanco",
-                     "email": "guilhermeblanco@gmail.com"
-                 },
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Doctrine\\Common\\Lexer\\": "lib/Doctrine/Common/Lexer"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Roman Borschel",
++                    "email": "roman@code-factory.org"
++                },
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
 +                {
 +                    "name": "Johannes Schmitt",
 +                    "email": "schmittjoh@gmail.com"
 +                }
 +            ],
-+            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
-+            "homepage": "http://www.doctrine-project.org",
++            "description": "PHP Doctrine Lexer parser library that can be used in Top-Down, Recursive Descent Parsers.",
++            "homepage": "https://www.doctrine-project.org/projects/lexer.html",
 +            "keywords": [
++                "annotations",
++                "docblock",
 +                "lexer",
-+                "parser"
++                "parser",
++                "php"
 +            ],
-+            "time": "2014-09-09T13:34:57+00:00"
++            "time": "2019-06-08T11:03:04+00:00"
 +        },
 +        {
 +            "name": "doctrine/migrations",
@@ -922,26 +980,37 @@ index 8855559..3649b3d 100644
 +            "bin": [
 +                "bin/doctrine-migrations"
 +            ],
-+            "type": "library",
-+            "extra": {
-+                "branch-alias": {
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.3.x-dev"
 +                    "dev-master": "2.0.x-dev"
-+                }
-+            },
-+            "autoload": {
+                 }
+             },
+             "autoload": {
+-                "psr-0": {
+-                    "Doctrine\\Common\\Collections\\": "lib/"
 +                "psr-4": {
 +                    "Doctrine\\Migrations\\": "lib/Doctrine/Migrations"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
-+                    "name": "Benjamin Eberlei",
-+                    "email": "kontakt@beberlei.de"
-+                },
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -237,70 +1003,77 @@
+                 "MIT"
+             ],
+             "authors": [
+-                {
+-                    "name": "Roman Borschel",
+-                    "email": "roman@code-factory.org"
+-                },
+                 {
+                     "name": "Benjamin Eberlei",
+                     "email": "kontakt@beberlei.de"
+                 },
+-                {
+-                    "name": "Guilherme Blanco",
+-                    "email": "guilhermeblanco@gmail.com"
+-                },
                  {
                      "name": "Jonathan Wage",
                      "email": "jonwage@gmail.com"
@@ -973,20 +1042,20 @@ index 8855559..3649b3d 100644
 -            "name": "doctrine/common",
 -            "version": "v2.8.1",
 +            "name": "doctrine/orm",
-+            "version": "v2.6.3",
++            "version": "v2.7.2",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/doctrine/common.git",
 -                "reference": "f68c297ce6455e8fd794aa8ffaf9fa458f6ade66"
 +                "url": "https://github.com/doctrine/orm.git",
-+                "reference": "434820973cadf2da2d66e7184be370084cc32ca8"
++                "reference": "dafe298ce5d0b995ebe1746670704c0a35868a6a"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/doctrine/common/zipball/f68c297ce6455e8fd794aa8ffaf9fa458f6ade66",
 -                "reference": "f68c297ce6455e8fd794aa8ffaf9fa458f6ade66",
-+                "url": "https://api.github.com/repos/doctrine/orm/zipball/434820973cadf2da2d66e7184be370084cc32ca8",
-+                "reference": "434820973cadf2da2d66e7184be370084cc32ca8",
++                "url": "https://api.github.com/repos/doctrine/orm/zipball/dafe298ce5d0b995ebe1746670704c0a35868a6a",
++                "reference": "dafe298ce5d0b995ebe1746670704c0a35868a6a",
                  "shasum": ""
              },
              "require": {
@@ -996,26 +1065,28 @@ index 8855559..3649b3d 100644
 -                "doctrine/inflector": "1.*",
 -                "doctrine/lexer": "1.*",
 -                "php": "~7.1"
-+                "doctrine/annotations": "~1.5",
-+                "doctrine/cache": "~1.6",
-+                "doctrine/collections": "^1.4",
-+                "doctrine/common": "^2.7.1",
-+                "doctrine/dbal": "^2.6",
-+                "doctrine/instantiator": "~1.1",
++                "doctrine/annotations": "^1.8",
++                "doctrine/cache": "^1.9.1",
++                "doctrine/collections": "^1.5",
++                "doctrine/common": "^2.11",
++                "doctrine/dbal": "^2.9.3",
++                "doctrine/event-manager": "^1.1",
++                "doctrine/instantiator": "^1.3",
++                "doctrine/persistence": "^1.2",
 +                "ext-pdo": "*",
++                "ocramius/package-versions": "^1.2",
 +                "php": "^7.1",
-+                "symfony/console": "~3.0|~4.0"
++                "symfony/console": "^3.0|^4.0|^5.0"
              },
              "require-dev": {
 -                "phpunit/phpunit": "^5.7"
-+                "doctrine/coding-standard": "^1.0",
-+                "phpunit/phpunit": "^6.5",
-+                "squizlabs/php_codesniffer": "^3.2",
-+                "symfony/yaml": "~3.4|~4.0"
-             },
++                "doctrine/coding-standard": "^5.0",
++                "phpunit/phpunit": "^7.5",
++                "symfony/yaml": "^3.4|^4.0|^5.0"
++            },
 +            "suggest": {
 +                "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
-+            },
+             },
 +            "bin": [
 +                "bin/doctrine"
 +            ],
@@ -1023,7 +1094,7 @@ index 8855559..3649b3d 100644
              "extra": {
                  "branch-alias": {
 -                    "dev-master": "2.8.x-dev"
-+                    "dev-master": "2.6.x-dev"
++                    "dev-master": "2.7.x-dev"
                  }
              },
              "autoload": {
@@ -1033,7 +1104,27 @@ index 8855559..3649b3d 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -325,50 +1073,57 @@
+@@ -308,6 +1081,10 @@
+                 "MIT"
+             ],
+             "authors": [
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
+                 {
+                     "name": "Roman Borschel",
+                     "email": "roman@code-factory.org"
+@@ -316,49 +1093,66 @@
+                     "name": "Benjamin Eberlei",
+                     "email": "kontakt@beberlei.de"
+                 },
+-                {
+-                    "name": "Guilherme Blanco",
+-                    "email": "guilhermeblanco@gmail.com"
+-                },
+                 {
+                     "name": "Jonathan Wage",
                      "email": "jonwage@gmail.com"
                  },
                  {
@@ -1044,8 +1135,9 @@ index 8855559..3649b3d 100644
                  }
              ],
 -            "description": "Common Library for Doctrine projects",
+-            "homepage": "http://www.doctrine-project.org",
 +            "description": "Object-Relational-Mapper for PHP",
-             "homepage": "http://www.doctrine-project.org",
++            "homepage": "https://www.doctrine-project.org/projects/orm.html",
              "keywords": [
 -                "annotations",
 -                "collections",
@@ -1054,28 +1146,42 @@ index 8855559..3649b3d 100644
 -                "spl"
 +                "database",
 +                "orm"
++            ],
++            "funding": [
++                {
++                    "url": "https://www.doctrine-project.org/sponsorship.html",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://www.patreon.com/phpdoctrine",
++                    "type": "patreon"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/doctrine/orm",
++                    "type": "tidelift"
++                }
              ],
 -            "time": "2017-08-31T08:43:38+00:00"
-+            "time": "2018-11-20T23:46:46+00:00"
++            "time": "2020-03-19T06:41:02+00:00"
          },
          {
 -            "name": "doctrine/inflector",
 -            "version": "v1.3.0",
 +            "name": "doctrine/persistence",
-+            "version": "v1.1.0",
++            "version": "1.3.7",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/doctrine/inflector.git",
 -                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
 +                "url": "https://github.com/doctrine/persistence.git",
-+                "reference": "c0f1c17602afc18b4cbd8e1c8125f264c9cf7d38"
++                "reference": "0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
 -                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
-+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/c0f1c17602afc18b4cbd8e1c8125f264c9cf7d38",
-+                "reference": "c0f1c17602afc18b4cbd8e1c8125f264c9cf7d38",
++                "url": "https://api.github.com/repos/doctrine/persistence/zipball/0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0",
++                "reference": "0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0",
                  "shasum": ""
              },
              "require": {
@@ -1083,7 +1189,7 @@ index 8855559..3649b3d 100644
 +                "doctrine/cache": "^1.0",
 +                "doctrine/collections": "^1.0",
 +                "doctrine/event-manager": "^1.0",
-+                "doctrine/reflection": "^1.0",
++                "doctrine/reflection": "^1.2",
                  "php": "^7.1"
              },
 +            "conflict": {
@@ -1091,25 +1197,45 @@ index 8855559..3649b3d 100644
 +            },
              "require-dev": {
 -                "phpunit/phpunit": "^6.2"
-+                "doctrine/coding-standard": "^5.0",
-+                "phpstan/phpstan": "^0.8",
++                "doctrine/coding-standard": "^6.0",
++                "phpstan/phpstan": "^0.11",
 +                "phpunit/phpunit": "^7.0"
              },
              "type": "library",
              "extra": {
-                 "branch-alias": {
--                    "dev-master": "1.3.x-dev"
-+                    "dev-master": "1.1.x-dev"
-                 }
+@@ -368,7 +1162,8 @@
              },
              "autoload": {
                  "psr-4": {
 -                    "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector"
-+                    "Doctrine\\Common\\": "lib/Doctrine/Common"
++                    "Doctrine\\Common\\": "lib/Doctrine/Common",
++                    "Doctrine\\Persistence\\": "lib/Doctrine/Persistence"
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -395,34 +1150,49 @@
+@@ -376,6 +1171,10 @@
+                 "MIT"
+             ],
+             "authors": [
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
+                 {
+                     "name": "Roman Borschel",
+                     "email": "roman@code-factory.org"
+@@ -384,10 +1183,6 @@
+                     "name": "Benjamin Eberlei",
+                     "email": "kontakt@beberlei.de"
+                 },
+-                {
+-                    "name": "Guilherme Blanco",
+-                    "email": "guilhermeblanco@gmail.com"
+-                },
+                 {
+                     "name": "Jonathan Wage",
+                     "email": "jonwage@gmail.com"
+@@ -395,44 +1190,75 @@
                  {
                      "name": "Johannes Schmitt",
                      "email": "schmittjoh@gmail.com"
@@ -1133,28 +1259,42 @@ index 8855559..3649b3d 100644
 +                "odm",
 +                "orm",
 +                "persistence"
++            ],
++            "funding": [
++                {
++                    "url": "https://www.doctrine-project.org/sponsorship.html",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://www.patreon.com/phpdoctrine",
++                    "type": "patreon"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fpersistence",
++                    "type": "tidelift"
++                }
              ],
 -            "time": "2018-01-09T20:05:19+00:00"
-+            "time": "2018-11-21T00:33:13+00:00"
++            "time": "2020-03-21T15:13:52+00:00"
          },
          {
 -            "name": "doctrine/lexer",
 -            "version": "v1.0.1",
 +            "name": "doctrine/reflection",
-+            "version": "v1.0.0",
++            "version": "1.2.1",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/doctrine/lexer.git",
 -                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
 +                "url": "https://github.com/doctrine/reflection.git",
-+                "reference": "02538d3f95e88eb397a5f86274deb2c6175c2ab6"
++                "reference": "55e71912dfcd824b2fdd16f2d9afe15684cfce79"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/doctrine/lexer/zipball/83893c552fd2045dd78aef794c31e694c37c0b8c",
 -                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
-+                "url": "https://api.github.com/repos/doctrine/reflection/zipball/02538d3f95e88eb397a5f86274deb2c6175c2ab6",
-+                "reference": "02538d3f95e88eb397a5f86274deb2c6175c2ab6",
++                "url": "https://api.github.com/repos/doctrine/reflection/zipball/55e71912dfcd824b2fdd16f2d9afe15684cfce79",
++                "reference": "55e71912dfcd824b2fdd16f2d9afe15684cfce79",
                  "shasum": ""
              },
              "require": {
@@ -1163,17 +1303,21 @@ index 8855559..3649b3d 100644
 +                "ext-tokenizer": "*",
 +                "php": "^7.1"
 +            },
++            "conflict": {
++                "doctrine/common": "<2.9"
++            },
 +            "require-dev": {
-+                "doctrine/coding-standard": "^4.0",
-+                "doctrine/common": "^2.8",
-+                "phpstan/phpstan": "^0.9.2",
-+                "phpstan/phpstan-phpunit": "^0.9.4",
-+                "phpunit/phpunit": "^7.0",
-+                "squizlabs/php_codesniffer": "^3.0"
++                "doctrine/coding-standard": "^5.0",
++                "doctrine/common": "^2.10",
++                "phpstan/phpstan": "^0.11.0",
++                "phpstan/phpstan-phpunit": "^0.11.0",
++                "phpunit/phpunit": "^7.0"
              },
              "type": "library",
              "extra": {
-@@ -431,8 +1201,8 @@
+                 "branch-alias": {
+-                    "dev-master": "1.0.x-dev"
++                    "dev-master": "1.2.x-dev"
                  }
              },
              "autoload": {
@@ -1184,22 +1328,28 @@ index 8855559..3649b3d 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -444,22 +1214,33 @@
+@@ -440,26 +1266,38 @@
+                 "MIT"
+             ],
+             "authors": [
++                {
++                    "name": "Guilherme Blanco",
++                    "email": "guilhermeblanco@gmail.com"
++                },
+                 {
                      "name": "Roman Borschel",
                      "email": "roman@code-factory.org"
                  },
-+                {
+                 {
+-                    "name": "Guilherme Blanco",
+-                    "email": "guilhermeblanco@gmail.com"
 +                    "name": "Benjamin Eberlei",
 +                    "email": "kontakt@beberlei.de"
 +                },
-                 {
-                     "name": "Guilherme Blanco",
-                     "email": "guilhermeblanco@gmail.com"
-                 },
 +                {
 +                    "name": "Jonathan Wage",
 +                    "email": "jonwage@gmail.com"
-+                },
+                 },
                  {
                      "name": "Johannes Schmitt",
                      "email": "schmittjoh@gmail.com"
@@ -1211,19 +1361,20 @@ index 8855559..3649b3d 100644
              ],
 -            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
 -            "homepage": "http://www.doctrine-project.org",
-+            "description": "Doctrine Reflection component",
++            "description": "The Doctrine Reflection project is a simple library used by the various Doctrine projects which adds some additional functionality on top of the reflection functionality that comes with PHP. It allows you to get the reflection information about classes, methods and properties statically.",
 +            "homepage": "https://www.doctrine-project.org/projects/reflection.html",
              "keywords": [
 -                "lexer",
 -                "parser"
-+                "reflection"
++                "reflection",
++                "static"
              ],
 -            "time": "2014-09-09T13:34:57+00:00"
-+            "time": "2018-06-14T14:45:07+00:00"
++            "time": "2020-03-27T11:06:43+00:00"
          },
          {
              "name": "guzzlehttp/guzzle",
-@@ -642,6 +1423,56 @@
+@@ -642,6 +1480,56 @@
              ],
              "time": "2017-03-20T17:10:46+00:00"
          },
@@ -1280,44 +1431,51 @@ index 8855559..3649b3d 100644
          {
              "name": "knplabs/knp-markdown-bundle",
              "version": "1.7.0",
-@@ -866,6 +1697,124 @@
-             "description": "Symfony bundle integration of maknz/slack library",
-             "time": "2018-01-18T01:13:27+00:00"
+@@ -752,45 +1640,154 @@
+             "time": "2018-01-15T00:49:33+00:00"
          },
-+        {
-+            "name": "ocramius/package-versions",
-+            "version": "1.3.0",
+         {
+-            "name": "nexylan/slack",
+-            "version": "v2.0.0",
++            "name": "nexylan/slack",
++            "version": "v2.0.0",
 +            "source": {
 +                "type": "git",
-+                "url": "https://github.com/Ocramius/PackageVersions.git",
-+                "reference": "4489d5002c49d55576fa0ba786f42dbb009be46f"
++                "url": "https://github.com/nexylan/slack.git",
++                "reference": "884fe1db0316f042e53989cbb06f343304dec75e"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/4489d5002c49d55576fa0ba786f42dbb009be46f",
-+                "reference": "4489d5002c49d55576fa0ba786f42dbb009be46f",
++                "url": "https://api.github.com/repos/nexylan/slack/zipball/884fe1db0316f042e53989cbb06f343304dec75e",
++                "reference": "884fe1db0316f042e53989cbb06f343304dec75e",
 +                "shasum": ""
 +            },
 +            "require": {
-+                "composer-plugin-api": "^1.0.0",
-+                "php": "^7.1.0"
++                "ext-mbstring": "*",
++                "php": "^7.1",
++                "php-http/client-common": "^1.7",
++                "php-http/client-implementation": "^1.0",
++                "php-http/discovery": "^1.3",
++                "symfony/options-resolver": "^3.4 || ^4.0"
 +            },
 +            "require-dev": {
-+                "composer/composer": "^1.6.3",
-+                "ext-zip": "*",
-+                "infection/infection": "^0.7.1",
-+                "phpunit/phpunit": "^7.0.0"
++                "guzzlehttp/psr7": "^1.4",
++                "mockery/mockery": "^1.0",
++                "php-http/message": "^1.6",
++                "php-http/mock-client": "^1.1"
 +            },
-+            "type": "composer-plugin",
++            "suggest": {
++                "nexylan/slack-bundle": "Required for Symfony bundle support"
++            },
++            "type": "library",
 +            "extra": {
-+                "class": "PackageVersions\\Installer",
 +                "branch-alias": {
-+                    "dev-master": "2.0.x-dev"
++                    "dev-master": "2.x-dev"
 +                }
 +            },
 +            "autoload": {
 +                "psr-4": {
-+                    "PackageVersions\\": "src/PackageVersions"
++                    "Nexy\\Slack\\": "src/"
 +                }
 +            },
 +            "notification-url": "https://packagist.org/downloads/",
@@ -1326,33 +1484,186 @@ index 8855559..3649b3d 100644
 +            ],
 +            "authors": [
 +                {
-+                    "name": "Marco Pivetta",
-+                    "email": "ocramius@gmail.com"
++                    "name": "maknz",
++                    "email": "github@mak.geek.nz"
++                },
++                {
++                    "name": "Sullivan SENECHAL",
++                    "email": "soullivaneuh@gmail.com"
 +                }
 +            ],
-+            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-+            "time": "2018-02-05T13:05:30+00:00"
++            "description": "A simple PHP package for sending messages to Slack, with a focus on ease of use and elegant syntax.",
++            "keywords": [
++                "slack",
++                "webhook"
++            ],
++            "time": "2018-01-17T16:48:45+00:00"
 +        },
 +        {
-+            "name": "ocramius/proxy-manager",
-+            "version": "2.1.1",
++            "name": "nexylan/slack-bundle",
++            "version": "v2.0.0",
 +            "source": {
 +                "type": "git",
-+                "url": "https://github.com/Ocramius/ProxyManager.git",
-+                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7"
++                "url": "https://github.com/nexylan/slack-bundle.git",
++                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
-+                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
++                "url": "https://api.github.com/repos/nexylan/slack-bundle/zipball/f8d0537dce96539eb94a184fa83be3070bafec2d",
++                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d",
 +                "shasum": ""
 +            },
 +            "require": {
++                "nexylan/slack": "^2.0",
++                "php": "^7.1",
++                "php-http/httplug-bundle": "^1.8",
++                "symfony/http-kernel": "^3.4 || ^4.0"
++            },
++            "require-dev": {
++                "matthiasnoback/symfony-dependency-injection-test": "^2.3",
++                "php-http/mock-client": "^1.1",
++                "phpunit/phpunit": "^6.5"
++            },
++            "suggest": {
++                "eightpoints/guzzle-bundle": "Make a custom Guzzle instance for Slack with ease"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "2.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Nexy\\SlackBundle\\": "src"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Sullivan SENECHAL",
++                    "email": "soullivaneuh@gmail.com"
++                }
++            ],
++            "description": "Symfony bundle integration of maknz/slack library",
++            "time": "2018-01-18T01:13:27+00:00"
++        },
++        {
++            "name": "ocramius/package-versions",
++            "version": "1.3.0",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/nexylan/slack.git",
+-                "reference": "884fe1db0316f042e53989cbb06f343304dec75e"
++                "url": "https://github.com/Ocramius/PackageVersions.git",
++                "reference": "4489d5002c49d55576fa0ba786f42dbb009be46f"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/nexylan/slack/zipball/884fe1db0316f042e53989cbb06f343304dec75e",
+-                "reference": "884fe1db0316f042e53989cbb06f343304dec75e",
++                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/4489d5002c49d55576fa0ba786f42dbb009be46f",
++                "reference": "4489d5002c49d55576fa0ba786f42dbb009be46f",
+                 "shasum": ""
+             },
+             "require": {
+-                "ext-mbstring": "*",
+-                "php": "^7.1",
+-                "php-http/client-common": "^1.7",
+-                "php-http/client-implementation": "^1.0",
+-                "php-http/discovery": "^1.3",
+-                "symfony/options-resolver": "^3.4 || ^4.0"
++                "composer-plugin-api": "^1.0.0",
++                "php": "^7.1.0"
+             },
+             "require-dev": {
+-                "guzzlehttp/psr7": "^1.4",
+-                "mockery/mockery": "^1.0",
+-                "php-http/message": "^1.6",
+-                "php-http/mock-client": "^1.1"
+-            },
+-            "suggest": {
+-                "nexylan/slack-bundle": "Required for Symfony bundle support"
++                "composer/composer": "^1.6.3",
++                "ext-zip": "*",
++                "infection/infection": "^0.7.1",
++                "phpunit/phpunit": "^7.0.0"
+             },
+-            "type": "library",
++            "type": "composer-plugin",
+             "extra": {
++                "class": "PackageVersions\\Installer",
+                 "branch-alias": {
+-                    "dev-master": "2.x-dev"
++                    "dev-master": "2.0.x-dev"
+                 }
+             },
+             "autoload": {
+                 "psr-4": {
+-                    "Nexy\\Slack\\": "src/"
++                    "PackageVersions\\": "src/PackageVersions"
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -799,58 +1796,58 @@
+             ],
+             "authors": [
+                 {
+-                    "name": "maknz",
+-                    "email": "github@mak.geek.nz"
+-                },
+-                {
+-                    "name": "Sullivan SENECHAL",
+-                    "email": "soullivaneuh@gmail.com"
++                    "name": "Marco Pivetta",
++                    "email": "ocramius@gmail.com"
+                 }
+             ],
+-            "description": "A simple PHP package for sending messages to Slack, with a focus on ease of use and elegant syntax.",
+-            "keywords": [
+-                "slack",
+-                "webhook"
+-            ],
+-            "time": "2018-01-17T16:48:45+00:00"
++            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
++            "time": "2018-02-05T13:05:30+00:00"
+         },
+         {
+-            "name": "nexylan/slack-bundle",
+-            "version": "v2.0.0",
++            "name": "ocramius/proxy-manager",
++            "version": "2.1.1",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/nexylan/slack-bundle.git",
+-                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d"
++                "url": "https://github.com/Ocramius/ProxyManager.git",
++                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/nexylan/slack-bundle/zipball/f8d0537dce96539eb94a184fa83be3070bafec2d",
+-                "reference": "f8d0537dce96539eb94a184fa83be3070bafec2d",
++                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
++                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
+                 "shasum": ""
+             },
+             "require": {
+-                "nexylan/slack": "^2.0",
+-                "php": "^7.1",
+-                "php-http/httplug-bundle": "^1.8",
+-                "symfony/http-kernel": "^3.4 || ^4.0"
 +                "ocramius/package-versions": "^1.1.1",
 +                "php": "^7.1.0",
 +                "zendframework/zend-code": "^3.1.0"
-+            },
-+            "require-dev": {
+             },
+             "require-dev": {
+-                "matthiasnoback/symfony-dependency-injection-test": "^2.3",
+-                "php-http/mock-client": "^1.1",
+-                "phpunit/phpunit": "^6.5"
 +                "couscous/couscous": "^1.5.2",
 +                "ext-phar": "*",
 +                "humbug/humbug": "dev-master@DEV",
@@ -1362,35 +1673,43 @@ index 8855559..3649b3d 100644
 +                "phpunit/phpunit": "^5.6.4",
 +                "phpunit/phpunit-mock-objects": "^3.4.1",
 +                "squizlabs/php_codesniffer": "^2.7.0"
-+            },
-+            "suggest": {
+             },
+             "suggest": {
+-                "eightpoints/guzzle-bundle": "Make a custom Guzzle instance for Slack with ease"
 +                "ocramius/generated-hydrator": "To have very fast object to array to object conversion for ghost objects",
 +                "zendframework/zend-json": "To have the JsonRpc adapter (Remote Object feature)",
 +                "zendframework/zend-soap": "To have the Soap adapter (Remote Object feature)",
 +                "zendframework/zend-xmlrpc": "To have the XmlRpc adapter (Remote Object feature)"
-+            },
+             },
+-            "type": "symfony-bundle",
 +            "type": "library",
-+            "extra": {
-+                "branch-alias": {
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "2.x-dev"
 +                    "dev-master": "3.0.x-dev"
-+                }
-+            },
-+            "autoload": {
+                 }
+             },
+             "autoload": {
+-                "psr-4": {
+-                    "Nexy\\SlackBundle\\": "src"
 +                "psr-0": {
 +                    "ProxyManager\\": "src"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
-+                {
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -859,12 +1856,21 @@
+             ],
+             "authors": [
+                 {
+-                    "name": "Sullivan SENECHAL",
+-                    "email": "soullivaneuh@gmail.com"
 +                    "name": "Marco Pivetta",
 +                    "email": "ocramius@gmail.com",
 +                    "homepage": "http://ocramius.github.io/"
-+                }
-+            ],
+                 }
+             ],
+-            "description": "Symfony bundle integration of maknz/slack library",
+-            "time": "2018-01-18T01:13:27+00:00"
 +            "description": "A library providing utilities to generate, instantiate and generally operate with Object Proxies",
 +            "homepage": "https://github.com/Ocramius/ProxyManager",
 +            "keywords": [
@@ -1401,11 +1720,10 @@ index 8855559..3649b3d 100644
 +                "service proxies"
 +            ],
 +            "time": "2017-05-04T11:12:50+00:00"
-+        },
+         },
          {
              "name": "php-http/cache-plugin",
-             "version": "v1.5.0",
-@@ -2104,6 +3053,74 @@
+@@ -2104,6 +3110,74 @@
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -1480,7 +1798,7 @@ index 8855559..3649b3d 100644
          {
              "name": "symfony/debug",
              "version": "v4.0.14",
-@@ -2162,7 +3179,7 @@
+@@ -2162,7 +3236,7 @@
          },
          {
              "name": "symfony/dependency-injection",
@@ -1489,7 +1807,7 @@ index 8855559..3649b3d 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/dependency-injection.git",
-@@ -2231,6 +3248,94 @@
+@@ -2231,6 +3305,94 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-01T08:23:45+00:00"
          },
@@ -1584,7 +1902,7 @@ index 8855559..3649b3d 100644
          {
              "name": "symfony/event-dispatcher",
              "version": "v4.0.14",
-@@ -2844,6 +3949,34 @@
+@@ -2844,6 +4006,34 @@
              ],
              "time": "2018-01-18T22:19:33+00:00"
          },
@@ -1619,7 +1937,7 @@ index 8855559..3649b3d 100644
          {
              "name": "symfony/polyfill-ctype",
              "version": "v1.9.0",
-@@ -2904,16 +4037,16 @@
+@@ -2904,16 +4094,16 @@
          },
          {
              "name": "symfony/polyfill-mbstring",
@@ -1640,7 +1958,7 @@ index 8855559..3649b3d 100644
                  "shasum": ""
              },
              "require": {
-@@ -2959,7 +4092,7 @@
+@@ -2959,7 +4149,7 @@
                  "portable",
                  "shim"
              ],
@@ -1649,7 +1967,7 @@ index 8855559..3649b3d 100644
          },
          {
              "name": "symfony/process",
-@@ -3481,6 +4614,113 @@
+@@ -3481,6 +4671,115 @@
                  "templating"
              ],
              "time": "2017-09-27T18:10:31+00:00"
@@ -1705,6 +2023,7 @@ index 8855559..3649b3d 100644
 +                "code",
 +                "zf2"
 +            ],
++            "abandoned": "laminas/laminas-code",
 +            "time": "2018-08-13T20:36:59+00:00"
 +        },
 +        {
@@ -1759,12 +2078,21 @@ index 8855559..3649b3d 100644
 +                "events",
 +                "zf2"
 +            ],
++            "abandoned": "laminas/laminas-eventmanager",
 +            "time": "2018-04-25T15:33:34+00:00"
          }
      ],
      "packages-dev": [
+@@ -4278,5 +5577,6 @@
+     "platform-dev": [],
+     "platform-overrides": {
+         "php": "7.1.3"
+-    }
++    },
++    "plugin-api-version": "1.1.0"
+ }
 diff --git a/config/bundles.php b/config/bundles.php
-index de7f774..aaa4908 100644
+index de7f7749..aaa49082 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -12,4 +12,7 @@ return [
@@ -1777,7 +2105,7 @@ index de7f774..aaa4908 100644
  ];
 diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
 new file mode 100644
-index 0000000..6c81971
+index 00000000..6c819716
 --- /dev/null
 +++ b/config/packages/doctrine.yaml
 @@ -0,0 +1,30 @@
@@ -1813,7 +2141,7 @@ index 0000000..6c81971
 +                alias: App
 diff --git a/config/packages/doctrine_migrations.yaml b/config/packages/doctrine_migrations.yaml
 new file mode 100644
-index 0000000..3bf0fbc
+index 00000000..3bf0fbca
 --- /dev/null
 +++ b/config/packages/doctrine_migrations.yaml
 @@ -0,0 +1,5 @@
@@ -1824,7 +2152,7 @@ index 0000000..3bf0fbc
 +    namespace: DoctrineMigrations
 diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
 new file mode 100644
-index 0000000..2f16f0f
+index 00000000..2f16f0fd
 --- /dev/null
 +++ b/config/packages/prod/doctrine.yaml
 @@ -0,0 +1,31 @@
@@ -1860,7 +2188,7 @@ index 0000000..2f16f0f
 +            doctrine.system_cache_pool:
 +                adapter: cache.system
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
-index e578316..cefa27c 100644
+index e578316a..cefa27c9 100644
 --- a/phpunit.xml.dist
 +++ b/phpunit.xml.dist
 @@ -15,6 +15,13 @@
@@ -1879,15 +2207,15 @@ index e578316..cefa27c 100644
      <testsuites>
 diff --git a/src/Entity/.gitignore b/src/Entity/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/src/Migrations/.gitignore b/src/Migrations/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/src/Repository/.gitignore b/src/Repository/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/symfony.lock b/symfony.lock
-index 92c9d5b..9132796 100644
+index 92c9d5bd..91327965 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -20,12 +20,54 @@

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 1af499a..4aa3db4 100644
+index 1af499a0..4aa3db4f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,6 +18,7 @@
@@ -11,7 +11,7 @@ index 1af499a..4aa3db4 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 59fb46e..1787ad4 100644
+index eb597f66..8adc0cb8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 59fb46e..1787ad4 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -2808,6 +2808,158 @@
+@@ -2865,6 +2865,158 @@
              ],
              "time": "2017-11-29T19:20:03+00:00"
          },
@@ -182,7 +182,7 @@ index 59fb46e..1787ad4 100644
          {
              "name": "psr/cache",
              "version": "1.0.1",
-@@ -4658,6 +4810,82 @@
+@@ -4715,6 +4867,82 @@
              ],
              "time": "2018-08-24T10:22:26+00:00"
          },
@@ -265,7 +265,7 @@ index 59fb46e..1787ad4 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4892,6 +5120,117 @@
+@@ -4949,6 +5177,117 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-18T16:52:46+00:00"
          },
@@ -383,7 +383,7 @@ index 59fb46e..1787ad4 100644
          {
              "name": "symfony/stopwatch",
              "version": "v4.1.4",
-@@ -5470,6 +5809,56 @@
+@@ -5527,6 +5866,56 @@
              ],
              "time": "2018-07-13T07:18:09+00:00"
          },
@@ -441,7 +441,7 @@ index 59fb46e..1787ad4 100644
              "name": "zendframework/zend-code",
              "version": "3.3.1",
 diff --git a/symfony.lock b/symfony.lock
-index 74cfd6d..6597ad1 100644
+index 74cfd6d8..6597ad12 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -182,6 +182,15 @@

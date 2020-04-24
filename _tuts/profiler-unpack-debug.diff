@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 754d714..7e34b4c 100644
+index 754d714b..7e34b4c7 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,10 +14,14 @@
@@ -20,7 +20,7 @@ index 754d714..7e34b4c 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 3d8f68d..c7f98bb 100644
+index 3d8f68db..c7f98bb4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -71,7 +71,7 @@ index 3d8f68d..c7f98bb 100644
              "name": "symfony/dotenv",
              "version": "v4.0.14",
 diff --git a/symfony.lock b/symfony.lock
-index 024b695..59d385d 100644
+index 024b695c..59d385d6 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -95,9 +95,6 @@
