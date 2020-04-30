@@ -67,6 +67,18 @@ it to use the API by saying `sendgrid+api://`.
 
 ## Sending an Email!
 
+***TIP
+SendGrid now requires that you "authenticate" your from address before you can
+send any emails. We'll talk more about "sender authentication" in the next chapter,
+but to send your first email, you will need to do a few extra steps:
+
+1) Follow https://sendgrid.com/docs/ui/sending-email/sender-verification/ to
+   verify a real email address. For development, you can use your personal email.
+
+2) In `src/Service/Mailer.php`, update the `setFrom()` line to use the email
+   you just configured, instead of `alienmailcarrier@example.com`.
+***
+
 Ok team - let's try this! Back in the browser, tell SendGrid that we *have*
 updated our settings and click "Next".
 
