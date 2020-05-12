@@ -11,7 +11,7 @@ index 1af499a0..4aa3db4f 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index eb597f66..8adc0cb8 100644
+index 34d0ced4..d69b84a2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -385,7 +385,7 @@ index eb597f66..8adc0cb8 100644
              "version": "v4.1.4",
 @@ -5527,6 +5866,56 @@
              ],
-             "time": "2018-07-13T07:18:09+00:00"
+             "time": "2019-05-14T12:03:52+00:00"
          },
 +        {
 +            "name": "webmozart/assert",

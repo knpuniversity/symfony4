@@ -11,7 +11,7 @@ index 19d353dc..1af499a0 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 0740602c..eb597f66 100644
+index 689de151..34d0ced4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

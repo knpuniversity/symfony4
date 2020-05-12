@@ -11,7 +11,7 @@ index 12dd94cc..52488e11 100644
          "symfony/yaml": "^4.0",
          "twig/extensions": "^1.5"
 diff --git a/composer.lock b/composer.lock
-index 8feedfb4..b7c23145 100644
+index ea4ec80c..eacfd6ed 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

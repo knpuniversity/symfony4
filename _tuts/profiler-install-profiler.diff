@@ -13,7 +13,7 @@ index ebc8b216..148daeeb 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index f42bdfa2..a739a27a 100644
+index dfa13628..ff30f92b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -25,7 +25,7 @@ index f42bdfa2..a739a27a 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2303,6 +2303,273 @@
+@@ -2304,6 +2304,273 @@
                  "environment"
              ],
              "time": "2018-07-26T11:22:46+00:00"

@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 8adc0cb8..8a15d546 100644
+index d69b84a2..430f228a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -1657,16 +1657,16 @@
@@ -742,15 +742,7 @@ index 8adc0cb8..8a15d546 100644
          },
          {
              "name": "twig/extensions",
-@@ -6196,6 +6197,7 @@
-                 "monolog",
-                 "productivity"
-             ],
-+            "abandoned": true,
-             "time": "2018-07-27T15:41:37+00:00"
-         },
-         {
-@@ -6379,7 +6381,7 @@
+@@ -6380,7 +6381,7 @@
          },
          {
              "name": "symfony/debug-bundle",
@@ -759,7 +751,7 @@ index 8adc0cb8..8a15d546 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -6444,7 +6446,7 @@
+@@ -6445,7 +6446,7 @@
          },
          {
              "name": "symfony/dotenv",
@@ -768,7 +760,7 @@ index 8adc0cb8..8a15d546 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/dotenv.git",
-@@ -6501,16 +6503,16 @@
+@@ -6502,16 +6503,16 @@
          },
          {
              "name": "symfony/maker-bundle",
@@ -789,7 +781,7 @@ index 8adc0cb8..8a15d546 100644
                  "shasum": ""
              },
              "require": {
-@@ -6563,20 +6565,20 @@
+@@ -6564,20 +6565,20 @@
                  "scaffold",
                  "scaffolding"
              ],
@@ -815,7 +807,7 @@ index 8adc0cb8..8a15d546 100644
                  "shasum": ""
              },
              "require": {
-@@ -6585,6 +6587,7 @@
+@@ -6586,6 +6587,7 @@
                  "symfony/http-kernel": "~3.4|~4.0"
              },
              "conflict": {
@@ -823,7 +815,7 @@ index 8adc0cb8..8a15d546 100644
                  "symfony/http-foundation": "<3.4"
              },
              "require-dev": {
-@@ -6594,7 +6597,7 @@
+@@ -6595,7 +6597,7 @@
                  "symfony/var-dumper": "~3.4|~4.0"
              },
              "suggest": {
@@ -832,7 +824,7 @@ index 8adc0cb8..8a15d546 100644
                  "symfony/event-dispatcher": "Needed when using log messages in console commands.",
                  "symfony/http-kernel": "For using the debugging handlers together with the response life cycle of the HTTP kernel.",
                  "symfony/var-dumper": "For using the debugging handlers like the console handler or the log server handler."
-@@ -6629,7 +6632,7 @@
+@@ -6630,7 +6632,7 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -841,7 +833,7 @@ index 8adc0cb8..8a15d546 100644
          },
          {
              "name": "symfony/monolog-bundle",
-@@ -6696,16 +6699,16 @@
+@@ -6697,16 +6699,16 @@
          },
          {
              "name": "symfony/phpunit-bridge",
@@ -862,7 +854,7 @@ index 8adc0cb8..8a15d546 100644
                  "shasum": ""
              },
              "require": {
-@@ -6758,7 +6761,7 @@
+@@ -6759,7 +6761,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -871,7 +863,7 @@ index 8adc0cb8..8a15d546 100644
          },
          {
              "name": "symfony/polyfill-php72",
-@@ -6845,16 +6848,16 @@
+@@ -6846,16 +6848,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -892,7 +884,7 @@ index 8adc0cb8..8a15d546 100644
                  "shasum": ""
              },
              "require": {
-@@ -6916,20 +6919,20 @@
+@@ -6917,20 +6919,20 @@
                  "debug",
                  "dump"
              ],
@@ -918,7 +910,7 @@ index 8adc0cb8..8a15d546 100644
                  "shasum": ""
              },
              "require": {
-@@ -6982,7 +6985,7 @@
+@@ -6983,7 +6985,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

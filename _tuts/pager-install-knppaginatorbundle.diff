@@ -11,7 +11,7 @@ index c893c39d..19d353dc 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
 diff --git a/composer.lock b/composer.lock
-index 63faa526..66a1a85c 100644
+index e4cd581a..781717cc 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

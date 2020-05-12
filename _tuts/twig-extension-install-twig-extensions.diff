@@ -13,7 +13,7 @@ index c91ca974..c893c39d 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 0bdcf3ee..63faa526 100644
+index c7db284c..e4cd581a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -87,7 +87,7 @@ index 0bdcf3ee..63faa526 100644
 +        },
          {
              "name": "twig/twig",
-             "version": "v2.4.4",
+             "version": "v2.10.0",
 diff --git a/config/packages/twig_extensions.yaml b/config/packages/twig_extensions.yaml
 new file mode 100644
 index 00000000..417b7bc3

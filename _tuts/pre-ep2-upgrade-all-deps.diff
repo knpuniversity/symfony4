@@ -21,7 +21,7 @@ index 9bc218ba..27e21023 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index 2204e638..22d35419 100644
+index 07a39c2c..5d32d055 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -159,7 +159,7 @@ index 2204e638..22d35419 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/web-server-bundle.git",
-@@ -2201,62 +2201,6 @@
+@@ -2202,62 +2202,6 @@
          }
      ],
      "packages-dev": [
@@ -222,7 +222,7 @@ index 2204e638..22d35419 100644
          {
              "name": "easycorp/easy-log-handler",
              "version": "v1.0.4",
-@@ -2385,55 +2329,9 @@
+@@ -2386,55 +2330,9 @@
              ],
              "time": "2017-06-19T01:22:40+00:00"
          },
@@ -279,7 +279,7 @@ index 2204e638..22d35419 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -2555,7 +2453,7 @@
+@@ -2556,7 +2454,7 @@
          },
          {
              "name": "symfony/monolog-bridge",
@@ -288,7 +288,7 @@ index 2204e638..22d35419 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/monolog-bridge.git",
-@@ -2684,16 +2582,16 @@
+@@ -2685,16 +2583,16 @@
          },
          {
              "name": "symfony/phpunit-bridge",
@@ -309,7 +309,7 @@ index 2204e638..22d35419 100644
                  "shasum": ""
              },
              "require": {
-@@ -2746,7 +2644,7 @@
+@@ -2747,7 +2645,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -318,7 +318,7 @@ index 2204e638..22d35419 100644
          },
          {
              "name": "symfony/polyfill-php72",
-@@ -2833,7 +2731,7 @@
+@@ -2834,7 +2732,7 @@
          },
          {
              "name": "symfony/stopwatch",
@@ -327,7 +327,7 @@ index 2204e638..22d35419 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/stopwatch.git",
-@@ -2882,16 +2780,16 @@
+@@ -2883,16 +2781,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -348,7 +348,7 @@ index 2204e638..22d35419 100644
                  "shasum": ""
              },
              "require": {
-@@ -2947,20 +2845,20 @@
+@@ -2948,20 +2846,20 @@
                  "debug",
                  "dump"
              ],
@@ -374,7 +374,7 @@ index 2204e638..22d35419 100644
                  "shasum": ""
              },
              "require": {
-@@ -3013,7 +2911,7 @@
+@@ -3014,7 +2912,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

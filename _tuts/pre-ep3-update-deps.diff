@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index b5f54c25..88555597 100644
+index 9d689aa2..611f4dea 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -3612,6 +3612,57 @@
+@@ -3613,6 +3613,57 @@
              ],
              "time": "2017-06-19T01:22:40+00:00"
          },
@@ -60,7 +60,7 @@ index b5f54c25..88555597 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.0.4",
-@@ -3736,28 +3787,34 @@
+@@ -3737,28 +3788,34 @@
          },
          {
              "name": "symfony/maker-bundle",
@@ -100,7 +100,7 @@ index b5f54c25..88555597 100644
                  "friendsofphp/php-cs-fixer": "^2.8",
                  "symfony/phpunit-bridge": "^3.4|^4.0",
                  "symfony/process": "^3.4|^4.0"
-@@ -3783,13 +3840,15 @@
+@@ -3784,13 +3841,15 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],

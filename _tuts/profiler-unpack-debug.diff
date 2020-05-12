@@ -20,7 +20,7 @@ index 754d714b..7e34b4c7 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 3d8f68db..c7f98bb4 100644
+index c26b94c6..2ec188e7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -32,7 +32,7 @@ index 3d8f68db..c7f98bb4 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2440,37 +2440,6 @@
+@@ -2441,37 +2441,6 @@
              "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },
