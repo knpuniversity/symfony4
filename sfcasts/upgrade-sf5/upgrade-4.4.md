@@ -119,6 +119,11 @@ of the `--dev` flag:
 composer require symfony/dotenv symfony/monolog-bundle easycorp/easy-log-handler
 ```
 
+***TIP
+The `easycorp/easy-log-handler` package is abandoned, so it's probably even better
+to remove it from this list and leave it out of your app
+***
+
 This should add those back under the `require` section - yep, here is one - *and*
 it will reinstall the *latest* version of their recipes... which means that the
 recipe *could* be slightly newer than the one we had before:
