@@ -117,7 +117,7 @@ it look like we're doing something during the AJAX call.
 [[[ code('0114135322') ]]]
 
 Make that with `$.ajax()` with `url` set to `'/admin/article/references/'+id` 
-and `method: 'DELETE'`. 
+and `method: 'DELETE'`:
 
 [[[ code('c9e0b0947f') ]]]
 
