@@ -25,10 +25,8 @@ into a Symfony project. Copy the `composer require` line, find your terminal, an
 paste!
 
 ***TIP
-The StofDoctrineExtensionBundle does not currently support Symfony 5. But a community
-member has created a fork that does. Use: `composer require antishov/doctrine-extensions-bundle`
-to download the fork instead. It's the same bundle, with same configuration,
-but with newer releases.
+stof/doctrine-extensions-bundle is now compatible with Symfony 5 - you can use it
+instead of antishov/doctrine-extensions-bundle fork
 ***
 
 ```terminal-silent
