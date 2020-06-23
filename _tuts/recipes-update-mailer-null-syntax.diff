@@ -1,9 +1,9 @@
 diff --git a/.env b/.env
-index 15a65042..11ce5020 100644
+index ff3108a1..9b579040 100644
 --- a/.env
 +++ b/.env
-@@ -36,7 +36,7 @@ SITE_BASE_HOST=localhost:8000
- SITE_BASE_URL=$SITE_BASE_SCHEME://$SITE_BASE_HOST
+@@ -35,7 +35,7 @@ SITE_BASE_SCHEME=https
+ SITE_BASE_HOST=localhost:8000
  
  ###> symfony/mailer ###
 -MAILER_DSN=smtp://null

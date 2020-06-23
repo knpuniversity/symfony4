@@ -1,8 +1,8 @@
 diff --git a/.env b/.env
-index 02de0c98..15a65042 100644
+index 61cea898..ff3108a1 100644
 --- a/.env
 +++ b/.env
-@@ -47,8 +47,7 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
+@@ -46,8 +46,7 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
  ###< knplabs/knp-snappy-bundle ###
  
  ###> symfony/sendgrid-mailer ###

@@ -1381,6 +1381,11 @@
             "description": null
         },
         {
+            "id": "pre-upgrade-change-site-base-url",
+            "name": "PRE UPGRADE: change SITE_BASE_URL",
+            "description": null
+        },
+        {
             "id": "pre-upgrade-tweaking-readme",
             "name": "PRE UPGRADE: Tweaking README",
             "description": null
@@ -1726,5 +1731,5 @@
             "description": null
         }
     ],
-    "sha": "9b1e1a4519379ca7083017fb6222580f60884b53"
+    "sha": "3a6d58685ebb5089e6f90520b35a78ccb8146346"
 }

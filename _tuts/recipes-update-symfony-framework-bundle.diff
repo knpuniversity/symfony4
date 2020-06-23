@@ -59,10 +59,10 @@ index 00000000..bcbbf13d
 +    resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
 +    prefix: /_error
 diff --git a/config/services.yaml b/config/services.yaml
-index c230130c..d44cf00b 100644
+index bc80588d..6299ecd7 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
-@@ -15,9 +15,6 @@ services:
+@@ -16,9 +16,6 @@ services:
      _defaults:
          autowire: true      # Automatically injects dependencies in your services.
          autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
