@@ -99,8 +99,19 @@ variables! For `SITE_BASE_URL`, set it to `$SITE_BASE_SCHEME` - yep, that's lega
 [[[ code('3a4b5c4236') ]]]
 
 I *love* that trick. Anyways, now that we've set those two parameters, Symfony
-will use *them* to generate the URL instead of trying to guess it. Try the command
-one last time:
+will use *them* to generate the URL instead of trying to guess it.
+
+***TIP
+This works, but if you need to override the scheme or host in `.env.local`, you would
+also need to repeat the `SITE_BASE_URL=` to set it again. A better solution would
+be to set the `SITE_BASE_URL` just once using a config trick in `services.yaml`:
+```
+parameters:
+    env(SITE_BASE_URL): '%env(SITE_BASE_SCHEME)%://%env(SITE_BASE_HOST)%'
+```
+***
+
+Try the command one last time:
 
 ```terminal-silent
 php bin/console app:author-weekly-report:send
