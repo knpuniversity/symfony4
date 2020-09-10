@@ -90,6 +90,12 @@ This is great... but what we *really* want to do is control the *types* of files
 that are uploaded. Change the max size to `5m` and add a `mimeTypes` option set
 to an array. 
 
+***TIP
+If you still have an error message because of the file size, you need to change
+the `upload_max_filesize` in your php.ini file. Don't forget to restart your
+webserver
+***
+
 [[[ code('4ae6709cbc') ]]]
 
 Let's see... what *do* we want to allow? Well, probably *any* image is ok - so 
