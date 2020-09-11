@@ -91,9 +91,9 @@ that are uploaded. Change the max size to `5m` and add a `mimeTypes` option set
 to an array. 
 
 ***TIP
-To allow files that are 5 mb large, you'll probably need to tweak the
-`upload_max_filesize` setting in your php.ini file. Then, don't forget to restart your
-web server!
+To allow files larger than 2MB, you'll probably need to tweak the
+`upload_max_filesize` setting in your `php.ini` file. Then, don't forget
+to restart your web server!
 ***
 
 [[[ code('4ae6709cbc') ]]]
