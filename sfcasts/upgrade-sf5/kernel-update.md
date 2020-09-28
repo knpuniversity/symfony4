@@ -168,7 +168,7 @@ git status
 Hmm... yep! These last changes are the ones we do *not* want. Revert them with:
 
 ```terminal
-get checkout .
+git checkout .
 ```
 
 We're ready to commit the *biggest* recipe upgrade we're going to have:
