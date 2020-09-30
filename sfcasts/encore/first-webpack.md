@@ -10,6 +10,11 @@ tells it the public path to this directory:
 
 The *third* important piece, and where *everything* truly starts, is `addEntry()`:
 
+***TIP
+The Encore recipe *now* puts `app.js` in `assets/app.js`. But
+the purpose of the file is exactly the same!
+***
+
 [[[ code('2446057d47') ]]]
 
 Here's the idea: we point Webpack at just *one* JavaScript file - `assets/js/app.js`.
