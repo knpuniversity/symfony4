@@ -19,7 +19,15 @@ git add -p
 ```
 
 Change one: it added `/public/build/` to the `.gitignore` file. We *definitely*
-want that... I'm not sure why it was missing. Next is `assets/js/app.js`. There
+want that... I'm not sure why it was missing.
+
+***TIP
+The Encore recipe *now* creates this file directly at `assets/app.js`.
+Make sure to delete that "starting" file. And later, the `app.css` file
+added by the recipe will now be at `assets/styles/app.css`.
+***
+
+Next is `assets/js/app.js`. There
 are a *lot* of changes here... but we don't want *any* of them. The
 WebpackEncoreBundle recipe gives you an "example" `app.js` file to start with.
 We don't want that example to overwrite our custom code.
