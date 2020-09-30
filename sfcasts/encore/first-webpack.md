@@ -25,6 +25,12 @@ together, and outputs one file in `public/build` called `app.js`. The first argu
 
 And the recipe gave us a few files to start. Open up `assets/js/app.js`:
 
+***TIP
+The recipe now puts CSS files into a `styles/` directory.
+So, `assets/styles/app.css` - but the purpose of all these
+files is the same.
+***
+
 [[[ code('cd6be845b2') ]]]
 
 *This* is the file that Webpack will start reading. There's not much here yet - a
