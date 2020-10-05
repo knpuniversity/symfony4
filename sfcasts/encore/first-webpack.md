@@ -26,7 +26,7 @@ together, and outputs one file in `public/build` called `app.js`. The first argu
 And the recipe gave us a few files to start. Open up `assets/js/app.js`:
 
 ***TIP
-The recipe now puts CSS files into a `styles/` directory.
+The recipe now puts CSS files into an `assets/styles/` directory.
 So, `assets/styles/app.css` - but the purpose of all these
 files is the same.
 ***
