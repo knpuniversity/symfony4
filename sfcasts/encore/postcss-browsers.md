@@ -115,6 +115,11 @@ yarn add autoprefixer --dev
 
 And *now* try Encore.
 
+***TIP
+If you get an error like `true is not a PostCSS plugin`, either downgrade autoprefixer to version 9
+or upgrade PostCSS to version 8. Basically, autoprefixer 10 doesn't play nicely with PostCSS 7 and lower.
+***
+
 ```terminal
 yarn watch
 ```
