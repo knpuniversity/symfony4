@@ -11,7 +11,7 @@ index 27e21023..6208f306 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 5d32d055..5245b15f 100644
+index c85a4c60..88876369 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -150,7 +150,7 @@ index b5436745..e278c0b4 100644
 +    Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 30c34e2e..ae7bc113 100644
+index 6899d304..06d00529 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -32,6 +32,12 @@

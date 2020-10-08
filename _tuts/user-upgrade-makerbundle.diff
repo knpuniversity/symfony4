@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index 28adeeeb..689de151 100644
+index 7891bb6d..897f956e 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -5831,16 +5831,16 @@
+@@ -5845,16 +5845,16 @@
          },
          {
              "name": "symfony/maker-bundle",
@@ -23,7 +23,7 @@ index 28adeeeb..689de151 100644
                  "shasum": ""
              },
              "require": {
-@@ -5861,7 +5861,8 @@
+@@ -5875,7 +5875,8 @@
                  "doctrine/orm": "^2.3",
                  "friendsofphp/php-cs-fixer": "^2.8",
                  "symfony/phpunit-bridge": "^3.4|^4.0",
@@ -33,7 +33,7 @@ index 28adeeeb..689de151 100644
              },
              "type": "symfony-bundle",
              "extra": {
-@@ -5892,7 +5893,7 @@
+@@ -5906,7 +5907,7 @@
                  "scaffold",
                  "scaffolding"
              ],

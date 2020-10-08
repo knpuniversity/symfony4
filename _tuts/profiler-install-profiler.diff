@@ -13,7 +13,7 @@ index ebc8b216..148daeeb 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index dfa13628..ff30f92b 100644
+index bf2615a7..91d6de94 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -25,7 +25,7 @@ index dfa13628..ff30f92b 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2304,6 +2304,273 @@
+@@ -2318,6 +2318,273 @@
                  "environment"
              ],
              "time": "2018-07-26T11:22:46+00:00"
@@ -347,10 +347,10 @@ index 00000000..c82beff2
 +    resource: '@WebProfilerBundle/Resources/config/routing/profiler.xml'
 +    prefix: /_profiler
 diff --git a/symfony.lock b/symfony.lock
-index a89dfb05..3741f5d2 100644
+index ad051f46..ee6d9d85 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -122,9 +122,15 @@
+@@ -125,9 +125,15 @@
      "symfony/polyfill-mbstring": {
          "version": "v1.6.0"
      },
@@ -366,7 +366,7 @@ index a89dfb05..3741f5d2 100644
      "symfony/routing": {
          "version": "4.0",
          "recipe": {
-@@ -134,6 +140,9 @@
+@@ -137,6 +143,9 @@
              "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
          }
      },
@@ -376,7 +376,7 @@ index a89dfb05..3741f5d2 100644
      "symfony/twig-bridge": {
          "version": "v4.0.2"
      },
-@@ -146,6 +155,18 @@
+@@ -149,6 +158,18 @@
              "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
          }
      },

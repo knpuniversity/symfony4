@@ -11,7 +11,7 @@ index d0c8d5a9..12dd94cc 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 65b59e17..ea4ec80c 100644
+index f7fe7a44..a9c86766 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,9 +23,9 @@ index 65b59e17..ea4ec80c 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4143,6 +4143,87 @@
-             "description": "Composer plugin for Symfony",
-             "time": "2019-06-15T07:15:42+00:00"
+@@ -4157,6 +4157,87 @@
+             ],
+             "time": "2020-06-16T23:10:41+00:00"
          },
 +        {
 +            "name": "symfony/form",
@@ -111,7 +111,7 @@ index 65b59e17..ea4ec80c 100644
          {
              "name": "symfony/framework-bundle",
              "version": "v4.1.6",
-@@ -4459,6 +4540,81 @@
+@@ -4473,6 +4554,81 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -193,7 +193,7 @@ index 65b59e17..ea4ec80c 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -4599,6 +4755,64 @@
+@@ -4613,6 +4769,64 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },
@@ -259,10 +259,10 @@ index 65b59e17..ea4ec80c 100644
              "name": "symfony/polyfill-mbstring",
              "version": "v1.10.0",
 diff --git a/symfony.lock b/symfony.lock
-index e83c74ca..df647161 100644
+index b6c09c52..f57c7736 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -284,6 +284,9 @@
+@@ -287,6 +287,9 @@
              "ref": "cc1afd81841db36fbef982fe56b48ade6716fac4"
          }
      },
@@ -272,7 +272,7 @@ index e83c74ca..df647161 100644
      "symfony/framework-bundle": {
          "version": "3.3",
          "recipe": {
-@@ -302,6 +305,9 @@
+@@ -305,6 +308,9 @@
      "symfony/inflector": {
          "version": "v4.1.4"
      },
@@ -282,7 +282,7 @@ index e83c74ca..df647161 100644
      "symfony/maker-bundle": {
          "version": "1.0",
          "recipe": {
-@@ -341,6 +347,9 @@
+@@ -344,6 +350,9 @@
      "symfony/polyfill-ctype": {
          "version": "v1.9.0"
      },

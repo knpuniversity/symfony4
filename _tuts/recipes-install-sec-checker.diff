@@ -21,7 +21,7 @@ index 62a94866..9c5804af 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index fe10f345..93d28471 100644
+index 73465b70..73836d0b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -33,7 +33,7 @@ index fe10f345..93d28471 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -1916,6 +1916,108 @@
+@@ -1930,6 +1930,108 @@
          }
      ],
      "packages-dev": [
@@ -157,7 +157,7 @@ index 00000000..544c0b33
 +        tags:
 +            - { name: console.command }
 diff --git a/symfony.lock b/symfony.lock
-index 212a663b..f517c7e0 100644
+index f08fe08d..a3aa5a39 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
@@ -168,7 +168,7 @@ index 212a663b..f517c7e0 100644
      "doctrine/annotations": {
          "version": "1.0",
          "recipe": {
-@@ -44,6 +47,15 @@
+@@ -47,6 +50,15 @@
              "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
          }
      },

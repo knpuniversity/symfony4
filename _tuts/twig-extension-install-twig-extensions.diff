@@ -13,7 +13,7 @@ index c91ca974..c893c39d 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index c7db284c..e4cd581a 100644
+index e62f86d5..f258d943 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -25,7 +25,7 @@ index c7db284c..e4cd581a 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4981,6 +4981,62 @@
+@@ -4995,6 +4995,62 @@
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -105,10 +105,10 @@ index 00000000..417b7bc3
 +    #Twig\Extensions\IntlExtension: ~
 +    #Twig\Extensions\TextExtension: ~
 diff --git a/symfony.lock b/symfony.lock
-index fbe5b10e..9478cc30 100644
+index 9fca021f..55550e03 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -398,6 +398,15 @@
+@@ -401,6 +401,15 @@
      "symfony/yaml": {
          "version": "v4.0.2"
      },

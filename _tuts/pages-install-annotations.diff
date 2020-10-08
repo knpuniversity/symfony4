@@ -11,7 +11,7 @@ index 1c336be9..62a94866 100644
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index ab3f9157..b3803e65 100644
+index 5321f31f..300ed2d0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,411 @@
@@ -523,7 +523,7 @@ index 00000000..d49a502a
 +    resource: ../../src/Controller/
 +    type: annotation
 diff --git a/symfony.lock b/symfony.lock
-index 8af0f57e..212a663b 100644
+index 6870f74d..f08fe08d 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,28 @@
@@ -552,10 +552,10 @@ index 8af0f57e..212a663b 100644
 +    "doctrine/lexer": {
 +        "version": "v1.0.1"
 +    },
-     "psr/cache": {
-         "version": "1.0.1"
+     "php": {
+         "version": "7.1.3"
      },
-@@ -11,6 +35,15 @@
+@@ -14,6 +38,15 @@
      "psr/simple-cache": {
          "version": "1.0.0"
      },

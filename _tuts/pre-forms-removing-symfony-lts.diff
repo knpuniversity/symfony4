@@ -21,7 +21,7 @@ index 4aa3db4f..d0c8d5a9 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 430f228a..65b59e17 100644
+index 0aa5c817..f7fe7a44 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -33,7 +33,7 @@ index 430f228a..65b59e17 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4459,100 +4459,6 @@
+@@ -4473,100 +4473,6 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -134,7 +134,7 @@ index 430f228a..65b59e17 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -6990,9 +6896,7 @@
+@@ -7004,9 +6910,7 @@
      ],
      "aliases": [],
      "minimum-stability": "stable",
@@ -146,10 +146,10 @@ index 430f228a..65b59e17 100644
      "prefer-lowest": false,
      "platform": {
 diff --git a/symfony.lock b/symfony.lock
-index 6597ad12..e83c74ca 100644
+index d0b70a39..b6c09c52 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -302,9 +302,6 @@
+@@ -305,9 +305,6 @@
      "symfony/inflector": {
          "version": "v4.1.4"
      },

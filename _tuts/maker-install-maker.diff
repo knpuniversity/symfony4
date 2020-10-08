@@ -11,7 +11,7 @@ index 2c7e34ef..cb0d75e0 100644
          "symfony/phpunit-bridge": "^3.3|^4.0",
          "symfony/profiler-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 7d193073..9d689aa2 100644
+index c7f6eced..27316a62 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 7d193073..9d689aa2 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -3735,6 +3735,63 @@
+@@ -3749,6 +3749,63 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -98,10 +98,10 @@ index 56ef227a..de7f7749 100644
 +    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 9d6f928d..fce23724 100644
+index 1ce3a7e4..cdf3a1a6 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -194,6 +194,15 @@
+@@ -197,6 +197,15 @@
      "symfony/lts": {
          "version": "4-dev"
      },

@@ -11,7 +11,7 @@ index 9299abb4..2f1a1138 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index ff0d25f7..e01fcdef 100644
+index 7c531595..0570f24a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -95,7 +95,7 @@ index ff0d25f7..e01fcdef 100644
          {
              "name": "michelf/php-markdown",
              "version": "1.8.0",
-@@ -4326,6 +4391,129 @@
+@@ -4340,6 +4405,129 @@
              "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },
@@ -261,7 +261,7 @@ index 4754e665..ca973308 100644
  services:
      # default configuration for services in *this* file
 diff --git a/symfony.lock b/symfony.lock
-index 91327965..97cf042e 100644
+index 16353dc1..1df24e98 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -92,6 +92,9 @@
@@ -274,7 +274,7 @@ index 91327965..97cf042e 100644
      "michelf/php-markdown": {
          "version": "1.8.0"
      },
-@@ -317,6 +320,18 @@
+@@ -320,6 +323,18 @@
      "symfony/stopwatch": {
          "version": "v4.0.3"
      },

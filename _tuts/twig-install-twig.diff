@@ -11,7 +11,7 @@ index 9c5804af..ebc8b216 100644
          "symfony/yaml": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 93d28471..dfa13628 100644
+index 73836d0b..bf2615a7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -67,7 +67,7 @@ index 93d28471..dfa13628 100644
          },
          {
              "name": "doctrine/lexer",
-@@ -1673,16 +1673,16 @@
+@@ -1687,16 +1687,16 @@
          },
          {
              "name": "symfony/process",
@@ -88,7 +88,7 @@ index 93d28471..dfa13628 100644
                  "shasum": ""
              },
              "require": {
-@@ -1718,7 +1718,7 @@
+@@ -1732,7 +1732,7 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -97,7 +97,7 @@ index 93d28471..dfa13628 100644
          },
          {
              "name": "symfony/routing",
-@@ -1797,18 +1797,181 @@
+@@ -1811,18 +1811,181 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -283,7 +283,7 @@ index 93d28471..dfa13628 100644
                  "shasum": ""
              },
              "require": {
-@@ -1817,7 +1980,7 @@
+@@ -1831,7 +1994,7 @@
                  "symfony/console": "~3.4|~4.0",
                  "symfony/dependency-injection": "~3.4|~4.0",
                  "symfony/http-kernel": "~3.4|~4.0",
@@ -292,7 +292,7 @@ index 93d28471..dfa13628 100644
              },
              "suggest": {
                  "symfony/expression-language": "For using the filter option of the log server.",
-@@ -1853,7 +2016,7 @@
+@@ -1867,7 +2030,7 @@
              ],
              "description": "Symfony WebServerBundle",
              "homepage": "https://symfony.com",
@@ -301,7 +301,7 @@ index 93d28471..dfa13628 100644
          },
          {
              "name": "symfony/yaml",
-@@ -1913,6 +2076,73 @@
+@@ -1927,6 +2090,73 @@
              "description": "Symfony Yaml Component",
              "homepage": "https://symfony.com",
              "time": "2018-07-26T11:22:46+00:00"
@@ -375,14 +375,6 @@ index 93d28471..dfa13628 100644
          }
      ],
      "packages-dev": [
-@@ -2090,5 +2320,6 @@
-     "platform-dev": [],
-     "platform-overrides": {
-         "php": "7.1.3"
--    }
-+    },
-+    "plugin-api-version": "1.1.0"
- }
 diff --git a/config/bundles.php b/config/bundles.php
 index 1ee925bd..e18f2a08 100644
 --- a/config/bundles.php
@@ -413,10 +405,10 @@ index 00000000..f4ee8396
 +    resource: '@TwigBundle/Resources/config/routing/errors.xml'
 +    prefix: /_error
 diff --git a/symfony.lock b/symfony.lock
-index f517c7e0..a89dfb05 100644
+index a3aa5a39..ad051f46 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -134,6 +134,18 @@
+@@ -137,6 +137,18 @@
              "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
          }
      },
@@ -435,7 +427,7 @@ index f517c7e0..a89dfb05 100644
      "symfony/web-server-bundle": {
          "version": "3.3",
          "recipe": {
-@@ -145,5 +157,8 @@
+@@ -148,5 +160,8 @@
      },
      "symfony/yaml": {
          "version": "v4.0.2"

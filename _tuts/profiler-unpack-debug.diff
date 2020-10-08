@@ -20,7 +20,7 @@ index 754d714b..7e34b4c7 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index c26b94c6..2ec188e7 100644
+index a76b4aab..cda74c4c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -32,7 +32,7 @@ index c26b94c6..2ec188e7 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -2441,37 +2441,6 @@
+@@ -2455,37 +2455,6 @@
              "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },
@@ -71,10 +71,10 @@ index c26b94c6..2ec188e7 100644
              "name": "symfony/dotenv",
              "version": "v4.0.14",
 diff --git a/symfony.lock b/symfony.lock
-index 024b695c..59d385d6 100644
+index 45ff7012..7033706f 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -95,9 +95,6 @@
+@@ -98,9 +98,6 @@
              "ref": "71d29aaf710fd59cd3abff2b1ade907ed73103c6"
          }
      },

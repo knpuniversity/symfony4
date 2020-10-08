@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index 9d689aa2..611f4dea 100644
+index 27316a62..75acb0f4 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -3613,6 +3613,57 @@
+@@ -3627,6 +3627,57 @@
              ],
              "time": "2017-06-19T01:22:40+00:00"
          },
@@ -60,7 +60,7 @@ index 9d689aa2..611f4dea 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.0.4",
-@@ -3737,28 +3788,34 @@
+@@ -3751,28 +3802,34 @@
          },
          {
              "name": "symfony/maker-bundle",
@@ -100,7 +100,7 @@ index 9d689aa2..611f4dea 100644
                  "friendsofphp/php-cs-fixer": "^2.8",
                  "symfony/phpunit-bridge": "^3.4|^4.0",
                  "symfony/process": "^3.4|^4.0"
-@@ -3784,13 +3841,15 @@
+@@ -3798,13 +3855,15 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -118,7 +118,7 @@ index 9d689aa2..611f4dea 100644
          {
              "name": "symfony/monolog-bridge",
 diff --git a/symfony.lock b/symfony.lock
-index fce23724..92c9d5bd 100644
+index cdf3a1a6..1e6eefc4 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -59,6 +59,9 @@

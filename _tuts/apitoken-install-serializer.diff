@@ -11,7 +11,7 @@ index 1af499a0..4aa3db4f 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 34d0ced4..d69b84a2 100644
+index 05a84aa2..87895cc2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -182,7 +182,7 @@ index 34d0ced4..d69b84a2 100644
          {
              "name": "psr/cache",
              "version": "1.0.1",
-@@ -4715,6 +4867,82 @@
+@@ -4729,6 +4881,82 @@
              ],
              "time": "2018-08-24T10:22:26+00:00"
          },
@@ -265,7 +265,7 @@ index 34d0ced4..d69b84a2 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4949,6 +5177,117 @@
+@@ -4963,6 +5191,117 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-18T16:52:46+00:00"
          },
@@ -383,7 +383,7 @@ index 34d0ced4..d69b84a2 100644
          {
              "name": "symfony/stopwatch",
              "version": "v4.1.4",
-@@ -5527,6 +5866,56 @@
+@@ -5541,6 +5880,56 @@
              ],
              "time": "2019-05-14T12:03:52+00:00"
          },
@@ -441,7 +441,7 @@ index 34d0ced4..d69b84a2 100644
              "name": "zendframework/zend-code",
              "version": "3.3.1",
 diff --git a/symfony.lock b/symfony.lock
-index 74cfd6d8..6597ad12 100644
+index f794a4bd..d0b70a39 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -182,6 +182,15 @@
@@ -457,10 +457,10 @@ index 74cfd6d8..6597ad12 100644
 +    "phpdocumentor/type-resolver": {
 +        "version": "0.4.0"
 +    },
-     "psr/cache": {
-         "version": "1.0.1"
+     "php": {
+         "version": "7.1.3"
      },
-@@ -350,6 +359,9 @@
+@@ -353,6 +362,9 @@
      "symfony/property-access": {
          "version": "v4.1.4"
      },
@@ -470,7 +470,7 @@ index 74cfd6d8..6597ad12 100644
      "symfony/routing": {
          "version": "4.0",
          "recipe": {
-@@ -371,6 +383,12 @@
+@@ -374,6 +386,12 @@
              "ref": "f8a63faa0d9521526499c0a8f403c9964ecb0527"
          }
      },
@@ -483,7 +483,7 @@ index 74cfd6d8..6597ad12 100644
      "symfony/stopwatch": {
          "version": "v4.0.3"
      },
-@@ -434,6 +452,9 @@
+@@ -437,6 +455,9 @@
      "twig/twig": {
          "version": "v2.4.4"
      },

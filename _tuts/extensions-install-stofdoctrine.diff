@@ -20,7 +20,7 @@ index ee09b412..c91ca974 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index faa14f24..c7db284c 100644
+index 26a8cd79..e62f86d5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,52 @@
@@ -255,7 +255,7 @@ index 00000000..c83f3b1d
 +stof_doctrine_extensions:
 +    default_locale: en_US
 diff --git a/symfony.lock b/symfony.lock
-index b5f80fb6..fbe5b10e 100644
+index 48d7da94..9fca021f 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
@@ -276,7 +276,7 @@ index b5f80fb6..fbe5b10e 100644
      "guzzlehttp/guzzle": {
          "version": "6.3.0"
      },
-@@ -194,6 +200,15 @@
+@@ -197,6 +203,15 @@
              "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
          }
      },

@@ -59,7 +59,7 @@ index cb0d75e0..9299abb4 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 611f4dea..ff0d25f7 100644
+index 75acb0f4..7c531595 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -1424,10 +1424,13 @@ index 611f4dea..ff0d25f7 100644
          },
          {
              "name": "guzzlehttp/guzzle",
-@@ -642,6 +1480,56 @@
+@@ -640,7 +1478,57 @@
+                 "uri",
+                 "url"
              ],
-             "time": "2017-03-20T17:10:46+00:00"
-         },
+-            "time": "2017-03-20T17:10:46+00:00"
++            "time": "2017-03-20T17:10:46+00:00"
++        },
 +        {
 +            "name": "jdorn/sql-formatter",
 +            "version": "v1.2.17",
@@ -1477,10 +1480,9 @@ index 611f4dea..ff0d25f7 100644
 +                "sql"
 +            ],
 +            "time": "2014-01-12T16:20:24+00:00"
-+        },
+         },
          {
              "name": "knplabs/knp-markdown-bundle",
-             "version": "1.7.0",
 @@ -866,6 +1754,124 @@
              "description": "Symfony bundle integration of maknz/slack library",
              "time": "2018-01-18T01:13:27+00:00"
@@ -1785,7 +1787,7 @@ index 611f4dea..ff0d25f7 100644
          {
              "name": "symfony/event-dispatcher",
              "version": "v4.0.14",
-@@ -2844,6 +4006,34 @@
+@@ -2858,6 +4020,34 @@
              ],
              "time": "2018-01-18T22:19:33+00:00"
          },
@@ -1820,7 +1822,7 @@ index 611f4dea..ff0d25f7 100644
          {
              "name": "symfony/polyfill-ctype",
              "version": "v1.9.0",
-@@ -2904,16 +4094,16 @@
+@@ -2918,16 +4108,16 @@
          },
          {
              "name": "symfony/polyfill-mbstring",
@@ -1841,7 +1843,7 @@ index 611f4dea..ff0d25f7 100644
                  "shasum": ""
              },
              "require": {
-@@ -2959,7 +4149,7 @@
+@@ -2973,7 +4163,7 @@
                  "portable",
                  "shim"
              ],
@@ -1850,7 +1852,7 @@ index 611f4dea..ff0d25f7 100644
          },
          {
              "name": "symfony/process",
-@@ -3482,6 +4672,115 @@
+@@ -3496,6 +4686,115 @@
                  "templating"
              ],
              "time": "2019-05-14T12:03:52+00:00"
@@ -1966,7 +1968,7 @@ index 611f4dea..ff0d25f7 100644
          }
      ],
      "packages-dev": [
-@@ -3533,6 +4832,7 @@
+@@ -3547,6 +4846,7 @@
                  "monolog",
                  "productivity"
              ],
@@ -2098,7 +2100,7 @@ diff --git a/src/Repository/.gitignore b/src/Repository/.gitignore
 new file mode 100644
 index 00000000..e69de29b
 diff --git a/symfony.lock b/symfony.lock
-index 92c9d5bd..91327965 100644
+index 1e6eefc4..16353dc1 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -20,12 +20,54 @@
@@ -2179,7 +2181,7 @@ index 92c9d5bd..91327965 100644
      "php-http/cache-plugin": {
          "version": "v1.5.0"
      },
-@@ -143,6 +194,9 @@
+@@ -146,6 +197,9 @@
              "ref": "9f94d3ea453cd8a3b95db7f82592d7344fe3a76a"
          }
      },
@@ -2189,7 +2191,7 @@ index 92c9d5bd..91327965 100644
      "symfony/debug": {
          "version": "v4.0.2"
      },
-@@ -158,6 +212,9 @@
+@@ -161,6 +215,9 @@
      "symfony/dependency-injection": {
          "version": "v4.0.2"
      },
@@ -2199,7 +2201,7 @@ index 92c9d5bd..91327965 100644
      "symfony/dotenv": {
          "version": "v4.0.2"
      },
-@@ -221,6 +278,9 @@
+@@ -224,6 +281,9 @@
      "symfony/options-resolver": {
          "version": "v4.0.4"
      },
@@ -2209,7 +2211,7 @@ index 92c9d5bd..91327965 100644
      "symfony/phpunit-bridge": {
          "version": "3.3",
          "recipe": {
-@@ -295,5 +355,11 @@
+@@ -298,5 +358,11 @@
      },
      "twig/twig": {
          "version": "v2.4.4"

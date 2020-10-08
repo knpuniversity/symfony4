@@ -23,7 +23,7 @@ index 2f1a1138..95121869 100644
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index e01fcdef..1d8b9820 100644
+index 0570f24a..4029e293 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -35,7 +35,7 @@ index e01fcdef..1d8b9820 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -4972,6 +4972,124 @@
+@@ -4986,6 +4986,124 @@
          }
      ],
      "packages-dev": [
@@ -174,7 +174,7 @@ diff --git a/src/DataFixtures/.gitignore b/src/DataFixtures/.gitignore
 new file mode 100644
 index 00000000..e69de29b
 diff --git a/symfony.lock b/symfony.lock
-index 97cf042e..1e038070 100644
+index 1df24e98..8c7133b1 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -20,6 +20,9 @@
