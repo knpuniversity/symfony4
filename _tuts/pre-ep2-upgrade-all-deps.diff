@@ -21,7 +21,7 @@ index 9bc218ba..27e21023 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index a7ff1c15..c85a4c60 100644
+index 1c41d3e6..5f261e98 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -68,7 +68,7 @@ index a7ff1c15..c85a4c60 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/asset.git",
-@@ -1743,16 +1743,16 @@
+@@ -1747,16 +1747,16 @@
          },
          {
              "name": "symfony/process",
@@ -89,7 +89,7 @@ index a7ff1c15..c85a4c60 100644
                  "shasum": ""
              },
              "require": {
-@@ -1788,7 +1788,7 @@
+@@ -1792,7 +1792,7 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -98,7 +98,7 @@ index a7ff1c15..c85a4c60 100644
          },
          {
              "name": "symfony/routing",
-@@ -1869,16 +1869,16 @@
+@@ -1873,16 +1873,16 @@
          },
          {
              "name": "symfony/twig-bridge",
@@ -119,7 +119,7 @@ index a7ff1c15..c85a4c60 100644
                  "shasum": ""
              },
              "require": {
-@@ -1955,20 +1955,20 @@
+@@ -1959,20 +1959,20 @@
              ],
              "description": "Symfony Twig Bridge",
              "homepage": "https://symfony.com",
@@ -145,7 +145,7 @@ index a7ff1c15..c85a4c60 100644
                  "shasum": ""
              },
              "require": {
-@@ -2028,11 +2028,11 @@
+@@ -2032,11 +2032,11 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
@@ -159,7 +159,7 @@ index a7ff1c15..c85a4c60 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/web-server-bundle.git",
-@@ -2216,62 +2216,6 @@
+@@ -2220,62 +2220,6 @@
          }
      ],
      "packages-dev": [
@@ -222,7 +222,7 @@ index a7ff1c15..c85a4c60 100644
          {
              "name": "easycorp/easy-log-handler",
              "version": "v1.0.4",
-@@ -2400,55 +2344,9 @@
+@@ -2404,55 +2348,9 @@
              ],
              "time": "2017-06-19T01:22:40+00:00"
          },
@@ -279,7 +279,7 @@ index a7ff1c15..c85a4c60 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -2570,7 +2468,7 @@
+@@ -2574,7 +2472,7 @@
          },
          {
              "name": "symfony/monolog-bridge",
@@ -288,7 +288,7 @@ index a7ff1c15..c85a4c60 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/monolog-bridge.git",
-@@ -2699,16 +2597,16 @@
+@@ -2703,16 +2601,16 @@
          },
          {
              "name": "symfony/phpunit-bridge",
@@ -309,7 +309,7 @@ index a7ff1c15..c85a4c60 100644
                  "shasum": ""
              },
              "require": {
-@@ -2761,7 +2659,7 @@
+@@ -2765,7 +2663,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -318,7 +318,7 @@ index a7ff1c15..c85a4c60 100644
          },
          {
              "name": "symfony/polyfill-php72",
-@@ -2848,7 +2746,7 @@
+@@ -2852,7 +2750,7 @@
          },
          {
              "name": "symfony/stopwatch",
@@ -327,7 +327,7 @@ index a7ff1c15..c85a4c60 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/stopwatch.git",
-@@ -2897,16 +2795,16 @@
+@@ -2901,16 +2799,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -348,7 +348,7 @@ index a7ff1c15..c85a4c60 100644
                  "shasum": ""
              },
              "require": {
-@@ -2962,20 +2860,20 @@
+@@ -2966,20 +2864,20 @@
                  "debug",
                  "dump"
              ],
@@ -374,7 +374,7 @@ index a7ff1c15..c85a4c60 100644
                  "shasum": ""
              },
              "require": {
-@@ -3028,7 +2926,7 @@
+@@ -3032,7 +2930,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

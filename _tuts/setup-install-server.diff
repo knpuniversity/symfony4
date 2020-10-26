@@ -36,7 +36,7 @@ index 6f479f8e..1c336be9 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index c88ff160..5321f31f 100644
+index 4d71138d..6ab98f0e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -48,7 +48,7 @@ index c88ff160..5321f31f 100644
      "packages": [
          {
              "name": "psr/cache",
-@@ -1213,6 +1213,55 @@
+@@ -1217,6 +1217,55 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },
@@ -104,7 +104,7 @@ index c88ff160..5321f31f 100644
          {
              "name": "symfony/routing",
              "version": "v4.0.14",
-@@ -1290,6 +1339,64 @@
+@@ -1294,6 +1343,64 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },

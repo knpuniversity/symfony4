@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 95121869..ee09b412 100644
+index 32061d62..668876de 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -22,6 +22,7 @@
+@@ -23,6 +23,7 @@
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
          "easycorp/easy-log-handler": "^1.0.2",
@@ -11,10 +11,10 @@ index 95121869..ee09b412 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 4029e293..26a8cd79 100644
+index 251459eb..51de611b 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -5155,6 +5155,56 @@
+@@ -5183,6 +5183,56 @@
              "abandoned": true,
              "time": "2018-01-10T08:34:20+00:00"
          },
@@ -72,10 +72,10 @@ index 4029e293..26a8cd79 100644
              "name": "monolog/monolog",
              "version": "1.23.0",
 diff --git a/symfony.lock b/symfony.lock
-index 8c7133b1..48d7da94 100644
+index 9d8151d7..41ec6b23 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -89,6 +89,9 @@
+@@ -92,6 +92,9 @@
              "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
          }
      },

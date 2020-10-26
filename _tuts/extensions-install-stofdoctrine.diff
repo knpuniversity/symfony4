@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index ee09b412..c91ca974 100644
+index 668876de..8cb2c67a 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -9,6 +9,7 @@
+@@ -10,6 +10,7 @@
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
@@ -10,7 +10,7 @@ index ee09b412..c91ca974 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
          "symfony/flex": "^1.0",
-@@ -74,7 +75,7 @@
+@@ -75,7 +76,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -20,15 +20,15 @@ index ee09b412..c91ca974 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 26a8cd79..e62f86d5 100644
+index 51de611b..6b453337 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,52 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "fb1146ad675d47078b149ee9d783952a",
-+    "content-hash": "f449c8990e7706f7759bff8481ff99d8",
+-    "content-hash": "6b70574a2aa899c56ab31d9938afc9ef",
++    "content-hash": "210d81dbbb00c1d60c185eeaaeeeb184",
      "packages": [
 +        {
 +            "name": "behat/transliterator",
@@ -77,7 +77,7 @@ index 26a8cd79..e62f86d5 100644
          {
              "name": "clue/stream-filter",
              "version": "v1.4.0",
-@@ -1299,6 +1343,84 @@
+@@ -1372,6 +1416,84 @@
              ],
              "time": "2020-03-27T11:06:43+00:00"
          },
@@ -162,7 +162,7 @@ index 26a8cd79..e62f86d5 100644
          {
              "name": "guzzlehttp/guzzle",
              "version": "6.3.0",
-@@ -2919,6 +3041,71 @@
+@@ -2943,6 +3065,71 @@
              ],
              "time": "2018-01-12T13:08:16+00:00"
          },
@@ -255,7 +255,7 @@ index 00000000..c83f3b1d
 +stof_doctrine_extensions:
 +    default_locale: en_US
 diff --git a/symfony.lock b/symfony.lock
-index 48d7da94..9fca021f 100644
+index 41ec6b23..96557220 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
@@ -266,7 +266,7 @@ index 48d7da94..9fca021f 100644
      "clue/stream-filter": {
          "version": "v1.4.0"
      },
-@@ -92,6 +95,9 @@
+@@ -95,6 +98,9 @@
      "fzaninotto/faker": {
          "version": "v1.7.1"
      },
@@ -276,7 +276,7 @@ index 48d7da94..9fca021f 100644
      "guzzlehttp/guzzle": {
          "version": "6.3.0"
      },
-@@ -197,6 +203,15 @@
+@@ -200,6 +206,15 @@
              "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
          }
      },

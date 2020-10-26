@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 4aa3db4f..d0c8d5a9 100644
+index 7386f902..62088117 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -15,7 +15,6 @@
+@@ -16,7 +16,6 @@
          "symfony/console": "^4.0",
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
@@ -10,30 +10,30 @@ index 4aa3db4f..d0c8d5a9 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
          "symfony/serializer-pack": "^1.0",
-@@ -79,7 +78,8 @@
+@@ -80,7 +79,8 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
 -            "allow-contrib": true
 +            "allow-contrib": true,
-+            "require": "4.1.*"
++            "require": "4.1.*|4.2.*"
          }
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 0aa5c817..f7fe7a44 100644
+index 79699395..efd96af8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "e0b936aa94d7b9ad7b4c319921c2638d",
-+    "content-hash": "2594fe2e3f6c4109d56b9c6b456e0863",
+-    "content-hash": "132cb1b3be266525f44b80ac43707ed5",
++    "content-hash": "ae3c46d53a127c27cb52bd9d451030dc",
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4473,100 +4473,6 @@
+@@ -4501,100 +4501,6 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -134,7 +134,7 @@ index 0aa5c817..f7fe7a44 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -7004,9 +6910,7 @@
+@@ -7032,9 +6938,7 @@
      ],
      "aliases": [],
      "minimum-stability": "stable",
@@ -146,10 +146,10 @@ index 0aa5c817..f7fe7a44 100644
      "prefer-lowest": false,
      "platform": {
 diff --git a/symfony.lock b/symfony.lock
-index d0b70a39..b6c09c52 100644
+index 3a40ccc5..f0d0fa72 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -305,9 +305,6 @@
+@@ -311,9 +311,6 @@
      "symfony/inflector": {
          "version": "v4.1.4"
      },

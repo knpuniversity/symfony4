@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index d0c8d5a9..12dd94cc 100644
+index 62088117..de54c2ff 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -14,6 +14,7 @@
+@@ -15,6 +15,7 @@
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
          "symfony/flex": "^1.0",
@@ -11,21 +11,21 @@ index d0c8d5a9..12dd94cc 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index f7fe7a44..a9c86766 100644
+index efd96af8..0c3546cc 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "2594fe2e3f6c4109d56b9c6b456e0863",
-+    "content-hash": "45cf1ecb943b3f739ab7914e53b569d6",
+-    "content-hash": "ae3c46d53a127c27cb52bd9d451030dc",
++    "content-hash": "ee316d069f428ac775d8c19b45bf5a7f",
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -4157,6 +4157,87 @@
+@@ -4185,6 +4185,87 @@
              ],
-             "time": "2020-06-16T23:10:41+00:00"
+             "time": "2020-10-14T17:41:54+00:00"
          },
 +        {
 +            "name": "symfony/form",
@@ -111,7 +111,7 @@ index f7fe7a44..a9c86766 100644
          {
              "name": "symfony/framework-bundle",
              "version": "v4.1.6",
-@@ -4473,6 +4554,81 @@
+@@ -4501,6 +4582,81 @@
              ],
              "time": "2018-07-26T08:55:25+00:00"
          },
@@ -193,7 +193,7 @@ index f7fe7a44..a9c86766 100644
          {
              "name": "symfony/options-resolver",
              "version": "v4.1.6",
-@@ -4613,6 +4769,64 @@
+@@ -4641,6 +4797,64 @@
              ],
              "time": "2018-08-06T14:22:27+00:00"
          },
@@ -259,10 +259,10 @@ index f7fe7a44..a9c86766 100644
              "name": "symfony/polyfill-mbstring",
              "version": "v1.10.0",
 diff --git a/symfony.lock b/symfony.lock
-index b6c09c52..f57c7736 100644
+index f0d0fa72..c1c786d4 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -287,6 +287,9 @@
+@@ -293,6 +293,9 @@
              "ref": "cc1afd81841db36fbef982fe56b48ade6716fac4"
          }
      },
@@ -272,7 +272,7 @@ index b6c09c52..f57c7736 100644
      "symfony/framework-bundle": {
          "version": "3.3",
          "recipe": {
-@@ -305,6 +308,9 @@
+@@ -311,6 +314,9 @@
      "symfony/inflector": {
          "version": "v4.1.4"
      },
@@ -282,7 +282,7 @@ index b6c09c52..f57c7736 100644
      "symfony/maker-bundle": {
          "version": "1.0",
          "recipe": {
-@@ -344,6 +350,9 @@
+@@ -350,6 +356,9 @@
      "symfony/polyfill-ctype": {
          "version": "v1.9.0"
      },

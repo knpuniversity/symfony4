@@ -11,7 +11,7 @@ index 2c7e34ef..cb0d75e0 100644
          "symfony/phpunit-bridge": "^3.3|^4.0",
          "symfony/profiler-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index c7f6eced..27316a62 100644
+index 5b645205..7b192885 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index c7f6eced..27316a62 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -3749,6 +3749,63 @@
+@@ -3753,6 +3753,63 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
