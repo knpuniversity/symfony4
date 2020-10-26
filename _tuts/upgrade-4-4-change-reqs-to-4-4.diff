@@ -1,20 +1,21 @@
 diff --git a/composer.json b/composer.json
-index 6541eb45..3e330df0 100644
+index b41b8ccf..10c4d840 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -18,23 +18,23 @@
+@@ -19,23 +19,23 @@
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
          "stof/doctrine-extensions-bundle": "^1.3",
 -        "symfony/asset": "^4.0",
 -        "symfony/console": "^4.0",
-+        "symfony/asset": "4.4.*",
-+        "symfony/console": "4.4.*",
-         "symfony/flex": "^1.0",
+-        "symfony/flex": "^1.9",
 -        "symfony/form": "^4.0",
 -        "symfony/framework-bundle": "^4.0",
 -        "symfony/mailer": "4.3.*",
 -        "symfony/messenger": "4.3.*",
++        "symfony/asset": "4.4.*",
++        "symfony/console": "4.4.*",
++        "symfony/flex": "^1.0",
 +        "symfony/form": "4.4.*",
 +        "symfony/framework-bundle": "4.4.*",
 +        "symfony/mailer": "4.4.*",
@@ -38,7 +39,7 @@ index 6541eb45..3e330df0 100644
          "twig/cssinliner-extra": "^2.12",
          "twig/extensions": "^1.5",
          "twig/inky-extra": "^2.12"
-@@ -43,14 +43,14 @@
+@@ -44,14 +44,14 @@
          "doctrine/doctrine-fixtures-bundle": "^3.0",
          "easycorp/easy-log-handler": "^1.0.2",
          "fzaninotto/faker": "^1.7",
@@ -59,19 +60,871 @@ index 6541eb45..3e330df0 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index ca390c27..9f0437e5 100644
+index c639e9d9..871869b6 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "89d2a78b0483f46892d035b63f922683",
-+    "content-hash": "c267e1e80b0b1051bedcd3e3303ace57",
+-    "content-hash": "e468695717268e6a526359fa5692fcdc",
++    "content-hash": "2a12d766a348baa23efa39b0e901eec1",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -5244,31 +5244,31 @@
+@@ -87,6 +87,11 @@
+                 "s3",
+                 "sdk"
+             ],
++            "support": {
++                "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
++                "issues": "https://github.com/aws/aws-sdk-php/issues",
++                "source": "https://github.com/aws/aws-sdk-php/tree/3.110.11"
++            },
+             "time": "2019-09-06T18:21:14+00:00"
+         },
+         {
+@@ -131,6 +136,10 @@
+                 "slug",
+                 "transliterator"
+             ],
++            "support": {
++                "issues": "https://github.com/Behat/Transliterator/issues",
++                "source": "https://github.com/Behat/Transliterator/tree/master"
++            },
+             "time": "2017-04-04T11:38:05+00:00"
+         },
+         {
+@@ -183,6 +192,10 @@
+                 "stream_filter_append",
+                 "stream_filter_register"
+             ],
++            "support": {
++                "issues": "https://github.com/clue/php-stream-filter/issues",
++                "source": "https://github.com/clue/php-stream-filter/tree/v1.4.1"
++            },
+             "time": "2019-04-09T12:31:48+00:00"
+         },
+         {
+@@ -325,6 +338,10 @@
+                 "docblock",
+                 "parser"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/annotations/issues",
++                "source": "https://github.com/doctrine/annotations/tree/1.10.x"
++            },
+             "time": "2020-04-02T12:33:25+00:00"
+         },
+         {
+@@ -407,6 +424,10 @@
+                 "redis",
+                 "xcache"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/cache/issues",
++                "source": "https://github.com/doctrine/cache/tree/1.10.0"
++            },
+             "time": "2019-11-29T15:36:20+00:00"
+         },
+         {
+@@ -477,6 +498,10 @@
+                 "iterators",
+                 "php"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/collections/issues",
++                "source": "https://github.com/doctrine/collections/tree/1.6.4"
++            },
+             "time": "2019-11-13T13:07:11+00:00"
+         },
+         {
+@@ -560,6 +585,10 @@
+                 "doctrine",
+                 "php"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/common/issues",
++                "source": "https://github.com/doctrine/common/tree/2.12.0"
++            },
+             "time": "2020-01-10T15:49:25+00:00"
+         },
+         {
+@@ -642,6 +671,10 @@
+                 "php",
+                 "queryobject"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/dbal/issues",
++                "source": "https://github.com/doctrine/dbal/tree/2.9"
++            },
+             "time": "2019-11-02T22:19:34+00:00"
+         },
+         {
+@@ -731,6 +764,10 @@
+                 "orm",
+                 "persistence"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/DoctrineBundle/issues",
++                "source": "https://github.com/doctrine/DoctrineBundle/tree/1.11.x"
++            },
+             "time": "2019-06-04T07:35:05+00:00"
+         },
+         {
+@@ -822,6 +859,10 @@
+                 "cache",
+                 "caching"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/DoctrineCacheBundle/issues",
++                "source": "https://github.com/doctrine/DoctrineCacheBundle/tree/1.3"
++            },
+             "time": "2018-11-09T06:25:35+00:00"
+         },
+         {
+@@ -887,6 +928,10 @@
+                 "migrations",
+                 "schema"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/DoctrineMigrationsBundle/issues",
++                "source": "https://github.com/doctrine/DoctrineMigrationsBundle/tree/master"
++            },
+             "time": "2019-01-09T18:49:50+00:00"
+         },
+         {
+@@ -963,6 +1008,10 @@
+                 "event system",
+                 "events"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/event-manager/issues",
++                "source": "https://github.com/doctrine/event-manager/tree/1.1.0"
++            },
+             "time": "2019-11-10T09:48:07+00:00"
+         },
+         {
+@@ -1030,6 +1079,10 @@
+                 "singularize",
+                 "string"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/inflector/issues",
++                "source": "https://github.com/doctrine/inflector/tree/1.3.1"
++            },
+             "time": "2019-10-30T19:59:35+00:00"
+         },
+         {
+@@ -1086,6 +1139,10 @@
+                 "constructor",
+                 "instantiate"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/instantiator/issues",
++                "source": "https://github.com/doctrine/instantiator/tree/master"
++            },
+             "time": "2019-10-21T16:45:58+00:00"
+         },
+         {
+@@ -1146,6 +1203,10 @@
+                 "parser",
+                 "php"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/lexer/issues",
++                "source": "https://github.com/doctrine/lexer/tree/1.0.2"
++            },
+             "time": "2019-06-08T11:03:04+00:00"
+         },
+         {
+@@ -1228,6 +1289,10 @@
+                 "migrations",
+                 "php"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/migrations/issues",
++                "source": "https://github.com/doctrine/migrations/tree/2.1.1"
++            },
+             "time": "2019-07-30T18:51:47+00:00"
+         },
+         {
+@@ -1312,6 +1377,10 @@
+                 "database",
+                 "orm"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/orm/issues",
++                "source": "https://github.com/doctrine/orm/tree/v2.7.2"
++            },
+             "funding": [
+                 {
+                     "url": "https://www.doctrine-project.org/sponsorship.html",
+@@ -1409,6 +1478,10 @@
+                 "orm",
+                 "persistence"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/persistence/issues",
++                "source": "https://github.com/doctrine/persistence/tree/1.3.x"
++            },
+             "funding": [
+                 {
+                     "url": "https://www.doctrine-project.org/sponsorship.html",
+@@ -1501,6 +1574,10 @@
+                 "reflection",
+                 "static"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/reflection/issues",
++                "source": "https://github.com/doctrine/reflection/tree/1.2.x"
++            },
+             "time": "2020-03-27T11:06:43+00:00"
+         },
+         {
+@@ -1559,6 +1636,10 @@
+                 "validation",
+                 "validator"
+             ],
++            "support": {
++                "issues": "https://github.com/egulias/EmailValidator/issues",
++                "source": "https://github.com/egulias/EmailValidator/tree/master"
++            },
+             "time": "2019-08-13T17:33:27+00:00"
+         },
+         {
+@@ -1640,6 +1721,12 @@
+                 "tree",
+                 "uploadable"
+             ],
++            "support": {
++                "email": "gediminas.morkevicius@gmail.com",
++                "issues": "https://github.com/Atlantic18/DoctrineExtensions/issues",
++                "source": "https://github.com/Atlantic18/DoctrineExtensions/tree/v2.4.37",
++                "wiki": "https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc"
++            },
+             "time": "2019-03-17T18:16:12+00:00"
+         },
+         {
+@@ -1705,6 +1792,10 @@
+                 "rest",
+                 "web service"
+             ],
++            "support": {
++                "issues": "https://github.com/guzzle/guzzle/issues",
++                "source": "https://github.com/guzzle/guzzle/tree/master"
++            },
+             "time": "2018-04-22T15:46:56+00:00"
+         },
+         {
+@@ -1756,6 +1847,10 @@
+             "keywords": [
+                 "promise"
+             ],
++            "support": {
++                "issues": "https://github.com/guzzle/promises/issues",
++                "source": "https://github.com/guzzle/promises/tree/master"
++            },
+             "time": "2016-12-20T10:07:11+00:00"
+         },
+         {
+@@ -1827,6 +1922,10 @@
+                 "uri",
+                 "url"
+             ],
++            "support": {
++                "issues": "https://github.com/guzzle/psr7/issues",
++                "source": "https://github.com/guzzle/psr7/tree/1.6.1"
++            },
+             "time": "2019-07-01T23:21:34+00:00"
+         },
+         {
+@@ -1885,6 +1984,10 @@
+                 "image manipulation",
+                 "image processing"
+             ],
++            "support": {
++                "issues": "https://github.com/avalanche123/Imagine/issues",
++                "source": "https://github.com/avalanche123/Imagine/tree/v0.7.1"
++            },
+             "time": "2017-05-16T10:31:22+00:00"
+         },
+         {
+@@ -1935,6 +2038,10 @@
+                 "highlight",
+                 "sql"
+             ],
++            "support": {
++                "issues": "https://github.com/jdorn/sql-formatter/issues",
++                "source": "https://github.com/jdorn/sql-formatter/tree/master"
++            },
+             "time": "2014-01-12T16:20:24+00:00"
+         },
+         {
+@@ -2001,6 +2108,10 @@
+                 "pager",
+                 "paginator"
+             ],
++            "support": {
++                "issues": "https://github.com/KnpLabs/knp-components/issues",
++                "source": "https://github.com/KnpLabs/knp-components/tree/master"
++            },
+             "time": "2018-09-11T07:54:48+00:00"
+         },
+         {
+@@ -2064,6 +2175,10 @@
+                 "knplabs",
+                 "markdown"
+             ],
++            "support": {
++                "issues": "https://github.com/KnpLabs/KnpMarkdownBundle/issues",
++                "source": "https://github.com/KnpLabs/KnpMarkdownBundle/tree/master"
++            },
+             "time": "2019-01-03T19:47:10+00:00"
+         },
+         {
+@@ -2126,6 +2241,10 @@
+                 "paginator",
+                 "symfony"
+             ],
++            "support": {
++                "issues": "https://github.com/KnpLabs/KnpPaginatorBundle/issues",
++                "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/master"
++            },
+             "time": "2018-05-16T12:15:58+00:00"
+         },
+         {
+@@ -2192,6 +2311,10 @@
+                 "thumbnail",
+                 "wkhtmltopdf"
+             ],
++            "support": {
++                "issues": "https://github.com/KnpLabs/snappy/issues",
++                "source": "https://github.com/KnpLabs/snappy/tree/master"
++            },
+             "time": "2018-12-14T14:59:37+00:00"
+         },
+         {
+@@ -2257,6 +2380,10 @@
+                 "pdf",
+                 "snappy"
+             ],
++            "support": {
++                "issues": "https://github.com/KnpLabs/KnpSnappyBundle/issues",
++                "source": "https://github.com/KnpLabs/KnpSnappyBundle/tree/v1.6.0"
++            },
+             "time": "2018-12-13T12:14:08+00:00"
+         },
+         {
+@@ -2322,6 +2449,10 @@
+                 "knplabs",
+                 "time"
+             ],
++            "support": {
++                "issues": "https://github.com/KnpLabs/KnpTimeBundle/issues",
++                "source": "https://github.com/KnpLabs/KnpTimeBundle/tree/master"
++            },
+             "time": "2019-04-19T10:01:52+00:00"
+         },
+         {
+@@ -2406,6 +2537,10 @@
+                 "sftp",
+                 "storage"
+             ],
++            "support": {
++                "issues": "https://github.com/thephpleague/flysystem/issues",
++                "source": "https://github.com/thephpleague/flysystem/tree/1.0.55"
++            },
+             "time": "2019-08-24T11:17:19+00:00"
+         },
+         {
+@@ -2453,6 +2588,10 @@
+                 }
+             ],
+             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
++            "support": {
++                "issues": "https://github.com/thephpleague/flysystem-aws-s3-v3/issues",
++                "source": "https://github.com/thephpleague/flysystem-aws-s3-v3/tree/master"
++            },
+             "time": "2019-06-05T17:18:29+00:00"
+         },
+         {
+@@ -2500,6 +2639,10 @@
+                 }
+             ],
+             "description": "An adapter decorator to enable meta-data caching.",
++            "support": {
++                "issues": "https://github.com/thephpleague/flysystem-cached-adapter/issues",
++                "source": "https://github.com/thephpleague/flysystem-cached-adapter/tree/master"
++            },
+             "time": "2018-07-09T20:51:04+00:00"
+         },
+         {
+@@ -2564,6 +2707,10 @@
+                 "html",
+                 "markdown"
+             ],
++            "support": {
++                "issues": "https://github.com/thephpleague/html-to-markdown/issues",
++                "source": "https://github.com/thephpleague/html-to-markdown/tree/4.8.2"
++            },
+             "time": "2019-08-02T11:57:39+00:00"
+         },
+         {
+@@ -2664,6 +2811,10 @@
+                 "symfony",
+                 "transformation"
+             ],
++            "support": {
++                "issues": "https://github.com/liip/LiipImagineBundle/issues",
++                "source": "https://github.com/liip/LiipImagineBundle/tree/master"
++            },
+             "time": "2018-07-10T12:53:54+00:00"
+         },
+         {
+@@ -2711,6 +2862,10 @@
+                 "template",
+                 "zurb"
+             ],
++            "support": {
++                "issues": "https://github.com/lorenzo/pinky/issues",
++                "source": "https://github.com/lorenzo/pinky/tree/1.0.5"
++            },
+             "time": "2019-09-16T21:23:31+00:00"
+         },
+         {
+@@ -2757,6 +2912,10 @@
+             "keywords": [
+                 "markdown"
+             ],
++            "support": {
++                "issues": "https://github.com/michelf/php-markdown/issues",
++                "source": "https://github.com/michelf/php-markdown/tree/lib"
++            },
+             "time": "2018-01-15T00:49:33+00:00"
+         },
+         {
+@@ -2812,6 +2971,10 @@
+                 "json",
+                 "jsonpath"
+             ],
++            "support": {
++                "issues": "https://github.com/jmespath/jmespath.php/issues",
++                "source": "https://github.com/jmespath/jmespath.php/tree/master"
++            },
+             "time": "2016-12-03T22:08:25+00:00"
+         },
+         {
+@@ -2875,6 +3038,10 @@
+                 "slack",
+                 "webhook"
+             ],
++            "support": {
++                "issues": "https://github.com/nexylan/slack/issues",
++                "source": "https://github.com/nexylan/slack/tree/v2.3.0"
++            },
+             "time": "2019-07-04T12:17:00+00:00"
+         },
+         {
+@@ -2927,6 +3094,10 @@
+                 }
+             ],
+             "description": "Symfony bundle integration of nexylan/slack library",
++            "support": {
++                "issues": "https://github.com/nexylan/slack-bundle/issues",
++                "source": "https://github.com/nexylan/slack-bundle/tree/v2.1.0"
++            },
+             "time": "2019-02-20T14:12:45+00:00"
+         },
+         {
+@@ -2996,6 +3167,10 @@
+                 "proxy pattern",
+                 "service proxies"
+             ],
++            "support": {
++                "issues": "https://github.com/Ocramius/ProxyManager/issues",
++                "source": "https://github.com/Ocramius/ProxyManager/tree/master"
++            },
+             "time": "2017-05-04T11:12:50+00:00"
+         },
+         {
+@@ -3092,6 +3267,10 @@
+                 "abstraction",
+                 "filesystem"
+             ],
++            "support": {
++                "issues": "https://github.com/1up-lab/OneupFlysystemBundle/issues",
++                "source": "https://github.com/1up-lab/OneupFlysystemBundle/tree/master"
++            },
+             "time": "2019-04-26T13:11:17+00:00"
+         },
+         {
+@@ -3153,6 +3332,10 @@
+                 "http",
+                 "httplug"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/client-common/issues",
++                "source": "https://github.com/php-http/client-common/tree/1.x"
++            },
+             "time": "2019-02-02T07:03:15+00:00"
+         },
+         {
+@@ -3218,6 +3401,10 @@
+                 "message",
+                 "psr7"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/discovery/issues",
++                "source": "https://github.com/php-http/discovery/tree/master"
++            },
+             "time": "2019-06-30T09:04:27+00:00"
+         },
+         {
+@@ -3278,6 +3465,10 @@
+                 "Guzzle",
+                 "http"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/guzzle6-adapter/issues",
++                "source": "https://github.com/php-http/guzzle6-adapter/tree/master"
++            },
+             "time": "2016-05-10T06:13:32+00:00"
+         },
+         {
+@@ -3334,6 +3525,10 @@
+                 "client",
+                 "http"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/httplug/issues",
++                "source": "https://github.com/php-http/httplug/tree/master"
++            },
+             "time": "2016-08-31T08:30:17+00:00"
+         },
+         {
+@@ -3436,6 +3631,10 @@
+                 "message",
+                 "php-http"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/HttplugBundle/issues",
++                "source": "https://github.com/php-http/HttplugBundle/tree/1.16.0"
++            },
+             "time": "2019-06-05T12:03:16+00:00"
+         },
+         {
+@@ -3491,6 +3690,10 @@
+                 "logger",
+                 "plugin"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/logger-plugin/issues",
++                "source": "https://github.com/php-http/logger-plugin/tree/master"
++            },
+             "time": "2019-01-30T11:48:21+00:00"
+         },
+         {
+@@ -3563,6 +3766,10 @@
+                 "message",
+                 "psr-7"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/message/issues",
++                "source": "https://github.com/php-http/message/tree/master"
++            },
+             "time": "2019-08-05T06:55:08+00:00"
+         },
+         {
+@@ -3613,6 +3820,10 @@
+                 "stream",
+                 "uri"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/message-factory/issues",
++                "source": "https://github.com/php-http/message-factory/tree/master"
++            },
+             "time": "2015-12-19T14:08:53+00:00"
+         },
+         {
+@@ -3663,6 +3874,10 @@
+             "keywords": [
+                 "promise"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/promise/issues",
++                "source": "https://github.com/php-http/promise/tree/master"
++            },
+             "time": "2016-01-26T13:27:02+00:00"
+         },
+         {
+@@ -3716,6 +3931,10 @@
+                 "plugin",
+                 "stopwatch"
+             ],
++            "support": {
++                "issues": "https://github.com/php-http/stopwatch-plugin/issues",
++                "source": "https://github.com/php-http/stopwatch-plugin/tree/master"
++            },
+             "time": "2019-01-30T12:01:37+00:00"
+         },
+         {
+@@ -3770,6 +3989,10 @@
+                 "reflection",
+                 "static analysis"
+             ],
++            "support": {
++                "issues": "https://github.com/phpDocumentor/ReflectionCommon/issues",
++                "source": "https://github.com/phpDocumentor/ReflectionCommon/tree/master"
++            },
+             "time": "2017-09-11T18:02:19+00:00"
+         },
+         {
+@@ -3821,6 +4044,10 @@
+                 }
+             ],
+             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
++            "support": {
++                "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
++                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/4.3.1"
++            },
+             "time": "2019-04-30T17:48:53+00:00"
+         },
+         {
+@@ -3868,6 +4095,10 @@
+                     "email": "me@mikevanriel.com"
+                 }
+             ],
++            "support": {
++                "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
++                "source": "https://github.com/phpDocumentor/TypeResolver/tree/master"
++            },
+             "time": "2017-07-14T14:27:02+00:00"
+         },
+         {
+@@ -3914,6 +4145,9 @@
+                 "psr",
+                 "psr-6"
+             ],
++            "support": {
++                "source": "https://github.com/php-fig/cache/tree/master"
++            },
+             "time": "2016-08-06T20:24:11+00:00"
+         },
+         {
+@@ -3963,6 +4197,10 @@
+                 "container-interop",
+                 "psr"
+             ],
++            "support": {
++                "issues": "https://github.com/php-fig/container/issues",
++                "source": "https://github.com/php-fig/container/tree/master"
++            },
+             "time": "2017-02-14T16:28:37+00:00"
+         },
+         {
+@@ -4013,6 +4251,9 @@
+                 "request",
+                 "response"
+             ],
++            "support": {
++                "source": "https://github.com/php-fig/http-message/tree/master"
++            },
+             "time": "2016-08-06T14:39:51+00:00"
+         },
+         {
+@@ -4060,6 +4301,9 @@
+                 "psr",
+                 "psr-3"
+             ],
++            "support": {
++                "source": "https://github.com/php-fig/log/tree/master"
++            },
+             "time": "2018-11-20T15:27:04+00:00"
+         },
+         {
+@@ -4100,6 +4344,10 @@
+                 }
+             ],
+             "description": "A polyfill for getallheaders.",
++            "support": {
++                "issues": "https://github.com/ralouphie/getallheaders/issues",
++                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
++            },
+             "time": "2019-03-08T08:55:37+00:00"
+         },
+         {
+@@ -4173,6 +4421,10 @@
+                 "annotations",
+                 "controllers"
+             ],
++            "support": {
++                "issues": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/issues",
++                "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v5.4.1"
++            },
+             "time": "2019-07-08T08:31:25+00:00"
+         },
+         {
+@@ -4238,6 +4490,10 @@
+                 "translatable",
+                 "tree"
+             ],
++            "support": {
++                "issues": "https://github.com/stof/StofDoctrineExtensionsBundle/issues",
++                "source": "https://github.com/stof/StofDoctrineExtensionsBundle/tree/v1.3.0"
++            },
+             "time": "2017-12-24T16:06:50+00:00"
+         },
+         {
+@@ -4294,6 +4550,9 @@
+             ],
+             "description": "Symfony Asset Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/asset/tree/4.4"
++            },
+             "time": "2019-10-12T00:35:04+00:00"
+         },
+         {
+@@ -4373,6 +4632,9 @@
+                 "caching",
+                 "psr6"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/cache/tree/v4.4.1"
++            },
+             "time": "2019-12-01T10:50:45+00:00"
+         },
+         {
+@@ -4431,6 +4693,9 @@
+                 "interoperability",
+                 "standards"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/cache-contracts/tree/master"
++            },
+             "time": "2019-10-04T21:43:27+00:00"
+         },
+         {
+@@ -4495,6 +4760,9 @@
+             ],
+             "description": "Symfony Config Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/config/tree/4.4"
++            },
+             "time": "2019-12-01T10:50:45+00:00"
+         },
+         {
+@@ -4571,6 +4839,9 @@
+             ],
+             "description": "Symfony Console Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/console/tree/4.4"
++            },
+             "time": "2019-12-01T10:06:17+00:00"
+         },
+         {
+@@ -4624,6 +4895,9 @@
+             ],
+             "description": "Symfony CssSelector Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/css-selector/tree/4.4"
++            },
+             "time": "2019-10-12T00:35:04+00:00"
+         },
+         {
+@@ -4680,6 +4954,9 @@
+             ],
+             "description": "Symfony Debug Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/debug/tree/v4.4.1"
++            },
+             "time": "2019-11-28T13:33:56+00:00"
+         },
+         {
+@@ -4753,6 +5030,9 @@
+             ],
+             "description": "Symfony DependencyInjection Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/dependency-injection/tree/4.4"
++            },
+             "time": "2019-12-01T10:19:36+00:00"
+         },
+         {
+@@ -4847,6 +5127,9 @@
+             ],
+             "description": "Symfony Doctrine Bridge",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/doctrine-bridge/tree/4.4"
++            },
+             "time": "2019-12-01T08:39:58+00:00"
+         },
+         {
+@@ -4903,6 +5186,10 @@
+             ],
+             "description": "Symfony ErrorHandler Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "issues": "https://github.com/symfony/error-handler/issues",
++                "source": "https://github.com/symfony/error-handler/tree/v4.4.1"
++            },
+             "time": "2019-12-01T08:46:01+00:00"
+         },
+         {
+@@ -4973,6 +5260,9 @@
+             ],
+             "description": "Symfony EventDispatcher Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/event-dispatcher/tree/4.4"
++            },
+             "time": "2019-11-28T13:33:56+00:00"
+         },
+         {
+@@ -5031,6 +5321,9 @@
+                 "interoperability",
+                 "standards"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/master"
++            },
+             "time": "2019-09-17T09:54:03+00:00"
+         },
+         {
+@@ -5081,6 +5374,9 @@
+             ],
+             "description": "Symfony Filesystem Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/filesystem/tree/4.4"
++            },
+             "time": "2019-11-26T23:16:41+00:00"
+         },
+         {
+@@ -5130,6 +5426,9 @@
+             ],
+             "description": "Symfony Finder Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/finder/tree/v4.4.0"
++            },
+             "time": "2019-11-17T21:56:56+00:00"
+         },
+         {
+@@ -5281,35 +5580,38 @@
+             ],
+             "description": "Symfony Form Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/form/tree/4.4"
++            },
+             "time": "2019-12-01T09:13:30+00:00"
          },
          {
              "name": "symfony/framework-bundle",
@@ -116,7 +969,7 @@ index ca390c27..9f0437e5 100644
              },
              "conflict": {
                  "phpdocumentor/reflection-docblock": "<3.0",
-@@ -5278,50 +5278,57 @@
+@@ -5319,50 +5621,57 @@
                  "symfony/browser-kit": "<4.3",
                  "symfony/console": "<4.3",
                  "symfony/dom-crawler": "<4.3",
@@ -207,7 +1060,7 @@ index ca390c27..9f0437e5 100644
              },
              "suggest": {
                  "ext-apcu": "For best performance of the system caches",
-@@ -5336,7 +5343,7 @@
+@@ -5377,7 +5686,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -216,16 +1069,56 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -5363,7 +5370,7 @@
+@@ -5404,7 +5713,10 @@
              ],
              "description": "Symfony FrameworkBundle",
              "homepage": "https://symfony.com",
 -            "time": "2019-11-28T11:39:15+00:00"
++            "support": {
++                "source": "https://github.com/symfony/framework-bundle/tree/v4.4.1"
++            },
 +            "time": "2019-11-28T14:12:27+00:00"
          },
          {
              "name": "symfony/http-foundation",
-@@ -5645,16 +5652,16 @@
+@@ -5459,6 +5771,9 @@
+             ],
+             "description": "Symfony HttpFoundation Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/http-foundation/tree/v4.4.1"
++            },
+             "time": "2019-11-28T13:33:56+00:00"
+         },
+         {
+@@ -5549,6 +5864,9 @@
+             ],
+             "description": "Symfony HttpKernel Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/http-kernel/tree/4.4"
++            },
+             "time": "2019-12-01T14:06:38+00:00"
+         },
+         {
+@@ -5607,6 +5925,9 @@
+                 "symfony",
+                 "words"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/inflector/tree/4.4"
++            },
+             "time": "2019-11-06T12:02:32+00:00"
+         },
+         {
+@@ -5682,20 +6003,23 @@
+                 "l10n",
+                 "localization"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/intl/tree/v4.4.1"
++            },
+             "time": "2019-11-26T23:16:41+00:00"
          },
          {
              "name": "symfony/mailer",
@@ -246,7 +1139,7 @@ index ca390c27..9f0437e5 100644
                  "shasum": ""
              },
              "require": {
-@@ -5662,21 +5669,27 @@
+@@ -5703,21 +6027,27 @@
                  "php": "^7.1.3",
                  "psr/log": "~1.0",
                  "symfony/event-dispatcher": "^4.3",
@@ -283,11 +1176,14 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -5703,20 +5716,20 @@
+@@ -5744,20 +6074,23 @@
              ],
              "description": "Symfony Mailer Component",
              "homepage": "https://symfony.com",
 -            "time": "2019-10-30T12:58:49+00:00"
++            "support": {
++                "source": "https://github.com/symfony/mailer/tree/v4.4.1"
++            },
 +            "time": "2019-12-01T08:46:01+00:00"
          },
          {
@@ -309,7 +1205,7 @@ index ca390c27..9f0437e5 100644
                  "shasum": ""
              },
              "require": {
-@@ -5724,25 +5737,24 @@
+@@ -5765,25 +6098,24 @@
                  "psr/log": "~1.0"
              },
              "conflict": {
@@ -349,7 +1245,7 @@ index ca390c27..9f0437e5 100644
              },
              "suggest": {
                  "enqueue/messenger-adapter": "For using the php-enqueue library as a transport."
-@@ -5750,7 +5762,7 @@
+@@ -5791,7 +6123,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -358,11 +1254,14 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -5777,20 +5789,20 @@
+@@ -5818,20 +6150,23 @@
              ],
              "description": "Symfony Messenger Component",
              "homepage": "https://symfony.com",
 -            "time": "2019-11-30T08:26:41+00:00"
++            "support": {
++                "source": "https://github.com/symfony/messenger/tree/v4.4.1"
++            },
 +            "time": "2019-12-01T10:19:36+00:00"
          },
          {
@@ -384,7 +1283,7 @@ index ca390c27..9f0437e5 100644
                  "shasum": ""
              },
              "require": {
-@@ -5798,14 +5810,17 @@
+@@ -5839,14 +6174,17 @@
                  "symfony/polyfill-intl-idn": "^1.10",
                  "symfony/polyfill-mbstring": "^1.0"
              },
@@ -404,16 +1303,137 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -5836,7 +5851,7 @@
+@@ -5877,7 +6215,10 @@
                  "mime",
                  "mime-type"
              ],
 -            "time": "2019-11-12T13:10:02+00:00"
++            "support": {
++                "source": "https://github.com/symfony/mime/tree/v4.4.1"
++            },
 +            "time": "2019-11-30T08:27:26+00:00"
          },
          {
              "name": "symfony/options-resolver",
-@@ -6540,60 +6555,59 @@
+@@ -5931,6 +6272,9 @@
+                 "configuration",
+                 "options"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/options-resolver/tree/4.4"
++            },
+             "time": "2019-10-28T21:57:16+00:00"
+         },
+         {
+@@ -5959,6 +6303,10 @@
+                 "MIT"
+             ],
+             "description": "A pack for the Doctrine ORM",
++            "support": {
++                "issues": "https://github.com/symfony/orm-pack/issues",
++                "source": "https://github.com/symfony/orm-pack/tree/master"
++            },
+             "time": "2019-10-18T05:41:09+00:00"
+         },
+         {
+@@ -6017,6 +6365,9 @@
+                 "polyfill",
+                 "portable"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/polyfill-ctype/tree/master"
++            },
+             "time": "2019-11-27T13:56:44+00:00"
+         },
+         {
+@@ -6075,6 +6426,9 @@
+                 "portable",
+                 "shim"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/polyfill-intl-icu/tree/v1.13.0"
++            },
+             "time": "2019-11-27T13:56:44+00:00"
+         },
+         {
+@@ -6137,6 +6491,9 @@
+                 "portable",
+                 "shim"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/polyfill-intl-idn/tree/master"
++            },
+             "time": "2019-11-27T13:56:44+00:00"
+         },
+         {
+@@ -6196,6 +6553,9 @@
+                 "portable",
+                 "shim"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/polyfill-mbstring/tree/master"
++            },
+             "time": "2019-11-27T14:18:11+00:00"
+         },
+         {
+@@ -6251,6 +6611,9 @@
+                 "portable",
+                 "shim"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/polyfill-php72/tree/master"
++            },
+             "time": "2019-11-27T13:56:44+00:00"
+         },
+         {
+@@ -6309,6 +6672,9 @@
+                 "portable",
+                 "shim"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/polyfill-php73/tree/v1.13.0"
++            },
+             "time": "2019-11-27T16:25:15+00:00"
+         },
+         {
+@@ -6358,6 +6724,9 @@
+             ],
+             "description": "Symfony Process Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/process/tree/v4.4.1"
++            },
+             "time": "2019-11-28T13:33:56+00:00"
+         },
+         {
+@@ -6425,6 +6794,9 @@
+                 "property path",
+                 "reflection"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/property-access/tree/v4.4.1"
++            },
+             "time": "2019-12-01T10:50:45+00:00"
+         },
+         {
+@@ -6501,6 +6873,9 @@
+                 "type",
+                 "validator"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/property-info/tree/v4.4.0-BETA2"
++            },
+             "time": "2019-11-05T16:11:08+00:00"
+         },
+         {
+@@ -6577,64 +6952,66 @@
+                 "uri",
+                 "url"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/routing/tree/v4.4.1"
++            },
+             "time": "2019-12-01T08:39:58+00:00"
          },
          {
              "name": "symfony/security-bundle",
@@ -506,16 +1526,56 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -6620,7 +6634,7 @@
+@@ -6661,7 +7038,10 @@
              ],
              "description": "Symfony SecurityBundle",
              "homepage": "https://symfony.com",
 -            "time": "2019-11-30T13:16:45+00:00"
++            "support": {
++                "source": "https://github.com/symfony/security-bundle/tree/v4.4.1"
++            },
 +            "time": "2019-11-30T14:03:57+00:00"
          },
          {
              "name": "symfony/security-core",
-@@ -6876,29 +6890,29 @@
+@@ -6734,6 +7114,9 @@
+             ],
+             "description": "Symfony Security Component - Core Library",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/security-core/tree/v4.4.1"
++            },
+             "time": "2019-11-20T10:44:55+00:00"
+         },
+         {
+@@ -6793,6 +7176,9 @@
+             ],
+             "description": "Symfony Security Component - CSRF Library",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/security-csrf/tree/4.4"
++            },
+             "time": "2019-10-12T00:35:04+00:00"
+         },
+         {
+@@ -6847,6 +7233,9 @@
+             ],
+             "description": "Symfony Security Component - Guard",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/security-guard/tree/4.4"
++            },
+             "time": "2019-11-30T09:49:41+00:00"
+         },
+         {
+@@ -6913,33 +7302,36 @@
+             ],
+             "description": "Symfony Security Component - HTTP Integration",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/security-http/tree/4.4"
++            },
+             "time": "2019-12-01T08:46:01+00:00"
          },
          {
              "name": "symfony/sendgrid-mailer",
@@ -552,16 +1612,97 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -6925,7 +6939,7 @@
+@@ -6966,7 +7358,10 @@
              ],
              "description": "Symfony Sendgrid Mailer Bridge",
              "homepage": "https://symfony.com",
 -            "time": "2019-08-22T08:16:11+00:00"
++            "support": {
++                "source": "https://github.com/symfony/sendgrid-mailer/tree/4.4"
++            },
 +            "time": "2019-10-22T15:44:54+00:00"
          },
          {
              "name": "symfony/serializer",
-@@ -7440,53 +7454,51 @@
+@@ -7047,6 +7442,9 @@
+             ],
+             "description": "Symfony Serializer Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/serializer/tree/v4.4.1"
++            },
+             "time": "2019-11-28T13:33:56+00:00"
+         },
+         {
+@@ -7077,6 +7475,10 @@
+                 "MIT"
+             ],
+             "description": "A pack for the Symfony serializer",
++            "support": {
++                "issues": "https://github.com/symfony/serializer-pack/issues",
++                "source": "https://github.com/symfony/serializer-pack/tree/master"
++            },
+             "time": "2018-12-10T12:14:14+00:00"
+         },
+         {
+@@ -7135,6 +7537,9 @@
+                 "interoperability",
+                 "standards"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/service-contracts/tree/v1.1.8"
++            },
+             "time": "2019-10-14T12:27:06+00:00"
+         },
+         {
+@@ -7185,6 +7590,9 @@
+             ],
+             "description": "Symfony Stopwatch Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/stopwatch/tree/v4.4.0-BETA1"
++            },
+             "time": "2019-11-05T16:11:08+00:00"
+         },
+         {
+@@ -7241,6 +7649,9 @@
+             ],
+             "description": "Symfony Templating Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/templating/tree/4.4"
++            },
+             "time": "2019-10-28T20:30:34+00:00"
+         },
+         {
+@@ -7317,6 +7728,9 @@
+             ],
+             "description": "Symfony Translation Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/translation/tree/v4.4.0-BETA1"
++            },
+             "time": "2019-11-12T17:18:47+00:00"
+         },
+         {
+@@ -7374,6 +7788,9 @@
+                 "interoperability",
+                 "standards"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/translation-contracts/tree/v1.1.7"
++            },
+             "time": "2019-09-17T11:12:18+00:00"
+         },
+         {
+@@ -7477,57 +7894,58 @@
+             ],
+             "description": "Symfony Twig Bridge",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/twig-bridge/tree/v4.4.1"
++            },
+             "time": "2019-11-30T14:03:57+00:00"
          },
          {
              "name": "symfony/twig-bundle",
@@ -637,16 +1778,255 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -7513,7 +7525,7 @@
+@@ -7554,7 +7972,10 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
 -            "time": "2019-10-29T14:56:06+00:00"
++            "support": {
++                "source": "https://github.com/symfony/twig-bundle/tree/4.4"
++            },
 +            "time": "2019-11-30T10:12:23+00:00"
          },
          {
              "name": "symfony/twig-pack",
-@@ -8796,27 +8808,27 @@
+@@ -7582,6 +8003,10 @@
+                 "MIT"
+             ],
+             "description": "A Twig pack for Symfony projects",
++            "support": {
++                "issues": "https://github.com/symfony/twig-pack/issues",
++                "source": "https://github.com/symfony/twig-pack/tree/v1.0.0"
++            },
+             "time": "2019-10-17T05:44:22+00:00"
+         },
+         {
+@@ -7674,6 +8099,9 @@
+             ],
+             "description": "Symfony Validator Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/validator/tree/4.4"
++            },
+             "time": "2019-11-30T14:03:57+00:00"
+         },
+         {
+@@ -7750,6 +8178,9 @@
+                 "debug",
+                 "dump"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/var-dumper/tree/v4.4.1"
++            },
+             "time": "2019-11-28T13:33:56+00:00"
+         },
+         {
+@@ -7810,6 +8241,9 @@
+                 "instantiate",
+                 "serialize"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/var-exporter/tree/v4.4.1"
++            },
+             "time": "2019-12-01T08:39:58+00:00"
+         },
+         {
+@@ -7869,6 +8303,9 @@
+             ],
+             "description": "Symfony WebServerBundle",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/web-server-bundle/tree/v4.4.1"
++            },
+             "time": "2019-11-26T23:16:41+00:00"
+         },
+         {
+@@ -7922,6 +8359,10 @@
+                 }
+             ],
+             "description": "Integration with your Symfony app & Webpack Encore!",
++            "support": {
++                "issues": "https://github.com/symfony/webpack-encore-bundle/issues",
++                "source": "https://github.com/symfony/webpack-encore-bundle/tree/master"
++            },
+             "time": "2019-11-26T14:48:41+00:00"
+         },
+         {
+@@ -7981,6 +8422,9 @@
+             ],
+             "description": "Symfony Yaml Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/yaml/tree/v4.4.0"
++            },
+             "time": "2019-11-12T14:51:11+00:00"
+         },
+         {
+@@ -8028,6 +8472,10 @@
+             ],
+             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
+             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
++            "support": {
++                "issues": "https://github.com/tijsverkoyen/CssToInlineStyles/issues",
++                "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/master"
++            },
+             "time": "2017-11-27T11:13:29+00:00"
+         },
+         {
+@@ -8082,6 +8530,9 @@
+                 "inlining",
+                 "twig"
+             ],
++            "support": {
++                "source": "https://github.com/twigphp/cssinliner-extra/tree/2.x"
++            },
+             "time": "2019-09-07T06:57:51+00:00"
+         },
+         {
+@@ -8137,6 +8588,11 @@
+                 "i18n",
+                 "text"
+             ],
++            "support": {
++                "issues": "https://github.com/twigphp/Twig-extensions/issues",
++                "source": "https://github.com/twigphp/Twig-extensions/tree/master"
++            },
++            "abandoned": true,
+             "time": "2018-12-05T18:34:18+00:00"
+         },
+         {
+@@ -8196,6 +8652,9 @@
+                 "extra",
+                 "twig"
+             ],
++            "support": {
++                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v2.12.1"
++            },
+             "time": "2019-10-17T07:27:12+00:00"
+         },
+         {
+@@ -8251,6 +8710,9 @@
+                 "inky",
+                 "twig"
+             ],
++            "support": {
++                "source": "https://github.com/twigphp/inky-extra/tree/2.x"
++            },
+             "time": "2019-09-17T06:08:14+00:00"
+         },
+         {
+@@ -8318,6 +8780,10 @@
+             "keywords": [
+                 "templating"
+             ],
++            "support": {
++                "issues": "https://github.com/twigphp/Twig/issues",
++                "source": "https://github.com/twigphp/Twig/tree/v2.12.1"
++            },
+             "time": "2019-10-17T07:34:53+00:00"
+         },
+         {
+@@ -8368,6 +8834,10 @@
+                 "check",
+                 "validate"
+             ],
++            "support": {
++                "issues": "https://github.com/webmozart/assert/issues",
++                "source": "https://github.com/webmozart/assert/tree/1.5.0"
++            },
+             "time": "2019-08-24T08:43:50+00:00"
+         },
+         {
+@@ -8421,6 +8891,14 @@
+                 "code",
+                 "zf"
+             ],
++            "support": {
++                "chat": "https://zendframework-slack.herokuapp.com",
++                "docs": "https://docs.zendframework.com/zend-code/",
++                "forum": "https://discourse.zendframework.com/c/questions/components",
++                "issues": "https://github.com/zendframework/zend-code/issues",
++                "rss": "https://github.com/zendframework/zend-code/releases.atom",
++                "source": "https://github.com/zendframework/zend-code"
++            },
+             "abandoned": "laminas/laminas-code",
+             "time": "2019-08-31T14:14:34+00:00"
+         },
+@@ -8476,6 +8954,10 @@
+                 "events",
+                 "zf2"
+             ],
++            "support": {
++                "issues": "https://github.com/zendframework/zend-eventmanager/issues",
++                "source": "https://github.com/zendframework/zend-eventmanager/tree/master"
++            },
+             "abandoned": "laminas/laminas-eventmanager",
+             "time": "2018-04-25T15:33:34+00:00"
+         }
+@@ -8539,6 +9021,10 @@
+             "keywords": [
+                 "database"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/data-fixtures/issues",
++                "source": "https://github.com/doctrine/data-fixtures/tree/v1.3.2"
++            },
+             "time": "2019-07-10T18:30:35+00:00"
+         },
+         {
+@@ -8603,6 +9089,10 @@
+                 "Fixture",
+                 "persistence"
+             ],
++            "support": {
++                "issues": "https://github.com/doctrine/DoctrineFixturesBundle/issues",
++                "source": "https://github.com/doctrine/DoctrineFixturesBundle/tree/3.2"
++            },
+             "time": "2019-06-12T12:03:37+00:00"
+         },
+         {
+@@ -8653,6 +9143,10 @@
+                 "monolog",
+                 "productivity"
+             ],
++            "support": {
++                "issues": "https://github.com/EasyCorp/easy-log-handler/issues",
++                "source": "https://github.com/EasyCorp/easy-log-handler/tree/master"
++            },
+             "abandoned": true,
+             "time": "2018-07-27T15:41:37+00:00"
+         },
+@@ -8704,6 +9198,10 @@
+                 "faker",
+                 "fixtures"
+             ],
++            "support": {
++                "issues": "https://github.com/fzaninotto/Faker/issues",
++                "source": "https://github.com/fzaninotto/Faker/tree/master"
++            },
+             "time": "2018-07-12T10:23:15+00:00"
+         },
+         {
+@@ -8782,6 +9280,10 @@
+                 "logging",
+                 "psr-3"
+             ],
++            "support": {
++                "issues": "https://github.com/Seldaek/monolog/issues",
++                "source": "https://github.com/Seldaek/monolog/tree/1.x"
++            },
+             "time": "2019-09-06T13:49:17+00:00"
+         },
+         {
+@@ -8833,31 +9335,35 @@
+                 "parser",
+                 "php"
+             ],
++            "support": {
++                "issues": "https://github.com/nikic/PHP-Parser/issues",
++                "source": "https://github.com/nikic/PHP-Parser/tree/v4.2.4"
++            },
+             "time": "2019-09-01T07:51:21+00:00"
          },
          {
              "name": "symfony/browser-kit",
@@ -683,7 +2063,7 @@ index ca390c27..9f0437e5 100644
              },
              "suggest": {
                  "symfony/process": ""
-@@ -8824,7 +8836,7 @@
+@@ -8865,7 +9371,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -692,16 +2072,99 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -8851,7 +8863,7 @@
+@@ -8892,7 +9398,10 @@
              ],
              "description": "Symfony BrowserKit Component",
              "homepage": "https://symfony.com",
 -            "time": "2019-10-28T17:07:32+00:00"
++            "support": {
++                "source": "https://github.com/symfony/browser-kit/tree/v4.4.0-BETA1"
++            },
 +            "time": "2019-10-28T20:30:34+00:00"
          },
          {
              "name": "symfony/debug-bundle",
-@@ -9330,42 +9342,40 @@
+@@ -8958,6 +9467,9 @@
+             ],
+             "description": "Symfony DebugBundle",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/debug-bundle/tree/v4.4.0-BETA1"
++            },
+             "time": "2019-10-12T00:35:04+00:00"
+         },
+         {
+@@ -9019,6 +9531,9 @@
+             ],
+             "description": "Symfony DomCrawler Component",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/dom-crawler/tree/v4.4.0-BETA2"
++            },
+             "time": "2019-10-29T11:38:30+00:00"
+         },
+         {
+@@ -9076,6 +9591,9 @@
+                 "env",
+                 "environment"
+             ],
++            "support": {
++                "source": "https://github.com/symfony/dotenv/tree/v4.4.1"
++            },
+             "time": "2019-11-23T14:53:46+00:00"
+         },
+         {
+@@ -9144,6 +9662,10 @@
+                 "scaffold",
+                 "scaffolding"
+             ],
++            "support": {
++                "issues": "https://github.com/symfony/maker-bundle/issues",
++                "source": "https://github.com/symfony/maker-bundle/tree/v1.14.3"
++            },
+             "time": "2019-11-07T00:56:03+00:00"
+         },
+         {
+@@ -9211,6 +9733,9 @@
+             ],
+             "description": "Symfony Monolog Bridge",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/monolog-bridge/tree/v4.4.1"
++            },
+             "time": "2019-11-26T23:16:41+00:00"
+         },
+         {
+@@ -9274,6 +9799,10 @@
+                 "log",
+                 "logging"
+             ],
++            "support": {
++                "issues": "https://github.com/symfony/monolog-bundle/issues",
++                "source": "https://github.com/symfony/monolog-bundle/tree/v3.5.0"
++            },
+             "time": "2019-11-13T13:11:14+00:00"
+         },
+         {
+@@ -9339,6 +9868,9 @@
+             ],
+             "description": "Symfony PHPUnit Bridge",
+             "homepage": "https://symfony.com",
++            "support": {
++                "source": "https://github.com/symfony/phpunit-bridge/tree/v4.4.1"
++            },
+             "time": "2019-11-28T13:33:56+00:00"
+         },
+         {
+@@ -9367,46 +9899,48 @@
+                 "MIT"
+             ],
+             "description": "A pack for the Symfony web profiler",
++            "support": {
++                "issues": "https://github.com/symfony/profiler-pack/issues",
++                "source": "https://github.com/symfony/profiler-pack/tree/master"
++            },
+             "time": "2018-12-10T12:11:44+00:00"
          },
          {
              "name": "symfony/web-profiler-bundle",
@@ -759,11 +2222,14 @@ index ca390c27..9f0437e5 100644
                  }
              },
              "autoload": {
-@@ -9392,7 +9402,7 @@
+@@ -9433,7 +9967,10 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",
 -            "time": "2019-10-23T17:52:52+00:00"
++            "support": {
++                "source": "https://github.com/symfony/web-profiler-bundle/tree/v4.4.1"
++            },
 +            "time": "2019-11-20T10:44:55+00:00"
          }
      ],

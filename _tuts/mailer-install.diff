@@ -11,11 +11,11 @@ index ef5d1fce..23bf03c3 100644
 +# MAILER_DSN=smtp://localhost
 +###< symfony/mailer ###
 diff --git a/composer.json b/composer.json
-index 201325d0..156ed18d 100644
+index e64617fc..9350f5e7 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -21,6 +21,7 @@
-         "symfony/flex": "^1.0",
+@@ -22,6 +22,7 @@
+         "symfony/flex": "^1.9",
          "symfony/form": "^4.0",
          "symfony/framework-bundle": "^4.0",
 +        "symfony/mailer": "4.3.*",
@@ -23,19 +23,19 @@ index 201325d0..156ed18d 100644
          "symfony/security-bundle": "^4.0",
          "symfony/serializer-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 63f43327..fe798df9 100644
+index 6d502564..e602ecaf 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "17e6d55718ec877af7bf935caf69dcf3",
-+    "content-hash": "138c8ab37f9633a6811bb78083bfc80b",
+-    "content-hash": "05567e25ff77df51ddb2672622f70e14",
++    "content-hash": "4dbaaebd6372086accea16563431e81c",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -1430,6 +1430,64 @@
+@@ -1503,6 +1503,64 @@
              ],
              "time": "2020-03-27T11:06:43+00:00"
          },
@@ -100,7 +100,7 @@ index 63f43327..fe798df9 100644
          {
              "name": "gedmo/doctrine-extensions",
              "version": "v2.4.37",
-@@ -5230,6 +5288,68 @@
+@@ -5271,6 +5329,68 @@
              ],
              "time": "2019-08-26T08:26:39+00:00"
          },

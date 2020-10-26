@@ -14,10 +14,10 @@ index 03c8fcad..eee59101 100644
 +# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
 +###< symfony/messenger ###
 diff --git a/composer.json b/composer.json
-index de3d528b..dadd525f 100644
+index 9fa718f1..2ffb4ba2 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -24,6 +24,7 @@
+@@ -25,6 +25,7 @@
          "symfony/form": "^4.0",
          "symfony/framework-bundle": "^4.0",
          "symfony/mailer": "4.3.*",
@@ -26,19 +26,19 @@ index de3d528b..dadd525f 100644
          "symfony/security-bundle": "^4.0",
          "symfony/sendgrid-mailer": "4.3.*",
 diff --git a/composer.lock b/composer.lock
-index e230cb95..0acec6f4 100644
+index e5afb227..b7060a31 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "0a58cdfcfb9febb67f25fde07561d2f3",
-+    "content-hash": "c25074318fcc25973d86f99304e74b81",
+-    "content-hash": "5695fc267e8f903ea5d51d49f7e7f579",
++    "content-hash": "c19dda8b3c1218556c875c3c96954662",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -5645,6 +5645,80 @@
+@@ -5686,6 +5686,80 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-22T08:16:11+00:00"
          },

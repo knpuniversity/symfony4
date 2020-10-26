@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 18df9380..6d8cb28d 100644
+index f0d036b5..24a4e616 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -8,9 +8,9 @@ index 18df9380..6d8cb28d 100644
          "ext-iconv": "*",
 +        "antishov/doctrine-extensions-bundle": "^1.4",
          "aws/aws-sdk-php": "^3.87",
+         "composer/package-versions-deprecated": "^1.11",
          "easycorp/easy-log-handler": "^1.0",
-         "knplabs/knp-markdown-bundle": "^1.7",
-@@ -18,7 +19,6 @@
+@@ -19,7 +20,6 @@
          "oneup/flysystem-bundle": "^3.0",
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
@@ -19,15 +19,15 @@ index 18df9380..6d8cb28d 100644
          "symfony/console": "4.4.*",
          "symfony/dotenv": "4.4.*",
 diff --git a/composer.lock b/composer.lock
-index d3eb1951..c0bb5928 100644
+index 3f966871..e3613c36 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,81 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "7f780f972bbcc8b6cdd7f28ead6a196a",
-+    "content-hash": "183b42c41823d68a81bfa83b835ff6fa",
+-    "content-hash": "9a98e184434328bcb360f65cd6ba63f9",
++    "content-hash": "73e00fbb1b3257f41400f7ddc15245bc",
      "packages": [
 +        {
 +            "name": "antishov/doctrine-extensions-bundle",
@@ -105,7 +105,7 @@ index d3eb1951..c0bb5928 100644
          {
              "name": "aws/aws-sdk-php",
              "version": "3.110.11",
-@@ -1553,16 +1626,16 @@
+@@ -1703,16 +1776,16 @@
          },
          {
              "name": "gedmo/doctrine-extensions",
@@ -126,7 +126,7 @@ index d3eb1951..c0bb5928 100644
                  "shasum": ""
              },
              "require": {
-@@ -1571,14 +1644,15 @@
+@@ -1721,14 +1794,15 @@
                  "php": ">=5.3.2"
              },
              "conflict": {
@@ -146,7 +146,7 @@ index d3eb1951..c0bb5928 100644
              },
              "suggest": {
                  "doctrine/mongodb-odm": "to use the extensions with the MongoDB ODM",
-@@ -1600,10 +1674,6 @@
+@@ -1750,10 +1824,6 @@
                  "MIT"
              ],
              "authors": [
@@ -157,7 +157,7 @@ index d3eb1951..c0bb5928 100644
                  {
                      "name": "Gediminas Morkevicius",
                      "email": "gediminas.morkevicius@gmail.com"
-@@ -1611,6 +1681,10 @@
+@@ -1761,6 +1831,10 @@
                  {
                      "name": "Gustavo Falco",
                      "email": "comfortablynumb84@gmail.com"
@@ -168,17 +168,23 @@ index d3eb1951..c0bb5928 100644
                  }
              ],
              "description": "Doctrine2 behavioral extensions",
-@@ -1630,7 +1704,7 @@
+@@ -1780,13 +1854,7 @@
                  "tree",
                  "uploadable"
              ],
+-            "support": {
+-                "email": "gediminas.morkevicius@gmail.com",
+-                "issues": "https://github.com/Atlantic18/DoctrineExtensions/issues",
+-                "source": "https://github.com/Atlantic18/DoctrineExtensions/tree/v2.4.37",
+-                "wiki": "https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc"
+-            },
 -            "time": "2019-03-17T18:16:12+00:00"
 +            "time": "2019-11-08T22:33:07+00:00"
          },
          {
              "name": "guzzlehttp/guzzle",
-@@ -4305,71 +4379,6 @@
-             ],
+@@ -4572,75 +4640,6 @@
+             },
              "time": "2019-07-08T08:31:25+00:00"
          },
 -        {
@@ -244,6 +250,10 @@ index d3eb1951..c0bb5928 100644
 -                "translatable",
 -                "tree"
 -            ],
+-            "support": {
+-                "issues": "https://github.com/stof/StofDoctrineExtensionsBundle/issues",
+-                "source": "https://github.com/stof/StofDoctrineExtensionsBundle/tree/v1.3.0"
+-            },
 -            "time": "2017-12-24T16:06:50+00:00"
 -        },
          {
@@ -268,7 +278,7 @@ index 9d730ce2..646871a6 100644
 +    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index c02857f5..aeb5cb58 100644
+index 2f5b7f3b..e0b02b75 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,16 @@
@@ -288,7 +298,7 @@ index c02857f5..aeb5cb58 100644
      "aws/aws-sdk-php": {
          "version": "3.87.10"
      },
-@@ -105,7 +117,7 @@
+@@ -96,7 +108,7 @@
          "version": "v1.8.0"
      },
      "gedmo/doctrine-extensions": {
@@ -297,7 +307,7 @@ index c02857f5..aeb5cb58 100644
      },
      "guzzlehttp/guzzle": {
          "version": "6.3.3"
-@@ -282,15 +294,6 @@
+@@ -273,15 +285,6 @@
              "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
          }
      },

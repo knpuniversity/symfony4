@@ -15,10 +15,10 @@ index f91075c2..38a8ee2a 100644
  .phpunit
  .phpunit.result.cache
 diff --git a/composer.json b/composer.json
-index decf26cd..be2c1ae2 100644
+index 2fea4fa9..75abdb13 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -35,7 +35,6 @@
+@@ -36,7 +36,6 @@
          "symfony/twig-bundle": "4.4.*",
          "symfony/twig-pack": "^1.0",
          "symfony/validator": "4.4.*",
@@ -27,20 +27,20 @@ index decf26cd..be2c1ae2 100644
          "symfony/yaml": "4.4.*",
          "twig/cssinliner-extra": "^2.12",
 diff --git a/composer.lock b/composer.lock
-index e72d77d4..4c0949c2 100644
+index 62befe2a..e1a33447 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "14db07b5c32c1d4a116808b28633f279",
-+    "content-hash": "fd9a7eff51a90b5476d6522913a55fae",
+-    "content-hash": "1f8ae1dabf8897d8bda68d38d41e6a2b",
++    "content-hash": "926be067b06494a5d27cd65e7adb3c3c",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -8099,65 +8099,6 @@
-             ],
+@@ -8594,68 +8594,6 @@
+             },
              "time": "2019-12-01T08:39:58+00:00"
          },
 -        {
@@ -100,6 +100,9 @@ index e72d77d4..4c0949c2 100644
 -            ],
 -            "description": "Symfony WebServerBundle",
 -            "homepage": "https://symfony.com",
+-            "support": {
+-                "source": "https://github.com/symfony/web-server-bundle/tree/v4.4.1"
+-            },
 -            "time": "2019-11-26T23:16:41+00:00"
 -        },
          {
@@ -118,10 +121,10 @@ index e7f8a24e..9d730ce2 100644
      Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
      Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
 diff --git a/symfony.lock b/symfony.lock
-index 62701692..62bcd22d 100644
+index 4a4c7a82..7ad4be07 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -638,15 +638,6 @@
+@@ -629,15 +629,6 @@
              "ref": "6bdfa1a95f6b2e677ab985cd1af2eae35d62e0f6"
          }
      },

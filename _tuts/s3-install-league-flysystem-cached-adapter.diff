@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 1692f43c..2ecbad69 100644
+index c99e76b5..66d54498 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -9,6 +9,7 @@
+@@ -10,6 +10,7 @@
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
          "league/flysystem-aws-s3-v3": "^1.0",
@@ -11,19 +11,19 @@ index 1692f43c..2ecbad69 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 8e9f5ec1..f6e627e7 100644
+index 31713b2b..b5fcc0e1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "a67a7b56e34aed217eaa203ed773af3c",
-+    "content-hash": "492dcd2a55a58b51f261cc6c32330f6c",
+-    "content-hash": "d9b7e33ad54bd2a23c8a2337d8e342c6",
++    "content-hash": "d61166a82960007200397172419c75d1",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -2184,6 +2184,53 @@
+@@ -2257,6 +2257,53 @@
              "description": "Flysystem adapter for the AWS S3 SDK v3.x",
              "time": "2019-01-31T15:07:25+00:00"
          },

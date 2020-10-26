@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 02e3fd61..91d6cee3 100644
+index 86b722dc..0568e6dc 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -10,6 +10,7 @@
+@@ -11,6 +11,7 @@
          "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
          "doctrine/orm": "^2.5.11",
          "easycorp/easy-log-handler": "^1.0",
@@ -11,20 +11,20 @@ index 02e3fd61..91d6cee3 100644
          "knplabs/knp-paginator-bundle": "^5.0",
          "knplabs/knp-snappy-bundle": "^1.6",
 diff --git a/composer.lock b/composer.lock
-index e763be9a..c6282b47 100644
+index ceee8d2a..2c048807 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "d0124513bab5dc6a6e31571ecfe22b8c",
-+    "content-hash": "b8a8aa2d531f75c5a2d8f6234105fba5",
+-    "content-hash": "70bc1291d06c8ac8ba43a617ba608877",
++    "content-hash": "7a861c3525172f68f0c7bf7db5ba3ee1",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
-@@ -1806,6 +1806,56 @@
-             ],
+@@ -1948,6 +1948,56 @@
+             },
              "time": "2019-07-01T23:21:34+00:00"
          },
 +        {
@@ -81,10 +81,10 @@ index e763be9a..c6282b47 100644
              "name": "imagine/imagine",
              "version": "1.2.3",
 diff --git a/symfony.lock b/symfony.lock
-index 1bbd39eb..dd1d8a34 100644
+index b2d19e9c..582a6358 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -131,6 +131,9 @@
+@@ -122,6 +122,9 @@
      "guzzlehttp/psr7": {
          "version": "1.5.2"
      },

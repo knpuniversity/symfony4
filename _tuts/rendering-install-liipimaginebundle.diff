@@ -11,10 +11,10 @@ index 4c881d3e..dfd32027 100644
 +/public/media/cache/
 +###< liip/imagine-bundle ###
 diff --git a/composer.json b/composer.json
-index 5c5432a5..8af7058c 100644
+index 7a73bb78..dbbb8153 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -7,6 +7,7 @@
+@@ -8,6 +8,7 @@
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
@@ -23,19 +23,19 @@ index 5c5432a5..8af7058c 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 9746f36d..17f47156 100644
+index 7a81179c..afb79a5d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "2ea48fcb79e0dc037b4c00078e26f8a8",
-+    "content-hash": "f89a2f5e2d1b8ef4ab9b5befb2861169",
+-    "content-hash": "d4f5663e1fbbc947e4f088bd033fc81b",
++    "content-hash": "8df0be858307e4a73c0a3fb1169cd680",
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -1607,6 +1607,64 @@
+@@ -1680,6 +1680,64 @@
              ],
              "time": "2018-12-04T20:46:45+00:00"
          },
@@ -100,7 +100,7 @@ index 9746f36d..17f47156 100644
          {
              "name": "jdorn/sql-formatter",
              "version": "v1.2.17",
-@@ -1913,6 +1971,106 @@
+@@ -1986,6 +2044,106 @@
              ],
              "time": "2018-12-06T14:53:51+00:00"
          },

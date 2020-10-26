@@ -7,10 +7,10 @@ index 00000000..02a76515
 +#webpack_encore:
 +#    strict_mode: false
 diff --git a/symfony.lock b/symfony.lock
-index 0ce1a398..62701692 100644
+index 875f6482..4a4c7a82 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -648,17 +648,19 @@
+@@ -639,17 +639,19 @@
          }
      },
      "symfony/webpack-encore-bundle": {

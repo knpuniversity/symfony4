@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index b5df31df..ad629d76 100644
+index 3154972d..42a4da01 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -7,19 +7,19 @@ index b5df31df..ad629d76 100644
          "php": "^7.1.3",
          "ext-iconv": "*",
 +        "aws/aws-sdk-php": "^3.87",
+         "composer/package-versions-deprecated": "^1.11",
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
-         "knplabs/knp-time-bundle": "^1.8",
 diff --git a/composer.lock b/composer.lock
-index c607d3e9..40c55734 100644
+index 8163f890..c9f15827 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,90 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "569cce480364cac7a7f1b30af4182f08",
-+    "content-hash": "6f253ee3fdf84a309146f63949785fda",
+-    "content-hash": "3c87a2f82383f408139a2903fc4b7555",
++    "content-hash": "3c2e8967814ff3ae09ad16b1716a5e9a",
      "packages": [
 +        {
 +            "name": "aws/aws-sdk-php",
@@ -106,7 +106,7 @@ index c607d3e9..40c55734 100644
          {
              "name": "behat/transliterator",
              "version": "v1.2.0",
-@@ -2201,6 +2283,61 @@
+@@ -2274,6 +2356,61 @@
              ],
              "time": "2018-01-15T00:49:33+00:00"
          },

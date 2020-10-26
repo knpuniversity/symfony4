@@ -1,17 +1,17 @@
 diff --git a/composer.lock b/composer.lock
-index 866c6fcd..d3eb1951 100644
+index 31737864..3f966871 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "fd9a7eff51a90b5476d6522913a55fae",
-+    "content-hash": "7f780f972bbcc8b6cdd7f28ead6a196a",
+-    "content-hash": "926be067b06494a5d27cd65e7adb3c3c",
++    "content-hash": "9a98e184434328bcb360f65cd6ba63f9",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -491,31 +491,30 @@
+@@ -593,31 +593,30 @@
          },
          {
              "name": "doctrine/dbal",
@@ -53,7 +53,7 @@ index 866c6fcd..d3eb1951 100644
              },
              "suggest": {
                  "symfony/console": "For helpful console commands such as SQL execution and import of files."
-@@ -526,7 +525,7 @@
+@@ -628,7 +627,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -62,7 +62,7 @@ index 866c6fcd..d3eb1951 100644
                      "dev-develop": "3.0.x-dev"
                  }
              },
-@@ -562,14 +561,25 @@
+@@ -664,18 +663,25 @@
              "keywords": [
                  "abstraction",
                  "database",
@@ -87,12 +87,16 @@ index 866c6fcd..d3eb1951 100644
 +                "sqlserver",
 +                "sqlsrv"
              ],
+-            "support": {
+-                "issues": "https://github.com/doctrine/dbal/issues",
+-                "source": "https://github.com/doctrine/dbal/tree/2.9"
+-            },
 -            "time": "2019-11-02T22:19:34+00:00"
 +            "time": "2020-01-04T12:56:21+00:00"
          },
          {
              "name": "doctrine/doctrine-bundle",
-@@ -1017,28 +1027,30 @@
+@@ -1147,28 +1153,30 @@
          },
          {
              "name": "doctrine/lexer",
@@ -130,7 +134,7 @@ index 866c6fcd..d3eb1951 100644
                  }
              },
              "autoload": {
-@@ -1051,14 +1063,14 @@
+@@ -1181,14 +1189,14 @@
                  "MIT"
              ],
              "authors": [
@@ -149,16 +153,20 @@ index 866c6fcd..d3eb1951 100644
                  {
                      "name": "Johannes Schmitt",
                      "email": "schmittjoh@gmail.com"
-@@ -1073,7 +1085,7 @@
+@@ -1203,11 +1211,7 @@
                  "parser",
                  "php"
              ],
+-            "support": {
+-                "issues": "https://github.com/doctrine/lexer/issues",
+-                "source": "https://github.com/doctrine/lexer/tree/1.0.2"
+-            },
 -            "time": "2019-06-08T11:03:04+00:00"
 +            "time": "2019-10-30T14:39:59+00:00"
          },
          {
              "name": "doctrine/migrations",
-@@ -1917,43 +1929,52 @@
+@@ -2101,43 +2105,52 @@
          },
          {
              "name": "knplabs/knp-components",
@@ -227,7 +235,7 @@ index 866c6fcd..d3eb1951 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -1963,11 +1984,11 @@
+@@ -2147,11 +2160,11 @@
              "authors": [
                  {
                      "name": "KnpLabs Team",
@@ -241,16 +249,20 @@ index 866c6fcd..d3eb1951 100644
                  }
              ],
              "description": "Knplabs component library",
-@@ -1979,7 +2000,7 @@
+@@ -2163,11 +2176,7 @@
                  "pager",
                  "paginator"
              ],
+-            "support": {
+-                "issues": "https://github.com/KnpLabs/knp-components/issues",
+-                "source": "https://github.com/KnpLabs/knp-components/tree/master"
+-            },
 -            "time": "2018-09-11T07:54:48+00:00"
 +            "time": "2019-11-25T10:00:08+00:00"
          },
          {
              "name": "knplabs/knp-markdown-bundle",
-@@ -2046,37 +2067,39 @@
+@@ -2238,37 +2247,39 @@
          },
          {
              "name": "knplabs/knp-paginator-bundle",
@@ -302,16 +314,20 @@ index 866c6fcd..d3eb1951 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2104,7 +2127,7 @@
+@@ -2296,11 +2307,7 @@
                  "paginator",
                  "symfony"
              ],
+-            "support": {
+-                "issues": "https://github.com/KnpLabs/KnpPaginatorBundle/issues",
+-                "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/master"
+-            },
 -            "time": "2018-05-16T12:15:58+00:00"
 +            "time": "2019-11-27T08:58:44+00:00"
          },
          {
              "name": "knplabs/knp-snappy",
-@@ -8484,16 +8507,16 @@
+@@ -9004,16 +9011,16 @@
          },
          {
              "name": "twig/twig",
@@ -332,16 +348,20 @@ index 866c6fcd..d3eb1951 100644
                  "shasum": ""
              },
              "require": {
-@@ -8547,7 +8570,7 @@
+@@ -9067,11 +9074,7 @@
              "keywords": [
                  "templating"
              ],
+-            "support": {
+-                "issues": "https://github.com/twigphp/Twig/issues",
+-                "source": "https://github.com/twigphp/Twig/tree/v2.12.1"
+-            },
 -            "time": "2019-10-17T07:34:53+00:00"
 +            "time": "2019-11-11T16:52:09+00:00"
          },
          {
              "name": "webmozart/assert",
-@@ -9353,12 +9376,12 @@
+@@ -9932,12 +9935,12 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {
@@ -354,13 +374,13 @@ index 866c6fcd..d3eb1951 100644
 -        "php": "7.1.3"
 +        "php": "7.2.5"
      },
-     "plugin-api-version": "1.1.0"
+     "plugin-api-version": "2.0.0"
  }
 diff --git a/symfony.lock b/symfony.lock
-index 65a6e4ed..c02857f5 100644
+index 9b5b4ea2..2f5b7f3b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -211,7 +211,7 @@
+@@ -202,7 +202,7 @@
          }
      },
      "php": {

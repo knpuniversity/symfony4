@@ -12,10 +12,10 @@ index a48752a7..8401b335 100644
              guard:
                  authenticators:
 diff --git a/symfony.lock b/symfony.lock
-index 2d2ff076..aac7df22 100644
+index 331e38fe..0afe145d 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -527,13 +527,16 @@
+@@ -518,13 +518,16 @@
          ]
      },
      "symfony/security-bundle": {

@@ -12,10 +12,10 @@ index 44b2278e..67652a8c 100644
 +# MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
 +###< symfony/sendgrid-mailer ###
 diff --git a/composer.json b/composer.json
-index 47a55e3f..de3d528b 100644
+index 88e13c93..9fa718f1 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -26,6 +26,7 @@
+@@ -27,6 +27,7 @@
          "symfony/mailer": "4.3.*",
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "^4.0",
@@ -24,19 +24,19 @@ index 47a55e3f..de3d528b 100644
          "symfony/twig-bundle": "^4.0",
          "symfony/twig-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 33475237..e230cb95 100644
+index 4ec55ec2..e5afb227 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "603fbd4aad94af6499d9f47dbfdbb8c7",
-+    "content-hash": "0a58cdfcfb9febb67f25fde07561d2f3",
+-    "content-hash": "cfe4b69173e115ed7fc7cd8207d7e943",
++    "content-hash": "5695fc267e8f903ea5d51d49f7e7f579",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -6738,6 +6738,59 @@
+@@ -6779,6 +6779,59 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-26T08:26:39+00:00"
          },

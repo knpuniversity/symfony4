@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index ad629d76..1692f43c 100644
+index 42a4da01..c99e76b5 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -8,6 +8,7 @@
+@@ -9,6 +9,7 @@
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
@@ -11,19 +11,19 @@ index ad629d76..1692f43c 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 40c55734..8e9f5ec1 100644
+index c9f15827..31713b2b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6f253ee3fdf84a309146f63949785fda",
-+    "content-hash": "a67a7b56e34aed217eaa203ed773af3c",
+-    "content-hash": "3c2e8967814ff3ae09ad16b1716a5e9a",
++    "content-hash": "d9b7e33ad54bd2a23c8a2337d8e342c6",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -2137,6 +2137,53 @@
+@@ -2210,6 +2210,53 @@
              ],
              "time": "2019-02-01T08:50:36+00:00"
          },

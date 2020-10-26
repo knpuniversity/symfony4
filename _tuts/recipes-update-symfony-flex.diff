@@ -10,10 +10,10 @@ index 415bd805..61cea898 100644
  #  * .env                contains default values for the environment variables needed by the app
  #  * .env.local          uncommitted file with local overrides
 diff --git a/symfony.lock b/symfony.lock
-index 2e580d72..50f510b9 100644
+index 86d25ddc..ac3e6844 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -366,8 +366,11 @@
+@@ -357,8 +357,11 @@
              "repo": "github.com/symfony/recipes",
              "branch": "master",
              "version": "1.0",

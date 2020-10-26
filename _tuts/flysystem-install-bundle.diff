@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 8af7058c..b5df31df 100644
+index dbbb8153..3154972d 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -9,6 +9,7 @@
+@@ -10,6 +10,7 @@
          "knplabs/knp-time-bundle": "^1.8",
          "liip/imagine-bundle": "^2.1",
          "nexylan/slack-bundle": "^2.0,<2.2.0",
@@ -11,19 +11,19 @@ index 8af7058c..b5df31df 100644
          "sensio/framework-extra-bundle": "^5.1",
          "stof/doctrine-extensions-bundle": "^1.3",
 diff --git a/composer.lock b/composer.lock
-index 17f47156..c607d3e9 100644
+index afb79a5d..8163f890 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "f89a2f5e2d1b8ef4ab9b5befb2861169",
-+    "content-hash": "569cce480364cac7a7f1b30af4182f08",
+-    "content-hash": "8df0be858307e4a73c0a3fb1169cd680",
++    "content-hash": "3c87a2f82383f408139a2903fc4b7555",
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -1971,6 +1971,90 @@
+@@ -2044,6 +2044,90 @@
              ],
              "time": "2018-12-06T14:53:51+00:00"
          },
@@ -114,7 +114,7 @@ index 17f47156..c607d3e9 100644
          {
              "name": "liip/imagine-bundle",
              "version": "2.1.0",
-@@ -2351,6 +2435,99 @@
+@@ -2374,6 +2458,99 @@
              ],
              "time": "2017-05-04T11:12:50+00:00"
          },

@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index 4c0949c2..866c6fcd 100644
+index e1a33447..31737864 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -2546,55 +2546,55 @@
+@@ -2770,55 +2770,55 @@
          },
          {
              "name": "liip/imagine-bundle",
@@ -81,7 +81,7 @@ index 4c0949c2..866c6fcd 100644
                  "ext-exif": "required to read EXIF metadata from images",
                  "ext-gd": "required to use gd driver",
                  "ext-gmagick": "required to use gmagick driver",
-@@ -2608,7 +2608,8 @@
+@@ -2832,7 +2832,8 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -91,10 +91,10 @@ index 4c0949c2..866c6fcd 100644
                  }
              },
              "autoload": {
-@@ -2642,7 +2643,7 @@
-                 "symfony",
-                 "transformation"
-             ],
+@@ -2870,7 +2871,7 @@
+                 "issues": "https://github.com/liip/LiipImagineBundle/issues",
+                 "source": "https://github.com/liip/LiipImagineBundle/tree/master"
+             },
 -            "time": "2018-07-10T12:53:54+00:00"
 +            "time": "2019-10-04T05:45:14+00:00"
          },

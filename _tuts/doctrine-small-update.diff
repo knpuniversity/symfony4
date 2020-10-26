@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index c0bb5928..174dd021 100644
+index e3613c36..49b26306 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -656,28 +656,31 @@
+@@ -758,28 +758,31 @@
          },
          {
              "name": "doctrine/doctrine-bundle",
@@ -43,7 +43,7 @@ index c0bb5928..174dd021 100644
              },
              "conflict": {
                  "doctrine/orm": "<2.6",
-@@ -686,15 +689,16 @@
+@@ -788,15 +791,16 @@
              "require-dev": {
                  "doctrine/coding-standard": "^6.0",
                  "doctrine/orm": "^2.6",
@@ -67,7 +67,7 @@ index c0bb5928..174dd021 100644
              },
              "suggest": {
                  "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
-@@ -703,7 +707,7 @@
+@@ -805,7 +809,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -76,7 +76,7 @@ index c0bb5928..174dd021 100644
                  }
              },
              "autoload": {
-@@ -717,20 +721,20 @@
+@@ -819,20 +823,20 @@
              ],
              "authors": [
                  {
@@ -103,10 +103,14 @@ index c0bb5928..174dd021 100644
                  }
              ],
              "description": "Symfony DoctrineBundle",
-@@ -741,7 +745,7 @@
+@@ -843,11 +847,7 @@
                  "orm",
                  "persistence"
              ],
+-            "support": {
+-                "issues": "https://github.com/doctrine/DoctrineBundle/issues",
+-                "source": "https://github.com/doctrine/DoctrineBundle/tree/1.11.x"
+-            },
 -            "time": "2019-06-04T07:35:05+00:00"
 +            "time": "2019-12-19T09:08:00+00:00"
          },

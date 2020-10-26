@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index dadd525f..2d02cd10 100644
+index 2ffb4ba2..9490417b 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -13,7 +13,7 @@
+@@ -14,7 +14,7 @@
          "league/flysystem-cached-adapter": "^1.0",
          "league/html-to-markdown": "^4.8",
          "liip/imagine-bundle": "^2.1",
@@ -12,19 +12,19 @@ index dadd525f..2d02cd10 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 0acec6f4..f65a618a 100644
+index b7060a31..ac34ecbe 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "c25074318fcc25973d86f99304e74b81",
-+    "content-hash": "c0b2ccde49de4be97497e74cfc7e3566",
+-    "content-hash": "c19dda8b3c1218556c875c3c96954662",
++    "content-hash": "3d6be513be1f71d0a07f1009746f3e8b",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -3050,15 +3050,15 @@
+@@ -3073,15 +3073,15 @@
              "authors": [
                  {
                      "name": "Jim Schmid",

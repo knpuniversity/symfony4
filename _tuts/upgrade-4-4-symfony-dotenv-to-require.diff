@@ -1,16 +1,16 @@
 diff --git a/composer.json b/composer.json
-index 3e330df0..decf26cd 100644
+index 10c4d840..2fea4fa9 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -5,6 +5,7 @@
-         "php": "^7.1.3",
+@@ -6,6 +6,7 @@
          "ext-iconv": "*",
          "aws/aws-sdk-php": "^3.87",
+         "composer/package-versions-deprecated": "^1.11",
 +        "easycorp/easy-log-handler": "^1.0",
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-snappy-bundle": "^1.6",
-@@ -20,11 +21,13 @@
+@@ -21,11 +22,13 @@
          "stof/doctrine-extensions-bundle": "^1.3",
          "symfony/asset": "4.4.*",
          "symfony/console": "4.4.*",
@@ -24,7 +24,7 @@ index 3e330df0..decf26cd 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "4.4.*",
          "symfony/sendgrid-mailer": "4.4.*",
-@@ -41,13 +44,10 @@
+@@ -42,13 +45,10 @@
      },
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
@@ -39,20 +39,20 @@ index 3e330df0..decf26cd 100644
          "symfony/profiler-pack": "^1.0",
          "symfony/var-dumper": "4.4.*"
 diff --git a/composer.lock b/composer.lock
-index 9f0437e5..e72d77d4 100644
+index 871869b6..62befe2a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "c267e1e80b0b1051bedcd3e3303ace57",
-+    "content-hash": "14db07b5c32c1d4a116808b28633f279",
+-    "content-hash": "2a12d766a348baa23efa39b0e901eec1",
++    "content-hash": "1f8ae1dabf8897d8bda68d38d41e6a2b",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -1430,6 +1430,57 @@
-             ],
+@@ -1580,6 +1580,61 @@
+             },
              "time": "2020-03-27T11:06:43+00:00"
          },
 +        {
@@ -103,28 +103,32 @@ index 9f0437e5..e72d77d4 100644
 +                "monolog",
 +                "productivity"
 +            ],
++            "support": {
++                "issues": "https://github.com/EasyCorp/easy-log-handler/issues",
++                "source": "https://github.com/EasyCorp/easy-log-handler/tree/master"
++            },
 +            "abandoned": true,
 +            "time": "2019-10-24T07:13:31+00:00"
 +        },
          {
              "name": "egulias/email-validator",
              "version": "2.1.11",
-@@ -2686,6 +2737,84 @@
-             ],
+@@ -2918,6 +2973,88 @@
+             },
              "time": "2018-01-15T00:49:33+00:00"
          },
 +        {
 +            "name": "monolog/monolog",
-+            "version": "1.25.2",
++            "version": "1.25.1",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/Seldaek/monolog.git",
-+                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287"
++                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
-+                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
++                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
++                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -189,52 +193,17 @@ index 9f0437e5..e72d77d4 100644
 +                "logging",
 +                "psr-3"
 +            ],
-+            "time": "2019-11-13T10:00:05+00:00"
++            "support": {
++                "issues": "https://github.com/Seldaek/monolog/issues",
++                "source": "https://github.com/Seldaek/monolog/tree/1.x"
++            },
++            "time": "2019-09-06T13:49:17+00:00"
 +        },
          {
              "name": "mtdowling/jmespath.php",
              "version": "2.4.0",
-@@ -3994,16 +4123,16 @@
-         },
-         {
-             "name": "psr/log",
--            "version": "1.1.0",
-+            "version": "1.1.2",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/php-fig/log.git",
--                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
-+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
+@@ -5132,6 +5269,66 @@
              },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
--                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
-+                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
-+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
-                 "shasum": ""
-             },
-             "require": {
-@@ -4012,7 +4141,7 @@
-             "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "1.0.x-dev"
-+                    "dev-master": "1.1.x-dev"
-                 }
-             },
-             "autoload": {
-@@ -4037,7 +4166,7 @@
-                 "psr",
-                 "psr-3"
-             ],
--            "time": "2018-11-20T15:27:04+00:00"
-+            "time": "2019-11-01T11:05:21+00:00"
-         },
-         {
-             "name": "ralouphie/getallheaders",
-@@ -4826,6 +4955,63 @@
-             "homepage": "https://symfony.com",
              "time": "2019-12-01T08:39:58+00:00"
          },
 +        {
@@ -292,37 +261,41 @@ index 9f0437e5..e72d77d4 100644
 +                "env",
 +                "environment"
 +            ],
++            "support": {
++                "source": "https://github.com/symfony/dotenv/tree/v4.4.1"
++            },
 +            "time": "2019-11-23T14:53:46+00:00"
 +        },
          {
              "name": "symfony/error-handler",
              "version": "v4.4.1",
-@@ -5854,23 +6040,41 @@
+@@ -6221,23 +6418,41 @@
              "time": "2019-11-30T08:27:26+00:00"
          },
          {
 -            "name": "symfony/options-resolver",
+-            "version": "v4.4.1",
 +            "name": "symfony/monolog-bridge",
-             "version": "v4.4.1",
++            "version": "v4.4.15",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/symfony/options-resolver.git",
 -                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f"
 +                "url": "https://github.com/symfony/monolog-bridge.git",
-+                "reference": "7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041"
++                "reference": "267085e15c00ea5e8059dbf1cd7ba8f5f7541221"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/2be23e63f33de16b49294ea6581f462932a77e2f",
 -                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f",
-+                "url": "https://api.github.com/repos/symfony/monolog-bridge/zipball/7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041",
-+                "reference": "7c7a9a2fc76b0cae1ea7d2429130c2f943e8f041",
++                "url": "https://api.github.com/repos/symfony/monolog-bridge/zipball/267085e15c00ea5e8059dbf1cd7ba8f5f7541221",
++                "reference": "267085e15c00ea5e8059dbf1cd7ba8f5f7541221",
                  "shasum": ""
              },
              "require": {
 -                "php": "^7.1.3"
 +                "monolog/monolog": "^1.25.1",
-+                "php": "^7.1.3",
++                "php": ">=7.1.3",
 +                "symfony/http-kernel": "^4.3",
 +                "symfony/service-contracts": "^1.1|^2"
              },
@@ -346,7 +319,7 @@ index 9f0437e5..e72d77d4 100644
              "extra": {
                  "branch-alias": {
                      "dev-master": "4.4-dev"
-@@ -5878,7 +6082,7 @@
+@@ -6245,7 +6460,7 @@
              },
              "autoload": {
                  "psr-4": {
@@ -355,7 +328,7 @@ index 9f0437e5..e72d77d4 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -5898,48 +6102,160 @@
+@@ -6265,30 +6480,163 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -367,8 +340,26 @@ index 9f0437e5..e72d77d4 100644
 -                "configuration",
 -                "options"
 -            ],
+             "support": {
+-                "source": "https://github.com/symfony/options-resolver/tree/4.4"
++                "source": "https://github.com/symfony/monolog-bridge/tree/v4.4.15"
+             },
 -            "time": "2019-10-28T21:57:16+00:00"
-+            "time": "2019-11-26T23:16:41+00:00"
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2020-10-02T07:34:48+00:00"
          },
          {
 -            "name": "symfony/orm-pack",
@@ -388,33 +379,16 @@ index 9f0437e5..e72d77d4 100644
 -                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c",
 +                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
 +                "reference": "dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
-                 "shasum": ""
-             },
-             "require": {
--                "doctrine/doctrine-bundle": "^1.6.10|^2.0",
--                "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
--                "doctrine/orm": "^2.5.11",
--                "php": "^7.0"
++                "shasum": ""
++            },
++            "require": {
 +                "monolog/monolog": "~1.22 || ~2.0",
 +                "php": ">=5.6",
 +                "symfony/config": "~3.4 || ~4.0 || ^5.0",
 +                "symfony/dependency-injection": "~3.4.10 || ^4.0.10 || ^5.0",
 +                "symfony/http-kernel": "~3.4 || ~4.0 || ^5.0",
 +                "symfony/monolog-bridge": "~3.4 || ~4.0 || ^5.0"
-             },
--            "type": "symfony-pack",
--            "notification-url": "https://packagist.org/downloads/",
--            "license": [
--                "MIT"
--            ],
--            "description": "A pack for the Doctrine ORM",
--            "time": "2019-10-18T05:41:09+00:00"
--        },
--        {
--            "name": "symfony/polyfill-ctype",
--            "version": "v1.13.1",
--            "source": {
--                "type": "git",
++            },
 +            "require-dev": {
 +                "symfony/console": "~3.4 || ~4.0 || ^5.0",
 +                "symfony/phpunit-bridge": "^3.4.19 || ^4.0 || ^5.0",
@@ -454,6 +428,10 @@ index 9f0437e5..e72d77d4 100644
 +                "log",
 +                "logging"
 +            ],
++            "support": {
++                "issues": "https://github.com/symfony/monolog-bundle/issues",
++                "source": "https://github.com/symfony/monolog-bundle/tree/v3.5.0"
++            },
 +            "time": "2019-11-13T13:11:14+00:00"
 +        },
 +        {
@@ -508,6 +486,9 @@ index 9f0437e5..e72d77d4 100644
 +                "configuration",
 +                "options"
 +            ],
++            "support": {
++                "source": "https://github.com/symfony/options-resolver/tree/4.4"
++            },
 +            "time": "2019-10-28T21:57:16+00:00"
 +        },
 +        {
@@ -522,32 +503,11 @@ index 9f0437e5..e72d77d4 100644
 +                "type": "zip",
 +                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/c57f5e05232ca40626eb9fa52a32bc8565e9231c",
 +                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c",
-+                "shasum": ""
-+            },
-+            "require": {
-+                "doctrine/doctrine-bundle": "^1.6.10|^2.0",
-+                "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
-+                "doctrine/orm": "^2.5.11",
-+                "php": "^7.0"
-+            },
-+            "type": "symfony-pack",
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "description": "A pack for the Doctrine ORM",
-+            "time": "2019-10-18T05:41:09+00:00"
-+        },
-+        {
-+            "name": "symfony/polyfill-ctype",
-+            "version": "v1.13.1",
-+            "source": {
-+                "type": "git",
-                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                 "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
+                 "shasum": ""
              },
-@@ -8576,57 +8892,6 @@
-             ],
+             "require": {
+@@ -9095,61 +9443,6 @@
+             },
              "time": "2019-06-12T12:03:37+00:00"
          },
 -        {
@@ -598,14 +558,18 @@ index 9f0437e5..e72d77d4 100644
 -                "monolog",
 -                "productivity"
 -            ],
+-            "support": {
+-                "issues": "https://github.com/EasyCorp/easy-log-handler/issues",
+-                "source": "https://github.com/EasyCorp/easy-log-handler/tree/master"
+-            },
 -            "abandoned": true,
 -            "time": "2018-07-27T15:41:37+00:00"
 -        },
          {
              "name": "fzaninotto/faker",
              "version": "v1.8.0",
-@@ -8677,84 +8942,6 @@
-             ],
+@@ -9204,88 +9497,6 @@
+             },
              "time": "2018-07-12T10:23:15+00:00"
          },
 -        {
@@ -684,13 +648,17 @@ index 9f0437e5..e72d77d4 100644
 -                "logging",
 -                "psr-3"
 -            ],
+-            "support": {
+-                "issues": "https://github.com/Seldaek/monolog/issues",
+-                "source": "https://github.com/Seldaek/monolog/tree/1.x"
+-            },
 -            "time": "2019-09-06T13:49:17+00:00"
 -        },
          {
              "name": "nikic/php-parser",
              "version": "v4.2.4",
-@@ -8992,63 +9179,6 @@
-             "homepage": "https://symfony.com",
+@@ -9536,66 +9747,6 @@
+             },
              "time": "2019-10-29T11:38:30+00:00"
          },
 -        {
@@ -748,13 +716,16 @@ index 9f0437e5..e72d77d4 100644
 -                "env",
 -                "environment"
 -            ],
+-            "support": {
+-                "source": "https://github.com/symfony/dotenv/tree/v4.4.1"
+-            },
 -            "time": "2019-11-23T14:53:46+00:00"
 -        },
          {
              "name": "symfony/maker-bundle",
              "version": "v1.14.3",
-@@ -9117,136 +9247,6 @@
-             ],
+@@ -9668,143 +9819,6 @@
+             },
              "time": "2019-11-07T00:56:03+00:00"
          },
 -        {
@@ -822,6 +793,9 @@ index 9f0437e5..e72d77d4 100644
 -            ],
 -            "description": "Symfony Monolog Bridge",
 -            "homepage": "https://symfony.com",
+-            "support": {
+-                "source": "https://github.com/symfony/monolog-bridge/tree/v4.4.1"
+-            },
 -            "time": "2019-11-26T23:16:41+00:00"
 -        },
 -        {
@@ -885,6 +859,10 @@ index 9f0437e5..e72d77d4 100644
 -                "log",
 -                "logging"
 -            ],
+-            "support": {
+-                "issues": "https://github.com/symfony/monolog-bundle/issues",
+-                "source": "https://github.com/symfony/monolog-bundle/tree/v3.5.0"
+-            },
 -            "time": "2019-11-13T13:11:14+00:00"
 -        },
          {
@@ -924,22 +902,25 @@ index 96dbf969..5bcdf06e 100644
              type: stream
              path: "%kernel.logs_dir%/%kernel.environment%.log"
 diff --git a/symfony.lock b/symfony.lock
-index 7d44dbd0..8704b429 100644
+index 7d44dbd0..2e9cbb79 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -93,7 +93,10 @@
-             "branch": "master",
-             "version": "1.0",
-             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
+@@ -87,13 +87,7 @@
+         "version": "v1.0.0"
+     },
+     "easycorp/easy-log-handler": {
+-        "version": "1.0",
+-        "recipe": {
+-            "repo": "github.com/symfony/recipes",
+-            "branch": "master",
+-            "version": "1.0",
+-            "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
 -        }
-+        },
-+        "files": [
-+            "config/packages/dev/easy_log_handler.yaml"
-+        ]
++        "version": "v1.0.9"
      },
      "egulias/email-validator": {
          "version": "2.1.11"
-@@ -174,7 +177,7 @@
+@@ -174,7 +168,7 @@
          "version": "1.8.0"
      },
      "monolog/monolog": {
@@ -948,16 +929,16 @@ index 7d44dbd0..8704b429 100644
      },
      "mtdowling/jmespath.php": {
          "version": "2.4.0"
-@@ -336,7 +339,7 @@
+@@ -336,7 +330,7 @@
          "version": "v4.3.5"
      },
      "symfony/dotenv": {
 -        "version": "v4.1.11"
-+        "version": "v4.4.1"
++        "version": "v4.4.15"
      },
      "symfony/error-handler": {
          "version": "v4.4.1"
-@@ -423,16 +426,21 @@
+@@ -423,16 +417,21 @@
          "version": "v4.3.4"
      },
      "symfony/monolog-bridge": {

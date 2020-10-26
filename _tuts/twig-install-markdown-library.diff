@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 156ed18d..d27dc581 100644
+index 9350f5e7..703fe9f3 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -10,6 +10,7 @@
+@@ -11,6 +11,7 @@
          "knplabs/knp-time-bundle": "^1.8",
          "league/flysystem-aws-s3-v3": "^1.0",
          "league/flysystem-cached-adapter": "^1.0",
@@ -11,19 +11,19 @@ index 156ed18d..d27dc581 100644
          "nexylan/slack-bundle": "^2.1,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index fe798df9..8d38895c 100644
+index e602ecaf..caca8ae7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "138c8ab37f9633a6811bb78083bfc80b",
-+    "content-hash": "80e2d9223773c3e7ef6d51530b838552",
+-    "content-hash": "4dbaaebd6372086accea16563431e81c",
++    "content-hash": "f8bc0ca3bd00aa7513fa39a44d03c581",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -2298,6 +2298,70 @@
+@@ -2371,6 +2371,70 @@
              "description": "An adapter decorator to enable meta-data caching.",
              "time": "2018-07-09T20:51:04+00:00"
          },

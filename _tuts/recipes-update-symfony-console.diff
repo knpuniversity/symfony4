@@ -73,10 +73,10 @@ index 1dab152d..976a7763 100644
  $_SERVER['APP_DEBUG'] = $_SERVER['APP_DEBUG'] ?? $_ENV['APP_DEBUG'] ?? 'prod' !== $_SERVER['APP_ENV'];
  $_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = (int) $_SERVER['APP_DEBUG'] || filter_var($_SERVER['APP_DEBUG'], FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
 diff --git a/symfony.lock b/symfony.lock
-index 8704b429..2e580d72 100644
+index 2e9cbb79..86d25ddc 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -303,13 +303,17 @@
+@@ -294,13 +294,17 @@
          "version": "v4.1.11"
      },
      "symfony/console": {

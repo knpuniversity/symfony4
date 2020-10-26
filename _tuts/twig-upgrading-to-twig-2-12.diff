@@ -1,8 +1,8 @@
 diff --git a/composer.lock b/composer.lock
-index 8d38895c..1012bf57 100644
+index caca8ae7..9a4d3db8 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -2872,15 +2872,15 @@
+@@ -2895,15 +2895,15 @@
              "authors": [
                  {
                      "name": "Jim Schmid",
@@ -22,7 +22,7 @@ index 8d38895c..1012bf57 100644
                  }
              ],
              "description": "Integrates Flysystem filesystem abstraction library to your Symfony2 project.",
-@@ -7476,16 +7476,16 @@
+@@ -7517,16 +7517,16 @@
          },
          {
              "name": "twig/twig",
@@ -43,7 +43,7 @@ index 8d38895c..1012bf57 100644
                  "shasum": ""
              },
              "require": {
-@@ -7495,13 +7495,13 @@
+@@ -7536,13 +7536,13 @@
              },
              "require-dev": {
                  "psr/container": "^1.0",
@@ -60,7 +60,7 @@ index 8d38895c..1012bf57 100644
                  }
              },
              "autoload": {
-@@ -7523,15 +7523,15 @@
+@@ -7564,15 +7564,15 @@
                      "homepage": "http://fabien.potencier.org",
                      "role": "Lead Developer"
                  },
@@ -81,7 +81,7 @@ index 8d38895c..1012bf57 100644
                  }
              ],
              "description": "Twig, the flexible, fast, and secure template language for PHP",
-@@ -7539,7 +7539,7 @@
+@@ -7580,7 +7580,7 @@
              "keywords": [
                  "templating"
              ],
