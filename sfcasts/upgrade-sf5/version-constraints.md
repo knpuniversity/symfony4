@@ -48,7 +48,7 @@ Open up the `composer.json` file and find `symfony/mailer`:
 
 Interesting: some packages - like `symfony/form` or `symfony/framework-bundle`
 are set to `^4.0` - which more or less means `4.*`. But the `symfony/mailer`
-version if `4.3.*`.
+version is `4.3.*`.
 
 ## Symfony Flex: composer.json Version Formatting
 
