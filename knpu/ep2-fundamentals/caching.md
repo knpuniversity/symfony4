@@ -21,6 +21,11 @@ aliases to the same service, it means that you can use *either* type hint to get
 the *exact* same object. Yep, both `CacheItemPoolInterface` and `AdapterInterface`
 will cause the *exact* same object to be passed to you.
 
+***TIP
+In recent versions of Symfony, a `Symfony\Contracts\Cache\CacheInterface` can also
+be used to autowire the cache service and it's the preferred type-hint to use.
+***
+
 So... which one should we use? The docs will recommend one, but it technically does
 *not* matter. The only difference is that PhpStorm may auto-complete different methods
 for you based on the interface or class you choose. So if it doesn't auto-complete
