@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 17bf64db..395451f3 100644
+index fc9fe707..f8f90fae 100644
 --- a/package.json
 +++ b/package.json
 @@ -7,6 +7,7 @@
@@ -8,13 +8,13 @@ index 17bf64db..395451f3 100644
          "font-awesome": "^4.7.0",
 +        "foundation-emails": "^2.2.1",
          "jquery": "^3.4.0",
-         "node-sass": "^4.11.0",
          "popper.js": "^1.15.0",
+         "postcss-loader": "^3.0.0",
 diff --git a/yarn.lock b/yarn.lock
-index 8f567e79..ec99e746 100644
+index de757ac9..472eb2fa 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2823,6 +2823,11 @@ forwarded@~0.1.2:
+@@ -2690,6 +2690,11 @@ forwarded@~0.1.2:
    resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
    integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
  

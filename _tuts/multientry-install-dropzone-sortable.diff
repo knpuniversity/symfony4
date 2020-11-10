@@ -10,7 +10,7 @@ index 5f2a78ad..53a5a83a 100644
  Dropzone.autoDiscover = false;
  
 diff --git a/package.json b/package.json
-index b26e3193..b9e50efc 100644
+index 5bb992b2..3b2b6243 100644
 --- a/package.json
 +++ b/package.json
 @@ -3,11 +3,13 @@
@@ -20,8 +20,8 @@ index b26e3193..b9e50efc 100644
 +        "dropzone": "^5.5.1",
          "font-awesome": "^4.7.0",
          "jquery": "^3.4.0",
-         "node-sass": "^4.11.0",
          "popper.js": "^1.15.0",
+         "sass": "^1.29.0",
          "sass-loader": "^7.0.1",
 +        "sortablejs": "^1.8.4",
          "webpack-notifier": "^1.6.0"
@@ -40,10 +40,10 @@ index d2697b22..07855d60 100644
      {{ encore_entry_script_tags('admin_article_form') }}
  {% endblock %}
 diff --git a/yarn.lock b/yarn.lock
-index f861dbe8..878dfa23 100644
+index 1f6b8cbc..fadafbaa 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2277,6 +2277,11 @@ dot-prop@^4.1.1:
+@@ -2189,6 +2189,11 @@ dot-prop@^4.1.1:
    dependencies:
      is-obj "^1.0.0"
  
@@ -55,7 +55,7 @@ index f861dbe8..878dfa23 100644
  duplexify@^3.4.2, duplexify@^3.6.0:
    version "3.7.1"
    resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.7.1.tgz#2a4df5317f6ccfd91f86d6fd25d8d8a103b88309"
-@@ -5825,6 +5830,11 @@ sockjs@0.3.19:
+@@ -5358,6 +5363,11 @@ sockjs@0.3.19:
      faye-websocket "^0.10.0"
      uuid "^3.0.1"
  
