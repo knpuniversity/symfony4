@@ -28,8 +28,13 @@ Uncomment it:
 
 Back at the terminal, copy the `yarn add` command, go to the open tab, and run it!
 
+***TIP
+Instead of `node-sass`, install `sass`. It's a pure-JavaScript implementation that
+is easier to install and is now recommended.
+***
+
 ```terminal-silent
-yarn add sass-loader@^7.0.1 node-sass --dev
+yarn add sass-loader@^7.0.1 sass --dev
 ```
 
 This *could* take a minute or two: `node-sass` is a C library and it may need to
