@@ -21,6 +21,14 @@ and pass it `app`, because that's the name of the entry:
 At the bottom, replace the script tag with almost the same thing:
 `{{ encore_entry_script_tags('app') }}`:
 
+***TIP
+In new Symfony projects, the `javascripts` block is at the top of this file - inside the `<head>` tag.
+Also, Encore will render a `defer` attribute on each `script` tag. To follow this tutorial, in
+`config/packages/webpack_encore.yaml`, comment-out the `defer: true` key to avoid this.
+For more info about `defer` and its performance benefits, check out
+https://symfony.com/blog/moving-script-inside-head-and-the-defer-attribute
+***
+
 [[[ code('46af2af729') ]]]
 
 Move over and refresh to try this. Wow! This made absolutely *no* difference!
