@@ -110,7 +110,7 @@ Easy enough! For the size part, if a `$size` is passed in, use `$url .= `
 to add `sprintf('?size=%dx%d')`, passing `$size` for both of these wildcards.
 At the bottom, `return $url`:
 
-[[[ code('f167708669') ]]]
+[[[ code('a70098b47e') ]]]
 
 Now that we're done with our fancy new function, go into `index.html.twig`, remove
 the long string, and just print `app.user.avatarUrl`:
