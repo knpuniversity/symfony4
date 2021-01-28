@@ -106,7 +106,7 @@ process. Before we walk through each one, because this authenticator will be for
 a login form, there's a different base class that allows us to... well... do less
 work!
 
-Instead of `extends AbstractGuardAuthenticator` use `extends AbtractFormLoginAuthenticator`:
+Instead of `extends AbstractGuardAuthenticator` use `extends AbstractFormLoginAuthenticator`:
 
 [[[ code('bb12700cb9') ]]]
 
