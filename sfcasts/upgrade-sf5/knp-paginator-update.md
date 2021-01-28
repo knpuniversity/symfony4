@@ -75,7 +75,7 @@ downloading dependencies *even* though I'm *actually* using PHP 7.3.
 
 Why would I want that? By setting this value to whatever PHP version you have on
 production, it will make sure you don't accidentally download any packages that
-work on your local machine with its *higher* PHP version... and explode on production.
+work on your local machine with its *higher* PHP version... but explode on production.
 
 So if our goal is to upgrade to Symfony 5, our production server will need to
 *at least* be set to Symfony 5's minimum PHP version, which is 7.2.5. And
