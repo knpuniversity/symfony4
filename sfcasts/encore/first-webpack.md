@@ -105,8 +105,7 @@ and the public path: `build/app.css`:
 
 [[[ code('6a73e5bf73') ]]]
 
-At the bottom, add the `script` tag with `src="{{ asset('build/app.js') }}"`. Oh,
-make that `app.js`:
+At the bottom, add the `script` tag with `src="{{ asset('build/app.js') }}"`.
 
 ***TIP
 In new Symfony projects, the `javascripts` block is at the top of this file - inside the `<head>` tag.
