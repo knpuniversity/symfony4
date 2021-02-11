@@ -19,7 +19,7 @@ Symfony to call our callback, the moment the underlying "data" is set onto
 the form - the `Article` object. Use `$builder->addEventListener()` and listen on an
 event called `FormEvents::PRE_SET_DATA`. Two things: first, this time, we're attaching
 the event to the entire *form*, which means our callback will be passed info about
-the entire form. That's *usually* want you want: listening to a single field like
+the entire form. That's *usually* what you want: listening to a single field like
 we did before was a bit of a hack to allow us to remove and re-add the field at
 *just* the right moment.
 
