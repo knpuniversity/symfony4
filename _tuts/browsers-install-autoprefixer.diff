@@ -11,10 +11,10 @@ index 78aab785..6d23a476 100644
          "core-js": "^3.0.0",
          "dropzone": "^5.5.1",
 diff --git a/yarn.lock b/yarn.lock
-index e9b80725..fde2a6d7 100644
+index a2aea666..4da6ce68 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1082,6 +1082,18 @@ autocomplete.js@^0.36.0:
+@@ -1304,6 +1304,18 @@ autocomplete.js@^0.36.0:
    dependencies:
      immediate "^3.2.3"
  
@@ -30,19 +30,31 @@ index e9b80725..fde2a6d7 100644
 +    postcss "^7.0.14"
 +    postcss-value-parser "^3.3.1"
 +
- aws-sign2@~0.7.0:
-   version "0.7.0"
-   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
-@@ -1405,7 +1417,7 @@ caniuse-api@^3.0.0:
-     lodash.memoize "^4.1.2"
-     lodash.uniq "^4.5.0"
+ babel-loader@^8.0.0:
+   version "8.2.2"
+   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.2.tgz#9363ce84c10c9a40e6c753748e1441b60c8a0b81"
+@@ -1545,7 +1557,7 @@ browserify-zlib@^0.2.0:
+   dependencies:
+     pako "~1.0.5"
  
--caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000955:
-+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000957:
-   version "1.0.30000957"
-   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000957.tgz#fb1026bf184d7d62c685205358c3b24b9e29f7b3"
-   integrity sha512-8wxNrjAzyiHcLXN/iunskqQnJquQQ6VX8JHfW5kLgAPRSiSuKZiNfmIkP5j7jgyXqAQBSoXyJxfnbCFS0ThSiQ==
-@@ -4040,6 +4052,11 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
+-browserslist@^4.0.0, browserslist@^4.14.5, browserslist@^4.16.3:
++browserslist@^4.0.0, browserslist@^4.14.5, browserslist@^4.16.3, browserslist@^4.5.4:
+   version "4.16.3"
+   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.3.tgz#340aa46940d7db878748567c5dea24a48ddf3717"
+   integrity sha512-vIyhWmIkULaq04Gt93txdh+j02yX/JzlyhLYbV3YQCn/zvES3JnY7TifHHvvr1w5hTDluNKMkV05cs4vy8Q7sw==
+@@ -1683,6 +1695,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001181:
+   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001191.tgz#bacb432b6701f690c8c5f7c680166b9a9f0843d9"
+   integrity sha512-xJJqzyd+7GCJXkcoBiQ1GuxEiOBCLQ0aVW9HMekifZsAVGdj5eJ4mFB9fEhSHipq9IOk/QXFJUiIr9lZT+EsGw==
+ 
++caniuse-lite@^1.0.30000957:
++  version "1.0.30000957"
++  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000957.tgz#fb1026bf184d7d62c685205358c3b24b9e29f7b3"
++  integrity sha512-8wxNrjAzyiHcLXN/iunskqQnJquQQ6VX8JHfW5kLgAPRSiSuKZiNfmIkP5j7jgyXqAQBSoXyJxfnbCFS0ThSiQ==
++
+ chalk@^1.1.3:
+   version "1.1.3"
+   resolved "https://registry.yarnpkg.com/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
+@@ -4330,6 +4347,11 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
    resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
    integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
  
@@ -54,7 +66,7 @@ index e9b80725..fde2a6d7 100644
  normalize-url@^3.0.0:
    version "3.3.0"
    resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
-@@ -4082,6 +4099,11 @@ nth-check@^1.0.2, nth-check@~1.0.1:
+@@ -4349,6 +4371,11 @@ nth-check@^1.0.2:
    dependencies:
      boolbase "~1.0.0"
  
@@ -63,6 +75,6 @@ index e9b80725..fde2a6d7 100644
 +  resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
 +  integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 +
- number-is-nan@^1.0.0:
-   version "1.0.1"
-   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
+ object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+   version "4.1.1"
+   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"

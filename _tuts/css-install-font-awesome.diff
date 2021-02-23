@@ -14623,12 +14623,12 @@ index 99925f2e..cfada468 100644
          {% endblock %}
      </head>
 diff --git a/yarn.lock b/yarn.lock
-index 25386808..2fc02c80 100644
+index 9057e57e..65a0d546 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2559,6 +2559,11 @@ follow-redirects@^1.0.0:
-   dependencies:
-     debug "^3.2.6"
+@@ -2908,6 +2908,11 @@ follow-redirects@^1.0.0:
+   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.2.tgz#dd73c8effc12728ba5cf4259d760ea5fb83e3147"
+   integrity sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
  
 +font-awesome@^4.7.0:
 +  version "4.7.0"

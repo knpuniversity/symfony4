@@ -23,10 +23,10 @@ index 75b7eda5..6302972c 100644
          "jquery": "^3.4.0",
          "webpack-notifier": "^1.6.0"
 diff --git a/yarn.lock b/yarn.lock
-index f7ba3b10..4c0b38c0 100644
+index 3f4e3ab6..420bb11d 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1158,6 +1158,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
+@@ -1436,6 +1436,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
    resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
    integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
  

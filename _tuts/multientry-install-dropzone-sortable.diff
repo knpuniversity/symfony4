@@ -40,12 +40,12 @@ index d2697b22..07855d60 100644
      {{ encore_entry_script_tags('admin_article_form') }}
  {% endblock %}
 diff --git a/yarn.lock b/yarn.lock
-index 1f6b8cbc..fadafbaa 100644
+index 817fbb21..c8ff1187 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2189,6 +2189,11 @@ dot-prop@^4.1.1:
+@@ -2436,6 +2436,11 @@ dot-prop@^5.2.0:
    dependencies:
-     is-obj "^1.0.0"
+     is-obj "^2.0.0"
  
 +dropzone@^5.5.1:
 +  version "5.5.1"
@@ -55,9 +55,9 @@ index 1f6b8cbc..fadafbaa 100644
  duplexify@^3.4.2, duplexify@^3.6.0:
    version "3.7.1"
    resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.7.1.tgz#2a4df5317f6ccfd91f86d6fd25d8d8a103b88309"
-@@ -5358,6 +5363,11 @@ sockjs@0.3.19:
-     faye-websocket "^0.10.0"
-     uuid "^3.0.1"
+@@ -5655,6 +5660,11 @@ sockjs@^0.3.21:
+     uuid "^3.4.0"
+     websocket-driver "^0.7.4"
  
 +sortablejs@^1.8.4:
 +  version "1.8.4"

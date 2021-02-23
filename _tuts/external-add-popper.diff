@@ -11,10 +11,10 @@ index 6302972c..09ee8a9d 100644
      },
      "license": "UNLICENSED",
 diff --git a/yarn.lock b/yarn.lock
-index 4c0b38c0..25386808 100644
+index 420bb11d..9057e57e 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -4253,6 +4253,11 @@ pkg-up@^1.0.0:
+@@ -4609,6 +4609,11 @@ pkg-up@^1.0.0:
    dependencies:
      find-up "^1.0.0"
  
@@ -23,6 +23,6 @@ index 4c0b38c0..25386808 100644
 +  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
 +  integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
 +
- portfinder@^1.0.20:
-   version "1.0.20"
-   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.20.tgz#bea68632e54b2e13ab7b0c4775e9b41bf270e44a"
+ portfinder@^1.0.26:
+   version "1.0.28"
+   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.28.tgz#67c4622852bd5374dd1dd900f779f53462fac778"

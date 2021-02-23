@@ -11,10 +11,10 @@ index fc9fe707..f8f90fae 100644
          "popper.js": "^1.15.0",
          "postcss-loader": "^3.0.0",
 diff --git a/yarn.lock b/yarn.lock
-index de757ac9..472eb2fa 100644
+index 716b07d7..2450ef97 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2690,6 +2690,11 @@ forwarded@~0.1.2:
+@@ -2924,6 +2924,11 @@ forwarded@~0.1.2:
    resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
    integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
  
