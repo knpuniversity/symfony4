@@ -57,7 +57,7 @@ So even though both Webpack and Encore are *Node* libraries, if you're using Sym
 you'll install Encore via composer... well... sort of. Open a new terminal tab and run:
 
 ```terminal
-composer require encore
+composer require "encore:^1.8"
 ```
 
 This downloads a small bundle called WebpackEncoreBundle. Actually, Encore *itself*
