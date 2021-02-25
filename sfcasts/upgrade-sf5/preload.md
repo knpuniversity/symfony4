@@ -9,7 +9,14 @@ it: "New in Symfony 4.4: Preloading Symfony Applications in PHP 7.4".
 
 Here's the deal: in PHP 7.4 a new feature was added called "preloading". Basically,
 in your `php.ini` file, you can point an `opcache.preload` setting at a file that
-contains a list of all the PHP files that your application uses. By doing this,
+contains a list of all the PHP files that your application uses.
+
+***TIP
+You may also need to set an `opcache.preload_user` setting set to your web server
+user (e.g. `www-data`).
+***
+
+By doing this,
 when PHP starts, it will "preload" those files into OPcache. You're effectively
 giving your web-server a "head" start: telling it to load the source code it will
 need into memory *now* so that it's ready when you start serving traffic.
