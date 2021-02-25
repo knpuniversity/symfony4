@@ -72,6 +72,18 @@ first is `router.request_context.scheme`, which you'll set to `https` or `http`.
 The other is `router.request_context.host` which, for our local development, will
 be `localhost:8000`.
 
+***TIP
+In Symfony 5.1, instead of setting these 2 parameters, you can set 1 new piece of config:
+
+```yml
+# config/packages/routing.yaml
+framework:
+    router:
+        # ...
+       default_uri: 'https://example.org/my/path/'
+```
+***
+
 Now obviously, we don't want to hardcode these - at least not the second value:
 it will be different on production. Instead, we need to set these as new
 environment variables. And... hey! In `.env`, the `SITE_BASE_URL` is *almost*
