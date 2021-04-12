@@ -59,6 +59,8 @@ directory with a `welcome.html.twig` template file inside. Open up the `template
 directory. To organize our email-related templates, let's create a new sub-directory
 called `email/`. Then, paste the `welcome.html.twig` template inside.
 
+[[[ code('ebfd366e3e') ]]]
+
 Say hello to our fancy new `templates/email/welcome.html.twig` file. This is a
 *full* HTML page with embedded styling via a `<style>` tag... and... nothing
 else interesting: it's 100% static. This `%name%` thing I added here isn't a variable:
