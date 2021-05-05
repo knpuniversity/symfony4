@@ -1,5 +1,5 @@
 diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
-index 602b14b4..f9cbeae3 100644
+index 602b14b..f9cbeae 100644
 --- a/assets/js/admin_article_form.js
 +++ b/assets/js/admin_article_form.js
 @@ -48,6 +48,8 @@ $(document).ready(function() {

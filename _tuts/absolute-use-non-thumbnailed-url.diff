@@ -1,5 +1,5 @@
 diff --git a/templates/article_admin/_form.html.twig b/templates/article_admin/_form.html.twig
-index b5999014..eb385c7a 100644
+index b599901..eb385c7 100644
 --- a/templates/article_admin/_form.html.twig
 +++ b/templates/article_admin/_form.html.twig
 @@ -13,7 +13,9 @@

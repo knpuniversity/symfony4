@@ -3,7 +3,7 @@ similarity index 100%
 rename from public/js/admin_article_form.js
 rename to assets/js/admin_article_form.js
 diff --git a/templates/article_admin/edit.html.twig b/templates/article_admin/edit.html.twig
-index 0eed3095..d2697b22 100644
+index 0eed309..d2697b2 100644
 --- a/templates/article_admin/edit.html.twig
 +++ b/templates/article_admin/edit.html.twig
 @@ -38,5 +38,5 @@
@@ -14,7 +14,7 @@ index 0eed3095..d2697b22 100644
 +    {{ encore_entry_script_tags('admin_article_form') }}
  {% endblock %}
 diff --git a/webpack.config.js b/webpack.config.js
-index 0ecaee14..98f4b7ab 100644
+index 0ecaee1..98f4b7a 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -19,6 +19,7 @@ Encore

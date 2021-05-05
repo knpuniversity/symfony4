@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 44b2278e..67652a8c 100644
+index 44b2278..67652a8 100644
 --- a/.env
 +++ b/.env
 @@ -45,3 +45,8 @@ MAILER_DSN=smtp://null
@@ -12,7 +12,7 @@ index 44b2278e..67652a8c 100644
 +# MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
 +###< symfony/sendgrid-mailer ###
 diff --git a/composer.json b/composer.json
-index 88e13c93..9fa718f1 100644
+index 88e13c9..9fa718f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -24,7 +24,7 @@ index 88e13c93..9fa718f1 100644
          "symfony/twig-bundle": "^4.0",
          "symfony/twig-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 4ec55ec2..e5afb227 100644
+index d03e1bc..85a256b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -97,7 +97,7 @@ index 4ec55ec2..e5afb227 100644
              "name": "symfony/serializer",
              "version": "v4.3.4",
 diff --git a/symfony.lock b/symfony.lock
-index e8a58986..ddab9293 100644
+index e8a5898..ddab929 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -494,6 +494,15 @@

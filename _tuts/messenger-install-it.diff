@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 03c8fcad..eee59101 100644
+index 03c8fca..eee5910 100644
 --- a/.env
 +++ b/.env
 @@ -52,3 +52,10 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
@@ -14,7 +14,7 @@ index 03c8fcad..eee59101 100644
 +# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
 +###< symfony/messenger ###
 diff --git a/composer.json b/composer.json
-index 9fa718f1..2ffb4ba2 100644
+index 9fa718f..2ffb4ba 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -25,6 +25,7 @@
@@ -26,7 +26,7 @@ index 9fa718f1..2ffb4ba2 100644
          "symfony/security-bundle": "^4.0",
          "symfony/sendgrid-mailer": "4.3.*",
 diff --git a/composer.lock b/composer.lock
-index e5afb227..b7060a31 100644
+index 85a256b..d0b070d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -121,7 +121,7 @@ index e5afb227..b7060a31 100644
              "version": "v4.3.4",
 diff --git a/config/packages/messenger.yaml b/config/packages/messenger.yaml
 new file mode 100644
-index 00000000..6b7319ce
+index 0000000..6b7319c
 --- /dev/null
 +++ b/config/packages/messenger.yaml
 @@ -0,0 +1,14 @@
@@ -140,7 +140,7 @@ index 00000000..6b7319ce
 +            # Route your messages to the transports
 +            # 'App\Message\YourMessage': async
 diff --git a/symfony.lock b/symfony.lock
-index ddab9293..fed6e88a 100644
+index ddab929..fed6e88 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -404,6 +404,18 @@

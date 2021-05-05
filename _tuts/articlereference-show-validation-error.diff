@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 882f2e2d..ec03cb1b 100644
+index 882f2e2..ec03cb1 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -26,7 +26,7 @@ index 882f2e2d..ec03cb1b 100644
  
          $filename = $uploaderHelper->uploadArticleReference($uploadedFile);
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index f360a280..827883e7 100644
+index f360a28..827883e 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -71,6 +71,12 @@

@@ -4203,7 +4203,7 @@ HcmV?d00001
 
 diff --git a/tutorial/inky/author-weekly-report.html.twig b/tutorial/inky/author-weekly-report.html.twig
 new file mode 100644
-index 00000000..59698193
+index 0000000..5969819
 --- /dev/null
 +++ b/tutorial/inky/author-weekly-report.html.twig
 @@ -0,0 +1,38 @@
@@ -4247,7 +4247,7 @@ index 00000000..59698193
 +</container>
 diff --git a/tutorial/inky/email.css b/tutorial/inky/email.css
 new file mode 100644
-index 00000000..c7ddf596
+index 0000000..c7ddf59
 --- /dev/null
 +++ b/tutorial/inky/email.css
 @@ -0,0 +1,36 @@
@@ -4289,7 +4289,7 @@ index 00000000..c7ddf596
 +}
 diff --git a/tutorial/inky/welcome.html.twig b/tutorial/inky/welcome.html.twig
 new file mode 100644
-index 00000000..cd729ee2
+index 0000000..cd729ee
 --- /dev/null
 +++ b/tutorial/inky/welcome.html.twig
 @@ -0,0 +1,75 @@
@@ -4370,7 +4370,7 @@ index 00000000..cd729ee2
 +</container>
 diff --git a/tutorial/welcome.html.twig b/tutorial/welcome.html.twig
 new file mode 100644
-index 00000000..6d363ced
+index 0000000..6d363ce
 --- /dev/null
 +++ b/tutorial/welcome.html.twig
 @@ -0,0 +1,97 @@

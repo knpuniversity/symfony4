@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index ef5d1fce..23bf03c3 100644
+index ef5d1fc..23bf03c 100644
 --- a/.env
 +++ b/.env
 @@ -32,3 +32,7 @@ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
@@ -11,7 +11,7 @@ index ef5d1fce..23bf03c3 100644
 +# MAILER_DSN=smtp://localhost
 +###< symfony/mailer ###
 diff --git a/composer.json b/composer.json
-index e64617fc..9350f5e7 100644
+index e64617f..9350f5e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -22,6 +22,7 @@
@@ -23,7 +23,7 @@ index e64617fc..9350f5e7 100644
          "symfony/security-bundle": "^4.0",
          "symfony/serializer-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 6d502564..e602ecaf 100644
+index 7ad08d4..bab3c46 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -171,7 +171,7 @@ index 6d502564..e602ecaf 100644
              "version": "v4.3.4",
 diff --git a/config/packages/mailer.yaml b/config/packages/mailer.yaml
 new file mode 100644
-index 00000000..56a650d8
+index 0000000..56a650d
 --- /dev/null
 +++ b/config/packages/mailer.yaml
 @@ -0,0 +1,3 @@
@@ -179,7 +179,7 @@ index 00000000..56a650d8
 +    mailer:
 +        dsn: '%env(MAILER_DSN)%'
 diff --git a/symfony.lock b/symfony.lock
-index c7fd0e57..85821cfa 100644
+index c7fd0e5..85821cf 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -95,6 +95,9 @@

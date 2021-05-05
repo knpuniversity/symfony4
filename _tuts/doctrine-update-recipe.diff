@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 9b579040..1fe7306f 100644
+index 9b57904..1fe7306 100644
 --- a/.env
 +++ b/.env
 @@ -21,9 +21,10 @@ APP_SECRET=96457dc35ef41bcf506c3e2226804b8d
@@ -16,7 +16,7 @@ index 9b579040..1fe7306f 100644
  ###< doctrine/doctrine-bundle ###
  
 diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
-index 9521fad7..616c6407 100644
+index 9521fad..616c640 100644
 --- a/config/packages/doctrine.yaml
 +++ b/config/packages/doctrine.yaml
 @@ -1,24 +1,13 @@
@@ -50,7 +50,7 @@ index 9521fad7..616c6407 100644
          mappings:
              App:
 diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
-index 0a7c53b4..084f59a0 100644
+index 0a7c53b..084f59a 100644
 --- a/config/packages/prod/doctrine.yaml
 +++ b/config/packages/prod/doctrine.yaml
 @@ -2,26 +2,14 @@ doctrine:
@@ -87,7 +87,7 @@ index 0a7c53b4..084f59a0 100644
  framework:
      cache:
 diff --git a/symfony.lock b/symfony.lock
-index 3cdbb6c4..feebf87e 100644
+index 3cdbb6c..feebf87 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -45,13 +45,19 @@

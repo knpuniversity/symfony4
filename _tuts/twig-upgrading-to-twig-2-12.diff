@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index caca8ae7..9a4d3db8 100644
+index 0455e4a..391dfa8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -2895,15 +2895,15 @@
@@ -22,71 +22,3 @@ index caca8ae7..9a4d3db8 100644
                  }
              ],
              "description": "Integrates Flysystem filesystem abstraction library to your Symfony2 project.",
-@@ -7517,16 +7517,16 @@
-         },
-         {
-             "name": "twig/twig",
--            "version": "v2.11.3",
-+            "version": "v2.12.1",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/twigphp/Twig.git",
--                "reference": "699ed2342557c88789a15402de5eb834dedd6792"
-+                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/twigphp/Twig/zipball/699ed2342557c88789a15402de5eb834dedd6792",
--                "reference": "699ed2342557c88789a15402de5eb834dedd6792",
-+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
-+                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
-                 "shasum": ""
-             },
-             "require": {
-@@ -7536,13 +7536,13 @@
-             },
-             "require-dev": {
-                 "psr/container": "^1.0",
--                "symfony/debug": "^2.7",
--                "symfony/phpunit-bridge": "^3.4.19|^4.1.8|^5.0"
-+                "symfony/debug": "^3.4|^4.2",
-+                "symfony/phpunit-bridge": "^4.4@dev|^5.0"
-             },
-             "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "2.11-dev"
-+                    "dev-master": "2.12-dev"
-                 }
-             },
-             "autoload": {
-@@ -7564,15 +7564,15 @@
-                     "homepage": "http://fabien.potencier.org",
-                     "role": "Lead Developer"
-                 },
--                {
--                    "name": "Armin Ronacher",
--                    "email": "armin.ronacher@active-4.com",
--                    "role": "Project Founder"
--                },
-                 {
-                     "name": "Twig Team",
-                     "homepage": "https://twig.symfony.com/contributors",
-                     "role": "Contributors"
-+                },
-+                {
-+                    "name": "Armin Ronacher",
-+                    "email": "armin.ronacher@active-4.com",
-+                    "role": "Project Founder"
-                 }
-             ],
-             "description": "Twig, the flexible, fast, and secure template language for PHP",
-@@ -7580,7 +7580,7 @@
-             "keywords": [
-                 "templating"
-             ],
--            "time": "2019-06-18T15:37:11+00:00"
-+            "time": "2019-10-17T07:34:53+00:00"
-         },
-         {
-             "name": "webmozart/assert",

@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index f91075c2..38a8ee2a 100644
+index f91075c..38a8ee2 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -7,11 +7,6 @@
@@ -15,7 +15,7 @@ index f91075c2..38a8ee2a 100644
  .phpunit
  .phpunit.result.cache
 diff --git a/composer.json b/composer.json
-index 2fea4fa9..75abdb13 100644
+index 2fea4fa..75abdb1 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -36,7 +36,6 @@
@@ -27,7 +27,7 @@ index 2fea4fa9..75abdb13 100644
          "symfony/yaml": "4.4.*",
          "twig/cssinliner-extra": "^2.12",
 diff --git a/composer.lock b/composer.lock
-index 62befe2a..e1a33447 100644
+index a6e3618..679c7d3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -109,7 +109,7 @@ index 62befe2a..e1a33447 100644
              "name": "symfony/webpack-encore-bundle",
              "version": "v1.7.2",
 diff --git a/config/bundles.php b/config/bundles.php
-index e7f8a24e..9d730ce2 100644
+index e7f8a24..9d730ce 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -2,7 +2,6 @@
@@ -121,7 +121,7 @@ index e7f8a24e..9d730ce2 100644
      Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
      Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
 diff --git a/symfony.lock b/symfony.lock
-index 4a4c7a82..7ad4be07 100644
+index 4a4c7a8..7ad4be0 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -629,15 +629,6 @@

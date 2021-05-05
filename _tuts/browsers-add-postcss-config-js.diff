@@ -1,6 +1,6 @@
 diff --git a/postcss.config.js b/postcss.config.js
 new file mode 100644
-index 00000000..84f991cd
+index 0000000..84f991c
 --- /dev/null
 +++ b/postcss.config.js
 @@ -0,0 +1,5 @@

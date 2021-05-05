@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 31737864..3f966871 100644
+index 1314666..649b785 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -327,41 +327,60 @@ index 31737864..3f966871 100644
          },
          {
              "name": "knplabs/knp-snappy",
-@@ -9004,16 +9011,16 @@
+@@ -9004,20 +9011,20 @@
          },
          {
              "name": "twig/twig",
--            "version": "v2.12.1",
-+            "version": "v2.12.2",
+-            "version": "v2.13.1",
++            "version": "v2.14.4",
              "source": {
                  "type": "git",
                  "url": "https://github.com/twigphp/Twig.git",
--                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5"
-+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed"
+-                "reference": "57e96259776ddcacf1814885fc3950460c8e18ef"
++                "reference": "0b4ba691fb99ec7952d25deb36c0a83061b93bbf"
              },
              "dist": {
                  "type": "zip",
--                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
--                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
-+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
-+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
+-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/57e96259776ddcacf1814885fc3950460c8e18ef",
+-                "reference": "57e96259776ddcacf1814885fc3950460c8e18ef",
++                "url": "https://api.github.com/repos/twigphp/Twig/zipball/0b4ba691fb99ec7952d25deb36c0a83061b93bbf",
++                "reference": "0b4ba691fb99ec7952d25deb36c0a83061b93bbf",
                  "shasum": ""
              },
              "require": {
-@@ -9067,11 +9074,7 @@
-             "keywords": [
-                 "templating"
+-                "php": ">=7.1.3",
++                "php": ">=7.2.5",
+                 "symfony/polyfill-ctype": "^1.8",
+                 "symfony/polyfill-mbstring": "^1.3"
+             },
+@@ -9028,7 +9035,7 @@
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "2.13-dev"
++                    "dev-master": "2.14-dev"
+                 }
+             },
+             "autoload": {
+@@ -9067,7 +9074,7 @@
              ],
--            "support": {
--                "issues": "https://github.com/twigphp/Twig/issues",
--                "source": "https://github.com/twigphp/Twig/tree/v2.12.1"
--            },
--            "time": "2019-10-17T07:34:53+00:00"
-+            "time": "2019-11-11T16:52:09+00:00"
+             "support": {
+                 "issues": "https://github.com/twigphp/Twig/issues",
+-                "source": "https://github.com/twigphp/Twig/tree/v2.13.1"
++                "source": "https://github.com/twigphp/Twig/tree/v2.14.4"
+             },
+             "funding": [
+                 {
+@@ -9079,7 +9086,7 @@
+                     "type": "tidelift"
+                 }
+             ],
+-            "time": "2020-08-05T15:09:04+00:00"
++            "time": "2021-03-10T10:05:55+00:00"
          },
          {
              "name": "webmozart/assert",
-@@ -9932,12 +9935,12 @@
+@@ -9940,12 +9947,12 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {
@@ -377,7 +396,7 @@ index 31737864..3f966871 100644
      "plugin-api-version": "2.0.0"
  }
 diff --git a/symfony.lock b/symfony.lock
-index 9b5b4ea2..2f5b7f3b 100644
+index 9b5b4ea..2f5b7f3 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -202,7 +202,7 @@

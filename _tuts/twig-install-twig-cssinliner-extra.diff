@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 61aa395b..c03482ca 100644
+index 61aa395..c03482c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,6 +33,7 @@
@@ -11,7 +11,7 @@ index 61aa395b..c03482ca 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 5715b454..ca4ea57d 100644
+index bdc7a21..5c1ca10 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -192,7 +192,7 @@ index 5715b454..ca4ea57d 100644
              "name": "twig/extensions",
              "version": "v1.5.4",
 diff --git a/symfony.lock b/symfony.lock
-index 2a896a0e..327a0d13 100644
+index 2a896a0..327a0d1 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -287,6 +287,12 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index de35ddb1..7f467b98 100644
+index de35ddb..7f467b9 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -9,6 +9,7 @@
@@ -11,7 +11,7 @@ index de35ddb1..7f467b98 100644
  //global.$ = $;
  import getNiceMessage from './get_nice_message';
 diff --git a/package.json b/package.json
-index 75b7eda5..6302972c 100644
+index 75b7eda..6302972 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -23,7 +23,7 @@ index 75b7eda5..6302972c 100644
          "jquery": "^3.4.0",
          "webpack-notifier": "^1.6.0"
 diff --git a/yarn.lock b/yarn.lock
-index 3f4e3ab6..420bb11d 100644
+index 3f4e3ab..420bb11 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1436,6 +1436,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:

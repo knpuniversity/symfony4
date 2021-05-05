@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 4c881d3e..dfd32027 100644
+index 4c881d3..dfd3202 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -17,3 +17,7 @@
@@ -11,7 +11,7 @@ index 4c881d3e..dfd32027 100644
 +/public/media/cache/
 +###< liip/imagine-bundle ###
 diff --git a/composer.json b/composer.json
-index 7a73bb78..dbbb8153 100644
+index 7a73bb7..dbbb815 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -8,6 +8,7 @@
@@ -23,7 +23,7 @@ index 7a73bb78..dbbb8153 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index 7a81179c..afb79a5d 100644
+index 7a81179..afb79a5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -208,7 +208,7 @@ index 7a81179c..afb79a5d 100644
              "name": "michelf/php-markdown",
              "version": "1.8.0",
 diff --git a/config/bundles.php b/config/bundles.php
-index 9c8aa9df..2ea3a624 100644
+index 9c8aa9d..2ea3a62 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -20,4 +20,5 @@ return [
@@ -219,7 +219,7 @@ index 9c8aa9df..2ea3a624 100644
  ];
 diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
 new file mode 100644
-index 00000000..48ea8349
+index 0000000..48ea834
 --- /dev/null
 +++ b/config/packages/liip_imagine.yaml
 @@ -0,0 +1,35 @@
@@ -260,14 +260,14 @@ index 00000000..48ea8349
 +#                    color:    '#fff'
 diff --git a/config/routes/liip_imagine.yaml b/config/routes/liip_imagine.yaml
 new file mode 100644
-index 00000000..201cbd5d
+index 0000000..201cbd5
 --- /dev/null
 +++ b/config/routes/liip_imagine.yaml
 @@ -0,0 +1,2 @@
 +_liip_imagine:
 +    resource: "@LiipImagineBundle/Resources/config/routing.yaml"
 diff --git a/symfony.lock b/symfony.lock
-index b6161b46..a1f54b3c 100644
+index b6161b4..a1f54b3 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -107,6 +107,9 @@

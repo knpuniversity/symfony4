@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index c03482ca..8145016e 100644
+index c03482c..8145016 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -34,7 +34,8 @@
@@ -13,7 +13,7 @@ index c03482ca..8145016e 100644
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index ca4ea57d..69ed01d7 100644
+index 5c1ca10..aa92227 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -140,9 +140,9 @@ index ca4ea57d..69ed01d7 100644
 +        },
          {
              "name": "twig/twig",
-             "version": "v2.12.1",
+             "version": "v2.13.1",
 diff --git a/symfony.lock b/symfony.lock
-index 327a0d13..b8bf57b0 100644
+index 327a0d1..b8bf57b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -152,6 +152,9 @@

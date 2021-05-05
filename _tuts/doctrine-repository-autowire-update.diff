@@ -1,5 +1,5 @@
 diff --git a/src/Repository/ApiTokenRepository.php b/src/Repository/ApiTokenRepository.php
-index 6c3bf6fa..1d68b8ab 100644
+index 6c3bf6f..1d68b8a 100644
 --- a/src/Repository/ApiTokenRepository.php
 +++ b/src/Repository/ApiTokenRepository.php
 @@ -4,7 +4,7 @@ namespace App\Repository;
@@ -21,7 +21,7 @@ index 6c3bf6fa..1d68b8ab 100644
          parent::__construct($registry, ApiToken::class);
      }
 diff --git a/src/Repository/ArticleReferenceRepository.php b/src/Repository/ArticleReferenceRepository.php
-index aedb99be..233e0f42 100644
+index aedb99b..233e0f4 100644
 --- a/src/Repository/ArticleReferenceRepository.php
 +++ b/src/Repository/ArticleReferenceRepository.php
 @@ -4,7 +4,7 @@ namespace App\Repository;
@@ -43,7 +43,7 @@ index aedb99be..233e0f42 100644
          parent::__construct($registry, ArticleReference::class);
      }
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index 5d3323ae..cd295b7c 100644
+index 5d3323a..cd295b7 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
 @@ -6,7 +6,7 @@ use App\Entity\Article;
@@ -65,7 +65,7 @@ index 5d3323ae..cd295b7c 100644
          parent::__construct($registry, Article::class);
      }
 diff --git a/src/Repository/CommentRepository.php b/src/Repository/CommentRepository.php
-index cea2a74a..2e60992c 100644
+index cea2a74..2e60992 100644
 --- a/src/Repository/CommentRepository.php
 +++ b/src/Repository/CommentRepository.php
 @@ -6,7 +6,8 @@ use App\Entity\Comment;
@@ -88,7 +88,7 @@ index cea2a74a..2e60992c 100644
          parent::__construct($registry, Comment::class);
      }
 diff --git a/src/Repository/TagRepository.php b/src/Repository/TagRepository.php
-index 10644ef9..c91ada3c 100644
+index 10644ef..c91ada3 100644
 --- a/src/Repository/TagRepository.php
 +++ b/src/Repository/TagRepository.php
 @@ -4,7 +4,7 @@ namespace App\Repository;
@@ -110,7 +110,7 @@ index 10644ef9..c91ada3c 100644
          parent::__construct($registry, Tag::class);
      }
 diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
-index d153145e..df6343a6 100644
+index d153145..df6343a 100644
 --- a/src/Repository/UserRepository.php
 +++ b/src/Repository/UserRepository.php
 @@ -4,7 +4,7 @@ namespace App\Repository;

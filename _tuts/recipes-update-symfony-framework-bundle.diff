@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index baa77a0a..c4874525 100644
+index baa77a0..c487452 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index baa77a0a..c4874525 100644
  /var/
  /vendor/
 diff --git a/config/packages/cache.yaml b/config/packages/cache.yaml
-index bff190ab..5e9ee9f3 100644
+index bff190a..5e9ee9f 100644
 --- a/config/packages/cache.yaml
 +++ b/config/packages/cache.yaml
 @@ -1,10 +1,10 @@
@@ -29,7 +29,7 @@ index bff190ab..5e9ee9f3 100644
  
          # Redis
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
-index 60f24ae2..6089f4bd 100644
+index 60f24ae..6089f4b 100644
 --- a/config/packages/framework.yaml
 +++ b/config/packages/framework.yaml
 @@ -1,13 +1,14 @@
@@ -51,7 +51,7 @@ index 60f24ae2..6089f4bd 100644
      #fragments: true
 diff --git a/config/routes/dev/framework.yaml b/config/routes/dev/framework.yaml
 new file mode 100644
-index 00000000..bcbbf13d
+index 0000000..bcbbf13
 --- /dev/null
 +++ b/config/routes/dev/framework.yaml
 @@ -0,0 +1,3 @@
@@ -59,7 +59,7 @@ index 00000000..bcbbf13d
 +    resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
 +    prefix: /_error
 diff --git a/config/services.yaml b/config/services.yaml
-index bc80588d..6299ecd7 100644
+index bc80588..6299ecd 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -16,9 +16,6 @@ services:
@@ -73,7 +73,7 @@ index bc80588d..6299ecd7 100644
          # setup special, global autowiring rules
          bind:
 diff --git a/public/index.php b/public/index.php
-index e30f90c0..f094a9b1 100644
+index e30f90c..f094a9b 100644
 --- a/public/index.php
 +++ b/public/index.php
 @@ -1,7 +1,7 @@
@@ -86,7 +86,7 @@ index e30f90c0..f094a9b1 100644
  
  require dirname(__DIR__).'/config/bootstrap.php';
 diff --git a/src/Kernel.php b/src/Kernel.php
-index edb95a08..316d0be5 100644
+index edb95a0..316d0be 100644
 --- a/src/Kernel.php
 +++ b/src/Kernel.php
 @@ -13,19 +13,9 @@ class Kernel extends BaseKernel
@@ -151,7 +151,7 @@ index edb95a08..316d0be5 100644
      }
  }
 diff --git a/symfony.lock b/symfony.lock
-index ac3e6844..2df2d8fc 100644
+index ac3e684..2df2d8f 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -367,13 +367,24 @@

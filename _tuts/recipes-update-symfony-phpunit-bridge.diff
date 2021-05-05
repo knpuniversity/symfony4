@@ -1,5 +1,5 @@
 diff --git a/.env.test b/.env.test
-index 99165890..65bc7a93 100644
+index 9916589..65bc7a9 100644
 --- a/.env.test
 +++ b/.env.test
 @@ -3,3 +3,4 @@ KERNEL_CLASS='App\Kernel'
@@ -8,7 +8,7 @@ index 99165890..65bc7a93 100644
  MESSENGER_TRANSPORT_DSN=in-memory://default
 +PANTHER_APP_ENV=panther
 diff --git a/.gitignore b/.gitignore
-index c4874525..f91075c2 100644
+index c487452..f91075c 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -14,6 +14,7 @@
@@ -20,7 +20,7 @@ index c4874525..f91075c2 100644
  ###< symfony/phpunit-bridge ###
  
 diff --git a/bin/phpunit b/bin/phpunit
-index cd7e32e7..4d1ed05d 100755
+index cd7e32e..4d1ed05 100755
 --- a/bin/phpunit
 +++ b/bin/phpunit
 @@ -1,19 +1,13 @@
@@ -47,7 +47,7 @@ index cd7e32e7..4d1ed05d 100755
 -require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php';
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
-index 134c69e9..5b7c8202 100644
+index 134c69e..5b7c820 100644
 --- a/phpunit.xml.dist
 +++ b/phpunit.xml.dist
 @@ -1,16 +1,18 @@
@@ -74,7 +74,7 @@ index 134c69e9..5b7c8202 100644
  
      <testsuites>
 diff --git a/symfony.lock b/symfony.lock
-index e41b64c1..5116324e 100644
+index e41b64c..5116324 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -458,13 +458,20 @@

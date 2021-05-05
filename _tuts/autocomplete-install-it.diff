@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 3b2b6243..30c81540 100644
+index 3b2b624..30c8154 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -11,7 +11,7 @@ index 3b2b6243..30c81540 100644
          "core-js": "^3.0.0",
          "dropzone": "^5.5.1",
 diff --git a/yarn.lock b/yarn.lock
-index c8ff1187..ddf67297 100644
+index c8ff118..ddf6729 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1297,6 +1297,13 @@ atob@^2.1.2:

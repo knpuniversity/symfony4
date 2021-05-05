@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 2ffb4ba2..9490417b 100644
+index 2ffb4ba..9490417 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,7 +14,7 @@
@@ -12,7 +12,7 @@ index 2ffb4ba2..9490417b 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index b7060a31..ac34ecbe 100644
+index d0b070d..3ddde5a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

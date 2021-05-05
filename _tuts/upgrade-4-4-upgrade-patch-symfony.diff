@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index ac34ecbe..1f1ba091 100644
+index 3ddde5a..2f9ffd5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4242,7 +4242,7 @@
@@ -1533,7 +1533,7 @@ index ac34ecbe..1f1ba091 100644
          },
          {
              "name": "tijsverkoyen/css-to-inline-styles",
-@@ -8700,16 +8698,16 @@
+@@ -8712,16 +8710,16 @@
          },
          {
              "name": "symfony/browser-kit",
@@ -1554,7 +1554,7 @@ index ac34ecbe..1f1ba091 100644
                  "shasum": ""
              },
              "require": {
-@@ -8755,11 +8753,11 @@
+@@ -8767,11 +8765,11 @@
              ],
              "description": "Symfony BrowserKit Component",
              "homepage": "https://symfony.com",
@@ -1568,7 +1568,7 @@ index ac34ecbe..1f1ba091 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/debug-bundle.git",
-@@ -8825,16 +8823,16 @@
+@@ -8837,16 +8835,16 @@
          },
          {
              "name": "symfony/dom-crawler",
@@ -1589,7 +1589,7 @@ index ac34ecbe..1f1ba091 100644
                  "shasum": ""
              },
              "require": {
-@@ -8882,27 +8880,27 @@
+@@ -8894,27 +8892,27 @@
              ],
              "description": "Symfony DomCrawler Component",
              "homepage": "https://symfony.com",
@@ -1623,7 +1623,7 @@ index ac34ecbe..1f1ba091 100644
              },
              "type": "library",
              "extra": {
-@@ -8939,44 +8937,44 @@
+@@ -8951,44 +8949,44 @@
                  "env",
                  "environment"
              ],
@@ -1686,7 +1686,7 @@ index ac34ecbe..1f1ba091 100644
              },
              "type": "symfony-bundle",
              "extra": {
-@@ -9007,20 +9005,20 @@
+@@ -9019,20 +9017,20 @@
                  "scaffold",
                  "scaffolding"
              ],
@@ -1712,7 +1712,7 @@ index ac34ecbe..1f1ba091 100644
                  "shasum": ""
              },
              "require": {
-@@ -9073,34 +9071,34 @@
+@@ -9085,34 +9083,34 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -1760,7 +1760,7 @@ index ac34ecbe..1f1ba091 100644
              },
              "type": "symfony-bundle",
              "extra": {
-@@ -9121,13 +9119,13 @@
+@@ -9133,13 +9131,13 @@
                  "MIT"
              ],
              "authors": [
@@ -1778,7 +1778,7 @@ index ac34ecbe..1f1ba091 100644
                  }
              ],
              "description": "Symfony MonologBundle",
-@@ -9136,20 +9134,20 @@
+@@ -9148,20 +9146,20 @@
                  "log",
                  "logging"
              ],
@@ -1804,7 +1804,7 @@ index ac34ecbe..1f1ba091 100644
                  "shasum": ""
              },
              "require": {
-@@ -9159,7 +9157,7 @@
+@@ -9171,7 +9169,7 @@
                  "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
              },
              "suggest": {
@@ -1813,7 +1813,7 @@ index ac34ecbe..1f1ba091 100644
              },
              "bin": [
                  "bin/simple-phpunit"
-@@ -9167,7 +9165,7 @@
+@@ -9179,7 +9177,7 @@
              "type": "symfony-bridge",
              "extra": {
                  "branch-alias": {
@@ -1822,7 +1822,7 @@ index ac34ecbe..1f1ba091 100644
                  },
                  "thanks": {
                      "name": "phpunit/phpunit",
-@@ -9201,7 +9199,7 @@
+@@ -9213,7 +9211,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -1831,7 +1831,7 @@ index ac34ecbe..1f1ba091 100644
          },
          {
              "name": "symfony/profiler-pack",
-@@ -9233,16 +9231,16 @@
+@@ -9245,16 +9243,16 @@
          },
          {
              "name": "symfony/var-dumper",
@@ -1852,7 +1852,7 @@ index ac34ecbe..1f1ba091 100644
                  "shasum": ""
              },
              "require": {
-@@ -9305,20 +9303,20 @@
+@@ -9317,20 +9315,20 @@
                  "debug",
                  "dump"
              ],
@@ -1878,7 +1878,7 @@ index ac34ecbe..1f1ba091 100644
                  "shasum": ""
              },
              "require": {
-@@ -9371,7 +9369,7 @@
+@@ -9383,7 +9381,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

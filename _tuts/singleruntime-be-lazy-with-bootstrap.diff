@@ -1,5 +1,5 @@
 diff --git a/assets/js/article_show.js b/assets/js/article_show.js
-index e47e84cf..ae010599 100644
+index e47e84c..ae01059 100644
 --- a/assets/js/article_show.js
 +++ b/assets/js/article_show.js
 @@ -1,6 +1,8 @@

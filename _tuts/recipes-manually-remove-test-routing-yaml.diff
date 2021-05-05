@@ -1,6 +1,6 @@
 diff --git a/config/packages/dev/routing.yaml b/config/packages/dev/routing.yaml
 deleted file mode 100644
-index 4116679a..00000000
+index 4116679..0000000
 --- a/config/packages/dev/routing.yaml
 +++ /dev/null
 @@ -1,3 +0,0 @@

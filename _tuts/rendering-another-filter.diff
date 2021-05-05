@@ -1,5 +1,5 @@
 diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
-index 372e159e..a86c1f52 100644
+index 372e159..a86c1f5 100644
 --- a/config/packages/liip_imagine.yaml
 +++ b/config/packages/liip_imagine.yaml
 @@ -14,6 +14,13 @@ liip_imagine:
@@ -17,7 +17,7 @@ index 372e159e..a86c1f52 100644
  #            # set your image quality defaults
  #            jpeg_quality:          85
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 08a9a295..5615115f 100644
+index 08a9a29..5615115 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -5,7 +5,7 @@
