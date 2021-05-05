@@ -11,7 +11,7 @@ index 3154972..42a4da0 100644
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
 diff --git a/composer.lock b/composer.lock
-index 8163f89..c9f1582 100644
+index 263ea86..01bf7c1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,90 @@
