@@ -86,7 +86,7 @@ So upgrading the recipes is... actually saving us time later!
 
 Finally, we get to the *most* important file of the recipe: `src/Kernel.php`.
 This is another file that you *probably* haven't added custom changes to. And
-so, it's *probably* save to accept all these updates. But let's look carefully
+so, it's *probably* safe to accept all these updates. But let's look carefully
 and I'll highlight the reason behind a few changes. It looks like a lot, but it's
 all minor.
 
