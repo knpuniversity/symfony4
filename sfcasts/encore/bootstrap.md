@@ -48,7 +48,7 @@ You'll see how this works in Webpack in a moment. Delete both of the script tags
 Then, find your terminal and run:
 
 ```terminal
-yarn add bootstrap --dev
+yarn add bootstrap@^4.3.1 --dev
 ```
 
 Oh, and how did I know that the package name was `bootstrap`? Just because I cheated
