@@ -5,6 +5,11 @@ Config done! Let's get to work in `UploaderHelper`. Instead of passing the
 `FilesystemInterface` - the one from `Flysystem` - `$filesystem`. Use that below,
 and rename the property to `$filesystem`.
 
+***TIP
+If you're using version 4 of `oneup/flysystem-bundle` (so, `flysystem` v2),
+autowire `Filesystem` instead of `FilesystemInterface` from `League\Flysystem`.
+***
+
 [[[ code('3350732bb2') ]]]
 
 Now, in the method, instead of `$file->move()`, we can say
