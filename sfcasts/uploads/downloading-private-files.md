@@ -78,6 +78,12 @@ Then, `$resource = $filesystem->readStream($path)`.
 
 [[[ code('53e63be12d') ]]]
 
+***TIP
+If you're using version 4 of `oneup/flysystem-bundle` (so, `flysystem` v2),
+you don't need to code defensively anymore! All methods will throw an exception
+automatically if the operation fails.
+***
+
 That's... pretty much it! But hold Cmd or Ctrl and click to see the `readStream()`
 method. Ah yes, if this fails, Flysystem will return `false`. So let's code defensively:
 `if ($resource === false)`, throw a `new \Exception()` with a nice message:
