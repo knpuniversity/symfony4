@@ -64,6 +64,11 @@ talk about private uploads soon - those are files where you need to do some
 security checks before you allow a user to see them. Change the directory to
 `%kernel.project_dir%` and then `/public/uploads`.
 
+***TIP
+If you're using version 4 of `oneup/flysystem-bundle`, the `directory` config
+is now called `location`.
+***
+
 [[[ code('adfa37173f') ]]]
 
 That is the *root* of this filesystem: everything will be stored relative to
