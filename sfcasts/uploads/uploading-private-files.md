@@ -38,6 +38,11 @@ id to point to the "private" one.
 
 [[[ code('ef6159e6b3') ]]]
 
+***TIP
+If you're using version 4 of `oneup/flysystem-bundle` (so, `flysystem` v2),
+autowire `Filesystem` instead of `FilesystemInterface` from `League\Flysystem`.
+***
+
 Now, copy that argument name and, in `UploaderHelper`, add a second argument:
 `FilesystemInterface $privateUploadFilesystem`. Create a new property on top
 called `$privateFilesystem` and set it below:
