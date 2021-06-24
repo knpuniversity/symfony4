@@ -21,8 +21,15 @@ In Symfony, we have an excellent bundle for this library: Google for OneupFlysys
 find their GitHub page, then click into the docs. Copy the library name, find your
 terminal and run:
 
+***TIP
+A newer version of this bundle exists, which uses a newer version of the underlying
+`league/flysystem` library. To use the same version as we use in this tutorial, install
+version 3 of the bundle. If you install the newer version, we'll do our best to
+add notes to guide you through any changes :).
+***
+
 ```terminal
-composer require oneup/flysystem-bundle
+composer require "oneup/flysystem-bundle:^3"
 ```
 
 ## Adapters & Filesystems
