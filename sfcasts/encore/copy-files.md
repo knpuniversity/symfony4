@@ -29,6 +29,12 @@ a configuration object:
 
 [[[ code('a1a4c74683') ]]]
 
+***TIP
+If you're using Encore 1.0 or later, you'll also need to install `file-loader`. As soon
+as you use `copyFiles()`, check your Encore terminal tab: it will have the exact
+command you need to run.
+***
+
 Obviously... this function helps you copy files from one place to another. Neato!
 But... how exactly do we use it? One of the nicest things about Encore is that
 its *code* is *extremely* well-documented. Hold `Command` or `Ctrl` and click
