@@ -62,6 +62,13 @@ Flysystem *will* still talk to S3, which will *now* say:
 And because the cached adapter *does* cache this, the *third* time LiipImagineBundle
 calls `exists`, Flysystem will immediately return `true` without talking to S3.
 
+***TIP
+If you're using version 4 of `oneup/flysystem-bundle` (so, `flysystem` v2),
+the `league/flysystem-cached-adapter` will not work - it was not updated to support
+flysystem v2. Someone has created a cached adapter - https://github.com/Lustmored/flysystem-v2-simple-cache-adapter -
+but configuring it requires extra steps.
+***
+
 To get this rocking, copy the composer require line, find your terminal and
 paste to download this "cached" Flysystem adapter.
 
