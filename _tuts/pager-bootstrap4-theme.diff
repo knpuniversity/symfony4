@@ -1,9 +1,0 @@
-diff --git a/config/packages/knp_paginator.yaml b/config/packages/knp_paginator.yaml
-new file mode 100644
-index 00000000..c7778510
---- /dev/null
-+++ b/config/packages/knp_paginator.yaml
-@@ -0,0 +1,3 @@
-+knp_paginator:
-+    template:
-+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'
