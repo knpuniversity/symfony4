@@ -15,7 +15,7 @@ Start back on the Installation page. Copy the composer require line, find your
 terminal, paste and... go go go!
 
 ```terminal-silent
-composer require liip/imagine-bundle
+composer require "liip/imagine-bundle:^2.1"
 ```
 
 While we're waiting, head back over to the docs. Thanks to Flex, we don't need
