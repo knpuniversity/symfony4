@@ -16,7 +16,7 @@ to help build this bundle, I just think it's great. Find the `composer require`
 line, copy that, go to your terminal and paste:
 
 ```terminal
-composer require knplabs/knp-paginator-bundle
+composer require "knplabs/knp-paginator-bundle:^2.7"
 ```
 
 While that's installing, go back to its documentation. As I *love* to tell you,
