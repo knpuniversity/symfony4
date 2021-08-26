@@ -65,7 +65,7 @@ Flysystem docs about S3 and scroll up. Here we go: the Flysystem S3 adapter
 is its own separate package. Copy this line, find your terminal and paste:
 
 ```terminal-silent
-composer require league/flysystem-aws-s3-v3
+composer require "league/flysystem-aws-s3-v3:^1.0"
 ```
 
 Once that finishes... there. *Now* we can use this `awss3v3` adapter. Open up
