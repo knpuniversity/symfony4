@@ -15,7 +15,7 @@ My favorite tool for creating PDFs is called Snappy. Fly over to your terminal
 and install it with:
 
 ```terminal
-composer require knplabs/knp-snappy-bundle
+composer require "knplabs/knp-snappy-bundle:^1.6"
 ```
 
 Snappy is a wrapper around a command-line utility called `wkhtmltopdf`. It has
