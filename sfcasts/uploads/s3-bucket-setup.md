@@ -12,7 +12,7 @@ The first thing we need is this `aws/aws-sdk-php` package. Copy that, move over
 to your terminal and run:
 
 ```terminal
-composer require aws/aws-sdk-php
+composer require "aws/aws-sdk-php:^3.87"
 ```
 
 ## Creating the S3 Bucket
