@@ -121,6 +121,13 @@ to the public path.
 Let's try it! Move over, refresh and... hello, weird blue background. And in the
 console... yes! There's the log!
 
+***TIP
+If you're coding along with a fresh Symfony project, you likely will *not* see
+the `console.log()` being printed. That's ok! In the next chapter, you'll learn
+about a Twig function that will render some `<script>` tags that you're
+currently missing.
+***
+
 We've only started to scratch the surface of the possibilities of Webpack. So if
 you're still wondering: "why is going through this build process so useful?". Stay
 tuned. Because next, we're going to talk about the `require()` and `import` statements
