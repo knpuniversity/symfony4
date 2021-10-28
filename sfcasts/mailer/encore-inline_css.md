@@ -120,6 +120,12 @@ php bin/console messenger:consume -vv
 Message received... and... message handled. Go check it out! The styling look great:
 they're inlined and coming from a proper Sass file.
 
+***TIP
+If you're using Encore in your emails like this *and* sending emails async with Messenger,
+you'll need to "reset" the Encore "entrypoint" before each message is processed, otherwise
+any emails after the first one sent by the worker won't have any styles. See: https://bit.ly/sf-messenger-emails-encore.
+***
+
 And... we've made it to the end! You are now an email *expert*... I mean, not
 just a Mailer expert... we *really* dove deep. Congrats!
 
