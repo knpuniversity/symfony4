@@ -48,6 +48,29 @@ docs for AWS S3, scroll down and... nice! It gives us the IAM permissions we nee
 Copy that, go back, and paste. Tweak the bucket name to be *our* bucket name. Let's
 see... it's `sfcasts-spacebar`. Back on the policy, paste that in both spots.
 
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "Stmt1420044805001",
+        "Effect": "Allow",
+        "Action": [
+            "s3:ListBucket",
+            "s3:GetObject",
+            "s3:GetObjectAcl",
+            "s3:PutObject",
+            "s3:PutObjectAcl",
+            "s3:ReplicateObject",
+            "s3:DeleteObject"
+        ],
+        "Resource": [
+            "arn:aws:s3:::your-bucket-name",
+            "arn:aws:s3:::your-bucket-name/*"
+        ]
+    }]
+}
+```
+
 This policy basically gives the new user full access to this specific bucket. Click
 "Review policy" and give it a name, how about `sfcasts-spacebar-full-s3-bucket-access`.
 Ok, create policy!
