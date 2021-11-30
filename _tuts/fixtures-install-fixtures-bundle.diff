@@ -23,7 +23,7 @@ index 0e01c325..32061d62 100644
          "symfony/debug-bundle": "^3.3|^4.0",
          "symfony/dotenv": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index ad484d72..251459eb 100644
+index 160c389c..033639d4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -35,7 +35,7 @@ index ad484d72..251459eb 100644
      "packages": [
          {
              "name": "clue/stream-filter",
-@@ -5014,6 +5014,124 @@
+@@ -5012,6 +5012,124 @@
          }
      ],
      "packages-dev": [

@@ -12,7 +12,7 @@ index 6208f306..2c7e34ef 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 10ceef87..5b645205 100644
+index e5db13ad..fa10c9f4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,60 @@
@@ -1305,7 +1305,7 @@ index 10ceef87..5b645205 100644
          {
              "name": "psr/log",
              "version": "1.0.2",
-@@ -1737,6 +2808,60 @@
+@@ -1735,6 +2806,60 @@
              "abandoned": "symfony/flex",
              "time": "2018-10-03T12:03:19+00:00"
          },
@@ -1366,7 +1366,7 @@ index 10ceef87..5b645205 100644
          {
              "name": "symfony/polyfill-ctype",
              "version": "v1.9.0",
-@@ -1980,6 +3105,55 @@
+@@ -1978,6 +3103,55 @@
              ],
              "time": "2018-07-26T11:22:46+00:00"
          },
@@ -1422,7 +1422,7 @@ index 10ceef87..5b645205 100644
          {
              "name": "symfony/twig-bridge",
              "version": "v4.0.4",
-@@ -2857,55 +4031,6 @@
+@@ -2855,55 +4029,6 @@
              "description": "A pack for the Symfony web profiler",
              "time": "2017-12-12T01:48:24+00:00"
          },

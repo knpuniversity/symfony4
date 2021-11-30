@@ -11,7 +11,7 @@ index eb0ba549..7386f902 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index abe9ebcb..f67b58d6 100644
+index 1425e412..d53d1eb1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -182,7 +182,7 @@ index abe9ebcb..f67b58d6 100644
          {
              "name": "psr/cache",
              "version": "1.0.1",
-@@ -4757,6 +4909,82 @@
+@@ -4755,6 +4907,82 @@
              ],
              "time": "2018-08-24T10:22:26+00:00"
          },
@@ -265,7 +265,7 @@ index abe9ebcb..f67b58d6 100644
          {
              "name": "symfony/routing",
              "version": "v4.1.4",
-@@ -4991,6 +5219,117 @@
+@@ -4989,6 +5217,117 @@
              "homepage": "https://symfony.com",
              "time": "2018-08-18T16:52:46+00:00"
          },
@@ -383,7 +383,7 @@ index abe9ebcb..f67b58d6 100644
          {
              "name": "symfony/stopwatch",
              "version": "v4.1.4",
-@@ -5569,6 +5908,56 @@
+@@ -5567,6 +5906,56 @@
              ],
              "time": "2019-05-14T12:03:52+00:00"
          },

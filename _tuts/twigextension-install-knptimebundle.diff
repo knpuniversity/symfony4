@@ -11,7 +11,7 @@ index 39ce12ea..0e01c325 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index da61b03f..ad484d72 100644
+index 2b0d9526..160c389c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -95,7 +95,7 @@ index da61b03f..ad484d72 100644
          {
              "name": "michelf/php-markdown",
              "version": "1.8.0",
-@@ -4368,6 +4433,129 @@
+@@ -4366,6 +4431,129 @@
              "homepage": "https://symfony.com",
              "time": "2018-01-03T07:38:00+00:00"
          },

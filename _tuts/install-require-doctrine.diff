@@ -67,7 +67,7 @@ index cb0d75e0..39ce12ea 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 387e7af4..da61b03f 100644
+index 2bfc9f0d..2b0d9526 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -1759,7 +1759,7 @@ index 387e7af4..da61b03f 100644
          {
              "name": "symfony/event-dispatcher",
              "version": "v4.0.14",
-@@ -2862,6 +4048,34 @@
+@@ -2860,6 +4046,34 @@
              ],
              "time": "2018-01-18T22:19:33+00:00"
          },
@@ -1794,7 +1794,7 @@ index 387e7af4..da61b03f 100644
          {
              "name": "symfony/polyfill-ctype",
              "version": "v1.9.0",
-@@ -2922,16 +4136,16 @@
+@@ -2920,16 +4134,16 @@
          },
          {
              "name": "symfony/polyfill-mbstring",
@@ -1815,7 +1815,7 @@ index 387e7af4..da61b03f 100644
                  "shasum": ""
              },
              "require": {
-@@ -2977,7 +4191,7 @@
+@@ -2975,7 +4189,7 @@
                  "portable",
                  "shim"
              ],
@@ -1824,7 +1824,7 @@ index 387e7af4..da61b03f 100644
          },
          {
              "name": "symfony/process",
-@@ -3500,6 +4714,115 @@
+@@ -3498,6 +4712,115 @@
                  "templating"
              ],
              "time": "2019-05-14T12:03:52+00:00"
@@ -1940,7 +1940,7 @@ index 387e7af4..da61b03f 100644
          }
      ],
      "packages-dev": [
-@@ -3551,6 +4874,7 @@
+@@ -3549,6 +4872,7 @@
                  "monolog",
                  "productivity"
              ],

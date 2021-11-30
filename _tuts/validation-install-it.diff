@@ -11,7 +11,7 @@ index de54c2ff..a34b3bb6 100644
          "symfony/yaml": "^4.0",
          "twig/extensions": "^1.5"
 diff --git a/composer.lock b/composer.lock
-index 0c3546cc..98d0fb9a 100644
+index d33c1204..c2944f33 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 0c3546cc..98d0fb9a 100644
      "packages": [
          {
              "name": "behat/transliterator",
-@@ -5789,6 +5789,92 @@
+@@ -5787,6 +5787,92 @@
              "homepage": "https://symfony.com",
              "time": "2018-09-30T03:38:13+00:00"
          },
