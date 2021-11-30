@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 2e16977..6a8db27 100644
+index 2e169779..6a8db271 100644
 --- a/.env
 +++ b/.env
 @@ -31,7 +31,9 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
@@ -14,7 +14,7 @@ index 2e16977..6a8db27 100644
  ###> symfony/mailer ###
  MAILER_DSN=smtp://localhost
 diff --git a/config/services.yaml b/config/services.yaml
-index 78f42d3..934bf99 100644
+index 78f42d36..934bf994 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -7,6 +7,8 @@ parameters:

@@ -1,6 +1,6 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
 new file mode 100644
-index 0000000..b789f03
+index 00000000..b789f03e
 --- /dev/null
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -0,0 +1,42 @@

@@ -1,5 +1,5 @@
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index d67c330..0b89dec 100644
+index d67c3308..0b89dec2 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,3 +1,4 @@

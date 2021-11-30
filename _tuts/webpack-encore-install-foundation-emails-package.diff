@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index fc9fe70..f8f90fa 100644
+index fc9fe707..f8f90fae 100644
 --- a/package.json
 +++ b/package.json
 @@ -7,6 +7,7 @@
@@ -11,7 +11,7 @@ index fc9fe70..f8f90fa 100644
          "popper.js": "^1.15.0",
          "postcss-loader": "^3.0.0",
 diff --git a/yarn.lock b/yarn.lock
-index 716b07d..2450ef9 100644
+index 716b07d7..2450ef97 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2924,6 +2924,11 @@ forwarded@~0.1.2:

@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 102cfe2..0c4d262 100644
+index 6332fc99..1123da30 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -481,7 +481,7 @@ index 102cfe2..0c4d262 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/filesystem.git",
-@@ -7806,20 +7691,20 @@
+@@ -7804,20 +7689,20 @@
          },
          {
              "name": "symfony/service-contracts",
@@ -507,7 +507,7 @@ index 102cfe2..0c4d262 100644
                  "psr/container": "^1.0"
              },
              "suggest": {
-@@ -7828,7 +7713,7 @@
+@@ -7826,7 +7711,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -516,7 +516,7 @@ index 102cfe2..0c4d262 100644
                  }
              },
              "autoload": {
-@@ -7860,14 +7745,11 @@
+@@ -7858,14 +7743,11 @@
                  "interoperability",
                  "standards"
              ],
@@ -533,7 +533,7 @@ index 102cfe2..0c4d262 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/stopwatch.git",
-@@ -9111,26 +8993,29 @@
+@@ -9109,26 +8991,29 @@
          },
          {
              "name": "zendframework/zend-code",
@@ -569,7 +569,7 @@ index 102cfe2..0c4d262 100644
                  "zendframework/zend-coding-standard": "^1.0",
                  "zendframework/zend-stdlib": "^2.7 || ^3.0"
              },
-@@ -9141,8 +9026,9 @@
+@@ -9139,8 +9024,9 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -581,7 +581,7 @@ index 102cfe2..0c4d262 100644
                  }
              },
              "autoload": {
-@@ -9169,7 +9055,7 @@
+@@ -9167,7 +9053,7 @@
                  "source": "https://github.com/zendframework/zend-code"
              },
              "abandoned": "laminas/laminas-code",
@@ -590,7 +590,7 @@ index 102cfe2..0c4d262 100644
          },
          {
              "name": "zendframework/zend-eventmanager",
-@@ -9234,27 +9120,30 @@
+@@ -9232,27 +9118,30 @@
      "packages-dev": [
          {
              "name": "doctrine/data-fixtures",
@@ -627,7 +627,7 @@ index 102cfe2..0c4d262 100644
                  "doctrine/orm": "^2.5.4",
                  "phpunit/phpunit": "^7.0"
              },
-@@ -9267,7 +9156,7 @@
+@@ -9265,7 +9154,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -636,7 +636,7 @@ index 102cfe2..0c4d262 100644
                  }
              },
              "autoload": {
-@@ -9290,43 +9179,42 @@
+@@ -9288,43 +9177,42 @@
              "keywords": [
                  "database"
              ],
@@ -693,7 +693,7 @@ index 102cfe2..0c4d262 100644
                  }
              },
              "autoload": {
-@@ -9340,16 +9228,16 @@
+@@ -9338,16 +9226,16 @@
              ],
              "authors": [
                  {
@@ -714,7 +714,7 @@ index 102cfe2..0c4d262 100644
                  }
              ],
              "description": "Symfony DoctrineFixturesBundle",
-@@ -9358,11 +9246,7 @@
+@@ -9356,11 +9244,7 @@
                  "Fixture",
                  "persistence"
              ],
@@ -728,7 +728,7 @@ index 102cfe2..0c4d262 100644
          {
              "name": "fzaninotto/faker",
 diff --git a/config/bundles.php b/config/bundles.php
-index 646871a..630e8cd 100644
+index 646871a6..630e8cdc 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -10,7 +10,6 @@ return [
@@ -740,7 +740,7 @@ index 646871a..630e8cd 100644
      Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
      Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
 diff --git a/symfony.lock b/symfony.lock
-index 6afdd0c..3cdbb6c 100644
+index 6afdd0c1..3cdbb6c4 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -53,9 +53,6 @@

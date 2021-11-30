@@ -1,5 +1,5 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 8370dbb..0f54234 100644
+index 8370dbbb..0f54234d 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -4,18 +4,13 @@ namespace App\Command;
@@ -70,7 +70,7 @@ index 8370dbb..0f54234 100644
          $io->progressFinish();
  
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 240f35d..106a217 100644
+index 240f35d4..106a217b 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -6,6 +6,7 @@ use App\Entity\User;
@@ -110,7 +110,7 @@ index 240f35d..106a217 100644
              return $guardHandler->authenticateUserAndHandleSuccess(
                  $user,
 diff --git a/src/Service/Mailer.php b/src/Service/Mailer.php
-index a7465f1..b92b9db 100644
+index a7465f11..b92b9db1 100644
 --- a/src/Service/Mailer.php
 +++ b/src/Service/Mailer.php
 @@ -2,14 +2,63 @@

@@ -1,5 +1,5 @@
 diff --git a/templates/article/homepage.html.twig b/templates/article/homepage.html.twig
-index f5f7d42..678171a 100644
+index f5f7d42b..678171a4 100644
 --- a/templates/article/homepage.html.twig
 +++ b/templates/article/homepage.html.twig
 @@ -11,7 +11,7 @@
@@ -30,7 +30,7 @@ index f5f7d42..678171a 100644
                      <button class="btn btn-info">Buy Now!</button>
                  </div>
 diff --git a/templates/article/show.html.twig b/templates/article/show.html.twig
-index 6bc658b..622cbea 100644
+index 6bc658bd..622cbea2 100644
 --- a/templates/article/show.html.twig
 +++ b/templates/article/show.html.twig
 @@ -9,7 +9,7 @@

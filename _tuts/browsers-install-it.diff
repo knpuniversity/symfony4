@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 30c8154..78aab78 100644
+index 30c81540..78aab785 100644
 --- a/package.json
 +++ b/package.json
 @@ -8,6 +8,7 @@
@@ -11,7 +11,7 @@ index 30c8154..78aab78 100644
          "sass-loader": "^7.0.1",
          "sortablejs": "^1.8.4",
 diff --git a/yarn.lock b/yarn.lock
-index ddf6729..a2aea66 100644
+index ddf67297..a2aea666 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2003,6 +2003,16 @@ core-util-is@~1.0.0:

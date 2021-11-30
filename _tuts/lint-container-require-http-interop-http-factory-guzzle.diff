@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 86b722d..0568e6d 100644
+index 86b722dc..0568e6dc 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -11,6 +11,7 @@
@@ -11,7 +11,7 @@ index 86b722d..0568e6d 100644
          "knplabs/knp-paginator-bundle": "^5.0",
          "knplabs/knp-snappy-bundle": "^1.6",
 diff --git a/composer.lock b/composer.lock
-index e327e4c..fe2827f 100644
+index db245d61..ecd4052c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -81,7 +81,7 @@ index e327e4c..fe2827f 100644
              "name": "imagine/imagine",
              "version": "1.2.3",
 diff --git a/symfony.lock b/symfony.lock
-index b2d19e9..582a635 100644
+index b2d19e9c..582a6358 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -122,6 +122,9 @@

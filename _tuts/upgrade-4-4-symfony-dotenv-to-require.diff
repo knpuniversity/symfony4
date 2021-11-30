@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 10c4d84..2fea4fa 100644
+index 10c4d840..2fea4fa9 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -6,6 +6,7 @@
@@ -39,7 +39,7 @@ index 10c4d84..2fea4fa 100644
          "symfony/profiler-pack": "^1.0",
          "symfony/var-dumper": "4.4.*"
 diff --git a/composer.lock b/composer.lock
-index 65351d8..a6e3618 100644
+index bfaee20e..c9f96cf6 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -269,7 +269,7 @@ index 65351d8..a6e3618 100644
          {
              "name": "symfony/error-handler",
              "version": "v4.4.1",
-@@ -6221,23 +6418,41 @@
+@@ -6219,23 +6416,41 @@
              "time": "2019-11-30T08:27:26+00:00"
          },
          {
@@ -319,7 +319,7 @@ index 65351d8..a6e3618 100644
              "extra": {
                  "branch-alias": {
                      "dev-master": "4.4-dev"
-@@ -6245,7 +6460,7 @@
+@@ -6243,7 +6458,7 @@
              },
              "autoload": {
                  "psr-4": {
@@ -328,7 +328,7 @@ index 65351d8..a6e3618 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -6265,30 +6480,163 @@
+@@ -6263,30 +6478,163 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -506,7 +506,7 @@ index 65351d8..a6e3618 100644
                  "shasum": ""
              },
              "require": {
-@@ -9103,61 +9451,6 @@
+@@ -9101,61 +9449,6 @@
              },
              "time": "2019-06-12T12:03:37+00:00"
          },
@@ -568,7 +568,7 @@ index 65351d8..a6e3618 100644
          {
              "name": "fzaninotto/faker",
              "version": "v1.8.0",
-@@ -9212,88 +9505,6 @@
+@@ -9210,88 +9503,6 @@
              },
              "time": "2018-07-12T10:23:15+00:00"
          },
@@ -657,7 +657,7 @@ index 65351d8..a6e3618 100644
          {
              "name": "nikic/php-parser",
              "version": "v4.2.4",
-@@ -9544,66 +9755,6 @@
+@@ -9542,66 +9753,6 @@
              },
              "time": "2019-10-29T11:38:30+00:00"
          },
@@ -724,7 +724,7 @@ index 65351d8..a6e3618 100644
          {
              "name": "symfony/maker-bundle",
              "version": "v1.14.3",
-@@ -9676,143 +9827,6 @@
+@@ -9674,143 +9825,6 @@
              },
              "time": "2019-11-07T00:56:03+00:00"
          },
@@ -869,7 +869,7 @@ index 65351d8..a6e3618 100644
              "name": "symfony/phpunit-bridge",
              "version": "v4.4.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 628c5cc..e7f8a24 100644
+index 628c5cc4..e7f8a24e 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -6,7 +6,6 @@ return [
@@ -887,7 +887,7 @@ index 628c5cc..e7f8a24 100644
 +    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
  ];
 diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
-index 96dbf96..5bcdf06 100644
+index 96dbf969..5bcdf06e 100644
 --- a/config/packages/prod/monolog.yaml
 +++ b/config/packages/prod/monolog.yaml
 @@ -4,9 +4,7 @@ monolog:
@@ -902,7 +902,7 @@ index 96dbf96..5bcdf06 100644
              type: stream
              path: "%kernel.logs_dir%/%kernel.environment%.log"
 diff --git a/symfony.lock b/symfony.lock
-index 7d44dbd..2e9cbb7 100644
+index 7d44dbd0..2e9cbb79 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -87,13 +87,7 @@

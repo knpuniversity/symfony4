@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 0072c03..58b7257 100644
+index 0072c030..58b72571 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -99,7 +99,7 @@
@@ -12,7 +12,7 @@ index 0072c03..58b7257 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 0c4d262..644a610 100644
+index 1123da30..8d6204b3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -2195,7 +2195,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/flex",
-@@ -5589,50 +5581,50 @@
+@@ -5587,50 +5579,50 @@
          },
          {
              "name": "symfony/form",
@@ -2271,7 +2271,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/security-csrf": "For protecting forms against CSRF attacks.",
-@@ -5642,7 +5634,7 @@
+@@ -5640,7 +5632,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -2280,7 +2280,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -5669,98 +5661,95 @@
+@@ -5667,98 +5659,95 @@
              ],
              "description": "Symfony Form Component",
              "homepage": "https://symfony.com",
@@ -2422,7 +2422,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "ext-apcu": "For best performance of the system caches",
-@@ -5775,7 +5764,7 @@
+@@ -5773,7 +5762,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -2431,7 +2431,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -5802,38 +5791,35 @@
+@@ -5800,38 +5789,35 @@
              ],
              "description": "Symfony FrameworkBundle",
              "homepage": "https://symfony.com",
@@ -2479,7 +2479,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -5860,62 +5846,65 @@
+@@ -5858,62 +5844,65 @@
              ],
              "description": "Symfony HttpFoundation Component",
              "homepage": "https://symfony.com",
@@ -2576,7 +2576,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/browser-kit": "",
-@@ -5926,7 +5915,7 @@
+@@ -5924,7 +5913,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -2585,7 +2585,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -5953,33 +5942,30 @@
+@@ -5951,33 +5940,30 @@
              ],
              "description": "Symfony HttpKernel Component",
              "homepage": "https://symfony.com",
@@ -2626,7 +2626,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6014,31 +6000,28 @@
+@@ -6012,31 +5998,28 @@
                  "symfony",
                  "words"
              ],
@@ -2665,7 +2665,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "ext-intl": "to use the component with locales other than \"en\""
-@@ -6046,7 +6029,7 @@
+@@ -6044,7 +6027,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -2674,7 +2674,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6092,36 +6075,32 @@
+@@ -6090,36 +6073,32 @@
                  "l10n",
                  "localization"
              ],
@@ -2719,7 +2719,7 @@ index 0c4d262..644a610 100644
              },
              "require-dev": {
                  "symfony/amazon-mailer": "^4.4|^5.0",
-@@ -6136,7 +6115,7 @@
+@@ -6134,7 +6113,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -2728,7 +2728,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6163,48 +6142,46 @@
+@@ -6161,48 +6140,46 @@
              ],
              "description": "Symfony Mailer Component",
              "homepage": "https://symfony.com",
@@ -2795,7 +2795,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "enqueue/messenger-adapter": "For using the php-enqueue library as a transport."
-@@ -6212,7 +6189,7 @@
+@@ -6210,7 +6187,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -2804,7 +2804,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6239,27 +6216,24 @@
+@@ -6237,27 +6214,24 @@
              ],
              "description": "Symfony Messenger Component",
              "homepage": "https://symfony.com",
@@ -2838,7 +2838,7 @@ index 0c4d262..644a610 100644
                  "symfony/polyfill-intl-idn": "^1.10",
                  "symfony/polyfill-mbstring": "^1.0"
              },
-@@ -6268,12 +6242,12 @@
+@@ -6266,12 +6240,12 @@
              },
              "require-dev": {
                  "egulias/email-validator": "^2.1.10",
@@ -2853,7 +2853,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6304,40 +6278,37 @@
+@@ -6302,40 +6276,37 @@
                  "mime",
                  "mime-type"
              ],
@@ -2907,7 +2907,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/console": "For the possibility to show log messages in console commands depending on verbosity settings.",
-@@ -6347,7 +6318,7 @@
+@@ -6345,7 +6316,7 @@
              "type": "symfony-bridge",
              "extra": {
                  "branch-alias": {
@@ -2916,7 +2916,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6374,24 +6345,7 @@
+@@ -6372,24 +6343,7 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -2942,7 +2942,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/monolog-bundle",
-@@ -6462,25 +6416,25 @@
+@@ -6460,25 +6414,25 @@
          },
          {
              "name": "symfony/options-resolver",
@@ -2974,7 +2974,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6512,10 +6466,7 @@
+@@ -6510,10 +6464,7 @@
                  "configuration",
                  "options"
              ],
@@ -2986,7 +2986,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/polyfill-ctype",
-@@ -6887,25 +6838,25 @@
+@@ -6885,25 +6836,25 @@
          },
          {
              "name": "symfony/process",
@@ -3018,7 +3018,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -6932,31 +6883,28 @@
+@@ -6930,31 +6881,28 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -3058,7 +3058,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "psr/cache-implementation": "To cache access methods."
-@@ -6964,7 +6912,7 @@
+@@ -6962,7 +6910,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3067,7 +3067,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7002,40 +6950,37 @@
+@@ -7000,40 +6948,37 @@
                  "property path",
                  "reflection"
              ],
@@ -3120,7 +3120,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "phpdocumentor/reflection-docblock": "To use the PHPDoc",
-@@ -7046,7 +6991,7 @@
+@@ -7044,7 +6989,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3129,7 +3129,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7081,41 +7026,38 @@
+@@ -7079,41 +7024,38 @@
                  "type",
                  "validator"
              ],
@@ -3185,7 +3185,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "doctrine/annotations": "For using the annotation loader",
-@@ -7127,7 +7069,7 @@
+@@ -7125,7 +7067,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3194,7 +3194,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7160,66 +7102,63 @@
+@@ -7158,66 +7100,63 @@
                  "uri",
                  "url"
              ],
@@ -3289,7 +3289,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7246,43 +7185,40 @@
+@@ -7244,43 +7183,40 @@
              ],
              "description": "Symfony SecurityBundle",
              "homepage": "https://symfony.com",
@@ -3345,7 +3345,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "psr/container-implementation": "To instantiate the Security class",
-@@ -7295,7 +7231,7 @@
+@@ -7293,7 +7229,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3354,7 +3354,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7322,34 +7258,31 @@
+@@ -7320,34 +7256,31 @@
              ],
              "description": "Symfony Security Component - Core Library",
              "homepage": "https://symfony.com",
@@ -3398,7 +3398,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/http-foundation": "For using the class SessionTokenStorage."
-@@ -7357,7 +7290,7 @@
+@@ -7355,7 +7288,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3407,7 +3407,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7384,29 +7317,26 @@
+@@ -7382,29 +7315,26 @@
              ],
              "description": "Symfony Security Component - CSRF Library",
              "homepage": "https://symfony.com",
@@ -3445,7 +3445,7 @@ index 0c4d262..644a610 100644
              },
              "require-dev": {
                  "psr/log": "~1.0"
-@@ -7414,7 +7344,7 @@
+@@ -7412,7 +7342,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3454,7 +3454,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7441,40 +7371,36 @@
+@@ -7439,40 +7369,36 @@
              ],
              "description": "Symfony Security Component - Guard",
              "homepage": "https://symfony.com",
@@ -3508,7 +3508,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/routing": "For using the HttpUtils class to create sub-requests, redirect the user, and match URLs",
-@@ -7483,7 +7409,7 @@
+@@ -7481,7 +7407,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3517,7 +3517,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7510,36 +7436,33 @@
+@@ -7508,36 +7434,33 @@
              ],
              "description": "Symfony Security Component - HTTP Integration",
              "homepage": "https://symfony.com",
@@ -3562,7 +3562,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7566,56 +7489,54 @@
+@@ -7564,56 +7487,54 @@
              ],
              "description": "Symfony Sendgrid Mailer Bridge",
              "homepage": "https://symfony.com",
@@ -3639,7 +3639,7 @@ index 0c4d262..644a610 100644
                  "symfony/property-access": "For using the ObjectNormalizer.",
                  "symfony/property-info": "To deserialize relations.",
                  "symfony/yaml": "For using the default YAML mapping loader."
-@@ -7623,7 +7544,7 @@
+@@ -7621,7 +7542,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3648,7 +3648,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7650,10 +7571,7 @@
+@@ -7648,10 +7569,7 @@
              ],
              "description": "Symfony Serializer Component",
              "homepage": "https://symfony.com",
@@ -3660,7 +3660,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/serializer-pack",
-@@ -7749,26 +7667,26 @@
+@@ -7747,26 +7665,26 @@
          },
          {
              "name": "symfony/stopwatch",
@@ -3693,7 +3693,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7795,27 +7713,24 @@
+@@ -7793,27 +7711,24 @@
              ],
              "description": "Symfony Stopwatch Component",
              "homepage": "https://symfony.com",
@@ -3727,7 +3727,7 @@ index 0c4d262..644a610 100644
                  "symfony/polyfill-ctype": "~1.8"
              },
              "require-dev": {
-@@ -7827,7 +7742,7 @@
+@@ -7825,7 +7740,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3736,7 +3736,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7854,49 +7769,47 @@
+@@ -7852,49 +7767,47 @@
              ],
              "description": "Symfony Templating Component",
              "homepage": "https://symfony.com",
@@ -3806,7 +3806,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "psr/log-implementation": "To use logging capability in translator",
-@@ -7906,7 +7819,7 @@
+@@ -7904,7 +7817,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3815,7 +3815,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7933,27 +7846,24 @@
+@@ -7931,27 +7844,24 @@
              ],
              "description": "Symfony Translation Component",
              "homepage": "https://symfony.com",
@@ -3849,7 +3849,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/translation-implementation": ""
-@@ -7961,7 +7871,7 @@
+@@ -7959,7 +7869,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -3858,7 +3858,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -7993,61 +7903,57 @@
+@@ -7991,61 +7901,57 @@
                  "interoperability",
                  "standards"
              ],
@@ -3950,7 +3950,7 @@ index 0c4d262..644a610 100644
                  "twig/cssinliner-extra": "^2.12",
                  "twig/inky-extra": "^2.12",
                  "twig/markdown-extra": "^2.12"
-@@ -8063,7 +7969,6 @@
+@@ -8061,7 +7967,6 @@
                  "symfony/security-csrf": "For using the CsrfExtension",
                  "symfony/security-http": "For using the LogoutUrlExtension",
                  "symfony/stopwatch": "For using the StopwatchExtension",
@@ -3958,7 +3958,7 @@ index 0c4d262..644a610 100644
                  "symfony/translation": "For using the TranslationExtension",
                  "symfony/var-dumper": "For using the DumpExtension",
                  "symfony/web-link": "For using the WebLinkExtension",
-@@ -8072,7 +7977,7 @@
+@@ -8070,7 +7975,7 @@
              "type": "symfony-bridge",
              "extra": {
                  "branch-alias": {
@@ -3967,7 +3967,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -8099,58 +8004,55 @@
+@@ -8097,58 +8002,55 @@
              ],
              "description": "Symfony Twig Bridge",
              "homepage": "https://symfony.com",
@@ -4052,7 +4052,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -8177,10 +8079,7 @@
+@@ -8175,10 +8077,7 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
@@ -4064,7 +4064,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/twig-pack",
-@@ -8216,49 +8115,49 @@
+@@ -8214,49 +8113,49 @@
          },
          {
              "name": "symfony/validator",
@@ -4136,7 +4136,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
-@@ -8277,7 +8176,7 @@
+@@ -8275,7 +8174,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -4145,7 +4145,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -8304,39 +8203,35 @@
+@@ -8302,39 +8201,35 @@
              ],
              "description": "Symfony Validator Component",
              "homepage": "https://symfony.com",
@@ -4196,7 +4196,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
-@@ -8349,7 +8244,7 @@
+@@ -8347,7 +8242,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -4205,7 +4205,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -8383,35 +8278,32 @@
+@@ -8381,35 +8276,32 @@
                  "debug",
                  "dump"
              ],
@@ -4249,7 +4249,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -8446,10 +8338,7 @@
+@@ -8444,10 +8336,7 @@
                  "instantiate",
                  "serialize"
              ],
@@ -4261,7 +4261,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/webpack-encore-bundle",
-@@ -8510,27 +8399,27 @@
+@@ -8508,27 +8397,27 @@
          },
          {
              "name": "symfony/yaml",
@@ -4296,7 +4296,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/console": "For validating YAML files using the lint command"
-@@ -8538,7 +8427,7 @@
+@@ -8536,7 +8425,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -4305,7 +4305,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -8565,10 +8454,7 @@
+@@ -8563,10 +8452,7 @@
              ],
              "description": "Symfony Yaml Component",
              "homepage": "https://symfony.com",
@@ -4317,7 +4317,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "tijsverkoyen/css-to-inline-styles",
-@@ -8740,16 +8626,16 @@
+@@ -8738,16 +8624,16 @@
          },
          {
              "name": "twig/extra-bundle",
@@ -4338,7 +4338,7 @@ index 0c4d262..644a610 100644
                  "shasum": ""
              },
              "require": {
-@@ -8759,16 +8645,16 @@
+@@ -8757,16 +8643,16 @@
                  "twig/twig": "^2.4|^3.0"
              },
              "require-dev": {
@@ -4361,7 +4361,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -8795,10 +8681,7 @@
+@@ -8793,10 +8679,7 @@
                  "extra",
                  "twig"
              ],
@@ -4373,7 +4373,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "twig/inky-extra",
-@@ -8939,31 +8822,29 @@
+@@ -8937,31 +8820,29 @@
          },
          {
              "name": "webmozart/assert",
@@ -4412,7 +4412,7 @@ index 0c4d262..644a610 100644
              "autoload": {
                  "psr-4": {
                      "Webmozart\\Assert\\": "src/"
-@@ -8985,11 +8866,7 @@
+@@ -8983,11 +8864,7 @@
                  "check",
                  "validate"
              ],
@@ -4425,7 +4425,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "zendframework/zend-code",
-@@ -9304,16 +9181,16 @@
+@@ -9302,16 +9179,16 @@
          },
          {
              "name": "nikic/php-parser",
@@ -4446,7 +4446,7 @@ index 0c4d262..644a610 100644
                  "shasum": ""
              },
              "require": {
-@@ -9321,6 +9198,7 @@
+@@ -9319,6 +9196,7 @@
                  "php": ">=7.0"
              },
              "require-dev": {
@@ -4454,7 +4454,7 @@ index 0c4d262..644a610 100644
                  "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
              },
              "bin": [
-@@ -9329,7 +9207,7 @@
+@@ -9327,7 +9205,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -4463,7 +4463,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -9351,35 +9229,31 @@
+@@ -9349,35 +9227,31 @@
                  "parser",
                  "php"
              ],
@@ -4510,7 +4510,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/process": ""
-@@ -9387,7 +9261,7 @@
+@@ -9385,7 +9259,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -4519,7 +4519,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -9414,40 +9288,37 @@
+@@ -9412,40 +9286,37 @@
              ],
              "description": "Symfony BrowserKit Component",
              "homepage": "https://symfony.com",
@@ -4574,7 +4574,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/config": "For service container configuration",
-@@ -9456,7 +9327,7 @@
+@@ -9454,7 +9325,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -4583,7 +4583,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -9483,27 +9354,24 @@
+@@ -9481,27 +9352,24 @@
              ],
              "description": "Symfony DebugBundle",
              "homepage": "https://symfony.com",
@@ -4617,7 +4617,7 @@ index 0c4d262..644a610 100644
                  "symfony/polyfill-ctype": "~1.8",
                  "symfony/polyfill-mbstring": "~1.0"
              },
-@@ -9512,7 +9380,7 @@
+@@ -9510,7 +9378,7 @@
              },
              "require-dev": {
                  "masterminds/html5": "^2.6",
@@ -4626,7 +4626,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/css-selector": ""
-@@ -9520,7 +9388,7 @@
+@@ -9518,7 +9386,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -4635,7 +4635,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -9547,10 +9415,7 @@
+@@ -9545,10 +9413,7 @@
              ],
              "description": "Symfony DomCrawler Component",
              "homepage": "https://symfony.com",
@@ -4647,7 +4647,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/maker-bundle",
-@@ -9626,23 +9491,23 @@
+@@ -9624,23 +9489,23 @@
          },
          {
              "name": "symfony/phpunit-bridge",
@@ -4676,7 +4676,7 @@ index 0c4d262..644a610 100644
              },
              "suggest": {
                  "symfony/error-handler": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
-@@ -9653,7 +9518,7 @@
+@@ -9651,7 +9516,7 @@
              "type": "symfony-bridge",
              "extra": {
                  "branch-alias": {
@@ -4685,7 +4685,7 @@ index 0c4d262..644a610 100644
                  },
                  "thanks": {
                      "name": "phpunit/phpunit",
-@@ -9687,10 +9552,7 @@
+@@ -9685,10 +9550,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -4697,7 +4697,7 @@ index 0c4d262..644a610 100644
          },
          {
              "name": "symfony/profiler-pack",
-@@ -9726,40 +9588,40 @@
+@@ -9724,40 +9586,40 @@
          },
          {
              "name": "symfony/web-profiler-bundle",
@@ -4754,7 +4754,7 @@ index 0c4d262..644a610 100644
                  }
              },
              "autoload": {
-@@ -9786,10 +9648,7 @@
+@@ -9784,10 +9646,7 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",
@@ -4766,7 +4766,7 @@ index 0c4d262..644a610 100644
          }
      ],
      "aliases": [],
-@@ -9798,12 +9657,12 @@
+@@ -9796,12 +9655,12 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {
@@ -4779,10 +4779,10 @@ index 0c4d262..644a610 100644
 -        "php": "7.2.5"
 +        "php": "7.3.0"
      },
-     "plugin-api-version": "2.0.0"
+     "plugin-api-version": "2.1.0"
  }
 diff --git a/symfony.lock b/symfony.lock
-index feebf87..b2d19e9 100644
+index feebf87e..b2d19e9c 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -217,7 +217,7 @@

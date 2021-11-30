@@ -1,5 +1,5 @@
 diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
-index 38fc5a8..8cb0199 100644
+index 38fc5a85..8cb0199b 100644
 --- a/tests/Service/MailerTest.php
 +++ b/tests/Service/MailerTest.php
 @@ -60,5 +60,6 @@ class MailerTest extends KernelTestCase

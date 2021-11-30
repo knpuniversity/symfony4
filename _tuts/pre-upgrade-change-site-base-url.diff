@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 41eb089..415bd80 100644
+index 41eb0890..415bd805 100644
 --- a/.env
 +++ b/.env
 @@ -33,7 +33,6 @@ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
@@ -11,7 +11,7 @@ index 41eb089..415bd80 100644
  ###> symfony/mailer ###
  MAILER_DSN=smtp://null
 diff --git a/config/services.yaml b/config/services.yaml
-index c230130..bc80588 100644
+index c230130c..bc80588d 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -6,6 +6,7 @@

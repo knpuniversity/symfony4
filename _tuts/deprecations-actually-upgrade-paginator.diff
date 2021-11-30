@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 1314666..649b785 100644
+index fb64e8aa..0e3e7d6d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -327,7 +327,7 @@ index 1314666..649b785 100644
          },
          {
              "name": "knplabs/knp-snappy",
-@@ -9004,20 +9011,20 @@
+@@ -9002,20 +9009,20 @@
          },
          {
              "name": "twig/twig",
@@ -353,7 +353,7 @@ index 1314666..649b785 100644
                  "symfony/polyfill-ctype": "^1.8",
                  "symfony/polyfill-mbstring": "^1.3"
              },
-@@ -9028,7 +9035,7 @@
+@@ -9026,7 +9033,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -362,7 +362,7 @@ index 1314666..649b785 100644
                  }
              },
              "autoload": {
-@@ -9067,7 +9074,7 @@
+@@ -9065,7 +9072,7 @@
              ],
              "support": {
                  "issues": "https://github.com/twigphp/Twig/issues",
@@ -371,7 +371,7 @@ index 1314666..649b785 100644
              },
              "funding": [
                  {
-@@ -9079,7 +9086,7 @@
+@@ -9077,7 +9084,7 @@
                      "type": "tidelift"
                  }
              ],
@@ -380,7 +380,7 @@ index 1314666..649b785 100644
          },
          {
              "name": "webmozart/assert",
-@@ -9940,12 +9947,12 @@
+@@ -9938,12 +9945,12 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {
@@ -393,10 +393,10 @@ index 1314666..649b785 100644
 -        "php": "7.1.3"
 +        "php": "7.2.5"
      },
-     "plugin-api-version": "2.0.0"
+     "plugin-api-version": "2.1.0"
  }
 diff --git a/symfony.lock b/symfony.lock
-index 9b5b4ea..2f5b7f3 100644
+index 9b5b4ea2..2f5b7f3b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -202,7 +202,7 @@

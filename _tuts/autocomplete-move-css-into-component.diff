@@ -1,5 +1,5 @@
 diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
-index 062a7ea..d123900 100644
+index 062a7ea3..d123900c 100644
 --- a/assets/js/admin_article_form.js
 +++ b/assets/js/admin_article_form.js
 @@ -3,7 +3,6 @@ import Dropzone from 'dropzone';
@@ -11,7 +11,7 @@ index 062a7ea..d123900 100644
  Dropzone.autoDiscover = false;
  
 diff --git a/assets/js/components/algolia-autocomplete.js b/assets/js/components/algolia-autocomplete.js
-index a005571..1a8cd6a 100644
+index a0055710..1a8cd6ac 100644
 --- a/assets/js/components/algolia-autocomplete.js
 +++ b/assets/js/components/algolia-autocomplete.js
 @@ -1,5 +1,6 @@

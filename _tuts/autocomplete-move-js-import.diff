@@ -3,7 +3,7 @@ similarity index 100%
 rename from public/css/algolia-autocomplete.css
 rename to assets/css/algolia-autocomplete.scss
 diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
-index e907530..062a7ea 100644
+index e907530a..062a7ea3 100644
 --- a/assets/js/admin_article_form.js
 +++ b/assets/js/admin_article_form.js
 @@ -2,6 +2,8 @@ import $ from 'jquery';
@@ -20,7 +20,7 @@ similarity index 100%
 rename from public/js/algolia-autocomplete.js
 rename to assets/js/components/algolia-autocomplete.js
 diff --git a/templates/article_admin/new.html.twig b/templates/article_admin/new.html.twig
-index dd65428..5a6c890 100644
+index dd65428b..5a6c890e 100644
 --- a/templates/article_admin/new.html.twig
 +++ b/templates/article_admin/new.html.twig
 @@ -3,8 +3,6 @@

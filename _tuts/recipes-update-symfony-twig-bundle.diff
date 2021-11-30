@@ -1,13 +1,13 @@
 diff --git a/config/packages/test/twig.yaml b/config/packages/test/twig.yaml
 new file mode 100644
-index 0000000..8c6e0b4
+index 00000000..8c6e0b40
 --- /dev/null
 +++ b/config/packages/test/twig.yaml
 @@ -0,0 +1,2 @@
 +twig:
 +    strict_variables: true
 diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
-index 6cb3f35..84d4e7d 100644
+index 6cb3f350..84d4e7d2 100644
 --- a/config/packages/twig.yaml
 +++ b/config/packages/twig.yaml
 @@ -7,3 +7,4 @@ twig:
@@ -16,7 +16,7 @@ index 6cb3f35..84d4e7d 100644
          - bootstrap_4_layout.html.twig
 +    exception_controller: null
 diff --git a/symfony.lock b/symfony.lock
-index 2df2d8f..5212525 100644
+index 2df2d8fc..52125259 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -566,13 +566,18 @@

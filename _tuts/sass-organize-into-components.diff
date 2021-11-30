@@ -1,5 +1,5 @@
 diff --git a/assets/css/app.scss b/assets/css/app.scss
-index 667520b..40e794e 100644
+index 667520b9..40e794e0 100644
 --- a/assets/css/app.scss
 +++ b/assets/css/app.scss
 @@ -1,245 +1,10 @@
@@ -256,7 +256,7 @@ index 667520b..40e794e 100644
 +@import './components/sortable';
 diff --git a/assets/css/components/_ad.scss b/assets/css/components/_ad.scss
 new file mode 100644
-index 0000000..848c82d
+index 00000000..848c82de
 --- /dev/null
 +++ b/assets/css/components/_ad.scss
 @@ -0,0 +1,23 @@
@@ -285,7 +285,7 @@ index 0000000..848c82d
 +}
 diff --git a/assets/css/components/_articles.scss b/assets/css/components/_articles.scss
 new file mode 100644
-index 0000000..5fe7657
+index 00000000..5fe7657d
 --- /dev/null
 +++ b/assets/css/components/_articles.scss
 @@ -0,0 +1,139 @@
@@ -430,7 +430,7 @@ index 0000000..5fe7657
 +}
 diff --git a/assets/css/components/_profile.scss b/assets/css/components/_profile.scss
 new file mode 100644
-index 0000000..02ddbcb
+index 00000000..02ddbcbb
 --- /dev/null
 +++ b/assets/css/components/_profile.scss
 @@ -0,0 +1,15 @@
@@ -451,7 +451,7 @@ index 0000000..02ddbcb
 +}
 diff --git a/assets/css/components/_sortable.scss b/assets/css/components/_sortable.scss
 new file mode 100644
-index 0000000..04f8de7
+index 00000000..04f8de71
 --- /dev/null
 +++ b/assets/css/components/_sortable.scss
 @@ -0,0 +1,6 @@
@@ -463,7 +463,7 @@ index 0000000..04f8de7
 +}
 diff --git a/assets/css/layout/_footer.scss b/assets/css/layout/_footer.scss
 new file mode 100644
-index 0000000..c79035a
+index 00000000..c79035a7
 --- /dev/null
 +++ b/assets/css/layout/_footer.scss
 @@ -0,0 +1,9 @@
@@ -478,7 +478,7 @@ index 0000000..c79035a
 +}
 diff --git a/assets/css/layout/_header.scss b/assets/css/layout/_header.scss
 new file mode 100644
-index 0000000..7145c80
+index 00000000..7145c804
 --- /dev/null
 +++ b/assets/css/layout/_header.scss
 @@ -0,0 +1,33 @@

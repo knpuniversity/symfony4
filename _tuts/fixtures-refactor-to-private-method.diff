@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index f421c88..e34b11c 100644
+index f421c882..e34b11cf 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -62,12 +62,7 @@ EOF

@@ -1,5 +1,5 @@
 diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
-index f9cbeae..7aee8d4 100644
+index f9cbeae3..7aee8d4e 100644
 --- a/assets/js/admin_article_form.js
 +++ b/assets/js/admin_article_form.js
 @@ -2,14 +2,15 @@ import $ from 'jquery';

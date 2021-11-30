@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index eee5910..41eb089 100644
+index eee59101..41eb0890 100644
 --- a/.env
 +++ b/.env
 @@ -56,6 +56,6 @@ DEV_MAIL_RECIPIENT=someone@example.com
@@ -11,7 +11,7 @@ index eee5910..41eb089 100644
  # MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
  ###< symfony/messenger ###
 diff --git a/config/packages/messenger.yaml b/config/packages/messenger.yaml
-index 6b7319c..22e1462 100644
+index 6b7319ce..22e14626 100644
 --- a/config/packages/messenger.yaml
 +++ b/config/packages/messenger.yaml
 @@ -5,10 +5,11 @@ framework:

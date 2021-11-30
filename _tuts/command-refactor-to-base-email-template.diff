@@ -1,5 +1,5 @@
 diff --git a/templates/email/author-weekly-report.html.twig b/templates/email/author-weekly-report.html.twig
-index 67e314d..ab4a813 100644
+index 67e314da..ab4a8131 100644
 --- a/templates/email/author-weekly-report.html.twig
 +++ b/templates/email/author-weekly-report.html.twig
 @@ -1,40 +1,38 @@
@@ -83,7 +83,7 @@ index 67e314d..ab4a813 100644
 +{% endblock %}
 diff --git a/templates/email/emailBase.html.twig b/templates/email/emailBase.html.twig
 new file mode 100644
-index 0000000..2edeed1
+index 00000000..2edeed11
 --- /dev/null
 +++ b/templates/email/emailBase.html.twig
 @@ -0,0 +1,31 @@
@@ -119,7 +119,7 @@ index 0000000..2edeed1
 +    </container>
 +{% endapply %}
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index 7e39a36..06ca765 100644
+index 7e39a362..06ca765b 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -1,77 +1,54 @@

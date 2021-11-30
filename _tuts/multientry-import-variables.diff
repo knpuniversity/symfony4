@@ -1,5 +1,5 @@
 diff --git a/assets/css/article_show.scss b/assets/css/article_show.scss
-index aa9b0fb..ebf11ea 100644
+index aa9b0fb3..ebf11eaf 100644
 --- a/assets/css/article_show.scss
 +++ b/assets/css/article_show.scss
 @@ -1,3 +1,5 @@

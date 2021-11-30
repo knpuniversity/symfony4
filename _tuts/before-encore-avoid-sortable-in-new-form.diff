@@ -1,5 +1,5 @@
 diff --git a/public/js/admin_article_form.js b/public/js/admin_article_form.js
-index 19bf443..5168d4f 100644
+index 19bf4436..5168d4f6 100644
 --- a/public/js/admin_article_form.js
 +++ b/public/js/admin_article_form.js
 @@ -1,9 +1,11 @@

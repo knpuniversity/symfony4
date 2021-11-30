@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 642ff88..1e6d896 100644
+index 642ff88b..1e6d8962 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -6,6 +6,7 @@ use App\Entity\User;
@@ -27,7 +27,7 @@ index 642ff88..1e6d896 100644
  
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
 new file mode 100644
-index 0000000..6d363ce
+index 00000000..6d363ced
 --- /dev/null
 +++ b/templates/email/welcome.html.twig
 @@ -0,0 +1,97 @@

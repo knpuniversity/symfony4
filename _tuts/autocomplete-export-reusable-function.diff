@@ -1,5 +1,5 @@
 diff --git a/assets/js/admin_article_form.js b/assets/js/admin_article_form.js
-index d123900..602b14b 100644
+index d123900c..602b14b4 100644
 --- a/assets/js/admin_article_form.js
 +++ b/assets/js/admin_article_form.js
 @@ -2,11 +2,16 @@ import $ from 'jquery';
@@ -21,7 +21,7 @@ index d123900..602b14b 100644
      if ($referenceList[0]) {
          var referenceList = new ReferenceList($('.js-reference-list'));
 diff --git a/assets/js/components/algolia-autocomplete.js b/assets/js/components/algolia-autocomplete.js
-index 1a8cd6a..90d1d25 100644
+index 1a8cd6ac..90d1d255 100644
 --- a/assets/js/components/algolia-autocomplete.js
 +++ b/assets/js/components/algolia-autocomplete.js
 @@ -2,8 +2,8 @@ import $ from 'jquery';

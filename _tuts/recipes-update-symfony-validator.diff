@@ -1,6 +1,6 @@
 diff --git a/config/packages/test/validator.yaml b/config/packages/test/validator.yaml
 new file mode 100644
-index 0000000..1e5ab78
+index 00000000..1e5ab788
 --- /dev/null
 +++ b/config/packages/test/validator.yaml
 @@ -0,0 +1,3 @@
@@ -8,7 +8,7 @@ index 0000000..1e5ab78
 +    validation:
 +        not_compromised_password: false
 diff --git a/config/packages/validator.yaml b/config/packages/validator.yaml
-index a695e1a..350786a 100644
+index a695e1a6..350786a1 100644
 --- a/config/packages/validator.yaml
 +++ b/config/packages/validator.yaml
 @@ -1,3 +1,8 @@
@@ -21,7 +21,7 @@ index a695e1a..350786a 100644
 +        #auto_mapping:
 +        #    App\Entity\: []
 diff --git a/symfony.lock b/symfony.lock
-index 91f4c10..875f648 100644
+index 91f4c10b..875f6482 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -602,13 +602,17 @@
