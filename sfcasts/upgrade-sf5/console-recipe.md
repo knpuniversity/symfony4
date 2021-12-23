@@ -60,6 +60,12 @@ it:
 composer recipes:install symfony/console --force -v
 ```
 
+***TIP
+Starting with symfony 5.1, the `config/bootstrap.php` is not used anymore. And so, you won't
+see it added when upgrading the recipe. You can safely delete this file: updates to your
+`bin/console` file now handle that file's job.
+***
+
 Nice! Thanks to the `-v` flag, it tells us what files it worked on. It says:
 
 ```bash
