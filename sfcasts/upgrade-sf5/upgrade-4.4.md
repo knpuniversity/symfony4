@@ -115,7 +115,7 @@ Removing these packages *also* removed their recipes. Re-add the libraries by
 using that same command, but replacing `remove` with `require` and getting rid
 of the `--dev` flag:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer require symfony/dotenv symfony/monolog-bundle easycorp/easy-log-handler
 ```
 
