@@ -57,7 +57,7 @@ adds Symfony 5 support. We're saved!
 So let's switch to use this fork. Copy the `stof` package name again, and
 remove it:
 
-```terminal
+```terminal skip-ci
 composer remove stof/doctrine-extensions-bundle
 ```
 
@@ -67,7 +67,7 @@ our app, *needs* this library... it's temporarily not speaking to us.
 Now go back to the homepage of the fork, find the `composer require` line, copy
 it, and re-install the library:
 
-```terminal
+```terminal skip-ci
 composer require antishov/doctrine-extensions-bundle
 ```
 
