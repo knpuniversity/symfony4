@@ -97,7 +97,7 @@ Logging is something we *always* want.
 Let's fix these. Copy the `symfony/dotenv` package name, find your terminal,
 and *remove* these three packages:
 
-```terminal
+```terminal skip-ci
 composer remove --dev symfony/dotenv symfony/monolog-bundle easycorp/easy-log-handler
 ```
 
