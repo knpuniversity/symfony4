@@ -50,7 +50,7 @@ much about the serializer right now: we're trying to learn security! But, I *do*
 want to use it. Find your terminal and run:
 
 ```terminal
-composer require serializer
+composer require "serializer:^1.0"
 ```
 
 This installs the serializer pack, which downloads the serializer and a few other
