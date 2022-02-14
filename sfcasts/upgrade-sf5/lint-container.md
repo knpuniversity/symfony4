@@ -86,7 +86,7 @@ had major version upgrades, if you looked in the CHANGELOGs, you'd find that we
 *also* need one more package to *truly* get things to work:
 
 ```terminal
-composer require http-interop/http-factory-guzzle
+composer require "http-interop/http-factory-guzzle:^1.1"
 ```
 
 The point is: `lint:container` is a *free* tool you can add to your continuous
