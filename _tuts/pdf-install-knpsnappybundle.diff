@@ -12,7 +12,7 @@ index 6a8db271..5b5f4d02 100644
 +WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
 +###< knplabs/knp-snappy-bundle ###
 diff --git a/composer.json b/composer.json
-index 8145016e..32f46410 100644
+index bd4b95c3..e6f5dfb0 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -8,6 +8,7 @@

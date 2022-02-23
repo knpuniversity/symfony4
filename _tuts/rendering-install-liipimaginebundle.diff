@@ -11,7 +11,7 @@ index 4c881d3e..dfd32027 100644
 +/public/media/cache/
 +###< liip/imagine-bundle ###
 diff --git a/composer.json b/composer.json
-index 7a73bb78..dbbb8153 100644
+index 74a07c17..3ad2c4cc 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -8,6 +8,7 @@

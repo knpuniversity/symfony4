@@ -11,7 +11,7 @@ index ef5d1fce..23bf03c3 100644
 +# MAILER_DSN=smtp://localhost
 +###< symfony/mailer ###
 diff --git a/composer.json b/composer.json
-index e64617fc..9350f5e7 100644
+index aef77d2a..49f1bc0e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -22,6 +22,7 @@

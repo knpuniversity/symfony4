@@ -15,7 +15,7 @@ index f91075c2..38a8ee2a 100644
  .phpunit
  .phpunit.result.cache
 diff --git a/composer.json b/composer.json
-index 2fea4fa9..75abdb13 100644
+index ff3ab8c0..60edb074 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -36,7 +36,6 @@

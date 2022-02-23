@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 75236b55..b41b8ccf 100644
+index 9e876c2b..9b3fae58 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -98,7 +98,7 @@
+@@ -103,7 +103,7 @@
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
              "allow-contrib": true,

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 7bb140d2..e64617fc 100644
+index 91b5c19e..aef77d2a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -12,7 +12,7 @@
@@ -11,7 +11,7 @@ index 7bb140d2..e64617fc 100644
          "oneup/flysystem-bundle": "^3.0",
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
-@@ -89,7 +89,7 @@
+@@ -94,7 +94,7 @@
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
              "allow-contrib": true,

@@ -12,7 +12,7 @@ index 44b2278e..67652a8c 100644
 +# MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
 +###< symfony/sendgrid-mailer ###
 diff --git a/composer.json b/composer.json
-index 88e13c93..9fa718f1 100644
+index 5f0552f0..29cff4d7 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
