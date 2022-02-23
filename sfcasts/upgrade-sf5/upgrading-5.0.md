@@ -39,7 +39,7 @@ packages that may have had the same version.... looks good.
 We're ready! At your terminal... I'll hit `Ctrl`+`C` to stop the log tail....
 and run the same command we used when upgrading from Symfony 4.3 to 4.4:
 
-```terminal
+```terminal skip-ci
 composer update "symfony/*"
 ```
 
@@ -58,7 +58,7 @@ And... it's possible that there is *not* yet a release of `doctrine/orm` that
 supports Symfony 5 - we hit that problem earlier with StofDoctrineExtensionsBundle.
 But... let's blindly try it! Add `doctrine/orm` to our update list and try again:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer update "symfony/*" doctrine/orm
 ```
 
@@ -68,7 +68,7 @@ Symfony5-compatible release either... and even if it does... it might require a
 *major* version upgrade. But the easiest thing to do is add it to our list and hope
 for the best. Try it:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer update "symfony/*" doctrine/orm knplabs/knp-markdown-bundle
 ```
 
@@ -86,7 +86,7 @@ unless you tweaked your `composer.json` file.
 Let's keep going with my cowardly, I mean, cautious way: copy the package name and
 add it to the update command:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
@@ -98,7 +98,7 @@ for `liip/imagine-bundle` - add that to the update command - then
 `oneup/flysystem-bundle`... and now `sensio/framework-extra-bundle`: add that to
 our very-long update command:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
@@ -123,7 +123,7 @@ Our app doesn't require `doctrine/instantiator` directly: it's a dependency of
 
 We allow that by adding `--with-dependencies` to the update command:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
@@ -161,7 +161,7 @@ under the `require` key:
 
 Ok, *now* try to update:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
@@ -176,7 +176,7 @@ Bah! I should've seen that coming: it's *still* complaining about
 `nexylan/slack-bundle`: it's reminding us that we need to *also* allow that bundle
 to update. Add it to our list:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer update "symfony/*" \
                 doctrine/orm \
                 knplabs/knp-markdown-bundle \
