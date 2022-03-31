@@ -1,0 +1,342 @@
+WEBVTT
+
+00:00:01.176 --> 00:00:06.156 align:middle
+Es hora de hablar de la parte más
+fundamental de Symfony: ¡los servicios!
+
+00:00:06.906 --> 00:00:12.516 align:middle
+Sinceramente, Symfony no es más que un montón
+de objetos útiles que funcionan juntos.
+
+00:00:12.516 --> 00:00:18.126 align:middle
+Por ejemplo, hay un objeto router que
+hace coincidir rutas y genera URLs.
+
+00:00:18.486 --> 00:00:21.026 align:middle
+Hay un objeto Twig que renderiza plantillas.
+
+00:00:21.456 --> 00:00:25.936 align:middle
+Y hay un objeto Logger que
+Symfony ya utiliza internamente
+
+00:00:26.146 --> 00:00:30.136 align:middle
+para almacenar cosas en un
+archivo var/log/dev.log.
+
+00:00:31.286 --> 00:00:35.916 align:middle
+En realidad, todo en Symfony
+-quiero decir todo- lo hace
+
+00:00:36.066 --> 00:00:39.716 align:middle
+uno de estos objetos útiles.
+
+00:00:39.716 --> 00:00:44.086 align:middle
+Y estos objetos útiles tienen
+un nombre especial: servicios.
+
+00:00:44.836 --> 00:00:48.266 align:middle
+Pero no te emociones demasiado
+con esa palabra: servicio. Es
+
+00:00:48.636 --> 00:00:56.896 align:middle
+una palabra especial para una idea realmente sencilla:
+un servicio es cualquier objeto que hace un trabajo,
+
+00:00:57.196 --> 00:01:02.466 align:middle
+como generar URLs, enviar correos electrónicos
+o guardar cosas en una base de datos.
+
+00:01:03.986 --> 00:01:07.266 align:middle
+Symfony viene con un gran número de servicios,
+
+00:01:07.526 --> 00:01:11.656 align:middle
+y quiero que pienses en los
+servicios como tus herramientas.
+
+00:01:12.226 --> 00:01:18.826 align:middle
+Por ejemplo, si te diera el servicio logger, u
+objeto, podrías utilizarlo para registrar mensajes.
+
+00:01:19.346 --> 00:01:23.316 align:middle
+Si te diera un servicio mailer,
+¡podrías enviar correos electrónicos!
+
+00:01:23.746 --> 00:01:29.216 align:middle
+¡Herramientas! Toda la segunda
+mitad de Symfony consiste en aprender
+
+00:01:29.216 --> 00:01:32.016 align:middle
+dónde encontrar estos
+servicios y cómo utilizarlos.
+
+00:01:32.836 --> 00:01:36.986 align:middle
+Cada vez que aprendes sobre un nuevo
+servicio, obtienes una nueva herramienta,
+
+00:01:37.266 --> 00:01:40.796 align:middle
+¡y te vuelves un poco más peligroso!
+
+00:01:41.626 --> 00:01:43.306 align:middle
+Vamos a comprobar el sistema de registro.
+
+00:01:43.306 --> 00:01:52.306 align:middle
+Busca tu terminal y ejecuta: tail -f
+var/log/dev.log Borrar la pantalla.
+
+00:01:53.636 --> 00:01:56.636 align:middle
+Ahora, actualiza la
+página, y vuelve a moverte.
+
+00:01:58.506 --> 00:02:04.246 align:middle
+¡Impresionante! Esto demuestra que Symfony
+tiene algún tipo de sistema de registro.
+
+00:02:04.966 --> 00:02:11.236 align:middle
+Y como todo lo hace un servicio,
+debe haber un objeto logger.
+
+00:02:11.236 --> 00:02:15.996 align:middle
+Así que esta es la pregunta: ¿cómo
+podemos obtener el servicio logger para
+
+00:02:16.176 --> 00:02:19.766 align:middle
+poder registrar nuestros propios mensajes?
+
+00:02:20.736 --> 00:02:26.566 align:middle
+Aquí está la respuesta: dentro del controlador,
+en el método, añade un argumento adicional.
+
+00:02:27.476 --> 00:02:32.526 align:middle
+Dale una pista de tipo LoggerInterface -
+pulsa el tabulador para autocompletarlo
+
+00:02:32.916 --> 00:02:36.616 align:middle
+y llámalo como quieras, qué tal $logger:
+
+00:02:37.696 --> 00:02:43.456 align:middle
+Recuerda: cuando autocompletas, PhpStorm añade
+la declaración use en la parte superior por ti.
+
+00:02:44.506 --> 00:02:50.836 align:middle
+Ahora, podemos utilizar uno de sus métodos:
+$logger->info('Article is being hearted'):
+
+00:02:52.806 --> 00:02:55.026 align:middle
+Antes de hablar de esto, ¡probemos!
+
+00:02:55.026 --> 00:02:57.666 align:middle
+Busca tu navegador y haz clic en el corazón.
+
+00:02:58.756 --> 00:03:00.466 align:middle
+Eso hace que se active la ruta AJAX.
+
+00:03:01.726 --> 00:03:02.696 align:middle
+Vuelve al terminal.
+
+00:03:03.406 --> 00:03:05.646 align:middle
+¡Sí! Ahí está en la parte inferior.
+
+00:03:06.046 --> 00:03:07.736 align:middle
+Pulsa Ctrl+C para salir de tail.
+
+00:03:08.906 --> 00:03:10.556 align:middle
+Vale, ¡genial! Pero...
+
+00:03:10.636 --> 00:03:13.106 align:middle
+¿cómo diablos ha funcionado eso?
+
+00:03:14.206 --> 00:03:20.916 align:middle
+Esto es lo que pasa: antes de que Symfony
+ejecute nuestro controlador, mira cada argumento.
+
+00:03:20.966 --> 00:03:27.226 align:middle
+Para argumentos simples como $slug,
+nos pasa el valor comodín del router:
+
+00:03:27.226 --> 00:03:32.996 align:middle
+Pero para $logger, mira el
+tipo-indicación y se da cuenta de
+
+00:03:33.176 --> 00:03:37.526 align:middle
+que queremos que Symfony
+nos pase el objeto logger.
+
+00:03:38.346 --> 00:03:42.026 align:middle
+Ah, y el orden de los argumentos no importa.
+
+00:03:42.676 --> 00:03:49.386 align:middle
+Esta es una idea muy poderosa llamada
+autoconexión: si necesitas un objeto de servicio,
+
+00:03:49.636 --> 00:03:53.026 align:middle
+¡sólo tienes que saber el tipo de
+pista correcto que debes utilizar!
+
+00:03:53.816 --> 00:03:57.756 align:middle
+Así que... ¿cómo diablos he
+sabido utilizar LoggerInterface?
+
+00:03:58.316 --> 00:04:03.476 align:middle
+Bueno, por supuesto, si miras la documentación
+oficial de Symfony sobre el registrador, te lo dirá.
+
+00:04:04.076 --> 00:04:06.126 align:middle
+Pero, hay una forma más fresca.
+
+00:04:07.236 --> 00:04:08.606 align:middle
+Ve a tu terminal y ejecuta: ./bin/console
+
+00:04:08.946 --> 00:04:13.456 align:middle
+debug:autowiring ¡Boom! Esta
+
+00:04:13.956 --> 00:04:19.686 align:middle
+es una lista completa de todas las sugerencias de tipo
+que puedes utilizar para obtener un servicio. Fíjate en
+
+00:04:20.746 --> 00:04:24.896 align:middle
+que la mayoría de ellos dicen
+que son un alias de algo. No
+
+00:04:25.586 --> 00:04:28.586 align:middle
+te preocupes demasiado por eso:
+al igual que las rutas, cada
+
+00:04:28.856 --> 00:04:32.436 align:middle
+servicio tiene un nombre interno que
+puedes utilizar para referenciarlo.
+
+00:04:33.386 --> 00:04:34.926 align:middle
+Aprenderemos más sobre eso más adelante. Ah,
+
+00:04:35.666 --> 00:04:41.626 align:middle
+y cada vez que instales un nuevo paquete, tendrás
+más y más servicios en esta lista. ¡ Más
+
+00:04:41.986 --> 00:04:43.296 align:middle
+herramientas! ¡ Y
+
+00:04:44.066 --> 00:04:44.866 align:middle
+mira esto! Si quieres obtener
+
+00:04:44.866 --> 00:04:50.106 align:middle
+el servicio Twig, puedes utilizar cualquiera
+de estas dos sugerencias de tipo. ¿Y
+
+00:04:51.136 --> 00:04:54.966 align:middle
+recuerdas que dije que todo en Symfony
+lo hace un servicio? Pues bien,
+
+00:04:55.546 --> 00:05:02.316 align:middle
+cuando llamamos a $this->render() en
+un controlador, eso es sólo un atajo para
+
+00:05:02.316 --> 00:05:05.946 align:middle
+obtener el servicio Twig y
+llamar a un método en él: De
+
+00:05:05.946 --> 00:05:11.586 align:middle
+hecho, imaginemos que el atajo
+$this->render() no existe. ¿Cómo
+
+00:05:12.276 --> 00:05:13.836 align:middle
+podríamos representar una plantilla? No hay
+
+00:05:14.896 --> 00:05:19.306 align:middle
+problema: sólo necesitamos
+el servicio Twig. Añade
+
+00:05:19.306 --> 00:05:22.486 align:middle
+un segundo argumento con una
+pista de tipo Environment, porque
+
+00:05:22.876 --> 00:05:25.936 align:middle
+ese es el nombre de la clase que
+vimos en debug:autowiring. Llama
+
+00:05:26.776 --> 00:05:28.566 align:middle
+al arg $twigEnvironment: A continuación,
+
+00:05:30.046 --> 00:05:36.856 align:middle
+cambia la declaración return por $html
+= $twigEnvironment->render(): El
+
+00:05:38.056 --> 00:05:42.656 align:middle
+método que queremos llamar en el
+objeto Twig es casualmente el mismo que
+
+00:05:42.656 --> 00:05:43.866 align:middle
+el acceso directo del controlador. Luego,
+
+00:05:44.996 --> 00:05:51.266 align:middle
+al final, devuelve new
+Response() y pasa $html: Vale,
+
+00:05:51.266 --> 00:05:54.356 align:middle
+esto es mucho más trabajo que antes... y
+
+00:05:54.546 --> 00:05:57.116 align:middle
+yo no haría esto en un proyecto real. Pero,
+
+00:05:57.636 --> 00:06:03.696 align:middle
+quería demostrar un punto: cuando usas el método de
+acceso directo $this->render() en el controlador
+
+00:06:03.696 --> 00:06:09.866 align:middle
+, todo lo que hace realmente es llamar
+a render() en el servicio Twig y
+
+00:06:09.866 --> 00:06:13.456 align:middle
+luego envolverlo dentro de un objeto
+Response para ti. ¡ Pruébalo
+
+00:06:14.306 --> 00:06:16.926 align:middle
+! Vuelve y actualiza la página. ¡
+
+00:06:19.546 --> 00:06:22.136 align:middle
+Funciona exactamente igual que antes! Por
+
+00:06:22.746 --> 00:06:29.176 align:middle
+supuesto, utilizaremos métodos abreviados, porque
+nos hacen la vida mucho más increíble. Volveré
+
+00:06:30.216 --> 00:06:32.776 align:middle
+a cambiar mi código para que
+se vea como antes. Pero la
+
+00:06:32.976 --> 00:06:38.616 align:middle
+cuestión es ésta: todo
+lo hace un servicio. Si
+
+00:06:39.116 --> 00:06:45.986 align:middle
+aprendes a dominar los servicios, podrás hacer
+cualquier cosa desde cualquier lugar en Symfony. Hay
+
+00:06:46.846 --> 00:06:51.946 align:middle
+mucho más que decir sobre el tema de los servicios, y sobre
+muchas otras partes de Symfony: la configuración, Doctrine
+
+00:06:52.546 --> 00:06:59.326 align:middle
+y la base de datos, los formularios, la seguridad
+y las API, por nombrar sólo algunas. ¡ La
+
+00:07:00.216 --> 00:07:05.586 align:middle
+Barra Espacial está lejos de ser la fuente de
+información galáctica que sabemos que será! Pero,
+
+00:07:06.096 --> 00:07:07.496 align:middle
+¡felicidades!
+
+00:07:07.716 --> 00:07:11.686 align:middle
+Acabas de dedicar una hora a conseguir
+una base impresionante en Symfony.
+
+00:07:12.216 --> 00:07:17.606 align:middle
+No te arrepentirás de tu duro trabajo: estás
+en camino de construir grandes cosas y, como
+
+00:07:17.976 --> 00:07:21.486 align:middle
+siempre, de convertirte en un
+desarrollador cada vez mejor. Muy bien
+
+00:07:22.546 --> 00:07:24.166 align:middle
+chicos, ¡hasta la próxima!
