@@ -1,0 +1,299 @@
+WEBVTT
+
+00:00:00.956 --> 00:00:05.856 align:middle
+Es hora de desmitificar algo
+increíble: los rayos tractores.
+
+00:00:06.356 --> 00:00:09.386 align:middle
+Bueno, en realidad, aún
+no los hemos descifrado...
+
+00:00:09.536 --> 00:00:15.766 align:middle
+así que vamos a desmitificar otra cosa, algo
+que ya está ocurriendo entre bastidores.
+
+00:00:15.766 --> 00:00:19.366 align:middle
+Primero confirma todo, con un bonito mensaje:
+
+00:00:22.506 --> 00:00:25.916 align:middle
+Vamos a instalar una nueva función
+llamada Symfony Security Checker.
+
+00:00:26.646 --> 00:00:28.336 align:middle
+Esta es una gran herramienta....
+
+00:00:28.656 --> 00:00:34.336 align:middle
+pero... revelación completa: lo estamos instalando
+principalmente para mostrar el sistema de recetas.
+
+00:00:34.816 --> 00:00:40.566 align:middle
+Ooooo. Ejecutar: git status
+Vale, no hay cambios.
+
+00:00:41.746 --> 00:00:47.206 align:middle
+Ahora ejecuta: composer require
+sec-checker Una vez más,
+
+00:00:47.386 --> 00:00:51.016 align:middle
+¡sec-checker no debería ser
+un nombre de paquete válido!
+
+00:00:51.316 --> 00:00:52.476 align:middle
+¿Qué está pasando?
+
+00:00:53.576 --> 00:00:55.636 align:middle
+Muévete y abre composer.json:
+
+00:00:55.636 --> 00:01:00.116 align:middle
+Nuestro proyecto comenzó
+con unas pocas dependencias.
+
+00:01:00.606 --> 00:01:06.236 align:middle
+Una de ellas era symfony/flex:
+esto es súper importante.
+
+00:01:06.236 --> 00:01:09.846 align:middle
+Flex es un plugin de Composer
+con dos superpoderes.
+
+00:01:10.496 --> 00:01:12.896 align:middle
+El primer superpoder es el sistema de alias.
+
+00:01:13.016 --> 00:01:16.826 align:middle
+Busca tu navegador y ve a symfony.sh.
+
+00:01:18.156 --> 00:01:23.996 align:middle
+Este es el servidor de "recetas" de Symfony:
+hablaremos de lo que significa a continuación.
+
+00:01:23.996 --> 00:01:25.136 align:middle
+Busca "seguridad".
+
+00:01:26.146 --> 00:01:30.826 align:middle
+Ah, aquí hay un paquete llamado
+sensiolabs/security-checker.
+
+00:01:31.246 --> 00:01:37.596 align:middle
+Y más abajo, tiene alias: sec-check,
+sec-checker, security-check y más.
+
+00:01:37.596 --> 00:01:43.906 align:middle
+Gracias a Flex, podemos decir composer require
+sec-checker, o cualquiera de estos alias,
+
+00:01:44.066 --> 00:01:46.936 align:middle
+y lo traducirá al nombre real del paquete.
+
+00:01:47.616 --> 00:01:50.106 align:middle
+Sí, es un sistema de atajos.
+
+00:01:50.106 --> 00:01:52.426 align:middle
+Pero el resultado es realmente genial.
+
+00:01:53.176 --> 00:01:54.256 align:middle
+¿Necesitas un registrador?
+
+00:01:54.456 --> 00:01:55.986 align:middle
+composer require logger.
+
+00:01:56.486 --> 00:01:57.416 align:middle
+¿Necesitas enviar correos electrónicos?
+
+00:01:57.646 --> 00:01:59.286 align:middle
+composer require mailer.
+
+00:01:59.516 --> 00:02:00.666 align:middle
+¿Necesitas un rayo tractor?
+
+00:02:01.006 --> 00:02:04.216 align:middle
+composer require. Espera, no,
+no podemos ayudarte con eso.
+
+00:02:05.376 --> 00:02:07.276 align:middle
+De vuelta a composer.json, ¡sí!
+
+00:02:07.626 --> 00:02:11.966 align:middle
+Composer añadió sensiolabs/security-checker:
+
+00:02:12.406 --> 00:02:15.266 align:middle
+Ese es el primer superpoder de Flex.
+
+00:02:15.946 --> 00:02:20.296 align:middle
+El segundo superpoder es
+aún mejor: las recetas.
+
+00:02:20.776 --> 00:02:23.826 align:middle
+Mmmm. Vuelve a tu terminal y...
+
+00:02:23.916 --> 00:02:30.826 align:middle
+¡sí! Se ha instalado y, mira esto
+"Operaciones Symfony: 1 receta".
+
+00:02:31.276 --> 00:02:35.406 align:middle
+Luego, "Configuración de
+sensiolabs/security-checker".
+
+00:02:36.416 --> 00:02:37.386 align:middle
+¿Qué significa eso?
+
+00:02:38.386 --> 00:02:40.936 align:middle
+Que se ejecute: git status ¡Woh!
+
+00:02:40.936 --> 00:02:46.286 align:middle
+Esperábamos que se actualizaran
+composer.json y composer.lock.
+
+00:02:46.676 --> 00:02:50.236 align:middle
+Pero también hay cambios
+en el archivo symfony.lock
+
+00:02:50.546 --> 00:02:53.826 align:middle
+y, de repente, ¡tenemos un archivo
+de configuración totalmente nuevo!
+
+00:02:55.206 --> 00:02:59.776 align:middle
+En primer lugar, symfony.lock:
+este archivo lo gestiona Flex.
+
+00:03:00.486 --> 00:03:03.346 align:middle
+Lleva la cuenta de las
+recetas que se han instalado.
+
+00:03:04.286 --> 00:03:05.136 align:middle
+Básicamente...
+
+00:03:05.366 --> 00:03:07.746 align:middle
+envíalo a git, pero no te preocupes por él.
+
+00:03:09.436 --> 00:03:14.756 align:middle
+El segundo archivo es
+config/packages/dev/security_checker.yaml:
+
+00:03:15.776 --> 00:03:19.186 align:middle
+Este fue añadido por la receta y, ¡genial!
+
+00:03:19.386 --> 00:03:22.486 align:middle
+¡Añade un nuevo comando
+bin/console a nuestra aplicación!
+
+00:03:23.546 --> 00:03:26.806 align:middle
+No te preocupes por el código
+en sí: ¡pronto entenderás
+
+00:03:26.806 --> 00:03:29.986 align:middle
+y escribirás código como éste!
+
+00:03:30.026 --> 00:03:40.926 align:middle
+La cuestión es la siguiente: gracias a este archivo, ahora
+podemos ejecutar: php bin/console security:check ¡Genial!
+
+00:03:41.316 --> 00:03:44.286 align:middle
+¡Este es el sistema de recetas en acción!
+
+00:03:44.806 --> 00:03:48.566 align:middle
+Siempre que instales un paquete,
+Flex ejecutará la receta
+
+00:03:48.566 --> 00:03:50.466 align:middle
+de ese paquete, si es que existe.
+
+00:03:51.086 --> 00:03:56.196 align:middle
+Las recetas pueden añadir archivos de configuración,
+crear directorios o incluso modificar archivos
+
+00:03:56.196 --> 00:04:02.506 align:middle
+como .gitignore para que la biblioteca funcione
+al instante sin ninguna configuración adicional.
+
+00:04:03.176 --> 00:04:05.046 align:middle
+Me encanta Flex. Por
+
+00:04:05.736 --> 00:04:10.166 align:middle
+cierto, el propósito del comprobador
+de seguridad es que compruebe
+
+00:04:10.166 --> 00:04:14.386 align:middle
+si hay alguna vulnerabilidad conocida para
+los paquetes utilizados en nuestro proyecto.
+
+00:04:15.016 --> 00:04:16.236 align:middle
+En este momento, ¡estamos bien!
+
+00:04:16.786 --> 00:04:19.286 align:middle
+Pero la receta ha hecho otro cambio.
+
+00:04:20.146 --> 00:04:27.206 align:middle
+Ejecutar: git diff composer.json Por supuesto,
+composer require añadió el paquete.
+
+00:04:27.746 --> 00:04:30.676 align:middle
+¡Pero la receta añadió
+un nuevo script! Gracias
+
+00:04:32.576 --> 00:04:36.686 align:middle
+a él, cada vez que ejecutamos:
+composer install cuando termina,
+
+00:04:37.056 --> 00:04:39.596 align:middle
+ejecuta el comprobador de
+seguridad automáticamente.
+
+00:04:39.596 --> 00:04:47.006 align:middle
+¡Así que genial! Ah, y no lo mostraré ahora, pero
+Flex es incluso lo suficientemente inteligente como
+
+00:04:47.006 --> 00:04:51.026 align:middle
+para desinstalar las recetas
+cuando eliminas un paquete.
+
+00:04:51.846 --> 00:04:55.426 align:middle
+Eso hace que probar nuevos
+paquetes sea rápido y fácil.
+
+00:04:55.466 --> 00:04:57.536 align:middle
+Así que puede que te preguntes...
+
+00:04:57.846 --> 00:04:59.266 align:middle
+¿dónde viven estas recetas?
+
+00:04:59.976 --> 00:05:00.806 align:middle
+¡Buena pregunta!
+
+00:05:01.146 --> 00:05:01.716 align:middle
+Viven...
+
+00:05:02.216 --> 00:05:03.426 align:middle
+en la nube.
+
+00:05:03.716 --> 00:05:05.686 align:middle
+Es decir, viven en GitHub.
+
+00:05:05.686 --> 00:05:11.226 align:middle
+En symfony.sh, haz clic en "Receta"
+junto al comprobador de seguridad.
+
+00:05:15.106 --> 00:05:19.416 align:middle
+Ah, nos lleva al repositorio symfony/recipes.
+
+00:05:20.556 --> 00:05:26.126 align:middle
+Aquí puedes ver qué archivos se añadirán y
+algunos otros cambios descritos en manifest.json.
+
+00:05:27.006 --> 00:05:33.536 align:middle
+Todas las recetas viven en este repositorio
+o en otro llamado symfony/recipes-contrib.
+
+00:05:34.416 --> 00:05:37.396 align:middle
+No hay ninguna diferencia
+importante entre ambos repositorios:
+
+00:05:37.806 --> 00:05:41.436 align:middle
+pero las recetas oficiales se vigilan
+más de cerca en cuanto a su calidad.
+
+00:05:42.906 --> 00:05:47.426 align:middle
+A continuación Pongamos en marcha
+el sistema de recetas instalando Twig
+
+00:05:47.426 --> 00:05:49.586 align:middle
+para poder crear plantillas adecuadas
