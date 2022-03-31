@@ -1,0 +1,185 @@
+WEBVTT
+
+00:00:01.066 --> 00:00:05.116 align:middle
+Asegúrate de que has confirmado
+todos tus cambios - yo ya lo he hecho.
+
+00:00:05.446 --> 00:00:09.406 align:middle
+¡Porque estamos a punto de
+instalar algo súper divertido!
+
+00:00:09.626 --> 00:00:12.426 align:middle
+Como, ¡diversión flotando por el espacio!
+
+00:00:13.296 --> 00:00:16.236 align:middle
+Ejecuta: composer require profiler
+
+00:00:16.426 --> 00:00:20.686 align:middle
+--dev El perfilador - también llamado
+
+00:00:20.686 --> 00:00:26.176 align:middle
+"barra de herramientas de depuración web" es
+probablemente la cosa más impresionante de Symfony.
+
+00:00:26.986 --> 00:00:28.996 align:middle
+Esto instala unos cuantos paquetes y...
+
+00:00:29.346 --> 00:00:30.596 align:middle
+¡una receta!
+
+00:00:31.146 --> 00:00:33.986 align:middle
+Corre: git status ¡Bien, genial!
+
+00:00:34.566 --> 00:00:38.406 align:middle
+Ha añadido un par de archivos de
+configuración e incluso algunas rutas
+
+00:00:38.406 --> 00:00:42.656 align:middle
+en el entorno dev sólo que ayudan
+al funcionamiento del perfilador.
+
+00:00:43.286 --> 00:00:46.416 align:middle
+Entonces... ¿qué diablos es el perfilador?
+
+00:00:47.206 --> 00:00:51.986 align:middle
+Vuelve a tu navegador, asegúrate de que estás en
+la página de presentación del artículo y actualiza
+
+00:00:52.646 --> 00:00:56.216 align:middle
+¡Ya está! ¿Ves esa barra negra tan
+elegante en la parte inferior de la página?
+
+00:00:56.686 --> 00:00:59.356 align:middle
+¡Es la barra de herramientas
+de depuración de la web!
+
+00:01:00.176 --> 00:01:06.286 align:middle
+Ahora se inyecta automáticamente en la parte inferior
+de cualquier página HTML válida durante el desarrollo.
+
+00:01:07.176 --> 00:01:11.466 align:middle
+Sí, este código JavaScript hace
+una llamada AJAX que la carga.
+
+00:01:12.516 --> 00:01:19.966 align:middle
+Ah, y está repleta de información, como qué ruta
+se ha encontrado, qué controlador se ha ejecutado, el
+
+00:01:20.776 --> 00:01:25.766 align:middle
+tiempo de ejecución, los detalles de la caché
+e incluso información sobre las plantillas.
+
+00:01:26.356 --> 00:01:31.626 align:middle
+Y a medida que instalemos más
+bibliotecas, ¡tendremos aún más iconos!
+
+00:01:32.286 --> 00:01:37.286 align:middle
+Pero lo realmente impresionante es que puedes hacer
+clic en cualquiera de estos iconos para entrar en...
+
+00:01:37.756 --> 00:01:39.156 align:middle
+el perfilador.
+
+00:01:39.676 --> 00:01:44.116 align:middle
+OoooOoo. Esto nos lleva a una
+página totalmente diferente.
+
+00:01:44.516 --> 00:01:49.856 align:middle
+El perfilador es como la barra de herramientas de depuración
+de la web con un reactor de fusión pegado a ella.
+
+00:01:50.506 --> 00:01:53.596 align:middle
+La pestaña Twig muestra exactamente
+qué plantillas se han renderizado.
+
+00:01:54.346 --> 00:01:59.606 align:middle
+También podemos obtener información detallada sobre el
+almacenamiento en caché, el enrutamiento y los eventos,
+
+00:01:59.826 --> 00:02:02.166 align:middle
+de los que hablaremos en un futuro tutorial.
+
+00:02:02.996 --> 00:02:06.376 align:middle
+Ah, y mi favorito personal: ¡Rendimiento!
+
+00:02:07.016 --> 00:02:11.816 align:middle
+Esto te muestra el tiempo que ha tardado cada
+parte de la petición, incluyendo el controlador.
+
+00:02:12.616 --> 00:02:19.146 align:middle
+En otro tutorial, utilizaremos esto para profundizar
+en cómo funciona exactamente Symfony bajo el capó.
+
+00:02:19.966 --> 00:02:23.836 align:middle
+Cuando estés listo para volver a la página original,
+puedes hacer clic en el enlace de la parte superior.
+
+00:02:24.676 --> 00:02:26.316 align:middle
+Pero espera, ¡hay más!
+
+00:02:26.936 --> 00:02:30.866 align:middle
+El perfilador también ha instalado
+el componente var-dumper de Symfony.
+
+00:02:32.016 --> 00:02:34.956 align:middle
+Busca ArticleController y ve a showAction().
+
+00:02:36.536 --> 00:02:41.176 align:middle
+Normalmente, para depurar, utilizaré
+var_dump() para imprimir algunos datos.
+
+00:02:41.746 --> 00:02:42.346 align:middle
+Pero, ¡ya no!
+
+00:02:42.816 --> 00:02:49.196 align:middle
+En su lugar, utiliza dump(): vuelca el $slug
+y también el propio objeto controlador:
+
+00:02:50.076 --> 00:02:51.326 align:middle
+Bien, ¡recupera!
+
+00:02:52.516 --> 00:02:54.456 align:middle
+Bonita salida de colores.
+
+00:02:54.936 --> 00:02:59.386 align:middle
+Además, puedes ampliar los
+objetos para profundizar en ellos.
+
+00:03:04.846 --> 00:03:08.636 align:middle
+La función dump() es aún más útil en Twig.
+
+00:03:11.906 --> 00:03:16.196 align:middle
+Dentro del bloque body, añade {{ dump() }}:
+
+00:03:16.196 --> 00:03:21.946 align:middle
+En Twig, puedes utilizar dump() sin argumentos.
+
+00:03:22.446 --> 00:03:24.666 align:middle
+Y eso es especialmente útil.
+
+00:03:25.316 --> 00:03:31.526 align:middle
+¿Por qué? Porque vuelca una matriz asociativa
+de todas las variables a las que tienes acceso.
+
+00:03:32.416 --> 00:03:35.826 align:middle
+Ya sabíamos que teníamos las
+variables title y comments.
+
+00:03:36.046 --> 00:03:39.616 align:middle
+Pero, al parecer, ¡también
+tenemos una variable app!
+
+00:03:40.176 --> 00:03:44.156 align:middle
+En realidad, todas las plantillas obtienen
+esta variable app automáticamente.
+
+00:03:44.896 --> 00:03:45.466 align:middle
+¡Es bueno saberlo!
+
+00:03:45.946 --> 00:03:49.766 align:middle
+¡Pero! ¡Symfony tiene aún
+más herramientas de depuración!
+
+00:03:50.446 --> 00:03:53.826 align:middle
+¡Vamos a por ellas y a aprender
+sobre los "paquetes" a continuación!
