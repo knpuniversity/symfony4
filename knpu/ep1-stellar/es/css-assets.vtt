@@ -1,0 +1,393 @@
+WEBVTT
+
+00:00:01.116 --> 00:00:06.316 align:middle
+Incluso los astronautas -que generalmente
+se pasan el tiempo mirando al negro abismo-
+
+00:00:06.606 --> 00:00:10.596 align:middle
+exigen un sitio menos feo que éste
+
+00:00:11.316 --> 00:00:12.066 align:middle
+¡Arreglémoslo!
+
+00:00:12.066 --> 00:00:17.696 align:middle
+Si descargas el código del curso desde la página
+en la que estás viendo este vídeo ahora mismo,
+
+00:00:18.226 --> 00:00:21.586 align:middle
+dentro del archivo zip,
+encontrarás un directorio start/.
+
+00:00:21.856 --> 00:00:26.906 align:middle
+Y dentro de él, verás el mismo
+directorio tutorial/ que tengo aquí.
+
+00:00:27.336 --> 00:00:28.956 align:middle
+Y dentro de él...
+
+00:00:29.316 --> 00:00:32.456 align:middle
+He creado un nuevo base.html.twig.
+
+00:00:33.416 --> 00:00:36.496 align:middle
+Cópialo y sobrescribe nuestra
+versión en templates/:
+
+00:00:37.846 --> 00:00:43.306 align:middle
+A nivel técnico, esto es básicamente lo
+mismo que antes: tiene los mismos bloques:
+
+00:00:43.556 --> 00:00:47.626 align:middle
+title stylesheets, body y
+javascripts en la parte inferior.
+
+00:00:48.316 --> 00:00:52.286 align:middle
+Pero ahora, tenemos un bonito diseño
+HTML que está estilizado con Bootstrap.
+
+00:00:52.286 --> 00:00:55.486 align:middle
+Si refrescas, debería verse mejor.
+
+00:00:56.046 --> 00:00:58.236 align:middle
+¡Woh! ¡No hay cambios!
+
+00:00:58.776 --> 00:01:00.976 align:middle
+¡Qué raro! En realidad...
+
+00:01:01.176 --> 00:01:04.436 align:middle
+esto es más raro de lo que crees.
+
+00:01:04.436 --> 00:01:12.876 align:middle
+Busca tu terminal y elimina el directorio
+var/cache/dev: ¿Qué diablos es esto?
+
+00:01:13.566 --> 00:01:16.946 align:middle
+Internamente, Symfony almacena
+cosas en este directorio.
+
+00:01:17.346 --> 00:01:22.116 align:middle
+Y... normalmente no necesitas
+pensar en esto en absoluto:
+
+00:01:22.116 --> 00:01:25.276 align:middle
+Symfony es lo suficientemente
+inteligente durante el desarrollo
+
+00:01:25.536 --> 00:01:29.176 align:middle
+como para reconstruir automáticamente
+esta caché siempre que sea necesario.
+
+00:01:29.856 --> 00:01:33.286 align:middle
+Entonces... ¿por qué la borro manualmente?
+
+00:01:34.006 --> 00:01:37.586 align:middle
+Bueno... porque hemos copiado mi archivo...
+
+00:01:37.926 --> 00:01:45.116 align:middle
+y como su fecha de "última modificación" es
+anterior a la de nuestro base.html.twig original,
+
+00:01:45.666 --> 00:01:50.636 align:middle
+Twig se confunde y piensa que la
+plantilla no se ha actualizado.
+
+00:01:50.636 --> 00:01:55.936 align:middle
+En serio, esto no es algo que deba
+preocupar en ninguna otra situación.
+
+00:01:56.516 --> 00:01:57.826 align:middle
+Y cuando refrescamos...
+
+00:01:59.336 --> 00:02:00.076 align:middle
+¡ahí está!
+
+00:02:00.586 --> 00:02:03.126 align:middle
+Vale, sigue siendo bastante feo.
+
+00:02:03.646 --> 00:02:05.876 align:middle
+¡Eso es porque nos faltan
+algunos archivos CSS!
+
+00:02:06.806 --> 00:02:11.976 align:middle
+En el directorio tutorial/, también he
+preparado algunos css/, fonts/ y images/.
+
+00:02:13.216 --> 00:02:17.096 align:middle
+Todos estos archivos deben ser
+accesibles para el navegador del usuario,
+
+00:02:17.386 --> 00:02:21.266 align:middle
+y eso significa que deben
+vivir dentro de public/.
+
+00:02:23.006 --> 00:02:25.086 align:middle
+Abre ese directorio y pégalos allí. Por
+
+00:02:25.916 --> 00:02:32.896 align:middle
+cierto, Symfony tiene una herramienta impresionante
+llamada Webpack Encore que ayuda a procesar, combinar,
+
+00:02:33.126 --> 00:02:38.326 align:middle
+minificar y, en general, hacer cosas
+increíbles con tus archivos CSS y JS.
+
+00:02:39.516 --> 00:02:42.556 align:middle
+Vamos a hablar de Webpack Encore...
+
+00:02:42.806 --> 00:02:44.946 align:middle
+pero en otro tutorial.
+
+00:02:44.946 --> 00:02:49.226 align:middle
+Por ahora, vamos a configurar las cosas
+con archivos normales y estáticos.
+
+00:02:50.286 --> 00:02:55.616 align:middle
+Los dos archivos CSS que queremos incluir
+son font-awesome.css y styles.css.
+
+00:02:56.466 --> 00:02:59.956 align:middle
+¡Y no necesitamos hacer
+nada complejo ni especial!
+
+00:03:00.476 --> 00:03:05.776 align:middle
+En base.html.twig, busca el bloque
+stylesheets y añade una etiqueta link.
+
+00:03:05.776 --> 00:03:12.896 align:middle
+Pero espera, ¿por qué añadimos exactamente
+la etiqueta link dentro del bloque stylesheets?
+
+00:03:13.346 --> 00:03:15.026 align:middle
+¿Es importante?
+
+00:03:15.586 --> 00:03:17.076 align:middle
+Bueno, técnicamente...
+
+00:03:17.236 --> 00:03:21.806 align:middle
+no importa: una etiqueta link puede
+vivir en cualquier parte de head.
+
+00:03:22.456 --> 00:03:29.126 align:middle
+Pero más adelante, es posible que queramos añadir
+archivos CSS adicionales en páginas específicas.
+
+00:03:29.936 --> 00:03:35.846 align:middle
+Al poner las etiquetas link dentro de este
+bloque, tendremos más flexibilidad para hacerlo.
+
+00:03:36.596 --> 00:03:41.176 align:middle
+No te preocupes: pronto veremos un
+ejemplo de esto con un archivo JavaScript.
+
+00:03:41.176 --> 00:03:44.296 align:middle
+Entonces... ¿qué ruta debemos utilizar?
+
+00:03:44.426 --> 00:03:51.716 align:middle
+Como public/ es la raíz del documento,
+debería ser simplemente /css/font-awesome.css:
+
+00:03:52.786 --> 00:03:57.266 align:middle
+Haz lo mismo con el otro
+archivo: /css/styles.css:
+
+00:03:57.266 --> 00:03:59.286 align:middle
+¡Es así de sencillo!
+
+00:03:59.286 --> 00:04:05.516 align:middle
+¡Refresca! Todavía no es
+perfecto, pero es mucho mejor
+
+00:04:05.946 --> 00:04:10.156 align:middle
+Y ahora voy a complicar ligeramente las cosas.
+
+00:04:11.776 --> 00:04:20.216 align:middle
+Vuelve a entrar en las Preferencias de PhpStorm,
+busca "Symfony" y encuentra el plugin "Symfony".
+
+00:04:21.456 --> 00:04:27.056 align:middle
+Cambia el directorio "web" por
+public - en Symfony 3 se llamaba web.
+
+00:04:27.786 --> 00:04:34.786 align:middle
+Esto no es necesario, pero nos dará más
+autocompletado cuando trabajemos con activos.
+
+00:04:34.786 --> 00:04:40.536 align:middle
+Elimina la ruta "font-awesome", vuelve a
+escribirla y pulsa el tabulador para autocompletar:
+
+00:04:40.536 --> 00:04:44.966 align:middle
+¡Woh! ¡Envolvió la ruta
+en una función Twig asset()!
+
+00:04:46.286 --> 00:04:48.926 align:middle
+Haz lo mismo para styles.css: Esto es lo que
+
+00:04:49.716 --> 00:04:56.806 align:middle
+pasa: siempre que enlaces a un activo
+estático -CSS, JS o imágenes-
+
+00:04:57.276 --> 00:05:00.746 align:middle
+debes envolver la ruta
+en esta función asset().
+
+00:05:01.416 --> 00:05:05.036 align:middle
+Pero... no es realmente tan importante.
+
+00:05:05.696 --> 00:05:12.546 align:middle
+De hecho, ahora mismo, no hace nada:
+imprimirá la misma ruta que antes.
+
+00:05:13.276 --> 00:05:18.646 align:middle
+Pero! en el futuro, la función
+asset() nos dará más flexibilidad
+
+00:05:18.886 --> 00:05:23.286 align:middle
+para versionar nuestros activos
+o almacenarlos en un CDN.
+
+00:05:23.286 --> 00:05:29.066 align:middle
+En otras palabras: no te preocupes demasiado
+por ella, ¡pero recuerda utilizarla!
+
+00:05:30.176 --> 00:05:35.976 align:middle
+En realidad, la función asset() hace algo
+inmediatamente: ¡rompe nuestro sitio!
+
+00:05:36.636 --> 00:05:37.456 align:middle
+¡Refrescar! ¡Ah!
+
+00:05:38.076 --> 00:05:43.526 align:middle
+La función asset() proviene de una parte
+de Symfony que aún no tenemos instalada.
+
+00:05:43.526 --> 00:05:51.676 align:middle
+Arréglalo ejecutando: composer require asset
+Esto instala el componente symfony/asset.
+
+00:05:53.176 --> 00:05:55.346 align:middle
+Y en cuanto Composer termine...
+
+00:05:55.996 --> 00:05:58.776 align:middle
+podemos actualizar, ¡y funciona!
+
+00:06:00.226 --> 00:06:06.006 align:middle
+Para comprobar que la función asset() no está
+haciendo nada mágico, puedes mirar la etiqueta link
+
+00:06:06.006 --> 00:06:12.766 align:middle
+en el código fuente HTML: es la
+misma aburrida /css/styles.css.
+
+00:06:12.766 --> 00:06:16.986 align:middle
+Hay otro punto en el que
+necesitamos utilizar asset().
+
+00:06:17.876 --> 00:06:19.916 align:middle
+En el diseño, busca img.
+
+00:06:20.846 --> 00:06:22.456 align:middle
+Ah, ¡una etiqueta img!
+
+00:06:23.286 --> 00:06:26.986 align:middle
+Elimina el src y vuelve a
+escribir astronaut-profile:
+
+00:06:27.936 --> 00:06:33.066 align:middle
+¡Perfecto! Refresca y disfruta de nuestro
+nuevo avatar en el menú de usuario.
+
+00:06:34.246 --> 00:06:38.716 align:middle
+Hay muchos datos codificados, pero
+lo haremos dinámico con el tiempo.
+
+00:06:39.976 --> 00:06:42.176 align:middle
+¡El diseño se ve muy bien!
+
+00:06:42.686 --> 00:06:44.716 align:middle
+Pero el interior de la página...
+
+00:06:45.026 --> 00:06:48.066 align:middle
+sí... sigue siendo bastante terrible.
+
+00:06:48.896 --> 00:06:54.026 align:middle
+De vuelta al directorio tutorial/,
+también hay un archivo article.html.twig.
+
+00:06:54.816 --> 00:06:59.056 align:middle
+No copies este archivo entero,
+sólo copia su contenido.
+
+00:07:00.486 --> 00:07:03.426 align:middle
+Ciérralo y abre show.html.twig.
+
+00:07:04.576 --> 00:07:07.676 align:middle
+Pega el nuevo código en la
+parte superior del bloque body:
+
+00:07:12.806 --> 00:07:13.996 align:middle
+Compruébalo en tu navegador.
+
+00:07:15.206 --> 00:07:16.546 align:middle
+Sí, se ve bien...
+
+00:07:16.846 --> 00:07:20.026 align:middle
+pero toda esta información está codificada.
+
+00:07:20.836 --> 00:07:24.506 align:middle
+Es decir, el nombre del artículo
+es sólo texto estático.
+
+00:07:25.736 --> 00:07:30.946 align:middle
+Tomemos el código dinámico que tenemos en la
+parte inferior y trabajémoslo en el nuevo HTML.
+
+00:07:36.256 --> 00:07:38.816 align:middle
+Para el título, utiliza {{ title }}:
+
+00:07:41.476 --> 00:07:44.106 align:middle
+Abajo, imprime el número de comentarios.
+
+00:07:44.526 --> 00:07:48.406 align:middle
+Sustitúyelo por {{ comments|length }}:
+
+00:07:51.676 --> 00:07:56.736 align:middle
+Ah, y en la parte inferior, hay una caja
+de comentarios y un comentario real.
+
+00:08:00.076 --> 00:08:01.536 align:middle
+Busquemos esto y...
+
+00:08:01.856 --> 00:08:02.656 align:middle
+¡añadir un bucle!
+
+00:08:02.836 --> 00:08:08.036 align:middle
+Para comment in comments en la parte
+superior, y endfor en la parte inferior.
+
+00:08:12.756 --> 00:08:15.446 align:middle
+Para el comentario real, utiliza {{ comment }}:
+
+00:08:18.946 --> 00:08:20.966 align:middle
+Borra el código antiguo
+de la parte inferior...
+
+00:08:25.106 --> 00:08:27.686 align:middle
+oh, pero no borres el endblock:
+
+00:08:29.236 --> 00:08:31.136 align:middle
+Vamos a probarlo - ¡recupera!
+
+00:08:32.216 --> 00:08:34.296 align:middle
+¡Se ve muy bien!
+
+00:08:35.036 --> 00:08:39.396 align:middle
+Todavía hay un montón de cosas
+codificadas, pero esto es mucho mejor. Es
+
+00:08:40.176 --> 00:08:45.266 align:middle
+hora de hacer que nuestra página web sea menos
+fea y de aprender sobre el segundo trabajo
+
+00:08:45.436 --> 00:08:49.156 align:middle
+del enrutamiento: la generación
+de rutas para enlazar
