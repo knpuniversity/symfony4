@@ -1,0 +1,410 @@
+WEBVTT
+
+00:00:01.076 --> 00:00:01.716 align:middle
+¡De vuelta al trabajo!
+
+00:00:02.416 --> 00:00:03.696 align:middle
+Abre ArticleController.
+
+00:00:04.776 --> 00:00:10.346 align:middle
+En cuanto quieras renderizar una plantilla, tienes
+que extender una clase base: AbstractController:
+
+00:00:11.706 --> 00:00:15.606 align:middle
+Obviamente, tu controlador
+no necesita extender esto.
+
+00:00:16.016 --> 00:00:17.416 align:middle
+Pero normalmente lo harán...
+
+00:00:17.416 --> 00:00:20.536 align:middle
+porque esta clase te proporciona
+métodos de acceso directo
+
+00:00:22.306 --> 00:00:26.066 align:middle
+El que queremos es return $this->render().
+
+00:00:27.146 --> 00:00:32.806 align:middle
+Pásale un nombre de archivo de
+plantilla: qué tal article/show.html.twig
+
+00:00:33.116 --> 00:00:35.336 align:middle
+para ser coherente con el
+nombre del controlador.
+
+00:00:36.486 --> 00:00:41.446 align:middle
+El segundo argumento es una matriz de
+variables que quieres pasar a tu plantilla:
+
+00:00:42.306 --> 00:00:45.006 align:middle
+Al final, vamos a cargar
+artículos de la base de datos.
+
+00:00:45.316 --> 00:00:46.356 align:middle
+Pero... ¡espera!
+
+00:00:46.606 --> 00:00:48.166 align:middle
+Todavía no estamos preparados.
+
+00:00:48.926 --> 00:00:50.636 align:middle
+¡Así que vamos a fingir
+hasta que lo consigamos!
+
+00:00:51.406 --> 00:00:55.646 align:middle
+Pasa una variable title ajustada a
+una versión del título del slug:
+
+00:00:58.076 --> 00:01:00.796 align:middle
+¡Genial! ¡Vamos a añadir esa plantilla!
+
+00:01:01.746 --> 00:01:08.636 align:middle
+Dentro de templates/, crea un directorio
+article y luego el archivo: show.html.twig.
+
+00:01:09.956 --> 00:01:15.686 align:middle
+Añade un h1, y luego imprime
+esa variable title: {{ title }}:
+
+00:01:15.866 --> 00:01:20.026 align:middle
+Si eres nuevo en Twig, ¡bienvenido!
+
+00:01:20.256 --> 00:01:22.096 align:middle
+¡Te va a encantar!
+
+00:01:22.746 --> 00:01:24.686 align:middle
+Twig sólo tiene 2 sintaxis.
+
+00:01:25.146 --> 00:01:28.226 align:middle
+La primera es {{ }}.
+
+00:01:28.746 --> 00:01:32.676 align:middle
+La llamo la etiqueta "decir
+algo", porque imprime.
+
+00:01:33.456 --> 00:01:40.066 align:middle
+Y al igual que en PHP, puedes imprimir cualquier cosa:
+una variable, una cadena o una expresión compleja.
+
+00:01:41.216 --> 00:01:45.276 align:middle
+La segunda sintaxis es {% %}.
+
+00:01:46.116 --> 00:01:48.406 align:middle
+La llamo la etiqueta "hacer algo". Se
+
+00:01:48.906 --> 00:01:54.146 align:middle
+utiliza siempre que necesitas
+hacer algo, en lugar de imprimir,
+
+00:01:54.516 --> 00:01:57.256 align:middle
+como una declaración if o un bucle for.
+
+00:01:58.176 --> 00:02:02.976 align:middle
+Veremos la lista completa de
+etiquetas "hacer algo" en un minuto.
+
+00:02:02.976 --> 00:02:03.906 align:middle
+Y... sí, ¡eso es todo!
+
+00:02:04.856 --> 00:02:06.756 align:middle
+Bueno, vale, he mentido totalmente.
+
+00:02:07.006 --> 00:02:11.786 align:middle
+Hay una tercera sintaxis: {# #}: ¡comentarios!
+
+00:02:12.286 --> 00:02:19.516 align:middle
+Al final de esta página, pegaré algo de
+contenido extra codificado para animar las cosas
+
+00:02:20.526 --> 00:02:21.316 align:middle
+¡Vamos a probarlo!
+
+00:02:21.776 --> 00:02:23.586 align:middle
+¡Busca tu navegador y actualízalo!
+
+00:02:24.906 --> 00:02:27.626 align:middle
+¡Bum! ¡Tenemos contenido!
+
+00:02:28.516 --> 00:02:31.076 align:middle
+Pero fíjate: si ves la fuente de la página...
+
+00:02:31.316 --> 00:02:36.576 align:middle
+es sólo este contenido: aún no tenemos
+ningún diseño ni estructura HTML.
+
+00:02:37.066 --> 00:02:38.526 align:middle
+Pero, ¡pronto lo tendremos!
+
+00:02:39.746 --> 00:02:40.836 align:middle
+Vuelve a tu controlador.
+
+00:02:42.276 --> 00:02:46.306 align:middle
+Con el tiempo, los usuarios tendrán
+que poder comentar los artículos,
+
+00:02:46.546 --> 00:02:50.766 align:middle
+para que puedan debatir respetuosamente
+las conclusiones del artículo
+
+00:02:50.766 --> 00:02:53.106 align:middle
+basadas en un análisis e
+investigación objetivos.
+
+00:02:53.636 --> 00:02:54.096 align:middle
+Ya sabes...
+
+00:02:54.216 --> 00:02:57.456 align:middle
+no es diferente de cualquier otra
+sección de comentarios de noticias.
+
+00:02:58.426 --> 00:03:00.276 align:middle
+Ejem. Voy a pegar 3 comentarios falsos.
+
+00:03:03.406 --> 00:03:06.836 align:middle
+Añade una segunda variable llamada
+comments para pasarlos a la plantilla:
+
+00:03:07.816 --> 00:03:12.756 align:middle
+Esta vez, no podemos limitarnos a imprimir esa
+matriz: tenemos que hacer un bucle sobre ella.
+
+00:03:13.486 --> 00:03:18.026 align:middle
+En la parte inferior, y un h2 que diga
+"Comentarios" y luego añade un ul:
+
+00:03:19.406 --> 00:03:22.596 align:middle
+¡Para hacer el bucle, necesitamos
+nuestra primera etiqueta de hacer algo!
+
+00:03:23.246 --> 00:03:30.426 align:middle
+¡Woo! Utiliza {% for comment in comments %}.
+
+00:03:30.426 --> 00:03:37.106 align:middle
+La mayoría de las etiquetas "hacer algo" también
+tienen una etiqueta de cierre: {% endfor %}:
+
+00:03:38.166 --> 00:03:41.606 align:middle
+Dentro del bucle, comment
+representa el comentario individual.
+
+00:03:41.856 --> 00:03:45.016 align:middle
+Así que, simplemente
+imprímelo: {{ comment }}:
+
+00:03:46.706 --> 00:03:49.856 align:middle
+¡Pruébalo! ¡Genial!
+
+00:03:50.266 --> 00:03:52.356 align:middle
+Es realmente feo...
+
+00:03:52.576 --> 00:03:54.836 align:middle
+oof. Pero lo arreglaremos más tarde.
+
+00:03:55.576 --> 00:03:59.366 align:middle
+Ve a twig.symfony.com y haz clic
+en el enlace Documentación.
+
+00:04:00.736 --> 00:04:05.376 align:middle
+Desplázate un poco hacia abajo hasta que veas
+un conjunto de columnas: la Referencia Twig.
+
+00:04:06.286 --> 00:04:08.366 align:middle
+¡Esto es increíble!
+
+00:04:08.836 --> 00:04:10.256 align:middle
+¿Ves las etiquetas de la izquierda?
+
+00:04:10.776 --> 00:04:15.366 align:middle
+Esa es toda la lista de posibles
+etiquetas de "hacer algo".
+
+00:04:16.216 --> 00:04:24.186 align:middle
+Sí, siempre será {% y luego una de
+estas: for, if, extends, tractorbeam.
+
+00:04:24.946 --> 00:04:29.776 align:middle
+Y sinceramente, sólo vas a utilizar
+unas 5 de ellas la mayoría de las veces.
+
+00:04:30.466 --> 00:04:32.046 align:middle
+Twig también tiene funciones...
+
+00:04:32.246 --> 00:04:36.616 align:middle
+que funcionan como cualquier otro lenguaje,
+y una cosa genial llamada "pruebas".
+
+00:04:37.546 --> 00:04:40.706 align:middle
+Son un poco singulares, pero no
+demasiado difíciles, y te permiten
+
+00:04:41.346 --> 00:04:45.606 align:middle
+decir cosas como if foo is defined o...
+
+00:04:46.106 --> 00:04:48.026 align:middle
+if space is empty.
+
+00:04:49.176 --> 00:04:52.696 align:middle
+La parte más útil de esta
+referencia es la sección de filtros.
+
+00:04:52.696 --> 00:04:57.946 align:middle
+Los filtros son como las funciones, pero con
+una sintaxis diferente, mucho más moderna.
+
+00:04:58.476 --> 00:05:00.176 align:middle
+Vamos a probar nuestro filtro |length.
+
+00:05:01.576 --> 00:05:02.596 align:middle
+Vuelve a nuestra plantilla.
+
+00:05:03.036 --> 00:05:05.996 align:middle
+Quiero imprimir el número
+total de comentarios.
+
+00:05:06.686 --> 00:05:12.376 align:middle
+Añade un conjunto de paréntesis
+y di {{ comments|length }}:
+
+00:05:13.176 --> 00:05:22.096 align:middle
+Esto es un filtro: el valor comments pasa de
+izquierda a derecha, como una tubería Unix.
+
+00:05:22.816 --> 00:05:26.876 align:middle
+El filtro length cuenta lo que se le
+haya pasado, e imprimimos el resultado.
+
+00:05:27.846 --> 00:05:30.276 align:middle
+¡Incluso puedes utilizar varios filtros!
+
+00:05:32.306 --> 00:05:37.616 align:middle
+Twig tiene una última función genial:
+su sistema de herencia de plantillas.
+
+00:05:38.076 --> 00:05:38.956 align:middle
+Porque, ¡recuerda!
+
+00:05:39.246 --> 00:05:44.936 align:middle
+Todavía no tenemos una página HTML
+real: sólo el contenido de la plantilla.
+
+00:05:46.576 --> 00:05:54.716 align:middle
+Para solucionar esto, en la parte superior de la
+plantilla, añade {% extends 'base.html.twig' %}:
+
+00:05:54.716 --> 00:05:58.956 align:middle
+Esto hace referencia al archivo
+base.html.twig que fue añadido por la receta:
+
+00:05:58.956 --> 00:06:05.086 align:middle
+Ahora es sencillo, pero este es nuestro archivo
+de diseño y lo personalizaremos con el tiempo.
+
+00:06:06.076 --> 00:06:10.816 align:middle
+Al ampliarlo, deberíamos obtener al
+menos esta estructura HTML básica.
+
+00:06:11.296 --> 00:06:12.766 align:middle
+Pero cuando actualizamos...
+
+00:06:14.026 --> 00:06:16.296 align:middle
+¡sorpresa! ¡Un error!
+
+00:06:16.876 --> 00:06:19.366 align:middle
+¡Y probablemente uno que
+verás en algún momento!
+
+00:06:20.166 --> 00:06:25.836 align:middle
+Una plantilla que extiende otra no puede
+incluir contenido fuera de los bloques Twig Huh.
+
+00:06:26.746 --> 00:06:33.606 align:middle
+Vuelve a mirar la plantilla base: es básicamente
+un diseño HTML más un montón de bloques...
+
+00:06:34.016 --> 00:06:35.656 align:middle
+la mayoría de los cuales están
+vacíos. Cuando extiendes una plantilla
+
+00:06:36.316 --> 00:06:39.856 align:middle
+, le estás diciendo a Twig que quieres
+
+00:06:39.856 --> 00:06:43.706 align:middle
+poner tu contenido dentro de esa plantilla.
+
+00:06:44.416 --> 00:06:50.876 align:middle
+Los bloques, son los "agujeros" en los que
+nuestra plantilla hija puede poner contenido.
+
+00:06:50.936 --> 00:06:58.016 align:middle
+Por ejemplo, hay un bloque llamado body, y
+ahí es donde queremos poner nuestro contenido:
+
+00:06:59.136 --> 00:07:02.426 align:middle
+Para ello, tenemos que anular ese bloque.
+
+00:07:03.806 --> 00:07:12.946 align:middle
+En la parte superior del contenido, añade {% block
+body %}, y en la parte inferior, {% endblock %}:
+
+00:07:15.206 --> 00:07:20.006 align:middle
+Ahora nuestro contenido debería ir
+dentro de ese bloque en base.html.twig.
+
+00:07:21.116 --> 00:07:22.616 align:middle
+¡Pruébalo! ¡Refresca!
+
+00:07:23.516 --> 00:07:29.576 align:middle
+¡Sí! No parece diferente, pero
+tenemos un cuerpo HTML adecuado.
+
+00:07:30.386 --> 00:07:35.486 align:middle
+Eres completamente libre de personalizar esta plantilla
+todo lo que quieras: cambiar el nombre de los bloques,
+
+00:07:35.766 --> 00:07:40.246 align:middle
+añadir más bloques y, con suerte,
+¡hacer que el sitio parezca menos feo!
+
+00:07:40.746 --> 00:07:43.356 align:middle
+Ah, y la mayoría de las veces,
+los bloques están vacíos.
+
+00:07:43.756 --> 00:07:48.556 align:middle
+Pero puedes dar al bloque algún
+contenido por defecto, como con title:
+
+00:07:49.246 --> 00:07:51.716 align:middle
+Sí, el título de la pestaña
+del navegador es Welcome.
+
+00:07:52.916 --> 00:07:53.806 align:middle
+¡Anulemos eso!
+
+00:07:54.316 --> 00:07:55.006 align:middle
+En la parte superior...
+
+00:07:55.146 --> 00:07:59.066 align:middle
+o realmente, en cualquier
+lugar, añade {% block title %}.
+
+00:07:59.066 --> 00:08:03.536 align:middle
+Luego di Read , imprime la
+variable title, y {% endblock %}:
+
+00:08:05.536 --> 00:08:07.866 align:middle
+¡Pruébalo! ¡Sí!
+
+00:08:08.316 --> 00:08:09.926 align:middle
+El título de la página cambia.
+
+00:08:10.516 --> 00:08:11.436 align:middle
+Y... ¡voilà!
+
+00:08:11.956 --> 00:08:12.856 align:middle
+Eso es Twig.
+
+00:08:13.346 --> 00:08:15.216 align:middle
+Te va a encantar.
+
+00:08:16.316 --> 00:08:21.446 align:middle
+A continuación, vamos a ver una de las
+características más asesinas de Symfony: el perfilador
