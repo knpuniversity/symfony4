@@ -1,0 +1,197 @@
+WEBVTT
+
+00:00:00.056 --> 00:00:03.166 align:middle
+¡Hola chicos! ¡Sí!
+
+00:00:04.376 --> 00:00:07.556 align:middle
+¡Es la hora de Symfony 4!
+
+00:00:07.886 --> 00:00:09.716 align:middle
+Estoy muy emocionado.
+
+00:00:10.336 --> 00:00:16.876 align:middle
+¿Por qué? Porque nada me hace más feliz
+que sentarme a trabajar dentro de un framework
+
+00:00:16.876 --> 00:00:21.136 align:middle
+en el que codificar es realmente divertido, y en el
+que puedo construir funcionalidades rápidamente,
+
+00:00:21.426 --> 00:00:24.286 align:middle
+pero sin sacrificar la calidad.
+
+00:00:25.036 --> 00:00:29.756 align:middle
+Bueno, quizás sería aún más feliz
+haciendo todo eso en una playa...
+
+00:00:29.756 --> 00:00:31.406 align:middle
+con, ¿quizás una bebida fría?
+
+00:00:32.376 --> 00:00:37.876 align:middle
+En cualquier caso, Symfony 4 ha reimaginado
+completamente la experiencia del desarrollador:
+
+00:00:38.446 --> 00:00:41.456 align:middle
+vas a crear mejores funciones,
+más rápido que nunca.
+
+00:00:42.006 --> 00:00:48.976 align:middle
+Además, Symfony tiene un nuevo y único
+superpoder: comienza como un microframework,
+
+00:00:49.136 --> 00:00:52.596 align:middle
+y luego escala automáticamente en
+tamaño a medida que tu proyecto crece.
+
+00:00:53.476 --> 00:00:55.056 align:middle
+¿Cómo? Permanece atento...
+
+00:00:55.906 --> 00:01:00.056 align:middle
+Ah, ¿y he mencionado que Symfony 4 es
+la versión más rápida de la historia?
+
+00:01:00.476 --> 00:01:02.386 align:middle
+¿Y el framework PHP más rápido?
+
+00:01:03.056 --> 00:01:08.056 align:middle
+Sinceramente, todos los frameworks son lo suficientemente
+rápidos de todos modos, pero la cuestión es la siguiente
+
+00:01:08.416 --> 00:01:11.856 align:middle
+estás construyendo sobre una
+base realmente impresionante.
+
+00:01:12.736 --> 00:01:15.016 align:middle
+Bien, ¡empecemos ya!
+
+00:01:15.666 --> 00:01:19.106 align:middle
+Abre un nuevo terminal y entra en el
+directorio que quieras. Asegúrate
+
+00:01:20.376 --> 00:01:24.306 align:middle
+de que ya tienes Composer instalado globalmente
+
+00:01:24.546 --> 00:01:26.756 align:middle
+para que puedas decir simplemente composer.
+
+00:01:27.426 --> 00:01:30.136 align:middle
+Si tienes alguna duda,
+¡pregúntanos en los comentarios!
+
+00:01:30.846 --> 00:01:35.226 align:middle
+Y asegúrate también de que tienes la
+última versión: Esto es importante:
+
+00:01:35.896 --> 00:01:38.566 align:middle
+Composer ha tenido una reciente corrección
+de errores para ayudar a Symfony.
+
+00:01:39.466 --> 00:01:46.146 align:middle
+Para descargar tu nuevo proyecto Symfony,
+ejecuta composer create-project symfony/skeleton
+
+00:01:46.446 --> 00:01:50.256 align:middle
+y ponlo en un nuevo directorio
+llamado the_spacebar.
+
+00:01:50.886 --> 00:01:52.696 align:middle
+¡Ese es el nombre de nuestro proyecto! "
+
+00:01:53.176 --> 00:01:59.856 align:middle
+La Barra Espacial" será el lugar para que la gente
+de toda la galaxia se comunique, comparta noticias
+
+00:01:59.966 --> 00:02:02.636 align:middle
+y discuta sobre los famosos y el BitCoin.
+
+00:02:03.016 --> 00:02:05.116 align:middle
+¡Va a ser increíble!
+
+00:02:06.006 --> 00:02:08.686 align:middle
+Este comando clona el proyecto symfony/skeleton
+
+00:02:08.686 --> 00:02:12.556 align:middle
+y luego ejecuta composer install
+para descargar sus dependencias.
+
+00:02:15.876 --> 00:02:20.976 align:middle
+Más abajo, hay algo especial:
+algo sobre "recetas".
+
+00:02:21.666 --> 00:02:26.946 align:middle
+OooOOO. Las recetas son un
+concepto nuevo y muy importante.
+
+00:02:27.646 --> 00:02:29.266 align:middle
+Hablaremos de ellas en unos minutos.
+
+00:02:30.396 --> 00:02:32.256 align:middle
+Y en la parte inferior, ¡genial!
+
+00:02:32.886 --> 00:02:36.266 align:middle
+Symfony nos da instrucciones claras
+sobre qué hacer a continuación.
+
+00:02:37.196 --> 00:02:44.836 align:middle
+Moverse al nuevo directorio: Aparentemente, podemos
+ejecutar nuestra aplicación inmediatamente ejecutando:
+
+00:02:44.916 --> 00:02:54.556 align:middle
+php -S 127.0.0.1:8000 -t public Esto
+inicia el servidor web PHP incorporado,
+
+00:02:54.786 --> 00:02:56.846 align:middle
+que es genial para el desarrollo.
+
+00:02:57.756 --> 00:03:02.056 align:middle
+public/ es el documento raíz del proyecto
+- ¡pero pronto hablaremos de ello!
+
+00:03:03.336 --> 00:03:05.046 align:middle
+¡Es hora de empezar a trabajar!
+
+00:03:05.796 --> 00:03:09.216 align:middle
+Ve a tu navegador y entra
+en http://localhost:8000.
+
+00:03:10.106 --> 00:03:12.336 align:middle
+¡Saluda a tu nueva aplicación Symfony!
+
+00:03:13.336 --> 00:03:16.246 align:middle
+De vuelta al terminal, crearé
+una nueva pestaña de terminal.
+
+00:03:17.256 --> 00:03:20.776 align:middle
+Symfony ya ha iniciado un nuevo
+repositorio git para nosotros
+
+00:03:21.176 --> 00:03:24.086 align:middle
+y nos ha dado un archivo perfecto .gitignore.
+
+00:03:24.926 --> 00:03:25.656 align:middle
+¡Gracias Symfony!
+
+00:03:26.326 --> 00:03:35.406 align:middle
+Eso significa que podemos crear nuestro primer commit
+con sólo decirlo: git init git add . git commit Crear
+
+00:03:35.406 --> 00:03:37.146 align:middle
+un mensaje de commit tranquilo y
+
+00:03:40.436 --> 00:03:46.546 align:middle
+bien pensado. ¡Woh! Mira
+esto: todo el proyecto
+
+00:03:46.546 --> 00:03:50.186 align:middle
+-incluyendo las cosas de
+Composer y .gitignore -
+
+00:03:50.776 --> 00:03:53.016 align:middle
+¡sólo tiene 16 archivos! ¡ Nuestra
+
+00:03:53.786 --> 00:03:58.316 align:middle
+aplicación es pequeñita! A continuación,
+vamos a conocer mejor nuestro proyecto y a
+
+00:03:58.356 --> 00:04:01.276 align:middle
+configurar nuestro editor para hacer
