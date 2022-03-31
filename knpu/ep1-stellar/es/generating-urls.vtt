@@ -1,0 +1,263 @@
+WEBVTT
+
+00:00:01.146 --> 00:00:03.466 align:middle
+La mayoría de estos enlaces
+no van a ninguna parte.
+
+00:00:03.746 --> 00:00:05.256 align:middle
+¡Lo que sea! ¡No hay problema!
+
+00:00:05.616 --> 00:00:07.966 align:middle
+Los iremos completando a
+medida que vayamos avanzando.
+
+00:00:08.576 --> 00:00:14.426 align:middle
+Además, la mayoría de nuestros usuarios estarán en
+hipersueño durante al menos unas cuantas décadas más.
+
+00:00:15.176 --> 00:00:18.046 align:middle
+Pero podemos conectar algunos de ellos
+
+00:00:18.386 --> 00:00:23.476 align:middle
+-como el texto del logotipo de la "Barra
+Espacial"- que deberían ir a la página de inicio.
+
+00:00:24.826 --> 00:00:29.526 align:middle
+Abre templates/base.html.twig
+y busca "La Barra Espacial":
+
+00:00:30.906 --> 00:00:33.816 align:middle
+Vale - apuntemos este enlace
+a la página de inicio.
+
+00:00:34.626 --> 00:00:39.306 align:middle
+Y sí, podríamos decir simplemente href="/".
+
+00:00:39.936 --> 00:00:42.366 align:middle
+Pero... hay una forma mejor.
+
+00:00:43.156 --> 00:00:47.626 align:middle
+En su lugar, vamos a generar una URL a la ruta.
+
+00:00:48.826 --> 00:00:52.526 align:middle
+Sí, vamos a pedirle a Symfony que
+nos dé la URL de la ruta que está
+
+00:00:52.666 --> 00:00:56.156 align:middle
+encima de nuestra acción
+de la página de inicio:
+
+00:00:57.046 --> 00:01:04.316 align:middle
+¿Por qué? Porque si alguna vez decidimos cambiar
+la URL de esta ruta -por ejemplo, a /news -
+
+00:01:04.786 --> 00:01:11.096 align:middle
+, si generamos la URL en lugar de codificarla,
+todos los enlaces se actualizarán automáticamente.
+
+00:01:11.886 --> 00:01:14.836 align:middle
+¡Mágico! ¿Cómo podemos hacerlo?
+
+00:01:14.836 --> 00:01:17.926 align:middle
+Primero, busca tu terminal
+y ejecútalo: ./bin/console
+
+00:01:18.266 --> 00:01:24.496 align:middle
+debug:router Esta es una pequeña e impresionante
+herramienta que te muestra una lista de
+
+00:01:24.696 --> 00:01:27.066 align:middle
+todas las rutas de tu aplicación.
+
+00:01:28.196 --> 00:01:34.616 align:middle
+Puedes ver nuestras dos rutas y un montón de rutas que ayudan al
+perfilador y a la barra de herramientas de depuración web. Hay
+
+00:01:35.586 --> 00:01:39.226 align:middle
+una cosa sobre las rutas de la
+que todavía no hemos hablado
+
+00:01:39.226 --> 00:01:43.096 align:middle
+: cada ruta tiene un nombre interno. Éste
+
+00:01:43.876 --> 00:01:50.606 align:middle
+nunca se muestra al usuario, sólo existe para que podamos
+referirnos a esa ruta en nuestro código. Para las rutas de
+
+00:01:50.696 --> 00:01:56.496 align:middle
+anotación, por defecto, ese
+nombre se crea por nosotros. Esto
+
+00:01:57.496 --> 00:02:04.116 align:middle
+significa que, para generar una URL a la página de inicio, hay
+que copiar el nombre de la ruta, volver a base.html.twig, añadir
+
+00:02:04.706 --> 00:02:08.656 align:middle
+{{ path() }} y pegar el nombre de la ruta: ¡Ya
+
+00:02:09.646 --> 00:02:10.966 align:middle
+está! ¡Refresca!
+
+00:02:12.346 --> 00:02:14.736 align:middle
+¡Haz clic en él! ¡Sí!
+
+00:02:15.726 --> 00:02:18.066 align:middle
+Hemos vuelto a la página de inicio. Pero...
+
+00:02:18.806 --> 00:02:24.476 align:middle
+en realidad no me gusta confiar en
+los nombres de ruta autocreados porque
+
+00:02:24.576 --> 00:02:28.596 align:middle
+podrían cambiar si cambiamos el nombre de ciertas partes
+de nuestro código. En su lugar, en cuanto quiero generar
+
+00:02:29.306 --> 00:02:33.506 align:middle
+una URL a una ruta,
+
+00:02:33.876 --> 00:02:38.886 align:middle
+añado una opción de nombre:
+name="app_homepage": Vuelve a ejecutar
+
+00:02:40.306 --> 00:02:46.976 align:middle
+debug:router : Lo único que ha
+cambiado es el nombre de la ruta. Ahora
+
+00:02:48.286 --> 00:02:52.636 align:middle
+vuelve a base.html.twig y utiliza
+aquí el nuevo nombre de la ruta:
+
+00:02:55.806 --> 00:03:01.536 align:middle
+Sigue funcionando exactamente igual que antes, pero
+tenemos el control total del nombre de la ruta.
+
+00:03:02.376 --> 00:03:05.116 align:middle
+Ahora tenemos un enlace a nuestra
+página de inicio... pero no
+
+00:03:05.296 --> 00:03:10.146 align:middle
+sé por qué querrías ir aquí: ¡es
+súper feo! Así que vamos a renderizar
+
+00:03:10.766 --> 00:03:12.026 align:middle
+una plantilla. En
+
+00:03:12.026 --> 00:03:15.936 align:middle
+ArticleController, en lugar de
+devolver un Response, devuelve
+
+00:03:16.256 --> 00:03:22.036 align:middle
+$this->render() con
+article/homepage.html.twig: Por
+
+00:03:23.326 --> 00:03:26.286 align:middle
+ahora, no pases ninguna
+variable a la plantilla. Esta
+
+00:03:26.846 --> 00:03:28.836 align:middle
+plantilla aún no existe. Pero
+
+00:03:29.516 --> 00:03:33.966 align:middle
+si vuelves a mirar en el directorio
+tutorial/ de la descarga de código, he
+
+00:03:34.466 --> 00:03:37.406 align:middle
+creado una plantilla de página
+de inicio para nosotros. ¡Genial!
+
+00:03:37.406 --> 00:03:42.536 align:middle
+Cópiala y pégala en templates/article:
+
+00:03:44.236 --> 00:03:50.306 align:middle
+No es nada especial: sólo un montón de información
+codificada y artículos espaciales fascinantes.
+
+00:03:52.706 --> 00:03:55.196 align:middle
+Sin embargo, es una página
+de inicio muy atractiva. Y
+
+00:03:55.906 --> 00:03:59.696 align:middle
+sí, haremos todo esto dinámico cuando tengamos una
+base de datos. Uno de los artículos codificados es
+
+00:04:00.906 --> 00:04:04.656 align:middle
+con el que hemos estado jugando: ¡ Por qué
+
+00:04:05.146 --> 00:04:07.316 align:middle
+los asteroides saben a tocino! El
+
+00:04:08.096 --> 00:04:11.036 align:middle
+enlace aún no va a ninguna
+parte, así que vamos a arreglarlo
+
+00:04:11.036 --> 00:04:14.956 align:middle
+generando una URL a nuestra página
+de presentación de artículos Paso 1
+
+00:04:16.296 --> 00:04:22.656 align:middle
+: ahora que queremos enlazar con esta
+ruta, dale un nombre: article_show: Paso 2:
+
+00:04:23.986 --> 00:04:28.576 align:middle
+dentro de homepage.html.twig,
+busca el artículo... y...
+
+00:04:30.976 --> 00:04:36.346 align:middle
+para el href, usa {{
+path('article_show') }}: Eso
+
+00:04:37.546 --> 00:04:38.866 align:middle
+debería funcionar... ¿verdad?
+
+00:04:38.866 --> 00:04:40.686 align:middle
+¡Refresca! ¡No!
+
+00:04:43.006 --> 00:04:46.636 align:middle
+¡Es un enorme y horrible error! Faltan algunos
+
+00:04:47.196 --> 00:04:52.626 align:middle
+parámetros obligatorios - {slug} - para
+generar una URL para article_show . ¡ Eso
+
+00:04:53.316 --> 00:04:55.716 align:middle
+tiene mucho sentido! Esta
+
+00:04:56.306 --> 00:04:58.456 align:middle
+ruta tiene un comodín... así que no
+
+00:04:58.896 --> 00:05:01.466 align:middle
+podemos simplemente generar
+una URL hacia ella. No,
+
+00:05:02.116 --> 00:05:09.776 align:middle
+tenemos que decirle también a Symfony qué valor
+debe utilizar para la parte {slug}. ¿Cómo?
+
+00:05:11.046 --> 00:05:15.636 align:middle
+Añadiendo un segundo
+argumento a path(): {}. Esa es
+
+00:05:16.366 --> 00:05:22.576 align:middle
+la sintaxis para un array asociativo cuando estás
+dentro de Twig - es similar a JavaScript. Dale a
+
+00:05:23.436 --> 00:05:28.836 align:middle
+esto una clave slug establecida en
+why-asteroids-taste-like-bacon: Pruébalo
+
+00:05:31.636 --> 00:05:33.406 align:middle
+- ¡actualiza! ¡El error
+
+00:05:34.476 --> 00:05:35.536 align:middle
+ha desaparecido! Y
+
+00:05:36.076 --> 00:05:39.126 align:middle
+mira esto: el enlace va a nuestra página
+de presentación. A continuación, vamos a
+
+00:05:40.306 --> 00:05:43.916 align:middle
+añadir algo de JavaScript
+y una ruta de la API para
+
+00:05:44.066 --> 00:05:46.406 align:middle
+dar vida a este pequeño icono de corazón
