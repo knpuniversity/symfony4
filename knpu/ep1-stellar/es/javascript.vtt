@@ -1,0 +1,234 @@
+WEBVTT
+
+00:00:01.156 --> 00:00:03.616 align:middle
+El tema de las API es...
+
+00:00:03.816 --> 00:00:08.836 align:middle
+ah... un tema enorme y enormemente
+importante hoy en día.
+
+00:00:09.586 --> 00:00:12.936 align:middle
+Vamos a profundizar en las
+API's en un futuro tutorial.
+
+00:00:13.166 --> 00:00:17.556 align:middle
+Pero... Creo que al menos tenemos que
+llegar a lo más básico ahora mismo.
+
+00:00:18.616 --> 00:00:21.276 align:middle
+Así que éste es el objetivo:
+¿ves este icono de corazón?
+
+00:00:21.746 --> 00:00:25.316 align:middle
+Quiero que el usuario pueda hacer clic
+en él para que le "guste" el artículo.
+
+00:00:26.446 --> 00:00:31.356 align:middle
+Vamos a escribir algo de JavaScript que envíe
+una petición AJAX a una ruta de la API.
+
+00:00:32.016 --> 00:00:38.306 align:middle
+Esa ruta devolverá el nuevo número de
+"me gusta" y actualizaremos la página.
+
+00:00:39.076 --> 00:00:41.986 align:middle
+Bueno, el número de "me gusta" es
+sólo un número falso por ahora,
+
+00:00:41.986 --> 00:00:46.026 align:middle
+pero aún podemos tener todo este
+sistema configurado y funcionando.
+
+00:00:46.646 --> 00:00:52.816 align:middle
+Ah, y por cierto, si te fijas en la parte inferior
+de base.html.twig, nuestra página sí tiene jQuery,
+
+00:00:53.026 --> 00:00:58.606 align:middle
+así que podemos utilizarlo: En el directorio
+public/, crea un nuevo directorio js/
+
+00:00:59.016 --> 00:01:03.086 align:middle
+y un archivo dentro llamado,
+qué tal, article_show.js.
+
+00:01:03.086 --> 00:01:09.566 align:middle
+La idea es que lo incluyamos sólo en la
+página de presentación del artículo.
+
+00:01:10.686 --> 00:01:18.266 align:middle
+Empieza con un bloque jQuery
+$(document).ready(): Ahora,
+
+00:01:18.456 --> 00:01:22.276 align:middle
+abre show.html.twig y,
+desplázate un poco hacia abajo.
+
+00:01:24.306 --> 00:01:30.606 align:middle
+Ah! Aquí está el número codificado y el enlace
+del corazón: Sí, iniciaremos la petición AJAX
+
+00:01:30.666 --> 00:01:34.666 align:middle
+cuando se haga clic en este enlace y
+actualizaremos el "5" con el nuevo número.
+
+00:01:35.646 --> 00:01:37.836 align:middle
+Para configurar esto, vamos
+a hacer algunos cambios.
+
+00:01:41.556 --> 00:01:46.226 align:middle
+En el enlace, añade una
+nueva clase js-like-article.
+
+00:01:46.226 --> 00:01:55.346 align:middle
+Y para apuntar al 5, añade un span a
+su alrededor con js-like-article-count:
+
+00:01:56.446 --> 00:01:59.386 align:middle
+Podemos utilizarlos para encontrar
+los elementos en JavaScript.
+
+00:02:00.186 --> 00:02:01.456 align:middle
+Copia la clase del enlace.
+
+00:02:02.276 --> 00:02:04.166 align:middle
+Vamos a escribir algo muy sencillo...
+
+00:02:04.166 --> 00:02:05.786 align:middle
+pero aún así increíble...
+
+00:02:05.786 --> 00:02:11.886 align:middle
+JavaScript: encontrar ese elemento y,
+al hacer clic, llamar a esta función.
+
+00:02:12.936 --> 00:02:20.876 align:middle
+Empieza con el clásico e.preventDefault() para que el
+navegador no siga el enlace: A continuación, establece
+
+00:02:20.876 --> 00:02:27.356 align:middle
+una variable $link como $(e.currentTarget):
+Este es el enlace que se acaba de pulsar.
+
+00:02:27.356 --> 00:02:32.236 align:middle
+Quiero alternar el icono del
+corazón entre estar vacío y lleno:
+
+00:02:33.106 --> 00:02:41.946 align:middle
+hazlo con
+$link.toggleClass('fa-heart-o').toggleClass('fa-heart'): Para
+
+00:02:41.946 --> 00:02:49.876 align:middle
+actualizar el valor de la cuenta, ve a
+copiar la otra clase: js-like-article-count.
+
+00:02:52.506 --> 00:02:58.886 align:middle
+Encuéntrala y establece su HTML, por
+ahora, en TEST: Es muy sencillo Todo lo que
+
+00:02:58.886 --> 00:03:02.986 align:middle
+tenemos que hacer ahora es incluir
+este archivo JS en nuestra página. Por
+
+00:03:03.846 --> 00:03:09.166 align:middle
+supuesto, en base.html.twig, podríamos
+añadir la etiqueta script justo al
+
+00:03:09.166 --> 00:03:11.746 align:middle
+final con las demás: Pero...
+
+00:03:12.036 --> 00:03:16.766 align:middle
+en realidad no queremos incluir este
+archivo JavaScript en todas las páginas,
+
+00:03:17.246 --> 00:03:20.106 align:middle
+sólo lo necesitamos en la página de
+presentación del artículo. ¿Pero
+
+00:03:21.006 --> 00:03:22.186 align:middle
+cómo podemos hacerlo? Si
+
+00:03:22.186 --> 00:03:26.676 align:middle
+lo añadimos al bloque
+body, en la página final
+
+00:03:26.806 --> 00:03:33.176 align:middle
+aparecerá demasiado pronto, ¡incluso
+antes de que se incluya jQuery! Para
+
+00:03:33.176 --> 00:03:38.786 align:middle
+añadir nuestro nuevo archivo en la parte inferior,
+podemos anular el bloque javascripts. En cualquier lugar
+
+00:03:39.566 --> 00:03:47.586 align:middle
+de show.html.twig, añade {% block
+javascripts %} y {% endblock %}: Añ ade
+
+00:03:47.586 --> 00:03:54.056 align:middle
+la etiqueta script con src="", empieza a
+escribir article_show, ¡y autocompleta!
+
+00:03:55.076 --> 00:03:57.146 align:middle
+Todavía hay un problema con esto... y
+
+00:03:57.146 --> 00:03:59.066 align:middle
+puede que ya lo veas. Actualiza
+
+00:03:59.706 --> 00:04:00.596 align:middle
+la página. Haz clic
+
+00:04:03.006 --> 00:04:04.256 align:middle
+y ... ¡no
+
+00:04:04.586 --> 00:04:06.326 align:middle
+funciona! Comprueba
+
+00:04:06.946 --> 00:04:07.866 align:middle
+la consola. ¡Woh!
+
+00:04:10.106 --> 00:04:14.146 align:middle
+$ no está definido ¡Eso no es bueno! Mira
+
+00:04:14.946 --> 00:04:18.426 align:middle
+el código fuente HTML y desplázate
+hacia la parte inferior. Sí,
+
+00:04:19.566 --> 00:04:24.176 align:middle
+literalmente sólo hay una etiqueta
+script en la página. ¡ Eso
+
+00:04:24.886 --> 00:04:26.616 align:middle
+tiene sentido! ¡ Cuando
+
+00:04:27.406 --> 00:04:32.096 align:middle
+anulas un bloque, anulas completamente ese
+bloque! ¡ Todas las etiquetas de script
+
+00:04:33.056 --> 00:04:36.946 align:middle
+de base.html.twig han desaparecido! ¡Ups!
+
+00:04:37.606 --> 00:04:44.516 align:middle
+Lo que realmente queremos hacer es
+añadir al bloque, no sustituirlo. ¿Cómo
+
+00:04:45.656 --> 00:04:46.436 align:middle
+podemos hacerlo? Digamos
+
+00:04:46.776 --> 00:04:53.076 align:middle
+{{ parent() }}: Esto imprimirá primero el
+contenido del bloque de la plantilla padre, y
+
+00:04:53.376 --> 00:04:56.516 align:middle
+luego añadiremos nuestras cosas.
+
+00:04:56.516 --> 00:05:02.556 align:middle
+Por eso ponemos el CSS en un bloque stylesheets y
+el JavaScript en un bloque javascripts. ¡ Pruébalo
+
+00:05:03.916 --> 00:05:04.466 align:middle
+ahora! ¡Refresca!
+
+00:05:05.046 --> 00:05:08.386 align:middle
+Y...
+
+00:05:08.706 --> 00:05:14.536 align:middle
+¡funciona! A continuación, vamos a crear
+nuestra ruta de la API y a conectar todo esto
