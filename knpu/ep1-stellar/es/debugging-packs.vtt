@@ -1,0 +1,143 @@
+WEBVTT
+
+00:00:01.056 --> 00:00:03.846 align:middle
+Symfony tiene aún más
+herramientas de depuración.
+
+00:00:04.976 --> 00:00:11.686 align:middle
+La forma más fácil de obtenerlas todas es buscar
+tu terminal y ejecutar: composer require debug
+
+00:00:11.846 --> 00:00:19.186 align:middle
+--dev Encuentra tu navegador, navega
+hasta symfony.sh y busca "debug".
+
+00:00:20.656 --> 00:00:28.546 align:middle
+Ah, así que el alias debug instalará en
+realidad un paquete llamado symfony/debug-pack.
+
+00:00:29.436 --> 00:00:31.736 align:middle
+Entonces... ¿qué es un paquete?
+
+00:00:32.546 --> 00:00:36.756 align:middle
+Haz clic para ver los detalles del paquete,
+y luego ve a su repositorio de GitHub.
+
+00:00:37.746 --> 00:00:42.756 align:middle
+¡Vaya! Es un solo archivo: ¡ composer.json!
+
+00:00:43.576 --> 00:00:47.606 align:middle
+Dentro, ¡requiere otras seis bibliotecas!
+
+00:00:48.466 --> 00:00:54.826 align:middle
+A veces, vas a querer instalar varios paquetes
+a la vez relacionados con una función.
+
+00:00:55.576 --> 00:00:59.206 align:middle
+Para facilitarlo, Symfony
+tiene una serie de "paquetes ",
+
+00:00:59.516 --> 00:01:03.756 align:middle
+y su objetivo es ofrecerte un paquete sencillo
+
+00:01:03.936 --> 00:01:07.396 align:middle
+que en realidad instala
+varias otras bibliotecas.
+
+00:01:08.226 --> 00:01:13.606 align:middle
+En este caso, composer require debug instalará
+Monolog -una biblioteca de registro-, phpunit-bridge
+
+00:01:13.886 --> 00:01:20.156 align:middle
+-para pruebas- e incluso el profiler-pack
+que ya hemos instalado antes.
+
+00:01:21.366 --> 00:01:22.666 align:middle
+Si vuelves al terminal...
+
+00:01:23.646 --> 00:01:28.466 align:middle
+¡sí! Se han descargado todas esas librerías
+y se han configurado algunas recetas.
+
+00:01:30.276 --> 00:01:31.696 align:middle
+Y... ¡mira esto!
+
+00:01:32.386 --> 00:01:34.746 align:middle
+¡Refrescar! ¡Hola!
+
+00:01:35.056 --> 00:01:37.816 align:middle
+¡Nuestro Twig dump() se ha vuelto más bonito!
+
+00:01:38.346 --> 00:01:42.046 align:middle
+El debug-pack lo ha integrado todo aún mejor.
+
+00:01:43.506 --> 00:01:45.826 align:middle
+Vuelve a tu plantilla Twig
+y elimina ese volcado.
+
+00:01:47.016 --> 00:01:49.086 align:middle
+Después, abre composer.json.
+
+00:01:50.446 --> 00:01:55.656 align:middle
+Acabamos de instalar dos paquetes:
+el debug-pack y el profiler-pack:
+
+00:01:56.126 --> 00:02:02.096 align:middle
+Y ahora sabemos que el debug-pack es en
+realidad una colección de unas 6 bibliotecas.
+
+00:02:02.746 --> 00:02:05.566 align:middle
+Pero, los packs tienen una desventaja...
+
+00:02:05.726 --> 00:02:07.226 align:middle
+un "lado oscuro".
+
+00:02:07.946 --> 00:02:12.776 align:middle
+¿Qué pasaría si quisieras controlar la
+versión de una sola de estas bibliotecas?
+
+00:02:13.486 --> 00:02:16.826 align:middle
+O qué pasaría si quisieras la
+mayoría de estas bibliotecas,
+
+00:02:17.046 --> 00:02:20.886 align:middle
+pero no quisieras, por
+ejemplo, la phpunit-bridge.
+
+00:02:21.626 --> 00:02:29.416 align:middle
+Bueno... ahora mismo, no hay forma de hacerlo:
+todo lo que tenemos es esta línea debug-pack.
+
+00:02:30.216 --> 00:02:31.836 align:middle
+¡No te preocupes valiente viajero del espacio!
+
+00:02:32.346 --> 00:02:34.526 align:middle
+Simplemente... ¡desembala el paquete!
+
+00:02:35.476 --> 00:02:43.686 align:middle
+Sí, en tu terminal, ejecuta composer
+unpack debug El comando unpack
+
+00:02:43.686 --> 00:02:44.696 align:middle
+viene de Symfony flex.
+
+00:02:45.226 --> 00:02:47.156 align:middle
+Y... ¡interesante!
+
+00:02:47.556 --> 00:02:51.116 align:middle
+Todo lo que dice es "eliminar
+symfony/debug-pack".
+
+00:02:51.116 --> 00:02:56.026 align:middle
+Pero si miras tu composer.json: ¡Ah!
+
+00:02:56.496 --> 00:03:05.346 align:middle
+¡Sí que ha eliminado symfony/debug-pack, pero
+lo ha sustituido por las 6 librerías de ese pack!
+
+00:03:05.896 --> 00:03:11.596 align:middle
+Ahora podemos controlar las versiones o incluso
+eliminar bibliotecas individuales si no las queremos.
+
+00:03:12.556 --> 00:03:14.906 align:middle
+¡Ese es el poder de los paquetes!
