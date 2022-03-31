@@ -1,0 +1,140 @@
+WEBVTT
+
+00:00:01.076 --> 00:00:03.996 align:middle
+¿Recuerdas la única
+regla para un controlador?
+
+00:00:04.756 --> 00:00:07.696 align:middle
+¡Debe devolver un objeto Symfony Response!
+
+00:00:08.286 --> 00:00:14.386 align:middle
+Pero a Symfony no le importa cómo lo hagas: puedes
+renderizar una plantilla, hacer peticiones a la API
+
+00:00:14.516 --> 00:00:17.516 align:middle
+o hacer consultas a la base de datos
+y construir una respuesta JSON. En
+
+00:00:18.126 --> 00:00:24.826 align:middle
+realidad, la mayor parte del aprendizaje de Symfony consiste en
+aprender a instalar y utilizar un montón de herramientas potentes,
+
+00:00:25.086 --> 00:00:28.596 align:middle
+pero opcionales, que facilitan este trabajo.
+
+00:00:28.596 --> 00:00:34.566 align:middle
+Si tu aplicación necesita devolver HTML, una
+de estas grandes herramientas se llama Twig.
+
+00:00:35.566 --> 00:00:40.556 align:middle
+En primer lugar, asegúrate de confirmar todos los
+cambios realizados hasta ahora: Yo ya lo he hecho.
+
+00:00:41.066 --> 00:00:44.926 align:middle
+¡Las recetas son mucho más divertidas
+cuando puedes ver lo que hacen!
+
+00:00:46.436 --> 00:00:54.296 align:middle
+Ahora corre: composer require twig Por cierto, en
+futuros tutoriales, nuestra aplicación será una mezcla
+
+00:00:54.296 --> 00:00:58.936 align:middle
+de una aplicación HTML tradicional y
+una API con un front-end JavaScript.
+
+00:00:59.706 --> 00:01:02.976 align:middle
+Así que si quieres saber cómo construir
+una API en Symfony, ¡llegaremos hasta allí!
+
+00:01:03.986 --> 00:01:08.356 align:middle
+Esto instala TwigBundle,
+algunas otras bibliotecas y...
+
+00:01:08.546 --> 00:01:10.546 align:middle
+¡configura una receta!
+
+00:01:11.416 --> 00:01:12.786 align:middle
+¿Qué hace esa receta?
+
+00:01:13.596 --> 00:01:17.286 align:middle
+Averigüémoslo: git status ¡Woh!
+
+00:01:17.546 --> 00:01:19.026 align:middle
+¡Muchas cosas buenas!
+
+00:01:20.046 --> 00:01:23.046 align:middle
+El primer cambio es config/bundles.php:
+
+00:01:24.216 --> 00:01:26.956 align:middle
+Los bundles son el sistema
+de "plugins" de Symfony.
+
+00:01:27.526 --> 00:01:29.946 align:middle
+Y cada vez que instalamos
+un bundle de terceros,
+
+00:01:30.216 --> 00:01:33.676 align:middle
+Flex lo añade aquí para que
+se utilice automáticamente.
+
+00:01:34.456 --> 00:01:35.346 align:middle
+¡Gracias Flex!
+
+00:01:36.746 --> 00:01:41.316 align:middle
+La receta también ha creado algunas
+cosas, ¡como un directorio templates/!
+
+00:01:42.066 --> 00:01:46.656 align:middle
+Sí, no hace falta adivinar dónde van
+las plantillas: ¡es bastante obvio!
+
+00:01:47.326 --> 00:01:50.486 align:middle
+Incluso añadió un archivo de
+diseño base que usaremos pronto.
+
+00:01:51.486 --> 00:01:58.416 align:middle
+Twig también necesita alguna configuración, así que
+la receta la añadió en config/packages/twig.yaml:
+
+00:01:59.106 --> 00:02:03.826 align:middle
+Pero aunque este archivo fue añadido
+por Flex, es tuyo para modificarlo:
+
+00:02:04.926 --> 00:02:06.936 align:middle
+puedes hacer los cambios que quieras.
+
+00:02:07.446 --> 00:02:09.396 align:middle
+Ah, ¡y esto me encanta!
+
+00:02:09.826 --> 00:02:13.206 align:middle
+¿Por qué nuestras plantillas tienen
+que vivir en un directorio templates/?
+
+00:02:13.636 --> 00:02:16.006 align:middle
+¿Está codificado en lo
+más profundo de Symfony?
+
+00:02:16.816 --> 00:02:18.266 align:middle
+No ¡Está aquí mismo!
+
+00:02:19.136 --> 00:02:24.216 align:middle
+No te preocupes todavía por este porcentaje de
+sintaxis, lo aprenderás en un próximo episodio.
+
+00:02:24.676 --> 00:02:31.716 align:middle
+Pero, probablemente puedas adivinar lo que
+ocurre: %kernel.project_dir% es una variable
+
+00:02:31.716 --> 00:02:33.586 align:middle
+que apunta a la raíz del proyecto.
+
+00:02:34.386 --> 00:02:38.616 align:middle
+De todos modos, ¡mirar lo que hizo una
+receta es una gran manera de aprender!
+
+00:02:39.056 --> 00:02:44.576 align:middle
+Pero la lección principal de Flex es ésta:
+instala una biblioteca y ella se encarga del resto.
+
+00:02:45.516 --> 00:02:47.486 align:middle
+Ahora, ¡vamos a utilizar Twig!
