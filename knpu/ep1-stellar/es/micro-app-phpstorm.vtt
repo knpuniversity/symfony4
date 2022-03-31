@@ -1,0 +1,297 @@
+WEBVTT
+
+00:00:01.146 --> 00:00:05.546 align:middle
+Nuestra misión: ir con audacia
+donde nadie ha ido antes...
+
+00:00:06.046 --> 00:00:08.626 align:middle
+¡consultando nuestra aplicación!
+
+00:00:08.626 --> 00:00:15.146 align:middle
+Ya he abierto el nuevo directorio en PhpStorm,
+así que enciende tu tricorder y ¡a explorar!
+
+00:00:15.976 --> 00:00:18.796 align:middle
+Sólo hay tres directorios
+en los que debes pensar.
+
+00:00:18.796 --> 00:00:25.496 align:middle
+En primer lugar, public/ es la raíz del documento: así
+que contendrá todos los archivos de acceso público.
+
+00:00:26.206 --> 00:00:28.666 align:middle
+Y... ¡sólo hay uno en este momento!
+
+00:00:29.176 --> 00:00:30.866 align:middle
+index.php.
+
+00:00:30.866 --> 00:00:36.796 align:middle
+Este es el "controlador frontal": una palabra elegante
+que inventaron los programadores y que significa
+
+00:00:36.906 --> 00:00:41.966 align:middle
+que es el archivo que se ejecuta
+cuando vas a cualquier URL.
+
+00:00:42.846 --> 00:00:46.266 align:middle
+Pero, en realidad, casi nunca
+tendrás que preocuparte por ello.
+
+00:00:46.616 --> 00:00:51.346 align:middle
+De hecho, ahora que hemos hablado de
+este directorio, ¡deja de pensar en él!
+
+00:00:52.006 --> 00:00:53.266 align:middle
+Sí, ¡he mentido!
+
+00:00:53.716 --> 00:01:00.536 align:middle
+Realmente sólo hay dos directorios en
+los que debes pensar: config/ y src/.
+
+00:01:01.656 --> 00:01:02.856 align:middle
+config/ mantiene...
+
+00:01:02.856 --> 00:01:03.716 align:middle
+um... ya sabes...
+
+00:01:03.716 --> 00:01:10.016 align:middle
+archivos de configuración y src/ es
+donde pondrás todo tu código PHP.
+
+00:01:11.006 --> 00:01:12.656 align:middle
+Es así de sencillo.
+
+00:01:13.746 --> 00:01:14.706 align:middle
+¿Dónde está Symfony? Como
+
+00:01:15.166 --> 00:01:20.476 align:middle
+siempre, cuando creamos el proyecto, Compos
+er leyó nuestro archivo composer.json
+
+00:01:20.766 --> 00:01:23.536 align:middle
+y descargó todas las librerías de terceros
+
+00:01:23.906 --> 00:01:27.336 align:middle
+-incluyendo partes de Symfony-
+en el directorio vendor/.
+
+00:01:28.636 --> 00:01:31.436 align:middle
+Vuelve a tu terminal y busca la ficha original.
+
+00:01:33.236 --> 00:01:38.486 align:middle
+Fíjate en esto: en la parte inferior, dice
+que podemos obtener un servidor web mejor
+
+00:01:38.746 --> 00:01:40.916 align:middle
+ejecutando composer require server.
+
+00:01:41.636 --> 00:01:43.506 align:middle
+¡Me gustan las cosas mejores!
+
+00:01:43.506 --> 00:01:44.246 align:middle
+¡Así que vamos a probarlo!
+
+00:01:45.076 --> 00:01:50.876 align:middle
+Pulsa Ctrl+C para detener el servidor existente,
+y luego ejecútalo: composer require server
+
+00:01:52.406 --> 00:01:54.836 align:middle
+Si estás familiarizado con Composer...
+
+00:01:55.236 --> 00:01:57.756 align:middle
+¡el nombre del paquete debe parecer gracioso!
+
+00:01:58.216 --> 00:01:59.426 align:middle
+Realmente, ¡está mal!
+
+00:02:00.546 --> 00:02:07.846 align:middle
+Normalmente, todo nombre de paquete es
+"algo" barra "algo", como symfony/console.
+
+00:02:07.966 --> 00:02:12.586 align:middle
+Así que... ¡ server no debería funcionar!
+
+00:02:13.156 --> 00:02:14.586 align:middle
+¡Pero lo hace!
+
+00:02:15.276 --> 00:02:18.256 align:middle
+Esto forma parte de un nuevo
+y genial sistema llamado Flex.
+
+00:02:18.716 --> 00:02:19.856 align:middle
+Pronto hablaremos de ello
+
+00:02:20.806 --> 00:02:22.606 align:middle
+Cuando esto termine, ya puedes ejecutar: php
+
+00:02:22.836 --> 00:02:29.146 align:middle
+./bin/console server:run Esto hace
+básicamente lo mismo que antes...
+
+00:02:29.356 --> 00:02:30.586 align:middle
+pero el comando es más corto.
+
+00:02:31.586 --> 00:02:34.626 align:middle
+Y cuando actualizamos, ¡sigue funcionando!
+
+00:02:34.626 --> 00:02:41.176 align:middle
+Por cierto, este comando bin/console va
+a ser nuestro nuevo compañero robot.
+
+00:02:41.876 --> 00:02:47.606 align:middle
+Pero no es magia: nuestro proyecto tiene un
+directorio bin/ con un archivo console dentro.
+
+00:02:48.606 --> 00:02:52.256 align:middle
+Los usuarios de Windows deberían
+decir php bin/console...
+
+00:02:52.446 --> 00:02:54.326 align:middle
+porque sólo es un archivo PHP.
+
+00:02:55.226 --> 00:02:59.316 align:middle
+Entonces, ¿qué cosas sorprendentes
+puede hacer este robot bin/console?
+
+00:02:59.426 --> 00:03:02.666 align:middle
+Busca tu pestaña de terminal
+abierta y ejecútala: php
+
+00:03:03.056 --> 00:03:05.246 align:middle
+./bin/console ¡Sí!
+
+00:03:05.506 --> 00:03:09.176 align:middle
+Esta es una lista de todos
+los comandos de bin/console.
+
+00:03:10.296 --> 00:03:12.996 align:middle
+Algunos de ellos son oro para la depuración.
+
+00:03:13.616 --> 00:03:15.336 align:middle
+¡Hablaremos de ellos a lo largo del camino!
+
+00:03:16.386 --> 00:03:19.626 align:middle
+Bien, ¡ya casi estamos listos
+para empezar a codificar!
+
+00:03:20.246 --> 00:03:24.816 align:middle
+Pero tenemos que hablar de nuestra nave
+espacial, quiero decir, ¡del editor!
+
+00:03:25.616 --> 00:03:28.996 align:middle
+Mira, puedes usar lo que quieras...
+
+00:03:29.226 --> 00:03:31.666 align:middle
+pero... ¡recomiendo encarecidamente PhpStorm!
+
+00:03:32.516 --> 00:03:36.266 align:middle
+En serio, ¡hace que desarrollar
+en Symfony sea un sueño!
+
+00:03:37.076 --> 00:03:41.976 align:middle
+Y no, esos buenos chicos y chicas de PhpStorm
+no me están pagando por decir esto...
+
+00:03:42.286 --> 00:03:43.686 align:middle
+¡pero pueden hacerlo si quieren!
+
+00:03:43.686 --> 00:03:46.236 align:middle
+Ejem, si lo usas...
+
+00:03:46.506 --> 00:03:48.316 align:middle
+lo cual sería genial para ti...
+
+00:03:48.776 --> 00:03:54.176 align:middle
+hay 2 secretos que debes conocer para
+trucar tu nave espacial, ¡ah, editor!
+
+00:03:54.696 --> 00:03:57.396 align:middle
+Está claro que he estado
+demasiado tiempo en hiper-sueño.
+
+00:03:57.956 --> 00:04:03.906 align:middle
+Ve a Preferencias, Plugins, y luego
+haz clic en "Examinar Repositorios".
+
+00:04:05.636 --> 00:04:08.256 align:middle
+Hay 3 plugins imprescindibles.
+
+00:04:09.076 --> 00:04:10.036 align:middle
+Busca "Symfony".
+
+00:04:11.246 --> 00:04:13.206 align:middle
+Primero: el "Plugin Symfony".
+
+00:04:13.966 --> 00:04:17.016 align:middle
+Tiene más de 2 millones de
+descargas por una razón:
+
+00:04:17.516 --> 00:04:21.566 align:middle
+te dará toneladas de autocompletado ridículo.
+
+00:04:22.466 --> 00:04:26.166 align:middle
+También deberías descargar "PHP
+Annotations" y "PHP Toolbox".
+
+00:04:27.006 --> 00:04:28.826 align:middle
+Yo ya los tengo instalados.
+
+00:04:28.856 --> 00:04:33.996 align:middle
+Si no los tienes, verás un botón de "Instalar"
+en la parte superior de la descripción.
+
+00:04:34.576 --> 00:04:38.156 align:middle
+Instálalos y reinicia PHPStorm.
+
+00:04:38.156 --> 00:04:43.966 align:middle
+Luego, vuelve a Preferencias, busca "symfony"
+y encuentra la nueva sección "Symfony".
+
+00:04:45.336 --> 00:04:51.236 align:middle
+Haz clic en la casilla "Habilitar Plugin": tienes que
+habilitar el plugin de Symfony para cada proyecto.
+
+00:04:52.216 --> 00:04:53.996 align:middle
+Dice que tienes que reiniciar...
+
+00:04:54.066 --> 00:04:55.956 align:middle
+pero creo que es mentira.
+
+00:04:56.526 --> 00:04:57.386 align:middle
+¡Es el espacio!
+
+00:04:57.606 --> 00:04:58.496 align:middle
+¿Qué podría salir mal?
+
+00:05:00.086 --> 00:05:02.526 align:middle
+Así que ese es el truco nº 1 de PhpStorm.
+
+00:05:02.626 --> 00:05:07.836 align:middle
+Para el segundo, busca "Composer" y
+haz clic en la sección "Composer".
+
+00:05:09.136 --> 00:05:14.056 align:middle
+Haz clic para buscar la "Ruta a composer.json"
+y selecciona la de nuestro proyecto.
+
+00:05:14.846 --> 00:05:17.126 align:middle
+No estoy seguro de por qué
+esto no es automático...
+
+00:05:17.166 --> 00:05:18.306 align:middle
+¡pero da igual!
+
+00:05:18.306 --> 00:05:23.686 align:middle
+Gracias a esto, PhpStorm facilitará
+la creación de clases en src/.
+
+00:05:24.016 --> 00:05:25.986 align:middle
+Lo verás muy pronto.
+
+00:05:27.226 --> 00:05:30.706 align:middle
+¡Muy bien! Nuestro proyecto
+está configurado y ya funciona.
+
+00:05:30.706 --> 00:05:35.866 align:middle
+Empecemos a construir algunas páginas y a
+descubrir más cosas chulas de la nueva aplicación
