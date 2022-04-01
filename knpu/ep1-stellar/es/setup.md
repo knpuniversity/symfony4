@@ -87,4 +87,4 @@ Crea un mensaje de commit tranquilo y bien pensado.
 
 ¡Woh! Mira esto: todo el proyecto -incluyendo las cosas de Composer y `.gitignore`- ¡sólo tiene 16 archivos! ¡Nuestra aplicación es pequeñita!
 
-Ahora vamos a aprender más sobre nuestro proyecto y a configurar nuestro editor para que el desarrollo de Symfony sea increíble
+A continuación, vamos a aprender más sobre nuestro proyecto y a configurar nuestro editor para que el desarrollo de Symfony sea increíble
