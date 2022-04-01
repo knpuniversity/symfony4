@@ -41,10 +41,10 @@ sistema configurado y funcionando.
 
 00:00:46.646 --> 00:00:52.816 align:middle
 Ah, y por cierto, si te fijas en la parte inferior
-de base.html.twig, nuestra página sí tiene jQuery,
+de base.html.twig, nuestra página tiene jQuery,
 
 00:00:53.026 --> 00:00:58.606 align:middle
-así que podemos utilizarlo: En el directorio
+así que podemos usarlo: En el directorio
 public/, crea un nuevo directorio js/
 
 00:00:59.016 --> 00:01:03.086 align:middle
