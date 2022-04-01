@@ -6,9 +6,11 @@ En cualquier caso, Symfony 4 ha reimaginado por completo la experiencia del desa
 
 Ah, ¿y he mencionado que Symfony 4 es la versión más rápida de la historia? ¿Y el framework PHP más rápido? Sinceramente, todos los frameworks son lo suficientemente rápidos de todos modos, pero la cuestión es ésta: estás construyendo sobre una base realmente impresionante.
 
-SUGERENCIA ¡Ve a http://www.phpbenchmarks.com para ver las estadísticas de los benchmarks de terceros!
+***TIP
+Consulta http://www.phpbenchmarks.com para ver las estadísticas de los benchmarks de terceros
+***
 
-## Prep: Descarga y actualiza Composer
+## Preparación: Descarga y actualiza Composer
 
 Bien, ¡empecemos ya! Abre un nuevo terminal y entra en el directorio que quieras. Asegúrate de que ya tienes [Composer](https://getcomposer.org/) instalado globalmente para que puedas decir simplemente `composer`. Si tienes alguna duda, ¡pregúntanos en los comentarios!
 
@@ -51,17 +53,23 @@ php -S 127.0.0.1:8000 -t public
 Esto inicia el servidor web PHP incorporado, que es genial para el desarrollo. `public/`
 es la raíz del documento del proyecto - ¡pero pronto hablaremos de ello!
 
-CONSEJO Si quieres usar Nginx o Apache para el desarrollo local, ¡puedes hacerlo! Consulta http://bit.ly/symfony-web-servers
+***TIP
+Si quieres usar Nginx o Apache para el desarrollo local, ¡puedes hacerlo! Consulta http://bit.ly/symfony-web-servers.
+***
 
-¡Es hora de salir a flote! Pasa a tu navegador y ve a `http://localhost:8000`. ¡Saluda a tu nueva aplicación Symfony!
+¡Es hora de despegar! Pasa a tu navegador y ve a `http://localhost:8000`. ¡Saluda a tu nueva aplicación Symfony!
 
 ## Nuestro Pequeño Proyecto
 
-CONSEJO Symfony ya no crea un repositorio Git automáticamente para ti. Pero, ¡no hay problema! Sólo tienes que escribir `git init` una vez para inicializar tu repositorio
+***TIP
+Symfony ya no crea un repositorio Git automáticamente para ti. Pero, ¡no hay problema! Sólo tienes que escribir `git init` una vez para inicializar tu repositorio.
+***
 
 De vuelta al terminal, crearé una nueva pestaña de terminal. Symfony ya ha inicializado un nuevo repositorio git por nosotros y nos ha dado un archivo `.gitignore` perfecto. ¡Gracias Symfony!
 
-SUGERENCIA Si estás usando PhpStorm, querrás ignorar el directorio `.idea` de git. Yo ya lo tengo ignorado en mi archivo global .gitignore: https://help.github.com/articles/ignoring-files/
+***TIP
+Si estás usando PhpStorm, querrás ignorar el directorio `.idea` de git. Yo ya lo tengo ignorado en mi archivo global .gitignore: https://help.github.com/articles/ignoring-files/
+***
 
 Eso significa que podemos crear nuestro primer commit simplemente diciendo
 
