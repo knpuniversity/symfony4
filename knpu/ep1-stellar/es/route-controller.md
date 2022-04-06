@@ -62,11 +62,15 @@ Luego, en `ArticleController`, encima del método del controlador, añade `/**`,
 
 [[[ code('e9f8d1dc4a') ]]]
 
-SUGERENCIA Cuando autocompletes la anotación `@Route`, asegúrate de elegir la de `Symfony\Component\Routing` - la que elegimos ahora está obsoleta. Ambas funcionan igual
+***TIP
+Cuando autocompletes la anotación `@Route`, asegúrate de elegir la de `Symfony\Component\Routing` - la que elegimos ahora está obsoleta. Ambas funcionan igual.
+***
 
 Ya está La ruta está definida justo encima del controlador, por eso me encantan las rutas de anotación: todo está en un solo lugar. Pero no te fíes de mí, busca tu navegador y actualiza. ¡Es un traaaaap! Es decir, ¡funciona!
 
-CONSEJO ¿Qué son exactamente las anotaciones? Son comentarios de PHP que se leen como configuración
+***TIP
+¿Qué son exactamente las anotaciones? Son comentarios de PHP que se leen como configuración.
+***
 
 ## Rutas con comodines
 
@@ -78,7 +82,7 @@ Al final, así es como queremos que se vean nuestras URLs. Esto se llama "slug",
 
 [[[ code('7ba5de7f42') ]]]
 
-¡Perfecto! Copia esa URL y pruébala en tu navegador. Funciona... ¡pero esto es una mierda! No quiero construir una ruta y un controlador para cada artículo que vive en la base de datos. No, necesitamos una ruta que pueda coincidir con `/news/` cualquier cosa. ¿Cómo? Usando `{slug}`:
+¡Perfecto! Copia esa URL y pruébala en tu navegador. Funciona... ¡pero esto es una mierda! No quiero construir una ruta y un controlador para cada artículo que vive en la base de datos. No, necesitamos una ruta que pueda coincidir con `/news/` cualquier cosa. ¿Cómo? Utilizando `{slug}`:
 
 [[[ code('d572f8cdbc') ]]]
 
