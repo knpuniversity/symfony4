@@ -1,90 +1,114 @@
-# Symfony 4: ¡Lanzamiento!
+# Symfony 4: Let's Launch!
 
-¡Hola chicos! ¡Sí! ¡Es la hora de Symfony 4! Estoy muy emocionado. ¿Por qué? Porque nada me hace más feliz que sentarme a trabajar dentro de un framework en el que codificar es realmente divertido, y en el que puedo construir características rápidamente, pero sin sacrificar la calidad. Bueno, tal vez sería aún más feliz haciendo todo eso en una playa... con, tal vez, una bebida fría?
+Hey guys! Yes! It's Symfony 4 time! I am *so* excited. Why? Because *nothing*
+makes me happier than sitting down to work inside a framework where coding is actually
+*fun*, and where I can build features fast, but *without* sacrificing quality. Well,
+maybe I'd be *even* happier doing all of that on a beach... with, maybe a cold drink?
 
-En cualquier caso, Symfony 4 ha reimaginado por completo la experiencia del desarrollador: vas a crear mejores funciones, más rápido que nunca. Además, Symfony tiene un nuevo y único superpoder: comienza como un microframework, y luego escala automáticamente en tamaño a medida que tu proyecto crece. ¿Cómo? Permanece atento...
+Anyways, Symfony 4 completely re-imagined the developer experience: you're going
+to create better features, faster than ever. *And*, Symfony has a *new*, unique
+super-power: it starts as a microframework, then automatically scales in size as
+your project grows. How? Stay tuned...
 
-Ah, ¿y he mencionado que Symfony 4 es la versión más rápida de la historia? ¿Y el framework PHP más rápido? Sinceramente, todos los frameworks son lo suficientemente rápidos de todos modos, pero la cuestión es ésta: estás construyendo sobre una base realmente impresionante.
+Oh, and did I mention that Symfony 4 is the fastest version ever? And the fastest
+PHP framework? Honestly, *all* frameworks are fast enough anyways, but the point
+is this: you're building on a seriously awesome foundation.
 
 ***TIP
-Consulta http://www.phpbenchmarks.com para ver las estadísticas de los benchmarks de terceros
+See http://www.phpbenchmarks.com for the third-party benchmark stats!
 ***
 
-## Preparación: Descarga y actualiza Composer
+## Prep: Download & Update Composer
 
-Bien, ¡empecemos ya! Abre un nuevo terminal y entra en el directorio que quieras. Asegúrate de que ya tienes [Composer](https://getcomposer.org/) instalado globalmente para que puedas decir simplemente `composer`. Si tienes alguna duda, ¡pregúntanos en los comentarios!
+Ok, let's get started already! Open a new terminal and move into whatever directory
+you want. Make sure that you already have [Composer](https://getcomposer.org/) installed
+globally so that you can just say `composer`. If you have any questions, ask us
+in the comments!
 
-Y también asegúrate de que tienes la última versión:
+And *also* make sure you have the latest version:
 
 ```terminal-silent
 composer self-update
 ```
 
-Esto es importante: Composer ha tenido una reciente corrección de errores para ayudar a Symfony.
+That's important: Composer had a recent bug fix to help Symfony.
 
-## ¡Instala Symfony!
+## Install Symfony!
 
-Para descargar tu nuevo proyecto Symfony, ejecuta `composer create-project symfony/skeleton`y ponlo en un nuevo directorio llamado `the_spacebar`.
+To download your new Symfony project, run `composer create-project symfony/skeleton`
+and put this into a new directory called `the_spacebar`.
 
 ```terminal-silent
 composer create-project symfony/skeleton the_spacebar '4.4.*'
 ```
 
-¡Ese es el nombre de nuestro proyecto! "La Barra Espacial" será el lugar para que la gente de toda la galaxia se comunique, comparta noticias y discuta sobre los famosos y el BitCoin. ¡Va a ser increíble!
+That's the name of our project! "The Spacebar" will be *the* place for people from
+*across* the galaxy to communicate, share news and argue about celebrities and
+BitCoin. It's going to be amazing!
 
-Este comando clona el proyecto `symfony/skeleton` y luego ejecuta `composer install`para descargar sus dependencias.
+This command clones the `symfony/skeleton` project and then runs `composer install`
+to download its dependencies.
 
-Más abajo, hay algo especial: algo sobre "recetas". OooOOO. Las recetas son un concepto nuevo y muy importante. Hablaremos de ellas en unos minutos.
+Further down, there's something *special*: something about "recipes". OooOOO.
+Recipes are a new and very important concept. We'll talk about them in a few minutes.
 
-## Iniciar el servidor web
+## Starting the Web Server
 
-Y al final, ¡genial! Symfony nos da instrucciones claras sobre qué hacer a continuación. Desplazarnos al nuevo directorio:
+And at the bottom, cool! Symfony gives us clear instructions about what to do
+next. Move into the new directory:
 
 ```terminal-silent
 cd the_spacebar
 ```
 
-Aparentemente, podemos ejecutar nuestra aplicación inmediatamente ejecutando:
+Apparently, we can run our app immediately by executing:
 
 ```terminal
 php -S 127.0.0.1:8000 -t public
 ```
 
-Esto inicia el servidor web PHP incorporado, que es genial para el desarrollo. `public/`
-es la raíz del documento del proyecto - ¡pero pronto hablaremos de ello!
+This starts the built-in PHP web server, which is *great* for development. `public/`
+is the document root of the project - but more on that soon!
 
 ***TIP
-Si quieres usar Nginx o Apache para el desarrollo local, ¡puedes hacerlo! Consulta http://bit.ly/symfony-web-servers.
+If you want to use Nginx or Apache for local development, you can! See
+http://bit.ly/symfony-web-servers.
 ***
 
-¡Es hora de despegar! Pasa a tu navegador y ve a `http://localhost:8000`. ¡Saluda a tu nueva aplicación Symfony!
+Time to blast off! Move to your browser and go to `http://localhost:8000`. Say
+hello to your new Symfony app!
 
-## Nuestro Pequeño Proyecto
+## Our Tiny Project
 
 ***TIP
-Symfony ya no crea un repositorio Git automáticamente para ti. Pero, ¡no hay problema! Sólo tienes que escribir `git init` una vez para inicializar tu repositorio.
+Symfony no longer creates a Git repository automatically for you. But, no problem!
+Just type `git init` once to initialize your repository.
 ***
 
-De vuelta al terminal, crearé una nueva pestaña de terminal. Symfony ya ha inicializado un nuevo repositorio git por nosotros y nos ha dado un archivo `.gitignore` perfecto. ¡Gracias Symfony!
+Back in the terminal, I'll create a new terminal tab. Symfony *already* inititalized
+a new git repository for us *and* gave us a perfect `.gitignore` file. Thanks Symfony!
 
 ***TIP
-Si estás usando PhpStorm, querrás ignorar el directorio `.idea` de git. Yo ya lo tengo ignorado en mi archivo global .gitignore: https://help.github.com/articles/ignoring-files/
+If you're using PhpStorm, you'll want to ignore the `.idea` directory from git. I already have it
+ignored in my global .gitignore file: https://help.github.com/articles/ignoring-files/
 ***
 
-Eso significa que podemos crear nuestro primer commit simplemente diciendo
+That means we can create our *first* commit just by saying:
 
 ```terminal
-git init
+git init 
 git add .
 git commit
 ```
 
-Crea un mensaje de commit tranquilo y bien pensado.
+Create a calm and well-thought-out commit message.
 
 ```terminal-silent
 # Woohoo! OMG WE ARE USING SYMFONY4
 ```
 
-¡Woh! Mira esto: todo el proyecto -incluyendo las cosas de Composer y `.gitignore`- ¡sólo tiene 16 archivos! ¡Nuestra aplicación es pequeñita!
+Woh! Check this out: the entire project - *including* Composer and `.gitignore`
+stuff - is only 16 files! Our app is teenie-tiny!
 
-A continuación, vamos a aprender más sobre nuestro proyecto y a configurar nuestro editor para que el desarrollo de Symfony sea increíble
+Let's learn more about our project next *and* setup our editor to make Symfony
+development *amazing*!
