@@ -20,7 +20,7 @@ Si vuelves al terminal... ¡sí! Se han descargado todas esas librerías y se ha
 
 Y... ¡mira esto! ¡Refrescar! Oye, ¡nuestro Twig `dump()` se ha vuelto más bonito! El `debug-pack`lo integró todo aún mejor.
 
-#¡Desembalar el paquete!
+# ¡Desembalar el paquete!
 
 Vuelve a tu plantilla Twig y elimina ese volcado. Luego, abre `composer.json`. Acabamos de instalar dos paquetes: el `debug-pack` y el `profiler-pack`:
 
