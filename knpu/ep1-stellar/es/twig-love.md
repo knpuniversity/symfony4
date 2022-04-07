@@ -32,7 +32,7 @@ Al final de esta página, pegaré algo de contenido extra codificado para animar
 
 ¡Vamos a probarlo! ¡Busca tu navegador y actualízalo! ¡Bum! ¡Tenemos contenido!
 
-Pero fíjate: si ves la fuente de la página... es sólo este contenido: aún no tenemos ningún diseño ni estructura HTML. ¡Pero pronto lo tendremos!
+Pero fíjate: si ves la fuente de la página... es sólo este contenido: aún no tenemos ningún diseño ni estructura HTML. Pero, ¡pronto lo tendremos!
 
 ## Bucle con for
 
@@ -62,7 +62,7 @@ Ve a [twig.symfony.com][twig_docs] y haz clic en el enlace Documentación. Despl
 
 ¡Esto es increíble! ¿Ves las etiquetas de la izquierda? Esa es toda la lista de posibles etiquetas de "hacer algo". Sí, siempre será `{%` y luego una de estas: `for`, `if`,`extends`, `tractorbeam`. Y sinceramente, sólo vas a utilizar unas 5 de ellas la mayoría de las veces.
 
-Twig también tiene funciones... que funcionan como cualquier otro lenguaje - y una cosa genial llamada "tests". Son un poco singulares, pero no demasiado difíciles, y te permiten decir cosas como `if foo is defined` o... `if space is empty`.
+Twig también tiene funciones... que funcionan como cualquier otro lenguaje - y una cosa genial llamada "pruebas". Son un poco singulares, pero no demasiado difíciles, y te permiten decir cosas como `if foo is defined` o... `if space is empty`.
 
 La parte más útil de esta referencia es la sección de filtros. Los filtros son como las funciones, pero con una sintaxis diferente, mucho más moderna. Vamos a probar nuestro filtro `|length`.
 
@@ -72,7 +72,9 @@ Vuelve a nuestra plantilla. Quiero imprimir el número total de comentarios. Añ
 
 Esto es un filtro: el valor `comments` pasa de izquierda a derecha, como una tubería Unix. El filtro `length` cuenta lo que se le haya pasado, e imprimimos el resultado. ¡Incluso puedes utilizar varios filtros!
 
-¡CONSEJO Para confundir innecesariamente a tus compañeros de equipo, prueba a utilizar los filtros `upper` y `lower` una y otra vez: `{{ name|upper|lower|upper|lower|upper }}`!
+***TIP
+¡Para confundir innecesariamente a tus compañeros, prueba a utilizar los filtros `upper` y `lower` una y otra vez: `{{ name|upper|lower|upper|lower|upper }}`!
+***
 
 ## Herencia de plantillas
 
@@ -104,7 +106,7 @@ Ahora nuestro contenido debería ir dentro de ese bloque en `base.html.twig`. Pr
 
 ## Más sobre los bloques
 
-Eres completamente libre de personalizar esta plantilla todo lo que quieras: cambiar el nombre de los bloques, añadir más bloques y, con suerte, ¡hacer que el sitio parezca menos feo!
+Eres completamente libre de personalizar esta plantilla tanto como quieras: cambiar el nombre de los bloques, añadir más bloques y, con suerte, ¡hacer que el sitio parezca menos feo!
 
 Ah, y la mayoría de las veces, los bloques están vacíos. Pero puedes dar al bloque algún contenido por defecto, como con `title`:
 
@@ -118,7 +120,9 @@ Sí, el título de la pestaña del navegador es `Welcome`.
 
 ¡Pruébalo! ¡Sí! El título de la página cambia. Y... ¡voilà! Eso es Twig. Te va a encantar.
 
-SEEALSO Echa un vistazo a otro [screencast][twig_screencast] nuestro para saber más sobre Twig
+***SEEALSO
+Mira otro [screencast][twig_screencast] nuestro para saber más sobre Twig
+***
 
 A continuación, vamos a ver una de las características más asesinas de Symfony: el perfilador.
 
