@@ -1,12 +1,14 @@
-# La receta de la ramita
+# La receta Twig
 
 ¿Recuerdas la única regla para un controlador? ¡Debe devolver un objeto Symfony Response! Pero a Symfony no le importa cómo lo hagas: puedes renderizar una plantilla, hacer peticiones a la API o hacer consultas a la base de datos y construir una respuesta JSON.
 
-CONSEJO Técnicamente, un controlador puede devolver cualquier cosa. Con el tiempo, aprenderás cómo y por qué hacerlo
+***TIP
+Técnicamente, un controlador puede devolver cualquier cosa. Con el tiempo, aprenderás cómo y por qué hacer esto.
+***
 
 En realidad, la mayor parte del aprendizaje de Symfony consiste en aprender a instalar y utilizar un montón de herramientas potentes, pero opcionales, que facilitan este trabajo. Si tu aplicación necesita devolver HTML, una de estas grandes herramientas se llama Twig.
 
-## Instalación de Twig
+## Instalar Twig
 
 En primer lugar, asegúrate de confirmar todos tus cambios hasta el momento:
 
