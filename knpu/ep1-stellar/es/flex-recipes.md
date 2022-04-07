@@ -2,7 +2,9 @@
 
 Es hora de desmitificar algo increíble: los rayos tractores. Bueno, en realidad, aún no los hemos descubierto... así que vamos a desmitificar otra cosa, algo que ya está ocurriendo entre bastidores. Primero confirma todo, con un bonito mensaje:
 
-TIP ¡Espera! Ejecuta primero `git init` antes de `git add .`: Symfony ya no crea un repo de Git automáticamente por ti :)
+***TIP
+¡Espera! Ejecuta primero `git init` antes de `git add .`: Symfony ya no crea un repositorio Git automáticamente por ti :)
+***
 
 ```terminal-silent
 git init
@@ -24,7 +26,9 @@ Vale, no hay cambios. Ahora ejecuta:
 composer require sec-checker
 ```
 
-SUGERENCIA Este paquete sólo se utilizará durante el desarrollo. Así que sería mejor ejecutar `composer require sec-checker --dev`
+***TIP
+Este paquete sólo se utilizará durante el desarrollo. Por lo tanto, sería mejor ejecutar `composer require sec-checker --dev`.
+***
 
 ## Hola Symfony Flex
 
@@ -48,9 +52,9 @@ De vuelta a `composer.json`, ¡sí! Composer añadió en realidad `sensiolabs/se
 
 Ese es el primer superpoder de Flex.
 
-#Recetas Flex
+## Recetas de Flex
 
-El segundo superpoder es aún mejor: las recetas. Mmmm. Vuelve a tu terminal y... ¡sí! Se ha instalado y, mira esto "Operaciones Symfony: 1 receta". Luego, "Configuración de `sensiolabs/security-checker`".
+El segundo superpoder es aún mejor: las recetas. Mmmm. Vuelve a tu terminal y... ¡sí! Se instaló y, mira esto "Operaciones Symfony: 1 receta". Luego, "Configuración de `sensiolabs/security-checker`".
 
 ¿Qué significa eso? Que se ejecute:
 
@@ -88,7 +92,7 @@ Por supuesto, `composer require` añadió el paquete. ¡Pero la receta añadió 
 
 [[[ code('b4ef3d7af5') ]]]
 
-Gracias a él, cada vez que ejecutamos
+Gracias a eso, cada vez que ejecutamos
 
 ```terminal
 composer install
