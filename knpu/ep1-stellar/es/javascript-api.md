@@ -1,4 +1,4 @@
-# Punto final de la API JSON
+# Ruta de la API JSON
 
 Cuando hacemos clic en el icono del corazón, necesitamos enviar una petición AJAX al servidor que, eventualmente, actualizará algo en una base de datos para mostrar que el nos ha gustado este artículo. Esa ruta de la API también necesita devolver el nuevo número de corazones para mostrar en la página... ya sabes... por si a otras 10 personas les ha gustado desde que abrimos la página.
 
@@ -16,7 +16,7 @@ Añade el argumento correspondiente `$slug`. Pero como aún no tenemos una base 
 
 [[[ code('24472bf8ea') ]]]
 
-## Devolver JSON
+## Regresando JSON
 
 Queremos que esta ruta de la API devuelva JSON... y recuerda: la única regla para un controlador Symfony es que debe devolver un objeto Symfony Response. Así que podríamos decir literalmente `return new Response(json_encode(['hearts' => 5]))`.
 
@@ -24,19 +24,19 @@ Queremos que esta ruta de la API devuelva JSON... y recuerda: la única regla pa
 
 [[[ code('a7ecdbda6f') ]]]
 
-***TIP ¡O usa el atajo del controlador!
-
-```php
+***TIP
+O usa el atajo del controlador!```php
 return $this->json(['hearts' => rand(5, 100)]);
-```
-
-Ten en cuenta que desde PHP 7.0, en lugar de `rand()`, puedes utilizar `random_int()`, que genera enteros pseudoaleatorios criptográficamente seguros. Es preferible utilizarlo a menos que tengas problemas de rendimiento, pero con sólo varias llamadas no se nota. ***
+```Ten en cuenta que desde PHP 7.0 en lugar de `rand()` puedes usar `random_int()` que genera enteros pseudoaleatorios criptográficamente seguros. Es preferible usarlo a menos que tengas problemas de rendimiento, pero con sólo varias llamadas ni siquiera se nota.
+***
 
 No hay nada especial aquí: `JsonResponse` es una subclase de `Response`. Llama a`json_encode()` por ti, y también establece la cabecera `Content-Type` en `application/json`, lo que ayuda a tu JavaScript a entender las cosas.
 
 Probemos primero esto en el navegador. Vuelve y añade `/heart` a la URL. ¡Sí! ¡Nuestro primer punto final de la API!
 
-SUGERENCIA ¡Mi JSON tiene un bonito aspecto gracias a la extensión [JSONView][json_view] para Chrome!
+***TIP
+¡Mi JSON tiene un bonito aspecto gracias a la extensión [JSONView][json_view] para Chrome!
+***
 
 ## Hacer que la ruta sea sólo POST
 
