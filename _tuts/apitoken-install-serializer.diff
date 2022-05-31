@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index eb0ba549..7386f902 100644
+index 8e1659c..5f55744 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -19,6 +19,7 @@
@@ -11,7 +11,7 @@ index eb0ba549..7386f902 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 1425e412..d53d1eb1 100644
+index 1425e41..d53d1eb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -441,7 +441,7 @@ index 1425e412..d53d1eb1 100644
              "name": "zendframework/zend-code",
              "version": "3.3.1",
 diff --git a/symfony.lock b/symfony.lock
-index 78375cc0..3a40ccc5 100644
+index 78375cc..3a40ccc 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -188,6 +188,18 @@

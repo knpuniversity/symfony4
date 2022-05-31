@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index e24255b2..b896d01a 100644
+index e24255b..b896d01 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -64,7 +64,7 @@ class ArticleController extends AbstractController
@@ -12,7 +12,7 @@ index e24255b2..b896d01a 100644
  
          $logger->info('Article is being hearted!');
 diff --git a/src/Entity/Article.php b/src/Entity/Article.php
-index 45f472f2..dd32f52a 100644
+index 45f472f..dd32f52 100644
 --- a/src/Entity/Article.php
 +++ b/src/Entity/Article.php
 @@ -129,6 +129,13 @@ class Article

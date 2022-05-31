@@ -1,5 +1,5 @@
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index 94bfa611..24354554 100644
+index 94bfa61..2435455 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
 @@ -25,9 +25,7 @@ class ArticleRepository extends ServiceEntityRepository

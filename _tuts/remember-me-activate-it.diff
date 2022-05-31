@@ -1,5 +1,5 @@
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index f1e9a7f1..cb01303f 100644
+index f1e9a7f..cb01303 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -20,6 +20,10 @@ security:
@@ -14,7 +14,7 @@ index f1e9a7f1..cb01303f 100644
  
              # http_basic: true
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 02c15cdf..778f582e 100644
+index 02c15cd..778f582 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -26,7 +26,7 @@

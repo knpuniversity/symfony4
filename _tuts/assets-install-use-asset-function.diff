@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 7e34b4c7..9bc218ba 100644
+index 7e34b4c..9bc218b 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,7 @@
@@ -11,7 +11,7 @@ index 7e34b4c7..9bc218ba 100644
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index a9f2975e..466c2782 100644
+index a9f2975..466c278 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -87,7 +87,7 @@ index a9f2975e..466c2782 100644
              "name": "symfony/cache",
              "version": "v4.0.14",
 diff --git a/symfony.lock b/symfony.lock
-index 7033706f..27397f4e 100644
+index 7033706..27397f4 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -71,6 +71,9 @@
@@ -101,7 +101,7 @@ index 7033706f..27397f4e 100644
          "version": "v4.0.2"
      },
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index b98bde36..7af65423 100644
+index b98bde3..7af6542 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -8,8 +8,8 @@

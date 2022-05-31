@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index c7df7e85..d3ba2276 100644
+index c7df7e8..d3ba227 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -31,7 +31,7 @@ class ArticleController extends AbstractController
@@ -12,7 +12,7 @@ index c7df7e85..d3ba2276 100644
          return $this->render('article/homepage.html.twig', [
              'articles' => $articles,
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index e52228c8..143e4887 100644
+index e52228c..143e488 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
 @@ -25,10 +25,8 @@ class ArticleRepository extends ServiceEntityRepository

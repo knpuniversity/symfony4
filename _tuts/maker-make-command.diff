@@ -1,6 +1,6 @@
 diff --git a/src/Command/ArticleStatsCommand.php b/src/Command/ArticleStatsCommand.php
 new file mode 100644
-index 00000000..26debd0f
+index 0000000..26debd0
 --- /dev/null
 +++ b/src/Command/ArticleStatsCommand.php
 @@ -0,0 +1,36 @@

@@ -1,5 +1,19 @@
+diff --git a/composer.json b/composer.json
+index 27e2102..240a95f 100644
+--- a/composer.json
++++ b/composer.json
+@@ -30,6 +30,9 @@
+         "sort-packages": true,
+         "platform": {
+             "php": "7.1.3"
++        },
++        "allow-plugins": {
++            "symfony/flex": true
+         }
+     },
+     "autoload": {
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
-index b32f52d9..f97dbe38 100644
+index b32f52d..f97dbe3 100644
 --- a/config/packages/framework.yaml
 +++ b/config/packages/framework.yaml
 @@ -4,12 +4,27 @@ framework:
@@ -35,7 +49,7 @@ index b32f52d9..f97dbe38 100644
 +        # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
 +        #app: cache.adapter.apcu
 diff --git a/public/index.php b/public/index.php
-index 521b85d7..ab41c26e 100644
+index 521b85d..ab41c26 100644
 --- a/public/index.php
 +++ b/public/index.php
 @@ -15,7 +15,10 @@ if (!isset($_SERVER['APP_ENV'])) {

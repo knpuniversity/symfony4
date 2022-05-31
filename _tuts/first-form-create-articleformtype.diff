@@ -1,6 +1,6 @@
 diff --git a/src/Form/ArticleFormType.php b/src/Form/ArticleFormType.php
 new file mode 100644
-index 00000000..6c6419d2
+index 0000000..6c6419d
 --- /dev/null
 +++ b/src/Form/ArticleFormType.php
 @@ -0,0 +1,14 @@
