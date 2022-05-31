@@ -26,7 +26,7 @@ file, put all the real values inside, and Symfony would use that! Well, if you'r
 planning on doing this, make sure to move the dotenv library from the `require-dev`
 section of your `composer.json` to `require` by removing and re-adding it:
 
-```terminal-silent
+```terminal-silent skip-ci
 composer remove symfony/dotenv
 composer require symfony/dotenv
 ```
