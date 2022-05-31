@@ -11,7 +11,7 @@ Let's get this installed: copy the `composer require` line. Then, move over to y
 terminal, paste and... go!
 
 ```terminal-silent
-composer require knplabs/knp-markdown-bundle
+composer require "knplabs/knp-markdown-bundle:^1.9"
 ```
 
 Notice that this is a *bundle*: you can see it right in the name. That means it
