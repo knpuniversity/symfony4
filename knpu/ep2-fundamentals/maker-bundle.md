@@ -8,7 +8,7 @@ For our last trick, I want to introduce a bundle that's going to make our life
 First, find your terminal, and install that bundle:
 
 ```terminal
-composer require maker --dev
+composer require "maker:^1.35" --dev
 ```
 
 Yep! That's a Flex alias for `symfony/maker-bundle`. And, in this case, "make"
