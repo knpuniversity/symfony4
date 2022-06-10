@@ -103,10 +103,11 @@ already have a `/` at the beginning. Finish the method with `return $source`.
 To avoid missing CSS if you send your emails via Messenger (or if you send multiple emails
 during the same request), "reset" Encore's internal cache before calling `getCssFiles()`
 
-```diff
-+ $files = $this->container
-+     ->get(EntrypointLookupInterface::class)
-+     ->reset();
+```php
+// add these 3 lines
+$files = $this->container
+    ->get(EntrypointLookupInterface::class)
+    ->reset();
 
 $files = $this->container
     ->get(EntrypointLookupInterface::class)
