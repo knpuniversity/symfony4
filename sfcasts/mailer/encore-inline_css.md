@@ -99,6 +99,22 @@ Down in the method, we can say
 `$source .= file_get_contents($this->publicDir.$file)` - each `$file` path should
 already have a `/` at the beginning. Finish the method with `return $source`.
 
+***TIP
+To avoid missing CSS if you send your emails via Messenger (or if you send multiple emails
+during the same request), "reset" Encore's internal cache before calling `getCssFiles()`
+
+```diff
++ $files = $this->container
++     ->get(EntrypointLookupInterface::class)
++     ->reset();
+
+$files = $this->container
+    ->get(EntrypointLookupInterface::class)
+    ->getCssFiles($entryName);
+// ...
+```
+***
+
 [[[ code('4f31937a60') ]]]
 
 Whew! Let's try this! We're already running Encore... so it already dumped the
@@ -119,12 +135,6 @@ php bin/console messenger:consume -vv
 
 Message received... and... message handled. Go check it out! The styling look great:
 they're inlined and coming from a proper Sass file.
-
-***TIP
-If you're using Encore in your emails like this *and* sending emails async with Messenger,
-you'll need to "reset" the Encore "entrypoint" before each message is processed, otherwise
-any emails after the first one sent by the worker won't have any styles. See: https://bit.ly/sf-messenger-emails-encore.
-***
 
 And... we've made it to the end! You are now an email *expert*... I mean, not
 just a Mailer expert... we *really* dove deep. Congrats!
