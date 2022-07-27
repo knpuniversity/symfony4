@@ -8,7 +8,7 @@ Now, open `ArticleFormType` so we can take a closer look at the field *types*.
 Right now, we're using `TextType`, this is `TextareaType`, this is a `DateTimeType`
 and the author drop-down is an `EntityType`. We learned earlier that the purpose
 of each field type is really two things. First: it controls how the field is rendered,
-like `<input type="text">`, `<textarea>`, `<input type="datetime-local">` or a select
+like `<input type="text">`, `<textarea>`, `<input type="datetime-local">` or a `<select>`
 drop down. The *second* purpose of a field type is more important: it determines
 how the field's data is transformed.
 
