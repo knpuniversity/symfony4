@@ -53,7 +53,7 @@ will make it render as an `<input type="email">`, but either will work fine.
 
 [[[ code('8adf3ca00b') ]]]
 
-Internally, the form fields have an inheritance system. For, not-too-interesting
+Internally, the form fields have an inheritance system. For not-too-interesting
 technical reasons, the form classes don't use *real* class inheritance - we don't
 literally extend the `TextType` class. But, it works in a similar way.
 
