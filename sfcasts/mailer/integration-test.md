@@ -73,6 +73,11 @@ we can fetch things out of the container using the same type-hints as normal. So
 `$pdf = self::$container` - `bootKernel()` set that property - `->get()` passing
 this `Pdf::class`. Do the same for Twig: `self::$container->get(Environment::class)`.
 
+***TIP
+Starting in Symfony 5.3, instead of `self::$container`, use `static::getContainer();` to get the container
+from inside a test. Also, calling `bootKernel()` is no longer needed.
+***
+
 [[[ code('593bb3f2ab') ]]]
 
 I love that! Again, the *downside* is that you really *do* need to have `wkhtmltopdf`
