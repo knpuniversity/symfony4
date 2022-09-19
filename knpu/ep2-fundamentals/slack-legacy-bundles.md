@@ -5,7 +5,18 @@ Let's do something fun! Google for SlackBundle - you'll find one called
 send messages to a Slack channel. To install it, find the `composer require`
 line, copy that, move over to your terminal and paste:
 
-```terminal-silent skip-ci
+
+***TIP
+We need this for our course CI, just ignore this note and follow the tutorial
+without executing these commands :)
+
+```terminal-silent
+echo 'nexy_slack:' > config/packages/nexy_slack.yaml
+echo "    endpoint: 'https://hooks.slack.com/services/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'" >> config/packages/nexy_slack.yaml
+```
+***
+
+```terminal-silent
 composer require nexylan/slack-bundle:2.2.0 php-http/guzzle6-adapter:1.1.1
 ```
 

@@ -141,13 +141,3 @@ With our new knowledge, let's keep going and start mastering features, like the
 Doctrine ORM, form system, API stuff and a lot more.
 
 Alright guys, seeya next time!
-
-***TIP
-We need this for our course CI, just ignore this note :)
-
-```terminal
-echo 'nexy_slack:' > config/packages/nexy_slack.yaml
-echo "    endpoint: 'https://hooks.slack.com/services/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'" >> config/packages/nexy_slack.yaml
-composer require nexylan/slack-bundle:2.2.0 php-http/guzzle6-adapter:1.1.1
-```
-***
