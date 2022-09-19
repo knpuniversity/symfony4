@@ -74,7 +74,7 @@ we can fetch things out of the container using the same type-hints as normal. So
 this `Pdf::class`. Do the same for Twig: `self::$container->get(Environment::class)`.
 
 ***TIP
-Starting in Symfony 5.3, instead of `self::$container`, use `static::getContainer();` to get the container
+Starting in Symfony 5.3, instead of `self::$container`, use `static::getContainer()` to get the container
 from inside a test. Also, calling `bootKernel()` is no longer needed.
 ***
 
