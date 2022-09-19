@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index 90f23e0..2dd3e65 100644
+index 90f23e0f..2dd3e65a 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -27,9 +27,10 @@ class ArticleFixtures extends BaseFixture implements DependentFixtureInterface
@@ -30,7 +30,7 @@ index 90f23e0..2dd3e65 100644
  
          $manager->flush();
 diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
-index ed8d012..9fc86d5 100644
+index ed8d012d..9fc86d58 100644
 --- a/src/DataFixtures/BaseFixture.php
 +++ b/src/DataFixtures/BaseFixture.php
 @@ -27,43 +27,63 @@ abstract class BaseFixture extends Fixture
@@ -113,7 +113,7 @@ index ed8d012..9fc86d5 100644
  
          return $references;
 diff --git a/src/DataFixtures/CommentFixture.php b/src/DataFixtures/CommentFixture.php
-index 912d618..5a48a49 100644
+index 912d6183..5a48a49a 100644
 --- a/src/DataFixtures/CommentFixture.php
 +++ b/src/DataFixtures/CommentFixture.php
 @@ -11,7 +11,8 @@ class CommentFixture extends BaseFixture implements DependentFixtureInterface
@@ -138,7 +138,7 @@ index 912d618..5a48a49 100644
  
          $manager->flush();
 diff --git a/src/DataFixtures/TagFixture.php b/src/DataFixtures/TagFixture.php
-index 6939a4c..b7ccc4d 100644
+index 6939a4c7..b7ccc4d9 100644
 --- a/src/DataFixtures/TagFixture.php
 +++ b/src/DataFixtures/TagFixture.php
 @@ -9,8 +9,11 @@ class TagFixture extends BaseFixture

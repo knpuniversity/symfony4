@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 1c336be..62a9486 100644
+index 1c336be9..62a94866 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -11,7 +11,7 @@ index 1c336be..62a9486 100644
          "symfony/flex": "^1.0",
          "symfony/framework-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index a0ba30e..eea220f 100644
+index a0ba30ee..eea220f2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,411 @@
@@ -504,7 +504,7 @@ index a0ba30e..eea220f 100644
              "name": "symfony/cache",
              "version": "v4.0.14",
 diff --git a/config/bundles.php b/config/bundles.php
-index 265bf15..1ee925b 100644
+index 265bf15d..1ee925bd 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -3,4 +3,5 @@
@@ -515,7 +515,7 @@ index 265bf15..1ee925b 100644
  ];
 diff --git a/config/routes/annotations.yaml b/config/routes/annotations.yaml
 new file mode 100644
-index 0000000..d49a502
+index 00000000..d49a502a
 --- /dev/null
 +++ b/config/routes/annotations.yaml
 @@ -0,0 +1,3 @@
@@ -523,7 +523,7 @@ index 0000000..d49a502
 +    resource: ../../src/Controller/
 +    type: annotation
 diff --git a/symfony.lock b/symfony.lock
-index 6870f74..f08fe08 100644
+index 6870f74d..f08fe08d 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,28 @@

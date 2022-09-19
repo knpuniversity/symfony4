@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index b50846a..2181c6b 100644
+index b50846ab..2181c6b2 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -21,6 +21,7 @@
@@ -11,7 +11,7 @@ index b50846a..2181c6b 100644
          "symfony/yaml": "^4.0",
          "twig/extensions": "^1.5"
 diff --git a/composer.lock b/composer.lock
-index d33c120..c2944f3 100644
+index d33c1204..c2944f33 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -118,7 +118,7 @@ index d33c120..c2944f3 100644
              "version": "v4.1.6",
 diff --git a/config/packages/validator.yaml b/config/packages/validator.yaml
 new file mode 100644
-index 0000000..a695e1a
+index 00000000..a695e1a6
 --- /dev/null
 +++ b/config/packages/validator.yaml
 @@ -0,0 +1,3 @@
@@ -126,7 +126,7 @@ index 0000000..a695e1a
 +    validation:
 +        email_validation_mode: html5
 diff --git a/symfony.lock b/symfony.lock
-index c1c786d..f92d18c 100644
+index c1c786d4..f92d18cb 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -431,6 +431,15 @@

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 75735d7..5353d5a 100644
+index 75735d7b..5353d5a4 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -23,6 +23,7 @@
@@ -11,7 +11,7 @@ index 75735d7..5353d5a 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 033639d..2e7b340 100644
+index 033639d4..2e7b340e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -5181,6 +5181,56 @@
@@ -72,7 +72,7 @@ index 033639d..2e7b340 100644
              "name": "monolog/monolog",
              "version": "1.23.0",
 diff --git a/symfony.lock b/symfony.lock
-index 9d8151d..41ec6b2 100644
+index 9d8151d7..41ec6b23 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -92,6 +92,9 @@

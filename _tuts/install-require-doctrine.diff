@@ -1,5 +1,5 @@
 diff --git a/.env.dist b/.env.dist
-index ceef5fd..01b48ec 100644
+index ceef5fd0..01b48ec0 100644
 --- a/.env.dist
 +++ b/.env.dist
 @@ -12,3 +12,10 @@ APP_SECRET=5ea3114a349591bd131296e00f21c20a
@@ -14,7 +14,7 @@ index ceef5fd..01b48ec 100644
 +DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 +###< doctrine/doctrine-bundle ###
 diff --git a/README.md b/README.md
-index 58be06d..6379099 100644
+index 58be06d5..63790990 100644
 --- a/README.md
 +++ b/README.md
 @@ -21,6 +21,28 @@ composer install
@@ -47,7 +47,7 @@ index 58be06d..6379099 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.json b/composer.json
-index d12a151..f65a6c5 100644
+index d12a1515..f65a6c57 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -67,7 +67,7 @@ index d12a151..f65a6c5 100644
          "symfony/web-server-bundle": "^4.0",
          "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 2bfc9f0..2b0d952 100644
+index 2bfc9f0d..2b0d9526 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -1949,7 +1949,7 @@ index 2bfc9f0..2b0d952 100644
          },
          {
 diff --git a/config/bundles.php b/config/bundles.php
-index de7f774..aaa4908 100644
+index de7f7749..aaa49082 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -12,4 +12,7 @@ return [
@@ -1962,7 +1962,7 @@ index de7f774..aaa4908 100644
  ];
 diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
 new file mode 100644
-index 0000000..6c81971
+index 00000000..6c819716
 --- /dev/null
 +++ b/config/packages/doctrine.yaml
 @@ -0,0 +1,30 @@
@@ -1998,7 +1998,7 @@ index 0000000..6c81971
 +                alias: App
 diff --git a/config/packages/doctrine_migrations.yaml b/config/packages/doctrine_migrations.yaml
 new file mode 100644
-index 0000000..3bf0fbc
+index 00000000..3bf0fbca
 --- /dev/null
 +++ b/config/packages/doctrine_migrations.yaml
 @@ -0,0 +1,5 @@
@@ -2009,7 +2009,7 @@ index 0000000..3bf0fbc
 +    namespace: DoctrineMigrations
 diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
 new file mode 100644
-index 0000000..2f16f0f
+index 00000000..2f16f0fd
 --- /dev/null
 +++ b/config/packages/prod/doctrine.yaml
 @@ -0,0 +1,31 @@
@@ -2045,7 +2045,7 @@ index 0000000..2f16f0f
 +            doctrine.system_cache_pool:
 +                adapter: cache.system
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
-index e578316..cefa27c 100644
+index e578316a..cefa27c9 100644
 --- a/phpunit.xml.dist
 +++ b/phpunit.xml.dist
 @@ -15,6 +15,13 @@
@@ -2064,15 +2064,15 @@ index e578316..cefa27c 100644
      <testsuites>
 diff --git a/src/Entity/.gitignore b/src/Entity/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/src/Migrations/.gitignore b/src/Migrations/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/src/Repository/.gitignore b/src/Repository/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 00000000..e69de29b
 diff --git a/symfony.lock b/symfony.lock
-index 1e6eefc..3b0f62e 100644
+index 1e6eefc4..3b0f62eb 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -2,6 +2,9 @@
