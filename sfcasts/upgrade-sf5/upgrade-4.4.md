@@ -67,6 +67,8 @@ Let's do this! Find your terminal and run:
 We need this for our course CI, just ignore this note and follow the tutorial without executing these commands :)
 ```terminal-silent
 sed -i 's/"4.3.*"/"4.4.*"/g' ./composer.json
+sed -i 's/"^4.0"/"4.4.*"/g' ./composer.json
+sed -i 's/"^3.3|^4.0"/"4.4.*"/g' ./composer.json
 ```
 ***
 
