@@ -17,7 +17,7 @@ echo "    endpoint: 'https://hooks.slack.com/services/T0A4N1AD6/B91D2NPPH/BX20IH
 ***
 
 ```terminal-silent
-composer require nexylan/slack-bundle:2.2.0 php-http/guzzle6-adapter:1.1.1
+composer require nexylan/slack-bundle:2.1.0 php-http/guzzle6-adapter:1.1.1
 ```
 
 Interesting: this installs the bundle *and* some other library called `guzzle6-adapter`.
