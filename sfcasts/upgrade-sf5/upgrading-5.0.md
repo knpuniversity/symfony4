@@ -191,6 +191,13 @@ composer update "symfony/*" \
 And try it. Surprise! Another package needs to be update. I *swear* we're almost
 done. Add that to our *gigantic* update command:
 
+***TIP
+We need this for our course CI, just ignore this note and follow the tutorial without executing these commands :)
+```terminal-silent
+sed -i 's/"4.4.*"/"5.0.*"/g' ./composer.json
+```
+***
+
 ```terminal-silent
 composer update "symfony/*" \
                 doctrine/orm \
