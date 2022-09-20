@@ -63,6 +63,13 @@ so that everything matches *and* we get that performance boost in Composer.
 
 Let's do this! Find your terminal and run:
 
+***TIP
+We need this for our course CI, just ignore this note and follow the tutorial without executing these commands :)
+```terminal-silent
+sed -i 's/"4.3.*"/"4.4.*"/g' ./composer.json
+```
+***
+
 ```terminal
 composer update "symfony/*"
 ```
