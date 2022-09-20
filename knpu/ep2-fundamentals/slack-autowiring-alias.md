@@ -113,7 +113,7 @@ That's it! Bind has *two* super-powers: you can bind by the argument name *or* y
 can bind by a class or interface. We're defining our *own* rules for autowiring!
 
 ***TIP
-You should commnent this line out with `nexylan/slack-bundle` >=2.2.0 to avoid
+You should comment this line out with `nexylan/slack-bundle` >=2.2.0 to avoid
 circular reference, as this alias is already added by the bundle
 ***
 
