@@ -114,6 +114,14 @@ Oh, and if you *really* want the "easy" way out, we could have just ran
 `composer update` with no arguments to allow *anything* to update. But I prefer to
 update as *little* as possible at one time. Try the command:
 
+***TIP
+We need this for our course CI, just ignore this note and follow the tutorial
+without executing these commands :)
+```terminal-silent
+sed -i 's/doctrine-bundle": "^1.11"/doctrine-bundle": "^2.0"/g' ./composer.json
+```
+***
+
 ```terminal-silent
 composer update doctrine/doctrine-bundle \
                 doctrine/doctrine-fixtures-bundle \
