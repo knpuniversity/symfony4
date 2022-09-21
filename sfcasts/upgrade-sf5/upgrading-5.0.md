@@ -195,6 +195,15 @@ done. Add that to our *gigantic* update command:
 We need this for our course CI, just ignore this note and follow the tutorial without executing these commands :)
 ```terminal-silent
 sed -i 's/"4.4.*"/"5.0.*"/g' ./composer.json
+sed -i 's/public function getExtendedType()/public static function getExtendedTypes(): iterable/g' ./src/Form/TypeExtension/TextareaSizeExtension.php
+sed -i 's/TextareaType::class/\[TextareaType::class\]/g' ./src/Form/TypeExtension/TextareaSizeExtension.php
+sed -i 's/extends Controller/extends AbstractController/g' ./src/Controller/CommentAdminController.php
+sed -i 's/use Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller/use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController/g' ./src/Controller/CommentAdminController.php
+sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/ArticleFixtures.php
+sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/BaseFixture.php
+sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/CommentFixture.php
+sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/TagFixture.php
+sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/UserFixture.php
 ```
 ***
 
@@ -208,6 +217,13 @@ composer update "symfony/*" \
                 sensio/framework-extra-bundle \
                 nexylan/slack-bundle \
                 knplabs/knp-time-bundle \
+                easycorp/easy-log-handler \
+                knplabs/knp-paginator-bundle \
+                stof/doctrine-extensions-bundle \
+                doctrine/doctrine-bundle \
+                doctrine/doctrine-fixtures-bundle \
+                doctrine/doctrine-migrations-bundle \
+                twig/cssinliner-extra \
                 --with-dependencies
 ```
 
