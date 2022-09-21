@@ -49,6 +49,14 @@ that will break our app. Let's... worry about that in a little while.
 
 Go update!
 
+***TIP
+We need this for our course CI, just ignore this note and follow the tutorial
+without executing these commands :)
+```terminal-silent
+sed -i 's/knp-paginator-bundle": "^2.7"/knp-paginator-bundle": "^5.0"/g' ./composer.json
+```
+***
+
 ```terminal
 composer update knplabs/knp-paginator-bundle
 ```
