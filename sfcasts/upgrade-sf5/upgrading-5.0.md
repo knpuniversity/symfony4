@@ -204,6 +204,7 @@ sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persist
 sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/CommentFixture.php
 sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/TagFixture.php
 sed -i 's/use Doctrine\\Common\\Persistence\\ObjectManager/use Doctrine\\Persistence\\ObjectManager/g' ./src/DataFixtures/UserFixture.php
+echo "delete duplicated file" && rm config/routes/dev/twig.yaml
 ```
 ***
 
