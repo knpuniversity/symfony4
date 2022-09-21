@@ -119,6 +119,18 @@ We need this for our course CI, just ignore this note and follow the tutorial
 without executing these commands :)
 ```terminal-silent
 sed -i 's/doctrine-bundle": "^1.11"/doctrine-bundle": "^2.0"/g' ./composer.json
+sed -i 's/RegistryInterface $registry/ManagerRegistry $registry/g' ./src/Repository/ApiTokenRepository.php
+sed -i 's/use Symfony\\Bridge\\Doctrine\\RegistryInterface/use Doctrine\\Persistence\\ManagerRegistry/g' ./src/Repository/ApiTokenRepository.php
+sed -i 's/RegistryInterface $registry/ManagerRegistry $registry/g' ./src/Repository/ArticleReferenceRepository.php
+sed -i 's/use Symfony\\Bridge\\Doctrine\\RegistryInterface/use Doctrine\\Persistence\\ManagerRegistry/g' ./src/Repository/ArticleReferenceRepository.php
+sed -i 's/RegistryInterface $registry/ManagerRegistry $registry/g' ./src/Repository/ArticleRepository.php
+sed -i 's/use Symfony\\Bridge\\Doctrine\\RegistryInterface/use Doctrine\\Persistence\\ManagerRegistry/g' ./src/Repository/ArticleRepository.php
+sed -i 's/RegistryInterface $registry/ManagerRegistry $registry/g' ./src/Repository/CommentRepository.php
+sed -i 's/use Symfony\\Bridge\\Doctrine\\RegistryInterface/use Doctrine\\Persistence\\ManagerRegistry/g' ./src/Repository/CommentRepository.php
+sed -i 's/RegistryInterface $registry/ManagerRegistry $registry/g' ./src/Repository/TagRepository.php
+sed -i 's/use Symfony\\Bridge\\Doctrine\\RegistryInterface/use Doctrine\\Persistence\\ManagerRegistry/g' ./src/Repository/TagRepository.php
+sed -i 's/RegistryInterface $registry/ManagerRegistry $registry/g' ./src/Repository/UserRepository.php
+sed -i 's/use Symfony\\Bridge\\Doctrine\\RegistryInterface/use Doctrine\\Persistence\\ManagerRegistry/g' ./src/Repository/UserRepository.php
 ```
 ***
 
