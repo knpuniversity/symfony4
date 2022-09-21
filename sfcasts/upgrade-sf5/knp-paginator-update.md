@@ -49,14 +49,6 @@ that will break our app. Let's... worry about that in a little while.
 
 Go update!
 
-***TIP
-We need this for our course CI, just ignore this note and follow the tutorial
-without executing these commands :)
-```terminal-silent
-sed -i 's/knp-paginator-bundle": "^2.7"/knp-paginator-bundle": "^5.0"/g' ./composer.json
-```
-***
-
 ```terminal
 composer update knplabs/knp-paginator-bundle
 ```
@@ -116,6 +108,14 @@ conservative: we told it to *only* upgrade `knplabs/knp-paginator-bundle` and
 it correctly figured out that it can't *only* upgrade that *one* package.
 
 To fix this, run the command again but now add `--with-dependencies`:
+
+***TIP
+We need this for our course CI, just ignore this note and follow the tutorial
+without executing these commands :)
+```terminal-silent
+sed -i 's/knp-paginator-bundle": "^2.7"/knp-paginator-bundle": "^5.0"/g' ./composer.json
+```
+***
 
 ```terminal-silent
 composer update knplabs/knp-paginator-bundle --with-dependencies
