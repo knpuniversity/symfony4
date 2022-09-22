@@ -1,9 +1,9 @@
 diff --git a/composer.json b/composer.json
-index 60edb074..f4c94b06 100644
+index ac2eb157..89196aff 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -8,7 +8,7 @@
-         "composer/package-versions-deprecated": "^1.11",
+@@ -9,7 +9,7 @@
+         "doctrine/persistence": "^1.3.7",
          "easycorp/easy-log-handler": "^1.0",
          "knplabs/knp-markdown-bundle": "^1.7",
 -        "knplabs/knp-paginator-bundle": "^2.7",

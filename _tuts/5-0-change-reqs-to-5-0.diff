@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 103fa924..ec95605c 100644
+index 030e5420..b4193712 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -23,23 +23,23 @@
+@@ -24,23 +24,23 @@
          "oneup/flysystem-bundle": "^3.0",
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
@@ -38,7 +38,7 @@ index 103fa924..ec95605c 100644
          "twig/cssinliner-extra": "^2.12",
          "twig/extensions": "^1.5",
          "twig/inky-extra": "^2.12"
-@@ -47,12 +47,12 @@
+@@ -48,12 +48,12 @@
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
          "fzaninotto/faker": "^1.7",
@@ -55,7 +55,7 @@ index 103fa924..ec95605c 100644
      },
      "config": {
          "preferred-install": {
-@@ -104,7 +104,7 @@
+@@ -105,7 +105,7 @@
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
              "allow-contrib": true,

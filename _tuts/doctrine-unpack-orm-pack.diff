@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 6b47d230..a452b4b1 100644
+index e222fd0b..81554c9c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -7,6 +7,9 @@
@@ -9,10 +9,10 @@ index 6b47d230..a452b4b1 100644
 +        "doctrine/doctrine-bundle": "^1.6.10|^2.0",
 +        "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
 +        "doctrine/orm": "^2.5.11",
+         "doctrine/persistence": "^1.3.7",
          "easycorp/easy-log-handler": "^1.0",
          "knplabs/knp-markdown-bundle": "^1.7",
-         "knplabs/knp-paginator-bundle": "^5.0",
-@@ -29,7 +32,6 @@
+@@ -30,7 +33,6 @@
          "symfony/mailer": "4.4.*",
          "symfony/messenger": "4.4.*",
          "symfony/monolog-bundle": "^3.5",
@@ -21,19 +21,19 @@ index 6b47d230..a452b4b1 100644
          "symfony/sendgrid-mailer": "4.4.*",
          "symfony/serializer-pack": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 94a97577..6332fc99 100644
+index 3ee890e7..9afd89fb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "73e00fbb1b3257f41400f7ddc15245bc",
-+    "content-hash": "acda5a339d426a2cfe8a4dec3a79c4fc",
+-    "content-hash": "b5675ff4d646b2881fd588f22ba7c4ef",
++    "content-hash": "6065b82fe467011709ab1a50a704908d",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
-@@ -6630,38 +6630,6 @@
+@@ -6631,38 +6631,6 @@
              },
              "time": "2019-10-28T21:57:16+00:00"
          },

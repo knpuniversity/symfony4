@@ -1,13 +1,13 @@
 diff --git a/composer.lock b/composer.lock
-index 6332fc99..1123da30 100644
+index 9afd89fb..76d823c6 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "acda5a339d426a2cfe8a4dec3a79c4fc",
-+    "content-hash": "21de1c633431064252c0cde49f33abe1",
+-    "content-hash": "6065b82fe467011709ab1a50a704908d",
++    "content-hash": "d829b55596b75045b7d78b1741142d14",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
@@ -336,7 +336,7 @@ index 6332fc99..1123da30 100644
          },
          {
              "name": "doctrine/orm",
-@@ -3307,41 +3205,38 @@
+@@ -3308,41 +3206,38 @@
                  }
              ],
              "description": "Symfony bundle integration of nexylan/slack library",
@@ -393,7 +393,7 @@ index 6332fc99..1123da30 100644
              },
              "suggest": {
                  "ocramius/generated-hydrator": "To have very fast object to array to object conversion for ghost objects",
-@@ -3380,11 +3275,7 @@
+@@ -3381,11 +3276,7 @@
                  "proxy pattern",
                  "service proxies"
              ],
@@ -406,7 +406,7 @@ index 6332fc99..1123da30 100644
          },
          {
              "name": "oneup/flysystem-bundle",
-@@ -4844,16 +4735,16 @@
+@@ -4845,16 +4736,16 @@
          },
          {
              "name": "symfony/config",
@@ -427,7 +427,7 @@ index 6332fc99..1123da30 100644
                  "shasum": ""
              },
              "require": {
-@@ -4904,10 +4795,7 @@
+@@ -4905,10 +4796,7 @@
              ],
              "description": "Symfony Config Component",
              "homepage": "https://symfony.com",
@@ -439,7 +439,7 @@ index 6332fc99..1123da30 100644
          },
          {
              "name": "symfony/console",
-@@ -5105,16 +4993,16 @@
+@@ -5106,16 +4994,16 @@
          },
          {
              "name": "symfony/dependency-injection",
@@ -460,7 +460,7 @@ index 6332fc99..1123da30 100644
                  "shasum": ""
              },
              "require": {
-@@ -5174,10 +5062,7 @@
+@@ -5175,10 +5063,7 @@
              ],
              "description": "Symfony DependencyInjection Component",
              "homepage": "https://symfony.com",
@@ -472,7 +472,7 @@ index 6332fc99..1123da30 100644
          },
          {
              "name": "symfony/doctrine-bridge",
-@@ -5532,7 +5417,7 @@
+@@ -5533,7 +5418,7 @@
          },
          {
              "name": "symfony/filesystem",
@@ -481,7 +481,7 @@ index 6332fc99..1123da30 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/filesystem.git",
-@@ -7804,20 +7689,20 @@
+@@ -7805,20 +7690,20 @@
          },
          {
              "name": "symfony/service-contracts",
@@ -507,7 +507,7 @@ index 6332fc99..1123da30 100644
                  "psr/container": "^1.0"
              },
              "suggest": {
-@@ -7826,7 +7711,7 @@
+@@ -7827,7 +7712,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -516,7 +516,7 @@ index 6332fc99..1123da30 100644
                  }
              },
              "autoload": {
-@@ -7858,14 +7743,11 @@
+@@ -7859,14 +7744,11 @@
                  "interoperability",
                  "standards"
              ],
@@ -533,7 +533,7 @@ index 6332fc99..1123da30 100644
              "source": {
                  "type": "git",
                  "url": "https://github.com/symfony/stopwatch.git",
-@@ -9109,26 +8991,29 @@
+@@ -9110,26 +8992,29 @@
          },
          {
              "name": "zendframework/zend-code",
@@ -569,7 +569,7 @@ index 6332fc99..1123da30 100644
                  "zendframework/zend-coding-standard": "^1.0",
                  "zendframework/zend-stdlib": "^2.7 || ^3.0"
              },
-@@ -9139,8 +9024,9 @@
+@@ -9140,8 +9025,9 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -581,7 +581,7 @@ index 6332fc99..1123da30 100644
                  }
              },
              "autoload": {
-@@ -9167,7 +9053,7 @@
+@@ -9168,7 +9054,7 @@
                  "source": "https://github.com/zendframework/zend-code"
              },
              "abandoned": "laminas/laminas-code",
@@ -590,7 +590,7 @@ index 6332fc99..1123da30 100644
          },
          {
              "name": "zendframework/zend-eventmanager",
-@@ -9232,27 +9118,30 @@
+@@ -9233,27 +9119,30 @@
      "packages-dev": [
          {
              "name": "doctrine/data-fixtures",
@@ -627,7 +627,7 @@ index 6332fc99..1123da30 100644
                  "doctrine/orm": "^2.5.4",
                  "phpunit/phpunit": "^7.0"
              },
-@@ -9265,7 +9154,7 @@
+@@ -9266,7 +9155,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -636,7 +636,7 @@ index 6332fc99..1123da30 100644
                  }
              },
              "autoload": {
-@@ -9288,43 +9177,42 @@
+@@ -9289,43 +9178,42 @@
              "keywords": [
                  "database"
              ],
@@ -693,7 +693,7 @@ index 6332fc99..1123da30 100644
                  }
              },
              "autoload": {
-@@ -9338,16 +9226,16 @@
+@@ -9339,16 +9227,16 @@
              ],
              "authors": [
                  {
@@ -714,7 +714,7 @@ index 6332fc99..1123da30 100644
                  }
              ],
              "description": "Symfony DoctrineFixturesBundle",
-@@ -9356,11 +9244,7 @@
+@@ -9357,11 +9245,7 @@
                  "Fixture",
                  "persistence"
              ],

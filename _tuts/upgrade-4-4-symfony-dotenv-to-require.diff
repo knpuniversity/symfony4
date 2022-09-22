@@ -1,16 +1,16 @@
 diff --git a/composer.json b/composer.json
-index c9c66326..ff3ab8c0 100644
+index 71003083..15abe688 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -6,6 +6,7 @@
-         "ext-iconv": "*",
+@@ -7,6 +7,7 @@
          "aws/aws-sdk-php": "^3.87",
          "composer/package-versions-deprecated": "^1.11",
+         "doctrine/persistence": "^1.3.7",
 +        "easycorp/easy-log-handler": "^1.0",
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-snappy-bundle": "^1.6",
-@@ -21,11 +22,13 @@
+@@ -22,11 +23,13 @@
          "stof/doctrine-extensions-bundle": "^1.3",
          "symfony/asset": "4.4.*",
          "symfony/console": "4.4.*",
@@ -24,7 +24,7 @@ index c9c66326..ff3ab8c0 100644
          "symfony/orm-pack": "^1.0",
          "symfony/security-bundle": "4.4.*",
          "symfony/sendgrid-mailer": "4.4.*",
-@@ -42,13 +45,10 @@
+@@ -43,13 +46,10 @@
      },
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
@@ -39,19 +39,19 @@ index c9c66326..ff3ab8c0 100644
          "symfony/profiler-pack": "^1.0",
          "symfony/var-dumper": "4.4.*"
 diff --git a/composer.lock b/composer.lock
-index bfaee20e..c9f96cf6 100644
+index ef5f7853..ac86c81d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "2a12d766a348baa23efa39b0e901eec1",
-+    "content-hash": "1f8ae1dabf8897d8bda68d38d41e6a2b",
+-    "content-hash": "0c05606d330a0c22a1176f120f44a841",
++    "content-hash": "50ab2684f2fcb5f00c2d7d883ec5ea8d",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -1580,6 +1580,61 @@
+@@ -1581,6 +1581,61 @@
              },
              "time": "2020-03-27T11:06:43+00:00"
          },
@@ -113,7 +113,7 @@ index bfaee20e..c9f96cf6 100644
          {
              "name": "egulias/email-validator",
              "version": "2.1.11",
-@@ -2918,6 +2973,88 @@
+@@ -2919,6 +2974,88 @@
              },
              "time": "2018-01-15T00:49:33+00:00"
          },
@@ -202,7 +202,7 @@ index bfaee20e..c9f96cf6 100644
          {
              "name": "mtdowling/jmespath.php",
              "version": "2.4.0",
-@@ -5132,6 +5269,66 @@
+@@ -5133,6 +5270,66 @@
              },
              "time": "2019-12-01T08:39:58+00:00"
          },
@@ -269,7 +269,7 @@ index bfaee20e..c9f96cf6 100644
          {
              "name": "symfony/error-handler",
              "version": "v4.4.1",
-@@ -6219,23 +6416,41 @@
+@@ -6220,23 +6417,41 @@
              "time": "2019-11-30T08:27:26+00:00"
          },
          {
@@ -319,7 +319,7 @@ index bfaee20e..c9f96cf6 100644
              "extra": {
                  "branch-alias": {
                      "dev-master": "4.4-dev"
-@@ -6243,7 +6458,7 @@
+@@ -6244,7 +6459,7 @@
              },
              "autoload": {
                  "psr-4": {
@@ -328,7 +328,7 @@ index bfaee20e..c9f96cf6 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -6263,30 +6478,163 @@
+@@ -6264,30 +6479,163 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -506,7 +506,7 @@ index bfaee20e..c9f96cf6 100644
                  "shasum": ""
              },
              "require": {
-@@ -9101,61 +9449,6 @@
+@@ -9102,61 +9450,6 @@
              },
              "time": "2019-06-12T12:03:37+00:00"
          },
@@ -568,7 +568,7 @@ index bfaee20e..c9f96cf6 100644
          {
              "name": "fzaninotto/faker",
              "version": "v1.8.0",
-@@ -9210,88 +9503,6 @@
+@@ -9211,88 +9504,6 @@
              },
              "time": "2018-07-12T10:23:15+00:00"
          },
@@ -657,7 +657,7 @@ index bfaee20e..c9f96cf6 100644
          {
              "name": "nikic/php-parser",
              "version": "v4.2.4",
-@@ -9542,66 +9753,6 @@
+@@ -9543,66 +9754,6 @@
              },
              "time": "2019-10-29T11:38:30+00:00"
          },
@@ -724,7 +724,7 @@ index bfaee20e..c9f96cf6 100644
          {
              "name": "symfony/maker-bundle",
              "version": "v1.14.3",
-@@ -9674,143 +9825,6 @@
+@@ -9675,143 +9826,6 @@
              },
              "time": "2019-11-07T00:56:03+00:00"
          },

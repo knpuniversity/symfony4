@@ -1,29 +1,29 @@
 diff --git a/composer.json b/composer.json
-index bc2766eb..560016b1 100644
+index 9c9c570e..972a36c7 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -11,6 +11,7 @@
-         "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
+@@ -12,6 +12,7 @@
          "doctrine/orm": "^2.5.11",
+         "doctrine/persistence": "^1.3.7",
          "easycorp/easy-log-handler": "^1.0",
 +        "http-interop/http-factory-guzzle": "^1.0",
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^5.0",
          "knplabs/knp-snappy-bundle": "^1.6",
 diff --git a/composer.lock b/composer.lock
-index db245d61..ecd4052c 100644
+index 048279ec..1a307949 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "70bc1291d06c8ac8ba43a617ba608877",
-+    "content-hash": "7a861c3525172f68f0c7bf7db5ba3ee1",
+-    "content-hash": "612891bbe355cdae21f905e76006e39a",
++    "content-hash": "7b85fa845d77d2cc27e5f01f3013107a",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
-@@ -1948,6 +1948,56 @@
+@@ -1949,6 +1949,56 @@
              },
              "time": "2019-07-01T23:21:34+00:00"
          },

@@ -15,10 +15,10 @@ index f91075c2..38a8ee2a 100644
  .phpunit
  .phpunit.result.cache
 diff --git a/composer.json b/composer.json
-index ff3ab8c0..60edb074 100644
+index 15abe688..ac2eb157 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -36,7 +36,6 @@
+@@ -37,7 +37,6 @@
          "symfony/twig-bundle": "4.4.*",
          "symfony/twig-pack": "^1.0",
          "symfony/validator": "4.4.*",
@@ -27,19 +27,19 @@ index ff3ab8c0..60edb074 100644
          "symfony/yaml": "4.4.*",
          "twig/cssinliner-extra": "^2.12",
 diff --git a/composer.lock b/composer.lock
-index c9f96cf6..76d562f8 100644
+index ac86c81d..6d8bb70e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "1f8ae1dabf8897d8bda68d38d41e6a2b",
-+    "content-hash": "926be067b06494a5d27cd65e7adb3c3c",
+-    "content-hash": "50ab2684f2fcb5f00c2d7d883ec5ea8d",
++    "content-hash": "f389b329f1c7717151b931c553b99595",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -8592,68 +8592,6 @@
+@@ -8593,68 +8593,6 @@
              },
              "time": "2019-12-01T08:39:58+00:00"
          },
