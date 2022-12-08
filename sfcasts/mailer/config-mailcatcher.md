@@ -57,7 +57,7 @@ Ruby and a similar tool - MailHog - is written in Go. Those are both *great* opt
 ## Hello Mailtrap
 
 But... to save me the headache of getting those running, I'm going to use a *third*
-option called Mailtrap. Head to [mailtrap.io]([https://mailtrap.io/](https://mailtrap.io/blog/send-emails-in-symfony/)). This is
+option called Mailtrap. Head to [mailtrap.io](https://mailtrap.io/blog/send-emails-in-symfony/). This is
 basically a "hosted" version of those tools: it gives us a fake SMTP server and
 fake inbox, but we don't need to install anything. *And* it has an excellent free
 plan.
