@@ -1,6 +1,6 @@
 diff --git a/src/Security/Voter/ArticleVoter.php b/src/Security/Voter/ArticleVoter.php
 new file mode 100644
-index 00000000..fa62bfee
+index 0000000..fa62bfe
 --- /dev/null
 +++ b/src/Security/Voter/ArticleVoter.php
 @@ -0,0 +1,41 @@

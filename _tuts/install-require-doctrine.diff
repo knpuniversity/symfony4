@@ -1,5 +1,5 @@
 diff --git a/.env.dist b/.env.dist
-index ceef5fd0..01b48ec0 100644
+index ceef5fd..01b48ec 100644
 --- a/.env.dist
 +++ b/.env.dist
 @@ -12,3 +12,10 @@ APP_SECRET=5ea3114a349591bd131296e00f21c20a
@@ -14,7 +14,7 @@ index ceef5fd0..01b48ec0 100644
 +DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 +###< doctrine/doctrine-bundle ###
 diff --git a/README.md b/README.md
-index 58be06d5..63790990 100644
+index 58be06d..6379099 100644
 --- a/README.md
 +++ b/README.md
 @@ -21,6 +21,28 @@ composer install
@@ -47,35 +47,30 @@ index 58be06d5..63790990 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.json b/composer.json
-index d12a1515..f65a6c57 100644
+index d7b4ffe..f10aee6 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -4,6 +4,7 @@
+@@ -4,6 +4,10 @@
      "require": {
          "php": "^7.1.3",
          "ext-iconv": "*",
 +        "composer/package-versions-deprecated": "^1.11",
++        "doctrine/doctrine-bundle": "^1.6.10",
++        "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
++        "doctrine/orm": "^2.5.11",
          "knplabs/knp-markdown-bundle": "^1.7",
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
-@@ -13,6 +14,7 @@
-         "symfony/flex": "^1.0",
-         "symfony/framework-bundle": "^4.0",
-         "symfony/lts": "^4@dev",
-+        "symfony/orm-pack": "^1.0",
-         "symfony/twig-bundle": "^4.0",
-         "symfony/web-server-bundle": "^4.0",
-         "symfony/yaml": "^4.0"
 diff --git a/composer.lock b/composer.lock
-index 2bfc9f0d..2b0d9526 100644
+index a44c70c..b07dceb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "bb310cd6f6a94b6e250611fb3f2dd94d",
-+    "content-hash": "987b5cd790cf8e1ac4346c235addd0b6",
+-    "content-hash": "eb21fd3afac39b2589ac1afcbe80d9ef",
++    "content-hash": "2e594ac98943008fed84fe8f4cb2e3b4",
      "packages": [
          {
              "name": "clue/stream-filter",
@@ -533,7 +528,7 @@ index 2bfc9f0d..2b0d9526 100644
                  {
                      "name": "Roman Borschel",
                      "email": "roman@code-factory.org"
-@@ -384,56 +498,162 @@
+@@ -384,55 +498,840 @@
                      "name": "Benjamin Eberlei",
                      "email": "kontakt@beberlei.de"
                  },
@@ -710,22 +705,19 @@ index 2bfc9f0d..2b0d9526 100644
              "autoload": {
 -                "psr-0": {
 -                    "Doctrine\\Common\\Lexer\\": "lib/"
--                }
 +                "psr-4": {
 +                    "Doctrine\\Bundle\\DoctrineCacheBundle\\": ""
 +                },
 +                "exclude-from-classmap": [
 +                    "/Tests/"
 +                ]
-             },
-             "notification-url": "https://packagist.org/downloads/",
-             "license": [
-@@ -441,25 +661,716 @@
-             ],
-             "authors": [
-                 {
--                    "name": "Roman Borschel",
--                    "email": "roman@code-factory.org"
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
 +                    "name": "Symfony Community",
 +                    "homepage": "http://symfony.com/contributors"
 +                },
@@ -736,30 +728,23 @@ index 2bfc9f0d..2b0d9526 100644
 +                {
 +                    "name": "Fabio B. Silva",
 +                    "email": "fabio.bat.silva@gmail.com"
-                 },
-                 {
-                     "name": "Guilherme Blanco",
--                    "email": "guilhermeblanco@gmail.com"
++                },
++                {
++                    "name": "Guilherme Blanco",
 +                    "email": "guilhermeblanco@hotmail.com"
-                 },
-                 {
--                    "name": "Johannes Schmitt",
--                    "email": "schmittjoh@gmail.com"
++                },
++                {
 +                    "name": "Doctrine Project",
 +                    "homepage": "http://www.doctrine-project.org/"
 +                },
 +                {
 +                    "name": "Fabien Potencier",
 +                    "email": "fabien@symfony.com"
-                 }
-             ],
--            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
--            "homepage": "http://www.doctrine-project.org",
++                }
++            ],
 +            "description": "Symfony Bundle for Doctrine Cache",
 +            "homepage": "https://www.doctrine-project.org",
-             "keywords": [
--                "lexer",
--                "parser"
++            "keywords": [
 +                "cache",
 +                "caching"
 +            ],
@@ -1404,41 +1389,47 @@ index 2bfc9f0d..2b0d9526 100644
 +            "autoload": {
 +                "psr-4": {
 +                    "Doctrine\\Common\\": "lib/Doctrine/Common"
-+                }
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "authors": [
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -440,26 +1339,38 @@
+                 "MIT"
+             ],
+             "authors": [
 +                {
 +                    "name": "Guilherme Blanco",
 +                    "email": "guilhermeblanco@gmail.com"
 +                },
-+                {
-+                    "name": "Roman Borschel",
-+                    "email": "roman@code-factory.org"
-+                },
-+                {
+                 {
+                     "name": "Roman Borschel",
+                     "email": "roman@code-factory.org"
+                 },
+                 {
+-                    "name": "Guilherme Blanco",
+-                    "email": "guilhermeblanco@gmail.com"
 +                    "name": "Benjamin Eberlei",
 +                    "email": "kontakt@beberlei.de"
 +                },
 +                {
 +                    "name": "Jonathan Wage",
 +                    "email": "jonwage@gmail.com"
-+                },
-+                {
-+                    "name": "Johannes Schmitt",
-+                    "email": "schmittjoh@gmail.com"
+                 },
+                 {
+                     "name": "Johannes Schmitt",
+                     "email": "schmittjoh@gmail.com"
 +                },
 +                {
 +                    "name": "Marco Pivetta",
 +                    "email": "ocramius@gmail.com"
-+                }
-+            ],
+                 }
+             ],
+-            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
+-            "homepage": "http://www.doctrine-project.org",
 +            "description": "The Doctrine Reflection project is a simple library used by the various Doctrine projects which adds some additional functionality on top of the reflection functionality that comes with PHP. It allows you to get the reflection information about classes, methods and properties statically.",
 +            "homepage": "https://www.doctrine-project.org/projects/reflection.html",
-+            "keywords": [
+             "keywords": [
+-                "lexer",
+-                "parser"
 +                "reflection",
 +                "static"
              ],
@@ -1759,42 +1750,7 @@ index 2bfc9f0d..2b0d9526 100644
          {
              "name": "symfony/event-dispatcher",
              "version": "v4.0.14",
-@@ -2860,6 +4046,34 @@
-             ],
-             "time": "2018-01-18T22:19:33+00:00"
-         },
-+        {
-+            "name": "symfony/orm-pack",
-+            "version": "v1.0.6",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/symfony/orm-pack.git",
-+                "reference": "36c2a928482dc5f05c5c1c1b947242ae03ff1335"
-+            },
-+            "dist": {
-+                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/36c2a928482dc5f05c5c1c1b947242ae03ff1335",
-+                "reference": "36c2a928482dc5f05c5c1c1b947242ae03ff1335",
-+                "shasum": ""
-+            },
-+            "require": {
-+                "doctrine/doctrine-bundle": "^1.6.10",
-+                "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
-+                "doctrine/orm": "^2.5.11",
-+                "php": "^7.0"
-+            },
-+            "type": "symfony-pack",
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "description": "A pack for the Doctrine ORM",
-+            "time": "2019-01-16T09:49:15+00:00"
-+        },
-         {
-             "name": "symfony/polyfill-ctype",
-             "version": "v1.9.0",
-@@ -2920,16 +4134,16 @@
+@@ -2920,16 +4106,16 @@
          },
          {
              "name": "symfony/polyfill-mbstring",
@@ -1815,7 +1771,7 @@ index 2bfc9f0d..2b0d9526 100644
                  "shasum": ""
              },
              "require": {
-@@ -2975,7 +4189,7 @@
+@@ -2975,7 +4161,7 @@
                  "portable",
                  "shim"
              ],
@@ -1824,7 +1780,7 @@ index 2bfc9f0d..2b0d9526 100644
          },
          {
              "name": "symfony/process",
-@@ -3498,6 +4712,115 @@
+@@ -3498,6 +4684,115 @@
                  "templating"
              ],
              "time": "2019-05-14T12:03:52+00:00"
@@ -1940,7 +1896,7 @@ index 2bfc9f0d..2b0d9526 100644
          }
      ],
      "packages-dev": [
-@@ -3549,6 +4872,7 @@
+@@ -3549,6 +4844,7 @@
                  "monolog",
                  "productivity"
              ],
@@ -1949,7 +1905,7 @@ index 2bfc9f0d..2b0d9526 100644
          },
          {
 diff --git a/config/bundles.php b/config/bundles.php
-index de7f7749..aaa49082 100644
+index de7f774..aaa4908 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -12,4 +12,7 @@ return [
@@ -1962,7 +1918,7 @@ index de7f7749..aaa49082 100644
  ];
 diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
 new file mode 100644
-index 00000000..6c819716
+index 0000000..6c81971
 --- /dev/null
 +++ b/config/packages/doctrine.yaml
 @@ -0,0 +1,30 @@
@@ -1998,7 +1954,7 @@ index 00000000..6c819716
 +                alias: App
 diff --git a/config/packages/doctrine_migrations.yaml b/config/packages/doctrine_migrations.yaml
 new file mode 100644
-index 00000000..3bf0fbca
+index 0000000..3bf0fbc
 --- /dev/null
 +++ b/config/packages/doctrine_migrations.yaml
 @@ -0,0 +1,5 @@
@@ -2009,7 +1965,7 @@ index 00000000..3bf0fbca
 +    namespace: DoctrineMigrations
 diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
 new file mode 100644
-index 00000000..2f16f0fd
+index 0000000..2f16f0f
 --- /dev/null
 +++ b/config/packages/prod/doctrine.yaml
 @@ -0,0 +1,31 @@
@@ -2045,7 +2001,7 @@ index 00000000..2f16f0fd
 +            doctrine.system_cache_pool:
 +                adapter: cache.system
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
-index e578316a..cefa27c9 100644
+index e578316..cefa27c 100644
 --- a/phpunit.xml.dist
 +++ b/phpunit.xml.dist
 @@ -15,6 +15,13 @@
@@ -2064,15 +2020,15 @@ index e578316a..cefa27c9 100644
      <testsuites>
 diff --git a/src/Entity/.gitignore b/src/Entity/.gitignore
 new file mode 100644
-index 00000000..e69de29b
+index 0000000..e69de29
 diff --git a/src/Migrations/.gitignore b/src/Migrations/.gitignore
 new file mode 100644
-index 00000000..e69de29b
+index 0000000..e69de29
 diff --git a/src/Repository/.gitignore b/src/Repository/.gitignore
 new file mode 100644
-index 00000000..e69de29b
+index 0000000..e69de29
 diff --git a/symfony.lock b/symfony.lock
-index 1e6eefc4..3b0f62eb 100644
+index 28b6eb4..668a1b3 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -2,6 +2,9 @@
@@ -2196,17 +2152,7 @@ index 1e6eefc4..3b0f62eb 100644
      "symfony/dotenv": {
          "version": "v4.0.2"
      },
-@@ -224,6 +284,9 @@
-     "symfony/options-resolver": {
-         "version": "v4.0.4"
-     },
-+    "symfony/orm-pack": {
-+        "version": "v1.0.5"
-+    },
-     "symfony/phpunit-bridge": {
-         "version": "3.3",
-         "recipe": {
-@@ -298,5 +361,11 @@
+@@ -295,5 +355,11 @@
      },
      "twig/twig": {
          "version": "v2.4.4"

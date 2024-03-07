@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 4e74c3c0..d12a1515 100644
+index 14c3870..d7b4ffe 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -73,7 +73,7 @@
+@@ -74,7 +74,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -12,7 +12,7 @@ index 4e74c3c0..d12a1515 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 0655da4a..2bfc9f0d 100644
+index f590798..a44c70c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -3629,6 +3629,57 @@
@@ -131,7 +131,7 @@ index 0655da4a..2bfc9f0d 100644
          {
              "name": "symfony/monolog-bridge",
 diff --git a/symfony.lock b/symfony.lock
-index cdf3a1a6..1e6eefc4 100644
+index f8b143b..28b6eb4 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -59,6 +59,9 @@

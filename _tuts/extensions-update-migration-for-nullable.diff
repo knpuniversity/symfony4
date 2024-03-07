@@ -1,5 +1,5 @@
 diff --git a/src/Migrations/Version20180418130337.php b/src/Migrations/Version20180418130337.php
-index 659ef019..1f05082c 100644
+index 659ef01..1f05082 100644
 --- a/src/Migrations/Version20180418130337.php
 +++ b/src/Migrations/Version20180418130337.php
 @@ -15,7 +15,8 @@ class Version20180418130337 extends AbstractMigration

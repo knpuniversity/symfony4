@@ -1,5 +1,5 @@
 diff --git a/src/Form/TypeExtension/TextareaSizeExtension.php b/src/Form/TypeExtension/TextareaSizeExtension.php
-index e3a89f4b..9c626044 100644
+index e3a89f4..9c62604 100644
 --- a/src/Form/TypeExtension/TextareaSizeExtension.php
 +++ b/src/Form/TypeExtension/TextareaSizeExtension.php
 @@ -2,6 +2,7 @@

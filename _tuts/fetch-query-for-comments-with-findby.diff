@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleController.php b/src/Controller/ArticleController.php
-index b896d01a..0ae05947 100644
+index b896d01..0ae0594 100644
 --- a/src/Controller/ArticleController.php
 +++ b/src/Controller/ArticleController.php
 @@ -4,6 +4,7 @@ namespace App\Controller;

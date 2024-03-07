@@ -1,8 +1,20 @@
 diff --git a/composer.json b/composer.json
-index 27e21023..a0b0d54e 100644
+index 27e2102..13c6ed6 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -30,6 +30,9 @@
+@@ -20,8 +20,9 @@
+         "symfony/dotenv": "^4.0",
+         "symfony/monolog-bundle": "^3.0",
+         "symfony/phpunit-bridge": "^3.3|^4.0",
+-        "symfony/profiler-pack": "^1.0",
+-        "symfony/var-dumper": "^3.3|^4.0"
++        "symfony/stopwatch": "^3.3|^4.0",
++        "symfony/var-dumper": "^3.3|^4.0",
++        "symfony/web-profiler-bundle": "^3.3|^4.0"
+     },
+     "config": {
+         "preferred-install": {
+@@ -30,6 +31,9 @@
          "sort-packages": true,
          "platform": {
              "php": "7.1.3"
@@ -12,7 +24,7 @@ index 27e21023..a0b0d54e 100644
          }
      },
      "autoload": {
-@@ -66,7 +69,7 @@
+@@ -66,7 +70,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -21,8 +33,102 @@ index 27e21023..a0b0d54e 100644
          }
      }
  }
+diff --git a/composer.lock b/composer.lock
+index 7755f09..82887ea 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "25dca78652995144111080d7e0af6d9b",
++    "content-hash": "7a252dd582a9a47a31f21831c1832529",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -1215,16 +1215,16 @@
+         },
+         {
+             "name": "symfony/flex",
+-            "version": "v1.17.6",
++            "version": "v1.21.6",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/symfony/flex.git",
+-                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc"
++                "reference": "06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/flex/zipball/7a79135e1dc66b30042b4d968ecba0908f9374bc",
+-                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc",
++                "url": "https://api.github.com/repos/symfony/flex/zipball/06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8",
++                "reference": "06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8",
+                 "shasum": ""
+             },
+             "require": {
+@@ -1260,7 +1260,7 @@
+             "description": "Composer plugin for Symfony",
+             "support": {
+                 "issues": "https://github.com/symfony/flex/issues",
+-                "source": "https://github.com/symfony/flex/tree/v1.17.6"
++                "source": "https://github.com/symfony/flex/tree/v1.21.6"
+             },
+             "funding": [
+                 {
+@@ -1276,7 +1276,7 @@
+                     "type": "tidelift"
+                 }
+             ],
+-            "time": "2021-11-29T15:39:37+00:00"
++            "time": "2024-03-02T08:16:37+00:00"
+         },
+         {
+             "name": "symfony/framework-bundle",
+@@ -2718,34 +2718,6 @@
+             ],
+             "time": "2017-10-11T12:05:26+00:00"
+         },
+-        {
+-            "name": "symfony/profiler-pack",
+-            "version": "v1.0.3",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/profiler-pack.git",
+-                "reference": "fa2e2dad522a3bef322196abad28ffce6d0fdbc5"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/profiler-pack/zipball/fa2e2dad522a3bef322196abad28ffce6d0fdbc5",
+-                "reference": "fa2e2dad522a3bef322196abad28ffce6d0fdbc5",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "php": "^7.0",
+-                "symfony/stopwatch": "^3.3|^4.0",
+-                "symfony/twig-bundle": "^3.3|^4.0",
+-                "symfony/web-profiler-bundle": "^3.3|^4.0"
+-            },
+-            "type": "symfony-pack",
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "description": "A pack for the Symfony web profiler",
+-            "time": "2017-12-12T01:48:24+00:00"
+-        },
+         {
+             "name": "symfony/stopwatch",
+             "version": "v4.0.4",
+@@ -2946,5 +2918,5 @@
+     "platform-overrides": {
+         "php": "7.1.3"
+     },
+-    "plugin-api-version": "2.1.0"
++    "plugin-api-version": "2.6.0"
+ }
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
-index b32f52d9..f97dbe38 100644
+index b32f52d..f97dbe3 100644
 --- a/config/packages/framework.yaml
 +++ b/config/packages/framework.yaml
 @@ -4,12 +4,27 @@ framework:
@@ -58,7 +164,7 @@ index b32f52d9..f97dbe38 100644
 +        # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
 +        #app: cache.adapter.apcu
 diff --git a/public/index.php b/public/index.php
-index 521b85d7..ab41c26e 100644
+index 521b85d..ab41c26 100644
 --- a/public/index.php
 +++ b/public/index.php
 @@ -15,7 +15,10 @@ if (!isset($_SERVER['APP_ENV'])) {
@@ -82,3 +188,17 @@ index 521b85d7..ab41c26e 100644
  $request = Request::createFromGlobals();
  $response = $kernel->handle($request);
  $response->send();
+diff --git a/symfony.lock b/symfony.lock
+index 6899d30..60c6c3d 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -164,9 +164,6 @@
+     "symfony/process": {
+         "version": "v4.0.2"
+     },
+-    "symfony/profiler-pack": {
+-        "version": "v1.0.3"
+-    },
+     "symfony/routing": {
+         "version": "4.0",
+         "recipe": {

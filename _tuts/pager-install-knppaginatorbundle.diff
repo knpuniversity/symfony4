@@ -1,25 +1,25 @@
 diff --git a/composer.json b/composer.json
-index afc171a4..a440cc80 100644
+index 3767d87..10231db 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -6,6 +6,7 @@
-         "ext-iconv": "*",
-         "composer/package-versions-deprecated": "^1.11",
+@@ -9,6 +9,7 @@
+         "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
+         "doctrine/orm": "^2.5.11",
          "knplabs/knp-markdown-bundle": "^1.7",
 +        "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
 diff --git a/composer.lock b/composer.lock
-index 88d54244..f3e8371c 100644
+index 1efb539..49f7e24 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "866a7f630d93bc98ec94934a2cd30912",
-+    "content-hash": "9fc8db432c3d27b219767584d15cd5dd",
+-    "content-hash": "4ba9415b3b3b2686be29533cc62b9de7",
++    "content-hash": "72271f2177ea94c30a0f99392eb1c4e1",
      "packages": [
          {
              "name": "behat/transliterator",
@@ -173,7 +173,7 @@ index 88d54244..f3e8371c 100644
              "name": "knplabs/knp-time-bundle",
              "version": "1.8.0",
 diff --git a/config/bundles.php b/config/bundles.php
-index c60e848c..80c373b7 100644
+index c60e848..80c373b 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -18,4 +18,5 @@ return [
@@ -183,7 +183,7 @@ index c60e848c..80c373b7 100644
 +    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 804313c9..d9a4327a 100644
+index 9cac61b..bf262e0 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -113,9 +113,15 @@

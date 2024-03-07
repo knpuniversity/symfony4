@@ -1,6 +1,6 @@
 diff --git a/src/Helper/LoggerTrait.php b/src/Helper/LoggerTrait.php
 new file mode 100644
-index 00000000..8a831c25
+index 0000000..8a831c2
 --- /dev/null
 +++ b/src/Helper/LoggerTrait.php
 @@ -0,0 +1,27 @@
@@ -32,7 +32,7 @@ index 00000000..8a831c25
 +    }
 +}
 diff --git a/src/Service/SlackClient.php b/src/Service/SlackClient.php
-index fbb9bae4..5f90b7db 100644
+index fbb9bae..5f90b7d 100644
 --- a/src/Service/SlackClient.php
 +++ b/src/Service/SlackClient.php
 @@ -2,36 +2,25 @@

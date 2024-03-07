@@ -1,5 +1,5 @@
 diff --git a/src/DataFixtures/ArticleFixtures.php b/src/DataFixtures/ArticleFixtures.php
-index a001b2a2..44fc0f91 100644
+index a001b2a..44fc0f9 100644
 --- a/src/DataFixtures/ArticleFixtures.php
 +++ b/src/DataFixtures/ArticleFixtures.php
 @@ -33,12 +33,12 @@ EOF
@@ -19,7 +19,7 @@ index a001b2a2..44fc0f91 100644
              ;
          });
 diff --git a/src/DataFixtures/BaseFixture.php b/src/DataFixtures/BaseFixture.php
-index 31b93e23..a5e12fc9 100644
+index 31b93e2..a5e12fc 100644
 --- a/src/DataFixtures/BaseFixture.php
 +++ b/src/DataFixtures/BaseFixture.php
 @@ -4,17 +4,23 @@ namespace App\DataFixtures;

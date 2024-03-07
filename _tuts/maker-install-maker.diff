@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index d022d7b7..4e74c3c0 100644
+index cb0e420..14c3870 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -21,6 +21,7 @@
@@ -9,17 +9,17 @@ index d022d7b7..4e74c3c0 100644
 +        "symfony/maker-bundle": "^1.0",
          "symfony/monolog-bundle": "^3.0",
          "symfony/phpunit-bridge": "^3.3|^4.0",
-         "symfony/profiler-pack": "^1.0",
+         "symfony/stopwatch": "^3.3|^4.0",
 diff --git a/composer.lock b/composer.lock
-index fa10c9f4..0655da4a 100644
+index 87bfa12..f590798 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "86e9b8256b98ec8d9944492339764461",
-+    "content-hash": "bb310cd6f6a94b6e250611fb3f2dd94d",
+-    "content-hash": "13835b62546ae4fd367072f9724ba993",
++    "content-hash": "eb21fd3afac39b2589ac1afcbe80d9ef",
      "packages": [
          {
              "name": "clue/stream-filter",
@@ -88,7 +88,7 @@ index fa10c9f4..0655da4a 100644
              "name": "symfony/monolog-bridge",
              "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 56ef227a..de7f7749 100644
+index 56ef227..de7f774 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -11,4 +11,5 @@ return [
@@ -98,7 +98,7 @@ index 56ef227a..de7f7749 100644
 +    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 1ce3a7e4..cdf3a1a6 100644
+index 68f5146..f8b143b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -197,6 +197,15 @@

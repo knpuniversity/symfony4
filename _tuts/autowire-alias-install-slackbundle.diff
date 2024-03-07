@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 1f21a6c6..d022d7b7 100644
+index d300991..cb0e420 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,8 @@
@@ -12,15 +12,15 @@ index 1f21a6c6..d022d7b7 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index e5db13ad..fa10c9f4 100644
+index b6371c0..87bfa12 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,60 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "23d720a07f979f93f991a7231d4600e0",
-+    "content-hash": "86e9b8256b98ec8d9944492339764461",
+-    "content-hash": "18d96195b9598e608c3079497726d32f",
++    "content-hash": "13835b62546ae4fd367072f9724ba993",
      "packages": [
 +        {
 +            "name": "clue/stream-filter",
@@ -1422,9 +1422,9 @@ index e5db13ad..fa10c9f4 100644
          {
              "name": "symfony/twig-bridge",
              "version": "v4.0.4",
-@@ -2855,55 +4029,6 @@
-             "description": "A pack for the Symfony web profiler",
-             "time": "2017-12-12T01:48:24+00:00"
+@@ -2827,55 +4001,6 @@
+             ],
+             "time": "2017-10-11T12:05:26+00:00"
          },
 -        {
 -            "name": "symfony/stopwatch",
@@ -1479,7 +1479,7 @@ index e5db13ad..fa10c9f4 100644
              "name": "symfony/var-dumper",
              "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index e278c0b4..56ef227a 100644
+index e278c0b..56ef227 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -9,4 +9,6 @@ return [
@@ -1491,7 +1491,7 @@ index e278c0b4..56ef227a 100644
  ];
 diff --git a/config/packages/httplug.yaml b/config/packages/httplug.yaml
 new file mode 100644
-index 00000000..2aadcd13
+index 0000000..2aadcd1
 --- /dev/null
 +++ b/config/packages/httplug.yaml
 @@ -0,0 +1,14 @@
@@ -1510,7 +1510,7 @@ index 00000000..2aadcd13
 +                - 'httplug.plugin.content_length'
 +                - 'httplug.plugin.redirect'
 diff --git a/symfony.lock b/symfony.lock
-index 06d00529..1ce3a7e4 100644
+index 1af3879..68f5146 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@

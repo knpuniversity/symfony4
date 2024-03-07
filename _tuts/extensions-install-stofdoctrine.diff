@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 5353d5a4..632c6e73 100644
+index a5f47e2..401231e 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -10,6 +10,7 @@
+@@ -13,6 +13,7 @@
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
@@ -10,7 +10,7 @@ index 5353d5a4..632c6e73 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
          "symfony/flex": "^1.0",
-@@ -78,7 +79,7 @@
+@@ -81,7 +82,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -20,15 +20,15 @@ index 5353d5a4..632c6e73 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 2e7b340e..f54cdf3a 100644
+index 6fb4ee1..5aa92a0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,52 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6b70574a2aa899c56ab31d9938afc9ef",
-+    "content-hash": "210d81dbbb00c1d60c185eeaaeeeb184",
+-    "content-hash": "b058b46368e25cccbe00a9a0292f0fa4",
++    "content-hash": "965ad02fa2aa8685338ac5c74939efcc",
      "packages": [
 +        {
 +            "name": "behat/transliterator",
@@ -235,7 +235,7 @@ index 2e7b340e..f54cdf3a 100644
              "name": "symfony/asset",
              "version": "v4.0.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index a3e56b0e..c60e848c 100644
+index a3e56b0..c60e848 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -17,4 +17,5 @@ return [
@@ -246,7 +246,7 @@ index a3e56b0e..c60e848c 100644
  ];
 diff --git a/config/packages/stof_doctrine_extensions.yaml b/config/packages/stof_doctrine_extensions.yaml
 new file mode 100644
-index 00000000..c83f3b1d
+index 0000000..c83f3b1
 --- /dev/null
 +++ b/config/packages/stof_doctrine_extensions.yaml
 @@ -0,0 +1,4 @@
@@ -255,7 +255,7 @@ index 00000000..c83f3b1d
 +stof_doctrine_extensions:
 +    default_locale: en_US
 diff --git a/symfony.lock b/symfony.lock
-index 41ec6b23..96557220 100644
+index bd89ed3..ba448e9 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,7 @@
