@@ -338,9 +338,6 @@
     "symfony/options-resolver": {
         "version": "v4.1.11"
     },
-    "symfony/orm-pack": {
-        "version": "v1.0.6"
-    },
     "symfony/phpunit-bridge": {
         "version": "4.1",
         "recipe": {
@@ -364,9 +361,6 @@
     },
     "symfony/process": {
         "version": "v4.1.11"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.4"
     },
     "symfony/property-access": {
         "version": "v4.1.11"
@@ -406,9 +400,6 @@
     },
     "symfony/serializer": {
         "version": "v4.1.11"
-    },
-    "symfony/serializer-pack": {
-        "version": "v1.0.2"
     },
     "symfony/stopwatch": {
         "version": "v4.1.11"
