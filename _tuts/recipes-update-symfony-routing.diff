@@ -1,6 +1,6 @@
 diff --git a/config/packages/prod/routing.yaml b/config/packages/prod/routing.yaml
 new file mode 100644
-index 00000000..b3e6a0af
+index 0000000..b3e6a0a
 --- /dev/null
 +++ b/config/packages/prod/routing.yaml
 @@ -0,0 +1,3 @@
@@ -8,7 +8,7 @@ index 00000000..b3e6a0af
 +    router:
 +        strict_requirements: null
 diff --git a/config/packages/routing.yaml b/config/packages/routing.yaml
-index 368bc7f4..7e977620 100644
+index 368bc7f..7e97762 100644
 --- a/config/packages/routing.yaml
 +++ b/config/packages/routing.yaml
 @@ -1,3 +1,3 @@
@@ -17,10 +17,10 @@ index 368bc7f4..7e977620 100644
 -        strict_requirements: ~
 +        utf8: true
 diff --git a/symfony.lock b/symfony.lock
-index 5116324e..331e38fe 100644
+index 936ce63..f75a905 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -504,13 +504,18 @@
+@@ -498,13 +498,18 @@
          "version": "v4.1.11"
      },
      "symfony/routing": {

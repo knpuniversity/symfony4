@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index ef5d1fce..23bf03c3 100644
+index ef5d1fc..23bf03c 100644
 --- a/.env
 +++ b/.env
 @@ -32,3 +32,7 @@ SLACK_WEBHOOK_ENDPOINT=https://hooks.slack.com/services/....
@@ -11,27 +11,46 @@ index ef5d1fce..23bf03c3 100644
 +# MAILER_DSN=smtp://localhost
 +###< symfony/mailer ###
 diff --git a/composer.json b/composer.json
-index aef77d2a..49f1bc0e 100644
+index 844dae8..c986b05 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -22,6 +22,7 @@
+@@ -27,10 +27,11 @@
          "symfony/flex": "^1.9",
          "symfony/form": "^4.0",
          "symfony/framework-bundle": "^4.0",
+-        "symfony/property-access": "^4.0",
+-        "symfony/property-info": "^4.0",
 +        "symfony/mailer": "4.3.*",
-         "symfony/orm-pack": "^1.0",
++        "symfony/property-access": "4.3.*",
++        "symfony/property-info": "4.3.*",
          "symfony/security-bundle": "^4.0",
-         "symfony/serializer-pack": "^1.0",
+-        "symfony/serializer": "^4.0",
++        "symfony/serializer": "4.3.*",
+         "symfony/twig-bundle": "^4.0",
+         "symfony/validator": "^4.0",
+         "symfony/web-server-bundle": "^4.0",
+@@ -47,9 +48,9 @@
+         "symfony/maker-bundle": "^1.0",
+         "symfony/monolog-bundle": "^3.0",
+         "symfony/phpunit-bridge": "^3.3|^4.0",
+-        "symfony/stopwatch": "^4.0",
++        "symfony/stopwatch": "4.3.*",
+         "symfony/var-dumper": "^3.3|^4.0",
+-        "symfony/web-profiler-bundle": "^4.0"
++        "symfony/web-profiler-bundle": "4.3.*"
+     },
+     "config": {
+         "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 46e07400..9a862af6 100644
+index e82dfb3..4c196be 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "05567e25ff77df51ddb2672622f70e14",
-+    "content-hash": "4dbaaebd6372086accea16563431e81c",
+-    "content-hash": "5ba8c6ae7a77f0147863ec4aa47dc755",
++    "content-hash": "a41786387117013c43b0dd5867c9f588",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -171,7 +190,7 @@ index 46e07400..9a862af6 100644
              "version": "v4.3.4",
 diff --git a/config/packages/mailer.yaml b/config/packages/mailer.yaml
 new file mode 100644
-index 00000000..56a650d8
+index 0000000..56a650d
 --- /dev/null
 +++ b/config/packages/mailer.yaml
 @@ -0,0 +1,3 @@
@@ -179,7 +198,7 @@ index 00000000..56a650d8
 +    mailer:
 +        dsn: '%env(MAILER_DSN)%'
 diff --git a/symfony.lock b/symfony.lock
-index c7fd0e57..85821cfa 100644
+index c7fd0e5..36659eb 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -95,6 +95,9 @@
@@ -211,3 +230,33 @@ index c7fd0e57..85821cfa 100644
      "symfony/maker-bundle": {
          "version": "1.0",
          "recipe": {
+@@ -374,9 +389,6 @@
+     "symfony/options-resolver": {
+         "version": "v4.1.11"
+     },
+-    "symfony/orm-pack": {
+-        "version": "v1.0.6"
+-    },
+     "symfony/phpunit-bridge": {
+         "version": "4.1",
+         "recipe": {
+@@ -407,9 +419,6 @@
+     "symfony/process": {
+         "version": "v4.1.11"
+     },
+-    "symfony/profiler-pack": {
+-        "version": "v1.0.4"
+-    },
+     "symfony/property-access": {
+         "version": "v4.1.11"
+     },
+@@ -449,9 +458,6 @@
+     "symfony/serializer": {
+         "version": "v4.1.11"
+     },
+-    "symfony/serializer-pack": {
+-        "version": "v1.0.2"
+-    },
+     "symfony/service-contracts": {
+         "version": "v1.1.6"
+     },

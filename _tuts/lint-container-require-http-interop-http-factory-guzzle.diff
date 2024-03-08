@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 9c9c570e..972a36c7 100644
+index 7d71393..8547abd 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -12,6 +12,7 @@
+@@ -13,6 +13,7 @@
          "doctrine/orm": "^2.5.11",
          "doctrine/persistence": "^1.3.7",
          "easycorp/easy-log-handler": "^1.0",
@@ -11,15 +11,15 @@ index 9c9c570e..972a36c7 100644
          "knplabs/knp-paginator-bundle": "^5.0",
          "knplabs/knp-snappy-bundle": "^1.6",
 diff --git a/composer.lock b/composer.lock
-index 048279ec..1a307949 100644
+index a7e4f03..aa00d9b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "612891bbe355cdae21f905e76006e39a",
-+    "content-hash": "7b85fa845d77d2cc27e5f01f3013107a",
+-    "content-hash": "f18010eec65ca47ac554e37744a99879",
++    "content-hash": "e74668182fdb87f0967480073cc9d398",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",
@@ -81,7 +81,7 @@ index 048279ec..1a307949 100644
              "name": "imagine/imagine",
              "version": "1.2.3",
 diff --git a/symfony.lock b/symfony.lock
-index b2d19e9c..582a6358 100644
+index 5ffc65c..71d7bed 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -122,6 +122,9 @@

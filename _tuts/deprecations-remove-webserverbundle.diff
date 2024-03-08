@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index f91075c2..38a8ee2a 100644
+index f91075c..38a8ee2 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -7,11 +7,6 @@
@@ -15,31 +15,31 @@ index f91075c2..38a8ee2a 100644
  .phpunit
  .phpunit.result.cache
 diff --git a/composer.json b/composer.json
-index 15abe688..ac2eb157 100644
+index d8e9946..e6de302 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -37,7 +37,6 @@
+@@ -42,7 +42,6 @@
+         "symfony/serializer": "4.3.*|4.4.*",
          "symfony/twig-bundle": "4.4.*",
-         "symfony/twig-pack": "^1.0",
          "symfony/validator": "4.4.*",
 -        "symfony/web-server-bundle": "4.4.*",
          "symfony/webpack-encore-bundle": "^1.4",
          "symfony/yaml": "4.4.*",
          "twig/cssinliner-extra": "^2.12",
 diff --git a/composer.lock b/composer.lock
-index ac86c81d..6d8bb70e 100644
+index 4f3c938..40588a7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "50ab2684f2fcb5f00c2d7d883ec5ea8d",
-+    "content-hash": "f389b329f1c7717151b931c553b99595",
+-    "content-hash": "3da2f26aafe1c1d87384b09f6a783b4f",
++    "content-hash": "907c2250074e1b4b542dc5e1eae92490",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -8593,68 +8593,6 @@
+@@ -8495,68 +8495,6 @@
              },
              "time": "2019-12-01T08:39:58+00:00"
          },
@@ -109,7 +109,7 @@ index ac86c81d..6d8bb70e 100644
              "name": "symfony/webpack-encore-bundle",
              "version": "v1.7.2",
 diff --git a/config/bundles.php b/config/bundles.php
-index e7f8a24e..9d730ce2 100644
+index e7f8a24..9d730ce 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -2,7 +2,6 @@
@@ -121,10 +121,10 @@ index e7f8a24e..9d730ce2 100644
      Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
      Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
 diff --git a/symfony.lock b/symfony.lock
-index 4a4c7a82..7ad4be07 100644
+index ff7a391..26e71b0 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -629,15 +629,6 @@
+@@ -617,15 +617,6 @@
              "ref": "6bdfa1a95f6b2e677ab985cd1af2eae35d62e0f6"
          }
      },

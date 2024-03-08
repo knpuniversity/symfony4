@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 44b2278e..67652a8c 100644
+index 44b2278..67652a8 100644
 --- a/.env
 +++ b/.env
 @@ -45,3 +45,8 @@ MAILER_DSN=smtp://null
@@ -12,31 +12,31 @@ index 44b2278e..67652a8c 100644
 +# MAILER_DSN=smtp://$SENDGRID_KEY@sendgrid
 +###< symfony/sendgrid-mailer ###
 diff --git a/composer.json b/composer.json
-index 5f0552f0..29cff4d7 100644
+index accd882..7514088 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -27,6 +27,7 @@
-         "symfony/mailer": "4.3.*",
-         "symfony/orm-pack": "^1.0",
+@@ -33,6 +33,7 @@
+         "symfony/property-access": "4.3.*",
+         "symfony/property-info": "4.3.*",
          "symfony/security-bundle": "^4.0",
 +        "symfony/sendgrid-mailer": "4.3.*",
-         "symfony/serializer-pack": "^1.0",
+         "symfony/serializer": "4.3.*",
          "symfony/twig-bundle": "^4.0",
-         "symfony/twig-pack": "^1.0",
+         "symfony/validator": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 5a0beb0c..a69df00d 100644
+index f7a6a57..9fbd12d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "cfe4b69173e115ed7fc7cd8207d7e943",
-+    "content-hash": "5695fc267e8f903ea5d51d49f7e7f579",
+-    "content-hash": "7ace32e6228785fb3a940c755edb7e5e",
++    "content-hash": "5a25104823b5f4ce5cf191c900c55fa0",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -6777,6 +6777,59 @@
+@@ -6749,6 +6749,59 @@
              "homepage": "https://symfony.com",
              "time": "2019-08-26T08:26:39+00:00"
          },
@@ -97,10 +97,10 @@ index 5a0beb0c..a69df00d 100644
              "name": "symfony/serializer",
              "version": "v4.3.4",
 diff --git a/symfony.lock b/symfony.lock
-index e8a58986..ddab9293 100644
+index cb02185..a566917 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -494,6 +494,15 @@
+@@ -488,6 +488,15 @@
      "symfony/security-http": {
          "version": "v4.2.3"
      },

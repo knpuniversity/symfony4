@@ -1,6 +1,6 @@
 diff --git a/tests/SecurityControllerTest.php b/tests/SecurityControllerTest.php
 new file mode 100644
-index 00000000..2e43a58c
+index 0000000..2e43a58
 --- /dev/null
 +++ b/tests/SecurityControllerTest.php
 @@ -0,0 +1,17 @@

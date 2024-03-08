@@ -1,64 +1,32 @@
 diff --git a/composer.json b/composer.json
-index 70871fa2..d149eb18 100644
+index 4e1ad76..7b244c5 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -28,6 +28,7 @@
-         "symfony/security-bundle": "^4.0",
-         "symfony/serializer-pack": "^1.0",
-         "symfony/twig-bundle": "^4.0",
-+        "symfony/twig-pack": "^1.0",
-         "symfony/validator": "^4.0",
+@@ -38,7 +38,9 @@
          "symfony/web-server-bundle": "^4.0",
          "symfony/webpack-encore-bundle": "^1.4",
+         "symfony/yaml": "^4.0",
+-        "twig/extensions": "^1.5"
++        "twig/extensions": "^1.5",
++        "twig/extra-bundle": "^2.12|^3.0",
++        "twig/twig": "^2.12|^3.0"
+     },
+     "require-dev": {
+         "doctrine/doctrine-fixtures-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 369dcb73..fd38212b 100644
+index 8ae4a5b..eab7ae0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "f8bc0ca3bd00aa7513fa39a44d03c581",
-+    "content-hash": "33fb5f833e336a3bd37c6abf4555c41c",
+-    "content-hash": "b7f5360f463fe8a8cf682a156d8bb46e",
++    "content-hash": "cb875c6fd41baec31ed012ceba89898f",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -7131,6 +7131,34 @@
-             "homepage": "https://symfony.com",
-             "time": "2019-08-26T08:26:39+00:00"
-         },
-+        {
-+            "name": "symfony/twig-pack",
-+            "version": "v1.0.0",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/symfony/twig-pack.git",
-+                "reference": "8b278ea4b61fba7c051f172aacae6d87ef4be0e0"
-+            },
-+            "dist": {
-+                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/twig-pack/zipball/8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
-+                "reference": "8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
-+                "shasum": ""
-+            },
-+            "require": {
-+                "php": "^7.0",
-+                "symfony/twig-bundle": "*",
-+                "twig/extra-bundle": "^2.12|^3.0",
-+                "twig/twig": "^2.12|^3.0"
-+            },
-+            "type": "symfony-pack",
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
-+                "MIT"
-+            ],
-+            "description": "A Twig pack for Symfony projects",
-+            "time": "2019-10-17T05:44:22+00:00"
-+        },
-         {
-             "name": "symfony/validator",
-             "version": "v4.3.4",
-@@ -7513,6 +7541,65 @@
+@@ -7455,6 +7455,65 @@
              ],
              "time": "2018-12-05T18:34:18+00:00"
          },
@@ -125,7 +93,7 @@ index 369dcb73..fd38212b 100644
              "name": "twig/twig",
              "version": "v2.13.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index ff98702c..b9437f84 100644
+index ff98702..b9437f8 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -23,4 +23,5 @@ return [
@@ -135,20 +103,10 @@ index ff98702c..b9437f84 100644
 +    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 00ffc377..2a896a0e 100644
+index 55408ee..a35fd20 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -503,6 +503,9 @@
-             "ref": "369b5b29dc52b2c190002825ae7ec24ab6f962dd"
-         }
-     },
-+    "symfony/twig-pack": {
-+        "version": "v1.0.0"
-+    },
-     "symfony/validator": {
-         "version": "4.1",
-         "recipe": {
-@@ -565,6 +568,9 @@
+@@ -556,6 +556,9 @@
              "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
          }
      },

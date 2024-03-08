@@ -1,16 +1,16 @@
 diff --git a/composer.json b/composer.json
-index 71003083..15abe688 100644
+index 2a474f9..d8e9946 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -7,6 +7,7 @@
-         "aws/aws-sdk-php": "^3.87",
-         "composer/package-versions-deprecated": "^1.11",
+@@ -11,6 +11,7 @@
+         "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
+         "doctrine/orm": "^2.5.11",
          "doctrine/persistence": "^1.3.7",
 +        "easycorp/easy-log-handler": "^1.0",
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-snappy-bundle": "^1.6",
-@@ -22,11 +23,13 @@
+@@ -27,11 +28,13 @@
          "stof/doctrine-extensions-bundle": "^1.3",
          "symfony/asset": "4.4.*",
          "symfony/console": "4.4.*",
@@ -21,10 +21,10 @@ index 71003083..15abe688 100644
          "symfony/mailer": "4.4.*",
          "symfony/messenger": "4.4.*",
 +        "symfony/monolog-bundle": "^3.5",
-         "symfony/orm-pack": "^1.0",
+         "symfony/property-access": "4.3.*|4.4.*",
+         "symfony/property-info": "4.3.*|4.4.*",
          "symfony/security-bundle": "4.4.*",
-         "symfony/sendgrid-mailer": "4.4.*",
-@@ -43,13 +46,10 @@
+@@ -50,13 +53,10 @@
      },
      "require-dev": {
          "doctrine/doctrine-fixtures-bundle": "^3.0",
@@ -36,18 +36,18 @@ index 71003083..15abe688 100644
          "symfony/maker-bundle": "^1.0",
 -        "symfony/monolog-bundle": "^3.0",
          "symfony/phpunit-bridge": "4.4.*",
-         "symfony/profiler-pack": "^1.0",
-         "symfony/var-dumper": "4.4.*"
+         "symfony/stopwatch": "4.3.*|4.4.*",
+         "symfony/var-dumper": "4.4.*",
 diff --git a/composer.lock b/composer.lock
-index ef5f7853..ac86c81d 100644
+index d467d95..4f3c938 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "0c05606d330a0c22a1176f120f44a841",
-+    "content-hash": "50ab2684f2fcb5f00c2d7d883ec5ea8d",
+-    "content-hash": "6e636ee4adaa34fd7c4ee569c5b5c8ad",
++    "content-hash": "3da2f26aafe1c1d87384b09f6a783b4f",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -362,21 +362,21 @@ index ef5f7853..ac86c81d 100644
 +            "time": "2020-10-02T07:34:48+00:00"
          },
          {
--            "name": "symfony/orm-pack",
--            "version": "v1.0.7",
+-            "name": "symfony/polyfill-ctype",
+-            "version": "v1.13.1",
 +            "name": "symfony/monolog-bundle",
 +            "version": "v3.5.0",
              "source": {
                  "type": "git",
--                "url": "https://github.com/symfony/orm-pack.git",
--                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c"
+-                "url": "https://github.com/symfony/polyfill-ctype.git",
+-                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
 +                "url": "https://github.com/symfony/monolog-bundle.git",
 +                "reference": "dd80460fcfe1fa2050a7103ad818e9d0686ce6fd"
              },
              "dist": {
                  "type": "zip",
--                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/c57f5e05232ca40626eb9fa52a32bc8565e9231c",
--                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c",
+-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
+-                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
 +                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
 +                "reference": "dd80460fcfe1fa2050a7103ad818e9d0686ce6fd",
 +                "shasum": ""
@@ -492,21 +492,21 @@ index ef5f7853..ac86c81d 100644
 +            "time": "2019-10-28T21:57:16+00:00"
 +        },
 +        {
-+            "name": "symfony/orm-pack",
-+            "version": "v1.0.7",
++            "name": "symfony/polyfill-ctype",
++            "version": "v1.13.1",
 +            "source": {
 +                "type": "git",
-+                "url": "https://github.com/symfony/orm-pack.git",
-+                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c"
++                "url": "https://github.com/symfony/polyfill-ctype.git",
++                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/c57f5e05232ca40626eb9fa52a32bc8565e9231c",
-+                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c",
++                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
++                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
                  "shasum": ""
              },
              "require": {
-@@ -9102,61 +9450,6 @@
+@@ -9004,61 +9352,6 @@
              },
              "time": "2019-06-12T12:03:37+00:00"
          },
@@ -568,7 +568,7 @@ index ef5f7853..ac86c81d 100644
          {
              "name": "fzaninotto/faker",
              "version": "v1.8.0",
-@@ -9211,88 +9504,6 @@
+@@ -9113,88 +9406,6 @@
              },
              "time": "2018-07-12T10:23:15+00:00"
          },
@@ -657,7 +657,7 @@ index ef5f7853..ac86c81d 100644
          {
              "name": "nikic/php-parser",
              "version": "v4.2.4",
-@@ -9543,66 +9754,6 @@
+@@ -9445,66 +9656,6 @@
              },
              "time": "2019-10-29T11:38:30+00:00"
          },
@@ -724,7 +724,7 @@ index ef5f7853..ac86c81d 100644
          {
              "name": "symfony/maker-bundle",
              "version": "v1.14.3",
-@@ -9675,143 +9826,6 @@
+@@ -9577,143 +9728,6 @@
              },
              "time": "2019-11-07T00:56:03+00:00"
          },
@@ -869,7 +869,7 @@ index ef5f7853..ac86c81d 100644
              "name": "symfony/phpunit-bridge",
              "version": "v4.4.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 628c5cc4..e7f8a24e 100644
+index 628c5cc..e7f8a24 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -6,7 +6,6 @@ return [
@@ -887,7 +887,7 @@ index 628c5cc4..e7f8a24e 100644
 +    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
  ];
 diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
-index 96dbf969..5bcdf06e 100644
+index 96dbf96..5bcdf06 100644
 --- a/config/packages/prod/monolog.yaml
 +++ b/config/packages/prod/monolog.yaml
 @@ -4,9 +4,7 @@ monolog:
@@ -902,7 +902,7 @@ index 96dbf969..5bcdf06e 100644
              type: stream
              path: "%kernel.logs_dir%/%kernel.environment%.log"
 diff --git a/symfony.lock b/symfony.lock
-index 7d44dbd0..2e9cbb79 100644
+index 4cb3cad..68f70c2 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -87,13 +87,7 @@

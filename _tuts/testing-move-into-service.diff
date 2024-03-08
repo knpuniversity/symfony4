@@ -2,7 +2,7 @@ diff --git a/tests/MailerTest.php b/tests/Service/MailerTest.php
 similarity index 84%
 rename from tests/MailerTest.php
 rename to tests/Service/MailerTest.php
-index 2dd0fad9..87ed9247 100644
+index 2dd0fad..87ed924 100644
 --- a/tests/MailerTest.php
 +++ b/tests/Service/MailerTest.php
 @@ -1,6 +1,6 @@

@@ -1,13 +1,13 @@
 diff --git a/composer.lock b/composer.lock
-index 61f298bc..cc717984 100644
+index b5a8e52..7f43d96 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "f389b329f1c7717151b931c553b99595",
-+    "content-hash": "8d65be1e568fdde81c1f318dc8526e29",
+-    "content-hash": "907c2250074e1b4b542dc5e1eae92490",
++    "content-hash": "f20b5f5ddf1878296011f79402fe7562",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -327,7 +327,7 @@ index 61f298bc..cc717984 100644
          },
          {
              "name": "knplabs/knp-snappy",
-@@ -9003,20 +9010,20 @@
+@@ -8905,20 +8912,20 @@
          },
          {
              "name": "twig/twig",
@@ -353,7 +353,7 @@ index 61f298bc..cc717984 100644
                  "symfony/polyfill-ctype": "^1.8",
                  "symfony/polyfill-mbstring": "^1.3"
              },
-@@ -9027,7 +9034,7 @@
+@@ -8929,7 +8936,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -362,7 +362,7 @@ index 61f298bc..cc717984 100644
                  }
              },
              "autoload": {
-@@ -9066,7 +9073,7 @@
+@@ -8968,7 +8975,7 @@
              ],
              "support": {
                  "issues": "https://github.com/twigphp/Twig/issues",
@@ -371,7 +371,7 @@ index 61f298bc..cc717984 100644
              },
              "funding": [
                  {
-@@ -9078,7 +9085,7 @@
+@@ -8980,7 +8987,7 @@
                      "type": "tidelift"
                  }
              ],
@@ -380,7 +380,7 @@ index 61f298bc..cc717984 100644
          },
          {
              "name": "webmozart/assert",
-@@ -9939,12 +9946,12 @@
+@@ -9809,12 +9816,12 @@
      "prefer-stable": false,
      "prefer-lowest": false,
      "platform": {
@@ -393,10 +393,10 @@ index 61f298bc..cc717984 100644
 -        "php": "7.1.3"
 +        "php": "7.2.5"
      },
-     "plugin-api-version": "2.3.0"
+     "plugin-api-version": "2.6.0"
  }
 diff --git a/symfony.lock b/symfony.lock
-index 9b5b4ea2..2f5b7f3b 100644
+index ddda503..d63cbe6 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -202,7 +202,7 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Command/AuthorWeeklyReportSendCommand.php b/src/Command/AuthorWeeklyReportSendCommand.php
-index 3225faae..97e592e0 100644
+index 3225faa..97e592e 100644
 --- a/src/Command/AuthorWeeklyReportSendCommand.php
 +++ b/src/Command/AuthorWeeklyReportSendCommand.php
 @@ -2,6 +2,7 @@
@@ -41,7 +41,7 @@ index 3225faae..97e592e0 100644
          $io->progressFinish();
  
 diff --git a/src/Repository/ArticleRepository.php b/src/Repository/ArticleRepository.php
-index 77953620..5d3323ae 100644
+index 7795362..5d3323a 100644
 --- a/src/Repository/ArticleRepository.php
 +++ b/src/Repository/ArticleRepository.php
 @@ -3,6 +3,7 @@

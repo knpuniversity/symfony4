@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SecurityController.php b/src/Controller/SecurityController.php
-index 1e6d8962..ed9041aa 100644
+index 1e6d896..ed9041a 100644
 --- a/src/Controller/SecurityController.php
 +++ b/src/Controller/SecurityController.php
 @@ -76,7 +76,10 @@ class SecurityController extends AbstractController
@@ -15,7 +15,7 @@ index 1e6d8962..ed9041aa 100644
              $mailer->send($email);
  
 diff --git a/templates/email/welcome.html.twig b/templates/email/welcome.html.twig
-index ef4663eb..2cbfee21 100644
+index ef4663e..2cbfee2 100644
 --- a/templates/email/welcome.html.twig
 +++ b/templates/email/welcome.html.twig
 @@ -62,7 +62,7 @@

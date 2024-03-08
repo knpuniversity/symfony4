@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 3457f1b7..ef5d1fce 100644
+index 3457f1b..ef5d1fc 100644
 --- a/.env
 +++ b/.env
 @@ -29,10 +29,6 @@ DATABASE_URL=mysql://root:@127.0.0.1:3306/the_spacebar
@@ -14,7 +14,7 @@ index 3457f1b7..ef5d1fce 100644
  
  SITE_BASE_URL=https://localhost:8000
 diff --git a/.gitignore b/.gitignore
-index a714f0f4..13e3e58d 100644
+index a714f0f..13e3e58 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -19,3 +19,5 @@
@@ -24,7 +24,7 @@ index a714f0f4..13e3e58d 100644
 +
 +/public/uploads
 diff --git a/config/packages/liip_imagine.yaml b/config/packages/liip_imagine.yaml
-index 24b752e1..4f50db58 100644
+index 24b752e..4f50db5 100644
 --- a/config/packages/liip_imagine.yaml
 +++ b/config/packages/liip_imagine.yaml
 @@ -14,8 +14,6 @@ liip_imagine:
@@ -37,7 +37,7 @@ index 24b752e1..4f50db58 100644
                  cache_prefix: media/cache
                  root_url: '%uploads_base_url%'
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
-index 48ad0555..ae121733 100644
+index 48ad055..ae12173 100644
 --- a/config/packages/oneup_flysystem.yaml
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -7,9 +7,8 @@ oneup_flysystem:
@@ -53,7 +53,7 @@ index 48ad0555..ae121733 100644
      filesystems:
          uploads_filesystem:
 diff --git a/config/services.yaml b/config/services.yaml
-index a3eee8bd..78f42d36 100644
+index a3eee8b..78f42d3 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
 @@ -6,7 +6,7 @@
@@ -87,7 +87,7 @@ index a3eee8bd..78f42d36 100644
 -                    key: '%env(AWS_S3_ACCESS_ID)%'
 -                    secret: '%env(AWS_S3_ACCESS_SECRET)%'
 diff --git a/src/Controller/ArticleReferenceAdminController.php b/src/Controller/ArticleReferenceAdminController.php
-index 26986dda..86e6937a 100644
+index 26986dd..86e6937 100644
 --- a/src/Controller/ArticleReferenceAdminController.php
 +++ b/src/Controller/ArticleReferenceAdminController.php
 @@ -6,7 +6,6 @@ use App\Api\ArticleReferenceUploadApiModel;

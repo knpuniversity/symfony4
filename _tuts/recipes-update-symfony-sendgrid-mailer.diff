@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 61cea898..ff3108a1 100644
+index 61cea89..ff3108a 100644
 --- a/.env
 +++ b/.env
 @@ -46,8 +46,7 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
@@ -13,10 +13,10 @@ index 61cea898..ff3108a1 100644
  
  DEV_MAIL_RECIPIENT=someone@example.com
 diff --git a/symfony.lock b/symfony.lock
-index d10e960e..e41b64c1 100644
+index f98bd47..442bbce 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -527,12 +527,12 @@
+@@ -521,12 +521,12 @@
          "version": "v4.2.3"
      },
      "symfony/sendgrid-mailer": {

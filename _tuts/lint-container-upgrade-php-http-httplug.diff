@@ -1,26 +1,26 @@
 diff --git a/composer.json b/composer.json
-index 73f0c9e2..9c9c570e 100644
+index 3494354..7d71393 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -22,7 +22,7 @@
+@@ -23,7 +23,7 @@
          "liip/imagine-bundle": "^2.1",
          "nexylan/slack-bundle": "^2.1",
          "oneup/flysystem-bundle": "^3.0",
 -        "php-http/guzzle6-adapter": "^1.1",
 +        "php-http/guzzle6-adapter": "^2.0",
+         "phpdocumentor/reflection-docblock": "^3.0|^4.0",
          "sensio/framework-extra-bundle": "^5.1",
          "symfony/asset": "5.0.*",
-         "symfony/console": "5.0.*",
 diff --git a/composer.lock b/composer.lock
-index 35663423..048279ec 100644
+index 3bfdee6..a7e4f03 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "18785c5699b462096462b59706af919b",
-+    "content-hash": "612891bbe355cdae21f905e76006e39a",
+-    "content-hash": "a1cbeae56a0b21b5396c368a1f04ef46",
++    "content-hash": "f18010eec65ca47ac554e37744a99879",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",

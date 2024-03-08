@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 3d6f5024..75b7eda5 100644
+index 56f4b19..75b7eda 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,6 +2,7 @@
@@ -10,15 +10,8 @@ index 3d6f5024..75b7eda5 100644
          "webpack-notifier": "^1.6.0"
      },
      "license": "UNLICENSED",
-@@ -12,4 +13,4 @@
-         "watch": "encore dev --watch",
-         "build": "encore production --progress"
-     }
--}
-\ No newline at end of file
-+}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index cc2d7e95..ba9861d5 100644
+index cc2d7e9..ba9861d 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -91,7 +91,6 @@
@@ -30,7 +23,7 @@ index cc2d7e95..ba9861d5 100644
              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
              <script>
 diff --git a/yarn.lock b/yarn.lock
-index 04f3bd8a..3f4e3ab6 100644
+index 04f3bd8..3f4e3ab 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -3708,6 +3708,11 @@ isobject@^3.0.0, isobject@^3.0.1:

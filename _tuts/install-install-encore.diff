@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 13e3e58d..ac2c33e9 100644
+index 13e3e58..ac2c33e 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -20,4 +20,11 @@
@@ -16,7 +16,7 @@ index 13e3e58d..ac2c33e9 100644
  /public/uploads
 diff --git a/assets/css/app.css b/assets/css/app.css
 new file mode 100644
-index 00000000..cb33b131
+index 0000000..cb33b13
 --- /dev/null
 +++ b/assets/css/app.css
 @@ -0,0 +1,3 @@
@@ -25,7 +25,7 @@ index 00000000..cb33b131
 +}
 diff --git a/assets/js/app.js b/assets/js/app.js
 new file mode 100644
-index 00000000..0648e871
+index 0000000..0648e87
 --- /dev/null
 +++ b/assets/js/app.js
 @@ -0,0 +1,14 @@
@@ -44,10 +44,10 @@ index 00000000..0648e871
 +
 +console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 diff --git a/composer.json b/composer.json
-index 5b69abf3..91b5c19e 100644
+index d89c713..b0e86fe 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -28,6 +28,7 @@
+@@ -34,6 +34,7 @@
          "symfony/twig-bundle": "^4.0",
          "symfony/validator": "^4.0",
          "symfony/web-server-bundle": "^4.0",
@@ -56,19 +56,19 @@ index 5b69abf3..91b5c19e 100644
          "twig/extensions": "^1.5"
      },
 diff --git a/composer.lock b/composer.lock
-index 55fb3715..a23eb2a4 100644
+index 195de10..f6bb04a 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "d61166a82960007200397172419c75d1",
-+    "content-hash": "f1c572142508d9e9263267e159950dae",
+-    "content-hash": "d2a4c2abdd97efe3d07ec92f54189e64",
++    "content-hash": "b7759c342ff9aafe0f67dea8da61af96",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -6754,6 +6754,60 @@
+@@ -6696,6 +6696,60 @@
              "homepage": "https://symfony.com",
              "time": "2019-03-04T10:37:56+00:00"
          },
@@ -130,7 +130,7 @@ index 55fb3715..a23eb2a4 100644
              "name": "symfony/yaml",
              "version": "v4.2.5",
 diff --git a/config/bundles.php b/config/bundles.php
-index dfbdc683..ff98702c 100644
+index dfbdc68..ff98702 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -22,4 +22,5 @@ return [
@@ -141,7 +141,7 @@ index dfbdc683..ff98702c 100644
  ];
 diff --git a/config/packages/assets.yaml b/config/packages/assets.yaml
 new file mode 100644
-index 00000000..051d36dc
+index 0000000..051d36d
 --- /dev/null
 +++ b/config/packages/assets.yaml
 @@ -0,0 +1,3 @@
@@ -150,7 +150,7 @@ index 00000000..051d36dc
 +        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
 diff --git a/config/packages/prod/webpack_encore.yaml b/config/packages/prod/webpack_encore.yaml
 new file mode 100644
-index 00000000..ae4cbaed
+index 0000000..ae4cbae
 --- /dev/null
 +++ b/config/packages/prod/webpack_encore.yaml
 @@ -0,0 +1,4 @@
@@ -161,7 +161,7 @@ index 00000000..ae4cbaed
 \ No newline at end of file
 diff --git a/config/packages/webpack_encore.yaml b/config/packages/webpack_encore.yaml
 new file mode 100644
-index 00000000..c7d5006e
+index 0000000..c7d5006
 --- /dev/null
 +++ b/config/packages/webpack_encore.yaml
 @@ -0,0 +1,13 @@
@@ -181,7 +181,7 @@ index 00000000..c7d5006e
 \ No newline at end of file
 diff --git a/package.json b/package.json
 new file mode 100644
-index 00000000..3d6f5024
+index 0000000..56f4b19
 --- /dev/null
 +++ b/package.json
 @@ -0,0 +1,15 @@
@@ -200,12 +200,11 @@ index 00000000..3d6f5024
 +        "build": "encore production --progress"
 +    }
 +}
-\ No newline at end of file
 diff --git a/symfony.lock b/symfony.lock
-index 27a9d951..5b0aa8ea 100644
+index 5d7d0eb..ce1aadb 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -503,6 +503,23 @@
+@@ -494,6 +494,23 @@
              "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
          }
      },
@@ -231,7 +230,7 @@ index 27a9d951..5b0aa8ea 100644
      },
 diff --git a/webpack.config.js b/webpack.config.js
 new file mode 100644
-index 00000000..a0b24860
+index 0000000..a0b2486
 --- /dev/null
 +++ b/webpack.config.js
 @@ -0,0 +1,68 @@

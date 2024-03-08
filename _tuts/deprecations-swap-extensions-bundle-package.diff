@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 774ac1b6..e222fd0b 100644
+index de5afad..9abea81 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,7 @@
@@ -9,25 +9,25 @@ index 774ac1b6..e222fd0b 100644
 +        "antishov/doctrine-extensions-bundle": "^1.4",
          "aws/aws-sdk-php": "^3.87",
          "composer/package-versions-deprecated": "^1.11",
-         "doctrine/persistence": "^1.3.7",
-@@ -20,7 +21,6 @@
-         "oneup/flysystem-bundle": "^3.0",
+         "doctrine/annotations": "^1.0",
+@@ -25,7 +26,6 @@
          "php-http/guzzle6-adapter": "^1.1",
+         "phpdocumentor/reflection-docblock": "^3.0|^4.0",
          "sensio/framework-extra-bundle": "^5.1",
 -        "stof/doctrine-extensions-bundle": "^1.3",
          "symfony/asset": "4.4.*",
          "symfony/console": "4.4.*",
          "symfony/dotenv": "4.4.*",
 diff --git a/composer.lock b/composer.lock
-index cc717984..7c7047a7 100644
+index 7f43d96..38e1cb5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,81 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "8d65be1e568fdde81c1f318dc8526e29",
-+    "content-hash": "b5675ff4d646b2881fd588f22ba7c4ef",
+-    "content-hash": "f20b5f5ddf1878296011f79402fe7562",
++    "content-hash": "2582131dcd41cdbe33e6f151c61ea689",
      "packages": [
 +        {
 +            "name": "antishov/doctrine-extensions-bundle",
@@ -260,7 +260,7 @@ index cc717984..7c7047a7 100644
              "name": "symfony/asset",
              "version": "v4.4.1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 9d730ce2..646871a6 100644
+index 9d730ce..646871a 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -15,7 +15,6 @@ return [
@@ -278,7 +278,7 @@ index 9d730ce2..646871a6 100644
 +    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
  ];
 diff --git a/symfony.lock b/symfony.lock
-index 2f5b7f3b..e0b02b75 100644
+index d63cbe6..df69c03 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -1,4 +1,16 @@

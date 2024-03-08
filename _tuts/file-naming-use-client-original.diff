@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ArticleAdminController.php b/src/Controller/ArticleAdminController.php
-index d37a3ddf..701b9cb5 100644
+index d37a3dd..701b9cb 100644
 --- a/src/Controller/ArticleAdminController.php
 +++ b/src/Controller/ArticleAdminController.php
 @@ -76,7 +76,10 @@ class ArticleAdminController extends BaseController

@@ -1,9 +1,18 @@
 diff --git a/composer.json b/composer.json
-index b10a9a4c..71003083 100644
+index 3dbe4fb..2a474f9 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -20,23 +20,23 @@
-         "php-http/guzzle6-adapter": "^1.1",
+@@ -7,7 +7,7 @@
+         "aws/aws-sdk-php": "^3.87",
+         "composer/package-versions-deprecated": "^1.11",
+         "doctrine/annotations": "^1.0",
+-        "doctrine/doctrine-bundle": "^1.6.10",
++        "doctrine/doctrine-bundle": "^1.6.10|^2.0",
+         "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
+         "doctrine/orm": "^2.5.11",
+         "doctrine/persistence": "^1.3.7",
+@@ -25,23 +25,23 @@
+         "phpdocumentor/reflection-docblock": "^3.0|^4.0",
          "sensio/framework-extra-bundle": "^5.1",
          "stof/doctrine-extensions-bundle": "^1.3",
 -        "symfony/asset": "^4.0",
@@ -11,8 +20,16 @@ index b10a9a4c..71003083 100644
 -        "symfony/flex": "^1.9",
 -        "symfony/form": "^4.0",
 -        "symfony/framework-bundle": "^4.0",
--        "symfony/mailer": "4.3.*",
--        "symfony/messenger": "4.3.*",
+-        "symfony/mailer": "^4.0",
+-        "symfony/messenger": "^4.0",
+-        "symfony/property-access": "^4.0",
+-        "symfony/property-info": "^4.0",
+-        "symfony/security-bundle": "^4.0",
+-        "symfony/sendgrid-mailer": "^4.0",
+-        "symfony/serializer": "^4.0",
+-        "symfony/twig-bundle": "^4.0",
+-        "symfony/validator": "^4.0",
+-        "symfony/web-server-bundle": "^4.0",
 +        "symfony/asset": "4.4.*",
 +        "symfony/console": "4.4.*",
 +        "symfony/flex": "^1.0",
@@ -20,17 +37,12 @@ index b10a9a4c..71003083 100644
 +        "symfony/framework-bundle": "4.4.*",
 +        "symfony/mailer": "4.4.*",
 +        "symfony/messenger": "4.4.*",
-         "symfony/orm-pack": "^1.0",
--        "symfony/security-bundle": "^4.0",
--        "symfony/sendgrid-mailer": "4.3.*",
++        "symfony/property-access": "4.3.*|4.4.*",
++        "symfony/property-info": "4.3.*|4.4.*",
 +        "symfony/security-bundle": "4.4.*",
 +        "symfony/sendgrid-mailer": "4.4.*",
-         "symfony/serializer-pack": "^1.0",
--        "symfony/twig-bundle": "^4.0",
++        "symfony/serializer": "4.3.*|4.4.*",
 +        "symfony/twig-bundle": "4.4.*",
-         "symfony/twig-pack": "^1.0",
--        "symfony/validator": "^4.0",
--        "symfony/web-server-bundle": "^4.0",
 +        "symfony/validator": "4.4.*",
 +        "symfony/web-server-bundle": "4.4.*",
          "symfony/webpack-encore-bundle": "^1.4",
@@ -38,8 +50,8 @@ index b10a9a4c..71003083 100644
 +        "symfony/yaml": "4.4.*",
          "twig/cssinliner-extra": "^2.12",
          "twig/extensions": "^1.5",
-         "twig/inky-extra": "^2.12"
-@@ -45,14 +45,14 @@
+         "twig/extra-bundle": "^2.12|^3.0",
+@@ -52,15 +52,15 @@
          "doctrine/doctrine-fixtures-bundle": "^3.0",
          "easycorp/easy-log-handler": "^1.0.2",
          "fzaninotto/faker": "^1.7",
@@ -52,23 +64,26 @@ index b10a9a4c..71003083 100644
          "symfony/maker-bundle": "^1.0",
          "symfony/monolog-bundle": "^3.0",
 -        "symfony/phpunit-bridge": "^3.3|^4.0",
+-        "symfony/stopwatch": "^4.0",
+-        "symfony/var-dumper": "^3.3|^4.0",
+-        "symfony/web-profiler-bundle": "^4.0"
 +        "symfony/phpunit-bridge": "4.4.*",
-         "symfony/profiler-pack": "^1.0",
--        "symfony/var-dumper": "^3.3|^4.0"
-+        "symfony/var-dumper": "4.4.*"
++        "symfony/stopwatch": "4.3.*|4.4.*",
++        "symfony/var-dumper": "4.4.*",
++        "symfony/web-profiler-bundle": "4.3.*|4.4.*"
      },
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index 1ab3a5a6..ef5f7853 100644
+index dfb83cf..d467d95 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "839270a62446f4ac0bc81d6694ce1607",
-+    "content-hash": "0c05606d330a0c22a1176f120f44a841",
+-    "content-hash": "394d5db1cbe6ac716f58226627f4eed7",
++    "content-hash": "6e636ee4adaa34fd7c4ee569c5b5c8ad",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -1304,7 +1319,7 @@ index 1ab3a5a6..ef5f7853 100644
          },
          {
              "name": "symfony/options-resolver",
-@@ -5934,26 +6271,30 @@
+@@ -5934,6 +6271,9 @@
                  "configuration",
                  "options"
              ],
@@ -1314,44 +1329,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-10-28T21:57:16+00:00"
          },
          {
-             "name": "symfony/orm-pack",
--            "version": "v1.0.8",
-+            "version": "v1.0.7",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/symfony/orm-pack.git",
--                "reference": "c9bcc08102061f406dc908192c0f33524a675666"
-+                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/c9bcc08102061f406dc908192c0f33524a675666",
--                "reference": "c9bcc08102061f406dc908192c0f33524a675666",
-+                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/c57f5e05232ca40626eb9fa52a32bc8565e9231c",
-+                "reference": "c57f5e05232ca40626eb9fa52a32bc8565e9231c",
-                 "shasum": ""
-             },
-             "require": {
--                "doctrine/doctrine-bundle": "*",
--                "doctrine/doctrine-migrations-bundle": "*",
--                "doctrine/orm": "*"
-+                "doctrine/doctrine-bundle": "^1.6.10|^2.0",
-+                "doctrine/doctrine-migrations-bundle": "^1.3|^2.0",
-+                "doctrine/orm": "^2.5.11",
-+                "php": "^7.0"
-             },
-             "type": "symfony-pack",
-             "notification-url": "https://packagist.org/downloads/",
-@@ -5965,7 +6306,7 @@
-                 "issues": "https://github.com/symfony/orm-pack/issues",
-                 "source": "https://github.com/symfony/orm-pack/tree/master"
-             },
--            "time": "2020-02-10T18:03:48+00:00"
-+            "time": "2019-10-18T05:41:09+00:00"
-         },
-         {
-             "name": "symfony/polyfill-ctype",
-@@ -6023,6 +6364,9 @@
+@@ -5992,6 +6332,9 @@
                  "polyfill",
                  "portable"
              ],
@@ -1361,7 +1339,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-27T13:56:44+00:00"
          },
          {
-@@ -6081,6 +6425,9 @@
+@@ -6050,6 +6393,9 @@
                  "portable",
                  "shim"
              ],
@@ -1371,7 +1349,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-27T13:56:44+00:00"
          },
          {
-@@ -6143,6 +6490,9 @@
+@@ -6112,6 +6458,9 @@
                  "portable",
                  "shim"
              ],
@@ -1381,7 +1359,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-27T13:56:44+00:00"
          },
          {
-@@ -6202,6 +6552,9 @@
+@@ -6171,6 +6520,9 @@
                  "portable",
                  "shim"
              ],
@@ -1391,7 +1369,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-27T14:18:11+00:00"
          },
          {
-@@ -6257,6 +6610,9 @@
+@@ -6226,6 +6578,9 @@
                  "portable",
                  "shim"
              ],
@@ -1401,7 +1379,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-27T13:56:44+00:00"
          },
          {
-@@ -6315,6 +6671,9 @@
+@@ -6284,6 +6639,9 @@
                  "portable",
                  "shim"
              ],
@@ -1411,7 +1389,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-27T16:25:15+00:00"
          },
          {
-@@ -6364,6 +6723,9 @@
+@@ -6333,6 +6691,9 @@
              ],
              "description": "Symfony Process Component",
              "homepage": "https://symfony.com",
@@ -1421,7 +1399,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-28T13:33:56+00:00"
          },
          {
-@@ -6431,6 +6793,9 @@
+@@ -6400,6 +6761,9 @@
                  "property path",
                  "reflection"
              ],
@@ -1431,7 +1409,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-12-01T10:50:45+00:00"
          },
          {
-@@ -6507,6 +6872,9 @@
+@@ -6476,6 +6840,9 @@
                  "type",
                  "validator"
              ],
@@ -1441,7 +1419,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-05T16:11:08+00:00"
          },
          {
-@@ -6583,64 +6951,66 @@
+@@ -6552,64 +6919,66 @@
                  "uri",
                  "url"
              ],
@@ -1541,7 +1519,7 @@ index 1ab3a5a6..ef5f7853 100644
                  }
              },
              "autoload": {
-@@ -6667,7 +7037,10 @@
+@@ -6636,7 +7005,10 @@
              ],
              "description": "Symfony SecurityBundle",
              "homepage": "https://symfony.com",
@@ -1553,7 +1531,7 @@ index 1ab3a5a6..ef5f7853 100644
          },
          {
              "name": "symfony/security-core",
-@@ -6740,6 +7113,9 @@
+@@ -6709,6 +7081,9 @@
              ],
              "description": "Symfony Security Component - Core Library",
              "homepage": "https://symfony.com",
@@ -1563,7 +1541,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-20T10:44:55+00:00"
          },
          {
-@@ -6799,6 +7175,9 @@
+@@ -6768,6 +7143,9 @@
              ],
              "description": "Symfony Security Component - CSRF Library",
              "homepage": "https://symfony.com",
@@ -1573,7 +1551,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-10-12T00:35:04+00:00"
          },
          {
-@@ -6853,6 +7232,9 @@
+@@ -6822,6 +7200,9 @@
              ],
              "description": "Symfony Security Component - Guard",
              "homepage": "https://symfony.com",
@@ -1583,7 +1561,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-30T09:49:41+00:00"
          },
          {
-@@ -6919,33 +7301,36 @@
+@@ -6888,33 +7269,36 @@
              ],
              "description": "Symfony Security Component - HTTP Integration",
              "homepage": "https://symfony.com",
@@ -1627,7 +1605,7 @@ index 1ab3a5a6..ef5f7853 100644
                  }
              },
              "autoload": {
-@@ -6972,7 +7357,10 @@
+@@ -6941,7 +7325,10 @@
              ],
              "description": "Symfony Sendgrid Mailer Bridge",
              "homepage": "https://symfony.com",
@@ -1639,7 +1617,7 @@ index 1ab3a5a6..ef5f7853 100644
          },
          {
              "name": "symfony/serializer",
-@@ -7053,25 +7441,29 @@
+@@ -7022,6 +7409,9 @@
              ],
              "description": "Symfony Serializer Component",
              "homepage": "https://symfony.com",
@@ -1649,58 +1627,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-28T13:33:56+00:00"
          },
          {
-             "name": "symfony/serializer-pack",
--            "version": "v1.0.4",
-+            "version": "v1.0.2",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/symfony/serializer-pack.git",
--                "reference": "61173947057d5e1bf1c79e2a6ab6a8430be0602e"
-+                "reference": "c5f18ba4ff989a42d7d140b7f85406e77cd8c4b2"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/symfony/serializer-pack/zipball/61173947057d5e1bf1c79e2a6ab6a8430be0602e",
--                "reference": "61173947057d5e1bf1c79e2a6ab6a8430be0602e",
-+                "url": "https://api.github.com/repos/symfony/serializer-pack/zipball/c5f18ba4ff989a42d7d140b7f85406e77cd8c4b2",
-+                "reference": "c5f18ba4ff989a42d7d140b7f85406e77cd8c4b2",
-                 "shasum": ""
-             },
-             "require": {
-                 "doctrine/annotations": "^1.0",
--                "phpdocumentor/reflection-docblock": "*",
-+                "php": "^7.0",
-+                "phpdocumentor/reflection-docblock": "^3.0|^4.0",
-                 "symfony/property-access": "*",
-                 "symfony/property-info": "*",
-                 "symfony/serializer": "*"
-@@ -7084,23 +7476,9 @@
-             "description": "A pack for the Symfony serializer",
-             "support": {
-                 "issues": "https://github.com/symfony/serializer-pack/issues",
--                "source": "https://github.com/symfony/serializer-pack/tree/v1.0.4"
-+                "source": "https://github.com/symfony/serializer-pack/tree/master"
-             },
--            "funding": [
--                {
--                    "url": "https://symfony.com/sponsor",
--                    "type": "custom"
--                },
--                {
--                    "url": "https://github.com/fabpot",
--                    "type": "github"
--                },
--                {
--                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
--                    "type": "tidelift"
--                }
--            ],
--            "time": "2020-10-19T08:52:16+00:00"
-+            "time": "2018-12-10T12:14:14+00:00"
-         },
-         {
-             "name": "symfony/service-contracts",
-@@ -7158,6 +7536,9 @@
+@@ -7080,6 +7470,9 @@
                  "interoperability",
                  "standards"
              ],
@@ -1710,7 +1637,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-10-14T12:27:06+00:00"
          },
          {
-@@ -7208,6 +7589,9 @@
+@@ -7130,6 +7523,9 @@
              ],
              "description": "Symfony Stopwatch Component",
              "homepage": "https://symfony.com",
@@ -1720,7 +1647,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-05T16:11:08+00:00"
          },
          {
-@@ -7264,6 +7648,9 @@
+@@ -7186,6 +7582,9 @@
              ],
              "description": "Symfony Templating Component",
              "homepage": "https://symfony.com",
@@ -1730,7 +1657,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-10-28T20:30:34+00:00"
          },
          {
-@@ -7340,6 +7727,9 @@
+@@ -7262,6 +7661,9 @@
              ],
              "description": "Symfony Translation Component",
              "homepage": "https://symfony.com",
@@ -1740,7 +1667,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-12T17:18:47+00:00"
          },
          {
-@@ -7397,6 +7787,9 @@
+@@ -7319,6 +7721,9 @@
                  "interoperability",
                  "standards"
              ],
@@ -1750,7 +1677,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-09-17T11:12:18+00:00"
          },
          {
-@@ -7500,57 +7893,58 @@
+@@ -7422,57 +7827,58 @@
              ],
              "description": "Symfony Twig Bridge",
              "homepage": "https://symfony.com",
@@ -1833,7 +1760,7 @@ index 1ab3a5a6..ef5f7853 100644
                  }
              },
              "autoload": {
-@@ -7577,23 +7971,27 @@
+@@ -7499,7 +7905,10 @@
              ],
              "description": "Symfony TwigBundle",
              "homepage": "https://symfony.com",
@@ -1844,55 +1771,8 @@ index 1ab3a5a6..ef5f7853 100644
 +            "time": "2019-11-30T10:12:23+00:00"
          },
          {
-             "name": "symfony/twig-pack",
--            "version": "v1.0.1",
-+            "version": "v1.0.0",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/symfony/twig-pack.git",
--                "reference": "08a73e833e07921c464336deb7630f93e85ef930"
-+                "reference": "8b278ea4b61fba7c051f172aacae6d87ef4be0e0"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/symfony/twig-pack/zipball/08a73e833e07921c464336deb7630f93e85ef930",
--                "reference": "08a73e833e07921c464336deb7630f93e85ef930",
-+                "url": "https://api.github.com/repos/symfony/twig-pack/zipball/8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
-+                "reference": "8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
-                 "shasum": ""
-             },
-             "require": {
-+                "php": "^7.0",
-                 "symfony/twig-bundle": "*",
-                 "twig/extra-bundle": "^2.12|^3.0",
-                 "twig/twig": "^2.12|^3.0"
-@@ -7606,23 +8004,9 @@
-             "description": "A Twig pack for Symfony projects",
-             "support": {
-                 "issues": "https://github.com/symfony/twig-pack/issues",
--                "source": "https://github.com/symfony/twig-pack/tree/v1.0.1"
-+                "source": "https://github.com/symfony/twig-pack/tree/v1.0.0"
-             },
--            "funding": [
--                {
--                    "url": "https://symfony.com/sponsor",
--                    "type": "custom"
--                },
--                {
--                    "url": "https://github.com/fabpot",
--                    "type": "github"
--                },
--                {
--                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
--                    "type": "tidelift"
--                }
--            ],
--            "time": "2020-10-19T08:46:41+00:00"
-+            "time": "2019-10-17T05:44:22+00:00"
-         },
-         {
              "name": "symfony/validator",
-@@ -7714,6 +8098,9 @@
+@@ -7591,6 +8000,9 @@
              ],
              "description": "Symfony Validator Component",
              "homepage": "https://symfony.com",
@@ -1902,7 +1782,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-30T14:03:57+00:00"
          },
          {
-@@ -7790,6 +8177,9 @@
+@@ -7667,6 +8079,9 @@
                  "debug",
                  "dump"
              ],
@@ -1912,7 +1792,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-28T13:33:56+00:00"
          },
          {
-@@ -7850,6 +8240,9 @@
+@@ -7727,6 +8142,9 @@
                  "instantiate",
                  "serialize"
              ],
@@ -1922,7 +1802,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-12-01T08:39:58+00:00"
          },
          {
-@@ -7909,6 +8302,9 @@
+@@ -7786,6 +8204,9 @@
              ],
              "description": "Symfony WebServerBundle",
              "homepage": "https://symfony.com",
@@ -1932,7 +1812,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-26T23:16:41+00:00"
          },
          {
-@@ -7962,6 +8358,10 @@
+@@ -7839,6 +8260,10 @@
                  }
              ],
              "description": "Integration with your Symfony app & Webpack Encore!",
@@ -1943,7 +1823,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-26T14:48:41+00:00"
          },
          {
-@@ -8021,6 +8421,9 @@
+@@ -7898,6 +8323,9 @@
              ],
              "description": "Symfony Yaml Component",
              "homepage": "https://symfony.com",
@@ -1953,7 +1833,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-12T14:51:11+00:00"
          },
          {
-@@ -8068,6 +8471,10 @@
+@@ -7945,6 +8373,10 @@
              ],
              "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
              "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
@@ -1964,7 +1844,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2017-11-27T11:13:29+00:00"
          },
          {
-@@ -8122,6 +8529,9 @@
+@@ -7999,6 +8431,9 @@
                  "inlining",
                  "twig"
              ],
@@ -1974,7 +1854,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-09-07T06:57:51+00:00"
          },
          {
-@@ -8177,6 +8587,11 @@
+@@ -8054,6 +8489,11 @@
                  "i18n",
                  "text"
              ],
@@ -1986,7 +1866,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2018-12-05T18:34:18+00:00"
          },
          {
-@@ -8236,6 +8651,9 @@
+@@ -8113,6 +8553,9 @@
                  "extra",
                  "twig"
              ],
@@ -1996,7 +1876,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-10-17T07:27:12+00:00"
          },
          {
-@@ -8291,6 +8709,9 @@
+@@ -8168,6 +8611,9 @@
                  "inky",
                  "twig"
              ],
@@ -2006,7 +1886,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-09-17T06:08:14+00:00"
          },
          {
-@@ -8420,6 +8841,10 @@
+@@ -8297,6 +8743,10 @@
                  "check",
                  "validate"
              ],
@@ -2017,7 +1897,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-08-24T08:43:50+00:00"
          },
          {
-@@ -8473,6 +8898,14 @@
+@@ -8350,6 +8800,14 @@
                  "code",
                  "zf"
              ],
@@ -2032,7 +1912,7 @@ index 1ab3a5a6..ef5f7853 100644
              "abandoned": "laminas/laminas-code",
              "time": "2019-08-31T14:14:34+00:00"
          },
-@@ -8528,6 +8961,10 @@
+@@ -8405,6 +8863,10 @@
                  "events",
                  "zf2"
              ],
@@ -2043,7 +1923,7 @@ index 1ab3a5a6..ef5f7853 100644
              "abandoned": "laminas/laminas-eventmanager",
              "time": "2018-04-25T15:33:34+00:00"
          }
-@@ -8591,6 +9028,10 @@
+@@ -8468,6 +8930,10 @@
              "keywords": [
                  "database"
              ],
@@ -2054,7 +1934,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-07-10T18:30:35+00:00"
          },
          {
-@@ -8655,6 +9096,10 @@
+@@ -8532,6 +8998,10 @@
                  "Fixture",
                  "persistence"
              ],
@@ -2065,7 +1945,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-06-12T12:03:37+00:00"
          },
          {
-@@ -8705,6 +9150,10 @@
+@@ -8582,6 +9052,10 @@
                  "monolog",
                  "productivity"
              ],
@@ -2076,7 +1956,7 @@ index 1ab3a5a6..ef5f7853 100644
              "abandoned": true,
              "time": "2018-07-27T15:41:37+00:00"
          },
-@@ -8756,6 +9205,10 @@
+@@ -8633,6 +9107,10 @@
                  "faker",
                  "fixtures"
              ],
@@ -2087,7 +1967,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2018-07-12T10:23:15+00:00"
          },
          {
-@@ -8834,6 +9287,10 @@
+@@ -8711,6 +9189,10 @@
                  "logging",
                  "psr-3"
              ],
@@ -2098,7 +1978,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-09-06T13:49:17+00:00"
          },
          {
-@@ -8885,31 +9342,35 @@
+@@ -8762,31 +9244,35 @@
                  "parser",
                  "php"
              ],
@@ -2143,7 +2023,7 @@ index 1ab3a5a6..ef5f7853 100644
              },
              "suggest": {
                  "symfony/process": ""
-@@ -8917,7 +9378,7 @@
+@@ -8794,7 +9280,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -2152,7 +2032,7 @@ index 1ab3a5a6..ef5f7853 100644
                  }
              },
              "autoload": {
-@@ -8944,7 +9405,10 @@
+@@ -8821,7 +9307,10 @@
              ],
              "description": "Symfony BrowserKit Component",
              "homepage": "https://symfony.com",
@@ -2164,7 +2044,7 @@ index 1ab3a5a6..ef5f7853 100644
          },
          {
              "name": "symfony/debug-bundle",
-@@ -9010,6 +9474,9 @@
+@@ -8887,6 +9376,9 @@
              ],
              "description": "Symfony DebugBundle",
              "homepage": "https://symfony.com",
@@ -2174,7 +2054,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-10-12T00:35:04+00:00"
          },
          {
-@@ -9071,6 +9538,9 @@
+@@ -8948,6 +9440,9 @@
              ],
              "description": "Symfony DomCrawler Component",
              "homepage": "https://symfony.com",
@@ -2184,7 +2064,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-10-29T11:38:30+00:00"
          },
          {
-@@ -9128,6 +9598,9 @@
+@@ -9005,6 +9500,9 @@
                  "env",
                  "environment"
              ],
@@ -2194,7 +2074,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-23T14:53:46+00:00"
          },
          {
-@@ -9196,6 +9669,10 @@
+@@ -9073,6 +9571,10 @@
                  "scaffold",
                  "scaffolding"
              ],
@@ -2205,7 +2085,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-07T00:56:03+00:00"
          },
          {
-@@ -9263,6 +9740,9 @@
+@@ -9140,6 +9642,9 @@
              ],
              "description": "Symfony Monolog Bridge",
              "homepage": "https://symfony.com",
@@ -2215,7 +2095,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-26T23:16:41+00:00"
          },
          {
-@@ -9326,6 +9806,10 @@
+@@ -9203,6 +9708,10 @@
                  "log",
                  "logging"
              ],
@@ -2226,7 +2106,7 @@ index 1ab3a5a6..ef5f7853 100644
              "time": "2019-11-13T13:11:14+00:00"
          },
          {
-@@ -9391,28 +9875,29 @@
+@@ -9268,46 +9777,47 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
@@ -2234,59 +2114,6 @@ index 1ab3a5a6..ef5f7853 100644
 +                "source": "https://github.com/symfony/phpunit-bridge/tree/v4.4.1"
 +            },
              "time": "2019-11-28T13:33:56+00:00"
-         },
-         {
-             "name": "symfony/profiler-pack",
--            "version": "v1.0.6",
-+            "version": "v1.0.4",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/symfony/profiler-pack.git",
--                "reference": "bcd6e80af9819454ac18594362e7875fd1d771c7"
-+                "reference": "99c4370632c2a59bb0444852f92140074ef02209"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/symfony/profiler-pack/zipball/bcd6e80af9819454ac18594362e7875fd1d771c7",
--                "reference": "bcd6e80af9819454ac18594362e7875fd1d771c7",
-+                "url": "https://api.github.com/repos/symfony/profiler-pack/zipball/99c4370632c2a59bb0444852f92140074ef02209",
-+                "reference": "99c4370632c2a59bb0444852f92140074ef02209",
-                 "shasum": ""
-             },
-             "require": {
-+                "php": "^7.0",
-                 "symfony/stopwatch": "*",
--                "symfony/web-profiler-bundle": "*"
--            },
--            "require-dev": {
--                "symfony/stopwatch": "*",
-+                "symfony/twig-bundle": "*",
-                 "symfony/web-profiler-bundle": "*"
-             },
-             "type": "symfony-pack",
-@@ -9423,62 +9908,46 @@
-             "description": "A pack for the Symfony web profiler",
-             "support": {
-                 "issues": "https://github.com/symfony/profiler-pack/issues",
--                "source": "https://github.com/symfony/profiler-pack/tree/v1.0.6"
-+                "source": "https://github.com/symfony/profiler-pack/tree/master"
-             },
--            "funding": [
--                {
--                    "url": "https://symfony.com/sponsor",
--                    "type": "custom"
--                },
--                {
--                    "url": "https://github.com/fabpot",
--                    "type": "github"
--                },
--                {
--                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
--                    "type": "tidelift"
--                }
--            ],
--            "time": "2021-08-20T17:27:58+00:00"
-+            "time": "2018-12-10T12:11:44+00:00"
          },
          {
              "name": "symfony/web-profiler-bundle",
@@ -2344,7 +2171,7 @@ index 1ab3a5a6..ef5f7853 100644
                  }
              },
              "autoload": {
-@@ -9505,7 +9974,10 @@
+@@ -9334,7 +9844,10 @@
              ],
              "description": "Symfony WebProfilerBundle",
              "homepage": "https://symfony.com",

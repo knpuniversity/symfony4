@@ -1,25 +1,25 @@
 diff --git a/composer.json b/composer.json
-index 3ad2c4cc..288ba1e4 100644
+index 07768d5..3d5759e 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -10,6 +10,7 @@
+@@ -14,6 +14,7 @@
          "knplabs/knp-time-bundle": "^1.8",
          "liip/imagine-bundle": "^2.1",
          "nexylan/slack-bundle": "^2.0,<2.2.0",
 +        "oneup/flysystem-bundle": "^3.0",
          "php-http/guzzle6-adapter": "^1.1",
+         "phpdocumentor/reflection-docblock": "^3.0|^4.0",
          "sensio/framework-extra-bundle": "^5.1",
-         "stof/doctrine-extensions-bundle": "^1.3",
 diff --git a/composer.lock b/composer.lock
-index 38a7318e..ae79766c 100644
+index a9ce9ec..6b4264f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "8df0be858307e4a73c0a3fb1169cd680",
-+    "content-hash": "3c87a2f82383f408139a2903fc4b7555",
+-    "content-hash": "0983a8fd9e8b6b16c053ffb4ada7f889",
++    "content-hash": "8b370b4e68cfeb99a1d8e6a71f13f5b0",
      "packages": [
          {
              "name": "behat/transliterator",
@@ -215,7 +215,7 @@ index 38a7318e..ae79766c 100644
              "name": "php-http/cache-plugin",
              "version": "1.6.0",
 diff --git a/config/bundles.php b/config/bundles.php
-index 2ea3a624..dfbdc683 100644
+index 2ea3a62..dfbdc68 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -21,4 +21,5 @@ return [
@@ -226,7 +226,7 @@ index 2ea3a624..dfbdc683 100644
  ];
 diff --git a/config/packages/oneup_flysystem.yaml b/config/packages/oneup_flysystem.yaml
 new file mode 100644
-index 00000000..50b80766
+index 0000000..50b8076
 --- /dev/null
 +++ b/config/packages/oneup_flysystem.yaml
 @@ -0,0 +1,10 @@
@@ -241,7 +241,7 @@ index 00000000..50b80766
 +            adapter: default_adapter
 +            alias: League\Flysystem\Filesystem
 diff --git a/symfony.lock b/symfony.lock
-index a1f54b3c..dd8eb1b8 100644
+index a12373b..bc1a7c4 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -125,6 +125,9 @@

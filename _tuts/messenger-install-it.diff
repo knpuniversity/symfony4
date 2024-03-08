@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 03c8fcad..eee59101 100644
+index 03c8fca..eee5910 100644
 --- a/.env
 +++ b/.env
 @@ -52,3 +52,10 @@ WKHTMLTOIMAGE_PATH=/usr/local/bin/wkhtmltoimage
@@ -14,27 +14,27 @@ index 03c8fcad..eee59101 100644
 +# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
 +###< symfony/messenger ###
 diff --git a/composer.json b/composer.json
-index 29cff4d7..10fad2dd 100644
+index 7514088..7d12556 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -25,6 +25,7 @@
+@@ -30,6 +30,7 @@
          "symfony/form": "^4.0",
          "symfony/framework-bundle": "^4.0",
          "symfony/mailer": "4.3.*",
 +        "symfony/messenger": "4.3.*",
-         "symfony/orm-pack": "^1.0",
+         "symfony/property-access": "4.3.*",
+         "symfony/property-info": "4.3.*",
          "symfony/security-bundle": "^4.0",
-         "symfony/sendgrid-mailer": "4.3.*",
 diff --git a/composer.lock b/composer.lock
-index a69df00d..3d211912 100644
+index 9fbd12d..81266e0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "5695fc267e8f903ea5d51d49f7e7f579",
-+    "content-hash": "c19dda8b3c1218556c875c3c96954662",
+-    "content-hash": "5a25104823b5f4ce5cf191c900c55fa0",
++    "content-hash": "7322b970223d3fd2c23699bba3ad5a19",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -121,7 +121,7 @@ index a69df00d..3d211912 100644
              "version": "v4.3.4",
 diff --git a/config/packages/messenger.yaml b/config/packages/messenger.yaml
 new file mode 100644
-index 00000000..6b7319ce
+index 0000000..6b7319c
 --- /dev/null
 +++ b/config/packages/messenger.yaml
 @@ -0,0 +1,14 @@
@@ -140,7 +140,7 @@ index 00000000..6b7319ce
 +            # Route your messages to the transports
 +            # 'App\Message\YourMessage': async
 diff --git a/symfony.lock b/symfony.lock
-index ddab9293..fed6e88a 100644
+index a566917..701a23a 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -404,6 +404,18 @@

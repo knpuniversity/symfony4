@@ -1,5 +1,5 @@
 diff --git a/assets/js/app.js b/assets/js/app.js
-index 6a178c3f..de35ddb1 100644
+index 6a178c3..de35ddb 100644
 --- a/assets/js/app.js
 +++ b/assets/js/app.js
 @@ -14,3 +14,11 @@ import $ from 'jquery';
@@ -15,7 +15,7 @@ index 6a178c3f..de35ddb1 100644
 +        .html(inputFile.files[0].name);
 +});
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index ba9861d5..4c9c1998 100644
+index ba9861d..4c9c199 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -93,15 +93,6 @@

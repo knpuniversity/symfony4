@@ -1,6 +1,6 @@
 diff --git a/public/build/email.css b/public/build/email.css
 new file mode 100644
-index 00000000..7b738812
+index 0000000..7b73881
 --- /dev/null
 +++ b/public/build/email.css
 @@ -0,0 +1,38 @@
@@ -45,7 +45,7 @@ index 00000000..7b738812
 \ No newline at end of file
 diff --git a/public/build/vendors~email.css b/public/build/vendors~email.css
 new file mode 100644
-index 00000000..3c19160a
+index 0000000..3c19160
 --- /dev/null
 +++ b/public/build/vendors~email.css
 @@ -0,0 +1,1348 @@
@@ -1400,7 +1400,7 @@ index 00000000..3c19160a
 \ No newline at end of file
 diff --git a/public/build/vendors~email.js b/public/build/vendors~email.js
 new file mode 100644
-index 00000000..1637ec14
+index 0000000..1637ec1
 --- /dev/null
 +++ b/public/build/vendors~email.js
 @@ -0,0 +1,2 @@

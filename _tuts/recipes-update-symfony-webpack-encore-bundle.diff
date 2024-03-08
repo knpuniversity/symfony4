@@ -1,16 +1,16 @@
 diff --git a/config/packages/test/webpack_encore.yaml b/config/packages/test/webpack_encore.yaml
 new file mode 100644
-index 00000000..02a76515
+index 0000000..02a7651
 --- /dev/null
 +++ b/config/packages/test/webpack_encore.yaml
 @@ -0,0 +1,2 @@
 +#webpack_encore:
 +#    strict_mode: false
 diff --git a/symfony.lock b/symfony.lock
-index 875f6482..4a4c7a82 100644
+index caab303..ff7a391 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -639,17 +639,19 @@
+@@ -627,17 +627,19 @@
          }
      },
      "symfony/webpack-encore-bundle": {
@@ -34,7 +34,7 @@ index 875f6482..4a4c7a82 100644
              "package.json",
              "webpack.config.js"
 diff --git a/webpack.config.js b/webpack.config.js
-index b354761d..7f75d993 100644
+index b354761..7f75d99 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -1,5 +1,11 @@

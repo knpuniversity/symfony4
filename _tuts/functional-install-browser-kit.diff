@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index e6f5dfb0..5f0552f0 100644
+index 7d93fa2..accd882 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -42,6 +42,7 @@
+@@ -49,6 +49,7 @@
          "doctrine/doctrine-fixtures-bundle": "^3.0",
          "easycorp/easy-log-handler": "^1.0.2",
          "fzaninotto/faker": "^1.7",
@@ -11,19 +11,19 @@ index e6f5dfb0..5f0552f0 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 80c21ce8..5a0beb0c 100644
+index 2434066..f7a6a57 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "d2731148016768ca2d24c15f3304178d",
-+    "content-hash": "cfe4b69173e115ed7fc7cd8207d7e943",
+-    "content-hash": "6d9e1218d67230d31313da94912a2fe6",
++    "content-hash": "7ace32e6228785fb3a940c755edb7e5e",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
-@@ -8581,6 +8581,65 @@
+@@ -8495,6 +8495,65 @@
              ],
              "time": "2019-09-01T07:51:21+00:00"
          },
@@ -89,7 +89,7 @@ index 80c21ce8..5a0beb0c 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.3.4",
-@@ -8647,6 +8706,67 @@
+@@ -8561,6 +8620,67 @@
              "homepage": "https://symfony.com",
              "time": "2019-07-19T08:33:28+00:00"
          },
@@ -158,7 +158,7 @@ index 80c21ce8..5a0beb0c 100644
              "name": "symfony/dotenv",
              "version": "v4.3.4",
 diff --git a/symfony.lock b/symfony.lock
-index 8a7561bb..e8a58986 100644
+index aac2c1a..cb02185 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -287,6 +287,9 @@

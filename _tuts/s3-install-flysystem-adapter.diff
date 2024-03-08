@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 806e341d..a6eefb16 100644
+index 8a518dd..ba525cc 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -9,6 +9,7 @@
+@@ -13,6 +13,7 @@
          "knplabs/knp-markdown-bundle": "^1.7",
          "knplabs/knp-paginator-bundle": "^2.7",
          "knplabs/knp-time-bundle": "^1.8",
@@ -11,15 +11,15 @@ index 806e341d..a6eefb16 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 91748dfc..28e9b10b 100644
+index 9ae69e3..8db85a7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "3c2e8967814ff3ae09ad16b1716a5e9a",
-+    "content-hash": "d9b7e33ad54bd2a23c8a2337d8e342c6",
+-    "content-hash": "824b3737131903ba62c5e93dbf8fa75a",
++    "content-hash": "6674367340b8f05ae817f844b0061dc8",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
@@ -78,7 +78,7 @@ index 91748dfc..28e9b10b 100644
              "name": "liip/imagine-bundle",
              "version": "2.1.0",
 diff --git a/symfony.lock b/symfony.lock
-index 1cf35d2a..b9d13378 100644
+index 9ad78dd..aefbf7c 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -131,6 +131,9 @@

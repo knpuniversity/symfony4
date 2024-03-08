@@ -1,5 +1,5 @@
 diff --git a/tests/Service/MailerTest.php b/tests/Service/MailerTest.php
-index 3fa67b27..d4b7a748 100644
+index 3fa67b2..d4b7a74 100644
 --- a/tests/Service/MailerTest.php
 +++ b/tests/Service/MailerTest.php
 @@ -53,8 +53,10 @@ class MailerTest extends TestCase

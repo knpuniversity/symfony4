@@ -1,5 +1,5 @@
 diff --git a/bin/console b/bin/console
-index 52fd3989..5d5c80fb 100755
+index 52fd398..5d5c80f 100755
 --- a/bin/console
 +++ b/bin/console
 @@ -4,7 +4,11 @@
@@ -16,7 +16,7 @@ index 52fd3989..5d5c80fb 100755
  set_time_limit(0);
  
 diff --git a/config/bootstrap.php b/config/bootstrap.php
-index 1dab152d..976a7763 100644
+index 1dab152..976a776 100644
 --- a/config/bootstrap.php
 +++ b/config/bootstrap.php
 @@ -6,46 +6,18 @@ require dirname(__DIR__).'/vendor/autoload.php';
@@ -73,7 +73,7 @@ index 1dab152d..976a7763 100644
  $_SERVER['APP_DEBUG'] = $_SERVER['APP_DEBUG'] ?? $_ENV['APP_DEBUG'] ?? 'prod' !== $_SERVER['APP_ENV'];
  $_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = (int) $_SERVER['APP_DEBUG'] || filter_var($_SERVER['APP_DEBUG'], FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
 diff --git a/symfony.lock b/symfony.lock
-index 2e9cbb79..86d25ddc 100644
+index 68f70c2..686649b 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -294,13 +294,17 @@
