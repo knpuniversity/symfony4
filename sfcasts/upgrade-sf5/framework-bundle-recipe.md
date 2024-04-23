@@ -94,7 +94,7 @@ Apparently this modified *several* files. You know the drill: let's start
 walking through the changes by running:
 
 ```terminal
-get add -p
+git add -p
 ```
 
 ## Changes to .env
