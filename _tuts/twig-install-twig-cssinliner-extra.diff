@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 7b244c5..72926b8 100644
+index 9dbcc5e..ba8ce1a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -38,6 +38,7 @@
@@ -11,15 +11,15 @@ index 7b244c5..72926b8 100644
          "twig/extra-bundle": "^2.12|^3.0",
          "twig/twig": "^2.12|^3.0"
 diff --git a/composer.lock b/composer.lock
-index eab7ae0..1a7de1a 100644
+index 38d4775..9fc310b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "cb875c6fd41baec31ed012ceba89898f",
-+    "content-hash": "03b1ba110331ffdf26e5f33508fcf6e9",
+-    "content-hash": "861653ab52673f792def38d34f33d8e1",
++    "content-hash": "c3881059da030f6aed61f081cace1944",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

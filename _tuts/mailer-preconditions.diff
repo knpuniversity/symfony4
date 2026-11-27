@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index b0e86fe..844dae8 100644
+index 7ca4d87..6c70c9b 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -16,7 +16,7 @@
@@ -37,7 +37,7 @@ index b0e86fe..844dae8 100644
      },
      "config": {
          "preferred-install": {
-@@ -101,7 +101,7 @@
+@@ -106,7 +106,7 @@
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
              "allow-contrib": true,
@@ -47,15 +47,15 @@ index b0e86fe..844dae8 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index f6bb04a..e82dfb3 100644
+index d5c03d3..b2bdeb7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,20 +4,20 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "b7759c342ff9aafe0f67dea8da61af96",
-+    "content-hash": "5ba8c6ae7a77f0147863ec4aa47dc755",
+-    "content-hash": "fd53eb21a3e91ab1950cf12217b72c87",
++    "content-hash": "e4749544dfc1d2e7f9cc5b8f7f3f7f3f",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

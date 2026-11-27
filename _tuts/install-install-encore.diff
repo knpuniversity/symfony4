@@ -44,7 +44,7 @@ index 0000000..0648e87
 +
 +console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 diff --git a/composer.json b/composer.json
-index d89c713..b0e86fe 100644
+index 8872c1e..7ca4d87 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -34,6 +34,7 @@
@@ -56,15 +56,15 @@ index d89c713..b0e86fe 100644
          "twig/extensions": "^1.5"
      },
 diff --git a/composer.lock b/composer.lock
-index 195de10..f6bb04a 100644
+index ef37374..d5c03d3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "d2a4c2abdd97efe3d07ec92f54189e64",
-+    "content-hash": "b7759c342ff9aafe0f67dea8da61af96",
+-    "content-hash": "b87d86b86b45f32bb125e99de1faba7a",
++    "content-hash": "fd53eb21a3e91ab1950cf12217b72c87",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

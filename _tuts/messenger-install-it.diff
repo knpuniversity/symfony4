@@ -14,7 +14,7 @@ index 03c8fca..eee5910 100644
 +# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
 +###< symfony/messenger ###
 diff --git a/composer.json b/composer.json
-index 7514088..7d12556 100644
+index c66ca69..b9cb1bd 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -30,6 +30,7 @@
@@ -26,15 +26,15 @@ index 7514088..7d12556 100644
          "symfony/property-info": "4.3.*",
          "symfony/security-bundle": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 9fbd12d..81266e0 100644
+index 6fbdda4..f5fae38 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "5a25104823b5f4ce5cf191c900c55fa0",
-+    "content-hash": "7322b970223d3fd2c23699bba3ad5a19",
+-    "content-hash": "bca6f6f073e2de19e92ddc882490fc88",
++    "content-hash": "8749daf5181d75704fde6fbbce83ae97",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

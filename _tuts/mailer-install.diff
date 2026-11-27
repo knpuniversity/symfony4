@@ -11,7 +11,7 @@ index ef5d1fc..23bf03c 100644
 +# MAILER_DSN=smtp://localhost
 +###< symfony/mailer ###
 diff --git a/composer.json b/composer.json
-index 844dae8..c986b05 100644
+index 6c70c9b..8fa9692 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,10 +27,11 @@
@@ -42,15 +42,15 @@ index 844dae8..c986b05 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index e82dfb3..4c196be 100644
+index b2bdeb7..4bb0c8b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "5ba8c6ae7a77f0147863ec4aa47dc755",
-+    "content-hash": "a41786387117013c43b0dd5867c9f588",
+-    "content-hash": "e4749544dfc1d2e7f9cc5b8f7f3f7f3f",
++    "content-hash": "0386d70a20d8109d478bf2f0338ffee7",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

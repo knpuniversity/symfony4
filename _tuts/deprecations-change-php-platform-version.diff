@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index cd86bdc..de5afad 100644
+index 78a1b38..f5bf53c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -2,7 +2,7 @@
@@ -20,3 +20,16 @@ index cd86bdc..de5afad 100644
          },
          "allow-plugins": {
              "composer/package-versions-deprecated": true,
+diff --git a/composer.lock b/composer.lock
+index b6464f8..bb06cc0 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "e4be9d193757930ac3ebfe78620b40e7",
++    "content-hash": "3c6fd4cb9998550c456a1c30fbadd90e",
+     "packages": [
+         {
+             "name": "aws/aws-sdk-php",

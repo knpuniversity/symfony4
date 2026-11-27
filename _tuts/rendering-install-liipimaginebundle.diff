@@ -11,7 +11,7 @@ index 4c881d3..dfd3202 100644
 +/public/media/cache/
 +###< liip/imagine-bundle ###
 diff --git a/composer.json b/composer.json
-index 0f8c68d..07768d5 100644
+index a2c7afa..b2d17db 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -12,6 +12,7 @@
@@ -23,15 +23,15 @@ index 0f8c68d..07768d5 100644
          "php-http/guzzle6-adapter": "^1.1",
          "phpdocumentor/reflection-docblock": "^3.0|^4.0",
 diff --git a/composer.lock b/composer.lock
-index 36e383d..a9ce9ec 100644
+index 08dd185..d1bd60b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "ea6cb1f4b53dbe976590c82085d229df",
-+    "content-hash": "0983a8fd9e8b6b16c053ffb4ada7f889",
+-    "content-hash": "83c292dbe211799fd615a75e8e9f2c8c",
++    "content-hash": "361f34eae87950fd8a3a05f757aa4f7f",
      "packages": [
          {
              "name": "behat/transliterator",

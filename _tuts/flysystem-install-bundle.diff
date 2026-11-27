@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 07768d5..3d5759e 100644
+index b2d17db..8ded3f3 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,6 +14,7 @@
@@ -11,15 +11,15 @@ index 07768d5..3d5759e 100644
          "phpdocumentor/reflection-docblock": "^3.0|^4.0",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index a9ce9ec..6b4264f 100644
+index d1bd60b..53ad272 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "0983a8fd9e8b6b16c053ffb4ada7f889",
-+    "content-hash": "8b370b4e68cfeb99a1d8e6a71f13f5b0",
+-    "content-hash": "361f34eae87950fd8a3a05f757aa4f7f",
++    "content-hash": "abaec15c2cea5d16ef6da7c1b583cb5e",
      "packages": [
          {
              "name": "behat/transliterator",

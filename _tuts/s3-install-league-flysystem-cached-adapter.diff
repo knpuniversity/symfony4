@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index ba525cc..d89c713 100644
+index 7ea8124..8872c1e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -14,6 +14,7 @@
@@ -11,15 +11,15 @@ index ba525cc..d89c713 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "oneup/flysystem-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 8db85a7..be093f4 100644
+index 809398c..fda7825 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6674367340b8f05ae817f844b0061dc8",
-+    "content-hash": "d2a4c2abdd97efe3d07ec92f54189e64",
+-    "content-hash": "3b0f958c27dc98390765e62cf9d0965a",
++    "content-hash": "b87d86b86b45f32bb125e99de1faba7a",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

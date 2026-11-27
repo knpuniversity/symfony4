@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 9abea81..1460349 100644
+index 58070cf..ee109a5 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -8,7 +8,7 @@
@@ -21,15 +21,15 @@ index 9abea81..1460349 100644
          "symfony/asset": "4.4.*",
          "symfony/console": "4.4.*",
 diff --git a/composer.lock b/composer.lock
-index 74dcbf8..a1b0c98 100644
+index 00ef57f..13ee097 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "2582131dcd41cdbe33e6f151c61ea689",
-+    "content-hash": "beb11b304605ebb02cd935d9791e8d24",
+-    "content-hash": "13a682fac0e44bb1fa93cac4de9ad4d6",
++    "content-hash": "8d7e181968f512fd41ca7b57b6c392f1",
      "packages": [
          {
              "name": "antishov/doctrine-extensions-bundle",

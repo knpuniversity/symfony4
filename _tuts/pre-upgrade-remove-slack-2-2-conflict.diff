@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 7d12556..0d1669e 100644
+index b9cb1bd..21ad15e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,7 +18,7 @@
@@ -12,15 +12,15 @@ index 7d12556..0d1669e 100644
          "php-http/guzzle6-adapter": "^1.1",
          "phpdocumentor/reflection-docblock": "^3.0|^4.0",
 diff --git a/composer.lock b/composer.lock
-index 81266e0..13aab69 100644
+index f5fae38..68f59aa 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "7322b970223d3fd2c23699bba3ad5a19",
-+    "content-hash": "cce70da5ab54c11e8d79cf9cba23b796",
+-    "content-hash": "8749daf5181d75704fde6fbbce83ae97",
++    "content-hash": "970bd824cb62256204c2c6ab125ab732",
      "packages": [
          {
              "name": "aws/aws-sdk-php",

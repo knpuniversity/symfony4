@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 7d93fa2..accd882 100644
+index 65f4134..07df23a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -49,6 +49,7 @@
@@ -11,15 +11,15 @@ index 7d93fa2..accd882 100644
          "symfony/dotenv": "^4.0",
          "symfony/maker-bundle": "^1.0",
 diff --git a/composer.lock b/composer.lock
-index 2434066..f7a6a57 100644
+index e2faed0..44c4ff4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6d9e1218d67230d31313da94912a2fe6",
-+    "content-hash": "7ace32e6228785fb3a940c755edb7e5e",
+-    "content-hash": "fd6f9a274f512ea992100529971ab2f3",
++    "content-hash": "fc98662dc5b761b4006e633863c837fe",
      "packages": [
          {
              "name": "aws/aws-sdk-php",
