@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 14c3870..d7b4ffe 100644
+index 2e97f4d..c0d65ea 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -74,7 +74,7 @@
+@@ -79,7 +79,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -12,9 +12,18 @@ index 14c3870..d7b4ffe 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index f590798..a44c70c 100644
+index 17ce874..05f946c 100644
 --- a/composer.lock
 +++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "f5adc90db9c335ddd42bd3bae607b629",
++    "content-hash": "2836e5d6b88da240e80d5d34dba7871a",
+     "packages": [
+         {
+             "name": "clue/stream-filter",
 @@ -3629,6 +3629,57 @@
              ],
              "time": "2017-06-19T01:22:40+00:00"

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index ebc8b21..148daee 100644
+index c6333be..3e3b941 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -15,7 +15,8 @@
@@ -13,15 +13,15 @@ index ebc8b21..148daee 100644
      "config": {
          "preferred-install": {
 diff --git a/composer.lock b/composer.lock
-index dbdd901..42d71a4 100644
+index 26f4303..6c87892 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "ad266c9fdad874f694e6b333eb1af1bc",
-+    "content-hash": "04203d85a367df02fd7fb3ee2de24310",
+-    "content-hash": "4ba55ad910484ed83f41ddcb8994a9b9",
++    "content-hash": "f9f820076f8d3007a84b61313048493a",
      "packages": [
          {
              "name": "doctrine/annotations",

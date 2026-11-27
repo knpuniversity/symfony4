@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 27e2102..13c6ed6 100644
+index 457a5a1..71fd332 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -20,8 +20,9 @@
@@ -14,17 +14,17 @@ index 27e2102..13c6ed6 100644
      },
      "config": {
          "preferred-install": {
-@@ -30,6 +31,9 @@
-         "sort-packages": true,
+@@ -31,6 +32,9 @@
          "platform": {
              "php": "7.1.3"
-+        },
+         },
 +        "allow-plugins": {
 +            "symfony/flex": true
-         }
-     },
-     "autoload": {
-@@ -66,7 +70,7 @@
++        },
+         "policy": {
+             "advisories": {
+                 "block": false
+@@ -71,7 +75,7 @@
      "extra": {
          "symfony": {
              "id": "01C1TW989CK77ZA7B2H4HC9WAG",
@@ -34,15 +34,15 @@ index 27e2102..13c6ed6 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 7755f09..82887ea 100644
+index 78dd1ad..22fb010 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "25dca78652995144111080d7e0af6d9b",
-+    "content-hash": "7a252dd582a9a47a31f21831c1832529",
+-    "content-hash": "20d2278157190cbf3056af9e37b39d36",
++    "content-hash": "37b0e197c946379cdd8ce548c895860b",
      "packages": [
          {
              "name": "doctrine/annotations",

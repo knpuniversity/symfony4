@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index f10aee6..a6fdcf0 100644
+index 766ef06..0abd5b8 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -9,6 +9,7 @@
@@ -11,15 +11,15 @@ index f10aee6..a6fdcf0 100644
          "php-http/guzzle6-adapter": "^1.1",
          "sensio/framework-extra-bundle": "^5.1",
 diff --git a/composer.lock b/composer.lock
-index b07dceb..abec723 100644
+index 22dbf9e..84871af 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "2e594ac98943008fed84fe8f4cb2e3b4",
-+    "content-hash": "68e0340d24524dcaa0e450eee1a8c6ac",
+-    "content-hash": "9379e2bead112ab8fadcafc050eb84d3",
++    "content-hash": "abcaf5afc6a31de446e70de26d0b6085",
      "packages": [
          {
              "name": "clue/stream-filter",

@@ -47,7 +47,7 @@ index 58be06d..6379099 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.json b/composer.json
-index d7b4ffe..f10aee6 100644
+index c0d65ea..766ef06 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,6 +4,10 @@
@@ -62,15 +62,15 @@ index d7b4ffe..f10aee6 100644
          "nexylan/slack-bundle": "^2.0,<2.2.0",
          "php-http/guzzle6-adapter": "^1.1",
 diff --git a/composer.lock b/composer.lock
-index a44c70c..b07dceb 100644
+index 05f946c..22dbf9e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "eb21fd3afac39b2589ac1afcbe80d9ef",
-+    "content-hash": "2e594ac98943008fed84fe8f4cb2e3b4",
+-    "content-hash": "2836e5d6b88da240e80d5d34dba7871a",
++    "content-hash": "9379e2bead112ab8fadcafc050eb84d3",
      "packages": [
          {
              "name": "clue/stream-filter",

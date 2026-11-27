@@ -24,7 +24,7 @@ index aeaf012..58be06d 100644
  
  Now check out the site at `http://localhost:8000`
 diff --git a/composer.json b/composer.json
-index 6f479f8..1c336be 100644
+index 292648d..89b3807 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -8,6 +8,7 @@
@@ -36,15 +36,15 @@ index 6f479f8..1c336be 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index cfcb16a..a0ba30e 100644
+index 2f1988f..46153d4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "d804c19f99942f2321db01ddf5e00b33",
-+    "content-hash": "72148cb5968c5f7364b7821e81c3b545",
+-    "content-hash": "33707267a2680cff1726d9ccfe54e0cb",
++    "content-hash": "61684aa7642cbd9a18861afa6e77641e",
      "packages": [
          {
              "name": "psr/cache",

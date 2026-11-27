@@ -1,5 +1,5 @@
 diff --git a/composer.lock b/composer.lock
-index 49f7e24..53cd156 100644
+index d111f2b..6b031a4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -1418,16 +1418,16 @@

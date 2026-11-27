@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 62a9486..9c5804a 100644
+index c6a7048..fd5183a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -13,6 +13,7 @@
@@ -10,7 +10,7 @@ index 62a9486..9c5804a 100644
          "symfony/dotenv": "^4.0"
      },
      "config": {
-@@ -43,7 +44,8 @@
+@@ -48,7 +49,8 @@
      "scripts": {
          "auto-scripts": {
              "cache:clear": "symfony-cmd",
@@ -21,15 +21,15 @@ index 62a9486..9c5804a 100644
          "post-install-cmd": [
              "@auto-scripts"
 diff --git a/composer.lock b/composer.lock
-index b66c92e..e2ce3b7 100644
+index 5859fc0..0431ab8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "a4ffa34aeeb5f71c735150158413f641",
-+    "content-hash": "b752e8cc3ef7a39d963fe0de2337329c",
+-    "content-hash": "bfc48d8f33a72fd7f6546361070550af",
++    "content-hash": "85ec9ba0e4a847e593c1c85e0e2877a3",
      "packages": [
          {
              "name": "doctrine/annotations",

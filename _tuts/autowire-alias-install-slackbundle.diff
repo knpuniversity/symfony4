@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index d300991..cb0e420 100644
+index 429a09e..a55ab35 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -5,6 +5,8 @@
@@ -12,15 +12,15 @@ index d300991..cb0e420 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index b6371c0..87bfa12 100644
+index ae86a22..b1df282 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,60 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "18d96195b9598e608c3079497726d32f",
-+    "content-hash": "13835b62546ae4fd367072f9724ba993",
+-    "content-hash": "a6faf5b9a27d45b56c27adf1a4fecbca",
++    "content-hash": "b48d348abed64b18f52af43fcae00d70",
      "packages": [
 +        {
 +            "name": "clue/stream-filter",

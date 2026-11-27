@@ -41,7 +41,7 @@ index 0000000..75d5be8
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index 148daee..754d714 100644
+index 3e3b941..3ada24e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -15,6 +15,7 @@
@@ -53,15 +53,15 @@ index 148daee..754d714 100644
          "symfony/profiler-pack": "^1.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 42d71a4..7f98a3b 100644
+index 6c87892..339dc54 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "04203d85a367df02fd7fb3ee2de24310",
-+    "content-hash": "e1c810c82260f3067abe1d921bb4b115",
+-    "content-hash": "f9f820076f8d3007a84b61313048493a",
++    "content-hash": "42891f9e837c164dcca78c8783eddd18",
      "packages": [
          {
              "name": "doctrine/annotations",
