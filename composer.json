@@ -57,6 +57,11 @@
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
             "symfony/runtime": true
+        },
+        "policy": {
+            "advisories": {
+                "block": false
+            }
         }
     },
     "autoload": {
