@@ -20,6 +20,11 @@
         "sort-packages": true,
         "platform": {
             "php": "7.1.3"
+        },
+        "policy": {
+            "advisories": {
+                "block": false
+            }
         }
     },
     "autoload": {
